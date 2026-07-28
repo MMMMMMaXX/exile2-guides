@@ -8,6 +8,8 @@ import { defineConfig, type Plugin } from "vite";
 import { loadStaticContentPages } from "./lib/content/content-page.server";
 import { buildSearchIndexes } from "./lib/search/search-index";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const virtualContentPagesId = "virtual:content-pages";
 const resolvedVirtualContentPagesId = `\0${virtualContentPagesId}`;
 const virtualSearchIndexesId = "virtual:search-indexes";
@@ -83,6 +85,11 @@ export default defineConfig({
     searchIndexesPlugin(),
     tailwindcss(),
     reactRouter(),
+    cloudflare({
+      viteEnvironment: {
+        name: "ssr"
+      }
+    })
   ],
   preview: {
     host: "127.0.0.1",
