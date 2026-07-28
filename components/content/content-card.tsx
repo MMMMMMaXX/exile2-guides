@@ -35,9 +35,9 @@ export function ContentCard({
           className="content-card__image"
           src={content.image}
           srcSet={`${content.image} 448w`}
-          sizes="(max-width: 34rem) calc(100vw - 2rem), 7rem"
+          sizes="(max-width: 40rem) calc(100vw - 2rem), (max-width: 48rem) 10rem, (max-width: 74rem) 50vw, 25vw"
           alt={content.imageAlt ?? ""}
-          height="576"
+          height="252"
           loading="lazy"
           width="448"
         />

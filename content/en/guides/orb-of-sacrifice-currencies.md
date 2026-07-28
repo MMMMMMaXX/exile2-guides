@@ -18,6 +18,8 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
+image: /images/prototype-v2/guide-orb-sacrifice.webp
+imageAlt: A ritual altar surrounded by four Orb of Sacrifice currencies
 tags: [guide, currency-crafting, corruption, verification]
 relatedContentIds: [patch-0-5-4-runes-of-aldur, atziri-red-queen]
 sources:

@@ -1,16 +1,29 @@
-/** 文件职责：提供仅在浏览器执行的当前语言本地搜索界面，搜索词只保存在 URL 与内存。 */
+/** 文件职责：提供 V3 专用搜索页的查询、类别筛选与结果布局，所有匹配均在当前语言本地索引中完成。 */
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 
-import type { ContentLocale } from "../../lib/content/constants";
+import type { ContentLocale, ContentType } from "../../lib/content/constants";
 import {
   searchDocuments,
   type SearchDocument,
 } from "../../lib/search/search-index";
+import { SearchResultCard } from "./search-result-card";
 
-const PAGE_SIZE = 20;
+const contentTypes: readonly ContentType[] = [
+  "guide",
+  "build",
+  "boss",
+  "item",
+  "skill",
+  "patch",
+];
 
-/** 渲染可键盘提交的搜索表单，并将词语写入 URL 以支持刷新和分享。 */
+/** 将 URL 或推荐词写回 URL，并统一重置筛选后的结果列表。 */
+function createQueryParams(query: string): Record<string, string> {
+  return query.trim() ? { q: query.trim() } : {};
+}
+
+/** 渲染可分享查询、即时类别筛选与 V3 横向搜索结果卡片。 */
 export function SearchPage({
   documents,
   locale,
@@ -21,101 +34,186 @@ export function SearchPage({
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") ?? "";
   const [input, setInput] = useState(query);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const results = useMemo(
-    () => searchDocuments(documents, query),
+  const [selectedType, setSelectedType] = useState<ContentType | "all">("all");
+  const zh = locale === "zh-cn";
+  const searchedDocuments = useMemo(
+    () => (query ? searchDocuments(documents, query) : documents),
     [documents, query],
   );
-  const zh = locale === "zh-cn";
+  const results = useMemo(
+    () =>
+      selectedType === "all"
+        ? searchedDocuments
+        : searchedDocuments.filter(
+            (document) => document.category === selectedType,
+          ),
+    [searchedDocuments, selectedType],
+  );
 
-  /** 提交新关键词时重置分页，避免上一个搜索的“继续加载”状态泄漏。 */
+  /** 提交关键词并保留 URL 可分享语义；不把查询上传至服务端。 */
   function submitSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextQuery = input.trim();
-    setVisibleCount(PAGE_SIZE);
-    setSearchParams(nextQuery ? { q: nextQuery } : {});
+    setSearchParams(createQueryParams(input));
   }
 
+  /** 使用推荐词快速查询，同时把焦点和结果状态收束到当前搜索页。 */
+  function selectPopularQuery(term: string) {
+    setInput(term);
+    setSearchParams(createQueryParams(term));
+  }
+
+  const filterLabels: Record<ContentType | "all", string> = zh
+    ? {
+        all: "全部",
+        boss: "首领",
+        build: "Build",
+        guide: "攻略",
+        item: "物品",
+        patch: "补丁说明",
+        skill: "技能",
+      }
+    : {
+        all: "All",
+        boss: "Bosses",
+        build: "Builds",
+        guide: "Guides",
+        item: "Items",
+        patch: "Patch Notes",
+        skill: "Skills",
+      };
+
   return (
-    <main className="page-shell search-page" data-prerender-content="true">
-      <header className="content-list-page__header">
-        <p className="eyebrow">Exile2 Guides</p>
-        <h1>{zh ? "站内搜索" : "Search guides"}</h1>
-        <p className="text-lead">
-          {zh
-            ? "搜索当前语言的已发布攻略标题、摘要、标签、目录标题和分类。搜索不会上传到服务器。"
-            : "Search titles, summaries, tags, headings and categories in the current language. Your search is never sent to a server."}
-        </p>
-      </header>
-      <form className="search-page__form" onSubmit={submitSearch} role="search">
-        <label htmlFor="site-search">{zh ? "搜索词" : "Search query"}</label>
-        <div>
-          <input
-            id="site-search"
-            name="q"
-            onChange={(event) => setInput(event.target.value)}
-            placeholder={
-              zh
-                ? "例如：升级、技能、首领"
-                : "For example: leveling, skill, boss"
-            }
-            type="search"
-            value={input}
-          />
-          <button className="button" type="submit">
-            {zh ? "搜索" : "Search"}
-          </button>
-        </div>
-      </form>
-      {query ? (
-        <section aria-live="polite" className="search-page__results">
-          <h2>{zh ? `“${query}”的搜索结果` : `Results for “${query}”`}</h2>
-          {results.length ? (
-            <>
-              <p>
-                {zh
-                  ? `找到 ${results.length} 条已发布内容。`
-                  : `${results.length} published result(s) found.`}
-              </p>
-              <div className="content-card-grid">
-                {results.slice(0, visibleCount).map((result) => (
-                  <article className="content-card" key={result.path}>
-                    <p className="content-card__type">{result.category}</p>
-                    <h3>
-                      <a href={result.path}>{result.title}</a>
-                    </h3>
-                    <p>{result.description}</p>
-                  </article>
-                ))}
-              </div>
-              {visibleCount < results.length ? (
+    <main className="search-page" data-prerender-content="true">
+      <section className="search-page-hero" aria-labelledby="site-search-title">
+        <div className="page-shell">
+          <nav
+            className="breadcrumbs"
+            aria-label={zh ? "面包屑" : "Breadcrumb"}
+          >
+            <a href={`/${locale}/`}>{zh ? "首页" : "Home"}</a>
+            <span aria-hidden="true">›</span>
+            <span>{zh ? "搜索" : "Search"}</span>
+          </nav>
+          <p className="eyebrow">{zh ? "站内搜索" : "Site search"}</p>
+          <h1 id="site-search-title">
+            {zh ? "查找准确的攻略或问题" : "Find the exact guide or question"}
+          </h1>
+          <form
+            className="search-page-form"
+            onSubmit={submitSearch}
+            role="search"
+          >
+            <label className="sr-only" htmlFor="site-search">
+              {zh ? "搜索" : "Search"}
+            </label>
+            <input
+              id="site-search"
+              name="q"
+              onChange={(event) => setInput(event.target.value)}
+              placeholder={
+                zh
+                  ? "试试“Liquid Verisium”、“Atziri”或“开荒 Build”…"
+                  : "Try “Liquid Verisium”, “Atziri”, “starter build”…"
+              }
+              type="search"
+              value={input}
+            />
+            <button type="submit">{zh ? "搜索" : "Search"}</button>
+          </form>
+          <div
+            className="popular-searches"
+            aria-label={zh ? "热门搜索" : "Popular searches"}
+          >
+            <span>{zh ? "热门：" : "Popular:"}</span>
+            {["Liquid Verisium", "Atziri", "Starter build", "Patch 0.5.4"].map(
+              (term) => (
                 <button
-                  className="button button--secondary"
-                  onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                  key={term}
+                  onClick={() => selectPopularQuery(term)}
                   type="button"
                 >
-                  {zh ? "加载更多" : "Load more"}
+                  {term}
                 </button>
-              ) : null}
-            </>
-          ) : (
+              ),
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-shell search-page-layout">
+        <aside className="search-filter-panel panel">
+          <p className="section-kicker">{zh ? "筛选结果" : "Filter results"}</p>
+          <h2>{zh ? "内容类型" : "Content type"}</h2>
+          <div className="catalog-filter__buttons">
+            {(["all", ...contentTypes] as const).map((type) => (
+              <button
+                className={selectedType === type ? "is-selected" : undefined}
+                key={type}
+                onClick={() => setSelectedType(type)}
+                type="button"
+              >
+                {filterLabels[type]}
+              </button>
+            ))}
+          </div>
+          <div className="filter-note">
+            <strong>{zh ? "搜索范围" : "Search behavior"}</strong>
             <p>
               {zh
-                ? "没有匹配的已发布内容。请尝试更通用的关键词。"
-                : "No published content matches this query. Try a broader term."}
+                ? "匹配标题、类型、标签与目录标题；结果只来自当前语言的已发布内容。"
+                : "Matches titles, types, tags and headings in the published content of this language."}
             </p>
+          </div>
+        </aside>
+        <section aria-live="polite" className="search-results-column">
+          <div className="catalog-toolbar">
+            <div>
+              <p className="section-kicker">{zh ? "结果" : "Results"}</p>
+              <h2>
+                {query
+                  ? zh
+                    ? `“${query}”的结果`
+                    : `Results for “${query}”`
+                  : zh
+                    ? "热门页面"
+                    : "Popular pages"}
+              </h2>
+            </div>
+            <span>
+              {zh ? `${results.length} 条结果` : `${results.length} results`}
+            </span>
+          </div>
+          {results.length ? (
+            <div className="search-page-results">
+              {results.map((document) => (
+                <SearchResultCard document={document} key={document.path} />
+              ))}
+            </div>
+          ) : (
+            <section className="search-empty">
+              <strong>
+                {zh ? "暂未找到匹配页面" : "No matching page yet"}
+              </strong>
+              <p>
+                {zh
+                  ? "请使用更短的机制名称、移除版本号，或浏览主要分类。"
+                  : "Try a shorter mechanic name, remove the patch number, or browse a main category."}
+              </p>
+              <div>
+                <a href={`/${locale}/guides/`}>
+                  {zh ? "浏览攻略" : "Browse Guides"}
+                </a>
+                <a href={`/${locale}/items/`}>
+                  {zh ? "浏览物品" : "Browse Items"}
+                </a>
+                <a href={`/${locale}/bosses/`}>
+                  {zh ? "浏览首领" : "Browse Bosses"}
+                </a>
+              </div>
+            </section>
           )}
         </section>
-      ) : (
-        <section className="content-empty-state">
-          <h2>{zh ? "输入关键词开始搜索" : "Enter a query to search"}</h2>
-          <p>
-            {zh
-              ? "结果只会来自当前语言且已经核验发布的内容。"
-              : "Results only include verified, published content in the current language."}
-          </p>
-        </section>
-      )}
+      </section>
     </main>
   );
 }

@@ -6,6 +6,7 @@ import type { Route } from "./+types/content-detail";
 import { ArticleLayout } from "../../components/layout/article-layout";
 import { BuildQuickSummary } from "../../components/builds/build-quick-summary";
 import { BossQuickPreparation } from "../../components/bosses/boss-quick-preparation";
+import { ArticleSidebar } from "../../components/content/article-sidebar";
 import { ContentFactSummary } from "../../components/content/content-fact-summary";
 import { PatchStatusNotice } from "../../components/content/patch-status-notice";
 import { NotFoundPage } from "../../components/content/not-found-page";
@@ -76,7 +77,7 @@ function getBreadcrumbs(page: StaticContentPage): BreadcrumbItem[] {
   const { contentType, locale, slug, title } = page.frontMatter;
   const sectionPath = `/${locale}/${contentTypeSegments[contentType]}/`;
   return [
-    { label: "Home", path: "/" },
+    { label: locale === "zh-cn" ? "首页" : "Home", path: `/${locale}/` },
     { label: contentTypeLabels[contentType], path: sectionPath },
     { label: title, path: `${sectionPath}${slug}/` },
   ];
@@ -185,10 +186,43 @@ export default function ContentDetailRoute() {
       <StructuredData data={createArticleJsonLd(page.frontMatter)} />
       <ArticleLayout
         breadcrumbs={breadcrumbs}
+        contentType={contentTypeLabels[page.frontMatter.contentType]}
+        {...(page.frontMatter.image
+          ? {
+              image: page.frontMatter.image,
+              ...(page.frontMatter.imageAlt
+                ? { imageAlt: page.frontMatter.imageAlt }
+                : {}),
+            }
+          : {})}
+        locale={page.frontMatter.locale}
         patch={page.frontMatter.patch}
+        rail={
+          <ArticleSidebar
+            author={page.frontMatter.author}
+            categoryHref={`/${page.frontMatter.locale}/${contentTypeSegments[page.frontMatter.contentType]}/`}
+            categoryLabel={contentTypeLabels[page.frontMatter.contentType]}
+            locale={page.frontMatter.locale}
+            patch={page.frontMatter.patch}
+            tags={page.frontMatter.tags}
+            updatedAt={page.frontMatter.updatedAt}
+            {...(page.frontMatter.verificationStatus
+              ? {
+                  verificationStatus: page.frontMatter.verificationStatus,
+                }
+              : {})}
+          />
+        }
+        {...(page.frontMatter.contentType === "guide" &&
+        typeof page.frontMatter.estimatedReadingMinutes === "number"
+          ? {
+              readingMinutes: page.frontMatter.estimatedReadingMinutes,
+            }
+          : {})}
         summary={page.frontMatter.summary}
         tableOfContents={page.tableOfContents}
         title={page.frontMatter.title}
+        updatedAt={page.frontMatter.updatedAt}
       >
         {isBuildPage(page) ? (
           <BuildQuickSummary frontMatter={page.frontMatter} />

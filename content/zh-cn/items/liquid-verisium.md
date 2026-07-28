@@ -18,6 +18,8 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
+image: /images/prototype-v2/item-liquid.webp
+imageAlt: 深色物品面板上的青色 Liquid Verisium 瓶
 tags: [item, currency, expedition, verification]
 relatedContentIds: [patch-0-5-4-runes-of-aldur]
 sources:

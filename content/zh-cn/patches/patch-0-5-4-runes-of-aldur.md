@@ -18,6 +18,8 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
+image: /images/prototype-v2/guide-patch-054.webp
+imageAlt: 代表 0.5.4 更新的风暴笼罩废墟城市
 tags: [patch, runes-of-aldur, expedition, atlas]
 relatedContentIds: []
 sources:

@@ -10,6 +10,8 @@ import {
   type ItemListItem,
 } from "../../lib/content/item-list";
 import { ContentCard } from "../content/content-card";
+import { CatalogContextRail } from "../catalog/catalog-context-rail";
+import { CatalogLayout } from "../catalog/catalog-layout";
 
 type ItemListCopy = { emptyDescription: string; emptyTitle: string };
 type FilterKey = keyof ItemFilters;
@@ -119,62 +121,75 @@ export function ItemList({
       </section>
     );
   return (
-    <section className="item-list" aria-label="Item results">
-      <ItemFiltersView
-        filters={filters}
-        items={items}
-        onChange={updateFilter}
-      />
-      {results.length ? (
-        <div className="content-card-grid">
-          {results.map(({ frontMatter }) => (
-            <ContentCard
-              key={frontMatter.contentId}
-              content={{
-                attributes: [
-                  ...(frontMatter.itemType
-                    ? [formatValue(frontMatter.itemType)]
-                    : []),
-                  ...(frontMatter.rarity
-                    ? [formatValue(frontMatter.rarity)]
-                    : []),
-                  ...frontMatter.useCases.map(formatValue),
-                ],
-                href: contentRoutePath(locale, "item", frontMatter.slug),
-                meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
-                summary: frontMatter.summary,
-                title: frontMatter.title,
-                typeLabel: "Item",
-                ...(frontMatter.image
-                  ? {
-                      image: frontMatter.image,
-                      ...(frontMatter.imageAlt
-                        ? { imageAlt: frontMatter.imageAlt }
-                        : {}),
-                    }
-                  : {}),
-              }}
-            />
-          ))}
+    <CatalogLayout
+      context={<CatalogContextRail contentType="item" locale={locale} />}
+      filters={
+        <ItemFiltersView
+          filters={filters}
+          items={items}
+          onChange={updateFilter}
+        />
+      }
+    >
+      <section className="item-list" aria-label="Item results">
+        <div className="catalog-toolbar">
+          <div>
+            <p className="section-kicker">Verified catalogue</p>
+            <h2>Items</h2>
+          </div>
+          <span>{results.length} result(s)</span>
         </div>
-      ) : (
-        <section
-          className="content-empty-state"
-          aria-labelledby="item-filter-empty-title"
-        >
-          <h2 id="item-filter-empty-title">No Items match these filters</h2>
-          <p>Try another combination to see the verified Item guides.</p>
-          {hasActiveFilters ? (
-            <button
-              className="button button--secondary"
-              onClick={clearFilters}
-              type="button"
-            >
-              Clear filters
-            </button>
-          ) : null}
-        </section>
-      )}
-    </section>
+        {results.length ? (
+          <div className="content-card-grid catalog-grid">
+            {results.map(({ frontMatter }) => (
+              <ContentCard
+                key={frontMatter.contentId}
+                content={{
+                  attributes: [
+                    ...(frontMatter.itemType
+                      ? [formatValue(frontMatter.itemType)]
+                      : []),
+                    ...(frontMatter.rarity
+                      ? [formatValue(frontMatter.rarity)]
+                      : []),
+                    ...frontMatter.useCases.map(formatValue),
+                  ],
+                  href: contentRoutePath(locale, "item", frontMatter.slug),
+                  meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
+                  summary: frontMatter.summary,
+                  title: frontMatter.title,
+                  typeLabel: "Item",
+                  ...(frontMatter.image
+                    ? {
+                        image: frontMatter.image,
+                        ...(frontMatter.imageAlt
+                          ? { imageAlt: frontMatter.imageAlt }
+                          : {}),
+                      }
+                    : {}),
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <section
+            className="content-empty-state"
+            aria-labelledby="item-filter-empty-title"
+          >
+            <h2 id="item-filter-empty-title">No Items match these filters</h2>
+            <p>Try another combination to see the verified Item guides.</p>
+            {hasActiveFilters ? (
+              <button
+                className="button button--secondary"
+                onClick={clearFilters}
+                type="button"
+              >
+                Clear filters
+              </button>
+            ) : null}
+          </section>
+        )}
+      </section>
+    </CatalogLayout>
   );
 }

@@ -18,6 +18,8 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
+image: /images/prototype-v2/guide-liquid-verisium.webp
+imageAlt: A glowing cyan Liquid Verisium flask in a dark workshop
 tags: [guide, systems, expedition, currency-crafting]
 relatedContentIds: [patch-0-5-4-runes-of-aldur]
 sources:

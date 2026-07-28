@@ -1,4 +1,4 @@
-/** 文件职责：提供全站主导航、语言入口和可访问的移动端菜单控制。 */
+/** 文件职责：提供原型 V2 风格的全站主导航、搜索入口、语言入口和移动菜单控制。 */
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useLocation } from "react-router";
 
@@ -53,6 +53,27 @@ export function Header({
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [isMenuOpen]);
 
+  // “/” 快捷键只负责进入现有静态搜索页，不复制另一套搜索索引或结果逻辑。
+  useEffect(() => {
+    /** 在非输入状态下将“/”转换为当前语言的搜索页导航。 */
+    function openSearchOnShortcut(event: KeyboardEvent) {
+      const target = event.target;
+      const isTyping =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        (target instanceof HTMLElement && target.isContentEditable);
+      if (event.key !== "/" || isTyping || event.metaKey || event.ctrlKey) {
+        return;
+      }
+      event.preventDefault();
+      window.location.assign(`/${currentLocale ?? "en"}/search/`);
+    }
+
+    document.addEventListener("keydown", openSearchOnShortcut);
+    return () => document.removeEventListener("keydown", openSearchOnShortcut);
+  }, [currentLocale]);
+
   /** 切换移动菜单，并用 aria-expanded 保持读屏状态与实际界面同步。 */
   function toggleMobileMenu() {
     setIsMenuOpen((previousValue) => !previousValue);
@@ -69,7 +90,10 @@ export function Header({
           <span className="site-brand__mark" aria-hidden="true">
             E2
           </span>
-          <span>Exile2 Guides</span>
+          <span className="site-brand__copy">
+            <strong>EXILE2</strong>
+            <em>GUIDES</em>
+          </span>
         </a>
 
         {hasPrimaryNavigation ? (
@@ -92,6 +116,21 @@ export function Header({
               aria-label={zh ? "主导航" : "Primary navigation"}
             >
               <ul>
+                <li>
+                  <a
+                    className="site-header__nav-item"
+                    href={brandHref}
+                    aria-current={
+                      pathname === brandHref ||
+                      pathname === brandHref.slice(0, -1)
+                        ? "page"
+                        : undefined
+                    }
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {zh ? "首页" : "Home"}
+                  </a>
+                </li>
                 {availablePrimaryNavigation.map((item) => (
                   <li key={item.id}>
                     <a
@@ -120,8 +159,11 @@ export function Header({
           <a
             className="site-header__search"
             href={`/${currentLocale ?? "en"}/search/`}
+            aria-label={zh ? "搜索" : "Search"}
           >
-            Search
+            <span aria-hidden="true">⌕</span>
+            <span>{zh ? "搜索攻略…" : "Search guides..."}</span>
+            <kbd aria-hidden="true">/</kbd>
           </a>
           <LanguageSwitcher pages={contentPages} />
         </div>

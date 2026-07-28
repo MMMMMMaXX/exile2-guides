@@ -10,6 +10,8 @@ import {
   type BossListItem,
 } from "../../lib/content/boss-list";
 import { ContentCard } from "../content/content-card";
+import { CatalogContextRail } from "../catalog/catalog-context-rail";
+import { CatalogLayout } from "../catalog/catalog-layout";
 
 type BossListCopy = { emptyDescription: string; emptyTitle: string };
 type FilterKey = keyof BossFilters;
@@ -125,64 +127,77 @@ export function BossList({
   }
 
   return (
-    <section className="boss-list" aria-label="Boss results">
-      <BossFilterChips
-        filters={filters}
-        items={items}
-        onFilterChange={updateFilter}
-      />
-      {filteredItems.length > 0 ? (
-        <div className="content-card-grid">
-          {filteredItems.map(({ frontMatter }) => (
-            <ContentCard
-              key={frontMatter.contentId}
-              content={{
-                attributes: [
-                  frontMatter.location,
-                  frontMatter.recommendedLevel
-                    ? `Level ${frontMatter.recommendedLevel}`
-                    : "",
-                  frontMatter.campaignStage,
-                  ...frontMatter.damageTypes.map(formatValue),
-                ].filter(
-                  (value): value is string =>
-                    typeof value === "string" && Boolean(value),
-                ),
-                href: contentRoutePath(locale, "boss", frontMatter.slug),
-                meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
-                summary: frontMatter.summary,
-                title: frontMatter.title,
-                typeLabel: "Boss",
-                ...(frontMatter.image
-                  ? {
-                      image: frontMatter.image,
-                      ...(frontMatter.imageAlt
-                        ? { imageAlt: frontMatter.imageAlt }
-                        : {}),
-                    }
-                  : {}),
-              }}
-            />
-          ))}
+    <CatalogLayout
+      context={<CatalogContextRail contentType="boss" locale={locale} />}
+      filters={
+        <BossFilterChips
+          filters={filters}
+          items={items}
+          onFilterChange={updateFilter}
+        />
+      }
+    >
+      <section className="boss-list" aria-label="Boss results">
+        <div className="catalog-toolbar">
+          <div>
+            <p className="section-kicker">Verified catalogue</p>
+            <h2>Bosses</h2>
+          </div>
+          <span>{filteredItems.length} result(s)</span>
         </div>
-      ) : (
-        <section
-          className="content-empty-state"
-          aria-labelledby="boss-filter-empty-title"
-        >
-          <h2 id="boss-filter-empty-title">No Bosses match these filters</h2>
-          <p>Try another combination to see the verified Boss catalogue.</p>
-          {hasActiveFilters ? (
-            <button
-              className="button button--secondary"
-              onClick={clearFilters}
-              type="button"
-            >
-              Clear filters
-            </button>
-          ) : null}
-        </section>
-      )}
-    </section>
+        {filteredItems.length > 0 ? (
+          <div className="content-card-grid catalog-grid">
+            {filteredItems.map(({ frontMatter }) => (
+              <ContentCard
+                key={frontMatter.contentId}
+                content={{
+                  attributes: [
+                    frontMatter.location,
+                    frontMatter.recommendedLevel
+                      ? `Level ${frontMatter.recommendedLevel}`
+                      : "",
+                    frontMatter.campaignStage,
+                    ...frontMatter.damageTypes.map(formatValue),
+                  ].filter(
+                    (value): value is string =>
+                      typeof value === "string" && Boolean(value),
+                  ),
+                  href: contentRoutePath(locale, "boss", frontMatter.slug),
+                  meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
+                  summary: frontMatter.summary,
+                  title: frontMatter.title,
+                  typeLabel: "Boss",
+                  ...(frontMatter.image
+                    ? {
+                        image: frontMatter.image,
+                        ...(frontMatter.imageAlt
+                          ? { imageAlt: frontMatter.imageAlt }
+                          : {}),
+                      }
+                    : {}),
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <section
+            className="content-empty-state"
+            aria-labelledby="boss-filter-empty-title"
+          >
+            <h2 id="boss-filter-empty-title">No Bosses match these filters</h2>
+            <p>Try another combination to see the verified Boss catalogue.</p>
+            {hasActiveFilters ? (
+              <button
+                className="button button--secondary"
+                onClick={clearFilters}
+                type="button"
+              >
+                Clear filters
+              </button>
+            ) : null}
+          </section>
+        )}
+      </section>
+    </CatalogLayout>
   );
 }

@@ -8,7 +8,7 @@ import { BossList } from "../../components/bosses/boss-list";
 import { CategoryCardList } from "../../components/content/category-card-list";
 import { ItemList } from "../../components/items/item-list";
 import { NotFoundPage } from "../../components/content/not-found-page";
-import { Breadcrumbs } from "../../components/layout/breadcrumbs";
+import { CategoryHero } from "../../components/catalog/category-hero";
 import { getBuildListItems } from "../../lib/content/build-list";
 import { getBossListItems } from "../../lib/content/boss-list";
 import { getCategoryListItems } from "../../lib/content/category-list";
@@ -81,7 +81,6 @@ export default function ContentListRoute() {
   }
 
   const copy = getCategoryCopy(route.locale, route.contentType);
-  const sectionPath = `/${route.locale}/${contentTypeSegments[route.contentType]}/`;
   const buildItems =
     route.contentType === "build"
       ? getBuildListItems(contentPages, route.locale)
@@ -96,24 +95,23 @@ export default function ContentListRoute() {
     route.contentType,
   );
 
+  const publishedCount =
+    route.contentType === "build"
+      ? buildItems.length
+      : route.contentType === "boss"
+        ? bossItems.length
+        : categoryItems.length;
+
   return (
-    <main
-      className="page-shell content-list-page"
-      data-prerender-content="true"
-    >
-      <Breadcrumbs
-        items={[
-          { label: "Home", path: `/${route.locale}/` },
-          { label: copy.label, path: sectionPath },
-        ]}
+    <main className="content-list-page" data-prerender-content="true">
+      <CategoryHero
+        contentType={route.contentType}
+        copy={copy}
+        locale={route.locale}
+        publishedCount={publishedCount}
       />
-      <header className="content-list-page__header">
-        <p className="eyebrow">Exile2 Guides</p>
-        <h1>{copy.label}</h1>
-        <p className="text-lead">{copy.intro}</p>
-      </header>
       {searchParams.get("translation") === "missing" ? (
-        <p className="translation-notice" role="status">
+        <p className="page-shell translation-notice" role="status">
           {route.locale === "zh-cn"
             ? "该内容尚未翻译，已为你打开对应分类。"
             : "This content has not been translated yet. We opened the matching category instead."}

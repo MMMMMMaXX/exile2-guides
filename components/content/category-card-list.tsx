@@ -1,7 +1,11 @@
 /** 文件职责：复用真实内容卡片与空状态，供 Item、Skill、Guide、Patch 分类保持一致的公开边界。 */
+import { useMemo, useState } from "react";
+
 import type { ContentLocale, ContentType } from "../../lib/content/constants";
 import { contentRoutePath } from "../../lib/content/constants";
 import type { StaticContentPage } from "../../lib/content/content-page";
+import { CatalogContextRail } from "../catalog/catalog-context-rail";
+import { CatalogLayout } from "../catalog/catalog-layout";
 import { ContentCard } from "./content-card";
 
 type CategoryListCopy = { emptyDescription: string; emptyTitle: string };
@@ -53,6 +57,13 @@ function getTypeLabel(contentType: ContentType): string {
   }[contentType];
 }
 
+/** 从已发布内容的真实标签收集可筛选项，不通过标题或原型样例推测分类。 */
+function getFilterTags(items: readonly StaticContentPage[]): string[] {
+  return [
+    ...new Set(items.flatMap((page) => page.frontMatter.tags).filter(Boolean)),
+  ].slice(0, 8);
+}
+
 /** 渲染无额外筛选要求的分类列表，仅消费静态生产内容页。 */
 export function CategoryCardList({
   copy,
@@ -63,6 +74,15 @@ export function CategoryCardList({
   items: readonly StaticContentPage[];
   locale: ContentLocale;
 }) {
+  const [selectedTag, setSelectedTag] = useState("all");
+  const filterTags = useMemo(() => getFilterTags(items), [items]);
+  const filteredItems = useMemo(
+    () =>
+      selectedTag === "all"
+        ? items
+        : items.filter((page) => page.frontMatter.tags.includes(selectedTag)),
+    [items, selectedTag],
+  );
   if (items.length === 0)
     return (
       <section
@@ -73,38 +93,90 @@ export function CategoryCardList({
         <p>{copy.emptyDescription}</p>
       </section>
     );
+  const contentType = items[0]?.frontMatter.contentType;
+  if (!contentType) return null;
   return (
-    <section aria-label="Content results" className="category-card-list">
-      <div className="content-card-grid">
-        {items.map((page) => {
-          const { frontMatter } = page;
-          return (
-            <ContentCard
-              key={frontMatter.contentId}
-              content={{
-                attributes: getCardAttributes(page),
-                href: contentRoutePath(
-                  locale,
-                  frontMatter.contentType,
-                  frontMatter.slug,
-                ),
-                meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
-                summary: frontMatter.summary,
-                title: frontMatter.title,
-                typeLabel: getTypeLabel(frontMatter.contentType),
-                ...(frontMatter.image
-                  ? {
-                      image: frontMatter.image,
-                      ...(frontMatter.imageAlt
-                        ? { imageAlt: frontMatter.imageAlt }
-                        : {}),
-                    }
-                  : {}),
-              }}
-            />
-          );
-        })}
-      </div>
-    </section>
+    <CatalogLayout
+      context={<CatalogContextRail contentType={contentType} locale={locale} />}
+      filters={
+        <div
+          className="category-card-list__filters"
+          aria-label="Content filters"
+        >
+          <h2>Filter entries</h2>
+          <div className="catalog-filter__buttons">
+            <button
+              className={selectedTag === "all" ? "is-selected" : undefined}
+              onClick={() => setSelectedTag("all")}
+              type="button"
+            >
+              All published
+            </button>
+            {filterTags.map((tag) => (
+              <button
+                className={selectedTag === tag ? "is-selected" : undefined}
+                key={tag}
+                onClick={() => setSelectedTag(tag)}
+                type="button"
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+          <p className="filter-note">
+            <strong>Patch 0.5.4</strong>
+            <br />
+            Only verified published entries are shown.
+          </p>
+        </div>
+      }
+    >
+      <section aria-label="Content results" className="category-card-list">
+        <div className="catalog-toolbar">
+          <div>
+            <p className="section-kicker">Verified catalogue</p>
+            <h2>{contentType}</h2>
+          </div>
+          <span>{filteredItems.length} result(s)</span>
+        </div>
+        {filteredItems.length ? (
+          <div className="content-card-grid catalog-grid">
+            {filteredItems.map((page) => {
+              const { frontMatter } = page;
+              return (
+                <ContentCard
+                  key={frontMatter.contentId}
+                  content={{
+                    attributes: getCardAttributes(page),
+                    href: contentRoutePath(
+                      locale,
+                      frontMatter.contentType,
+                      frontMatter.slug,
+                    ),
+                    meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
+                    summary: frontMatter.summary,
+                    title: frontMatter.title,
+                    typeLabel: getTypeLabel(frontMatter.contentType),
+                    ...(frontMatter.image
+                      ? {
+                          image: frontMatter.image,
+                          ...(frontMatter.imageAlt
+                            ? { imageAlt: frontMatter.imageAlt }
+                            : {}),
+                        }
+                      : {}),
+                  }}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <section className="content-empty-state">
+            <h2>No entries match this filter</h2>
+            <p>Choose another verified tag to restore the catalogue.</p>
+          </section>
+        )}
+      </section>
+    </CatalogLayout>
   );
 }

@@ -25,7 +25,8 @@ function saveLocalePreference(locale: ContentLocale): void {
 /** 渲染两种语言的稳定链接，并按构建期已发布内容映射决定目标。 */
 export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
   const { pathname } = useLocation();
-  const currentLocale = getLocaleFromPathname(pathname);
+  // 根语言选择页没有语言段时按英文默认值渲染，移动端仍只显示一个可切换目标。
+  const currentLocale = getLocaleFromPathname(pathname) ?? "en";
 
   return (
     <nav
@@ -49,7 +50,10 @@ export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
             lang={option.lang}
             onClick={() => saveLocalePreference(option.locale)}
           >
-            {option.label}
+            <span className="site-header__language-icon" aria-hidden="true">
+              ◎
+            </span>
+            <span className="site-header__language-label">{option.label}</span>
           </a>
         );
       })}
