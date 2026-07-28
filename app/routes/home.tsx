@@ -1,7 +1,10 @@
-/** 文件职责：渲染 English 与简体中文独立首页，且不在无已发布内容时伪造攻略数据。 */
+/** 文件职责：渲染 English 与简体中文独立首页，并从构建期生产内容中提供真实入口。 */
 import { useParams } from "react-router";
+import contentPages from "virtual:content-pages";
 
 import type { Route } from "./+types/home";
+import { CategoryCardList } from "../../components/content/category-card-list";
+import { getHomeContentItems } from "../../lib/content/home-content";
 import { getHomeCopy } from "../../lib/i18n/home-copy";
 import {
   createBilingualAlternatePaths,
@@ -21,9 +24,10 @@ export function meta({ params }: Route.MetaArgs) {
   });
 }
 
-/** 渲染当前语言的首页；暂未发布内容时保留真实状态而不使用占位卡片。 */
+/** 渲染当前语言首页；内容卡片只消费构建期已发布页面，避免重新发现草稿。 */
 export default function HomeRoute() {
-  const copy = getHomeCopy(useParams().locale);
+  const locale = useParams().locale;
+  const copy = getHomeCopy(locale);
   if (!copy) {
     return (
       <main className="page-shell home-page home-page--not-found">
@@ -31,6 +35,7 @@ export default function HomeRoute() {
       </main>
     );
   }
+  const items = getHomeContentItems(contentPages, locale as "en" | "zh-cn");
 
   return (
     <main className="page-shell home-page">
@@ -39,11 +44,11 @@ export default function HomeRoute() {
         <h1 id="home-title">{copy.heroTitle}</h1>
         <p className="text-lead">{copy.description}</p>
         <div className="home-hero__actions">
-          <a className="button button--primary" href="#content-status">
-            {copy.ctaBuilds}
+          <a className="button button--primary" href={`/${locale}/guides/`}>
+            {copy.primaryCta}
           </a>
-          <a className="button button--secondary" href="#content-status">
-            {copy.ctaGuides}
+          <a className="button button--secondary" href={`/${locale}/patches/`}>
+            {copy.secondaryCta}
           </a>
         </div>
       </section>
@@ -56,6 +61,14 @@ export default function HomeRoute() {
         <p className="eyebrow">Content status</p>
         <h2 id="content-status-title">{copy.contentStatusTitle}</h2>
         <p className="text-lead">{copy.contentStatusDescription}</p>
+        <CategoryCardList
+          copy={{
+            emptyDescription: copy.emptyDescription,
+            emptyTitle: copy.emptyTitle,
+          }}
+          items={items}
+          locale={locale as "en" | "zh-cn"}
+        />
       </section>
     </main>
   );
