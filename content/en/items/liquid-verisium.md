@@ -3,9 +3,9 @@ contentId: liquid-verisium
 locale: en
 contentType: item
 slug: liquid-verisium
-title: "Draft: Liquid Verisium Reference"
-seoTitle: "Draft: Path of Exile 2 Liquid Verisium Reference"
-seoDescription: An unpublished reference draft for verifying Liquid Verisium in the 0.5.4 Patch before any usage claim is published.
+title: "Liquid Verisium Reference"
+seoTitle: "Path of Exile 2 Liquid Verisium Reference"
+seoDescription: A source-linked reference for Liquid Verisium purchase conditions, use behaviour, encounter result, and current restrictions.
 summary: A source-linked item draft covering Liquid Verisium's purchase conditions, use behaviour, encounter result, and current restrictions.
 status: published
 featured: false
@@ -36,11 +36,11 @@ requiredLevel: ""
 useCases: [verification]
 ---
 
-<!-- 文件职责：提供 Liquid Verisium 英文 Item 草稿；在来源、购买条件和遭遇结果完成 PC 核验前，不给出获得或使用结论。 -->
+<!-- 文件职责：提供 Liquid Verisium 英文 Item 页面；在来源、购买条件和遭遇结果完成 Steam PC 核验前，不给出确定的获得或使用结论。 -->
 
-# Draft: Liquid Verisium Reference
+# Liquid Verisium Reference
 
-> Status: draft and under review. This is not a farming, value, or purchase recommendation.
+> Verification status: Steam PC verification is pending. This is not a farming, value, or purchase recommendation.
 
 The official 0.5.4 Patch Notes identify Liquid Verisium as an Expedition currency in the Runes of Aldur changes. Using it immediately starts a Runic Remnant Encounter with a random Runic Inscription. After allocating Feeling Lucky? on the Expedition Atlas Passive Tree, a player can purchase it from Farrow using Verisium. Liquid Verisium is not an Atziri's Temple currency in the cited 0.5.4 notes.
 
@@ -61,4 +61,4 @@ No use case, cost, reward, or efficiency claim is approved yet. A future verifie
 - [Path of Exile 2 official 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 official 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC verification is pending.
+Steam PC verification is pending.

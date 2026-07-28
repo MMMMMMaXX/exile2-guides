@@ -234,6 +234,27 @@ phases: null
     },
   );
 
+  it("rejects Draft in a published pending-pc title", async () => {
+    const pendingPcFields = publishedFields
+      .replace("verifiedAt: 2026-07-26\n", "")
+      .concat("verificationStatus: pending-pc\n");
+    const source = createSource("build", buildFields, pendingPcFields).replace(
+      "title: Schema Example",
+      'title: "Draft: Schema Example"',
+    );
+
+    await expect(
+      parseContentSource(source, "content/en/builds/schema-example.md"),
+    ).rejects.toMatchObject({
+      issues: expect.arrayContaining([
+        expect.objectContaining({
+          code: "invalid-front-matter",
+          path: ["title"],
+        }),
+      ]),
+    });
+  });
+
   it("rejects a published body that still marks PC verification as pending", async () => {
     await expect(
       parseContentSource(

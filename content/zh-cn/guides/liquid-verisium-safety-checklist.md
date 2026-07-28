@@ -3,9 +3,9 @@ contentId: liquid-verisium-safety-checklist
 locale: zh-cn
 contentType: guide
 slug: liquid-verisium-safety-checklist
-title: "草稿：Liquid Verisium 解锁、使用与避坑清单"
-seoTitle: "草稿：Path of Exile 2 Liquid Verisium 避坑清单"
-seoDescription: 一篇未发布的来源链接草稿，用于在 0.5.4 中核验 Liquid Verisium 的解锁和使用条件。
+title: "Liquid Verisium 解锁、使用与避坑清单"
+seoTitle: "Path of Exile 2 Liquid Verisium 避坑清单"
+seoDescription: 一份带来源的核验清单，用于检查 0.5.4 中 Liquid Verisium 的购买和使用条件。
 summary: 一份以核验为先的 Liquid Verisium 清单，不写未经测试的购买、使用、遭遇、奖励或效率结论。
 status: published
 featured: false
@@ -37,11 +37,11 @@ prerequisites:
   - 用于记录 Remnant 交互的测试角色
 ---
 
-<!-- 文件职责：提供 Liquid Verisium 中文 Guide 草稿；在来源、目标、限制和结果经 PC 核验前，不提供获取或效率建议。 -->
+<!-- 文件职责：提供 Liquid Verisium 中文 Guide 页面；在购买条件、限制和结果经 Steam PC 核验前，不提供获取或效率建议。 -->
 
-# 草稿：Liquid Verisium 解锁、使用与避坑清单
+# Liquid Verisium 解锁、使用与避坑清单
 
-> 状态：草稿，待复核。本文是核验清单，不是货币刷取建议。
+> 核验状态：Steam PC 实机核验待完成。本文是核验清单，不是货币刷取建议。
 
 ## 适用读者
 
@@ -79,4 +79,4 @@ prerequisites:
 - [Path of Exile 2 官方 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)：说明遭遇、随机 Inscription、Feeling Lucky?、Farrow 与 Verisium 的关系。
 - [Path of Exile 2 官方 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)：单独记录客户端版本，不增加 Liquid Verisium 改动。
 
-PC 核验尚未完成。本文不宣称购买结果、遭遇奖励或效率结论。
+Steam PC 实机核验尚未完成。本文不宣称已经核验的购买结果、遭遇奖励或效率结论。

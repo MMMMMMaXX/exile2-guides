@@ -3,9 +3,9 @@ contentId: liquid-verisium-safety-checklist
 locale: en
 contentType: guide
 slug: liquid-verisium-safety-checklist
-title: "Draft: Liquid Verisium Unlock, Use and Safety Checklist"
-seoTitle: "Draft: Path of Exile 2 Liquid Verisium Safety Checklist"
-seoDescription: An unpublished, source-linked draft for verifying Liquid Verisium unlock and use conditions in 0.5.4.
+title: "Liquid Verisium Unlock, Use and Safety Checklist"
+seoTitle: "Path of Exile 2 Liquid Verisium Safety Checklist"
+seoDescription: A source-linked checklist for verifying Liquid Verisium purchase and use conditions in 0.5.4.
 summary: A verification-first checklist for Liquid Verisium that avoids untested purchase, use, encounter, reward, and efficiency claims.
 status: published
 featured: false
@@ -37,15 +37,15 @@ prerequisites:
   - A test character and a recordable Remnant interaction
 ---
 
-<!-- 文件职责：提供 Liquid Verisium 英文 Guide 草稿；在来源、目标、限制和结果经 PC 核验前，不提供获取或效率建议。 -->
+<!-- 文件职责：提供 Liquid Verisium 英文 Guide 页面；在购买条件、限制和结果经 Steam PC 核验前，不提供获取或效率建议。 -->
 
-# Draft: Liquid Verisium Unlock, Use and Safety Checklist
+# Liquid Verisium Unlock, Use and Safety Checklist
 
-> Status: draft and under review. This is a verification checklist, not a currency-farming recommendation.
+> Verification status: Steam PC verification is pending. This is a verification checklist, not a currency-farming recommendation.
 
-## Who this draft is for
+## Who this page is for
 
-This draft helps a PC player document Liquid Verisium safely before using it in a route or recommending it to another player. The official 0.5.4 Patch Notes place it in Runes of Aldur and Expedition: using it immediately starts a Runic Remnant Encounter with a random Runic Inscription. After allocating the Feeling Lucky? Expedition Atlas Passive, it can be bought from Farrow with Verisium. This draft still requires PC reproduction before offering route or efficiency advice.
+This page helps a PC player document Liquid Verisium safely before using it in a route or recommending it to another player. The official 0.5.4 Patch Notes place it in Runes of Aldur and Expedition: using it immediately starts a Runic Remnant Encounter with a random Runic Inscription. After allocating the Feeling Lucky? Expedition Atlas Passive, it can be bought from Farrow with Verisium. Steam PC reproduction is still required before offering route or efficiency advice.
 
 ## Before using the item
 
@@ -79,4 +79,4 @@ A publishable version needs verified purchase and use prerequisites, costs, limi
 - [Path of Exile 2 official 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218) — specifies the encounter, random inscription, Feeling Lucky?, Farrow, and Verisium relationship.
 - [Path of Exile 2 official 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607) — records the client version separately; it does not add a Liquid Verisium change.
 
-PC verification is pending. This draft does not claim a purchase result, encounter reward, or efficiency result.
+Steam PC verification is pending. This page does not claim a verified purchase result, encounter reward, or efficiency result.

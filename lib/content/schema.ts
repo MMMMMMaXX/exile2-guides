@@ -343,10 +343,8 @@ export const contentFrontMatterSchema = rawContentFrontMatterSchema.superRefine(
       });
     }
 
-    if (
-      data.verificationStatus !== "pending-pc" &&
-      /\bdraft\b|草稿/i.test(data.title)
-    ) {
+    // 公开与已核验是两个独立维度：pending-pc 页面可以上线，但标题仍不得伪装成草稿。
+    if (/\bdraft\b|草稿/i.test(data.title)) {
       context.addIssue({
         code: "custom",
         message: "published title cannot contain Draft or 草稿",

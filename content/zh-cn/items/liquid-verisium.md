@@ -3,10 +3,10 @@ contentId: liquid-verisium
 locale: zh-cn
 contentType: item
 slug: liquid-verisium
-title: "草稿：Liquid Verisium 物品资料"
-seoTitle: "草稿：Path of Exile 2 Liquid Verisium 物品资料"
-seoDescription: 一篇未发布的资料草稿，用于在发布任何使用结论前核验 0.5.4 中的 Liquid Verisium。
-summary: 一篇带来源的物品草稿，用于记录 Liquid Verisium 的购买条件、使用行为、遭遇结果和当前限制。
+title: "Liquid Verisium 物品资料"
+seoTitle: "Path of Exile 2 Liquid Verisium 物品资料"
+seoDescription: 一篇带来源的物品资料，用于记录 Liquid Verisium 的购买条件、使用行为、遭遇结果和当前限制。
+summary: 一篇带来源的物品页面，用于记录 Liquid Verisium 的购买条件、使用行为、遭遇结果和当前限制。
 status: published
 featured: false
 draft: false
@@ -36,13 +36,13 @@ requiredLevel: ""
 useCases: [verification]
 ---
 
-<!-- 文件职责：提供 Liquid Verisium 中文 Item 草稿；在来源、购买条件和遭遇结果完成 PC 核验前，不给出获得或使用结论。 -->
+<!-- 文件职责：提供 Liquid Verisium 中文 Item 页面；在来源、购买条件和遭遇结果完成 Steam PC 核验前，不给出确定的获得或使用结论。 -->
 
-# 草稿：Liquid Verisium 物品资料
+# Liquid Verisium 物品资料
 
-> 状态：草稿，待复核。本文不是刷取、价值或购买建议。
+> 核验状态：Steam PC 实机核验待完成。本文不是刷取、价值或购买建议。
 
-官方 0.5.4 Patch Notes 将 Liquid Verisium 列为 Runes of Aldur / Expedition 货币：使用后立即开始带随机 Runic Inscription 的 Runic Remnant Encounter；分配 Feeling Lucky? Expedition Atlas Passive 后，可以用 Verisium 向 Farrow 购买。该物品与 Atziri's Temple 没有本草稿所述的直接关系。
+官方 0.5.4 Patch Notes 将 Liquid Verisium 列为 Runes of Aldur / Expedition 货币：使用后立即开始带随机 Runic Inscription 的 Runic Remnant Encounter；分配 Feeling Lucky? Expedition Atlas Passive 后，可以用 Verisium 向 Farrow 购买。该物品与 Atziri's Temple 没有本文所述的直接关系。
 
 ## 物品核验记录
 
@@ -60,4 +60,4 @@ useCases: [verification]
 - [Path of Exile 2 官方 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 官方 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC 核验尚未完成。
+Steam PC 实机核验尚未完成。

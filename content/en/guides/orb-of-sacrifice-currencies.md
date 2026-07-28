@@ -3,9 +3,9 @@ contentId: orb-of-sacrifice-currencies
 locale: en
 contentType: guide
 slug: orb-of-sacrifice-currencies
-title: "Draft: Orb of Sacrifice Currencies: Effects and Risk Checklist"
-seoTitle: "Draft: Path of Exile 2 Orb of Sacrifice Currencies"
-seoDescription: An unpublished mechanics draft covering the four Orb of Sacrifice currencies and their confirmed effect boundary.
+title: "Orb of Sacrifice Currencies: Effects and Risk Checklist"
+seoTitle: "Path of Exile 2 Orb of Sacrifice Currencies"
+seoDescription: A source-linked mechanics guide covering the four Orb of Sacrifice currencies and their confirmed effect boundary.
 summary: A source-linked mechanics draft covering the Orb of Sacrifice currency series, its confirmed effect, and verification risks.
 status: published
 featured: false
@@ -35,11 +35,11 @@ estimatedReadingMinutes: 6
 prerequisites: []
 ---
 
-<!-- 文件职责：提供 Orb of Sacrifice 系列货币的英文 Guide 草稿；不把四种变体误建模为单一 Item。 -->
+<!-- 文件职责：提供 Orb of Sacrifice 系列货币的英文 Guide 页面；不把四种变体误建模为单一 Item。 -->
 
-# Draft: Orb of Sacrifice Currencies: Effects and Risk Checklist
+# Orb of Sacrifice Currencies: Effects and Risk Checklist
 
-> Status: draft and under review. This is a series mechanics page, not a drop-rate or profit recommendation.
+> Verification status: Steam PC verification is pending. This is a series mechanics page, not a drop-rate or profit recommendation.
 
 The official 0.5.4 Patch Notes state that Atziri's Vault has a chance to drop one of four Orb of Sacrifice currencies. The series upgrades Corrupted Enchantments and randomly removes one Explicit Modifier. The four variants, their individual names, and their probabilities remain unverified here.
 

@@ -3,10 +3,10 @@ contentId: orb-of-sacrifice-currencies
 locale: zh-cn
 contentType: guide
 slug: orb-of-sacrifice-currencies
-title: "草稿：Orb of Sacrifice 系列货币：效果与风险清单"
-seoTitle: "草稿：Path of Exile 2 Orb of Sacrifice 系列货币"
-seoDescription: 一篇未发布的机制草稿，记录四种 Orb of Sacrifice 货币和已确认的效果边界。
-summary: 一篇带来源的机制草稿，用于记录 Orb of Sacrifice 系列货币、已确认效果和核验风险。
+title: "Orb of Sacrifice 系列货币：效果与风险清单"
+seoTitle: "Path of Exile 2 Orb of Sacrifice 系列货币"
+seoDescription: 一篇带来源的机制指南，记录四种 Orb of Sacrifice 货币和已确认的效果边界。
+summary: 一篇带来源的机制页面，用于记录 Orb of Sacrifice 系列货币、已确认效果和核验风险。
 status: published
 featured: false
 draft: false
@@ -35,11 +35,11 @@ estimatedReadingMinutes: 6
 prerequisites: []
 ---
 
-<!-- 文件职责：提供 Orb of Sacrifice 系列货币的中文 Guide 草稿；不把四种变体误建模为单一 Item。 -->
+<!-- 文件职责：提供 Orb of Sacrifice 系列货币的中文 Guide 页面；不把四种变体误建模为单一 Item。 -->
 
-# 草稿：Orb of Sacrifice 系列货币：效果与风险清单
+# Orb of Sacrifice 系列货币：效果与风险清单
 
-> 状态：草稿，待复核。本文是系列机制页，不是掉率或收益建议。
+> 核验状态：Steam PC 实机核验待完成。本文是系列机制页，不是掉率或收益建议。
 
 官方 0.5.4 Patch Notes 说明：Atziri's Vault 有机会掉落四种 Orb of Sacrifice 货币中的一种。该系列用于升级 Corrupted Enchantment，并随机移除一个 Explicit Modifier。四个变体的具体名称与概率在本文中仍未核验。
 

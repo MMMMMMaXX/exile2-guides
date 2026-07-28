@@ -3,9 +3,9 @@ contentId: arbiter-of-ash
 locale: en
 contentType: boss
 slug: arbiter-of-ash
-title: "Draft: Arbiter of Ash Encounter Verification Notes"
-seoTitle: "Draft: Path of Exile 2 Arbiter of Ash Guide"
-seoDescription: An unpublished verification draft for the Arbiter of Ash encounter in the 0.5.4 Patch scope.
+title: "Arbiter of Ash Encounter Verification Notes"
+seoTitle: "Path of Exile 2 Arbiter of Ash Guide"
+seoDescription: A source-linked encounter verification page for Arbiter of Ash in the 0.5.4 Patch scope.
 summary: A source-linked encounter verification plan for Arbiter of Ash; location, phases, attacks, and response windows remain under review.
 status: published
 featured: false
@@ -38,15 +38,15 @@ damageTypes: []
 phases: null
 ---
 
-<!-- 文件职责：提供 Arbiter of Ash 的英文 Boss 草稿；在入场、阶段、攻击与应对完成 PC 核验前，不形成战斗攻略。 -->
+<!-- 文件职责：提供 Arbiter of Ash 的英文 Boss 页面；在入场、阶段、攻击与应对完成 Steam PC 核验前，不形成确定的战斗攻略。 -->
 
-# Draft: Arbiter of Ash Encounter Verification Notes
+# Arbiter of Ash Encounter Verification Notes
 
-> Status: draft and under review. This is an encounter test plan, not a boss-kill guide.
+> Verification status: Steam PC verification is pending. This is an encounter test plan, not a boss-kill guide.
 
 ## Scope
 
-The Arbiter of Ash is a launch research candidate because current Patch notes may affect endgame encounter behaviour. This draft does not preserve any prior version's phase sequence, damage assumption, or positioning advice.
+The Arbiter of Ash is a launch research candidate because current Patch notes may affect endgame encounter behaviour. This page does not preserve any prior version's phase sequence, damage assumption, or positioning advice.
 
 ## Observation plan
 
@@ -56,7 +56,7 @@ The Arbiter of Ash is a launch research candidate because current Patch notes ma
 4. Test one response at a time, with the same build state where possible.
 5. Mark any phase, arena, or damage conclusion `under-review` when a later Patch or Hotfix changes the evidence.
 
-## What must be verified before publication
+## What must be verified before strategy claims
 
 A published guide needs the correct location, entry requirements, all observed phases, tested mitigation/positioning options, and a list of what has not been tested. It must not present a single successful attempt as a universal strategy or state unobserved loot/attack details as fact.
 
@@ -66,4 +66,4 @@ A published guide needs the correct location, entry requirements, all observed p
 - [Path of Exile 2 official 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 official 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC verification is pending.
+Steam PC verification is pending.

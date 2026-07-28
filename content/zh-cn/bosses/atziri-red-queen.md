@@ -3,9 +3,9 @@ contentId: atziri-red-queen
 locale: zh-cn
 contentType: boss
 slug: atziri-red-queen
-title: "草稿：Atziri, the Red Queen 战前准备笔记"
-seoTitle: "草稿：Path of Exile 2 Atziri, the Red Queen 指南"
-seoDescription: 一篇未发布的核验草稿，用于记录 0.5.4 范围内的 Atziri, the Red Queen。
+title: "Atziri, the Red Queen 战前准备笔记"
+seoTitle: "Path of Exile 2 Atziri, the Red Queen 指南"
+seoDescription: 一篇带来源的 Atziri, the Red Queen 战前准备与核验页面，范围限定为 0.5.4 Patch。
 summary: 一套带来源的 Atziri, the Red Queen 战前准备框架；入场、阶段、攻击、掉落和应对均待复核。
 status: published
 featured: false
@@ -40,11 +40,11 @@ damageTypes: []
 phases: null
 ---
 
-<!-- 文件职责：提供 Atziri, the Red Queen 的中文 Boss 草稿；在入场、阶段、攻击、掉落和应对完成 PC 核验前，不形成战斗攻略。 -->
+<!-- 文件职责：提供 Atziri, the Red Queen 的中文 Boss 页面；在入场、阶段、攻击、掉落和应对完成 Steam PC 核验前，不形成确定的战斗攻略。 -->
 
-# 草稿：Atziri, the Red Queen 战前准备笔记
+# Atziri, the Red Queen 战前准备笔记
 
-> 状态：草稿，待复核。本文不是已核验的 Boss 策略。
+> 核验状态：Steam PC 实机核验待完成。本文不是已核验的 Boss 策略。
 
 ## 范围
 
@@ -70,4 +70,4 @@ phases: null
 - [Path of Exile 2 官方 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 官方 0.5.4d Hotfix](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC 核验尚未完成。
+Steam PC 实机核验尚未完成。

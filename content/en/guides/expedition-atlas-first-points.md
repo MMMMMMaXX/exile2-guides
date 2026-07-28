@@ -3,9 +3,9 @@ contentId: expedition-atlas-first-points
 locale: en
 contentType: guide
 slug: expedition-atlas-first-points
-title: "Draft: Expedition Atlas First Points and Route"
-seoTitle: "Draft: Path of Exile 2 Expedition Atlas First Points Guide"
-seoDescription: An unpublished, source-linked draft for verifying the 0.5.4 Expedition Atlas before choosing a route.
+title: "Expedition Atlas First Points and Route"
+seoTitle: "Path of Exile 2 Expedition Atlas First Points Guide"
+seoDescription: A source-linked checklist for reviewing the 0.5.4 Expedition Atlas before choosing a route.
 summary: A cautious first-points checklist for the 0.5.4 Expedition Atlas, with all node names, effects, and routes still pending PC verification.
 status: published
 featured: false
@@ -37,15 +37,15 @@ prerequisites:
   - A saved copy of the official 0.5.4 and 0.5.4d announcements
 ---
 
-<!-- 文件职责：提供 Expedition Atlas 英文 Guide 草稿；在节点、解锁与路线完成 PC 核验前，不给出可发布的加点结论。 -->
+<!-- 文件职责：提供 Expedition Atlas 英文 Guide 页面；在节点、解锁与路线完成 Steam PC 核验前，不给出确定的加点结论。 -->
 
-# Draft: Expedition Atlas First Points and Route
+# Expedition Atlas First Points and Route
 
-> Status: draft and under review. Do not treat this as a verified Atlas route.
+> Verification status: Steam PC verification is pending. Do not treat this as a verified Atlas route.
 
-## Who this draft is for
+## Who this page is for
 
-This draft is for PC players who can access the current endgame Atlas and want a disciplined way to verify the Expedition Atlas before committing points. The official 0.5.4 preview identifies a Runes of Aldur Atlas Passive Tree and expanded Expedition customisation, but it does not justify copying a route from an unverified screenshot or older Patch guide.
+This page is for PC players who can access the current endgame Atlas and want a disciplined way to verify the Expedition Atlas before committing points. The official 0.5.4 preview identifies a Runes of Aldur Atlas Passive Tree and expanded Expedition customisation, but it does not justify copying a route from an unverified screenshot or older Patch guide.
 
 ## Before choosing a point
 
@@ -62,9 +62,9 @@ This draft is for PC players who can access the current endgame Atlas and want a
 4. Compare the result with the official notes and mark any mismatch as `under-review`.
 5. Only after the observations are repeatable should a future published guide explain a route, its tradeoff, and the player profile it serves.
 
-## Decisions this draft does not make yet
+## Decisions this page does not make yet
 
-This draft does not name a required node order, a point total, a farming strategy, or an optimal reward target. Those conclusions require the current node text, a reproducible PC test, and a stated build/gear context. They must also be revisited if 0.5.4d changes an interaction.
+This page does not name a required node order, a point total, a farming strategy, or an optimal reward target. Those conclusions require the current node text, a reproducible Steam PC test, and a stated build/gear context. They must also be revisited if a later official announcement lists a related interaction change; the cited 0.5.4d notes do not do so.
 
 ## Common mistakes to avoid
 
@@ -79,4 +79,4 @@ This draft does not name a required node order, a point total, a farming strateg
 - [Path of Exile 2 official 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218) — records that Atlas points come from each Boss in The Grand Expedition questline.
 - [Path of Exile 2 official 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607) — records the client version separately and does not establish an Atlas change.
 
-PC verification is pending. No node, point, route, or reward claim is approved for publication.
+Steam PC verification is pending. No node, point, route, or reward claim on this public page is marked as verified.

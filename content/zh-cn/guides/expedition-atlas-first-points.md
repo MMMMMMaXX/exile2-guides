@@ -3,9 +3,9 @@ contentId: expedition-atlas-first-points
 locale: zh-cn
 contentType: guide
 slug: expedition-atlas-first-points
-title: "草稿：Expedition Atlas 首批点数与路线"
-seoTitle: "草稿：Path of Exile 2 Expedition Atlas 首批点数指南"
-seoDescription: 一篇未发布的来源链接草稿，用于在选择路线前核验 0.5.4 的 Expedition Atlas。
+title: "Expedition Atlas 首批点数与路线"
+seoTitle: "Path of Exile 2 Expedition Atlas 首批点数指南"
+seoDescription: 一份带来源的核验清单，用于在选择路线前检查 0.5.4 的 Expedition Atlas。
 summary: 面向 0.5.4 Expedition Atlas 的谨慎首批点数核验清单；节点名称、效果和路线仍等待 PC 核验。
 status: published
 featured: false
@@ -37,11 +37,11 @@ prerequisites:
   - 已保存 0.5.4 与 0.5.4d 官方公告原文
 ---
 
-<!-- 文件职责：提供 Expedition Atlas 中文 Guide 草稿；在节点、解锁与路线完成 PC 核验前，不给出可发布的加点结论。 -->
+<!-- 文件职责：提供 Expedition Atlas 中文 Guide 页面；在节点、解锁与路线完成 Steam PC 核验前，不给出确定的加点结论。 -->
 
-# 草稿：Expedition Atlas 首批点数与路线
+# Expedition Atlas 首批点数与路线
 
-> 状态：草稿，待复核。请勿将本文当作已核验的 Atlas 路线。
+> 核验状态：Steam PC 实机核验待完成。请勿将本文当作已核验的 Atlas 路线。
 
 ## 适用读者
 
@@ -62,7 +62,7 @@ prerequisites:
 4. 将结果与官方说明比对，出现不一致时标记为 `under-review`。
 5. 只有观察结果可重复时，未来的公开指南才能解释路线、取舍和适用读者。
 
-## 本草稿尚不做出的决定
+## 本文尚不做出的决定
 
 本文不指定节点顺序、点数总量、刷取策略或最优奖励目标。这些结论需要当前节点文本、可复现的 PC 测试，以及明确的 Build/装备前提；若 0.5.4d 改动相关交互，还需要重新复核。
 
@@ -79,4 +79,4 @@ prerequisites:
 - [Path of Exile 2 官方 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)：记录 Grand Expedition 任务线 Boss 提供 Atlas Passive Points。
 - [Path of Exile 2 官方 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)：单独记录客户端版本，不建立 Atlas 改动结论。
 
-PC 核验尚未完成。本文没有任何节点、点数、路线或奖励结论获准发布。
+Steam PC 实机核验尚未完成。本文公开展示的节点、点数、路线或奖励结论均未标记为已核验。

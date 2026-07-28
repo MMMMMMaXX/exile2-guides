@@ -3,9 +3,9 @@ contentId: skill-granting-unique-scaling
 locale: en
 contentType: guide
 slug: skill-granting-unique-scaling
-title: "Draft: Skill-Granting Unique Scaling Mechanics in 0.5.4"
-seoTitle: "Draft: Path of Exile 2 Skill-Granting Unique Scaling Mechanics"
-seoDescription: An unpublished mechanics guide that records the 0.5.4 rules for skills granted by Unique Items.
+title: "Skill-Granting Unique Scaling Mechanics in 0.5.4"
+seoTitle: "Path of Exile 2 Skill-Granting Unique Scaling Mechanics"
+seoDescription: A source-linked mechanics guide recording the 0.5.4 rules for skills granted by Unique Items.
 summary: A draft mechanics guide for level-scaling skill-granting Uniques; it does not recommend a Build.
 status: published
 featured: false
@@ -35,11 +35,11 @@ estimatedReadingMinutes: 6
 prerequisites: []
 ---
 
-<!-- 文件职责：说明赋予技能的 Unique 在 0.5.4 中的公开机制边界；草稿阶段只复述有来源的规则，不延伸为配装建议。 -->
+<!-- 文件职责：说明赋予技能的 Unique 在 0.5.4 中的公开机制边界；只复述有来源的规则，不延伸为配装建议。 -->
 
-# Draft: Skill-Granting Unique Scaling Mechanics in 0.5.4
+# Skill-Granting Unique Scaling Mechanics in 0.5.4
 
-> Status: draft and under review. This is a mechanics reference, not a Build recommendation.
+> Verification status: Steam PC verification is pending. This is a mechanics reference, not a Build recommendation.
 
 The 0.5.4 Patch Notes state that skills granted by Unique Items use the lowest skill-level requirement and then scale up to the maximum level as their requirements are met. The notes give Lifesprig as an example: a level-20 Mana Drain granted by the item is level 1 when equipped by a level-1 character.
 

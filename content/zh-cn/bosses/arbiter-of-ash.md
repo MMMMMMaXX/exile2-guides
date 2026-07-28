@@ -3,9 +3,9 @@ contentId: arbiter-of-ash
 locale: zh-cn
 contentType: boss
 slug: arbiter-of-ash
-title: "草稿：Arbiter of Ash 遭遇核验笔记"
-seoTitle: "草稿：Path of Exile 2 Arbiter of Ash 指南"
-seoDescription: 一篇未发布的核验草稿，用于记录 0.5.4 范围内的 Arbiter of Ash 遭遇。
+title: "Arbiter of Ash 遭遇核验笔记"
+seoTitle: "Path of Exile 2 Arbiter of Ash 指南"
+seoDescription: 一篇带来源的 Arbiter of Ash 遭遇核验页面，范围限定为 0.5.4 Patch。
 summary: 一套带来源的 Arbiter of Ash 遭遇核验计划；地点、阶段、攻击和应对窗口均待复核。
 status: published
 featured: false
@@ -38,11 +38,11 @@ damageTypes: []
 phases: null
 ---
 
-<!-- 文件职责：提供 Arbiter of Ash 的中文 Boss 草稿；在入场、阶段、攻击与应对完成 PC 核验前，不形成战斗攻略。 -->
+<!-- 文件职责：提供 Arbiter of Ash 的中文 Boss 页面；在入场、阶段、攻击与应对完成 Steam PC 核验前，不形成确定的战斗攻略。 -->
 
-# 草稿：Arbiter of Ash 遭遇核验笔记
+# Arbiter of Ash 遭遇核验笔记
 
-> 状态：草稿，待复核。本文是遭遇测试计划，不是 Boss 击杀攻略。
+> 核验状态：Steam PC 实机核验待完成。本文是遭遇测试计划，不是 Boss 击杀攻略。
 
 ## 范围
 
@@ -56,7 +56,7 @@ Arbiter of Ash 被列为首发研究候选，是因为当前 Patch Notes 可能�
 4. 尽量在相同 Build 状态下，一次测试一个应对方式。
 5. 后续 Patch 或 Hotfix 改变证据时，将任何阶段、场地或伤害结论标记为 `under-review`。
 
-## 公开前必须核验的内容
+## 写入策略结论前必须核验的内容
 
 公开指南需要准确地点、入场要求、所有观察到的阶段、已测试减伤/走位选项，以及尚未测试内容的列表。不得把一次成功尝试写成通用策略，也不得把未观察到的掉落/攻击细节当成事实。
 
@@ -66,4 +66,4 @@ Arbiter of Ash 被列为首发研究候选，是因为当前 Patch Notes 可能�
 - [Path of Exile 2 官方 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 官方 0.5.4d Hotfix](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC 核验尚未完成。
+Steam PC 实机核验尚未完成。

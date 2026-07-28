@@ -3,9 +3,9 @@ contentId: atziri-red-queen
 locale: en
 contentType: boss
 slug: atziri-red-queen
-title: "Draft: Atziri, the Red Queen Preparation Notes"
-seoTitle: "Draft: Path of Exile 2 Atziri, the Red Queen Guide"
-seoDescription: An unpublished verification draft for Atziri, the Red Queen in the 0.5.4 Patch scope.
+title: "Atziri, the Red Queen Preparation Notes"
+seoTitle: "Path of Exile 2 Atziri, the Red Queen Guide"
+seoDescription: A source-linked preparation and verification page for Atziri, the Red Queen in the 0.5.4 Patch scope.
 summary: A source-linked preparation framework for Atziri, the Red Queen; entry, phases, attacks, drops, and responses remain under review.
 status: published
 featured: false
@@ -40,11 +40,11 @@ damageTypes: []
 phases: null
 ---
 
-<!-- 文件职责：提供 Atziri, the Red Queen 的英文 Boss 草稿；在入场、阶段、攻击、掉落和应对完成 PC 核验前，不形成战斗攻略。 -->
+<!-- 文件职责：提供 Atziri, the Red Queen 的英文 Boss 页面；在入场、阶段、攻击、掉落和应对完成 Steam PC 核验前，不形成确定的战斗攻略。 -->
 
-# Draft: Atziri, the Red Queen Preparation Notes
+# Atziri, the Red Queen Preparation Notes
 
-> Status: draft and under review. This is not a verified boss strategy.
+> Verification status: Steam PC verification is pending. This is not a verified boss strategy.
 
 ## Scope
 
@@ -68,4 +68,4 @@ The final guide must replace every blank encounter field, state the tested chara
 - [Path of Exile 2 official 0.5.4 Patch Notes](https://www.pathofexile.com/forum/view-thread/3975218)
 - [Path of Exile 2 official 0.5.4d Patch Notes](https://www.pathofexile.com/forum/view-thread/3987607)
 
-PC verification is pending.
+Steam PC verification is pending.
