@@ -3,6 +3,7 @@ import type { ContentIndex } from "../content/content-index";
 import { loadContentIndex } from "../content/content-index";
 import { contentTypeSegments, supportedLocales } from "../content/constants";
 import { informationPageSlugs } from "../i18n/information-copy";
+import { getV4SubtypePaths } from "../content/v4-taxonomy";
 
 // 这里只维护已经注册且必须公开的固定路由；后续任务新增页面时必须同步扩展。
 export const categoryListPaths = supportedLocales.flatMap((locale) =>
@@ -20,6 +21,7 @@ export const fixedPublicPaths = [
   ...categoryListPaths,
   ...informationPagePaths,
   ...searchPaths,
+  ...getV4SubtypePaths(),
 ];
 
 /** 合并固定页面和已发布内容详情页，输出稳定、去重的预渲染路径清单。 */

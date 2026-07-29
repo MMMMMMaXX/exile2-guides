@@ -12,6 +12,13 @@ import { PatchStatusNotice } from "../../components/content/patch-status-notice"
 import { NotFoundPage } from "../../components/content/not-found-page";
 import { RelatedContent } from "../../components/content/related-content";
 import { SourcesAndVerification } from "../../components/content/sources-and-verification";
+import {
+  CatalogCard,
+  EmptyState,
+  FactsRail,
+  PageHero,
+  StickyToc,
+} from "../../components/v4/page-primitives";
 import { StructuredData } from "../../components/seo/structured-data";
 import {
   contentRoutePath,
@@ -28,9 +35,13 @@ import {
   createBreadcrumbJsonLd,
   type BreadcrumbItem,
 } from "../../lib/seo/breadcrumb";
-import { createSeoMetadata } from "../../lib/seo/metadata";
+import {
+  createBilingualAlternatePaths,
+  createSeoMetadata,
+} from "../../lib/seo/metadata";
 import { getNotFoundMeta } from "../../lib/seo/not-found";
 import { createArticleJsonLd } from "../../lib/seo/structured-data";
+import { isV4Subtype } from "../../lib/content/v4-taxonomy";
 
 const contentTypeBySegment = new Map<string, ContentType>(
   Object.entries(contentTypeSegments).map(([contentType, segment]) => [
@@ -70,6 +81,85 @@ function getPage(
       slug,
     )
   ];
+}
+
+/** 判断两段 URL 是否对应 V4 的受控子类聚合页；真实详情始终优先于骨架聚合页。 */
+function getSubtypeRoute(params: Record<string, string | undefined>) {
+  const locale = params.locale as (typeof supportedLocales)[number] | undefined;
+  const contentType = params.section
+    ? contentTypeBySegment.get(params.section)
+    : undefined;
+  return locale &&
+    contentType &&
+    params.slug &&
+    supportedLocales.includes(locale) &&
+    isV4Subtype(contentType, params.slug)
+    ? { contentType, locale, subtype: params.slug }
+    : undefined;
+}
+
+/** 渲染无真实详情时的聚合结构页，避免将分类词误报为可阅读的内容详情。 */
+function V4SubtypeSkeleton({
+  contentType,
+  locale,
+  subtype,
+}: {
+  contentType: ContentType;
+  locale: (typeof supportedLocales)[number];
+  subtype: string;
+}) {
+  const title = subtype.replace(/-/g, " ");
+  const sections = [
+    "Overview",
+    "Available entries",
+    "Connections",
+    "Publication rule",
+  ];
+  return (
+    <main className="v4-subtype-page" data-prerender-content="true">
+      <PageHero eyebrow="Subtype aggregation" title={title} />
+      <div className="page-shell v4-subtype-layout">
+        <StickyToc
+          items={sections.map((label, index) => ({
+            href: `#v4-subtype-${index + 1}`,
+            label,
+          }))}
+        />
+        <article className="v4-module-stack">
+          {sections.map((label, index) => (
+            <section
+              className="panel"
+              id={`v4-subtype-${index + 1}`}
+              key={label}
+            >
+              <p className="section-kicker">Module {index + 1}</p>
+              <h2>{label}</h2>
+              {index === 1 ? (
+                <div className="content-card-grid">
+                  <CatalogCard
+                    meta="Development index row · no detail page"
+                    title={`${title} skeleton row`}
+                  />
+                </div>
+              ) : (
+                <EmptyState
+                  title={`${label} is ready for reviewed ${contentType} content`}
+                />
+              )}
+            </section>
+          ))}
+        </article>
+        <FactsRail
+          facts={[
+            { label: "Module", value: contentType },
+            { label: "Subtype", value: title },
+            { label: "Locale", value: locale },
+            { label: "Publishing", value: "No thin details" },
+          ]}
+        />
+      </div>
+    </main>
+  );
 }
 
 /** 按当前内容类型生成可见面包屑与结构化数据共用的稳定层级。 */
@@ -138,7 +228,23 @@ function getRelatedCards(page: StaticContentPage) {
 /** 从已校验内容生成静态页面标题和描述。 */
 export function meta({ params }: Route.MetaArgs) {
   const page = getPage(params);
-  if (!page) return getNotFoundMeta(params.locale === "zh-cn" ? "zh-cn" : "en");
+  if (!page) {
+    const subtype = getSubtypeRoute(params);
+    if (subtype) {
+      const path = `/${subtype.locale}/${contentTypeSegments[subtype.contentType]}/${subtype.subtype}/`;
+      return createSeoMetadata({
+        alternatePaths: createBilingualAlternatePaths(
+          `${contentTypeSegments[subtype.contentType]}/${subtype.subtype}/`,
+        ),
+        description: `V4 ${subtype.contentType} aggregation skeleton.`,
+        locale: subtype.locale,
+        path,
+        robots: "noindex, follow",
+        title: `${subtype.subtype} | Exile2 Guides`,
+      });
+    }
+    return getNotFoundMeta(params.locale === "zh-cn" ? "zh-cn" : "en");
+  }
   const alternatePaths = Object.fromEntries(
     (Object.values(contentPages) as StaticContentPage[])
       .filter(
@@ -174,6 +280,8 @@ export default function ContentDetailRoute() {
   const params = useParams();
   const page = getPage(params);
   if (!page) {
+    const subtype = getSubtypeRoute(params);
+    if (subtype) return <V4SubtypeSkeleton {...subtype} />;
     return <NotFoundPage locale={params.locale === "zh-cn" ? "zh-cn" : "en"} />;
   }
 

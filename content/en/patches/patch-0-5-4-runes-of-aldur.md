@@ -18,7 +18,7 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
-image: /images/prototype-v2/guide-patch-054.webp
+image: /images/prototype-v4/patch-runes.webp
 imageAlt: A storm-darkened ruined city representing the 0.5.4 update
 tags: [patch, runes-of-aldur, expedition, atlas]
 relatedContentIds: []

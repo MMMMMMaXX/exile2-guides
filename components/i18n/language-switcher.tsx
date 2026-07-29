@@ -1,4 +1,5 @@
-/** 文件职责：提供同内容优先、缺译文安全回退的全站语言切换入口。 */
+/** 文件职责：提供同内容优先、缺译文安全回退的全站语言下拉切换入口。 */
+import { useState } from "react";
 import { useLocation } from "react-router";
 
 import type { ContentLocale } from "../../lib/content/constants";
@@ -22,18 +23,35 @@ function saveLocalePreference(locale: ContentLocale): void {
   }
 }
 
-/** 渲染两种语言的稳定链接，并按构建期已发布内容映射决定目标。 */
+/** 渲染当前语言按钮与两种语言的下拉入口，并按构建期内容映射决定目标。 */
 export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
   const { pathname } = useLocation();
   // 根语言选择页没有语言段时按英文默认值渲染，移动端仍只显示一个可切换目标。
   const currentLocale = getLocaleFromPathname(pathname) ?? "en";
+  const [isOpen, setIsOpen] = useState(false);
+  const currentOption = localeOptions.find(
+    (option) => option.locale === currentLocale,
+  )!;
 
   return (
-    <nav
+    <div
       className="site-header__languages"
       aria-label={currentLocale === "zh-cn" ? "语言选择" : "Language selection"}
     >
-      {localeOptions.map((option) => {
+      <button
+        aria-expanded={isOpen}
+        aria-haspopup="menu"
+        className="site-header__language-toggle"
+        onClick={() => setIsOpen((open) => !open)}
+        type="button"
+      >
+        <span aria-hidden="true">◎</span>
+        <span>{currentOption.label}</span>
+        <span aria-hidden="true">⌄</span>
+      </button>
+      {isOpen ? (
+        <div className="site-header__language-menu" role="menu">
+          {localeOptions.map((option) => {
         const target = resolveLanguageSwitchTarget(
           pathname,
           option.locale,
@@ -48,7 +66,11 @@ export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
             hrefLang={option.lang}
             key={option.locale}
             lang={option.lang}
-            onClick={() => saveLocalePreference(option.locale)}
+            onClick={() => {
+              saveLocalePreference(option.locale);
+              setIsOpen(false);
+            }}
+            role="menuitem"
           >
             <span className="site-header__language-icon" aria-hidden="true">
               ◎
@@ -56,7 +78,9 @@ export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
             <span className="site-header__language-label">{option.label}</span>
           </a>
         );
-      })}
-    </nav>
+          })}
+        </div>
+      ) : null}
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import searchIndexes from "virtual:search-indexes";
 
 import type { Route } from "./+types/search";
 import { SearchPage } from "../../components/search/search-page";
+import { getV4SkeletonSearchDocuments } from "../../lib/content/v4-taxonomy";
 import {
   supportedLocales,
   type ContentLocale,
@@ -38,5 +39,9 @@ export default function SearchRoute() {
         <h1>Not Found</h1>
       </main>
     );
-  return <SearchPage documents={searchIndexes[locale]} locale={locale} />;
+  const documents = [
+    ...searchIndexes[locale],
+    ...getV4SkeletonSearchDocuments(locale),
+  ];
+  return <SearchPage documents={documents} locale={locale} />;
 }

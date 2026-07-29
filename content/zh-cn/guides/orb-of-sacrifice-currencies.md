@@ -18,7 +18,7 @@ reviewer: Max
 verificationStatus: pending-pc
 publishedAt: 2026-07-28
 updatedAt: 2026-07-27
-image: /images/prototype-v2/guide-orb-sacrifice.webp
+image: /images/prototype-v4/guide-orbs.webp
 imageAlt: 由四种 Orb of Sacrifice 货币环绕的仪式祭坛
 tags: [guide, currency-crafting, corruption, verification]
 relatedContentIds: [patch-0-5-4-runes-of-aldur, atziri-red-queen]

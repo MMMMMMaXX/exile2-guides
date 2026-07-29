@@ -1,4 +1,4 @@
-/** 文件职责：渲染多语言 About、Contact 与法律信息页，保证它们在构建时输出完整可读 HTML。 */
+/** 文件职责：以 V4 信息页布局渲染多语言 About、Contact 与法律内容，并保证构建时输出完整 HTML。 */
 import { useParams } from "react-router";
 
 import { Breadcrumbs } from "../../components/layout/breadcrumbs";
@@ -59,33 +59,12 @@ export function InformationPage({ slug }: { slug: InformationPageSlug }) {
 
   const copy = getInformationPageCopy(route.locale, route.slug);
   return (
-    <main className="page-shell information-page" data-prerender-content="true">
-      <Breadcrumbs
-        items={[
-          { label: "Home", path: `/${route.locale}/` },
-          { label: copy.title, path: `/${route.locale}/${route.slug}/` },
-        ]}
-      />
-      <header className="information-page__header">
-        <p className="eyebrow">Exile2 Guides</p>
-        <h1>{copy.title}</h1>
-      </header>
-      <div className="information-page__content">
-        {copy.sections.map((section) => (
-          <section key={section.title}>
-            <h2>{section.title}</h2>
-            {section.paragraphs?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            {section.bullets ? (
-              <ul>
-                {section.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-        ))}
+    <main className="v4-information-page" data-prerender-content="true">
+      <div className="page-shell"><Breadcrumbs items={[{ label: "Home", path: `/${route.locale}/` }, { label: copy.title, path: `/${route.locale}/${route.slug}/` }]} /></div>
+      <header className="v4-information-page__hero"><div className="page-shell"><p className="eyebrow">Exile2 Guides</p><h1>{copy.title}</h1><p>{copy.description}</p></div></header>
+      <div className="page-shell v4-information-page__layout">
+        <nav className="v4-information-page__rail" aria-label={route.locale === "zh-cn" ? "本页目录" : "On this page"}>{copy.sections.map((section, index) => <a href={`#information-${index + 1}`} key={section.title}>{section.title}</a>)}</nav>
+        <div className="v4-information-page__content">{copy.sections.map((section, index) => <section id={`information-${index + 1}`} key={section.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{section.title}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.bullets ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}</div></section>)}</div>
       </div>
     </main>
   );

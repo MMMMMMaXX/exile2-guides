@@ -18,6 +18,7 @@ export default [
   route(":locale/cookie-policy", "./routes/cookie-policy.tsx"),
   route(":locale/disclaimer", "./routes/disclaimer.tsx"),
   route(":locale/search", "./routes/search.tsx"),
+  route(":locale/builds/classes/:class", "./routes/content-subtype.tsx"),
   route(":locale/:section", "./routes/content-list.tsx"),
   route(":locale/:section/:slug", "./routes/content-detail.tsx"),
   route("*", "./routes/not-found.tsx"),
