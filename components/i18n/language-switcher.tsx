@@ -34,7 +34,7 @@ export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
   )!;
 
   return (
-    <div
+    <nav
       className="site-header__languages"
       aria-label={currentLocale === "zh-cn" ? "语言选择" : "Language selection"}
     >
@@ -52,35 +52,41 @@ export function LanguageSwitcher({ pages }: { pages: StaticContentPageMap }) {
       {isOpen ? (
         <div className="site-header__language-menu" role="menu">
           {localeOptions.map((option) => {
-        const target = resolveLanguageSwitchTarget(
-          pathname,
-          option.locale,
-          pages,
-        );
-        return (
-          <a
-            aria-current={currentLocale === option.locale ? "page" : undefined}
-            className="site-header__language"
-            data-translation-missing={target.translationMissing || undefined}
-            href={target.href}
-            hrefLang={option.lang}
-            key={option.locale}
-            lang={option.lang}
-            onClick={() => {
-              saveLocalePreference(option.locale);
-              setIsOpen(false);
-            }}
-            role="menuitem"
-          >
-            <span className="site-header__language-icon" aria-hidden="true">
-              ◎
-            </span>
-            <span className="site-header__language-label">{option.label}</span>
-          </a>
-        );
+            const target = resolveLanguageSwitchTarget(
+              pathname,
+              option.locale,
+              pages,
+            );
+            return (
+              <a
+                aria-current={
+                  currentLocale === option.locale ? "page" : undefined
+                }
+                className="site-header__language"
+                data-translation-missing={
+                  target.translationMissing || undefined
+                }
+                href={target.href}
+                hrefLang={option.lang}
+                key={option.locale}
+                lang={option.lang}
+                onClick={() => {
+                  saveLocalePreference(option.locale);
+                  setIsOpen(false);
+                }}
+                role="menuitem"
+              >
+                <span className="site-header__language-icon" aria-hidden="true">
+                  ◎
+                </span>
+                <span className="site-header__language-label">
+                  {option.label}
+                </span>
+              </a>
+            );
           })}
         </div>
       ) : null}
-    </div>
+    </nav>
   );
 }

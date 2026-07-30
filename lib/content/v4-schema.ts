@@ -2,26 +2,15 @@
 import { z } from "zod";
 
 import { contentFrontMatterSchema } from "./schema";
+import { buildArticleSchema, type BuildArticle } from "../builds/schema";
 
 const skeletonText = z.string().trim().min(1);
 const skeletonList = z.array(skeletonText).default([]);
 const factSchema = z.strictObject({ label: skeletonText, value: skeletonText });
 const sourceSchema = z.strictObject({ label: skeletonText, url: z.url() });
 
-/** BuildContent 约束 V4 详情需要的成长、技能、装备与排错字段；仅骨架阶段可留在 mock 层。 */
-export const buildContentSchema = contentFrontMatterSchema.and(
-  z.object({
-    contentType: z.literal("build"),
-    complexity: skeletonText.optional(),
-    coreGear: skeletonList,
-    defense: skeletonList,
-    levelingSkills: skeletonList,
-    pros: skeletonList,
-    skillSupports: skeletonList,
-    tradeOffs: skeletonList,
-    upgradeOrder: skeletonList,
-  }),
-);
+// Builds 已迁移到可直接映射数据库的独立 JSON 契约；这里保留兼容出口，避免形成第二套 Schema。
+export const buildContentSchema = buildArticleSchema;
 
 /** BossContent 描述战前准备、阶段和攻击表的模板数据边界。 */
 export const bossContentSchema = contentFrontMatterSchema.and(
@@ -85,7 +74,7 @@ export const detailSkeletonSchema = z.strictObject({
     .default([]),
 });
 
-export type BuildContent = z.infer<typeof buildContentSchema>;
+export type BuildContent = BuildArticle;
 export type BossContent = z.infer<typeof bossContentSchema>;
 export type ItemContent = z.infer<typeof itemContentSchema>;
 export type SkillContent = z.infer<typeof skillContentSchema>;

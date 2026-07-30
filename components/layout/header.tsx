@@ -3,6 +3,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useLocation } from "react-router";
 
 import type { StaticContentPageMap } from "../../lib/content/content-page";
+import { resolveImageAsset } from "../../lib/assets/image-assets";
 import {
   getLocaleFromPathname,
   localeHomePath,
@@ -12,6 +13,9 @@ import {
   availablePrimaryNavigation,
   primaryNavigation,
 } from "./site-navigation";
+
+/** 站点 Logo 图片资源路径。 */
+const siteLogoSrc = resolveImageAsset("/images/logo.png");
 
 /** 根据当前 URL 判断一级栏目，后续分类页注册后不需要在组件中复制路由规则。 */
 function getActiveNavigationId(pathname: string): string | undefined {
@@ -87,13 +91,17 @@ export function Header({
           href={brandHref}
           aria-label="Exile2 Guides home"
         >
-          <span className="site-brand__mark" aria-hidden="true">
-            E2
-          </span>
-          <span className="site-brand__copy">
-            <strong>EXILE2</strong>
-            <em>GUIDES</em>
-          </span>
+          <img
+            className="site-brand__logo"
+            src={siteLogoSrc}
+            srcSet={`${siteLogoSrc} 80w`}
+            sizes="3rem"
+            alt="POE2 Guides"
+            width="40"
+            height="48"
+            decoding="async"
+            fetchPriority="high"
+          />
         </a>
 
         {hasPrimaryNavigation ? (

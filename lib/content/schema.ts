@@ -138,10 +138,11 @@ export const guideFrontMatterSchema = z.strictObject({
   guideCategory: z
     .enum([
       "beginner",
-      "leveling",
-      "progression",
-      "currency-crafting",
-      "systems",
+      "campaign",
+      "mechanics",
+      "crafting-trading",
+      "endgame-atlas",
+      "troubleshooting",
     ])
     .nullable()
     .default(null),

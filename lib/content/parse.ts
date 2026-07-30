@@ -9,13 +9,25 @@ import {
   containsPublishedPlaceholder,
   contentFrontMatterSchema,
 } from "./schema";
+import type { BuildArticle } from "../builds/schema";
+import type { BossArticle } from "../bosses/schema";
+import type { ItemArticle } from "../items/schema";
+import type { SkillArticle } from "../skills/schema";
+import type { GuideArticle } from "../guides/schema";
+import type { PatchArticle } from "../patches/schema";
 
-export type ContentExtension = ".md" | ".mdx";
+export type ContentExtension = ".json" | ".md" | ".mdx";
 
 export type ParsedContent = {
   body: string;
+  bossArticle?: BossArticle;
+  buildArticle?: BuildArticle;
   extension: ContentExtension;
   frontMatter: ContentFrontMatter;
+  guideArticle?: GuideArticle;
+  itemArticle?: ItemArticle;
+  patchArticle?: PatchArticle;
+  skillArticle?: SkillArticle;
   sourcePath: string;
 };
 

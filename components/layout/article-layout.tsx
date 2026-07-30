@@ -1,6 +1,7 @@
 /** 文件职责：提供 V4 详情 Hero、三栏正文、响应式目录与辅助信息布局。 */
 import type { ReactNode } from "react";
 
+import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { TableOfContentsItem } from "../../lib/content/table-of-contents";
 import type { BreadcrumbItem } from "../../lib/seo/breadcrumb";
 import { CopyPageLink } from "../content/copy-page-link";
@@ -24,6 +25,21 @@ export type ArticleLayoutProps = {
   updatedAt?: string;
 };
 
+/** 根据页面类型区分 Build 正式封面和其他原型视觉，避免来源说明与真实用途不一致。 */
+function getArtworkCaption(
+  contentType: string,
+  locale: "en" | "zh-cn",
+): string {
+  if (contentType === "Builds") {
+    return locale === "zh-cn"
+      ? "Exile2 Guides 本站原创 Build 封面"
+      : "Original Build cover artwork by Exile2 Guides";
+  }
+  return locale === "zh-cn"
+    ? "Exile2 Guides 原型原创视觉"
+    : "Original prototype artwork for Exile2 Guides";
+}
+
 /** 渲染详情 Hero 与三栏阅读结构；中小屏按原型依次收起目录和右侧栏。 */
 export function ArticleLayout({
   breadcrumbs,
@@ -40,6 +56,7 @@ export function ArticleLayout({
   title,
   updatedAt,
 }: ArticleLayoutProps) {
+  const resolvedImage = image ? resolveImageAsset(image) : undefined;
   return (
     <>
       <ReadingProgress />
@@ -48,7 +65,7 @@ export function ArticleLayout({
           <Breadcrumbs items={breadcrumbs} />
         </div>
         <header
-          className={`v4-article-page__hero${image ? "" : " v4-article-page__hero--without-image"}`}
+          className={`v4-article-page__hero${resolvedImage ? "" : " v4-article-page__hero--without-image"}`}
         >
           <div className="page-shell v4-article-page__hero-grid">
             <div className="v4-article-page__hero-copy">
@@ -73,7 +90,7 @@ export function ArticleLayout({
                 <CopyPageLink locale={locale} />
               </div>
             </div>
-            {image ? (
+            {resolvedImage ? (
               <figure className="v4-article-page__hero-media">
                 <img
                   alt={imageAlt ?? ""}
@@ -81,14 +98,12 @@ export function ArticleLayout({
                   fetchPriority="high"
                   height="540"
                   sizes="(max-width: 920px) calc(100vw - 2rem), 42vw"
-                  src={image}
-                  srcSet={`${image} 960w`}
+                  src={resolvedImage}
+                  srcSet={`${resolvedImage} 960w`}
                   width="960"
                 />
                 <figcaption>
-                  {locale === "zh-cn"
-                    ? "Exile2 Guides 原型原创视觉"
-                    : "Original prototype artwork for Exile2 Guides"}
+                  {getArtworkCaption(contentType, locale)}
                 </figcaption>
               </figure>
             ) : null}
@@ -106,7 +121,9 @@ export function ArticleLayout({
             <TableOfContents items={tableOfContents} variant="mobile" />
             <div className="v4-article-page__body">{children}</div>
           </article>
-          {rail ? <aside className="v4-article-page__rail">{rail}</aside> : null}
+          {rail ? (
+            <aside className="v4-article-page__rail">{rail}</aside>
+          ) : null}
         </div>
       </main>
     </>

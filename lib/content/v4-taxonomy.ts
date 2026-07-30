@@ -51,41 +51,6 @@ export const v4SkeletonRows: readonly V4MockRow[] = [
     slug: "ranger-starter",
     title: "Ranger starter skeleton",
   },
-  {
-    category: "campaign",
-    contentType: "boss",
-    detailReady: false,
-    slug: "campaign-boss-index",
-    title: "Campaign boss index skeleton",
-  },
-  {
-    category: "currency",
-    contentType: "item",
-    detailReady: false,
-    slug: "currency-reference",
-    title: "Currency reference skeleton",
-  },
-  {
-    category: "active",
-    contentType: "skill",
-    detailReady: false,
-    slug: "active-skill-index",
-    title: "Active skill index skeleton",
-  },
-  {
-    category: "beginner",
-    contentType: "guide",
-    detailReady: false,
-    slug: "beginner-question-index",
-    title: "Beginner question index skeleton",
-  },
-  {
-    category: "major-updates",
-    contentType: "patch",
-    detailReady: false,
-    slug: "patch-timeline",
-    title: "Patch timeline skeleton",
-  },
 ];
 
 /** 返回双语可预渲染的 V4 子类路径；Patch 分类仅供筛选，不创建独立详情页。 */
@@ -101,11 +66,10 @@ export function getV4SubtypePaths(): string[] {
   return (["en", "zh-cn"] as const).flatMap((locale) =>
     (Object.entries(v4Taxonomy) as [ContentType, readonly string[]][]).flatMap(
       ([type, categories]) =>
-        type === "patch"
+        type === "patch" || type === "build" || type === "boss" || type === "item" || type === "skill" || type === "guide"
           ? []
           : categories.map(
-              (category) =>
-                `/${locale}/${segmentByType[type]}/${type === "build" ? "classes/" : ""}${category}/`,
+              (category) => `/${locale}/${segmentByType[type]}/${category}/`,
             ),
     ),
   );
@@ -122,8 +86,7 @@ export function getV4SkeletonSearchDocuments(
 ): SearchDocument[] {
   return v4SkeletonRows.map((row) => ({
     category: row.contentType,
-    description:
-      "Verified V4 structure row. No detail page is published.",
+    description: "Verified V4 structure row. No detail page is published.",
     headings: [],
     locale,
     path: `/${locale}/${

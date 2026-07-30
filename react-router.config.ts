@@ -3,6 +3,7 @@ import path from "node:path";
 
 import type { Config } from "@react-router/dev/config";
 
+import { verifyFingerprintedImageBuild } from "./lib/assets/verify-build.server";
 import { loadContentIndex } from "./lib/content/content-index";
 import {
   enumeratePublicPaths,
@@ -35,6 +36,7 @@ export default {
     await verifyStaticNotFoundDocument(outputDirectory);
     await verifySeoSiteFiles(outputDirectory, index, siteOrigin);
     await verifyClientPerformance(outputDirectory, publicPaths);
+    await verifyFingerprintedImageBuild(outputDirectory);
   },
   ssr: false,
 } satisfies Config;

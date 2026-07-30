@@ -1,6 +1,8 @@
 /** 文件职责：提供列表与关联内容共用的整卡链接展示，避免页面重复拼接内容元数据。 */
 import type { ReactNode } from "react";
 
+import { resolveImageAsset } from "../../lib/assets/image-assets";
+
 export type ContentCardData = {
   attributes?: readonly string[];
   href: string;
@@ -26,15 +28,18 @@ export function ContentCard({
   footer?: ReactNode;
 }) {
   const attributes = getVisibleAttributes(content.attributes);
+  const resolvedImage = content.image
+    ? resolveImageAsset(content.image)
+    : undefined;
 
   return (
-    <a className="content-card" href={content.href}>
-      {content.image ? (
+    <a aria-label={content.title} className="content-card" href={content.href}>
+      {resolvedImage ? (
         <img
           decoding="async"
           className="content-card__image"
-          src={content.image}
-          srcSet={`${content.image} 448w`}
+          src={resolvedImage}
+          srcSet={`${resolvedImage} 448w`}
           sizes="(max-width: 40rem) calc(100vw - 2rem), (max-width: 48rem) 10rem, (max-width: 74rem) 50vw, 25vw"
           alt={content.imageAlt ?? ""}
           height="252"

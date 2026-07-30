@@ -5,11 +5,16 @@ import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type Plugin } from "vite";
 
-import { loadStaticContentPages } from "./lib/content/content-page.server";
+import {
+  loadLocalBuildDraftPreviewPages,
+  loadStaticContentPages,
+} from "./lib/content/content-page.server";
 import { buildSearchIndexes } from "./lib/search/search-index";
 
 const virtualContentPagesId = "virtual:content-pages";
 const resolvedVirtualContentPagesId = `\0${virtualContentPagesId}`;
+const virtualBuildDraftPreviewPagesId = "virtual:build-draft-preview-pages";
+const resolvedVirtualBuildDraftPreviewPagesId = `\0${virtualBuildDraftPreviewPagesId}`;
 const virtualSearchIndexesId = "virtual:search-indexes";
 const resolvedVirtualSearchIndexesId = `\0${virtualSearchIndexesId}`;
 
@@ -46,6 +51,30 @@ function contentPagesPlugin(): Plugin {
   };
 }
 
+/**
+ * 只为本地 Vite 开发服务内联 Build 草稿。
+ * 生产构建仍解析同一模块，但内容固定为空，避免草稿正文进入部署产物。
+ */
+function buildDraftPreviewPagesPlugin(enabled: boolean): Plugin {
+  return {
+    name: "exile2-build-draft-preview-pages",
+    /** 仅接管本地 Build 草稿预览模块，不改变正式内容模块的语义。 */
+    resolveId(id) {
+      return id === virtualBuildDraftPreviewPagesId
+        ? resolvedVirtualBuildDraftPreviewPagesId
+        : null;
+    },
+    /** 本地开发读取非模板 Build 草稿，其他命令输出空映射。 */
+    async load(id) {
+      if (id !== resolvedVirtualBuildDraftPreviewPagesId) return null;
+      const pages = enabled
+        ? await loadLocalBuildDraftPreviewPages(getContentDirectory())
+        : {};
+      return `export default ${JSON.stringify(pages)};`;
+    },
+  };
+}
+
 /** 在构建期导出每种语言独立 JSON，同时提供同一份虚拟数据给浏览器本地搜索。 */
 function searchIndexesPlugin(): Plugin {
   return {
@@ -77,9 +106,10 @@ function searchIndexesPlugin(): Plugin {
   };
 }
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     contentPagesPlugin(),
+    buildDraftPreviewPagesPlugin(command === "serve"),
     searchIndexesPlugin(),
     tailwindcss(),
     reactRouter(),
@@ -90,4 +120,4 @@ export default defineConfig({
   server: {
     host: "127.0.0.1",
   },
-});
+}));

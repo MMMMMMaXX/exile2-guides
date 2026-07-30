@@ -2,8 +2,9 @@
 import { useParams } from "react-router";
 import contentPages from "virtual:content-pages";
 
-import type { Route } from "./+types/home";
+import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { ContentCard } from "../../components/content/content-card";
+import { ReadingProgress } from "../../components/content/reading-progress";
 import {
   contentTypeSegments,
   type ContentType,
@@ -15,6 +16,9 @@ import {
   createBilingualAlternatePaths,
   createSeoMetadata,
 } from "../../lib/seo/metadata";
+import type { Route } from "./+types/home";
+
+const homeHeroImage = resolveImageAsset("/images/prototype-v2/hero-home.webp");
 
 const homeSectionOrder = [
   "guide",
@@ -222,6 +226,7 @@ export default function HomeRoute() {
 
   return (
     <main className="home-page" data-prerender-content="true">
+      <ReadingProgress />
       <section className="home-hero-v2" aria-labelledby="home-title">
         <img
           alt=""
@@ -231,8 +236,8 @@ export default function HomeRoute() {
           fetchPriority="high"
           height="760"
           sizes="100vw"
-          src="/images/prototype-v2/hero-home.webp"
-          srcSet="/images/prototype-v2/hero-home.webp 1920w"
+          src={homeHeroImage}
+          srcSet={`${homeHeroImage} 1920w`}
           width="1920"
         />
         <div className="home-hero-v2__overlay" aria-hidden="true" />

@@ -1,0 +1,595 @@
+{
+  "id": "whirling-assault-martial-artist",
+  "slug": "whirling-assault-martial-artist",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "draft",
+  "featured": false,
+  "title": "旋风突袭 Martial Artist — 0.5.4 研究草稿",
+  "shortTitle": "旋风突袭 Martial Artist",
+  "summary": "以核验为先的旋风突袭成长草稿，覆盖剧情切换、充能生成、Bell 配置、CI 转型以及物理/元素变体。",
+  "description": "基于 0.5.4 的 Path of Exile 2 旋风突袭 Martial Artist Build 研究草稿。",
+  "classId": "monk",
+  "ascendancyId": "martial-artist",
+  "mainSkillIds": ["whirling-assault"],
+  "secondarySkillIds": [
+    "tempest-bell",
+    "hollow-form",
+    "charged-staff",
+    "killing-palm",
+    "trinity"
+  ],
+  "stages": ["starter", "leveling", "early-endgame", "endgame", "bossing"],
+  "budgets": ["low", "medium", "high"],
+  "difficulty": "intermediate",
+  "playstyleTags": ["melee", "channeling", "mobile", "charge-based"],
+  "damageTypes": ["physical", "elemental"],
+  "bestFor": ["mapping", "mobile-melee", "staged-progression"],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-07-30",
+  "heroImage": "/images/builds/covers/whirling-assault-martial-artist.webp",
+  "cardImage": "/images/builds/covers/whirling-assault-martial-artist.webp",
+  "imageAlt": "持杖 Martial Artist 穿过风暴钟与元素充能旋转突袭",
+  "tags": [
+    "build",
+    "research-draft",
+    "monk",
+    "martial-artist",
+    "whirling-assault"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "Build 概览",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "Whirling Assault 并不是从第一分钟就使用的升级技能。维护路线会经历前期技能、空手阶段、战役与早期地图，只有法杖、充能、Spirit 和防御都能支撑时才进入完整 Whirling 配置。跳过这段过桥，正是社区讨论中最常见的抱怨。",
+        "终局阶段，Whirling Assault 提供移动伤害，Tempest Bell 建立 Boss 集火点，Trinity 奖励均衡元素贡献，Charged Staff 则依赖稳定暴击球。CI 是独立防御决策：必须等能量护盾配置真实成立，并且它与 Way of the Mountain 不兼容。",
+        "以核验为先的旋风突袭成长草稿，覆盖剧情切换、充能生成、Bell 配置、CI 转型以及物理/元素变体。"
+      ],
+      "bullets": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。",
+        "稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。",
+        "Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "优点与缺点",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "成型后可在移动中快速清图。",
+        "终局可选择物理或元素路线。",
+        "清图与 Boss 可复用充能和 Bell 工具。"
+      ],
+      "cons": [
+        "剧情前期需要临时技能过渡。",
+        "强敌需要处理充能和 Bell 的准备。",
+        "ES 套件未完成前不应强行转 CI。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "core-rotation",
+      "type": "playstyle",
+      "title": "核心循环",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。 稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。 Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "bullets": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。",
+        "稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。",
+        "Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "bell-charge-loop-visual",
+      "type": "figure",
+      "title": "充能和 Bell 都在持续攻击之前",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/whirling-assault-martial-artist-mechanic.webp",
+        "alt": "Martial Artist 建立充能、放置 Tempest Bell 并开始 Whirling Assault 的编辑示意图",
+        "caption": "先建立充能循环，为耐久目标放置 Tempest Bell，再进入 Whirling Assault 的持续攻击路线。",
+        "credit": "Exile2 Guides 原创编辑示意图",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "升级流程",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "1–22 级",
+          "body": ["按当前指南使用武僧过渡技能，优先保证武器、抗性和移动。"]
+        },
+        {
+          "label": "切换旋风突袭",
+          "body": ["技能、辅助与充能路径齐备后再切换，不从 1 级强行使用。"]
+        },
+        {
+          "label": "剧情末期",
+          "body": ["先稳定生命或混合防御，再加入高成本伤害。"]
+        },
+        {
+          "label": "早期 Atlas",
+          "body": ["选择物理或元素路线，并测试低密度场景的充能稳定性。"]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "技能组合",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "skillId": "whirling-assault",
+              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "辅助候选",
+          "skills": [
+            {
+              "skillId": "tempest-bell",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "hollow-form",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "charged-staff",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "killing-palm",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "trinity",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "升华顺序",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暂定顺序",
+          "body": [
+            "按所选当前指南执行，并在发布前于 0.5.4 客户端逐个确认节点。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "天赋树",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "剧情",
+          "body": ["只选择支持当前升级技能和防御需求的节点。"]
+        },
+        {
+          "label": "早期地图",
+          "body": ["转入所选 Build 变体，不混合不兼容 Planner。"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装备",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "武器",
+          "recommendations": ["对应路线的高攻击伤害", "不影响操控的攻击速度"],
+          "notes": ["制作前先区分物理与元素变体。"]
+        },
+        {
+          "slot": "护甲",
+          "recommendations": ["符合当前阶段的生命或能量护盾", "元素抗性"],
+          "notes": ["不要把终局 CI 外壳直接搬到剧情。"]
+        },
+        {
+          "slot": "饰品",
+          "recommendations": ["对应路线的附加伤害", "属性与抗性"],
+          "notes": ["充能词缀需当前客户端确认。"]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "属性优先级",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "可用防御",
+          "reason": "先完成元素抗性和生命/ES 方案，再追求奢侈伤害。"
+        },
+        {
+          "label": "武器伤害",
+          "reason": "旋风突袭的实际输出高度依赖合适的武器或 Hollow Form 方案。"
+        },
+        {
+          "label": "攻击速度",
+          "reason": "改善手感，但必须和持续攻击控制、资源维持一起测试。"
+        },
+        {
+          "label": "充能稳定性",
+          "reason": "如果循环只在密集怪群生效，Boss 伤害会崩溃。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "升级优先级",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "1",
+          "body": ["修正抗性与生命/ES 防御。"]
+        },
+        {
+          "label": "2",
+          "body": ["升级主伤害来源与辅助。"]
+        },
+        {
+          "label": "3",
+          "body": ["让单体充能可靠。"]
+        },
+        {
+          "label": "4",
+          "body": ["加入 Bell 与变体专属缩放。"]
+        },
+        {
+          "label": "5",
+          "body": ["完整防御检查通过后才转 CI。"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "清图",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "维持充能来源，开启 Charged Staff，再用 Whirling Assault 穿过连续目标。Spirit 不足时可以先移除 Herald of Ash。加入 Trinity 后清图下降，应检查元素重叠，而不是假设光环自动生效。",
+        "不要持续冲进未知地面效果；低密度地图要主动重启充能循环。移动速度是手感，不可替代抗性与防御。"
+      ],
+      "bullets": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。",
+        "稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。",
+        "Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "Boss 战",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "先放 Tempest Bell，用 Hollow Focus 或当前充能方式生成资源，开启 Charged Staff，再让 Whirling Assault 穿过 Bell 与目标。第二武器组的 Rend 是可选项，先证明基础 Bell 与充能循环有效。",
+        "尽量带充能入场，在稳定输出窗口放置 Bell，只在站位安全时持续攻击。Hollow Form 的确切顺序仍是暂定。"
+      ],
+      "bullets": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。",
+        "稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。",
+        "Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "ci-transition",
+      "type": "overview",
+      "title": "CI 转型",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "草稿不会把物理、元素和 CI 装备混在同一购物清单。先选择伤害路线；只有 ES、恢复和抗性检查全部通过后再转 CI。"
+      ],
+      "bullets": [
+        "普通怪群先建立充能循环，再沿安全路线使用旋风突袭。",
+        "稀有怪前先准备充能并放置 Tempest Bell，再开始持续攻击。",
+        "Boss 的 Hollow Form、Bell 与充能顺序必须在当前客户端复现后才能定稿。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "不要跳过转型",
+      "order": 140,
+      "visible": true,
+      "caption": "阶段对应维护路线，也直接回应玩家指出的中段缺口。",
+      "columns": ["战役过桥", "早期 Whirling", "CI + Trinity"],
+      "rows": [
+        {
+          "label": "主要状态",
+          "cells": [
+            "前期技能或空手",
+            "法杖 Whirling + Bell",
+            "元素平衡、充能与 ES"
+          ]
+        },
+        {
+          "label": "切换证明",
+          "cells": [
+            "战役安全清理",
+            "充能与法杖可维持",
+            "ES、Spirit、抗性同时成立"
+          ]
+        },
+        {
+          "label": "优先装备",
+          "cells": ["基础防御", "元素点伤法杖与移速", "闪避/ES、充能与 Spirit"]
+        },
+        {
+          "label": "不要做",
+          "cells": ["过早强用 Whirling", "点伤前先买暴击", "CI 搭配不兼容节点"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "故障排查",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "Boss 战充能中断",
+          "checks": [
+            "排除所有依赖击杀的路径后单独测试。",
+            "逐一检查 0.5.4 的辅助与升华交互。"
+          ]
+        },
+        {
+          "symptom": "清图容易暴毙",
+          "checks": [
+            "不要持续穿过明显技能。",
+            "先检查抗性、规避与恢复，不要只加伤害。"
+          ]
+        },
+        {
+          "symptom": "CI 转型变弱",
+          "checks": [
+            "ES 或恢复不足时退回上一阶段。",
+            "不要把单个社区角色的 ES 数值当作通用门槛。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "转型、Trinity 与 CI 解答",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "为什么终局规划器放到我的战役角色上完全不能用？",
+          "answer": [
+            "它默认转型组件已经存在。法杖、充能、Spirit 和防御都能支撑前，应继续使用战役或空手过桥。"
+          ],
+          "bullets": [
+            "选择最接近当前装备的版本。",
+            "一次只改一个系统。",
+            "转型期间保留可用的备用技能。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "为什么 Trinity 没有提升伤害？",
+          "answer": [
+            "收益依赖元素伤害重叠。检查游戏内分项或规划器，通过法杖和戒指调整火、冰、雷贡献，使其真正支持预期共振。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "必须立刻转 CI 吗？",
+          "answer": [
+            "不需要。维护攻略把 CI 视为能量护盾足够后的可选项，并说明 Way of the Mountain 不与 CI 配合。过早变成一血，不如先保留生命或混合阶段。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/builds/twister-spirit-walker/",
+              "label": "对比远程移动构筑"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "公开攻略在哪里丢失读者",
+      "order": 170,
+      "visible": true,
+      "note": "社区抱怨被用作“说明缺失”的证据，而不是针对作者。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "Whirling Assault 攻略选择讨论",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1txwbev/best_martial_artist_whirling_assault_guide/",
+          "statement": "一位玩家认为攻略从前期直接跳到超终局，缺少中段；回复建议查看版本标签与新视频，也有人认为文字页落后于视频更新。",
+          "context": "因此本文把过桥做成正文对比表，而不是让读者去隐藏标签中自行猜测。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "Whirling Assault 求助讨论",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1uppcsb/help_with_whirling_assault_martial_artist/",
+          "statement": "针对卡在 T13 附近的玩家，建议优先解决稳定暴击球、Bell 互动、Wind Dancer 与元素点伤装备，并把暴击推迟到真正买得起时。",
+          "context": "这些是实际排错优先级；具体防御目标仍等待 PC 实机核验。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "用文字过桥理解概念实战",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "社区构筑作者",
+          "label": "Whirling Assault 概念实战",
+          "url": "https://youtu.be/CuDrHBZP2R8",
+          "description": "用于观察 Bell 放置、Whirling 路径与充能消耗。",
+          "takeaway": "先对照自己当前阶段，不要把终局充能技术直接移植到未完成的战役配置。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "来源与边界",
+      "order": 190,
+      "visible": true,
+      "paragraphs": [
+        "官方补丁定义版本基线；指南、Planner、视频和社区结论在复现前都属于暂定。"
+      ],
+      "bullets": [
+        "来源访问日期：2026-07-29。",
+        "未复制第三方文案或媒体。",
+        "PC 核验仍待完成。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新记录",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": ["建立带来源的 0.5.4 研究草稿；发布仍受 PC 核验门禁限制。"]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": ["twister-spirit-walker"],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray 0.5 Martial Artist progression guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/martial-artist-monk-build-league-starter-to-endgame"
+    },
+    {
+      "label": "Travic Hollow Form Whirling Assault guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/martial-artist-hollow-palm-whirling-assault-travic"
+    },
+    {
+      "label": "Community build concept, planner and gameplay",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tn227g/05_whirling_assault_martial_artist_build_concept/"
+    },
+    {
+      "label": "PoB2 export for the community build concept",
+      "sourceType": "tool",
+      "url": "https://pobb.in/eHBUQwqAgeO6"
+    },
+    {
+      "label": "Whirling Assault build concept gameplay",
+      "sourceType": "community",
+      "url": "https://youtu.be/CuDrHBZP2R8"
+    },
+    {
+      "label": "Community question about missing Whirling Assault transition steps",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1txwbev/best_martial_artist_whirling_assault_guide/"
+    },
+    {
+      "label": "Whirling Assault help thread",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1uppcsb/help_with_whirling_assault_martial_artist/"
+    }
+  ],
+  "seo": {
+    "title": "旋风突袭 Martial Artist — 0.5.4 研究草稿",
+    "description": "基于 0.5.4 的 Path of Exile 2 旋风突袭 Martial Artist Build 研究草稿。",
+    "noindex": true
+  }
+}

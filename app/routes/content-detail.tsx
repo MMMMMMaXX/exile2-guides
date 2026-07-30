@@ -1,13 +1,37 @@
 /** 文件职责：提供六类内容共用的最小静态详情路由，视觉文章模板将在后续任务扩展。 */
 import { useParams } from "react-router";
-import contentPages from "virtual:content-pages";
 
 import type { Route } from "./+types/content-detail";
 import { ArticleLayout } from "../../components/layout/article-layout";
 import { BuildQuickSummary } from "../../components/builds/build-quick-summary";
+import {
+  BuildMediaNotice,
+  BuildSectionRenderer,
+} from "../../components/builds/build-section-renderer";
+import {
+  BossMediaNotice,
+  BossSectionRenderer,
+} from "../../components/bosses/boss-section-renderer";
+import {
+  ItemMediaNotice,
+  ItemSectionRenderer,
+} from "../../components/items/item-section-renderer";
+import {
+  SkillMediaNotice,
+  SkillSectionRenderer,
+} from "../../components/skills/skill-section-renderer";
+import {
+  GuideMediaNotice,
+  GuideSectionRenderer,
+} from "../../components/guides/guide-section-renderer";
+import {
+  PatchMediaNotice,
+  PatchSectionRenderer,
+} from "../../components/patches/patch-section-renderer";
 import { BossQuickPreparation } from "../../components/bosses/boss-quick-preparation";
 import { ArticleSidebar } from "../../components/content/article-sidebar";
 import { ContentFactSummary } from "../../components/content/content-fact-summary";
+import { DraftPreviewNotice } from "../../components/content/draft-preview-notice";
 import { PatchStatusNotice } from "../../components/content/patch-status-notice";
 import { NotFoundPage } from "../../components/content/not-found-page";
 import { RelatedContent } from "../../components/content/related-content";
@@ -27,9 +51,11 @@ import {
   supportedLocales,
 } from "../../lib/content/constants";
 import type { StaticContentPage } from "../../lib/content/content-page";
+import { locallyVisibleContentPages as contentPages } from "../../lib/content/runtime-pages";
 import type {
   BossFrontMatter,
   BuildFrontMatter,
+  ItemFrontMatter,
 } from "../../lib/content/schema";
 import {
   createBreadcrumbJsonLd,
@@ -187,6 +213,13 @@ function isBossPage(
   return page.frontMatter.contentType === "boss";
 }
 
+/** 判断详情页是否为 Item，使物品摘要仅消费已通过 Item Schema 的字段。 */
+function isItemPage(
+  page: StaticContentPage,
+): page is StaticContentPage & { frontMatter: ItemFrontMatter } {
+  return page.frontMatter.contentType === "item";
+}
+
 /** 从已内联的同语言公开页面派生关联卡片，草稿不会存在于该虚拟模块。 */
 function getRelatedCards(page: StaticContentPage) {
   return page.frontMatter.relatedContentIds.flatMap((contentId) => {
@@ -270,6 +303,15 @@ export function meta({ params }: Route.MetaArgs) {
       page.frontMatter.contentType,
       page.frontMatter.slug,
     ),
+    ...(page.frontMatter.draft ||
+    page.buildArticle?.seo.noindex ||
+    page.bossArticle?.seo.noindex ||
+    page.itemArticle?.seo.noindex ||
+    page.skillArticle?.seo.noindex ||
+    page.guideArticle?.seo.noindex ||
+    page.patchArticle?.seo.noindex
+      ? { robots: "noindex, follow" }
+      : {}),
     title: page.frontMatter.seoTitle,
     type: "article",
   });
@@ -291,7 +333,9 @@ export default function ContentDetailRoute() {
   return (
     <>
       <StructuredData data={createBreadcrumbJsonLd(breadcrumbs)} />
-      <StructuredData data={createArticleJsonLd(page.frontMatter)} />
+      {!page.frontMatter.draft ? (
+        <StructuredData data={createArticleJsonLd(page.frontMatter)} />
+      ) : null}
       <ArticleLayout
         breadcrumbs={breadcrumbs}
         contentType={contentTypeLabels[page.frontMatter.contentType]}
@@ -332,21 +376,52 @@ export default function ContentDetailRoute() {
         title={page.frontMatter.title}
         updatedAt={page.frontMatter.updatedAt}
       >
+        <DraftPreviewNotice frontMatter={page.frontMatter} />
         {isBuildPage(page) ? (
           <BuildQuickSummary frontMatter={page.frontMatter} />
         ) : null}
         {isBossPage(page) ? (
           <BossQuickPreparation frontMatter={page.frontMatter} />
         ) : null}
-        {["item", "skill", "guide", "patch"].includes(
-          page.frontMatter.contentType,
-        ) ? (
+        {isItemPage(page) ? (
           <ContentFactSummary frontMatter={page.frontMatter} />
         ) : null}
         <PatchStatusNotice frontMatter={page.frontMatter} />
-        <div dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />
+        {page.buildArticle ? (
+          <BuildSectionRenderer article={page.buildArticle} />
+        ) : page.bossArticle ? (
+          <BossSectionRenderer article={page.bossArticle} />
+        ) : page.itemArticle ? (
+          <ItemSectionRenderer article={page.itemArticle} />
+        ) : page.skillArticle ? (
+          <SkillSectionRenderer article={page.skillArticle} />
+        ) : page.guideArticle ? (
+          <GuideSectionRenderer article={page.guideArticle} />
+        ) : page.patchArticle ? (
+          <PatchSectionRenderer article={page.patchArticle} />
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />
+        )}
         <SourcesAndVerification frontMatter={page.frontMatter} />
         <RelatedContent items={relatedCards} />
+        {page.buildArticle ? (
+          <BuildMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
+        {page.bossArticle ? (
+          <BossMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
+        {page.itemArticle ? (
+          <ItemMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
+        {page.skillArticle ? (
+          <SkillMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
+        {page.guideArticle ? (
+          <GuideMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
+        {page.patchArticle ? (
+          <PatchMediaNotice locale={page.frontMatter.locale} />
+        ) : null}
       </ArticleLayout>
     </>
   );

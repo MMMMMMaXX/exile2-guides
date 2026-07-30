@@ -2,7 +2,7 @@
 
 # Exile2 Guides
 
-> 本节更新时间：2026-07-27 17:32（Asia/Shanghai）
+> 本节更新时间：2026-07-29 17:27（Asia/Shanghai）
 
 Exile2 Guides 是一个基于 React、TypeScript、React Router Framework Mode 和
 Vite 的多语言静态攻略内容站。产品与技术需求以
@@ -89,6 +89,9 @@ npm run check:comments
 # 内容 Schema、发布状态和索引校验
 npm run validate:content
 
+# 图片路径、缺失文件和指纹目录校验
+npm run check:images
+
 # 检查格式
 npm run format:check
 
@@ -105,6 +108,30 @@ npm run quality
 该命令依次检查格式、中文注释、内容发布边界、类型、Lint、单元/组件测试、生产构建
 和 Playwright 核心浏览器流程。E2E 使用独立测试内容目录，不会把测试内容加入生产
 路由、Sitemap 或搜索索引。
+
+## 图片资源与缓存
+
+> 本节更新时间：2026-07-29 14:48（Asia/Shanghai）
+
+页面图片统一放入 `app/assets/images/`，并按用途保留子目录。例如：
+
+```text
+app/assets/images/prototype-v4/hero-skill.webp
+```
+
+代码或 Markdown 继续使用稳定路径：
+
+```text
+/images/prototype-v4/hero-skill.webp
+```
+
+`lib/assets/image-assets.ts` 会在开发和构建时自动发现目录内的 WebP、AVIF、PNG、JPEG、
+GIF 与 SVG，并把稳定路径转换成 `/assets/文件名-内容哈希.扩展名`。新增或替换图片后只需
+重新构建，不需要手写哈希，也不要在 `public/images/` 保存页面图片。
+
+`npm run check:images` 会阻止缺失引用和旧 `public/images/` 文件进入交付；生产构建还会
+确认全部输出图片都位于 `/assets/` 且文件名带内容指纹。现有 `_headers` 会对这些指纹
+资源设置一年浏览器缓存和 `immutable`，文件内容改变时新哈希会自动绕开旧缓存。
 
 ## 常见问题
 
@@ -128,6 +155,7 @@ npm run dev
 - `EXILE2-GUIDES-PRD.md`：MVP 产品与技术需求唯一事实源
 - `docs/project-progress.md`：TASK-001～TASK-025、任务外事项和会话时间线
 - `docs/content-schema.md`：内容字段和发布门禁
+- `docs/build-article-json-spec.md`：Build JSON 字段、章节结构、路由和生成规范
 - `docs/content-index.md`：内容索引、翻译与关联关系
 - `docs/content-authoring.md`：草稿模板、事实核验和安全发布流程
 - `docs/launch-execution-plan.md`：MVP 完成后的真实内容、上线与维护执行方案

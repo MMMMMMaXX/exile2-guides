@@ -1,0 +1,605 @@
+{
+  "id": "ed-contagion-lich",
+  "slug": "ed-contagion-lich",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "draft",
+  "featured": false,
+  "title": "Essence Drain Contagion Lich — 0.5.4 研究草稿",
+  "shortTitle": "ED Contagion Lich",
+  "summary": "带来源的混沌持续伤害草稿，明确区分怪群传播、Boss 维持以及 Full-Life/Low-Life 终局选择。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Essence Drain 与 Contagion Lich Build 研究草稿。",
+  "classId": "witch",
+  "ascendancyId": "lich",
+  "mainSkillIds": ["essence-drain", "contagion"],
+  "secondarySkillIds": [
+    "dark-effigy",
+    "despair",
+    "sigil-of-power",
+    "entangle",
+    "bonestorm"
+  ],
+  "stages": ["starter", "leveling", "early-endgame", "endgame", "bossing"],
+  "budgets": ["low", "medium"],
+  "difficulty": "beginner",
+  "playstyleTags": ["caster", "chaos-dot", "damage-over-time", "mobile"],
+  "damageTypes": ["chaos", "damage-over-time"],
+  "bestFor": ["league-start", "mapping", "mobile-bossing"],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-07-30",
+  "heroImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "cardImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "imageAlt": "Lich 以紫色 Essence Drain 与 Contagion 向黑暗怪群扩散",
+  "tags": [
+    "build",
+    "research-draft",
+    "witch",
+    "lich",
+    "essence-drain",
+    "contagion"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "Build 概览",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "ED + Contagion 的价值在于把选目标变成传播机制：Contagion 标记怪群，Essence Drain 提供伤害减益，死亡后整套效果继续向外传递。两次施法落在不相干的目标上时体验会骤降，因此瞄准与怪群顺序往往比多一条面板伤害更重要。",
+        "Boss 战没有传播红利，构筑会变成维持型循环：保持 Essence Drain，只在目标值得时补 Despair，维持 Dark Effigy 图腾，然后利用持续伤害期间移动。接受伤害分层启动较慢，换来的就是更长的安全位移时间。",
+        "带来源的混沌持续伤害草稿，明确区分怪群传播、Boss 维持以及 Full-Life/Low-Life 终局选择。"
+      ],
+      "bullets": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
+        "在效果结束前补施 Essence Drain 和所选诅咒。",
+        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "优点与缺点",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "剧情期装备门槛较低。",
+        "移动时持续伤害仍可生效。",
+        "成功的双技能应用可传播清理怪群。"
+      ],
+      "cons": [
+        "伤害存在延迟。",
+        "Boss 战需要多个 Debuff 或辅助技能。",
+        "不同终局指南对辅助技能和防御有分歧。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "damage-rotation",
+      "type": "dot-rotation",
+      "title": "持续伤害循环",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。 在效果结束前补施 Essence Drain 和所选诅咒。 Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "bullets": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
+        "在效果结束前补施 Essence Drain 和所选诅咒。",
+        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "spread-loop-visual",
+      "type": "figure",
+      "title": "让两次施法落在同一目标上",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ed-contagion-lich-mechanic.webp",
+        "alt": "Contagion 与 Essence Drain 命中同一目标后向外传播的编辑示意图",
+        "caption": "Contagion 与 Essence Drain 必须在同一个怪群目标上相遇；第一个敌人死亡后，整套伤害才向外传播。",
+        "credit": "Exile2 Guides 原创编辑示意图",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "升级流程",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "剧情开始",
+          "body": ["满足当前技能条件后使用 Essence Drain 与 Contagion。"]
+        },
+        {
+          "label": "Act 2–4",
+          "body": ["在不破坏传播循环的前提下补充可靠单体。"]
+        },
+        {
+          "label": "剧情末期",
+          "body": ["维持宝石等级，同时建立 ES 与恢复。"]
+        },
+        {
+          "label": "早期地图",
+          "body": ["明确使用 Full-Life 默认外壳还是后期 Low-Life 转型。"]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "技能组合",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "skillId": "essence-drain",
+              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "contagion",
+              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "辅助候选",
+          "skills": [
+            {
+              "skillId": "dark-effigy",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "despair",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "sigil-of-power",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "entangle",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "skillId": "bonestorm",
+              "role": "依变体使用的工具或准备技能。",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "升华顺序",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暂定顺序",
+          "body": [
+            "按所选当前指南执行，并在发布前于 0.5.4 客户端逐个确认节点。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "天赋树",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "剧情",
+          "body": ["只选择支持当前升级技能和防御需求的节点。"]
+        },
+        {
+          "label": "早期地图",
+          "body": ["转入所选 Build 变体，不混合不兼容 Planner。"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装备",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "武器",
+          "recommendations": ["相关混沌或法术技能等级", "混沌或持续伤害"],
+          "notes": ["确认所选路线使用法杖、权杖还是 Focus。"]
+        },
+        {
+          "slot": "Focus 或盾",
+          "recommendations": ["能量护盾", "防御后缀"],
+          "notes": ["不要把 Low-Life Focus 搬到 Full-Life 阶段。"]
+        },
+        {
+          "slot": "护甲与饰品",
+          "recommendations": ["ES、抗性和属性", "需要时补充消耗或魔力"],
+          "notes": ["不记录固定市场价格。"]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "属性优先级",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "技能等级",
+          "reason": "直接提升主要持续伤害组合。"
+        },
+        {
+          "label": "混沌与 DoT",
+          "reason": "提升持续伤害而非无关 Hit。"
+        },
+        {
+          "label": "施法速度",
+          "reason": "改善施加手感，但不能替代持续时间。"
+        },
+        {
+          "label": "ES 与恢复",
+          "reason": "走位输出仍需要完整防御。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "升级优先级",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "1",
+          "body": ["保持主技能等级。"]
+        },
+        {
+          "label": "2",
+          "body": ["修正抗性与 ES。"]
+        },
+        {
+          "label": "3",
+          "body": ["升级武器或 Focus。"]
+        },
+        {
+          "label": "4",
+          "body": ["稳定魔力和诅咒覆盖。"]
+        },
+        {
+          "label": "5",
+          "body": ["只选择一种终局生命状态。"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "清图",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "先把 Contagion 放在相连怪群中央，再把 Essence Drain 命中其中一个目标。传播开始后立刻移动，先观察是否扩散再决定重放。Unearth 或召唤层可以补零散目标，但不能替代正确瞄准。",
+        "标记密集怪群并确认传播启动后向前移动。传播失败时检查施法顺序、范围、持续时间以及首个目标死亡时是否同时存在两个效果。"
+      ],
+      "bullets": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
+        "在效果结束前补施 Essence Drain 和所选诅咒。",
+        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "Boss 战",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "按当前配置决定是否保留 Contagion，持续维持 Essence Drain，补 Despair，并保持允许数量的 Dark Effigy。正确节奏是“刷新 → 走位 → 刷新”，而不是站桩连续施放 ED。",
+        "移动中维持 Essence Drain、Despair 和所选辅助 Debuff。Dark Effigy、Entangle 或 Bonestorm 在核验前都属于变体选项。"
+      ],
+      "bullets": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
+        "在效果结束前补施 Essence Drain 和所选诅咒。",
+        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "defensive-layers",
+      "type": "overview",
+      "title": "防御层",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "Full-Life 与 Low-Life 使用不同防御和保留前提。草稿以 Full-Life 为较安全的编辑默认值，Low-Life 保持待审。"
+      ],
+      "bullets": [
+        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
+        "在效果结束前补施 Essence Drain 和所选诅咒。",
+        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "按目标选择动作",
+      "order": 140,
+      "visible": true,
+      "caption": "根据两份文字攻略与玩家讨论整理的实战循环表。",
+      "columns": ["普通怪群", "怪群中的稀有怪", "孤立 Boss"],
+      "rows": [
+        {
+          "label": "起手",
+          "cells": ["Contagion", "Contagion → Essence Drain", "Essence Drain"]
+        },
+        {
+          "label": "追加",
+          "cells": [
+            "一次 ED",
+            "稀有怪存活时补 Despair",
+            "Despair + Dark Effigy"
+          ]
+        },
+        {
+          "label": "移动",
+          "cells": ["传播开始即走", "DoT 期间绕行", "机制间隙刷新"]
+        },
+        {
+          "label": "常见浪费",
+          "cells": ["传播前重复施法", "ED 打在 Contagion 外", "站桩连续 ED"]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "故障排查",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "Contagion 不传播",
+          "checks": [
+            "确认死亡目标同时存在两个效果。",
+            "在游戏内检查当前传播条件与范围。"
+          ]
+        },
+        {
+          "symptom": "Boss 伤害低",
+          "checks": [
+            "检查覆盖率而非只看 Tooltip。",
+            "确认诅咒、Effigy 与辅助技能确实生效。"
+          ]
+        },
+        {
+          "symptom": "魔力耗尽",
+          "checks": [
+            "减少不必要的重复施法。",
+            "增加按钮前先检查药剂、消耗与回复。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "瞄准与持续伤害解答",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "为什么有的怪群瞬间消失，下一群却几乎不掉血？",
+          "answer": [
+            "成功怪群很可能同时被 Contagion 与 Essence Drain 覆盖；失败时，ED 可能命中了 Contagion 范围外，或怪物间距大到无法传播。"
+          ],
+          "bullets": [
+            "把 Contagion 放在怪群中心。",
+            "等待第一次传播后再重放。",
+            "利用地形聚怪。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "是否应该改用 Entangle？",
+          "answer": [
+            "如果你更重视简单瞄准，可以改。社区把它视为操作体验替代，而不是 ED + Contagion 无效的证据；代价是清图方式和辅助配置会变化。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "如果我想要更直接的施法手感呢？",
+          "answer": [
+            "Cold Chronomancer 是更直接的命中与冻结节奏，但需要分阶段换宝石，并承担更近的站位。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/builds/cold-caster-chronomancer/",
+              "label": "对比 Cold Caster Chronomancer"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "社区分歧在哪里",
+      "order": 170,
+      "visible": true,
+      "note": "玩家经历说明可行路径，但不构成进度上限保证。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "0.5 ED + Contagion 体验讨论",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/",
+          "statement": "玩家反馈这组技能可以在多个升华上推进且前期轻松；也有人更喜欢 Entangle，因为它减少 ED 瞄准和 Unearth 传播管理。",
+          "context": "这解释了为什么构筑可能有效，但不喜欢两段瞄准的人仍会觉得别扭。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ronarray ED + Contagion Lich 攻略",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+          "statement": "维护中的攻略用 Contagion 接 Essence Drain 清怪，只在需要时补 Despair；Boss 战维持 Dark Effigy，并让角色在 DoT 生效时持续移动。",
+          "context": "本文采用的是循环逻辑，不把攻略里的每一件装备都解释成必需品。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "来源与边界",
+      "order": 180,
+      "visible": true,
+      "paragraphs": [
+        "官方补丁定义版本基线；指南、Planner、视频和社区结论在复现前都属于暂定。"
+      ],
+      "bullets": [
+        "来源访问日期：2026-07-29。",
+        "未复制第三方文案或媒体。",
+        "PC 核验仍待完成。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "观察传播与 Boss 维持",
+      "order": 175,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "社区攻略",
+          "label": "0.5 ED + Contagion 分步实战",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "description": "用于观察战役瞄准顺序，以及配置何时获得辅助层。",
+          "takeaway": "看 Contagion 落点与第一个 Essence Drain 目标的相对位置。"
+        },
+        {
+          "creator": "社区攻略",
+          "label": "终局机制与 Boss 实战",
+          "url": "https://youtu.be/r6ouLO-Y0sk",
+          "description": "对比 Boss 的刷新节奏与更快的清图循环。",
+          "takeaway": "数一数维持施法次数，再观察角色能安全移动多久。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新记录",
+      "order": 190,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": ["建立带来源的 0.5.4 研究草稿；发布仍受 PC 核验门禁限制。"]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": ["cold-caster-chronomancer"],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray ED + Contagion Lich guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "PoE2Path ED Contagion Lich guide",
+      "sourceType": "community",
+      "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+    },
+    {
+      "label": "0.5 ED/C campaign guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+    },
+    {
+      "label": "0.5 step-by-step gameplay video",
+      "sourceType": "community",
+      "url": "https://youtu.be/qbrEeLZzuqI"
+    },
+    {
+      "label": "Endgame gameplay and mechanics video",
+      "sourceType": "community",
+      "url": "https://youtu.be/r6ouLO-Y0sk"
+    },
+    {
+      "label": "Mobalytics Build Planner export",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "Community discussion: how ED + Contagion feels in 0.5",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+    }
+  ],
+  "seo": {
+    "title": "Essence Drain Contagion Lich — 0.5.4 研究草稿",
+    "description": "基于 0.5.4 的 Path of Exile 2 Essence Drain 与 Contagion Lich Build 研究草稿。",
+    "noindex": true
+  }
+}

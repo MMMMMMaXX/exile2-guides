@@ -42,7 +42,7 @@ export function SourcesAndVerification({
       ) : null}
       <ul>
         {frontMatter.sources.map((source) => (
-          <li key={source.url}>
+          <li key={`${source.sourceType}:${source.label}:${source.url}`}>
             <a href={source.url} rel="noreferrer" target="_blank">
               {source.label}
             </a>

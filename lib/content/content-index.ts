@@ -6,6 +6,18 @@ import {
   type ContentLocale,
   type ContentType,
 } from "./constants";
+import { buildArticleToParsedContent } from "../builds/content-adapter";
+import { loadBuildArticles } from "../builds/json-repository.server";
+import { bossArticleToParsedContent } from "../bosses/content-adapter";
+import { loadBossArticles } from "../bosses/json-repository.server";
+import { itemArticleToParsedContent } from "../items/content-adapter";
+import { loadItemArticles } from "../items/json-repository.server";
+import { skillArticleToParsedContent } from "../skills/content-adapter";
+import { loadSkillArticles } from "../skills/json-repository.server";
+import { guideArticleToParsedContent } from "../guides/content-adapter";
+import { loadGuideArticles } from "../guides/json-repository.server";
+import { patchArticleToParsedContent } from "../patches/content-adapter";
+import { loadPatchArticles } from "../patches/json-repository.server";
 import { loadContentFiles } from "./filesystem";
 import type { ParsedContent } from "./parse";
 import { isPublishedContent } from "./publication";
@@ -260,6 +272,33 @@ export async function loadContentIndex(
   contentDirectory = path.resolve(process.cwd(), "content"),
   options: BuildContentIndexOptions = {},
 ): Promise<ContentIndex> {
-  const contents = await loadContentFiles(contentDirectory);
-  return buildContentIndex(contents, options);
+  const [
+    contents,
+    buildArticles,
+    bossArticles,
+    itemArticles,
+    skillArticles,
+    guideArticles,
+    patchArticles,
+  ] = await Promise.all([
+    loadContentFiles(contentDirectory),
+    loadBuildArticles(contentDirectory),
+    loadBossArticles(contentDirectory),
+    loadItemArticles(contentDirectory),
+    loadSkillArticles(contentDirectory),
+    loadGuideArticles(contentDirectory),
+    loadPatchArticles(contentDirectory),
+  ]);
+  return buildContentIndex(
+    [
+      ...contents,
+      ...buildArticles.map((article) => buildArticleToParsedContent(article)),
+      ...bossArticles.map((article) => bossArticleToParsedContent(article)),
+      ...itemArticles.map((article) => itemArticleToParsedContent(article)),
+      ...skillArticles.map((article) => skillArticleToParsedContent(article)),
+      ...guideArticles.map((article) => guideArticleToParsedContent(article)),
+      ...patchArticles.map((article) => patchArticleToParsedContent(article)),
+    ],
+    options,
+  );
 }

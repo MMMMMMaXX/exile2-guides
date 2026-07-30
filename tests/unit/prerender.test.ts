@@ -7,14 +7,21 @@ import { describe, expect, it } from "vitest";
 
 import { buildContentIndex } from "../../lib/content";
 import type { ParsedContent } from "../../lib/content/parse";
+import { getV4SubtypePaths } from "../../lib/content/v4-taxonomy";
 import {
+  bossCollectionPaths,
+  buildCollectionPaths,
   enumeratePublicPaths,
+  guideCollectionPaths,
   inspectInternalLinkTargets,
   inspectPrerenderedHtml,
   inspectSeoMetadata,
   inspectStructuredData,
+  itemCollectionPaths,
+  patchCollectionPaths,
   PrerenderVerificationError,
   publicPathToHtmlFile,
+  skillCollectionPaths,
   verifyPrerenderBuild,
   verifyStaticNotFoundDocument,
 } from "../../lib/prerender";
@@ -97,6 +104,13 @@ describe("public prerender paths", () => {
       "/zh-cn/disclaimer/",
       "/en/search/",
       "/zh-cn/search/",
+      ...buildCollectionPaths,
+      ...bossCollectionPaths,
+      ...itemCollectionPaths,
+      ...skillCollectionPaths,
+      ...guideCollectionPaths,
+      ...patchCollectionPaths,
+      ...getV4SubtypePaths(),
       "/en/guides/verified-guide/",
     ]);
   });
@@ -140,6 +154,13 @@ describe("public prerender paths", () => {
       "/zh-cn/disclaimer/",
       "/en/search/",
       "/zh-cn/search/",
+      ...buildCollectionPaths,
+      ...bossCollectionPaths,
+      ...itemCollectionPaths,
+      ...skillCollectionPaths,
+      ...guideCollectionPaths,
+      ...patchCollectionPaths,
+      ...getV4SubtypePaths(),
     ]);
   });
 });

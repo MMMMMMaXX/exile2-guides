@@ -2,7 +2,10 @@
 import { describe, expect, it } from "vitest";
 
 import { loadContentIndex } from "../../lib/content";
-import { loadStaticContentPages } from "../../lib/content/content-page.server";
+import {
+  loadLocalBuildDraftPreviewPages,
+  loadStaticContentPages,
+} from "../../lib/content/content-page.server";
 import { contentTypes, supportedLocales } from "../../lib/content/constants";
 import {
   enumerateIndexablePaths,
@@ -91,6 +94,36 @@ describe("repository content templates", () => {
       expect(entries.some((entry) => entry.path.includes("-template/"))).toBe(
         false,
       );
+    }
+  });
+
+  it("loads non-template Build drafts only through the local preview source", async () => {
+    const previewPages = await loadLocalBuildDraftPreviewPages();
+    const entries = Object.entries(previewPages);
+    const expectedSlugs = [
+      "bear-shaman-druid",
+      "cold-caster-chronomancer",
+      "ed-contagion-lich",
+      "explosive-witchhunter",
+      "fire-bear-smith-of-kitava",
+      "ice-shot-deadeye",
+      "twister-spirit-walker",
+      "whirling-assault-martial-artist",
+    ];
+
+    for (const slug of expectedSlugs) {
+      expect(previewPages[`/en/builds/${slug}/`]).toBeDefined();
+      expect(previewPages[`/zh-cn/builds/${slug}/`]).toBeDefined();
+    }
+    expect(entries.length).toBeGreaterThanOrEqual(expectedSlugs.length * 2);
+    for (const [route, page] of entries) {
+      expect(route).toMatch(/^\/(en|zh-cn)\/builds\//);
+      expect(page.frontMatter).toMatchObject({
+        contentType: "build",
+        draft: true,
+        status: "draft",
+      });
+      expect(page.frontMatter.contentId).not.toMatch(/-template$/);
     }
   });
 });

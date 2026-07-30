@@ -11,7 +11,9 @@ afterEach(cleanup);
 describe("not found page", () => {
   it("provides recovery links and explicitly excludes error pages from indexing", () => {
     render(<NotFoundPage locale="zh-cn" />);
-    expect(screen.getByRole("heading", { name: "未找到该页面" })).toBeTruthy();
+    expect(
+      screen.getByRole("heading", { name: "使用搜索或返回内容中心。" }),
+    ).toBeTruthy();
     expect(
       screen.getByRole("link", { name: "返回首页" }).getAttribute("href"),
     ).toBe("/zh-cn/");

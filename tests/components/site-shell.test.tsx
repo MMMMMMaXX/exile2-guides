@@ -36,11 +36,14 @@ describe("site header", () => {
     expect(
       screen.getByRole("link", { name: "Search" }).getAttribute("href"),
     ).toBe("/en/search/");
+    const languageToggle = screen.getByRole("button", { name: "EN" });
+    expect(languageToggle.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(languageToggle);
     expect(
-      screen.getByRole("link", { name: "EN" }).getAttribute("aria-current"),
+      screen.getByRole("menuitem", { name: "EN" }).getAttribute("aria-current"),
     ).toBe("page");
     expect(
-      screen.getByRole("link", { name: "简体中文" }).getAttribute("href"),
+      screen.getByRole("menuitem", { name: "简体中文" }).getAttribute("href"),
     ).toBe("/zh-cn/");
     expect(screen.queryByText("Pricing")).toBeNull();
   });
@@ -53,21 +56,23 @@ describe("site header", () => {
         .getByRole("link", { name: "Exile2 Guides home" })
         .getAttribute("href"),
     ).toBe("/zh-cn/");
+    const languageToggle = screen.getByRole("button", {
+      name: "简体中文",
+    });
+    fireEvent.click(languageToggle);
     expect(
       screen
-        .getByRole("link", { name: "简体中文" })
+        .getByRole("menuitem", { name: "简体中文" })
         .getAttribute("aria-current"),
     ).toBe("page");
   });
 
   it("stores an explicit locale choice without replacing the language URL", () => {
     renderHeader("/en/");
-    fireEvent.click(screen.getByRole("link", { name: "简体中文" }));
+    fireEvent.click(screen.getByRole("button", { name: "EN" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "简体中文" }));
 
     expect(localStorage.getItem("exile2-guides-locale")).toBe("zh-cn");
-    expect(
-      screen.getByRole("link", { name: "简体中文" }).getAttribute("href"),
-    ).toBe("/zh-cn/");
   });
 
   it("opens the mobile menu when category routes are available", () => {

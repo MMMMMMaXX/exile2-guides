@@ -28,7 +28,8 @@ test.describe("public content routes", () => {
     page,
   }) => {
     await page.goto("/en/guides/e2e-guide/");
-    await page.getByRole("link", { name: "简体中文" }).click();
+    await page.getByRole("button", { name: "EN" }).click();
+    await page.getByRole("menuitem", { name: "简体中文" }).click();
     await expect(page).toHaveURL("/zh-cn/guides/e2e-guide/");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "端到端指南夹具",
@@ -38,7 +39,7 @@ test.describe("public content routes", () => {
   test("shows a recoverable noindex 404 interface", async ({ page }) => {
     await page.goto("/en/route-that-does-not-exist/");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Page not found",
+      "Use search or return to a content hub.",
     );
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       "content",
@@ -64,5 +65,99 @@ test.describe("public content routes", () => {
     await expect(
       page.getByRole("link", { name: "E2E Build Fixture" }),
     ).toBeVisible();
+  });
+
+  test("serves Build JSON through collection, query, detail and 404 routes", async ({
+    page,
+  }) => {
+    await page.goto("/en/builds/");
+    const publishedCard = page.getByRole("link", {
+      name: "E2E Build Fixture",
+    });
+    await expect(publishedCard).toHaveClass(/v4-prototype-card--content/);
+    await expect(page.locator(".v4-published-content")).toHaveCount(0);
+    await expect(
+      page.getByRole("region", { name: "Build filters" }),
+    ).toHaveCount(0);
+
+    await page.goto("/en/builds/classes/ranger/");
+    await expect(
+      page.getByRole("link", { name: "E2E Build Fixture" }),
+    ).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, follow",
+    );
+
+    await page.goto("/en/builds/ascendancies/deadeye/");
+    await expect(
+      page.getByRole("link", { name: "E2E Build Fixture" }),
+    ).toBeVisible();
+
+    await page.goto("/en/builds/starter/");
+    await expect(
+      page.getByRole("link", { name: "E2E Build Fixture" }),
+    ).toBeVisible();
+
+    await page.goto("/en/builds/?class=ranger&budget=low");
+    await expect(
+      page.getByRole("link", { name: "E2E Build Fixture" }),
+    ).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      /\/en\/builds\/$/,
+    );
+
+    await page.goto("/en/builds/not-exist/");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, nofollow",
+    );
+  });
+
+  test("previews Build drafts locally without adding them to search", async ({
+    page,
+  }) => {
+    await page.goto("/en/builds/");
+    const draftCard = page.getByRole("link", {
+      name: "Local Build Draft Fixture",
+    });
+    await expect(draftCard).toHaveClass(/v4-prototype-card--content/);
+    await expect(
+      draftCard.getByText("Local draft", { exact: true }),
+    ).toBeVisible();
+    await expect(page.locator(".v4-published-content")).toHaveCount(0);
+    await draftCard.click();
+    await expect(page).toHaveURL("/en/builds/e2e-build-draft/");
+    await expect(
+      page.getByText("Local draft preview", { exact: true }),
+    ).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, follow",
+    );
+
+    await page.goto("/en/search/?q=Local%20Build%20Draft%20Fixture");
+    await expect(page.getByText("0 results", { exact: true })).toBeVisible();
+  });
+
+  test("keeps unified Build content cards single-column on mobile", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/en/builds/");
+    const draftCard = page.getByRole("link", {
+      name: "Local Build Draft Fixture",
+    });
+    await expect(draftCard).toBeVisible();
+    await expect(page.locator(".v4-published-content")).toHaveCount(0);
+    await expect
+      .poll(() =>
+        draftCard.evaluate(
+          (element) =>
+            getComputedStyle(element).gridTemplateColumns.split(" ").length,
+        ),
+      )
+      .toBe(1);
   });
 });

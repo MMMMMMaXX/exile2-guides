@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import * as jsxRuntime from "react/jsx-runtime";
 
 import { contentRoutePath, loadContentIndex } from "./content-index";
+import type { ParsedContent } from "./parse";
 import type { StaticContentPageMap } from "./content-page";
 import { addHeadingAnchors, extractTableOfContents } from "./table-of-contents";
 
@@ -22,22 +23,39 @@ export async function renderContentBody(
   return renderToStaticMarkup(createElement(module.default));
 }
 
-/** 一次生成全部已发布页面数据，供 Vite 虚拟模块在构建期内联到路由。 */
-export async function loadStaticContentPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+/** 将指定索引条目渲染成浏览器可读取的静态页面映射，调用方负责先确定发布边界。 */
+async function renderStaticContentPages(
+  contents: readonly ParsedContent[],
 ): Promise<StaticContentPageMap> {
-  const index = await loadContentIndex(contentDirectory);
   const pages = await Promise.all(
-    index.entries.map(async (content) => {
-      // 目录和锚点必须从同一份正文派生，防止编辑修改标题后侧栏链接与正文脱节。
-      const tableOfContents = extractTableOfContents(content.body);
-      const bodyHtml = addHeadingAnchors(
-        await renderContentBody(
-          content.body,
-          content.extension === ".md" ? "md" : "mdx",
-        ),
-        tableOfContents,
-      );
+    contents.map(async (content) => {
+      // JSON 结构化文章（Build / Boss / Item / Skill / Guide / Patch）目录从 sections 派生，无需解析 Markdown 标题。
+      const jsonArticle =
+        content.buildArticle ??
+        content.bossArticle ??
+        content.itemArticle ??
+        content.skillArticle ??
+        content.guideArticle ??
+        content.patchArticle;
+      const tableOfContents = jsonArticle
+        ? jsonArticle.sections
+            .filter((section) => section.visible && section.toc)
+            .sort((left, right) => left.order - right.order)
+            .map((section) => ({
+              id: section.id,
+              level: 2 as const,
+              text: section.title,
+            }))
+        : extractTableOfContents(content.body);
+      const bodyHtml = jsonArticle
+        ? ""
+        : addHeadingAnchors(
+            await renderContentBody(
+              content.body,
+              content.extension === ".md" ? "md" : "mdx",
+            ),
+            tableOfContents,
+          );
 
       return [
         contentRoutePath(
@@ -47,6 +65,20 @@ export async function loadStaticContentPages(
         ),
         {
           bodyHtml,
+          ...(content.buildArticle
+            ? { buildArticle: content.buildArticle }
+            : {}),
+          ...(content.bossArticle ? { bossArticle: content.bossArticle } : {}),
+          ...(content.itemArticle ? { itemArticle: content.itemArticle } : {}),
+          ...(content.skillArticle
+            ? { skillArticle: content.skillArticle }
+            : {}),
+          ...(content.guideArticle
+            ? { guideArticle: content.guideArticle }
+            : {}),
+          ...(content.patchArticle
+            ? { patchArticle: content.patchArticle }
+            : {}),
           frontMatter: content.frontMatter,
           tableOfContents,
         },
@@ -55,4 +87,138 @@ export async function loadStaticContentPages(
   );
 
   return Object.fromEntries(pages) as StaticContentPageMap;
+}
+
+/** 一次生成全部已发布页面数据，供生产路由、首页和搜索虚拟模块复用。 */
+export async function loadStaticContentPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory);
+  return renderStaticContentPages(index.entries);
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Build 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalBuildDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "build" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Boss 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalBossDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "boss" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Item 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalItemDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "item" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Skill 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalSkillDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "skill" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Guide 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalGuideDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "guide" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
+}
+
+/**
+ * 生成仅供本地开发服务器读取的 Patch 草稿映射。
+ * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
+ */
+export async function loadLocalPatchDraftPreviewPages(
+  contentDirectory = path.resolve(process.cwd(), "content"),
+): Promise<StaticContentPageMap> {
+  const index = await loadContentIndex(contentDirectory, {
+    includeDrafts: true,
+  });
+  return renderStaticContentPages(
+    index.entries.filter(
+      (content) =>
+        content.frontMatter.contentType === "patch" &&
+        content.frontMatter.status === "draft" &&
+        content.frontMatter.draft &&
+        !content.frontMatter.contentId.endsWith("-template"),
+    ),
+  );
 }

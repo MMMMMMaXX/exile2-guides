@@ -18,7 +18,47 @@ export default [
   route(":locale/cookie-policy", "./routes/cookie-policy.tsx"),
   route(":locale/disclaimer", "./routes/disclaimer.tsx"),
   route(":locale/search", "./routes/search.tsx"),
-  route(":locale/builds/classes/:class", "./routes/content-subtype.tsx"),
+  route(":locale/builds/classes/:class", "./routes/build-collection.tsx", {
+    id: "build-class",
+  }),
+  route(
+    ":locale/builds/ascendancies/:ascendancy",
+    "./routes/build-collection.tsx",
+    { id: "build-ascendancy" },
+  ),
+  route(":locale/builds/starter", "./routes/build-collection.tsx", {
+    id: "build-starter",
+  }),
+  route(":locale/builds/leveling", "./routes/build-collection.tsx", {
+    id: "build-leveling",
+  }),
+  route(":locale/builds/endgame", "./routes/build-collection.tsx", {
+    id: "build-endgame",
+  }),
+  route(":locale/builds/bossing", "./routes/build-collection.tsx", {
+    id: "build-bossing",
+  }),
+  route(":locale/builds/budget", "./routes/build-collection.tsx", {
+    id: "build-budget",
+  }),
+  route(":locale/bosses/categories/:category", "./routes/boss-collection.tsx", {
+    id: "boss-category",
+  }),
+  route(":locale/bosses/acts/:act", "./routes/boss-collection.tsx", {
+    id: "boss-act",
+  }),
+  route(":locale/items/categories/:category", "./routes/item-collection.tsx", {
+    id: "item-category",
+  }),
+  route(":locale/skills/categories/:category", "./routes/skill-collection.tsx", {
+    id: "skill-category",
+  }),
+  route(":locale/guides/categories/:category", "./routes/guide-collection.tsx", {
+    id: "guide-category",
+  }),
+  route(":locale/patches/categories/:category", "./routes/patch-collection.tsx", {
+    id: "patch-category",
+  }),
   route(":locale/:section", "./routes/content-list.tsx"),
   route(":locale/:section/:slug", "./routes/content-detail.tsx"),
   route("*", "./routes/not-found.tsx"),
