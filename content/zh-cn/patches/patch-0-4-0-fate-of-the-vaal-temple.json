@@ -1,0 +1,464 @@
+{
+  "id": "patch-0-4-0-fate-of-the-vaal-temple",
+  "slug": "patch-0-4-0-fate-of-the-vaal-temple",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.4.0 命运的瓦尔与阿兹里神殿：信标、房间与 0.4.0d/e 修复",
+  "shortTitle": "0.4.0 命运的瓦尔 / 神殿",
+  "summary": "0.4.0「命运的瓦尔」联盟如何构建多房间的阿兹里神殿，为何上线初期房间断开或失稳，以及 0.4.0d 与 0.4.0e 对现行规则做了哪些改动。",
+  "description": "一篇关于「命运的瓦尔」与可建造阿兹里神殿的机制史：信标、能量、房间放置与升级、建筑师/阿兹里/密室/宝库的关系、0.4.0d 的连接修复，以及 0.4.0e 移除自动失稳。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "imageAlt": "阿兹里，红皇后，重建神殿的最终首领",
+  "tags": [
+    "0-4-0",
+    "fate-of-the-vaal",
+    "atziri",
+    "temple",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速摘要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0-4-0",
+        "0-4-0d-0-4-0e"
+      ],
+      "bullets": [
+        "0-4-0d",
+        "0-4-0e"
+      ]
+    },
+    {
+      "id": "system-flow",
+      "order": 2,
+      "title": "系统流程",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "信标",
+          "verdict": "核心循环",
+          "detail": "信标放置在神殿区域，消耗能量来建造房间。其放置方式决定了哪些房间相互连通。"
+        },
+        {
+          "area": "能量",
+          "verdict": "资源",
+          "detail": "通过清空房间与联盟活动获得，决定你能建造与升级多少个房间。"
+        },
+        {
+          "area": "房间",
+          "verdict": "可建造",
+          "detail": "每个房间有特定功能（奖励、危害、首领前厅）。连通性是上线当周的主要痛点。"
+        },
+        {
+          "area": "密室 / 宝库",
+          "verdict": "深层进度",
+          "detail": "密室是宝库的门槛；宝库通向红皇后阿兹里。"
+        }
+      ]
+    },
+    {
+      "id": "boss-access",
+      "order": 3,
+      "title": "首领入口：建筑师、阿兹里、密室",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "建筑师",
+          "detail": "建造并守卫神殿房间。0.4.0e 之后对其节奏做了调整，使它成为威胁而非终结整局的元凶。",
+          "action": "视作节奏型威胁；不要过度投入防崩盘预案。"
+        },
+        {
+          "name": "阿兹里，红皇后",
+          "detail": "通过宝库抵达的最终首领。其身份未变，但入场需遵循 0.4.0d 之后的连接规则。",
+          "action": "将入口攻略更新为现行连接规则。"
+        },
+        {
+          "name": "被瓦尔侵蚀的稀有怪",
+          "detail": "神殿房间内的腐蚀性词缀；属于该联盟风险/回报的一部分。",
+          "action": "归类于终局/神殿，而非独立联盟。"
+        }
+      ]
+    },
+    {
+      "id": "reward-map",
+      "order": 4,
+      "title": "奖励地图",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "Currency",
+          "title": "牺牲之球",
+          "detail": "神殿制作与瓦尔腐蚀流程的核心，随本联盟一同引入。",
+          "tags": [
+            "vaal",
+            "currency",
+            "crafting"
+          ]
+        },
+        {
+          "kind": "Currency",
+          "title": "瓦尔宝珠",
+          "detail": "其腐蚀作用与早期行为一致，随瓦尔剧情线一同被强调。",
+          "tags": [
+            "vaal",
+            "corruption"
+          ]
+        },
+        {
+          "kind": "Base item",
+          "title": "护符",
+          "detail": "同一 0.4.0 窗口引入的变形武器基底；在瓦尔内容中频繁掉落。",
+          "tags": [
+            "druid",
+            "weapon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixes-d",
+      "order": 5,
+      "title": "0.4.0d 修复",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "房间连接逻辑",
+          "detail": "0.4.0d 重写了已放置房间的连接方式，减少了无法抵达的房间与死路。",
+          "scope": "官方 0.4.0d 说明"
+        },
+        {
+          "category": "fix",
+          "title": "死亡重试流程",
+          "detail": "改进了神殿内部死亡后的反馈与重试，使团灭不会静默破坏房间状态。",
+          "scope": "官方 0.4.0d 说明"
+        },
+        {
+          "category": "fix",
+          "title": "地图状态反馈",
+          "detail": "新增更清晰的指示，标明哪些房间已连接、哪些待连接。",
+          "scope": "官方 0.4.0d 说明"
+        }
+      ]
+    },
+    {
+      "id": "fixes-e",
+      "order": 6,
+      "title": "0.4.0e 修复",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "移除自动失稳",
+          "detail": "0.4.0e 删除了会在无预警下摧毁神殿的自动失稳；现在房间只会在明确预警后才失稳。",
+          "scope": "官方 0.4.0e 说明"
+        },
+        {
+          "category": "balance",
+          "title": "建筑师节奏",
+          "detail": "移除失稳后调整了建筑师的压力，使联盟保留张力而不会出现随机终结整局的情况。",
+          "scope": "官方 0.4.0e 说明"
+        },
+        {
+          "category": "qol",
+          "title": "神殿界面预警",
+          "detail": "在房间失稳前新增明确预警，取代原先静默的自动崩盘。",
+          "scope": "官方 0.4.0e 说明"
+        }
+      ]
+    },
+    {
+      "id": "then-now",
+      "order": 7,
+      "title": "当年 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "房间连通性",
+          "thenText": "0.4.0 上线：房间频繁断开或无法抵达。",
+          "nowText": "0.4.0d 连接逻辑保持房间可达；地图反馈明确。"
+        },
+        {
+          "aspect": "失稳",
+          "thenText": "0.4.0 上线：神殿会在无预警下自动失稳。",
+          "nowText": "0.4.0e 移除自动失稳；房间会先预警。"
+        },
+        {
+          "aspect": "神殿内死亡",
+          "thenText": "0.4.0 上线：死亡可能静默破坏房间状态。",
+          "nowText": "0.4.0d 重试流程保留状态并给出清晰反馈。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 8,
+      "title": "现行适用性（0.5.4e）",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "信标 / 能量房间建造",
+          "status": "still-current",
+          "currentSummary": "神殿核心循环身份未变；用信标消耗能量建造房间。",
+          "supersededBy": "—",
+          "affectedContent": "阿兹里神殿攻略"
+        },
+        {
+          "topic": "房间连接规则",
+          "status": "changed-later",
+          "currentSummary": "0.4.0d 重写了连通性；后续地图更新可能进一步调整。",
+          "supersededBy": "0.4.0d、0.5.x 地图更新",
+          "affectedContent": "阿兹里神殿攻略"
+        },
+        {
+          "topic": "自动失稳",
+          "status": "removed",
+          "currentSummary": "0.4.0e 移除；房间不再自动崩盘。",
+          "supersededBy": "0.4.0e",
+          "affectedContent": "命运的瓦尔攻略"
+        },
+        {
+          "topic": "阿兹里作为最终首领",
+          "status": "still-current",
+          "currentSummary": "0.5.4e 中阿兹里仍是神殿的最终首领。",
+          "supersededBy": "—",
+          "affectedContent": "阿兹里首领页"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 9,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit（0.4.0 上线当周）",
+          "context": "玩家报告无法抵达的房间与静默失稳。",
+          "quote": "我一半的神殿都到不了，然后它毫无预警就失稳了。",
+          "analysis": "与上线行为吻合；0.4.0d 修复了连通性、0.4.0e 移除了自动失稳。现在的局不应再出现此情况。"
+        },
+        {
+          "source": "论坛（0.4.0e 之后）",
+          "context": "玩家确认失稳前会有预警。",
+          "quote": "现在房间要失稳前我确实会收到警告。",
+          "analysis": "确认 0.4.0e 行为已实装；请使用 0.4.0e 之后的攻略。"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "故障排查",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "某房间显示「待连接」且无法连通——请检查信标放置与能量；这是连接前的正常状态，并非 Bug。",
+          "status": "tracking"
+        },
+        {
+          "text": "阿兹里无法抵达——请确认密室路由遵循 0.4.0d 之后的连接规则，而非上线当周的路径。",
+          "status": "open"
+        },
+        {
+          "text": "老视频显示自动失稳——那些是 0.4.0e 之前的内容，不反映现行规则。",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "阿兹里神殿攻略",
+          "type": "guide",
+          "trigger": "0.4.0d/e 连接 + 失稳改动",
+          "action": "重写连接与重试章节；移除自动失稳。",
+          "status": "queued"
+        },
+        {
+          "name": "阿兹里首领页",
+          "type": "boss",
+          "trigger": "入场规则",
+          "action": "将入口更新为 0.4.0d 之后规则。",
+          "status": "reviewing"
+        },
+        {
+          "name": "牺牲之球物品页",
+          "type": "item",
+          "trigger": "神殿制作",
+          "action": "记录瓦尔腐蚀流程。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "历史视频",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 命运的瓦尔 —— 神殿建造",
+          "url": "https://www.youtube.com/watch?v=2c2ILpVhRxE",
+          "takeaway": "上线当周神殿展示；注意其中展示的自动失稳已在 0.4.0e 移除。",
+          "timestamps": [
+            {
+              "label": "信标与能量",
+              "time": "00:40"
+            },
+            {
+              "label": "房间建造",
+              "time": "02:00"
+            },
+            {
+              "label": "建筑师战斗",
+              "time": "03:30"
+            },
+            {
+              "label": "阿兹里 / 宝库",
+              "time": "05:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为什么老神殿视频里房间会自己失稳？",
+          "answer": [
+            "0-4-0-0-4-0e"
+          ]
+        },
+        {
+          "question": "信标和能量还是神殿的运作方式吗？",
+          "answer": [
+            "0-5-4e"
+          ]
+        },
+        {
+          "question": "阿兹里还是最终首领吗？",
+          "answer": [
+            "0-4-0d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路2 官方 0.4.0 补丁说明",
+          "description": "命运的瓦尔联盟与阿兹里神殿介绍。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "流放之路2 官方 0.4.0d 补丁说明",
+          "description": "房间连接与死亡重试修复。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3983000"
+        },
+        {
+          "label": "流放之路2 官方 0.4.0e 补丁说明",
+          "description": "移除自动失稳与建筑师调整。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3985000"
+        }
+      ],
+      "verificationChecklist": [
+        "0-4-0-d-e",
+        "0-5-4e"
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "atziri-red-queen"
+  ],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 官方 0.4.0 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 官方 0.4.0d 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3983000",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 官方 0.4.0e 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3985000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 命运的瓦尔与阿兹里神殿 —— 信标、房间与 0.4.0d/e 修复",
+    "description": "0.4.0 阿兹里神殿如何运作、为何上线时房间崩坏，以及 0.4.0d/e 对 0.5.4e 做了哪些改动。"
+  }
+}

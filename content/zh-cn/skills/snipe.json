@@ -1,0 +1,447 @@
+{
+  "id": "snipe",
+  "slug": "snipe",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Snipe 攻略 — 蓄力阶段、完美窗口与弓系狙击",
+  "shortTitle": "Snipe 狙击",
+  "summary": "Snipe 是一颗弓系蓄力技能：按住瞄准会累积阶段（stage），每个阶段提升伤害与暴击，到达满阶段后有一个“完美”释放窗口，此时射出的箭获得额外暴击与伤害加成。本文讲清阶段怎么累积、完美窗口为什么难抓、松手太早 / 太晚的后果、与 Ice Shot / Lightning Arrow 的分工，以及为什么它适合 Deadeye 的远程单体。",
+  "description": "Snipe 深度攻略：蓄力阶段与伤害 / 暴击曲线、完美窗口机制、与 Ice Shot / Lightning Arrow 的对比、推荐的暴击 / 攻速 / 增伤辅助、Deadeye 定位、松手时机错误与断蓄力的常见原因、视频时间点与社区真实问题。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "bow",
+    "channel",
+    "crit",
+    "single-target"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑部",
+  "reviewer": "Exile2 Guides 编辑部",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "snipe",
+    "bow",
+    "channel",
+    "deadeye",
+    "crit",
+    "single-target"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "技能总览：瞄准 → 蓄力 → 完美一击",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Snipe 是一颗弓系蓄力（channel）技能：你按住不放进入瞄准状态，箭的伤害与暴击随蓄力阶段逐步提升；当蓄满到达满阶段时，会进入一个短暂的“完美”窗口，此时松手射出的箭获得额外暴击与伤害加成。它不是“按住越久越好”的无脑技能，而是“抓住完美窗口”的节奏型单体爆发。",
+        "它的核心价值在远程单体：比起 Ice Shot / Lightning Arrow 这类边走边打的攻击，Snipe 牺牲了机动性换取一发极高的命中——适合在安全距离慢慢磨 Boss、或清理不能贴脸的高威胁目标。代价是你必须站定瞄准，期间被打断、被击退或移动都会丢失蓄力。",
+        "这也是 Deadeye 远程流派喜欢它的原因：Deadeye 的远距离加成、暴击与穿透天赋让“一发完美 Snipe”的收益被放大，配合 far-shot 类机制能打出夸张的单体数字。"
+      ],
+      "bullets": [
+        "本质：弓系蓄力技能，阶段累积伤害 / 暴击，满阶段有完美窗口。",
+        "定位：远程单体爆发，牺牲机动换一击高伤。",
+        "风险：瞄准中被打断 / 击退 / 移动会丢失蓄力。",
+        "常见载体：Deadeye 远程单体流派。"
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "关键属性与获取",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "技能类型",
+          "value": "Active Attack（弓 · 蓄力 · 投射物）",
+          "notes": [
+            "归类为 attack、projectile、bow、channel、crit、single-target。"
+          ]
+        },
+        {
+          "label": "武器需求",
+          "value": "Bow（弓）",
+          "notes": [
+            "必须装备弓；双武器流派中放在弓那一套。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "value": "未切割技能宝石",
+          "notes": [
+            "通过战役或掉落获得的未切割技能宝石解锁。"
+          ]
+        },
+        {
+          "label": "蓄力阶段",
+          "value": "多阶段，满阶段触发完美窗口",
+          "notes": [
+            "每阶段提升伤害与暴击；完美窗口在满阶段附近。"
+          ]
+        },
+        {
+          "label": "Quality",
+          "value": "影响阶段增益 / 完美窗口加成",
+          "notes": [
+            "高品质通常放大每阶段或完美窗口的暴击 / 伤害收益。"
+          ]
+        },
+        {
+          "label": "完美窗口",
+          "value": "满阶段后的短暂加成期",
+          "notes": [
+            "在窗口内松手获得额外暴击与伤害；抓不住则只是普通满蓄。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charge-mechanic",
+      "order": 30,
+      "title": "机制：阶段怎么累积、完美窗口怎么抓",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "阶段累积：按住瞄准时，Snipe 按时间积累阶段，阶段越高，这一发的伤害与暴击几率越高。也就是说哪怕不追求完美，蓄满也比零蓄力强很多——蓄力本身就是主要增伤来源。",
+        "完美窗口：当阶段到达满值附近，会开启一个很短的“完美”窗口。在窗口内释放，箭获得额外的暴击与伤害加成（通常还带必定暴击或暴击加成）。窗口很短，所以需要练习“在满阶段那一刻松手”的手感，太早没满、太晚窗口已过。",
+        "松手时机后果：松手太早（阶段未蓄满）牺牲了大部分伤害；松手太晚（完美窗口已过、仍在满阶段外）只是普通满蓄，错过额外暴击。实战中很多玩家纠结“要不要等完美”，答案通常是：能稳定抓完美就等，赶时间或移动战就满蓄即射。"
+      ],
+      "bullets": [
+        "蓄力本身已是主要增伤；满蓄远比零蓄强。",
+        "完美窗口在满阶段附近，额外暴击 + 伤害，窗口很短。",
+        "太早松手亏伤害，太晚错过额外暴击。",
+        "稳定抓完美最优；移动战满蓄即射更实际。"
+      ]
+    },
+    {
+      "id": "stage-table",
+      "order": 40,
+      "title": "蓄力阶段与收益对照",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "蓄力状态",
+        "伤害提升",
+        "暴击变化",
+        "实战取舍"
+      ],
+      "rows": [
+        [
+          "零蓄力 / 刚按下",
+          "基准（无加成）",
+          "基础暴击",
+          "应急或打断时被迫发射，伤害最低"
+        ],
+        [
+          "中间阶段",
+          "随阶段线性提升",
+          "暴击随阶段上升",
+          "移动战 / 赶时间可中途发射"
+        ],
+        [
+          "满阶段（非完美）",
+          "接近上限",
+          "较高暴击",
+          "稳定单体输出，最常见发射点"
+        ],
+        [
+          "满阶段 + 完美窗口",
+          "上限 + 额外加成",
+          "额外暴击 / 必暴加成",
+          "抓得住就等，单体爆发峰值"
+        ]
+      ]
+    },
+    {
+      "id": "skill-compare",
+      "order": 50,
+      "title": "对比：Snipe 与 Ice Shot / Lightning Arrow",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Snipe 是“站定狙击”，Ice Shot / Lightning Arrow 是“边走边打”。前者单体峰值最高但牺牲机动，后者能持续移动输出与清图。一个成熟的 Deadeye 往往让 Snipe 负责不能贴脸的 Boss、Ice Shot / Lightning Arrow 负责走位清图与补伤。",
+        "节奏差异：Snipe 的 DPS 高度依赖你能否稳定站定蓄力并抓完美；一旦频繁被打断，它的有效 DPS 会崩溃。Ice Shot 类则几乎不受打断影响。所以 Snipe 强不强，一半看你站位与抗打断，一半看数值。",
+        "共享体系：三者都用弓与攻击速度，Snipe 的蓄力时间和攻速无关（蓄力按固定节奏），但攻击速度影响两次 Snipe 之间的衔接。配装时不要把“攻速提升 Snipe 蓄力”当成事实。"
+      ],
+      "bullets": [
+        "Snipe 站定狙击、单体峰值最高；Ice Shot / LA 移动输出。",
+        "Snipe 的有效 DPS 极依赖站定与抗打断。",
+        "攻速不加速 Snipe 蓄力，只影响两次射击衔接。"
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 60,
+      "title": "推荐辅助宝石",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Critical Damage / 暴击类支持",
+          "priority": "core",
+          "notes": [
+            "Snipe 本来就堆暴击，暴击伤害支持直接放大完美窗口的爆发。",
+            "与必暴 / 暴击加成类机制叠加收益最高。"
+          ]
+        },
+        {
+          "label": "Deadly Poison / 增伤类（按体系）",
+          "priority": "core",
+          "notes": [
+            "若你走物理 / 元素混合，对应的增伤支持提升每发基数。",
+            "按你实际伤害类型选择，不要盲带。"
+          ]
+        },
+        {
+          "label": "Bloodthirst / 满血增伤类",
+          "priority": "situational",
+          "notes": [
+            "Snipe 常站定输出、不易掉血，满血增伤支持稳定吃满。",
+            "适合不被频繁消耗的站桩流派。"
+          ]
+        },
+        {
+          "label": "Greater Multiple Projectiles（多投）",
+          "priority": "situational",
+          "notes": [
+            "Snipe 通常走单体，多投会分摊单体并破坏狙击手感，一般不带。",
+            "仅在刻意做“蓄力散射”玩法时考虑。"
+          ]
+        },
+        {
+          "label": "Martial Tempo / 攻击速度类",
+          "priority": "optional",
+          "notes": [
+            "不加速蓄力，但缩短两次 Snipe 之间的间隙，提升有效 DPS。",
+            "在站定机会多时收益明显。"
+          ]
+        },
+        {
+          "label": "Execute / 处决类（若适用）",
+          "priority": "optional",
+          "notes": [
+            "低血目标额外伤害，配合 Snipe 的单体爆发收尾。",
+            "需确认当前客户端支持映射到攻击。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 70,
+      "title": "在 Build 中的定位",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Deadeye 远程单体：最典型载体。靠远距离加成与暴击天赋放大完美 Snipe，作为 Boss 与高威胁目标的处决手段，冰 / 雷攻击负责走位清图。",
+        "冰霜射手副手狙击：主手 Ice Shot 清图，遇到不能冻或需要稳定单体的场合切 Snipe。两者共用弓，切换成本低，是常见的双弓配置。",
+        "抗打断是前提：任何让 Snipe 频繁被打断的地图（大量击退、强制位移）都会让它的有效 DPS 暴跌。这类场景不如直接用 Ice Shot / Lightning Arrow 持续输出。"
+      ],
+      "bullets": [
+        "Deadeye：完美 Snipe 作 Boss 处决，冰 / 雷攻击清图。",
+        "冰霜射手：Snipe 作异常失效时的单体副手。",
+        "易被击退 / 强制位移的图，Snipe 不如持续输出技能。"
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 80,
+      "title": "常见错误：断蓄力 / 抓不住完美",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "蓄力总被打断：你站的位置被击退、被强制位移，或怪贴脸打断。直接答案：拉远距离、利用地形卡视野，并优先堆抗打断 / 站桩能力再练 Snipe。",
+        "抓不住完美窗口：窗口很短，手感没练出来。直接答案：先在木桩练“满阶段即松手”，稳定后再尝试卡完美；实战赶时间就满蓄即射，别硬等。",
+        "以为攻速能加速蓄力：Snipe 蓄力按固定节奏，攻速只影响两次射击衔接。直接答案：别为“蓄更快”堆攻速，攻速收益在衔接而非蓄力。",
+        "用 Snipe 当清图技能：它单体峰值高但 AoE 弱、且要站定。直接答案：清图交给 Ice Shot / Lightning Arrow，Snipe 专注单体。"
+      ],
+      "bullets": [
+        "问题：蓄力总被打断。",
+        "直接答案：拉远距离 + 地形 + 抗打断，再练 Snipe。",
+        "问题：抓不住完美窗口。",
+        "直接答案：先练满蓄即射，稳定后再卡完美。",
+        "问题：误以为攻速加速蓄力。",
+        "直接答案：攻速只影响射击衔接，不加速蓄力。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 90,
+      "title": "视频演示与时间点",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Size Ice Shot / Snipe Deadeye 作者",
+          "label": "Deadeye 中的 Snipe 与 Ice Shot 切换演示",
+          "description": "以 Ice Shot 为主清图、Snipe 负责单体处决的 Deadeye 构筑，覆盖蓄力节奏与完美窗口实战。",
+          "takeaway": "重点看作者如何在走位中找站定点、抓完美窗口打 Boss。",
+          "url": "https://youtu.be/KMwvDu9LXuk",
+          "timestamps": [
+            {
+              "label": "构筑与技能分配",
+              "time": "0:00"
+            },
+            {
+              "label": "Ice Shot 清图节奏",
+              "time": "2:00"
+            },
+            {
+              "label": "Snipe 蓄力与完美窗口",
+              "time": "4:30"
+            },
+            {
+              "label": "Boss 处决演示",
+              "time": "7:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 100,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "完美窗口一定要等吗？",
+          "answer": [
+            "不是必须。满阶段（非完美）已是接近上限的输出，完美只是额外暴击 + 伤害。",
+            "能稳定抓就等；移动战或赶时间就满蓄即射，别硬等完美。"
+          ]
+        },
+        {
+          "question": "攻速能让我蓄力更快吗？",
+          "answer": [
+            "不能。Snipe 蓄力按固定节奏，攻速只影响两次 Snipe 之间的衔接。",
+            "想提升有效 DPS 应优先稳定站定与抗打断。"
+          ]
+        },
+        {
+          "question": "为什么我的 Snipe 总被打断？",
+          "answer": [
+            "站得太近被贴脸打断、或地图有大量击退 / 强制位移。",
+            "直接答案：拉远距离、利用地形，并堆抗打断 / 站桩能力。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 110,
+      "title": "更新记录",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "初版发布：覆盖蓄力阶段与完美窗口、与 Ice Shot 对比、暴击 / 增伤辅助、Deadeye 定位与断蓄力常见原因。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 120,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "GGG 官方论坛 Patch Notes 与公告，用于确认 Snipe 的阶段数、完美窗口时长与伤害 / 暴击曲线是否在本版本调整。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与 Community Wiki 提供技能 id、标签、武器需求、蓄力阶段与隐藏行为。",
+          "url": "https://poe2db.tw/us/Snipe"
+        },
+        {
+          "label": "攻略与视频",
+          "description": "Mobalytics 的 Deadeye 弓系构筑、Size Ice Shot / Snipe Deadeye 实战视频，用于交叉验证蓄力节奏、完美窗口与技能分工。",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Reddit、官方论坛与评论区用于发现“蓄力被打断、抓不住完美、攻速加速蓄力误区”等真实问题，并经客户端复现后给出直接答案。"
+        }
+      ],
+      "verificationChecklist": [
+        "蓄力阶段数 / 完美窗口时长 / 伤害曲线以 0.5.4 客户端为准，本文给出方向性结论。",
+        "攻速不影响蓄力节奏需以当前客户端复现为准。",
+        "视频演示来自第三方作者，链接见上方攻略与视频分类。",
+        "机制结论经数据库、独立攻略与社区问题三方交叉核对。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 官方 Patch Notes 论坛帖",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Snipe",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Snipe"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Size Ice Shot / Snipe Deadeye 实战视频",
+      "sourceType": "community",
+      "url": "https://youtu.be/KMwvDu9LXuk"
+    }
+  ],
+  "seo": {
+    "title": "Snipe 攻略 — 蓄力阶段、完美窗口与弓系狙击",
+    "description": "Snipe 弓系蓄力技能深度攻略：蓄力阶段与伤害 / 暴击曲线、完美窗口机制、与 Ice Shot / Lightning Arrow 对比、暴击 / 增伤辅助、Deadeye 定位与断蓄力常见原因。",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/snipe.webp",
+  "cardImage": "/images/skills/snipe.webp",
+  "imageAlt": "Snipe 弓系狙击技能图标"
+}

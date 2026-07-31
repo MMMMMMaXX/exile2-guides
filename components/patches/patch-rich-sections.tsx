@@ -495,6 +495,393 @@ function PatchFollowup({
   );
 }
 
+/** 历史 Patch 富模块 i18n（状态/优先级/横幅/表头），与文章语言一致。 */
+const historicalI18n: Record<
+  ContentLocale,
+  {
+    stillCurrent: string;
+    changedLater: string;
+    removed: string;
+    unknown: string;
+    high: string;
+    medium: string;
+    low: string;
+    historical: string;
+    partiallyCurrent: string;
+    superseded: string;
+    baseline: string;
+    notCurrentClient: string;
+    lastChecked: string;
+    applicabilityBoard: string;
+    thenVsNow: string;
+    supersededBy: string;
+    priority: string;
+    introduces: string;
+    dependsOn: string;
+    breaks: string;
+    from: string;
+    to: string;
+    status: string;
+  }
+> = {
+  en: {
+    stillCurrent: "Still current",
+    changedLater: "Changed later",
+    removed: "Removed",
+    unknown: "Needs verification",
+    high: "High",
+    medium: "Medium",
+    low: "Low",
+    historical: "Historical Patch",
+    partiallyCurrent: "Partially current",
+    superseded: "Superseded",
+    baseline: "Current comparison baseline",
+    notCurrentClient: "Not the current client version",
+    lastChecked: "Last checked against current content",
+    applicabilityBoard: "Current Applicability Board",
+    thenVsNow: "Then vs Now",
+    supersededBy: "Superseded by",
+    priority: "Priority",
+    introduces: "Introduces",
+    dependsOn: "Depends on",
+    breaks: "Breaks",
+    from: "From",
+    to: "To",
+    status: "Status",
+  },
+  "zh-cn": {
+    stillCurrent: "仍然有效",
+    changedLater: "后续已修改",
+    removed: "已移除",
+    unknown: "待核实",
+    high: "高",
+    medium: "中",
+    low: "低",
+    historical: "历史版本",
+    partiallyCurrent: "部分仍适用",
+    superseded: "已被取代",
+    baseline: "当前对照基线",
+    notCurrentClient: "非当前客户端版本",
+    lastChecked: "最近对照当前内容核验",
+    applicabilityBoard: "当前适用性看板",
+    thenVsNow: "新旧对照",
+    supersededBy: "被以下版本取代",
+    priority: "优先级",
+    introduces: "引入",
+    dependsOn: "依赖",
+    breaks: "破坏",
+    from: "旧",
+    to: "新",
+    status: "状态",
+  },
+};
+
+function applicabilityStatusLabel(locale: ContentLocale, status: string): string {
+  const map = historicalI18n[locale];
+  if (status === "still-current") return map.stillCurrent;
+  if (status === "changed-later") return map.changedLater;
+  if (status === "removed") return map.removed;
+  if (status === "unknown") return map.unknown;
+  return status;
+}
+
+function priorityLabel(locale: ContentLocale, priority: string): string {
+  const map = historicalI18n[locale];
+  if (priority === "high") return map.high;
+  if (priority === "medium") return map.medium;
+  if (priority === "low") return map.low;
+  return priority;
+}
+
+/** 历史背景：所处时代 + 当前对照基线 + 叙述。 */
+function PatchHistoricalContext({
+  section,
+}: {
+  section: Extract<PatchSection, { type: "historical-context" }>;
+}) {
+  return (
+    <div className="patch-historical-context">
+      <p className="patch-historical-context__era">{section.era}</p>
+      <p className="patch-historical-context__baseline">
+        {section.baselineNote}
+      </p>
+      {section.paragraphs.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
+      ))}
+      {section.bullets.length > 0 ? (
+        <ul>
+          {section.bullets.map((bullet, index) => (
+            <li key={index}>{bullet}</li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
+/** 当前适用性看板：逐项记录机制在 0.5.4e 是否仍有效。 */
+function PatchCurrentApplicability({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "current-applicability" }>;
+  locale: ContentLocale;
+}) {
+  return (
+    <div className="patch-current-applicability">
+      <div className="patch-table-wrap">
+        <table className="patch-data-table patch-current-applicability__table">
+          <thead>
+            <tr>
+              <th>{locale === "zh-cn" ? "机制" : "Mechanic"}</th>
+              <th>{historicalI18n[locale].status}</th>
+              <th>
+                {locale === "zh-cn"
+                  ? "当前规则（0.5.4e）"
+                  : "Current rule (0.5.4e)"}
+              </th>
+              <th>{historicalI18n[locale].supersededBy}</th>
+              <th>{locale === "zh-cn" ? "应读页面" : "Read"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {section.rows.map((row, index) => (
+              <tr data-patch-app-status={row.status} key={index}>
+                <td>
+                  <b>{row.topic}</b>
+                </td>
+                <td>
+                  <span
+                    className={`patch-app-status patch-app-status--${row.status}`}
+                  >
+                    {applicabilityStatusLabel(locale, row.status)}
+                  </span>
+                </td>
+                <td>{row.currentSummary}</td>
+                <td>{row.supersededBy}</td>
+                <td>{row.affectedContent}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/** Then vs Now 对照矩阵。 */
+function PatchThenVsNow({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "then-vs-now" }>;
+  locale: ContentLocale;
+}) {
+  return (
+    <div className="patch-then-now">
+      {section.rows.map((row, index) => (
+        <div className="patch-then-now__row" key={index}>
+          <p className="patch-then-now__aspect">{row.aspect}</p>
+          <div className="patch-then-now__cols">
+            <div className="patch-then-now__then">
+              <span className="patch-then-now__label">
+                {locale === "zh-cn" ? "旧版本" : "Then"}
+              </span>
+              <p>{row.thenText}</p>
+            </div>
+            <div className="patch-then-now__now">
+              <span className="patch-then-now__label">
+                {locale === "zh-cn" ? "当前 0.5.4e" : "Now"}
+              </span>
+              <p>{row.nowText}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** 被取代的变更列表。 */
+function PatchSupersededChanges({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "superseded-changes" }>;
+  locale: ContentLocale;
+}) {
+  const map = historicalI18n[locale];
+  return (
+    <ul className="patch-superseded">
+      {section.items.map((item, index) => (
+        <li className="patch-superseded__item" key={index}>
+          <p className="patch-superseded__change">{item.change}</p>
+          <p className="patch-superseded__meta">
+            <span>{map.supersededBy}</span> {item.byPatch}
+          </p>
+          <p className="patch-superseded__replacement">{item.replacement}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** 回归玩家清单：按优先级排列必须重新学习的内容。 */
+function PatchReturningPlayerChecklist({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "returning-player-checklist" }>;
+  locale: ContentLocale;
+}) {
+  return (
+    <div className="patch-returning">
+      {section.items.map((item, index) => (
+        <div
+          className={`patch-returning__item patch-returning__item--${item.priority}`}
+          key={index}
+        >
+          <span className="patch-returning__priority">
+            {priorityLabel(locale, item.priority)}
+          </span>
+          <div>
+            <h3>{item.label}</h3>
+            <p>{item.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** 站内旧内容审计表。 */
+function PatchLegacyContentAudit({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "legacy-content-audit" }>;
+  locale: ContentLocale;
+}) {
+  return (
+    <div className="patch-legacy-audit">
+      <div className="patch-table-wrap">
+        <table className="patch-data-table patch-legacy-audit__table">
+          <thead>
+            <tr>
+              <th>{locale === "zh-cn" ? "站内页面" : "Page"}</th>
+              <th>{locale === "zh-cn" ? "类型" : "Type"}</th>
+              <th>{locale === "zh-cn" ? "问题" : "Issue"}</th>
+              <th>{locale === "zh-cn" ? "动作" : "Action"}</th>
+              <th>{locale === "zh-cn" ? "状态" : "Status"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {section.rows.map((row, index) => (
+              <tr data-patch-qstatus={row.status} key={index}>
+                <td>
+                  <b>{row.contentId}</b>
+                </td>
+                <td>{affectedTypeLabel[locale][row.kind] ?? row.kind}</td>
+                <td>{row.issue}</td>
+                <td>{row.action}</td>
+                <td>
+                  <span className={`patch-status patch-status--${row.status}`}>
+                    {statusLabel(locale, row.status)}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/** 版本依赖图。 */
+function PatchVersionDependencyMap({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "version-dependency-map" }>;
+  locale: ContentLocale;
+}) {
+  const map = historicalI18n[locale];
+  return (
+    <div className="patch-version-map">
+      {section.nodes.map((node, index) => (
+        <div className="patch-version-map__node" key={index}>
+          <h3 className="patch-version-map__version">{node.version}</h3>
+          <dl className="patch-version-map__dl">
+            <dt>{map.introduces}</dt>
+            <dd>{node.introduces}</dd>
+            <dt>{map.dependsOn}</dt>
+            <dd>{node.dependsOn}</dd>
+            <dt>{map.breaks}</dt>
+            <dd>{node.breaks}</dd>
+          </dl>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** 系统来源叙述。 */
+function PatchSystemOrigin({
+  section,
+}: {
+  section: Extract<PatchSection, { type: "system-origin" }>;
+}) {
+  return (
+    <div className="patch-system-origin">
+      <p className="patch-system-origin__meta">
+        {section.introducedIn} · {section.sourceId}
+      </p>
+      {section.paragraphs.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
+      ))}
+      {section.bullets.length > 0 ? (
+        <ul>
+          {section.bullets.map((bullet, index) => (
+            <li key={index}>{bullet}</li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
+/** 迁移指南：旧配置到当前配置的迁移步骤。 */
+function PatchMigrationGuide({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "migration-guide" }>;
+  locale: ContentLocale;
+}) {
+  const map = historicalI18n[locale];
+  return (
+    <ol className="patch-migration">
+      {section.steps.map((step, index) => (
+        <li className="patch-migration__step" key={index}>
+          <div className="patch-migration__flow">
+            <span className="patch-migration__from">
+              {map.from}: {step.from}
+            </span>
+            <span className="patch-migration__arrow" aria-hidden="true">
+              →
+            </span>
+            <span className="patch-migration__to">
+              {map.to}: {step.to}
+            </span>
+          </div>
+          <p>{step.note}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /** 富内容章节统一出口，供 PatchSectionRenderer 调用。 */
 export function renderPatchRichSection(
   section: PatchSection,
@@ -523,6 +910,24 @@ export function renderPatchRichSection(
       return <PatchKnownIssues section={section} locale={locale} />;
     case "patch-followup":
       return <PatchFollowup section={section} />;
+    case "historical-context":
+      return <PatchHistoricalContext section={section} />;
+    case "current-applicability":
+      return <PatchCurrentApplicability section={section} locale={locale} />;
+    case "then-vs-now":
+      return <PatchThenVsNow section={section} locale={locale} />;
+    case "superseded-changes":
+      return <PatchSupersededChanges section={section} locale={locale} />;
+    case "returning-player-checklist":
+      return <PatchReturningPlayerChecklist section={section} locale={locale} />;
+    case "legacy-content-audit":
+      return <PatchLegacyContentAudit section={section} locale={locale} />;
+    case "version-dependency-map":
+      return <PatchVersionDependencyMap section={section} locale={locale} />;
+    case "system-origin":
+      return <PatchSystemOrigin section={section} />;
+    case "migration-guide":
+      return <PatchMigrationGuide section={section} locale={locale} />;
     default:
       return null;
   }

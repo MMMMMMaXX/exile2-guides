@@ -125,6 +125,34 @@ function renderSectionContent(
           verificationChecklistLabel={labels.verificationChecklist}
         />
       );
+    case "data-table":
+      return (
+        <div className="skill-data-table-wrap">
+          <table className="skill-data-table">
+            <thead>
+              <tr>
+                {section.columns.map((column, index) => (
+                  <th key={`${column}-${index}`}>{column}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.rows.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td
+                      key={cellIndex}
+                      style={{ whiteSpace: "pre-line" }}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
   }
 }
 

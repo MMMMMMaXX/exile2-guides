@@ -1,0 +1,427 @@
+{
+  "id": "chain-support",
+  "slug": "chain-support",
+  "locale": "en",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Chain Support Guide — Bounce Count, Range and Projectile Behavior",
+  "shortTitle": "Chain Support",
+  "summary": "Chain Support is a Support gem: it makes the supported projectile (or skill) bounce to additional enemies several times after hitting the primary target, forming a chain. This guide explains bounce count and per-jump range, how Chain fundamentally differs from Fork / Pierce / Returning Projectile, why it naturally fits Lightning Arrow / frost projectile builds, and common 'won't bounce / hits repeat targets' causes.",
+  "description": "Chain Support deep guide: bounce count and per-jump range, comparison with Fork / Pierce / Returning, recommended damage / area pairings, Ice Shot / Lightning Arrow projectile role, won't-bounce and repeat-target causes with direct answers, video timestamps and real community questions.",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "skillCategory": "support",
+  "skillTags": [
+    "support",
+    "projectile",
+    "chain",
+    "aoe",
+    "bounce"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "chain-support",
+    "support",
+    "projectile",
+    "chain",
+    "lightning-arrow"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "Overview: Bounce Again After the Hit",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Chain Support is a Support gem: socket it into a projectile (or some bouncable) skill, and after that skill hits the primary target, it keeps bouncing the projectile to nearby other enemies several times, forming a chain. It doesn't increase single-hit damage; it extends 'one hit' into 'a string of hits' — boosting coverage and clear.",
+        "Its value is in dense scenes: when a pack is bunched up, Chain makes one arrow / bolt ricochet between them, covering far beyond the single landing point. The cost is that each bounce usually hits a target only once, and the bounce distance is limited — too spread or too far and it won't bounce.",
+        "This fits Lightning Arrow / frost projectile builds naturally: Lightning Arrow already补 damage via post-hit lightning chains; stacking Chain makes the arrow itself bounce too, forming 'arrow bounce + chain bounce' double coverage; Ice Shot-style clear builds also string mobs together via Chain."
+      ],
+      "bullets": [
+        "Essence: support gem, makes supported skill bounce to extra targets after hit.",
+        "Value: dense-scene coverage far beyond the single landing.",
+        "Cost: each target usually hit once, bounce distance limited.",
+        "Common partners: Lightning Arrow / Ice Shot projectile builds."
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "Key Stats and Acquisition",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Support (Support · Projectile · Bounce)",
+          "notes": [
+            "Tagged support, projectile, chain, aoe, bounce."
+          ]
+        },
+        {
+          "label": "Supported targets",
+          "value": "Projectiles / bouncable skills",
+          "notes": [
+            "Only supports spells / attacks on its allowed list, and the target must be bouncable form."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Support Gem",
+          "notes": [
+            "Unlocked via an Uncut Support Gem from campaign or drops."
+          ]
+        },
+        {
+          "label": "Bounce count",
+          "value": "Bounces to extra targets N times (client-side)",
+          "notes": [
+            "Count sets chain length; usually raised via gem level / supports."
+          ]
+        },
+        {
+          "label": "Bounce range",
+          "value": "Max distance per jump",
+          "notes": [
+            "Targets between bounces must be within range; too far breaks the chain."
+          ]
+        },
+        {
+          "label": "Quality",
+          "value": "Improves bounce count / range",
+          "notes": [
+            "Higher quality usually raises bounce count or bounce range."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain-mechanic",
+      "order": 30,
+      "title": "Mechanics: How Bounces Jump, Do They Repeat?",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bounce logic: after the supported projectile hits the primary target, it looks near that target for the next enemy not yet hit by this bounce chain, jumps and hits again, repeating until bounces run out or no target found. Each jump re-selects a 'not-yet-hit' target, so normally the same mob isn't bounced twice.",
+        "Range limit: the max distance per jump is fixed. If there's no new target within range nearby, the chain breaks early. This is why in sparse or scattered packs Chain looks like 'it only bounced once' or didn't bounce at all — not that it isn't socketed, but there's no target to jump to.",
+        "And hit rate: Chain doesn't change the first hit; it only extends after a hit. If the primary misses, there's no subsequent bounce. So the projectile's base hit rate remains the prerequisite."
+      ],
+      "bullets": [
+        "Each bounce picks a new unhit target; usually no repeat hits.",
+        "Fixed max distance per jump; no in-range target = chain breaks.",
+        "Sparse / scattered packs hurt Chain; dense packs best.",
+        "Chain only extends after a hit; first-hit rate stays the prerequisite."
+      ]
+    },
+    {
+      "id": "behavior-compare",
+      "order": 40,
+      "title": "Comparison: Chain vs Fork / Pierce / Returning",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Behavior",
+        "When it happens",
+        "Effect on coverage",
+        "Typical trade-off"
+      ],
+      "rows": [
+        [
+          "Chain",
+          "Bounces to extra targets after hit",
+          "Strings across a pack, covers a row",
+          "Best in dense packs, weak in sparse"
+        ],
+        [
+          "Fork",
+          "Splits into extra projectiles on hit",
+          "Scatters in multiple directions",
+          "Wide coverage but each line shallow"
+        ],
+        [
+          "Pierce",
+          "Passes through target, keeps flying",
+          "Goes straight through multiple targets",
+          "Best vs lined-up mobs, no turning"
+        ],
+        [
+          "Returning Projectile",
+          "Flies out then returns to caster",
+          "Outbound + return each hit once",
+          "Round-trip coverage, path-dependent"
+        ]
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 50,
+      "title": "Pairing Suggestions (supported-skill side)",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Magnified Area (if it affects bounce)",
+          "priority": "core",
+          "notes": [
+            "If the client lets area modifiers affect bounce distance, enlarging area extends the chain, reducing breaks.",
+            "Dense clear builds often rely on it to fill the chain."
+          ]
+        },
+        {
+          "label": "Added Lightning / cold (main-skill side)",
+          "priority": "core",
+          "notes": [
+            "Chain only decides hit count; real damage comes from the main skill's scaling.",
+            "Pair with the matching elemental scaling on Lightning Arrow / Ice Shot."
+          ]
+        },
+        {
+          "label": "Greater Multiple Projectiles (main-skill side)",
+          "priority": "situational",
+          "notes": [
+            "Multi-proj + Chain makes each arrow bounce independently — explosive coverage but split single-target.",
+            "Clear-only; drop multi-proj for boss single-target."
+          ]
+        },
+        {
+          "label": "Critical Damage (main-skill side)",
+          "priority": "situational",
+          "notes": [
+            "Boosts crit payoff on each bounce hit; more chains = more value.",
+            "Generic for crit systems."
+          ]
+        },
+        {
+          "label": "Chain vs Fork: pick one",
+          "priority": "optional",
+          "notes": [
+            "Both reshape projectile form; running both invites logic conflict and diminishing returns.",
+            "Most builds pick one, choose by need."
+          ]
+        },
+        {
+          "label": "Pierce (different logic from Chain)",
+          "priority": "optional",
+          "notes": [
+            "Pierce is straight-line pass-through, Chain is turning bounce — different direction logic.",
+            "Lined-up mobs use Pierce, scattered use Chain; usually not mixed."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 60,
+      "title": "Role in Builds",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lightning Arrow double coverage: Lightning Arrow already has post-hit lightning chains; stacking Chain makes the arrow itself bounce too, forming 'arrow bounce + chain bounce' double chaining — extremely high clear efficiency in dense packs.",
+        "Ice Shot clear build: the frost bow uses Ice Shot to spread chill and shatter; Chain strings arrows through the pack to pre-spread chill faster, pairing with Herald of Ice's shatter explosion for a smoother clear chain.",
+        "Relation to single-target bosses: a boss is single-target with no extra target to bounce to, so Chain's payoff drops to zero. In those scenes Chain should be removed or swapped for a damage support — the most common newbie misjudgment: assuming Chain helps on bosses too."
+      ],
+      "bullets": [
+        "Lightning Arrow: arrow bounce + chain bounce double chain, dense clear strong.",
+        "Ice Shot: Chain pre-spreads chill, smoother with shatter explosion.",
+        "Boss single-target: Chain has no extra target, remove for damage."
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 70,
+      "title": "Common Mistakes: Won't Bounce / Repeat Targets",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Won't bounce: there's no new target within bounce range nearby (too scattered / too far), so the chain breaks early. Direct answer: gather mobs before clearing, or enlarge area to extend the chain; don't run Chain on solo targets.",
+        "Thinking it hits repeat targets: normally Chain picks a new target each jump and won't bounce the same mob twice. If you see 'one mob hit multiple times', it's usually the main skill's multi-proj / multi-hit, not Chain repeating. Direct answer: distinguish Chain from the main skill's multi-hit.",
+        "Running Chain on bosses: a boss is single-target with no extra target, so Chain yields zero and wastes a support slot. Direct answer: drop Chain for damage / crit support in boss fights.",
+        "Primary missed: Chain only extends after a hit; if the first hit whiffs there's no follow-up. Direct answer: ensure projectile hit rate first, then talk Chain."
+      ],
+      "bullets": [
+        "Issue: won't bounce / only one bounce.",
+        "Direct answer: mobs too scattered or far, gather or enlarge area; no solo Chain.",
+        "Issue: thinks same mob bounced twice.",
+        "Direct answer: Chain doesn't repeat; likely main-skill multi-hit.",
+        "Issue: Chain on boss yields nothing.",
+        "Direct answer: drop Chain for damage support."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 80,
+      "title": "Video Walkthrough and Timestamps",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Eventide Monk author",
+          "label": "Projectile chaining and mana-fix showcase",
+          "description": "A projectile-build (Chain context included) showcase covering chain coverage and mana management.",
+          "takeaway": "Watch how the author uses chaining for coverage in dense scenes and adjusts supports for the mana fix.",
+          "url": "https://youtu.be/wuYHXGB4jos",
+          "timestamps": [
+            {
+              "label": "Build and support overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Projectile chain coverage demo",
+              "time": "2:30"
+            },
+            {
+              "label": "Mana fix and support tweak",
+              "time": "5:00"
+            },
+            {
+              "label": "Dense-scene clear",
+              "time": "7:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 90,
+      "title": "Frequently Asked Questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Does Chain hit repeat targets?",
+          "answer": [
+            "Normally no. Each jump picks a new target not yet hit by this bounce chain.",
+            "If you see one mob hit multiple times, it's usually the main skill's multi-proj / multi-hit, not Chain repeating."
+          ]
+        },
+        {
+          "question": "Why do I only get one bounce even with Chain?",
+          "answer": [
+            "No new target within bounce range nearby, so the chain broke early; or the primary missed.",
+            "Direct answer: gather mobs, enlarge area, and ensure first hit connects."
+          ]
+        },
+        {
+          "question": "Is Chain useful on bosses?",
+          "answer": [
+            "Essentially no. A boss is single-target with no extra target to bounce to; Chain yields zero.",
+            "In boss fights drop Chain for damage / crit support."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 100,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Initial release: bounce count and per-jump range, comparison with Fork / Pierce / Returning, damage / area pairings, projectile-build role and won't-bounce causes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 110,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG official forum Patch Notes and announcements, used to confirm Chain Support's bounce count, bounce range and supported list changes this patch.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB and Community Wiki provide skill id, tags, bounce count, bounce range and supported targets.",
+          "url": "https://poe2db.tw/us/Chain"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Mobalytics projectile builds and the Eventide Monk showcase, used to cross-check chain coverage and mana fix.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit, official forums and comments surface real issues like won't bounce, repeat-target confusion, and the Chain-on-boss misconception, reproduced on client and answered directly."
+        }
+      ],
+      "verificationChecklist": [
+        "Bounce count / bounce range are per 0.5.4 client; directional conclusions given.",
+        "Chain not hitting repeat targets must be reproduced on current client.",
+        "Video demos are from third-party authors; links in the builds-and-video category above.",
+        "Mechanics conclusions cross-checked across database, independent builds and community questions."
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Chain Support",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Chain"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Eventide Monk projectile chain showcase",
+      "sourceType": "community",
+      "url": "https://youtu.be/wuYHXGB4jos"
+    }
+  ],
+  "seo": {
+    "title": "Chain Support Guide — Bounce Count, Range and Projectile Behavior",
+    "description": "Chain Support support-gem deep guide: bounce count and per-jump range, comparison with Fork / Pierce / Returning, damage / area pairings, Ice Shot / Lightning Arrow projectile role, won't-bounce and repeat-target causes with direct answers.",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/chain-support.webp",
+  "cardImage": "/images/skills/chain-support.webp",
+  "imageAlt": "Chain Support bounce support gem icon"
+}

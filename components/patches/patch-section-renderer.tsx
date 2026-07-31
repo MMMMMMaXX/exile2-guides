@@ -101,7 +101,13 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
     .sort((left, right) => left.order - right.order);
   let majorSectionIndex = 0;
 
-  return sections.map((section) => {
+  const historicalBanner = article.historicalStatus ? (
+    <HistoricalPatchBanner article={article} locale={article.locale} />
+  ) : null;
+
+  return [
+    historicalBanner,
+    ...sections.map((section) => {
     const Heading = section.toc ? "h2" : "h3";
     if (section.toc) majorSectionIndex += 1;
 
@@ -122,7 +128,69 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
         </div>
       </section>
     );
-  });
+    }),
+  ].filter(Boolean) as ReactNode[];
+}
+
+const historicalStatusLabels: Record<ContentLocale, Record<string, string>> = {
+  en: {
+    historical: "Historical Patch",
+    "partially-current": "Partially current",
+    superseded: "Superseded",
+  },
+  "zh-cn": {
+    historical: "历史版本",
+    "partially-current": "部分仍适用",
+    superseded: "已被取代",
+  },
+};
+
+/** 历史 Patch 首屏状态横幅：明确标注非当前版本、当前对照基线与最近核验日期。 */
+function HistoricalPatchBanner({
+  article,
+  locale,
+}: {
+  article: PatchArticle;
+  locale: ContentLocale;
+}) {
+  if (!article.historicalStatus) return null;
+  const checked = article.lastVerifiedAt ?? article.updatedAt;
+  const statusLabel =
+    historicalStatusLabels[locale][article.historicalStatus] ??
+    article.historicalStatus;
+  return (
+    <div
+      className={`patch-historical-banner patch-historical-banner--${article.historicalStatus}`}
+      role="note"
+    >
+      <span className="patch-historical-banner__badge">{statusLabel}</span>
+      <div className="patch-historical-banner__body">
+        <p className="patch-historical-banner__line">
+          {locale === "zh-cn"
+            ? "非当前客户端版本"
+            : "Not the current client version"}
+        </p>
+        {article.currentBaseline ? (
+          <p className="patch-historical-banner__line">
+            <b>
+              {locale === "zh-cn" ? "当前对照基线" : "Current comparison baseline"}
+              :
+            </b>{" "}
+            {article.currentBaseline}
+          </p>
+        ) : null}
+        <p className="patch-historical-banner__line">
+          <b>
+            {locale === "zh-cn"
+              ? "最近对照当前内容核验"
+              : "Last checked against current content"}
+            :
+          </b>{" "}
+          {checked}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 /**

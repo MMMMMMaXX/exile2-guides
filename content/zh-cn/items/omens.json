@@ -1,0 +1,745 @@
+{
+  "id": "omens",
+  "slug": "omens",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "预兆指南：激活、制作组合与消耗时机",
+  "shortTitle": "预兆",
+  "summary": "预兆是一种放在背包里、改变下一次匹配货币行为的物品。本指南讲解如何激活预兆、哪个预兆对应哪种货币、如何避免误触发昂贵的预兆，以及用于生存和玩法机制的“非制作类”预兆。",
+  "description": "流放之路2预兆的带来源参考：激活规则、左/右命名法、预兆+货币组合、误触发检查与价值评估。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "omen",
+    "targeted-crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "抢先体验",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "currency",
+    "omen",
+    "crafting"
+  ],
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "流放之路2预兆货币物品图标——一枚蓝色仪式图腾，用于改变下一次匹配货币的使用结果",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "在背包中激活预兆（右键直到出现红色边框）。它会改变紧接着那次匹配的货币操作。只有在条件真正触发时才被消耗——若条件从未满足，预兆会一直保留。",
+      "calloutDetail": [
+        "左（Sinistral）影响前缀，右（Dextral）影响后缀；名字其余部分说明对应哪种货币。",
+        "同一时间只能激活一个“非制作类”（生存/玩法）预兆。"
+      ],
+      "answers": [
+        {
+          "label": "制作新手",
+          "text": [
+            "从左右升华预兆和结晶预兆开始。"
+          ]
+        },
+        {
+          "label": "高投入",
+          "text": [
+            "叠加伟大升华、同质升华与雕刻预兆做确定性制作。"
+          ]
+        },
+        {
+          "label": "避免",
+          "text": [
+            "误把昂贵预兆保持激活，却用错货币。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#effect",
+          "label": "预兆如何生效 →"
+        },
+        {
+          "href": "#pre-use-checklist",
+          "label": "误触发检查 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "位置",
+          "value": "背包中保持激活",
+          "note": [
+            "右键切换红色激活边框。"
+          ]
+        },
+        {
+          "label": "触发",
+          "value": "下一次匹配的货币使用",
+          "note": [
+            "仅当条件满足时才被消耗。"
+          ]
+        },
+        {
+          "label": "命名",
+          "value": "左=前缀，右=后缀",
+          "note": [
+            "“of Exaltation”等说明对应货币。"
+          ]
+        },
+        {
+          "label": "来源",
+          "value": "主要来自仪式",
+          "note": [
+            "也有深渊预兆与货币兑换。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "预兆家族",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "预兆分为制作控制类预兆与非制作类（生存/玩法）预兆。制作类预兆中，左/右前缀表示影响哪一侧词缀。"
+      ],
+      "members": [
+        {
+          "id": "omen-exaltation",
+          "eyebrow": "崇高宝珠",
+          "title": "左 / 右 / 伟大 升华",
+          "sub": "前缀 / 后缀 / 两条词缀",
+          "tags": [
+            "crafting",
+            "exalt"
+          ],
+          "body": [
+            "左升华只加前缀，右升华只加后缀。伟大升华加两条随机词缀，并与左/右升华叠加，从而加两条指定侧的词缀。"
+          ]
+        },
+        {
+          "id": "omen-annulment",
+          "eyebrow": "抹除宝珠",
+          "title": "左 / 右 抹除",
+          "sub": "删前缀 / 删后缀",
+          "tags": [
+            "crafting",
+            "annul"
+          ],
+          "body": [
+            "限制抹除宝珠能剥离词缀的一侧。"
+          ]
+        },
+        {
+          "id": "omen-erasure",
+          "eyebrow": "混沌宝珠",
+          "title": "左 / 右 湮灭",
+          "sub": "混沌只重roll一侧",
+          "tags": [
+            "crafting",
+            "chaos"
+          ],
+          "body": [
+            "强制混沌宝珠只重roll前缀块或只重roll后缀块。"
+          ]
+        },
+        {
+          "id": "omen-crystallisation",
+          "eyebrow": "完美 / 腐蚀精华",
+          "title": "左 / 右 结晶",
+          "sub": "精华只删一侧",
+          "tags": [
+            "crafting",
+            "essence"
+          ],
+          "body": [
+            "下一次完美/腐蚀精华只删前缀或只删后缀——安全使用精华的方式。"
+          ]
+        },
+        {
+          "id": "omen-homogenising",
+          "eyebrow": "崇高 / 加冕宝珠",
+          "title": "同质升华 / 加冕",
+          "sub": "同标签词缀",
+          "tags": [
+            "crafting",
+            "advanced"
+          ],
+          "body": [
+            "下一次崇高/加冕宝珠只能加与物品已有词缀共享标签的词缀。"
+          ]
+        },
+        {
+          "id": "omen-whittling",
+          "eyebrow": "混沌宝珠",
+          "title": "雕刻",
+          "sub": "删最低级词缀",
+          "tags": [
+            "crafting",
+            "value"
+          ],
+          "body": [
+            "下一次混沌宝珠删掉最低级词缀而非随机词缀。交易联盟中价值很高。"
+          ]
+        },
+        {
+          "id": "omen-catalysing",
+          "eyebrow": "崇高宝珠",
+          "title": "催化升华",
+          "sub": "消耗催化剂品质",
+          "tags": [
+            "crafting",
+            "jewellery"
+          ],
+          "body": [
+            "下一次崇高宝珠消耗全部催化剂品质，偏向该类型词缀。详见催化剂指南。"
+          ]
+        },
+        {
+          "id": "omen-survival",
+          "eyebrow": "非制作类",
+          "title": "缓和 / 焕发 / 复苏",
+          "sub": "生存",
+          "tags": [
+            "defense",
+            "survival"
+          ],
+          "body": [
+            "死亡减少经验损失、低血时补满药剂/护符充能、低血时恢复生命/魔力/护盾。同一时间只能激活一个非制作类预兆。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "预兆如何改变货币",
+      "toc": true,
+      "visible": true,
+      "type": "effect",
+      "paragraphs": [
+        "预兆不直接改变物品，而是改写下一次匹配货币的规则。例如激活右升华预兆后，下一次崇高宝珠只加后缀词缀，而非随机词缀。",
+        "多个预兆可同时激活并叠加，只要彼此兼容。不兼容的预兆（如两个都想控制“下一次崇高”）会在你激活较新的那个时，让较早的那个失效。"
+      ],
+      "bullets": [
+        "激活的预兆在背包中显示红色边框。",
+        "仅当匹配操作发生时代预兆被消耗。",
+        "若始终不进行匹配操作，预兆不会被消耗，留在背包。"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 50,
+      "title": "什么会触发预兆",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "每个预兆都标明它监视的确切货币与词缀侧，对其他操作无效。"
+      ],
+      "columns": [
+        "崇高宝珠",
+        "抹除宝珠",
+        "完美 / 腐蚀精华"
+      ],
+      "rows": [
+        {
+          "label": "右升华预兆",
+          "note": "只加后缀词缀",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "是"
+            },
+            {
+              "kind": "no",
+              "text": "否"
+            },
+            {
+              "kind": "no",
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "label": "右抹除预兆",
+          "note": "只删后缀词缀",
+          "values": [
+            {
+              "kind": "no",
+              "text": "否"
+            },
+            {
+              "kind": "yes",
+              "text": "是"
+            },
+            {
+              "kind": "no",
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "label": "右结晶预兆",
+          "note": "精华只删后缀",
+          "values": [
+            {
+              "kind": "no",
+              "text": "否"
+            },
+            {
+              "kind": "no",
+              "text": "否"
+            },
+            {
+              "kind": "yes",
+              "text": "是"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 60,
+      "title": "如何获取预兆",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "预兆是终局制作资源，主要从一个机制获取，另有少量补充途径。"
+      ],
+      "routes": [
+        {
+          "label": "仪式祭坛",
+          "body": [
+            "主要来源。在仪式祭坛消耗贡品，有几率获得预兆；部分价值极高。"
+          ]
+        },
+        {
+          "label": "深渊机制",
+          "body": [
+            "深渊预兆从深渊内容掉落，遵循相同激活规则。"
+          ]
+        },
+        {
+          "label": "货币兑换",
+          "body": [
+            "交易联盟中可直接用货币兑换许多常见预兆。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "如何使用预兆",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "选预兆",
+          "body": [
+            "选匹配你要控制的货币与词缀侧的预兆。"
+          ]
+        },
+        {
+          "label": "激活",
+          "body": [
+            "在背包中右键直到出现红色边框。"
+          ]
+        },
+        {
+          "label": "使用货币",
+          "body": [
+            "执行匹配的货币操作；预兆被消耗并应用其规则。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前检查清单",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "预兆匹配货币",
+          "checks": [
+            "确认预兆名字对应你即将使用的确切货币。"
+          ],
+          "why": "不匹配的预兆不会触发，浪费货币。",
+          "fix": "使用货币前重读预兆名。"
+        },
+        {
+          "label": "词缀侧正确",
+          "checks": [
+            "左=前缀，右=后缀；确认你需要哪侧。"
+          ],
+          "why": "用错侧浪费昂贵预兆。",
+          "fix": "换成正确的左/右预兆。"
+        },
+        {
+          "label": "无冲突预兆激活",
+          "checks": [
+            "确认没有更早的同一货币预兆已激活。"
+          ],
+          "why": "冲突预兆会让较早的失效。",
+          "fix": "最后激活正确的那个。"
+        },
+        {
+          "label": "物品已就绪",
+          "checks": [
+            "目标物品在货币前已具备你预期的词缀。"
+          ],
+          "why": "预兆不可逆地改变一次操作。",
+          "fix": "先把其他铺垫做完。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "预兆+货币的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "exalt",
+        "annul",
+        "essence"
+      ],
+      "rows": [
+        {
+          "scenario": "右升华作用于只有 1 后缀的稀有装",
+          "audience": "定向制作玩家",
+          "benefit": "安全填满后缀块",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "收尾稀有装的默认好选择",
+          "tags": [
+            "exalt"
+          ]
+        },
+        {
+          "scenario": "左结晶 + 完美精华",
+          "audience": "精华制作玩家",
+          "benefit": "保留后缀，只换前缀",
+          "risk": "中",
+          "level": "medium",
+          "recommendation": "安全做完美精华的方式",
+          "tags": [
+            "essence"
+          ]
+        },
+        {
+          "scenario": "左抹除作用于只有 1 前缀的稀有装",
+          "audience": "修补玩家",
+          "benefit": "只删掉坏前缀",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "比普通抹除更干净",
+          "tags": [
+            "annul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 100,
+      "title": "可用的制作组合",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "最常见的确定性组合是右升华 + 伟大升华：下一次完美崇高宝珠以最低等级加两条后缀词缀。把左升华、右升华与伟大升华叠加，可完全控制两侧。",
+        "对于精华，把左或右结晶预兆与完美/腐蚀精华搭配，这样你只会丢掉不想要的那一侧。同质升华是进阶选项：它把下一次崇高/加冕限制为与物品已有词缀共享标签的词缀。"
+      ],
+      "bullets": [
+        "右升华 + 伟大升华 = 一次完美崇高加两条后缀。",
+        "左结晶 + 完美精华 = 安全换前缀。",
+        "同质升华需要理解词缀标签。"
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "风险分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "昂贵预兆被误留激活",
+          "gain": "无",
+          "loss": "在错误货币上浪费预兆",
+          "level": "high",
+          "recommendation": "仅在匹配货币前立刻激活预兆。"
+        },
+        {
+          "scenario": "两个同货币预兆激活",
+          "gain": "无",
+          "loss": "较早的预兆被静默失效",
+          "level": "medium",
+          "recommendation": "每种货币只保留一个控制类预兆。"
+        },
+        {
+          "scenario": "雕刻用于成品装",
+          "gain": "只删最低级词缀",
+          "loss": "仍可能删掉你想要的词缀",
+          "level": "low",
+          "recommendation": "仅当最低级词缀确实不想要时使用。"
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 120,
+      "title": "用、卖还是留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "市场价值随联盟与版本变动。以下为抢先体验 0.5.x 交易联盟讨论的快照，任何交易前必须在游戏内复核。"
+      ],
+      "use": {
+        "condition": "你在收尾高价值制作且需要确定性控制",
+        "first": "激活匹配的左右预兆",
+        "risk": "消耗可交易物品",
+        "text": [
+          "当制作价值明显超过预兆价格时值得。"
+        ]
+      },
+      "sell": {
+        "condition": "你不做制作且预兆有需求",
+        "first": "按当前价挂交易站",
+        "risk": "供给上升时价格下跌",
+        "text": [
+          "高价值预兆（如雕刻）可换其他装备。"
+        ]
+      },
+      "hold": {
+        "condition": "你计划稍后制作或价格在涨",
+        "first": "存入仓库",
+        "risk": "版本改动可能重估预兆价值",
+        "text": [
+          "若联盟规划包含确定性制作则保留。"
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-mistrigger",
+          "kind": "Reddit 问题",
+          "question": "为什么我的昂贵预兆凭空消失了？",
+          "summary": [
+            "有玩家激活预兆后用了别的货币，结果预兆没了。"
+          ],
+          "editorialAnalysis": [
+            "预兆只在匹配操作时被消耗；用不匹配货币不会消耗它。丢失很可能是冲突预兆导致失效，或激活后用错货币。"
+          ],
+          "officialAnswer": [
+            "在精确匹配货币前立刻激活预兆；每种货币只保留一个控制类。"
+          ]
+        },
+        {
+          "sourceId": "forum-prefix-suffix",
+          "kind": "论坛问题",
+          "question": "预兆只阻止删除，还是也控制新增？",
+          "summary": [
+            "玩家混淆结晶/升华预兆是否也限制新增。"
+          ],
+          "editorialAnalysis": [
+            "升华类预兆控制新增（只加前缀/后缀）；结晶/抹除/湮灭类预兆控制删除。"
+          ],
+          "officialAnswer": [
+            "按操作匹配：升华=新增侧，抹除/湮灭/结晶=删除侧。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "预兆未触发",
+          "directAnswer": [
+            "你用的货币不是该预兆监视的那个。"
+          ],
+          "checks": [
+            "重读预兆名；确认确切货币。"
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "打开触发矩阵"
+            }
+          ]
+        },
+        {
+          "symptom": "影响错了侧",
+          "directAnswer": [
+            "你需要右却用了左，或反之。"
+          ],
+          "checks": [
+            "左=前缀，右=后缀；下次使用前换。"
+          ]
+        },
+        {
+          "symptom": "预兆莫名消失",
+          "directAnswer": [
+            "同一货币的冲突预兆在你激活较新那个时让旧的失效。"
+          ],
+          "checks": [
+            "每种货币只保留一个控制类预兆激活。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "essences",
+          "contentType": "item",
+          "title": "精华",
+          "description": "结晶预兆控制完美精华删除哪一侧。",
+          "href": "/zh-cn/items/essences/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal 宝珠",
+          "description": "制作链中其他高风险的货币。",
+          "href": "/zh-cn/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.x",
+          "date": "2026-07-31",
+          "changes": [
+            "预兆仍是背包激活的制作控制器；左/右命名与结晶/升华/抹除/湮灭家族在 0.5.4 未变。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "COMMUNITY",
+          "description": "Mobalytics 预兆制作指南，含完整预兆列表与命名法。",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2补丁说明，涵盖仪式与预兆获取。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2DB 预兆数据。",
+          "url": "https://poe2db.tw/us"
+        }
+      ],
+      "verificationChecklist": [
+        "背包激活显示红色边框已确认。",
+        "左=前缀、右=后缀命名已确认。",
+        "仅匹配操作才消耗已确认。",
+        "市场价值标记为联盟/时间快照。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "essences",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Mobalytics — 预兆制作",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "流放之路2 官方 0.5.4 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — 预兆",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 预兆指南：激活、制作组合与消耗时机",
+    "description": "PoE2 预兆机制：背包激活、左/右命名法、预兆+货币组合、误触发检查与价值评估。"
+  }
+}

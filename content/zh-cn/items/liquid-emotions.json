@@ -1,0 +1,719 @@
+{
+  "id": "liquid-emotions",
+  "slug": "liquid-emotions",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "蒸馏情绪：项链灌注、组合查询与当前限制",
+  "shortTitle": "蒸馏情绪",
+  "summary": "蒸馏情绪（Distilled Emotions / Liquid Emotions）可把一枚著名被动技能直接灌注到你的项链上（或把一条地图词缀灌注到界石上），无需消耗天赋点。本指南讲解当前灌注流程、如何读取组合、重新灌注会发生什么，以及哪些旧攻略已经过时。",
+  "description": "流放之路2蒸馏情绪（Distilled Emotions）的来源关联参考：灌注流程、十种情绪类型、组合查询，以及已过时的「界石灌注」误区。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "anointing",
+    "delirium",
+    "crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "anointing-currency",
+  "itemClass": "currency",
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "抢先体验",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "currency",
+    "anointing",
+    "delirium"
+  ],
+  "heroImage": "/images/items/liquid-emotions-hero.webp",
+  "cardImage": "/images/items/liquid-emotions-hero.webp",
+  "imageAlt": "流放之路2蒸馏情绪货币物品图标——用于给项链与界石灌注著名被动技能的水瓶",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "一句话结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "右键点击一枚蒸馏情绪打开「灌注（Instilling）」窗口，把项链放进顶部槽位、三枚情绪依次放入底部槽位（顺序有讲究），然后点击灌注。你将获得所显示的著名被动，无需消耗天赋点。重新灌注会覆盖旧的附魔。",
+      "calloutDetail": [
+        "在天赋树上按住 Alt 键悬停某枚著名被动，即可看到它精确的三情绪组合。",
+        "旧攻略把「界石灌注」描述成另一套独立旧系统，这已经过时；在当前客户端里，界石与项链使用完全相同的灌注方式。"
+      ],
+      "answers": [
+        {
+          "label": "用来做什么",
+          "text": [
+            "为离你天赋路线很远的著名被动，或为界石固定一条地图词缀。"
+          ]
+        },
+        {
+          "label": "先确认什么",
+          "text": [
+            "不要灌注你已经在天赋树上点亮的著名被动——两者不会叠加。"
+          ]
+        },
+        {
+          "label": "避免什么",
+          "text": [
+            "不要轻信那些展示另一种灌注菜单、或只讲界石单独灌注的旧视频。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#usage",
+          "label": "灌注步骤 →"
+        },
+        {
+          "href": "#patch-history",
+          "label": "发生了什么变化 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "类型",
+          "value": "10 种蒸馏情绪",
+          "note": [
+            "绝望、厌恶、贪婪、暴怒、苦痛、偏执、愧疚、嫉妒、恐惧、孤立。"
+          ]
+        },
+        {
+          "label": "来源",
+          "value": "迷雾（Delirium）内容",
+          "note": [
+            "掉落自迷雾地图、幻象（Simulacrum）以及货币兑换所。"
+          ]
+        },
+        {
+          "label": "目标",
+          "value": "项链与界石",
+          "note": [
+            "项链 = 著名被动；界石 = 地图词缀。"
+          ]
+        },
+        {
+          "label": "顺序",
+          "value": "有讲究（从左到右）",
+          "note": [
+            "组合及其顺序共同决定最终结果。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "十种情绪",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "每一枚蒸馏情绪都对应一组被动，并在界石上对应一个特定的地图效果。你按顺序排列组合的三枚情绪，决定了最终结果。"
+      ],
+      "members": [
+        {
+          "id": "emotion-ire",
+          "eyebrow": "进攻",
+          "title": "蒸馏暴怒",
+          "sub": "魔法怪物 / 属性",
+          "tags": [
+            "ire",
+            "density"
+          ],
+          "body": [
+            "放在界石上时，增加更多魔法怪物。在组合中它偏向进攻/防御类属性（例如高度戒备、招架动作）。"
+          ]
+        },
+        {
+          "id": "emotion-fear",
+          "eyebrow": "暴击",
+          "title": "蒸馏恐惧",
+          "sub": "稀有词缀 / 暴击",
+          "tags": [
+            "fear",
+            "crit"
+          ],
+          "body": [
+            "放在界石上时，稀有怪物获得额外词缀。在组合中它出现在暴击流派（雷充能）。"
+          ]
+        },
+        {
+          "id": "emotion-envy",
+          "eyebrow": "功能",
+          "title": "蒸馏嫉妒",
+          "sub": "磨刀石 / 药剂",
+          "tags": [
+            "envy",
+            "utility"
+          ],
+          "body": [
+            "放在界石上时，提升磨刀石掉落。在组合中它出现在药剂流派（豪饮者）。"
+          ]
+        },
+        {
+          "id": "emotion-greed",
+          "eyebrow": "稀有度",
+          "title": "蒸馏贪婪",
+          "sub": "更高稀有度 / 闪避",
+          "tags": [
+            "greed",
+            "rarity"
+          ],
+          "body": [
+            "放在界石上时，提高掉落更高稀有度物品的概率。在组合中与暴怒搭配用于闪避（高度戒备）。"
+          ]
+        },
+        {
+          "id": "emotion-despair",
+          "eyebrow": "幻象",
+          "title": "蒸馏绝望",
+          "sub": "碑石掉落 / 速度",
+          "tags": [
+            "despair",
+            "tablet"
+          ],
+          "body": [
+            "放在界石上时，提升幻象碎片堆叠上限与先驱碑石（Precursor Tablet）掉落。用于攻速组合（深度入定）。"
+          ]
+        },
+        {
+          "id": "emotion-other",
+          "eyebrow": "其余",
+          "title": "厌恶 / 苦痛 / 偏执 / 愧疚 / 孤立",
+          "sub": "专精效果",
+          "tags": [
+            "misc"
+          ],
+          "body": [
+            "每种都提供自己的地图词缀，并完成特定的著名被动组合。具体组合请查看游戏内 Alt 预览。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 40,
+      "title": "如何获取蒸馏情绪",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "情绪几乎全部来自迷雾内容。"
+      ],
+      "routes": [
+        {
+          "label": "迷雾地图",
+          "body": [
+            "运行带有迷雾词缀的地图；每一份奖励都保证至少掉落一枚蒸馏情绪，且随你在迷雾中停留的时间越久越多。"
+          ]
+        },
+        {
+          "label": "幻象",
+          "body": [
+            "终局波次内容，掉落情绪与幻象碎片。"
+          ]
+        },
+        {
+          "label": "重铸台",
+          "body": [
+            "将三枚相同低阶情绪合成一枚更高阶情绪。"
+          ]
+        },
+        {
+          "label": "货币兑换所 / 交易",
+          "body": [
+            "从其他玩家处购买你需要的特定情绪。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 50,
+      "title": "如何灌注",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "找到著名被动",
+          "body": [
+            "打开天赋树，在著名被动上按住 Alt 查看其所需的三情绪组合及顺序。"
+          ]
+        },
+        {
+          "label": "打开灌注窗口",
+          "body": [
+            "右键点击任意一枚蒸馏情绪，打开「灌注 / 圣杯（Instilling / Decanter）」窗口。"
+          ]
+        },
+        {
+          "label": "放入物品",
+          "body": [
+            "把项链放入顶部槽位，三枚情绪从左到右放入底部槽位。"
+          ]
+        },
+        {
+          "label": "灌注",
+          "body": [
+            "确认显示的被动名称后点击灌注。结果会成为项链上的一条物品内蕴词缀。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "你能灌注什么",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "项链获得著名被动；界石获得地图词缀。在当前客户端上，你不能灌注戒指或其他装备。"
+      ],
+      "columns": [
+        "项链",
+        "界石",
+        "戒指"
+      ],
+      "rows": [
+        {
+          "label": "著名被动",
+          "note": "作为内蕴词缀赋予",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        },
+        {
+          "label": "地图词缀",
+          "note": "界石效果",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不可以"
+            },
+            {
+              "kind": "yes",
+              "text": "可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        },
+        {
+          "label": "已在天赋树上？",
+          "note": "不要重复点",
+          "values": [
+            {
+              "kind": "text",
+              "text": "浪费这次灌注"
+            },
+            {
+              "kind": "text",
+              "text": "不适用"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 70,
+      "title": "使用前检查清单",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "著名被动尚未点亮",
+          "checks": [
+            "确认该著名被动不在你天赋树路线上。"
+          ],
+          "why": "灌注不会与天赋树节点叠加。",
+          "fix": "选一个不在你路线上的著名被动。"
+        },
+        {
+          "label": "正确的组合与顺序",
+          "checks": [
+            "对著名被动按 Alt 预览；三枚情绪从左到右精确匹配。"
+          ],
+          "why": "顺序错误会得到不同（或不想要）的结果。",
+          "fix": "灌注前重新核对预览。"
+        },
+        {
+          "label": "项链是你长期使用的那枚",
+          "checks": [
+            "附魔在重新灌注前是永久的。"
+          ],
+          "why": "重新灌注会覆盖它。",
+          "fix": "用你最好的项链。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "按流派需求看结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "crit",
+        "defense",
+        "flask",
+        "speed"
+      ],
+      "rows": [
+        {
+          "scenario": "暴击元素流派",
+          "audience": "暴击法术 / 攻击",
+          "benefit": "雷充能（恐惧/恐惧/嫉妒）提供暴击元素伤害",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "强力的通用暴击灌注",
+          "tags": [
+            "crit"
+          ]
+        },
+        {
+          "scenario": "闪避 / 生存",
+          "audience": "闪避流派",
+          "benefit": "高度戒备（暴怒/暴怒/贪婪）在满血时提供闪避与眩晕阈值",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "优秀的防御向灌注",
+          "tags": [
+            "defense"
+          ]
+        },
+        {
+          "scenario": "依赖药剂流派",
+          "audience": "药剂使用者",
+          "benefit": "豪饮者（嫉妒/嫉妒/嫉妒）提升药剂效果",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "廉价的同情绪组合",
+          "tags": [
+            "flask"
+          ]
+        },
+        {
+          "scenario": "攻速需求",
+          "audience": "清图速度流派",
+          "benefit": "深度入定（恐惧/暴怒/绝望）提供攻击速度",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "对刷图速度很有用",
+          "tags": [
+            "speed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "各流派灌注什么",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "当一枚著名被动离你的路线很远时，灌注就格外亮眼。把著名被动与你的伤害和防御规划匹配起来。"
+      ],
+      "builds": [
+        {
+          "title": "暴击元素",
+          "description": "雷充能（恐惧/恐惧/嫉妒）在暴击后提供 +暴击元素伤害。"
+        },
+        {
+          "title": "闪避 / 坦度",
+          "description": "高度戒备（暴怒/暴怒/贪婪）在满血时提供闪避与眩晕阈值。"
+        },
+        {
+          "title": "格挡流派",
+          "description": "招架动作（暴怒/恐惧/暴怒）提供格挡几率与移动速度。"
+        },
+        {
+          "title": "药剂 / 续航",
+          "description": "豪饮者（嫉妒/嫉妒/嫉妒）提升药剂效果与生命回复。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 100,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-double-notable",
+          "kind": "Reddit 提问",
+          "question": "我把一个已经在天赋树上点亮的著名被动灌注了——会叠加吗？",
+          "summary": [
+            "有玩家灌注了一个已经分配的著名被动，期望获得双倍数值。"
+          ],
+          "editorialAnalysis": [
+            "灌注是把该著名被动作为物品内蕴词缀赋予；它不会与同一个天赋树节点叠加。这次灌注被浪费了。"
+          ],
+          "officialAnswer": [
+            "只灌注你尚未在天赋树上点亮的著名被动。"
+          ]
+        },
+        {
+          "sourceId": "forum-old-waystone",
+          "kind": "论坛提问",
+          "question": "为什么旧视频里界石灌注的界面不一样？",
+          "summary": [
+            "玩家参照了描述某套独立旧系统的过时攻略。"
+          ],
+          "editorialAnalysis": [
+            "灌注流程在 0.5（符文之奥杜尔）中改动；当前客户端对项链和界石都使用「疯狂圣杯 / 灌注」窗口。"
+          ],
+          "officialAnswer": [
+            "使用游戏内当前的灌注窗口；忽略旧的「只灌注界石」攻略。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 110,
+      "title": "视频与关键节点",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "如何在流放之路2中灌注你的项链",
+          "url": "https://www.youtube.com/watch?v=tbRI-iCF8Gg",
+          "creator": "Friendly Frenzy Games",
+          "description": "使用疯狂圣杯逐步演示项链灌注。",
+          "takeaway": "重点看组合查询与灌注步骤。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "灌注的作用"
+            },
+            {
+              "time": "02:10",
+              "label": "读取组合（Alt 预览）"
+            },
+            {
+              "time": "04:30",
+              "label": "灌注实操"
+            }
+          ]
+        },
+        {
+          "label": "项链灌注 — 流放之路2",
+          "url": "https://www.youtube.com/watch?v=yfMe1I3U5DI",
+          "creator": "NoSweatCs",
+          "description": "对灌注系统与组合的清晰讲解。",
+          "takeaway": "适合作为特定流派著名被动选择的参考。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "灌注基础"
+            },
+            {
+              "time": "03:00",
+              "label": "著名被动组合"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "出现了错误的著名被动",
+          "directAnswer": [
+            "三枚情绪的顺序错了，或者组合本身错了。"
+          ],
+          "checks": [
+            "重新核对 Alt 预览；从左到右精确匹配。"
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "打开灌注步骤"
+            }
+          ]
+        },
+        {
+          "symptom": "灌注没有与天赋树叠加",
+          "directAnswer": [
+            "灌注是物品内蕴词缀，不会与已分配的天赋树节点叠加。"
+          ],
+          "checks": [
+            "只灌注不在你路线上的著名被动。"
+          ]
+        },
+        {
+          "symptom": "旧攻略显示的是不同界面",
+          "directAnswer": [
+            "流程在 0.5 中改动了；请使用当前的灌注窗口。"
+          ],
+          "checks": [
+            "遵循游戏内的疯狂圣杯，而非旧视频。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 130,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "waystones",
+          "contentType": "item",
+          "title": "界石",
+          "description": "界石使用相同的灌注方式以获得地图词缀。",
+          "href": "/zh-cn/items/waystones-guide/"
+        },
+        {
+          "contentId": "tablets",
+          "contentType": "item",
+          "title": "碑石",
+          "description": "蒸馏绝望在界石上提升碑石掉落概率。",
+          "href": "/zh-cn/items/tablets/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 140,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.0（符文之奥杜尔）",
+          "date": "2026-05-29",
+          "changes": [
+            "灌注流程重做：开启迷雾任务链（奇异倒影），抵达枯萎柳处，使用疯狂圣杯为项链与界石灌注。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "蒸馏情绪仍是灌注货币；十情绪体系与疯狂圣杯流程保持为当前版本。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 150,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "GUIDE",
+          "description": "GamesRecon 与 Gamer-Choice 的灌注清单（含情绪组合）。",
+          "url": "https://www.gamesrecon.com/how-to-anoint-in-path-of-exile-poe-2"
+        },
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2 补丁说明，涵盖 0.5 灌注重做。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki 蒸馏情绪 / 灌注数据。",
+          "url": "https://www.poe2wiki.net/wiki/Distilled_Emotion"
+        }
+      ],
+      "verificationChecklist": [
+        "十种情绪类型已确认。",
+        "项链 = 著名被动、界石 = 地图词缀已确认。",
+        "顺序有讲究；Alt 预览显示组合已确认。",
+        "重新灌注会覆盖；不与天赋树节点叠加已确认。",
+        "旧的「界石灌注」攻略已在 0.5 后标记为过时。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "waystones",
+    "tablets"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "GamesRecon — 如何在 PoE2 中灌注",
+      "url": "https://www.gamesrecon.com/how-to-anoint-in-path-of-exile-poe-2",
+      "sourceType": "community"
+    },
+    {
+      "label": "流放之路2 官方 0.5.4 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — 蒸馏情绪",
+      "url": "https://www.poe2wiki.net/wiki/Distilled_Emotion",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 蒸馏情绪：项链灌注、组合查询与当前限制",
+    "description": "PoE2 蒸馏情绪如何运作：灌注流程、十种情绪类型、组合查询、重新灌注行为，以及已过时的「界石灌注」误区。"
+  }
+}

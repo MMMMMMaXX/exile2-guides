@@ -1,0 +1,428 @@
+{
+  "id": "freezing-mark",
+  "slug": "freezing-mark",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Freezing Mark 攻略 — 印记扩散、冰冻积累与猎手标记",
+  "shortTitle": "Freezing Mark 冰印",
+  "summary": "Freezing Mark 是一颗印记（Mark）技能：你对一个敌人施加冰冻印记，被标记的敌人承受更高的冰冻积累，并且在被击杀或受到暴击时把印记扩散到附近敌人。本文讲清印记怎么上、扩散触发条件、和 Sniper's Mark / Overwhelming Mark 等其他印记的区别、为何它天然服务于冰霜射手，以及常见“标记不扩散 / 不冻结”的原因。",
+  "description": "Freezing Mark 深度攻略：印记施加与扩散机制、冰冻积累加成、与其他印记的对比、推荐的暴击 / 增伤辅助、Ice Shot / Herald of Ice 联动、标记不扩散与冻结失败的常见原因、视频时间点与社区真实问题。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "mark",
+    "cold",
+    "ailment",
+    "curse",
+    "single-target",
+    "spread"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑部",
+  "reviewer": "Exile2 Guides 编辑部",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "freezing-mark",
+    "mark",
+    "cold",
+    "ice-shot",
+    "deadeye"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "技能总览：一个标记，一片冻结",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Freezing Mark 是一颗印记技能：你对单体敌人施加一个冰冻印记。被标记的敌人承受更高的冰冻积累（Freeze Buildup），因此更容易被冻住；更关键的是，当这个被标记的敌人被击杀、或受到暴击时，印记会自动扩散到附近的敌人——形成“杀一个、冻一片”的滚雪球。",
+        "它的定位不是直接伤害，而是一个“放大器 + 控场”工具：你用一个低消耗的标记换来成倍的冰冻效率与群体冻结。对于依赖冰冻触发、冰冻碎冰或冰冻控场的流派，它是把单体控制变成群体控制的桥梁。",
+        "这也是它和 Ice Shot / Herald of Ice 这些冰霜体系天然契合的原因：冰霜射手本来就在铺冰与碎冰，Freezing Mark 让关键目标（和它们周围的小怪）更快冻结，进而让碎冰与冰冻触发吃满收益。"
+      ],
+      "bullets": [
+        "本质：单体印记，提升目标冰冻积累，并在击杀 / 暴击时扩散。",
+        "定位：放大器 + 控场，不直接造成伤害。",
+        "机制：杀一个 → 扩散 → 冻一片，滚雪球。",
+        "天然搭档：Ice Shot / Herald of Ice 冰霜体系。"
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "关键属性与获取",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "技能类型",
+          "value": "Active Mark（印记 · 冰冷 · 异常）",
+          "notes": [
+            "归类为 mark、cold、ailment、curse、single-target、spread。"
+          ]
+        },
+        {
+          "label": "武器需求",
+          "value": "无（法术 / 印记类）",
+          "notes": [
+            "通常作为无武器限制的标记技能，可放进任意技能槽。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "value": "未切割技能宝石",
+          "notes": [
+            "通过战役或掉落获得的未切割技能宝石解锁。"
+          ]
+        },
+        {
+          "label": "冰冻积累加成",
+          "value": "被标记目标承受更高 Freeze Buildup",
+          "notes": [
+            "直接降低冻结门槛，让目标更快进入冰冻。"
+          ]
+        },
+        {
+          "label": "扩散触发",
+          "value": "击杀 / 暴击时扩散到附近",
+          "notes": [
+            "这是滚雪球的核心；扩散目标需在被标记目标附近。"
+          ]
+        },
+        {
+          "label": "Quality",
+          "value": "影响积累加成 / 扩散范围",
+          "notes": [
+            "高品质通常放大冰冻积累加成或扩散半径。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mark-mechanic",
+      "order": 30,
+      "title": "机制：印记怎么上、怎么扩散",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "施加：你对一个敌人使用 Freezing Mark，它就带上冰冻印记。印记本身不造成伤害，但让该目标承受的冰冻积累变高——你原本打不太动冻结门槛的怪，标了之后更容易冻。",
+        "扩散条件：当被标记的敌人被击杀、或受到一次暴击时，印记会跳到附近的一个敌人身上。这意味着“先点掉一只标记的 → 它扩散到旁边 → 旁边那只也变成高冰冻积累目标 → 再击杀继续扩散”的连锁。暴击触发扩散让你不必非要击杀也能维持滚雪球，对高血 Boss 阶段尤其有用。",
+        "单一印记限制：通常你同一时间只能让一个敌人“作为主标记”享受最大加成（类似诅咒的唯一条目）。但扩散后的次级目标也会继承冰冻积累加成，所以实际收益覆盖一片。注意不要误以为可以无限叠加多层独立标记。"
+      ],
+      "bullets": [
+        "标记提升目标冰冻积累，更快冻结。",
+        "击杀或暴击触发扩散，跳到附近敌人。",
+        "暴击扩散让你不必击杀也能维持滚雪球（Boss 有用）。",
+        "同一时间通常只有一个主标记，扩散目标继承加成。"
+      ]
+    },
+    {
+      "id": "mark-compare",
+      "order": 40,
+      "title": "对比：Freezing Mark 与其他印记",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "印记",
+        "核心加成",
+        "扩散 / 触发",
+        "典型定位"
+      ],
+      "rows": [
+        [
+          "Freezing Mark",
+          "目标承受更高冰冻积累",
+          "击杀 / 暴击扩散到附近",
+          "冰霜控场，配合碎冰 / 冰冻触发"
+        ],
+        [
+          "Sniper's Mark",
+          "目标承受更高命中 / 暴击相关增益",
+          "通常单体强化",
+          "远程单体爆发，Deadeye 常见"
+        ],
+        [
+          "Overwhelming Mark",
+          "目标承受更高伤害（增伤）",
+          "单体强化",
+          "通用增伤标记，Boss 战常用"
+        ],
+        [
+          "其他元素印记",
+          "对应元素积累 / 异常加成",
+          "按元素机制",
+          "对应元素体系专用"
+        ]
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 50,
+      "title": "推荐辅助宝石",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Critical Damage / 暴击类支持",
+          "priority": "core",
+          "notes": [
+            "暴击是扩散触发条件之一，堆暴击等于更频繁地维持滚雪球。",
+            "与冰霜射手的暴击体系天然叠加。"
+          ]
+        },
+        {
+          "label": "Cold Infusion / 附加冰冷类",
+          "priority": "core",
+          "notes": [
+            "提升冰霜伤害，让标记的冰冻积累更快打满。",
+            "冰系构筑通用核心。"
+          ]
+        },
+        {
+          "label": "Mark Duration / 延长持续类（若适用）",
+          "priority": "situational",
+          "notes": [
+            "若客户端提供延长印记持续的支持，可减少补标记的频繁度。",
+            "需确认当前客户端支持映射到 Mark。"
+          ]
+        },
+        {
+          "label": "Increased AoE / 范围类（作用于扩散）",
+          "priority": "situational",
+          "notes": [
+            "若扩散范围受范围词影响，范围支持能扩大滚雪球覆盖。",
+            "密集怪群清图收益明显。"
+          ]
+        },
+        {
+          "label": "Magnified Area / 放大范围",
+          "priority": "optional",
+          "notes": [
+            "放大标记相关的作用半径，配合 AoE 冰技能。",
+            "对定点 Boss 帮助有限。"
+          ]
+        },
+        {
+          "label": "Spell Echo（若作瞬发印记）",
+          "priority": "optional",
+          "notes": [
+            "若标记是瞬发法术，Spell Echo 可加速补标记节奏。",
+            "注意 Spell Echo 对触发类无效，仅作用于手动施放。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 60,
+      "title": "在 Build 中的定位",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice Shot Deadeye 的控场核心：冰霜射手用 Ice Shot 铺冰与碎冰，Freezing Mark 让关键目标与周围小怪更快冻结，碎冰与冰冻触发的收益被放大。配合 Herald of Ice 的碎冰爆发，形成“标记 → 冻结 → 碎冰清场”的闭环。",
+        "Boss 阶段的暴击扩散：高血 Boss 不能靠“击杀扩散”，但暴击扩散让你持续把标记甩到 Boss 附近刷新的小怪或 Boss 本体相关目标上，维持控场。",
+        "与冰冻触发 / 碎冰流的关系：任何靠 Freeze 触发（如 Cast on Elemental Ailment 的冰冻路线）或靠碎冰清图的流派，都能从 Freezing Mark 更快的冻结里直接获益。"
+      ],
+      "bullets": [
+        "Ice Shot Deadeye：标记 → 冻结 → 碎冰清场闭环。",
+        "Boss 阶段：靠暴击扩散维持控场，不依赖击杀。",
+        "服务于冰冻触发 / 碎冰流，加快冻结即直接增益。"
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 70,
+      "title": "常见错误：不扩散 / 不冻结",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "标记不扩散：你只标了但没击杀也没暴击，扩散不会被触发。直接答案：对标记目标打出暴击、或优先击杀它，印记才会跳到附近。",
+        "不冻结：标记只提升冰冻积累，不等于必冻——如果你的冰伤太低、或目标冰冻免疫，标记也救不了。直接答案：确认你的冰伤足以打满冻结门槛，且目标不免疫冰冻。",
+        "误以为能叠多层独立标记：通常同一时间只有一个主标记。直接答案：把标记留给当前最关键目标，靠扩散覆盖其余，而非试图给每只怪单独标。",
+        "标记中断输出循环：Freezing Mark 是额外动作，乱标会打断你的主攻节奏。直接答案：把标记融入循环（如对精英上标记后再集火），而非无脑连点。"
+      ],
+      "bullets": [
+        "问题：标记不扩散。",
+        "直接答案：对标记目标暴击或击杀，才会扩散。",
+        "问题：标了也不冻结。",
+        "直接答案：标记只加积累，冰伤不足 / 免疫仍不冻。",
+        "问题：想给每只怪单独标。",
+        "直接答案：只有一个主标记，靠扩散覆盖。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 80,
+      "title": "视频演示与时间点",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Isallonda Ice Shot Deadeye 作者",
+          "label": "Ice Shot + Freezing Mark + Herald of Ice 实战",
+          "description": "冰霜 Deadeye 构筑，覆盖 Freezing Mark 的标记与扩散、Ice Shot 铺冰、Herald of Ice 碎冰爆发。",
+          "takeaway": "重点看作者如何在精英 / Boss 上标记并利用暴击扩散维持冻结。",
+          "url": "https://youtu.be/n3VBtaSzWVI",
+          "timestamps": [
+            {
+              "label": "构筑与技能分配",
+              "time": "0:00"
+            },
+            {
+              "label": "Ice Shot 铺冰与 Freezing Mark",
+              "time": "2:30"
+            },
+            {
+              "label": "Herald of Ice 碎冰爆发",
+              "time": "5:00"
+            },
+            {
+              "label": "Boss 标记与扩散演示",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 90,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Freezing Mark 能直接造成伤害吗？",
+          "answer": [
+            "不能。它是印记 / 控场工具，本身不造成伤害。",
+            "它的价值在于提升目标冰冻积累，并在击杀 / 暴击时扩散。"
+          ]
+        },
+        {
+          "question": "扩散到底靠什么触发？",
+          "answer": [
+            "被标记的敌人被击杀、或受到一次暴击时，印记跳到附近敌人。",
+            "暴击触发让你不必击杀也能维持滚雪球，对 Boss 阶段很有用。"
+          ]
+        },
+        {
+          "question": "为什么标了还是不冻结？",
+          "answer": [
+            "标记只提升冰冻积累，不等于必冻；冰伤不足或目标冰冻免疫仍不冻。",
+            "直接答案：确认冰伤打满冻结门槛且目标不免疫。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 100,
+      "title": "更新记录",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "初版发布：覆盖印记施加与扩散、与其他印记对比、暴击 / 冰霜辅助、Ice Shot / Herald of Ice 联动与不扩散常见原因。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 110,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "GGG 官方论坛 Patch Notes 与公告，用于确认印记系统、Freezing Mark 的积累加成与扩散条件是否在本版本调整。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与 Community Wiki 提供技能 id、标签、积累加成与扩散行为。",
+          "url": "https://poe2db.tw/us/Freezing_Mark"
+        },
+        {
+          "label": "攻略与视频",
+          "description": "Mobalytics 的 Ice Shot Deadeye 构筑、Isallonda Ice Shot + Freezing Mark + Herald of Ice 实战视频，用于交叉验证标记节奏与碎冰闭环。",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Reddit、官方论坛与评论区用于发现“标记不扩散、标了不冻结、试图叠多层标记”等真实问题，并经客户端复现后给出直接答案。"
+        }
+      ],
+      "verificationChecklist": [
+        "冰冻积累加成数值与扩散条件以 0.5.4 客户端为准，本文给出方向性结论。",
+        "单一主标记限制与扩散继承需以当前客户端复现为准。",
+        "视频演示来自第三方作者，链接见上方攻略与视频分类。",
+        "机制结论经数据库、独立攻略与社区问题三方交叉核对。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 官方 Patch Notes 论坛帖",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Freezing Mark",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Freezing_Mark"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Isallonda Ice Shot + Freezing Mark 实战视频",
+      "sourceType": "community",
+      "url": "https://youtu.be/n3VBtaSzWVI"
+    }
+  ],
+  "seo": {
+    "title": "Freezing Mark 攻略 — 印记扩散、冰冻积累与猎手标记",
+    "description": "Freezing Mark 印记技能深度攻略：印记施加与扩散机制、冰冻积累加成、与其他印记对比、暴击 / 冰霜辅助、Ice Shot / Herald of Ice 联动、不扩散与不冻结常见原因。",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/freezing-mark.webp",
+  "cardImage": "/images/skills/freezing-mark.webp",
+  "imageAlt": "Freezing Mark 冰冻印记技能图标"
+}

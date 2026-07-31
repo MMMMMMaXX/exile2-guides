@@ -1,0 +1,845 @@
+{
+  "id": "essences",
+  "slug": "essences",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "精华指南：等级、保底词缀与制作风险",
+  "shortTitle": "精华",
+  "summary": "精华是一种定向制作货币，能在装备上保底附加一条特定词缀。本指南讲解等级阶梯、每个精华家族在不同装备部位提供的词缀、完美与腐蚀精华的行为，以及如何配合预兆控制前缀或后缀的删除。",
+  "description": "流放之路2精华的带来源参考：等级阶梯、保底词缀表、完美与腐蚀精华风险、结晶预兆组合、可用目标与制作顺序。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "targeted-crafting",
+    "essence"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "抢先体验",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "currency",
+    "crafting",
+    "essence",
+    "targeted-crafting"
+  ],
+  "heroImage": "/images/items/essences-hero.webp",
+  "cardImage": "/images/items/essences-hero.webp",
+  "imageAlt": "流放之路2精华货币物品图标——一枚发光的水晶球，用于给装备保底附加一条词缀",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "当你想要一条保底词缀而不是随机 roll 时，使用精华。次级、普通、 greater（高等）精华会把普通或魔法物品升级为稀有并附加一条固定词缀；完美精华会删掉稀有物品上一条随机词缀，并替换为更强的保底词缀。",
+      "calloutDetail": [
+        "完美与腐蚀精华可能删掉你想要保留的词缀——这是主要风险。",
+        "激活左/右结晶预兆可以限制完美/腐蚀精华只能删前缀或只能删后缀。"
+      ],
+      "answers": [
+        {
+          "label": "用于",
+          "text": [
+            "定向制作：随机货币很难稳定命中的特定防御、元素或生命词缀。"
+          ]
+        },
+        {
+          "label": "搭配",
+          "text": [
+            "在稀有物品上用完美/腐蚀精华且已有好词缀时，配合左/右结晶预兆。"
+          ]
+        },
+        {
+          "label": "暂缓",
+          "text": [
+            "底材是成品稀有装，且丢失任意现有词缀都会毁掉它。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "精华家族 →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "制作风险 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "等级",
+          "value": "次级 → 普通 → 高等 → 完美",
+          "note": [
+            "对被困住的精华怪物使用 Vaal 宝珠，可将完美升级为腐蚀精华。"
+          ]
+        },
+        {
+          "label": "次级/普通/高等",
+          "value": "普通/魔法 → 稀有 + 1 词缀",
+          "note": [
+            "附加一条保底词缀并把物品提升为稀有。"
+          ]
+        },
+        {
+          "label": "完美",
+          "value": "稀有：删 1 随机词缀，加 1 强词缀",
+          "note": [
+            "除非激活结晶预兆，否则被删词缀是随机的。"
+          ]
+        },
+        {
+          "label": "来源",
+          "value": "地图中的精华怪物",
+          "note": [
+            "水晶囚笼会刷出被困怪物，击杀后掉落水晶上显示的精华。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "精华家族与保底词缀",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "每个精华家族对应一种属性。具体的词缀和其等级取决于家族以及使用部位（武器、护甲或首饰）。下面是最常被用到的家族。"
+      ],
+      "members": [
+        {
+          "id": "essence-body",
+          "eyebrow": "生命",
+          "title": "躯体精华",
+          "sub": "最大生命",
+          "tags": [
+            "defense",
+            "life"
+          ],
+          "body": [
+            "提供大量固定或百分比生命词缀。完美 roll 在胸甲上约为 +8-10% 最大生命，在首饰上为固定生命。"
+          ]
+        },
+        {
+          "id": "essence-abrasion",
+          "eyebrow": "物理",
+          "title": "磨损精华",
+          "sub": "固定物理伤害",
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "body": [
+            "给武器附加固定物理伤害。完美 roll 可附加“获得 X% 伤害作为额外物理伤害”，是强力的攻击制作前缀。"
+          ]
+        },
+        {
+          "id": "essence-elemental",
+          "eyebrow": "元素",
+          "title": "火焰 / 冰霜 / 电力精华",
+          "sub": "元素伤害%",
+          "tags": [
+            "elemental",
+            "attack",
+            "spell"
+          ],
+          "body": [
+            "各自提供对应类型的元素伤害%。低等级给魔法武器附加固定元素伤害；完美给稀有武器附加“获得 X% 伤害作为额外”词缀。"
+          ]
+        },
+        {
+          "id": "essence-resists",
+          "eyebrow": "抗性",
+          "title": "绝缘 / 解冻 /  grounding / 毁灭精华",
+          "sub": "抗性",
+          "tags": [
+            "defense",
+            "resistance"
+          ],
+          "body": [
+            "分别提供冰霜 / 冰霜 / 闪电 / 混沌抗性。完美 roll 可达约 +26-30% 对应抗性，毁灭额外提供“物理伤害视为混沌”。"
+          ]
+        },
+        {
+          "id": "essence-infinite",
+          "eyebrow": "属性",
+          "title": "无限精华",
+          "sub": "属性",
+          "tags": [
+            "attribute",
+            "requirements"
+          ],
+          "body": [
+            "提供增加的力量、敏捷或智慧。当你需要凑齐技能或装备的属性需求而不想绕点天赋树时很有用。"
+          ]
+        },
+        {
+          "id": "essence-command",
+          "eyebrow": "光环",
+          "title": "指挥精华",
+          "sub": "光环强度",
+          "tags": [
+            "aura",
+            "support"
+          ],
+          "body": [
+            "在权杖上提升光环强度。对靠光环增益队友的召唤/辅助流派有意义。"
+          ]
+        },
+        {
+          "id": "essence-battle",
+          "eyebrow": "技能等级",
+          "title": "战斗精华",
+          "sub": "武器技能等级",
+          "tags": [
+            "attack",
+            "skill-levels"
+          ],
+          "body": [
+            "给武器附加技能等级：单手 +4 或双手 +6。对攻击流派前期提升明显。"
+          ]
+        },
+        {
+          "id": "essence-sorcery",
+          "eyebrow": "法术伤害",
+          "title": "秘术精华",
+          "sub": "法术技能等级",
+          "tags": [
+            "spell",
+            "skill-levels"
+          ],
+          "body": [
+            "在法杖/聚魔杖上 +3 全法术技能，在长杖上 +5。是法系制作核心精华。"
+          ]
+        },
+        {
+          "id": "essence-haste",
+          "eyebrow": "攻击速度",
+          "title": "急速精华",
+          "sub": "攻击速度 / 疾驰",
+          "tags": [
+            "attack-speed",
+            "clear"
+          ],
+          "body": [
+            "给武器附加攻击速度；完美可提供击杀触发疾驰的几率，对清图很有用。"
+          ]
+        },
+        {
+          "id": "essence-enhancement",
+          "eyebrow": "防御",
+          "title": "强化精华",
+          "sub": "全局防御",
+          "tags": [
+            "defense",
+            "es"
+          ],
+          "body": [
+            "在项链上提供全局防御，适合堆能量护盾或混合防御流派。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 40,
+      "title": "精华适用的物品",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "适用性取决于等级。次级/普通/高等把普通或魔法物品提升为稀有；完美与腐蚀只作用于已经是稀有的物品。"
+      ],
+      "columns": [
+        "普通物品",
+        "魔法物品",
+        "稀有物品"
+      ],
+      "rows": [
+        {
+          "label": "次级 / 普通 / 高等",
+          "note": "提升稀有并附加一条保底词缀",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可用（普通）"
+            },
+            {
+              "kind": "yes",
+              "text": "可用（魔法）"
+            },
+            {
+              "kind": "no",
+              "text": "不可用 - 已是稀有"
+            }
+          ]
+        },
+        {
+          "label": "完美 / 腐蚀",
+          "note": "删一条词缀，加一条强词缀",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不可用"
+            },
+            {
+              "kind": "no",
+              "text": "不可用"
+            },
+            {
+              "kind": "yes",
+              "text": "可用"
+            }
+          ]
+        },
+        {
+          "label": "已鉴定唯一",
+          "note": "精华不作用于唯一装备",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不可用"
+            },
+            {
+              "kind": "no",
+              "text": "不可用"
+            },
+            {
+              "kind": "no",
+              "text": "不可用"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "如何获取精华",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "精华主要来自地图遭遇，另有少量补充途径。"
+      ],
+      "routes": [
+        {
+          "label": "地图中的精华怪物",
+          "body": [
+            "地图各处出现水晶囚笼。打破水晶放出被困怪物，击杀后掉落水晶上显示的精华。"
+          ]
+        },
+        {
+          "label": "对怪物使用 Vaal 宝珠",
+          "body": [
+            "在释放前对水晶使用 Vaal 宝珠可能：无效果、立即放出怪物、附加额外精华，或提升一个等级（普通→高等→完美→腐蚀）。"
+          ]
+        },
+        {
+          "label": "商人 / 重铸台",
+          "body": [
+            "三个相同类型和等级的精华可合成一个更高等级。重铸配方会随版本变动，请以当前客户端为准。"
+          ]
+        },
+        {
+          "label": "货币兑换 / 交易",
+          "body": [
+            "若你需要比掉落更高等级的精华，可向其他玩家购买。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 60,
+      "title": "用精华制作",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "先选一个已经带有一条理想词缀的普通或魔法底材。次级/普通/高等精华会把它提升为稀有并附加保底词缀，相当于以精华加底材的代价“锁定”一条好词缀。",
+        "对于成品，完美精华会删掉一条随机词缀并附加一条强力保底词缀。因为被删词缀是随机的，应只在“丢失任意单条词缀都可接受”的稀有装上使用完美精华，或配合结晶预兆指定被删的一侧。"
+      ],
+      "bullets": [
+        "左结晶预兆：下一次完美/腐蚀精华只删前缀。",
+        "右结晶预兆：下一次完美/腐蚀精华只删后缀。",
+        "可在背包中同时激活多个预兆，叠加效果。"
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "如何使用精华",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "选底材",
+          "body": [
+            "次级-高等选普通/魔法底材；完美/腐蚀选稀有底材。"
+          ]
+        },
+        {
+          "label": "激活预兆",
+          "body": [
+            "在背包中右键结晶预兆，直到出现红色激活边框。"
+          ]
+        },
+        {
+          "label": "使用精华",
+          "body": [
+            "右键精华，再点目标物品。结果立即生效且不可逆。"
+          ]
+        }
+      ],
+      "compare": {
+        "note": "低等级附加词缀并提升稀有度；完美用一条更强词缀替换一条。",
+        "before": [
+          "稀有胸甲带 +生命 后缀和一条较弱冰抗前缀。"
+        ],
+        "after": [
+          "完美躯体精华删掉弱前缀，新增 +8-10% 最大生命 作为新前缀。"
+        ]
+      }
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前检查清单",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "等级匹配底材",
+          "checks": [
+            "次级-高等对应普通/魔法；完美/腐蚀对应稀有。"
+          ],
+          "why": "等级不对无法使用。",
+          "fix": "先用蜕变/富豪提升，或更换精华。"
+        },
+        {
+          "label": "可承受丢失一条词缀",
+          "checks": [
+            "完美/腐蚀使用时，确认没有不可替换的现有词缀。"
+          ],
+          "why": "会随机删除一条词缀。",
+          "fix": "激活结晶预兆锁定保留的一侧。"
+        },
+        {
+          "label": "预兆已激活",
+          "checks": [
+            "背包中预兆显示红色激活边框。"
+          ],
+          "why": "未激活的预兆不起作用。",
+          "fix": "使用精华前先右键预兆。"
+        },
+        {
+          "label": "成本 vs 底材价值",
+          "checks": [
+            "对比精华成本与底材成败后的价值。"
+          ],
+          "why": "昂贵精华用在廉价底材上浪费货币。",
+          "fix": "高等级精华留给高价值底材。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "不同场景的预期结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "upgrade",
+        "perfect",
+        "corrupted"
+      ],
+      "rows": [
+        {
+          "scenario": "带一条好前缀的魔法武器",
+          "audience": "练级玩家",
+          "benefit": "提升为稀有并保底第二条词缀",
+          "risk": "低 - 底材可扩展",
+          "level": "low",
+          "recommendation": "高等精华的理想首用场景",
+          "tags": [
+            "upgrade"
+          ]
+        },
+        {
+          "scenario": "有一条可丢弱词缀的稀有装",
+          "audience": "终局制作玩家",
+          "benefit": "附加一条强力保底词缀",
+          "risk": "中 - 可能删掉有用词缀",
+          "level": "medium",
+          "recommendation": "配合结晶预兆使用",
+          "tags": [
+            "perfect"
+          ]
+        },
+        {
+          "scenario": "近乎毕业稀有装，所有词缀都想要",
+          "audience": "高投入制作玩家",
+          "benefit": "可能获得顶级词缀",
+          "risk": "高 - 丢失任意词缀都伤",
+          "level": "high",
+          "recommendation": "仅在两个结晶预兆+备用底材齐全时使用",
+          "tags": [
+            "perfect",
+            "corrupted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "没有预兆的成品稀有装用完美",
+          "gain": "一条强力保底词缀",
+          "loss": "一条随机现有词缀被删除",
+          "level": "high",
+          "recommendation": "仅在所有现有词缀都可舍弃时使用，否则用结晶预兆。"
+        },
+        {
+          "scenario": "Vaal 升级出的腐蚀精华",
+          "gain": "顶级独特效果词缀（如恐惧、狂乱）",
+          "loss": "Vaal 步骤可能浪费怪物或毫无收获",
+          "level": "medium",
+          "recommendation": "对能匀出的完美精华值得一试。"
+        },
+        {
+          "scenario": "练级魔法底材用高等",
+          "gain": "可靠的稀有装带固定词缀",
+          "loss": "少量货币成本",
+          "level": "low",
+          "recommendation": "练级期间安全且推荐。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "哪些流派依赖精华",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "当流派早期就需要一条特定高价值词缀时，精华是首选定向制作手段。"
+      ],
+      "builds": [
+        {
+          "title": "法系流派",
+          "description": "秘术精华 +3 法术技能，或强化精华给项链全局防御。"
+        },
+        {
+          "title": "攻击 / 物理流派",
+          "description": "磨损精华（额外物理）或战斗精华（+技能等级）用于武器。"
+        },
+        {
+          "title": "坦克 / HC 流派",
+          "description": "躯体精华最大生命，配合抗性精华补抗。"
+        },
+        {
+          "title": "堆属性流派",
+          "description": "无限精华凑技能/装备需求，不绕点天赋树。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-perfect-deleted",
+          "kind": "Reddit 问题",
+          "question": "为什么完美精华删掉了我最好的词缀？",
+          "summary": [
+            "有玩家在喜欢的稀有装上用了完美精华，结果丢了想保留的词缀。"
+          ],
+          "editorialAnalysis": [
+            "完美会随机删一条词缀，除非结晶预兆限制了被删的一侧。"
+          ],
+          "officialAnswer": [
+            "使用完美精华前激活左或右结晶预兆，选择删前缀或后缀。"
+          ]
+        },
+        {
+          "sourceId": "forum-direct-or-currency",
+          "kind": "论坛问题",
+          "question": "应该直接用精华，还是先用普通货币铺垫？",
+          "summary": [
+            "玩家争论是先用精华，还是先用宝珠把底材做好。"
+          ],
+          "editorialAnalysis": [
+            "对已经带一条好词缀的底材用次级/高等精华提升；其他词缀用普通货币补齐后再做完美替换。"
+          ],
+          "officialAnswer": [
+            "先精华锁定保底词缀，再用其他货币填满剩余词缀。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频与时间点",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "制作完美装备（精华 + 预兆流程）",
+          "url": "https://www.youtube.com/watch?v=9oFGFT-X1OA",
+          "creator": "P4wnyhof",
+          "description": "演示确定性精华制作，以及预兆如何控制结果。",
+          "takeaway": "重点看精华与结晶预兆组合实现安全完美制作的章节。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "精华制作概览"
+            },
+            {
+              "time": "02:30",
+              "label": "用高等精华提升底材"
+            },
+            {
+              "time": "06:10",
+              "label": "完美精华 + 结晶预兆组合"
+            },
+            {
+              "time": "11:45",
+              "label": "终局制作实例"
+            }
+          ]
+        },
+        {
+          "label": "流放之路2精华终极指南",
+          "url": "https://www.youtube.com/watch?v=BxDQaXc0LIw",
+          "creator": "EODGamerz",
+          "description": "完整讲解精华家族、等级以及各自使用时机。",
+          "takeaway": "查哪个精华家族适合你的部位和流派的好参考。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "精华是什么"
+            },
+            {
+              "time": "03:20",
+              "label": "等级阶梯与 Vaal 升级"
+            },
+            {
+              "time": "08:00",
+              "label": "逐家族示例"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "精华无法使用",
+          "directAnswer": [
+            "等级与底材不匹配：次级-高等需要普通/魔法，完美/腐蚀需要稀有。"
+          ],
+          "checks": [
+            "检查物品稀有度与是否已鉴定。"
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "打开适用目标"
+            }
+          ]
+        },
+        {
+          "symptom": "想要的词缀消失了",
+          "directAnswer": [
+            "完美/腐蚀精华删了一条随机词缀；下次用结晶预兆。"
+          ],
+          "checks": [
+            "任何完美替换前保留备用底材。"
+          ]
+        },
+        {
+          "symptom": "同一精华在不同装备上结果不同",
+          "directAnswer": [
+            "保底词缀取决于部位（武器 / 护甲 / 首饰）。"
+          ],
+          "checks": [
+            "悬停精华或查看家族表对应你的部位。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "omens",
+          "contentType": "item",
+          "title": "预兆",
+          "description": "结晶预兆控制完美精华删除前缀还是后缀。",
+          "href": "/zh-cn/items/omens/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal 宝珠",
+          "description": "对被困精华怪物使用，将等级升级至腐蚀精华。",
+          "href": "/zh-cn/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.0",
+          "date": "2026-05-29",
+          "changes": [
+            "精华等级命名调整（多个家族中 Grand 改名为 Normal）；腐蚀精华仍为完美精华经 Vaal 宝珠升级而来。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "精华仍是主要定向制作货币；结晶预兆继续控制完美与腐蚀精华的前缀/后缀删除。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2补丁说明，涵盖精华等级与制作货币。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2DB 精华家族与词缀数据。",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "社区制作指南与关于完美/腐蚀行为的 Reddit 反馈。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": [
+        "等级阶梯确认：次级/普通/高等/完美 + Vaal 升级腐蚀。",
+        "完美在未激活结晶预兆时会删随机词缀。",
+        "按部位变化的保底词缀已在各家族确认。",
+        "精确掉率与商人配方标记为需客户端复核。"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "创建精华指南（第二批物品模板文章）。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "omens",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 官方 0.5.4 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — 精华",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    },
+    {
+      "label": "Mobalytics — 预兆制作（结晶）",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 精华指南：等级、保底词缀与制作风险",
+    "description": "PoE2 精华机制：等级阶梯、按部位保底词缀表、完美与腐蚀风险，以及结晶预兆组合实现安全定向制作。"
+  }
+}

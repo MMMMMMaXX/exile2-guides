@@ -8373,3 +8373,352 @@ a {
     margin-top: 2px;
   }
 }
+
+/* 技能结构化数据表（data-table 章节）：作用域在 .skill-section 内，不影响其他分类。 */
+.skill-data-table-wrap {
+  margin: 14px 0 18px;
+  overflow-x: auto;
+  border: 1px solid var(--eg-line, #2a3340);
+  border-radius: 10px;
+  background: var(--eg-surface-2, #141b24);
+}
+.skill-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--eg-text, #e6edf3);
+}
+.skill-data-table th,
+.skill-data-table td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--eg-line, #2a3340);
+  border-right: 1px solid var(--eg-line, #2a3340);
+}
+.skill-data-table th:last-child,
+.skill-data-table td:last-child {
+  border-right: none;
+}
+.skill-data-table tr:last-child td {
+  border-bottom: none;
+}
+.skill-data-table thead th {
+  background: rgba(104, 220, 255, 0.1);
+  color: var(--eg-cyan, #68dcff);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.skill-data-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+.skill-data-table tbody tr:hover {
+  background: rgba(104, 220, 255, 0.06);
+}
+@media (max-width: 720px) {
+  .skill-data-table {
+    font-size: 13px;
+  }
+  .skill-data-table th,
+  .skill-data-table td {
+    padding: 8px 10px;
+  }
+}
+
+/* ===== 历史 Patch 模块（第二批） ===== */
+
+/* 首屏历史状态横幅：明确标注非当前版本、对照基线与最近核验日期 */
+.patch-historical-banner {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--eg-color-border, #2a2f3a);
+  background: linear-gradient(135deg, rgba(120, 130, 150, 0.12), rgba(120, 130, 150, 0.04));
+  margin-bottom: 24px;
+}
+.patch-historical-banner__badge {
+  flex: none;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #0c0f16;
+  background: #9aa6b8;
+}
+.patch-historical-banner--partially-current .patch-historical-banner__badge {
+  background: var(--eg-color-info, #68dcff);
+}
+.patch-historical-banner--superseded .patch-historical-banner__badge {
+  background: var(--eg-color-danger, #ff6b6b);
+  color: #fff;
+}
+.patch-historical-banner__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.patch-historical-banner__line {
+  margin: 0;
+  font-size: 14px;
+  color: var(--eg-color-text, #e7e9ee);
+}
+.patch-historical-banner__line b {
+  color: var(--eg-color-gold, #e8c873);
+}
+
+/* historical-context */
+.patch-historical-context__era {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--eg-color-gold, #e8c873);
+}
+.patch-historical-context__baseline {
+  font-size: 14px;
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+
+/* current-applicability 状态药丸 */
+.patch-app-status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.patch-app-status--still-current {
+  background: rgba(80, 200, 120, 0.16);
+  color: #6ee79b;
+  border-color: rgba(80, 200, 120, 0.4);
+}
+.patch-app-status--changed-later {
+  background: rgba(232, 200, 115, 0.16);
+  color: #e8c873;
+  border-color: rgba(232, 200, 115, 0.4);
+}
+.patch-app-status--removed {
+  background: rgba(255, 107, 107, 0.16);
+  color: #ff8d8d;
+  border-color: rgba(255, 107, 107, 0.4);
+}
+.patch-app-status--unknown {
+  background: rgba(154, 163, 178, 0.16);
+  color: #b6bdca;
+  border-color: rgba(154, 163, 178, 0.4);
+}
+
+/* then-vs-now */
+.patch-then-now {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.patch-then-now__row {
+  border: 1px solid var(--eg-color-border, #2a2f3a);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.patch-then-now__aspect {
+  margin: 0;
+  padding: 10px 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.03);
+}
+.patch-then-now__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.patch-then-now__then,
+.patch-then-now__now {
+  padding: 12px 14px;
+}
+.patch-then-now__then {
+  border-right: 1px solid var(--eg-color-border, #2a2f3a);
+}
+.patch-then-now__label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--eg-color-text-muted, #9aa3b2);
+  margin-bottom: 6px;
+}
+.patch-then-now__now .patch-then-now__label {
+  color: var(--eg-color-info, #68dcff);
+}
+
+/* superseded-changes */
+.patch-superseded {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.patch-superseded__item {
+  border-left: 3px solid var(--eg-color-danger, #ff6b6b);
+  padding: 8px 14px;
+  background: rgba(255, 107, 107, 0.05);
+}
+.patch-superseded__change {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.patch-superseded__meta {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+.patch-superseded__meta span {
+  color: var(--eg-color-gold, #e8c873);
+  font-weight: 600;
+}
+.patch-superseded__replacement {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* returning-player-checklist */
+.patch-returning {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.patch-returning__item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--eg-color-border, #2a2f3a);
+  border-radius: 10px;
+}
+.patch-returning__priority {
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #0c0f16;
+}
+.patch-returning__item--high .patch-returning__priority {
+  background: var(--eg-color-danger, #ff6b6b);
+  color: #fff;
+}
+.patch-returning__item--medium .patch-returning__priority {
+  background: var(--eg-color-gold, #e8c873);
+}
+.patch-returning__item--low .patch-returning__priority {
+  background: #9aa6b8;
+}
+.patch-returning__item h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+.patch-returning__item p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+
+/* legacy-audit */
+.patch-legacy-audit__table tbody tr[data-patch-qstatus="queued"] {
+  opacity: 0.75;
+}
+
+/* version-dependency-map */
+.patch-version-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.patch-version-map__node {
+  border: 1px solid var(--eg-color-border, #2a2f3a);
+  border-radius: 10px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.patch-version-map__version {
+  margin: 0 0 10px;
+  color: var(--eg-color-gold, #e8c873);
+}
+.patch-version-map__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+}
+.patch-version-map__dl dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+.patch-version-map__dl dd {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* system-origin */
+.patch-system-origin__meta {
+  font-size: 13px;
+  color: var(--eg-color-text-muted, #9aa3b2);
+  font-weight: 600;
+}
+
+/* migration-guide */
+.patch-migration {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.patch-migration__step {
+  border: 1px solid var(--eg-color-border, #2a2f3a);
+  border-radius: 10px;
+  padding: 14px;
+}
+.patch-migration__flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.patch-migration__from {
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+.patch-migration__arrow {
+  color: var(--eg-color-gold, #e8c873);
+}
+.patch-migration__to {
+  color: var(--eg-color-info, #68dcff);
+}
+.patch-migration__step p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--eg-color-text-muted, #9aa3b2);
+}
+
+@media (max-width: 720px) {
+  .patch-then-now__cols {
+    grid-template-columns: 1fr;
+  }
+  .patch-then-now__then {
+    border-right: none;
+    border-bottom: 1px solid var(--eg-color-border, #2a2f3a);
+  }
+  .patch-historical-banner {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

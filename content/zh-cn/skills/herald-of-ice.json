@@ -1,0 +1,427 @@
+{
+  "id": "herald-of-ice",
+  "slug": "herald-of-ice",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Herald of Ice 攻略 — 冰霜光环、碎冰爆炸与 Spirit",
+  "shortTitle": "Herald of Ice 冰 Herald",
+  "summary": "Herald of Ice 是一颗光环（Herald）技能：它为你提供额外的冰冷伤害加成，并且当被冰冻的敌人死亡（碎裂）时，会引发一场冰霜爆炸，对附近敌人造成冰冷伤害。本文讲清它如何抢 Spirit、碎冰爆炸的触发条件、与 Ice Shot / Freezing Mark 的闭环、和 Herald of Thunder / Ash 的区别，以及为什么它是冰霜射手的清图核心。",
+  "description": "Herald of Ice 深度攻略：光环加成与碎冰爆炸机制、Spirit 占用、与其他 Herald 的对比、推荐的持续 / 范围 / 冰霜辅助、Ice Shot Deadeye 定位、碎冰不触发与 Spirit 超预算的常见原因、视频时间点与社区真实问题。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "spirit",
+  "skillTags": [
+    "herald",
+    "aura",
+    "cold",
+    "shatter",
+    "aoe",
+    "spirit"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑部",
+  "reviewer": "Exile2 Guides 编辑部",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "herald-of-ice",
+    "herald",
+    "cold",
+    "ice-shot",
+    "deadeye"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "技能总览：光环加成 + 碎冰连锁",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Herald of Ice 是一颗 Herald（传令 / 光环）技能：开启后它为你提供一层额外的冰冷伤害加成（让你的攻击与法术附带更多冰伤），并且最关键的是——当一只被冰冻的敌人死亡（碎裂 / shatter）时，会触发一场冰霜爆炸，对附近的敌人造成冰冷伤害。它是“buff + 击杀连锁”的双重工具。",
+        "它的清图逻辑非常优雅：你用冰系技能把怪冻住，冻住的怪一死就碎，碎裂又引发冰霜爆炸把周围也冻 / 伤一片——形成“冻 → 死 → 碎 → 炸 → 再冻”的滚雪球。这正是它成为冰霜射手清图核心的原因。",
+        "代价是 Spirit：Herald 类技能需要预留 Spirit（与 Persistent Buff / 其他 Herald / 触发宝石争夺预算）。在 Spirit 紧张的构筑里，开不开 Herald of Ice 往往是“清图效率”和“其他核心光环”之间的取舍。"
+      ],
+      "bullets": [
+        "本质：光环加成（额外冰伤）+ 碎冰爆炸（击杀连锁）。",
+        "清图逻辑：冻 → 死 → 碎 → 炸 → 再冻，滚雪球。",
+        "代价：占用 Spirit，与其他 Herald / 触发宝石争夺预算。",
+        "常见搭档：Ice Shot / Freezing Mark 冰霜体系。"
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "关键属性与获取",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "技能类型",
+          "value": "Herald（光环 · 冰冷 · 碎裂）",
+          "notes": [
+            "归类为 herald、aura、cold、shatter、aoe、spirit。"
+          ]
+        },
+        {
+          "label": "武器需求",
+          "value": "无（光环类）",
+          "notes": [
+            "作为光环技能，通常不受武器限制，可放进任意技能槽。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "value": "未切割 Herald 宝石",
+          "notes": [
+            "通过战役或掉落获得的未切割 Herald 宝石解锁。"
+          ]
+        },
+        {
+          "label": "Spirit 占用",
+          "value": "较高（预留预算）",
+          "notes": [
+            "与其他 Persistent Buff / Herald / 触发宝石争夺 Spirit。"
+          ]
+        },
+        {
+          "label": "碎冰爆炸触发",
+          "value": "被冰冻敌人死亡时",
+          "notes": [
+            "只有“被冰冻”的敌人死亡才触发；普通死亡不触发。"
+          ]
+        },
+        {
+          "label": "Quality",
+          "value": "影响冰伤加成 / 爆炸范围",
+          "notes": [
+            "高品质通常放大冰伤加成或碎冰爆炸的范围 / 伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shatter-mechanic",
+      "order": 30,
+      "title": "机制：碎冰爆炸怎么触发",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "触发条件：碎冰爆炸只在“被冰冻的敌人死亡”时发生。也就是说，你必须先把目标冻住，再把它打死，碎裂才会引发冰霜爆炸。如果你没冻住就打死，普通死亡不会触发 Herald of Ice 的爆炸——这是新手最常踩的点。",
+        "爆炸效果：碎裂引发的冰霜爆炸对附近敌人造成冰冷伤害，并且这个爆炸本身也能把周围敌人冻住 / 推进冰冻积累，于是旁边的怪被炸后更容易冻、冻了再死又炸，形成连锁。密集怪群里这一下能直接清场。",
+        "加成部分：Herald of Ice 还给你的攻击 / 法术附加冰冷伤害，所以即使不依赖碎冰，常驻开着也能提升你的冰系输出。它是一层“被动冰伤 + 主动碎冰连锁”的组合。"
+      ],
+      "bullets": [
+        "碎冰爆炸只在“被冰冻的敌人死亡”时触发，普通死亡不触发。",
+        "爆炸对附近造成冰伤，并能冻 / 推进周围，形成连锁。",
+        "常驻还附加冰伤，是被动冰伤 + 主动碎冰的组合。"
+      ]
+    },
+    {
+      "id": "herald-compare",
+      "order": 40,
+      "title": "对比：Herald of Ice 与其他 Herald",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Herald",
+        "附加伤害",
+        "击杀 / 触发效果",
+        "典型定位"
+      ],
+      "rows": [
+        [
+          "Herald of Ice",
+          "冰冷伤害",
+          "被冰冻敌人死亡 → 冰霜爆炸",
+          "冰霜清图核心，碎冰连锁"
+        ],
+        [
+          "Herald of Thunder",
+          "闪电伤害",
+          "被感电敌人死亡 → 落雷",
+          "闪电清图，感电连锁"
+        ],
+        [
+          "Herald of Ash",
+          "火焰伤害",
+          "被点燃敌人死亡 → 火焰爆发",
+          "火焰体系，点燃连锁"
+        ],
+        [
+          "其他 Herald",
+          "对应元素伤害",
+          "按元素触发",
+          "对应元素体系专用"
+        ]
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 50,
+      "title": "推荐辅助宝石",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Cold Infusion / 附加冰冷类",
+          "priority": "core",
+          "notes": [
+            "放大 Herald 提供的冰伤加成与碎冰爆炸的冰伤。",
+            "冰系构筑核心。"
+          ]
+        },
+        {
+          "label": "Magnified Area / 放大范围",
+          "priority": "core",
+          "notes": [
+            "扩大碎冰爆炸半径，让连锁覆盖更多敌人，清图质变。",
+            "很多冰霜流把它当作 Herald 的必备支持。"
+          ]
+        },
+        {
+          "label": "Increased Duration（若作用于光环）",
+          "priority": "situational",
+          "notes": [
+            "若客户端允许延长光环 / 效果持续，可减少重开频率。",
+            "需确认当前客户端映射到 Herald。"
+          ]
+        },
+        {
+          "label": "Spell Cascade / 法术瀑布",
+          "priority": "optional",
+          "notes": [
+            "若碎冰爆炸视为法术效果，瀑布可扩大其作用。",
+            "具体收益以客户端为准。"
+          ]
+        },
+        {
+          "label": "Energy Retention / Spirit 相关（若适用）",
+          "priority": "optional",
+          "notes": [
+            "若客户端提供降低 Spirit 占用的支持，可缓解预算压力。",
+            "Spirit 紧张的构筑尤其关注。"
+          ]
+        },
+        {
+          "label": "Elemental Focus / 元素类",
+          "priority": "optional",
+          "notes": [
+            "放大冰伤，但会放弃元素异常状态，需确认你不在乎冰冻之外的异常。",
+            "若碎冰连锁依赖冰冻状态，慎用 Elemental Focus。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 60,
+      "title": "在 Build 中的定位",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice Shot Deadeye 的清图引擎：冰霜射手用 Ice Shot 铺冰与冻结，Herald of Ice 把“冻住的怪一死就炸”变成常态，配合 Freezing Mark 更快冻结关键目标——形成“标记 → 冻 → 死 → 碎 → 炸”的闭环清场。",
+        "与冰冻触发 / 碎冰流的关系：任何靠 Freeze 触发或靠碎冰清图的流派，都能从 Herald of Ice 的常态碎冰爆炸里直接获益。它是把“单体冰冻”放大成“群体冰爆”的杠杆。",
+        "Spirit 预算取舍：在 Spirit 紧张的构筑里，开 Herald of Ice 可能挤掉其他核心光环或触发宝石。此时要算清“碎冰清图收益”是否大于被挤掉的光环价值，必要时用降低 Spirit 的支持或换装解决。"
+      ],
+      "bullets": [
+        "Ice Shot Deadeye：Herald 作碎冰清图引擎，闭环清场。",
+        "服务于冰冻触发 / 碎冰流，放大群体冰爆。",
+        "Spirit 紧张时，权衡碎冰收益与被挤掉的光环。"
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 70,
+      "title": "常见错误：碎冰不触发 / Spirit 超预算",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "碎冰不触发：你打死的是没被冰冻的怪（普通死亡），自然不触发爆炸。直接答案：先冻住再击杀；用 Ice Shot / Freezing Mark 保证目标进入冰冻后再补刀。",
+        "爆炸没覆盖：碎冰爆炸有半径，怪太散就吃不饱。直接答案：用 Magnified Area 扩大半径，或把怪引到一起再清。",
+        "Spirit 超预算：开了 Herald of Ice 又开别的 Herald / 触发宝石，Spirit 爆了导致技能无法启用。直接答案：重新分配 Spirit，优先保留核心光环，或用降低 Spirit 的支持。",
+        "以为爆炸能冻 Boss：Boss 通常不被“碎裂”机制清掉，碎冰爆炸对单体 Boss 收益有限。直接答案：Herald of Ice 强在清图，Boss 单体别指望它。"
+      ],
+      "bullets": [
+        "问题：碎冰不触发。",
+        "直接答案：先冻住再击杀，普通死亡不触发。",
+        "问题：爆炸没覆盖。",
+        "直接答案：放大范围或聚怪再清。",
+        "问题：Spirit 超预算。",
+        "直接答案：重分配 Spirit，优先核心光环。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 80,
+      "title": "视频演示与时间点",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Isallonda Ice Shot Deadeye 作者",
+          "label": "Ice Shot + Freezing Mark + Herald of Ice 实战",
+          "description": "冰霜 Deadeye 构筑，覆盖 Herald of Ice 的常驻冰伤与碎冰爆炸、Ice Shot 铺冰、Freezing Mark 标记。",
+          "takeaway": "重点看作者如何用碎冰爆炸在密集怪群里连锁清场。",
+          "url": "https://youtu.be/n3VBtaSzWVI",
+          "timestamps": [
+            {
+              "label": "构筑与技能分配",
+              "time": "0:00"
+            },
+            {
+              "label": "Herald of Ice 常驻与碎冰",
+              "time": "3:00"
+            },
+            {
+              "label": "Ice Shot 铺冰与 Freezing Mark",
+              "time": "5:00"
+            },
+            {
+              "label": "密集怪群连锁清场",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 90,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "为什么我打死怪没有冰霜爆炸？",
+          "answer": [
+            "碎冰爆炸只在“被冰冻的敌人死亡”时触发；普通死亡不触发。",
+            "直接答案：先冻住再击杀，用 Ice Shot / Freezing Mark 保证冰冻。"
+          ]
+        },
+        {
+          "question": "Herald of Ice 占用很多 Spirit 吗？",
+          "answer": [
+            "较高。它与其他 Herald / Persistent Buff / 触发宝石争夺 Spirit 预算。",
+            "Spirit 紧张时需权衡，或借助降低 Spirit 占用的支持。"
+          ]
+        },
+        {
+          "question": "它对 Boss 有用吗？",
+          "answer": [
+            "有限。Boss 通常不被碎裂机制清掉，碎冰爆炸对单体 Boss 收益低。",
+            "Herald of Ice 的真正强项在密集怪群清图。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 100,
+      "title": "更新记录",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "初版发布：覆盖光环加成与碎冰爆炸机制、与其他 Herald 对比、冰霜 / 范围辅助、Ice Shot Deadeye 定位与碎冰不触发常见原因。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 110,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "GGG 官方论坛 Patch Notes 与公告，用于确认 Herald 系统、Herald of Ice 的碎冰触发条件与 Spirit 占用是否在本版本调整。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与 Community Wiki 提供技能 id、标签、冰伤加成、碎冰爆炸与 Spirit 数值。",
+          "url": "https://poe2db.tw/us/Herald_of_Ice"
+        },
+        {
+          "label": "攻略与视频",
+          "description": "Mobalytics 的 Ice Shot Deadeye 构筑、Isallonda Ice Shot + Freezing Mark + Herald of Ice 实战视频，用于交叉验证碎冰连锁与清图节奏。",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Reddit、官方论坛与评论区用于发现“碎冰不触发、Spirit 超预算、误以为炸 Boss”等真实问题，并经客户端复现后给出直接答案。"
+        }
+      ],
+      "verificationChecklist": [
+        "Spirit 占用与碎冰爆炸数值以 0.5.4 客户端为准，本文给出方向性结论。",
+        "碎冰爆炸仅在被冰冻敌人死亡时触发需以当前客户端复现为准。",
+        "视频演示来自第三方作者，链接见上方攻略与视频分类。",
+        "机制结论经数据库、独立攻略与社区问题三方交叉核对。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 官方 Patch Notes 论坛帖",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Herald of Ice",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Herald_of_Ice"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Isallonda Ice Shot + Herald of Ice 实战视频",
+      "sourceType": "community",
+      "url": "https://youtu.be/n3VBtaSzWVI"
+    }
+  ],
+  "seo": {
+    "title": "Herald of Ice 攻略 — 冰霜光环、碎冰爆炸与 Spirit",
+    "description": "Herald of Ice 光环技能深度攻略：光环加成与碎冰爆炸机制、Spirit 占用、与其他 Herald 对比、冰霜 / 范围辅助、Ice Shot Deadeye 定位、碎冰不触发与 Spirit 超预算常见原因。",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/herald-of-ice.webp",
+  "cardImage": "/images/skills/herald-of-ice.webp",
+  "imageAlt": "Herald of Ice 冰霜光环技能图标"
+}

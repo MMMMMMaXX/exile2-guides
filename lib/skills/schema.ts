@@ -111,6 +111,14 @@ const skillSourcesSectionSchema = z.strictObject({
   verificationChecklist: sourceVerificationChecklistSchema,
 });
 
+/** 结构化数据表：支持家族对比、Debuff 矩阵、能量规则、连锁优先级等需表格呈现的章节。 */
+const skillDataTableSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("data-table"),
+  columns: z.array(requiredText).min(1),
+  rows: z.array(z.array(requiredText)).default([]),
+});
+
 export const skillSectionSchema = z.discriminatedUnion("type", [
   skillNarrativeSectionSchema,
   skillSupportsSectionSchema,
@@ -119,6 +127,7 @@ export const skillSectionSchema = z.discriminatedUnion("type", [
   skillVideoSectionSchema,
   skillChangelogSectionSchema,
   skillSourcesSectionSchema,
+  skillDataTableSectionSchema,
 ]);
 
 // --- SkillArticle 顶层结构 ---

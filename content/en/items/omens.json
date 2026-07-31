@@ -1,0 +1,745 @@
+{
+  "id": "omens",
+  "slug": "omens",
+  "locale": "en",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Omens Guide: Activation, Crafting Combos and When They Are Consumed",
+  "shortTitle": "Omens",
+  "summary": "Omens are inventory items that change how the next matching currency works. This guide covers how to activate them, which Omen pairs with which currency, how to avoid mis-triggering an expensive Omen, and the non-crafting Omens used for survival and league mechanics.",
+  "description": "A source-linked reference for Omens in Path of Exile 2: activation rules, the Sinistral/Dextral naming scheme, Omen + currency combos, mis-trigger checks, and valuation.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "omen",
+    "targeted-crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "currency",
+    "omen",
+    "crafting"
+  ],
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "Omen currency item icon from Path of Exile 2 - a blue ritual totem that modifies the next matching currency use",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick answer",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Activate an Omen in your inventory (right-click until it shows a red border). It then changes the very next matching currency action. It is consumed only when that action actually happens - if the condition is never met, the Omen stays.",
+      "calloutDetail": [
+        "Sinistral affects Prefixes, Dextral affects Suffixes; the rest of the name tells you which currency.",
+        "Only one non-crafting (survival/league) Omen can be active at a time."
+      ],
+      "answers": [
+        {
+          "label": "New to crafting",
+          "text": [
+            "Start with Omen of Sinistral/Dextral Exaltation and an Omen of Crystallisation."
+          ]
+        },
+        {
+          "label": "High investment",
+          "text": [
+            "Add Omen of Greater Exaltation, Homogenising Exaltation and Whittling for deterministic crafts."
+          ]
+        },
+        {
+          "label": "Avoid",
+          "text": [
+            "Leaving an expensive Omen active when you run a different currency by mistake."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#effect",
+          "label": "How Omens work →"
+        },
+        {
+          "href": "#pre-use-checklist",
+          "label": "Mis-trigger checklist →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick facts",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Where",
+          "value": "Active in your inventory",
+          "note": [
+            "Right-click to toggle the red active border."
+          ]
+        },
+        {
+          "label": "Trigger",
+          "value": "Next matching currency use",
+          "note": [
+            "Only consumed when the condition is met."
+          ]
+        },
+        {
+          "label": "Naming",
+          "value": "Sinistral = Prefix, Dextral = Suffix",
+          "note": [
+            "'of Exaltation' etc. names the currency."
+          ]
+        },
+        {
+          "label": "Source",
+          "value": "Primarily Ritual",
+          "note": [
+            "Also Abyss Omens and the Currency Exchange."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Omen families",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Omens split into crafting control Omens and non-crafting (survival / league) Omens. Within crafting Omens, the Sinistral/Dextral prefix tells you which modifier side is affected."
+      ],
+      "members": [
+        {
+          "id": "omen-exaltation",
+          "eyebrow": "Exalted Orb",
+          "title": "Sinistral / Dextral / Greater Exaltation",
+          "sub": "Prefix / Suffix / two mods",
+          "tags": [
+            "crafting",
+            "exalt"
+          ],
+          "body": [
+            "Sinistral adds only Prefix modifiers, Dextral only Suffix modifiers. Greater Exaltation adds two random modifiers, and stacks with a Sinistral/Dextral Omen to add two of the chosen side."
+          ]
+        },
+        {
+          "id": "omen-annulment",
+          "eyebrow": "Orb of Annulment",
+          "title": "Sinistral / Dextral Annulment",
+          "sub": "Remove Prefix / Suffix",
+          "tags": [
+            "crafting",
+            "annul"
+          ],
+          "body": [
+            "Limits which side the Orb of Annulment can strip a modifier from."
+          ]
+        },
+        {
+          "id": "omen-erasure",
+          "eyebrow": "Chaos Orb",
+          "title": "Sinistral / Dextral Erasure",
+          "sub": "Chaos rerolls one side",
+          "tags": [
+            "crafting",
+            "chaos"
+          ],
+          "body": [
+            "Forces a Chaos Orb to reroll only the Prefix or only the Suffix block."
+          ]
+        },
+        {
+          "id": "omen-crystallisation",
+          "eyebrow": "Perfect / Corrupted Essence",
+          "title": "Sinistral / Dextral Crystallisation",
+          "sub": "Essence removes one side",
+          "tags": [
+            "crafting",
+            "essence"
+          ],
+          "body": [
+            "Your next Perfect or Corrupted Essence removes only Prefix or only Suffix modifiers - the safe way to use essences."
+          ]
+        },
+        {
+          "id": "omen-homogenising",
+          "eyebrow": "Exalted / Regal",
+          "title": "Homogenising Exaltation / Coronation",
+          "sub": "Same-tag modifiers",
+          "tags": [
+            "crafting",
+            "advanced"
+          ],
+          "body": [
+            "The next Exalted/Regal Orb can only add a modifier that shares a Tag with an existing modifier on the item."
+          ]
+        },
+        {
+          "id": "omen-whittling",
+          "eyebrow": "Chaos Orb",
+          "title": "Whittling",
+          "sub": "Remove lowest-tier mod",
+          "tags": [
+            "crafting",
+            "value"
+          ],
+          "body": [
+            "Your next Chaos Orb removes the lowest-tier modifier instead of a random one. High-value on trade leagues."
+          ]
+        },
+        {
+          "id": "omen-catalysing",
+          "eyebrow": "Exalted Orb",
+          "title": "Catalysing Exaltation",
+          "sub": "Spend Catalyst Quality",
+          "tags": [
+            "crafting",
+            "jewellery"
+          ],
+          "body": [
+            "The next Exalted Orb consumes all Catalyst Quality to bias toward that modifier type. See the Catalysts guide."
+          ]
+        },
+        {
+          "id": "omen-survival",
+          "eyebrow": "Non-crafting",
+          "title": "Amelioration / Refreshment / Resurgence",
+          "sub": "Survival",
+          "tags": [
+            "defense",
+            "survival"
+          ],
+          "body": [
+            "Reduce XP loss on death, refill flask/charm charges at Low Life, or restore Life/Mana/ES at Low Life. Only one non-crafting Omen active at a time."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "How an Omen changes a currency",
+      "toc": true,
+      "visible": true,
+      "type": "effect",
+      "paragraphs": [
+        "An Omen does not change the item directly. It rewrites the rules of the next currency that matches its condition. For example, with Omen of Dextral Exaltation active, your next Exalted Orb adds only Suffix modifiers instead of a random modifier.",
+        "Several Omens can be active at once and their effects stack, as long as they are compatible. Incompatible Omens (such as two that both want to be the 'next Exalted' controller) will deactivate the earlier one when you activate the later."
+      ],
+      "bullets": [
+        "Active Omens show a red border in the inventory.",
+        "An Omen is spent only when its matching action occurs.",
+        "If you never perform the matching action, the Omen is not consumed and stays in your inventory."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 50,
+      "title": "What triggers an Omen",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Each Omen names the exact currency and modifier side it watches for. It does nothing for any other action."
+      ],
+      "columns": [
+        "Exalted Orb",
+        "Orb of Annulment",
+        "Perfect / Corrupted Essence"
+      ],
+      "rows": [
+        {
+          "label": "Omen of Sinistral Exaltation",
+          "note": "Adds only Prefix modifiers",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Yes"
+            },
+            {
+              "kind": "no",
+              "text": "No"
+            },
+            {
+              "kind": "no",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Annulment",
+          "note": "Removes only Prefix modifiers",
+          "values": [
+            {
+              "kind": "no",
+              "text": "No"
+            },
+            {
+              "kind": "yes",
+              "text": "Yes"
+            },
+            {
+              "kind": "no",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Crystallisation",
+          "note": "Essence removes only Prefix modifiers",
+          "values": [
+            {
+              "kind": "no",
+              "text": "No"
+            },
+            {
+              "kind": "no",
+              "text": "No"
+            },
+            {
+              "kind": "yes",
+              "text": "Yes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 60,
+      "title": "How to get Omens",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Omens are an endgame crafting resource obtained mainly from one mechanic, with a couple of extra routes."
+      ],
+      "routes": [
+        {
+          "label": "Ritual altars",
+          "body": [
+            "The primary source. Spend Tribute at a Ritual Altar for a chance at Omens; some are extremely valuable."
+          ]
+        },
+        {
+          "label": "Abyss mechanic",
+          "body": [
+            "Abyss Omens drop from the Abyss content and follow the same activation rules."
+          ]
+        },
+        {
+          "label": "Currency Exchange",
+          "body": [
+            "In trade leagues you can exchange currency for many common Omens directly."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "How to use an Omen",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Choose the Omen",
+          "body": [
+            "Pick the Omen that matches the currency and side you want to control."
+          ]
+        },
+        {
+          "label": "Activate it",
+          "body": [
+            "Right-click in your inventory until the red border appears."
+          ]
+        },
+        {
+          "label": "Use the currency",
+          "body": [
+            "Perform the matching currency action; the Omen is consumed and its rule applies."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Pre-use checklist",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "Omen matches the currency",
+          "checks": [
+            "Confirm the Omen names the exact currency you are about to use."
+          ],
+          "why": "A mismatched Omen will not trigger and you waste the currency.",
+          "fix": "Re-read the Omen name before the currency."
+        },
+        {
+          "label": "Side is intended",
+          "checks": [
+            "Sinistral = Prefix, Dextral = Suffix; confirm which you need."
+          ],
+          "why": "Wrong side wastes an expensive Omen.",
+          "fix": "Swap to the correct Sinistral/Dextral Omen."
+        },
+        {
+          "label": "No incompatible Omen active",
+          "checks": [
+            "Check no earlier Omen of the same currency is already active."
+          ],
+          "why": "An incompatible Omen deactivates the earlier one.",
+          "fix": "Activate the right one last."
+        },
+        {
+          "label": "Item is ready",
+          "checks": [
+            "The target item has the modifiers you expect before the currency."
+          ],
+          "why": "The Omen changes one action irreversibly.",
+          "fix": "Finish other prep first."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Outcomes by Omen + currency",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "exalt",
+        "annul",
+        "essence"
+      ],
+      "rows": [
+        {
+          "scenario": "Dextral Exaltation on a 1-suffix Rare",
+          "audience": "Targeted crafters",
+          "benefit": "Fills the Suffix block safely",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Great default for finishing a Rare",
+          "tags": [
+            "exalt"
+          ]
+        },
+        {
+          "scenario": "Sinistral Crystallisation + Perfect Essence",
+          "audience": "Essence crafters",
+          "benefit": "Keeps Suffix mods, swaps a Prefix",
+          "risk": "Medium",
+          "level": "medium",
+          "recommendation": "The safe way to Perfect-craft",
+          "tags": [
+            "essence"
+          ]
+        },
+        {
+          "scenario": "Sinistral Annulment on a 1-prefix Rare",
+          "audience": "Fixers",
+          "benefit": "Removes only the bad Prefix",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Cleaner than a plain Annulment",
+          "tags": [
+            "annul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 100,
+      "title": "Crafting combos that work",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "The most common deterministic combo is Omen of Dextral Exaltation plus Omen of Greater Exaltation: the next Perfect Exalted Orb adds two Suffix modifiers at a minimum tier. Stacking a Sinistral and Dextral Omen with a Greater Omen lets you fully control both sides.",
+        "For essences, pair Omen of Sinistral or Dextral Crystallisation with a Perfect/Corrupted essence so you only ever lose the side you do not care about. Homogenising Exaltation is an advanced option: it restricts the next Exalted/Regal to modifiers sharing a Tag with what is already on the item."
+      ],
+      "bullets": [
+        "Dextral Exaltation + Greater Exaltation = two Suffix mods from one Perfect Exalted.",
+        "Sinistral Crystallisation + Perfect Essence = safe Prefix swap.",
+        "Homogenising Exaltation needs a good understanding of modifier Tags."
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "Risk analysis",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Expensive Omen left active by mistake",
+          "gain": "None",
+          "loss": "Wasted Omen on the wrong currency",
+          "level": "high",
+          "recommendation": "Activate the Omen only right before the matching currency."
+        },
+        {
+          "scenario": "Two same-currency Omens active",
+          "gain": "None",
+          "loss": "Earlier Omen silently deactivated",
+          "level": "medium",
+          "recommendation": "Keep only one controller Omen per currency active."
+        },
+        {
+          "scenario": "Whittling on a finished item",
+          "gain": "Removes only the lowest-tier mod",
+          "loss": "Still removes a mod you might want",
+          "level": "low",
+          "recommendation": "Use only when the lowest mod is unwanted."
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 120,
+      "title": "Use, sell or hold",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Market values shift by league and patch. The figures below are a snapshot from Early Access 0.5.x trade league chatter and must be re-checked in-game before any trade."
+      ],
+      "use": {
+        "condition": "You are finishing a high-value craft and need deterministic control",
+        "first": "Activate the matching Sinistral/Dextral Omen",
+        "risk": "Consumes a tradeable item",
+        "text": [
+          "Worth it when the craft's value clearly exceeds the Omen's price."
+        ]
+      },
+      "sell": {
+        "condition": "You do not craft and the Omen is in demand",
+        "first": "List on the trade site at the current rate",
+        "risk": "Prices fall as supply rises",
+        "text": [
+          "Valuable Omens (e.g. Whittling) can fund other gear."
+        ]
+      },
+      "hold": {
+        "condition": "You expect to craft later or prices are rising",
+        "first": "Keep in stash",
+        "risk": "Patch changes can revalue Omens",
+        "text": [
+          "Hold if your league plan includes deterministic crafting."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Community evidence",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-mistrigger",
+          "kind": "Reddit question",
+          "question": "Why did my expensive Omen vanish without doing anything?",
+          "summary": [
+            "A player activated an Omen, then used a different currency and lost it."
+          ],
+          "editorialAnalysis": [
+            "An Omen is consumed only by its matching action; using a non-matching currency does not spend it. The loss was likely an incompatible Omen deactivating, or using the wrong currency after activation."
+          ],
+          "officialAnswer": [
+            "Activate the Omen immediately before the exact matching currency; keep only one controller per currency."
+          ]
+        },
+        {
+          "sourceId": "forum-prefix-suffix",
+          "kind": "Forum question",
+          "question": "Does the Omen only stop deletion, or also control what gets added?",
+          "summary": [
+            "Players confused whether Crystallisation/Exaltation Omens also gate additions."
+          ],
+          "editorialAnalysis": [
+            "Exaltation Omens control what is added (Prefix/Suffix only). Crystallisation/Annulment/Erasure Omens control what is removed."
+          ],
+          "officialAnswer": [
+            "Match the Omen to the action: Exaltation = addition side, Annulment/Erasure/Crystallisation = removal side."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problems and direct answers",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Omen did not trigger",
+          "directAnswer": [
+            "The currency you used was not the one the Omen watches for."
+          ],
+          "checks": [
+            "Re-read the Omen name; confirm the exact currency."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "Open trigger matrix"
+            }
+          ]
+        },
+        {
+          "symptom": "Wrong side was affected",
+          "directAnswer": [
+            "You used a Sinistral when you needed Dextral, or vice versa."
+          ],
+          "checks": [
+            "Sinistral = Prefix, Dextral = Suffix; swap before the next use."
+          ]
+        },
+        {
+          "symptom": "Omen disappeared unexpectedly",
+          "directAnswer": [
+            "An incompatible Omen of the same currency deactivated it when you activated the newer one."
+          ],
+          "checks": [
+            "Keep a single controller Omen per currency active."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Connected content",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "essences",
+          "contentType": "item",
+          "title": "Essences",
+          "description": "Crystallisation Omens control which side a Perfect essence removes.",
+          "href": "/en/items/essences/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "Other high-stakes currency used in crafting chains.",
+          "href": "/en/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Patch history",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.x",
+          "date": "2026-07-31",
+          "changes": [
+            "Omens remain inventory-activated crafting controllers; Sinistral/Dextral naming and the Crystallisation/Exaltation/Annulment/Erasure families are unchanged in 0.5.4."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "COMMUNITY",
+          "description": "Mobalytics Omen crafting guide with the full Omen list and naming scheme.",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 patch notes covering Ritual and Omen acquisition.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2DB Omen data.",
+          "url": "https://poe2db.tw/us"
+        }
+      ],
+      "verificationChecklist": [
+        "Inventory activation with red border confirmed.",
+        "Sinistral = Prefix, Dextral = Suffix naming confirmed.",
+        "Consumed only on matching action confirmed.",
+        "Market values flagged as league/time snapshots."
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "essences",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Mobalytics — Omen Crafting",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Omens",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Omens Guide: Activation, Crafting Combos and Consumption",
+    "description": "How PoE2 Omens work: inventory activation, the Sinistral/Dextral naming scheme, Omen + currency combos, mis-trigger checks, and valuation."
+  }
+}

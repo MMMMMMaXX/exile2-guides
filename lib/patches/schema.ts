@@ -282,6 +282,151 @@ const patchFollowupSectionSchema = z.strictObject({
     .min(1),
 });
 
+// --- 历史 Patch 专属章节（第二批：当前适用性 / 演变 / 回归玩家） ---
+
+/** 历史背景：说明该版本所处的时代与当前对照基线。 */
+const patchHistoricalContextSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("historical-context"),
+  era: requiredText,
+  baselineNote: requiredText,
+  paragraphs: paragraphList,
+  bullets: paragraphList,
+});
+
+/** 当前适用性看板：逐项记录某个机制在 0.5.4e 是否仍有效。 */
+const patchCurrentApplicabilitySectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("current-applicability"),
+  rows: z
+    .array(
+      z.strictObject({
+        topic: requiredText,
+        status: z.enum([
+          "still-current",
+          "changed-later",
+          "removed",
+          "unknown",
+        ]),
+        currentSummary: requiredText,
+        supersededBy: requiredText,
+        affectedContent: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** Then vs Now 对照矩阵：同一机制在旧版本与当前版本的差异。 */
+const patchThenVsNowSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("then-vs-now"),
+  rows: z
+    .array(
+      z.strictObject({
+        aspect: requiredText,
+        thenText: requiredText,
+        nowText: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 被取代的变更：列出旧规则、取代它的 Patch 与替代方案。 */
+const patchSupersededChangesSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("superseded-changes"),
+  items: z
+    .array(
+      z.strictObject({
+        change: requiredText,
+        byPatch: requiredText,
+        replacement: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 回归玩家清单：从旧版本跳到当前版本必须重新学习的内容。 */
+const patchReturningPlayerChecklistSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("returning-player-checklist"),
+  items: z
+    .array(
+      z.strictObject({
+        priority: z.enum(["high", "medium", "low"]),
+        label: requiredText,
+        detail: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 站内旧内容审计：哪些现有页面需要按当前规则修订。 */
+const patchLegacyContentAuditSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("legacy-content-audit"),
+  rows: z
+    .array(
+      z.strictObject({
+        contentId: requiredText,
+        kind: z.enum([
+          "boss",
+          "build",
+          "item",
+          "skill",
+          "guide",
+          "patch",
+          "other",
+        ]),
+        issue: requiredText,
+        action: requiredText,
+        status: z.enum(["ready", "reviewing", "queued"]),
+      }),
+    )
+    .min(1),
+});
+
+/** 版本依赖图：每个版本引入、依赖与破坏的内容。 */
+const patchVersionDependencyMapSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("version-dependency-map"),
+  nodes: z
+    .array(
+      z.strictObject({
+        version: requiredText,
+        dependsOn: requiredText,
+        introduces: requiredText,
+        breaks: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 系统来源：某个系统最初从哪个版本加入，原始来源 sourceId。 */
+const patchSystemOriginSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("system-origin"),
+  introducedIn: requiredText,
+  sourceId: requiredText,
+  paragraphs: paragraphList,
+  bullets: paragraphList,
+});
+
+/** 迁移指南：旧配置如何迁移到当前版本。 */
+const patchMigrationGuideSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("migration-guide"),
+  steps: z
+    .array(
+      z.strictObject({
+        from: requiredText,
+        to: requiredText,
+        note: requiredText,
+      }),
+    )
+    .min(1),
+});
+
 export const patchSectionSchema = z.discriminatedUnion("type", [
   patchNarrativeSectionSchema,
   patchStepsSectionSchema,
@@ -300,6 +445,15 @@ export const patchSectionSchema = z.discriminatedUnion("type", [
   patchTechnicalEnvironmentSectionSchema,
   patchKnownIssuesSectionSchema,
   patchFollowupSectionSchema,
+  patchHistoricalContextSectionSchema,
+  patchCurrentApplicabilitySectionSchema,
+  patchThenVsNowSectionSchema,
+  patchSupersededChangesSectionSchema,
+  patchReturningPlayerChecklistSectionSchema,
+  patchLegacyContentAuditSectionSchema,
+  patchVersionDependencyMapSectionSchema,
+  patchSystemOriginSectionSchema,
+  patchMigrationGuideSectionSchema,
 ]);
 
 // --- PatchArticle 顶层结构 ---
@@ -326,6 +480,35 @@ const patchArticleBaseSchema = z.strictObject({
   patchStatus: z.enum(patchStatuses),
   verificationStatus: z.enum(verificationStatuses).optional(),
   verifiedClientVersion: requiredText.optional(),
+
+  // 历史 Patch 字段（第二批）：标明旧版本状态与当前适用性
+  historicalStatus: z
+    .enum(["historical", "partially-current", "superseded"])
+    .nullable()
+    .default(null),
+  currentBaseline: requiredText.optional(),
+  currentApplicability: z
+    .array(
+      z.strictObject({
+        topicId: requiredText,
+        status: z.enum([
+          "still-current",
+          "changed-later",
+          "removed",
+          "unknown",
+        ]),
+        currentSummary: z.array(requiredText).default([]),
+        supersededByPatchIds: z.array(requiredText).default([]),
+        affectedContentIds: z.array(requiredText).default([]),
+        sourceIds: z.array(requiredText).default([]),
+      }),
+    )
+    .default([]),
+  supersededByPatchIds: z.array(requiredText).default([]),
+  returningPlayerPriority: z
+    .enum(["high", "medium", "low"])
+    .nullable()
+    .default(null),
 
   author: requiredText,
   reviewer: z.string().trim().default(""),

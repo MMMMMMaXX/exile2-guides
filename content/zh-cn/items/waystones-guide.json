@@ -1,0 +1,655 @@
+{
+  "id": "waystones",
+  "slug": "waystones-guide",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "界石指南：等级、词缀、维持与失败地图",
+  "shortTitle": "界石",
+  "summary": "界石是开启流放之路2终局星图（Atlas）的单次消耗钥匙。本指南讲解等级推进、词缀如何影响难度与掉落、为什么高稀有度不等于能维持（sustain），以及地图失败时会损失什么。",
+  "description": "流放之路2界石的带来源参考：等级与区域对应、词缀价值/危险矩阵、维持策略、失败地图损失，以及 T15/T16 顶点规则。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "endgame",
+    "atlas",
+    "waystone"
+  ],
+  "itemCategory": "waystones",
+  "subcategoryId": "atlas-progression",
+  "itemClass": "map-item",
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "抢先体验",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "waystones",
+    "atlas",
+    "endgame"
+  ],
+  "heroImage": "/images/items/waystones-hero.webp",
+  "cardImage": "/images/items/waystones-hero.webp",
+  "imageAlt": "流放之路2终局地图物品图标——代表界石进阶顶点的 T16 地图，用于开启星图地图",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "界石被消耗以开启一张星图地图，每个界石只有一次机会。1-16 级提升怪物等级与难度；词缀增加收益（前缀）与代价（后缀），后缀同时提升界石掉落几率。",
+      "calloutDetail": [
+        "维持（sustain）来自掉落几率后缀、星图天赋与不死亡——而非仅稀有度。",
+        "失败的（未完成）地图同样消耗界石，以及其上镶嵌的徽印。"
+      ],
+      "answers": [
+        {
+          "label": "升级",
+          "text": [
+            "跑你能完成的地图；在重铸台用 3 个同级界石合成高一级。"
+          ]
+        },
+        {
+          "label": "维持",
+          "text": [
+            "优先选加界石掉落几率的后缀，并把星图点投资到数量上。"
+          ]
+        },
+        {
+          "label": "避免",
+          "text": [
+            "在地图中死亡（丢失界石），以及把你的流派扛不住的词缀堆太狠。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "界石属性 →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "失败地图风险 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "等级",
+          "value": "1 到 16",
+          "note": [
+            "每级提升怪物等级与地图难度。"
+          ]
+        },
+        {
+          "label": "使用",
+          "value": "每界石一次机会",
+          "note": [
+            "放入地图装置；无论是否完成都被消耗。"
+          ]
+        },
+        {
+          "label": "词缀",
+          "value": "前缀 + 后缀",
+          "note": [
+            "后缀增加代价，但提升界石掉落几率。"
+          ]
+        },
+        {
+          "label": "T16",
+          "value": "Vaal 腐蚀 T15",
+          "note": [
+            "无法重铸；T15 经 Vaal 腐蚀可升 T16。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "界石是什么",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "界石是开启星图地图节点的消耗品，是终局推进的骨干：清理地图可获得星图天赋点并解锁更高等级。"
+      ],
+      "members": [
+        {
+          "id": "waystone-basic",
+          "eyebrow": "推进",
+          "title": "标准界石",
+          "sub": "开启地图节点",
+          "tags": [
+            "atlas",
+            "progress"
+          ],
+          "body": [
+            "普通 / 魔法 / 稀有界石开启对应等级的地图。稀有度越高，词缀越多。"
+          ]
+        },
+        {
+          "id": "waystone-tower",
+          "eyebrow": "特殊",
+          "title": "高塔界石",
+          "sub": "揭示 + 徽印掉落",
+          "tags": [
+            "tower",
+            "tablet"
+          ],
+          "body": [
+            "完成高塔会揭示周围星图，并保证掉落一枚先驱徽印。"
+          ]
+        },
+        {
+          "id": "waystone-corrupted",
+          "eyebrow": "顶点",
+          "title": "腐蚀 / T16 界石",
+          "sub": "顶级",
+          "tags": [
+            "pinnacle",
+            "t16"
+          ],
+          "body": [
+            "T16 由 Vaal 腐蚀 T15 界石获得；要塞（Citadel）需要 T15。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "界石属性",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "等级",
+          "value": "1 - 16",
+          "notes": [
+            "决定怪物等级与地图难度。T5 界石把怪物提升到约 70 级。"
+          ]
+        },
+        {
+          "label": "机会",
+          "value": "每界石一次",
+          "notes": [
+            "无论通关还是失败，界石都被消耗。"
+          ]
+        },
+        {
+          "label": "前缀",
+          "value": "收益",
+          "notes": [
+            "更多怪物、金币、稀有度、包裹量。通常为正面。"
+          ]
+        },
+        {
+          "label": "后缀",
+          "value": "代价 + 掉落几率",
+          "notes": [
+            "诅咒或额外怪物伤害，但每条都增加界石掉落几率。"
+          ]
+        },
+        {
+          "label": "界石掉落几率",
+          "value": "0% - 700%",
+          "notes": [
+            "驱动维持的核心属性；由后缀、稀有度与星图天赋提升。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "如何获取界石",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "界石从多处进入你的库存，目标是让库存不枯竭。"
+      ],
+      "routes": [
+        {
+          "label": "地图 Boss 与稀有怪",
+          "body": [
+            "主要维持来源。Boss 几乎必掉界石；稀有怪与地图完成额外补充。"
+          ]
+        },
+        {
+          "label": "Doryani / 战役奖励",
+          "body": [
+            "战役结束后获得一枚免费界石，清理等级可获得天赋书。"
+          ]
+        },
+        {
+          "label": "重铸台",
+          "body": [
+            "3 个同级同稀有度界石合成一个高一级（T15→T16 不行）。"
+          ]
+        },
+        {
+          "label": "Vaal 宝珠（T15）",
+          "body": [
+            "腐蚀 T15 界石有几率得 T16；不可预测但是唯一通往 T16 的路。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 60,
+      "title": "如何使用界石",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "选地图节点",
+          "body": [
+            "选一个你能用对应等级通关的节点。"
+          ]
+        },
+        {
+          "label": "镶嵌界石",
+          "body": [
+            "放入该节点的地图装置槽。"
+          ]
+        },
+        {
+          "label": "穿越",
+          "body": [
+            "开启传送门并进入地图；进入即消耗。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 70,
+      "title": "改造界石",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "界石像普通物品一样接受标准货币。蜕变/增幅宝珠加词缀；加冕/崇高提升稀有度并加更多词缀；崇高/混沌宝珠进一步扩充词缀池。",
+        "蒸馏情绪（Distilled Emotions）也可通过灌注窗口施加（最多三个），每个增加一条地图词缀，如更多魔法/稀有怪物。注意旧攻略声称界石不能接受情绪——在当前客户端该说法已过时。"
+      ],
+      "bullets": [
+        "词缀越多→可镶嵌徽印越多（0-2 词缀：1 槽，3-5：2，6+：3）。",
+        "腐蚀裂隙（Corrupted Nexus）需要至少 4 条词缀的界石。",
+        "权衡收益与每条后缀带来的代价。"
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前检查清单",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "你能通关",
+          "checks": [
+            "你的流派能扛住该等级与界石后缀。"
+          ],
+          "why": "死亡会无奖励消耗界石。",
+          "fix": "降到更低等级或去掉危险词缀。"
+        },
+        {
+          "label": "词缀适配流派",
+          "checks": [
+            "没有对你的流派是硬克制的效果（如敌人再生、大额元素伤害）。"
+          ],
+          "why": "错误词缀导致可避免的死亡。",
+          "fix": "该节点用更朴素的界石。"
+        },
+        {
+          "label": "T15/T16 规则",
+          "checks": [
+            "要塞需 T15；腐蚀裂隙需 ≥4 词缀。"
+          ],
+          "why": "等级不对会卡任务进度。",
+          "fix": "尝试前备好对应界石。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "不同投入的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "sustain",
+        "pinnacle",
+        "risk"
+      ],
+      "rows": [
+        {
+          "scenario": "低等级，能轻松通关",
+          "audience": "终局前期",
+          "benefit": "稳定星图点与基础维持",
+          "risk": "收益低",
+          "level": "low",
+          "recommendation": "刷以搭建等级阶梯",
+          "tags": [
+            "sustain"
+          ]
+        },
+        {
+          "scenario": "T15 带 ≥4 词缀做腐蚀裂隙",
+          "audience": "任务玩家",
+          "benefit": "净化地图与裂变宝珠",
+          "risk": "地图更难",
+          "level": "medium",
+          "recommendation": "投资你能扛住的后缀",
+          "tags": [
+            "pinnacle"
+          ]
+        },
+        {
+          "scenario": "T16 要塞尝试",
+          "audience": "顶点追求者",
+          "benefit": "独特碎片奖励",
+          "risk": "只有一次机会",
+          "level": "high",
+          "recommendation": "仅在流派已验证强力时",
+          "tags": [
+            "pinnacle",
+            "risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "地图中死亡",
+          "gain": "无",
+          "loss": "界石与镶嵌的徽印被消耗，无完成奖励",
+          "level": "high",
+          "recommendation": "不要过度堆词缀；只跑能扛住的。"
+        },
+        {
+          "scenario": "高稀有度但无掉落几率后缀",
+          "gain": "更多词缀",
+          "loss": "维持差，库存缩水",
+          "level": "medium",
+          "recommendation": "优先选加界石掉落几率的后缀。"
+        },
+        {
+          "scenario": "在 T16 前过度投入 T15",
+          "gain": "要塞入口",
+          "loss": "若清不掉则浪费",
+          "level": "medium",
+          "recommendation": "先确认清图速度。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-no-sustain",
+          "kind": "Reddit 问题",
+          "question": "为什么我等级很高界石还是一直枯竭？",
+          "summary": [
+            "有玩家用稀有界石但库存仍缩水。"
+          ],
+          "editorialAnalysis": [
+            "仅靠稀有度无法维持；只有掉落几率后缀、星图天赋与不死亡才能维持库存。"
+          ],
+          "officialAnswer": [
+            "加带界石掉落几率的后缀，并把星图数量节点投资上去。"
+          ]
+        },
+        {
+          "sourceId": "forum-failed-map",
+          "kind": "论坛问题",
+          "question": "地图失败会丢失界石吗？",
+          "summary": [
+            "玩家不确定失败地图的代价。"
+          ],
+          "editorialAnalysis": [
+            "界石在进入时即被消耗；未完成的地图没有完成奖励，并丢失镶嵌的徽印。"
+          ],
+          "officialAnswer": [
+            "把每个界石当作单次机会；只跑能完成的。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 120,
+      "title": "视频与时间点",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "如何完全解锁你的星图（0.5 星图指南）",
+          "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w",
+          "creator": "Fubgun",
+          "description": "完整星图推进讲解，含界石等级与维持。",
+          "takeaway": "看等级推进与维持章节了解界石循环。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "星图基础"
+            },
+            {
+              "time": "04:15",
+              "label": "界石等级与词缀"
+            },
+            {
+              "time": "09:30",
+              "label": "维持策略"
+            },
+            {
+              "time": "15:00",
+              "label": "T15 / T16 顶点"
+            }
+          ]
+        },
+        {
+          "label": "终局新手指南：地图与界石",
+          "url": "https://www.youtube.com/watch?v=9I5Us5fRJUU",
+          "creator": "ImSidVicious",
+          "description": "入门级讲解地图、界石与失败地图。",
+          "takeaway": "若你刚接触星图并想了解失败规则，很适合。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "界石是什么"
+            },
+            {
+              "time": "03:40",
+              "label": "地图为何失败"
+            },
+            {
+              "time": "07:10",
+              "label": "首批维持技巧"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "界石库存缩水",
+          "directAnswer": [
+            "你没拿到足够掉落几率后缀，和/或死亡太频繁。"
+          ],
+          "checks": [
+            "加界石掉落几率后缀，并检查星图天赋。"
+          ],
+          "links": [
+            {
+              "href": "#risk-analysis",
+              "label": "打开维持风险"
+            }
+          ]
+        },
+        {
+          "symptom": "无法重铸到 T16",
+          "directAnswer": [
+            "T16 无法重铸；用 Vaal 宝珠腐蚀 T15 才有几率得 T16。"
+          ],
+          "checks": [
+            "对 T15 用 Vaal 宝珠，而非重铸台。"
+          ]
+        },
+        {
+          "symptom": "腐蚀裂隙打不开",
+          "directAnswer": [
+            "界石需要至少 4 条词缀才能开启腐蚀裂隙。"
+          ],
+          "checks": [
+            "用货币加词缀直到达到 4 条以上。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 140,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "tablets",
+          "contentType": "item",
+          "title": "徽印",
+          "description": "先驱徽印与界石一起镶嵌，强化周围地图。",
+          "href": "/zh-cn/items/tablets/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 150,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.1",
+          "date": "2026-06-10",
+          "changes": [
+            "徽印从高塔改为与界石一起镶嵌；界石词缀数现在决定徽印槽位。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "界石 1-16 级、掉落几率维持，以及 T16 经 Vaal 腐蚀 T15 仍是当前终局推进方式。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2补丁说明，涵盖星图、界石与徽印。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki / IGN 界石页，含等级与词缀细节。",
+          "url": "https://www.poe2wiki.net/wiki/Waystone"
+        },
+        {
+          "label": "GUIDE",
+          "description": "PC Gamer 与 Poe-Vault 星图/界石维持指南。",
+          "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping"
+        }
+      ],
+      "verificationChecklist": [
+        "等级 1-16 与单次消耗已确认。",
+        "前缀=收益、后缀=代价+掉落几率已确认。",
+        "T16 仅能通过 Vaal 腐蚀 T15 获得已确认。",
+        "界石用蒸馏情绪灌注标记为需客户端复核（旧攻略有出入）。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "tablets"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 官方 0.5.4 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — 界石",
+      "url": "https://www.poe2wiki.net/wiki/Waystone",
+      "sourceType": "tool"
+    },
+    {
+      "label": "PC Gamer — 星图界石地图",
+      "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 界石指南：等级、词缀、维持与失败地图",
+    "description": "PoE2 界石机制：等级推进、词缀价值/危险矩阵、维持策略、失败地图损失，以及 T15/T16 顶点规则。"
+  }
+}

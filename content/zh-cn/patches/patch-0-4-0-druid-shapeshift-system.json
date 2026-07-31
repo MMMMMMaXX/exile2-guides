@@ -1,0 +1,421 @@
+{
+  "id": "patch-0-4-0-druid-shapeshift-system",
+  "slug": "patch-0-4-0-druid-shapeshift-system",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路 2 0.4.0 德鲁伊与变形系统：图腾、原始技能，以及旧 Build 为何失效",
+  "shortTitle": "0.4.0 德鲁伊 / 变形",
+  "summary": "德鲁伊、神谕与萨满如何在 0.4.0 加入游戏，为何图腾是变形武器，以及为何 0.4.0 之前的德鲁伊 Build 会在技能 ID、武器与被动上同时失效。",
+  "description": "0.4.0 德鲁伊与变形框架的系统级历史：动物形态、原始技能、血脉辅助、图腾武器规则、0.4.0i 暴击条件修复，以及旧德鲁伊配置的迁移指南。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "瓦尔命运",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "流放之路 2 火熊变形德鲁伊",
+  "tags": [
+    "0-4-0"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速摘要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0-4-0",
+        "id-build"
+      ],
+      "bullets": [
+        "0-4-0i",
+        "0-4-0-build"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "系统来源",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.4.0",
+      "sourceId": "official-0-4-0",
+      "paragraphs": [],
+      "bullets": []
+    },
+    {
+      "id": "historical-context",
+      "order": 3,
+      "title": "历史背景",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路 2 抢先体验 — 0.4.0 德鲁伊框架",
+      "baselineNote": "下面的当前规则以客户端 0.5.4e 为对照。",
+      "paragraphs": [
+        "0-4-0-build",
+        "bug-0-4-0i"
+      ],
+      "bullets": [
+        "0-4-0",
+        "0-4-0i"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 4,
+      "title": "职业与升华地图",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "德鲁伊（基础职业）",
+          "verdict": "仍适用",
+          "detail": "在 0.5.4e 中是可选职业；变形身份完整保留。"
+        },
+        {
+          "area": "神谕（升华）",
+          "verdict": "仍适用",
+          "detail": "偏护盾/预言的德鲁伊升华；节点簇身份未变。"
+        },
+        {
+          "area": "萨满（升华）",
+          "verdict": "仍适用",
+          "detail": "偏元素/召唤的德鲁伊升华。"
+        },
+        {
+          "area": "被动树节点",
+          "verdict": "新增 250+，仍适用",
+          "detail": "存在德鲁伊专属簇；旧的“无德鲁伊节点”攻略是错的。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-rel",
+      "order": 5,
+      "title": "武器与技能关系",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.4.0 之前假设",
+      "oldText": "“德鲁伊”会像任何施法者一样使用法杖或权杖，并镶嵌通用辅助。",
+      "newLabel": "0.4.0 规则（0.5.4e 仍适用）",
+      "newText": "变形需要图腾武器；原始技能在无激活或最近激活的形态时休眠；血脉辅助只适配原始技能。"
+    },
+    {
+      "id": "passive-impact",
+      "order": 6,
+      "title": "被动树影响",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "250+ 德鲁伊被动技能",
+          "detail": "为变形持续、原始技能效果与形态暴击新增的簇。0.4.0 前的被动规划器没有这些节点。",
+          "scope": "官方 0.4.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "被动上的形态把关",
+          "detail": "部分德鲁伊被动仅在变形时提供加成，旧树无法表示这种状态。",
+          "scope": "官方 0.4.0 说明"
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "order": 7,
+      "title": "值得关注的 0.4.x 修复",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "0.4.0i “最近变形过”暴击",
+          "detail": "暴击条件现在在离开形态后可靠触发，修复了熊/树精暴击 Build。",
+          "scope": "官方 0.4.0i 说明"
+        },
+        {
+          "category": "fix",
+          "title": "0.4.0i 图腾需求校验",
+          "detail": "客户端现在在启用形态词缀前正确校验图腾武器需求。",
+          "scope": "官方 0.4.0i 说明"
+        },
+        {
+          "category": "fix",
+          "title": "主机端崩溃修复",
+          "detail": "0.4.0i 解决了形态切换时 Xbox/PS5 上的若干客户端崩溃。",
+          "scope": "官方 0.4.0i 说明"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 8,
+      "title": "Build 迁移指南",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "旧“德鲁伊”布局使用法杖 + 通用辅助",
+          "to": "图腾武器 + 原始技能 + 血脉辅助",
+          "note": "先换武器基础；原始技能没有图腾就会休眠。"
+        },
+        {
+          "from": "从其他施法者复制来的辅助",
+          "to": "原始技能只用血脉辅助",
+          "note": "血脉辅助不能镶嵌进非原始技能；非原始链接保留通用辅助。"
+        },
+        {
+          "from": "没有德鲁伊簇的被动树",
+          "to": "加入 0.4.0 德鲁伊簇（形态持续、原始效果）",
+          "note": "0.4.0 前的规划器完全缺少这些节点。"
+        },
+        {
+          "from": "忽略形态状态的暴击堆叠",
+          "to": "考虑“最近变形过”条件（0.4.0i 修复）",
+          "note": "0.4.0i 后该条件在形态后可靠触发。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "当前适用性（0.5.4e）",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "图腾武器需求",
+          "status": "still-current",
+          "currentSummary": "变形在 0.5.4e 仍需图腾；0.4.0i 的需求校验修复仍然生效。",
+          "supersededBy": "—",
+          "affectedContent": "图腾物品页"
+        },
+        {
+          "topic": "原始技能形态把关",
+          "status": "still-current",
+          "currentSummary": "原始技能在 0.5.4e 仍受形态把关。",
+          "supersededBy": "—",
+          "affectedContent": "原始技能页"
+        },
+        {
+          "topic": "血脉辅助限制",
+          "status": "still-current",
+          "currentSummary": "血脉辅助在 0.5.4e 仍只可镶嵌进原始技能。",
+          "supersededBy": "—",
+          "affectedContent": "辅助宝石页"
+        },
+        {
+          "topic": "变形暴击条件",
+          "status": "changed-later",
+          "currentSummary": "0.4.0i 已修复；后来的平衡可能调整了暴击数值，但条件本身正常工作。",
+          "supersededBy": "0.4.0i、0.5.x 平衡",
+          "affectedContent": "熊萨满德鲁伊 Build"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 10,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "论坛（0.4.0–0.4.0i）",
+          "context": "熊形态 Build 报告离开形态后暴击不触发。",
+          "quote": "我解除熊形态后暴击条件从不触发。",
+          "analysis": "已在 0.4.0i 修复。在 0.5.4e 上条件正常工作，因此旧抱怨不再适用。"
+        },
+        {
+          "source": "Reddit（0.4.0 之前的“德鲁伊”视频）",
+          "context": "标题为“德鲁伊 Build”的早期视频描述的是尚不存在的职业。",
+          "quote": "整个攻略针对的是一个还不在游戏里的职业。",
+          "analysis": "当时正确；现在已过时。请只使用 0.4.0 之后的德鲁伊内容。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "受影响的 Build 与技能",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "熊萨满德鲁伊 Build",
+          "type": "build",
+          "trigger": "德鲁伊 + 图腾 + 变形",
+          "action": "核对图腾规则与 0.4.0i 暴击修复。",
+          "status": "reviewing"
+        },
+        {
+          "name": "火熊基塔瓦铁匠",
+          "type": "build",
+          "trigger": "德鲁伊变形",
+          "action": "确认原始技能链接。",
+          "status": "ready"
+        },
+        {
+          "name": "原始技能页",
+          "type": "skill",
+          "trigger": "形态把关",
+          "action": "显式记录形态需求。",
+          "status": "queued"
+        },
+        {
+          "name": "图腾物品页",
+          "type": "item",
+          "trigger": "武器需求",
+          "action": "写明变形前提。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "历史视频",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 德鲁伊变形深度解析",
+          "url": "https://www.youtube.com/watch?v=2c2ILpVhRxE",
+          "takeaway": "首发周德鲁伊展示；图腾/原始规则大体仍正确，但暴击表现反映的是 0.4.0i 之前。",
+          "timestamps": [
+            {
+              "label": "动物形态",
+              "time": "00:50"
+            },
+            {
+              "label": "图腾武器",
+              "time": "02:30"
+            },
+            {
+              "label": "原始 + 血脉",
+              "time": "04:10"
+            },
+            {
+              "label": "暴击条件（0.4.0i 前）",
+              "time": "06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为什么我的旧德鲁伊 Build 提示技能无效？",
+          "answer": [
+            "0-4-0"
+          ]
+        },
+        {
+          "question": "血脉辅助能用于非原始技能吗？",
+          "answer": [
+            "（答案待补充）"
+          ]
+        },
+        {
+          "question": "变形暴击修复保留在游戏中了吗？",
+          "answer": [
+            "0-4-0i-0-5-4e"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路 2 官方 0.4.0 补丁说明",
+          "description": "德鲁伊、图腾、原始技能、血脉辅助与被动加成。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "流放之路 2 官方 0.4.0i 补丁说明",
+          "description": "变形暴击条件与图腾需求修复。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        },
+        {
+          "label": "PoE2 Wiki — 德鲁伊",
+          "description": "当前德鲁伊职业与变形数据。",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": [
+        "0-4-0-0-4-0i",
+        "0-5-4e"
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid",
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "流放之路 2 官方 0.4.0 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路 2 官方 0.4.0i 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路 2 0.4.0 德鲁伊与变形 — 图腾、原始技能与旧 Build 迁移",
+    "description": "为何 0.4.0 之前的德鲁伊 Build 会崩，以及图腾 / 原始技能 / 血脉辅助系统在 0.5.4e 中如何运作。"
+  }
+}
