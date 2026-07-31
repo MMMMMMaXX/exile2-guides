@@ -28,9 +28,9 @@ export function SourcesSection({
       <div className="boss-source-list">
         {categories.map((category) => (
           <article key={category.label}>
-            <span>{category.label}</span>
+            <span>{category.description}</span>
             <div>
-              <p>{category.description}</p>
+              <p>{category.label}</p>
             </div>
             {category.url ? (
               <a
