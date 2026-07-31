@@ -25,21 +25,6 @@ export type ArticleLayoutProps = {
   updatedAt?: string;
 };
 
-/** 根据页面类型区分 Build 正式封面和其他原型视觉，避免来源说明与真实用途不一致。 */
-function getArtworkCaption(
-  contentType: string,
-  locale: "en" | "zh-cn",
-): string {
-  if (contentType === "Builds") {
-    return locale === "zh-cn"
-      ? "Exile2 Guides 本站原创 Build 封面"
-      : "Original Build cover artwork by Exile2 Guides";
-  }
-  return locale === "zh-cn"
-    ? "Exile2 Guides 原型原创视觉"
-    : "Original prototype artwork for Exile2 Guides";
-}
-
 /** 渲染详情 Hero 与三栏阅读结构；中小屏按原型依次收起目录和右侧栏。 */
 export function ArticleLayout({
   breadcrumbs,
@@ -102,9 +87,6 @@ export function ArticleLayout({
                   srcSet={`${resolvedImage} 960w`}
                   width="960"
                 />
-                <figcaption>
-                  {getArtworkCaption(contentType, locale)}
-                </figcaption>
               </figure>
             ) : null}
           </div>
