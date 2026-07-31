@@ -111,11 +111,16 @@ function VideoCard({
                 <img
                   alt=""
                   aria-hidden="true"
+                  decoding="async"
+                  height="360"
                   loading="lazy"
                   onError={(event) => {
                     event.currentTarget.style.display = "none";
                   }}
+                  sizes="(max-width: 960px) calc(100vw - 2rem), 56vw"
                   src={coverSrc}
+                  srcSet={`${coverSrc} 640w`}
+                  width="640"
                 />
               ) : null}
               <span aria-hidden="true" className="build-video-card__play" />

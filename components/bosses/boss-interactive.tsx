@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
+import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { ContentLocale } from "../../lib/content/constants";
 
 // --- 阶段切换（V5 Phase Tabs） ---
@@ -391,7 +392,16 @@ export function BossLightboxTrigger({
         role="button"
         tabIndex={0}
       >
-        <img alt={alt} src={src} />
+        <img
+          alt={alt}
+          decoding="async"
+          height="900"
+          loading="lazy"
+          sizes="(max-width: 960px) calc(100vw - 2rem), 56vw"
+          src={resolveImageAsset(src)}
+          srcSet={`${resolveImageAsset(src)} 1600w`}
+          width="1600"
+        />
         {caption ? <figcaption>{caption}</figcaption> : null}
         <button
           aria-label={alt || "Zoom"}

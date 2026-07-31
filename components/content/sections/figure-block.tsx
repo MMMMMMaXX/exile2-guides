@@ -25,6 +25,7 @@ export function FigureBlock({
         loading="lazy"
         sizes="(max-width: 960px) calc(100vw - 2rem), 56vw"
         src={resolveImageAsset(image.src)}
+        srcSet={`${resolveImageAsset(image.src)} 1600w`}
         width="1600"
       />
       <figcaption>

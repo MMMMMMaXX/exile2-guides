@@ -47,7 +47,13 @@ export function NotFoundPage({ locale = "en" }: { locale?: ContentLocale }) {
           alt=""
           aria-hidden="true"
           className="not-found-page__image"
+          decoding="async"
+          height="788"
+          loading="lazy"
+          sizes="(max-width: 920px) calc(100vw - 2rem), 42vw"
           src={notFoundImage}
+          srcSet={`${notFoundImage} 1400w`}
+          width="1400"
         />
       </section>
     </main>
