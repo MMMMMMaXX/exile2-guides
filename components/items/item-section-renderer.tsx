@@ -50,23 +50,35 @@ const rendererLabels: Record<
   {
     editorialAnalysis: string;
     officialAnswer: string;
+    playVideo: string;
     source: string;
+    takeaway: string;
+    timestamps: string;
     verificationChecklist: string;
+    videoPreview: string;
     why: string;
   }
 > = {
   en: {
     editorialAnalysis: "Editorial analysis",
     officialAnswer: "Our answer",
+    playVideo: "Play video",
     source: "Open source",
+    takeaway: "What to watch for",
+    timestamps: "Key timestamps",
     verificationChecklist: "Verification checklist",
+    videoPreview: "Open the original video",
     why: "Why it matters",
   },
   "zh-cn": {
     editorialAnalysis: "编辑分析",
     officialAnswer: "本站解答",
+    playVideo: "播放视频",
     source: "查看来源",
+    takeaway: "建议重点观看",
+    timestamps: "重要节点",
     verificationChecklist: "发布前核验清单",
+    videoPreview: "打开原始视频",
     why: "为什么重要",
   },
 };
@@ -149,9 +161,11 @@ function renderSectionContent(
         <VideoList
           entries={section.entries}
           labels={{
+            playVideo: labels.playVideo,
             source: labels.source,
-            takeaway: "What to watch for",
-            videoPreview: "Open the original video",
+            takeaway: labels.takeaway,
+            timestamps: labels.timestamps,
+            videoPreview: labels.videoPreview,
           }}
         />
       );
