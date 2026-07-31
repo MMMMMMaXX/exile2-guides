@@ -1197,6 +1197,31 @@ export function V4CatalogPage({
             </div>
           ) : null}
         </section>
+        <aside className="v4-prototype-rail">
+          <section>
+            <p className="section-kicker">Implementation order</p>
+            <h2>Skeleton first</h2>
+            <ol>
+              <li>Index and filters</li>
+              <li>Subtype aggregation</li>
+              <li>Detail template</li>
+              <li>Search integration</li>
+              <li>Content generation later</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Required connections</h2>
+            <a href={`/${locale}/search/`}>
+              Search results <span>→</span>
+            </a>
+            <a href={`/${locale}/guides/`}>
+              Content inventory <span>→</span>
+            </a>
+            <a href={`/${locale}/patches/`}>
+              Patch relationships <span>→</span>
+            </a>
+          </section>
+        </aside>
       </section>
     </main>
   );
