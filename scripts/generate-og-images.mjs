@@ -6,35 +6,19 @@
  * 详情页通过 resolveImageAsset("/images/og/{segment}/{slug}.webp") 取得 og:image，
  * 满足“图片必须经 Vite 输出到 assets”的构建门禁（禁止 public/images 回流）。
  *
- * 运行：NODE_PATH=<managed node_modules> node scripts/generate-og-images.mjs
- * 依赖：sharp（位于隔离的工作区 node_modules，不污染项目依赖）。
+ * 运行：node scripts/generate-og-images.mjs
+ * 依赖：sharp（项目正式依赖，随 npm install 安装；本地与 Cloudflare Pages 等构建环境均能正常解析）。
  * 说明：OG 图按 slug 共享（locale 无关），卡片文案采用英文版本，避免 librsvg 中文字体缺失问题。
  */
 import fs from "node:fs";
 import path from "node:path";
-import { createRequire } from "node:module";
+import sharp from "sharp";
 
-// sharp 位于隔离的 workspace node_modules（见文件头运行说明）。
-// ESM 的 import 不读取 NODE_PATH，因此改用 createRequire 经由 require 加载，
-// 这样保留 NODE_PATH=<managed node_modules> 的运行约定即可解析到 sharp。
-// 若未设置 NODE_PATH，则按候选顺序回退到隔离工作区的绝对路径，便于直接 `node` 运行。
-const require = createRequire(import.meta.url);
-const SHARP_CANDIDATES = [
-  "sharp",
-  "/Users/manxin/.workbuddy/binaries/node/workspace/node_modules/sharp",
-];
-let sharp;
-for (const candidate of SHARP_CANDIDATES) {
-  try {
-    sharp = require(candidate);
-    break;
-  } catch {
-    // 继续尝试下一个候选路径
-  }
-}
-if (!sharp) {
+// sharp 作为项目正式依赖随 npm install 安装，构建环境（本地与 Cloudflare Pages 等）
+// 通过正常的依赖解析即可加载，不再依赖本机隔离工作区的绝对路径。
+if (!sharp || typeof sharp !== "function") {
   console.error(
-    "未能加载 sharp：请通过 NODE_PATH 指向包含 sharp 的 node_modules，或在隔离工作区安装 sharp。",
+    "未能加载 sharp：请确认 sharp 已加入项目依赖并执行 npm install。",
   );
   process.exit(1);
 }
