@@ -4,7 +4,16 @@ import { join } from "node:path";
 const locales = ["en", "zh-cn"];
 const types = ["bosses", "skills", "guides", "items", "builds", "patches"];
 
-// Exact dead URLs reported by build2.log (specific item pages missing in repo)
+// Dead targets: specific item pages missing from repo. Keyed by locale|contentType|contentId.
+const deadSet = new Set([
+  "en|items|catalysts",
+  "zh-cn|items|catalysts",
+  "en|items|waystones",
+  "zh-cn|items|waystones",
+  "zh-cn|items|liquid-emotions",
+]);
+
+const norm = (t: string) => (t.endsWith("/") ? t.slice(0, -1) : t);
 const deadUrls = new Set([
   "/en/items/catalysts/",
   "/zh-cn/items/catalysts/",
@@ -12,9 +21,7 @@ const deadUrls = new Set([
   "/zh-cn/items/waystones/",
   "/zh-cn/items/liquid-emotions/",
 ]);
-
-const norm = (t: string) => (t.endsWith("/") ? t.slice(0, -1) : t);
-const isDead = (t: string) =>
+const isDeadUrl = (t: string) =>
   deadUrls.has(t) || deadUrls.has(t + "/") || deadUrls.has(norm(t));
 
 let removedHref = 0;
@@ -24,7 +31,7 @@ let changedFiles = 0;
 
 function neutralizeMarkdown(s: string): string {
   return s.replace(/\[([^\]]+)\]\((#{0,1}\/[^)]*)\)/g, (m, text, url) => {
-    if (isDead(url)) {
+    if (isDeadUrl(url)) {
       removedMd++;
       return String(text);
     }
@@ -32,43 +39,51 @@ function neutralizeMarkdown(s: string): string {
   });
 }
 
-function walk(obj: any, changed: { f: boolean }) {
+function walk(obj: any, locale: string, changed: { f: boolean }, parentArr: any[] | null, idx: number) {
   if (typeof obj === "string") return;
   if (Array.isArray(obj)) {
     for (let i = obj.length - 1; i >= 0; i--) {
-      const item = obj[i];
-      if (
-        item &&
-        typeof item === "object" &&
-        typeof item.href === "string" &&
-        isDead(item.href) &&
-        typeof item.contentId === "string"
-      ) {
-        obj.splice(i, 1);
-        removedCard++;
-        changed.f = true;
-        continue;
-      }
-      walk(item, changed);
+      walk(obj[i], locale, changed, obj, i);
     }
     return;
   }
   if (obj && typeof obj === "object") {
-    if (typeof obj.href === "string" && isDead(obj.href)) {
+    // href field directly pointing to dead URL
+    if (typeof obj.href === "string" && isDeadUrl(obj.href)) {
+      if (typeof obj.contentId === "string" && parentArr) {
+        parentArr.splice(idx, 1);
+        removedCard++;
+        changed.f = true;
+        return;
+      }
       delete obj.href;
       removedHref++;
       changed.f = true;
     }
+    // contentId-derived dead link (href generated at render)
+    if (
+      typeof obj.contentId === "string" &&
+      typeof obj.contentType === "string" &&
+      deadSet.has(`${locale}|${obj.contentType}|${obj.contentId}`) &&
+      parentArr
+    ) {
+      parentArr.splice(idx, 1);
+      removedCard++;
+      changed.f = true;
+      return;
+    }
     for (const k of Object.keys(obj)) {
       const v = obj[k];
-      if (typeof v === "string" && v.includes("](") && /\[[^\]]+\]\(#{0,1}\//.test(v)) {
-        const fixed = neutralizeMarkdown(v);
-        if (fixed !== v) {
-          obj[k] = fixed;
-          changed.f = true;
+      if (typeof v === "string") {
+        if (v.includes("](") && /\[[^\]]+\]\(#{0,1}\//.test(v)) {
+          const fixed = neutralizeMarkdown(v);
+          if (fixed !== v) {
+            obj[k] = fixed;
+            changed.f = true;
+          }
         }
       } else {
-        walk(v, changed);
+        walk(v, locale, changed, null, -1);
       }
     }
   }
@@ -91,7 +106,7 @@ for (const loc of locales) {
         continue;
       }
       const changed = { f: false };
-      walk(json, changed);
+      walk(json, loc, changed, null, -1);
       if (changed.f) {
         writeFileSync(fp, JSON.stringify(json, null, 2) + "\n");
         changedFiles++;
