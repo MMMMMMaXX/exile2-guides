@@ -1,7 +1,7 @@
 /** 文件职责：统一渲染“来源与核验”章节的分类卡片 + 核验清单布局，供六类内容模块复用。 */
 import type { ReactNode } from "react";
 
-/** 来源分类条目，与共享 sourceCategorySchema 对齐。 */
+/** 来源分类条目，与共享 sourceCategorySchema 对齐。约定：label 为类型标签（官方来源/社区讨论等短文本），description 为来源标题（长文本）；窄列显示标签、宽列显示标题。 */
 type SourceCategory = {
   description: string;
   label: string;
@@ -26,11 +26,11 @@ export function SourcesSection({
   return (
     <div className="boss-source-layout">
       <div className="boss-source-list">
-        {categories.map((category) => (
-          <article key={category.label}>
-            <span>{category.description}</span>
+        {categories.map((category, index) => (
+          <article key={index}>
+            <span>{category.label}</span>
             <div>
-              <p>{category.label}</p>
+              <p>{category.description}</p>
             </div>
             {category.url ? (
               <a
