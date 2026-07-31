@@ -1,4 +1,4 @@
-/** 文件职责：定义 Bosses JSON 的唯一内容契约和发布门禁，供本地文件与未来数据库适配器共享。 */
+/** 文件职责：定义 Bosses JSON 的唯一内容契约和发布门禁（V5 富内容结构），供本地文件与未来数据库适配器共享。 */
 import { z } from "zod";
 
 import {
@@ -30,6 +30,14 @@ export const bossCategorySlugs = [
 ] as const;
 export const bossActSlugs = ["act-1", "act-2", "act-3", "act-4"] as const;
 export const bossDifficulties = ["low", "medium", "high"] as const;
+export const bossDangerLevels = ["low", "medium", "high", "critical"] as const;
+export const bossMediaRights = [
+  "owned",
+  "official",
+  "permission",
+  "embedded",
+  "generated",
+] as const;
 export const bossReservedSlugs = [
   "categories",
   "acts",
@@ -37,7 +45,25 @@ export const bossReservedSlugs = [
   ...bossActSlugs,
 ] as const;
 
-// --- Boss 专属 Section 判别联合 ---
+// --- 顶层媒体对象 ---
+
+/** Boss 文章顶层媒体资源结构；每张图片、视频和 Embed 统一在此声明版权与来源。 */
+export const bossMediaItemSchema = z.strictObject({
+  id: stableIdentifier,
+  type: z.enum(["image", "youtube", "reddit-embed", "forum-quote", "generated"]),
+  src: z.string().trim().optional(),
+  url: z.string().trim().optional(),
+  alt: z.string().trim().optional(),
+  caption: z.string().trim().optional(),
+  credit: z.string().trim().optional(),
+  rights: z.enum(bossMediaRights),
+  sourceUrl: z.string().trim().nullable().optional(),
+  timestamps: z
+    .array(z.strictObject({ time: requiredText, label: requiredText }))
+    .optional(),
+});
+
+// --- Boss 专属 Section 判别联合（V5 富内容结构） ---
 
 /** 叙述型章节：overview、arena、strategy、build-considerations、community、verification。 */
 const bossNarrativeSectionSchema = z.strictObject({
@@ -54,21 +80,55 @@ const bossNarrativeSectionSchema = z.strictObject({
   bullets: paragraphList,
 });
 
-/** 战前快速准备清单。 */
-const bossQuickPreparationSectionSchema = z.strictObject({
+/** V5 首屏快速结论：高亮叫牌 + 三张答案卡片 + 内链。 */
+const bossQuickAnswerSectionSchema = z.strictObject({
   ...baseSectionShape,
-  type: z.literal("quick-preparation"),
-  items: z
+  type: z.literal("quick-answer"),
+  callout: requiredText,
+  calloutDetail: paragraphList,
+  answers: z
     .array(
       z.strictObject({
-        checks: paragraphList,
         label: requiredText,
+        text: requiredText,
+      }),
+    )
+    .default([]),
+  links: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        href: requiredText,
       }),
     )
     .default([]),
 });
 
-/** 进入方式的有序步骤。 */
+/** 战前准备检查表（V5 增加 why/fix 列）。 */
+const bossPreparationSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.enum(["quick-preparation", "preparation"]),
+  items: z
+    .array(
+      z.strictObject({
+        checks: paragraphList,
+        label: requiredText,
+        why: z.string().trim().optional(),
+        fix: z.string().trim().optional(),
+      }),
+    )
+    .default([]),
+  links: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        href: requiredText,
+      }),
+    )
+    .default([]),
+});
+
+/** 进入方式的有序步骤（V5 增加事实卡片）。 */
 const bossAccessSectionSchema = z.strictObject({
   ...baseSectionShape,
   type: z.literal("access"),
@@ -77,6 +137,15 @@ const bossAccessSectionSchema = z.strictObject({
       z.strictObject({
         body: paragraphList,
         label: requiredText,
+      }),
+    )
+    .default([]),
+  facts: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        value: requiredText,
+        note: z.string().trim().optional(),
       }),
     )
     .default([]),
@@ -97,7 +166,7 @@ const bossRequirementsSectionSchema = z.strictObject({
     .default([]),
 });
 
-/** 战斗阶段时间轴。 */
+/** 战斗阶段时间轴（V5 增加标签和媒体引用）。 */
 const bossPhaseSectionSchema = z.strictObject({
   ...baseSectionShape,
   type: z.literal("phases"),
@@ -109,12 +178,14 @@ const bossPhaseSectionSchema = z.strictObject({
         objectives: paragraphList,
         phaseId: stableIdentifier,
         trigger: requiredText,
+        tags: z.array(requiredText).default([]),
+        mediaId: stableIdentifier.optional(),
       }),
     )
     .default([]),
 });
 
-/** 攻击识别与应对——Boss 最重要的专属结构。 */
+/** 攻击识别与应对（V5 增加危险等级、常见失败、媒体和来源引用）。 */
 const bossAttackSectionSchema = z.strictObject({
   ...baseSectionShape,
   type: z.literal("attacks"),
@@ -128,6 +199,10 @@ const bossAttackSectionSchema = z.strictObject({
         phaseIds: identifierList,
         responses: paragraphList,
         telegraph: paragraphList,
+        danger: z.enum(bossDangerLevels).optional(),
+        commonMistakes: paragraphList,
+        mediaIds: identifierList,
+        sourceIds: identifierList,
       }),
     )
     .default([]),
@@ -164,7 +239,7 @@ const bossRewardsSectionSchema = z.strictObject({
     .default([]),
 });
 
-/** 故障排查：症状 + 检查清单。 */
+/** 故障排查（V5 增加直接答案和站内关联）。 */
 const bossTroubleshootingSectionSchema = z.strictObject({
   ...baseSectionShape,
   type: z.literal("troubleshooting"),
@@ -173,9 +248,72 @@ const bossTroubleshootingSectionSchema = z.strictObject({
       z.strictObject({
         checks: paragraphList,
         symptom: requiredText,
+        directAnswer: paragraphList,
+        relatedContentIds: identifierList,
       }),
     )
     .default([]),
+});
+
+/** V5 社区证据：摘要、编辑分析与本站解答。 */
+const bossCommunityEvidenceSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("community-evidence"),
+  entries: z
+    .array(
+      z.strictObject({
+        sourceId: stableIdentifier,
+        kind: z.enum(["embed", "quote", "summary"]),
+        question: requiredText.optional(),
+        summary: paragraphList,
+        editorialAnalysis: paragraphList,
+        officialAnswer: paragraphList,
+        relatedQuestionIds: identifierList,
+        linkHref: z.string().trim().optional(),
+        linkLabel: z.string().trim().optional(),
+      }),
+    )
+    .default([]),
+});
+
+/** V5 截图画廊：引用顶层 media 数组中的图片。 */
+const bossGallerySectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("gallery"),
+  mediaIds: identifierList,
+});
+
+/** V5 相关内容卡片：按当前问题推荐站内文档。 */
+const bossRelatedContentSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("related-content"),
+  items: z
+    .array(
+      z.strictObject({
+        contentId: stableIdentifier,
+        title: requiredText,
+        description: requiredText,
+        contentType: requiredText,
+        href: requiredText,
+      }),
+    )
+    .default([]),
+});
+
+/** V5 来源与核验：分类展示来源并附带核验清单。 */
+const bossSourcesSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("sources-section"),
+  categories: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        description: requiredText,
+        url: z.string().trim().optional(),
+      }),
+    )
+    .default([]),
+  verificationChecklist: paragraphList,
 });
 
 /** FAQ 复用共享结构。 */
@@ -201,7 +339,8 @@ const bossChangelogSectionSchema = z.strictObject({
 
 export const bossSectionSchema = z.discriminatedUnion("type", [
   bossNarrativeSectionSchema,
-  bossQuickPreparationSectionSchema,
+  bossQuickAnswerSectionSchema,
+  bossPreparationSectionSchema,
   bossAccessSectionSchema,
   bossRequirementsSectionSchema,
   bossPhaseSectionSchema,
@@ -209,6 +348,10 @@ export const bossSectionSchema = z.discriminatedUnion("type", [
   bossDamageTypesSectionSchema,
   bossRewardsSectionSchema,
   bossTroubleshootingSectionSchema,
+  bossCommunityEvidenceSectionSchema,
+  bossGallerySectionSchema,
+  bossRelatedContentSectionSchema,
+  bossSourcesSectionSchema,
   bossFaqSectionSchema,
   bossVideoSectionSchema,
   bossChangelogSectionSchema,
@@ -259,6 +402,7 @@ const bossArticleBaseSchema = z.strictObject({
 
   tags: identifierList,
   sections: z.array(bossSectionSchema).default([]),
+  media: z.array(bossMediaItemSchema).default([]),
   relatedBuildIds: identifierList,
   relatedGuideIds: identifierList,
   relatedItemIds: identifierList,
@@ -376,6 +520,9 @@ export const bossArticleSchema = bossArticleBaseSchema.superRefine(
 
 export type BossArticle = z.infer<typeof bossArticleSchema>;
 export type BossSection = z.infer<typeof bossSectionSchema>;
+export type BossMediaItem = z.infer<typeof bossMediaItemSchema>;
 export type BossDifficulty = (typeof bossDifficulties)[number];
+export type BossDangerLevel = (typeof bossDangerLevels)[number];
 export type BossCategory = (typeof bossCategorySlugs)[number];
 export type BossAct = (typeof bossActSlugs)[number];
+export type BossMediaRights = (typeof bossMediaRights)[number];

@@ -5,7 +5,6 @@ import { patchArticleToParsedContent } from "../../lib/patches/content-adapter";
 import { InMemoryPatchRepository } from "../../lib/patches/repository";
 import { patchArticleSchema, type PatchArticle } from "../../lib/patches/schema";
 import {
-  PatchService,
   filterPatches,
   parsePatchQuery,
 } from "../../lib/patches/service";

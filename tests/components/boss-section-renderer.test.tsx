@@ -114,6 +114,9 @@ describe("BossSectionRenderer", () => {
             damageTypes: ["physical"],
             responses: ["Dodge backwards."],
             notes: [],
+            commonMistakes: [],
+            mediaIds: [],
+            sourceIds: [],
           },
         ],
       },
@@ -127,7 +130,7 @@ describe("BossSectionRenderer", () => {
     expect(queryByText("Dodge backwards.")).not.toBeNull();
   });
 
-  it("renders phases section as a timeline", () => {
+  it("renders phases section as interactive tabs", () => {
     const article = createBossArticle([
       {
         id: "phases",
@@ -143,16 +146,20 @@ describe("BossSectionRenderer", () => {
             trigger: "At 100% HP",
             objectives: ["Survive the opening."],
             notes: [],
+            tags: [],
           },
         ],
       },
     ]);
 
-    const { queryByText } = render(<BossSectionRenderer article={article} />);
+    const { getAllByText, queryByText } = render(
+      <BossSectionRenderer article={article} />,
+    );
 
     expect(queryByText("Fight Phases")).not.toBeNull();
     expect(queryByText("Phase 1")).not.toBeNull();
-    expect(queryByText(/At 100% HP/)).not.toBeNull();
+    // V5 标签页结构：触发条件同时出现在标签按钮和详情视图中
+    expect(getAllByText(/At 100% HP/).length).toBeGreaterThan(0);
   });
 
   it("renders quick-preparation as a definition list", () => {
@@ -165,6 +172,7 @@ describe("BossSectionRenderer", () => {
         toc: true,
         visible: true,
         items: [{ label: "Resistances", checks: ["Cap fire resistance."] }],
+        links: [],
       },
     ]);
 

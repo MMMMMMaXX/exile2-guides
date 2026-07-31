@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-01 01:05（Asia/Shanghai）
+> 文档更新时间：2026-07-31 04:30（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -44,7 +44,7 @@
 | 后续执行计划    | 首周观察 Search Console、Cloudflare 部署和用户反馈；Patch 变化时复核内容 |
 | 待用户补充      | 仅在 Google 报告明确技术错误、内容被拒收或游戏更新时提供截图/官方来源    |
 | 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）                          |
-| 公开攻略内容    | 8 个双语主题、16 个静态详情页；均标记为 Steam PC 待核验                  |
+| 公开攻略内容    | 8 个双语主题、16 个静态详情页、8 篇双语 Build 已发布；均标记为 Steam PC 待核验             |
 | 当前生产地址    | `https://poe2.stratlore.com/en/`                                         |
 | GitHub 推送策略 | 默认不自动推送；仅在用户当前会话明确要求时执行                           |
 
@@ -152,10 +152,12 @@
 | EXTRA-064 | 2026-07-31 00:00–00:35             | 已完成 | Guides JSON 化改造                                                  | 新建 GuideArticle/GuideSection Schema、数据层、管线接入、渲染器、聚合路由、SEO/Sitemap；迁移 10 个 MD 为 JSON；移除 V4 骨架行          | 完整 quality 通过：177 项单元/组件测试、生产构建及全部内容/注释门禁；未提交、未推送                                                    |
 | EXTRA-065 | 2026-08-01 00:50–01:05             | 已完成 | Patches JSON 化改造                                                 | 新建 PatchArticle/PatchSection Schema、数据层、管线接入、渲染器、聚合路由、SEO/Sitemap；迁移 4 个 MD 为 JSON；移除 V4 骨架行           | 完整 quality 通过：195 项单元/组件测试、生产构建及全部内容/注释门禁；未提交、未推送                                                    |
 | EXTRA-066 | 2026-07-31 01:05–01:12             | 已完成 | 修复 Skills 分类页骨架卡片不可点击                                   | 为 `PrototypeCard` 增加可选 `href`；6 张 Skills 骨架卡片链接到对应分类聚合页和 Builds 目录；有 href 的卡片渲染为 `<a>` 并沿用正式内容卡交互样式 | 类型、Lint、141 项单元测试和浏览器点击验证通过；构建 image-contract 告警为工作区已有问题，与本次修改无关；未提交、未推送              |
+| EXTRA-067 | 2026-07-31 01:15–03:10             | 已完成 | Boss V5 富内容改造：8 篇双语文章全量升级                              | 升级 Schema（17 种 Section + 顶层 media）；重建渲染器；新建/升级 8 篇双语 Boss JSON（Count Geonor、Jamanra、Zarokh、Atziri、Arbiter of Ash、Arbiter of Divinity、Doryani、Trialmaster）；创建 8 个研究目录 | 完整 quality 通过：195 项单元/组件测试、18 Boss JSON 校验、179 文件注释、生产构建及全部内链门禁；未提交、未推送 |
+| EXTRA-068 | 2026-07-31 03:10–04:30             | 已完成 | 将 8 篇双语 Build 草稿转为正式文档                                    | 16 份 JSON 切换 published、补齐 publishedAt/reviewer、移除 research-draft 标签、清理标题/描述/正文中 draft/草稿字样、noindex 改为 false | 内容校验、类型、Lint、注释门禁通过；生产构建 image-contract 告警为工作区已有问题；未提交、未推送 |
 
 ## 会话时间线
 
-> 本节更新时间：2026-07-31 01:12（Asia/Shanghai）
+> 本节更新时间：2026-07-31 04:30（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -247,3 +249,5 @@
 | SESSION-086 | 2026-07-31 00:00–00:35            | Guides JSON 化改造                       | 新建 GuideArticle/GuideSection Schema、数据层、管线接入、渲染器、聚合路由、SEO/Sitemap；迁移 10 个 MD 为 JSON；移除 V4 骨架行                   | 完整 quality 通过：177 项单元/组件测试、生产构建及全部内容/注释门禁                     | 后续 Patches 按相同范式推进                          |
 | SESSION-087 | 2026-08-01 00:50–01:05            | Patches JSON 化改造                      | 新建 PatchArticle/PatchSection Schema、数据层、管线接入、渲染器、聚合路由、SEO/Sitemap；迁移 4 个 MD 为 JSON；移除 V4 骨架行                    | 完整 quality 通过：195 项单元/组件测试、生产构建及全部内容/注释门禁                     | 六类内容 JSON 化全部完成                              |
 | SESSION-088 | 2026-07-31 01:05–01:12            | 修复 Skills 骨架卡片不可点击             | 为骨架卡片增加可选 href 并渲染为链接；6 张 Skills 卡片分别指向 active/support/spirit/meta/ascendancy 分类聚合页与 Builds 目录                   | 类型、Lint、141 项单元测试通过；浏览器确认卡片可点击且目标页正常渲染                    | 提交前运行完整质量链                                |
+| SESSION-089 | 2026-07-31 01:15–03:10            | Boss V5 富内容改造                       | 升级 Schema（17 种 Section + media）；重建渲染器；新建/升级 8 篇双语 Boss JSON；创建 8 个研究目录；修复 video/changelog 字段和内链门禁          | 完整 quality 通过：195 项测试、18 Boss JSON、179 文件注释、生产构建及内链门禁          | 后续可补充真实截图和视频替换占位符                  |
+| SESSION-090 | 2026-07-31 03:10–04:30            | 将 Builds 草稿转为正式文档               | 16 份 Build JSON 切换 published；补齐 publishedAt/reviewer；移除 research-draft 标签；清理标题/描述/正文 draft/草稿字样；noindex 改为 false      | 内容校验、类型、Lint、注释门禁通过；生产构建 image-contract 告警为已有问题              | 提交前运行完整质量链；用户确认后推送部署              |

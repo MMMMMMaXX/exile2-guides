@@ -1,5 +1,5 @@
 /** 文件职责：验证 Builds 结构化章节按文章语言渲染共享标签，避免中文正文混入英文界面词。 */
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
 import {
@@ -189,14 +189,15 @@ describe("BuildSectionRenderer", () => {
       view.getByRole("link", { name: /Related build/ }).getAttribute("href"),
     ).toBe("/en/builds/related-build/");
     expect(view.getByAltText("A controlled mechanic diagram")).toBeTruthy();
-    expect(
-      view
-        .getByRole("link", {
-          name: /Open the original video: Test gameplay/,
-        })
-        .getAttribute("href"),
-    ).toBe("https://youtu.be/CuDrHBZP2R8");
+    const playButton = view.getByRole("button", { name: /Test gameplay/ });
     expect(view.queryByTitle("Test gameplay")).toBeNull();
+    fireEvent.click(playButton);
+    expect(view.getByTitle("Test gameplay").getAttribute("src")).toContain(
+      "https://www.youtube-nocookie.com/embed/CuDrHBZP2R8",
+    );
+    expect(
+      view.getByRole("link", { name: /Open source/ }).getAttribute("href"),
+    ).toBe("https://youtu.be/CuDrHBZP2R8");
   });
 
   it("renders the localized external-media notice after Build content", () => {

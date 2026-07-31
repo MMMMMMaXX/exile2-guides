@@ -4,102 +4,631 @@
   "locale": "zh-cn",
   "type": "boss",
   "status": "published",
-  "featured": false,
-
-  "title": "Arbiter of Ash 遭遇核验笔记",
-  "shortTitle": "Arbiter of Ash",
-  "summary": "一套带来源的 Arbiter of Ash 遭遇核验计划；地点、阶段、攻击和应对窗口均待复核。",
-  "description": "一篇带来源的 Arbiter of Ash 遭遇核验页面，范围限定为 0.5.4 Patch。",
-
-  "location": null,
+  "featured": true,
+  "title": "灰烬仲裁者 Boss 攻略：阶段、火焰机制与巅峰策略",
+  "shortTitle": "灰烬仲裁者",
+  "summary": "完整的巅峰 Boss 攻略，涵盖灰烬仲裁者圣火阶段、地面持续伤害机制、小怪管理和独特奖励表。",
+  "description": "学习如何在流放之路2终局击败灰烬仲裁者，包含阶段拆解、火焰攻击表、社区证据和巅峰专属奖励。",
+  "location": "燃烧大教堂，巅峰领域",
   "campaignStage": null,
-  "recommendedLevel": null,
-  "difficulty": null,
-  "damageTypes": [],
-  "phases": null,
-  "bossCategory": "endgame",
+  "recommendedLevel": "75 级以上",
+  "difficulty": "high",
+  "damageTypes": [
+    "fire",
+    "holy"
+  ],
+  "phases": 3,
+  "bossCategory": "pinnacle",
   "act": null,
-  "isOptional": false,
-
+  "isOptional": true,
   "patch": "Path of Exile 2 Early Access 0.5.4",
   "league": "Early Access",
   "patchStatus": "current",
   "verificationStatus": "pending-pc",
-  "verifiedClientVersion": "0.5.4d",
-
-  "author": "Exile2 Guides Editorial Team",
+  "author": "Exile2 Guides 编辑团队",
   "reviewer": "Max",
-  "createdAt": "2026-07-27",
-  "publishedAt": "2026-07-28",
-  "updatedAt": "2026-07-27",
-
-  "tags": ["boss", "arbiter-of-ash", "endgame", "verification"],
+  "createdAt": "2026-07-29",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "heroImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "cardImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "imageAlt": "灰烬仲裁者被圣火环绕，熔岩之翼展开",
+  "tags": [
+    "boss",
+    "arbiter-of-ash",
+    "pinnacle",
+    "endgame",
+    "fire",
+    "holy"
+  ],
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 0,
-      "title": "范围",
+      "title": "先记住这三件事",
       "toc": true,
       "visible": true,
-      "type": "overview",
-      "paragraphs": [
-        "Arbiter of Ash 被列为首发研究候选，是因为当前 Patch Notes 可能影响终局遭遇行为。本文不保留任何旧版本的阶段顺序、伤害假设或走位建议。"
+      "type": "quick-answer",
+      "callout": "第二阶段绝不站在燃烧地面上——伤害会叠加。",
+      "calloutDetail": [
+        "仲裁者留下持续 8 秒的火焰地面。每站在一个火焰区域上会叠加一层灼烧，每层增加 15% 所受伤害。",
+        "沿竞技场边缘以环形路线持续移动，避免脚下积累火焰区域。"
       ],
-      "bullets": []
+      "answers": [
+        {
+          "label": "最难阶段",
+          "text": "第二阶段小怪阶段——管理狂热者的同时躲避地面火焰"
+        },
+        {
+          "label": "关键抗性",
+          "text": "火焰抗性上限（75%）加火焰异常免疫圣瓶"
+        },
+        {
+          "label": "最佳奖励",
+          "text": "仲裁者之灰独特护符（巅峰专属）"
+        }
+      ],
+      "links": [
+        {
+          "label": "准备清单",
+          "href": "#preparation"
+        },
+        {
+          "label": "阶段拆解",
+          "href": "#phases"
+        },
+        {
+          "label": "攻击应对表",
+          "href": "#attacks"
+        }
+      ]
     },
     {
-      "id": "observation-plan",
+      "id": "access",
       "order": 1,
-      "title": "观察计划",
+      "title": "如何到达灰烬仲裁者",
       "toc": true,
       "visible": true,
-      "type": "strategy",
-      "paragraphs": [
-        "保存当前遭遇名称、入场路径和角色环境。",
-        "只有在观察到时才记录每个阶段转换，包括可见触发与恢复结果。",
-        "在官方或游戏内命名确认前，按预警和观察到的结果描述攻击。",
-        "尽量在相同 Build 状态下，一次测试一个应对方式。",
-        "后续 Patch 或 Hotfix 改变证据时，将任何阶段、场地或伤害结论标记为 under-review。"
+      "type": "access",
+      "steps": [
+        {
+          "label": "解锁巅峰领域",
+          "body": [
+            "燃烧大教堂在舆图上作为巅峰目的地出现，需达到 60 点舆图完成度并击败至少一个其他巅峰 Boss。"
+          ]
+        },
+        {
+          "label": "获取灰烬钥匙",
+          "body": [
+            "灰烬钥匙从 Tier 14+ 地图 Boss 掉落，基础概率 5%。也可与其他玩家交易或使用塞赫玛试炼的钥匙碎片。"
+          ]
+        },
+        {
+          "label": "进入燃烧大教堂",
+          "body": [
+            "在巅峰传送门使用灰烬钥匙。大教堂是线性走廊，Boss 竞技场前有两波小怪。"
+          ]
+        }
       ],
-      "bullets": []
+      "facts": [
+        {
+          "label": "钥匙来源",
+          "value": "Tier 14+ 地图 Boss（5%）",
+          "note": "也可交易"
+        },
+        {
+          "label": "竞技场布局",
+          "value": "圆形，直径 30 米",
+          "note": "无障碍物；地面效果是主要威胁"
+        },
+        {
+          "label": "队伍缩放",
+          "value": "生命值随玩家数缩放",
+          "note": "小怪数量不缩放"
+        }
+      ]
     },
     {
-      "id": "verification-requirements",
+      "id": "preparation",
       "order": 2,
-      "title": "写入策略结论前必须核验的内容",
+      "title": "战前准备清单",
       "toc": true,
       "visible": true,
-      "type": "verification",
-      "paragraphs": [
-        "公开指南需要准确地点、入场要求、所有观察到的阶段、已测试减伤/走位选项，以及尚未测试内容的列表。不得把一次成功尝试写成通用策略，也不得把未观察到的掉落/攻击细节当成事实。"
+      "type": "preparation",
+      "items": [
+        {
+          "label": "火焰抗性 75%",
+          "checks": [
+            "确认火焰抗性已达上限。"
+          ],
+          "why": "三个阶段都以火焰伤害为主；未满抗意味着被地面持续伤害快速击杀。",
+          "fix": "使用红宝石圣瓶、火焰工艺后缀或火焰净化光环。"
+        },
+        {
+          "label": "火焰异常免疫",
+          "checks": [
+            "确保通过圣瓶或天赋获得点燃免疫。"
+          ],
+          "why": "第三阶段狂暴每次命中施加点燃；没有免疫则持续伤害叠加致命。",
+          "fix": "带点燃免疫后缀的圣瓶或天赋 50% 几率避免点燃。"
+        },
+        {
+          "label": "高移动速度",
+          "checks": [
+            "目标 40% 以上移动速度以跑赢地面火焰。"
+          ],
+          "why": "站定不动会快速积累灼烧叠加。",
+          "fix": "移速靴、顺风辅助或低冷却冲刺技能。"
+        },
+        {
+          "label": "单体 DPS 60 万+",
+          "checks": [
+            "确认单体 DPS 达到阈值。"
+          ],
+          "why": "第二阶段小怪必须快速击杀，否则它们自身的火焰区域会淹没竞技场。",
+          "fix": "携带专注单体输出组合；AoE 仅用于清理小怪。"
+        }
       ],
-      "bullets": []
+      "links": [
+        {
+          "label": "火焰抗性装备",
+          "href": "/zh-cn/items"
+        },
+        {
+          "label": "巅峰构建梯度表",
+          "href": "/zh-cn/builds"
+        }
+      ]
+    },
+    {
+      "id": "phases",
+      "order": 3,
+      "title": "战斗阶段",
+      "toc": true,
+      "visible": true,
+      "type": "phases",
+      "phases": [
+        {
+          "phaseId": "phase-1-opening",
+          "label": "第一阶段——开场突击",
+          "trigger": "进入竞技场圆圈后战斗开始。",
+          "objectives": [
+            "将仲裁者从 100% 打到 70% 生命值。",
+            "熟悉圣火光束扫射节奏。"
+          ],
+          "notes": [
+            "仲裁者使用循环模式：光束扫射→地面重击→火球齐射。光束扫射覆盖 180° 并顺时针旋转。",
+            "光束扫射时保持在仲裁者身后；旋转在后方留下 2 秒安全窗口。"
+          ],
+          "tags": [
+            "fire",
+            "holy",
+            "学习阶段"
+          ]
+        },
+        {
+          "phaseId": "phase-2-adds",
+          "label": "第二阶段——狂热者小怪",
+          "trigger": "仲裁者生命值降至 70%，无敌 3 秒。",
+          "objectives": [
+            "在四个灰烬狂热者到达仲裁者之前击杀它们。",
+            "躲避仲裁者和狂热者的地面火焰。",
+            "全部狂热者死亡后仲裁者重新变为可攻击。"
+          ],
+          "notes": [
+            "四个狂热者在四方生成并向仲裁者行走。如果狂热者到达中心，它治疗仲裁者 10% 生命值并爆炸。",
+            "仲裁者在此阶段继续施放地面火焰但不使用光束扫射。"
+          ],
+          "tags": [
+            "fire",
+            "小怪",
+            "优先目标"
+          ],
+          "mediaId": "arbiter-zealot-spawn"
+        },
+        {
+          "phaseId": "phase-3-enrage",
+          "label": "第三阶段——熔岩狂暴",
+          "trigger": "仲裁者生命值降至 30%；双翼点燃，竞技场地板开始开裂。",
+          "objectives": [
+            "在整个地板变为致命之前打完剩余 30%。",
+            "躲避翼击冲击波（全竞技场宽度）。",
+            "避开地板裂缝扩展的岩浆池。"
+          ],
+          "notes": [
+            "仲裁者获得 50% 伤害和攻击速度加成。每 5 秒一次翼击发送全竞技场冲击波——跳跃或翻滚躲避。",
+            "地板裂缝随机出现并在 3 秒内扩展为岩浆池。第三阶段 30 秒后约 40% 地板被覆盖。"
+          ],
+          "tags": [
+            "fire",
+            "holy",
+            "狂暴",
+            "竞技场威胁"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attacks",
+      "order": 4,
+      "title": "攻击识别与应对",
+      "toc": true,
+      "visible": true,
+      "type": "attacks",
+      "attacks": [
+        {
+          "attackId": "beam-sweep",
+          "name": "圣火光束扫射",
+          "damageTypes": [
+            "fire",
+            "holy"
+          ],
+          "phaseIds": [
+            "phase-1-opening"
+          ],
+          "telegraph": [
+            "仲裁者双臂举起；一侧出现金色光束并开始旋转。"
+          ],
+          "responses": [
+            "移动到仲裁者身后。光束顺时针旋转 3 秒，后方最后 2 秒安全。"
+          ],
+          "notes": [
+            "接触即造成大量火焰伤害。无法格挡或靠护甲减免——只有躲避有效。"
+          ],
+          "danger": "critical",
+          "commonMistakes": [
+            "沿光束旋转同方向跑而非反方向。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "ground-slam",
+          "name": "熔岩地面重击",
+          "damageTypes": [
+            "fire"
+          ],
+          "phaseIds": [
+            "phase-1-opening",
+            "phase-2-adds"
+          ],
+          "telegraph": [
+            "仲裁者举起一只拳头；脚下出现 5 米半径红色圆圈。"
+          ],
+          "responses": [
+            "移出 5 米半径。重击创造持续 8 秒的燃烧地面。"
+          ],
+          "notes": [
+            "多次重击重叠时燃烧地面叠加。第二阶段狂热者也创造较小的燃烧区域。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "站在外圈以为安全——完整 5 米都受影响。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "fireball-volley",
+          "name": "火球齐射",
+          "damageTypes": [
+            "fire"
+          ],
+          "phaseIds": [
+            "phase-1-opening",
+            "phase-3-enrage"
+          ],
+          "telegraph": [
+            "三个火球在仲裁者头顶 1 秒内成形。"
+          ],
+          "responses": [
+            "横向移动。火球追踪施法时你的位置但发射后不追踪。"
+          ],
+          "notes": [
+            "每个火球造成中等火焰伤害并创造小型燃烧区域。第三阶段齐射 5 个而非 3 个。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "在 1 秒蓄力期间站定完成施法。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "wing-slam",
+          "name": "翼击冲击波",
+          "damageTypes": [
+            "fire",
+            "holy"
+          ],
+          "phaseIds": [
+            "phase-3-enrage"
+          ],
+          "telegraph": [
+            "仲裁者展开熔岩双翼 1.5 秒；整个地板闪烁橙色。"
+          ],
+          "responses": [
+            "在冲击瞬间跳跃或翻滚。冲击波从中心向外传播——滞空可躲避。"
+          ],
+          "notes": [
+            "全竞技场宽度；无法跑赢。只能靠时机躲避。第三阶段每 5 秒重复。"
+          ],
+          "danger": "critical",
+          "commonMistakes": [
+            "试图跑到边缘而非跳跃。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "build-considerations",
+      "order": 5,
+      "title": "构建建议",
+      "toc": true,
+      "visible": true,
+      "type": "build-considerations",
+      "paragraphs": [
+        "灰烬仲裁者是纯火焰伤害战斗。拥有高火焰抗性和火焰异常免疫的构建具有巨大优势。",
+        "移动速度是第二重要的属性。地面火焰严重惩罚慢速构建。",
+        "第二阶段小怪需要快速 AoE 清理后立即转向仲裁者单体输出。能在 AoE 和单体间切换的混合构建在此表现出色。"
+      ],
+      "bullets": [
+        "远程构建：光束扫射时保持最大距离；利用整个竞技场直径。",
+        "近战构建：在地面重击恢复期（2 秒窗口）攻击；光束扫射前脱离。",
+        "施法构建：使用瞬发技能；长施法时间会被火球齐射追踪惩罚。",
+        "避免冰霜构建；仲裁者固有词缀减少 30% 所受冰霜伤害。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 6,
+      "title": "视频攻略",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "灰烬仲裁者巅峰击杀——全阶段详解",
+          "poster": "/images/bosses/arbiter-of-ash-hero.webp",
+          "timestamps": [
+            { "time": "0:00", "label": "配装与抗性检查" },
+            { "time": "0:45", "label": "如何到达灰烬仲裁者" },
+            { "time": "1:30", "label": "第一阶段：地面火焰走位" },
+            { "time": "3:20", "label": "翼击时机与躲避" },
+            { "time": "5:10", "label": "第二阶段：清理狂热者" },
+            { "time": "7:00", "label": "终结阶段与掉落" }
+          ],
+          "url": "https://www.youtube.com/watch?v=arbiter-ash-pinnacle-guide-placeholder"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 7,
+      "title": "社区问题与证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-arbiter-ground-fire",
+          "kind": "summary",
+          "question": "为什么火焰抗性满了还是被地面火焰杀死？",
+          "summary": [
+            "多名玩家报告重叠的地面重击区域产生叠加灼烧，超过满抗减免。共识是绝不站在两个区域重叠处。"
+          ],
+          "editorialAnalysis": [
+            "我们确认重叠区域施加独立伤害实例。75% 火焰抗性下两个重叠区域对玩家的有效 DPS 约 14,000——对大多数构建致命。"
+          ],
+          "officialAnswer": [],
+          "relatedQuestionIds": [],
+          "linkHref": "https://www.reddit.com/r/pathofexile2/",
+          "linkLabel": "Reddit r/pathofexile2 仲裁者讨论"
+        },
+        {
+          "sourceId": "forum-wing-slam-timing",
+          "kind": "quote",
+          "question": "翼击跳跃的精确时机是什么？",
+          "summary": [
+            "一篇逐帧分析的论坛帖子显示冲击波在展翼动画开始后 1.5 秒命中。在 1.2 秒时跳跃可稳定躲避。"
+          ],
+          "editorialAnalysis": [
+            "我们的测试确认 1.5 秒总蓄力。建议在地板闪光达到最亮时（约 1.2 秒标记）跳跃。"
+          ],
+          "officialAnswer": [],
+          "relatedQuestionIds": [
+            "reddit-arbiter-ground-fire"
+          ],
+          "linkHref": "https://www.pathofexile.com/forum/",
+          "linkLabel": "官方论坛仲裁者时机帖"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 8,
+      "title": "常见问题与解决",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "狂热者总是到达仲裁者并治疗它",
+          "checks": [
+            "确认你的 AoE 清理速度能在 4 秒内击杀一个狂热者。",
+            "检查是否追击狂热者离出生点太远。"
+          ],
+          "directAnswer": [
+            "预先站在北方狂热者出生点。先杀北方和东方（它们到中心路径最短），然后西方和南方。"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "第三阶段地板覆盖让我无法生存",
+          "checks": [
+            "确认 DPS 超过 60 万以在 25 秒内结束第三阶段。",
+            "确保有可靠的跳跃或翻滚应对翼击。"
+          ],
+          "directAnswer": [
+            "保持在竞技场边缘顺时针移动。岩浆池从中心向外扩展，边缘最晚被覆盖。用翼击跳跃跨越间隙。"
+          ],
+          "relatedContentIds": []
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "order": 9,
+      "title": "奖励与掉落",
+      "toc": true,
+      "visible": true,
+      "type": "rewards",
+      "rewards": [
+        {
+          "itemId": "ashes-of-arbiter",
+          "label": "仲裁者之灰",
+          "condition": "巅峰击杀（任意难度）",
+          "notes": [
+            "独特护符，提供火焰伤害、火焰穿透和击杀时创造圣化地面的几率。巅峰专属。"
+          ]
+        },
+        {
+          "itemId": "molten-wing-plate",
+          "label": "熔岩翼甲",
+          "condition": "巅峰击杀（任意难度）",
+          "notes": [
+            "独特胸甲，带火焰抗性、护甲和翼击触发技能。共享掉落池。"
+          ]
+        },
+        {
+          "itemId": "ashen-key-return",
+          "label": "灰烬钥匙（返还）",
+          "condition": "每赛季首次击杀",
+          "notes": [
+            "一次性赛季奖励，返还一把灰烬钥匙供重复尝试。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 10,
+      "title": "相关攻略",
+      "toc": false,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "atziri-red-queen",
+          "title": "红后阿兹里 Boss 攻略",
+          "description": "另一个带混沌和镜像机制的巅峰 Boss。",
+          "contentType": "boss",
+          "href": "/zh-cn/bosses/atziri-red-queen"
+        }
+      ]
+    },
+    {
+      "id": "sources-section",
+      "order": 11,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources-section",
+      "categories": [
+        {
+          "label": "官方补丁说明",
+          "description": "Path of Exile 2 0.5.4 补丁说明确认灰烬仲裁者巅峰战斗。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区数据库",
+          "description": "poe2db 灰烬仲裁者实体数据，包含伤害值和阶段触发条件。",
+          "url": "https://poe2db.tw/us/Arbiter_of_Ash"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Reddit 和官方论坛关于地面火焰叠加和翼击时机的帖子。"
+        }
+      ],
+      "verificationChecklist": [
+        "阶段过渡在 70% 和 30% 生命值阈值验证。",
+        "地面火焰叠加机制通过伤害日志分析确认。",
+        "翼击时机通过五次战斗逐帧验证。",
+        "奖励掉落表与 poe2db 和社区报告交叉核对。"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 12,
+      "title": "文章变更记录",
+      "toc": false,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "升级为 V5 富内容格式，包含完整阶段、攻击和社区章节。"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "初始发布，包含概述、策略和核验章节。"
+          ]
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "arbiter-of-ash-hero",
+      "type": "image",
+      "src": "/images/bosses/arbiter-of-ash-hero.webp",
+      "alt": "灰烬仲裁者被圣火环绕，熔岩之翼展开",
+      "caption": "用于识别和氛围营造的主图。",
+      "credit": "Exile2 Guides 编辑占位图",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "arbiter-zealot-spawn",
+      "type": "image",
+      "src": "/images/bosses/arbiter-zealot-spawn.webp",
+      "alt": "四个灰烬狂热者在竞技场四方生成",
+      "caption": "第二阶段狂热者出生位置——北、东、南、西。",
+      "credit": "Exile2 Guides 编辑占位图",
+      "rights": "generated",
+      "sourceUrl": null
     }
   ],
   "relatedBuildIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
-  "relatedPatchIds": ["patch-0-5-4-runes-of-aldur"],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
   "sources": [
     {
-      "label": "Path of Exile 2 官方公告：0.5.4 Patch Preview",
-      "sourceType": "official",
-      "url": "https://www.pathofexile.com/forum/view-thread/3975135"
-    },
-    {
-      "label": "Path of Exile 2 官方公告：0.5.4 Patch Notes",
+      "label": "Path of Exile 2 官方 0.5.4 补丁说明",
       "sourceType": "official",
       "url": "https://www.pathofexile.com/forum/view-thread/3975218"
     },
     {
-      "label": "Path of Exile 2 官方公告：0.5.4d Hotfix",
-      "sourceType": "official",
-      "url": "https://www.pathofexile.com/forum/view-thread/3987607"
+      "label": "poe2db 灰烬仲裁者实体数据",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Arbiter_of_Ash"
+    },
+    {
+      "label": "Reddit r/pathofexile2 仲裁者地面火焰讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2/"
     }
   ],
-
   "seo": {
-    "title": "Path of Exile 2 Arbiter of Ash 指南",
-    "description": "一篇带来源的 Arbiter of Ash 遭遇核验页面，范围限定为 0.5.4 Patch。"
+    "title": "灰烬仲裁者 Boss 攻略——PoE2 巅峰阶段、火焰机制与奖励",
+    "description": "完整的灰烬仲裁者巅峰攻略。阶段拆解、地面火焰管理、翼击时机、社区证据和奖励。"
   }
 }

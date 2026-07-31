@@ -413,7 +413,7 @@ svg {
 .boss-quick-preparation,
 .content-fact-summary,
 .sources-and-verification {
-  margin-block: var(--eg-space-8);
+  margin-block: var(--eg-space-4);
   padding: var(--eg-space-5);
   border: 1px solid var(--eg-color-border);
   border-radius: var(--eg-radius-md);
@@ -5335,6 +5335,937 @@ a {
   line-height: 1.6;
 }
 
+/*
+ * Boss V5 富内容详情页样式（对齐 exile2-boss-article-prototype-v5 原型）。
+ * 章节卡片、编号眉标、交互表格、阶段切换、灯箱等视觉均以原型为准。
+ */
+.boss-section {
+  min-width: 0;
+  scroll-margin-top: 5.5rem;
+  padding: 1.25rem 1.375rem;
+  border: 1px solid #273342;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, rgb(16 24 34 / 96%), rgb(9 15 23 / 96%));
+  box-shadow: 0 12px 32px rgb(0 0 0 / 16%);
+}
+
+.boss-section + .boss-section {
+  margin-top: 0.625rem;
+}
+
+.boss-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.boss-section-heading > span {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 1px solid #895d22;
+  border-radius: 0.4375rem;
+  background: #17120b;
+  color: #ffb53d;
+  font-weight: 900;
+}
+
+.boss-section-heading p {
+  margin: 0 0 0.0625rem;
+  color: #ffb53d;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.boss-section-heading h2 {
+  margin: 0;
+  font-size: 1.28rem;
+}
+
+.boss-section-title-plain {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* --- 快速结论 --- */
+.boss-answer-callout {
+  padding: 0.8125rem 0.9375rem;
+  border: 1px solid #1e6241;
+  border-radius: 0.5625rem;
+  background: linear-gradient(90deg, rgb(19 91 57 / 25%), rgb(10 28 22 / 55%));
+  color: #caefdc;
+}
+
+.boss-answer-callout strong {
+  color: #6fe1a1;
+}
+
+.boss-answer-callout p {
+  margin: 0.25rem 0 0;
+}
+
+.boss-answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6875rem;
+  margin-top: 0.75rem;
+}
+
+.boss-answer-grid article,
+.boss-fact-cards article,
+.boss-damage-card,
+.boss-reward-grid article {
+  padding: 0.875rem;
+  border: 1px solid #253445;
+  border-radius: 0.5625rem;
+  background: #0c131c;
+}
+
+.boss-answer-grid b {
+  color: #f1f4f8;
+}
+
+.boss-answer-grid p,
+.boss-fact-cards p,
+.boss-damage-card p,
+.boss-reward-grid p {
+  margin: 0.3125rem 0 0;
+  color: #9eabba;
+  font-size: 0.87rem;
+}
+
+.boss-inline-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.8125rem;
+}
+
+.boss-inline-links a {
+  color: #56a9ff;
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+
+/* --- 事实卡片与进入方式 --- */
+.boss-fact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+}
+
+.boss-fact-cards small {
+  color: #ffb53d;
+  font-weight: 800;
+}
+
+.boss-fact-cards strong {
+  display: block;
+  margin-top: 0.1875rem;
+  font-size: 1.03rem;
+}
+
+.boss-access-steps {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.boss-access-steps h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.boss-access-steps p {
+  margin: 0.25rem 0 0;
+  color: #9eabba;
+  font-size: 0.87rem;
+}
+
+/* --- 需求键值对 --- */
+.boss-requirements {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.boss-requirement-row {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #253445;
+  border-radius: 0.5rem;
+  background: #0c131c;
+}
+
+.boss-requirement-row dt {
+  color: #8795a6;
+  font-size: 0.84rem;
+}
+
+.boss-requirement-row dd {
+  margin: 0;
+  color: #c4ccd6;
+  font-size: 0.87rem;
+}
+
+.boss-requirement-note {
+  grid-column: 2;
+  color: #8795a6 !important;
+  font-size: 0.78rem !important;
+}
+
+/* --- 数据表格（准备清单 / 攻击参照） --- */
+.boss-prep-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.625rem;
+  color: #9eabba;
+  font-size: 0.82rem;
+}
+
+.boss-prep-toolbar button {
+  border: 0;
+  background: transparent;
+  color: #56a9ff;
+  cursor: pointer;
+}
+
+.boss-table-wrap {
+  overflow: auto;
+  border: 1px solid #273443;
+  border-radius: 0.5625rem;
+}
+
+.boss-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 47.5rem;
+}
+
+.boss-data-table th,
+.boss-data-table td {
+  padding: 0.6875rem 0.75rem;
+  border-bottom: 1px solid #25303e;
+  border-right: 1px solid #212c38;
+  text-align: left;
+  vertical-align: top;
+}
+
+.boss-data-table th {
+  background: #151e29;
+  color: #cfd6df;
+  font-size: 0.78rem;
+}
+
+.boss-data-table td {
+  color: #aeb8c5;
+  font-size: 0.86rem;
+}
+
+.boss-data-table td b {
+  color: #edf1f5;
+}
+
+.boss-data-table td small {
+  display: block;
+  color: #708095;
+}
+
+.boss-data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.boss-prep-table input[type="checkbox"] {
+  accent-color: #58d28b;
+  width: 1.0625rem;
+  height: 1.0625rem;
+}
+
+.boss-prep-table td p {
+  margin: 0.25rem 0 0;
+  color: #8795a6;
+  font-size: 0.78rem;
+}
+
+/* --- 攻击筛选 --- */
+.boss-filter-row {
+  display: flex;
+  gap: 0.4375rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.625rem;
+}
+
+.boss-filter-row button {
+  padding: 0.4375rem 0.6875rem;
+  border: 1px solid #2a3949;
+  border-radius: 0.4375rem;
+  background: #0b121b;
+  color: #aeb9c6;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.boss-filter-row button.selected {
+  border-color: #ffb53d;
+  background: rgb(255 181 61 / 12%);
+  color: white;
+}
+
+.boss-risk {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.1875rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.boss-risk--high {
+  background: rgb(255 75 69 / 14%);
+  color: #ff7771;
+}
+
+.boss-risk--medium {
+  background: rgb(255 181 61 / 13%);
+  color: #ffc864;
+}
+
+.boss-risk--low {
+  background: rgb(88 210 139 / 13%);
+  color: #6fe1a1;
+}
+
+/* --- 阶段切换 --- */
+.boss-phase-layout {
+  display: grid;
+  grid-template-columns: 14.375rem 1fr;
+  gap: 0.75rem;
+}
+
+.boss-phase-tabs {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.boss-phase-tabs button {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid #263442;
+  border-radius: 0.5625rem;
+  background: #0b121b;
+  color: #c4cdd7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.boss-phase-tabs button span {
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background: #172231;
+  color: #ffb53d;
+  font-weight: 900;
+  font-size: 0.78rem;
+}
+
+.boss-phase-tabs button b {
+  font-size: 0.93rem;
+}
+
+.boss-phase-tabs button small {
+  color: #778699;
+  font-size: 0.72rem;
+}
+
+.boss-phase-tabs button.selected {
+  border-color: #536c86;
+  background: #121d29;
+}
+
+.boss-phase-view {
+  display: grid;
+  grid-template-columns: minmax(17.5rem, 0.85fr) minmax(21.25rem, 1.15fr);
+  border: 1px solid #263442;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  background: #0b121b;
+}
+
+.boss-phase-copy {
+  padding: 1.1875rem;
+}
+
+.boss-phase-label {
+  margin: 0;
+  color: #ffb53d;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.boss-phase-copy h3 {
+  margin: 0.375rem 0 0.5625rem;
+  font-size: 1.15rem;
+}
+
+.boss-phase-trigger {
+  margin: 0.375rem 0;
+  color: #abb6c3;
+  font-size: 0.85rem;
+}
+
+.boss-phase-objectives-label {
+  display: block;
+  margin-top: 0.5rem;
+  color: #c4ccd6;
+  font-size: 0.82rem;
+}
+
+.boss-phase-copy ul {
+  margin: 0.375rem 0;
+  padding-left: 1.25rem;
+}
+
+.boss-phase-copy li,
+.boss-phase-copy > p:not(.boss-phase-label):not(.boss-phase-trigger) {
+  color: #abb6c3;
+  font-size: 0.88rem;
+}
+
+.boss-phase-tags {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-top: 0.875rem;
+}
+
+.boss-phase-tags span {
+  padding: 0.1875rem 0.4375rem;
+  border: 1px solid #34465a;
+  border-radius: 999px;
+  color: #aebdcb;
+  font-size: 0.68rem;
+}
+
+/* --- 带标注媒体与灯箱 --- */
+.boss-annotated-media {
+  position: relative;
+  margin: 0;
+  min-height: 14rem;
+  overflow: hidden;
+  background: #071019;
+  cursor: zoom-in;
+}
+
+.boss-annotated-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.boss-annotated-media figcaption {
+  position: absolute;
+  left: 0.625rem;
+  right: 0.625rem;
+  bottom: 0.5625rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.3125rem;
+  background: rgb(4 8 12 / 78%);
+  color: #abb7c5;
+  font-size: 0.68rem;
+}
+
+.boss-zoom-button {
+  position: absolute;
+  right: 0.625rem;
+  top: 0.625rem;
+  width: 1.9375rem;
+  height: 1.9375rem;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 0.4375rem;
+  background: rgb(5 9 14 / 78%);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.boss-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: grid;
+  place-items: center;
+  padding: 2.5rem;
+  background: rgb(2 4 7 / 94%);
+}
+
+.boss-lightbox img {
+  max-height: 82vh;
+  max-width: min(68.75rem, 92vw);
+  border: 1px solid #46576a;
+  border-radius: 0.625rem;
+}
+
+.boss-lightbox p {
+  position: absolute;
+  bottom: 1.125rem;
+  color: #c5ced8;
+}
+
+.boss-lightbox-close {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.125rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #56687a;
+  border-radius: 50%;
+  background: #101821;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --- 伤害类型 --- */
+.boss-damage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+
+.boss-damage-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.boss-damage-card ul {
+  margin: 0.375rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.boss-damage-card li {
+  color: #9eabba;
+  font-size: 0.85rem;
+}
+
+/* --- 奖励 --- */
+.boss-reward-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+}
+
+.boss-reward-grid article {
+  display: grid;
+  grid-template-columns: 2.625rem 1fr;
+  gap: 0.625rem;
+}
+
+.boss-reward-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgb(255 181 61 / 14%);
+  color: #ffb53d;
+}
+
+.boss-reward-grid small {
+  color: #ffb53d;
+  font-size: 0.72rem;
+}
+
+.boss-reward-grid h3 {
+  margin: 0.125rem 0;
+  font-size: 0.95rem;
+}
+
+/* --- 常见问题 --- */
+.boss-qa-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.boss-qa-list details {
+  border: 1px solid #2a3847;
+  border-radius: 0.5625rem;
+  overflow: hidden;
+  background: #0b121b;
+}
+
+.boss-qa-list summary {
+  padding: 0.8125rem 0.9375rem;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.boss-qa-list details[open] summary {
+  border-bottom: 1px solid #263442;
+  background: #111b27;
+}
+
+.boss-qa-body {
+  padding: 0.8125rem 0.9375rem;
+  color: #aeb9c6;
+  font-size: 0.87rem;
+}
+
+.boss-qa-body p {
+  margin-top: 0;
+}
+
+.boss-qa-body ol {
+  padding-left: 1.25rem;
+}
+
+/* --- 社区证据 --- */
+.boss-community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6875rem;
+}
+
+.boss-community-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.9375rem;
+  border: 1px solid #293748;
+  border-radius: 0.625rem;
+  background: #0b121b;
+}
+
+.boss-community:not(.boss-community--expanded) .boss-community-extra {
+  display: none;
+}
+
+.boss-community-meta {
+  display: flex;
+  gap: 0.5625rem;
+  align-items: center;
+}
+
+.boss-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 50%;
+  background: #48304a;
+  color: #ffc0ff;
+  font-weight: 900;
+}
+
+.boss-avatar--green {
+  background: #233f35;
+  color: #9ff7c2;
+}
+
+.boss-avatar--orange {
+  background: #493527;
+  color: #ffc58d;
+}
+
+.boss-community-meta small {
+  display: block;
+  color: #788898;
+}
+
+.boss-community-card h3 {
+  margin: 0.75rem 0 0.4375rem;
+  font-size: 0.98rem;
+}
+
+.boss-community-card blockquote {
+  margin: 0;
+  padding-left: 0.625rem;
+  border-left: 2px solid #46576a;
+  color: #9ba8b7;
+  font-size: 0.84rem;
+}
+
+.boss-editor-analysis,
+.boss-official-answer {
+  margin-top: 0.75rem;
+  padding: 0.625rem;
+  border-radius: 0.4375rem;
+}
+
+.boss-editor-analysis {
+  background: #111a24;
+}
+
+.boss-official-answer {
+  border: 1px solid #1e603f;
+  background: #0e2119;
+}
+
+.boss-editor-analysis b {
+  color: #c8d3de;
+}
+
+.boss-official-answer b {
+  color: #65db98;
+}
+
+.boss-editor-analysis p,
+.boss-official-answer p {
+  margin: 0.25rem 0;
+  color: #aeb8c4;
+  font-size: 0.83rem;
+}
+
+.boss-official-answer a {
+  color: #78c7ff;
+  font-size: 0.79rem;
+}
+
+/* 社区证据卡片底部的原文链接，指向 Reddit/论坛等社区来源。 */
+.boss-community-source {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: #78c7ff;
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.boss-community-toggle {
+  display: block;
+  margin: 0.75rem auto 0;
+  padding: 0.5625rem 0.9375rem;
+  border: 1px solid #34475b;
+  border-radius: 0.5rem;
+  background: #101925;
+  color: #d4dbe4;
+  cursor: pointer;
+  font-size: 0.84rem;
+}
+
+/* --- 画廊 --- */
+.boss-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 0.95fr;
+  gap: 0.625rem;
+}
+
+.boss-gallery-grid .boss-annotated-media {
+  border: 1px solid #2a3745;
+  border-radius: 0.5625rem;
+  min-height: 0;
+}
+
+.boss-gallery-grid .boss-annotated-media img {
+  height: 11.25rem;
+}
+
+/* --- 相关内容卡片 --- */
+.boss-related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+}
+
+.boss-related-card {
+  position: relative;
+  padding: 0.875rem;
+  border: 1px solid #2a3745;
+  border-radius: 0.5625rem;
+  overflow: hidden;
+  background: #0b121b;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.boss-related-card:hover {
+  transform: translateY(-2px);
+  border-color: #50677e;
+}
+
+.boss-related-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.boss-related-card p {
+  margin: 0;
+  color: #8493a4;
+  font-size: 0.76rem;
+}
+
+.boss-card-type {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.62rem;
+  font-weight: 900;
+  background: #154831;
+  color: #7bedab;
+}
+
+.boss-card-type--troubleshoot,
+.boss-card-type--patch {
+  background: #664521;
+  color: #ffd079;
+}
+
+/* --- 来源与核验 --- */
+.boss-source-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 0.75rem;
+}
+
+.boss-source-list {
+  display: grid;
+  gap: 0.4375rem;
+}
+
+.boss-source-list article {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 2.125rem;
+  gap: 0.625rem;
+  align-items: center;
+  padding: 0.625rem;
+  border: 1px solid #2a3745;
+  border-radius: 0.5rem;
+  background: #0b121b;
+}
+
+.boss-source-list article > span {
+  color: #ffb53d;
+  font-weight: 900;
+  font-size: 0.76rem;
+}
+
+.boss-source-list p {
+  margin: 0;
+  color: #8998a9;
+  font-size: 0.76rem;
+}
+
+.boss-source-list a {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #34475a;
+  border-radius: 0.4375rem;
+  background: #121b26;
+  color: #cdd5de;
+}
+
+.boss-verification-card {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border: 1px solid #3f533f;
+  border-radius: 0.5625rem;
+  background: #101a14;
+}
+
+.boss-verification-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.boss-verification-card ul {
+  margin: 0;
+  padding-left: 1.125rem;
+}
+
+.boss-verification-card li {
+  color: #adbbb0;
+  font-size: 0.82rem;
+}
+
+/* --- 媒体免责声明 --- */
+.boss-media-notice {
+  margin-top: 1.25rem;
+  padding: 0.75rem 0.875rem;
+  border-left: 3px solid #ffb53d;
+  background: #111821;
+  border-radius: 0 0.4375rem 0.4375rem 0;
+  color: #aeb9c5;
+  font-size: 0.8rem;
+}
+
+/* --- Boss V5 响应式 --- */
+@media (max-width: 73.75rem) {
+  .boss-fact-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .boss-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 57.5rem) {
+  .boss-phase-layout,
+  .boss-phase-view,
+  .boss-source-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-phase-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .boss-community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .boss-answer-grid,
+  .boss-fact-cards,
+  .boss-damage-grid,
+  .boss-reward-grid,
+  .boss-gallery-grid,
+  .boss-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-phase-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-section {
+    padding: 1rem 0.8125rem;
+  }
+
+  .boss-section-heading h2 {
+    font-size: 1.08rem;
+  }
+
+  .boss-requirement-row {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-requirement-note {
+    grid-column: 1;
+  }
+}
+
 .build-section {
   min-width: 0;
   scroll-margin-top: 5.5rem;
@@ -5593,6 +6524,139 @@ a {
     #070b10;
   color: #e8edf4 !important;
   text-decoration: none;
+}
+
+/* YouTube 页面内嵌入播放器：保持 16:9 比例并铺满卡片顶部。 */
+.build-video-card__embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid rgb(56 70 88 / 66%);
+  background: #070b10;
+}
+
+.build-video-card__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 单视频且无节点时铺满两列，避免右侧出现空白列。 */
+.build-video-card--wide {
+  grid-column: 1 / -1;
+}
+
+/* 可点击封面：展示海报图与播放按钮，点击后才加载 YouTube 嵌入。 */
+.build-video-card__cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-bottom: 1px solid rgb(56 70 88 / 66%);
+  background:
+    radial-gradient(circle at center, rgb(82 104 132 / 22%), transparent 66%),
+    #070b10;
+  cursor: pointer;
+}
+
+.build-video-card__cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.build-video-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(220 40 40 / 92%);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 45%);
+  transform: translate(-50%, -50%);
+  transition: background 0.15s ease;
+}
+
+.build-video-card__play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 0.25rem;
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+  border-left: 1rem solid #fff;
+}
+
+.build-video-card__cover:hover .build-video-card__play,
+.build-video-card__cover:focus-visible .build-video-card__play {
+  background: rgb(240 52 52 / 96%);
+}
+
+/* “重要节点”面板：与视频并排，点击某节点从对应时间开始播放。 */
+.build-video-timestamps {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 0.75rem;
+  border: 1px solid rgb(58 72 90 / 78%);
+  border-radius: 0.625rem;
+  background: rgb(8 13 19 / 78%);
+}
+
+.build-video-timestamps ol {
+  display: flex;
+  overflow-y: auto;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.build-video-timestamps__item {
+  display: flex;
+  width: 100%;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  background: rgb(18 26 36 / 70%);
+  color: #dfe6ee;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+
+.build-video-timestamps__item:hover:not(:disabled),
+.build-video-timestamps__item:focus-visible:not(:disabled) {
+  border-color: rgb(120 199 255 / 45%);
+  background: rgb(24 36 50 / 85%);
+}
+
+.build-video-timestamps__item:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.build-video-timestamps__time {
+  flex-shrink: 0;
+  color: var(--eg-color-gold);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.build-video-timestamps__label {
+  min-width: 0;
 }
 
 .build-video-card__external-preview span {

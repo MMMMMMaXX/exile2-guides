@@ -144,7 +144,7 @@ describe("GuideSectionRenderer", () => {
     const view = render(<GuideSectionRenderer article={createArticle("en")} />);
 
     expect(
-      view.getByRole("link", {
+      view.getByRole("button", {
         name: /Open the original video: Test gameplay/,
       }),
     ).toBeTruthy();
@@ -156,7 +156,7 @@ describe("GuideSectionRenderer", () => {
     );
 
     expect(
-      view.getByRole("link", {
+      view.getByRole("button", {
         name: /打开原始视频: Test gameplay/,
       }),
     ).toBeTruthy();

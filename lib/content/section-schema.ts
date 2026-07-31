@@ -72,14 +72,23 @@ export const faqItemsSchema = z
   )
   .default([]);
 
-/** 共享视频条目结构，供各模块的 video Section 复用。 */
+/** 共享视频条目结构，供各模块的 video Section 复用；poster 提供页面内封面，timestamps 提供可跳转的重要节点。 */
 export const videoEntriesSchema = z
   .array(
     z.strictObject({
       creator: requiredText.optional(),
       description: requiredText.optional(),
       label: requiredText,
+      poster: imagePath.optional(),
       takeaway: requiredText.optional(),
+      timestamps: z
+        .array(
+          z.strictObject({
+            label: requiredText,
+            time: requiredText,
+          }),
+        )
+        .default([]),
       url: z.url(),
     }),
   )

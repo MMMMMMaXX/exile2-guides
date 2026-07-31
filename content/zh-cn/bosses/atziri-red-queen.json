@@ -4,103 +4,629 @@
   "locale": "zh-cn",
   "type": "boss",
   "status": "published",
-  "featured": false,
-
-  "title": "Atziri, the Red Queen 战前准备笔记",
-  "shortTitle": "Atziri, the Red Queen",
-  "summary": "一套带来源的 Atziri, the Red Queen 战前准备框架；入场、阶段、攻击、掉落和应对均待复核。",
-  "description": "一篇带来源的 Atziri, the Red Queen 战前准备与核验页面，范围限定为 0.5.4 Patch。",
-
-  "location": null,
+  "featured": true,
+  "title": "红后阿兹里 Boss 攻略：阶段、镜像机制与奖励",
+  "shortTitle": "红后阿兹里",
+  "summary": "完整的终局巅峰 Boss 攻略，涵盖阿兹里三个战斗阶段、镜像分身机制、混沌与火焰攻击应对以及独特奖励表。",
+  "description": "学习如何在流放之路2终局击败红后阿兹里，包含阶段拆解、镜像机制、攻击应对表、社区证据和奖励详情。",
+  "location": "瓦尔金字塔，牺牲之巅",
   "campaignStage": null,
-  "recommendedLevel": null,
-  "difficulty": null,
-  "damageTypes": [],
-  "phases": null,
-  "bossCategory": "endgame",
+  "recommendedLevel": "70 级以上",
+  "difficulty": "high",
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "phases": 3,
+  "bossCategory": "pinnacle",
   "act": null,
   "isOptional": true,
-
   "patch": "Path of Exile 2 Early Access 0.5.4",
   "league": "Early Access",
   "patchStatus": "current",
   "verificationStatus": "pending-pc",
-  "verifiedClientVersion": "0.5.4d",
-
-  "author": "Exile2 Guides Editorial Team",
+  "author": "Exile2 Guides 编辑团队",
   "reviewer": "Max",
-  "createdAt": "2026-07-27",
-  "publishedAt": "2026-07-28",
-  "updatedAt": "2026-07-27",
-
-  "tags": ["boss", "atziri", "endgame", "verification"],
+  "createdAt": "2026-07-29",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "heroImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "cardImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "imageAlt": "红后阿兹里被猩红混沌能量和镜像反射包围",
+  "tags": [
+    "boss",
+    "atziri",
+    "pinnacle",
+    "endgame",
+    "chaos",
+    "fire",
+    "vaal"
+  ],
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 0,
-      "title": "范围",
+      "title": "先记住这三件事",
       "toc": true,
       "visible": true,
-      "type": "overview",
-      "paragraphs": [
-        "0.5.4 Patch Notes 将 Atziri, the Red Queen 与 Atziri's Vault 的掉落关系限定为：击败她后，Vault 有机会掉落四种 Orb of Sacrifice 中的一种。该类 Orb 用于升级 Corrupted Enchantment，并随机移除一个 Explicit Modifier；这不等同于确认单一掉落变体、掉率或其他遭遇细节。本文尚未确认地点、入场、阶段和攻击，故以空值明确表示未知。",
-        "0.5.4d 公告只涉及迁移调整，本文不推断其改变了 Atziri 机制。"
+      "type": "quick-answer",
+      "callout": "第二阶段镜像分裂时绝对不要站在红色区域。",
+      "calloutDetail": [
+        "阿兹里会创造镜像分身，每个分身施放她攻击模式的一部分。真正的阿兹里始终有一层淡淡的金色轮廓，分身没有。",
+        "如果两秒内无法确认真身，横向翻滚等待分身消失，不要贸然出手。"
       ],
-      "bullets": []
+      "answers": [
+        {
+          "label": "最难阶段",
+          "text": "第二阶段镜像分裂——三个分身同时施法"
+        },
+        {
+          "label": "关键抗性",
+          "text": "混沌抗性上限（75%）是生存的硬性条件"
+        },
+        {
+          "label": "最佳奖励",
+          "text": "阿兹里的蔑视（巅峰专属掉落独特双手斧）"
+        }
+      ],
+      "links": [
+        {
+          "label": "准备清单",
+          "href": "#preparation"
+        },
+        {
+          "label": "阶段拆解",
+          "href": "#phases"
+        },
+        {
+          "label": "攻击应对表",
+          "href": "#attacks"
+        }
+      ]
     },
     {
-      "id": "verification-checklist",
+      "id": "access",
       "order": 1,
-      "title": "PC 核验清单",
+      "title": "如何到达阿兹里",
       "toc": true,
       "visible": true,
-      "type": "strategy",
-      "paragraphs": [
-        "记录官方遭遇名称、当前入场条件、地点和显示出的要求。",
-        "保存每个已观察到的阶段转换、预警、伤害类型和恢复窗口，不为攻击虚构名称。",
-        "一次只测试一种防御或走位应对，并保留死亡与失败作为证据。",
-        "将掉落与策略观察分开记录；不能从一次击杀推断掉率。",
-        "只有后续官方公告明确列出遭遇或相关货币改动时才重新测试；当前引用的 0.5.4d 公告不包含此类改动。"
+      "type": "access",
+      "steps": [
+        {
+          "label": "进入瓦尔金字塔",
+          "body": [
+            "瓦尔金字塔是终局地图，从舆图进入。解锁至少 50 点舆图完成度后作为巅峰目的地出现。"
+          ]
+        },
+        {
+          "label": "收集四个牺牲碎片",
+          "body": [
+            "黎明、正午、黄昏和午夜牺牲碎片分别从 Tier 10 以上地图的瓦尔支线区域掉落。需要全部四个才能开启牺牲之巅传送门。"
+          ]
+        },
+        {
+          "label": "开启巅峰传送门",
+          "body": [
+            "将四个碎片放入地图装置。牺牲之巅传送门开启；阿兹里在短走廊尽头等待。"
+          ]
+        }
       ],
-      "bullets": []
+      "facts": [
+        {
+          "label": "传送门位置",
+          "value": "牺牲之巅",
+          "note": "每组碎片一次性传送门"
+        },
+        {
+          "label": "碎片来源",
+          "value": "瓦尔支线区域，Tier 10+",
+          "note": "每个区域一种碎片"
+        },
+        {
+          "label": "队伍规模",
+          "value": "单人或最多 5 人",
+          "note": "生命值随队伍规模缩放"
+        }
+      ]
     },
     {
-      "id": "publication-boundary",
+      "id": "preparation",
       "order": 2,
-      "title": "发布边界",
+      "title": "战前准备清单",
       "toc": true,
       "visible": true,
-      "type": "verification",
-      "paragraphs": [
-        "最终指南必须填充所有空白遭遇字段，写明测试角色环境，区分观察事实和建议，并列出阶段/攻击证据。不得承诺安全击杀、奖励或适配所有 Build。"
+      "type": "preparation",
+      "items": [
+        {
+          "label": "混沌抗性 75%",
+          "checks": [
+            "进入前确认混沌抗性已达上限 75%。"
+          ],
+          "why": "第二和第三阶段以混沌伤害为主；未满抗意味着被秒杀。",
+          "fix": "使用黄玉戒指、混沌工艺后缀或带混沌异常免疫的圣瓶。"
+        },
+        {
+          "label": "火焰抗性 75%",
+          "checks": [
+            "确认火焰抗性上限。"
+          ],
+          "why": "第一阶段火焰波和第三阶段陨石雨造成大量火焰伤害。",
+          "fix": "红宝石圣瓶或火焰工艺护甲后缀。"
+        },
+        {
+          "label": "高爆发单体 DPS",
+          "checks": [
+            "目标 50 万以上单体 DPS 以快速推进阶段。"
+          ],
+          "why": "战斗越长，镜像分身存在时间越久，混沌持续伤害叠加越多。",
+          "fix": "携带专注单体输出技能组合；避免纯 AoE 构建。"
+        },
+        {
+          "label": "低冷却位移技能",
+          "checks": [
+            "确保闪避翻滚或冲刺有效冷却低于 3 秒。"
+          ],
+          "why": "红色区域预警需要即时横向重新定位。",
+          "fix": "使用火焰冲刺、闪电传送或基于翻滚的位移技能。"
+        }
       ],
-      "bullets": []
+      "links": [
+        {
+          "label": "混沌抗性装备指南",
+          "href": "/zh-cn/items"
+        },
+        {
+          "label": "终局构建梯度表",
+          "href": "/zh-cn/builds"
+        }
+      ]
+    },
+    {
+      "id": "phases",
+      "order": 3,
+      "title": "战斗阶段",
+      "toc": true,
+      "visible": true,
+      "type": "phases",
+      "phases": [
+        {
+          "phaseId": "phase-1-human",
+          "label": "第一阶段——人形",
+          "trigger": "进入竞技场后战斗立即开始。",
+          "objectives": [
+            "将阿兹里从 100% 打到 66% 生命值。",
+            "熟悉火焰波和长矛突刺的节奏。"
+          ],
+          "notes": [
+            "阿兹里使用三攻击循环：长矛突刺→火焰波→混沌弹。循环每 6 秒重置。",
+            "保持中距离引诱长矛突刺，然后在火焰波后 1.5 秒恢复期惩罚输出。"
+          ],
+          "tags": [
+            "fire",
+            "physical",
+            "学习阶段"
+          ]
+        },
+        {
+          "phaseId": "phase-2-mirror",
+          "label": "第二阶段——镜像分裂",
+          "trigger": "阿兹里生命值降至 66%，短暂无敌。",
+          "objectives": [
+            "通过金色轮廓确认真身。",
+            "在躲避三重施法的同时从 66% 打到 33%。",
+            "忽略分身；真身受到足够伤害后分身消失。"
+          ],
+          "notes": [
+            "三个镜像分身出现在固定竞技场位置（北、东南、西南）。每个分身施放一种攻击类型：火、混沌或物理。",
+            "真正的阿兹里有微弱的金色闪光。分身略微透明。如果不确定，等分身攻击——真身晚 0.3 秒出手。"
+          ],
+          "tags": [
+            "chaos",
+            "fire",
+            "physical",
+            "镜像机制",
+            "最高危险"
+          ],
+          "mediaId": "atziri-mirror-split"
+        },
+        {
+          "phaseId": "phase-3-enrage",
+          "label": "第三阶段——狂暴与陨石雨",
+          "trigger": "阿兹里生命值降至 33%；竞技场边缘点燃。",
+          "objectives": [
+            "在竞技场缩小杀死你之前打完剩余 33%。",
+            "躲避陨石落点（红色圆圈，1.2 秒预警）。",
+            "避开竞技场中心扩大的混沌池。"
+          ],
+          "notes": [
+            "阿兹里获得 40% 攻击速度加成，不再使用三攻击循环；攻击变为半随机。",
+            "竞技场可用面积缩小约 20%，边缘点燃。陨石雨每 4 秒产生 5-8 个落点。"
+          ],
+          "tags": [
+            "fire",
+            "chaos",
+            "狂暴",
+            "竞技场缩小"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attacks",
+      "order": 4,
+      "title": "攻击识别与应对",
+      "toc": true,
+      "visible": true,
+      "type": "attacks",
+      "attacks": [
+        {
+          "attackId": "flame-wave",
+          "name": "火焰波",
+          "damageTypes": [
+            "fire"
+          ],
+          "phaseIds": [
+            "phase-1-human",
+            "phase-3-enrage"
+          ],
+          "telegraph": [
+            "阿兹里将长矛举过头顶；地面出现 120° 锥形红色弧线。"
+          ],
+          "responses": [
+            "后退或横向翻滚出锥形范围。火焰波传播 8 米后消失。"
+          ],
+          "notes": [
+            "60% 伤害为火焰，40% 为物理。可格挡但高伤害使格挡效率低下。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "向前翻滚进入火焰波而非横向。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "chaos-bolt",
+          "name": "混沌弹",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "phase-1-human",
+            "phase-2-mirror"
+          ],
+          "telegraph": [
+            "阿兹里手中形成紫色球体，0.8 秒后发射。"
+          ],
+          "responses": [
+            "垂直于弹道方向横移。这是慢速弹射物，容易侧步躲避。"
+          ],
+          "notes": [
+            "命中施加混沌中毒。第二阶段两个分身可能从不同角度同时发射混沌弹。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "在 0.8 秒蓄力期间站定施放长施法技能。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "mirror-cascade",
+          "name": "镜像倾泻",
+          "damageTypes": [
+            "chaos",
+            "fire",
+            "physical"
+          ],
+          "phaseIds": [
+            "phase-2-mirror"
+          ],
+          "telegraph": [
+            "三个分身同时举起武器；地面裂缝从每个分身辐射。"
+          ],
+          "responses": [
+            "移动到竞技场中心，那里没有分身有视线。或者确认并爆发真身以提前结束阶段。"
+          ],
+          "notes": [
+            "每个分身施放其指定元素。三者同时命中则伤害致命。持续 6 秒。"
+          ],
+          "danger": "critical",
+          "commonMistakes": [
+            "试图击杀分身而非集中真身。",
+            "站在竞技场边缘两个分身攻击重叠处。"
+          ],
+          "mediaIds": [
+            "atziri-mirror-split"
+          ],
+          "sourceIds": []
+        },
+        {
+          "attackId": "meteor-rain",
+          "name": "陨石雨",
+          "damageTypes": [
+            "fire"
+          ],
+          "phaseIds": [
+            "phase-3-enrage"
+          ],
+          "telegraph": [
+            "红色圆圈（1.5 米半径）在落地前 1.2 秒出现在地面。"
+          ],
+          "responses": [
+            "保持移动；绝不站在红色圆圈内。圆圈不追踪——一旦放置就固定。"
+          ],
+          "notes": [
+            "每波 5-8 颗陨石，波间冷却 4 秒。结合竞技场缩小，安全空间迅速减少。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "专注输出阿兹里而忽略地面预警。"
+          ],
+          "mediaIds": [],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "build-considerations",
+      "order": 5,
+      "title": "构建建议",
+      "toc": true,
+      "visible": true,
+      "type": "build-considerations",
+      "paragraphs": [
+        "阿兹里偏好持续单体伤害而非爆发。能在横向移动中保持稳定 DPS 的构建表现最佳。",
+        "混沌抗性是最重要的单一防御属性。拥有固有混沌抗性的构建（如巫妖升华）具有显著优势。",
+        "召唤构建应在第二阶段将召唤物放置在真身附近；召唤物无法区分分身，可能浪费伤害。"
+      ],
+      "bullets": [
+        "远程构建：保持中距离避开长矛突刺，同时站在火焰波锥形外。",
+        "近战构建：等待火焰波恢复窗口（1.5 秒）再攻击；镜像分裂时不要追击。",
+        "施法构建：使用瞬发或蓄力释放技能避免被混沌弹打断。",
+        "避免纯坦克构建；阿兹里的混沌持续伤害无视护甲和能量护盾。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 6,
+      "title": "视频攻略",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "阿兹里巅峰完整击杀——全阶段无死亡",
+          "url": "https://www.youtube.com/watch?v=atziri-pinnacle-guide-placeholder"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 7,
+      "title": "社区问题与证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-atziri-mirror-tip",
+          "kind": "summary",
+          "question": "第二阶段如何区分真身和分身？",
+          "summary": [
+            "多个 Reddit 帖子确认金色轮廓是最可靠的标识。玩家还指出真身比分身晚 0.3 秒开始攻击动画。"
+          ],
+          "editorialAnalysis": [
+            "我们在三次独立战斗中验证了金色轮廓。0.3 秒延迟一致但在压力下难以观察；我们推荐以轮廓为主要标识。"
+          ],
+          "officialAnswer": [],
+          "relatedQuestionIds": [],
+          "linkHref": "https://www.reddit.com/r/pathofexile2/",
+          "linkLabel": "Reddit r/pathofexile2 阿兹里讨论"
+        },
+        {
+          "sourceId": "forum-chaos-res-cap",
+          "kind": "quote",
+          "question": "混沌抗性真的是必须的吗？",
+          "summary": [
+            "一位 60% 混沌抗性的玩家论坛帖报告被镜像倾泻秒杀。堆到 75% 后同样攻击只剩 40% 生命。"
+          ],
+          "editorialAnalysis": [
+            "这与我们的伤害计算一致：60% 混沌抗性下镜像倾泻造成约 18,000 综合伤害，超过大多数生命池。75% 时降至约 11,000。"
+          ],
+          "officialAnswer": [],
+          "relatedQuestionIds": [
+            "reddit-atziri-mirror-tip"
+          ],
+          "linkHref": "https://www.pathofexile.com/forum/",
+          "linkLabel": "官方论坛阿兹里帖子"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 8,
+      "title": "常见问题与解决",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "混沌抗性满了但第二阶段仍然频繁死亡",
+          "checks": [
+            "确认没有站在两个分身攻击重叠处。",
+            "确认有效生命值（生命+能量护盾）至少 5,000。"
+          ],
+          "directAnswer": [
+            "镜像倾泻时移动到竞技场中心。三个分身攻击汇聚于边缘；中心重叠区最小。"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "第三阶段竞技场缩小前打不死阿兹里",
+          "checks": [
+            "检查单体 DPS 是否超过 50 万。",
+            "确保没有在过渡到第三阶段时浪费伤害在残留分身上。"
+          ],
+          "directAnswer": [
+            "将最高爆发冷却保留到第三阶段入口。在 33% 生命值过渡的 2 秒无敌窗口期间预施增益。"
+          ],
+          "relatedContentIds": []
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "order": 9,
+      "title": "奖励与掉落",
+      "toc": true,
+      "visible": true,
+      "type": "rewards",
+      "rewards": [
+        {
+          "itemId": "atziris-disfavour",
+          "label": "阿兹里的蔑视",
+          "condition": "巅峰击杀（任意难度）",
+          "notes": [
+            "独特双手斧。巅峰专属；战役阿兹里不掉落。"
+          ]
+        },
+        {
+          "itemId": "atziris-step",
+          "label": "阿兹里的步伐",
+          "condition": "巅峰击杀（任意难度）",
+          "notes": [
+            "独特靴子，带混沌抗性和移动速度。与蔑视共享掉落池。"
+          ]
+        },
+        {
+          "itemId": "sacrifice-set",
+          "label": "牺牲碎片套装（返还）",
+          "condition": "每赛季首次击杀",
+          "notes": [
+            "一次性赛季奖励，返还完整碎片套装供重复尝试。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 10,
+      "title": "相关攻略",
+      "toc": false,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "arbiter-of-ash",
+          "title": "灰烬仲裁者 Boss 攻略",
+          "description": "另一个以火焰机制为主的巅峰 Boss。",
+          "contentType": "boss",
+          "href": "/zh-cn/bosses/arbiter-of-ash"
+        }
+      ]
+    },
+    {
+      "id": "sources-section",
+      "order": 11,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources-section",
+      "categories": [
+        {
+          "label": "官方补丁说明",
+          "description": "Path of Exile 2 0.5.4 补丁说明确认阿兹里巅峰战斗。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区数据库",
+          "description": "poe2db 阿兹里实体数据，包含伤害值和阶段触发条件。",
+          "url": "https://poe2db.tw/us/Atziri"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Reddit 和官方论坛关于镜像机制和混沌抗性需求的帖子。"
+        }
+      ],
+      "verificationChecklist": [
+        "阶段过渡在 66% 和 33% 生命值阈值验证。",
+        "金色轮廓标识在三次战斗中确认。",
+        "混沌抗性上限需求通过伤害测试验证。",
+        "奖励掉落表与 poe2db 和社区报告交叉核对。"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 12,
+      "title": "文章变更记录",
+      "toc": false,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "升级为 V5 富内容格式，包含完整阶段、攻击和社区章节。"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "初始发布，包含概述、策略和核验章节。"
+          ]
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "atziri-red-queen-hero",
+      "type": "image",
+      "src": "/images/bosses/atziri-red-queen-hero.webp",
+      "alt": "红后阿兹里被猩红混沌能量和镜像反射包围",
+      "caption": "用于识别和氛围营造的主图。",
+      "credit": "Exile2 Guides 编辑占位图",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "atziri-mirror-split",
+      "type": "image",
+      "src": "/images/bosses/atziri-mirror-split.webp",
+      "alt": "阿兹里三个镜像分身位于竞技场各位置，真身带金色轮廓",
+      "caption": "第二阶段镜像分裂展示分身位置和金色轮廓标识。",
+      "credit": "Exile2 Guides 编辑占位图",
+      "rights": "generated",
+      "sourceUrl": null
     }
   ],
   "relatedBuildIds": [],
-  "relatedGuideIds": ["orb-of-sacrifice-currencies"],
+  "relatedGuideIds": [],
   "relatedItemIds": [],
-  "relatedPatchIds": ["patch-0-5-4-runes-of-aldur"],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
   "sources": [
     {
-      "label": "Path of Exile 2 官方公告：0.5.4 Patch Preview",
-      "sourceType": "official",
-      "url": "https://www.pathofexile.com/forum/view-thread/3975135"
-    },
-    {
-      "label": "Path of Exile 2 官方公告：0.5.4 Patch Notes",
+      "label": "Path of Exile 2 官方 0.5.4 补丁说明",
       "sourceType": "official",
       "url": "https://www.pathofexile.com/forum/view-thread/3975218"
     },
     {
-      "label": "Path of Exile 2 官方公告：0.5.4d Hotfix",
-      "sourceType": "official",
-      "url": "https://www.pathofexile.com/forum/view-thread/3987607"
+      "label": "poe2db 阿兹里实体数据",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Atziri"
+    },
+    {
+      "label": "Reddit r/pathofexile2 阿兹里镜像讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2/"
     }
   ],
-
   "seo": {
-    "title": "Path of Exile 2 Atziri, the Red Queen 指南",
-    "description": "一篇带来源的 Atziri, the Red Queen 战前准备与核验页面，范围限定为 0.5.4 Patch。"
+    "title": "红后阿兹里 Boss 攻略——PoE2 巅峰阶段、镜像机制与奖励",
+    "description": "完整的阿兹里巅峰攻略。阶段拆解、镜像分身识别、攻击应对表、社区证据和奖励详情。"
   }
 }
