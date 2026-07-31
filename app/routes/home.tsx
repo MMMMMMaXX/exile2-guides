@@ -22,7 +22,9 @@ const homeHeroImage = resolveImageAsset("/images/prototype-v2/hero-home.webp");
 
 const homeSectionOrder = [
   "guide",
+  "build",
   "boss",
+  "skill",
   "item",
   "patch",
 ] as const satisfies readonly ContentType[];
@@ -30,15 +32,19 @@ const homeSectionOrder = [
 const sectionLabels = {
   en: {
     boss: ["Encounter library", "Boss Guides"],
+    build: ["Build library", "Builds"],
     guide: ["Recently updated", "Latest Guides"],
     item: ["Browse mechanics", "Items Database"],
     patch: ["Current release", "Latest Patch"],
+    skill: ["Skill reference", "Skills"],
   },
   "zh-cn": {
     boss: ["首领资料库", "Boss 攻略"],
+    build: ["Build 资料库", "Build 攻略"],
     guide: ["最近更新", "最新攻略"],
     item: ["机制速查", "物品资料"],
     patch: ["当前版本", "最新 Patch"],
+    skill: ["技能速查", "技能资料"],
   },
 } as const;
 
