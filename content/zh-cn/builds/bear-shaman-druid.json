@@ -5,10 +5,10 @@
   "type": "build",
   "status": "published",
   "featured": false,
-  "title": "熊形 Shaman Druid Build 指南",
-  "shortTitle": "熊形 Shaman Druid",
-  "summary": "默认清图路线是 Rampage；Meteor Bear 与 Walking Calamity 作为后期变体记录，不混入所有阶段。",
-  "description": "基于 0.5.4 的 Path of Exile 2 熊形 Shaman Druid Build 指南。",
+  "title": "Bear Shaman Druid Build 指南：变形熊开荒与终局",
+  "shortTitle": "Bear Shaman Druid",
+  "summary": "熊形态是变形（不是伤害来源）；Rampage、Maul、Furious Slam 才是真正打伤害的技能。Rampage Bear、Walking Calamity、Meteor Bear 作为三条独立分支呈现，各有进入条件，不再混成单一路线。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Bear Shaman Druid 指南，区分熊形态、伤害技能与 Rampage / Walking Calamity / Meteor 三条变体路线。",
   "classId": "druid",
   "ascendancyId": "shaman",
   "mainSkillIds": [
@@ -17,6 +17,7 @@
     "furious-slam"
   ],
   "secondarySkillIds": [
+    "bear-form",
     "walking-calamity",
     "ferocious-roar",
     "pounce"
@@ -31,24 +32,25 @@
   "budgets": [
     "low",
     "medium",
-    "high"
+    "high",
+    "luxury"
   ],
   "difficulty": "intermediate",
   "playstyleTags": [
     "melee",
-    "shapeshift",
+    "transformation",
     "bear",
-    "rage"
+    "slam",
+    "tanky"
   ],
   "damageTypes": [
     "physical",
-    "cold",
-    "fire"
+    "lightning"
   ],
   "bestFor": [
     "mapping",
-    "shapeshift",
-    "armour"
+    "survivability",
+    "staged-investment"
   ],
   "patch": "0.5.4",
   "league": "return-of-the-ancients",
@@ -57,17 +59,17 @@
   "author": "Exile2 Guides Editorial Team",
   "reviewer": "Exile2 Guides Editorial Team",
   "createdAt": "2026-07-29",
-  "updatedAt": "2026-07-31",
+  "updatedAt": "2026-08-01",
   "heroImage": "/images/builds/covers/bear-shaman-druid.webp",
   "cardImage": "/images/builds/covers/bear-shaman-druid.webp",
-  "imageAlt": "熊形 Shaman Druid 在风暴中以大地与冰霜力量冲锋",
+  "imageAlt": "变形熊德鲁伊在战场上用 Maul 重击",
   "tags": [
     "build",
     "druid",
     "shaman",
+    "bear-form",
     "rampage",
-    "maul",
-    "furious-slam"
+    "maul"
   ],
   "sections": [
     {
@@ -77,14 +79,14 @@
       "order": 10,
       "visible": true,
       "paragraphs": [
-        "这不是一篇只讲“变熊”和技能链接的幻想清单。它真正依赖一个可重复的资源循环：先恢复怒火，建立临时增伤，再借密集怪群启动 Rampage；链条中断时，用 Maul 或 Furious Slam 重新建立怒火。这个循环不稳定时，单纯购买更高伤害并不会让刷图变顺。",
-        "可以把它理解为两条相连但不能混装的路线：Rampage Bear 偏高速刷图，需要管理怒火与动作承诺；Meteor Bear 节奏更慢，更强调 Boss 输出窗口。核心版本尚未跑顺前，不要把两套装备优先级混在一起。",
-        "默认清图路线是 Rampage；Meteor Bear 与 Walking Calamity 作为后期变体记录，不混入所有阶段。"
+        "这个 Build 有三层常被旧版混在一起的东西：(1) 变形——熊形态，它是形态而不是伤害技能；(2) 真正打伤害的攻击技能——Rampage、Maul、Furious Slam；(3) 核心成型后你要从中选择的后期变体路线。",
+        "可复用的资源循环是：进入熊形态，恢复怒气（Rage），用 Rampage 在怪堆里冲撞，断链时用 Maul 或 Furious Slam 补。如果这个循环不稳，堆更多伤害也不会让清图变顺。",
+        "Rampage Bear 是默认清图路线。Walking Calamity（消耗 Glory 的范围终结技）和 Meteor Bear（绑在 Maul 上的陨星/闪电变形）是各自带进入条件的独立分支——它们不会被无脑混进同一条路线。核心循环成型后再选其中一条。"
       ],
       "bullets": [
-        "用 Maul 或已核验方式生成 Rage。",
-        "Rampage 负责移动与清图。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
+        "熊形态是形态，不是伤害来源。",
+        "Rampage + Maul + Furious Slam 才是真正的攻击技能。",
+        "Rampage Bear / Walking Calamity / Meteor Bear 是三条独立分支，各有进入条件。"
       ],
       "toc": true
     },
@@ -95,60 +97,44 @@
       "order": 20,
       "visible": true,
       "pros": [
-        "Build 身份与成长阶段清晰。",
-        "主要循环已有当前 0.5 指南覆盖。",
-        "指南区分清图与 Boss 前提。"
+        "Build 定位清晰、阶段化推进。",
+        "核心 Rampage 循环有当前 0.5 攻略覆盖。",
+        "区分了清图与 Boss 假设，以及三条变体路线。"
       ],
       "cons": [
-        "多个机制仍需当前客户端复现。",
-        "作者终局配置可能隐藏昂贵依赖。",
-        "不同变体的辅助与天赋可能不同。"
+        "多个机制仍需当前客户端实测复现。",
+        "终局创作者配装可能隐藏昂贵前提。",
+        "具体辅助与天赋随分支不同可能变化。"
       ],
       "toc": false
     },
     {
       "id": "bear-transformation",
       "type": "transformation",
-      "title": "熊形变形",
+      "title": "熊形态（是形态，不是伤害技能）",
       "order": 30,
       "visible": true,
       "paragraphs": [
-        "默认清图路线是 Rampage；Meteor Bear 与 Walking Calamity 作为后期变体记录，不混入所有阶段。"
+        "熊形态是让你变成熊的变形技能。它提供护甲、生命与抗性的增益，是这 BD 生存力的根基。它是下面所有熊系攻击技能的前置——不在熊形态下无法使用 Rampage、Maul 或 Furious Slam。"
       ],
       "bullets": [
-        "用 Maul 或已核验方式生成 Rage。",
-        "Rampage 负责移动与清图。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
-      ],
-      "toc": false
-    },
-    {
-      "id": "meteor-bear-variant",
-      "type": "overview",
-      "title": "Meteor Bear 变体",
-      "order": 40,
-      "visible": true,
-      "paragraphs": [
-        "Walking Calamity 在当前宝石等级与角色要求前不可用，应先用 Maul/Furious Slam 升级。Bhatair's Vengeance 交互已有变化，必须实机测试。"
-      ],
-      "bullets": [
-        "用 Maul 或已核验方式生成 Rage。",
-        "Rampage 负责移动与清图。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
+        "使用任何攻击技能前先进入熊形态。",
+        "形态提供生存，攻击技能提供伤害。",
+        "形态解锁等级与限制标记为待 PC 核验（claim C1）。"
       ],
       "toc": false
     },
     {
       "id": "rage-loop-visual",
       "type": "figure",
-      "title": "先看懂怒火循环，再照抄装备",
-      "order": 45,
+      "title": "先看懂怒气循环，再抄装备",
+      "order": 35,
       "visible": true,
       "toc": false,
       "image": {
         "src": "/images/builds/media/bear-shaman-druid-mechanic.webp",
-        "alt": "熊形角色冲锋、结束 Rampage 并重新积累 Rage 的编辑示意图",
-        "caption": "路线是一个循环：积累 Rage，进入 Rampage，穿过怪群，再为下一次连续冲锋重建资源。",
+        "alt": "编辑示意图：熊冲锋、脱离 Rampage、重建怒气",
+        "caption": "路线是一个循环：进入熊形态 → 攒怒气 → 用 Rampage 冲锋 → 在下一链前重建资源。",
         "credit": "Exile2 Guides 原创编辑示意图",
         "sourceKind": "generated"
       }
@@ -157,31 +143,101 @@
       "id": "leveling",
       "type": "leveling",
       "title": "升级流程",
-      "order": 50,
+      "order": 40,
       "visible": true,
       "steps": [
         {
-          "label": "剧情开始",
+          "label": "剧情前段（人形态）",
+          "levelRange": "1–30",
           "body": [
-            "使用已核验过渡方案，优先保证武器或法术核心可用。"
+            "先用已验证的人形态过渡配装，优先保证可用的武器/法杖、生命与抗性。熊形态解锁前不要强行用熊系技能。"
           ]
         },
         {
-          "label": "核心技能转型",
+          "label": "熊形态解锁",
+          "levelRange": "31+",
           "body": [
-            "满足当前宝石与资源条件后再切换。"
+            "满足宝石与形态要求后切换到熊形态，再叠加 Rampage + Maul。优先补满抗性与生命；肉度才是重点，别急着堆伤害。解锁等级待 PC 核验（claim C1）。"
           ]
         },
         {
-          "label": "剧情末期",
+          "label": "核心循环稳定",
+          "levelRange": "31–49",
           "body": [
-            "修正抗性、恢复与主资源循环。"
+            "修好怒气恢复循环：进场前 Ferocious Roar，连片怪用 Rampage，断链用 Maul / Furious Slam 补。记录怒气/Glory 生成用于 PC 核验（claim C3）。"
           ]
         },
         {
-          "label": "早期地图",
+          "label": "早期地图——选默认路线",
+          "levelRange": "50+",
           "body": [
-            "只采用一个有文档的变体，不混搭终局快照。"
+            "走 Rampage Bear 默认路线。先不要混用终局变体的规划器快照；Walking Calamity 和 Meteor Bear 是后期带各自进入条件的分支。"
+          ]
+        },
+        {
+          "label": "变体分叉",
+          "levelRange": "70+",
+          "body": [
+            "核心 Rampage 循环稳定后，再选一条变体分支：Walking Calamity（需要 Glory 生成）或 Meteor Bear（需要陨星/闪电变形装备）。每条都有进入条件——见技能与阶段配置章节。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "阶段配置",
+      "order": 45,
+      "visible": true,
+      "caption": "每个阶段该用什么。具体宝石等级与辅助链接仍待 PC 核验；阶段边界与变体进入条件才是可操作的重点。",
+      "columns": [
+        "阶段",
+        "主技能",
+        "关键辅助",
+        "天赋重点",
+        "装备目标",
+        "转换条件"
+      ],
+      "rows": [
+        {
+          "label": "升级（人形态 → 熊）",
+          "cells": [
+            "人形态法术，熊形态后转 Maul",
+            "熊形态 + Ferocious Roar",
+            "生命、护甲、抗性、近战",
+            "够用的武器，补满抗性",
+            "达到熊形态解锁（约 31 级，待 PC）"
+          ]
+        },
+        {
+          "label": "早期地图——Rampage Bear（默认）",
+          "cells": [
+            "Rampage + Maul",
+            "Ferocious Roar，Walking Calamity 收尾",
+            "怒气恢复、攻速",
+            "稳定怒气循环，生命/护甲达标",
+            "怒气恢复稳定后再分叉"
+          ]
+        },
+        {
+          "label": "变体分叉——选一条",
+          "cells": [
+            "Rampage Bear / Walking Calamity / Meteor Bear",
+            "对应分支的辅助",
+            "分支天赋分配",
+            "分支装备（Talisman 词缀）",
+            "只选一条；不要混用规划器快照"
+          ]
+        },
+        {
+          "label": "终局 Boss",
+          "cells": [
+            "Furious Slam + 分支爆发",
+            "Maul 叠层 / 陨星 / 灾祸",
+            "防御 + 分支轮",
+            "分支毕业装（待 PC）",
+            "单体可靠后再堆奢侈"
           ]
         }
       ],
@@ -191,52 +247,205 @@
       "id": "skills",
       "type": "skills",
       "title": "技能组合",
-      "order": 60,
+      "order": 50,
       "visible": true,
       "groups": [
         {
-          "label": "核心技能",
+          "label": "变形（形态）",
           "skills": [
             {
+              "displayName": "熊形态",
+              "skillId": "bear-form",
+              "role": "把你变成熊的变形技能。它是形态而非伤害技能：提供护甲、生命与抗性增益，是所有熊系攻击技能的前置。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "不变身就无法用 Rampage、Maul、Furious Slam；它是每条熊系路线的入口。"
+              ],
+              "whenReplace": [
+                "不可替代；它是每条路线的入口。"
+              ],
+              "mappingBossingDiff": [
+                "清图与 Boss 一致：都保持熊形态。"
+              ],
+              "notes": [
+                "在 0.5.4 客户端确认熊形态解锁等级与形态限制（claim C1，待 PC）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "核心攻击技能（真正打伤害）",
+          "skills": [
+            {
+              "displayName": "狂暴冲锋",
               "skillId": "rampage",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
-              "supportSkillIds": [],
-              "notes": []
+              "role": "冲锋攻击，既打伤害又穿越怪堆；是 Rampage Bear 路线的清图引擎。",
+              "supportSkillIds": [
+                "martial-tempo",
+                "elemental-damage-with-attacks"
+              ],
+              "whyUse": [
+                "它是主要清图伤害兼位移工具，清图节奏全靠它。"
+              ],
+              "whenReplace": [
+                "每条路线都核心；在 Walking Calamity / Meteor 路线里仍清图，只是爆发技不同。"
+              ],
+              "mappingBossingDiff": [
+                "清图：穿怪堆狂喷。Boss：别用它追会跑的 Boss（砸空 + 暴露）。"
+              ],
+              "notes": [
+                "具体辅助与宝石等级待 PC 核验。"
+              ]
             },
             {
+              "displayName": "重碾",
               "skillId": "maul",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
-              "supportSkillIds": [],
-              "notes": []
+              "role": "主力猛击，可叠层。Meteor Bear 路线里会绑上陨星/闪电变形。",
+              "supportSkillIds": [
+                "martial-tempo",
+                "heavy-hit"
+              ],
+              "whyUse": [
+                "它是所有路线共用的叠层单体伤害基础。"
+              ],
+              "whenReplace": [
+                "所有路线都保留；仅 Meteor Bear 里它的变形不同。"
+              ],
+              "mappingBossingDiff": [
+                "清图：冲锋时顺手砸。Boss：Furious Slam / 分支爆发前的叠层工具。"
+              ],
+              "notes": [
+                "陨星变形可用性待 PC（claim C4）。"
+              ]
             },
             {
+              "displayName": "狂怒猛击",
               "skillId": "furious-slam",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
-              "supportSkillIds": [],
+              "role": "Boss / 单体猛击，在安全窗口使用（断链或 Boss 窗口时）。",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "whyUse": [
+                "不依赖 Rampage 链的稳定单体爆发。"
+              ],
+              "whenReplace": [
+                "保留；是所有路线的通用 Boss 工具。"
+              ],
+              "mappingBossingDiff": [
+                "清图：很少需要。Boss：安全窗口里的释放。"
+              ],
               "notes": []
             }
           ]
         },
         {
-          "label": "辅助候选",
+          "label": "辅助与增益",
           "skills": [
             {
-              "skillId": "walking-calamity",
-              "role": "依变体使用的工具或准备技能。",
-              "supportSkillIds": [],
-              "notes": []
-            },
-            {
+              "displayName": "凶猛咆哮",
               "skillId": "ferocious-roar",
-              "role": "依变体使用的工具或准备技能。",
+              "role": "增益 / 资源生成，进场前先吼一口稳定循环。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "可生成资源并增益；进场与 Boss 前都先开。"
+              ],
+              "whenReplace": [
+                "所有路线都保留。"
+              ],
+              "mappingBossingDiff": [
+                "清图与 Boss 一致：战前开一次。"
+              ],
+              "notes": [
+                "具体资源生成待 PC（claim C3）。"
+              ]
             },
             {
+              "displayName": "猛扑",
               "skillId": "pounce",
-              "role": "依变体使用的工具或准备技能。",
+              "role": "抓单 / 补位移，处理落单或散开的敌人。",
               "supportSkillIds": [],
+              "whyUse": [
+                "抓散怪或补位移而不打断循环。"
+              ],
+              "whenReplace": [
+                "可选工具；不是伤害竞争者。"
+              ],
+              "mappingBossingDiff": [
+                "清图与 Boss 一致：仅位移用途。"
+              ],
               "notes": []
+            }
+          ]
+        },
+        {
+          "label": "分支——Rampage Bear（默认路线，进入条件：怒气恢复稳定）",
+          "skills": [
+            {
+              "displayName": "狂暴冲锋（Rampage Bear 路线）",
+              "skillId": "rampage",
+              "role": "默认清图路线的标志：持续冲锋清图。怒气恢复稳定后选这条；它是输入最低、清图最快的选项。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "三条分支里清图最快、操作最省。"
+              ],
+              "whenReplace": [
+                "这是路线选择，不是战中切换。"
+              ],
+              "mappingBossingDiff": [
+                "清图：主技能。Boss：别追会跑的 Boss。"
+              ],
+              "notes": [
+                "进入条件：怒气恢复已确认稳定；否则用 Maul / Furious Slam 补（claim C3）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "分支——Walking Calamity（进入条件：Glory 生成 + 宝石等级）",
+          "skills": [
+            {
+              "displayName": "灾祸降临",
+              "skillId": "walking-calamity",
+              "role": "消耗 Glory 的范围终结技。Walking Calamity 的宝石等级/Glory 生成解决后再选这条；它是独立分支，不混进每个阶段。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "大范围清图爆发；被报道为该路线的收尾核心。"
+              ],
+              "whenReplace": [
+                "路线选择；在其他路线里不是核心单体竞争者。"
+              ],
+              "mappingBossingDiff": [
+                "清图：怪堆收尾。Boss：单体贡献有限。"
+              ],
+              "notes": [
+                "0.5 后该技能可用性与 Bhatair's Vengeance 交互已变动——客户端实测（claim C4）。进入条件：Glory 生成已解决。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "分支——Meteor Bear（进入条件：陨星/闪电变形装备）",
+          "skills": [
+            {
+              "displayName": "重碾（陨星变形）",
+              "skillId": "maul",
+              "role": "该路线把陨星/闪电变形绑在 Maul 上做爆发。具备对应装备/辅助（CaptainLance9）后再选。独立分支，不与 Rampage Bear 无脑混用。",
+              "supportSkillIds": [
+                "meteor",
+                "lightning"
+              ],
+              "whyUse": [
+                "比持续路线更高的单段爆发。"
+              ],
+              "whenReplace": [
+                "路线选择；否则 Maul 保持原样。"
+              ],
+              "mappingBossingDiff": [
+                "清图：仍清图。Boss：猛击伤害更高。"
+              ],
+              "notes": [
+                "变形可用性与具体辅助待 PC（claim C4）。进入条件：陨星/闪电变形装备/辅助。"
+              ]
             }
           ]
         }
@@ -247,13 +456,19 @@
       "id": "ascendancy",
       "type": "ascendancy",
       "title": "升华顺序",
-      "order": 70,
+      "order": 60,
       "visible": true,
       "steps": [
         {
-          "label": "暂定顺序",
+          "label": "Shaman——先强化形态与防御",
           "body": [
-            "按所选当前指南执行，并在发布前于 0.5.4 客户端逐个确认节点。"
+            "先点强化熊形态生存与增益覆盖的 Shaman 节点，再补伤害。参照所选当前攻略，发布前在 0.5.4 客户端逐项确认。"
+          ]
+        },
+        {
+          "label": "按分支分配",
+          "body": [
+            "核心成型后，朝所选分支分配（Rampage 续航、Glory/Walking Calamity、或陨星/闪电变形）。不要提前点你还没法负担的分支。"
           ]
         }
       ],
@@ -263,19 +478,19 @@
       "id": "passive-tree",
       "type": "passive-tree",
       "title": "天赋树",
-      "order": 80,
+      "order": 70,
       "visible": true,
       "steps": [
         {
           "label": "剧情",
           "body": [
-            "只选择支持当前升级技能和防御需求的节点。"
+            "只点支持当前升级技能与防御需求的节点：生命、护甲、抗性、近战伤害与早期怒气节点。"
           ]
         },
         {
           "label": "早期地图",
           "body": [
-            "转入所选 Build 变体，不混合不兼容 Planner。"
+            "转入所选变体；不要混用不兼容的规划器快照（Rampage、Walking Calamity、Meteor 天赋树各异）。"
           ]
         }
       ],
@@ -285,37 +500,103 @@
       "id": "gear",
       "type": "gear",
       "title": "装备",
-      "order": 90,
+      "order": 80,
       "visible": true,
       "slots": [
         {
-          "slot": "主要伤害部位",
+          "slot": "武器（护符/近战 Talisman）",
           "recommendations": [
-            "合适技能等级或武器伤害",
-            "兼容所选变体的词缀"
+            "当前层级足够的技能等级或武器伤害。",
+            "分支兼容词缀（Rampage Bear 要物理；Meteor Bear 要陨星/闪电）。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "当前层级足够的技能等级或基础武器伤害",
+              "reason": "每条熊系路线首要的进度检查。"
+            },
+            {
+              "tier": "recommended",
+              "label": "分支词缀（物理，或陨星/闪电）",
+              "reason": "匹配所选分支的伤害来源。"
+            },
+            {
+              "tier": "optional",
+              "label": "攻击速度",
+              "reason": "提升手感而非伤害下限。"
+            },
+            {
+              "tier": "luxury",
+              "label": "分支专属暗金（如 Fury of the King）",
+              "reason": "核心循环与防御达标后再考虑；核验前提。"
+            }
           ],
           "notes": [
-            "不要脱离前置条件复制终局装备。"
+            "不要无脑抄终局暗金；Talisman/武器组行为待 PC（claim C2）。"
           ]
         },
         {
-          "slot": "防御护甲",
+          "slot": "护甲 / 头 / 鞋",
           "recommendations": [
-            "生命或所选防御池",
-            "元素抗性与恢复"
+            "生命或所选防御池。",
+            "元素抗性与恢复；鞋子上要移速。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两条未满的抗性",
+              "reason": "再高的伤害也救不了在地图里暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "护甲（熊形态放大它）",
+              "reason": "与形态搭配的核心防御层。"
+            },
+            {
+              "tier": "optional",
+              "label": "鞋子移速",
+              "reason": "帮助调整进场线。"
+            },
+            {
+              "tier": "luxury",
+              "label": "显性 DPS 词缀",
+              "reason": "防御达标后再要。"
+            }
           ],
           "notes": [
-            "必须比较整套防御。"
+            "对比整套防御，而不是单个槽位。"
           ]
         },
         {
-          "slot": "饰品与工具",
+          "slot": "珠宝与暗金",
           "recommendations": [
-            "属性与资源维持",
-            "仅使用已核验专属词缀"
+            "属性与资源续航（怒气 / Glory）。",
+            "只用已验证的 BD 专属词缀。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备武器与宝石所需的属性",
+              "reason": "拿不动的武器毫无价值。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与生命",
+              "reason": "补齐防御外壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "怒气 / Glory 续航珠宝",
+              "reason": "稳定核心循环。"
+            },
+            {
+              "tier": "luxury",
+              "label": "分支专属词缀",
+              "reason": "取决于所选分支。"
+            }
           ],
           "notes": [
-            "指南不记录固定价格。"
+            "价格当前未固定；Mobalytics 的 Verified 不等于本站客户端核验。"
           ]
         }
       ],
@@ -325,24 +606,28 @@
       "id": "stat-priority",
       "type": "stat-priority",
       "title": "属性优先级",
-      "order": 100,
+      "order": 90,
       "visible": true,
       "priorities": [
         {
-          "label": "防御底线",
-          "reason": "先完成抗性与恢复。"
+          "label": "防御基线",
+          "reason": "先补满抗性并确立恢复。"
         },
         {
-          "label": "主伤害缩放",
-          "reason": "只采用 Planner 与实战证据共同支持的缩放。"
+          "label": "主伤害标量",
+          "reason": "用规划器与实战证据共认的标量。"
         },
         {
-          "label": "资源维持",
-          "reason": "主循环对单体也必须成立。"
+          "label": "资源续航（怒气 / Glory）",
+          "reason": "核心循环对单体也要成立。"
         },
         {
-          "label": "手感属性",
-          "reason": "Build 可用后再加入速度或范围。"
+          "label": "命中 / 准确度",
+          "reason": "Boss 砸空是常见失败；先于伤害处理。"
+        },
+        {
+          "label": "舒适词缀",
+          "reason": "BD 能跑后再加移速或范围。"
         }
       ],
       "toc": false
@@ -351,38 +636,56 @@
       "id": "upgrade-priority",
       "type": "upgrade-priority",
       "title": "升级优先级",
-      "order": 110,
+      "order": 100,
       "visible": true,
       "steps": [
         {
-          "label": "1",
-          "body": [
-            "修正防御与需求。"
-          ]
+          "label": "Rampage 链在地图中段断掉",
+          "symptom": "Rampage 链没连贯起来，而是在地图中途崩了。",
+          "checks": [
+            "怒气恢复稳定吗（Ferocious Roar 覆盖、珠宝）？",
+            "你是不是在断开的怪堆或空走廊硬开 Rampage？"
+          ],
+          "upgrade": "用 Maul / Furious Slam 重建怒气；别在空走廊里交掉增益。客户端核验恢复（claim C3）。"
         },
         {
-          "label": "2",
-          "body": [
-            "升级主伤害部位。"
-          ]
+          "label": "稀有怪与 Boss 打太久",
+          "symptom": "单体耗时远多于清图；社区『lowish damage』反馈。",
+          "checks": [
+            "命中 / 准确度修了吗？",
+            "Maul / Furious Slam 宝石等级与辅助上去了吗？",
+            "你是不是指望 Walking Calamity 单挑 Boss（它只是范围收尾）？"
+          ],
+          "upgrade": "堆命中 + 猛击倍率；考虑 Meteor Bear 变形分支。别指望 Walking Calamity 扛单体。"
         },
         {
-          "label": "3",
-          "body": [
-            "稳定资源生成。"
-          ]
+          "label": "在地图里暴毙",
+          "symptom": "T15+ 或 Boss 房频繁死亡。",
+          "checks": [
+            "哪条抗性没满？",
+            "生命/护甲是否低于当前层级？",
+            "进场前 Ferocious Roar 开了吗？"
+          ],
+          "upgrade": "补满抗性、稳定生命/护甲；别用伤害装去补防御窟窿。"
         },
         {
-          "label": "4",
-          "body": [
-            "加入所选变体核心交互。"
-          ]
+          "label": "Boss 战资源循环断档",
+          "symptom": "单体战斗里怒气 / Glory 清零。",
+          "checks": [
+            "Boss 战 Ferocious Roar 覆盖在吗？",
+            "是否去掉了击杀回资源的假设？",
+            "记录序列前后每样资源。"
+          ],
+          "upgrade": "修资源生成（咆哮覆盖、续航珠宝）；客户端核验（claim C3）。"
         },
         {
-          "label": "5",
-          "body": [
-            "逐项测试奢侈升级。"
-          ]
+          "label": "考虑换分支",
+          "symptom": "想从 Rampage Bear 转 Walking Calamity 或 Meteor Bear。",
+          "checks": [
+            "核心 Rampage 循环已经稳定了吗？",
+            "启用 Glory 生成或陨星/闪电变形的装备有了吗？"
+          ],
+          "upgrade": "核心成型后再选一条分支；不要混用不兼容的规划器快照。"
         }
       ],
       "toc": false
@@ -391,16 +694,16 @@
       "id": "mapping",
       "type": "mapping",
       "title": "清图",
-      "order": 120,
+      "order": 110,
       "visible": true,
       "paragraphs": [
-        "进怪群前先确认怒火足够。具备额外冰伤条件时使用 Lunar Assault，再开启 Walking Calamity，最后沿连续怪群启动 Rampage。遇到空走廊不要硬续 Rampage，应立即用 Maul 或 Furious Slam 重建资源。",
-        "用 Maul 或已核验方式生成 Rage。"
+        "带够怒气进怪堆。先 Ferocious Roar，再用 Rampage 穿连片怪群，途中 Maul，Walking Calamity（走该分支时）做范围收尾。空走廊是资源问题：别硬开 Rampage，用 Maul / Furious Slam 补。",
+        "用 Maul 或已验证的生成器攒怒气；别在空走廊里交掉临时增益。"
       ],
       "bullets": [
-        "用 Maul 或已核验方式生成 Rage。",
-        "Rampage 负责移动与清图。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
+        "Ferocious Roar → Rampage → Maul →（该分支用 Walking Calamity 收尾）。",
+        "Rampage 既是位移也是伤害；穿怪堆才是重点。",
+        "下一链前先重建怒气，别硬撑。"
       ],
       "toc": true
     },
@@ -408,62 +711,59 @@
       "id": "bossing",
       "type": "bossing",
       "title": "Boss 战",
-      "order": 130,
+      "order": 120,
       "visible": true,
       "paragraphs": [
-        "Boss 战要把准备阶段和输出阶段分开：危险机制开始前补满怒火，只做一次必要的增益准备，然后在安全动作窗口内攻击。下方玩家反馈揭示了典型错配：角色可能非常耐打，但稀有怪处理时间仍然过长。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
+        "Boss 战要把准备时间与输出时间分开。进 arena 变危险前先重建怒气，临时增益开一次，再只在安全动画窗口用 Maul 与 Furious Slam 打。别用 Rampage 追会跑的 Boss——砸空还暴露。",
+        "在其分支里用 Glory 开 Walking Calamity，或用 Meteor 变形打爆发窗口；这些是独立路线，不是单一混编循环。"
       ],
       "bullets": [
-        "用 Maul 或已核验方式生成 Rage。",
-        "Rampage 负责移动与清图。",
-        "用 Glory 启动 Walking Calamity，以 Furious Slam 处理稳定单体。"
+        "Maul 叠层 → 窗口里 Furious Slam / 分支爆发。",
+        "别用 Rampage 追会跑的 Boss。",
+        "Walking Calamity / Meteor 是分支爆发，不是通用 Boss 工具。"
       ],
       "toc": false
     },
     {
       "id": "build-variants",
       "type": "comparison-table",
-      "title": "买装备前先选定熊形路线",
-      "order": 140,
+      "title": "买装备前先选熊系路线",
+      "order": 130,
       "visible": true,
-      "caption": "根据当前 Rampage 攻略、Meteor 替代路线与玩家反馈整理；具体伤害仍等待 PC 实机复核。",
+      "caption": "根据 Ronarray 与 CaptainLance9 的 0.5 攻略整理，具体伤害仍待 PC 核验。每条路线各有进入条件。",
       "columns": [
-        "Rampage 刷图",
-        "Meteor 替代",
-        "防御回退"
+        "路线",
+        "伤害来源",
+        "强项",
+        "进入条件",
+        "参考"
       ],
       "rows": [
         {
-          "label": "适合内容",
+          "label": "Rampage Bear（默认）",
           "cells": [
-            "密集地图",
-            "节奏明确的 Boss 战",
-            "学习机制"
+            "Rampage + Maul 持续",
+            "清图快、操作省",
+            "怒气恢复稳定",
+            "Ronarray 攻略"
           ]
         },
         {
-          "label": "核心循环",
+          "label": "Walking Calamity",
           "cells": [
-            "怒火 → 增益 → Rampage",
-            "创造施法窗口 → Meteor",
-            "机制间隙短打"
+            "消耗 Glory 的范围终结",
+            "大范围爆发",
+            "Glory 生成 + 宝石等级解决",
+            "社区反馈"
           ]
         },
         {
-          "label": "首要条件",
+          "label": "Meteor Bear",
           "cells": [
-            "稳定怒火恢复",
-            "稳定站位与施法",
-            "生命、抗性与回复"
-          ]
-        },
-        {
-          "label": "失败信号",
-          "cells": [
-            "怪群间链条中断",
-            "施法频繁被打断",
-            "很安全但稀有怪过慢"
+            "陨星/闪电变形的 Maul",
+            "更高单段爆发",
+            "陨星/闪电变形装备",
+            "CaptainLance9 攻略"
           ]
         }
       ],
@@ -473,28 +773,28 @@
       "id": "troubleshooting",
       "type": "troubleshooting",
       "title": "故障排查",
-      "order": 150,
+      "order": 140,
       "visible": true,
       "problems": [
         {
           "symptom": "核心技能不可用",
           "checks": [
-            "检查宝石等级、形态、武器组与装备条件。",
-            "退回已记录的过渡阶段。"
+            "检查宝石等级、形态、武器组与装备要求。",
+            "回到文档记录的过渡阶段。"
           ]
         },
         {
-          "symptom": "单体循环中断",
+          "symptom": "单体循环断掉",
           "checks": [
-            "移除依赖击杀的假设。",
-            "记录循环前后所有资源。"
+            "去掉击杀回资源的假设。",
+            "记录序列前后每样资源。"
           ]
         },
         {
-          "symptom": "照抄终局装备后变弱",
+          "symptom": "抄来的终局装备更弱",
           "checks": [
             "检查缺失天赋、辅助与阈值。",
-            "从较低的已核验阶段重建。"
+            "从更低验证阶段重建。"
           ]
         }
       ],
@@ -503,42 +803,42 @@
     {
       "id": "faq",
       "type": "question-answer",
-      "title": "花钱前先排除这些问题",
-      "order": 160,
+      "title": "变形熊常见问题",
+      "order": 150,
       "visible": true,
       "items": [
         {
-          "question": "为什么 Rampage 经常在地图中途停掉？",
+          "question": "为什么 Rampage 在地图中段停了？",
           "answer": [
-            "Rampage 是资源回报，不是资源发生器。怒火恢复不足或怪群断层时强行启动，链条自然会崩。"
+            "Rampage 是收益，不是资源生成器。怒气恢复弱或跨断开怪堆开，链自然崩。"
           ],
           "bullets": [
-            "用 Maul 或 Furious Slam 重建怒火。",
-            "不要在空走廊消耗临时增益。",
-            "增加伤害暗金前先检查回蓝、偷取和怒火恢复。"
+            "用 Maul / Furious Slam 重建怒气。",
+            "别在空走廊交掉临时增益。",
+            "加伤害暗金前先查资源回复与偷取。"
           ],
           "relatedLinks": [
             {
               "href": "/zh-cn/builds/fire-bear-smith-of-kitava/",
-              "label": "对比低操作 Fire Bear 循环"
+              "label": "对比更低输入的 Fire Bear 循环"
             }
           ]
         },
         {
-          "question": "我很耐打，但稀有怪处理很慢，先看什么？",
+          "question": "我什么都扛得住但稀有怪打不动，查什么？",
           "answer": [
-            "依次确认近战技能等级、攻速、物理或冰伤基础，以及承载构筑效果的关键槽位。防御护符搭配弱输出位，很容易形成“安全但打不动”的状态。"
+            "确认近战宝石等级、攻速、物理/冰附加、命中，以及承载 BD 定义效果的槽位。防御项链配弱输出槽会让角色安全但没伤害。"
           ],
           "bullets": [
-            "每次只改一个变量。",
-            "用同一地图等级的稀有怪做前后对比。"
+            "每次改动前后测一只稀有怪。",
+            "保持同一地图层级才有对比意义。"
           ],
           "relatedLinks": []
         },
         {
-          "question": "是否应该改成 Meteor Bear？",
+          "question": "该转 Meteor Bear 或 Walking Calamity 吗？",
           "answer": [
-            "只有在你更喜欢站位和施法窗口节奏时才切换。Meteor 不是修复错误 Rampage 循环的自动升级，而是另一条有独立失败点的路线。"
+            "只有当你喜欢该路线节奏且达到进入条件（陨星/闪电变形装备，或 Glory 生成已解决）才转。它不是破烂 Rampage 循环的自动升级；每条都是不同分支、不同失败模式。"
           ],
           "bullets": [],
           "relatedLinks": []
@@ -547,28 +847,56 @@
       "toc": false
     },
     {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "Build Planner 与导入",
+      "order": 160,
+      "visible": true,
+      "note": "可粘贴导入字符串 / .build 待 PC 核验。先用下方创作者攻略与原生规划器；务必在你自己的客户端复核节点选择。",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
+      "toc": false
+    },
+    {
       "id": "community-notes",
       "type": "community-voices",
-      "title": "玩家实际反馈",
+      "title": "社区怎么看这个 Build",
       "order": 170,
       "visible": true,
-      "note": "以下均为带来源的编辑转述，不等于本站已经独立验证伤害或生存数字。",
+      "note": "以下来自真实攻略与论坛讨论，属于玩家经验样本，不是已核验的游戏机制；与官方补丁冲突时以 0.5.4 官方资料为准。",
       "entries": [
         {
-          "representation": "paraphrase",
-          "sourceType": "reddit",
-          "label": "Rampage Bear 玩家反馈",
-          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/",
-          "statement": "一位 Shaman 玩家认为这套配置非常耐打，但早期伤害不足；把薄弱武器或护符位换成 Fury of the King 后，处理稀有怪的体验明显改善。",
-          "context": "这更适合作为排错线索：优先检查承担伤害的关键槽位和怒火循环，而不是先拆掉整套防御。"
-        },
-        {
+          "context": "开荒定位",
+          "label": "Ronarray Rampage Bear 0.5 攻略",
           "representation": "paraphrase",
           "sourceType": "guide",
-          "label": "Ronarray Rampage Bear 攻略",
-          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
-          "statement": "持续维护的攻略把 Rampage 作为清图核心，同时把怒火管理和动作承诺列为真实缺点；Rampage 不可用时，用 Maul 或 Furious Slam 过渡并回资源。",
-          "context": "它支撑了本文的循环描述，但装备数值仍需客户端内复现。"
+          "statement": "Ronarray 的 Mobalytics Planner 给出从开荒到终局的完整 Rampage Bear 路线，强调冲脸压制与稳定肉度，是新手最稳的熊系路线之一。",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+        },
+        {
+          "context": "爆发路线",
+          "label": "CaptainLance9 Meteor Bear 攻略",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "CaptainLance9 的 Meteor Bear 在 Maul 上绑陨星/闪电效果做单段爆发，提供与 Rampage Bear 不同的伤害曲线，pathofexile.gg 也有独立写法。",
+          "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
+        },
+        {
+          "context": "路线选择",
+          "label": "Reddit r/pathofexile2builds — best bear build",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "该讨论串里玩家对比 Rampage Bear、Meteor Bear 与 Daniel 路线，共识是『先变熊立住肉度，再按装备选伤害分支』。",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
+        },
+        {
+          "context": "单体痛点",
+          "label": "Reddit r/pathofexile2builds — lowish damage bear",
+          "representation": "quote",
+          "sourceType": "forum",
+          "statement": "『lowish damage with rampage walking calamity bear』——楼主直白抱怨 Rampage + Walking Calamity 在部分 Boss 上伤害不足，印证了单体是熊系软肋。",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tsq3ig/lowish_damage_with_rampage_walking_calamity_bear/"
         }
       ],
       "toc": true
@@ -576,19 +904,37 @@
     {
       "id": "video",
       "type": "video",
-      "title": "直接观察循环",
+      "title": "观察升级与变形节奏",
       "order": 180,
       "visible": true,
+      "toc": true,
       "entries": [
         {
           "creator": "Ronarray",
-          "label": "0.5 Bear 升级与实战",
+          "label": "0.5 Bear Druid 练级实机",
           "url": "https://www.youtube.com/watch?v=5MkXZedNjDY",
-          "description": "重点观察 Rampage 的启动时机、跨越怪群空档的方式，以及何时重新补怒火。",
-          "takeaway": "在每次 Rampage 前后暂停，比较资源状态，而不是只看清图速度。"
+          "description": "演示从人形态到熊系的平滑过渡与练级节奏。",
+          "takeaway": "重点看变熊时机与 Ferocious Roar 的覆盖，不要只抄装备。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "熊德练级开始 （创作者未提供章节）"
+            },
+            {
+              "time": "2:00",
+              "label": "熊形态切换与怒气循环 （编辑估算，待 PC 核验）"
+            },
+            {
+              "time": "5:00",
+              "label": "暴怒连击与跨越怪群 （编辑估算，待 PC 核验）"
+            },
+            {
+              "time": "8:00",
+              "label": "终局变体预览 （编辑估算，待 PC 核验）"
+            }
+          ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "sources",
@@ -596,15 +942,15 @@
       "title": "来源与边界",
       "order": 190,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "官方补丁定义版本基线；指南、Planner、视频和社区结论在复现前都属于暂定。"
+        "官方补丁定义版本基线；攻略、Planner、视频和社区结论在复现前都属于暂定经验。"
       ],
       "bullets": [
-        "来源访问日期：2026-07-29。",
-        "未复制第三方文案或媒体。",
-        "PC 核验仍待完成。"
-      ],
-      "toc": true
+        "来源访问日期：2026-07-31。",
+        "未复制第三方文案或媒体；社区内容仅作归纳引用并保留原始链接。",
+        "PC 核验仍待完成，verificationStatus 为 pending-pc。"
+      ]
     },
     {
       "id": "changelog",
@@ -612,19 +958,32 @@
       "title": "更新记录",
       "order": 200,
       "visible": true,
+      "toc": false,
       "entries": [
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "扩展 schema：技能卡改为带显示名，并拆为形态 / 核心攻击 / 辅助 / 三条变体分支（Rampage Bear、Walking Calamity、Meteor Bear），各带入条件；新增阶段配置表、Build Planner 条目、每槽位装备属性优先级、症状式升级优先级。移除模糊的单一混编路线。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "基于 Ronarray / CaptainLance9 攻略与 Reddit 讨论重写：补充两路线分叉、变形时机、怒气管理、故障排查与社区声音。"
+          ]
+        },
         {
           "date": "2026-07-29",
           "changes": [
             "建立带来源的 0.5.4 Build 指南；PC 核验仍在进行中。"
           ]
         }
-      ],
-      "toc": false
+      ]
     }
   ],
   "relatedBuildIds": [
-    "fire-bear-smith-of-kitava"
+    "fire-bear-smith-of-kitava",
+    "twister-spirit-walker"
   ],
   "relatedGuideIds": [],
   "sources": [
@@ -634,44 +993,34 @@
       "url": "https://www.pathofexile.com/forum/view-thread/3975218"
     },
     {
-      "label": "Ronarray Rampage Bear guide",
+      "label": "Mobalytics — Ronarray Rampage Bear 0.5",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
     },
     {
-      "label": "CaptainLance9 Meteor Bear guide",
+      "label": "Mobalytics — CaptainLance9 Meteor Bear",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
     },
     {
-      "label": "Independent Meteor Bear guide",
+      "label": "pathofexile.gg — Independent Meteor Bear",
       "sourceType": "community",
       "url": "https://pathofexile.gg/shaman-meteor-bear-build/"
     },
     {
-      "label": "Bear route comparison discussion",
+      "label": "Reddit — best bear build 讨论",
       "sourceType": "community",
       "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
     },
     {
-      "label": "Mobalytics Build Planner export",
-      "sourceType": "tool",
-      "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
-    },
-    {
-      "label": "Ronarray 0.5 Bear leveling gameplay",
+      "label": "YouTube — Ronarray 0.5 Bear leveling",
       "sourceType": "community",
       "url": "https://www.youtube.com/watch?v=5MkXZedNjDY"
-    },
-    {
-      "label": "Player report on Rampage Bear survivability and rare damage",
-      "sourceType": "community",
-      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/"
     }
   ],
   "seo": {
-    "title": "熊形 Shaman Druid Build 指南",
-    "description": "基于 0.5.4 的 Path of Exile 2 熊形 Shaman Druid Build 指南。",
+    "title": "Bear Shaman Druid Build 指南｜Exile2 Guides",
+    "description": "基于 0.5.4 的 Path of Exile 2 Bear Shaman Druid 指南：区分熊形态、伤害技能与 Rampage / Walking Calamity / Meteor 三条变体路线。",
     "noindex": false
   },
   "publishedAt": "2026-07-31"

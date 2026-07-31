@@ -107,6 +107,22 @@ async function main() {
     return;
   }
 
+  const bossQuickPrepIssues: string[] = [];
+  for (const article of bossArticles) {
+    if (article.status !== "published") continue;
+    if (article.damageTypes.length === 0) {
+      bossQuickPrepIssues.push(
+        `${article.locale}/${article.slug}: published boss must declare non-empty damageTypes (Quick Preparation field)`,
+      );
+    }
+  }
+  if (bossQuickPrepIssues.length > 0) {
+    console.error("\nQuick Preparation validation failed:");
+    for (const issue of bossQuickPrepIssues) console.error(`  - ${issue}`);
+    process.exitCode = 1;
+    return;
+  }
+
   let itemArticles;
   try {
     itemArticles = await loadItemArticles(contentDirectory);

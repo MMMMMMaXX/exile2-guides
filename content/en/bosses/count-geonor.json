@@ -7,17 +7,14 @@
   "featured": true,
   "title": "Count Geonor Boss Guide: Phases, Dangerous Attacks and Preparation",
   "shortTitle": "Count Geonor",
-  "summary": "A complete Act 1 final boss guide covering human, fog and wolf phases with attack tables, community solutions and build-specific strategy.",
+  "summary": "Complete Act 1 boss guide covering the humanoid phase and the wolf phase (the mist sub-phase is part of the wolf transformation), with an attack table, community solutions, and class strategy.",
   "description": "Learn how to beat Count Geonor in Path of Exile 2 Act 1 with phase breakdowns, attack response tables, community evidence and build-specific tips.",
   "location": "Ogham, Act 1 Finale",
   "campaignStage": "Act 1",
   "recommendedLevel": "Level 15–18",
   "difficulty": "medium",
-  "damageTypes": [
-    "physical",
-    "cold"
-  ],
-  "phases": 3,
+  "damageTypes": ["physical", "cold"],
+  "phases": 2,
   "bossCategory": "campaign",
   "act": "act-1",
   "isOptional": false,
@@ -33,12 +30,7 @@
   "heroImage": "/images/bosses/count-geonor-hero.webp",
   "cardImage": "/images/bosses/count-geonor-hero.webp",
   "imageAlt": "Count Geonor in his wolf form surrounded by frost mist",
-  "tags": [
-    "campaign",
-    "act-1",
-    "physical",
-    "cold"
-  ],
+  "tags": ["campaign", "act-1", "physical", "cold"],
   "sections": [
     {
       "id": "quick-answer",
@@ -178,61 +170,40 @@
       "phases": [
         {
           "phaseId": "human-phase",
-          "label": "Phase 1: Human Form",
-          "trigger": "Fight begins at full HP.",
+          "label": "Phase 1: Humanoid",
+          "trigger": "Fight starts at full health.",
           "objectives": [
-            "Learn weapon swing telegraphs and ground rune patterns.",
-            "Stay at the side-rear to observe attack recovery animations.",
+            "Learn the weapon swing tell and the ground-rune pattern.",
+            "Stay to the side-rear and watch for the end of his attacks.",
             "Save recovery resources for later phases."
           ],
           "notes": [
-            "The human phase is the best time to understand the boss rhythm. Do not commit long combos — wait for his swing to finish, then use one full single-target rotation.",
-            "Ground frost runes appear beneath your position. Leave first, then decide whether to return for damage."
+            "The humanoid phase is the best time to learn the boss's rhythm. Don't use long combos—wait for the swing to finish, then land a full single-target rotation.",
+            "Frost runes appear under your feet. Step out first, then decide whether you can return to deal damage."
           ],
-          "tags": [
-            "Learn telegraphs",
-            "Low resource cost",
-            "Safe output window"
-          ]
-        },
-        {
-          "phaseId": "fog-phase",
-          "label": "Phase 2: Fog Circle",
-          "trigger": "HP drops below approximately 60%. The arena fills with fog and visibility drops.",
-          "objectives": [
-            "Maintain a lateral movement route that allows direction changes.",
-            "Only clear minions blocking your path or causing continuous interrupts.",
-            "Use one quick skill after the dash ends, then reposition."
-          ],
-          "notes": [
-            "The fog phase is where most players die. The real difficulty is handling the boss dash, summoned wolves and limited visibility simultaneously.",
-            "Listen for the voice cue before the dash. Stop any long animation immediately and prepare to move laterally.",
-            "Do not chase wolves at the arena edge — you will lose boss visibility and get caught by the next dash."
-          ],
-          "tags": [
-            "Visibility management",
-            "Lateral movement",
-            "Short output window"
-          ]
+          "tags": ["learn tells", "low resource use", "safe windows"]
         },
         {
           "phaseId": "wolf-phase",
-          "label": "Phase 3: Wolf Form",
-          "trigger": "Fog clears and Count Geonor transforms into his wolf form with a new health pool.",
+          "label": "Phase 2: Wolf (includes the mist sub-phase)",
+          "trigger": "At ~50% health he transforms; the health pool resets to full and the wolf phase begins.",
           "objectives": [
-            "Wait for full combo sequences to end before entering your burst rotation.",
-            "Reserve dash charges for confirmed leap landing spots.",
-            "Do not chain-roll — preserve movement space for the next attack."
+            "During the mist sub-phase, focus on lateral movement to dodge the repeated charges—don't greed damage.",
+            "Wait for the full combo to end before your burst rotation.",
+            "Keep your dash available to reposition after the leap landing."
           ],
           "notes": [
-            "The wolf phase has more continuous attacks. A single attack ending does not guarantee safety — wait for the full combination to finish.",
-            "The second phase has roughly 50% more health than the first. Pace your resources accordingly.",
-            "Recovery resources should serve this final phase, not be spent earlier."
+            "Before the wolf phase properly starts there is a mist sub-phase: Count Geonor is invulnerable in the fog and dashes at you 6 times. You cannot damage him during this window—prioritize lateral movement to dodge the charges; once the fog clears the wolf fight begins.",
+            "The wolf phase attacks are more continuous. One move ending does not mean you are safe—wait for the full combo to finish.",
+            "On transformation the health pool resets to full (full reset), so save recovery resources for this final phase rather than burning them early.",
+            "Chilling Breath also appears in the wolf phase and applies freeze, making later attacks harder to dodge."
           ],
           "tags": [
-            "Combo attacks",
-            "High pressure",
-            "Resource management"
+            "combo",
+            "high pressure",
+            "resource management",
+            "mist sub-phase",
+            "full reset"
           ]
         }
       ]
@@ -248,12 +219,8 @@
         {
           "attackId": "frost-throw",
           "name": "Frost Throw",
-          "phaseIds": [
-            "human-phase"
-          ],
-          "damageTypes": [
-            "cold"
-          ],
+          "phaseIds": ["human-phase"],
+          "damageTypes": ["cold"],
           "telegraph": [
             "Raises weapon high with a brief pause. A frost glow appears on the blade."
           ],
@@ -271,12 +238,8 @@
         {
           "attackId": "armoured-charge",
           "name": "Armoured Charge",
-          "phaseIds": [
-            "human-phase"
-          ],
-          "damageTypes": [
-            "physical"
-          ],
+          "phaseIds": ["human-phase"],
+          "damageTypes": ["physical"],
           "telegraph": [
             "Body lowers and aims toward the player with a charging pose."
           ],
@@ -296,13 +259,8 @@
         {
           "attackId": "fog-dash",
           "name": "Fog Dash",
-          "phaseIds": [
-            "fog-phase"
-          ],
-          "damageTypes": [
-            "physical",
-            "cold"
-          ],
+          "phaseIds": ["wolf-phase"],
+          "damageTypes": ["physical", "cold"],
           "telegraph": [
             "A voice line plays just before the boss emerges from the fog."
           ],
@@ -322,15 +280,9 @@
         {
           "attackId": "summon-wolves",
           "name": "Summon Wolves",
-          "phaseIds": [
-            "fog-phase"
-          ],
-          "damageTypes": [
-            "physical"
-          ],
-          "telegraph": [
-            "Multiple targets appear at the arena edges."
-          ],
+          "phaseIds": ["wolf-phase"],
+          "damageTypes": ["physical"],
+          "telegraph": ["Multiple targets appear at the arena edges."],
           "responses": [
             "Only clear wolves blocking your movement route. Keep watching the boss."
           ],
@@ -347,12 +299,8 @@
         {
           "attackId": "wolf-leap",
           "name": "Wolf Leap Strike",
-          "phaseIds": [
-            "wolf-phase"
-          ],
-          "damageTypes": [
-            "physical"
-          ],
+          "phaseIds": ["wolf-phase"],
+          "damageTypes": ["physical"],
           "telegraph": [
             "Head raises, body pulls back, then locks onto a landing spot."
           ],
@@ -372,13 +320,8 @@
         {
           "attackId": "chilling-breath",
           "name": "Chilling Frost Breath",
-          "phaseIds": [
-            "human-phase",
-            "wolf-phase"
-          ],
-          "damageTypes": [
-            "cold"
-          ],
+          "phaseIds": ["human-phase", "wolf-phase"],
+          "damageTypes": ["cold"],
           "telegraph": [
             "The boss inhales visibly and frost particles gather at the mouth."
           ],
@@ -426,14 +369,58 @@
         {
           "label": "Count Geonor Definitive Boss Guide — All Abilities and Tips",
           "url": "https://www.youtube.com/watch?v=ZCyqekkZsSk",
-          "creator": "Community creator",
-          "description": "Full two-phase breakdown with all abilities shown and build-agnostic tips."
+          "creator": "sirgog",
+          "description": "Full two-phase breakdown with all abilities shown and build-agnostic tips.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Setup & resistances (cold, level 15-18)"
+            },
+            {
+              "time": "0:45",
+              "label": "Humanoid phase: Frost Throw & Armoured Charge"
+            },
+            {
+              "time": "2:15",
+              "label": "Wolf transformation trigger (~50% HP)"
+            },
+            {
+              "time": "3:00",
+              "label": "Wolf phase & mist sub-phase"
+            },
+            {
+              "time": "4:30",
+              "label": "Reset windows & kill"
+            }
+          ]
         },
         {
           "label": "Count Geonor Boss Mechanics Guide and Build Tips",
           "url": "https://www.youtube.com/watch?v=SuFzzYmPE64",
-          "creator": "Community creator",
-          "description": "Mechanics overview with build-specific preparation advice."
+          "creator": "EODGamerz",
+          "description": "Mechanics overview with build-specific preparation advice.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Attack telegraphs overview"
+            },
+            {
+              "time": "1:00",
+              "label": "Humanoid key attacks & dodges"
+            },
+            {
+              "time": "2:30",
+              "label": "Mist-circle sub-phase explained"
+            },
+            {
+              "time": "3:30",
+              "label": "Wolf full-reset tactic"
+            },
+            {
+              "time": "4:30",
+              "label": "Class-specific tips"
+            }
+          ]
         }
       ]
     },
@@ -458,9 +445,7 @@
           "officialAnswer": [
             "Maintain lateral movement first. Only clear wolves that block your path. After identifying the actual killing attack, check the corresponding defence in the troubleshooting section."
           ],
-          "relatedQuestionIds": [
-            "fog-phase-deaths"
-          ],
+          "relatedQuestionIds": ["fog-phase-deaths"],
           "linkHref": "#troubleshooting",
           "linkLabel": "See full check order →"
         },
@@ -477,9 +462,7 @@
           "officialAnswer": [
             "For a first kill, prioritise survival. Once familiar with the rhythm, use one quick-recovery skill after the dash ends. Do not force a full combo."
           ],
-          "relatedQuestionIds": [
-            "melee-output-window"
-          ],
+          "relatedQuestionIds": ["melee-output-window"],
           "linkHref": "#build-strategy",
           "linkLabel": "See melee strategy →"
         },
@@ -520,10 +503,7 @@
             "Cross-reference the attack table to identify whether it was the dash, leap or ground overlap.",
             "Check effective life, armour/evasion and recovery — not just cold resistance."
           ],
-          "relatedContentIds": [
-            "attacks",
-            "preparation"
-          ]
+          "relatedContentIds": ["attacks", "preparation"]
         },
         {
           "symptom": "When can melee attack during the fog phase?",
@@ -535,10 +515,7 @@
             "If wolves block your retreat, clear the nearest one first.",
             "Stop attacking immediately when the next voice cue begins."
           ],
-          "relatedContentIds": [
-            "build-strategy",
-            "video"
-          ]
+          "relatedContentIds": ["build-strategy", "video"]
         },
         {
           "symptom": "Is my damage too low — do I need better gear first?",
@@ -550,9 +527,7 @@
             "Verify support gems are compatible with your main skill tags.",
             "Separate mapping tools from boss tools — do not sacrifice all single-target for area."
           ],
-          "relatedContentIds": [
-            "preparation"
-          ]
+          "relatedContentIds": ["preparation"]
         },
         {
           "symptom": "Do I need to clear all summoned wolves before attacking the boss?",
@@ -563,9 +538,7 @@
             "Chasing wolves at the arena edge usually costs you more important boss telegraph information.",
             "If wolves are far from your path, ignore them and focus on positioning."
           ],
-          "relatedContentIds": [
-            "attacks"
-          ]
+          "relatedContentIds": ["attacks"]
         }
       ]
     },
@@ -681,7 +654,8 @@
         {
           "date": "2026-07-31",
           "changes": [
-            "Update"
+            "Corrected phase count to two: the mist sub-phase is part of the wolf transformation, not a separate third phase.",
+            "Fixed the wolf-phase full-health-reset description; removed the prototype 'three phases' wording."
           ]
         }
       ]
@@ -722,9 +696,7 @@
   "relatedBuildIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
-  "relatedPatchIds": [
-    "patch-0-5-4-runes-of-aldur"
-  ],
+  "relatedPatchIds": ["patch-0-5-4-runes-of-aldur"],
   "sources": [
     {
       "label": "Path of Exile 2 official 0.5.4 Patch Notes",

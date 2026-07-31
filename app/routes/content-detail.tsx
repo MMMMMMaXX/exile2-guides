@@ -67,6 +67,7 @@ import {
 } from "../../lib/seo/metadata";
 import { getNotFoundMeta } from "../../lib/seo/not-found";
 import { createArticleJsonLd } from "../../lib/seo/structured-data";
+import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { isV4Subtype } from "../../lib/content/v4-taxonomy";
 
 const contentTypeBySegment = new Map<string, ContentType>(
@@ -293,10 +294,19 @@ export function meta({ params }: Route.MetaArgs) {
         ),
       ]),
   );
+  // 已发布详情页使用按 slug 生成的专属 OG 图（脚本：scripts/generate-og-images.mjs），
+  // 经 Vite 指纹管线后通过 resolveImageAsset 取得带哈希的 URL；
+  // 草稿预览页（仅开发期存在）回退到主视觉指纹 URL或站点默认图，避免引用尚未生成的文件。
+  const ogSourcePath = `/images/og/${contentTypeSegments[page.frontMatter.contentType]}/${page.frontMatter.slug}.webp`;
+  const ogImagePath = page.frontMatter.draft
+    ? page.frontMatter.image
+      ? resolveImageAsset(page.frontMatter.image)
+      : undefined
+    : resolveImageAsset(ogSourcePath);
   return createSeoMetadata({
     alternatePaths,
     description: page.frontMatter.seoDescription,
-    ...(page.frontMatter.image ? { imagePath: page.frontMatter.image } : {}),
+    ...(ogImagePath ? { imagePath: ogImagePath } : {}),
     locale: page.frontMatter.locale,
     path: contentRoutePath(
       page.frontMatter.locale,

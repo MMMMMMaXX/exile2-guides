@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router";
 
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { ContentLocale, ContentType } from "../../lib/content/constants";
-import { contentTypeSegments } from "../../lib/content/constants";
 import {
   searchDocuments,
   type SearchDocument,
@@ -199,7 +198,6 @@ export function SearchPage({
                 const image = document.image
                   ? resolveImageAsset(document.image)
                   : fallbackImages[document.category];
-                const segment = contentTypeSegments[document.category];
                 const typeLabel = zh
                   ? typeLabels[document.category].zh
                   : typeLabels[document.category].en;

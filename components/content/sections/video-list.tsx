@@ -1,4 +1,4 @@
-/** 文件职责：渲染视频卡片，YouTube 支持页面内封面+点击嵌入播放，并在旁列出可跳转的重要节点，供各内容模块的 video 章节复用。 */
+/** 文件职责：渲染视频卡片，YouTube 支持页面内封面+点击嵌入播放，并在右侧列出可跳转的重要节点，供各内容模块的 video 章节复用。 */
 import { useState } from "react";
 
 import { resolveImageAsset } from "../../../lib/assets/image-assets";
@@ -53,15 +53,13 @@ function parseTimestampSeconds(time: string): number | undefined {
   return segments.reduce((total, value) => total * 60 + value, 0);
 }
 
-/** 渲染单个视频卡片：管理封面/播放态，YouTube 显示可点击封面并按节点从指定时间开始播放。 */
-function VideoCard({
+/** 渲染单个视频行：左侧播放器（封面/内嵌 iframe/外链），右侧重要节点面板；多个视频行纵向堆叠。 */
+function VideoRow({
   entry,
   labels,
-  solo,
 }: {
   entry: VideoEntry;
   labels: VideoLabels;
-  solo: boolean;
 }) {
   const youtubeId = extractYouTubeId(entry.url);
   const timestamps = entry.timestamps ?? [];
@@ -74,7 +72,6 @@ function VideoCard({
     (youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : undefined);
   const playVideo = labels.playVideo ?? labels.videoPreview;
 
-  /** 加载嵌入播放器并从指定秒数开始，供封面与节点列表共用。 */
   const playFrom = (start: number) => setActive(start);
 
   const embedSrc = (() => {
@@ -84,10 +81,8 @@ function VideoCard({
   })();
 
   return (
-    <>
-      <article
-        className={`build-video-card${solo && !hasTimestamps ? " build-video-card--wide" : ""}`}
-      >
+    <div className={`build-video-row${hasTimestamps ? "" : " build-video-row--solo"}`}>
+      <article className="build-video-card">
         {youtubeId ? (
           active !== null ? (
             <div className="build-video-card__embed">
@@ -182,11 +177,11 @@ function VideoCard({
           </ol>
         </aside>
       ) : null}
-    </>
+    </div>
   );
 }
 
-/** 将视频条目渲染为可页面内播放的卡片网格；有节点时并排展示重要节点列表，非 YouTube 链接回退为外部预览入口。 */
+/** 将视频条目渲染为可页面内播放的纵向行：每行左侧播放器、右侧重要节点面板，多个视频纵向堆叠。 */
 export function VideoList({
   entries,
   labels,
@@ -194,15 +189,13 @@ export function VideoList({
   entries: readonly VideoEntry[];
   labels: VideoLabels;
 }) {
-  const solo = entries.length === 1;
   return (
-    <div className="build-video-grid">
+    <div className="build-video-stack">
       {entries.map((entry) => (
-        <VideoCard
+        <VideoRow
           entry={entry}
           key={`${entry.label}:${entry.url}`}
           labels={labels}
-          solo={solo}
         />
       ))}
     </div>

@@ -11,11 +11,14 @@ export type PrerenderVerificationIssue = {
     | "missing-canonical"
     | "missing-description"
     | "missing-hreflang"
-    | "missing-internal-link-target"
-    | "missing-open-graph"
-    | "missing-structured-data"
-    | "missing-title"
-    | "missing-twitter-card";
+  | "missing-internal-link-target"
+  | "missing-open-graph"
+  | "missing-structured-data"
+  | "missing-title"
+  | "missing-twitter-card"
+  | "duplicate-h1"
+  | "missing-anchor-target"
+  | "missing-og-image-file";
   message: string;
   publicPath: string;
 };
@@ -157,6 +160,72 @@ export function inspectInternalLinkTargets(
   });
 }
 
+/** 内容详情页必须恰好一个 H1：标题由文章布局渲染，重复 H1 会稀释主题权重并干扰 SEO。 */
+export function inspectSingleH1(
+  html: string,
+  publicPath: string,
+): PrerenderVerificationIssue[] {
+  const h1Count = (html.match(/<h1(?:\s|>)/gi) ?? []).length;
+  if (h1Count !== 1) {
+    return [
+      {
+        code: "duplicate-h1",
+        message: `Expected exactly 1 <h1> element, found ${h1Count}`,
+        publicPath,
+      },
+    ];
+  }
+  return [];
+}
+
+/** 所有页内锚点链接（href="#id"）必须指向文档中真实存在的 id，防止目录与正文锚点脱节。 */
+export function inspectAnchorTargets(
+  html: string,
+  publicPath: string,
+): PrerenderVerificationIssue[] {
+  const ids = new Set(
+    [...html.matchAll(/\sid=["']([^"']+)["']/gi)].map((match) => match[1]),
+  );
+  const issues: PrerenderVerificationIssue[] = [];
+  for (const match of html.matchAll(/href=["']#([^"']+)["']/gi)) {
+    const anchor = match[1];
+    if (anchor && !ids.has(anchor)) {
+      issues.push({
+        code: "missing-anchor-target",
+        message: `In-page anchor #${anchor} has no matching element id`,
+        publicPath,
+      });
+    }
+  }
+  return issues;
+}
+
+/** 内容详情页引用的 og:image 必须在构建产物中存在，防止社交分享图 404（按 slug 生成的专属图）。 */
+export async function inspectOgImageFile(
+  html: string,
+  publicPath: string,
+  outputDirectory: string,
+): Promise<PrerenderVerificationIssue[]> {
+  const content = html
+    .match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+    ?.[1];
+  if (!content) return [];
+  // 仅校验根相对路径；已配置 VITE_SITE_URL 输出的绝对地址由部署方保证可达。
+  if (!content.startsWith("/")) return [];
+  try {
+    await fs.access(path.join(outputDirectory, content));
+    return [];
+  } catch {
+    return [
+      {
+        code: "missing-og-image-file",
+        message: `Referenced og:image ${content} is missing from build output`,
+        publicPath,
+      },
+    ];
+  }
+}
+
 /** 验证静态宿主可直接采用的 404 文档，防止部署时将未知地址回退到首页或空壳。 */
 export async function verifyStaticNotFoundDocument(
   outputDirectory: string,
@@ -263,16 +332,21 @@ export async function verifyPrerenderBuild(
       continue;
     }
 
+    const isContentRoute = index.byRoute.has(publicPath);
     issues.push(
-      ...inspectPrerenderedHtml(
-        html,
-        publicPath,
-        index.byRoute.has(publicPath),
-      ),
+      ...inspectPrerenderedHtml(html, publicPath, isContentRoute),
       ...inspectSeoMetadata(html, publicPath),
-      ...inspectStructuredData(html, publicPath, index.byRoute.has(publicPath)),
+      ...inspectStructuredData(html, publicPath, isContentRoute),
       ...inspectInternalLinkTargets(html, publicPath, publicPaths),
     );
+
+    if (isContentRoute) {
+      issues.push(
+        ...inspectSingleH1(html, publicPath),
+        ...inspectAnchorTargets(html, publicPath),
+        ...(await inspectOgImageFile(html, publicPath, outputDirectory)),
+      );
+    }
   }
 
   if (issues.length > 0) throw new PrerenderVerificationError(issues);

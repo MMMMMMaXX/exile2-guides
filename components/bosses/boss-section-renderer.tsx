@@ -452,6 +452,9 @@ export function BossSectionRenderer({ article }: { article: BossArticle }) {
   let majorSectionIndex = 0;
 
   return sections.map((section) => {
+    if (section.type === "related-content" && section.items.length === 0) {
+      return null;
+    }
     if (section.toc) majorSectionIndex += 1;
 
     return (

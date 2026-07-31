@@ -26,6 +26,8 @@ export function itemArticleToFrontMatter(
       ...article.relatedBuildIds,
       ...article.relatedBossIds,
       ...article.relatedGuideIds,
+      ...article.relatedItemIds,
+      ...article.relatedSkillIds,
       ...article.relatedPatchIds,
     ],
     requiredLevel: article.requiredLevel,

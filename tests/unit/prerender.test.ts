@@ -13,9 +13,12 @@ import {
   buildCollectionPaths,
   enumeratePublicPaths,
   guideCollectionPaths,
+  inspectAnchorTargets,
   inspectInternalLinkTargets,
+  inspectOgImageFile,
   inspectPrerenderedHtml,
   inspectSeoMetadata,
+  inspectSingleH1,
   inspectStructuredData,
   itemCollectionPaths,
   patchCollectionPaths,
@@ -271,5 +274,69 @@ describe("prerender HTML verification", () => {
     await expect(
       verifyPrerenderBuild(outputDirectory, enumeratePublicPaths(index), index),
     ).rejects.toBeInstanceOf(PrerenderVerificationError);
+  });
+});
+
+describe("content route structural gates", () => {
+  it("要求内容详情页恰好一个 H1", () => {
+    expect(inspectSingleH1("<h1>Title</h1>", "/en/guides/g/")).toEqual([]);
+    expect(
+      inspectSingleH1("<h1>A</h1><h1>B</h1>", "/en/guides/g/").map((i) => i.code),
+    ).toEqual(["duplicate-h1"]);
+    expect(
+      inspectSingleH1("<p>No heading</p>", "/en/guides/g/")[0]?.code,
+    ).toBe("duplicate-h1");
+  });
+
+  it("要求页内锚点都指向真实存在的 id", () => {
+    const okHtml =
+      '<nav><a href="#scope">Scope</a><a href="#verification">Verify</a></nav>' +
+      '<section id="scope"></section><section id="verification"></section>';
+    expect(inspectAnchorTargets(okHtml, "/en/guides/g/")).toEqual([]);
+
+    const brokenHtml =
+      '<nav><a href="#scope">Scope</a><a href="#missing">Missing</a></nav>' +
+      '<section id="scope"></section>';
+    expect(inspectAnchorTargets(brokenHtml, "/en/guides/g/")).toEqual([
+      expect.objectContaining({ code: "missing-anchor-target" }),
+    ]);
+  });
+
+  it("要求引用的根相对 og:image 在构建产物中存在", async () => {
+    const outputDirectory = await mkdtemp(
+      path.join(os.tmpdir(), "exile2-og-"),
+    );
+    const ogDir = path.join(outputDirectory, "images", "og", "guides");
+    await mkdir(ogDir, { recursive: true });
+    await writeFile(path.join(ogDir, "verified-guide.webp"), "webp");
+
+    const okHtml =
+      '<meta property="og:image" content="/images/og/guides/verified-guide.webp">';
+    expect(
+      await inspectOgImageFile(okHtml, "/en/guides/verified-guide/", outputDirectory),
+    ).toEqual([]);
+
+    const brokenHtml =
+      '<meta property="og:image" content="/images/og/guides/absent.webp">';
+    expect(
+      (
+        await inspectOgImageFile(
+          brokenHtml,
+          "/en/guides/verified-guide/",
+          outputDirectory,
+        )
+      ).map((issue) => issue.code),
+    ).toEqual(["missing-og-image-file"]);
+
+    // 绝对地址（已配置 VITE_SITE_URL）不做本地产物校验
+    const absoluteHtml =
+      '<meta property="og:image" content="https://poe2.stratlore.com/og.png">';
+    expect(
+      await inspectOgImageFile(
+        absoluteHtml,
+        "/en/guides/verified-guide/",
+        outputDirectory,
+      ),
+    ).toEqual([]);
   });
 });

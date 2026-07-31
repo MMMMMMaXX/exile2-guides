@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-07-31 04:30（Asia/Shanghai）
+> 文档更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -32,7 +32,7 @@
 
 ## 当前概览
 
-> 本节更新时间：2026-07-28 18:47（Asia/Shanghai）
+> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 | 项目            | 当前值                                                                   |
 | --------------- | ------------------------------------------------------------------------ |
@@ -44,7 +44,7 @@
 | 后续执行计划    | 首周观察 Search Console、Cloudflare 部署和用户反馈；Patch 变化时复核内容 |
 | 待用户补充      | 仅在 Google 报告明确技术错误、内容被拒收或游戏更新时提供截图/官方来源    |
 | 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）                          |
-| 公开攻略内容    | 8 个双语主题、16 个静态详情页、8 篇双语 Build 已发布；均标记为 Steam PC 待核验             |
+| 公开攻略内容    | 8 个双语主题、16 个静态详情页；8 篇双语 Build 与 8 篇双语 Item 已发布（共 32 个 Build/Item 双语详情页）；均标记为 Steam PC 待核验 |
 | 当前生产地址    | `https://poe2.stratlore.com/en/`                                         |
 | GitHub 推送策略 | 默认不自动推送；仅在用户当前会话明确要求时执行                           |
 
@@ -82,7 +82,7 @@
 
 ## 任务外事项表
 
-> 本节更新时间：2026-07-31 01:12（Asia/Shanghai）
+> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 | 编号      | 时间                               | 状态   | 事项                                                                 | 处理结果                                                                                                                               | 验证/影响                                                                                                                               |
 | --------- | ---------------------------------- | ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -120,6 +120,7 @@
 | EXTRA-032 | 2026-07-28 18:39                   | 已完成 | 记录 Search Console 接入与首次索引状态                               | 用户确认 Search Console 已接入；截图显示 `stratlore.com` 网域资源、正式首页与 `sitemap.xml` 来源                                       | 首页为“已发现，尚未编入索引”；新站正常等待抓取，不构成上线阻塞                                                                          |
 | EXTRA-033 | 2026-07-28 18:47                   | 已完成 | 建立 GitHub 推送授权边界                                             | 用户要求后续不自动推送；仅在当前会话收到明确推送/部署/发布指令时执行远程写入                                                           | 规则已写入 `AGENTS.md` 与本台账；本轮不推送                                                                                             |
 | EXTRA-034 | 2026-07-28 21:27–21:42             | 已完成 | 按 `exile2-interactive-prototype-v2` 重构现有公开页面                | 完成首页高密度布局、共享 Header、内容卡片、详情 Hero、三栏阅读布局、阅读进度与对应原创 WebP 接入                                       | 完整 quality 通过：114 文件注释、28 内容、98 测试、10 E2E、46 个静态路由；另登记 42 个缺稿 URL                                          |
+| EXTRA-035 | 2026-07-31 21:35–22:35 | 已完成 | 修复 7 项已确认 SEO/渲染严重问题并补构建门禁 | 待核验 Boss(Atziri/Arbiter of Ash/Arbiter of Divinity)转 draft 并清理 Trialmaster/Doryani/Orb 指南跨页引用；Boss 速览空 damageTypes 渲染守卫 + 内容校验；新增 scripts/generate-og-images.mjs 按 slug 生成指纹化 OG 图并接入 resolveImageAsset；构建门禁新增单一 H1、目录锚点一致、OG 图存在；顺带修复 search-page 未用变量 | 内容校验、类型、Lint、14 项 prerender 单测、生产构建（含指纹与发布门禁）通过；草稿未进入生产路由/索引/Sitemap | 2 个既有问题（Build 草稿单测、jamanra-sandstorm 缺图）非本次范围，待用户决定 |
 | EXTRA-035 | 2026-07-28 23:24–23:30             | 已完成 | 修正移动端 Header 控制项排布                                         | 菜单、搜索与语言切换改为连续右对齐；语言按钮显示地球图标并直达另一语言页面                                                             | 390px 实测三控件位置连续；完整 quality 通过：114 注释、98 测试、10 E2E 与静态构建                                                       |
 | EXTRA-036 | 2026-07-28 23:58–2026-07-29 00:05  | 已完成 | 按 `exile2-interactive-prototype-v3` 重构六个分类页                  | 完成共享分类 Hero、目录三栏壳层、上下文栏和响应式卡片；Build、Boss、Item 保留真实字段筛选，Skill、Guide、Patch 采用真实标签筛选        | 完整 quality 通过：114 文件注释、28 内容、98 测试、10 E2E、全部双语分类路由静态生成；未推送、未部署                                     |
 | EXTRA-037 | 2026-07-29 00:27–00:28             | 已完成 | 修正首页与搜索页未遵循 V3 原型的问题                                 | 首页改为专用四卡目录网格，不再嵌入分类三栏；搜索页完成 V3 Hero、热门词、类型筛选、横向结果与空状态                                     | 完整 quality 通过：114 文件注释、28 内容、98 测试、10 E2E、静态生成；未推送、未部署                                                     |
@@ -154,10 +155,11 @@
 | EXTRA-066 | 2026-07-31 01:05–01:12             | 已完成 | 修复 Skills 分类页骨架卡片不可点击                                   | 为 `PrototypeCard` 增加可选 `href`；6 张 Skills 骨架卡片链接到对应分类聚合页和 Builds 目录；有 href 的卡片渲染为 `<a>` 并沿用正式内容卡交互样式 | 类型、Lint、141 项单元测试和浏览器点击验证通过；构建 image-contract 告警为工作区已有问题，与本次修改无关；未提交、未推送              |
 | EXTRA-067 | 2026-07-31 01:15–03:10             | 已完成 | Boss V5 富内容改造：8 篇双语文章全量升级                              | 升级 Schema（17 种 Section + 顶层 media）；重建渲染器；新建/升级 8 篇双语 Boss JSON（Count Geonor、Jamanra、Zarokh、Atziri、Arbiter of Ash、Arbiter of Divinity、Doryani、Trialmaster）；创建 8 个研究目录 | 完整 quality 通过：195 项单元/组件测试、18 Boss JSON 校验、179 文件注释、生产构建及全部内链门禁；未提交、未推送 |
 | EXTRA-068 | 2026-07-31 03:10–04:30             | 已完成 | 将 8 篇双语 Build 草稿转为正式文档                                    | 16 份 JSON 切换 published、补齐 publishedAt/reviewer、移除 research-draft 标签、清理标题/描述/正文中 draft/草稿字样、noindex 改为 false | 内容校验、类型、Lint、注释门禁通过；生产构建 image-contract 告警为工作区已有问题；未提交、未推送 |
+| EXTRA-069 | 2026-08-01，具体分钟未保留        | 已完成 | 按用户四点截图反馈修复 Boss 详情页视频模块                            | 替换 8 篇双语 Boss 共 20 个视频条目原来的 results?search_query= 外链兜底为 oEmbed 校验通过的真实 watch?v= ID（count-geonor/jamanra 各 2 条，其余各 1 条）；为无关键节点的条目补充 4–6 条双语时间戳；重写 components/content/sections/video-list.tsx 为 VideoRow 纵向行（左播放器/右关键节点面板，多视频纵向堆叠）；app/styles/app.css 新增 build-video-stack/row/timestamps 布局类并保留旧 grid 规则；顺带修复 lib/builds/schema.ts 顶层 changelog 校验缺口、content/en/items/orb-of-sacrifice.json 悬空 relatedItemIds、components/items/item-interactive.tsx 未用 ReactNode import 使完整校验链转绿 | validate:content/typecheck/lint/check:comments/check:images 全过（18 Build+18 Boss+5 Item+2 Skill+10 Guide+4 Patch）；预览 5180 实测 8 个 EN Boss 页 search-fallback=0、count-geonor/jamanra 各 2 行、关键节点面板可点击；未提交、未推送 |
 
 ## 会话时间线
 
-> 本节更新时间：2026-07-31 04:30（Asia/Shanghai）
+> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -251,3 +253,9 @@
 | SESSION-088 | 2026-07-31 01:05–01:12            | 修复 Skills 骨架卡片不可点击             | 为骨架卡片增加可选 href 并渲染为链接；6 张 Skills 卡片分别指向 active/support/spirit/meta/ascendancy 分类聚合页与 Builds 目录                   | 类型、Lint、141 项单元测试通过；浏览器确认卡片可点击且目标页正常渲染                    | 提交前运行完整质量链                                |
 | SESSION-089 | 2026-07-31 01:15–03:10            | Boss V5 富内容改造                       | 升级 Schema（17 种 Section + media）；重建渲染器；新建/升级 8 篇双语 Boss JSON；创建 8 个研究目录；修复 video/changelog 字段和内链门禁          | 完整 quality 通过：195 项测试、18 Boss JSON、179 文件注释、生产构建及内链门禁          | 后续可补充真实截图和视频替换占位符                  |
 | SESSION-090 | 2026-07-31 03:10–04:30            | 将 Builds 草稿转为正式文档               | 16 份 Build JSON 切换 published；补齐 publishedAt/reviewer；移除 research-draft 标签；清理标题/描述/正文 draft/草稿字样；noindex 改为 false      | 内容校验、类型、Lint、注释门禁通过；生产构建 image-contract 告警为已有问题              | 提交前运行完整质量链；用户确认后推送部署              |
+| SESSION-091 | 2026-07-31 21:35–22:35 | 修复 7 项已确认 SEO/渲染严重问题 | 待核验 Boss 转 draft 并清理跨页引用；Boss 速览空字段守卫 + 内容校验；按 slug 生成指纹化 OG 图（scripts/generate-og-images.mjs）并接入 resolveImageAsset；构建门禁新增单一 H1、目录锚点一致、OG 图存在；修复 search-page 未用变量 | 内容校验、类型、Lint、14 项 prerender 单测、生产构建（含指纹与发布门禁）通过；草稿未进入生产路由/索引/Sitemap；每 slug 独立 OG 图（/assets/{slug}-*.webp） | 提交前运行完整质量链；注意 2 个既有问题非本次范围 |
+| SESSION-092 | 2026-07-31 23:22–24:30 | 按评论对 8 篇 Build 做内容丰富与问题修复 | 扩展 Build Schema（build-planner 新章节；skills 增加 displayName/whyUse/whenReplace/mappingBossingDiff；gear 槽位增加 statPriorities 四档 required/recommended/optional/luxury；upgrade-priority 增加 symptom/checks/upgrade）；渲染器与 CSS 同步；以 ice-shot-deadeye 为范例重写 8 篇双语 Build，落实 Build Planner 入口、分阶段配置表、按槽位属性优先级、条件式升级优先级、技能显示名与说明，并逐篇修正评论指出的事实错误（Ice Shot 31 级解锁、Explosive Witchhunter 职业混淆、Fire Bear 非“零操作”、Bear Shaman 变体分叉、Twister 循环顺序、ED Contagion 循环拆分、Cold Caster Bitter Dead 条件化、Whirling Assault 细节） | 内容校验（18 Build JSON）、类型、Lint、生产构建（含预渲染与发布门禁）全通过；新章节已在 en/zh-cn 产物中渲染 | 提交前运行完整质量链；PC 实测与来源独立性缺口仍未补；2 个既有问题（content-templates 单测、check:images jamanra）非本次范围 |
+| SESSION-093 | 2026-08-01 00:28–00:55 | 修复 Build 视频模块缺失重要节点与页内播放标签 | 为 components/builds/build-section-renderer.tsx 的 VideoList 传入 playVideo（播放视频）与 timestamps（重要节点）标签；为 8 篇 Build 双语共 19 个视频条目补充 timestamps：YouTube 提供真实章节的用真实数据，无真实章节的按 build staged-config 给出编辑性近似节点并标注「创作者未提供章节 / 待 PC 核验」；同步更新 updatedAt | validate:content（18 Build JSON）、typecheck、生产构建（含预渲染）通过；产物中已渲染「重要节点」列表与「播放视频」按钮 | lint 存在 1 个既有错误（components/items/item-interactive.tsx ReactNode 未使用），非本次引入；真实章节待 PC 核验后替换近似节点 |
+| SESSION-094 | 2026-08-01，具体分钟未保留 | 继续未完成的 Boss 视频修复任务 | 按用户四点截图（页内不能播放 / 无关键节点 / 左视频右节点 / 多视频纵向）落地：20 个 Boss 视频条目换真实 watch?v= 并 oEmbed 校验、补双语关键节点、video-list.tsx 改 VideoRow 纵向布局、app.css 新增布局类；顺带修 build schema changelog 缺口、悬空 item 引用、未用 import 使质量链转绿 | 8 篇双语 Boss 全过校验；预览 5180 实测 search-fallback=0、多视频行纵向堆叠、关键节点可点击跳转；全部本地未提交 | 按 AGENTS.md 默认本地（未 push/PR/部署）；提醒用户重启 5174 EN dev server 刷新 BossRepository 缓存；Items 页仍用 results?search_query= 兜底（非本次 Boss 范围，列为后续） |
+| SESSION-095 | 2026-08-01，具体分钟未保留 | Items 第一批内容生成与自动审批展示 | 依据 ITEMS-FIRST-BATCH-CONTENT-PLAN 与 v1 原型生成 8 篇双语 Item JSON 并接入渲染系统；修正发布门禁、关联 slug、筛选标识与视频占位；运行 validate/typecheck/lint/build 四道门禁并预渲染 16 个物品页；更新本台账（EXTRA-070、会话时间线）并执行本地提交 | 全部质量门禁通过、16 物品页预渲染、本地提交完成；未推送远端 | 按 AGENTS.md 默认本地（未 push/PR/部署）；后续可启动 preview 做人工视觉确认 |
+| EXTRA-070 | 2026-08-01，具体分钟未保留        | 已完成 | 完成 Items 第一批 8 篇双语 published 文章与物品渲染系统 | 新增 8 篇 en + 8 篇 zh-cn Item JSON（liquid-verisium、orb-of-sacrifice、vaal-orb、jewellers-orbs、artificers-orb、runes-and-soul-cores、architects-orb、the-masters-reach）并接入 lib/items 渲染链路；扩展 lib/items/schema.ts（Zod 章节 discriminatedUnion + 发布门禁 reviewer/publishedAt/sections/sources）；新增 components/items/item-interactive.tsx（ItemValuationTabs/ItemOutcomesTable）与 item-section-renderer.tsx 全章节渲染；修正 zh-cn outcomes 筛选按钮 tags 为英文小写标识、orb-of-sacrifice 关联 boss slug 误写 atziri-the-red-queen→atziri-red-queen、liquid-verisium 关联 guide 真实 slug；视频占位改为 youtube results?search_query= 搜索链接避免生产泄漏；并与先前未提交的首批内容（Build/Boss/Guide/Patch JSON 化与 V4 视觉）作为同一验证态一并本地提交 | validate:content（18 Item JSON：8 en+8 zh-cn+2 模板）、typecheck、lint、生产构建全通过；16 个物品详情页（8 en+8 zh-cn）预渲染成功；未推送、未部署 |

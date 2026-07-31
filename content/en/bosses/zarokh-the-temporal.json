@@ -7,17 +7,14 @@
   "featured": false,
   "title": "Zarokh, the Temporal Boss Guide: Trial Access, Honour and Time Mechanics",
   "shortTitle": "Zarokh",
-  "summary": "Complete Trial of the Sekhemas floor 4 boss guide covering Barya access, Honour management, Relic priorities and the time-stop phase.",
+  "summary": "Complete Trial of the Sekhemas floor 4 boss guide covering Barya entry, Honour management, the Clock hourglass phase, Relic priority, and the time-stop phase.",
   "description": "Learn how to reach and beat Zarokh in the Trial of the Sekhemas with floor-by-floor access, Honour tips, Relic priorities and phase strategy.",
   "location": "Trial of the Sekhemas, Floor 4",
   "campaignStage": null,
   "recommendedLevel": "Level 30+",
   "difficulty": "high",
-  "damageTypes": [
-    "physical",
-    "lightning"
-  ],
-  "phases": 2,
+  "damageTypes": ["physical", "lightning"],
+  "phases": 3,
   "bossCategory": "trial",
   "act": null,
   "isOptional": false,
@@ -33,12 +30,7 @@
   "heroImage": "/images/bosses/zarokh-hero.webp",
   "cardImage": "/images/bosses/zarokh-hero.webp",
   "imageAlt": "Zarokh the Temporal in the Trial of the Sekhemas arena",
-  "tags": [
-    "trial",
-    "sekhemas",
-    "physical",
-    "lightning"
-  ],
+  "tags": ["trial", "sekhemas", "physical", "lightning"],
   "sections": [
     {
       "id": "quick-answer",
@@ -50,7 +42,9 @@
       "callout": "The boss itself is manageable. Reaching the boss is the real challenge.",
       "calloutDetail": [
         "Zarokh sits at the end of a four-floor trial with an Honour system that can end your run before you ever see the boss.",
-        "Preparation for the trial floors matters more than raw DPS for the boss fight itself."
+        "Preparation for the trial floors matters more than raw DPS for the boss fight itself.",
+        "Zarokh triggers a Clock phase: 6 hourglasses spawn around the arena and must be collected within one rotation.",
+        "Since 0.3.0, missing an hourglass no longer instantly fails the Trial—it deals Honour damage and triggers a slowed sub-phase instead."
       ],
       "answers": [
         {
@@ -161,9 +155,7 @@
         },
         {
           "label": "Lightning and physical defence",
-          "checks": [
-            "Zarokh deals both physical and lightning damage."
-          ],
+          "checks": ["Zarokh deals both physical and lightning damage."],
           "why": "The time-stop phase has lightning attacks that are hard to avoid while repositioning.",
           "fix": "Cap lightning resistance if possible. Bring a physical damage reduction option."
         }
@@ -200,10 +192,23 @@
             "Phase one is a standard boss fight with physical melee combos and occasional ranged projectiles.",
             "The key is resource conservation. Do not use all your defensive tools here — you will need them in phase two."
           ],
-          "tags": [
-            "Learn patterns",
-            "Conserve resources"
-          ]
+          "tags": ["Learn patterns", "Conserve resources"]
+        },
+        {
+          "phaseId": "clock-phase",
+          "label": "Phase 2: Clock phase (collect hourglasses)",
+          "trigger": "Mid-fight Zarokh stops time and spawns 6 hourglasses (hourglass) around the arena.",
+          "objectives": [
+            "Collect all 6 hourglasses within one rotation (one full spin).",
+            "If you miss one, keep moving to grab the rest—don't stand still.",
+            "Once collected, time resumes and the standard fight continues."
+          ],
+          "notes": [
+            "The 6 hourglasses sit around the arena edge and must be picked up before Zarokh completes one rotation.",
+            "0.3.0 change: missing an hourglass no longer instantly fails the Trial. Instead it deals Honour damage and triggers a slowed sub-phase; you can keep fighting.",
+            "A single miss is survivable, but repeated misses stack Honour pressure and can still end the attempt."
+          ],
+          "tags": ["time", "hourglass", "honour-damage", "slowed sub-phase"]
         },
         {
           "phaseId": "time-stop-phase",
@@ -219,11 +224,7 @@
             "Lightning attacks continue during the time-stop. They are harder to see because the visual field changes.",
             "This phase repeats if you do not kill Zarokh quickly enough. Each repetition increases pressure."
           ],
-          "tags": [
-            "Keep moving",
-            "Visual awareness",
-            "Short attacks"
-          ]
+          "tags": ["Keep moving", "Visual awareness", "Short attacks"]
         }
       ]
     },
@@ -238,12 +239,8 @@
         {
           "attackId": "temporal-slash",
           "name": "Temporal Slash",
-          "phaseIds": [
-            "phase-one"
-          ],
-          "damageTypes": [
-            "physical"
-          ],
+          "phaseIds": ["phase-one"],
+          "damageTypes": ["physical"],
           "telegraph": [
             "Weapon glows and a short wind-up precedes a wide arc."
           ],
@@ -261,16 +258,9 @@
         {
           "attackId": "time-projectile",
           "name": "Temporal Projectile",
-          "phaseIds": [
-            "phase-one",
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning"
-          ],
-          "telegraph": [
-            "Zarokh raises his staff and a glowing orb forms."
-          ],
+          "phaseIds": ["phase-one", "time-stop-phase"],
+          "damageTypes": ["lightning"],
+          "telegraph": ["Zarokh raises his staff and a glowing orb forms."],
           "responses": [
             "Move laterally. The projectile tracks briefly but can be outrun."
           ],
@@ -287,13 +277,8 @@
         {
           "attackId": "temporal-field",
           "name": "Temporal Field (Time Stop)",
-          "phaseIds": [
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning",
-            "physical"
-          ],
+          "phaseIds": ["time-stop-phase"],
+          "damageTypes": ["lightning", "physical"],
           "telegraph": [
             "The arena shifts colour and parts of the ground freeze."
           ],
@@ -313,12 +298,8 @@
         {
           "attackId": "time-lightning-strike",
           "name": "Temporal Lightning Strike",
-          "phaseIds": [
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning"
-          ],
+          "phaseIds": ["time-stop-phase"],
+          "damageTypes": ["lightning"],
           "telegraph": [
             "Brief ground marker appears during the time-stop field."
           ],
@@ -332,6 +313,25 @@
           "notes": [
             "These strikes are secondary threats during the time-stop. Movement is the primary survival tool."
           ],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "hourglass-clock",
+          "name": "Clock Hourglasses",
+          "phaseIds": ["clock-phase"],
+          "damageTypes": ["physical"],
+          "telegraph": [
+            "Arena shifts color; 6 hourglasses appear around the edges."
+          ],
+          "responses": [
+            "Pick them up one by one within the rotation; if you miss one, keep moving for the rest—don't freeze in place."
+          ],
+          "notes": [
+            "Since 0.3.0 a missed hourglass deals Honour damage and triggers a slowed sub-phase rather than an instant fail."
+          ],
+          "danger": "medium",
+          "commonMistakes": ["Chasing one hourglass into the time-stop zone."],
           "mediaIds": [],
           "sourceIds": []
         }
@@ -365,9 +365,27 @@
       "entries": [
         {
           "label": "Trial of the Sekhemas Complete Guide — All Four Floors and Zarokh",
-          "url": "https://www.youtube.com/results?search_query=poe2+trial+of+the+sekhemas+zarokh+guide",
-          "creator": "Community creator",
-          "description": "Full four-floor run showing Honour management, room choices and the Zarokh fight."
+          "url": "https://www.youtube.com/watch?v=gxM9FiR83Ak",
+          "creator": "z3r0pointflux",
+          "description": "Full four-floor run showing Honour management, room choices and the Zarokh fight.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Trial of the Sekhemas floor 4 & Honour prep"
+            },
+            {
+              "time": "0:45",
+              "label": "Early-phase attacks"
+            },
+            {
+              "time": "2:00",
+              "label": "Clock phase: collect all hourglasses (0.3.0 no instant-fail)"
+            },
+            {
+              "time": "3:30",
+              "label": "Final burst & rewards"
+            }
+          ]
         }
       ]
     },
@@ -392,9 +410,7 @@
           "officialAnswer": [
             "The floors are the primary challenge. Prioritise Honour resistance Relics, avoid unnecessary fights, and learn trap patterns. The boss becomes manageable once you arrive with high Honour."
           ],
-          "relatedQuestionIds": [
-            "trial-difficulty"
-          ],
+          "relatedQuestionIds": ["trial-difficulty"],
           "linkHref": "#preparation",
           "linkLabel": "See Relic priorities →"
         },
@@ -411,9 +427,7 @@
           "officialAnswer": [
             "Keep moving through unfrozen corridors. Do not stop to dodge-roll — continuous movement through safe ground is the survival mechanic. Lightning strikes are secondary; the frozen zones are the primary threat."
           ],
-          "relatedQuestionIds": [
-            "time-stop-confusion"
-          ],
+          "relatedQuestionIds": ["time-stop-confusion"],
           "linkHref": "#phases",
           "linkLabel": "See phase breakdown →"
         }
@@ -437,10 +451,7 @@
             "Use movement skills to traverse trap rooms without taking hits.",
             "Equip Honour resistance Relics for your first several attempts."
           ],
-          "relatedContentIds": [
-            "access",
-            "preparation"
-          ]
+          "relatedContentIds": ["access", "preparation"]
         },
         {
           "symptom": "The time-stop phase kills me every time.",
@@ -452,10 +463,7 @@
             "Follow the unfrozen ground path.",
             "Accept that you will take some lightning hits — movement avoids the lethal frozen zones."
           ],
-          "relatedContentIds": [
-            "phases",
-            "attacks"
-          ]
+          "relatedContentIds": ["phases", "attacks"]
         },
         {
           "symptom": "Which Relics should I prioritise?",
@@ -467,9 +475,7 @@
             "Swap to damage Relics once the floors are manageable.",
             "Do not mix both unless you have a large Relic inventory."
           ],
-          "relatedContentIds": [
-            "preparation"
-          ]
+          "relatedContentIds": ["preparation"]
         }
       ]
     },
@@ -585,7 +591,8 @@
         {
           "date": "2026-07-31",
           "changes": [
-            "Update"
+            "Added the Clock phase (6 hourglasses, collect within one rotation).",
+            "Corrected outdated info: since 0.3.0 a missed hourglass no longer instantly fails the Trial—it deals Honour damage and a slowed sub-phase."
           ]
         }
       ]
@@ -606,9 +613,7 @@
   "relatedBuildIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
-  "relatedPatchIds": [
-    "patch-0-5-4-runes-of-aldur"
-  ],
+  "relatedPatchIds": ["patch-0-5-4-runes-of-aldur"],
   "sources": [
     {
       "label": "Path of Exile 2 official 0.5.4 Patch Notes",

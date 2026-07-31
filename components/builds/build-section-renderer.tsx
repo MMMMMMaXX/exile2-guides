@@ -21,7 +21,20 @@ const rendererLabels: Record<
     source: string;
     supports: string;
     takeaway: string;
+    timestamps: string;
     videoPreview: string;
+    playVideo: string;
+    symptom: string;
+    check: string;
+    upgrade: string;
+    tierRequired: string;
+    tierRecommended: string;
+    tierOptional: string;
+    tierLuxury: string;
+    plannerImport: string;
+    plannerOpen: string;
+    plannerDownload: string;
+    plannerCreator: string;
   }
 > = {
   en: {
@@ -33,7 +46,20 @@ const rendererLabels: Record<
     source: "Open source",
     supports: "Supports",
     takeaway: "What to watch for",
+    timestamps: "Key timestamps",
     videoPreview: "Open the original video",
+    playVideo: "Play video",
+    symptom: "Symptom",
+    check: "Check first",
+    upgrade: "Upgrade next",
+    tierRequired: "Required",
+    tierRecommended: "Recommended",
+    tierOptional: "Optional",
+    tierLuxury: "Luxury",
+    plannerImport: "Import Build",
+    plannerOpen: "Open Build Planner",
+    plannerDownload: "Download .build",
+    plannerCreator: "View original creator setup",
   },
   "zh-cn": {
     cons: "缺点",
@@ -44,7 +70,20 @@ const rendererLabels: Record<
     source: "查看来源",
     supports: "辅助技能",
     takeaway: "建议重点观看",
+    timestamps: "重要节点",
     videoPreview: "打开原始视频",
+    playVideo: "播放视频",
+    symptom: "现象",
+    check: "先检查",
+    upgrade: "优先升级",
+    tierRequired: "必须",
+    tierRecommended: "推荐",
+    tierOptional: "可选",
+    tierLuxury: "奢侈升级",
+    plannerImport: "导入配置",
+    plannerOpen: "打开 Build Planner",
+    plannerDownload: "下载 .build",
+    plannerCreator: "查看创作者原始配置",
   },
 };
 
@@ -104,9 +143,34 @@ function renderSectionContent(
                 {step.label}
                 {step.levelRange ? ` · ${step.levelRange}` : ""}
               </h3>
-              {step.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              {step.symptom ? (
+                <div className="build-upgrade-rule">
+                  <p>
+                    <strong>{labels.symptom}:</strong> {step.symptom}
+                  </p>
+                  {step.checks?.length ? (
+                    <p>
+                      <strong>{labels.check}:</strong>
+                    </p>
+                  ) : null}
+                  {step.checks?.length ? (
+                    <ul>
+                      {step.checks.map((check) => (
+                        <li key={check}>{check}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {step.upgrade ? (
+                    <p>
+                      <strong>{labels.upgrade}:</strong> {step.upgrade}
+                    </p>
+                  ) : null}
+                </div>
+              ) : (
+                step.body.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))
+              )}
             </li>
           ))}
         </ol>
@@ -117,11 +181,36 @@ function renderSectionContent(
           <h3>{group.label}</h3>
           {group.skills.map((skill) => (
             <div className="build-data-row" key={skill.skillId}>
-              <strong>{skill.skillId}</strong>
+              <div className="build-skill-head">
+                {skill.icon ? (
+                  <img
+                    alt={skill.displayName}
+                    className="build-skill-icon"
+                    src={skill.icon}
+                  />
+                ) : null}
+                <strong>{skill.displayName}</strong>
+              </div>
               <span>{skill.role}</span>
               {skill.supportSkillIds.length > 0 ? (
                 <p>
                   {labels.supports}: {skill.supportSkillIds.join(" · ")}
+                </p>
+              ) : null}
+              {skill.whyUse?.length ? (
+                <p>
+                  <strong>Why:</strong> {skill.whyUse.join(" ")}
+                </p>
+              ) : null}
+              {skill.whenReplace?.length ? (
+                <p>
+                  <strong>When to replace:</strong> {skill.whenReplace.join(" ")}
+                </p>
+              ) : null}
+              {skill.mappingBossingDiff?.length ? (
+                <p>
+                  <strong>Mapping vs Bossing:</strong>{" "}
+                  {skill.mappingBossingDiff.join(" ")}
                 </p>
               ) : null}
               {skill.notes.map((note) => (
@@ -135,6 +224,36 @@ function renderSectionContent(
       return section.slots.map((slot) => (
         <section className="build-data-row" key={slot.slot}>
           <h3>{slot.slot}</h3>
+          {slot.statPriorities.length > 0 ? (
+            <div className="build-gear-priorities">
+              {(
+                [
+                  ["required", labels.tierRequired],
+                  ["recommended", labels.tierRecommended],
+                  ["optional", labels.tierOptional],
+                  ["luxury", labels.tierLuxury],
+                ] as const
+              ).map(([tier, tierLabel]) => {
+                const tierItems = slot.statPriorities.filter(
+                  (priority) => priority.tier === tier,
+                );
+                if (tierItems.length === 0) return null;
+                return (
+                  <div className="build-gear-tier" key={tier}>
+                    <h4>{tierLabel}</h4>
+                    <ol>
+                      {tierItems.map((priority) => (
+                        <li key={priority.label}>
+                          <strong>{priority.label}</strong>
+                          {priority.reason ? ` — ${priority.reason}` : ""}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
           <ul>
             {slot.recommendations.map((item) => (
               <li key={item}>{item}</li>
@@ -177,7 +296,9 @@ function renderSectionContent(
           labels={{
             source: labels.source,
             takeaway: labels.takeaway,
+            timestamps: labels.timestamps,
             videoPreview: labels.videoPreview,
+            playVideo: labels.playVideo,
           }}
         />
       );
@@ -244,6 +365,63 @@ function renderSectionContent(
       );
     case "changelog":
       return <ChangelogList entries={section.entries} />;
+    case "build-planner":
+      return (
+        <div className="build-planner-card">
+          {section.note ? (
+            <p className="build-planner-note">{section.note}</p>
+          ) : null}
+          <ul className="build-planner-actions">
+            {section.importUrl ? (
+              <li>
+                <a
+                  href={section.importUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {labels.plannerImport} ↗
+                </a>
+              </li>
+            ) : null}
+            {section.buildPlannerUrl ? (
+              <li>
+                <a
+                  href={section.buildPlannerUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {labels.plannerOpen} ↗
+                </a>
+              </li>
+            ) : null}
+            {section.downloadUrl ? (
+              <li>
+                <a
+                  href={section.downloadUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {labels.plannerDownload} ↗
+                </a>
+              </li>
+            ) : null}
+            {section.creatorUrl ? (
+              <li>
+                <a
+                  href={section.creatorUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {section.creatorName
+                    ? `${labels.plannerCreator} · ${section.creatorName}`
+                    : labels.plannerCreator}{" "}
+                  ↗
+                </a>
+              </li>
+            ) : null}
+          </ul>
+        </div>
+      );
   }
 }
 

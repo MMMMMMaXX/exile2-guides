@@ -7,17 +7,14 @@
   "featured": false,
   "title": "Zarokh Boss 攻略：试炼进入、Honour 与时间机制",
   "shortTitle": "Zarokh",
-  "summary": "Trial of the Sekhemas 第四层 Boss 完整攻略，覆盖 Barya 进入、Honour 管理、Relic 优先级和时间停止阶段。",
+  "summary": "Trial of the Sekhemas 第四层 Boss 完整攻略，覆盖 Barya 进入、Honour 管理、时钟沙漏阶段、Relic 优先级和时间停止阶段。",
   "description": "Path of Exile 2 Zarokh 完整攻略：逐层进入、Honour 技巧、Relic 优先级与阶段策略。",
   "location": "Trial of the Sekhemas，第四层",
   "campaignStage": null,
   "recommendedLevel": "等级 30+",
   "difficulty": "high",
-  "damageTypes": [
-    "physical",
-    "lightning"
-  ],
-  "phases": 2,
+  "damageTypes": ["physical", "lightning"],
+  "phases": 3,
   "bossCategory": "trial",
   "act": null,
   "isOptional": false,
@@ -33,12 +30,7 @@
   "heroImage": "/images/bosses/zarokh-hero.webp",
   "cardImage": "/images/bosses/zarokh-hero.webp",
   "imageAlt": "Zarokh 在 Trial of the Sekhemas 竞技场中",
-  "tags": [
-    "trial",
-    "sekhemas",
-    "physical",
-    "lightning"
-  ],
+  "tags": ["trial", "sekhemas", "physical", "lightning"],
   "sections": [
     {
       "id": "quick-answer",
@@ -50,7 +42,9 @@
       "callout": "Boss 本身可以应对。到达 Boss 才是真正的挑战。",
       "calloutDetail": [
         "Zarokh 位于四层试炼的终点，Honour 系统可能在你见到 Boss 之前就结束你的尝试。",
-        "试炼楼层的准备比 Boss 战本身的纯 DPS 更重要。"
+        "试炼楼层的准备比 Boss 战本身的纯 DPS 更重要。",
+        "Zarokh 会发动时钟阶段：竞技场周围生成 6 个沙漏，需在一圈内收集。",
+        "0.3.0 起漏捡沙漏不再直接判定 Trial 失败，而是承受 Honour 伤害并进入减速次级阶段。"
       ],
       "answers": [
         {
@@ -137,33 +131,25 @@
       "items": [
         {
           "label": "Honour 抗性 Relic",
-          "checks": [
-            "减少试炼楼层中每次受击的 Honour 损失。"
-          ],
+          "checks": ["减少试炼楼层中每次受击的 Honour 损失。"],
           "why": "Honour 损失在四层中累积。即使小幅减少在完整尝试中也会显著复合。",
           "fix": "前几次尝试优先 Honour 抗性 Relic。能稳定到达 Boss 后再考虑伤害 Relic。"
         },
         {
           "label": "移动与躲避",
-          "checks": [
-            "试炼楼层有消耗 Honour 的陷阱和伏击。"
-          ],
+          "checks": ["试炼楼层有消耗 Honour 的陷阱和伏击。"],
           "why": "大部分 Honour 损失发生在楼层而非 Boss。躲避比硬扛更有价值。",
           "fix": "使用位移技能快速重新定位。不要正面硬扛陷阱房间。"
         },
         {
           "label": "Boss 单体伤害",
-          "checks": [
-            "Zarokh 血量可观。战斗越长意味着越多时间停止阶段。"
-          ],
+          "checks": ["Zarokh 血量可观。战斗越长意味着越多时间停止阶段。"],
           "why": "每个时间停止阶段都是一次生存检验。战斗越短检验越少。",
           "fix": "带专用单体技能组。确认辅助宝石兼容性。"
         },
         {
           "label": "闪电与物理防御",
-          "checks": [
-            "Zarokh 同时造成物理和闪电伤害。"
-          ],
+          "checks": ["Zarokh 同时造成物理和闪电伤害。"],
           "why": "时间停止阶段有重新定位时难以躲避的闪电攻击。",
           "fix": "尽可能满闪电抗性。带一个物理减伤手段。"
         }
@@ -200,10 +186,23 @@
             "第一阶段是标准 Boss 战，有物理近战连招和偶尔的远程投射物。",
             "关键是资源保留。不要在这里用完所有防御工具——第二阶段需要它们。"
           ],
-          "tags": [
-            "学习模式",
-            "保留资源"
-          ]
+          "tags": ["学习模式", "保留资源"]
+        },
+        {
+          "phaseId": "clock-phase",
+          "label": "阶段 2：时钟阶段（收集沙漏）",
+          "trigger": "战斗推进中 Zarokh 停止时间，在竞技场周围生成 6 个沙漏（hourglass）。",
+          "objectives": [
+            "在一圈（一次旋转）内收集全部 6 个沙漏。",
+            "错过沙漏不要原地停留——继续移动收集其余。",
+            "收集完成后时间恢复，回到标准战斗节奏。"
+          ],
+          "notes": [
+            "6 个沙漏分布竞技场四周，需在 Zarokh 完成一圈旋转前拾取。",
+            "0.3.0 改动：漏掉沙漏不再直接判定 Trial 失败；改为承受 Honour 伤害并进入一个减速次级阶段，仍可继续战斗。",
+            "单次漏捡的惩罚可控，但连续漏捡会累积 Honour 压力，仍可能导致尝试结束。"
+          ],
+          "tags": ["time", "hourglass", "honour-damage", "减速次级阶段"]
         },
         {
           "phaseId": "time-stop-phase",
@@ -219,11 +218,7 @@
             "闪电攻击在时间停止期间继续。因为视觉场变化，它们更难看到。",
             "如果不够快击杀 Zarokh，此阶段会重复。每次重复增加压力。"
           ],
-          "tags": [
-            "保持移动",
-            "视觉意识",
-            "短攻击"
-          ]
+          "tags": ["保持移动", "视觉意识", "短攻击"]
         }
       ]
     },
@@ -238,21 +233,11 @@
         {
           "attackId": "temporal-slash",
           "name": "时间斩击",
-          "phaseIds": [
-            "phase-one"
-          ],
-          "damageTypes": [
-            "physical"
-          ],
-          "telegraph": [
-            "武器发光，短暂蓄力后释放宽弧。"
-          ],
-          "responses": [
-            "后退或翻滚穿过弧线。收招很快。"
-          ],
-          "commonMistakes": [
-            "站在近战范围内不看前摇。"
-          ],
+          "phaseIds": ["phase-one"],
+          "damageTypes": ["physical"],
+          "telegraph": ["武器发光，短暂蓄力后释放宽弧。"],
+          "responses": ["后退或翻滚穿过弧线。收招很快。"],
+          "commonMistakes": ["站在近战范围内不看前摇。"],
           "danger": "medium",
           "notes": [],
           "mediaIds": [],
@@ -261,77 +246,58 @@
         {
           "attackId": "time-projectile",
           "name": "时间投射物",
-          "phaseIds": [
-            "phase-one",
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning"
-          ],
-          "telegraph": [
-            "Zarokh 举起法杖，发光球体形成。"
-          ],
-          "responses": [
-            "横向移动。投射物短暂追踪但可以被跑赢。"
-          ],
-          "commonMistakes": [
-            "直线后退——追踪会追上你。向侧面走。"
-          ],
+          "phaseIds": ["phase-one", "time-stop-phase"],
+          "damageTypes": ["lightning"],
+          "telegraph": ["Zarokh 举起法杖，发光球体形成。"],
+          "responses": ["横向移动。投射物短暂追踪但可以被跑赢。"],
+          "commonMistakes": ["直线后退——追踪会追上你。向侧面走。"],
           "danger": "medium",
-          "notes": [
-            "时间停止阶段也会使用，使其更难看到。"
-          ],
+          "notes": ["时间停止阶段也会使用，使其更难看到。"],
           "mediaIds": [],
           "sourceIds": []
         },
         {
           "attackId": "temporal-field",
           "name": "时间场（时间停止）",
-          "phaseIds": [
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning",
-            "physical"
-          ],
-          "telegraph": [
-            "竞技场变色，部分地面冻结。"
-          ],
-          "responses": [
-            "通过未冻结走廊持续移动。不要站定。"
-          ],
-          "commonMistakes": [
-            "恐慌跑入冻结区域，被定身。"
-          ],
+          "phaseIds": ["time-stop-phase"],
+          "damageTypes": ["lightning", "physical"],
+          "telegraph": ["竞技场变色，部分地面冻结。"],
+          "responses": ["通过未冻结走廊持续移动。不要站定。"],
+          "commonMistakes": ["恐慌跑入冻结区域，被定身。"],
           "danger": "critical",
-          "notes": [
-            "冻结区域造成伤害并定身。只有移动走廊安全。"
-          ],
+          "notes": ["冻结区域造成伤害并定身。只有移动走廊安全。"],
           "mediaIds": [],
           "sourceIds": []
         },
         {
           "attackId": "time-lightning-strike",
           "name": "时间闪电打击",
-          "phaseIds": [
-            "time-stop-phase"
-          ],
-          "damageTypes": [
-            "lightning"
-          ],
-          "telegraph": [
-            "时间场期间出现短暂地面标记。"
-          ],
+          "phaseIds": ["time-stop-phase"],
+          "damageTypes": ["lightning"],
+          "telegraph": ["时间场期间出现短暂地面标记。"],
           "responses": [
             "保持移动——不要停下来躲避。走廊移动可以避开大部分打击。"
           ],
-          "commonMistakes": [
-            "停下来翻滚，结果进入冻结区域。"
-          ],
+          "commonMistakes": ["停下来翻滚，结果进入冻结区域。"],
           "danger": "high",
-          "notes": [
-            "这些打击是时间停止期间的次要威胁。移动是主要生存工具。"
+          "notes": ["这些打击是时间停止期间的次要威胁。移动是主要生存工具。"],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "hourglass-clock",
+          "name": "时钟沙漏",
+          "phaseIds": ["clock-phase"],
+          "damageTypes": ["physical"],
+          "telegraph": ["竞技场变色，6 个沙漏在四周出现。"],
+          "responses": [
+            "在一圈内逐个拾取；漏捡也继续移动收集其余，不要停在原地。"
           ],
+          "notes": [
+            "漏捡沙漏在 0.3.0 后造成 Honour 伤害并触发减速次级阶段，而非直接失败。"
+          ],
+          "danger": "medium",
+          "commonMistakes": ["为追一个沙漏跑入时间停止区域。"],
           "mediaIds": [],
           "sourceIds": []
         }
@@ -365,9 +331,27 @@
       "entries": [
         {
           "label": "Trial of the Sekhemas 完整指南——四层与 Zarokh",
-          "url": "https://www.youtube.com/results?search_query=poe2+trial+of+the+sekhemas+zarokh+guide",
-          "creator": "社区创作者",
-          "description": "完整四层尝试，展示 Honour 管理、房间选择和 Zarokh 战斗。"
+          "url": "https://www.youtube.com/watch?v=gxM9FiR83Ak",
+          "creator": "z3r0pointflux",
+          "description": "完整四层尝试，展示 Honour 管理、房间选择和 Zarokh 战斗。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "塞克哈玛斯试炼第 4 层与 Honor 准备"
+            },
+            {
+              "time": "0:45",
+              "label": "前阶段攻击"
+            },
+            {
+              "time": "2:00",
+              "label": "时钟阶段：收集全部沙漏（0.3.0 不再即死）"
+            },
+            {
+              "time": "3:30",
+              "label": "收尾爆发与奖励"
+            }
+          ]
         }
       ]
     },
@@ -392,9 +376,7 @@
           "officialAnswer": [
             "楼层是主要挑战。优先 Honour 抗性 Relic，跳过不必要战斗，学习陷阱模式。到达 Boss 时 Honour 高，战斗就可以应对。"
           ],
-          "relatedQuestionIds": [
-            "trial-difficulty"
-          ],
+          "relatedQuestionIds": ["trial-difficulty"],
           "linkHref": "#preparation",
           "linkLabel": "查看 Relic 优先级 →"
         },
@@ -411,9 +393,7 @@
           "officialAnswer": [
             "通过未冻结走廊持续移动。不要停下来翻滚——通过安全地面的持续移动才是生存机制。闪电打击是次要的；冻结区域是主要威胁。"
           ],
-          "relatedQuestionIds": [
-            "time-stop-confusion"
-          ],
+          "relatedQuestionIds": ["time-stop-confusion"],
           "linkHref": "#phases",
           "linkLabel": "查看阶段拆解 →"
         }
@@ -437,10 +417,7 @@
             "使用位移技能穿越陷阱房间而不受击。",
             "前几次尝试装备 Honour 抗性 Relic。"
           ],
-          "relatedContentIds": [
-            "access",
-            "preparation"
-          ]
+          "relatedContentIds": ["access", "preparation"]
         },
         {
           "symptom": "时间停止阶段每次都杀我。",
@@ -452,10 +429,7 @@
             "跟随未冻结地面路径。",
             "接受会受到一些闪电命中——移动避开的是致命的冻结区域。"
           ],
-          "relatedContentIds": [
-            "phases",
-            "attacks"
-          ]
+          "relatedContentIds": ["phases", "attacks"]
         },
         {
           "symptom": "应该优先哪些 Relic？",
@@ -467,9 +441,7 @@
             "楼层可应对后换伤害 Relic。",
             "除非 Relic 库存充足，不要混用。"
           ],
-          "relatedContentIds": [
-            "preparation"
-          ]
+          "relatedContentIds": ["preparation"]
         }
       ]
     },
@@ -585,7 +557,8 @@
         {
           "date": "2026-07-31",
           "changes": [
-            "Update"
+            "新增时钟阶段（6 个沙漏，一圈内收集）说明。",
+            "更正过时信息：0.3.0 起漏捡沙漏不再直接 Trial 失败，改为 Honour 伤害 + 减速次级阶段。"
           ]
         }
       ]
@@ -606,9 +579,7 @@
   "relatedBuildIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
-  "relatedPatchIds": [
-    "patch-0-5-4-runes-of-aldur"
-  ],
+  "relatedPatchIds": ["patch-0-5-4-runes-of-aldur"],
   "sources": [
     {
       "label": "Path of Exile 2 官方 0.5.4 Patch Notes",

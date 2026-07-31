@@ -31,10 +31,14 @@ export function BossQuickPreparation({
           value: frontMatter.recommendedLevel,
         }
       : undefined,
-    {
-      label: isChinese ? "主要伤害类型" : "Primary Damage Types",
-      value: frontMatter.damageTypes.map(formatValue).join(" · "),
-    },
+    ...(frontMatter.damageTypes.length > 0
+      ? [
+          {
+            label: isChinese ? "主要伤害类型" : "Primary Damage Types",
+            value: frontMatter.damageTypes.map(formatValue).join(" · "),
+          },
+        ]
+      : []),
     ...(frontMatter.difficulty
       ? [
           {

@@ -5,10 +5,10 @@
   "type": "build",
   "status": "published",
   "featured": false,
-  "title": "Twister Spirit Walker Build 指南",
+  "title": "Twister Spirit Walker Build 指南：龙卷猎手开荒与终局",
   "shortTitle": "Twister Spirit Walker",
-  "summary": "指南把简化清图循环与完整 Boss 准备分开，因为武器组、翻滚时机和强化投射物使完整路线明显更复杂。",
-  "description": "基于 0.5.4 的 Path of Exile 2 Twister Spirit Walker Build 指南。",
+  "summary": "用 Twister 制造持续龙卷，靠走位把龙卷拖过怪群做范围伤害。覆盖 Whirling Slash 起手、移动施法、Primal Bounty 时机与社区真实痛点，是 0.5 公认的 S 级开荒。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Twister Spirit Walker 指南，整合 SiahZ、SnooBAE 攻略与 Reddit 论坛讨论。",
   "classId": "huntress",
   "ascendancyId": "spirit-walker",
   "mainSkillIds": [
@@ -32,24 +32,26 @@
   "budgets": [
     "low",
     "medium",
-    "high"
+    "high",
+    "luxury"
   ],
   "difficulty": "advanced",
   "playstyleTags": [
-    "ranged",
-    "combo",
-    "projectile",
-    "mobile",
-    "multi-button"
+    "melee",
+    "spear",
+    "twister",
+    "moving-cast",
+    "aoe"
   ],
   "damageTypes": [
     "physical",
-    "cold"
+    "cold",
+    "lightning"
   ],
   "bestFor": [
     "mapping",
-    "projectile-combos",
-    "advanced-play"
+    "clear-speed",
+    "staged-investment"
   ],
   "patch": "0.5.4",
   "league": "return-of-the-ancients",
@@ -58,15 +60,16 @@
   "author": "Exile2 Guides Editorial Team",
   "reviewer": "Exile2 Guides Editorial Team",
   "createdAt": "2026-07-29",
-  "updatedAt": "2026-07-31",
+  "updatedAt": "2026-08-01",
   "heroImage": "/images/builds/covers/twister-spirit-walker.webp",
   "cardImage": "/images/builds/covers/twister-spirit-walker.webp",
-  "imageAlt": "持长矛的 Spirit Walker 引导冰冷 Twister 沿战场路径推进",
+  "imageAlt": "魂行者女猎手拉出龙卷风",
   "tags": [
     "build",
     "huntress",
     "spirit-walker",
-    "twister"
+    "twister",
+    "spear"
   ],
   "sections": [
     {
@@ -75,17 +78,17 @@
       "title": "Build 概览",
       "order": 10,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "Twister 是顺序型构筑。Ice-Tipped Arrows 准备冰系互动，Whirling Slash 建立移动或路径，Twister 把准备转成移动范围伤害。Boss 战还会加入翻滚与 Barrage，因此应把它学成有顺序的动作，而不是一组各自很强的宝石。",
-        "维护中的规划器列出非暴击和多个暴击版本，但真正门槛是：Spirit 是否足够、胸甲选择是否还能生存、投射物路径是否可靠，以及不靠展示级装备时循环能否运作。",
-        "指南把简化清图循环与完整 Boss 准备分开，因为武器组、翻滚时机和强化投射物使完整路线明显更复杂。"
+        "Twister 是一套「序列」构筑。回旋斩（Whirling Slash）制造旋风，旋风（Twister）在旋风内部释放并吞噬旋风，生成额外龙卷并造成更多伤害；冰镞箭矢（Ice-Tipped Arrows）把伤害转为冰霜并触发冰碎片，弹幕（Barrage）消耗狂怒球增加投射物，翻滚（Dodge Roll，经原始恩赐 Primal Bounty）强化下一个投射技能。它必须当成有序动作来练，而不是一堆强力宝石。",
+        "社区维护的规划器有非暴击与多个暴击变体，但那些名字掩盖了真正的门槛：所选套装的灵力是否够、衣服是否够生存、投射行为是否稳定，以及没有秀场级装备时循环是否还能转。",
+        "本指南给出四套明确循环——简化清图、完整 Boss、过渡前、成型后——因为只列技能毫无用处。展示的 DPS 在规划器与实战复现前都视为作者专属。"
       ],
       "bullets": [
-        "清图只维持所选 Twister 强化，避免无必要准备。",
-        "Boss 前准备武器组、强化与辅助攻击，再进入主 Twister 窗口。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
-      ],
-      "toc": true
+        "清图：保持所选 Twister 赋能，边走边跑简化循环。",
+        "Boss：在 Twister 窗口前准备好招架、旋风、冰霜与投射物。",
+        "展示 DPS 视为作者专属，复现前勿盲信。"
+      ]
     },
     {
       "id": "pros-cons",
@@ -93,61 +96,113 @@
       "title": "优点与缺点",
       "order": 20,
       "visible": true,
+      "toc": false,
       "pros": [
-        "Build 身份与成长阶段清晰。",
-        "主要循环已有当前 0.5 指南覆盖。",
-        "指南区分清图与 Boss 前提。"
+        "清图定位清晰，分阶进步直观。",
+        "主循环有 0.5 当前攻略覆盖。",
+        "清图与 Boss 假设被拆成有序循环，便于对照。"
       ],
       "cons": [
         "多个机制仍需当前客户端复现。",
-        "作者终局配置可能隐藏昂贵依赖。",
-        "不同变体的辅助与天赋可能不同。"
-      ],
-      "toc": false
+        "终局作者配置可能藏昂贵依赖（武器组、Sacred Unity）。",
+        "具体辅助与天赋会随变体变化。"
+      ]
     },
     {
-      "id": "simple-mapping-rotation",
+      "id": "loop-reads",
       "type": "playstyle",
-      "title": "简化清图循环",
+      "title": "循环怎么读",
       "order": 30,
       "visible": true,
+      "toc": false,
       "paragraphs": [
-        "清图只维持所选 Twister 强化，避免无必要准备。"
+        "这套构筑按情境与装备有四种不同循环。只列技能毫无用处——顺序才是构筑本身。下面各节给出每种情境的真实序列，而非技能清单。"
       ],
       "bullets": [
-        "清图只维持所选 Twister 强化，避免无必要准备。",
-        "Boss 前准备武器组、强化与辅助攻击，再进入主 Twister 窗口。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
-      ],
-      "toc": false
+        "清图 = 简化清图循环（边走边转）。",
+        "Boss = 含招架、反复放龙卷的完整循环。",
+        "过渡前 = 装备/等级门槛未到时的精简循环。",
+        "成型后 = 含武器组切换与 Sacred Unity 的完整循环。"
+      ]
     },
     {
-      "id": "full-boss-rotation",
+      "id": "rotation-simplified-clear",
       "type": "playstyle",
-      "title": "完整 Boss 循环",
-      "order": 40,
+      "title": "简化清图循环（Mapping）",
+      "order": 31,
       "visible": true,
       "paragraphs": [
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
+        "清图循环是边走边转的流程，白怪与多数稀有怪都用同一顺序。具体次数与站位待 PC 核验。"
       ],
       "bullets": [
-        "清图只维持所选 Twister 强化，避免无必要准备。",
-        "Boss 前准备武器组、强化与辅助攻击，再进入主 Twister 窗口。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
-      ],
-      "toc": false
+        "1. 翻滚（Dodge Roll）——触发原始恩赐，消耗鸮羽强化下一个投射技能。",
+        "2. 回旋斩 ×3——叠满旋风（Twister 会吞噬），作者攻略常留低等级省蓝。",
+        "3. 冰镞箭矢——强化下一次攻击转冰霜并触发冰碎片（冷却好了就用）。",
+        "4. 弹幕（白怪可省）——消耗狂怒球增加龙卷投射物。",
+        "5. 旋风——在旋风内部释放，然后持续走位把龙卷拖过怪群。"
+      ]
     },
     {
-      "id": "projectile-line-visual",
+      "id": "rotation-full-boss",
+      "type": "playstyle",
+      "title": "完整 Boss 循环",
+      "order": 32,
+      "visible": true,
+      "paragraphs": [
+        "Boss 战先开伤害窗口，再跑完整「准备—释放」序列。招架窗口内可放下多次龙卷。"
+      ],
+      "bullets": [
+        "0. 招架（Parry）——给 Boss 开一个短时间「受到攻击伤害 +50%」的窗口（可选前置）。",
+        "1. 翻滚——触发原始恩赐。",
+        "2. 回旋斩 ×3——叠满旋风。",
+        "3. 冰镞箭矢——冰霜赋能。",
+        "4. 弹幕——消耗狂怒球补投射物。",
+        "5. 旋风 ×N——在旋风内部释放；循环重复，窗口结束再补招架。"
+      ]
+    },
+    {
+      "id": "rotation-pre-transition",
+      "type": "playstyle",
+      "title": "过渡前循环（装备/等级门槛未到）",
+      "order": 33,
+      "visible": true,
+      "paragraphs": [
+        "在构筑成型前——缺 Twister 赋能、武器组、辅助或蓝量——用精简循环。具体数值待 PC 核验（claim C1-C4）。"
+      ],
+      "bullets": [
+        "回旋斩放一两次（蓝量或等级不够不必强求叠满）。",
+        "在旋风内释放旋风。",
+        "保持走位；门槛未到前跳过弹幕、冰镞箭矢时机与原始恩赐同步。",
+        "优先是可运转、能生存的循环，而非最多龙卷。"
+      ]
+    },
+    {
+      "id": "rotation-post-gear",
+      "type": "playstyle",
+      "title": "成型后循环（装备集齐）",
+      "order": 34,
+      "visible": true,
+      "paragraphs": [
+        "长矛、辅助、两套武器组与 Sacred Unity 三件套（鲜活践踏、原始恩赐、Wild Protector）都点出后，循环即带武器组纪律的完整 Boss 序列。"
+      ],
+      "bullets": [
+        "切到起手武器组（堆攻速的长矛）放回旋斩。",
+        "翻滚 → 回旋斩 ×3 → 冰镞箭矢 → 弹幕。",
+        "切到伤害武器组，再在旋风内释放旋风。",
+        "鲜活践踏留下感电地面、Sacred Unity 留下腾飞地面持续强化龙卷；重复即可。"
+      ]
+    },
+    {
+      "id": "twister-drag-visual",
       "type": "figure",
-      "title": "先建立路径，再释放 Twister",
-      "order": 45,
+      "title": "放龙卷，再走位拖拽",
+      "order": 35,
       "visible": true,
       "toc": false,
       "image": {
         "src": "/images/builds/media/twister-spirit-walker-mechanic.webp",
-        "alt": "Spirit Walker 建立冰冷路径后释放 Twister 的编辑示意图",
-        "caption": "先准备冰冷互动与移动路径，强化后的 Twister 才能沿你创造的空间稳定推进。",
+        "alt": "魂行者放出 Twister 龙卷并走位拖拽",
+        "caption": "用回旋斩造旋风，冰霜与投射物赋能后，在旋风内释放旋风吞噬风暴生成额外龙卷。",
         "credit": "Exile2 Guides 原创编辑示意图",
         "sourceKind": "generated"
       }
@@ -156,323 +211,557 @@
       "id": "leveling",
       "type": "leveling",
       "title": "升级流程",
-      "order": 50,
+      "order": 40,
       "visible": true,
+      "toc": true,
       "steps": [
         {
-          "label": "剧情开始",
+          "label": "1–拿到 Twister 前",
+          "levelRange": "1-31",
           "body": [
-            "使用已核验过渡方案，优先保证武器或法术核心可用。"
+            "剧情期用其他长柄/矛技能过渡，先把生命、抗性和移速堆起来。",
+            "SiahZ 的 league starter 指南给出早期过渡节奏。"
           ]
         },
         {
-          "label": "核心技能转型",
+          "label": "解锁 Twister + 回旋斩",
+          "levelRange": "31+",
           "body": [
-            "满足当前宝石与资源条件后再切换。"
+            "拿到核心后切换，龙卷拖拽让清图质变（解锁等级待 PC 核验，claim C1）。",
+            "此阶段先熟悉「放龙卷 + 走位」的节奏，再堆伤害。"
           ]
         },
         {
-          "label": "剧情末期",
+          "label": "早期地图（移动施法）",
+          "levelRange": "50+",
           "body": [
-            "修正抗性、恢复与主资源循环。"
+            "启用移动施法，鲜活践踏提供移速，让龙卷扫更多怪。",
+            "SiahZ / SnooBAE 的 0.5 Planner 给出分阶建议。"
           ]
         },
         {
-          "label": "早期地图",
+          "label": "终局（updated endgame）",
+          "levelRange": "70+",
           "body": [
-            "只采用一个有文档的变体，不混搭终局快照。"
+            "装备成型后按 updated endgame 路线优化龙卷数量与走位。",
+            "具体以 SiahZ / SnooBAE 的成型 Planner 为准。"
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "skills",
       "type": "skills",
       "title": "技能组合",
-      "order": 60,
+      "order": 50,
       "visible": true,
+      "toc": true,
       "groups": [
         {
-          "label": "核心技能",
+          "label": "核心龙卷",
           "skills": [
             {
               "skillId": "twister",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "displayName": "旋风",
+              "role": "核心伤害技能；放出龙卷，吞噬你的旋风以倍增并获取元素伤害。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "它是唯一把旋风与元素地面转化为持续范围伤害的手段，清图与 Boss 输出全靠它。"
+              ],
+              "whenReplace": [
+                "永不被替换；其他技能都是为了强化它。"
+              ],
+              "mappingBossingDiff": [
+                "清图：在旋风内放出并持续走位把龙卷拖过怪群。Boss：同样在旋风内释放，但落在招架/伤害窗口内并贯穿整场。"
+              ],
+              "notes": [
+                "具体辅助链与宝石等级待 PC 核验。务必站在旋风内释放，否则加成消失。"
+              ]
+            },
+            {
+              "skillId": "whirling-slash",
+              "displayName": "回旋斩",
+              "role": "制造旋风，旋风被 Twister 吞噬以生成额外龙卷，每层 +80% 更多伤害。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "为 Twister 提供旋风燃料；作者攻略常留低等级省蓝。"
+              ],
+              "whenReplace": [
+                "不替换；它是起手技能，不是伤害竞争者。"
+              ],
+              "mappingBossingDiff": [
+                "清图与 Boss 都放（常 ×3 叠满）；区别在情境而非用法。"
+              ],
+              "notes": [
+                "具体等级与 AoE 断点待 PC 核验（claim C1/C4）。"
+              ]
             }
           ]
         },
         {
-          "label": "辅助候选",
+          "label": "辅助与走位",
           "skills": [
             {
-              "skillId": "whirling-slash",
-              "role": "依变体使用的工具或准备技能。",
-              "supportSkillIds": [],
-              "notes": []
-            },
-            {
               "skillId": "ice-tipped-arrows",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "冰镞箭矢",
+              "role": "强化下一次投射攻击，把物理转冰霜并触发冰碎片；提供冰霜交互。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "补上冰霜层，让龙卷的元素地面与冰冻协同可见。"
+              ],
+              "whenReplace": [
+                "作为起手辅助保留；除非出现已核验的更强冰霜赋能才替换。"
+              ],
+              "mappingBossingDiff": [
+                "清图：边走边用（冷却好就放）。Boss：在爆发窗口内、Twister 前施放。"
+              ],
+              "notes": [
+                "有冷却；消耗 1 个狂怒球可跳过冷却。"
+              ]
             },
             {
               "skillId": "barrage",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "弹幕",
+              "role": "消耗狂怒球为龙卷增加投射物；强力单体补伤。",
               "supportSkillIds": [],
+              "whyUse": [
+                "把积攒的狂怒球转成更多龙卷投射物，用于 Boss 与密集怪群。"
+              ],
+              "whenReplace": [
+                "Boss/稀有工具；白怪可省。"
+              ],
+              "mappingBossingDiff": [
+                "清图：白怪可省。Boss：在 Twister 前的准备阶段施放。"
+              ],
               "notes": []
             },
             {
               "skillId": "parry",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "招架",
+              "role": "防御工具；衔接后给 Boss 开启「受到攻击伤害 +50%」的窗口。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "给目标开一个短窗口，可容纳多次龙卷旋转。"
+              ],
+              "whenReplace": [
+                "Boss 保留；白怪无需。"
+              ],
+              "mappingBossingDiff": [
+                "清图：不用。Boss：完整循环前可选的第一步。"
+              ],
+              "notes": [
+                "属于 Act 1 起手体系，后续清图更顺后会淡出（据作者攻略）。"
+              ]
             },
             {
               "skillId": "vivid-stampede",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "鲜活践踏",
+              "role": "升华移动技能，留下感电地面，经元素地面强化龙卷。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "把移动转化为范围伤害与感电地面，强化龙卷。"
+              ],
+              "whenReplace": [
+                "点出后不替换；它类似被动式移动引擎。"
+              ],
+              "mappingBossingDiff": [
+                "两者都靠持续走位生成灵雾并拖龙卷；清图因不断移动更相关。"
+              ],
+              "notes": [
+                "Sacred Unity 三件套之一（与原始恩赐、Wild Protector 并列）。"
+              ]
             },
             {
               "skillId": "primal-bounty",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "原始恩赐",
+              "role": "升华技能，随时间积攒鸮羽；翻滚消耗鸮羽，为下一个投射技能增加投射物与速度。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "翻滚→原始恩赐触发是爆发龙卷的能源，时机很关键。"
+              ],
+              "whenReplace": [
+                "点出后不替换。"
+              ],
+              "mappingBossingDiff": [
+                "清图：移动中翻滚自然触发。Boss：把翻滚时机卡在 Twister 释放前。"
+              ],
+              "notes": [
+                "与翻滚同步；错过同步会丢爆发（据作者攻略）。具体叠加待 PC 核验。"
+              ]
             }
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "ascendancy",
       "type": "ascendancy",
       "title": "升华顺序",
-      "order": 70,
+      "order": 60,
       "visible": true,
+      "toc": false,
       "steps": [
         {
-          "label": "暂定顺序",
+          "label": "Spirit Walker 路线：先点三灵，再补元素",
           "body": [
-            "按所选当前指南执行，并在发布前于 0.5.4 客户端逐个确认节点。"
+            "点出鲜活践踏、原始恩赐与 Wild Protector 解锁 Sacred Unity，再在 0.5.4 客户端逐项确认后再发布。",
+            "具体节点以当前 Planner 为准，本指南不做未核验的数值断言。"
           ]
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "passive-tree",
       "type": "passive-tree",
       "title": "天赋树",
-      "order": 80,
+      "order": 70,
       "visible": true,
+      "toc": false,
       "steps": [
         {
           "label": "剧情",
           "body": [
-            "只选择支持当前升级技能和防御需求的节点。"
+            "只点支持长柄/矛与生存的节点：物理/元素伤、生命、抗性、移速优先。"
           ]
         },
         {
-          "label": "早期地图",
+          "label": "早期地图 → 终局",
           "body": [
-            "转入所选 Build 变体，不混合不兼容 Planner。"
+            "转入龙卷路线，优先 Twister 倍率与移动施法，再补三元素。",
+            "涂油：选择支持范围/元素的节点，具体以成型 Planner 为准。"
           ]
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "gear",
       "type": "gear",
       "title": "装备",
-      "order": 90,
+      "order": 80,
       "visible": true,
+      "toc": true,
       "slots": [
         {
-          "slot": "主要伤害部位",
+          "slot": "长柄 / 矛（主伤害）",
           "recommendations": [
-            "合适技能等级或武器伤害",
-            "兼容所选变体的词缀"
+            "优先高底伤、可附加元素的长柄武器，三元素混合灵活。",
+            "具体 best-in-slot 以社区 0.5 规划器为准。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "底伤与 Twister 技能等级足以应对当前层级",
+              "reason": "清图与 Boss 伤害的首要成长检查。"
+            },
+            {
+              "tier": "recommended",
+              "label": "变体兼容的伤害词缀（物理/冰/附加）",
+              "reason": "直接抬升龙卷命中。"
+            },
+            {
+              "tier": "optional",
+              "label": "攻击速度 / 移速",
+              "reason": "改善清图手感与旋风覆盖。"
+            },
+            {
+              "tier": "luxury",
+              "label": "变体专属暴击或 rarity 词缀",
+              "reason": "仅在变体真正成型且生存达标后。"
+            }
           ],
           "notes": [
-            "不要脱离前置条件复制终局装备。"
+            "Mobalytics 的 Verified 标签不等同于本站客户端核验。"
           ]
         },
         {
-          "slot": "防御护甲",
+          "slot": "衣服 / 头 / 腰带（防御）",
           "recommendations": [
-            "生命或所选防御池",
-            "元素抗性与恢复"
+            "优先生命 + 抗性；移速词缀有助于龙卷拖拽。",
+            "带范围/元素伤的词缀优先。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与未cap的抗性",
+              "reason": "再高 DPS 也抵不过在地图里暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "所选防御池（闪避/护甲）与恢复",
+              "reason": "补全防御壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "移速（适用处）",
+              "reason": "帮助 reposition 射击线。"
+            },
+            {
+              "tier": "luxury",
+              "label": "显式伤害词缀",
+              "reason": "防御基线解决后再考虑。"
+            }
           ],
           "notes": [
-            "必须比较整套防御。"
+            "生存与机动同等重要，别只堆伤害。"
           ]
         },
         {
-          "slot": "饰品与工具",
+          "slot": "珠宝与暗金（实用）",
           "recommendations": [
-            "属性与资源维持",
-            "仅使用已核验专属词缀"
+            "Twister 倍率 / 移动施法相关珠宝是循环关键。",
+            "150 rarity 流派（Reddit）依赖特定暗金堆 rarity，以规划器为准。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "能装备长矛与宝石的属性",
+              "reason": "装备不上的长矛毫无价值。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与资源续航（蓝/血）",
+              "reason": "让循环在 Boss 战也能转。"
+            },
+            {
+              "tier": "optional",
+              "label": "已核验的构筑专属词缀（移速、Twister 倍率）",
+              "reason": "让珠宝贴合构筑。"
+            },
+            {
+              "tier": "luxury",
+              "label": "rarity 堆叠（视变体）",
+              "reason": "取决于所选终局变体。"
+            }
           ],
           "notes": [
-            "指南不记录固定价格。"
+            "rarity 流派是终局可选方向，非必须。"
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "stat-priority",
       "type": "stat-priority",
       "title": "属性优先级",
-      "order": 100,
+      "order": 90,
       "visible": true,
+      "toc": false,
       "priorities": [
         {
-          "label": "防御底线",
-          "reason": "先完成抗性与恢复。"
+          "label": "Twister 倍率 / 范围",
+          "reason": "决定龙卷伤害与覆盖，是这套 BD 的首要成长检查。"
         },
         {
-          "label": "主伤害缩放",
-          "reason": "只采用 Planner 与实战证据共同支持的缩放。"
+          "label": "移速",
+          "reason": "走位拖拽效率的关键，动得越快龙卷扫越多。"
         },
         {
-          "label": "资源维持",
-          "reason": "主循环对单体也必须成立。"
+          "label": "三元素伤害（物理/冰/电）",
+          "reason": "混合灵活，直接抬龙卷伤害。"
         },
         {
-          "label": "手感属性",
-          "reason": "Build 可用后再加入速度或范围。"
+          "label": "生命 / 抗性",
+          "reason": "生存根基；缺抗比少伤害更致命。"
+        },
+        {
+          "label": "命中 / 准确度",
+          "reason": "龙卷与辅助技能需要命中。"
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "upgrade-priority",
       "type": "upgrade-priority",
       "title": "升级优先级",
-      "order": 110,
+      "order": 100,
       "visible": true,
+      "toc": false,
       "steps": [
         {
-          "label": "1",
-          "body": [
-            "修正防御与需求。"
-          ]
+          "label": "清图慢",
+          "symptom": "普通怪群要三次以上龙卷才清掉。",
+          "checks": [
+            "长矛是否还是剧情级底子？",
+            "抗性与生命是否已解决（确认武器才是瓶颈）？",
+            "释放 Twister 前旋风是否真的叠满？"
+          ],
+          "upgrade": "先升级长矛 / 确认叠满旋风，再动珠宝与实用装。"
         },
         {
-          "label": "2",
-          "body": [
-            "升级主伤害部位。"
-          ]
+          "label": "进图或 Boss 暴毙",
+          "symptom": "T15+ 或 Boss 战频繁死亡。",
+          "checks": [
+            "哪些抗性没 cap？",
+            "生命/防御是否低于当前层级？",
+            "防御层是否生效？"
+          ],
+          "upgrade": "先 cap 抗性、稳住生命/防御；别用伤害装去补防御问题。"
         },
         {
-          "label": "3",
-          "body": [
-            "稳定资源生成。"
-          ]
+          "label": "单体循环断",
+          "symptom": "Boss 伤害停滞或单体循环断裂。",
+          "checks": [
+            "冰镞箭矢与弹幕是否在准备阶段生效？",
+            "是否有狂怒球给弹幕？",
+            "Twister 是否在旋风内释放？"
+          ],
+          "upgrade": "修准备顺序（旋风→冰镞→弹幕→Twister），不是换武器。"
         },
         {
-          "label": "4",
-          "body": [
-            "加入所选变体核心交互。"
-          ]
+          "label": "抄终局装备反而更弱",
+          "symptom": "照搬终局装备表现不及预期。",
+          "checks": [
+            "是否缺天赋、辅助与门槛？",
+            "武器组配置是否完整？"
+          ],
+          "upgrade": "从更低已核验阶段重建；别混用不兼容的规划器快照。"
         },
         {
-          "label": "5",
-          "body": [
-            "逐项测试奢侈升级。"
-          ]
+          "label": "考虑暴击 / 变体切换",
+          "symptom": "想要更多伤害，盯着变体件。",
+          "checks": [
+            "非暴击清图、Boss 伤害与防御是否已稳定？",
+            "变体装备会不会破抗性或掉生命？"
+          ],
+          "upgrade": "清单通过后再转变体；逐件买、复测，别为规划器数字牺牲生存。"
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "mapping",
       "type": "mapping",
       "title": "清图",
-      "order": 120,
+      "order": 110,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "先用 Ice-Tipped Arrows，再用 Whirling Slash 穿过或调整位置，只有当准备好的路径能命中有效目标时才释放 Twister。翻滚可以修正角度，但连续翻滚通常说明接近路线本身不合理。",
-        "清图只维持所选 Twister 强化，避免无必要准备。"
+        "按标准循环清图：翻滚（原始恩赐）、回旋斩 ×3 叠满旋风、冰镞箭矢，然后在旋风内释放 Twister。持续走位让鲜活践踏生成感电地面并把龙卷拖过怪群。",
+        "白怪可省弹幕，它是稀有/Boss 工具。普通怪群不再一两拨清掉时，就该升级长矛了。"
       ],
       "bullets": [
-        "清图只维持所选 Twister 强化，避免无必要准备。",
-        "Boss 前准备武器组、强化与辅助攻击，再进入主 Twister 窗口。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
-      ],
-      "toc": true
+        "翻滚 → 回旋斩 ×3 → 冰镞箭矢 → Twister，是清图节奏。",
+        "白怪跳过弹幕；它是单体工具。",
+        "清图变慢就先升级长矛。"
+      ]
     },
     {
       "id": "bossing",
       "type": "bossing",
       "title": "Boss 战",
-      "order": 130,
+      "order": 120,
       "visible": true,
+      "toc": false,
       "paragraphs": [
-        "建立 Whirling Slash 路线，沿安全角度翻滚，补 Ice-Tipped Arrows，使用 Barrage，最后释放 Twister。跳过准备或投射物飞离目标的单次施法，不能代表构筑伤害。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
+        "先用招架开「受到攻击伤害 +50%」窗口，再跑完整循环：翻滚（原始恩赐）、回旋斩 ×3、冰镞箭矢、弹幕（消耗狂怒球）、在旋风内释放 Twister。招架窗口内可放下多次龙卷。",
+        "若伤害停滞，问题在准备顺序（旋风叠满、冰镞箭矢、弹幕、释放位置），不是长矛。错过翻滚/原始恩赐同步会丢爆发。"
       ],
       "bullets": [
-        "清图只维持所选 Twister 强化，避免无必要准备。",
-        "Boss 前准备武器组、强化与辅助攻击，再进入主 Twister 窗口。",
-        "作者标注 DPS 在 Planner 与实战条件可复现前不作为事实。"
-      ],
-      "toc": false
+        "招架 → 翻滚 → 回旋斩 ×3 → 冰镞箭矢 → 弹幕 → Twister。",
+        "在旋风内释放 Twister，否则加成消失。",
+        "没伤害 = 修准备，不是换武器。"
+      ]
     },
     {
       "id": "build-variants",
       "type": "comparison-table",
-      "title": "Twister 升级选择",
-      "order": 140,
+      "title": "Twister 与 Ice Shot 怎么选（同为 S 级开荒）",
+      "order": 130,
       "visible": true,
-      "caption": "根据维护版本与更新帖问题整理的决策表。",
+      "toc": false,
+      "caption": "根据 SiahZ 与社区讨论整理，两个 0.5 S 级开荒的定位差异。",
       "columns": [
-        "开荒非暴击",
-        "早期暴击",
-        "终局暴击"
+        "Twister Spirit Walker",
+        "Ice Shot Deadeye"
       ],
       "rows": [
         {
-          "label": "优先级",
+          "label": "输出方式",
           "cells": [
-            "循环与防御",
-            "不丢 Spirit 的可靠暴击",
-            "伤害、稀有度或专项装备"
+            "龙卷拖拽（移动施法）",
+            "穿透箭 + 冻结（站桩/走位）"
           ]
         },
         {
-          "label": "胸甲",
+          "label": "机动",
           "cells": [
-            "可生存稀有胸甲",
-            "防御不降再换",
-            "严格匹配版本"
+            "边走边输出，强",
+            "高移速，强"
           ]
         },
         {
-          "label": "验证",
+          "label": "难度",
           "cells": [
-            "Twister 路径能命中",
-            "暴击变化可测量",
-            "Spirit 与充能包仍启用"
+            "ADVANCED（走位要求高）",
+            "INTERMEDIATE"
           ]
         },
         {
-          "label": "警告",
+          "label": "适用玩家",
           "cells": [
-            "不要追逐 DPS 标签",
-            "不要只复制半套版本",
-            "展示数字不是本站结论"
+            "喜欢走位规划、高上限",
+            "想要稳定冻结控制"
           ]
         }
+      ]
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "Staged Configuration",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "caption": "每个阶段该跑什么。宝石等级与辅助链待 PC 核验；阶段边界与循环顺序才是可操作的部分。",
+      "columns": [
+        "Stage",
+        "Main Skill",
+        "Key Support",
+        "Passive Focus",
+        "Gear Goal",
+        "Transition Condition"
       ],
-      "toc": false
+      "rows": [
+        {
+          "label": "开荒前（L1-30，未解锁 Twister）",
+          "cells": [
+            "长矛攻击 / 过渡技能（临时）",
+            "基础攻击辅助",
+            "生命、抗性、攻击速度",
+            "任意长矛 + 生命/抗性",
+            "31 级解锁 Twister（待 PC）"
+          ]
+        },
+        {
+          "label": "解锁 Twister（L31-50）",
+          "cells": [
+            "旋风",
+            "回旋斩（旋风）",
+            "Twister/范围节点、首个升华",
+            "带 Twister 等级的长矛，cap 抗性",
+            "进早期地图且清图稳定"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "cells": [
+            "旋风 + 回旋斩",
+            "冰镞箭矢、鲜活践踏",
+            "移动施法、范围、元素地面",
+            "cap 抗性、生命、一把真长矛",
+            "扛住 T15+ 且清图可靠"
+          ]
+        },
+        {
+          "label": "终局 / Boss",
+          "cells": [
+            "赋能旋风",
+            "弹幕 + 原始恩赐（翻滚）、招架",
+            "满树、Sacred Unity 三件套",
+            "变体装备、两套武器组",
+            "Boss 伤害可靠后再转变体"
+          ]
+        }
+      ]
     },
     {
       "id": "troubleshooting",
@@ -480,117 +769,184 @@
       "title": "故障排查",
       "order": 150,
       "visible": true,
+      "toc": true,
       "problems": [
         {
-          "symptom": "核心技能不可用",
+          "symptom": "清图慢",
           "checks": [
-            "检查宝石等级、形态、武器组与装备条件。",
-            "退回已记录的过渡阶段。"
+            "检查是否站桩——Twister 靠走位拖拽，动起来。",
+            "用鲜活践踏补移速，让龙卷扫更多怪。"
           ]
         },
         {
-          "symptom": "单体循环中断",
+          "symptom": "Boss 掉血慢",
           "checks": [
-            "移除依赖击杀的假设。",
-            "记录循环前后所有资源。"
+            "检查龙卷是否刮到 Boss，预判落点。",
+            "趁原始恩赐时机叠伤，用弹幕补爆发。"
           ]
         },
         {
-          "symptom": "照抄终局装备后变弱",
+          "symptom": "被秒",
           "checks": [
-            "检查缺失天赋、辅助与阈值。",
-            "从较低的已核验阶段重建。"
+            "补满抗性与生命，别只堆伤害。",
+            "用招架处理关键攻击。"
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "faq",
       "type": "question-answer",
-      "title": "投射物路径与转型解答",
+      "title": "龙卷猎手常见问题",
       "order": 160,
       "visible": true,
+      "toc": false,
       "items": [
         {
-          "question": "为什么 Twister 会错过身边的目标？",
+          "question": "我是不是被版本绑死在 Twister 上了？",
           "answer": [
-            "投射物跟随准备好的路径和角度，距离近不等于必定命中。重新建立 Whirling Slash 路线，并朝目标未来位置释放。"
+            "Reddit『am i shoehorned into twister』的讨论里，玩家确实有这种担心——它强到几乎成版本答案。但你可以不选：想要稳定冻结控制看 Ice Shot Deadeye，想要站撸看 Fire Bear。Twister 强，但不是唯一解。"
           ],
           "bullets": [
-            "先在开阔地测试。",
-            "只用一次翻滚修角度。",
-            "不要在门口判断技能。"
+            "Twister 是 S 级，但非唯一开荒。",
+            "想要不同手感可看 Ice Shot / Fire Bear。"
           ],
-          "relatedLinks": []
-        },
-        {
-          "question": "为什么转暴击后生存或 Spirit 反而下降？",
-          "answer": [
-            "暴击转型通常同时改变多个槽位。胸甲、项链、腰带、充能来源和 Spirit 保留必须一起比较，不能只看武器或天赋树。"
-          ],
-          "bullets": [],
-          "relatedLinks": []
-        },
-        {
-          "question": "如果我更喜欢直接近战？",
-          "answer": [
-            "Whirling Assault Martial Artist 保留高速移动感，但以近战接触、Bell 窗口和充能管理为核心。"
-          ],
-          "bullets": [],
           "relatedLinks": [
             {
-              "href": "/zh-cn/builds/whirling-assault-martial-artist/",
-              "label": "对比 Whirling Assault Martial Artist"
+              "href": "/zh-cn/builds/ice-shot-deadeye/",
+              "label": "对比 Ice Shot Deadeye（同为 0.5 S 级开荒）"
             }
           ]
+        },
+        {
+          "question": "为什么我放龙卷却没伤害？",
+          "answer": [
+            "Twister 的伤害来自龙卷覆盖与走位时长，不是单次面板。如果你站桩，龙卷扫不到怪就等于没输出。回旋斩起手给 Twister 赋能也很关键——先确认是在旋风内释放。"
+          ],
+          "bullets": [
+            "先回旋斩造旋风，再在旋风内放龙卷。",
+            "动起来，让龙卷拖过怪。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "150 rarity 流派值得玩吗？",
+          "answer": [
+            "Reddit『150 rarity twister spirit walker build』是一个终局可选方向，靠特定暗金堆 rarity 做掉落优化。它非必须，是成型后的玩法分支，不要为 rarity 牺牲生存与伤害。"
+          ],
+          "bullets": [
+            "终局可选，非必须。",
+            "别为 rarity 牺牲生存。"
+          ],
+          "relatedLinks": []
         }
-      ],
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "Build Planner 与导入",
+      "order": 165,
+      "visible": true,
+      "note": "Pasteable import string / .build pending PC verification.",
+      "creatorName": "SiahZ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
       "toc": false
     },
     {
       "id": "community-notes",
       "type": "community-voices",
-      "title": "展示背后的真实问题",
+      "title": "社区怎么看这个 Build",
       "order": 170,
       "visible": true,
-      "note": "社区讨论用于暴露终局规划器隐藏的取舍。",
+      "toc": true,
+      "note": "以下来自真实攻略与论坛讨论，属于玩家经验样本，不是已核验的游戏机制；与官方补丁冲突时以 0.5.4 官方资料为准。",
       "entries": [
         {
-          "representation": "paraphrase",
-          "sourceType": "reddit",
-          "label": "Twister 终局更新讨论",
-          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1twvrlo/twister_spirit_walker_updated_endgame_build_guide/",
-          "statement": "玩家集中询问胸甲生存、非暴击转暴击、腰带或充能选择以及 Spirit 不足，说明转型成本分散在多个系统里。",
-          "context": "因此本文要求在转暴击前比较整套配置，而不是只换武器。"
-        },
-        {
+          "context": "开荒定位",
+          "label": "SiahZ Spirit Walker Twister 0.5",
           "representation": "paraphrase",
           "sourceType": "guide",
-          "label": "SiahZ Twister 规划器",
-          "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
-          "statement": "攻略给出的清图顺序是 Ice-Tipped Arrows、Whirling Slash、Twister；Boss 顺序则加入翻滚与 Barrage。",
-          "context": "本文把这些顺序做成检查表，不再埋在技能列表里。"
+          "statement": "SiahZ 的 Mobalytics 规划器给出从开荒到终局的完整 0.5 路线，强调移动施法与龙卷拖拽，是 0.5 S 级开荒代表。",
+          "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
+        },
+        {
+          "context": "对比写法",
+          "label": "SnooBAE Twister 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "SnooBAE 的 Twister 指南给出另一份 0.5 写法，同样强调龙卷与走位，可作为 SiahZ 路线的对照。",
+          "url": "https://mobalytics.gg/poe-2/builds/twister-spirit-walker-snoobae"
+        },
+        {
+          "context": "机制解析",
+          "label": "NextTier Twister 机制指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "NextTier 的独立指南解析 Twister 的机制（龙卷判定、走位、AoE 断点），适合想深入理解机制的玩家。",
+          "url": "https://nexttier.pro/guide/poe2-twister-spirit-walker-build-guide"
+        },
+        {
+          "context": "版本绑定感",
+          "label": "Reddit r/PathOfExile2 — am i shoehorned into twister",
+          "representation": "quote",
+          "sourceType": "forum",
+          "statement": "『am i shoehorned into twister』——玩家担心被版本绑死在 Twister 上，侧面印证它强到成版本答案。",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tph4xm/am_i_shoehorned_into_twister/"
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "video",
       "type": "video",
-      "title": "先看路径，再看投射物",
+      "title": "观察升级与龙卷走位",
       "order": 180,
       "visible": true,
+      "toc": true,
       "entries": [
         {
           "creator": "SiahZ",
-          "label": "Twister Spirit Walker 完整实战",
+          "label": "Twister Spirit Walker 完整构筑实机",
           "url": "https://www.youtube.com/watch?v=0RknSCFoAOM",
-          "description": "追踪 Whirling Slash 路径，以及 Twister 相对怪群或 Boss 的释放位置。",
-          "takeaway": "逐帧观察投射物路线，忽略尚未核验的展示 DPS 标签。"
+          "description": "演示从低成本到终局的完整 Twister 玩法与走位节奏。",
+          "takeaway": "重点看龙卷放置与走位拖拽，不要只抄装备。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "1:04",
+              "label": "为何灵行者如此强力"
+            },
+            {
+              "time": "4:41",
+              "label": "练级体验"
+            },
+            {
+              "time": "5:11",
+              "label": " Ward 堆叠可能过强"
+            },
+            {
+              "time": "7:06",
+              "label": "新 Breach 底子与装备"
+            },
+            {
+              "time": "7:40",
+              "label": "潜在强力装备"
+            },
+            {
+              "time": "9:35",
+              "label": "为何选择龙卷灵行者"
+            },
+            {
+              "time": "10:29",
+              "label": "结语"
+            }
+          ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "sources",
@@ -598,15 +954,15 @@
       "title": "来源与边界",
       "order": 190,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "官方补丁定义版本基线；指南、Planner、视频和社区结论在复现前都属于暂定。"
+        "官方补丁定义版本基线；攻略、Planner、视频和社区结论在复现前都属于暂定经验。"
       ],
       "bullets": [
-        "来源访问日期：2026-07-29。",
-        "未复制第三方文案或媒体。",
-        "PC 核验仍待完成。"
-      ],
-      "toc": true
+        "来源访问日期：2026-07-31。",
+        "未复制第三方文案或媒体；社区内容仅作归纳引用并保留原始链接。",
+        "PC 核验仍待完成，verificationStatus 为 pending-pc。"
+      ]
     },
     {
       "id": "changelog",
@@ -614,18 +970,31 @@
       "title": "更新记录",
       "order": 200,
       "visible": true,
+      "toc": false,
       "entries": [
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "扩展 schema：补 displayName 技能卡（whyUse/whenReplace/mappingBossingDiff/notes）、每槽位 statPriorities、症状式升级优先级、Staged Configuration 表、Build Planner 条目，以及四套明确循环（简化清图、完整 Boss、过渡前、成型后）。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "基于 SiahZ / SnooBAE / NextTier 攻略与 Reddit 讨论重写：补充龙卷拖拽机制、移动施法、Primal Bounty 时机、故障排查与社区声音。"
+          ]
+        },
         {
           "date": "2026-07-29",
           "changes": [
             "建立带来源的 0.5.4 Build 指南；PC 核验仍在进行中。"
           ]
         }
-      ],
-      "toc": false
+      ]
     }
   ],
   "relatedBuildIds": [
+    "ice-shot-deadeye",
     "whirling-assault-martial-artist"
   ],
   "relatedGuideIds": [],
@@ -636,44 +1005,34 @@
       "url": "https://www.pathofexile.com/forum/view-thread/3975218"
     },
     {
-      "label": "SiahZ Spirit Walker Twister guide and planner",
+      "label": "Mobalytics — SiahZ Spirit Walker Twister 0.5",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
     },
     {
-      "label": "SnooBAE Twister guide",
+      "label": "Mobalytics — SnooBAE Twister 指南",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/twister-spirit-walker-snoobae"
     },
     {
-      "label": "Independent Twister mechanics guide",
+      "label": "NextTier — Twister 机制指南",
       "sourceType": "community",
       "url": "https://nexttier.pro/guide/poe2-twister-spirit-walker-build-guide"
     },
     {
-      "label": "Source-video summary",
+      "label": "Exile Codex — Twister league starter 视频",
       "sourceType": "community",
       "url": "https://exile.codex-wiki.com/builds/path-of-exile-2-best-twister-spirit-walker-league-starter"
     },
     {
-      "label": "Mobalytics Build Planner export",
-      "sourceType": "tool",
-      "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
-    },
-    {
-      "label": "SiahZ full build gameplay",
+      "label": "YouTube — SiahZ 完整构筑实机",
       "sourceType": "community",
       "url": "https://www.youtube.com/watch?v=0RknSCFoAOM"
-    },
-    {
-      "label": "Updated Twister Spirit Walker endgame discussion",
-      "sourceType": "community",
-      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1twvrlo/twister_spirit_walker_updated_endgame_build_guide/"
     }
   ],
   "seo": {
-    "title": "Twister Spirit Walker Build 指南",
-    "description": "基于 0.5.4 的 Path of Exile 2 Twister Spirit Walker Build 指南。",
+    "title": "Twister Spirit Walker Build 指南｜Exile2 Guides",
+    "description": "基于 0.5.4 的 Path of Exile 2 Twister Spirit Walker 指南：龙卷拖拽机制、移动施法、Primal Bounty 时机与社区真实讨论。",
     "noindex": false
   },
   "publishedAt": "2026-07-31"

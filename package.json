@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "node scripts/generate-og-images.mjs && react-router build",
     "check:comments": "tsx scripts/check-comments.ts",
     "check:images": "tsx scripts/check-image-assets.ts",
     "dev": "react-router dev",
+    "generate:og": "node scripts/generate-og-images.mjs",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint .",
     "quality": "npm run format:check && npm run check:comments && npm run check:images && npm run validate:content && npm run typecheck && npm run lint && npm test && npm run build && npm run test:e2e",

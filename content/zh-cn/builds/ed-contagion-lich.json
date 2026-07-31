@@ -5,10 +5,10 @@
   "type": "build",
   "status": "published",
   "featured": false,
-  "title": "Essence Drain Contagion Lich Build 指南",
+  "title": "ED Contagion Lich Build 指南：混沌持续伤害开荒与终局",
   "shortTitle": "ED Contagion Lich",
-  "summary": "带来源的混沌持续伤害指南，明确区分怪群传播、Boss 维持以及 Full-Life/Low-Life 终局选择。",
-  "description": "基于 0.5.4 的 Path of Exile 2 Essence Drain 与 Contagion Lich Build Build 指南。",
+  "summary": "用 灵魂吸取 + 瘟疫 的混沌持续伤害传播清群，Lich 提供 Full-Life / Low-Life 两条终局分支。覆盖传播顺序、黑暗雕像 与 绝望 搭配、Boss 维持与社区真实痛点。",
+  "description": "基于 0.5.4 的 Path of Exile 2 ED Contagion Lich 指南，整合 Ronarray、PoE2Path 攻略与 Reddit 论坛讨论。",
   "classId": "witch",
   "ascendancyId": "lich",
   "mainSkillIds": [
@@ -31,23 +31,25 @@
   ],
   "budgets": [
     "low",
-    "medium"
+    "medium",
+    "high",
+    "luxury"
   ],
   "difficulty": "beginner",
   "playstyleTags": [
     "caster",
     "chaos-dot",
-    "damage-over-time",
-    "mobile"
+    "contagion",
+    "dot",
+    "tanky-dot"
   ],
   "damageTypes": [
-    "chaos",
-    "damage-over-time"
+    "chaos"
   ],
   "bestFor": [
-    "league-start",
     "mapping",
-    "mobile-bossing"
+    "clear-speed",
+    "staged-investment"
   ],
   "patch": "0.5.4",
   "league": "return-of-the-ancients",
@@ -56,16 +58,17 @@
   "author": "Exile2 Guides Editorial Team",
   "reviewer": "Exile2 Guides Editorial Team",
   "createdAt": "2026-07-29",
-  "updatedAt": "2026-07-31",
+  "updatedAt": "2026-08-01",
   "heroImage": "/images/builds/covers/ed-contagion-lich.webp",
   "cardImage": "/images/builds/covers/ed-contagion-lich.webp",
-  "imageAlt": "Lich 以紫色 Essence Drain 与 Contagion 向黑暗怪群扩散",
+  "imageAlt": "巫妖在怪群间播撒混沌持续伤害",
   "tags": [
     "build",
     "witch",
     "lich",
     "essence-drain",
-    "contagion"
+    "contagion",
+    "chaos"
   ],
   "sections": [
     {
@@ -74,17 +77,17 @@
       "title": "Build 概览",
       "order": 10,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "ED + Contagion 的价值在于把选目标变成传播机制：Contagion 标记怪群，Essence Drain 提供伤害减益，死亡后整套效果继续向外传递。两次施法落在不相干的目标上时体验会骤降，因此瞄准与怪群顺序往往比多一条面板伤害更重要。",
-        "Boss 战没有传播红利，构筑会变成维持型循环：保持 Essence Drain，只在目标值得时补 Despair，维持 Dark Effigy 图腾，然后利用持续伤害期间移动。接受伤害分层启动较慢，换来的就是更长的安全位移时间。",
-        "带来源的混沌持续伤害指南，明确区分怪群传播、Boss 维持以及 Full-Life/Low-Life 终局选择。"
+        "ED Contagion Lich 是 0.5『Return of the Ancients』里最经典的混沌持续伤害（chaos DoT）开荒之一。它的核心循环很简单：先用 瘟疫 给一片怪上瘟疫，再用 灵魂吸取（ED）把混沌 DoT 打在一个目标上，ED 的『传播』会把 DoT 像瘟疫一样复制到附近所有被 瘟疫 影响的敌人身上——于是你只需要点一个目标，整群怪一起掉血。",
+        "社区里有两条主流写法。Ronarray 的 Mobalytics 规划器给出从开荒到终局的完整阶梯；PoE2Path 的 ED Contagion Lich 指南则强调 0.5 的练级与 Boss 节奏。两条路的底层逻辑一致：靠 DoT 传播清群，靠维持 Boss 身上的 DoT 打持久战。",
+        "本指南把三种真实节奏拆开讲——清图循环、开王起手、持续对王循环——让 灵魂吸取、瘟疫、绝望、黑暗雕像 的施放顺序不再含糊。"
       ],
       "bullets": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
-        "在效果结束前补施 Essence Drain 和所选诅咒。",
-        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
-      ],
-      "toc": true
+        "瘟疫 铺病 → ED 打一个目标 → DoT 自动传播到整群，是清图核心。",
+        "Lich 提供 Full-Life / Low-Life 两条终局分支，按装备选择。",
+        "DoT 是延迟伤害，Boss 战要保持 DoT 不空窗；这不是爆发 BD。"
+      ]
     },
     {
       "id": "pros-cons",
@@ -92,45 +95,50 @@
       "title": "优点与缺点",
       "order": 20,
       "visible": true,
+      "toc": false,
       "pros": [
-        "剧情期装备门槛较低。",
-        "移动时持续伤害仍可生效。",
-        "成功的双技能应用可传播清理怪群。"
+        "清图 top tier：DoT 传播一次点一个，整群一起掉血，几乎所有攻略站都把它列为一类开荒。",
+        "门槛低：BEGINNER 难度，机制直观，不需要背复杂连招。",
+        "Boss 持久战强：维持 DoT 后伤害持续，适合打高血 Boss。",
+        "路线灵活：Full-Life 稳、Low-Life 上限更高，随装备分叉。"
       ],
       "cons": [
-        "伤害存在延迟。",
-        "Boss 战需要多个 Debuff 或辅助技能。",
-        "不同终局指南对辅助技能和防御有分歧。"
-      ],
-      "toc": false
+        "DoT 生效慢：前几秒看不到数字，急性子会觉得没反应。",
+        "Boss 移动时传播易断：会跑的 Boss 维护 DoT 麻烦（社区 FAQ 高频问题）。",
+        "防御偏脆：Full-Life 期靠堆血，Low-Life 需要额外机制维持生存。",
+        "依赖诅咒与图腾：绝望 / 黑暗雕像 没铺好时伤害骤降。"
+      ]
     },
     {
-      "id": "damage-rotation",
-      "type": "dot-rotation",
-      "title": "持续伤害循环",
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "战斗循环",
       "order": 30,
       "visible": true,
+      "toc": false,
       "paragraphs": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。 在效果结束前补施 Essence Drain 和所选诅咒。 Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
+        "这套 BD 有三种不同的节奏。清图是传播循环，开王是固定起手序列，持续对王是重复的维持循环。把这三种混在一起——比如对着单独 Boss 丢 瘟疫，或者站桩狂按 灵魂吸取——是最常见的失误。",
+        "清图循环（清群）：先丢 瘟疫，让整片怪进入『传染』状态，再把 灵魂吸取 打在范围内任意一个目标上。因为目标带病，灵魂吸取的传播会把 DoT 复制到每一个邻近被 瘟疫 影响的敌人。立刻走位，伤害会在你移动时结算。黑暗雕像 可以插在怪群里，自动维持 灵魂吸取/绝望。",
+        "开王起手（战斗如何开始）：先上 绝望——这是减混沌抗的诅咒，能放大它之后的一切。然后插下 黑暗雕像（这个图腾/辅助会自动施放 灵魂吸取 + 绝望，提供免手动的覆盖）。最后用 灵魂吸取 铺上主 DoT。单独的 Boss 通常不需要 瘟疫，因为没有可传播的目标。",
+        "持续对王循环（起手之后的重复）：在 灵魂吸取 持续时间结束前补一次，保持 黑暗雕像 图腾存活并跟着走位（会跑的 Boss 图腾可能打不到，所以你得自己补 灵魂吸取），绝望 掉了就补，并在机制之间保持移动。节奏是『补 DoT → 走位 → 再补』，绝不是站桩读条。"
       ],
       "bullets": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
-        "在效果结束前补施 Essence Drain 和所选诅咒。",
-        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
-      ],
-      "toc": false
+        "清图：瘟疫 → 灵魂吸取 → 走位（可选 黑暗雕像）。",
+        "开王：绝望 → 黑暗雕像 → 灵魂吸取。",
+        "持续：补 灵魂吸取 → 保持 雕像 → 补 绝望 → 走位。"
+      ]
     },
     {
-      "id": "spread-loop-visual",
+      "id": "dot-spread-visual",
       "type": "figure",
-      "title": "让两次施法落在同一目标上",
+      "title": "先 瘟疫，再 ED 触发传播",
       "order": 35,
       "visible": true,
       "toc": false,
       "image": {
         "src": "/images/builds/media/ed-contagion-lich-mechanic.webp",
-        "alt": "Contagion 与 Essence Drain 命中同一目标后向外传播的编辑示意图",
-        "caption": "Contagion 与 Essence Drain 必须在同一个怪群目标上相遇；第一个敌人死亡后，整套伤害才向外传播。",
+        "alt": "灵魂吸取 把混沌 DoT 从中心目标传播到周围被 瘟疫 影响的敌人",
+        "caption": "瘟疫 给整片怪上病后，ED 命中任一带病目标即可把 DoT 复制到邻近所有感染敌人。",
         "credit": "Exile2 Guides 原创编辑示意图",
         "sourceKind": "generated"
       }
@@ -141,29 +149,96 @@
       "title": "升级流程",
       "order": 40,
       "visible": true,
+      "toc": true,
       "steps": [
         {
-          "label": "剧情开始",
+          "label": "1–拿到 ED/瘟疫 前（核心前）",
+          "levelRange": "1-31",
           "body": [
-            "满足当前技能条件后使用 Essence Drain 与 Contagion。"
+            "剧情期用其他混沌/过渡法术（如 Chaos Bolt 类），先把生命、抗性和移速堆起来，别硬上 DoT 链。",
+            "PoE2Path 与 Mobalytics 的 0.5 指南都强调前期不要硬上 DoT 链，先稳住生存。"
           ]
         },
         {
-          "label": "Act 2–4",
+          "label": "解锁 灵魂吸取 + 瘟疫（核心在线）",
+          "levelRange": "31+",
           "body": [
-            "在不破坏传播循环的前提下补充可靠单体。"
+            "拿到核心两件套后切换，清图体验立刻质变——一次点一个，整群掉血。",
+            "此阶段优先补 绝望 与 黑暗雕像 的可用性。"
           ]
         },
         {
-          "label": "剧情末期",
+          "label": "早期地图（Full-Life）",
+          "levelRange": "50+",
           "body": [
-            "维持宝石等级，同时建立 ES 与恢复。"
+            "采用 Full-Life 分支，靠堆血与抗性稳住，先把 DoT 传播做顺。",
+            "YouTube 上的『0.5 step-by-step gameplay』演示了完整练级节奏（qbrEeLZzuqI）。"
           ]
         },
         {
-          "label": "早期地图",
+          "label": "终局分叉（Low-Life）",
+          "levelRange": "70+",
           "body": [
-            "明确使用 Full-Life 默认外壳还是后期 Low-Life 转型。"
+            "装备成型后转 Low-Life 分支，上限更高但需额外机制维持生存。",
+            "具体以 Ronarray / PoE2Path 的成型 Planner 为准。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "阶段配置",
+      "order": 45,
+      "visible": true,
+      "caption": "各阶段该用什么。具体宝石等级与辅助链仍待 PC 核验；阶段边界与施放顺序才是可落地的部分。",
+      "columns": [
+        "阶段",
+        "主技能",
+        "关键辅助",
+        "天赋重点",
+        "装备目标",
+        "转阶段条件"
+      ],
+      "rows": [
+        {
+          "label": "1–31 级（核心前）",
+          "cells": [
+            "混沌/过渡法术，尚未用 ED",
+            "生存 + 过渡 DoT",
+            "生命、抗性、混沌节点",
+            "任意法杖，抗满",
+            "解锁 灵魂吸取 + 瘟疫 的等级"
+          ]
+        },
+        {
+          "label": "31+ 级练级",
+          "cells": [
+            "灵魂吸取 + 瘟疫（先瘟疫）",
+            "待 PC 核验的辅助",
+            "混沌 DoT、施法速度",
+            "法杖/混沌武器、生命/ES",
+            "进图且传播稳定"
+          ]
+        },
+        {
+          "label": "早期地图（Full-Life）",
+          "cells": [
+            "维持 ED + 绝望 + 黑暗雕像",
+            "绝望（诅咒）、黑暗雕像（图腾）",
+            "Full-Life 防御、混沌加成",
+            "生命/ES、抗满、DoT 武器",
+            "分叉前 Boss 覆盖稳定"
+          ]
+        },
+        {
+          "label": "终局（Low-Life）",
+          "cells": [
+            "同套 BD，Low-Life 体系",
+            "同套 + Low-Life 启用件",
+            "Low-Life 防御节点",
+            "Low-Life 暗金/机制",
+            "通过 Full-Life 清单后"
           ]
         }
       ],
@@ -175,61 +250,145 @@
       "title": "技能组合",
       "order": 50,
       "visible": true,
+      "toc": true,
       "groups": [
         {
-          "label": "核心技能",
+          "label": "核心 DoT",
           "skills": [
             {
               "skillId": "essence-drain",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "displayName": "灵魂吸取",
+              "role": "主混沌 DoT；命中带 瘟疫 的目标会触发传播的伤害减益。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "它是持续混沌伤害的来源——只要打在带病的目标上就会传给整群，对王时则是要维持的主 DoT。"
+              ],
+              "whenReplace": [
+                "不会替换；从练级到终局都是核心伤害技能，变的只是辅助与宝石等级。"
+              ],
+              "mappingBossingDiff": [
+                "清图：先 瘟疫，再把 灵魂吸取 打在范围内目标触发传播，然后走位。对王：作为重复 DoT 维持覆盖；图腾能帮忙，但会跑的 Boss 你得自己补。"
+              ],
+              "notes": [
+                "具体辅助链与宝石等级待 PC 核验。"
+              ]
             },
             {
               "skillId": "contagion",
-              "role": "主要 Build 技能；确切辅助待 PC 核验。",
+              "displayName": "瘟疫",
+              "role": "传播启动器；给敌人上『传染』状态，灵魂吸取 才能扩散。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "它是清群的前提：目标没带 瘟疫，灵魂吸取 就不会传播。必须在 灵魂吸取 之前丢。"
+              ],
+              "whenReplace": [
+                "保留在清图工具箱。单独 Boss 几乎没用（没有可传播目标）；部分变体对王会舍弃它。"
+              ],
+              "mappingBossingDiff": [
+                "清图：先丢到怪群中心启动传播。对王：单独 Boss 通常跳过，除非有小怪。"
+              ],
+              "notes": [
+                "传播条件与范围待 PC 核验。"
+              ]
             }
           ]
         },
         {
-          "label": "辅助候选",
+          "label": "辅助与维持",
           "skills": [
             {
               "skillId": "dark-effigy",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "黑暗雕像",
+              "role": "图腾/辅助，自动施放 灵魂吸取（与 绝望），免手动维持 DoT。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "它能在你走位时维持 ED/绝望 覆盖，减少手动补的负担。"
+              ],
+              "whenReplace": [
+                "保留用于 Boss 与密集清图；会跑的 Boss 时图腾可能打不到，仍需自己补 灵魂吸取。"
+              ],
+              "mappingBossingDiff": [
+                "清图：可选，插在怪群上。对王：起手插下，保持存活并跟着走位。"
+              ],
+              "notes": [
+                "会跑 Boss 时覆盖是已知弱点；具体贡献待 PC 核验。"
+              ]
             },
             {
               "skillId": "despair",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "绝望",
+              "role": "诅咒，减目标混沌抗性，直接抬 DoT 伤害。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "它是直接放大被诅咒目标上 ED 伤害的诅咒；在铺 DoT 之前先上。"
+              ],
+              "whenReplace": [
+                "保留；它是单体增伤放大器，不是伤害竞争者。"
+              ],
+              "mappingBossingDiff": [
+                "清图：难打的稀有怪可选。对王：起手先上，之后维持覆盖。"
+              ],
+              "notes": [
+                "诅咒效果/宝石等级待 PC 核验。"
+              ]
             },
             {
               "skillId": "sigil-of-power",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "力量印记",
+              "role": "变体相关增益区域，提供伤害或生存加成。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "部分变体把它当伤害/防御放大器；在所选攻略核验前视为可选。"
+              ],
+              "whenReplace": [
+                "变体选择；只有所选 Planner 包含才保留。"
+              ],
+              "mappingBossingDiff": [
+                "清图：可选。对王：维持循环前的可选增益。"
+              ],
+              "notes": [
+                "具体角色待 PC 核验。"
+              ]
             },
             {
               "skillId": "entangle",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "缠绕",
+              "role": "变体相关定身/控制，可简化瞄准。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "社区讨论把它当品质生活的替代方案，免去精准瞄准 ED 的麻烦。不是伤害竞争者。"
+              ],
+              "whenReplace": [
+                "变体选择；部分玩家偏好它胜过严格的二段瞄准。"
+              ],
+              "mappingBossingDiff": [
+                "清图：可选控制。对王：一般不在对王循环里。"
+              ],
+              "notes": [
+                "作为替代方案的角色待 PC 核验。"
+              ]
             },
             {
               "skillId": "bonestorm",
-              "role": "依变体使用的工具或准备技能。",
+              "displayName": "白骨风暴",
+              "role": "变体相关范围 AoE，用于密集怪群或某些攻略的对王手段。",
               "supportSkillIds": [],
-              "notes": []
+              "whyUse": [
+                "部分攻略用它对密集怪群加压或作为单体手段。以所选变体为准。"
+              ],
+              "whenReplace": [
+                "变体选择；不是 ED + 瘟疫 循环的核心。"
+              ],
+              "mappingBossingDiff": [
+                "清图：密集怪群可选。对王：部分单体变体可选。"
+              ],
+              "notes": [
+                "具体角色待 PC 核验。"
+              ]
             }
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "ascendancy",
@@ -237,15 +396,16 @@
       "title": "升华顺序",
       "order": 60,
       "visible": true,
+      "toc": false,
       "steps": [
         {
-          "label": "暂定顺序",
+          "label": "Lich 路线：先点 DoT 与生存，再分 Full/Low-Life",
           "body": [
-            "按所选当前指南执行，并在发布前于 0.5.4 客户端逐个确认节点。"
+            "Lich 升华优先强化混沌 DoT 与生存，再在 Full-Life 与 Low-Life 分支间选择。",
+            "具体节点以当前 Planner 为准（Ronarray / PoE2Path 的 0.5 规划器），本指南不做未核验的数值断言。"
           ]
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "passive-tree",
@@ -253,21 +413,22 @@
       "title": "天赋树",
       "order": 70,
       "visible": true,
+      "toc": false,
       "steps": [
         {
           "label": "剧情",
           "body": [
-            "只选择支持当前升级技能和防御需求的节点。"
+            "只点支持 DoT 与生存的节点：混沌伤害、持续伤害、生命、抗性优先。"
           ]
         },
         {
-          "label": "早期地图",
+          "label": "早期地图 → 终局",
           "body": [
-            "转入所选 Build 变体，不混合不兼容 Planner。"
+            "转入所选变体（Full-Life / Low-Life）。Full-Life 堆血与抗性，Low-Life 补相关上限机制。",
+            "涂油：选择支持 DoT 的节点，具体以成型 Planner 为准。"
           ]
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "gear",
@@ -275,39 +436,105 @@
       "title": "装备",
       "order": 80,
       "visible": true,
+      "toc": true,
       "slots": [
         {
-          "slot": "武器",
+          "slot": "法杖 / 魔杖",
           "recommendations": [
-            "相关混沌或法术技能等级",
-            "混沌或持续伤害"
+            "优先高法术/混沌 DoT 底伤的武器，DoT 倍率词缀直接抬传播伤害。",
+            "具体 best-in-slot 以社区 0.5 规划器为准。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "混沌 / 持续伤害倍率（武器底子）",
+              "reason": "直接放大持续的 ED 伤害包。"
+            },
+            {
+              "tier": "recommended",
+              "label": "相关混沌技能的等级/宝石等级",
+              "reason": "抬升 DoT 基础。"
+            },
+            {
+              "tier": "optional",
+              "label": "施法速度",
+              "reason": "改善补 DoT 节奏，不是伤害下限。"
+            },
+            {
+              "tier": "luxury",
+              "label": "Low-Life 启用词缀",
+              "reason": "仅 Low-Life 变体相关。"
+            }
           ],
           "notes": [
-            "确认所选路线使用法杖、权杖还是 Focus。"
+            "Mobalytics 的 Verified 标签不等同于本站客户端核验。"
           ]
         },
         {
-          "slot": "Focus 或盾",
+          "slot": "衣服 / 头 / 腰带",
           "recommendations": [
-            "能量护盾",
-            "防御后缀"
+            "Full-Life 期优先生命 + 抗性；Low-Life 期需额外机制维持生存。",
+            "带 DoT 倍率 / 混沌伤害的词缀优先。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命 / 能量护盾（ES）",
+              "reason": "走位放 DoT 时的主要防御层。"
+            },
+            {
+              "tier": "recommended",
+              "label": "防御后缀（抗性、生命回复）",
+              "reason": "补全防御壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "魔力保留 / 消耗词缀",
+              "reason": "帮助开光环或诅咒。"
+            },
+            {
+              "tier": "luxury",
+              "label": "Low-Life 专属词缀",
+              "reason": "变体限定。"
+            }
           ],
           "notes": [
-            "不要把 Low-Life Focus 搬到 Full-Life 阶段。"
+            "肉度优先于纯伤害上限。"
           ]
         },
         {
-          "slot": "护甲与饰品",
+          "slot": "珠宝与暗金",
           "recommendations": [
-            "ES、抗性和属性",
-            "需要时补充消耗或魔力"
+            "诅咒效果 / DoT 倍率相关珠宝是循环关键。",
+            "Lich 的 Low-Life 实现依赖特定暗金或机制，以社区规划器为准。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "抗性与生命/ES",
+              "reason": "进图暴毙比少伤害更致命。"
+            },
+            {
+              "tier": "recommended",
+              "label": "装备宝石所需属性",
+              "reason": "插不上的宝石毫无价值。"
+            },
+            {
+              "tier": "optional",
+              "label": "鞋子移速",
+              "reason": "DoT 持续时帮助走位。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确混沌 DoT 词缀",
+              "reason": "防御成型后才考虑。"
+            }
           ],
           "notes": [
-            "不记录固定市场价格。"
+            "Low-Life 分支对装备要求更高，成型前先用 Full-Life。"
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "stat-priority",
@@ -315,25 +542,29 @@
       "title": "属性优先级",
       "order": 90,
       "visible": true,
+      "toc": false,
       "priorities": [
         {
-          "label": "技能等级",
-          "reason": "直接提升主要持续伤害组合。"
+          "label": "混沌 DoT 倍率",
+          "reason": "决定传播后的整群掉血速度，是这套 BD 的首要成长检查。"
         },
         {
-          "label": "混沌与 DoT",
-          "reason": "提升持续伤害而非无关 Hit。"
+          "label": "诅咒效果（绝望）",
+          "reason": "直接减目标混沌抗，抬实际 DoT 伤害。"
         },
         {
-          "label": "施法速度",
-          "reason": "改善施加手感，但不能替代持续时间。"
+          "label": "生命 / 抗性",
+          "reason": "Full-Life 期生存根基；缺抗比少伤害更致命。"
         },
         {
-          "label": "ES 与恢复",
-          "reason": "走位输出仍需要完整防御。"
+          "label": "命中 / 施法速度",
+          "reason": "ED 需要命中才能触发传播，施法速度影响维持频率。"
+        },
+        {
+          "label": "Low-Life 机制（分阶段）",
+          "reason": "成型后再转，需额外装备维持生存。"
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "upgrade-priority",
@@ -341,39 +572,56 @@
       "title": "升级优先级",
       "order": 100,
       "visible": true,
+      "toc": false,
       "steps": [
         {
-          "label": "1",
-          "body": [
-            "保持主技能等级。"
-          ]
+          "label": "整群不传播 / 清图慢",
+          "symptom": "普通怪群要反复丢很多次，传播始终没明显触发。",
+          "checks": [
+            "是否先丢 瘟疫 再丢 灵魂吸取？",
+            "主宝石等级与辅助是否跟上当前阶段？"
+          ],
+          "upgrade": "先修正施放顺序（瘟疫 → ED）并把主宝石升到对应等级，再考虑买输出装。"
         },
         {
-          "label": "2",
-          "body": [
-            "修正抗性与 ES。"
-          ]
+          "label": "进图或打王暴毙",
+          "symptom": "T15+ 或 Boss 战频繁死亡。",
+          "checks": [
+            "哪些抗性没满？",
+            "生命/ES 是否低于当前内容档？",
+            "防御层是否生效？"
+          ],
+          "upgrade": "先抗满并稳住 ES/生命，再碰任何输出装。"
         },
         {
-          "label": "3",
-          "body": [
-            "升级武器或 Focus。"
-          ]
+          "label": "Boss 掉血慢",
+          "symptom": "明明在丢技能，Boss 血量几乎不动。",
+          "checks": [
+            "绝望 是否挂在 Boss 上？",
+            "黑暗雕像 是否存活且在射程？",
+            "灵魂吸取 覆盖是否真的够高？"
+          ],
+          "upgrade": "修 Boss 覆盖（绝望 → 雕像 → ED），不是换武器。"
         },
         {
-          "label": "4",
-          "body": [
-            "稳定魔力和诅咒覆盖。"
-          ]
+          "label": "魔力耗尽",
+          "symptom": "单体战斗打着打着魔力空了。",
+          "checks": [
+            "是否只靠药剂？",
+            "是否有减耗 / 偷取 / 回复生效？"
+          ],
+          "upgrade": "先修魔力续航（减耗、回复、药剂），再加更多按键。"
         },
         {
-          "label": "5",
-          "body": [
-            "只选择一种终局生命状态。"
-          ]
+          "label": "考虑转 Low-Life",
+          "symptom": "想要更多 Boss 伤害，盯着 Low-Life 装备。",
+          "checks": [
+            "Full-Life 的清图、Boss 覆盖与防御是否已稳？",
+            "Low-Life 装备会不会破抗或掉生命/ES？"
+          ],
+          "upgrade": "清单通过后再转 Low-Life，不为上限牺牲生存。"
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "mapping",
@@ -381,16 +629,16 @@
       "title": "清图",
       "order": 110,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "先把 Contagion 放在相连怪群中央，再把 Essence Drain 命中其中一个目标。传播开始后立刻移动，先观察是否扩散再决定重放。Unearth 或召唤层可以补零散目标，但不能替代正确瞄准。",
-        "标记密集怪群并确认传播启动后向前移动。传播失败时检查施法顺序、范围、持续时间以及首个目标死亡时是否同时存在两个效果。"
+        "清图是 ED Contagion 的主场。先把 瘟疫 丢进相连的怪群，再把 灵魂吸取 打在范围内任意一个目标上——DoT 会传播到每个邻近带病敌人。立刻走位，并在浪费下一次施放前观察减益是否开始传播。黑暗雕像 可以插在怪群上，自动维持 灵魂吸取/绝望。",
+        "标记密集怪群，确认传播开始，然后向前走。若没传播，检查施放顺序（必须先 瘟疫）、范围、持续时间，以及首杀目标是否同时带两种减益。"
       ],
       "bullets": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
-        "在效果结束前补施 Essence Drain 和所选诅咒。",
-        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
-      ],
-      "toc": true
+        "瘟疫 → 灵魂吸取 → 走位；可选 黑暗雕像。",
+        "先修施放顺序，再怪装备。",
+        "清图变慢时再反应式升级武器。"
+      ]
     },
     {
       "id": "bossing",
@@ -398,181 +646,295 @@
       "title": "Boss 战",
       "order": 120,
       "visible": true,
+      "toc": false,
       "paragraphs": [
-        "按当前配置决定是否保留 Contagion，持续维持 Essence Drain，补 Despair，并保持允许数量的 Dark Effigy。正确节奏是“刷新 → 走位 → 刷新”，而不是站桩连续施放 ED。",
-        "移动中维持 Essence Drain、Despair 和所选辅助 Debuff。Dark Effigy、Entangle 或 Bonestorm 在核验前都属于变体选项。"
+        "开王按这个顺序：先上 绝望（诅咒，减混沌抗），再插 黑暗雕像（图腾自动施放 灵魂吸取 + 绝望），最后用 灵魂吸取 铺上主 DoT。单独的 Boss 通常跳过 瘟疫，因为没有可传播的目标。",
+        "维持用循环：在 灵魂吸取 到期前补一次，保持 黑暗雕像 图腾存活并跟着走位（会跑的 Boss 图腾可能打不到，所以你得自己补 灵魂吸取），绝望 掉了就补，并在机制之间保持移动。节奏是『补 DoT → 走位 → 再补』，绝不站桩。"
       ],
       "bullets": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
-        "在效果结束前补施 Essence Drain 和所选诅咒。",
-        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
-      ],
-      "toc": false
+        "开王：绝望 → 黑暗雕像 → 灵魂吸取。",
+        "持续：补 灵魂吸取 → 保持 雕像 → 补 绝望 → 走位。",
+        "单独 Boss 不需要 瘟疫。"
+      ]
     },
     {
-      "id": "defensive-layers",
-      "type": "overview",
-      "title": "防御层",
-      "order": 130,
+      "id": "showcase-visual",
+      "type": "figure",
+      "title": "实战中的混沌传播",
+      "order": 125,
       "visible": true,
-      "paragraphs": [
-        "Full-Life 与 Low-Life 使用不同防御和保留前提。指南以 Full-Life 为较安全的编辑默认值，Low-Life 保持待审。"
-      ],
-      "bullets": [
-        "对怪群施加双技能传播组合，然后在伤害结算时移动。",
-        "在效果结束前补施 Essence Drain 和所选诅咒。",
-        "Boss 只加入所选变体已核验的辅助技能，不把所有指南的按钮混在一起。"
-      ],
-      "toc": false
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ed-contagion-lich-showcase.webp",
+        "alt": "巫妖在怪群中维持 灵魂吸取 的混沌 DoT",
+        "caption": "ED Contagion 靠 DoT 传播清群；Boss 战则靠 绝望 + 黑暗雕像 + 手动 灵魂吸取 维持 DoT 不空窗。",
+        "credit": "Exile2 Guides 原创编辑示意图",
+        "sourceKind": "generated"
+      }
     },
     {
       "id": "build-variants",
       "type": "comparison-table",
-      "title": "按目标选择动作",
-      "order": 140,
+      "title": "Full-Life 与 Low-Life 怎么选",
+      "order": 130,
       "visible": true,
-      "caption": "根据两份文字攻略与玩家讨论整理的实战循环表。",
+      "toc": false,
+      "caption": "根据 Ronarray 与 PoE2Path 的 0.5 攻略整理，决定你走哪条分支。",
       "columns": [
-        "普通怪群",
-        "怪群中的稀有怪",
-        "孤立 Boss"
+        "Full-Life（稳）",
+        "Low-Life（高上限）"
       ],
       "rows": [
         {
-          "label": "起手",
+          "label": "生存",
           "cells": [
-            "Contagion",
-            "Contagion → Essence Drain",
-            "Essence Drain"
+            "堆血 + 抗性，简单稳",
+            "需额外机制维持"
           ]
         },
         {
-          "label": "追加",
+          "label": "伤害上限",
           "cells": [
-            "一次 ED",
-            "稀有怪存活时补 Despair",
-            "Despair + Dark Effigy"
+            "足够打大部分内容",
+            "更高，但依赖装备"
           ]
         },
         {
-          "label": "移动",
+          "label": "装备信号",
           "cells": [
-            "传播开始即走",
-            "DoT 期间绕行",
-            "机制间隙刷新"
+            "普通暗金即可",
+            "特定 Low-Life 暗金/机制"
           ]
         },
         {
-          "label": "常见浪费",
+          "label": "适用阶段",
           "cells": [
-            "传播前重复施法",
-            "ED 打在 Contagion 外",
-            "站桩连续 ED"
+            "开荒到中期",
+            "成型终局"
           ]
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "troubleshooting",
       "type": "troubleshooting",
       "title": "故障排查",
-      "order": 150,
+      "order": 140,
       "visible": true,
+      "toc": true,
       "problems": [
         {
-          "symptom": "Contagion 不传播",
+          "symptom": "整群不传播",
           "checks": [
-            "确认死亡目标同时存在两个效果。",
-            "在游戏内检查当前传播条件与范围。"
+            "确认施放顺序：先 瘟疫 铺病，再 ED 打带病目标。",
+            "检查目标是否真的带 瘟疫 状态，传播前提是它。"
           ]
         },
         {
-          "symptom": "Boss 伤害低",
+          "symptom": "Boss 掉血慢",
           "checks": [
-            "检查覆盖率而非只看 Tooltip。",
-            "确认诅咒、Effigy 与辅助技能确实生效。"
+            "检查 绝望 是否覆盖（减混沌抗）。",
+            "会跑的 Boss 时自己补 灵魂吸取，别只靠 黑暗雕像。"
           ]
         },
         {
-          "symptom": "魔力耗尽",
+          "symptom": "被秒",
           "checks": [
-            "减少不必要的重复施法。",
-            "增加按钮前先检查药剂、消耗与回复。"
+            "补满抗性与生命，Full-Life 期生存优先。",
+            "Low-Life 分支需额外机制维持，成型前先用 Full-Life。"
           ]
         }
-      ],
-      "toc": true
+      ]
     },
     {
       "id": "faq",
       "type": "question-answer",
-      "title": "瞄准与持续伤害解答",
-      "order": 160,
+      "title": "ED Contagion 常见问题",
+      "order": 150,
       "visible": true,
+      "toc": false,
       "items": [
         {
-          "question": "为什么有的怪群瞬间消失，下一群却几乎不掉血？",
+          "question": "应该先放哪个技能才能稳定传播？",
           "answer": [
-            "成功怪群很可能同时被 Contagion 与 Essence Drain 覆盖；失败时，ED 可能命中了 Contagion 范围外，或怪物间距大到无法传播。"
+            "规则是：先用 瘟疫 给一片怪上病，再用 灵魂吸取 命中任意一个带 瘟疫 的目标，DoT 才会复制到邻近所有感染敌人。顺序反了就传播不开——这是 Reddit『what exactly causes contagion propagation』讨论的核心。"
           ],
           "bullets": [
-            "把 Contagion 放在怪群中心。",
-            "等待第一次传播后再重放。",
-            "利用地形聚怪。"
+            "永远先 瘟疫，后 ED。",
+            "确认目标带病状态再点 ED。"
           ],
-          "relatedLinks": []
-        },
-        {
-          "question": "是否应该改用 Entangle？",
-          "answer": [
-            "如果你更重视简单瞄准，可以改。社区把它视为操作体验替代，而不是 ED + Contagion 无效的证据；代价是清图方式和辅助配置会变化。"
-          ],
-          "bullets": [],
-          "relatedLinks": []
-        },
-        {
-          "question": "如果我想要更直接的施法手感呢？",
-          "answer": [
-            "Cold Chronomancer 是更直接的命中与冻结节奏，但需要分阶段换宝石，并承担更近的站位。"
-          ],
-          "bullets": [],
           "relatedLinks": [
             {
               "href": "/zh-cn/builds/cold-caster-chronomancer/",
-              "label": "对比 Cold Caster Chronomancer"
+              "label": "对比 Cold Caster Chronomancer（同为法术持续输出）"
             }
           ]
+        },
+        {
+          "question": "会跑的 Boss 时 黑暗雕像 还有用吗？",
+          "answer": [
+            "部分有用，但移动 Boss 战中图腾可能打不到，所以你必须自己手动补 灵魂吸取 维持 DoT 不空窗。社区 FAQ『Is Dark Effigy contributing during a moving boss fight』的担心是合理的，应对方法是手动维持。"
+          ],
+          "bullets": [
+            "图腾 + 手动 ED 双管齐下。",
+            "DoT 不空窗比堆叠多一段更重要。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "这套在新联盟还好用吗？",
+          "answer": [
+            "Reddit『do contagion lich perform well in this league』的讨论结论是：清图依旧 top tier，但高层 Boss 需要你认真维持 DoT。它仍是公认的一类开荒，只是不是无脑秒杀型。"
+          ],
+          "bullets": [
+            "清图强度不变，Boss 战靠维持。"
+          ],
+          "relatedLinks": []
         }
-      ],
-      "toc": false
+      ]
     },
     {
       "id": "community-notes",
       "type": "community-voices",
-      "title": "社区分歧在哪里",
-      "order": 170,
+      "title": "社区怎么看这个 Build",
+      "order": 160,
       "visible": true,
-      "note": "玩家经历说明可行路径，但不构成进度上限保证。",
+      "toc": true,
+      "note": "以下来自真实攻略与论坛讨论，属于玩家经验样本，不是已核验的游戏机制；与官方补丁冲突时以 0.5.4 官方资料为准。",
       "entries": [
         {
-          "representation": "paraphrase",
-          "sourceType": "reddit",
-          "label": "0.5 ED + Contagion 体验讨论",
-          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/",
-          "statement": "玩家反馈这组技能可以在多个升华上推进且前期轻松；也有人更喜欢 Entangle，因为它减少 ED 瞄准和 Unearth 传播管理。",
-          "context": "这解释了为什么构筑可能有效，但不喜欢两段瞄准的人仍会觉得别扭。"
-        },
-        {
+          "context": "开荒定位",
+          "label": "Ronarray ED + Contagion Lich 0.5 攻略",
           "representation": "paraphrase",
           "sourceType": "guide",
-          "label": "Ronarray ED + Contagion Lich 攻略",
-          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
-          "statement": "维护中的攻略用 Contagion 接 Essence Drain 清怪，只在需要时补 Despair；Boss 战维持 Dark Effigy，并让角色在 DoT 生效时持续移动。",
-          "context": "本文采用的是循环逻辑，不把攻略里的每一件装备都解释成必需品。"
+          "statement": "Ronarray 的 Mobalytics Planner 给出从开荒到终局的完整阶梯，强调 DoT 传播清群与 Full/Low-Life 分叉，是新手最稳的混沌路线之一。",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "context": "练级节奏",
+          "label": "PoE2Path ED Contagion Lich 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "PoE2Path 的指南强调 0.5 的练级与 Boss 节奏，给出从拿到 ED/瘟疫 到终局的清晰路径。",
+          "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+        },
+        {
+          "context": "联盟表现",
+          "label": "Reddit r/pathofexile2builds — do contagion lich perform well",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "该讨论串里玩家共识是清图依旧 top tier，但高层 Boss 需要维持 DoT；不是无脑秒杀型 BD。",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u3na0s/do_contagion_lich_perform_well_in_this_league/"
+        },
+        {
+          "context": "传播机制",
+          "label": "Reddit r/PathOfExile2 — contagion spread",
+          "representation": "quote",
+          "sourceType": "forum",
+          "statement": "『what exactly causes contagion propagation』——玩家搞不清传播触发条件，本质是先 瘟疫 再 ED 的顺序问题。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=contagion%20spread"
         }
-      ],
-      "toc": true
+      ]
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "观察升级与 DoT 维持",
+      "order": 170,
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "社区攻略作者",
+          "label": "0.5 ED/Contagion 分步练级实机",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "description": "演示从拿到 ED/瘟疫 到终局的完整练级节奏。",
+          "takeaway": "重点看施放顺序（先 瘟疫 后 ED）与 Boss 的 DoT 维持。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "0.5 混沌女巫巫妖开荒 Build"
+            },
+            {
+              "time": "0:43",
+              "label": "Essence Drain + Contagion 连击"
+            },
+            {
+              "time": "1:46",
+              "label": "初期技能配置"
+            },
+            {
+              "time": "3:47",
+              "label": "第一颗精魂宝石"
+            },
+            {
+              "time": "4:22",
+              "label": "14 级补充"
+            },
+            {
+              "time": "5:08",
+              "label": "辅助宝石优先级"
+            },
+            {
+              "time": "6:32",
+              "label": "装备升级优先级"
+            },
+            {
+              "time": "7:50",
+              "label": "天赋树推进"
+            },
+            {
+              "time": "8:28",
+              "label": "升华：巫妖或狱火师"
+            },
+            {
+              "time": "9:53",
+              "label": "加入 Orb of Storms"
+            },
+            {
+              "time": "10:56",
+              "label": "关于 Bonestorm"
+            },
+            {
+              "time": "11:41",
+              "label": "祝开荒愉快"
+            }
+          ]
+        },
+        {
+          "creator": "社区攻略作者",
+          "label": "0.5 终局机制演示",
+          "url": "https://youtu.be/r6ouLO-Y0sk",
+          "description": "演示终局地图与 Boss 机制下的 ED Contagion 运作。",
+          "takeaway": "看会跑的 Boss 时如何手动补 ED 维持 DoT。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "终局 Build 概览 （创作者未提供章节）"
+            },
+            {
+              "time": "2:00",
+              "label": "Boss 起手循环 （编辑估算，待 PC 核验）"
+            },
+            {
+              "time": "5:00",
+              "label": "清图与 Boss 节奏 （编辑估算，待 PC 核验）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "Build Planner 与导入",
+      "order": 165,
+      "visible": true,
+      "note": "可粘贴的导入字符串 / .build 待 PC 核验。先用下方作者攻略与规划器工具，正式发布前务必在自己客户端复核节点选择。",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+      "toc": false
     },
     {
       "id": "sources",
@@ -580,39 +942,15 @@
       "title": "来源与边界",
       "order": 180,
       "visible": true,
+      "toc": true,
       "paragraphs": [
-        "官方补丁定义版本基线；指南、Planner、视频和社区结论在复现前都属于暂定。"
+        "官方补丁定义版本基线；攻略、Planner、视频和社区结论在复现前都属于暂定经验。"
       ],
       "bullets": [
-        "来源访问日期：2026-07-29。",
-        "未复制第三方文案或媒体。",
-        "PC 核验仍待完成。"
-      ],
-      "toc": true
-    },
-    {
-      "id": "video",
-      "type": "video",
-      "title": "观察传播与 Boss 维持",
-      "order": 175,
-      "visible": true,
-      "entries": [
-        {
-          "creator": "社区攻略",
-          "label": "0.5 ED + Contagion 分步实战",
-          "url": "https://youtu.be/qbrEeLZzuqI",
-          "description": "用于观察战役瞄准顺序，以及配置何时获得辅助层。",
-          "takeaway": "看 Contagion 落点与第一个 Essence Drain 目标的相对位置。"
-        },
-        {
-          "creator": "社区攻略",
-          "label": "终局机制与 Boss 实战",
-          "url": "https://youtu.be/r6ouLO-Y0sk",
-          "description": "对比 Boss 的刷新节奏与更快的清图循环。",
-          "takeaway": "数一数维持施法次数，再观察角色能安全移动多久。"
-        }
-      ],
-      "toc": true
+        "来源访问日期：2026-07-31。",
+        "未复制第三方文案或媒体；社区内容仅作归纳引用并保留原始链接。",
+        "PC 核验仍待完成，verificationStatus 为 pending-pc。"
+      ]
     },
     {
       "id": "changelog",
@@ -620,19 +958,32 @@
       "title": "更新记录",
       "order": 190,
       "visible": true,
+      "toc": false,
       "entries": [
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "重写为扩展 schema：新增战斗循环三块（清图 / 开王 / 持续对王）、阶段配置表、Build Planner 条目、每件装备的属性优先级与按症状的升级优先级；拆清 灵魂吸取、瘟疫、绝望、黑暗雕像 施放顺序。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "基于 Ronarray / PoE2Path 攻略与 Reddit 讨论重写：补充传播顺序、黑暗雕像 与 绝望 搭配、Full/Low-Life 分叉、故障排查与社区声音。"
+          ]
+        },
         {
           "date": "2026-07-29",
           "changes": [
             "建立带来源的 0.5.4 Build 指南；PC 核验仍在进行中。"
           ]
         }
-      ],
-      "toc": false
+      ]
     }
   ],
   "relatedBuildIds": [
-    "cold-caster-chronomancer"
+    "cold-caster-chronomancer",
+    "twister-spirit-walker"
   ],
   "relatedGuideIds": [],
   "sources": [
@@ -642,44 +993,34 @@
       "url": "https://www.pathofexile.com/forum/view-thread/3975218"
     },
     {
-      "label": "Ronarray ED + Contagion Lich guide",
+      "label": "Mobalytics — Ronarray ED + Contagion Lich 0.5",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
     },
     {
-      "label": "PoE2Path ED Contagion Lich guide",
+      "label": "PoE2Path — ED Contagion Lich 指南",
       "sourceType": "community",
       "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
     },
     {
-      "label": "0.5 ED/C campaign guide",
+      "label": "Mobalytics — 0.5 ED/C 战役指南",
       "sourceType": "community",
       "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
     },
     {
-      "label": "0.5 step-by-step gameplay video",
+      "label": "Reddit — do contagion lich perform well",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u3na0s/do_contagion_lich_perform_well_in_this_league/"
+    },
+    {
+      "label": "YouTube — 0.5 ED/Contagion 分步练级",
       "sourceType": "community",
       "url": "https://youtu.be/qbrEeLZzuqI"
-    },
-    {
-      "label": "Endgame gameplay and mechanics video",
-      "sourceType": "community",
-      "url": "https://youtu.be/r6ouLO-Y0sk"
-    },
-    {
-      "label": "Mobalytics Build Planner export",
-      "sourceType": "tool",
-      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
-    },
-    {
-      "label": "Community discussion: how ED + Contagion feels in 0.5",
-      "sourceType": "community",
-      "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
     }
   ],
   "seo": {
-    "title": "Essence Drain Contagion Lich Build 指南",
-    "description": "基于 0.5.4 的 Path of Exile 2 Essence Drain 与 Contagion Lich Build Build 指南。",
+    "title": "ED Contagion Lich Build 指南｜Exile2 Guides",
+    "description": "基于 0.5.4 的 Path of Exile 2 ED Contagion Lich 指南：DoT 传播顺序、黑暗雕像 与 绝望 搭配、Full/Low-Life 分叉与社区真实讨论。",
     "noindex": false
   },
   "publishedAt": "2026-07-31"

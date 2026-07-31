@@ -80,6 +80,9 @@ const progressionSectionSchema = z.strictObject({
         body: paragraphList,
         label: requiredText,
         levelRange: requiredText.optional(),
+        symptom: z.string().trim().optional(),
+        checks: paragraphList.optional(),
+        upgrade: z.string().trim().optional(),
       }),
     )
     .default([]),
@@ -95,10 +98,15 @@ const skillsSectionSchema = z.strictObject({
         skills: z
           .array(
             z.strictObject({
-              notes: paragraphList,
-              role: requiredText,
+              displayName: requiredText,
               skillId: stableIdentifier,
+              role: requiredText,
               supportSkillIds: identifierList,
+              icon: optionalImagePath,
+              whyUse: paragraphList.optional(),
+              whenReplace: paragraphList.optional(),
+              mappingBossingDiff: paragraphList.optional(),
+              notes: paragraphList,
             }),
           )
           .default([]),
@@ -116,6 +124,20 @@ const gearSectionSchema = z.strictObject({
         notes: paragraphList,
         recommendations: paragraphList,
         slot: requiredText,
+        statPriorities: z
+          .array(
+            z.strictObject({
+              label: requiredText,
+              reason: z.string().trim().default(""),
+              tier: z.enum([
+                "required",
+                "recommended",
+                "optional",
+                "luxury",
+              ]),
+            }),
+          )
+          .default([]),
       }),
     )
     .default([]),
@@ -229,6 +251,38 @@ const changelogSectionSchema = z.strictObject({
   entries: changelogEntriesSchema,
 });
 
+/**
+ * Build Planner 入口：至少提供一个可点击的操作链接，避免页面给出不可导入的空洞配置。
+ * 真实 .build 导入串/下载地址需在 PC 核验后回填；pending-pc 阶段可用创作者攻略或
+ * 官方 Build Planner 工具链接，但不得编造不存在的导入码。
+ */
+const buildPlannerSectionSchema = z
+  .strictObject({
+    ...baseSectionShape,
+    type: z.literal("build-planner"),
+    note: z.string().trim().default(""),
+    creatorName: z.string().trim().default(""),
+    importUrl: z.url().optional(),
+    buildPlannerUrl: z.url().optional(),
+    downloadUrl: z.url().optional(),
+    creatorUrl: z.url().optional(),
+  })
+  .superRefine((section, context) => {
+    const hasLink = [
+      section.importUrl,
+      section.buildPlannerUrl,
+      section.downloadUrl,
+      section.creatorUrl,
+    ].some((value) => Boolean(value));
+    if (!hasLink) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "build-planner section must provide at least one of importUrl, buildPlannerUrl, downloadUrl or creatorUrl",
+      });
+    }
+  });
+
 export const buildSectionSchema = z.discriminatedUnion("type", [
   narrativeSectionSchema,
   prosConsSectionSchema,
@@ -244,7 +298,26 @@ export const buildSectionSchema = z.discriminatedUnion("type", [
   communityVoicesSectionSchema,
   questionAnswerSectionSchema,
   changelogSectionSchema,
+  buildPlannerSectionSchema,
 ]);
+
+/**
+ * Build 顶层变更日志：复用共享 changelogEntriesSchema 的条目结构，
+ * 额外允许可选的 version 字段以记录版本号。所有 Build JSON 已携带该字段。
+ */
+const buildChangelogSchema = z
+  .strictObject({
+    entries: z
+      .array(
+        z.strictObject({
+          date: isoDate,
+          version: z.string().trim().optional(),
+          changes: paragraphList,
+        }),
+      )
+      .default([]),
+  })
+  .optional();
 
 const buildArticleBaseSchema = z.strictObject({
   id: stableIdentifier,
@@ -292,6 +365,8 @@ const buildArticleBaseSchema = z.strictObject({
   relatedBuildIds: identifierList,
   relatedGuideIds: identifierList,
   sources: z.array(sourceSchema).default([]),
+
+  changelog: buildChangelogSchema,
 
   seo: z.strictObject({
     title: requiredText,
