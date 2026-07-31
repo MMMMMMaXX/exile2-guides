@@ -94,6 +94,137 @@ const guideSourcesSectionSchema = z.strictObject({
   verificationChecklist: sourceVerificationChecklistSchema,
 });
 
+/** 速答卡片网格：quick-answer 章节用于页面顶部直接答案。 */
+const guideQuickAnswerSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("quick-answer"),
+  items: z
+    .array(
+      z.strictObject({
+        body: paragraphList,
+        link: z.url().optional(),
+        linkLabel: requiredText.optional(),
+        title: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 关键数字概览：stat-grid 章节用于进度/总量速览。 */
+const guideStatGridSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("stat-grid"),
+  stats: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        note: requiredText.optional(),
+        value: requiredText,
+      }),
+    )
+    .min(1),
+  note: requiredText.optional(),
+});
+
+/** 可筛选数据表：data-table 章节用于奖励矩阵、对比表等。 */
+const guideDataTableSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("data-table"),
+  caption: requiredText.optional(),
+  columns: z
+    .array(z.strictObject({ key: requiredText, label: requiredText }))
+    .min(1),
+  filters: z
+    .array(z.strictObject({ id: requiredText, label: requiredText }))
+    .default([]),
+  rows: z
+    .array(
+      z.strictObject({
+        cells: z.record(requiredText, requiredText),
+        tags: identifierList,
+      }),
+    )
+    .min(1),
+  note: requiredText.optional(),
+});
+
+/** 标签切换面板：tabs 章节用于阶段/模式/平台切换说明。 */
+const guideTabsSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("tabs"),
+  intro: requiredText.optional(),
+  tabs: z
+    .array(
+      z.strictObject({
+        bullets: paragraphList,
+        id: stableIdentifier,
+        label: requiredText,
+        paragraphs: paragraphList,
+        steps: z
+          .array(
+            z.strictObject({ body: paragraphList, label: requiredText }),
+          )
+          .default([]),
+      }),
+    )
+    .min(1),
+});
+
+/** 卡片网格：card-grid 章节用于路线步骤、社区证据、用例等。 */
+const guideCardGridSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("card-grid"),
+  intro: requiredText.optional(),
+  cards: z
+    .array(
+      z.strictObject({
+        body: paragraphList,
+        link: z.url().optional(),
+        linkLabel: requiredText.optional(),
+        tag: requiredText.optional(),
+        title: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 交互诊断器：diagnostic 章节用于从症状反查原因与修复步骤。 */
+const guideDiagnosticSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("diagnostic"),
+  intro: requiredText.optional(),
+  controls: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        label: requiredText,
+        options: z
+          .array(z.strictObject({ label: requiredText, value: requiredText }))
+          .min(1),
+      }),
+    )
+    .min(1),
+  rules: z
+    .array(
+      z.strictObject({
+        link: z.url().optional(),
+        linkLabel: requiredText.optional(),
+        steps: paragraphList,
+        title: requiredText,
+        when: z.record(requiredText, requiredText),
+      }),
+    )
+    .default([]),
+  defaultResult: z
+    .strictObject({
+      link: z.url().optional(),
+      linkLabel: requiredText.optional(),
+      steps: paragraphList,
+      title: requiredText,
+    })
+    .optional(),
+});
+
 export const guideSectionSchema = z.discriminatedUnion("type", [
   guideNarrativeSectionSchema,
   guideStepsSectionSchema,
@@ -101,6 +232,12 @@ export const guideSectionSchema = z.discriminatedUnion("type", [
   guideVideoSectionSchema,
   guideChangelogSectionSchema,
   guideSourcesSectionSchema,
+  guideQuickAnswerSectionSchema,
+  guideStatGridSectionSchema,
+  guideDataTableSectionSchema,
+  guideTabsSectionSchema,
+  guideCardGridSectionSchema,
+  guideDiagnosticSectionSchema,
 ]);
 
 // --- GuideArticle 顶层结构 ---

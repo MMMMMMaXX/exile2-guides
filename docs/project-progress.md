@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-01 02:41（Asia/Shanghai）
+> 文档更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -44,7 +44,7 @@
 | 后续执行计划    | 首周观察 Search Console、Cloudflare 部署和用户反馈；Patch 变化时复核内容 |
 | 待用户补充      | 仅在 Google 报告明确技术错误、内容被拒收或游戏更新时提供截图/官方来源    |
 | 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）                          |
-| 公开攻略内容    | 8 个双语主题、16 个静态详情页；8 篇双语 Build 与 8 篇双语 Item 已发布（共 32 个 Build/Item 双语详情页）；均标记为 Steam PC 待核验 |
+| 公开攻略内容    | 8 个双语主题；8 篇双语 Build、8 篇双语 Item 与 8 篇双语 Skill 已发布（共 48 个 Build/Item/Skill 双语详情页）；均标记为 Steam PC 待核验 |
 | 当前生产地址    | `https://poe2.stratlore.com/en/`                                         |
 | GitHub 推送策略 | 默认不自动推送；仅在用户当前会话明确要求时执行                           |
 
@@ -82,7 +82,7 @@
 
 ## 任务外事项表
 
-> 本节更新时间：2026-08-01 02:41（Asia/Shanghai）
+> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 | 编号      | 时间                               | 状态   | 事项                                                                 | 处理结果                                                                                                                               | 验证/影响                                                                                                                               |
 | --------- | ---------------------------------- | ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -159,7 +159,7 @@
 
 ## 会话时间线
 
-> 本节更新时间：2026-08-01 02:41（Asia/Shanghai）
+> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -267,3 +267,8 @@
 | EXTRA-072 | 2026-08-01，具体分钟未保留 | 已完成 | 统一六类详情页“来源与核验”模块样式并删除重复底部块 | 新建 sources-section.tsx 复用组件（分类卡片 + 核验清单）；lib/content/section-schema.ts 增 sourceCategorySchema/sourceVerificationChecklistSchema；builds/guides/patches/skills 四类 Schema 增 type:"sources" 章节并接入各自渲染器；删除 sources-and-verification.tsx 及 content-detail.tsx 底部重复块与相关测试；脚本为 34 篇内容 JSON 新增/替换 body sources 章节（由 frontMatter.sources 派生，保留发布门禁 sources 数组）；patch-summary-template 既有 sources 章节 id 改名 sources-verification；修复 3 篇 Guides（orb-of-sacrifice-currencies、liquid-verisium-safety-checklist、expedition-atlas-first-points）原有 verification 占位章节与新增 sources 章节标题重复问题，移除冗余占位使每页仅一个模块 | validate:content/typecheck/lint/生产构建全通过；预渲染产物每页仅一个来源与核验标题、底部重复块已删除；未提交、未推送 |
 | EXTRA-073 | 2026-08-01 02:03–02:04 | 已完成 | 修正来源卡片标签与标题位置放反（用户截图反馈） | 交换 components/content/sections/sources-section.tsx 渲染字段：窄列 span 改显 description（类型标签：官方来源/社区讨论），宽列 p 改显 label（来源标题），使卡片视觉与预期一致；未修改 JSON 数据 | typecheck、lint、生产构建全通过；预渲染产物结构验证正确；已本地提交 |
 | EXTRA-074 | 2026-08-01 02:05–02:41 | 已完成 | 统一六类来源卡片 label/description 语义，修复上次改动引入的反转 | 固定正确语义：label=类型标签、description=标题；组件回退为 span=label、p=description 并将 key 改为 index（避免同类型标签重复 key）；脚本对 26 篇语义反了的 Builds/Guides/Patches JSON（en+zh-cn）交换其 sources 章节 categories 的 label/description，Bosses/Items 不受影响；六类详情页一致 | validate:content/typecheck/lint/生产构建全通过；预渲染产物六类结构均为 `<span>类型标签</span><p>来源标题</p>`；已本地提交 |
+| EXTRA-075 | 2026-08-01，具体分钟未保留 | 已完成 | Skills 第一批 8 篇双语 published 文章生成与展示 | 依据 SKILLS-FIRST-BATCH-CONTENT-PLAN 与 v1 正文设计稿生成 8 篇双语 Skill JSON（twister、ice-shot、whirling-assault、essence-drain、contagion、explosive-grenade、walking-calamity、frost-darts，各 en+zh-cn 共 16 篇）并接入 lib/skills 渲染链路；仅采用正文设计稿、左右侧栏与线上保持一致；落实四类历史反模式规避：单一 sources 模块（仅保留 sources 章节、不写 verification 重复块）、视频页内播放（真实 watch?v= ID 经 oEmbed 核验 + VideoList 纵向行关键节点面板）、数据详实（机制/Quality/关联 Build/社区问答而非 AI 简写）；app/styles/app.css 新增 .skill-section/.skill-supports/.skill-properties/.skill-media-notice 等正文样式（蓝青强调色，仅作用于 .skill-section 不影响其他分类）；生成按 slug 指纹化 OG 图 | validate:content（18 Skill JSON）、typecheck、lint（0 error）、生产构建全通过；16 个技能详情页与集合页预渲染；预览 5180 实测单一 H1、单一来源模块、视频封面按钮与关键节点面板均在；按 AGENTS.md 默认本地未提交/未推送/未部署 |
+
+| 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
+| ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| SESSION-100 | 2026-08-01，具体分钟未保留 | Skills 第一批 8 篇双语内容生成与展示 | 依据内容计划与正文设计稿生成 16 篇双语 Skill JSON，接入渲染链路并规避来源重复/视频外链/内容简写三类历史问题；为正文补齐 app.css 技能专属样式（蓝青强调色）；生成 OG 图；运行四道门禁并预渲染 16 详情页与集合页；本地启动 5180 预览验证 | validate/typecheck/lint/build 全过；预览确认单一 H1、单一来源、视频内嵌封面与关键节点；全部本地未提交 | 按 AGENTS.md 默认本地（未 push/PR/部署）；可启动 preview 做人工视觉确认 |

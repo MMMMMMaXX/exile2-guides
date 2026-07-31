@@ -8,6 +8,12 @@ import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
 import { ChangelogList } from "../content/sections/changelog-list";
 import { SourcesSection } from "../content/sections/sources-section";
+import { QuickAnswer } from "./sections/quick-answer";
+import { StatGrid } from "./sections/stat-grid";
+import { DataTable } from "./sections/data-table";
+import { Tabbed } from "./sections/tabs";
+import { CardGrid } from "./sections/card-grid";
+import { Diagnostic } from "./sections/diagnostic";
 
 const rendererLabels: Record<
   ContentLocale,
@@ -89,6 +95,18 @@ function renderSectionContent(
           verificationChecklistLabel={labels.verificationChecklist}
         />
       );
+    case "quick-answer":
+      return <QuickAnswer section={section} />;
+    case "stat-grid":
+      return <StatGrid section={section} />;
+    case "data-table":
+      return <DataTable section={section} />;
+    case "tabs":
+      return <Tabbed section={section} />;
+    case "card-grid":
+      return <CardGrid section={section} />;
+    case "diagnostic":
+      return <Diagnostic section={section} />;
   }
 }
 

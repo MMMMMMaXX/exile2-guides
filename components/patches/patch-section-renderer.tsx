@@ -8,6 +8,7 @@ import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
 import { ChangelogList } from "../content/sections/changelog-list";
 import { SourcesSection } from "../content/sections/sources-section";
+import { renderPatchRichSection } from "./patch-rich-sections";
 
 const rendererLabels: Record<
   ContentLocale,
@@ -88,6 +89,8 @@ function renderSectionContent(
           verificationChecklistLabel={labels.verificationChecklist}
         />
       );
+    default:
+      return renderPatchRichSection(section, locale);
   }
 }
 

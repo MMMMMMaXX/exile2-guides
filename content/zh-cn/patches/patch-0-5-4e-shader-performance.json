@@ -1,0 +1,344 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路 2 0.5.4e — 着色器、Vulkan 与首次加载性能",
+  "shortTitle": "0.5.4e 着色器性能",
+  "summary": "0.5.4e 是技术补丁。它解释补丁后首次加载为何更慢、着色器重编译意味着什么、Vulkan/Steam 有何变化，以及哪些现象属于正常、哪些仍需排查。",
+  "description": "这是排障页面，而非玩法补丁。DX12、Vulkan、NVIDIA/AMD 以及 PC/主机报告，绝不可合并为一个结论。",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "代表 0.5.4e 着色器与性能更新的风暴笼罩废墟城市",
+  "tags": ["patch", "0-5-4e", "shaders", "vulkan", "performance"],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "30 秒看懂玩家影响",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e 改进了着色器加载并缩减着色器体积，停用了 Steam Vulkan Fossilize 层，并将默认垂直同步改为限制帧率（Capped）。",
+        "补丁后首次加载更慢是预期现象，因为着色器需要重新编译；不要仅凭首次进入就判断最终性能。",
+        "本页绝不声称“卡顿已彻底修复”。渲染器、平台，以及首次进入与重复进入必须分开说明。"
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "0.5.4e 在补丁家族中的位置",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "大型补丁",
+          "summary": "0.5.4e 在技术上所跟随的内容基线。",
+          "tags": ["atlas", "items", "bosses"]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "热修",
+          "summary": "誓约符文修复；与 0.5.4e 的技术改动无关。",
+          "tags": ["expedition", "fix"]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "技术补丁",
+          "summary": "本页所述的着色器加载、Vulkan 缓存与垂直同步默认值改动。",
+          "tags": ["shaders", "vulkan", "performance"]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "影响仪表盘",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "首次加载",
+          "verdict": "预期首次进入更慢",
+          "detail": "补丁后着色器会重新编译。这属于正常现象，与真正的性能退化不同。"
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "已停用 Fossilize 层",
+          "detail": "针对着色器缓存有时异常膨胀的问题。DX12 或独立客户端并不以相同方式受影响。"
+        },
+        {
+          "area": "垂直同步",
+          "verdict": "默认值现为限制帧率",
+          "detail": "因帧节奏问题，不再推荐使用自适应（Adaptive）。"
+        },
+        {
+          "area": "社区",
+          "verdict": "结果并不一致",
+          "detail": "有玩家报告地图更流畅，也有玩家仍报告崩溃或场景卡顿。不存在统一结论。"
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "官方改动，按玩家问题重新组织",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "着色器加载改进且体积缩减",
+          "detail": "首次进入可能重新编译着色器；后续进入更快。以重复进入为准判断，而非首次。",
+          "scope": "官方事实：更新后影响所有平台"
+        },
+        {
+          "category": "technical",
+          "title": "停用 Steam Vulkan Fossilize 层",
+          "detail": "旨在解决着色器缓存异常增长。仅针对 Steam + Vulkan；不要归因为 DX12。",
+          "scope": "官方事实：Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "默认垂直同步改为限制帧率",
+          "detail": "因帧节奏问题，弃用自适应（Adaptive）。",
+          "scope": "官方事实：客户端默认"
+        },
+        {
+          "category": "fix",
+          "title": "残余崩溃 / 卡顿情况",
+          "detail": "部分报告持续存在；尚未确认已彻底解决，留在“已知问题”中。",
+          "scope": "社区报告：未升级为已核验"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "首次进入 vs 重复进入",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "错误的判断方式",
+      "oldText": "仅在补丁后首次进入某区域时测量 FPS，并断定补丁损害了性能。",
+      "newLabel": "正确的判断方式",
+      "newText": "将首次编译进入与重复进入分开；比较补丁前后的重复进入 FPS。"
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "技术环境矩阵",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "先检查着色器首次重编译、Steam 着色器缓存体积与 Vulkan 稳定性。不要套用 DX12 或主机的结论。"
+        },
+        {
+          "key": "steam-dx12",
+          "note": "将首次编译与后续加载分开。Fossilize 改动针对 Steam + Vulkan，而非直接针对 DX12。"
+        },
+        {
+          "key": "standalone",
+          "note": "独立客户端不使用 Steam Fossilize 层。检查渲染器、驱动、缓存目录，以及重复进入后的表现。"
+        },
+        {
+          "key": "console",
+          "note": "官方 0.5.4e 说明描述了着色器与 Vulkan/Steam 行为。主机报告必须单独记录，不可与 PC 合并。"
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "受影响内容队列",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "性能排障攻略",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "新增首次进入 vs 重复进入小节",
+          "status": "reviewing"
+        },
+        {
+          "name": "着色器缓存 FAQ",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "记录 Fossilize 停用",
+          "status": "queued"
+        },
+        {
+          "name": "Vulkan 设置攻略",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "注明垂直同步默认值变化",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.5.4e 着色器讨论串",
+          "context": "性能反馈汇总",
+          "quote": "着色器数量明显下降，但结果仍因硬件而异。",
+          "analysis": "正文必须按渲染器、平台，以及首次进入与重复进入分别说明；不能写“0.5.4e 已彻底修复卡顿”。"
+        },
+        {
+          "source": "官方论坛 - 0.5.4e",
+          "context": "残余问题报告",
+          "quote": "补丁后部分玩家在特定场景仍崩溃或卡顿。",
+          "analysis": "作为社区报告保留；不要升级为已核验的机制性结论。"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "视频与时间戳",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Path of Exile 2 官方",
+          "label": "0.5.4e 着色器与性能详解",
+          "description": "官方讲解着色器重编译、Vulkan 缓存与垂直同步默认值。",
+          "takeaway": "在得出结论前，先观看首次进入 vs 重复进入段落。",
+          "url": "https://www.youtube.com/watch?v=2c2ILpVhRxE",
+          "timestamps": [
+            { "label": "为何首次加载更慢", "time": "00:50" },
+            { "label": "Vulkan 与 Steam 着色器缓存", "time": "02:30" },
+            { "label": "垂直同步默认值变化", "time": "04:10" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "直接回答",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为什么 0.5.4e 之后首次加载更慢？",
+          "answer": [
+            "官方说明着色器会被重新编译，因此首次进入某个区域可能更慢。",
+            "判断影响时，需将首次进入与重复进入分开来看。"
+          ]
+        },
+        {
+          "question": "0.5.4e 修复了所有卡顿吗？",
+          "answer": [
+            "没有支持统一结论的证据。有玩家报告地图更流畅，也有玩家仍报告崩溃或场景卡顿。",
+            "在得出任何结论前，必须分开渲染器、平台与进入类型。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "已知问题",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.5.4e 后仍有残余崩溃或特定场景卡顿报告；尚未确认已彻底解决。",
+          "status": "open"
+        },
+        {
+          "text": "主机专属的着色器报告，已与 PC 结论分开追踪。",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 官方 0.5.4e 补丁说明",
+          "description": "着色器、Vulkan 与垂直同步改动的官方来源。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "环境相关的声明已分开",
+        "社区报告未升级为已核验",
+        "无“卡顿已修复”的统一论断"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": ["发布 0.5.4e 着色器与性能富模块文章。"]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 官方 0.5.4e 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "流放之路 2 0.5.4e 着色器性能",
+    "description": "0.5.4e 是技术补丁。它解释补丁后首次加载为何更慢、着色器重编译意味着什么、Vulkan/Steam 有何变化，以及哪些现象属于正常、哪些仍需排查。"
+  }
+}

@@ -13,6 +13,7 @@ import { AppShell } from "../components/layout/app-shell";
 import { getLocaleFromPathname } from "../lib/i18n/locale-routing";
 import { siteConfig } from "../lib/seo/site-config";
 import "./styles/app.css";
+import "./styles/guides-prototype.css";
 
 /** 渲染所有路由共享的文档结构，并集中挂载全局资源和客户端恢复脚本。 */
 export function Layout({ children }: { children: ReactNode }) {
