@@ -89,6 +89,7 @@ export function getV4SkeletonSearchDocuments(
     description: "Verified V4 structure row. No detail page is published.",
     headings: [],
     locale,
+    patch: "V4 skeleton",
     path: `/${locale}/${
       {
         boss: `bosses/${row.category}`,
@@ -101,5 +102,6 @@ export function getV4SkeletonSearchDocuments(
     }/`,
     tags: [row.category, "v4-skeleton"],
     title: row.title,
+    updatedAt: "—",
   }));
 }

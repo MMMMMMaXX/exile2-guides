@@ -769,7 +769,6 @@ export function V4CatalogPage({
   /** Boss 有真实内容时始终走真实卡片区，筛选为空时显示空状态而非骨架卡片。 */
   const hasRealBossContent = contentType === "boss" && items.length > 0;
   const rendersRealContent = visibleItems.length > 0 || hasRealBossContent;
-  const hasDraftPreviews = visibleItems.some((page) => page.frontMatter.draft);
   const querySelectedTags =
     contentType === "build"
       ? [
@@ -1077,45 +1076,10 @@ export function V4CatalogPage({
               </button>
             ))}
           </div>
-          <p>
-            <strong>
-              {rendersRealBuilds || rendersRealContent
-                ? hasDraftPreviews
-                  ? zh
-                    ? "本地预览"
-                    : "Local preview"
-                  : zh
-                    ? "已发布"
-                    : "Published"
-                : "V4 goal"}
-            </strong>
-            {rendersRealBuilds || rendersRealContent
-              ? hasDraftPreviews
-                ? zh
-                  ? "草稿只在本地显示；正式发布后继续使用相同卡片布局。"
-                  : "Drafts stay local and keep this card layout after publication."
-                : zh
-                  ? "正式内容使用统一的横向图文卡片。"
-                  : "Published content uses the shared horizontal content card."
-              : zh
-                ? "先完成每个中心和详情路由，再填充正式内容。"
-                : "Build every hub and detail route before populating production content."}
-          </p>
         </aside>
         <section className="v4-prototype-catalog__main">
           <header>
             <div>
-              <p className="section-kicker">
-                {rendersRealBuilds || rendersRealContent
-                  ? hasDraftPreviews
-                    ? zh
-                      ? "本地草稿预览"
-                      : "Local draft preview"
-                    : zh
-                      ? "已发布内容"
-                      : "Published content"
-                  : "Module architecture"}
-              </p>
               <h2>
                 {rendersRealBuilds
                   ? zh
@@ -1123,8 +1087,8 @@ export function V4CatalogPage({
                     : "Build guides"
                   : rendersRealContent
                     ? zh
-                      ? "可阅读页面"
-                      : "Available pages"
+                      ? `${config.title}攻略`
+                      : `${config.title} guides`
                     : `${config.title} page types`}
               </h2>
             </div>
@@ -1233,31 +1197,6 @@ export function V4CatalogPage({
             </div>
           ) : null}
         </section>
-        <aside className="v4-prototype-rail">
-          <section>
-            <p className="section-kicker">Implementation order</p>
-            <h2>Skeleton first</h2>
-            <ol>
-              <li>Index and filters</li>
-              <li>Subtype aggregation</li>
-              <li>Detail template</li>
-              <li>Search integration</li>
-              <li>Content generation later</li>
-            </ol>
-          </section>
-          <section>
-            <h2>Required connections</h2>
-            <a href={`/${locale}/search/`}>
-              Search results <span>→</span>
-            </a>
-            <a href={`/${locale}/guides/`}>
-              Content inventory <span>→</span>
-            </a>
-            <a href={`/${locale}/patches/`}>
-              Patch relationships <span>→</span>
-            </a>
-          </section>
-        </aside>
       </section>
     </main>
   );

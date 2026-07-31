@@ -6,10 +6,13 @@ export type SearchDocument = {
   category: ContentType;
   description: string;
   headings: string[];
+  image?: string | undefined;
   locale: ContentLocale;
+  patch: string;
   path: string;
   tags: string[];
   title: string;
+  updatedAt: string;
 };
 
 export type SearchIndexByLocale = Record<ContentLocale, SearchDocument[]>;
@@ -25,10 +28,13 @@ export function buildSearchIndexes(
       category: frontMatter.contentType,
       description: frontMatter.summary,
       headings: tableOfContents.map((item) => item.text),
+      image: frontMatter.image,
       locale: frontMatter.locale,
+      patch: frontMatter.patch,
       path,
       tags: frontMatter.tags,
       title: frontMatter.title,
+      updatedAt: frontMatter.updatedAt,
     });
   }
   return indexes;

@@ -44,18 +44,22 @@ describe("search index", () => {
         description: "Leveling route",
         headings: [],
         locale: "en" as const,
+        patch: "0.5.4",
         path: "/en/guides/one/",
         tags: [],
         title: "Campaign notes",
+        updatedAt: "2025-01-01",
       },
       {
         category: "guide" as const,
         description: "Route notes",
         headings: [],
         locale: "en" as const,
+        patch: "0.5.4",
         path: "/en/guides/two/",
         tags: [],
         title: "Leveling Guide",
+        updatedAt: "2025-01-01",
       },
     ];
     expect(
