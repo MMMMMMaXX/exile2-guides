@@ -139,7 +139,7 @@ function renderSectionContent(
           {section.links.length > 0 ? (
             <div className="boss-inline-links">
               {section.links.map((link) => (
-                <a href={link.href} key={link.href}>
+                <a href={link.href} key={link.href} rel="noopener noreferrer" target="_blank">
                   {link.label}
                 </a>
               ))}
@@ -384,7 +384,7 @@ function renderSectionContent(
       return (
         <div className="boss-related-grid">
           {section.items.map((item) => (
-            <a className="boss-related-card" href={item.href} key={item.contentId}>
+            <a className="boss-related-card" href={item.href} key={item.contentId} rel="noopener noreferrer" target="_blank">
               <span className={`boss-card-type boss-card-type--${item.contentType}`}>
                 {item.contentType}
               </span>

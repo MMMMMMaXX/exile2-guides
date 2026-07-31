@@ -63,7 +63,7 @@ export function CatalogCard({
     </>
   );
   return href ? (
-    <a className="content-card" href={href}>
+    <a className="content-card" href={href} rel="noopener noreferrer" target="_blank">
       {body}
     </a>
   ) : (
@@ -187,7 +187,7 @@ export function SourceList({ items }: { items: readonly LinkItem[] }) {
     <ul className="v4-source-list">
       {items.map((item) => (
         <li key={item.href}>
-          <a href={item.href}>{item.label}</a>
+          <a href={item.href} rel="noopener noreferrer" target="_blank">{item.label}</a>
           {item.note ? <span>{item.note}</span> : null}
         </li>
       ))}
@@ -205,7 +205,7 @@ export function RelatedContent({ items }: { items: readonly LinkItem[] }) {
       {items.length ? (
         <nav>
           {items.map((item) => (
-            <a href={item.href} key={item.href}>
+            <a href={item.href} key={item.href} rel="noopener noreferrer" target="_blank">
               {item.label}
             </a>
           ))}

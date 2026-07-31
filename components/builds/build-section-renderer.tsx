@@ -232,7 +232,7 @@ function renderSectionContent(
                 <nav aria-label={`${labels.related}: ${item.question}`}>
                   <strong>{labels.related}</strong>
                   {item.relatedLinks.map((link) => (
-                    <a href={link.href} key={link.href}>
+                    <a href={link.href} key={link.href} rel="noopener noreferrer" target="_blank">
                       {link.label} →
                     </a>
                   ))}

@@ -354,6 +354,7 @@ export default function ContentDetailRoute() {
             author={page.frontMatter.author}
             categoryHref={`/${page.frontMatter.locale}/${contentTypeSegments[page.frontMatter.contentType]}/`}
             categoryLabel={contentTypeLabels[page.frontMatter.contentType]}
+            contentType={page.frontMatter.contentType}
             locale={page.frontMatter.locale}
             patch={page.frontMatter.patch}
             tags={page.frontMatter.tags}

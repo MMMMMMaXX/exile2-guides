@@ -1,4 +1,5 @@
-/** 文件职责：以 V4 信息页布局渲染多语言 About、Contact 与法律内容，并保证构建时输出完整 HTML。 */
+/** 文件职责：以 V4 信息页布局渲染多语言 About、Contact 与法律内容，支持段落、列表、卡片网格、表格与表单。 */
+import { useState } from "react";
 import { useParams } from "react-router";
 
 import { Breadcrumbs } from "../../components/layout/breadcrumbs";
@@ -9,6 +10,7 @@ import {
 import {
   getInformationPageCopy,
   isInformationPageSlug,
+  type InformationContactField,
   type InformationPageSlug,
 } from "../../lib/i18n/information-copy";
 import {
@@ -44,6 +46,103 @@ export function createInformationMeta(slug: InformationPageSlug) {
       title: `${copy.title} | Exile2 Guides`,
     });
   };
+}
+
+/** 渲染单个表单字段，按类型输出 select / input / textarea。 */
+function ContactFormField({
+  field,
+  locale,
+}: {
+  field: InformationContactField;
+  locale: ContentLocale;
+}) {
+  const placeholder =
+    locale === "zh-cn"
+      ? field.type === "select"
+        ? `请选择`
+        : field.type === "email"
+          ? "your@email.com"
+          : field.type === "url"
+            ? "https://..."
+            : ""
+      : field.type === "select"
+        ? "Select"
+        : field.type === "email"
+          ? "your@email.com"
+          : field.type === "url"
+            ? "https://..."
+            : "";
+
+  return (
+    <label>
+      {field.label}
+      {field.type === "select" ? (
+        <select name={field.name} required={field.required}>
+          <option value="">{placeholder}</option>
+          {field.options?.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : field.type === "textarea" ? (
+        <textarea
+          name={field.name}
+          placeholder={placeholder}
+          required={field.required}
+          rows={6}
+        />
+      ) : (
+        <input
+          name={field.name}
+          placeholder={placeholder}
+          required={field.required}
+          type={field.type}
+        />
+      )}
+    </label>
+  );
+}
+
+/** 渲染联系表单，包含客户端校验和提交反馈。 */
+function ContactForm({
+  form,
+  locale,
+}: {
+  form: NonNullable<
+    ReturnType<typeof getInformationPageCopy>["form"]
+  >;
+  locale: ContentLocale;
+}) {
+  const [submitted, setSubmitted] = useState(false);
+  const zh = locale === "zh-cn";
+
+  /** 阻止默认提交并展示校验通过提示（MVP 无后端）。 */
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <form
+      className="info-contact-form"
+      onSubmit={handleSubmit}
+    >
+      {form.fields.map((field) => (
+        <ContactFormField field={field} key={field.name} locale={locale} />
+      ))}
+      <button className="info-contact-form__submit" type="submit">
+        {form.submitLabel}
+      </button>
+      {submitted ? (
+        <p className="info-contact-form__message" aria-live="polite">
+          {zh
+            ? "✓ 表单校验通过。当前 MVP 尚未接入后端，消息未实际发送。"
+            : "✓ Form validated. The current MVP has no backend — message was not actually sent."}
+        </p>
+      ) : null}
+    </form>
+  );
 }
 
 /** 渲染指定静态信息页正文；全部文案来自受控本地副本，不依赖网络或用户数据。 */
@@ -102,9 +201,56 @@ export function InformationPage({ slug }: { slug: InformationPageSlug }) {
                     ))}
                   </ul>
                 ) : null}
+                {section.connectionLinks ? (
+                  <div className="info-connection-grid">
+                    {section.connectionLinks.map((link) => (
+                      <a href={link.href} key={link.href}>
+                        <strong>{link.label}</strong>
+                        <span>{link.description}</span>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+                {section.issueCards ? (
+                  <div className="info-issue-grid">
+                    {section.issueCards.map((card) => (
+                      <article key={card.title}>
+                        <h3>{card.title}</h3>
+                        <p>{card.description}</p>
+                      </article>
+                    ))}
+                  </div>
+                ) : null}
+                {section.table ? (
+                  <div className="info-table-wrap">
+                    <table className="info-table">
+                      <thead>
+                        <tr>
+                          {section.table.headers.map((header) => (
+                            <th key={header}>{header}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, rowIndex) => (
+                          <tr key={rowIndex}>
+                            {row.map((cell, cellIndex) => (
+                              <td key={cellIndex}>{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : null}
               </div>
             </section>
           ))}
+          {copy.form ? (
+            <section className="v4-information-page__form-section">
+              <ContactForm form={copy.form} locale={route.locale} />
+            </section>
+          ) : null}
         </div>
       </div>
     </main>

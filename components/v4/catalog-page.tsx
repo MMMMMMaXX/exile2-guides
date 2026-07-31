@@ -363,6 +363,40 @@ function getBuildCardImage(page: BuildContentPage, fallbackImage: string) {
     : (buildCardFallbacks[page.buildArticle.classId] ?? fallbackImage);
 }
 
+/** 从 patch 字符串中提取版本号；例如 "Path of Exile 2 Early Access 0.5.4" → "0.5.4"。 */
+function extractVersionNumber(patch: string): string {
+  const match = patch.match(/(\d+\.\d+(?:\.\d+)?)/);
+  return match ? match[1]! : patch;
+}
+
+/** Boss tag slug 到显示名的映射；卡片底部和筛选标签均读取此表。 */
+const bossTagLabels: Record<string, { en: string; zh: string }> = {
+  "act-1": { en: "Act 1", zh: "Act 1" },
+  "act-2": { en: "Act 2", zh: "Act 2" },
+  campaign: { en: "Campaign", zh: "剧情" },
+  chaos: { en: "Chaos", zh: "混沌" },
+  cold: { en: "Cold", zh: "冰霜" },
+  elemental: { en: "Elemental", zh: "元素" },
+  endgame: { en: "Endgame", zh: "终局" },
+  fire: { en: "Fire", zh: "火焰" },
+  holy: { en: "Holy", zh: "神圣" },
+  "league-mechanic": { en: "League", zh: "赛季" },
+  lightning: { en: "Lightning", zh: "闪电" },
+  "map-boss": { en: "Map Boss", zh: "地图 Boss" },
+  "multi-phase": { en: "Multi-phase", zh: "多阶段" },
+  "permanent-reward": { en: "Reward", zh: "奖励" },
+  physical: { en: "Physical", zh: "物理" },
+  pinnacle: { en: "Pinnacle", zh: "巅峰" },
+  sekhemas: { en: "Sekhemas", zh: "Sekhemas" },
+  trial: { en: "Trial", zh: "试炼" },
+};
+
+/** 将 tag slug 转为当前语言的显示名；未知标签直接返回原始值。 */
+function formatBossTag(tag: string, zh: boolean): string {
+  const entry = bossTagLabels[tag];
+  return entry ? (zh ? entry.zh : entry.en) : tag;
+}
+
 /**
  * 非 Build 类型的真实内容共用这一张横向整卡，与 Build 卡片保持相同布局，
  * 发布状态只改变标签，防止文章转为 published 后重新落入另一套布局。
@@ -383,31 +417,58 @@ export function V4ContentPageCard({
   const image = fm.image ? resolveImageAsset(fm.image) : fallbackImage;
   const segment = contentTypeSegments[contentType];
   const typeLabel = catalogConfigs[contentType].title;
+  const displayTags =
+    contentType === "boss"
+      ? fm.tags.map((tag) => formatBossTag(tag, zh))
+      : [];
+  const versionNumber = extractVersionNumber(fm.patch);
 
   return (
     <a
       aria-label={fm.title}
       className="v4-prototype-card v4-prototype-card--content"
       href={`/${locale}/${segment}/${fm.slug}/`}
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      <img
-        alt={fm.imageAlt ?? ""}
-        decoding="async"
-        height="788"
-        loading="lazy"
-        sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
-        src={image}
-        srcSet={`${image} 1400w`}
-        width="1400"
-      />
-      <div>
-        <span className={fm.draft ? "is-draft" : undefined}>
+      <div className="v4-card-image-wrap">
+        <span className={`v4-card-image-label${fm.draft ? " is-draft" : ""}`}>
           {fm.draft ? (zh ? "本地草稿" : "Local draft") : typeLabel}
         </span>
+        <img
+          alt={fm.imageAlt ?? ""}
+          decoding="async"
+          height="788"
+          loading="lazy"
+          sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
+          src={image}
+          srcSet={`${image} 1400w`}
+          width="1400"
+        />
+      </div>
+      <div className="v4-card-text">
         <h3>{fm.title}</h3>
         <p>{fm.summary}</p>
-        <small>
-          {fm.patch} · {fm.updatedAt}
+        <small className="v4-card-meta">
+          {displayTags.length > 0 ? (
+            <span className="v4-card-meta__tags">
+              <span className="v4-card-meta__tags-track">
+                {displayTags.map((tag) => (
+                  <span className="v4-card-meta__tag" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+                {displayTags.map((tag) => (
+                  <span className="v4-card-meta__tag" key={`dup-${tag}`}>
+                    {tag}
+                  </span>
+                ))}
+              </span>
+            </span>
+          ) : null}
+          <span className="v4-card-meta__info">
+            {versionNumber} · {fm.updatedAt}
+          </span>
         </small>
       </div>
     </a>
@@ -439,30 +500,36 @@ export function V4BuildContentCard({
       aria-label={article.title}
       className="v4-prototype-card v4-prototype-card--content v4-prototype-card--build"
       href={`/${locale}/builds/${article.slug}/`}
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      <img
-        alt={article.imageAlt ?? ""}
-        decoding="async"
-        height="788"
-        loading="lazy"
-        sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
-        src={image}
-        srcSet={`${image} 1400w`}
-        width="1400"
-      />
-      <div>
-        <span className={article.status === "draft" ? "is-draft" : undefined}>
+      <div className="v4-card-image-wrap">
+        <span className={`v4-card-image-label${article.status === "draft" ? " is-draft" : ""}`}>
           {article.status === "draft"
             ? zh
               ? "本地草稿"
               : "Local draft"
             : "Build"}
         </span>
+        <img
+          alt={article.imageAlt ?? ""}
+          decoding="async"
+          height="788"
+          loading="lazy"
+          sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
+          src={image}
+          srcSet={`${image} 1400w`}
+          width="1400"
+        />
+      </div>
+      <div className="v4-card-text">
         <h3>{article.title}</h3>
         <p>{article.summary}</p>
-        <small>
-          {identity ? `${identity} · ` : ""}
-          {article.patch} · {article.updatedAt}
+        <small className="v4-card-meta">
+          <span className="v4-card-meta__info">
+            {identity ? `${identity} · ` : ""}
+            {article.patch} · {article.updatedAt}
+          </span>
         </small>
       </div>
     </a>
@@ -588,6 +655,34 @@ function createCards(contentType: ContentType): readonly PrototypeCard[] {
   }));
 }
 
+/** Boss 左侧筛选值到 bossCategory 的映射；"All" 和 "Index" 不做过滤。 */
+const bossRailFilterMap: Record<string, string> = {
+  Campaign: "campaign",
+  Endgame: "endgame",
+  Pinnacle: "pinnacle",
+  Trial: "trial",
+};
+
+/** Boss 顶部 taxonomy 按钮值到 tag slug 的映射。 */
+const bossTaxonomyTagMap: Record<string, string> = {
+  "Act 1": "act-1",
+  "Act 2": "act-2",
+  "Act 3": "act-3",
+  "Act 4": "act-4",
+  Endgame: "endgame",
+  Interludes: "interludes",
+  "League mechanic": "league-mechanic",
+  Map: "map-boss",
+  "Permanent reward": "permanent-reward",
+  Pinnacle: "pinnacle",
+  Trial: "trial",
+};
+
+/** 将 taxonomy 显示名转为 tag slug，使顶部按钮能过滤真实 Boss 标签。 */
+function taxonomyValueToBossTag(value: string): string | undefined {
+  return bossTaxonomyTagMap[value];
+}
+
 /** 按 V4 原型结构渲染分类页；Build 真实内容会替换骨架卡片并沿用同一发布布局。 */
 export function V4CatalogPage({
   contentType,
@@ -642,9 +737,38 @@ export function V4CatalogPage({
           order.get(`${right.buildArticle.locale}:${right.buildArticle.slug}`)!,
       );
   }, [buildPages, buildQuery, contentType]);
-  const visibleItems = contentType === "build" ? visibleBuildPages : items;
+  /** Boss 真实内容按左侧筛选和顶部标签过滤；两者均为空时返回全部。 */
+  const visibleBossItems = useMemo(() => {
+    if (contentType !== "boss") return items;
+    return items.filter((page) => {
+      const bossArticle = page.bossArticle;
+      if (!bossArticle) return true;
+      const railCategory = bossRailFilterMap[filter];
+      if (railCategory && bossArticle.bossCategory !== railCategory) return false;
+      if (selectedTags.length > 0) {
+        const tagSlugs = selectedTags
+          .map((value) => taxonomyValueToBossTag(value))
+          .filter((slug): slug is string => Boolean(slug));
+        if (
+          tagSlugs.length > 0 &&
+          !tagSlugs.some((slug) => bossArticle.tags.includes(slug))
+        ) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }, [contentType, items, filter, selectedTags]);
+  const visibleItems =
+    contentType === "build"
+      ? visibleBuildPages
+      : contentType === "boss"
+        ? visibleBossItems
+        : items;
   const rendersRealBuilds = contentType === "build" && buildPages.length > 0;
-  const rendersRealContent = contentType !== "build" && visibleItems.length > 0;
+  /** Boss 有真实内容时始终走真实卡片区，筛选为空时显示空状态而非骨架卡片。 */
+  const hasRealBossContent = contentType === "boss" && items.length > 0;
+  const rendersRealContent = visibleItems.length > 0 || hasRealBossContent;
   const hasDraftPreviews = visibleItems.some((page) => page.frontMatter.draft);
   const querySelectedTags =
     contentType === "build"
@@ -1053,21 +1177,25 @@ export function V4CatalogPage({
                     /** 带 href 的骨架卡片渲染为链接，沿用正式内容卡的交互样式。 */
                     const cardBody = (
                       <>
-                        <img
-                          alt=""
-                          decoding="async"
-                          height="788"
-                          loading="lazy"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
-                          src={card.image}
-                          srcSet={`${card.image} 1400w`}
-                          width="1400"
-                        />
-                        <div>
-                          <span>{config.title}</span>
+                        <div className="v4-card-image-wrap">
+                          <span className="v4-card-image-label">{config.title}</span>
+                          <img
+                            alt=""
+                            decoding="async"
+                            height="788"
+                            loading="lazy"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
+                            src={card.image}
+                            srcSet={`${card.image} 1400w`}
+                            width="1400"
+                          />
+                        </div>
+                        <div className="v4-card-text">
                           <h3>{card.title}</h3>
                           <p>{card.summary}</p>
-                          <small>V4 skeleton · replace mock data</small>
+                          <small className="v4-card-meta">
+                            <span className="v4-card-meta__info">V4 skeleton · replace mock data</span>
+                          </small>
                         </div>
                       </>
                     );

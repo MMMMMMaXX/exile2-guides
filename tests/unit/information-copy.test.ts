@@ -15,9 +15,9 @@ describe("information page copy", () => {
   it("discloses the confirmed public contact address without implying a backend form", () => {
     const copy = getInformationPageCopy("en", "contact");
 
-    expect(copy.title).toBe("Contact");
+    expect(copy.title).toBe("Contact Us");
     expect(copy.sections[0]?.paragraphs?.join(" ")).toMatch(
-      /contact@stratlore\.com/i,
+      /contact@exile2guides\.com/i,
     );
   });
 });

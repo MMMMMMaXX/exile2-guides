@@ -1238,7 +1238,7 @@ svg {
   grid-template-columns: 34% minmax(0, 1fr);
   min-height: 14.5rem;
   overflow: hidden;
-  border: 1px solid #2d3a4c;
+  border: none;
   border-radius: 0.7rem;
   background: #0d141d;
 }
@@ -1251,7 +1251,6 @@ svg {
     transform 140ms ease;
 }
 .v4-prototype-card--content:hover {
-  border-color: #52657d;
   background: #111a25;
   transform: translateY(-1px);
 }
@@ -1262,12 +1261,52 @@ svg {
 .v4-prototype-card img {
   width: 100%;
   height: 100%;
-  min-height: 14.5rem;
   object-fit: cover;
+  object-position: center;
   background: #111722;
 }
+
+/* 图片容器：用于将类型标签定位到右下角，图片贴边无内边距 */
+.v4-card-image-wrap {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+}
+.v4-card-image-wrap img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+}
+.v4-card-image-label {
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: 0.35rem;
+  bottom: 0.35rem;
+  z-index: 1;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid #3b4c63;
+  border-radius: 999px;
+  background: rgb(10 15 22 / 75%);
+  color: #c4d0df;
+  font-size: 0.6rem;
+  backdrop-filter: blur(4px);
+}
+.v4-card-image-label.is-draft {
+  border-color: rgb(215 154 54 / 58%);
+  background: rgb(215 154 54 / 18%);
+  color: #f1b947;
+}
 .v4-prototype-card--build img {
-  object-fit: contain;
+  object-fit: cover;
   background:
     radial-gradient(circle at 50% 45%, rgb(44 58 76 / 45%), transparent 68%),
     #070b10;
@@ -1276,9 +1315,16 @@ svg {
   display: grid;
   align-content: center;
   gap: 0.7rem;
+  padding: 0;
+}
+.v4-prototype-card > div.v4-card-image-wrap {
+  display: block;
+  gap: 0;
+}
+.v4-prototype-card > div.v4-card-text {
   padding: 1.15rem;
 }
-.v4-prototype-card > div > span {
+.v4-prototype-card > div.v4-card-text > span {
   width: fit-content;
   padding: 0.35rem 0.65rem;
   border: 1px solid #3b4c63;
@@ -1286,7 +1332,7 @@ svg {
   color: #c4d0df;
   font-size: 0.8rem;
 }
-.v4-prototype-card > div > span.is-draft {
+.v4-prototype-card > div.v4-card-text > span.is-draft {
   border-color: rgb(215 154 54 / 58%);
   background: rgb(215 154 54 / 12%);
   color: #f1b947;
@@ -1294,14 +1340,74 @@ svg {
 .v4-prototype-card h3 {
   margin: 0;
   font-size: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .v4-prototype-card p {
   margin: 0;
   color: #acb6c5;
   line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .v4-prototype-card small {
   color: #b6bdc8;
+}
+
+/* 卡片底部元数据行：标签左侧横向轮播，版本日期固定右侧 */
+.v4-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.v4-card-meta__tags {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0, #000 1.5rem);
+}
+.v4-card-meta__tags-track {
+  display: inline-flex;
+  gap: 0.25rem;
+  animation: v4-tag-scroll 9s linear infinite;
+  will-change: transform;
+}
+.v4-card-meta__tag {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  color: #8a95a4;
+}
+.v4-card-meta__tag::after {
+  content: "\00a0\00b7\00a0";
+  color: #6b7a8d;
+}
+.v4-card-meta__tag:last-child::after {
+  content: "";
+}
+.v4-card-meta__info {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: #8a95a4;
+}
+
+/* 标签不足一行时不触发轮播 */
+.v4-card-meta__tags-track:not(:hover) {
+  animation-play-state: running;
+}
+@keyframes v4-tag-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 .v4-prototype-catalog__empty {
   grid-column: 1 / -1;
@@ -1405,7 +1511,6 @@ svg {
   }
   .v4-prototype-card img {
     min-height: 10rem;
-    max-height: 13rem;
   }
   .v4-prototype-rail {
     grid-template-columns: 1fr;
@@ -1536,14 +1641,11 @@ svg {
   grid-template-columns: 29% minmax(0, 1fr);
   border-radius: 0.55rem;
 }
-.v4-prototype-card img {
-  min-height: 10.2rem;
-}
-.v4-prototype-card > div {
+.v4-prototype-card > div.v4-card-text {
   gap: 0.4rem;
   padding: 0.8rem;
 }
-.v4-prototype-card > div > span {
+.v4-prototype-card > div.v4-card-text > span {
   padding: 0.25rem 0.45rem;
   font-size: 0.68rem;
 }
@@ -1609,7 +1711,6 @@ svg {
   }
   .v4-prototype-card img {
     min-height: 7rem;
-    max-height: 9rem;
   }
 }
 @media (max-width: 40rem) {
@@ -2333,7 +2434,7 @@ svg {
   display: grid;
   gap: 1rem;
 }
-.v4-information-page__content section {
+.v4-information-page__content section[id^="information-"] {
   display: grid;
   grid-template-columns: 2.5rem minmax(0, 1fr);
   gap: 0.8rem;
@@ -2342,7 +2443,7 @@ svg {
   border-radius: 0.7rem;
   background: #0d131d;
 }
-.v4-information-page__content section > span {
+.v4-information-page__content section[id^="information-"] > span {
   color: #f1ad35;
   font-weight: 800;
 }
@@ -2353,6 +2454,169 @@ svg {
 .v4-information-page__content li {
   color: #b9c3d0;
   line-height: 1.7;
+}
+/* 信息页扩展元素：通知框、卡片网格、表格与联系表单 */
+.info-notice {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #6b4923;
+  border-radius: 0.5rem;
+  background: #21170d;
+  color: #f0c88e;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.info-notice strong {
+  color: #f6d89e;
+}
+.info-connection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.info-connection-grid a {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid #2b3748;
+  border-radius: 0.55rem;
+  background: #0b1118;
+  color: #e7ebf2;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.info-connection-grid a:hover {
+  border-color: #f1ad35;
+  transform: translateY(-2px);
+}
+.info-connection-grid strong {
+  font-size: 1.05rem;
+  color: #f1ad35;
+}
+.info-connection-grid span {
+  color: #94a0af;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.info-issue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.info-issue-grid article {
+  padding: 1rem;
+  border: 1px solid #2b3748;
+  border-radius: 0.55rem;
+  background: #0b1118;
+}
+.info-issue-grid h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: #e7ebf2;
+}
+.info-issue-grid p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+.info-table-wrap {
+  margin-top: 1rem;
+  overflow: auto;
+  border: 1px solid #2b3748;
+  border-radius: 0.55rem;
+}
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 26rem;
+}
+.info-table th,
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #2b3748;
+  text-align: left;
+}
+.info-table th {
+  background: #0a0f15;
+  color: #dce3eb;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.info-table td {
+  color: #b9c3d0;
+  font-size: 0.88rem;
+}
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+.v4-information-page__form-section {
+  padding: 1.5rem;
+  border: 1px solid #2b3748;
+  border-radius: 0.7rem;
+  background: #0d131d;
+}
+.info-contact-form {
+  display: grid;
+  gap: 1rem;
+}
+.info-contact-form label {
+  display: grid;
+  gap: 0.4rem;
+  color: #c2cad6;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.info-contact-form input,
+.info-contact-form select,
+.info-contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #37465c;
+  border-radius: 0.45rem;
+  background: #0c121b;
+  color: #eef3fb;
+  font: inherit;
+}
+.info-contact-form input:focus,
+.info-contact-form select:focus,
+.info-contact-form textarea:focus {
+  outline: 2px solid #f1ad35;
+  outline-offset: 1px;
+}
+.info-contact-form__submit {
+  justify-self: start;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #f1ad35;
+  border-radius: 0.45rem;
+  background: #f1ad35;
+  color: #15110a;
+  font-weight: 750;
+  cursor: pointer;
+}
+.info-contact-form__submit:hover {
+  background: #d99a2b;
+}
+.info-contact-form__message {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #2a5e3a;
+  border-radius: 0.45rem;
+  background: #0d1f14;
+  color: #69d59b;
+  font-size: 0.88rem;
+}
+@media (max-width: 60rem) {
+  .info-connection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .info-issue-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 40rem) {
+  .info-connection-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .not-found-page {
   min-height: 65vh;

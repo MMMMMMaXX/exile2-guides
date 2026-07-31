@@ -33,7 +33,7 @@ export function ContentCard({
     : undefined;
 
   return (
-    <a aria-label={content.title} className="content-card" href={content.href}>
+    <a aria-label={content.title} className="content-card" href={content.href} rel="noopener noreferrer" target="_blank">
       {resolvedImage ? (
         <img
           decoding="async"
