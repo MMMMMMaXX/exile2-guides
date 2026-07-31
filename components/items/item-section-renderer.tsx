@@ -7,6 +7,7 @@ import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
 import { ChangelogList } from "../content/sections/changelog-list";
+import { SourcesSection } from "../content/sections/sources-section";
 import {
   BossCommunityGrid,
   BossPrepChecklist,
@@ -595,33 +596,11 @@ function renderSectionContent(
       );
     case "sources":
       return (
-        <div className="boss-source-layout">
-          <div className="boss-source-list">
-            {section.categories.map((category) => (
-              <article key={category.label}>
-                <span>{category.label}</span>
-                <div>
-                  <p>{category.description}</p>
-                </div>
-                {category.url ? (
-                  <a href={category.url} rel="noopener noreferrer" target="_blank">
-                    ↗
-                  </a>
-                ) : null}
-              </article>
-            ))}
-          </div>
-          {section.verificationChecklist.length > 0 ? (
-            <aside className="boss-verification-card">
-              <h3>{labels.verificationChecklist}</h3>
-              <ul>
-                {section.verificationChecklist.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </aside>
-          ) : null}
-        </div>
+        <SourcesSection
+          categories={section.categories}
+          verificationChecklist={section.verificationChecklist}
+          verificationChecklistLabel={labels.verificationChecklist}
+        />
       );
   }
 }

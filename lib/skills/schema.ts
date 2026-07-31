@@ -15,7 +15,9 @@ import {
   optionalImagePath,
   paragraphList,
   requiredText,
+  sourceCategorySchema,
   sourceSchema,
+  sourceVerificationChecklistSchema,
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
@@ -101,6 +103,14 @@ const skillChangelogSectionSchema = z.strictObject({
   entries: changelogEntriesSchema,
 });
 
+/** 来源与核验：分类展示来源并附带核验清单。 */
+const skillSourcesSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("sources"),
+  categories: z.array(sourceCategorySchema).default([]),
+  verificationChecklist: sourceVerificationChecklistSchema,
+});
+
 export const skillSectionSchema = z.discriminatedUnion("type", [
   skillNarrativeSectionSchema,
   skillSupportsSectionSchema,
@@ -108,6 +118,7 @@ export const skillSectionSchema = z.discriminatedUnion("type", [
   skillFaqSectionSchema,
   skillVideoSectionSchema,
   skillChangelogSectionSchema,
+  skillSourcesSectionSchema,
 ]);
 
 // --- SkillArticle 顶层结构 ---

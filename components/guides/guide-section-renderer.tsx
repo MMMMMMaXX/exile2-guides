@@ -7,23 +7,27 @@ import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
 import { ChangelogList } from "../content/sections/changelog-list";
+import { SourcesSection } from "../content/sections/sources-section";
 
 const rendererLabels: Record<
   ContentLocale,
   {
     source: string;
     takeaway: string;
+    verificationChecklist: string;
     videoPreview: string;
   }
 > = {
   en: {
     source: "Open source",
     takeaway: "What to watch for",
+    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
   },
   "zh-cn": {
     source: "查看来源",
     takeaway: "建议重点观看",
+    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
   },
 };
@@ -77,6 +81,14 @@ function renderSectionContent(
       );
     case "changelog":
       return <ChangelogList entries={section.entries} />;
+    case "sources":
+      return (
+        <SourcesSection
+          categories={section.categories}
+          verificationChecklist={section.verificationChecklist}
+          verificationChecklistLabel={labels.verificationChecklist}
+        />
+      );
   }
 }
 

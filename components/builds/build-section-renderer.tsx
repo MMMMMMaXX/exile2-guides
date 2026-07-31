@@ -9,6 +9,7 @@ import { FigureBlock } from "../content/sections/figure-block";
 import { VideoList } from "../content/sections/video-list";
 import { ChangelogList } from "../content/sections/changelog-list";
 import { ComparisonTable } from "../content/sections/comparison-table";
+import { SourcesSection } from "../content/sections/sources-section";
 
 const rendererLabels: Record<
   ContentLocale,
@@ -31,6 +32,7 @@ const rendererLabels: Record<
     tierRecommended: string;
     tierOptional: string;
     tierLuxury: string;
+    verificationChecklist: string;
     plannerImport: string;
     plannerOpen: string;
     plannerDownload: string;
@@ -56,6 +58,7 @@ const rendererLabels: Record<
     tierRecommended: "Recommended",
     tierOptional: "Optional",
     tierLuxury: "Luxury",
+    verificationChecklist: "Verification checklist",
     plannerImport: "Import Build",
     plannerOpen: "Open Build Planner",
     plannerDownload: "Download .build",
@@ -80,6 +83,7 @@ const rendererLabels: Record<
     tierRecommended: "推荐",
     tierOptional: "可选",
     tierLuxury: "奢侈升级",
+    verificationChecklist: "发布前核验清单",
     plannerImport: "导入配置",
     plannerOpen: "打开 Build Planner",
     plannerDownload: "下载 .build",
@@ -103,11 +107,18 @@ function renderSectionContent(
     case "crossbow":
     case "dot-rotation":
     case "community":
-    case "sources":
       return (
         <NarrativeContent
           bullets={section.bullets}
           paragraphs={section.paragraphs}
+        />
+      );
+    case "sources":
+      return (
+        <SourcesSection
+          categories={section.categories}
+          verificationChecklist={section.verificationChecklist}
+          verificationChecklistLabel={labels.verificationChecklist}
         />
       );
     case "pros-cons":

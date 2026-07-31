@@ -36,6 +36,18 @@ export const sourceSchema = z.strictObject({
   url: z.url(),
 });
 
+/** 来源与核验章节的分类卡片结构，供各内容模块复用。 */
+export const sourceCategorySchema = z.strictObject({
+  label: requiredText,
+  description: requiredText,
+  url: z.url().optional(),
+});
+
+/** 来源与核验章节的核验清单结构，供各内容模块复用。 */
+export const sourceVerificationChecklistSchema = z
+  .array(requiredText)
+  .default([]);
+
 /** 文章配图结构；非 generated 来源必须附带 sourceUrl 以尊重版权。 */
 export const figureImageSchema = z
   .strictObject({

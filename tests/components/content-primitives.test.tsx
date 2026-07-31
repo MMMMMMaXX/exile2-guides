@@ -6,7 +6,6 @@ import { Callout } from "../../components/content/callout";
 import { ContentCard } from "../../components/content/content-card";
 import { FaqAccordion } from "../../components/content/faq-accordion";
 import { RelatedContent } from "../../components/content/related-content";
-import { SourcesAndVerification } from "../../components/content/sources-and-verification";
 
 // 每个用例清理 DOM，避免 details 默认展开状态或重复 id 影响后续断言。
 afterEach(cleanup);
@@ -79,30 +78,3 @@ describe("related content", () => {
   });
 });
 
-describe("sources and verification", () => {
-  it("renders supplied source links and the real verification date", () => {
-    render(
-      <SourcesAndVerification
-        frontMatter={
-          {
-            locale: "en",
-            sources: [
-              {
-                label: "Official patch notes",
-                sourceType: "official",
-                url: "https://www.pathofexile.com/",
-              },
-            ],
-            verifiedAt: "2026-07-27",
-          } as never
-        }
-      />,
-    );
-
-    expect(screen.getByText("Sources & Verification")).toBeTruthy();
-    expect(
-      screen.getByRole("link", { name: "Official patch notes" }),
-    ).toBeTruthy();
-    expect(screen.getByText("2026-07-27")).toBeTruthy();
-  });
-});

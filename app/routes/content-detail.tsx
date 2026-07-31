@@ -35,7 +35,6 @@ import { DraftPreviewNotice } from "../../components/content/draft-preview-notic
 import { PatchStatusNotice } from "../../components/content/patch-status-notice";
 import { NotFoundPage } from "../../components/content/not-found-page";
 import { RelatedContent } from "../../components/content/related-content";
-import { SourcesAndVerification } from "../../components/content/sources-and-verification";
 import {
   CatalogCard,
   EmptyState,
@@ -413,7 +412,6 @@ export default function ContentDetailRoute() {
         ) : (
           <div dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />
         )}
-        <SourcesAndVerification frontMatter={page.frontMatter} />
         <RelatedContent items={relatedCards} />
         {page.buildArticle ? (
           <BuildMediaNotice locale={page.frontMatter.locale} />

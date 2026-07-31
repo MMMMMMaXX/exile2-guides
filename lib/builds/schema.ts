@@ -16,7 +16,9 @@ import {
   optionalImagePath,
   paragraphList,
   requiredText,
+  sourceCategorySchema,
   sourceSchema,
+  sourceVerificationChecklistSchema,
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
@@ -58,7 +60,6 @@ const narrativeSectionSchema = z.strictObject({
     "crossbow",
     "dot-rotation",
     "community",
-    "sources",
   ]),
   paragraphs: paragraphList,
   bullets: paragraphList,
@@ -251,6 +252,14 @@ const changelogSectionSchema = z.strictObject({
   entries: changelogEntriesSchema,
 });
 
+/** 来源与核验：分类展示来源并附带核验清单，与 Items/Bosses 保持同一视觉结构。 */
+const buildSourcesSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("sources"),
+  categories: z.array(sourceCategorySchema).default([]),
+  verificationChecklist: sourceVerificationChecklistSchema,
+});
+
 /**
  * Build Planner 入口：至少提供一个可点击的操作链接，避免页面给出不可导入的空洞配置。
  * 真实 .build 导入串/下载地址需在 PC 核验后回填；pending-pc 阶段可用创作者攻略或
@@ -299,6 +308,7 @@ export const buildSectionSchema = z.discriminatedUnion("type", [
   questionAnswerSectionSchema,
   changelogSectionSchema,
   buildPlannerSectionSchema,
+  buildSourcesSectionSchema,
 ]);
 
 /**

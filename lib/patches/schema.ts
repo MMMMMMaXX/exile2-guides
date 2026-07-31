@@ -15,7 +15,9 @@ import {
   optionalImagePath,
   paragraphList,
   requiredText,
+  sourceCategorySchema,
   sourceSchema,
+  sourceVerificationChecklistSchema,
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
@@ -82,12 +84,21 @@ const patchChangelogSectionSchema = z.strictObject({
   entries: changelogEntriesSchema,
 });
 
+/** 来源与核验：分类展示来源并附带核验清单。 */
+const patchSourcesSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("sources"),
+  categories: z.array(sourceCategorySchema).default([]),
+  verificationChecklist: sourceVerificationChecklistSchema,
+});
+
 export const patchSectionSchema = z.discriminatedUnion("type", [
   patchNarrativeSectionSchema,
   patchStepsSectionSchema,
   patchFaqSectionSchema,
   patchVideoSectionSchema,
   patchChangelogSectionSchema,
+  patchSourcesSectionSchema,
 ]);
 
 // --- PatchArticle 顶层结构 ---
