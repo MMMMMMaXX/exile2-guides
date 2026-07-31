@@ -21,11 +21,11 @@ import type { Route } from "./+types/home";
 const homeHeroImage = resolveImageAsset("/images/prototype-v2/hero-home.webp");
 
 const homeSectionOrder = [
-  "guide",
   "build",
   "boss",
-  "skill",
   "item",
+  "skill",
+  "guide",
   "patch",
 ] as const satisfies readonly ContentType[];
 
