@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
+> 文档更新时间：2026-08-01 02:04（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -82,7 +82,7 @@
 
 ## 任务外事项表
 
-> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
+> 本节更新时间：2026-08-01 02:04（Asia/Shanghai）
 
 | 编号      | 时间                               | 状态   | 事项                                                                 | 处理结果                                                                                                                               | 验证/影响                                                                                                                               |
 | --------- | ---------------------------------- | ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -159,7 +159,7 @@
 
 ## 会话时间线
 
-> 本节更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
+> 本节更新时间：2026-08-01 02:04（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -260,6 +260,8 @@
 | SESSION-095 | 2026-08-01，具体分钟未保留 | Items 第一批内容生成与自动审批展示 | 依据 ITEMS-FIRST-BATCH-CONTENT-PLAN 与 v1 原型生成 8 篇双语 Item JSON 并接入渲染系统；修正发布门禁、关联 slug、筛选标识与视频占位；运行 validate/typecheck/lint/build 四道门禁并预渲染 16 个物品页；更新本台账（EXTRA-070、会话时间线）并执行本地提交 | 全部质量门禁通过、16 物品页预渲染、本地提交完成；未推送远端 | 按 AGENTS.md 默认本地（未 push/PR/部署）；后续可启动 preview 做人工视觉确认 |
 | SESSION-096 | 2026-08-01，具体分钟未保留 | 修复 Items 视频模块支持当前页面内播放 | 用户截图反馈 Items 视频只能外链打开、无法页内播放。根因：(1) components/items/item-section-renderer.tsx 的 VideoList 未传入 playVideo/timestamps 等标签；(2) 16 篇 Item JSON 视频 url 均为 youtube results?search_query= 搜索链接，extractYouTubeId 无法解析而回退外链。修复：为 item-section-renderer 补 playVideo/takeaway/timestamps/videoPreview 标签并传入 VideoList；为 8 个主题（en+zh-cn 共 16 篇）替换 oEmbed 校验通过的真实 watch?v= ID（liquid-verisium→8ia4WbI_nAs、orb-of-sacrifice→0SRKipVVimo、vaal-orb→Q5mK_Ie3KPo、jewellers-orbs→WRIevMb3L1w、artificers-orb→hkgaVympzig、runes-and-soul-cores→axynqDPfFYI、architects-orb→fX3mdULsIEA、the-masters-reach→kBq2T2V5Ml0）；为每条视频补 4–5 条双语 timestamps，其中 jewellers-orbs/architects-orb/the-masters-reach 用 YouTube 真实章节，其余 5 条用编辑性近似并在 takeaway 标注「待 PC 核验」 | validate:content（18 Item JSON）、typecheck、lint、生产构建全通过；预渲染 16 物品页产物 grep 确认含 build-video-card__cover 封面按钮、youtube 缩略图与 build-video-timestamps 关键节点面板，build-video-card__external-preview 外链兜底计数=0，即视频已改为页内播放 | 按 AGENTS.md 默认本地（未 push/PR/部署）；真实章节待 PC 实测后替换编辑性近似节点 |
 | SESSION-097 | 2026-08-01，具体分钟未保留 | 统一六类详情页“来源与核验”并删除重复模块 | 用户截图反馈详情页“来源与核验”有两块重复。新建复用组件 components/content/sections/sources-section.tsx（分类卡片 + 核验清单），在 lib/content/section-schema.ts 增 sourceCategorySchema/sourceVerificationChecklistSchema，为 builds/guides/patches/skills 四类 Schema 增 type:"sources" 章节并接入各自渲染器（items/bosses 复用既有）；删除 components/content/sources-and-verification.tsx 与 content-detail.tsx 底部重复块及相关测试；脚本为 34 篇内容 JSON 新增/替换 body sources 章节（由 frontMatter.sources 派生，保留发布门禁 sources 数组），patch-summary-template 既有 sources 章节 id 改名 sources-verification 避免冲突；修复 3 篇 Guides 原有 verification 占位章节（标题同为“来源与核验”）与新增 sources 章节重复，移除冗余占位使每页仅一个模块 | validate:content（18 Build+18 Boss+18 Item+2 Skill+10 Guide+4 Patch）、typecheck、lint、生产构建全通过；预渲染产物 grep 确认六类详情页每个仅一个 <h2>来源与核验 / Sources and verification 标题，底部重复块已删除 | 按 AGENTS.md 默认本地（未 push/PR/部署）；可启动 preview 做人工视觉确认 |
+| SESSION-098 | 2026-08-01 02:03–02:04 | 修正来源卡片标签与标题位置放反 | 用户截图反馈“来源与核验”模块内来源卡片的标签（官方来源/社区讨论）与来源标题位置放反。根因为 components/content/sections/sources-section.tsx 将 label（实际存标题）渲染在窄列、description（实际存类型标签）渲染在宽列。修复：交换渲染字段，使窄列显示类型标签、宽列显示来源标题；仅改 1 个组件文件 | typecheck、lint、生产构建全通过；预渲染产物确认每个来源卡片结构为 `<span>官方来源/社区讨论</span><p>来源标题</p>` | 按 AGENTS.md 默认本地（未 push/PR/部署）；SourcesSection 组件内 label/description 命名与 JSON 实际语义仍相反，后续如重写数据可同步修正命名 |
 | EXTRA-070 | 2026-08-01，具体分钟未保留        | 已完成 | 完成 Items 第一批 8 篇双语 published 文章与物品渲染系统 | 新增 8 篇 en + 8 篇 zh-cn Item JSON（liquid-verisium、orb-of-sacrifice、vaal-orb、jewellers-orbs、artificers-orb、runes-and-soul-cores、architects-orb、the-masters-reach）并接入 lib/items 渲染链路；扩展 lib/items/schema.ts（Zod 章节 discriminatedUnion + 发布门禁 reviewer/publishedAt/sections/sources）；新增 components/items/item-interactive.tsx（ItemValuationTabs/ItemOutcomesTable）与 item-section-renderer.tsx 全章节渲染；修正 zh-cn outcomes 筛选按钮 tags 为英文小写标识、orb-of-sacrifice 关联 boss slug 误写 atziri-the-red-queen→atziri-red-queen、liquid-verisium 关联 guide 真实 slug；视频占位改为 youtube results?search_query= 搜索链接避免生产泄漏；并与先前未提交的首批内容（Build/Boss/Guide/Patch JSON 化与 V4 视觉）作为同一验证态一并本地提交 | validate:content（18 Item JSON：8 en+8 zh-cn+2 模板）、typecheck、lint、生产构建全通过；16 个物品详情页（8 en+8 zh-cn）预渲染成功；未推送、未部署 |
 | EXTRA-071 | 2026-08-01，具体分钟未保留        | 已完成 | 修复 Items 视频模块支持页内播放（用户截图反馈） | 为 item-section-renderer 补 VideoList 标签（playVideo/takeaway/timestamps/videoPreview）；16 篇 Item JSON 视频 url 由 results?search_query= 搜索链接替换为 oEmbed 校验通过的真实 watch?v= ID，并为每条补双语 timestamps（3 条真实章节 + 5 条编辑性近似标注待 PC 核验）；复用既有 VideoList 纵向行布局即可页内播放 | validate:content/typecheck/lint/生产构建全通过；预渲染产物 search-fallback=0、关键节点面板可点击；未提交、未推送 |
 | EXTRA-072 | 2026-08-01，具体分钟未保留 | 已完成 | 统一六类详情页“来源与核验”模块样式并删除重复底部块 | 新建 sources-section.tsx 复用组件（分类卡片 + 核验清单）；lib/content/section-schema.ts 增 sourceCategorySchema/sourceVerificationChecklistSchema；builds/guides/patches/skills 四类 Schema 增 type:"sources" 章节并接入各自渲染器；删除 sources-and-verification.tsx 及 content-detail.tsx 底部重复块与相关测试；脚本为 34 篇内容 JSON 新增/替换 body sources 章节（由 frontMatter.sources 派生，保留发布门禁 sources 数组）；patch-summary-template 既有 sources 章节 id 改名 sources-verification；修复 3 篇 Guides（orb-of-sacrifice-currencies、liquid-verisium-safety-checklist、expedition-atlas-first-points）原有 verification 占位章节与新增 sources 章节标题重复问题，移除冗余占位使每页仅一个模块 | validate:content/typecheck/lint/生产构建全通过；预渲染产物每页仅一个来源与核验标题、底部重复块已删除；未提交、未推送 |
+| EXTRA-073 | 2026-08-01 02:03–02:04 | 已完成 | 修正来源卡片标签与标题位置放反（用户截图反馈） | 交换 components/content/sections/sources-section.tsx 渲染字段：窄列 span 改显 description（类型标签：官方来源/社区讨论），宽列 p 改显 label（来源标题），使卡片视觉与预期一致；未修改 JSON 数据 | typecheck、lint、生产构建全通过；预渲染产物结构验证正确；已本地提交 |
