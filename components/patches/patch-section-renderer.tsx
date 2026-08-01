@@ -99,17 +99,23 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
   const sections = article.sections
     .filter((section) => section.visible)
     .sort((left, right) => left.order - right.order);
-  let majorSectionIndex = 0;
-
   const historicalBanner = article.historicalStatus ? (
     <HistoricalPatchBanner article={article} locale={article.locale} />
   ) : null;
 
+  // 预计算各主章节（toc）序号：按 order 排序后，toc 章节依次编号为 1..N；
+  // 用纯计算替代渲染期变量重赋值，避免 ESLint 的不可变渲染告警。
+  const numberedSections = sections.map((section, index) => ({
+    section,
+    majorNumber: section.toc
+      ? sections.slice(0, index).filter((prev) => prev.toc).length + 1
+      : 0,
+  }));
+
   return [
     historicalBanner,
-    ...sections.map((section) => {
+    ...numberedSections.map(({ section, majorNumber }) => {
     const Heading = section.toc ? "h2" : "h3";
-    if (section.toc) majorSectionIndex += 1;
 
     return (
       <section
@@ -119,7 +125,7 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
       >
         {section.toc ? (
           <span aria-hidden="true" className="patch-section__number">
-            {majorSectionIndex}
+            {majorNumber}
           </span>
         ) : null}
         <div className="patch-section__content">
