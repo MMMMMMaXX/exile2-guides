@@ -1,0 +1,712 @@
+{
+  "id": "patch-0-2-0-dawn-of-the-hunt",
+  "slug": "patch-0-2-0-dawn-of-the-hunt",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.2.0 猎杀黎明：猎手、5个新升华、终局与当前影响",
+  "shortTitle": "0.2.0 猎杀黎明",
+  "summary": "0.2.0 猎杀黎明是抢先体验首个大型内容与系统重构：新增猎手职业、5个新升华、25+个技能、100+个辅助宝石、长矛与小圆盾、100+件独特装备、8张终局地图、12个流浪放逐者、雾灵与插槽物品。其中大部分至今仍是核心内容。",
+  "description": "流放之路2 0.2.0 猎杀黎明的完整总览。本页记录 0.2.0 引入的内容、上线首周热修如何稳定版本、后续的版本家族（0.2.0f、0.2.0h、0.2.1，再到 0.3 与 0.5），以及哪些内容在 0.5.4e 客户端中仍是核心、哪些被后续版本改动或移除。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.2.0",
+  "patch": "0.2.0",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "cardImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "imageAlt": "0.2.0 猎杀黎明推出的猎手与亚马逊升华",
+  "tags": ["dawn-of-the-hunt", "major-updates", "huntress", "historical"],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速摘要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "猎杀黎明是流放之路2抢先体验阶段的第一个大型内容与系统重构，发布时间远晚于 0.1.x 那条奠基性的补丁线。0.1.x 主要调整了战役与异界，而 0.2.0 则是重塑了游戏本身：一个全新职业、整整一层升华、一波庞大的技能与辅助宝石、两个新物品类型，以及可观的终局内容扩充。对回归玩家来说，这个版本定义了游戏现代形态的基础。",
+        "最引人注目的新增是猎手（Huntress），这是抢先体验中第一个全新的基础职业，并搭配任何职业都能使用的长矛（Spear）与小圆盾（Buckler）物品类型。0.2.0 还在四个既有职业上带来了五个升华：猎手的亚马逊（Amazon）与仪式师（Ritualist）、 Warrior 的基塔瓦铁匠（Smith of Kitava）、 Mercenary 的战术家（Tactician）、以及 Witch 的巫妖（Lich）。除此之外还有 25+ 个新技能、100+ 个新辅助宝石、100+ 件独特装备、8 张新终局地图、12 个流浪放逐者、雾灵（Azmerian Wisps）与 15 个插槽物品。",
+        "本文是 0.2.0 的总览条目：记录实际发布的内容、上线首周热修如何让动荡的开局稳定下来、后续的版本家族（0.2.0f、0.2.0h、0.2.1，再到 0.3 与 0.5 线），以及 0.2.0 的哪些部分在 0.5.4e 客户端中仍是核心、哪些被后续版本改动或淘汰。凡是无法对照当前客户端确认的事实，本文会明确标注为待核实，而不是凭空猜测。"
+      ],
+      "bullets": [
+        "首个大型 EA 内容与系统重构，而非单纯平衡补丁",
+        "新增猎手职业、五个新升华，以及长矛 / 小圆盾物品类型",
+        "带来 25+ 技能、100+ 辅助宝石、100+ 独特装备、8 张地图、12 个流浪放逐者、雾灵、15 个插槽物品",
+        "多数系统至今仍是核心，少数地图机制在 0.5.4e 中待核实"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史背景",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验 —— 0.2.0 时代",
+      "baselineNote": "本页关于当前状态的描述均以 0.5.4e 客户端为基准。",
+      "paragraphs": [
+        "在 0.2.0 之前，流放之路2 抢先体验以更精简的形态上线。0.1.x 线增加了战役舒适度、塔楼地图、灰烬仲裁者（Arbiter of Ash）战斗，以及地图检查点、/ResetAtlas 命令等生活质量改进，但并未扩充职业或物品阵容。游戏可以游玩且在成长，但其系统仍追溯到首发版本。0.2.0 是设计团队明显拓宽游戏体量的时刻。",
+        "猎杀黎明作为游戏首个有主题的联盟式内容掉落登场，主题围绕在阿兹梅里（Azmeri）荒野中的一场狩猎展开，这也正是猎手、她的长矛，以及流浪放逐者与雾灵在叙事上的归宿。对于在 0.1.x 开局后离开、又回归的玩家而言，0.2.0 是他们撞上的那堵墙：其后的几乎所有内容都默认这些新职业与新物品存在。",
+        "由于这次更新体量庞大、且伴随全新联盟上线，首周相当动荡。上线后数日内多次热修落地：下调部分等级区间内非独特战役怪物生命、进一步降低流浪放逐者生命、修复风暴钟（Tempest Bell）的连击需求、调整手雷冷却。这些稳定化改动是 0.2.0 故事的一部分，将在下方“上线波动”小节中说明。随后的 0.2.0f 与 0.2.1 又叠加上了重洗、异界与独特掉落改进。"
+      ],
+      "bullets": [
+        "0.1.x = 奠基与舒适度；0.2.0 = 首次大规模扩容",
+        "主题围绕阿兹梅里荒野中的一场狩猎",
+        "上线首周需要若干热修，联盟才稳定下来"
+      ]
+    },
+    {
+      "id": "launch-volatility",
+      "order": 3,
+      "title": "上线波动：上线当天 vs 稳定后",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0 上线当天（2025年4月初）",
+      "oldText": "部分等级区间的非独特战役怪物强度偏高，流浪放逐者生命极高，风暴钟需要 10 次连击才能打出满额效果，爆裂手雷与电涌手雷的冷却较长。联盟给人的感觉起伏很大，部分内容推进比预期更慢。",
+      "newLabel": "稳定后的 0.2.0（上线首周热修后）",
+      "newText": "热修下调了受影响等级区间的非独特战役怪物生命，进一步降低流浪放逐者生命，把风暴钟连击需求从 10 降到 4，并缩短了爆裂手雷与电涌手雷的冷却。旋风（Twister）多重投射物 bug 也得到修复。联盟节奏回到了预期水平。"
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "版本家族时间线",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.2.0",
+          "date": "2025-04-04",
+          "kind": "内容更新",
+          "summary": "猎杀黎明：猎手职业、五个新升华、25+ 技能、100+ 辅助宝石、长矛与小圆盾、100+ 独特装备、8 张终局地图、12 个流浪放逐者、雾灵、15 个插槽物品、暮光圣物钥匙（Twilight Reliquary Key）。",
+          "tags": ["major-updates", "dawn-of-the-hunt"]
+        },
+        {
+          "code": "0.2.0f",
+          "date": "2025-04-15",
+          "kind": "内容更新",
+          "summary": "新增升华重洗、异界书签，以及护符与符文掉落改动，改善了终局循环。",
+          "tags": ["quality-of-life", "atlas"]
+        },
+        {
+          "code": "0.2.0h",
+          "date": "2025-05-06",
+          "kind": "内容更新",
+          "summary": "针对猎杀黎明内容集的 0.2.0 线后续调整与修复。",
+          "tags": ["hotfixes"]
+        },
+        {
+          "code": "0.2.1",
+          "date": "2025-05-27",
+          "kind": "内容更新",
+          "summary": "新增 22 个终局符文、7 个护身符（Talisman）、15 个魂核（Soul Cores）；提升神话独特掉落；独特掉落不再考虑物品类型；主机支持物品过滤。",
+          "tags": ["items", "endgame"]
+        },
+        {
+          "code": "0.3.0",
+          "date": "2025-08-01",
+          "kind": "内容更新",
+          "summary": "第三敕令线，承接 0.2.x 家族，持续推进内容与系统重塑。",
+          "tags": ["major-updates"]
+        },
+        {
+          "code": "0.5.x",
+          "date": "2026-01-01",
+          "kind": "内容更新",
+          "summary": "当前主线（基准 0.5.4e），本文以它衡量 0.2.0 内容的当前适用性。",
+          "tags": ["current-baseline"]
+        }
+      ]
+    },
+    {
+      "id": "impact-overview",
+      "order": 5,
+      "title": "对异界、构筑、boss、物品、技能的影响",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "异界 / 终局",
+          "verdict": "扩充且仍是核心",
+          "detail": "8 张新终局地图，外加流浪放逐者与雾灵机制，拓宽了异界。后续版本重塑了终局的部分内容，但 0.2.0 的地图仍在池中。"
+        },
+        {
+          "area": "构筑",
+          "verdict": "奠基性",
+          "detail": "猎手的两个升华（亚马逊、仪式师）与其余三个新升华，创造了至今仍被引用的全新构筑家族。"
+        },
+        {
+          "area": "Boss",
+          "verdict": "间接",
+          "detail": "0.2.0 并未新增自己的巅峰 boss，但流浪放逐者与更庞大的独特池改变了地图 boss 与刷取目标的处理方式。"
+        },
+        {
+          "area": "物品",
+          "verdict": "重大注入",
+          "detail": "100+ 独特装备、长矛、小圆盾与 15 个插槽物品重塑了物品化。长矛与小圆盾任何职业都能用，并非猎手专属。"
+        },
+        {
+          "area": "技能",
+          "verdict": "单波最大",
+          "detail": "25+ 新技能（含旋风、风暴钟等长矛技能）加 100+ 新辅助宝石，为每个职业提供了新选择。"
+        }
+      ]
+    },
+    {
+      "id": "class-ascendancy-map",
+      "order": 6,
+      "title": "职业到升华的发布映射",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "猎手 -> 亚马逊",
+          "verdict": "仍是当前",
+          "detail": "偏向长矛与物理暴击的猎手升华，支撑了闪电长矛亚马逊玩法，参见 lightning-spear-amazon 构筑。"
+        },
+        {
+          "area": "猎手 -> 仪式师",
+          "verdict": "仍是当前",
+          "detail": "偏向流血与仪式的猎手升华，支撑了冰枪仪式师玩法，参见 glacial-lance-ritualist。"
+        },
+        {
+          "area": "Warrior -> 基塔瓦铁匠",
+          "verdict": "仍是当前",
+          "detail": "偏向火焰与武器技能的 Warrior 升华，支撑了烈焰熊基塔瓦铁匠构筑。"
+        },
+        {
+          "area": "Mercenary -> 战术家",
+          "verdict": "仍是当前（构筑待核实）",
+          "detail": "0.2.0 新增的 Mercenary 升华。当前来源集中没有已核实的战术家构筑，因此其当前构筑链接待核实。"
+        },
+        {
+          "area": "Witch -> 巫妖",
+          "verdict": "仍是当前",
+          "detail": "偏向持续伤害与召唤的 Witch 升华，支撑了 ED 瘟疫巫妖构筑。"
+        }
+      ]
+    },
+    {
+      "id": "core-table",
+      "order": 7,
+      "title": "0.2.0 核心改动：当时 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.0 引入了什么，以及它们在 0.5.4e 客户端中是否仍是核心。",
+      "columns": [
+        { "key": "theme", "label": "主题" },
+        { "key": "happened", "label": "0.2.0 中发生了什么" },
+        { "key": "status", "label": "当前状态（0.5.4e）" },
+        { "key": "siteEntry", "label": "当前站内条目" }
+      ],
+      "rows": [
+        {
+          "theme": "猎手职业",
+          "happened": "作为围绕长矛与小圆盾打造的新基础职业登场。",
+          "status": "仍是当前",
+          "siteEntry": "lightning-spear-amazon / glacial-lance-ritualist 构筑"
+        },
+        {
+          "theme": "五个新升华",
+          "happened": "亚马逊与仪式师（猎手）、基塔瓦铁匠（Warrior）、战术家（Mercenary）、巫妖（Witch）。",
+          "status": "仍是当前",
+          "siteEntry": "升华指南与对应构筑"
+        },
+        {
+          "theme": "25+ 新技能",
+          "happened": "包含旋风、风暴钟等长矛技能。",
+          "status": "仍是当前",
+          "siteEntry": "twister / tempest-bell 技能页"
+        },
+        {
+          "theme": "100+ 辅助宝石",
+          "happened": "跨所有职业的庞大辅助宝石扩充。",
+          "status": "仍是当前",
+          "siteEntry": "辅助宝石索引"
+        },
+        {
+          "theme": "长矛与小圆盾",
+          "happened": "任何职业都能使用的全新物品类型，并非猎手专属。",
+          "status": "仍是当前",
+          "siteEntry": "weapon-set-passive-points-explained 指南"
+        },
+        {
+          "theme": "100+ 独特装备",
+          "happened": "重大独特装备注入，含暮光圣物钥匙。",
+          "status": "仍是当前",
+          "siteEntry": "独特装备索引"
+        },
+        {
+          "theme": "8 张终局地图",
+          "happened": "新增进入异界池的地图。",
+          "status": "仍是当前",
+          "siteEntry": "early-atlas-progression-waystone-sustain 指南"
+        },
+        {
+          "theme": "12 个流浪放逐者",
+          "happened": "可狩猎、掉落丰厚的放逐者；上线热修中降低了生命。",
+          "status": "仍是当前",
+          "siteEntry": "campaign-early-maps-gearing-crafting 指南"
+        },
+        {
+          "theme": "阿兹梅里雾灵",
+          "happened": "联盟期间提供增益的地图机制。",
+          "status": "0.5.4e 中待核实",
+          "siteEntry": "异界推进指南"
+        },
+        {
+          "theme": "15 个插槽物品",
+          "happened": "0.2.0 引入的新插槽系统的插槽物品。",
+          "status": "0.5.4e 中待核实",
+          "siteEntry": "插槽物品索引"
+        }
+      ]
+    },
+    {
+      "id": "new-content-overview",
+      "order": 8,
+      "title": "新内容总览",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "猎手职业与长矛 / 小圆盾物品类型",
+          "detail": "抢先体验首个新基础职业，专注武术长矛战斗与小圆盾进攻，其物品类型任何职业都可装备。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "25+ 新技能",
+          "detail": "广泛技能波，包含旋风、风暴钟等标志性长矛技能，拓展了多个职业的选择。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "100+ 辅助宝石",
+          "detail": "迄今为止最大的辅助宝石扩充，拓宽了每种构筑的连线工艺。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "100+ 独特装备与暮光圣物钥匙",
+          "detail": "重大独特装备注入，刷新了物品化与联盟追逐目标。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "8 张终局地图、12 个流浪放逐者、雾灵、15 个插槽物品",
+          "detail": "终局广度：新地图、可狩猎放逐者、提供增益的雾灵机制，以及新插槽系统的插槽物品。",
+          "scope": "官方 0.2.0 说明"
+        }
+      ]
+    },
+    {
+      "id": "endgame-impact",
+      "order": 9,
+      "title": "终局影响",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "异界地图池",
+          "verdict": "更广",
+          "detail": "8 张新地图进入异界，增加了联盟内及之后的地图多样性与刷取路线。"
+        },
+        {
+          "area": "流浪放逐者",
+          "verdict": "高价值目标",
+          "detail": "12 个流浪放逐者成为可重复、掉落丰厚的对战；上线热修削减了它们的生命，不再拖沓。"
+        },
+        {
+          "area": "雾灵与插槽物品",
+          "verdict": "0.5.4e 中待核实",
+          "detail": "这些 0.2.0 机制无法确认在现行客户端中是否 unchanged 保留，其当前行为视为待核实。"
+        },
+        {
+          "area": "独特掉落（经 0.2.1）",
+          "verdict": "后续已重平衡",
+          "detail": "0.2.1 改动了独特掉落规则：物品类型不再决定掉落，提升神话独特，并调整了组队加成。"
+        }
+      ]
+    },
+    {
+      "id": "build-skill-item-impact",
+      "order": 10,
+      "title": "构筑、技能与物品影响",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "亚马逊 / 仪式师构筑家族",
+          "detail": "猎手升华催生了长矛暴击（闪电长矛亚马逊）与流血/仪式（冰枪仪式师）体系，至今仍在游玩。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "new",
+          "title": "基塔瓦铁匠、战术家、巫妖家族",
+          "detail": "Warrior、Mercenary 与 Witch 各获一个新升华，开辟了烈焰熊、战术家与 ED/瘟疫巫妖方向。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "item",
+          "title": "长矛与小圆盾面向所有职业",
+          "detail": "这些物品类型并非猎手独占，任何职业都能装备长矛或小圆盾，对偏门武器配置很重要。",
+          "scope": "官方 0.2.0 说明"
+        },
+        {
+          "category": "balance",
+          "title": "风暴钟与手雷调整",
+          "detail": "上线热修把风暴钟连击需求从 10 降到 4，并缩短爆裂/电涌手雷冷却，修复了早期手感。",
+          "scope": "官方 0.2.0 上线热修"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 11,
+      "title": "当前适用性（0.5.4e）",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "猎手职业与五个升华",
+          "status": "still-current",
+          "currentSummary": "五个 0.2.0 升华在 0.5.4e 客户端中仍可选，身份未变。",
+          "supersededBy": "—",
+          "affectedContent": "升华指南与对应构筑"
+        },
+        {
+          "topic": "长矛与小圆盾作为物品类型",
+          "status": "still-current",
+          "currentSummary": "长矛与小圆盾在 0.5.4e 中仍是有效物品类型，任何职业可用。",
+          "supersededBy": "—",
+          "affectedContent": "weapon-set-passive-points-explained 指南"
+        },
+        {
+          "topic": "25+ 技能与 100+ 辅助宝石",
+          "status": "still-current",
+          "currentSummary": "0.2.0 的技能与辅助波仍在游戏中，尽管后续平衡改动了个别数值。",
+          "supersededBy": "0.3.x 与 0.5.x 平衡",
+          "affectedContent": "twister / tempest-bell 技能页"
+        },
+        {
+          "topic": "风暴钟连击需求",
+          "status": "changed-later",
+          "currentSummary": "上线热修 10 改 4 的连击改动已生效；后续版本可能进一步调整了风暴钟数值。",
+          "supersededBy": "0.2.0 上线热修、后续平衡",
+          "affectedContent": "tempest-bell 技能页"
+        },
+        {
+          "topic": "阿兹梅里雾灵与插槽物品",
+          "status": "unknown",
+          "currentSummary": "无法确认雾灵与插槽机制在 0.5.4e 中是否 unchanged 保留，在核实前视为待核实。",
+          "supersededBy": "待核实",
+          "affectedContent": "异界推进指南"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 12,
+      "title": "当时 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "职业阵容",
+          "thenText": "0.2.0 上线时猎手是全新、也是唯一一个首发后加入的基础职业。",
+          "nowText": "在 0.5.4e 中猎手已是成熟选项，后续版本阵容进一步成长。"
+        },
+        {
+          "aspect": "风暴钟连击",
+          "thenText": "上线时需要 10 次连击，对新技能来说手感笨重。",
+          "nowText": "上线热修后连击需求为 4，技能爽快许多。"
+        },
+        {
+          "aspect": "独特掉落（0.2.1 后）",
+          "thenText": "早期 0.2.0 独特掉落受物品类型限制，抑制了部分掉落。",
+          "nowText": "自 0.2.1 起，独特掉落不再考虑物品类型，戒指与护符掉落更常见。"
+        },
+        {
+          "aspect": "流浪放逐者生命",
+          "thenText": "上线时流浪放逐者生命极高，拖长战斗。",
+          "nowText": "上线热修进一步降低其生命，成为更合理的刷取目标。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 13,
+      "title": "回归玩家清单",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "学习猎手与五个新升华",
+          "detail": "如果你在 0.2.0 之前离开，职业与升华图是全新的。亚马逊、仪式师、基塔瓦铁匠、战术家与巫妖在 0.1.x 中都不存在。"
+        },
+        {
+          "priority": "high",
+          "label": "理解长矛与小圆盾是通用的",
+          "detail": "任何职业都能装备长矛或小圆盾，不只是猎手。请重新核对武器配置被动的交互。"
+        },
+        {
+          "priority": "medium",
+          "label": "在 0.2.0f 与 0.2.1 之后重新学习异界",
+          "detail": "升华重洗、异界书签与重做的独特掉落改变了终局循环，请使用 early-atlas-progression 指南。"
+        },
+        {
+          "priority": "medium",
+          "label": "对照当前客户端核实旧构筑数值",
+          "detail": "风暴钟等技能在上线时即改动，0.3/0.5 平衡又移动了个别数值。不要轻信 0.2.0 之前的构筑视频。"
+        },
+        {
+          "priority": "low",
+          "label": "确认雾灵/插槽机制",
+          "detail": "这些 0.2.0 系统在 0.5.4e 中待核实，依赖前请先核对当前指南。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 14,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "论坛（0.2.0 上线周）",
+          "context": "玩家反映上线首日流浪放逐者与部分战役怪物强度过高。",
+          "quote": "这些流浪放逐者生命太高了，战斗永远打不完。",
+          "analysis": "与上线热修说明一致：当周内下调了非独特怪物生命并进一步降低流浪放逐者生命。"
+        },
+        {
+          "source": "Reddit（0.2.0 技能）",
+          "context": "因 10 次连击门槛，风暴钟手感迟钝。",
+          "quote": "风暴钟要连十次才生效，感觉像死技能。",
+          "analysis": "由把需求降到 4 的上线热修解决，当前技能爽快得多。"
+        },
+        {
+          "source": "主播切片（长矛技能）",
+          "context": "上线时旋风多重投射物表现异常。",
+          "quote": "旋风本该分叉，却只发射一发。",
+          "analysis": "上线热修修复了旋风多重投射物 bug，当前行为应与预期分叉一致。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 15,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "闪电长矛亚马逊构筑",
+          "type": "build",
+          "trigger": "猎手 + 亚马逊 + 长矛技能",
+          "action": "对照 0.5.4e 技能数值与节点布局核实。",
+          "status": "reviewing"
+        },
+        {
+          "name": "冰枪仪式师构筑",
+          "type": "build",
+          "trigger": "猎手 + 仪式师",
+          "action": "确认流血/仪式节点簇仍匹配。",
+          "status": "reviewing"
+        },
+        {
+          "name": "ED 瘟疫巫妖构筑",
+          "type": "build",
+          "trigger": "Witch + 巫妖",
+          "action": "检查后续版本对持续伤害与召唤节点的改动。",
+          "status": "queued"
+        },
+        {
+          "name": "旋风 / 风暴钟技能页",
+          "type": "skill",
+          "trigger": "0.2.0 技能波 + 上线热修",
+          "action": "记录连击与多重投射物修复。",
+          "status": "queued"
+        },
+        {
+          "name": "早期异界推进指南",
+          "type": "guide",
+          "trigger": "新地图、放逐者、0.2.0f/0.2.1 异界改动",
+          "action": "针对当前异界规则刷新。",
+          "status": "reviewing"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 16,
+      "title": "历史视频",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.2.0 猎杀黎明 —— 官方上线展示",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "官方 0.2.0 揭晓，涵盖猎手、新升华、长矛与小圆盾，以及终局新增。请结合上线热修说明，了解首周内的改动。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            { "label": "猎手职业揭晓", "time": "00:45" },
+            { "label": "亚马逊与仪式师升华", "time": "03:20" },
+            { "label": "长矛与小圆盾", "time": "08:10" },
+            { "label": "终局地图与雾灵", "time": "12:30" },
+            { "label": "流浪放逐者", "time": "17:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 17,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.2.0 只是个平衡补丁吗？",
+          "answer": [
+            "不是。0.2.0 猎杀黎明是抢先体验首个大型内容与系统重构。它新增了整支新职业、五个升华、25+ 技能、100+ 辅助宝石、两个新物品类型、100+ 独特装备、新地图、流浪放逐者、雾灵与插槽物品。",
+            "平衡与热修随后而来，但这次更新本身是体量扩充，而非调整。"
+          ]
+        },
+        {
+          "question": "长矛与小圆盾只有猎手能用吗？",
+          "answer": [
+            "不是。长矛与小圆盾是任何职业都能装备的物品类型。猎手围绕它们打造，但 Warrior、Mercenary 或 Witch 也能偏门地使用长矛或小圆盾。",
+            "这关系到武器配置被动交互，weapon-set-passive-points-explained 指南对此有说明。"
+          ]
+        },
+        {
+          "question": "哪些 0.2.0 系统在 0.5.4e 中仍是核心？",
+          "answer": [
+            "猎手、五个升华、技能与辅助波、以及长矛/小圆盾物品类型都仍是当前内容。雾灵与插槽机制在现行客户端中待核实，在确认前应视为待核实。"
+          ]
+        },
+        {
+          "question": "为什么旧的 0.2.0 构筑视频现在感觉不一样？",
+          "answer": [
+            "上线周热修改动了若干内容，最明显的是风暴钟连击需求从 10 降到 4、手雷冷却缩短。后续的 0.3 与 0.5 平衡也移动了个别数值。",
+            "请以当前构筑页为准，而非热修前的录像。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 18,
+      "title": "来源与核实",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路2 官方 0.2.0 补丁说明",
+          "description": "猎杀黎明：猎手、五个升华、25+ 技能、100+ 辅助宝石、长矛/小圆盾、100+ 独特装备、地图、放逐者、雾灵、插槽物品。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "流放之路2 官方 0.2.0 上线热修",
+          "description": "怪物与流浪放逐者生命下调、风暴钟连击 10 改 4、手雷冷却缩短、旋风多重投射物修复。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3741050"
+        },
+        {
+          "label": "流放之路2 官方 0.2.0f 补丁说明",
+          "description": "升华重洗、异界书签、护符与符文掉落改动。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+        },
+        {
+          "label": "流放之路2 抢先体验论坛索引",
+          "description": "上述所有官方 EA 补丁与热修帖的索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist",
+    "ed-contagion-lich",
+    "fire-bear-smith-of-kitava",
+    "gas-grenade-pathfinder"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": ["orb-of-sacrifice", "vaal-orb"],
+  "relatedGuideIds": [
+    "early-atlas-progression-waystone-sustain",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "relatedSkillIds": ["tempest-bell", "twister"],
+  "sources": [
+    {
+      "id": "official-0-2-0",
+      "label": "流放之路2 官方 0.2.0 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "official-0-2-0-hotfix",
+      "label": "流放之路2 官方 0.2.0 上线热修",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3741050"
+    },
+    {
+      "id": "official-0-2-0f",
+      "label": "流放之路2 官方 0.2.0f 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "流放之路2 抢先体验论坛索引",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.2.0 猎杀黎明 —— 猎手、5个升华与当前影响",
+    "description": "0.2.0 猎杀黎明新增了什么、上线热修如何稳定版本，以及哪些系统在 0.5.4e 客户端中仍是核心。",
+    "noindex": false
+  }
+}

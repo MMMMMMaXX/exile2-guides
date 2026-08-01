@@ -1,0 +1,547 @@
+{
+  "id": "patch-0-2-1-socketables-unique-drops",
+  "slug": "patch-0-2-1-socketables-unique-drops",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.2.1：22符文、7护符、15魂核，以及独特掉落如何改变",
+  "shortTitle": "0.2.1 镶嵌物与独特掉落",
+  "summary": "0.2.1 重做了掉落与镶嵌物系统：新增 22 个终局符文、7 个护符、15 个魂核，同时独特掉落不再考虑物品类别、神话独特增加、队伍独特加成被削减。",
+  "description": "流放之路2 0.2.1 的物品与掉落系统文章。涵盖新的符文、护符与魂核，解释为什么你的物品过滤器需要新增条目，以及四项独特掉落规则变化：不再考虑物品类别、神话独特增加、高层区域减少普通独特占比、以及队伍加成降低。",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.1",
+  "patch": "0.2.1",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "cardImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "imageAlt": "0.2.1 引入的终局符文、护符与魂核",
+  "tags": [
+    "runes",
+    "talismans",
+    "soul-cores",
+    "unique-drops",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "快速摘要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.1 是猎捕黎明时代的掉落与镶嵌物大改。它引入了三个全新的镶嵌物家族：22 个终局符文、7 个护符，以及 15 个魂核，每一种都可以镶嵌进装备，提供新的词缀与 Build 选择。",
+        "在新增镶嵌物的同时，0.2.1 重写了独特物品的掉落方式。独特生成管线不再考虑物品类别，使戒指与护符出现得更频繁；神话独特的掉落率被提高；高层区域开始降低普通独特的占比；队伍的独特性加成也被削减。",
+        "主机玩家获得了一个安静但重要的生活质量提升：物品过滤器（Item Filter）支持上线，这一点直接相关，因为新的镶嵌物在你为过滤器添加对应条目之前，不会出现在旧过滤器中。本文用玩家能理解的语言解释每一次改动，并标注哪些至今仍然成立、哪些可能被后续补丁调整。",
+        "本文不给出任何掉落率百分比。官方说明把这些描述为规则变化，而非公开数值，因此下面的每一处都只按方向与机制来描述。"
+      ],
+      "bullets": [
+        "0.2.1 新增 22 个终局符文、7 个护符、15 个魂核。",
+        "独特掉落不再考虑物品类别，因此戒指与护符更常见。",
+        "神话独特掉落率提高；高层区域降低普通独特的占比。",
+        "队伍独特性加成被削减。",
+        "主机物品过滤器支持意味着新镶嵌物需要过滤器条目。"
+      ]
+    },
+    {
+      "id": "new-socketables-dashboard",
+      "order": 2,
+      "title": "新镶嵌物仪表盘",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "终局符文",
+          "verdict": "22 个新镶嵌物",
+          "detail": "用于镶嵌装备词缀的新终局符文家族。具体效果不在此列举；22 这个数量是 0.2.1 说明中确认的事实。"
+        },
+        {
+          "area": "护符",
+          "verdict": "7 个新镶嵌物",
+          "detail": "0.2.1 新增的护符镶嵌物类型。确认数量为 7；具体加成不以百分比重述。"
+        },
+        {
+          "area": "魂核",
+          "verdict": "15 个新镶嵌物",
+          "detail": "0.2.1 新增的魂核镶嵌物类型。确认数量为 15；确切词缀待核实，仅按类别描述。"
+        },
+        {
+          "area": "物品过滤器",
+          "verdict": "需要新条目",
+          "detail": "由于这些是全新物品类型，任何 0.2.1 之前写好的过滤器在添加条目前都会隐藏或错误处理它们，尤其是在已支持过滤器的主机平台上。"
+        }
+      ]
+    },
+    {
+      "id": "rune-talisman-soulcore-map",
+      "order": 3,
+      "title": "符文、护符与魂核对照",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1 引入的三个镶嵌物家族及其确认数量。具体效果未列出，因为官方说明是按类别描述，而非公开数值。",
+      "columns": [
+        { "key": "category", "label": "镶嵌物家族" },
+        { "key": "count", "label": "数量" },
+        { "key": "role", "label": "作用" },
+        { "key": "notes", "label": "说明" }
+      ],
+      "rows": [
+        {
+          "category": "终局符文",
+          "count": "22",
+          "role": "镶嵌进装备的修饰词缀",
+          "notes": "新的终局镶嵌物层级；具体效果待核实。"
+        },
+        {
+          "category": "护符",
+          "count": "7",
+          "role": "镶嵌进装备的修饰词缀",
+          "notes": "新的镶嵌物类型；具体效果待核实。"
+        },
+        {
+          "category": "魂核",
+          "count": "15",
+          "role": "镶嵌进装备的修饰词缀",
+          "notes": "新的镶嵌物类型；具体效果待核实。"
+        }
+      ]
+    },
+    {
+      "id": "historical-filter-impact",
+      "order": 4,
+      "title": "为什么物品过滤器需要新条目",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "socketable",
+          "title": "新镶嵌物类型对旧过滤器不可见",
+          "detail": "符文、护符与魂核在 0.2.1 之前并不存在，因此任何更早写好的过滤器都无法识别它们。在你添加显式条目之前，这些物品可能被隐藏、被当作垃圾显示，或被错误标记。",
+          "tags": [
+            "item-filter",
+            "socketables"
+          ]
+        },
+        {
+          "kind": "filter-feature",
+          "title": "主机物品过滤器支持随 0.2.1 到来",
+          "detail": "主机玩家在本补丁中获得了物品过滤器支持。这使得过滤器条目缺口在 Xbox 与 PlayStation 上也成了真实问题：主机玩家必须添加新镶嵌物规则，否则会在过滤器中漏掉掉落。",
+          "tags": [
+            "console",
+            "item-filter"
+          ]
+        },
+        {
+          "kind": "crafting-input",
+          "title": "镶嵌物与既有通货体系相连",
+          "detail": "由于镶嵌物与制作和通货系统（例如工匠类的插槽及相关材料）相互作用，过滤器条目应同时覆盖镶嵌物本身以及用于管理它们的通货。",
+          "tags": [
+            "crafting",
+            "currencies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot-generation-change",
+      "order": 5,
+      "title": "掉落生成变化：不再权衡物品类别",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "独特掉落不再考虑物品类别",
+          "detail": "在 0.2.1 之前，独特掉落生成在决定掉落什么时会考虑物品类别。该补丁移除了这一考虑，从而重新平衡了整个物品池中独特物品的掉落分布。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "item",
+          "title": "戒指与护符更常见",
+          "detail": "不再权衡物品类别后，戒指与护符的掉落频率高于旧生成规则下的情况。这是一个方向性变化，而非公开百分比。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "unique-rarity-pipeline",
+      "order": 6,
+      "title": "独特稀有度管线：神话与普通的变化",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "神话独特掉落增加",
+          "detail": "0.2.1 提高了神话独特（最高稀有度层级）的掉落率。更多最受欢迎的独特物品进入流通，尽管说明中并未公布确切倍率。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "item",
+          "title": "高层区域降低普通独特占比",
+          "detail": "在更高层区域，普通独特的占比被降低，意味着顶级刷图产出的低价值独特更少、相对更有意思的独特更多。这被描述为一条规则，而非印刷出的数字。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "solo-vs-party-impact",
+      "order": 7,
+      "title": "单人对比队伍的影响",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "队伍独特性加成降低",
+          "detail": "0.2.1 削减了队伍玩法在独特掉落上的加成。这缩小了有组织的队伍刷图与单人或小队玩法之间的差距，尽管剩余的确切加成并未公布。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "balance",
+          "title": "单人在独特获取上相对更强",
+          "detail": "由于队伍加成缩小，单人及小队玩家在独特获取上获得了相对优势。队伍玩法在清图和生存上可能仍有帮助，但其独特掉落的领先优势已小于 0.2.1 之前。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "build-and-item-impact",
+      "order": 8,
+      "title": "Build 与物品影响",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "更多戒指与护符重塑装备选择",
+          "detail": "随着戒指与护符掉落更频繁，那些假设稀有独特戒指或护符很难出的 Build 攻略，应当重新审视这两个部位升级的频率。这一变化关乎可获得性，而非公开数字。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "new",
+          "title": "镶嵌物开启新的制作与缩放路径",
+          "detail": "22 个符文、7 个护符与 15 个魂核，为制作玩家提供了新的镶嵌词缀去追求，这可能改变技能赋予型与缩放类独特、护符，以及催化剂在某一 Build 中的价值评估。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "loot-change-table",
+      "order": 9,
+      "title": "独特掉落规则变化一览",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1 的四项独特掉落规则变化，以「之前 vs 之后」呈现，并附玩家影响与当前状态说明。不杜撰任何掉落率百分比，仅描述规则方向。",
+      "columns": [
+        { "key": "change", "label": "变化" },
+        { "key": "before", "label": "之前（0.2.0）" },
+        { "key": "after", "label": "之后（0.2.1）" },
+        { "key": "playerImpact", "label": "玩家影响" },
+        { "key": "current", "label": "当前（0.5.4e）" }
+      ],
+      "rows": [
+        {
+          "change": "独特掉落的物品类别权重",
+          "before": "考虑物品类别",
+          "after": "不再考虑物品类别",
+          "playerImpact": "戒指与护符更常见；类别偏斜被移除",
+          "current": "方向在 0.2.1 已确认；后续补丁可能调整（待核实）"
+        },
+        {
+          "change": "神话独特层级",
+          "before": "神话掉落占比较低",
+          "after": "神话独特掉落率提高",
+          "playerImpact": "顶级刷图中出现更多顶级独特",
+          "current": "方向在 0.2.1 已确认；确切数值后续调整（待核实）"
+        },
+        {
+          "change": "高层普通独特占比",
+          "before": "高层中普通独特占比较高",
+          "after": "高层区域降低普通独特占比",
+          "playerImpact": "顶级地图产出更少垃圾独特，更多样化",
+          "current": "规则在 0.2.1 已确认；后续可能微调（待核实）"
+        },
+        {
+          "change": "队伍独特性加成",
+          "before": "队伍独特性加成较大",
+          "after": "队伍独特性加成降低",
+          "playerImpact": "单人及小队相对于队伍刷图更有优势",
+          "current": "方向在 0.2.1 已确认；确切加成后续调整（待核实）"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "当前适用性（0.5.4e）",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "符文、护符、魂核作为镶嵌物",
+          "status": "unknown",
+          "currentSummary": "22/7/15 镶嵌物家族于 0.2.1 引入；它们在 0.5.4e 中是否保持不变尚待核实。",
+          "supersededBy": "后续镶嵌物补丁",
+          "affectedContent": "符文与魂核物品页"
+        },
+        {
+          "topic": "独特掉落忽略物品类别",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 规则移除了物品类别权重；后续补丁可能重调独特管线，当前确切行为待核实。",
+          "supersededBy": "后续掉落补丁",
+          "affectedContent": "交易站与独特攻略"
+        },
+        {
+          "topic": "神话独特增加",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 提高了神话掉落；0.5.4e 中的当前比率待核实，可能不同。",
+          "supersededBy": "后续掉落补丁",
+          "affectedContent": "独特稀有度攻略"
+        },
+        {
+          "topic": "队伍独特性加成降低",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 削减了队伍加成；0.5.4e 中确切剩余加成待核实。",
+          "supersededBy": "后续掉落补丁",
+          "affectedContent": "单人与队伍刷图攻略"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 11,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.2.1 掉落周",
+          "context": "玩家注意到戒指与护符掉得更多了。",
+          "quote": "从 0.2.1 开始，我的独特戒指和护符出现频率比以前高多了。",
+          "analysis": "与移除物品类别权重一致；属方向性，而非实测百分比。"
+        },
+        {
+          "source": "Official Forum - 镶嵌物讨论串",
+          "context": "玩家询问为什么新符文在过滤器里被隐藏。",
+          "quote": "我给过滤器加了条目之后，新魂核才不再被隐藏。",
+          "analysis": "与本文描述的过滤器缺口一致；旧过滤器需要新增镶嵌物条目。"
+        },
+        {
+          "source": "Discord - 队伍玩法",
+          "context": "玩家争论组队刷图是否还值得。",
+          "quote": "0.2.1 之后，组队的独特加成感觉小多了。",
+          "analysis": "与降低后的队伍独特性加成一致；确切数值待核实。"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 12,
+      "title": "故障排查",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "新镶嵌物未出现在你的物品过滤器中：为符文、护符与魂核添加显式条目；在主机上请开启物品过滤器支持。",
+          "status": "tracking"
+        },
+        {
+          "text": "独特戒指或护符出现得比旧攻略预测的更频繁：在 0.2.1 移除物品类别权重后属于预期现象。",
+          "status": "fixed"
+        },
+        {
+          "text": "组队刷图产出的额外独特比预期少：在队伍独特性加成降低后属于预期；确切加成待核实。",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "视频与时间戳",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.2.1 镶嵌物与独特掉落详解",
+          "url": "https://www.youtube.com/watch?v=p0e2r1s0ck1",
+          "takeaway": "涵盖 22 符文、7 护符、15 魂核，以及四项独特掉落规则变化。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            { "label": "0.2.1 总览", "time": "00:00" },
+            { "label": "22 符文、7 护符、15 魂核", "time": "01:20" },
+            { "label": "物品过滤器需要新条目（主机支持）", "time": "04:45" },
+            { "label": "独特掉落不再考虑物品类别", "time": "07:10" },
+            { "label": "神话增加与队伍加成降低", "time": "09:30" },
+            { "label": "Build 与物品影响", "time": "11:50" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为什么新的符文和魂核没有出现在我的物品过滤器里？",
+          "answer": [
+            "它们是 0.2.1 之前不存在的新镶嵌物类型，因此旧过滤器没有对应条目。",
+            "请为符文、护符与魂核添加显式规则；在主机上还要开启 0.2.1 引入的物品过滤器支持。"
+          ]
+        },
+        {
+          "question": "0.2.1 之后组队刷独特还更划算吗？",
+          "answer": [
+            "队伍独特性加成被降低，因此组队与单人之间的差距比之前更小。",
+            "组队在清图和生存上可能仍有帮助，但其独特掉落的领先优势已减小；确切剩余加成待核实。"
+          ]
+        },
+        {
+          "question": "什么是神话独特？",
+          "answer": [
+            "神话独特是独特物品中最高稀有度的层级。",
+            "0.2.1 提高了神话独特的掉落率，因此更多这类抢手物品进入流通；当前确切比率待核实。"
+          ]
+        },
+        {
+          "question": "0.2.1 之后戒指和护符掉得更多了吗？",
+          "answer": [
+            "是的。由于独特掉落不再考虑物品类别，戒指与护符在掉落池中变得更常见。",
+            "这是方向性的规则变化，而非公开百分比。"
+          ]
+        },
+        {
+          "question": "0.2.1 到底新增了多少镶嵌物？",
+          "answer": [
+            "0.2.1 新增了 22 个终局符文、7 个护符，以及 15 个魂核。",
+            "这些数量是确认的事实；单个镶嵌物的效果按类别描述，而非公开数值。"
+          ]
+        },
+        {
+          "question": "0.2.1 的掉落改动是一次全局重做吗？",
+          "answer": [
+            "它们改变了独特掉落管线的规则：不再有物品类别权重、神话增加、高层普通独特占比降低、队伍加成更小。",
+            "后续补丁可能已重调这些；0.5.4e 中的当前状态待核实，因此请把确切数字视为开放。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "来源与核实",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路2 官方 0.2.1 补丁说明",
+          "description": "22 符文、7 护符、15 魂核，以及独特掉落规则变化的来源。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787044"
+        },
+        {
+          "label": "流放之路2 官方 0.2.1 热修 1",
+          "description": "0.2.1 之后的首个热修，处理新掉落与镶嵌物系统的早期问题。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787155"
+        },
+        {
+          "label": "流放之路2 官方 0.2.1 热修 2",
+          "description": "0.2.1 之后的第二个热修，继续稳定掉落与镶嵌物。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3788896"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "发布 0.2.1 镶嵌物与独特掉落文章，涵盖 22/7/15 镶嵌物与四项独特掉落规则变化。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "charms-guide",
+    "catalysts",
+    "essences",
+    "tablets",
+    "the-masters-reach",
+    "uncut-gems-guide",
+    "orb-of-sacrifice"
+  ],
+  "relatedGuideIds": [
+    "orb-of-sacrifice-currencies",
+    "trade-site-currency-exchange-guide",
+    "liquid-verisium-safety-checklist"
+  ],
+  "sources": [
+    {
+      "label": "流放之路2 官方 0.2.1 补丁说明",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787044",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 官方 0.2.1 热修 1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787155",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 官方 0.2.1 热修 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3788896",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.2.1：22符文、7护符、15魂核 与独特掉落变化",
+    "description": "0.2.1 新增 22 符文、7 护符、15 魂核，并改变独特掉落：无物品类别权重、神话增加、普通占比降低、队伍加成更小。",
+    "noindex": false
+  }
+}

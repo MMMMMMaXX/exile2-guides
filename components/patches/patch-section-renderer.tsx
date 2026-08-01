@@ -55,6 +55,7 @@ const patchEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
     "patch-family-timeline": "PATCH FAMILY",
     "returning-player-checklist": "RETURNING PLAYER",
     "community-evidence": "COMMUNITY EVIDENCE",
+    "data-table": "DATA TABLE",
   },
   "zh-cn": {
     overview: "内容概览",
@@ -79,6 +80,7 @@ const patchEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
     "patch-family-timeline": "版本家族",
     "returning-player-checklist": "回归玩家",
     "community-evidence": "社区证据",
+    "data-table": "数据表格",
   },
 };
 

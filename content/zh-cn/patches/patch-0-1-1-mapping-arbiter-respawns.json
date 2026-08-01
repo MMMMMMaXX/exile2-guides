@@ -1,0 +1,454 @@
+{
+  "id": "patch-0-1-1-mapping-arbiter-respawns",
+  "slug": "patch-0-1-1-mapping-arbiter-respawns",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.1.1 终局：新塔地图、地图Boss频率与灰烬仲裁者六次尝试",
+  "shortTitle": "0.1.1 地图与仲裁者",
+  "summary": "0.1.1 版本重做了流放之路2 的终局：新增四张塔地图、重做失落之塔、加入地图检查点、改善城堡可见性，并让灰烬仲裁者的尝试次数提升到最多六次。",
+  "description": "本文记录流放之路2 0.1.1 终局改动的历史：塔地图、失落之塔、灰烬仲裁者尝试规则、地图检查点、城堡可见性，以及监管者先驱碑注入Boss 的机制。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.1",
+  "patch": "0.1.1",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "cardImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "imageAlt": "0.1.1 改变重试规则的灰烬仲裁者",
+  "tags": [
+    "arbiter",
+    "tower-maps",
+    "atlas",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "low",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "0.1.1 改了什么（速览）",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.1 是流放之路2 抢先体验（Early Access）早期一次以终局为核心的更新，它重做了世界之石（Atlas of Worlds）的整体手感。在该版本之前，巅峰Boss 灰烬仲裁者（Arbiter of Ash）每次遭遇只允许一次尝试，因此每一次死亡都会直接结束整轮挑战，任何失误的代价都被无限放大。这次更新减轻了这种压力，同时也为玩家提供了更多地图层面的基础设施。",
+        "本文是对 0.1.1 引入的地图与仲裁者改动的历史记录。它涵盖四张新增的塔地图（Alpine Ridge、Bluff、Mesa 与 Sinking Spire）、重做后的失落之塔（Lost Towers）、地图检查点（map checkpoints）的引入、城堡（Citadel）在距离与可见性上的改善、监管者先驱碑（Overseer's Precursor Tablet）及其注入Boss 的机制，以及最重磅的改动：灰烬仲裁者的尝试次数提升到最多六次（随难度变化）。",
+        "由于这些系统从抢先体验以来持续演进，我们在文中会标注哪些行为是针对 0.1.1 确认的、哪些在当前 0.5.4e 基线中可能已经不同。请将下文描述的尝试次数、碑文机制与地图频率视为对应原始版本的记录，而非对今日实际状态的保证。"
+      ],
+      "bullets": [
+        "新增四张塔地图：Alpine Ridge、Bluff、Mesa、Sinking Spire。",
+        "灰烬仲裁者尝试次数从 1 次提升到最多 6 次（高难度下更少）。",
+        "引入地图检查点、城堡距离/可见性优化，以及监管者先驱碑。"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "0.1.1 之前的抢先体验终局",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验启动阶段（0.1.x）",
+      "baselineNote": "相对于当前的 0.5.4e 基线，本页记录的是后续版本又迭代过的 0.1.1 终局改动。",
+      "paragraphs": [
+        "流放之路2 进入抢先体验时，终局内容是有意做得精简的。当时的世界之石地图池更小，灰烬仲裁者是一个冷酷的“单次尝试”守门人，玩家在失误后几乎没有什么恢复手段，也缺少对某个区域做专精（specialise）的工具。0.1.x 这一批补丁正是 Grinding Gear Games 开始填补这些空缺的阶段。",
+        "0.1.1 处在这一早期迭代阶段。它并不像后来“猎捕黎明（Dawn of the Hunt）”那样是一次大规模内容扩张，而是一轮有针对性的生活质量（QoL）与终局深度补丁。以今天的视角回看，最令人惊讶的差别在于：相比启动周的仲裁者体验，尝试系统的容错度变得高出许多。"
+      ],
+      "bullets": [
+        "抢先体验终局以“单次尝试的仲裁者”和单薄的塔地图池启动。",
+        "0.1.1 是一次迭代式深度补丁，而非内容扩张。"
+      ]
+    },
+    {
+      "id": "tower-map-additions",
+      "order": 3,
+      "title": "塔地图新增与失落之塔重做",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "atlas",
+          "title": "四张新塔地图",
+          "detail": "新增 Alpine Ridge、Bluff、Mesa、Sinking Spire 四张塔地图，扩充了玩家可能遇到并可围绕其做专精的地图池。",
+          "scope": "0.1.1 官方补丁说明"
+        },
+        {
+          "category": "atlas",
+          "title": "失落之塔重做",
+          "detail": "失落之塔的布局与行为被重做，改变了玩家在世界之石中与这一塔变体的互动方式。",
+          "scope": "0.1.1 官方补丁说明"
+        },
+        {
+          "category": "atlas",
+          "title": "监管者先驱碑",
+          "detail": "新增一种世界之石碑文（tablet），可将其作用范围内的地图注入一个Boss，让玩家能主动把世界之石导向特定的遭遇。",
+          "scope": "0.1.1 官方补丁说明"
+        }
+      ]
+    },
+    {
+      "id": "boss-attempt-evolution",
+      "order": 4,
+      "title": "Boss 尝试次数演变：0.1.0 到 0.1.1",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "灰烬仲裁者每次遭遇的尝试次数",
+          "thenText": "0.1.0：仅有一次尝试；死亡即结束本轮。",
+          "nowText": "0.1.1：最多六次尝试，高难度下授予次数更少。"
+        },
+        {
+          "aspect": "死亡后的流程恢复",
+          "thenText": "0.1.0：仲裁者失败意味着要重走整条巅峰路径。",
+          "nowText": "0.1.1：玩家可以在同一次会话中重新进入并继续尝试。"
+        }
+      ]
+    },
+    {
+      "id": "arbiter-rule-table",
+      "order": 5,
+      "title": "各版本仲裁者尝试规则对照",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "灰烬仲裁者的尝试规则在 0.1.0 与 0.1.1 之间如何变化。",
+      "columns": [
+        { "key": "version", "label": "版本" },
+        { "key": "boss", "label": "Boss" },
+        { "key": "base-attempts", "label": "基础尝试次数" },
+        { "key": "high-difficulty-impact", "label": "高难度影响" },
+        { "key": "party-trigger", "label": "队伍触发" },
+        { "key": "leaving-area", "label": "离开区域" }
+      ],
+      "rows": [
+        {
+          "version": "0.1.0",
+          "boss": "灰烬仲裁者",
+          "base-attempts": "1",
+          "high-difficulty-impact": "无（仅单次尝试）",
+          "party-trigger": "待核实",
+          "leaving-area": "结束整场遭遇"
+        },
+        {
+          "version": "0.1.1",
+          "boss": "灰烬仲裁者",
+          "base-attempts": "最多 6 次",
+          "high-difficulty-impact": "高难度下尝试次数减少（具体数值待核实）",
+          "party-trigger": "待核实",
+          "leaving-area": "离开竞技场仍会消耗一次尝试"
+        }
+      ]
+    },
+    {
+      "id": "map-checkpoints",
+      "order": 6,
+      "title": "地图检查点",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.1 引入了地图检查点，让玩家在地图内死亡后能够就地重新集结，而不必从头完全重开整张地图的布局。对于更长或更危险的地图而言，这是一项有意义的生活质量改善——在此之前，一次死亡意味着要把所有内容重新清一遍。",
+        "检查点与更宽容的尝试规则天然互补。二者共同削弱了抢先体验地图那种“全有或全无”的体验，让玩家更容易通过重复练习来学习一张地图的机制，而不是只能押注于单次高风险的通关。"
+      ],
+      "bullets": [
+        "检查点让你在地图内死亡后可以从内部继续。",
+        "它们降低了通过反复练习来学习危险布局的代价。"
+      ]
+    },
+    {
+      "id": "citadel-visibility",
+      "order": 7,
+      "title": "城堡的距离与可见性",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "该补丁还改善了城堡在世界之石上的呈现方式。城堡被移到更靠近金字形避难所（Ziggurat Refuge）的位置，并提升了其可见性，使玩家更容易找到这些重要地标并规划前往路线。",
+        "更好的城堡可见性意味着玩家花在扫视战争迷雾上的时间更少，终局路线也更可预测。对于追逐特定巅峰内容的玩家来说，清楚城堡相对于避难所的位置，让整套地图规划都更顺畅。"
+      ],
+      "bullets": [
+        "城堡被移到更靠近金字形避难所的位置。",
+        "地图上的可见性得到提升，便于路线规划。"
+      ]
+    },
+    {
+      "id": "overseer-tablet-origin",
+      "order": 8,
+      "title": "监管者先驱碑的起源",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.1.1",
+      "sourceId": "tablets",
+      "paragraphs": [
+        "监管者先驱碑在 0.1.1 作为新型世界之石碑文被引入。它的原始用途是：为作用范围内的地图添加一个Boss，让玩家能够把世界之石导向特定的Boss 遭遇，而非听天由命。",
+        "这是流放之路2 中“注入Boss 的碑文”机制的首次登场。它为后来更深版本所扩展的碑文生态奠定了基础，但在 0.1.1 中，它的角色明确就是向作用范围内的地图注入Boss。"
+      ],
+      "bullets": [
+        "在 0.1.1 作为世界之石碑文被引入。",
+        "原始用途：为作用范围内的地图添加一个Boss。"
+      ]
+    },
+    {
+      "id": "map-specialisation",
+      "order": 9,
+      "title": "地图专精与Boss 频率",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "伴随新的塔地图与碑文，0.1.1 让地图专精变得更有意义。一个值得注意的现象是：在对某个区域做专精时，大约每四张地图会出现一个Boss，相比此前稀疏的分布，玩家获得巅峰内容的节奏更稳定。",
+        "需要特别理解的是，“大约每四张地图”从来都不是一个保底下限。它描述的是一种平均节奏，而非承诺第五张地图、或任何特定的一张地图必定包含Boss。把它当作硬性保证的玩家，偶尔会因为某个区域跳过了Boss 而感到意外。",
+        "结合监管者先驱碑，专精让有投入的玩家能够把世界之石偏向他们想要的Boss，但底层的出现频率始终是概率性的，而非契约式的保证。"
+      ],
+      "bullets": [
+        "专精时大约每 4 张地图出现一个Boss（并非保底下限）。",
+        "频率是概率性的，而非对每张地图的硬性承诺。"
+      ]
+    },
+    {
+      "id": "atlas-endgame-evolution",
+      "order": 10,
+      "title": "0.1.1 前后的世界之石终局",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "塔地图池",
+          "thenText": "0.1.0：更小的塔地图集合，失落之塔为原始形态。",
+          "nowText": "0.1.1：四张新塔地图（Alpine Ridge、Bluff、Mesa、Sinking Spire）外加失落之塔重做。"
+        },
+        {
+          "aspect": "Boss 节奏",
+          "thenText": "0.1.0：Boss 稀疏且难以预测。",
+          "nowText": "0.1.1：专精时约每四张地图一个Boss，但并不保证。"
+        },
+        {
+          "aspect": "城堡可达性",
+          "thenText": "0.1.0：城堡更远、更难辨认。",
+          "nowText": "0.1.1：城堡更靠近避难所，且可见性提升。"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 11,
+      "title": "在 0.5.4e 中是否仍然适用？",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "灰烬仲裁者的尝试次数",
+          "status": "unknown",
+          "currentSummary": "0.1.1 引入了最多 6 次尝试；这一确切数值是否在 0.5.4e 中保留，尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "arbiter-of-ash"
+        },
+        {
+          "topic": "塔地图（Alpine Ridge/Bluff/Mesa/Sinking Spire）",
+          "status": "unknown",
+          "currentSummary": "在 0.1.1 中加入；其在 0.5.4e 中的当前可用性尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "tablets"
+        },
+        {
+          "topic": "监管者先驱碑的Boss 注入",
+          "status": "unknown",
+          "currentSummary": "在 0.1.1 中引入；其在 0.5.4e 中的当前功能尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "tablets"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "官方论坛 - 0.1.1 反馈",
+          "context": "抢先体验地图反馈",
+          "quote": "仲裁者额外的尝试次数，让这场战斗像决斗而非抛硬币。",
+          "analysis": "与官方提升尝试次数的方向一致；将其视为社区情绪，而非机制规格。"
+        },
+        {
+          "source": "Reddit - PoE2 世界之石",
+          "context": "城堡路线讨论",
+          "quote": "城堡更靠近避难所，终于让规划路线变得值得了。",
+          "analysis": "与可见性/距离改动一致；仅作为社区信号。"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "视频讲解",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Official Path of Exile 2",
+          "label": "0.1.1 终局与仲裁者解析",
+          "takeaway": "跳转到塔地图、仲裁者尝试规则与城堡可见性段落。",
+          "url": "https://www.youtube.com/watch?v=0a1b2c3d4e5",
+          "timestamps": [
+            { "label": "塔地图概览", "time": "00:45" },
+            { "label": "仲裁者尝试规则", "time": "03:10" },
+            { "label": "地图检查点", "time": "06:25" },
+            { "label": "城堡可见性", "time": "09:05" },
+            { "label": "监管者先驱碑", "time": "11:40" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "仲裁者现在有几次尝试？",
+          "answer": [
+            "在 0.1.1 中，灰烬仲裁者的每次遭遇获得最多六次尝试，取代了 0.1.0 的单次尝试。",
+            "在高难度下授予的尝试次数更少，不过本历史记录中具体数值尚待核实。"
+          ]
+        },
+        {
+          "question": "队友能触发仲裁者的重试吗？",
+          "answer": [
+            "我们所引用的 0.1.1 说明中并未记录仲裁者的队伍触发行为，因此标记为待核实。",
+            "整队重试的触发规则在后来的 0.1.1c 中对其余巅峰Boss 有明确描述，而非针对 0.1.1 的仲裁者。"
+          ]
+        },
+        {
+          "question": "离开地图会浪费一次尝试吗？",
+          "answer": [
+            "会。离开仲裁者竞技场仍会消耗一次尝试，因此退出并不等于免费重置。",
+            "这也是为什么“最多六次”应被当作一种预算，而非六次各自安全的重试。"
+          ]
+        },
+        {
+          "question": "四张新塔地图是保底出Boss 的下限吗？",
+          "answer": [
+            "不是。约每四张地图一个Boss 是平均值，而非保底下限。",
+            "特定地图仍可能跳过Boss；专精只是改变了概率，并未以契约方式保证出Boss。"
+          ]
+        },
+        {
+          "question": "监管者先驱碑最初是做什么用的？",
+          "answer": [
+            "它在 0.1.1 被引入，目的是为作用范围内的地图添加一个Boss。",
+            "这种注入Boss 的行为是该碑文在后来碑文系统扩展之前的原始用途。"
+          ]
+        },
+        {
+          "question": "这些 0.1.1 规则在 0.5.4e 中仍然有效吗？",
+          "answer": [
+            "由于尚未对照 0.5.4e 基线重新核实，我们将每个机制的当前适用性标记为待核实。",
+            "请将本页视为 0.1.1 的历史记录，而非对当前实际状态的陈述。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "来源与核实",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路2 0.1.1 补丁说明",
+          "description": "Grinding Gear Games 官方论坛帖，涵盖塔地图、失落之塔重做、仲裁者尝试次数、地图检查点、城堡可见性，以及监管者先驱碑。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3695606"
+        },
+        {
+          "label": "流放之路2 抢先体验论坛",
+          "description": "抢先体验公告与补丁帖的索引，便于交叉核对。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.1.1"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "发布 0.1.1 地图与仲裁者历史文章。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "arbiter-of-ash",
+    "arbiter-of-divinity"
+  ],
+  "relatedItemIds": [
+    "tablets",
+    "waystones-guide",
+    "the-masters-reach"
+  ],
+  "relatedGuideIds": [
+    "early-atlas-progression-waystone-sustain",
+    "expedition-atlas-first-points"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "poenotes-011",
+      "label": "流放之路2 0.1.1 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3695606"
+    },
+    {
+      "id": "ea-index",
+      "label": "流放之路2 抢先体验论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.1.1 终局：新塔地图、地图Boss频率与灰烬仲裁者六次尝试",
+    "description": "0.1.1 版本重做了流放之路2 的终局：新增四张塔地图、重做失落之塔、加入地图检查点、改善城堡可见性，并让灰烬仲裁者的尝试次数提升到最多六次。",
+    "noindex": false
+  }
+}

@@ -882,6 +882,44 @@ function PatchMigrationGuide({
   );
 }
 
+/** 通用数据表格：列与行由数据驱动，复用 patch-data-table 样式。 */
+function PatchDataTable({
+  section,
+  locale,
+}: {
+  section: Extract<PatchSection, { type: "data-table" }>;
+  locale: ContentLocale;
+}) {
+  return (
+    <div className="patch-table-wrap">
+      {section.caption ? (
+        <p className="patch-data-table__caption">
+          {locale === "zh-cn" ? "表格说明：" : "Note: "}
+          {section.caption}
+        </p>
+      ) : null}
+      <table className="patch-data-table patch-data-table--generic">
+        <thead>
+          <tr>
+            {section.columns.map((column) => (
+              <th key={column.key}>{column.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {section.rows.map((row, index) => (
+            <tr key={index}>
+              {section.columns.map((column) => (
+                <td key={column.key}>{row[column.key] ?? ""}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 /** 富内容章节统一出口，供 PatchSectionRenderer 调用。 */
 export function renderPatchRichSection(
   section: PatchSection,
@@ -928,6 +966,8 @@ export function renderPatchRichSection(
       return <PatchSystemOrigin section={section} />;
     case "migration-guide":
       return <PatchMigrationGuide section={section} locale={locale} />;
+    case "data-table":
+      return <PatchDataTable section={section} locale={locale} />;
     default:
       return null;
   }

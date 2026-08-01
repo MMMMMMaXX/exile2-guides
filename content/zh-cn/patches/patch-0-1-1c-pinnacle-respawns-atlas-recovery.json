@@ -1,0 +1,442 @@
+{
+  "id": "patch-0-1-1c-pinnacle-respawns-atlas-recovery",
+  "slug": "patch-0-1-1c-pinnacle-respawns-atlas-recovery",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.1.1c：Xesht、Olroth、迷雾之王的重试规则与 /ResetAtlas 恢复",
+  "shortTitle": "0.1.1c 巅峰重试",
+  "summary": "0.1.1c 将巅峰Boss 重试规则扩展到 Xesht、Olroth 与迷雾之王，并新增 /ResetAtlas 用于修复彻底损坏的 Atlas 区域。",
+  "description": "本文记录流放之路2 0.1.1c 的Boss 重试行为、队伍触发规则、小地图图标，以及用于彻底损坏 Atlas 区域的 /ResetAtlas 恢复命令。",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.1.1c",
+  "patch": "0.1.1c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/xesht-we-that-are-one-hero.webp",
+  "cardImage": "/images/bosses/xesht-we-that-are-one-hero.webp",
+  "imageAlt": "0.1.1c 扩展重试规则的巅峰Boss之一 Xesht",
+  "tags": [
+    "xesht",
+    "olroth",
+    "king-in-the-mists",
+    "atlas-recovery",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "low",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "一句话答案",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.1c 是抢先体验时期一次历史性的热修补丁，把巅峰Boss 的重试规则从灰烬仲裁者扩展到了其他Boss。Xesht、Olroth 与迷雾之王（King in the Mists）都获得了死亡后重试的能力，因此一次失误不再意味着遭遇的永久终结。",
+        "该补丁还新增了 /ResetAtlas 命令。它的用途非常窄：这是一个用于“彻底损坏（bricked）”的 Atlas 的恢复工具，即那些已经无法通过正常玩法推进或完成的区域。它不是普通的重置命令，也不是刷图工具。",
+        "最后，0.1.1c 为联盟机制与坚固箱（Strongbox）添加了小地图图标，并强化了地图检查点。这些改动让死亡后的恢复循环与地图内的导航更清晰，也与新的重试规则相辅相成。"
+      ],
+      "bullets": [
+        "0.1.1c 之后，Xesht、Olroth 与迷雾之王都获得了重试能力。",
+        "/ResetAtlas 仅用于彻底损坏的 Atlas 区域，且不会清除你的进度。",
+        "为联盟机制与坚固箱新增了小地图图标。"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "0.1.1c 相关的版本事实",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验，0.1.1 之后的热修窗口",
+      "baselineNote": "相对于当前的 0.5.4e 基线，本页记录的是后续版本又迭代过的 0.1.1c 重试与 Atlas 恢复改动。",
+      "paragraphs": [
+        "在 0.1.1 引入灰烬仲裁者最多六次尝试之后，玩家在其他巅峰Boss 上仍然碰壁。Xesht、Olroth 与迷雾之王尚未共享这种宽容的重试行为，因此在那里死亡往往是一条死路，直到 0.1.1c 出现。",
+        "0.1.1c 是一次有针对性的后续补丁。它不是内容扩张，而是一轮生活质量与恢复补丁，弥合了剩余巅峰Boss 的重试缺口，并为开发者提供了一种官方认可的方式来恢复那些已经无法完成的地图。"
+      ],
+      "bullets": [
+        "在 0.1.1c 之前，只有灰烬仲裁者拥有文档化的多次尝试重试。",
+        "0.1.1c 将重试扩展到了 Xesht、Olroth 与迷雾之王。"
+      ]
+    },
+    {
+      "id": "boss-attempt-evolution",
+      "order": 3,
+      "title": "Boss 尝试次数演变：0.1.1 到 0.1.1c",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "巅峰Boss 尝试次数",
+          "thenText": "0.1.1：仅灰烬仲裁者拥有最多 6 次尝试；Xesht、Olroth、迷雾之王无文档化的重试。",
+          "nowText": "0.1.1c：Xesht、Olroth 与迷雾之王也在死亡后获得重试。"
+        },
+        {
+          "aspect": "Atlas 恢复",
+          "thenText": "0.1.1：没有用于彻底损坏 Atlas 的官方工具。",
+          "nowText": "0.1.1c：新增 /ResetAtlas 用于损坏的 Atlas 区域（不清除进度）。"
+        }
+      ]
+    },
+    {
+      "id": "xesht-respawn-flow",
+      "order": 4,
+      "title": "Xesht 的重试流程",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "对于 Xesht（We That Are One），重试流程与扭曲领域（Twisted Domain）绑定。你在扭曲领域内死亡的地点，决定了你重生的位置，因此即使在一次失败的尝试之后，站位依然重要。",
+        "一个重要细节：重复进入扭曲领域再次击杀不会获得经验。重试存在的意义是给你另一次挑战Boss 的机会，而非让你从同一场遭遇中刷取无限经验。"
+      ],
+      "bullets": [
+        "重生位置由你在扭曲领域内的死亡位置决定。",
+        "重复进入该领域不会获得经验。"
+      ]
+    },
+    {
+      "id": "olroth-respawn-flow",
+      "order": 5,
+      "title": "Olroth 的重试流程",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Olroth（Origin of the Fall）是通过远征日志（Expedition Logbook）进入的，其重试也遵循同一个进入道具。虚空之枢（Crux of Nothingness）是这场遭遇相关的远征锚点。",
+        "由于 Olroth 被远征日志系统所门控，重试归属于日志的持有者。失去日志持有者的访问权，是重试链断裂的主要原因。"
+      ],
+      "bullets": [
+        "Olroth 通过远征日志进入。",
+        "虚空之枢是相关的远征锚点。"
+      ]
+    },
+    {
+      "id": "king-in-the-mists-respawn-flow",
+      "order": 6,
+      "title": "迷雾之王的重试流程",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "巅峰版本的迷雾之王（King in the Mists）是通过“觐见迷雾之王（Audience with the King）”进入的。它的重试也遵循该进入道具，因此觐见的持有者掌控队伍能否重新进入。",
+        "与其他巅峰Boss 一样，重试绑定于进入道具的持有者，而非每一个单独的玩家，这也正是下方队伍触发规则之所以重要的原因。"
+      ],
+      "bullets": [
+        "迷雾之王通过“觐见迷雾之王”进入。",
+        "觐见的持有者掌控重新进入。"
+      ]
+    },
+    {
+      "id": "party-trigger-rules",
+      "order": 7,
+      "title": "队伍触发规则",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "这些Boss 之间一致的规则是：进入道具的持有者会为整个队伍触发重试。对于 Xesht 是裂界石（Breachstone）持有者，对于 Olroth 是日志持有者，对于迷雾之王则是觐见持有者。",
+        "这意味着死亡后只有持有者能点击重试；队伍其余成员搭的是持有者的“顺风车”。如果持有者离开或丢失了道具，即便其他成员仍在场，整队的重生能力也会崩溃。"
+      ],
+      "bullets": [
+        "进入道具的持有者为全队触发重试。",
+        "死亡后只有持有者能点击重试。"
+      ]
+    },
+    {
+      "id": "minimap-and-checkpoints",
+      "order": 8,
+      "title": "小地图图标与检查点",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "qol",
+          "title": "联盟机制与坚固箱的小地图图标",
+          "detail": "0.1.1c 为联盟机制与坚固箱添加了小地图图标，使它们在地图上更容易定位。",
+          "scope": "0.1.1c 官方补丁说明"
+        },
+        {
+          "category": "qol",
+          "title": "地图检查点",
+          "detail": "地图中放置的检查点强化了早先引入的死亡后恢复循环，让玩家无需完全重开整张地图布局即可重新集结。",
+          "scope": "0.1.1c 官方补丁说明"
+        }
+      ]
+    },
+    {
+      "id": "respawn-key-table",
+      "order": 9,
+      "title": "重试关键表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "由谁触发重试、在哪里重生，以及重复通关时经验如何。",
+      "columns": [
+        { "key": "content", "label": "内容" },
+        { "key": "entry-item", "label": "进入道具" },
+        { "key": "who-triggers-respawn", "label": "由谁触发重试" },
+        { "key": "respawn-location", "label": "重生位置" },
+        { "key": "repeat-area-xp", "label": "重复区域经验" },
+        { "key": "current-status", "label": "当前状态" }
+      ],
+      "rows": [
+        {
+          "content": "扭曲领域（Xesht）",
+          "entry-item": "裂界石",
+          "who-triggers-respawn": "裂界石持有者",
+          "respawn-location": "扭曲领域内的死亡位置",
+          "repeat-area-xp": "重复通关无经验",
+          "current-status": "自 0.1.1c 起生效"
+        },
+        {
+          "content": "远征（Olroth）",
+          "entry-item": "远征日志 / 虚空之枢",
+          "who-triggers-respawn": "日志持有者",
+          "respawn-location": "远征区域",
+          "repeat-area-xp": "待核实",
+          "current-status": "自 0.1.1c 起生效"
+        },
+        {
+          "content": "迷雾之王（巅峰）",
+          "entry-item": "觐见迷雾之王",
+          "who-triggers-respawn": "觐见持有者",
+          "respawn-location": "迷雾之王竞技场",
+          "repeat-area-xp": "待核实",
+          "current-status": "自 0.1.1c 起生效"
+        }
+      ]
+    },
+    {
+      "id": "atlas-recovery",
+      "order": 10,
+      "title": "用 /ResetAtlas 恢复 Atlas",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "/ResetAtlas 命令是用于“彻底损坏”的 Atlas 的恢复工具。所谓损坏的 Atlas，指的是一个已经无法通过正常玩法推进或完成的区域，让玩家陷入无路可走的境地。",
+        "关键点是：/ResetAtlas 不会清除你的进度。它不是普通的重置命令，也不是刷图工具；它只用于解除那些真正卡死、无法推进的地图，并保留你已在 Atlas 其他地方完成的工作。",
+        "请谨慎使用，只有在某个区域确实无法恢复时才动用。因为它是一种恢复手段而非日常工具，把它当成地图重投（reroll）来用是对其用途的误解。"
+      ],
+      "bullets": [
+        "/ResetAtlas 仅用于彻底损坏的 Atlas 区域。",
+        "它不会清除你的进度，也不是刷图工具。"
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 11,
+      "title": "在 0.5.4e 中是否仍然适用？",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "巅峰Boss 死亡后重试",
+          "status": "unknown",
+          "currentSummary": "0.1.1c 将重试扩展到了 Xesht、Olroth 与迷雾之王；这一确切行为是否在 0.5.4e 中保留，尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "xesht-we-that-are-one"
+        },
+        {
+          "topic": "/ResetAtlas 恢复命令",
+          "status": "unknown",
+          "currentSummary": "在 0.1.1c 中为损坏的 Atlas 区域加入；其在 0.5.4e 中的当前可用性尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "none"
+        },
+        {
+          "topic": "联盟机制与坚固箱的小地图图标",
+          "status": "unknown",
+          "currentSummary": "在 0.1.1c 中加入；其在 0.5.4e 中是否仍然存在尚待核实。",
+          "supersededBy": "none",
+          "affectedContent": "none"
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 12,
+      "title": "已知问题与排错",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "如果只有持有者能点击重试，那么当持有者在重生前离开或断线时，队伍可能会卡住。",
+          "status": "open"
+        },
+        {
+          "text": "玩家有时会误以为 /ResetAtlas 是普通的地图重置；它只是用于损坏 Atlas 的恢复工具，不会清除进度。",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "官方论坛 - 0.1.1c 反馈",
+          "context": "巅峰Boss 重试反馈",
+          "quote": "终于，Xesht 让我能重试，而不是一次死亡就结束整轮。",
+          "analysis": "与官方扩展重试的方向一致；视为社区情绪，而非机制规格。"
+        },
+        {
+          "source": "Reddit - PoE2 世界之石",
+          "context": "/ResetAtlas 讨论",
+          "quote": "大家总以为 /ResetAtlas 是重投地图，但它其实只是修复损坏的区域。",
+          "analysis": "印证了其“仅用于恢复”的用途；强化了它不是刷图工具这一点。"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为什么只有持有者能在死亡后点击重试？",
+          "answer": [
+            "重试绑定于进入道具的持有者：Xesht 对应裂界石、Olroth 对应日志、迷雾之王对应觐见。",
+            "持有者的动作会触发全队重试，因此只有持有者能发起它。"
+          ]
+        },
+        {
+          "question": "为什么 Xesht 重复进入不给经验？",
+          "answer": [
+            "重试后重复进入扭曲领域不会获得经验。",
+            "重试存在的意义是再给一次挑战Boss 的机会，而非从同一场遭遇中刷经验。"
+          ]
+        },
+        {
+          "question": "/ResetAtlas 会删掉我的 Atlas 吗？",
+          "answer": [
+            "不会。/ResetAtlas 是用于彻底损坏 Atlas 的恢复工具，且不会清除你的进度。",
+            "它不是普通的重置，也不是刷图工具；只有区域真的卡死时才使用它。"
+          ]
+        },
+        {
+          "question": "队友能替我触发重试吗？",
+          "answer": [
+            "不能。只有进入道具的持有者触发重试，全队搭顺风车。",
+            "如果持有者离开，即便其他成员仍在，整队的重生也会崩溃。"
+          ]
+        },
+        {
+          "question": "Xesht 会把我在哪里重生？",
+          "answer": [
+            "你的重生位置由你在扭曲领域内的死亡位置决定。",
+            "在一次失败的尝试之后，站位依然重要。"
+          ]
+        },
+        {
+          "question": "这些 0.1.1c 规则在 0.5.4e 中仍然有效吗？",
+          "answer": [
+            "由于尚未对照 0.5.4e 基线重新核实，我们将当前适用性标记为待核实。",
+            "请将本页视为 0.1.1c 的历史记录。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "来源与核实",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "流放之路2 0.1.1c 补丁说明",
+          "description": "Grinding Gear Games 官方论坛帖，涵盖巅峰Boss 重试、/ResetAtlas 与小地图图标。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3717308"
+        },
+        {
+          "label": "流放之路2 抢先体验论坛",
+          "description": "抢先体验公告与补丁帖的索引，便于交叉核对。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.1.1c"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "发布 0.1.1c 巅峰重试与 Atlas 恢复历史文章。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "xesht-we-that-are-one",
+    "olroth-origin-of-the-fall",
+    "king-in-the-mists-pinnacle",
+    "arbiter-of-ash"
+  ],
+  "relatedItemIds": [
+    "tablets",
+    "waystones-guide"
+  ],
+  "relatedGuideIds": [
+    "early-atlas-progression-waystone-sustain",
+    "how-to-stop-getting-one-shot"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "poenotes-011c",
+      "label": "流放之路2 0.1.1c 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3717308"
+    },
+    {
+      "id": "ea-index",
+      "label": "流放之路2 抢先体验论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.1.1c：Xesht、Olroth、迷雾之王的重试规则与 /ResetAtlas 恢复",
+    "description": "0.1.1c 将巅峰Boss 重试规则扩展到 Xesht、Olroth 与迷雾之王，并新增 /ResetAtlas 用于修复彻底损坏的 Atlas 区域。",
+    "noindex": false
+  }
+}

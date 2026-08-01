@@ -427,6 +427,22 @@ const patchMigrationGuideSectionSchema = z.strictObject({
     .min(1),
 });
 
+/** 通用数据表格：承载版本对照、规则表、物品清单等结构化数据，列与行均由数据驱动。 */
+const patchDataTableSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("data-table"),
+  caption: requiredText.optional(),
+  columns: z
+    .array(
+      z.strictObject({
+        key: requiredText,
+        label: requiredText,
+      }),
+    )
+    .min(1),
+  rows: z.array(z.record(z.string(), z.string())).min(1),
+});
+
 export const patchSectionSchema = z.discriminatedUnion("type", [
   patchNarrativeSectionSchema,
   patchStepsSectionSchema,
@@ -454,6 +470,7 @@ export const patchSectionSchema = z.discriminatedUnion("type", [
   patchVersionDependencyMapSectionSchema,
   patchSystemOriginSectionSchema,
   patchMigrationGuideSectionSchema,
+  patchDataTableSectionSchema,
 ]);
 
 // --- PatchArticle 顶层结构 ---
