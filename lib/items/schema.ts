@@ -34,6 +34,7 @@ export const itemCategorySlugs = [
   "waystones",
   "charms",
   "uncut-gems",
+  "endgame-access",
 ] as const;
 export const itemRarities = ["normal", "magic", "rare", "unique"] as const;
 export const itemReservedSlugs = ["categories", ...itemCategorySlugs] as const;

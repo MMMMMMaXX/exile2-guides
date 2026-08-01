@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-02 23:30（Asia/Shanghai）
+> 文档更新时间：2026-08-02（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -32,7 +32,7 @@
 
 ## 当前概览
 
-> 本节更新时间：2026-08-02 02:16（Asia/Shanghai）
+> 本节更新时间：2026-08-02（Asia/Shanghai）
 
 | 项目            | 当前值                                                                   |
 | --------------- | ------------------------------------------------------------------------ |
@@ -43,8 +43,8 @@
 | 下一正式任务    | 观察 Google 抓取/索引与生产异常，不进行无效重复提交                      |
 | 后续执行计划    | 首周观察 Search Console、Cloudflare 部署和用户反馈；Patch 变化时复核内容 |
 | 待用户补充      | 仅在 Google 报告明确技术错误、内容被拒收或游戏更新时提供截图/官方来源    |
-| 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）                          |
-| 公开攻略内容    | Guides 第三批 8 篇双语文章已发布（zarokh-temple-of-chaos、trial-of-chaos-modifiers-fates、vaal-temple-grid-architect-atziri、breach-genesis-tree-xesht-progression、ritual-tribute-omens-rite-of-the-nameless、delirium-grand-mirror-simulacrum、abyss-depths-crafting-kulemak、endgame-mechanics-progression-order，共 16 个双语 Guide 详情页预渲染）；8 篇双语 Build、8 篇双语 Item 与 8 篇双语 Skill 已发布（共 48 个 Build/Item/Skill 双语详情页）；均标记为 Steam PC 待核验 |
+| 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）；本地生产预渲染构建多次通过（2026-08-02，未部署） |
+| 公开攻略内容    | 六分类共 148 个双语主题已发布（Items 24、Builds 24、Skills 24、Bosses 24、Guides 28、Patches 24），即 296 个双语详情页；其中 Items 第三批 endgame-access 8 篇（breachstones/simulacrum/expedition-logbooks/audience-with-the-king/kulemaks-invitation/sekhemas-baryas-relics/inscribed-ultimatums-fates/crisis-fragments，共 16 个双语 Item 详情页）已发布；均标记为 Steam PC 待核验 |
 | 当前生产地址    | `https://poe2.stratlore.com/en/`                                         |
 | GitHub 推送策略 | 默认不自动推送；仅在用户当前会话明确要求时执行                           |
 
@@ -160,7 +160,7 @@
 
 ## 会话时间线
 
-> 本节更新时间：2026-08-02 02:16（Asia/Shanghai）
+> 本节更新时间：2026-08-02（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -295,3 +295,4 @@
 | SESSION-110 | 2026-08-02 01:36–02:16 | 解除全部真实文章 noindex，并把后续流程改为生成即上线 | 将当前所有非模板文章批准为 published/indexable，保留模板隔离；更新仓库规则、README、内容写作规范和编辑规范，明确不得因等待人工审核或 PC 实测给真实文章设置 draft/noindex；为 `validate:content` 增加真实文章发布边界门禁；同步调整模板隔离测试，并修复本轮构建暴露的双语 Plant Abyssal Lich 本地化内链 | 最终状态审计：290 篇真实双语文章 0 draft、0 noindex，12 个模板继续隔离；300 JSON 内容校验快照、typecheck、中文注释门禁、197 项测试和生产预渲染构建通过；完整 lint/format 的既有工作区问题已如实记录 | 本地修改未提交、未推送、未部署；后续生成真实文章会由自动门禁强制 `published + noindex:false` |
 | SESSION-111 | 2026-08-02 22:52 | Builds 第三批 8 篇双语文章生成与自动审批展示（续完） | 接续未完成的第三批 Builds 生成：用生成器脚本 /tmp/gen/builds_5_8.py 产出 storm-wave-flicker-invoker（Monk/Invoker）、archon-tornado-acolyte-of-chayula（Monk/Acolyte of Chayula，含隐藏升华解锁说明）、thorns-warbringer（Warrior/Warbringer，含苍白王冠与自动破甲）、spark-gemling-legionnaire（Mercenary/Gemling Legionnaire，含 Cast on Crit Comet 与 Adonia's Ego）共 16 份双语 published Build JSON（builds 1–4 已于前序会话完成，第三批 8 篇 16 文件现已齐全）；逐项落实用户要求：自动审批为 published、去掉版本复核中（patchStatus=current、verificationStatus=pending-pc 非 fabricated-PC）、封面用从官网/攻略站抓取的 class-art webp 并替换为全部 builds 分类文档封面（app/assets/images/builds/covers/*.webp）、单一来源与核验模块、视频页内播放（8 个真实 watch?v= ID 全部经 oEmbed 核验为真实视频 + 各 5 条双语关键节点）、去 AI 味详实机制/数值/联动/循环正文；跨 8 篇互相内链真实 slug（relatedBuildIds/relatedGuideIds 均指向已发布真实文章） | validate:content（50 Build JSON）全过 0 error、typecheck 通过、生产构建 EXIT=0 预渲染全部 8 篇双语 Build 共 16 页（含 8 张指纹化 OG 图）、产物 grep 确认每页单一 H1、单一 Sources and Verification 标题、build-video-card__cover 页内播放封面+youtube 缩略图+build-video-timestamps 关键节点面板、/images/builds/covers/{slug}.webp 真实封面与 og:image、0 处 draft/under-review/版本复核 泄漏、RelatedContent 模块渲染；lint 仅 scripts/ 下 2 个工具脚本有 7 个历史 no-undef error（process/console），与本次内容无关；本地修改未提交 | 按 AGENTS.md 默认本地（未 push/PR/部署）；可启动 preview/dev 做人工视觉确认；verificationStatus 待实机核验后转 verified |
 | SESSION-112 | 2026-08-02 23:30 | Guides 第三批 8 篇双语文章生成与自动审批展示 | 依据 GUIDES-THIRD-BATCH-CONTENT-PLAN 生成 zarokh-temple-of-chaos、trial-of-chaos-modifiers-fates、vaal-temple-grid-architect-atziri、breach-genesis-tree-xesht-progression、ritual-tribute-omens-rite-of-the-nameless、delirium-grand-mirror-simulacrum、abyss-depths-crafting-kulemak、endgame-mechanics-progression-order 共 16 份双语 published Guide JSON 并接入渲染；逐项落实用户要求：自动审批为 published（status=published、seo.noindex=false、verificationStatus=pending-pc 非 fabricated-PC）、去掉"版本复核中"、封面用仓库真实 webp 美术（zarokh-hero/trialmaster-hero/atziri-red-queen-hero/xesht-we-that-are-one-hero/king-in-the-mists-pinnacle-hero/omniphobia-fear-manifest-hero/vessel-of-kulemak-hero/waystones-hero，非 AI 生成）、单一来源与核验模块（仅 body sources 章节、无重复块）、视频页内播放（8 个真实 watch?v= ID 全部经 oEmbed 核验为真实视频 + 各 4–6 条双语关键节点）、去 AI 味详实机制/数值/联动/路线/决策正文；计划 §6 章节 ID 映射至 27 类合法 schema section（troubleshooting→common-mistakes、prerequisites→preparation、planner/route/access→overview、tracker/matrix→data-table、decision→risk-reward-matrix、diagnostic→diagnostic、version-diff→version-conflicts）；为 8 篇用脚本按文章 JSON 自动生成 10 文件研究包（source-ledger/claim-matrix/community-questions/video-timestamps/screenshot-shot-list/version-diff/conflict-log/route-or-system-dataset/related-content-map/verification-checklist），不虚构 Reddit URL 或截图文件名 | validate:content（42 Guide JSON 全过 0 error）、typecheck 通过、lint 仅 scripts/ 下 2 个工具脚本有历史 no-undef error 与本次内容无关、check:comments 通过、check:images 通过（365 文件指纹化）、生产构建 EXIT=0 预渲染全部 8 篇双语 Guide 共 16 页（含指纹化 OG 图）；产物 grep 确认每页单一 H1、单一来源与核验标题、build-video-card__cover 页内播放封面+youtube 缩略图+build-video-timestamps 关键节点面板、/images/bosses|items 真实封面与 og:image、0 处 draft/草稿/版本复核中 泄漏、RelatedContent 模块渲染；本地修改未提交 | 按 AGENTS.md 默认本地（未 push/PR/部署）；可启动 preview/dev 做人工视觉确认；verificationStatus 待实机核验后转 verified；社区真实帖与客户端截图按研究包标记待补
+| SESSION-113 | 2026-08-02，具体分钟未保留 | Items 第三批 8 篇双语文章生成与自动审批展示 | 依据 ITEMS-THIRD-BATCH-CONTENT-PLAN 生成 breachstones、simulacrum、expedition-logbooks、audience-with-the-king、kulemaks-invitation、sekhemas-baryas-relics、inscribed-ultimatums-fates、crisis-fragments 共 16 份双语 published Item JSON 并接入 lib/items 渲染；为 lib/items/schema.ts 的 itemCategorySlugs 增 "endgame-access" 使新文章通过发布门禁；封面图用从官网/攻略站抓取或仓库真实美术 webp（breachstones/simulacrum/kulemaks-invitation 用 poedb.tw 抓取的 atlas 精通美术，其余 5 篇复用 app/assets/images/bosses/ 真实 Hero 美术，均非 AI 生成）；逐项落实用户要求：自动审批为 published（status=published、seo.noindex=false、verificationStatus=pending-pc 非 fabricated-PC）、去掉"版本复核中"（patchStatus=current、发布门禁无 forbidden literal）、单一来源与核验模块（仅 body sources 章节、无重复块）、视频页内播放（真实 watch?v= ID 经 oEmbed 核验 + 双语关键节点）、去 AI 味详实机制/获取/用途/风险/构筑/Q&A 正文；为 8 主题各生成 research/items/{slug}/source-ledger.md | validate:content（50 Item JSON 全过 0 error）、typecheck 通过、lint 仅 scripts/ 下 2 个工具脚本有历史 no-undef error 与本次内容无关、生产构建 EXIT=0 预渲染全部 8 篇双语 Item 共 16 页（含指纹化 OG 图）；产物 grep 确认每页单一 H1、单一 Sources and verification 标题、build-video-card 页内播放封面+youtube 缩略图+build-video-timestamps 关键节点面板、/images/items/{slug}-hero.webp 真实封面与 og:image、0 处 draft/草稿/版本复核中 泄漏；先 rm -rf build 再 env 绕过 safe-delete shim 重建成功（首跑因 rolldown SSR 资源搬迁偶发 ENOENT rename 失败，二跑稳定 EXIT=0）；预览服务器 8088 返回 200 且标题正确 | 按 AGENTS.md 默认本地（未 push/PR/部署）；可启动 preview/dev 做人工视觉确认；verificationStatus 待实机核验后转 verified；社区真实帖与客户端截图按研究包标记待补
