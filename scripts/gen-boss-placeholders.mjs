@@ -1,9 +1,10 @@
+/* eslint-env node */
 /** 文件职责：为第二批 8 个 Boss 生成本地占位 webp 图（hero/arena/phase/attack/annotated）。
  * 这些不是 AI 生成的艺术图，而是带明确“官方原画待补”标识的编辑占位图，
  * 以满足 schema 的 /images/...webp 本地指纹契约与 check:images 门禁。
  * 上线前请将 app/assets/images/bosses/<slug>-hero.webp 等替换为官网/攻略站原画。 */
 import sharp from "sharp";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
 const OUT_DIR = path.resolve(process.cwd(), "app/assets/images/bosses");

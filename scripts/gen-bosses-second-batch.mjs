@@ -1,3 +1,4 @@
+/* eslint-env node */
 /** 文件职责：生成 Bosses 第二批 8 篇 Draft（EN + ZH 各一篇，共 16 个 JSON）。
  * 严格遵循 lib/bosses/schema.ts 的判别联合章节类型；把方案里的新页面模型
  * （encounter-loop / reward-decision / modifier-builder / wave-context / failure-cost /
@@ -810,7 +811,7 @@ SPECS.push({
         { label: "混沌抗拉满", checks: ["确认混沌抗达 75% 上限。"], why: "王的最终阶段与许多能力造成混沌；未满混沌抗会迅速死亡。", fix: "混沌词缀装备、混沌抗 roll 或混沌符。" },
         { label: "移速", checks: ["鞋子带移速。"], why: "预兆雾气与迷宫需要持续走位。", fix: "移速后缀或位移技能。" },
         { label: "衰减缓解", checks: ["检查衰减（chaos DoT 增幅）来源。"], why: "衰减叠层放大所受混沌伤害；快速清除。", fix: "解除衰减的药剂/被动；击杀幽灵来源。" },
-        { label: "远程/近战站位", checks: ["规划绕平台的风筝路线。"], why: "场地基于平台；近战须切入，远程须保持视线。", fix: "在练习跑中预勘平台安全点。"],
+        { label: "远程/近战站位", checks: ["规划绕平台的风筝路线。"], why: "场地基于平台；近战须切入，远程须保持视线。", fix: "在练习跑中预勘平台安全点。" },
       ],
       links: [
         { label: "混沌抗配装", href: "/zh-cn/items" },
@@ -944,6 +945,22 @@ SPECS.push({
       paras: ["Failure costs the Kulemak's Invitation you used — you must obtain another from a Commander to retry. The encounter itself does not pause; dying mid-loop ends the attempt and you keep the ring as crafted so far (you do not lose prior mods).", "Because the Invitation is the only gate, farm Commanders efficiently before committing to a Full Strength push."],
       bullets: ["Death = lose the Invitation (need another Commander drop).", "Prior ring mods are kept; you don't restart the ring from scratch.", "No in-fight pause — plan flask/charm use beforehand."],
     },
+    preparation: {
+      items: [
+        { label: "Burst & mobility over sustain", checks: ["Confirm your build bursts, not sustains."], why: "Recovery-forbidden zones suppress life/flask recovery; sustain builds stall.", fix: "Favour burst windows and movement; drop heavy regen." },
+        { label: "Chaos Resistance", checks: ["Verify chaos res is capped."], why: "Demon Beam and recovery-forbidden zones deal Chaos.", fix: "Chaos-crafted gear or a Chaos Charm." },
+        { label: "Pre-planned flasks / charms", checks: ["Load flasks before the Well of Souls."], why: "The encounter does not pause; you cannot rebuff mid-loop.", fix: "Enter with full flasks and a removal charm." },
+        { label: "Per-loop DPS check", checks: ["Know your effective DPS vs each escalation."], why: "Each revival adds HP and speed; a slow build gets boxed in.", fix: "Stop at Full Strength rather than over-commit." },
+      ],
+      links: [
+        { label: "Chaos resistance gearing", href: "/en/items" },
+        { label: "Abyss atlas guide", href: "/en/builds" },
+      ],
+    },
+    arena: {
+      paras: ["The Black Cathedral is a contained, dimly-lit arena. The fight has no sprawling adds phase — pressure comes from ground hazards: recovery-forbidden zones, Demon Beam safe sectors, and Teleport Slam shadows.", "Because it is dark, telegraphs can wash out; raise your effect opacity and rely on the Teleport Slam shadow outline and the beam's safe sector (opposite the origin)."],
+      bullets: ["Contained arena — no retreat; plan burst windows.", "Recovery-forbidden zones suppress healing; fight outside them.", "Beam safe sector is opposite the beam origin; Teleport Slam shadow is your dodge tell."],
+    },
     encounterLoop: {
       paras: ["The fight is a loop, not a single kill. Step 1: drop the Vessel and fight him. Step 2: on kill, a choice UI appears. Step 3: pick a petrified Lich (Amanamu, Ulaman, or Kurgal) to stamp a Desecrated modifier onto a new Grip of Kulemak ring and strengthen the next Kulemak. Step 4: he revives with more HP / faster attacks / extra wave. Repeat up to three Lich choices (Full Strength).", "Each loop trades survivability for ring power. Stop when the next Kulemak's pressure exceeds your build's comfort — there is no bonus for over-committing."],
       bullets: ["Loop = kill → choose Lich → ring gains mod → Kulemak revives stronger.", "Max three Lich choices; after that you are at Full Strength.", "You can stop any time after a kill and keep the crafted ring."],
@@ -1056,6 +1073,22 @@ SPECS.push({
     failureCost: {
       paras: ["失败消耗你使用的 Kulemak 邀请——需从指挥官再获得一个才能重试。战斗本身不暂停；循环中死亡结束尝试，你保留目前已打造的戒指（不丢失先前词缀）。", "由于邀请是唯一门槛，在全力推进前高效farm 指挥官。" ],
       bullets: ["死亡 = 失去邀请（需另一次指挥官掉落）。", "先前戒指词缀保留；不从零重来。", "无战斗中暂停——事先规划药剂/符。" ],
+    },
+    preparation: {
+      items: [
+        { label: "爆发与机动优于续航", checks: ["确认构筑是爆发而非续航。"], why: "恢复禁止区抑制生命/药剂恢复；续航构筑会卡住。", fix: "偏好爆发窗口与机动；放弃重回血。" },
+        { label: "混沌抗性", checks: ["确认混沌抗拉满。"], why: "恶魔光束与恢复禁止区造成混沌。", fix: "混沌词缀装备或混沌符。" },
+        { label: "预规划药剂/符", checks: ["进入灵魂之井前装好药剂。"], why: "战斗不暂停；循环中无法重新 buff。", fix: "满药剂与清除符进入。" },
+        { label: "每循环 DPS 门槛", checks: ["清楚有效 DPS 对每次递进。"], why: "每次复活加血与速度；慢构筑被逼角。", fix: "达全力即停，不超投。" },
+      ],
+      links: [
+        { label: "混沌抗配装", href: "/zh-cn/items" },
+        { label: "深渊 Atlas 指南", href: "/zh-cn/builds" },
+      ],
+    },
+    arena: {
+      paras: ["黑教堂是封闭、昏暗的场地。战斗没有铺开的召唤阶段——压力来自地面危险：恢复禁止区、恶魔光束安全扇区与传送 Slam 影子。", "由于昏暗，前摇可能被淹没；调高效果不透明度，依赖传送 Slam 影子轮廓与光束安全扇区（源头对侧）。"],
+      bullets: ["封闭场地——无后退；规划爆发窗口。", "恢复禁止区抑制治疗；在区外战斗。", "光束安全扇区在源头对侧；传送 Slam 影子是闪避提示。"],
     },
     encounterLoop: {
       paras: ["这场战斗是循环而非单次击杀。步骤1：放下器皿战斗。步骤2：击杀后出现选择 UI。步骤3：选一个石化巫妖（Amanamu、Ulaman 或 Kurgal）把亵渎词缀盖印到全新的 Kulemak 之握戒指并强化下一个 Kulemak。步骤4：他以更多血量/更快攻击/额外波次复活。重复最多三次巫妖选择（全力）。", "每个循环用生存换取戒指力量。当下一个 Kulemak 的压力超出你构筑的舒适度时停止——过度投入无奖励。" ],
@@ -2050,9 +2083,9 @@ SPECS.push({
     preparation: {
       items: [
         { label: "持续单体 DPS", checks: ["确认能跑赢熔岩计时。"], why: "战斗由推进熔岩 DPS 门槛；低 DPS = 被困。", fix: "单体配置；临时伤害辅助替换。" },
-        { label: "火焰抗性", checks: ["堆火抗。"], why: "熔岩攻击造火；熔岩本身是火危险。"], fix: "火抗词缀装备或 Ruby 药剂。" },
-        { label: "位移/重新走位工具", checks: ["有方式重新走位 Mektul 或自己。"], why: "你必须把他拉出熔流。"], fix: "位移技能或击退。" },
-        { label: "不依赖暂停", checks: ["战前规划消耗品。"], why: "熔岩计时不可暂停。"], fix: "预buff；不依赖菜单暂停。" },
+        { label: "火焰抗性", checks: ["堆火抗。"], why: "熔岩攻击造火；熔岩本身是火危险。", fix: "火抗词缀装备或 Ruby 药剂。" },
+        { label: "位移/重新走位工具", checks: ["有方式重新走位 Mektul 或自己。"], why: "你必须把他拉出熔流。", fix: "位移技能或击退。" },
+        { label: "不依赖暂停", checks: ["战前规划消耗品。"], why: "熔岩计时不可暂停。", fix: "预buff；不依赖菜单暂停。" },
       ],
       links: [
         { label: "火抗配装", href: "/zh-cn/items" },
@@ -2135,12 +2168,9 @@ const sourceLabels = {
 };
 
 function buildArticle(spec, locale) {
-  const t = spec[locale];
+  const lang = locale === "zh-cn" ? "zh" : "en";
+  const t = spec[lang];
   const isZh = locale === "zh-cn";
-  const srcIds = ["src-patch-notes", "src-wiki", "src-mobalytics", "src-maxroll"];
-  // some bosses reference extra source ids
-  const extraSrcIds = ["src-ign", "src-poe-vault", "src-gamerguides", "src-deltias"];
-  const allSrcIds = [...new Set([...srcIds, ...extraSrcIds])];
 
   const heroImg = `/images/bosses/${spec.slug}-hero.webp`;
   const vids = videoEntries(spec.slug, locale,
@@ -2264,10 +2294,10 @@ function buildArticle(spec, locale) {
     id: "sources-section", type: "sources-section", title: isZh ? "来源与核验" : "Sources and Verification",
     toc: true, visible: true,
     categories: [
-      { label: isZh ? "官方来源" : "Official", description: sourceLabels.patch[locale] + " — " + spec.urls.patch },
-      { label: isZh ? "数据库" : "Database", description: sourceLabels.wiki[locale] + " — " + spec.urls.wiki },
-      { label: isZh ? "社区攻略" : "Community", description: sourceLabels.mobalytics[locale] + " — " + spec.urls.mobalytics },
-      { label: isZh ? "社区攻略" : "Community", description: sourceLabels.maxroll[locale] + " — " + spec.urls.maxroll },
+      { label: isZh ? "官方来源" : "Official", description: sourceLabels.patch[lang] + " — " + spec.urls.patch },
+      { label: isZh ? "数据库" : "Database", description: sourceLabels.wiki[lang] + " — " + spec.urls.wiki },
+      { label: isZh ? "社区攻略" : "Community", description: sourceLabels.mobalytics[lang] + " — " + spec.urls.mobalytics },
+      { label: isZh ? "社区攻略" : "Community", description: sourceLabels.maxroll[lang] + " — " + spec.urls.maxroll },
     ],
     verificationChecklist: t.checklist,
   });
