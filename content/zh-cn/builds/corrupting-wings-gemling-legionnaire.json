@@ -1,0 +1,811 @@
+{
+  "id": "corrupting-wings-gemling-legionnaire",
+  "slug": "corrupting-wings-gemling-legionnaire",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Corrupting Wings Gemling 构建指南：Corrupting Cry、品质堆叠与开图",
+  "shortTitle": "Corrupting Wings Gemling",
+  "summary": "0.5.4 Warcry 体系：Corrupting Cry 在 0.5 变为触发技能，经 Warcry 等级/品质/支持放大。覆盖生命管理、冷却断点、Cast on Dodge 与高投入 Block 版本边界。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Corrupting Wings Gemling Legionnaire 指南：Corrupting Cry 触发机制、品质堆叠、Warcry 时间轴、生命管理与真实视频时间点。",
+  "classId": "mercenary",
+  "ascendancyId": "gemling-legionnaire",
+  "mainSkillIds": [
+    "fortifying-cry",
+    "corrupting-cry"
+  ],
+  "secondarySkillIds": [
+    "decree-of-flight",
+    "cast-on-dodge"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking",
+    "cooldown",
+    "mobility"
+  ],
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "screenwide"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "cardImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "imageAlt": "佣兵 Gemling Legionnaire 施放 Warcry 触发 Corrupted Blood 横扫战场的实战画面",
+  "tags": [
+    "build",
+    "mercenary",
+    "gemling-legionnaire",
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "构建概览",
+      "paragraphs": [
+        "Corrupting Wings Gemling 是佣兵的 Warcry 体系：施放 Warcry 触发 Corrupting Cry，对范围内敌人叠加 Corrupted Blood（持续混沌/物理伤害）。Gemling Legionnaire 升华让品质（Quality）直接转化为属性与伤害，因此「品质堆叠」是该体系的核心放大手段。",
+        "0.5 中 Corrupting Cry 变为触发技能——它不再是你手动按的主技能，而是由 Warcry 触发。因此伤害来自 Warcry 等级、支持宝石、品质与 Gemling 的属性转化，而不是单次施法。",
+        "本指南把 Warcry 时间轴、生命管理、冷却断点与高投入 Block 版本讲清楚，并标注所有客户端数值待 PC 核验。0.5 初期 Bug 与后续修复分开记录。"
+      ],
+      "bullets": [
+        "Warcry 触发 Corrupting Cry → Corrupted Blood 叠层。",
+        "Gemling 品质堆叠转化属性与伤害。",
+        "0.5 后 Corrupting Cry 是触发技能，非手动主技能。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "优点与缺点",
+      "pros": [
+        "Warcry 触发清图接近一键，横扫体验好。",
+        "品质堆叠在 Gemling 下收益极高。",
+        "高投入 Block（如 Svalinn）提供强容错。",
+        "移动手段（Cast on Dodge / Decree of Flight）灵活。"
+      ],
+      "cons": [
+        "早期生命与法力管理紧张。",
+        "冷却与滚动节奏需要练习。",
+        "高投入版本依赖特定 Unique，门槛高。",
+        "0.5 初期 Bug 曾影响手感，需确认已修复。"
+      ]
+    },
+    {
+      "id": "warcry-cycle",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "循环怎么看：Warcry → 触发",
+      "paragraphs": [
+        "施放 Fortifying Cry 给自己_guard/回声增益并触发 Corrupting Cry 叠层；Corrupted Blood 在敌群中持续跳数。",
+        "Decree of Flight 与 Cast on Dodge 提供位移：前者主动起飞，后者在闪避时触发效果，减少站桩。",
+        "高投入版本把 Wings / 双 Cast on Dodge 用于更长位移；普通版本靠翻滚即可。两者循环结构相同，差别在容错与移动距离。"
+      ],
+      "bullets": [
+        "Fortifying Cry → 触发 Corrupting Cry 叠层。",
+        "Decree of Flight / Cast on Dodge 提供位移。",
+        "高投入 = 更长位移与更强容错。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "升级流程",
+      "steps": [
+        {
+          "label": "1–14 级",
+          "levelRange": "1–14",
+          "body": [
+            "用基础射击/手雷开图；Warcry 在解锁后作为补伤与防御手段。"
+          ]
+        },
+        {
+          "label": "15–29 级",
+          "levelRange": "15–29",
+          "body": [
+            "点出 Fortifying Cry，开始用 Warcry 触发补伤；补生命/抗性节点。"
+          ]
+        },
+        {
+          "label": "30–42 级 — Gemling 解锁",
+          "levelRange": "30–42",
+          "body": [
+            "选择 Gemling Legionnaire，品质开始转化属性；Corrupting Cry 触发链成型。"
+          ]
+        },
+        {
+          "label": "43–60 级 — 早期地图",
+          "levelRange": "43–60",
+          "body": [
+            "以低预算运行 Warcry 循环；解决生命/抗性，管理法力与冷却。"
+          ]
+        },
+        {
+          "label": "60+ 级 — 终局准备",
+          "levelRange": "60+",
+          "body": [
+            "拉 Warcry 等级/品质、冷却与 Block；清单通过后追高配 Unique。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "技能组合",
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "displayName": "Fortifying Cry",
+              "skillId": "fortifying-cry",
+              "role": "主 Warcry，提供_guard/回声并触发 Corrupting Cry。",
+              "supportSkillIds": [
+                "echoing-cry",
+                "lifetap"
+              ],
+              "whyUse": [
+                "它是循环起点；没有它就没有触发与防御增益。"
+              ],
+              "whenReplace": [
+                "不被替换；是体系核心。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，Boss 更依赖_guard。"
+              ],
+              "notes": [
+                "每隔几秒使用，节奏由冷却决定。"
+              ]
+            },
+            {
+              "displayName": "Corrupting Cry",
+              "skillId": "corrupting-cry",
+              "role": "由 Warcry 触发的叠层技能，主伤害来源。",
+              "supportSkillIds": [
+                "corrupted-blood",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "它是 0.5 后的触发技能，伤害来自等级/品质/支持。"
+              ],
+              "whenReplace": [
+                "不被替换，但要求 Warcry 触发到位。"
+              ],
+              "mappingBossingDiff": [
+                "开图横扫；Boss 集中叠层。"
+              ],
+              "notes": [
+                "0.5 后变为触发，非手动主技能。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "位移与补强",
+          "skills": [
+            {
+              "displayName": "Decree of Flight",
+              "skillId": "decree-of-flight",
+              "role": "主动起飞位移，规避地面效果。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "提供关键机动，减少站桩暴毙。"
+              ],
+              "whenReplace": [
+                "保留为位移手段。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Dodge",
+              "skillId": "cast-on-dodge",
+              "role": "闪避时触发效果，补充位移/伤害。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "高投入版本靠双 Cast on Dodge 拉位移；普通版可选。"
+              ],
+              "whenReplace": [
+                "高投入必上，普通版可选。"
+              ],
+              "mappingBossingDiff": [
+                "高投入版本更依赖。"
+              ],
+              "notes": [
+                "缺少它仍能正常玩，只是机动略低。"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "升华顺序",
+      "steps": [
+        {
+          "label": "Gemling Legionnaire — 初始节点",
+          "body": [
+            "优先点出品质转化属性的节点；这是品质堆叠生效的前提。"
+          ]
+        },
+        {
+          "label": "防御检查",
+          "body": [
+            "若 T15+ 生存不稳，用 Block/生命节点补防御，不要全换伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "天赋树",
+      "steps": [
+        {
+          "label": "剧情",
+          "body": [
+            "点生命、抗性、Warcry 增益与品质相关节点；不要提前连向 Block 轮。"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "body": [
+            "转入触发链变体；生命、冷却与品质优先。"
+          ]
+        },
+        {
+          "label": "终局",
+          "body": [
+            "防御与冷却解决后，再投资品质/伤害轮；同层级对比装备。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装备",
+      "slots": [
+        {
+          "slot": "主手 / 武器组",
+          "recommendations": [
+            "选择支撑 Warcry / 触发链的基底；武器组切换可在清图与 Boss 间换配置。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Warcry 等级 / 技能品质",
+              "reason": "直接放大触发与品质堆叠。"
+            },
+            {
+              "tier": "recommended",
+              "label": "生命与抗性",
+              "reason": "早期生存底线。"
+            },
+            {
+              "tier": "optional",
+              "label": "冷却缩减",
+              "reason": "加快 Warcry 节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "Block 相关词缀",
+              "reason": "高投入版本门槛。"
+            }
+          ],
+          "notes": [
+            "武器组被动点可在两套配置间切换（参考武器组被动点指南）。"
+          ]
+        },
+        {
+          "slot": "胸甲 / 靴子 / 头盔",
+          "recommendations": [
+            "生命、抗性与格挡；靴子移动速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两项未达上限的抗性",
+              "reason": "再高伤害也补不了暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "格挡率（Block）",
+              "reason": "高投入版本防御边界。"
+            },
+            {
+              "tier": "optional",
+              "label": "移动速度",
+              "reason": "改善走位与翻滚。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确品质/伤害词缀",
+              "reason": "防御解决后。"
+            }
+          ],
+          "notes": [
+            "Svalinn 是高投入 Block 的核心，但非门槛。"
+          ]
+        },
+        {
+          "slot": "戒指 / 护符 / 腰带",
+          "recommendations": [
+            "属性、抗性、生命与格挡；需要处提供法力续航。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备武器与宝石所需的属性",
+              "reason": "无法装备等于无用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与生命",
+              "reason": "补全防御外壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "格挡/法力",
+              "reason": "来自首饰的免费防御。"
+            },
+            {
+              "tier": "luxury",
+              "label": "技能品质",
+              "reason": "后期增伤。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "属性优先级",
+      "priorities": [
+        {
+          "label": "Warcry 等级与技能品质",
+          "reason": "品质堆叠的核心，首要进度检查。"
+        },
+        {
+          "label": "生命与抗性",
+          "reason": "早期生存底线。"
+        },
+        {
+          "label": "冷却缩减",
+          "reason": "加快 Warcry 触发节奏。"
+        },
+        {
+          "label": "格挡（Block）",
+          "reason": "高投入版本防御边界。"
+        },
+        {
+          "label": "法力续航",
+          "reason": "持续触发与位移的底线。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "升级优先级",
+      "steps": [
+        {
+          "label": "清图变慢",
+          "symptom": "怪群需要多轮 Warcry。",
+          "checks": [
+            "Warcry 等级/品质是否到位？",
+            "抗性与生命是否先解决？"
+          ],
+          "upgrade": "升级 Warcry 等级与品质，而非堆纯伤害。"
+        },
+        {
+          "label": "频繁死亡",
+          "symptom": "地图或 Boss 暴毙。",
+          "checks": [
+            "Block/生命是否断层？",
+            "地图词缀是否高压？"
+          ],
+          "upgrade": "先补防御，不继续堆伤害。"
+        },
+        {
+          "label": "法力/冷却断档",
+          "symptom": "Warcry 放不出或节奏断。",
+          "checks": [
+            "法力是否支撑连续施放？",
+            "冷却缩减是否足够？"
+          ],
+          "upgrade": "补法力续航与冷却缩减。"
+        },
+        {
+          "label": "考虑 Svalinn/双 Cast on Dodge",
+          "symptom": "想要更高容错与位移。",
+          "checks": [
+            "普通版是否已达标？",
+            "高投入 Unique 是否会破坏抗性？"
+          ],
+          "upgrade": "清单通过后分件购买、复测。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "开图",
+      "paragraphs": [
+        "对敌群施放 Fortifying Cry 触发 Corrupting Cry，Corrupted Blood 在怪间跳数清图；用 Decree of Flight / 翻滚走位。",
+        "普通怪群不需要精细叠层；只有稀有/Boss 才需要集中触发。清图变慢时优先升级 Warcry 等级与品质。"
+      ],
+      "bullets": [
+        "Fortifying Cry 触发横扫。",
+        "杂兵跳过精细叠层。",
+        "清图变慢先升级 Warcry 等级/品质。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Boss 战",
+      "paragraphs": [
+        "在 Boss 前预读走位，施放 Fortifying Cry 触发 Corrupting Cry，让 Corrupted Blood 在 Boss 身上集中叠层；用 Decree of Flight 规避地面效果。",
+        "若伤害断档，问题在 Warcry 等级/品质/支持，不是主手；高投入版本用 Svalinn/双 Cast on Dodge 拉容错与位移。"
+      ],
+      "bullets": [
+        "Fortifying Cry → Corrupting Cry 集中叠层。",
+        "Decree of Flight 规避。",
+        "断档 = 修 Warcry，不是换武器。"
+      ]
+    },
+    {
+      "id": "life-management",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "生命管理",
+      "paragraphs": [
+        "早期生命紧张是这套的真实瓶颈：Warcry 自身不回血，持续触发与位移都吃法力。优先保证生命上限与抗性，再考虑伤害。",
+        "高投入 Block 版本通过格挡把单次伤害摊薄，缓解生命压力；但格挡需要装备支撑，不是开局就有。具体数值待 PC 核验。"
+      ],
+      "bullets": [
+        "生命与抗性优先于伤害。",
+        "Block 摊薄伤害但需装备。",
+        "法力续航撑起持续触发。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "社区证据",
+      "note": "本指南以可复现清单使用社区讨论，而非对其展示 DPS 的承诺。",
+      "entries": [
+        {
+          "context": "玩家问 0.5 Gemling 如何缩放。",
+          "label": "pathofky Gemling Legionnaire 0.5 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "指南区分机制、宝石、武器组切换与被动树，强调品质与属性转化。",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "context": "玩家争论 0.5 初期 Bug 是否影响手感。",
+          "label": "P4wnyhof Gemling Legionnaire 开图到终局",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "实况展示 Act 1 到终局的连贯过渡，强调升华节点带来的质变。",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "故障排查",
+      "problems": [
+        {
+          "symptom": "Boss 伤害断档",
+          "checks": [
+            "Warcry 等级/品质是否到位？",
+            "支持宝石是否匹配？"
+          ]
+        },
+        {
+          "symptom": "频繁死亡",
+          "checks": [
+            "Block/生命是否断层？",
+            "地图词缀是否高压？"
+          ]
+        },
+        {
+          "symptom": "Warcry 放不出",
+          "checks": [
+            "法力是否支撑？",
+            "冷却是否过长？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Corrupting Cry 现在还是手动主技能吗？",
+          "answer": [
+            "0.5 后它是触发技能，由 Warcry 触发；伤害来自等级/品质/支持，不是单次施法。"
+          ],
+          "bullets": [
+            "靠 Fortifying Cry 触发。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "没有 Svalinn 能玩吗？",
+          "answer": [
+            "可以；Svalinn 是高投入 Block 版本的核心，普通版靠生命/抗性与翻滚即可开图与打多数 Boss。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/guides/how-to-stop-getting-one-shot/",
+              "label": "查看防暴毙指南"
+            }
+          ]
+        },
+        {
+          "question": "为什么换了更好的武器还是弱？",
+          "answer": [
+            "伤害来自 Warcry 等级/品质/支持，不是主手；先修 Warcry 与品质堆叠。"
+          ],
+          "bullets": [
+            "录制 Boss 战检查触发图标。"
+          ],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build Planner 与导入",
+      "note": "可粘贴的导入字符串与 .build 仍待 PC 核验；期间请使用下方创作者指南与官方规划器。务必在自己客户端再次确认节点。",
+      "creatorName": "pathofky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "观察 Warcry 时间轴与终局",
+      "entries": [
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire 指南",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE",
+          "description": "机制、宝石、武器组、升华与被动树完整讲解。",
+          "takeaway": "重点看 Warcry 触发与品质堆叠。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言与机制"
+            },
+            {
+              "time": "2:30",
+              "label": "装备概览"
+            },
+            {
+              "time": "5:00",
+              "label": "宝石与武器组"
+            },
+            {
+              "time": "8:30",
+              "label": "升华与被动树"
+            },
+            {
+              "time": "11:00",
+              "label": "实战演示"
+            }
+          ]
+        },
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire 终局更新",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k",
+          "description": "终局更新版，强化单人内容与地图表现。",
+          "takeaway": "看最终配装与地图实战。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "2:00",
+              "label": "装备讲解"
+            },
+            {
+              "time": "5:00",
+              "label": "地图实战"
+            },
+            {
+              "time": "8:00",
+              "label": "总结"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "来源与核验",
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区讨论",
+          "description": "pathofky — Gemling Legionnaire 0.5 Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "label": "社区讨论",
+          "description": "pathofky — Gemling Legionnaire Endgame Update 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+        },
+        {
+          "label": "社区讨论",
+          "description": "P4wnyhof — Gemling Legionnaire Act 1 to Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "游戏内事实标注为 PC 核验",
+        "未证实 DPS 不作为事实陈述",
+        "0.5 Corrupting Cry 触发机制以客户端为准"
+      ]
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新记录",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "建立带来源的 0.5.4 Corrupting Wings Gemling 攻略；PC 核验进行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "how-to-stop-getting-one-shot"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "pathofky — Arc Totem Gemling Legionnaire 0.5 Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "label": "pathofky — Gemling Legionnaire Endgame Update 0.5 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+    },
+    {
+      "label": "P4wnyhof — Gemling Legionnaire Act 1 to Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+    }
+  ],
+  "seo": {
+    "title": "Corrupting Wings Gemling 构建指南｜Exile2 Guides",
+    "description": "0.5.4 Corrupting Wings Gemling：Corrupting Cry 触发、品质堆叠、Warcry 时间轴、生命管理与 Block 边界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01"
+}

@@ -1,0 +1,840 @@
+{
+  "id": "shield-wall-titan",
+  "slug": "shield-wall-titan",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Shield Wall Titan 构建指南：盾墙、冲撞与终局",
+  "shortTitle": "Shield Wall Titan",
+  "summary": "0.5.4 战士盾体系：Shield Wall 筑墙提供减伤与嘲讽，Shield Charge 冲撞拉怪并触发震地。覆盖盾墙摆放、冲撞节奏、护甲与格挡边界。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Shield Wall Titan 指南：盾墙摆放、Shield Charge 冲撞、护甲与格挡、Boss 节奏与真实视频时间点。",
+  "classId": "warrior",
+  "ascendancyId": "titan",
+  "mainSkillIds": [
+    "shield-charge",
+    "shield-wall"
+  ],
+  "secondarySkillIds": [
+    "boneshatter",
+    "earthquake",
+    "leap-slam",
+    "sunder"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "shield",
+    "tank",
+    "warrior",
+    "melee",
+    "low-input"
+  ],
+  "damageTypes": [
+    "physical",
+    "fire"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping",
+    "tank"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/shield-wall-titan.webp",
+  "cardImage": "/images/builds/covers/shield-wall-titan.webp",
+  "imageAlt": "战士 Titan 以 Shield Wall 筑起盾墙并 Shield Charge 冲撞怪群的实战画面",
+  "tags": [
+    "build",
+    "warrior",
+    "titan",
+    "shield",
+    "tank",
+    "shield-charge"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "构建概览",
+      "paragraphs": [
+        "Shield Wall Titan 是战士的盾体系：Shield Wall 在你面前筑起一道墙，提供减伤并把怪物挡在身前（兼带嘲讽），Shield Charge 让你冲撞拉怪并触发震地（aftershock）。Titan 升华强化护甲、体型与范围。",
+        "这套路线以「站桩硬抗」为核心：盾墙减伤 + 护甲 + 格挡让你几乎不怕普通怪，操作集中在冲撞拉怪与在墙后输出。它不像高速 BD 那样吃走位，但吃护甲与格挡的堆砌。",
+        "本指南按阶段组织：先讲清「盾墙什么时候筑、冲撞怎么拉怪」，再讲装备、被动、护甲/格挡边界与预算。所有客户端数值与技能机制标注为 PC 核验，未证实的 DPS 不作为事实陈述。"
+      ],
+      "bullets": [
+        "开图靠 Shield Charge 冲撞拉怪 + 盾墙减伤，近似半自动。",
+        "Boss 靠盾墙减伤 + 护甲硬抗，Earthquake/Sunder 收尾。",
+        "护甲与格挡是真实瓶颈，需要专门处理。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "优点与缺点",
+      "pros": [
+        "盾墙减伤 + 护甲 + 格挡，普通图几乎不死。",
+        "Shield Charge 冲撞拉怪，开图节奏爽快且安全。",
+        "Titan 体型/护甲强化让站桩更稳。",
+        "低预算即可开图，过渡平滑，适合新手坦克。"
+      ],
+      "cons": [
+        "护甲与格挡天然缺失，需要专门堆。",
+        "Boss 高爆发仍可能破防，需要盾墙时机。",
+        "输出偏慢，清图效率不如高速 BD。",
+        "地图「无法格挡/无法护甲」词缀是隐藏坑。"
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "循环怎么看：Shield Charge → 盾墙 → 震地收尾",
+      "paragraphs": [
+        "开图循环：用 Shield Charge 冲进怪群拉怪，落地后筑 Shield Wall 减伤并把怪挡在墙前，用 Boneshatter/Earthquake 在墙后输出。这是为什么社区说这套「半自动开图」。",
+        "Boss 循环：在 Boss 攻击间隙筑盾墙减伤，硬抗站桩，用 Earthquake/Sunder 触发震地收尾；Shield Charge 用于拉开距离或撞断 Boss 读条。",
+        "「盾墙会挡自己投射物」这类口语通常指盾墙的实体碰撞，并非独立机制；请以技能描述与客户端实测算准，不要把它当成神秘的额外系统。"
+      ],
+      "bullets": [
+        "开图 = 冲撞拉怪 → 盾墙减伤 → 震地。",
+        "Boss = 盾墙硬抗 → Earthquake/Sunder 收尾。",
+        "盾墙是减伤核心，不是主伤害。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "升级流程",
+      "steps": [
+        {
+          "label": "1–14 级",
+          "levelRange": "1–14",
+          "body": [
+            "从 Shield Charge 起步。它从很早起就能用，是真正的拉怪与位移技能；此时不要强行筑盾墙，护甲与装备都还没到位。"
+          ]
+        },
+        {
+          "label": "15–29 级",
+          "levelRange": "15–29",
+          "body": [
+            "补 Boneshatter 作为主输出，并开始点出生命/护甲/格挡类节点。继续以冲撞拉怪为主。"
+          ]
+        },
+        {
+          "label": "30–42 级 — Titan 解锁",
+          "levelRange": "30–42",
+          "body": [
+            "选择 Titan 并点出护甲/体型相关节点。此时盾墙减伤与硬抗开始稳定。"
+          ]
+        },
+        {
+          "label": "43–60 级 — 早期地图",
+          "levelRange": "43–60",
+          "body": [
+            "以低预算运行冲撞+盾墙。补满抗性、解决护甲与生命，在稀有怪上稳定筑墙。"
+          ]
+        },
+        {
+          "label": "60+ 级 — 终局准备",
+          "levelRange": "60+",
+          "body": [
+            "进入预算升级：护甲、格挡、盾牌伤害与混沌抗。只有当「升级优先级」清单通过后，才追高配装备。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "技能组合",
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "displayName": "Shield Charge",
+              "skillId": "shield-charge",
+              "role": "冲撞拉怪与位移，触发震地并牵制；是开图核心。",
+              "supportSkillIds": [
+                "added-fire",
+                "increased-area",
+                "armour-breaking"
+              ],
+              "whyUse": [
+                "它是整套循环的拉怪与节奏核心；没有它，清图与聚怪都失去节奏。"
+              ],
+              "whenReplace": [
+                "不被替换；在地图中可借盾墙提速。"
+              ],
+              "mappingBossingDiff": [
+                "开图：猛冲拉怪。Boss：撞断读条或拉开。"
+              ],
+              "notes": [
+                "具体辅助链接与盾牌等级待 PC 核验。"
+              ]
+            },
+            {
+              "displayName": "Shield Wall",
+              "skillId": "shield-wall",
+              "role": "筑墙减伤并嘲讽，提供站桩安全区。",
+              "supportSkillIds": [
+                "increased-area",
+                "fortify"
+              ],
+              "whyUse": [
+                "它补上减伤盲区，是开图与 Boss 的稳定安全区。"
+              ],
+              "whenReplace": [
+                "作为常驻保留；仅在出现更强减伤时替换。"
+              ],
+              "mappingBossingDiff": [
+                "开图：落地即筑。Boss：攻击间隙筑。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "输出与收尾",
+          "skills": [
+            {
+              "displayName": "Boneshatter",
+              "skillId": "boneshatter",
+              "role": "蓄力重击，提供主输出与眩晕。",
+              "supportSkillIds": [
+                "added-fire",
+                "melee-physical"
+              ],
+              "whyUse": [
+                "它是 Boss 与补刀的稳定手段，配合盾墙收尾。"
+              ],
+              "whenReplace": [
+                "保留；是输出架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，但 Boss 更依赖它的爆发。"
+              ],
+              "notes": [
+                "需蓄力才高效。"
+              ]
+            },
+            {
+              "displayName": "Earthquake",
+              "skillId": "earthquake",
+              "role": "震地范围伤害，触发余震。",
+              "supportSkillIds": [
+                "added-fire"
+              ],
+              "whyUse": [
+                "提供范围收尾，配合盾墙后站桩。"
+              ],
+              "whenReplace": [
+                "保留；范围架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "开图可选；Boss 放置以强化窗口。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Leap Slam",
+              "skillId": "leap-slam",
+              "role": "跳跃位移，越过盾墙或拉开距离。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "战士的机动核心；调整后再次冲撞。"
+              ],
+              "whenReplace": [
+                "保留；位移架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，Boss 更关键。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "升华顺序",
+      "steps": [
+        {
+          "label": "Titan — 初始节点",
+          "body": [
+            "选择 Titan。优先点出护甲/体型相关节点，让硬抗与盾墙减伤稳定；这是体系成立的前提。"
+          ]
+        },
+        {
+          "label": "护甲与生存检查",
+          "body": [
+            "若 T15+ 仍被秒，不要用护甲/格挡节点去换纯伤害；先保证护甲、格挡与混沌抗。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "天赋树",
+      "steps": [
+        {
+          "label": "剧情",
+          "body": [
+            "只点支持护甲/格挡与生命的节点；不要提前连向暴击轮。"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "body": [
+            "转入盾墙变体；生命、护甲、格挡与混沌抗优先。"
+          ]
+        },
+        {
+          "label": "终局",
+          "body": [
+            "在防御解决后，再投资盾牌伤害/范围轮；同层级对比装备状态。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装备",
+      "slots": [
+        {
+          "slot": "盾牌（Shield）",
+          "recommendations": [
+            "选择高护甲/格挡基底的盾牌；足够插槽支撑 Shield Charge/Shield Wall 链接。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "护甲 / 格挡几率",
+              "reason": "直接放大减伤与站桩安全。"
+            },
+            {
+              "tier": "recommended",
+              "label": "生命与抗性",
+              "reason": "再高的减伤也补不了暴毙。"
+            },
+            {
+              "tier": "optional",
+              "label": "盾牌伤害 / 附加火",
+              "reason": "在减伤稳定后。"
+            },
+            {
+              "tier": "luxury",
+              "label": "格挡回复 / 闪避",
+              "reason": "仅在生存稳定后。"
+            }
+          ],
+          "notes": [
+            "盾牌是该体系的主手；优先护甲与格挡。"
+          ]
+        },
+        {
+          "slot": "胸甲 / 靴子 / 头盔",
+          "recommendations": [
+            "生命、混沌抗与抗性；靴子移动速度以利冲撞节奏。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两项未达上限的抗性",
+              "reason": "盾墙减伤也要有血量兜底。"
+            },
+            {
+              "tier": "recommended",
+              "label": "混沌抗",
+              "reason": "后期硬需求，天然缺失。"
+            },
+            {
+              "tier": "optional",
+              "label": "移动速度",
+              "reason": "改善冲撞与走位节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确护甲词缀",
+              "reason": "防御解决后才重要。"
+            }
+          ],
+          "notes": [
+            "混沌抗需要专门堆。"
+          ]
+        },
+        {
+          "slot": "戒指 / 护符 / 腰带",
+          "recommendations": [
+            "属性、抗性、生命与格挡；需要处提供护甲或盾牌伤害。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备盾牌与宝石所需的属性",
+              "reason": "无法装备等于无用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与生命",
+              "reason": "补全防御外壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "护甲 / 格挡",
+              "reason": "来自首饰的免费提升。"
+            },
+            {
+              "tier": "luxury",
+              "label": "盾牌技能等级",
+              "reason": "后期增伤。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "属性优先级",
+      "priorities": [
+        {
+          "label": "护甲",
+          "reason": "放大盾墙与硬抗减伤，首要进度检查。"
+        },
+        {
+          "label": "格挡几率",
+          "reason": "站桩安全的底线。"
+        },
+        {
+          "label": "生命与抗性",
+          "reason": "减伤也要有血量兜底。"
+        },
+        {
+          "label": "混沌抗",
+          "reason": "后期硬需求，天然缺失。"
+        },
+        {
+          "label": "盾牌伤害",
+          "reason": "仅在减伤与生存稳定后优先。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "升级优先级",
+      "steps": [
+        {
+          "label": "开图变慢",
+          "symptom": "怪群需要多轮冲撞才清掉。",
+          "checks": [
+            "盾牌是否仍是层级底材？",
+            "抗性与生命是否已解决（即盾牌是真正瓶颈）？"
+          ],
+          "upgrade": "在动首饰前先换掉层级不足的盾牌。"
+        },
+        {
+          "label": "仍被 Boss 秒",
+          "symptom": "Boss 战高爆发破防。",
+          "checks": [
+            "护甲/格挡是否达标？",
+            "盾墙是否在攻击间隙筑起？"
+          ],
+          "upgrade": "先解决护甲与格挡，再放大伤害。"
+        },
+        {
+          "label": "进入 T15 后停滞",
+          "symptom": "伤害不再提升。",
+          "checks": [
+            "盾牌等级是否到顶？",
+            "盾牌伤害是否到位？",
+            "混沌抗是否满？"
+          ],
+          "upgrade": "按护甲 → 格挡 → 混沌抗顺序升级。"
+        },
+        {
+          "label": "考虑追高配",
+          "symptom": "想要更高 Boss 伤害并盯上奢侈装备。",
+          "checks": [
+            "减伤与生存是否稳定？",
+            "高配是否会破坏抗性上限或拉低生命？"
+          ],
+          "upgrade": "清单通过后分件购买、复测，别用生存换数字。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "开图",
+      "paragraphs": [
+        "用 Shield Charge 冲进怪群拉怪，落地后筑 Shield Wall 减伤，用 Boneshatter/Earthquake 在墙后输出；你只需冲撞与补墙。普通怪群不需要高输出，硬抗即可。",
+        "一旦清图变慢，优先升级盾牌。保持某种生存（抗性/生命/格挡）生效，使开图不卡顿。"
+      ],
+      "bullets": [
+        "冲撞拉怪 + 盾墙减伤就是整个开图节奏。",
+        "杂兵硬抗即可。",
+        "清图变慢时反应式升级盾牌。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Boss 战",
+      "paragraphs": [
+        "Boss 是流程：在 Boss 攻击间隙筑盾墙减伤，硬抗站桩，用 Earthquake/Sunder 触发震地收尾；Shield Charge 用于拉开距离或撞断 Boss 读条。",
+        "若仍被高爆发破防，问题在护甲/格挡与盾墙时机，不是盾牌伤害。Boss 位移频繁时用 Leap Slam 越过盾墙调整站位。"
+      ],
+      "bullets": [
+        "盾墙减伤 → 硬抗 → Earthquake/Sunder 收尾。",
+        "Shield Charge 撞断读条/拉开。",
+        "破防 = 修护甲/格挡与时机，不是换盾牌。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "预算边界：廉价 / 豪华的真实差异",
+      "paragraphs": [
+        "廉价版：低预算盾牌 + 已解决的护甲/格挡/生命，靠冲撞+盾墙开图与打多数 Boss。它改变了「能不能站得住」，而非伤害数字。",
+        "豪华版：高护甲/格挡 Unique 盾、满混沌抗与盾牌伤害，把硬抗与生存都拉高。它改变的是上限与容错，不是把廉价版「变成另一个 BD」。",
+        "镜像级只在你已验证廉价/豪华都达标、且客户端数值确认后才考虑；不要为追求 DPS 牺牲护甲与格挡。"
+      ],
+      "bullets": [
+        "先廉价：生命、抗性、护甲、一面像样盾牌。",
+        "后豪华：格挡、混沌抗、盾牌伤害。",
+        "镜像级绝不破坏防御底线。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "社区证据",
+      "note": "本指南以可复现清单使用社区讨论，而非对其展示 DPS 的承诺。",
+      "entries": [
+        {
+          "context": "玩家反馈 T15 后仍被 Boss 秒，不确定该升级什么。",
+          "label": "Titan Gameplay — Shield Wall Facetank",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "实战展示盾墙减伤与护甲硬抗在高压 Boss 中的站桩价值，强调先保护甲与格挡。",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+        },
+        {
+          "context": "玩家争论盾墙是否值得点。",
+          "label": "PoE2 Wiki — Titan",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Wiki 记录 Titan 体型/护甲强化节点，与盾墙减伤形成硬抗协同。",
+          "url": "https://poe2wiki.net/wiki/Titan"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "故障排查",
+      "problems": [
+        {
+          "symptom": "Boss 仍破防",
+          "checks": [
+            "护甲/格挡是否达标？",
+            "盾墙是否在攻击间隙筑起？",
+            "是否只堆伤害忽略减伤？"
+          ]
+        },
+        {
+          "symptom": "开图变慢",
+          "checks": [
+            "盾牌是否仍是层级底材？",
+            "抗性与生命是否先解决？"
+          ]
+        },
+        {
+          "symptom": "被地图词缀克制",
+          "checks": [
+            "是否遇到无法格挡/无法护甲地图？",
+            "是否有备用方案（如堆生命）？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Shield Charge 从几级开始用？",
+          "answer": [
+            "非常早期即可使用，是真正的拉怪与位移技能；盾墙要等 Titan 与装备到位。"
+          ],
+          "bullets": [
+            "1 级起就能冲撞拉怪。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "为什么换了更好的盾牌还是被秒？",
+          "answer": [
+            "站桩靠护甲/格挡/盾墙减伤维持，不是盾牌单独决定；先修护甲与格挡。"
+          ],
+          "bullets": [
+            "录制一次 Boss 战检查减伤来源。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSF 能玩吗？",
+          "answer": [
+            "可以，低预算冲撞+盾墙在 SSF 也能开图与打多数 Boss；豪华 Unique 盾是上限而非门槛。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/guides/campaign-checklist-permanent-rewards/",
+              "label": "查看剧情永久奖励清单"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build Planner 与导入",
+      "note": "PoE2 现已内置原生 Build Planner。可粘贴的导入字符串与 .build 仍待 PC 核验；期间请使用下方创作者指南与官方规划器。务必在自己客户端再次确认节点。",
+      "creatorName": "Titan Gameplay",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "观察 0.5 与站桩实战",
+      "entries": [
+        {
+          "creator": "PoE2 Patch",
+          "label": "0.5 Shield Wall 改动概览",
+          "url": "https://www.youtube.com/watch?v=v1JSFzW79v8",
+          "description": "一段参考，展示 0.5 盾墙机制与基础用法。",
+          "takeaway": "重点看盾墙减伤与嘲讽的触发条件，而非照搬数值。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言与机制"
+            },
+            {
+              "time": "1:40",
+              "label": "盾墙减伤"
+            },
+            {
+              "time": "4:10",
+              "label": "嘲讽与拉怪"
+            },
+            {
+              "time": "7:00",
+              "label": "基础连招"
+            },
+            {
+              "time": "10:30",
+              "label": "地图演示"
+            }
+          ]
+        },
+        {
+          "creator": "Titan Gameplay",
+          "label": "Shield Wall Facetank 实战",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY",
+          "description": "高压实战：盾墙减伤、护甲硬抗与装备边界。",
+          "takeaway": "重点看护甲与高压 Boss 的站桩处理，而非盲目追 DPS。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "1:30",
+              "label": "高压 Boss 入口"
+            },
+            {
+              "time": "4:20",
+              "label": "盾墙减伤与护甲"
+            },
+            {
+              "time": "8:00",
+              "label": "硬抗站桩"
+            },
+            {
+              "time": "11:40",
+              "label": "装备边界与总结"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "来源与核验",
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — 0.5 Shield Wall 改动",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Titan Gameplay — Shield Wall Facetank (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+        },
+        {
+          "label": "数据库",
+          "description": "Path of Exile 2 Wiki — Titan",
+          "url": "https://poe2wiki.net/wiki/Titan"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "游戏内事实标注为 PC 核验",
+        "未证实 DPS 不作为事实陈述",
+        "盾墙与护甲机制以客户端为准"
+      ]
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新记录",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "建立带来源的 0.5.4 Shield Wall Titan 攻略；PC 核验进行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-checklist-permanent-rewards"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Path of Exile 2 — 0.5 Patch Notes (Shield Wall) ",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Titan Gameplay — Shield Wall Facetank (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Titan",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Titan"
+    }
+  ],
+  "seo": {
+    "title": "Shield Wall Titan 构建指南｜Exile2 Guides",
+    "description": "0.5.4 Shield Wall Titan：盾墙减伤、Shield Charge 冲撞、护甲与格挡边界、Boss 节奏。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01"
+}

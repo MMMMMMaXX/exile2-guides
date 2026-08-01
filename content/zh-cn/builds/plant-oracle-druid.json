@@ -1,0 +1,868 @@
+{
+  "id": "plant-oracle-druid",
+  "slug": "plant-oracle-druid",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Plant Oracle Druid 构建指南：开荒、CoC 雷暴与终局",
+  "shortTitle": "Plant Oracle Druid",
+  "summary": "0.5.4 植物法术体系：Entangle 开图、Thunderstorm 经 Forced Outcome 与 Cast on Critical 持续触发。覆盖阶段切换、Mana 续航、Boss 循环与预算边界。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Plant Oracle Druid 指南：开荒阶梯、Forced Outcome 机制、CoC 雷暴触发、Mana 管理与真实视频时间点。",
+  "classId": "druid",
+  "ascendancyId": "oracle",
+  "mainSkillIds": [
+    "entangle",
+    "thrashing-vines"
+  ],
+  "secondarySkillIds": [
+    "thunderstorm",
+    "cast-on-critical",
+    "mana-remnants",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "plant",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "low-input"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "cardImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "imageAlt": "德鲁伊 Oracle 在战场上用 Entangle 召唤藤蔓并引落 Thunderstorm 的实战画面",
+  "tags": [
+    "build",
+    "druid",
+    "oracle",
+    "plant",
+    "entangle",
+    "thunderstorm"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "构建概览",
+      "paragraphs": [
+        "Plant Oracle 是德鲁伊的植物法术体系：Entangle 把怪物钉在原地并生成藤蔓，Thunderstorm 在头顶持续落雷。Oracle 升华的 Forced Outcome 让一部分触发类效果（如 Cast on Critical 触发的 Thunderstorm）在条件满足时稳定释放，这正是该体系「低操作、高覆盖」的来源。",
+        "这条路线不是 1 级就能成型的爆发 BD。Entangle 从非常早期即可使用，但 Thunderstorm 的稳定触发依赖 Forced Outcome、Cast on Critical 与足够的法力；在它们就位前，你先用 Entangle + Thrashing Vines 做开图与单体，法力管理以翻滚（roll）与 Mana Remnants 为主。",
+        "本指南按阶段而非按等级堆砌：先讲清楚「什么时候从 Entangle 主输出切到 Thunderstorm 触发循环」，再讲装备、被动与预算边界。所有客户端数值与技能机制标注为 PC 核验，未证实的 DPS 不作为事实陈述。"
+      ],
+      "bullets": [
+        "开图靠 Entangle 钉怪 + Thrashing Vines 横扫，近似单键。",
+        "Boss 靠 Forced Outcome / CoC 维持的 Thunderstorm 收尾。",
+        "长 Boss 战的法力枯竭是真实瓶颈，需要专门处理。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "优点与缺点",
+      "pros": [
+        "开图几乎单键，藤蔓自动处理杂兵，手感轻松。",
+        "Forced Outcome 让触发循环稳定，Boss 覆盖可观。",
+        "植物状态提供软控制，降低被围殴风险。",
+        "低预算即可开图，过渡平滑。"
+      ],
+      "cons": [
+        "Thunderstorm 触发前伤害偏低，需要前置升华与法力。",
+        "长 Boss 战法力容易枯竭，管理不当会断循环。",
+        "混沌抗（Chaos Res）在后期是硬需求，天然缺失。",
+        "装备防御堆砌偏被动，爆发窗口依赖状态而非走位。"
+      ]
+    },
+    {
+      "id": "plant-loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "循环怎么看：Entangle → Thunderstorm",
+      "paragraphs": [
+        "开图循环：对怪群放 Entangle，藤蔓会持续抽打范围内的敌人；你几乎只需要补 Entangle 与翻滚。这是为什么社区常说这套「单键开图」。",
+        "Boss 循环：先用 Entangle 钉住 Boss 并建立植物状态，再用 Forced Outcome / Cast on Critical 把 Thunderstorm 维持在头顶。Thrashing Vines 在侧翼补刀，Sigil of Power 提供增伤与暴击辅助。",
+        "「给植物浇水」这类口语通常指植物状态叠加层数带来的增伤/范围，并非独立机制；请以技能描述与客户端实测算准，不要把它当成神秘的额外系统。"
+      ],
+      "bullets": [
+        "开图 = Entangle + 翻滚，藤蔓自动处理。",
+        "Boss = Entangle 钉怪 → Forced Outcome/CoC 维持 Thunderstorm。",
+        "Thrashing Vines 是侧翼补刀，不是主伤害。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "升级流程",
+      "steps": [
+        {
+          "label": "1–14 级",
+          "levelRange": "1–14",
+          "body": [
+            "从 Entangle 起步。它从很早起就能用，是真正的开图技能；此时不要强行凑 Thunderstorm 触发链，法力与升华都还没到位。"
+          ]
+        },
+        {
+          "label": "15–29 级",
+          "levelRange": "15–29",
+          "body": [
+            "补 Thrashing Vines 作为侧翼补刀，并开始点出生命/法力/范围类节点。继续以 Entangle 为主。"
+          ]
+        },
+        {
+          "label": "30–42 级 — Oracle 解锁",
+          "levelRange": "30–42",
+          "body": [
+            "选择 Oracle 并点出 Forced Outcome 相关节点。此时 Cast on Critical 触发 Thunderstorm 开始稳定，Boss 伤害明显提升。"
+          ]
+        },
+        {
+          "label": "43–60 级 — 早期地图",
+          "levelRange": "43–60",
+          "body": [
+            "以非暴击、低预算运行触发循环。补满抗性、解决生命/法力，在稀有怪上稳定维持 Thunderstorm。"
+          ]
+        },
+        {
+          "label": "60+ 级 — 终局准备",
+          "levelRange": "60+",
+          "body": [
+            "进入预算升级：Focus 法强、Cast Speed、Mana 上限与混沌抗。只有当「升级优先级」清单通过后，才追高配装备。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "技能组合",
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "开图主技能，钉怪并生成藤蔓；也是 Boss 钉怪与建立植物状态的前置。",
+              "supportSkillIds": [
+                "increased-area",
+                "arcane-tempo",
+                "ritual-of-tangling"
+              ],
+              "whyUse": [
+                "它是整套循环的起点：没有 Entangle 钉怪，Thunderstorm 的覆盖与植物状态都建立不起来。"
+              ],
+              "whenReplace": [
+                "不被替换；在 Boss 战中它从主伤害转为状态前置。"
+              ],
+              "mappingBossingDiff": [
+                "开图：猛放 Entangle 维持藤蔓。Boss：先 Entangle 钉怪再接触发链。"
+              ],
+              "notes": [
+                "具体辅助链接与宝石等级待 PC 核验。"
+              ]
+            },
+            {
+              "displayName": "Thunderstorm",
+              "skillId": "thunderstorm",
+              "role": "经 Forced Outcome / Cast on Critical 维持的头顶落雷，Boss 主伤害。",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "concentrated-effect",
+                "controlled-destruction"
+              ],
+              "whyUse": [
+                "它是后期单体与范围伤害的核心；触发稳定后落雷几乎常驻。"
+              ],
+              "whenReplace": [
+                "不被替换，但要求 Forced Outcome/CoC 与法力到位才发挥。"
+              ],
+              "mappingBossingDiff": [
+                "开图：可选。Boss：经触发链常驻头顶。"
+              ],
+              "notes": [
+                "释放时机由触发条件决定，不是手点。"
+              ]
+            },
+            {
+              "displayName": "Thrashing Vines",
+              "skillId": "thrashing-vines",
+              "role": "侧翼藤蔓补刀，清理与 Boss 阶段补伤。",
+              "supportSkillIds": [
+                "added-lightning",
+                "physical-to-lightning"
+              ],
+              "whyUse": [
+                "它在 Entangle 范围内自动抽打，是开图与 Boss 侧翼的稳定补伤。"
+              ],
+              "whenReplace": [
+                "作为补刀保留；仅在出现更强范围植物技能时替换。"
+              ],
+              "mappingBossingDiff": [
+                "开图：常驻。Boss：阶段切换时补刀。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "触发与增益",
+          "skills": [
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "触发载体，让 Thunderstorm 在暴击时释放。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "它是 Thunderstorm 稳定触发的前置之一；没有它，雷暴节奏会断。"
+              ],
+              "whenReplace": [
+                "保留；它是触发架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，但 Boss 更依赖它的稳定触发。"
+              ],
+              "notes": [
+                "需配合足够暴击与法力。"
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "地面增伤/暴击增益，提升触发链输出。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "提供增伤与暴击辅助，强化 Thunderstorm 结算。"
+              ],
+              "whenReplace": [
+                "作为增益保留。"
+              ],
+              "mappingBossingDiff": [
+                "开图可选；Boss 放置以强化窗口。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Mana Remnants",
+              "skillId": "mana-remnants",
+              "role": "法力续航手段，缓解长 Boss 战枯竭。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "长 Boss 战法力枯竭时，它比单纯堆上限更直接。"
+              ],
+              "whenReplace": [
+                "保留；法力管理核心。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，Boss 更关键。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "升华顺序",
+      "steps": [
+        {
+          "label": "Oracle — 初始节点",
+          "body": [
+            "选择 Oracle。优先点出 Forced Outcome 相关节点，让 Cast on Critical 触发的 Thunderstorm 稳定释放；这是体系成立的前提。"
+          ]
+        },
+        {
+          "label": "法力与生存检查",
+          "body": [
+            "若 T15+ 生存不稳，不要用植物/法强节点去换纯伤害；先保证法力续航与混沌抗。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "天赋树",
+      "steps": [
+        {
+          "label": "剧情",
+          "body": [
+            "只点支持 Entangle / 植物范围 / 法力与生命的节点；不要提前连向暴击轮。"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "body": [
+            "转入触发链变体；生命、法力上限、混沌抗与 Cast Speed 优先。"
+          ]
+        },
+        {
+          "label": "终局",
+          "body": [
+            "在防御与法力底线解决后，再投资暴击/法强轮；同层级对比装备状态。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装备",
+      "slots": [
+        {
+          "slot": "法杖 / 法器（Focus）",
+          "recommendations": [
+            "选择提升法术等级与闪电/法术伤害的基底；足够插槽支撑 Thunderstorm 链接。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "法术技能等级 / 闪电法术伤害",
+              "reason": "直接放大 Thunderstorm 结算。"
+            },
+            {
+              "tier": "recommended",
+              "label": "法力上限与回魔",
+              "reason": "长 Boss 战不断循环的关键。"
+            },
+            {
+              "tier": "optional",
+              "label": "施法速度（Cast Speed）",
+              "reason": "加快触发节奏，但非底线。"
+            },
+            {
+              "tier": "luxury",
+              "label": "暴击几率 / 暴击伤害",
+              "reason": "仅在触发与法力稳定后。"
+            }
+          ],
+          "notes": [
+            "Focus 是该体系的主手；优先法强与法力。"
+          ]
+        },
+        {
+          "slot": "胸甲 / 靴子 / 头盔",
+          "recommendations": [
+            "生命、混沌抗与抗性；靴子移动速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两项未达上限的抗性",
+              "reason": "再高的伤害也补不了暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "混沌抗",
+              "reason": "后期硬需求，天然缺失。"
+            },
+            {
+              "tier": "optional",
+              "label": "移动速度",
+              "reason": "改善走位与翻滚节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确法强词缀",
+              "reason": "防御解决后才重要。"
+            }
+          ],
+          "notes": [
+            "混沌抗不能靠装备基底，需要专门堆。"
+          ]
+        },
+        {
+          "slot": "戒指 / 护符 / 腰带",
+          "recommendations": [
+            "属性、抗性、生命与法力；需要处提供法力续航。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备法杖与宝石所需的属性",
+              "reason": "无法装备等于无用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与生命",
+              "reason": "补全防御外壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "法力上限 / 回魔",
+              "reason": "来自首饰的免费续航。"
+            },
+            {
+              "tier": "luxury",
+              "label": "法术技能等级",
+              "reason": "后期增伤。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "属性优先级",
+      "priorities": [
+        {
+          "label": "法术技能等级",
+          "reason": "放大 Thunderstorm 与 Entangle 结算，首要进度检查。"
+        },
+        {
+          "label": "法力上限与回魔",
+          "reason": "长 Boss 战不断循环的底线。"
+        },
+        {
+          "label": "混沌抗",
+          "reason": "后期硬需求，天然缺失。"
+        },
+        {
+          "label": "施法速度",
+          "reason": "加快触发节奏，但排在防御与法力之后。"
+        },
+        {
+          "label": "暴击（ crit ）",
+          "reason": "CoC 触发的前置，仅在法力稳定后优先。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "升级优先级",
+      "steps": [
+        {
+          "label": "开图变慢",
+          "symptom": "怪群需要多轮 Entangle 才清掉。",
+          "checks": [
+            "法杖是否仍是层级底材？",
+            "抗性与生命是否已解决（即法杖是真正瓶颈）？"
+          ],
+          "upgrade": "在动首饰前先换掉层级不足的法杖。"
+        },
+        {
+          "label": "Boss 法力枯竭",
+          "symptom": "单体战斗中法力耗尽，Thunderstorm 断。",
+          "checks": [
+            "是否只依赖击杀回魔？",
+            "Boss 战是否有 Mana Remnants / 偷取 / 药剂生效？"
+          ],
+          "upgrade": "先解决法力续航，再放大伤害。"
+        },
+        {
+          "label": "Boss 雷暴不来",
+          "symptom": "Thunderstorm 窗口始终不稳定。",
+          "checks": [
+            "Forced Outcome 是否点出？",
+            "Cast on Critical 暴击是否足够？",
+            "法力是否支撑持续触发？"
+          ],
+          "upgrade": "修触发链（Forced Outcome → CoC → 法力），而非换法杖。"
+        },
+        {
+          "label": "进入 T15 后停滞",
+          "symptom": "伤害不再提升。",
+          "checks": [
+            "法术等级是否到顶？",
+            "Focus 法强是否到位？",
+            "混沌抗是否满？"
+          ],
+          "upgrade": "按法术等级 → Focus → 混沌抗顺序升级。"
+        },
+        {
+          "label": "考虑追高配",
+          "symptom": "想要更高 Boss 伤害并盯上奢侈装备。",
+          "checks": [
+            "触发链与法力是否稳定？",
+            "高配是否会破坏抗性上限或拉低生命？"
+          ],
+          "upgrade": "清单通过后分件购买、复测，别用生存换数字。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "开图",
+      "paragraphs": [
+        "对怪群放 Entangle，藤蔓自动抽打；你只需补 Entangle 与翻滚走位。普通怪群不需要 Thunderstorm，停下触发反而降速。",
+        "一旦清图变慢，优先升级法杖。保持某种法力续航（击杀回魔 / Mana Remnants / 药剂）生效，使开图不卡顿。"
+      ],
+      "bullets": [
+        "Entangle + 翻滚就是整个开图节奏。",
+        "杂兵跳过 Thunderstorm 触发。",
+        "清图变慢时反应式升级法杖。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Boss 战",
+      "paragraphs": [
+        "Boss 是流程：先 Entangle 钉怪并建立植物状态，用 Sigil of Power 增伤，再让 Forced Outcome / Cast on Critical 维持 Thunderstorm 在头顶。Thrashing Vines 在侧翼补刀。",
+        "若雷暴始终不来，问题在触发链（Forced Outcome / 暴击 / 法力），不是法杖。长 Boss 战法力枯竭时，用翻滚与 Mana Remnants 维持，而非硬堆上限。"
+      ],
+      "bullets": [
+        "Entangle 钉怪 → Sigil → Forced Outcome/CoC 维持 Thunderstorm。",
+        "Thrashing Vines 侧翼补刀。",
+        "法力断 = 修触发与续航，不是换武器。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "预算边界：廉价 / 豪华的真实差异",
+      "paragraphs": [
+        "廉价版：低预算法杖 + 已解决的抗性/生命/法力，靠触发链开图与打多数 Boss。它改变了「能不能玩」，而非伤害数字。",
+        "豪华版：高法术等级 Focus、专属 Unique、满混沌抗与暴击，把 Thunderstorm 结算与生存都拉高。它改变的是上限与容错，不是把廉价版「变成另一个 BD」。",
+        "镜像级（mirror）只在你已验证廉价/豪华都达标、且客户端数值确认后才考虑；不要为追求 DPS 牺牲混沌抗与法力。"
+      ],
+      "bullets": [
+        "先廉价：生命、抗性、法力、一把像样法杖。",
+        "后豪华：法术等级、混沌抗、暴击。",
+        "镜像级绝不破坏防御底线。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "社区证据",
+      "note": "本指南以可复现清单使用社区讨论，而非对其展示 DPS 的承诺。",
+      "entries": [
+        {
+          "context": "玩家反馈 T15 后伤害停滞，不确定该升级什么。",
+          "label": "Raxxanterax 0.5 植物 Oracle 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "指南区分廉价/豪华/镜像三档，明确每档改变的是装备边界而非换一套机制。",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "context": "玩家争论「植物浇水」是否神秘机制。",
+          "label": "P4wnyhof Plant Druid 开荒体验",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "开荒体验强调 Entangle 钉怪 + 藤蔓横扫的单键手感，植物状态是叠加层数而非独立系统。",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "故障排查",
+      "problems": [
+        {
+          "symptom": "Boss 雷暴不触发",
+          "checks": [
+            "Forced Outcome 是否点出？",
+            "Cast on Critical 暴击是否足够？",
+            "法力是否支撑持续触发？"
+          ]
+        },
+        {
+          "symptom": "长 Boss 战法力枯竭",
+          "checks": [
+            "是否只依赖击杀回魔？",
+            "Mana Remnants / 偷取 / 药剂是否在 Boss 战生效？"
+          ]
+        },
+        {
+          "symptom": "开图变慢",
+          "checks": [
+            "法杖是否仍是层级底材？",
+            "抗性与生命是否先解决？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Entangle 从几级开始用？",
+          "answer": [
+            "非常早期即可使用，是真正的开图技能；Thunderstorm 触发链要等 Oracle 与法力到位。"
+          ],
+          "bullets": [
+            "1 级起就能 Entangle 开图。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "为什么换了更好的法杖雷暴还是弱？",
+          "answer": [
+            "雷暴靠触发链（Forced Outcome / Cast on Critical / 法力）维持，不是法杖单独决定；先修触发与法力。"
+          ],
+          "bullets": [
+            "录制一次 Boss 战检查触发图标。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSF 能玩吗？",
+          "answer": [
+            "可以，低预算触发链在 SSF 也能开图与打多数 Boss；豪华 Unique 是上限而非门槛。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/guides/campaign-early-maps-gearing-crafting/",
+              "label": "查看开图与地图装备指南"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build Planner 与导入",
+      "note": "PoE2 现已内置原生 Build Planner。可粘贴的导入字符串与 .build 仍待 PC 核验；期间请使用下方创作者指南与官方规划器。务必在自己客户端再次确认节点。",
+      "creatorName": "Raxxanterax",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "观察开荒与雷暴节奏",
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 植物 Oracle 开荒指南",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4",
+          "description": "一段长参考，展示从 Entangle 开图到 Thunderstorm 触发链成型的全过程。",
+          "takeaway": "每幕抽样一个剧情 Boss，记录触发顺序而非照搬清图速度。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言与构建思路"
+            },
+            {
+              "time": "2:10",
+              "label": "第一章开图"
+            },
+            {
+              "time": "5:30",
+              "label": "Oracle 升华与 Forced Outcome"
+            },
+            {
+              "time": "9:00",
+              "label": "Thunderstorm 触发链"
+            },
+            {
+              "time": "13:20",
+              "label": "早期地图与装备"
+            }
+          ]
+        },
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 植物 Oracle 终局指南",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0",
+          "description": "终局版：法力管理、廉价/豪华/镜像装备与被动树。",
+          "takeaway": "重点看 Mana 管理与装备边界，而非盲目追 DPS。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "1:40",
+              "label": "法力管理"
+            },
+            {
+              "time": "4:30",
+              "label": "廉价 Unique 与装备"
+            },
+            {
+              "time": "8:15",
+              "label": "豪华/镜像装备"
+            },
+            {
+              "time": "12:00",
+              "label": "被动树与总结"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "来源与核验",
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "label": "社区讨论",
+          "description": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "游戏内事实标注为 PC 核验",
+        "未证实 DPS 不作为事实陈述",
+        "Forced Outcome 与 Thunderstorm 触发以客户端为准"
+      ]
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新记录",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "建立带来源的 0.5.4 Plant Oracle Druid 攻略；PC 核验进行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+    },
+    {
+      "label": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+    }
+  ],
+  "seo": {
+    "title": "Plant Oracle Druid 构建指南｜Exile2 Guides",
+    "description": "0.5.4 Plant Oracle Druid：Entangle 开图、Forced Outcome 与 CoC 雷暴、Mana 续航、Boss 循环与预算边界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01"
+}

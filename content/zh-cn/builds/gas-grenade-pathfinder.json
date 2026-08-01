@@ -1,0 +1,841 @@
+{
+  "id": "gas-grenade-pathfinder",
+  "slug": "gas-grenade-pathfinder",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Gas Grenade Pathfinder 构建指南：毒云、Boss 预铺与装备",
+  "shortTitle": "Gas Grenade Pathfinder",
+  "summary": "0.5.4 毒云体系：Gas Grenade 生成并可重叠 Poison Clouds，用 Despair / Toxic Domain / Wither 叠层。覆盖毒云持续时间断点、Boss 预铺、Ghost Dance 与 Evasion 边界。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Gas Grenade Pathfinder 指南：毒云叠层、持续时间断点、Boss 预铺顺序、防御边界与真实视频时间点。",
+  "classId": "ranger",
+  "ascendancyId": "pathfinder",
+  "mainSkillIds": [
+    "gas-grenade"
+  ],
+  "secondarySkillIds": [
+    "despair",
+    "toxic-domain",
+    "herald-of-plague",
+    "withering-presence",
+    "dark-effigy"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "grenade",
+    "poison",
+    "chaos",
+    "ground-effect",
+    "ranged"
+  ],
+  "damageTypes": [
+    "chaos",
+    "poison"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "dot"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "cardImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "imageAlt": "游侠 Pathfinder 投掷 Gas Grenade 在地面铺开 Poison Cloud 的实战画面",
+  "tags": [
+    "build",
+    "ranger",
+    "pathfinder",
+    "gas-grenade",
+    "poison",
+    "chaos"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "构建概览",
+      "paragraphs": [
+        "Gas Grenade Pathfinder 是游侠的毒云体系：Gas Grenade 在落点生成一团 Poison Cloud，多个 Grenade 重叠会扩大云的面积与叠层。Pathfinder 升华强化持续伤害与药剂/地面效果，让毒云成为主要输出。",
+        "这套路线的关键不是「扔得准」，而是「提前铺」。Boss 战里你要在 Boss 走到位置前就把云铺好，再用 Despair / Toxic Domain / Wither 把层数拉满。开图则靠连续投掷覆盖怪群。",
+        "Poison Duration 过短会导致 Boss 血条短暂下降后停止——这是最常见的「单体弱」根源。本指南把持续时间断点与预铺顺序讲清楚，并标注所有客户端数值待 PC 核验。"
+      ],
+      "bullets": [
+        "Gas Grenade 生成可重叠的 Poison Clouds。",
+        "Pathfinder 强化持续伤害与地面/药剂效果。",
+        "Boss 弱通常源于 Poison Duration 而非装备。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "优点与缺点",
+      "pros": [
+        "毒云自动持续伤害，开图几乎不依赖瞄准。",
+        "叠层机制让 Boss 血条稳定下滑。",
+        "Pathfinder 药剂/地面增益提供容错。",
+        "低预算即可开图与打多数 Boss。"
+      ],
+      "cons": [
+        "Poison Duration 过短会断档，单体显弱。",
+        "移动目标（如飞行 Boss）降低云覆盖率。",
+        "混沌抗与 ES 恢复是后期硬需求。",
+        "预铺节奏需要练习，乱扔会浪费输出。"
+      ]
+    },
+    {
+      "id": "poison-cloud-lab",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "循环怎么看：预铺毒云",
+      "paragraphs": [
+        "开图循环：对怪群连续投掷 Gas Grenade，让云重叠覆盖；你只需要走位保持自己在云外、怪在云里。",
+        "Boss 循环：在 Boss 到达预定位置前预铺 1–2 团云，落地后补 Despair 降抗、Toxic Domain 增层、Wither 强化。Dark Effigy 可额外铺一层持续云。",
+        "毒云扩张是范围效果，不是弹道；因此「在怪走向哪里之前铺好」比「瞄准怪本身」更重要。"
+      ],
+      "bullets": [
+        "开图 = 连续投掷，云重叠覆盖。",
+        "Boss = 预铺 → Despair → Toxic Domain → Wither。",
+        "云是地面效果，预铺优先于瞄准。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "升级流程",
+      "steps": [
+        {
+          "label": "1–14 级",
+          "levelRange": "1–14",
+          "body": [
+            "用基础弓/弩技能开图；Gas Grenade 在解锁后作为补伤手段，此时毒云叠层尚未成型。"
+          ]
+        },
+        {
+          "label": "15–29 级",
+          "levelRange": "15–29",
+          "body": [
+            "点出 Gas Grenade 并开始叠云；补生命/闪避/混沌抗节点。"
+          ]
+        },
+        {
+          "label": "30–42 级 — Pathfinder 解锁",
+          "levelRange": "30–42",
+          "body": [
+            "选择 Pathfinder，强化持续伤害与地面效果；Boss 预铺开始稳定。"
+          ]
+        },
+        {
+          "label": "43–60 级 — 早期地图",
+          "levelRange": "43–60",
+          "body": [
+            "以低预算运行毒云循环；补 Despair / Toxic Domain 链接，解决抗性。"
+          ]
+        },
+        {
+          "label": "60+ 级 — 终局准备",
+          "levelRange": "60+",
+          "body": [
+            "拉 Poison Duration、ES 与混沌抗；只有当升级优先级清单通过后追高配。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "技能组合",
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "displayName": "Gas Grenade",
+              "skillId": "gas-grenade",
+              "role": "主技能，生成可重叠的 Poison Cloud。",
+              "supportSkillIds": [
+                "poison-army",
+                "increased-area",
+                "acute-poison"
+              ],
+              "whyUse": [
+                "它是整个体系的核心；没有它就没有持续毒云。"
+              ],
+              "whenReplace": [
+                "不被替换；是体系起点。"
+              ],
+              "mappingBossingDiff": [
+                "开图：连续投掷覆盖。Boss：预铺 1–2 团再补增益。"
+              ],
+              "notes": [
+                "持续时间与叠层靠辅助与增益放大。"
+              ]
+            },
+            {
+              "displayName": "Despair",
+              "skillId": "despair",
+              "role": "降混沌抗，放大毒云伤害。",
+              "supportSkillIds": [
+                "hex-bloom"
+              ],
+              "whyUse": [
+                "它是 Boss 单体必备；没有降抗毒云伤害上限受限。"
+              ],
+              "whenReplace": [
+                "保留作为诅咒前置。"
+              ],
+              "mappingBossingDiff": [
+                "开图可选；Boss 必上。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Toxic Domain",
+              "skillId": "toxic-domain",
+              "role": "扩大毒云叠层与范围的地面增益。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "它把云的层数拉满，是单体伤害的关键。"
+              ],
+              "whenReplace": [
+                "保留；高投入但必要。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，Boss 更依赖。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Withering Presence",
+              "skillId": "withering-presence",
+              "role": "光环/被动式增伤，强化混沌持续伤害。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "提供常驻的混沌增伤，稳定提升全场景输出。"
+              ],
+              "whenReplace": [
+                "保留。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "补强",
+          "skills": [
+            {
+              "displayName": "Herald of Plague",
+              "skillId": "herald-of-plague",
+              "role": " herald 增益，附加混沌/毒持续伤害。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "提供额外毒层与增益，强化整体 DoT。"
+              ],
+              "whenReplace": [
+                "作为增益保留。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Dark Effigy",
+              "skillId": "dark-effigy",
+              "role": "可放置的持续毒云来源，补充覆盖。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "在 Boss 预铺时额外铺一层云，提升覆盖率。"
+              ],
+              "whenReplace": [
+                "仅在需要更高覆盖时放置。"
+              ],
+              "mappingBossingDiff": [
+                "Boss 更有用。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "升华顺序",
+      "steps": [
+        {
+          "label": "Pathfinder — 初始节点",
+          "body": [
+            "优先点出强化持续伤害与地面/药剂效果的节点；这是毒云体系成立的底座。"
+          ]
+        },
+        {
+          "label": "防御检查",
+          "body": [
+            "若 T15+ 暴毙，用 Evasion / ES / Ghost Dance 节点补防御，不要全换伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "天赋树",
+      "steps": [
+        {
+          "label": "剧情",
+          "body": [
+            "点持续伤害、混沌、范围与闪避/生命；不要提前连向 ES 轮。"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "body": [
+            "转入毒云变体；Poison Duration、混沌抗与 ES 优先。"
+          ]
+        },
+        {
+          "label": "终局",
+          "body": [
+            "防御与持续时间解决后，再投资伤害轮；同层级对比装备。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装备",
+      "slots": [
+        {
+          "slot": "弓 / 弩（投掷基底）",
+          "recommendations": [
+            "选择提升投掷/范围技能与混沌伤害的基底；足够插槽支撑 Gas Grenade 链接。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "技能等级 / 混沌持续伤害",
+              "reason": "直接放大毒云结算。"
+            },
+            {
+              "tier": "recommended",
+              "label": "投掷/范围技能伤害",
+              "reason": "提升整体投掷输出。"
+            },
+            {
+              "tier": "optional",
+              "label": "施放/投掷速度",
+              "reason": "加快铺云节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "额外毒层 / 暴击",
+              "reason": "仅在持续时间稳定后。"
+            }
+          ],
+          "notes": [
+            "投掷基底优先技能等级与混沌词缀。"
+          ]
+        },
+        {
+          "slot": "胸甲 / 靴子 / 头盔",
+          "recommendations": [
+            "闪避、ES、生命与抗性；靴子移动速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两项未达上限的抗性",
+              "reason": "毒云 BD 仍会暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "闪避 / ES（Ghost Dance 配合）",
+              "reason": "后期防御边界。"
+            },
+            {
+              "tier": "optional",
+              "label": "移动速度",
+              "reason": "改善预铺走位。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确混沌伤害词缀",
+              "reason": "防御解决后。"
+            }
+          ],
+          "notes": [
+            "Ghost Dance 需要 ES 才能生效，别只堆闪避。"
+          ]
+        },
+        {
+          "slot": "戒指 / 护符 / 腰带",
+          "recommendations": [
+            "属性、抗性、生命与混沌抗；需要处提供 ES 恢复。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备武器与宝石所需的属性",
+              "reason": "无法装备等于无用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "混沌抗与 ES 恢复",
+              "reason": "后期硬需求。"
+            },
+            {
+              "tier": "optional",
+              "label": "药剂效果/持续时间",
+              "reason": "Pathfinder 放大药剂收益。"
+            },
+            {
+              "tier": "luxury",
+              "label": "技能等级",
+              "reason": "后期增伤。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "属性优先级",
+      "priorities": [
+        {
+          "label": "毒云技能等级 / 混沌持续伤害",
+          "reason": "放大毒云结算，首要进度检查。"
+        },
+        {
+          "label": "Poison Duration",
+          "reason": "避免 Boss 血条断档的核心。"
+        },
+        {
+          "label": "混沌抗与 ES 恢复",
+          "reason": "后期生存硬需求。"
+        },
+        {
+          "label": "闪避 / ES（Ghost Dance）",
+          "reason": "防御边界，需配合 ES。"
+        },
+        {
+          "label": "投掷/施放速度",
+          "reason": "加快铺云，但排在防御之后。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "升级优先级",
+      "steps": [
+        {
+          "label": "Boss 站在云里但伤害断档",
+          "symptom": "Boss 血条短暂下降后停止。",
+          "checks": [
+            "Poison Duration 是否足够？",
+            "重施频率是否匹配？"
+          ],
+          "upgrade": "增加持续时间或调整投掷节奏，而非换武器。"
+        },
+        {
+          "label": "清图强但单体弱",
+          "symptom": "开图快，Boss 打不动。",
+          "checks": [
+            "是否缺 Despair / Toxic Domain / Wither？",
+            "Boss 循环是否完整？"
+          ],
+          "upgrade": "补完整单体准备（降抗+叠层+增益）。"
+        },
+        {
+          "label": "经常暴毙",
+          "symptom": "地图或 Boss 频繁死亡。",
+          "checks": [
+            "ES 恢复或 Evasion 是否断层？",
+            "地图词缀是否高压？"
+          ],
+          "upgrade": "先补防御，不继续堆伤害。"
+        },
+        {
+          "label": "移动 Boss 覆盖低",
+          "symptom": "飞行/冲刺 Boss 吃不到云。",
+          "checks": [
+            "是否在 Boss 路径前预铺？",
+            "Dark Effigy 是否补层？"
+          ],
+          "upgrade": "改为预铺 + 额外云源，而非追伤害。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "开图",
+      "paragraphs": [
+        "对怪群连续投掷 Gas Grenade，让毒云重叠覆盖；保持自己在云外、怪在云里，用翻滚走位。",
+        "普通怪群不需要 Despair；只有稀有/Boss 才补降抗与叠层。清图变慢时优先升级投掷基底而非堆防御。"
+      ],
+      "bullets": [
+        "连续投掷，云重叠覆盖。",
+        "杂兵跳过 Despair。",
+        "清图变慢先升级投掷基底。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Boss 战",
+      "paragraphs": [
+        "在 Boss 到达预定位置前预铺 1–2 团云，落地后上 Despair 降抗、Toxic Domain 增层、Wither 强化，Dark Effigy 补一层。",
+        "若血条断档，问题在 Poison Duration / 重施频率，不是装备。移动 Boss 要在其路径前铺云，而非追着扔。"
+      ],
+      "bullets": [
+        "预铺云 → Despair → Toxic Domain → Wither。",
+        "Dark Effigy 补云层。",
+        "断档 = 修持续时间，不是换武器。"
+      ]
+    },
+    {
+      "id": "poison-duration-breakpoints",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "毒云持续时间断点",
+      "paragraphs": [
+        "Poison Duration 决定了单次叠层在目标身上存在多久。过短会让 Boss 在叠层耗尽后血条停止下滑，造成「单体弱」的错觉。",
+        "提升方式：辅助宝石的持续时间词缀、Toxic Domain 的增益、装备上的持续时间/范围词缀，以及 Pathfinder 升华的地面效果强化。具体数值待 PC 核验，请以客户端实测算准。"
+      ],
+      "bullets": [
+        "持续时间过短 = Boss 血条断档。",
+        "持续/范围词缀与 Toxic Domain 共同拉长。",
+        "以客户端实测为准。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "社区证据",
+      "note": "本指南以可复现清单使用社区讨论，而非对其展示 DPS 的承诺。",
+      "entries": [
+        {
+          "context": "玩家问毒云持续伤害如何放大。",
+          "label": "Dreamcore Gas Grenade Pathfinder 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "指南把机制、独特装备、预铺与宝石顺序分开讲解，强调持续时间与叠层。",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "context": "玩家争论 PoE2 0.5 毒云强度。",
+          "label": "Fubgun Poisonburst Pathfinder 指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "指南区分 Pathfinder 增益与潜在削弱，给出技能组与 Mobalytics 链接。",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "故障排查",
+      "problems": [
+        {
+          "symptom": "Boss 血条断档",
+          "checks": [
+            "Poison Duration 是否足够？",
+            "重施频率是否匹配移动 Boss？"
+          ]
+        },
+        {
+          "symptom": "清图强单体弱",
+          "checks": [
+            "是否缺 Despair/Toxic Domain/Wither？",
+            "Boss 循环是否完整？"
+          ]
+        },
+        {
+          "symptom": "频繁暴毙",
+          "checks": [
+            "ES 恢复或 Evasion 是否断层？",
+            "地图词缀是否高压？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Gas Grenade 从几级解锁？",
+          "answer": [
+            "具体解锁等级待 PC 核验；解锁后即作为补伤，叠层体系在 Pathfinder 后成型。"
+          ],
+          "bullets": [
+            "解锁后开始铺云。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "为什么换了更好的弓单体还是弱？",
+          "answer": [
+            "单体依赖 Poison Duration 与降抗/叠层，不是弓本身；先修持续时间与 Boss 预铺。"
+          ],
+          "bullets": [
+            "录制 Boss 战检查云覆盖。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "移动 Boss 怎么打？",
+          "answer": [
+            "在其路径前预铺云，并用 Dark Effigy 补一层；不要追着扔。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/builds/ice-shot-deadeye/",
+              "label": "对比 Ice Shot Deadeye"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build Planner 与导入",
+      "note": "可粘贴的导入字符串与 .build 仍待 PC 核验；期间请使用下方创作者指南与官方规划器。务必在自己客户端再次确认节点。",
+      "creatorName": "Dreamcore",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "观察毒云铺开与 Boss 预铺",
+      "entries": [
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 Gas Grenade Pathfinder 指南",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M",
+          "description": "完整指南：机制、独特装备、预铺、宝石与 Boss 循环。",
+          "takeaway": "重点看 Poison Duration 与 Boss 预铺顺序。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言与机制"
+            },
+            {
+              "time": "3:00",
+              "label": "独特装备"
+            },
+            {
+              "time": "6:30",
+              "label": "宝石与辅助"
+            },
+            {
+              "time": "9:40",
+              "label": "被动与升华"
+            },
+            {
+              "time": "12:30",
+              "label": "装备与预铺"
+            }
+          ]
+        },
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 Gas Grenade Pathfinder 最终更新",
+          "url": "https://www.youtube.com/watch?v=obW5fV147kA",
+          "description": "终局更新版，强化单人内容与地图表现。",
+          "takeaway": "看最终配装与地图实战。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "2:20",
+              "label": "装备更新"
+            },
+            {
+              "time": "5:10",
+              "label": "地图实战"
+            },
+            {
+              "time": "8:00",
+              "label": "总结"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "来源与核验",
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Dreamcore — Gas Grenade Pathfinder Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Fubgun — Poisonburst Pathfinder Full Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        },
+        {
+          "label": "社区讨论",
+          "description": "Dreamcore — Gas Grenade Pathfinder Mobalytics",
+          "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "游戏内事实标注为 PC 核验",
+        "未证实 DPS 不作为事实陈述",
+        "Poison Duration 以客户端为准"
+      ]
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新记录",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "建立带来源的 0.5.4 Gas Grenade Pathfinder 攻略；PC 核验进行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Dreamcore — Gas Grenade Pathfinder Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+    },
+    {
+      "label": "Fubgun — Poisonburst Pathfinder Full Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+    },
+    {
+      "label": "Dreamcore — Gas Grenade Pathfinder Mobalytics",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    }
+  ],
+  "seo": {
+    "title": "Gas Grenade Pathfinder 构建指南｜Exile2 Guides",
+    "description": "0.5.4 Gas Grenade Pathfinder：毒云叠层、Poison Duration 断点、Boss 预铺、Ghost Dance 与 Evasion 边界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01"
+}

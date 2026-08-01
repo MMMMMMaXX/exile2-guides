@@ -1,0 +1,846 @@
+{
+  "id": "sniper-minion-infernalist",
+  "slug": "sniper-minion-infernalist",
+  "locale": "zh-cn",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Sniper Minion Infernalist 构建指南：狙击哨卫、恶魔形态与终局",
+  "shortTitle": "Sniper Minion Infernalist",
+  "summary": "0.5.4 女巫召唤体系：Elemental Sentry 作为远程狙击哨卫提供稳定单体，Raging Spirit 处理贴脸，Infernalist 恶魔形态提供爆发窗口。覆盖哨卫摆放、恶魔变身时机与防御边界。",
+  "description": "基于 0.5.4 的 Path of Exile 2 Sniper Minion Infernalist 指南：哨卫摆放、恶魔形态、Raging Spirit 协同、防御边界与真实视频时间点。",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "elemental-sentry",
+    "summon-raging-spirit"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "pain-offering",
+    "contingency",
+    "cast-on-minion-death"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "minion",
+    "sentry",
+    "ranged",
+    "demon",
+    "low-input"
+  ],
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "minion"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "under-review",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "cardImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "imageAlt": "女巫 Infernalist 召唤 Elemental Sentry 狙击远程小队并号令 Raging Spirit 的实战画面",
+  "tags": [
+    "build",
+    "witch",
+    "infernalist",
+    "minion",
+    "sentry",
+    "sniper"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "构建概览",
+      "paragraphs": [
+        "Sniper Minion Infernalist 是女巫的远程召唤体系：Elemental Sentry 作为可布置的狙击哨卫提供稳定单体，Raging Spirit（愤怒之灵）处理贴脸敌人，Infernalist 升华的恶魔形态在你变身时提供一段爆发窗口。",
+        "这条路的核心爽点是「摆好哨卫后走位拉怪」，大部分输出由哨卫与灵体自动完成，你的操作集中在走位、补灵体与触发恶魔形态。它不像纯法术 BD 那样吃法力，但吃召唤物生存与数量上限。",
+        "本指南按阶段组织：先讲清「什么时候从纯灵体过渡到哨卫为主」，再讲装备、被动、恶魔形态时机与预算边界。所有客户端数值与技能机制标注为 PC 核验，未证实的 DPS 不作为事实陈述。"
+      ],
+      "bullets": [
+        "开图靠灵体贴脸 + 哨卫远程补刀，近似半自动。",
+        "Boss 靠哨卫定点狙击 + 恶魔形态爆发收尾。",
+        "召唤物生存与数量上限是真实瓶颈，需要专门处理。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "优点与缺点",
+      "pros": [
+        "哨卫自动狙击，开图几乎半自动，手感轻松。",
+        "恶魔形态提供清晰的爆发窗口，Boss 收尾干净。",
+        "不吃法力，续航压力远低于纯法术 BD。",
+        "低预算即可开图，过渡平滑。"
+      ],
+      "cons": [
+        "哨卫数量上限与存活是硬约束，前期容易断输出。",
+        "贴脸怪会绕过哨卫射程，需要灵体补位。",
+        "Boss 位移频繁时会拉低哨卫命中率。",
+        "地图施法/召唤物相关词缀（如减少召唤物伤害）是隐藏坑。"
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "循环怎么看：哨卫布置 → 灵体补刀 → 恶魔爆发",
+      "paragraphs": [
+        "开图循环：在怪群侧翼布置 Elemental Sentry，灵体自动扑向最近的敌人；你只管走位聚怪并补灵体。这是为什么社区说这套「半自动开图」。",
+        "Boss 循环：先在 Boss 移动路径上预置 1–2 个哨卫，用灵体贴脸牵制，等恶魔形态资源满后变身打出爆发窗口，哨卫持续狙击核心。",
+        "「哨卫会自己锁头」这类口语通常指哨卫的自动索敌，并非独立机制；请以技能描述与客户端实测算准，不要把它当成神秘的额外系统。"
+      ],
+      "bullets": [
+        "开图 = 摆哨卫 + 走位，灵体自动处理。",
+        "Boss = 预置哨卫 → 灵体牵制 → 恶魔形态爆发。",
+        "灵体是贴脸补刀，不是主伤害来源。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "升级流程",
+      "steps": [
+        {
+          "label": "1–14 级",
+          "levelRange": "1–14",
+          "body": [
+            "从 Raging Spirit 起步，它是非常早期的召唤物，真正负责开图；此时不要强行凑哨卫数量，召唤上限与装备都还没到位。"
+          ]
+        },
+        {
+          "label": "15–29 级",
+          "levelRange": "15–29",
+          "body": [
+            "补 Elemental Sentry 作为远程补刀，并开始点出生命/灵体伤害/抗性类节点。继续以灵体为主。"
+          ]
+        },
+        {
+          "label": "30–42 级 — Infernalist 解锁",
+          "levelRange": "30–42",
+          "body": [
+            "选择 Infernalist 并点出恶魔形态相关节点。此时变身窗口开始提供 Boss 爆发。"
+          ]
+        },
+        {
+          "label": "43–60 级 — 早期地图",
+          "levelRange": "43–60",
+          "body": [
+            "以非暴击、低预算运行哨卫+灵体。补满抗性、解决生命，在稀有怪上稳定维持哨卫。"
+          ]
+        },
+        {
+          "label": "60+ 级 — 终局准备",
+          "levelRange": "60+",
+          "body": [
+            "进入预算升级：哨卫数量上限、召唤物伤害、灵体等级与混沌抗。只有当「升级优先级」清单通过后，才追高配装备。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "技能组合",
+      "groups": [
+        {
+          "label": "核心技能",
+          "skills": [
+            {
+              "displayName": "Elemental Sentry",
+              "skillId": "elemental-sentry",
+              "role": "可布置的远程狙击哨卫，提供稳定单体；是 Boss 主伤害来源。",
+              "supportSkillIds": [
+                "minion-damage",
+                "minion-speed",
+                "added-chaos"
+              ],
+              "whyUse": [
+                "它是整套循环的定点输出核心；没有哨卫，Boss 战会回到纯灵体的不稳定节奏。"
+              ],
+              "whenReplace": [
+                "不被替换；在地图中可临时少摆以提速。"
+              ],
+              "mappingBossingDiff": [
+                "开图：侧翼摆 1 个即可。Boss：路径上摆 1–2 个锁核心。"
+              ],
+              "notes": [
+                "具体辅助链接与哨卫数量上限待 PC 核验。"
+              ]
+            },
+            {
+              "displayName": "Raging Spirit",
+              "skillId": "summon-raging-spirit",
+              "role": "贴脸灵体，处理绕过哨卫射程的近敌，并牵制 Boss。",
+              "supportSkillIds": [
+                "minion-damage",
+                "meat-shield",
+                "feeding-frenzy"
+              ],
+              "whyUse": [
+                "它补上哨卫的射程盲区，是开图与 Boss 牵制的稳定手段。"
+              ],
+              "whenReplace": [
+                "作为常驻保留；仅在出现更强近战召唤物时替换。"
+              ],
+              "mappingBossingDiff": [
+                "开图：自动扑怪。Boss：贴脸牵制与补刀。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "增益与触发",
+          "skills": [
+            {
+              "displayName": "Pain Offering",
+              "skillId": "pain-offering",
+              "role": "牺牲召唤物换取全队增伤，短时间内抬升哨卫/灵体输出。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "它是爆发窗口的增伤核心；在恶魔形态与 Boss 阶段开启收益最大。"
+              ],
+              "whenReplace": [
+                "保留；是增伤架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，但 Boss 更依赖它的增伤。"
+              ],
+              "notes": [
+                "会消耗召唤物，时机要算准。"
+              ]
+            },
+            {
+              "displayName": "Flame Wall",
+              "skillId": "flame-wall",
+              "role": "地面火焰墙，经过的投射物获得火焰附加，强化哨卫/灵体。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "提供火焰附加与范围增伤，强化结算。"
+              ],
+              "whenReplace": [
+                "作为增益保留。"
+              ],
+              "mappingBossingDiff": [
+                "开图可选；Boss 放置以强化窗口。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Minion Death",
+              "skillId": "cast-on-minion-death",
+              "role": "召唤物死亡时触发法术，提供额外覆盖与自保。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "当灵体阵亡时自动补一层伤害/控制，缓解断档。"
+              ],
+              "whenReplace": [
+                "保留；自保架构的一部分。"
+              ],
+              "mappingBossingDiff": [
+                "两者都用，Boss 更关键。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "升华顺序",
+      "steps": [
+        {
+          "label": "Infernalist — 初始节点",
+          "body": [
+            "选择 Infernalist。优先点出恶魔形态相关节点，让变身窗口稳定提供爆发；这是体系成立的前提。"
+          ]
+        },
+        {
+          "label": "召唤物生存检查",
+          "body": [
+            "若 T15+ 召唤物频繁阵亡，不要用恶魔/增伤节点去换纯伤害；先保证哨卫数量与灵体生存。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "天赋树",
+      "steps": [
+        {
+          "label": "剧情",
+          "body": [
+            "只点支持灵体/召唤物伤害与生命的节点；不要提前连向哨卫数量轮。"
+          ]
+        },
+        {
+          "label": "早期地图",
+          "body": [
+            "转入哨卫变体；生命、混沌抗、召唤物伤害与哨卫上限优先。"
+          ]
+        },
+        {
+          "label": "终局",
+          "body": [
+            "在防御与哨卫上限解决后，再投资召唤物暴击/伤害轮；同层级对比装备状态。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装备",
+      "slots": [
+        {
+          "slot": "法杖 / 法器（Focus）",
+          "recommendations": [
+            "选择提升召唤物等级与法术/召唤物伤害的基底；足够插槽支撑灵体与哨卫链接。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "召唤物技能等级 / 召唤物伤害",
+              "reason": "直接放大哨卫与灵体结算。"
+            },
+            {
+              "tier": "recommended",
+              "label": "生命与抗性",
+              "reason": "你自己也要站得住才能指挥。"
+            },
+            {
+              "tier": "optional",
+              "label": "施法速度（Cast Speed）",
+              "reason": "加快补灵体与摆哨卫节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "召唤物暴击几率 / 暴击伤害",
+              "reason": "仅在生存与数量稳定后。"
+            }
+          ],
+          "notes": [
+            "Focus 是该体系的主手；优先召唤物词缀。"
+          ]
+        },
+        {
+          "slot": "胸甲 / 靴子 / 头盔",
+          "recommendations": [
+            "生命、混沌抗与抗性；靴子移动速度以利走位聚怪。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "生命与两项未达上限的抗性",
+              "reason": "召唤物会死，自己不能也暴毙。"
+            },
+            {
+              "tier": "recommended",
+              "label": "混沌抗",
+              "reason": "后期硬需求，天然缺失。"
+            },
+            {
+              "tier": "optional",
+              "label": "移动速度",
+              "reason": "改善走位与聚怪节奏。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明确召唤物词缀",
+              "reason": "防御解决后才重要。"
+            }
+          ],
+          "notes": [
+            "混沌抗需要专门堆。"
+          ]
+        },
+        {
+          "slot": "戒指 / 护符 / 腰带",
+          "recommendations": [
+            "属性、抗性、生命；需要处提供哨卫数量或召唤物生存。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "装备法杖与宝石所需的属性",
+              "reason": "无法装备等于无用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "抗性与生命",
+              "reason": "补全防御外壳。"
+            },
+            {
+              "tier": "optional",
+              "label": "哨卫数量上限 / 召唤物生存",
+              "reason": "来自首饰的免费提升。"
+            },
+            {
+              "tier": "luxury",
+              "label": "召唤物技能等级",
+              "reason": "后期增伤。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "属性优先级",
+      "priorities": [
+        {
+          "label": "召唤物技能等级",
+          "reason": "放大哨卫与灵体结算，首要进度检查。"
+        },
+        {
+          "label": "哨卫数量上限",
+          "reason": "决定能否稳定维持多哨卫覆盖。"
+        },
+        {
+          "label": "混沌抗",
+          "reason": "后期硬需求，天然缺失。"
+        },
+        {
+          "label": "生命与抗性",
+          "reason": "你自己站得住才能指挥召唤物。"
+        },
+        {
+          "label": "召唤物暴击（ crit ）",
+          "reason": "仅在生存与数量稳定后优先。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "升级优先级",
+      "steps": [
+        {
+          "label": "开图变慢",
+          "symptom": "怪群需要多轮灵体才清掉。",
+          "checks": [
+            "法杖是否仍是层级底材？",
+            "抗性与生命是否已解决（即法杖是真正瓶颈）？"
+          ],
+          "upgrade": "在动首饰前先换掉层级不足的法杖。"
+        },
+        {
+          "label": "哨卫频繁阵亡",
+          "symptom": "Boss 战中哨卫总被打掉。",
+          "checks": [
+            "是否只堆伤害忽略哨卫生存？",
+            "Boss 战是否有走位拉怪保护哨卫？"
+          ],
+          "upgrade": "先解决哨卫生存与数量，再放大伤害。"
+        },
+        {
+          "label": "恶魔形态不来",
+          "symptom": "变身资源始终攒不满。",
+          "checks": [
+            "是否在点出恶魔节点前强行打 Boss？",
+            "击杀节奏是否太慢导致资源不来？"
+          ],
+          "upgrade": "修升华与击杀节奏，而非换法杖。"
+        },
+        {
+          "label": "进入 T15 后停滞",
+          "symptom": "伤害不再提升。",
+          "checks": [
+            "召唤物等级是否到顶？",
+            "Focus 召唤物伤害是否到位？",
+            "混沌抗是否满？"
+          ],
+          "upgrade": "按召唤物等级 → Focus → 混沌抗顺序升级。"
+        },
+        {
+          "label": "考虑追高配",
+          "symptom": "想要更高 Boss 伤害并盯上奢侈装备。",
+          "checks": [
+            "哨卫与生存是否稳定？",
+            "高配是否会破坏抗性上限或拉低生命？"
+          ],
+          "upgrade": "清单通过后分件购买、复测，别用生存换数字。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "开图",
+      "paragraphs": [
+        "在怪群侧翼布置 Elemental Sentry，灵体自动扑向最近的敌人；你只管走位聚怪并补灵体。普通怪群不需要全员满哨卫，摆一个就够。",
+        "一旦清图变慢，优先升级法杖。保持某种生存（抗性/生命/走位）生效，使开图不卡顿。"
+      ],
+      "bullets": [
+        "摆哨卫 + 走位聚怪就是整个开图节奏。",
+        "杂兵一个哨卫足够。",
+        "清图变慢时反应式升级法杖。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Boss 战",
+      "paragraphs": [
+        "Boss 是流程：先在 Boss 移动路径上预置 1–2 个哨卫，用灵体贴脸牵制，等恶魔形态资源满后变身打出爆发窗口，哨卫持续狙击核心。",
+        "若哨卫总被打掉，问题在生存与摆放（走位保护），不是法杖。Boss 位移频繁时把哨卫摆在它必经的窄道而不是脚下。"
+      ],
+      "bullets": [
+        "预置哨卫 → 灵体牵制 → 恶魔形态爆发。",
+        "灵体贴脸补刀。",
+        "哨卫死 = 修生存与摆放，不是换武器。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "预算边界：廉价 / 豪华的真实差异",
+      "paragraphs": [
+        "廉价版：低预算法杖 + 已解决的抗性/生命/哨卫数量，靠哨卫+灵体开图与打多数 Boss。它改变了「能不能玩」，而非伤害数字。",
+        "豪华版：高召唤物等级 Focus、专属 Unique、满混沌抗与召唤物暴击，把哨卫结算与生存都拉高。它改变的是上限与容错，不是把廉价版「变成另一个 BD」。",
+        "镜像级只在你已验证廉价/豪华都达标、且客户端数值确认后才考虑；不要为追求 DPS 牺牲混沌抗与生命。"
+      ],
+      "bullets": [
+        "先廉价：生命、抗性、哨卫数量、一把像样法杖。",
+        "后豪华：召唤物等级、混沌抗、暴击。",
+        "镜像级绝不破坏防御底线。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "社区证据",
+      "note": "本指南以可复现清单使用社区讨论，而非对其展示 DPS 的承诺。",
+      "entries": [
+        {
+          "context": "玩家反馈 T15 后哨卫输出停滞，不确定该升级什么。",
+          "label": "LugoHQ — Sniper Minion Infernalist 终局指南",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "指南区分廉价/豪华装备档，明确每档改变的是装备边界而非换一套机制。",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "context": "玩家争论恶魔形态是否值得点。",
+          "label": "LugoHQ — Sniper Minion Infernalist Citadel",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Citadel 实战展示恶魔形态爆发窗口在高压 Boss 中的收尾价值，强调先保哨卫生存。",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "故障排查",
+      "problems": [
+        {
+          "symptom": "Boss 哨卫不触发/被打掉",
+          "checks": [
+            "哨卫是否摆在必经窄道？",
+            "是否只堆伤害忽略哨卫生存？",
+            "走位是否保护哨卫？"
+          ]
+        },
+        {
+          "symptom": "恶魔形态资源攒不满",
+          "checks": [
+            "是否点出恶魔节点？",
+            "击杀节奏是否太慢？"
+          ]
+        },
+        {
+          "symptom": "开图变慢",
+          "checks": [
+            "法杖是否仍是层级底材？",
+            "抗性与生命是否先解决？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Raging Spirit 从几级开始用？",
+          "answer": [
+            "非常早期即可使用，是真正的开图召唤物；哨卫体系要等装备与上限到位。"
+          ],
+          "bullets": [
+            "1 级起就能灵体开图。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "为什么换了更好的法杖哨卫还是弱？",
+          "answer": [
+            "哨卫靠数量上限与生存维持，不是法杖单独决定；先修哨卫数量与生存。"
+          ],
+          "bullets": [
+            "录制一次 Boss 战检查哨卫存活。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSF 能玩吗？",
+          "answer": [
+            "可以，低预算哨卫+灵体在 SSF 也能开图与打多数 Boss；豪华 Unique 是上限而非门槛。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/zh-cn/guides/campaign-early-maps-gearing-crafting/",
+              "label": "查看开图与地图装备指南"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build Planner 与导入",
+      "note": "PoE2 现已内置原生 Build Planner。可粘贴的导入字符串与 .build 仍待 PC 核验；期间请使用下方创作者指南与官方规划器。务必在自己客户端再次确认节点。",
+      "creatorName": "LugoHQ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "观察终局与 Citadel 实战",
+      "entries": [
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper Minion Infernalist 终局指南",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "description": "一段长参考，展示从灵体开图到哨卫为主与恶魔形态成型的全过程。",
+          "takeaway": "每幕抽样一个剧情 Boss，记录哨卫摆放顺序而非照搬清图速度。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言与构建思路"
+            },
+            {
+              "time": "2:30",
+              "label": "第一章开图"
+            },
+            {
+              "time": "6:00",
+              "label": "Infernalist 升华与恶魔形态"
+            },
+            {
+              "time": "10:30",
+              "label": "哨卫摆放与灵体协同"
+            },
+            {
+              "time": "15:00",
+              "label": "早期地图与装备"
+            }
+          ]
+        },
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper Minion Infernalist Citadel",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs",
+          "description": "Citadel 高压实战：哨卫生存、恶魔形态收尾与装备边界。",
+          "takeaway": "重点看哨卫摆放与高压 Boss 的生存处理，而非盲目追 DPS。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "前言"
+            },
+            {
+              "time": "1:50",
+              "label": "Citadel 入口与聚怪"
+            },
+            {
+              "time": "5:20",
+              "label": "哨卫摆放与保护"
+            },
+            {
+              "time": "9:10",
+              "label": "恶魔形态爆发窗口"
+            },
+            {
+              "time": "13:00",
+              "label": "装备边界与总结"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "来源与核验",
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "社区讨论",
+          "description": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "label": "社区讨论",
+          "description": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        },
+        {
+          "label": "数据库",
+          "description": "Path of Exile 2 Wiki — Infernalist",
+          "url": "https://poe2wiki.net/wiki/Infernalist"
+        }
+      ],
+      "verificationChecklist": [
+        "外部来源链接已复核",
+        "游戏内事实标注为 PC 核验",
+        "未证实 DPS 不作为事实陈述",
+        "恶魔形态与哨卫机制以客户端为准"
+      ]
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新记录",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "建立带来源的 0.5.4 Sniper Minion Infernalist 攻略；PC 核验进行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Infernalist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Infernalist"
+    }
+  ],
+  "seo": {
+    "title": "Sniper Minion Infernalist 构建指南｜Exile2 Guides",
+    "description": "0.5.4 Sniper Minion Infernalist：Elemental Sentry 狙击、Infernalist 恶魔形态、Raging Spirit 协同与防御边界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01"
+}
