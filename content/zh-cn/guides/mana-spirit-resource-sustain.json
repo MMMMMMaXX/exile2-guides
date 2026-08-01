@@ -25,11 +25,7 @@
   "createdAt": "2026-08-01",
   "updatedAt": "2026-08-01",
   "tags": [
-    "guide",
-    "mana",
-    "spirit",
-    "resource",
-    "sustain"
+    "troubleshooting"
   ],
   "heroImage": "/images/skills/herald-of-ice.webp",
   "cardImage": "/images/skills/herald-of-ice.webp",
@@ -96,17 +92,31 @@
           "id": "symptom",
           "label": "你的症状",
           "options": [
-            { "label": "清图没事，打 Boss 见底", "value": "mapping-fine-boss-dry" },
-            { "label": "光环或持续buff开不了", "value": "aura-wont-enable" },
-            { "label": "触发技能断档", "value": "trigger-dropout" },
-            { "label": "哪里都缺魔力", "value": "always-dry" }
+            {
+              "label": "清图没事，打 Boss 见底",
+              "value": "mapping-fine-boss-dry"
+            },
+            {
+              "label": "光环或持续buff开不了",
+              "value": "aura-wont-enable"
+            },
+            {
+              "label": "触发技能断档",
+              "value": "trigger-dropout"
+            },
+            {
+              "label": "哪里都缺魔力",
+              "value": "always-dry"
+            }
           ]
         }
       ],
       "rules": [
         {
           "title": "清图没事，Boss 见底",
-          "when": { "symptom": "mapping-fine-boss-dry" },
+          "when": {
+            "symptom": "mapping-fine-boss-dry"
+          },
           "steps": [
             "你的恢复依赖击杀回魔与偷取，而它们需要稳定击杀。",
             "长时间无小怪的 Boss 阶段会切断这些来源。",
@@ -115,7 +125,9 @@
         },
         {
           "title": "光环开不了",
-          "when": { "symptom": "aura-wont-enable" },
+          "when": {
+            "symptom": "aura-wont-enable"
+          },
           "steps": [
             "保留的 Spirit 大于你的最大 Spirit。",
             "取下或降低其它持续buff与 Support 以释放 Spirit。",
@@ -124,7 +136,9 @@
         },
         {
           "title": "触发技能断档",
-          "when": { "symptom": "trigger-dropout" },
+          "when": {
+            "symptom": "trigger-dropout"
+          },
           "steps": [
             "触发技能在打出时同样消耗魔力，叠加在触发技能之上。",
             "若触发频率高，两次恢复之间的总魔力支出会骤增。",
@@ -133,7 +147,9 @@
         },
         {
           "title": "哪里都缺魔力",
-          "when": { "symptom": "always-dry" },
+          "when": {
+            "symptom": "always-dry"
+          },
           "steps": [
             "基础魔力消耗在任何场景下都超过基础恢复。",
             "记录 10 秒循环，测量确切缺口。",
@@ -163,18 +179,35 @@
           "id": "resource",
           "label": "要检查的池",
           "options": [
-            { "label": "魔力消耗 vs 恢复", "value": "mana-cost" },
-            { "label": "偷取与击杀回魔", "value": "leech-onkill" },
-            { "label": "药剂与护符", "value": "flask-charm" },
-            { "label": "Spirit 保留", "value": "spirit" },
-            { "label": "生命/ES/符文庇护", "value": "alt-pool" }
+            {
+              "label": "魔力消耗 vs 恢复",
+              "value": "mana-cost"
+            },
+            {
+              "label": "偷取与击杀回魔",
+              "value": "leech-onkill"
+            },
+            {
+              "label": "药剂与护符",
+              "value": "flask-charm"
+            },
+            {
+              "label": "Spirit 保留",
+              "value": "spirit"
+            },
+            {
+              "label": "生命/ES/符文庇护",
+              "value": "alt-pool"
+            }
           ]
         }
       ],
       "rules": [
         {
           "title": "魔力消耗 vs 恢复",
-          "when": { "resource": "mana-cost" },
+          "when": {
+            "resource": "mana-cost"
+          },
           "steps": [
             "对比技能魔力消耗与你每秒魔力恢复。",
             "抬高消耗的 Support 即使基础消耗正常，也可能把消耗推到恢复之上。",
@@ -183,7 +216,9 @@
         },
         {
           "title": "偷取与击杀回魔",
-          "when": { "resource": "leech-onkill" },
+          "when": {
+            "resource": "leech-onkill"
+          },
           "steps": [
             "偷取与击杀回魔只在你持续造成伤害并击杀时回魔。",
             "在清图时极佳，在长时间无小怪的 Boss 阶段很弱。",
@@ -192,7 +227,9 @@
         },
         {
           "title": "药剂与护符",
-          "when": { "resource": "flask-charm" },
+          "when": {
+            "resource": "flask-charm"
+          },
           "steps": [
             "魔力药剂或护符在使用时爆发式回复，并靠充能补充。",
             "检查充能获取：若你很少触发获得充能的动作，恢复会停滞。",
@@ -201,7 +238,9 @@
         },
         {
           "title": "Spirit 保留",
-          "when": { "resource": "spirit" },
+          "when": {
+            "resource": "spirit"
+          },
           "steps": [
             "把你每个持续buff与 Support 的保留量相加，对照最大 Spirit。",
             "若总和超过上限，最后一个效果将无法开启。",
@@ -210,7 +249,9 @@
         },
         {
           "title": "替代池",
-          "when": { "resource": "alt-pool" },
+          "when": {
+            "resource": "alt-pool"
+          },
           "steps": [
             "有些技能消耗生命而非魔力；能量护盾与符文庇护是独立的池。",
             "直接核实承压的池：消耗生命的技能靠魔力恢复修不了。",
@@ -383,12 +424,30 @@
           "takeaway": "测一段 10 秒循环，开光环前先释放 Spirit，并先移除抬高消耗的 Support 再堆叠恢复。",
           "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM",
           "timestamps": [
-            { "label": "简介", "time": "0:00" },
-            { "label": "魔力 vs Spirit", "time": "1:30" },
-            { "label": "清图 vs Boss", "time": "4:00" },
-            { "label": "抬高消耗的 Support", "time": "7:00" },
-            { "label": "10 秒循环法", "time": "10:00" },
-            { "label": "修复顺序", "time": "13:00" }
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "魔力 vs Spirit",
+              "time": "1:30"
+            },
+            {
+              "label": "清图 vs Boss",
+              "time": "4:00"
+            },
+            {
+              "label": "抬高消耗的 Support",
+              "time": "7:00"
+            },
+            {
+              "label": "10 秒循环法",
+              "time": "10:00"
+            },
+            {
+              "label": "修复顺序",
+              "time": "13:00"
+            }
           ]
         }
       ]
@@ -435,9 +494,11 @@
           "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
         }
       ],
-      "verificationChecklist": [
-        "已核验完成"
-      ]
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
     },
     {
       "id": "changelog",

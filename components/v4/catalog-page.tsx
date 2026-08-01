@@ -19,6 +19,7 @@ import {
   buildAscendancySlugs,
   buildClassSlugs,
 } from "../../lib/builds/taxonomy";
+import { TAG_TAXONOMY, formatTag } from "../../lib/content/tag-taxonomy";
 
 type BuildContentPage = StaticContentPage & {
   buildArticle: NonNullable<StaticContentPage["buildArticle"]>;
@@ -36,7 +37,6 @@ type PrototypeConfig = {
   filters: readonly string[];
   heroImage: string;
   intro: string;
-  taxonomies: readonly { label: string; values: readonly string[] }[];
   title: string;
 };
 
@@ -56,45 +56,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
     intro:
       "Browse by class, ascendancy, main skill, progression stage, budget and play style.",
     filters: ["All", "Starter", "Leveling", "Endgame", "Bossing", "Budget"],
-    taxonomies: [
-      {
-        label: "By class",
-        values: [
-          "Druid",
-          "Huntress",
-          "Mercenary",
-          "Monk",
-          "Ranger",
-          "Sorceress",
-          "Warrior",
-          "Witch",
-        ],
-      },
-      {
-        label: "By purpose",
-        values: [
-          "Starter",
-          "Leveling",
-          "Mapping",
-          "Bossing",
-          "Budget",
-          "SSF",
-          "One-button",
-          "Minion",
-        ],
-      },
-      {
-        label: "By play style",
-        values: [
-          "Melee",
-          "Ranged",
-          "Caster",
-          "Minion",
-          "Transformation",
-          "Trigger",
-        ],
-      },
-    ],
   },
   boss: {
     eyebrow: "Encounter library",
@@ -103,34 +64,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
     intro:
       "Index campaign, optional, trial, map, endgame and pinnacle encounters before adding complex strategy pages.",
     filters: ["All", "Index", "Campaign", "Trial", "Endgame", "Pinnacle"],
-    taxonomies: [
-      {
-        label: "Campaign",
-        values: ["Act 1", "Act 2", "Act 3", "Act 4", "Interludes"],
-      },
-      {
-        label: "Encounter type",
-        values: [
-          "Main story",
-          "Optional",
-          "Permanent reward",
-          "Trial",
-          "Map",
-          "League mechanic",
-          "Endgame",
-          "Pinnacle",
-        ],
-      },
-      {
-        label: "Page readiness",
-        values: [
-          "Index only",
-          "Basic facts",
-          "Full strategy",
-          "Video supported",
-        ],
-      },
-    ],
   },
   item: {
     eyebrow: "Item reference",
@@ -146,45 +79,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Reference",
       "Currency",
     ],
-    taxonomies: [
-      {
-        label: "Equipment",
-        values: [
-          "Weapons",
-          "Off-hand",
-          "Armour",
-          "Jewellery",
-          "Flasks",
-          "Charms",
-        ],
-      },
-      {
-        label: "Materials",
-        values: [
-          "Currency",
-          "Essences",
-          "Omens",
-          "Catalysts",
-          "League currency",
-        ],
-      },
-      {
-        label: "Endgame",
-        values: [
-          "Waystones",
-          "Fragments",
-          "Logbooks",
-          "Tablets",
-          "Trial items",
-          "Relics",
-          "Keys",
-        ],
-      },
-      {
-        label: "Reference",
-        values: ["Unique items", "Quest items", "Special variants"],
-      },
-    ],
   },
   skill: {
     eyebrow: "Skill reference",
@@ -193,34 +87,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
     intro:
       "Organize active, support, spirit, meta, lineage and ascendancy skills before publishing build-specific advice.",
     filters: ["All", "Active", "Support", "Spirit", "Meta", "Ascendancy"],
-    taxonomies: [
-      {
-        label: "Skill families",
-        values: [
-          "Active",
-          "Support",
-          "Spirit",
-          "Meta",
-          "Lineage",
-          "Ascendancy",
-        ],
-      },
-      {
-        label: "Use",
-        values: [
-          "Damage",
-          "Defence",
-          "Mobility",
-          "Minions",
-          "Auras",
-          "Triggers",
-        ],
-      },
-      {
-        label: "Reference",
-        values: ["Gem level", "Tags", "Requirements", "Related builds"],
-      },
-    ],
   },
   guide: {
     eyebrow: "Guide library",
@@ -236,20 +102,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Crafting",
       "Endgame",
     ],
-    taxonomies: [
-      {
-        label: "Progression",
-        values: ["Beginner", "Campaign", "Endgame Atlas", "Troubleshooting"],
-      },
-      {
-        label: "Systems",
-        values: ["Mechanics", "Crafting", "Trading", "Atlas", "League systems"],
-      },
-      {
-        label: "Format",
-        values: ["Checklist", "Reference", "How-to", "Decision guide"],
-      },
-    ],
   },
   patch: {
     eyebrow: "Patch archive",
@@ -264,25 +116,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Hotfixes",
       "Bug Fixes",
       "Impact",
-    ],
-    taxonomies: [
-      {
-        label: "Release type",
-        values: ["Major updates", "Balance", "Hotfixes", "Bug fixes"],
-      },
-      {
-        label: "Impact",
-        values: ["Builds", "Bosses", "Items", "Skills", "Atlas", "Economy"],
-      },
-      {
-        label: "Editorial state",
-        values: [
-          "Patch overview",
-          "Impact notes",
-          "Follow-up guide",
-          "Archived",
-        ],
-      },
     ],
   },
 };
@@ -369,34 +202,6 @@ function extractVersionNumber(patch: string): string {
   return match ? match[1]! : patch;
 }
 
-/** Boss tag slug 到显示名的映射；卡片底部和筛选标签均读取此表。 */
-const bossTagLabels: Record<string, { en: string; zh: string }> = {
-  "act-1": { en: "Act 1", zh: "Act 1" },
-  "act-2": { en: "Act 2", zh: "Act 2" },
-  campaign: { en: "Campaign", zh: "剧情" },
-  chaos: { en: "Chaos", zh: "混沌" },
-  cold: { en: "Cold", zh: "冰霜" },
-  elemental: { en: "Elemental", zh: "元素" },
-  endgame: { en: "Endgame", zh: "终局" },
-  fire: { en: "Fire", zh: "火焰" },
-  holy: { en: "Holy", zh: "神圣" },
-  "league-mechanic": { en: "League", zh: "赛季" },
-  lightning: { en: "Lightning", zh: "闪电" },
-  "map-boss": { en: "Map Boss", zh: "地图 Boss" },
-  "multi-phase": { en: "Multi-phase", zh: "多阶段" },
-  "permanent-reward": { en: "Reward", zh: "奖励" },
-  physical: { en: "Physical", zh: "物理" },
-  pinnacle: { en: "Pinnacle", zh: "巅峰" },
-  sekhemas: { en: "Sekhemas", zh: "Sekhemas" },
-  trial: { en: "Trial", zh: "试炼" },
-};
-
-/** 将 tag slug 转为当前语言的显示名；未知标签直接返回原始值。 */
-function formatBossTag(tag: string, zh: boolean): string {
-  const entry = bossTagLabels[tag];
-  return entry ? (zh ? entry.zh : entry.en) : tag;
-}
-
 /**
  * 非 Build 类型的真实内容共用这一张横向整卡，与 Build 卡片保持相同布局，
  * 发布状态只改变标签，防止文章转为 published 后重新落入另一套布局。
@@ -417,10 +222,8 @@ export function V4ContentPageCard({
   const image = fm.image ? resolveImageAsset(fm.image) : fallbackImage;
   const segment = contentTypeSegments[contentType];
   const typeLabel = catalogConfigs[contentType].title;
-  const displayTags =
-    contentType === "boss"
-      ? fm.tags.map((tag) => formatBossTag(tag, zh))
-      : [];
+  // 全部分类统一用受控词表把 tag slug 渲染为当前语言显示名。
+  const displayTags = fm.tags.map((tag) => formatTag(contentType, tag, zh));
   const versionNumber = extractVersionNumber(fm.patch);
 
   return (
@@ -455,11 +258,6 @@ export function V4ContentPageCard({
               <span className="v4-card-meta__tags-track">
                 {displayTags.map((tag) => (
                   <span className="v4-card-meta__tag" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-                {displayTags.map((tag) => (
-                  <span className="v4-card-meta__tag" key={`dup-${tag}`}>
                     {tag}
                   </span>
                 ))}
@@ -663,26 +461,6 @@ const bossRailFilterMap: Record<string, string> = {
   Trial: "trial",
 };
 
-/** Boss 顶部 taxonomy 按钮值到 tag slug 的映射。 */
-const bossTaxonomyTagMap: Record<string, string> = {
-  "Act 1": "act-1",
-  "Act 2": "act-2",
-  "Act 3": "act-3",
-  "Act 4": "act-4",
-  Endgame: "endgame",
-  Interludes: "interludes",
-  "League mechanic": "league-mechanic",
-  Map: "map-boss",
-  "Permanent reward": "permanent-reward",
-  Pinnacle: "pinnacle",
-  Trial: "trial",
-};
-
-/** 将 taxonomy 显示名转为 tag slug，使顶部按钮能过滤真实 Boss 标签。 */
-function taxonomyValueToBossTag(value: string): string | undefined {
-  return bossTaxonomyTagMap[value];
-}
-
 /** 按 V4 原型结构渲染分类页；Build 真实内容会替换骨架卡片并沿用同一发布布局。 */
 export function V4CatalogPage({
   contentType,
@@ -693,9 +471,11 @@ export function V4CatalogPage({
   items: readonly StaticContentPage[];
   locale: ContentLocale;
 }) {
+  const zh = locale === "zh-cn";
   const config = catalogConfigs[contentType];
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState("All");
+  // 选中的标签统一存受控 slug，供全部分类的标签筛选与卡片展示复用。
   const [selectedTags, setSelectedTags] = useState<readonly string[]>([]);
   const cards = useMemo(() => createCards(contentType), [contentType]);
   const visibleCards =
@@ -706,7 +486,6 @@ export function V4CatalogPage({
             card.type.toLowerCase().includes(filter.toLowerCase()) ||
             card.title.toLowerCase().includes(filter.toLowerCase()),
         );
-  const zh = locale === "zh-cn";
   const buildQuery = useMemo(
     () => parseBuildQuery(searchParams),
     [searchParams],
@@ -745,37 +524,49 @@ export function V4CatalogPage({
       if (!bossArticle) return true;
       const railCategory = bossRailFilterMap[filter];
       if (railCategory && bossArticle.bossCategory !== railCategory) return false;
-      if (selectedTags.length > 0) {
-        const tagSlugs = selectedTags
-          .map((value) => taxonomyValueToBossTag(value))
-          .filter((slug): slug is string => Boolean(slug));
-        if (
-          tagSlugs.length > 0 &&
-          !tagSlugs.some((slug) => bossArticle.tags.includes(slug))
-        ) {
-          return false;
-        }
+      if (
+        selectedTags.length > 0 &&
+        !selectedTags.some((slug) => bossArticle.tags.includes(slug))
+      ) {
+        return false;
       }
       return true;
     });
   }, [contentType, items, filter, selectedTags]);
-  const visibleItems =
-    contentType === "build"
-      ? visibleBuildPages
-      : contentType === "boss"
-        ? visibleBossItems
-        : items;
+  /**
+   * 非 Build 分类的真实文章按选中标签过滤：选中任一标签即命中
+   * （OR 语义，便于发现），未选标签时返回全部。
+   */
+  const visibleTaggedItems = useMemo(() => {
+    if (selectedTags.length === 0) return items;
+    return items.filter((page) =>
+      selectedTags.some((slug) => page.frontMatter.tags.includes(slug)),
+    );
+  }, [items, selectedTags]);
+  /** 统一各分类的可见列表：Build 走 URL 查询，Boss 走左侧+标签，其余走标签。 */
+  const visibleItems = useMemo(() => {
+    if (contentType === "build") {
+      if (selectedTags.length === 0) return visibleBuildPages;
+      return visibleBuildPages.filter((page) =>
+        selectedTags.some((slug) => page.frontMatter.tags.includes(slug)),
+      );
+    }
+    if (contentType === "boss") return visibleBossItems;
+    return visibleTaggedItems;
+  }, [contentType, selectedTags, visibleBuildPages, visibleBossItems, visibleTaggedItems]);
   const rendersRealBuilds = contentType === "build" && buildPages.length > 0;
   /** Boss 有真实内容时始终走真实卡片区，筛选为空时显示空状态而非骨架卡片。 */
   const hasRealBossContent = contentType === "boss" && items.length > 0;
   const rendersRealContent = visibleItems.length > 0 || hasRealBossContent;
+  // Build 的 URL 筛选词 + 本地标签选择合并展示；其余分类直接展示选中 slug。
+  const buildUrlTags = [
+    buildQuery.filters.class,
+    buildQuery.filters.stage,
+    buildQuery.filters.playstyle,
+  ].flatMap((value) => (value ? [value] : []));
   const querySelectedTags =
     contentType === "build"
-      ? [
-          buildQuery.filters.class,
-          buildQuery.filters.stage,
-          buildQuery.filters.playstyle,
-        ].flatMap((value) => (value ? [value] : []))
+      ? [...buildUrlTags, ...selectedTags]
       : selectedTags;
 
   /** 更新一个筛选参数并保留其他筛选；空值会删除参数以恢复规范列表状态。 */
@@ -810,14 +601,17 @@ export function V4CatalogPage({
     return buildQuery.filters.stage === value.toLowerCase();
   }
 
-  /** 将原型标签映射到真实 Build 查询字段；不属于正式筛选词表的标签只保留视觉选择。 */
+  /**
+   * 将受控标签 slug 映射到真实 Build 查询字段；可映射的标签走 URL 查询，
+   * 不可映射的（如 endgame/early-endgame）仅保留视觉选中状态，由选中标签
+   * 统一对 frontMatter.tags 过滤。
+   */
   function getBuildTagQuery(tag: string) {
-    const value = tag.toLowerCase().replace(/\s+/g, "-");
-    if (buildClassSlugs.includes(value as (typeof buildClassSlugs)[number])) {
-      return { name: "class", value };
+    if (buildClassSlugs.includes(tag as (typeof buildClassSlugs)[number])) {
+      return { name: "class", value: tag };
     }
-    if (["starter", "leveling", "bossing"].includes(value)) {
-      return { name: "stage", value };
+    if (["starter", "leveling", "bossing"].includes(tag)) {
+      return { name: "stage", value: tag };
     }
     if (
       [
@@ -827,28 +621,37 @@ export function V4CatalogPage({
         "minion",
         "transformation",
         "trigger",
-      ].includes(value)
+      ].includes(tag)
     ) {
-      return { name: "playstyle", value };
+      return { name: "playstyle", value: tag };
     }
-    if (value === "budget") return { name: "budget", value: "low" };
+    if (tag === "budget") return { name: "budget", value: "low" };
     return undefined;
   }
-  /** taxonomy 标签支持多选；内容映射将在有正式分类数据后接入，当前明确保留选择状态。 */
-  function toggleTag(tag: string) {
-    const query = contentType === "build" ? getBuildTagQuery(tag) : undefined;
-    if (query) {
-      updateBuildQuery(
-        query.name,
-        searchParams.get(query.name) === query.value ? "" : query.value,
-      );
-      return;
+  /** 顶部标签按钮支持多选；Build 可映射标签接入 URL 查询，其余分类直接维护选中 slug。 */
+  function toggleTag(slug: string) {
+    if (contentType === "build") {
+      const query = getBuildTagQuery(slug);
+      if (query) {
+        updateBuildQuery(
+          query.name,
+          searchParams.get(query.name) === query.value ? "" : query.value,
+        );
+        return;
+      }
     }
     setSelectedTags((current) =>
-      current.includes(tag)
-        ? current.filter((value) => value !== tag)
-        : [...current, tag],
+      current.includes(slug)
+        ? current.filter((value) => value !== slug)
+        : [...current, slug],
     );
+  }
+  /** 清除当前分类的全部标签选择（Build 同时清空 URL 查询）。 */
+  function clearTags() {
+    if (contentType === "build") {
+      setSearchParams({}, { preventScrollReset: true });
+    }
+    setSelectedTags([]);
   }
   return (
     <main className="v4-prototype-catalog" data-prerender-content="true">
@@ -890,42 +693,33 @@ export function V4CatalogPage({
         </div>
       </section>
       <section className="page-shell v4-taxonomy-strip">
-        {config.taxonomies.map((group) => (
-          <section className="v4-taxonomy-group" key={group.label}>
-            <h3>{group.label}</h3>
+        {TAG_TAXONOMY[contentType].facets.map((facet) => (
+          <section className="v4-taxonomy-group" key={facet.label.en}>
+            <h3>{zh ? facet.label.zh : facet.label.en}</h3>
             <div>
-              {group.values.map((value) => (
-                <button
-                  aria-pressed={
-                    contentType === "build"
-                      ? (() => {
-                          const query = getBuildTagQuery(value);
-                          return query
-                            ? searchParams.get(query.name) === query.value
-                            : selectedTags.includes(value);
-                        })()
-                      : selectedTags.includes(value)
-                  }
-                  className={
-                    contentType === "build"
-                      ? (() => {
-                          const query = getBuildTagQuery(value);
-                          return query &&
-                            searchParams.get(query.name) === query.value
-                            ? "is-selected"
-                            : undefined;
-                        })()
-                      : selectedTags.includes(value)
-                        ? "is-selected"
-                        : undefined
-                  }
-                  key={value}
-                  onClick={() => toggleTag(value)}
-                  type="button"
-                >
-                  {value}
-                </button>
-              ))}
+              {facet.values.map((value) => {
+                // Build 可映射标签看 URL 查询激活态，其余分类直接看选中 slug。
+                const isSelected =
+                  contentType === "build"
+                    ? (() => {
+                        const query = getBuildTagQuery(value);
+                        return query
+                          ? searchParams.get(query.name) === query.value
+                          : selectedTags.includes(value);
+                      })()
+                    : selectedTags.includes(value);
+                return (
+                  <button
+                    aria-pressed={isSelected}
+                    className={isSelected ? "is-selected" : undefined}
+                    key={value}
+                    onClick={() => toggleTag(value)}
+                    type="button"
+                  >
+                    {formatTag(contentType, value, zh)}
+                  </button>
+                );
+              })}
             </div>
           </section>
         ))}
@@ -1104,15 +898,13 @@ export function V4CatalogPage({
           {querySelectedTags.length ? (
             <p className="v4-active-tags">
               {zh ? "已选标签：" : "Selected tags: "}
-              {querySelectedTags.join(" · ")}
-              <button
-                onClick={() =>
-                  contentType === "build"
-                    ? setSearchParams({}, { preventScrollReset: true })
-                    : setSelectedTags([])
-                }
-                type="button"
-              >
+              {querySelectedTags.map((slug, index) => (
+                <span key={slug}>
+                  {index > 0 ? " · " : ""}
+                  {formatTag(contentType, slug, zh)}
+                </span>
+              ))}
+              <button onClick={clearTags} type="button">
                 {zh ? "清除" : "Clear"}
               </button>
             </p>
@@ -1192,6 +984,23 @@ export function V4CatalogPage({
                 }
                 type="button"
               >
+                {zh ? "清除筛选" : "Clear filters"}
+              </button>
+            </div>
+          ) : null}
+          {!rendersRealBuilds && rendersRealContent && visibleItems.length === 0 ? (
+            <div className="empty-state v4-prototype-catalog__empty">
+              <h2>
+                {zh
+                  ? `没有符合条件的${config.title}`
+                  : `No matching ${config.title}`}
+              </h2>
+              <p>
+                {zh
+                  ? "调整或清除标签筛选查看全部内容。"
+                  : "Adjust or clear the tag filters to see everything."}
+              </p>
+              <button onClick={clearTags} type="button">
                 {zh ? "清除筛选" : "Clear filters"}
               </button>
             </div>

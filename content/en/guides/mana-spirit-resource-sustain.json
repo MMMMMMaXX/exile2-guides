@@ -25,11 +25,8 @@
   "createdAt": "2026-08-01",
   "updatedAt": "2026-08-01",
   "tags": [
-    "guide",
-    "mana",
-    "spirit",
-    "resource",
-    "sustain"
+    "map",
+    "troubleshooting"
   ],
   "heroImage": "/images/skills/herald-of-ice.webp",
   "cardImage": "/images/skills/herald-of-ice.webp",
@@ -96,17 +93,31 @@
           "id": "symptom",
           "label": "Your symptom",
           "options": [
-            { "label": "Mapping is fine, boss fights run dry", "value": "mapping-fine-boss-dry" },
-            { "label": "Aura or persistent buff won't enable", "value": "aura-wont-enable" },
-            { "label": "Triggered skills drop out", "value": "trigger-dropout" },
-            { "label": "Always out of mana everywhere", "value": "always-dry" }
+            {
+              "label": "Mapping is fine, boss fights run dry",
+              "value": "mapping-fine-boss-dry"
+            },
+            {
+              "label": "Aura or persistent buff won't enable",
+              "value": "aura-wont-enable"
+            },
+            {
+              "label": "Triggered skills drop out",
+              "value": "trigger-dropout"
+            },
+            {
+              "label": "Always out of mana everywhere",
+              "value": "always-dry"
+            }
           ]
         }
       ],
       "rules": [
         {
           "title": "Mapping fine, boss dry",
-          "when": { "symptom": "mapping-fine-boss-dry" },
+          "when": {
+            "symptom": "mapping-fine-boss-dry"
+          },
           "steps": [
             "Your recovery leans on on-kill and leech, which need steady kills.",
             "Bosses with long phases and no adds cut those sources off.",
@@ -115,7 +126,9 @@
         },
         {
           "title": "Aura will not enable",
-          "when": { "symptom": "aura-wont-enable" },
+          "when": {
+            "symptom": "aura-wont-enable"
+          },
           "steps": [
             "Reserved Spirit is greater than your maximum Spirit.",
             "Unsocket or lower other persistent buffs and supports to free Spirit.",
@@ -124,7 +137,9 @@
         },
         {
           "title": "Triggered skills drop out",
-          "when": { "symptom": "trigger-dropout" },
+          "when": {
+            "symptom": "trigger-dropout"
+          },
           "steps": [
             "Triggered skills still cost mana when they fire, on top of the trigger skill.",
             "If trigger rate is high, total mana spent spikes between recoveries.",
@@ -133,7 +148,9 @@
         },
         {
           "title": "Always out of mana",
-          "when": { "symptom": "always-dry" },
+          "when": {
+            "symptom": "always-dry"
+          },
           "steps": [
             "Base mana cost exceeds base recovery in every context.",
             "Record a 10-second loop to measure the exact gap.",
@@ -163,18 +180,35 @@
           "id": "resource",
           "label": "Resource to inspect",
           "options": [
-            { "label": "Mana cost vs regen", "value": "mana-cost" },
-            { "label": "Leech and on-kill", "value": "leech-onkill" },
-            { "label": "Flask and charm", "value": "flask-charm" },
-            { "label": "Spirit reservation", "value": "spirit" },
-            { "label": "Life, ES, Runic Ward", "value": "alt-pool" }
+            {
+              "label": "Mana cost vs regen",
+              "value": "mana-cost"
+            },
+            {
+              "label": "Leech and on-kill",
+              "value": "leech-onkill"
+            },
+            {
+              "label": "Flask and charm",
+              "value": "flask-charm"
+            },
+            {
+              "label": "Spirit reservation",
+              "value": "spirit"
+            },
+            {
+              "label": "Life, ES, Runic Ward",
+              "value": "alt-pool"
+            }
           ]
         }
       ],
       "rules": [
         {
           "title": "Mana cost vs regen",
-          "when": { "resource": "mana-cost" },
+          "when": {
+            "resource": "mana-cost"
+          },
           "steps": [
             "Compare the skill's mana cost to your mana regeneration per second.",
             "A support that adds mana cost can push cost above regen even if base cost was fine.",
@@ -183,7 +217,9 @@
         },
         {
           "title": "Leech and on-kill",
-          "when": { "resource": "leech-onkill" },
+          "when": {
+            "resource": "leech-onkill"
+          },
           "steps": [
             "Leech and on-kill mana only return while you are dealing damage and securing kills.",
             "They are excellent in maps, weak in long boss phases with no adds.",
@@ -192,7 +228,9 @@
         },
         {
           "title": "Flask and charm",
-          "when": { "resource": "flask-charm" },
+          "when": {
+            "resource": "flask-charm"
+          },
           "steps": [
             "A mana flask or charm restores a burst on use and refills from charges.",
             "Check charge gain: if you rarely take the actions that grant charges, recovery stalls.",
@@ -201,7 +239,9 @@
         },
         {
           "title": "Spirit reservation",
-          "when": { "resource": "spirit" },
+          "when": {
+            "resource": "spirit"
+          },
           "steps": [
             "Sum every persistent buff and support reservation against your maximum Spirit.",
             "If the sum exceeds maximum, the last effect will not enable.",
@@ -210,7 +250,9 @@
         },
         {
           "title": "Alternative pools",
-          "when": { "resource": "alt-pool" },
+          "when": {
+            "resource": "alt-pool"
+          },
           "steps": [
             "Some skills cost Life instead of mana; Energy Shield and Runic Ward are separate pools.",
             "Verify the pressured pool directly: a Life-cost skill will not be fixed by mana regen.",
@@ -383,12 +425,30 @@
           "takeaway": "Measure a 10-second loop, free Spirit before adding auras, and remove cost-inflating supports before stacking recovery.",
           "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM",
           "timestamps": [
-            { "label": "Intro", "time": "0:00" },
-            { "label": "Mana vs Spirit", "time": "1:30" },
-            { "label": "Mapping vs boss", "time": "4:00" },
-            { "label": "Supports that inflate cost", "time": "7:00" },
-            { "label": "10-second loop method", "time": "10:00" },
-            { "label": "Fix order", "time": "13:00" }
+            {
+              "label": "Intro",
+              "time": "0:00"
+            },
+            {
+              "label": "Mana vs Spirit",
+              "time": "1:30"
+            },
+            {
+              "label": "Mapping vs boss",
+              "time": "4:00"
+            },
+            {
+              "label": "Supports that inflate cost",
+              "time": "7:00"
+            },
+            {
+              "label": "10-second loop method",
+              "time": "10:00"
+            },
+            {
+              "label": "Fix order",
+              "time": "13:00"
+            }
           ]
         }
       ]
@@ -435,9 +495,11 @@
           "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
         }
       ],
-      "verificationChecklist": [
-        "Verification completed"
-      ]
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
     },
     {
       "id": "changelog",

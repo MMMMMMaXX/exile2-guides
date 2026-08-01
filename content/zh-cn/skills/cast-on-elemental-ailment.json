@@ -10,7 +10,11 @@
   "summary": "Cast on Elemental Ailment（简称 CoEA）是 0.3.0 由 Cast on Freeze / Cast on Shock / Cast on Ignite 合并而来的 Meta 触发宝石。本文讲清为什么找不到独立的 Cast on Freeze、三种异常如何积累 Energy、Socketed Spell 的施法时间如何决定最大 Energy、为什么会显示 Missing Socketed Skill，以及如何维持单机 Boss 的触发节奏。",
   "description": "Cast on Elemental Ailment 深度攻略：Freeze/Shock/Ignite 的 Energy 公式对比、Socketed Spell 施法时间与最大 Energy、触发后 Spell 的 Mana 行为、与 Elemental Invocation 的区别、常见不触发原因与直接答案、Mapping 与 Boss 循环、推荐构筑与社区真实问题。",
   "skillType": "active",
-  "requiredLevel": "1",
+  "requiredLevel": null,
+  "gemLevel": null,
+  "uncutGemTier": 14,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": 100,
   "skillCategory": "meta",
   "skillTags": [
     "meta",
@@ -31,12 +35,12 @@
   "publishedAt": "2026-08-01",
   "updatedAt": "2026-08-01",
   "tags": [
-    "cast-on-elemental-ailment",
-    "meta-skill",
-    "trigger",
-    "energy",
-    "stormweaver",
-    "cold-caster"
+    "cold",
+    "fire",
+    "lightning",
+    "meta",
+    "spell",
+    "triggers"
   ],
   "sections": [
     {
@@ -76,9 +80,16 @@
         },
         {
           "label": "Spirit 占用",
-          "value": "较高（发布前以当前客户端为准）",
+          "value": "100 Spirit",
           "notes": [
             "作为 Spirit 预留宝石，会与其他 Persistent Buff / Herald 争夺 Spirit 预算。"
+          ]
+        },
+        {
+          "label": "宝石等级 / 阶位",
+          "value": "等级 1-20 · 未切割 Meta 阶位 14 · 需要等级 1",
+          "notes": [
+            "由未切割 Meta 宝石（阶位 14）获得；宝石等级随角色等级从 1 提升至 20。"
           ]
         },
         {
@@ -90,14 +101,14 @@
         },
         {
           "label": "Socketed Spell",
-          "value": "必填一颗 Spell",
+          "value": "需要一颗或多颗 Spell",
           "notes": [
-            "空的 Socketed Spell 槽会直接报 Missing Socketed Skill，宝石完全不工作。"
+            "空格会直接报 Missing Socketed Skill，宝石完全不工作；可同时塞入多颗 Spell，能量打满时全部一并触发。"
           ]
         },
         {
           "label": "Energy 上限",
-          "value": "由 Socketed Spell 施法时间决定",
+          "value": "10 ×（施法时间 ÷ 0.1 秒）",
           "notes": [
             "施法时间越长，单步可积攒的 Energy 上限越高；这是配装的核心权衡点。"
           ]
@@ -137,23 +148,28 @@
       "type": "data-table",
       "visible": true,
       "toc": true,
-      "columns": ["异常类型", "积累 Energy 的方式", "单体积累效率", "实战注意"],
+      "columns": [
+        "异常类型",
+        "积累 Energy 的方式",
+        "单体积累效率",
+        "实战注意"
+      ],
       "rows": [
         [
           "Freeze（冰冻）",
-          "每次把目标冻住（或把冻结进度打满）时获得一笔 Energy",
+          "每点冰冻 Power 得 10 Energy — 冰冻或把冻结进度打满时获得",
           "密集怪群最快，清图首选",
           "单体 Boss 免疫或阶段切换时常断；需靠高冻结积累或冰冻地面维持"
         ],
         [
           "Shock（感电）",
-          "每次造成有效感电（达到感电阈值）时获得 Energy",
+          "每点感电 Power 得 1 Energy — 每次达到感电阈值时获得",
           "中等，依赖感电门槛与感电强度",
           "堆叠感电强度可放大每次感电的 Energy；适合中速多目标"
         ],
         [
           "Ignite（点燃）",
-          "每次施加点燃时按点燃强度比例获得 Energy",
+          "每点燃 Power 得 1 Energy × 点燃强度比例（强度 ÷ Ailment Threshold）",
           "与 Ignite 强度 / Ailment Threshold 比例相关",
           "高点燃强度下单体也能稳定供能；常与 Flammability 类增伤联动"
         ]
@@ -167,7 +183,7 @@
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Energy 不是无限积攒的。CoEA 内部有一个最大 Energy 上限，而这个上限直接由你塞进去的 Socketed Spell 的施法时间（Cast Time）决定：施法时间越长，每一步能容纳的 Energy 越多。这就是为什么很多人会选择一颗施法时间偏长的 Spell——它决定了你“攒满一次能砸多重”。",
+        "Energy 不是无限积攒的。CoEA 内部有一个最大 Energy 上限，直接由你塞进去的 Socketed Spell 的基础施法时间（Cast Time）决定：最大 Energy = 10 ×（施法时间 ÷ 0.1 秒）。换句话说，一颗 0.8 秒施法的 Spell 每步可攒到 80 Energy，0.2 秒的只能攒 20。这就是为什么很多人会选择施法时间偏长的 Spell——它决定了你“攒满一次能砸多重”。",
         "代价是节奏：施法时间长的 Spell，触发间隔也更长，单次伤害高但频率低；施法时间短的 Spell，触发频繁但单次上限低。Mapping 清图通常偏好高频小砸（更快清场），Boss 单体则偏好攒满一次的重砸。",
         "触发后的 Spell 仍然消耗 Mana：CoEA 只是“自动帮你按了一下施法”，并不会免除那颗 Spell 的 Mana 成本。如果你的 Socketed Spell 很贵，你需要确保 Mana 池、回复或光环能撑住连续的自动施放，否则会自动施放被打断或 Mana 见底。"
       ],
@@ -228,9 +244,9 @@
         },
         {
           "label": "Spell Echo（法术回响）",
-          "priority": "optional",
+          "priority": "incompatible",
           "notes": [
-            "注意：触发的 Spell 不会被 Spell Echo 再次自动触发；它只能作用于你手动施放的同源 Spell。",
+            "不兼容：触发的 Spell 不会被 Spell Echo 再次自动触发；它只能作用于你手动施放的同源 Spell。",
             "社区常见误区就是把 Spell Echo 当成“让触发更频繁”的支持，实际上它对 Triggered Spell 无效。"
           ]
         },
@@ -343,8 +359,8 @@
         {
           "question": "Energy 上限由什么决定？",
           "answer": [
-            "由你塞进槽里的 Socketed Spell 的施法时间决定：施法时间越长，单步可积攒的 Energy 上限越高。",
-            "具体数值以当前客户端技能面板为准。"
+            "由你塞进槽里的 Socketed Spell 的基础施法时间决定：最大 Energy = 10 ×（施法时间 ÷ 0.1 秒）。",
+            "0.8 秒施法的 Spell 可攒到 80，0.2 秒的只能攒 20。"
           ]
         },
         {
@@ -417,10 +433,16 @@
           "description": "Reddit、官方论坛与评论区用于发现“Missing Socketed Skill、Energy 不涨、随从异常不算、Spell Echo 误区”等真实问题，并经客户端复现后给出直接答案。"
         }
       ],
-      "verificationChecklist": ["已核验完成"]
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
     }
   ],
-  "relatedBuildIds": ["cold-caster-chronomancer"],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
   "relatedBossIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
@@ -455,7 +477,7 @@
   "seo": {
     "title": "Cast on Elemental Ailment 攻略 — 元素异常触发、Energy 与 Socketed Spell",
     "description": "Cast on Elemental Ailment 深度攻略：Freeze/Shock/Ignite 的 Energy 公式、Socketed Spell 施法时间与最大 Energy、不触发原因与直接答案、Mapping/Boss 循环与社区真实问题。",
-    "noindex": false
+    "noindex": true
   },
   "heroImage": "/images/skills/cast-on-elemental-ailment.webp",
   "cardImage": "/images/skills/cast-on-elemental-ailment.webp",

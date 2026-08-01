@@ -10,7 +10,11 @@
   "summary": "Cast on Elemental Ailment (CoEA) is the Meta trigger gem created in 0.3.0 by merging Cast on Freeze / Cast on Shock / Cast on Ignite. This guide explains why you can no longer find a standalone Cast on Freeze, how Freeze / Shock / Ignite each generate Energy, how your Socketed Spell's cast time sets the maximum Energy, why you see Missing Socketed Skill, and how to keep single-target bosses triggering.",
   "description": "Cast on Elemental Ailment deep guide: Energy formulas for Freeze / Shock / Ignite, maximum Energy vs Socketed Spell cast time, Mana behavior of triggered spells, how it differs from Elemental Invocation, common non-triggering causes with direct answers, mapping and boss rotations, recommended builds and real community questions.",
   "skillType": "active",
-  "requiredLevel": "1",
+  "requiredLevel": null,
+  "gemLevel": null,
+  "uncutGemTier": 14,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": 100,
   "skillCategory": "meta",
   "skillTags": [
     "meta",
@@ -31,12 +35,12 @@
   "publishedAt": "2026-08-01",
   "updatedAt": "2026-08-01",
   "tags": [
-    "cast-on-elemental-ailment",
-    "meta-skill",
-    "trigger",
-    "energy",
-    "stormweaver",
-    "cold-caster"
+    "cold",
+    "fire",
+    "lightning",
+    "meta",
+    "spell",
+    "triggers"
   ],
   "sections": [
     {
@@ -76,9 +80,16 @@
         },
         {
           "label": "Spirit reservation",
-          "value": "High (verify on current client)",
+          "value": "100 Spirit",
           "notes": [
             "Competes with other Persistent Buffs / Heralds for your Spirit budget."
+          ]
+        },
+        {
+          "label": "Gem level / tier",
+          "value": "Level 1-20 · Uncut Meta Tier 14 · Requires Level 1",
+          "notes": [
+            "Obtained from an Uncut Meta Gem (Tier 14); gem level scales 1-20 with character level."
           ]
         },
         {
@@ -90,14 +101,14 @@
         },
         {
           "label": "Socketed Spell",
-          "value": "One Spell required",
+          "value": "One or more Spells required",
           "notes": [
-            "An empty slot reports Missing Socketed Skill and the gem does nothing."
+            "An empty slot reports Missing Socketed Skill and the gem does nothing; you may socket several Spells and all trigger at max Energy."
           ]
         },
         {
           "label": "Maximum Energy",
-          "value": "Set by Socketed Spell cast time",
+          "value": "10 × (cast time ÷ 0.1s)",
           "notes": [
             "Longer cast time = higher per-step Energy cap; the core gearing trade-off."
           ]
@@ -146,19 +157,19 @@
       "rows": [
         [
           "Freeze",
-          "A lump of Energy when you freeze (or fill freeze buildup) a target",
+          "10 Energy per Freeze Power — awarded when you Freeze or fully build freeze on a target",
           "Fastest in dense packs; best for clearing",
           "Stalls on freeze-immune or phase-shifting bosses; needs freeze buildup or chilling ground"
         ],
         [
           "Shock",
-          "Energy on each effective Shock (reaching shock threshold)",
+          "1 Energy per Shock Power — awarded each time you reach the Shock threshold",
           "Medium; depends on shock threshold and shock magnitude",
           "Stacking shock magnitude amplifies per-shock Energy; good for mid-speed multi-target"
         ],
         [
           "Ignite",
-          "Energy proportional to ignite intensity",
+          "1 Energy per Ignite Power × ignite intensity ratio (intensity ÷ Ailment Threshold)",
           "Tied to Ignite intensity / Ailment Threshold ratio",
           "High ignite intensity sustains single-target; often paired with Flammability-style scaling"
         ]
@@ -172,7 +183,7 @@
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Energy is not infinite. CoEA has an internal maximum Energy cap, and that cap is set directly by the cast time of the Socketed Spell you slot: longer cast time means more Energy can be stored per step. This is why many builds choose a relatively long-cast-time Spell — it decides 'how heavy a slam can I charge up'.",
+        "Energy is not infinite. CoEA has an internal maximum Energy cap, and that cap is set directly by the base cast time of the Socketed Spell you slot: Max Energy = 10 × (Socketed Spell cast time ÷ 0.1s). In other words, a 0.8s-cast Spell stores up to 80 Energy per socketed step; a 0.2s-cast Spell stores only 20. This is why many builds choose a relatively long-cast-time Spell — it decides 'how heavy a slam can I charge up'.",
         "The cost is cadence: a long-cast-time Spell also triggers less often — high single hit, low frequency. A short-cast-time Spell triggers often but with a lower cap. Mapping usually prefers frequent small slams for faster clears; bossing prefers a fully charged heavy slam.",
         "Triggered Spells still cost Mana: CoEA only 'auto-presses cast' for you; it does not waive the Spell's Mana cost. If your Socketed Spell is expensive, you need a Mana pool, recovery or aura that can sustain continuous auto-casts, or the auto-cast gets interrupted and you bottom out."
       ],
@@ -233,9 +244,9 @@
         },
         {
           "label": "Spell Echo",
-          "priority": "optional",
+          "priority": "incompatible",
           "notes": [
-            "Note: a Triggered Spell is NOT re-triggered by Spell Echo; it only affects the same Spell when you cast it manually.",
+            "Incompatible: a Triggered Spell is NOT re-triggered by Spell Echo; it only affects the same Spell when you cast it manually.",
             "A common community mistake is treating Spell Echo as 'makes triggering faster' — it does not speed up triggers."
           ]
         },
@@ -348,8 +359,8 @@
         {
           "question": "What decides the Energy cap?",
           "answer": [
-            "The cast time of the Socketed Spell you slot: longer cast time = higher per-step Energy cap.",
-            "Exact numbers verified on the current client skill panel."
+            "The base cast time of the Socketed Spell you slot: Max Energy = 10 × (cast time ÷ 0.1s).",
+            "A 0.8s-cast Spell stores up to 80 Energy; a 0.2s-cast Spell stores only 20."
           ]
         },
         {
@@ -422,10 +433,16 @@
           "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Cast%20on%20Elemental%20Ailment&restrict_sr=1"
         }
       ],
-      "verificationChecklist": ["Verification completed"]
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
     }
   ],
-  "relatedBuildIds": ["cold-caster-chronomancer"],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
   "relatedBossIds": [],
   "relatedGuideIds": [],
   "relatedItemIds": [],
@@ -460,7 +477,7 @@
   "seo": {
     "title": "Cast on Elemental Ailment Guide — Trigger, Energy and Socketed Spell",
     "description": "Cast on Elemental Ailment deep guide: Energy formulas for Freeze / Shock / Ignite, maximum Energy vs Socketed Spell cast time, non-trigger causes with direct answers, mapping/boss rotations and real community questions.",
-    "noindex": false
+    "noindex": true
   },
   "heroImage": "/images/skills/cast-on-elemental-ailment.webp",
   "cardImage": "/images/skills/cast-on-elemental-ailment.webp",
