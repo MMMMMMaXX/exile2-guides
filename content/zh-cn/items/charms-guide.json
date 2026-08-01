@@ -1,0 +1,769 @@
+{
+  "id": "charms",
+  "slug": "charms-guide",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "护符：项链插槽、触发效果与充能",
+  "shortTitle": "护符",
+  "summary": "护符是镶嵌在项链「护符插槽」中的可镶嵌物品。每种护符会在其条件满足时（低生命、受暴击、被施加 ailments 等）自动触发奖励，然后进入充能冷却。本指南讲解护符属性、如何获取与镶嵌，以及哪种护符适配哪种流派。",
+  "description": "流放之路2护符来源关联参考：项链护符插槽、触发式条件效果、充能机制，以及如何按流派需求选择护符。",
+  "itemType": "charm",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "defence",
+    "utility",
+    "trigger"
+  ],
+  "itemCategory": "charms",
+  "subcategoryId": "amulet-charm",
+  "itemClass": "charm",
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "抢先体验",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "item",
+    "charm",
+    "amulet",
+    "defence"
+  ],
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "流放之路2 护符物品——可镶嵌到项链、触发条件效果的可镶嵌护符",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "一句话结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "把护符镶嵌进项链的护符插槽。当它触发条件发生（例如你降到低生命、受到暴击、或获得异常状态）时，护符奖励会自动生效，随后护符进入充能冷却。",
+      "calloutDetail": [
+        "护符是自动的——你无需按键；条件满足时效果自动触发。",
+        "触发后护符进入冷却并充能，因此它是周期性安全网，而非常驻增益。"
+      ],
+      "answers": [
+        {
+          "label": "用来做什么",
+          "text": [
+            "为任何佩戴项链的流派提供一层反应式防御或功能。"
+          ]
+        },
+        {
+          "label": "先确认什么",
+          "text": [
+            "确认你的项链有护符插槽（部分需要任务或工作台解锁）。"
+          ]
+        },
+        {
+          "label": "避免什么",
+          "text": [
+            "不要期待护符像常驻光环那样一直生效——它会触发然后充能。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "护符如何运作 →"
+        },
+        {
+          "href": "#usage",
+          "label": "镶嵌步骤 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "插槽",
+          "value": "项链护符插槽",
+          "note": [
+            "当前客户端每件项链一个护符。"
+          ]
+        },
+        {
+          "label": "触发",
+          "value": "条件自动触发",
+          "note": [
+            "条件满足时自动生效，无需手动按键。"
+          ]
+        },
+        {
+          "label": "充能",
+          "value": "冷却制",
+          "note": [
+            "触发后进入冷却并充能；非常驻。"
+          ]
+        },
+        {
+          "label": "类型",
+          "value": "防御 / 进攻 / 功能",
+          "note": [
+            "以其赋予的效果命名。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "护符家族",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "护符按所赋予奖励的种类分组。每种以其效果命名（例如低生命时赋予耐力充能的护符）。具体目录随版本扩充——以游戏内tooltip为准。"
+      ],
+      "members": [
+        {
+          "id": "charm-defensive",
+          "eyebrow": "防御",
+          "title": "防御护符",
+          "sub": "耐力 / 屏障 / 生命",
+          "tags": [
+            "defence"
+          ],
+          "body": [
+            "在危险时触发（低生命、受暴击、异常状态）以赋予防御：耐力充能、屏障或回复生命。"
+          ]
+        },
+        {
+          "id": "charm-offensive",
+          "eyebrow": "进攻",
+          "title": "进攻护符",
+          "sub": "充能 / 伤害",
+          "tags": [
+            "offence"
+          ],
+          "body": [
+            "在满足条件时触发以赋予狂怒或暴击充能，或一段爆发伤害（击杀、施加异常等）。"
+          ]
+        },
+        {
+          "id": "charm-utility",
+          "eyebrow": "功能",
+          "title": "功能护符",
+          "sub": "异常 / 魔力",
+          "tags": [
+            "utility"
+          ],
+          "body": [
+            "在条件触发时清除异常状态、回复魔力或净化减益。"
+          ]
+        },
+        {
+          "id": "charm-elemental",
+          "eyebrow": "元素",
+          "title": "元素护符",
+          "sub": "感电 / 冰冻 / 点燃",
+          "tags": [
+            "elemental"
+          ],
+          "body": [
+            "在元素事件触发时（被感电、冰冻敌人）把异常状态转化为收益。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "护符属性",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "插槽",
+          "value": "项链护符插槽",
+          "notes": [
+            "护符镶嵌在项链专用的护符插槽中，而非普通宝石插槽。"
+          ]
+        },
+        {
+          "label": "触发条件",
+          "value": "每件护符不同",
+          "notes": [
+            "每件护符定义触发它的事件：低生命、受暴击、异常状态、击杀等。"
+          ]
+        },
+        {
+          "label": "效果",
+          "value": "赋予的奖励",
+          "notes": [
+            "触发时护符在短暂持续时间内赋予其奖励（充能、屏障、生命、净化）。"
+          ]
+        },
+        {
+          "label": "充能",
+          "value": "冷却制",
+          "notes": [
+            "触发后进入冷却并充能；它是周期性安全网，而非常驻光环。"
+          ]
+        },
+        {
+          "label": "每件项链一个",
+          "value": "当前客户端",
+          "notes": [
+            "当前客户端一件项链容纳一个护符。若机制有变请以你的客户端为准。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "如何获取护符",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "护符作为与项链护符插槽系统相关的终局内容进入掉落池。"
+      ],
+      "routes": [
+        {
+          "label": "终局掉落",
+          "body": [
+            "一旦护符插槽内容可用，护符会从地图与首领处掉落。"
+          ]
+        },
+        {
+          "label": "任务 / 解锁",
+          "body": [
+            "部分项链需要先通过任务或工作台步骤解锁护符插槽，才能镶嵌护符。"
+          ]
+        },
+        {
+          "label": "交易",
+          "body": [
+            "从其他玩家处购买你需要的特定效果护符。"
+          ]
+        },
+        {
+          "label": "定向刷取",
+          "body": [
+            "社区策略（例如强行引导「成年礼」式掉落）可让掉落偏向护符相关奖励。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 60,
+      "title": "如何镶嵌护符",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "解锁插槽",
+          "body": [
+            "确认你的项链有护符插槽（依物品不同需任务或工作台）。"
+          ]
+        },
+        {
+          "label": "选护符",
+          "body": [
+            "选择触发条件与奖励匹配你流派实际遭遇危险的护符。"
+          ]
+        },
+        {
+          "label": "镶嵌",
+          "body": [
+            "像镶嵌宝石一样把护符拖进项链的护符插槽。"
+          ]
+        },
+        {
+          "label": "确认充能",
+          "body": [
+            "战斗中观察护符在条件满足时触发并随后充能。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 70,
+      "title": "护符适配位置",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "护符只能放入项链的护符插槽。它们不适用于武器、护甲或普通宝石插槽。"
+      ],
+      "columns": [
+        "项链（已镶嵌）",
+        "戒指",
+        "普通宝石插槽"
+      ],
+      "rows": [
+        {
+          "label": "接受护符",
+          "note": "仅护符插槽",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        },
+        {
+          "label": "自动触发",
+          "note": "依条件",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        },
+        {
+          "label": "会充能",
+          "note": "冷却",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            },
+            {
+              "kind": "no",
+              "text": "不可以"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前检查清单",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "项链有护符插槽",
+          "checks": [
+            "购买护符前先确认插槽存在。"
+          ],
+          "why": "没有插槽护符毫无用处。",
+          "fix": "先通过任务/工作台解锁插槽。"
+        },
+        {
+          "label": "触发匹配你的风险",
+          "checks": [
+            "选择你实际会遇到的触发（低生命、暴击、异常）。"
+          ],
+          "why": "条件从不满足的护符毫无作用。",
+          "fix": "让护符匹配你真实的死亡点或压力点。"
+        },
+        {
+          "label": "效果值得这个槽位",
+          "checks": [
+            "对比赋予的奖励与项链还能做的其他事。"
+          ],
+          "why": "每件项链一个护符是真实的机会成本。",
+          "fix": "为你的流派选价值最高的触发。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "按流派需求看结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "defence",
+        "offence",
+        "utility"
+      ],
+      "rows": [
+        {
+          "scenario": "脆皮攻击手",
+          "audience": "低生命 / 玻璃大炮",
+          "benefit": "防御护符在低生命时赋予耐力 / 屏障",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "强力应急按钮",
+          "tags": [
+            "defence"
+          ]
+        },
+        {
+          "scenario": "依赖充能流派",
+          "audience": "狂怒 / 暴击充能用户",
+          "benefit": "进攻护符在条件满足时赋予充能",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "维持充能覆盖",
+          "tags": [
+            "offence"
+          ]
+        },
+        {
+          "scenario": "异常状态密集内容",
+          "audience": "迷雾 / 裂隙",
+          "benefit": "功能护符在异常时净化",
+          "risk": "低",
+          "level": "medium",
+          "recommendation": "适合持续伤害地图",
+          "tags": [
+            "utility"
+          ]
+        },
+        {
+          "scenario": "缺蓝施法者",
+          "audience": "法术施放者",
+          "benefit": "功能护符触发时回复魔力",
+          "risk": "低",
+          "level": "medium",
+          "recommendation": "平滑续航",
+          "tags": [
+            "utility"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "护符与其他选项对比",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "护符常被拿来与药剂对比。药剂是主动的：你按键使用（或自动使用），在持续时间内被消耗。护符是被动且自动的：在条件满足时触发然后充能，因此它覆盖你忘记喝药或无法喝药的时刻。",
+        "护符也不同于灌注（蒸馏情绪）。灌注在项链上赋予一个永久的著名被动；护符从护符插槽提供一个触发式的临时奖励。它们占据项链的不同系统，可以共存。",
+        "相比永久光环或技能光环，护符每秒价值更低，但不消耗魔力、不需要插槽——它是你主配置之上的免费反应层。"
+      ],
+      "bullets": [
+        "药剂 = 主动、被消耗、你按键使用。",
+        "护符 = 被动、自动、会充能。",
+        "灌注 = 永久著名被动；护符 = 触发奖励（不同插槽）。",
+        "护符是免费反应层，不是主伤害来源。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "各流派用哪种护符",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "按你流派真正死于哪种失败模式来选护符，而非按纸面数值。"
+      ],
+      "builds": [
+        {
+          "title": "玻璃大炮攻击手",
+          "description": "低生命触发的防御护符，提供屏障或耐力充能。"
+        },
+        {
+          "title": "堆充能流派",
+          "description": "条件满足时赋予狂怒或暴击充能的进攻护符。"
+        },
+        {
+          "title": "持续伤害 / 异常流派",
+          "description": "触发时净化异常的功能护符。"
+        },
+        {
+          "title": "缺蓝施法者",
+          "description": "受暴击或低生命时回复魔力的功能护符。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-no-socket",
+          "kind": "Reddit 提问",
+          "question": "我有护符但项链没有护符插槽——怎么办？",
+          "summary": [
+            "有玩家拿着护符却无法镶嵌。"
+          ],
+          "editorialAnalysis": [
+            "护符需要项链的护符插槽。部分项链需先通过任务或工作台步骤解锁插槽，才能镶嵌护符。"
+          ],
+          "officialAnswer": [
+            "先解锁项链的护符插槽，再镶嵌护符。"
+          ]
+        },
+        {
+          "sourceId": "forum-not-firing",
+          "kind": "论坛提问",
+          "question": "我的护符好像从不触发——坏了吗？",
+          "summary": [
+            "玩家觉得自己的护符没起作用。"
+          ],
+          "editorialAnalysis": [
+            "护符只在特定条件满足时触发，随后充能。若你的内容中很少出现该条件，护符就很少触发——让触发匹配你实际面对的危险。"
+          ],
+          "officialAnswer": [
+            "选择触发条件匹配你流派所遇压力的护符。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频与关键节点",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE2 中护符如何运作",
+          "url": "https://www.youtube.com/watch?v=dn7UxGuMe0I",
+          "creator": "Kripparrian",
+          "description": "清晰拆解护符系统与镶嵌方式。",
+          "takeaway": "触发与充能的最佳概览。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "护符是什么"
+            },
+            {
+              "time": "02:30",
+              "label": "镶嵌与触发"
+            },
+            {
+              "time": "05:00",
+              "label": "选哪种护符"
+            }
+          ]
+        },
+        {
+          "label": "强行引导成年礼护符掉落",
+          "url": "https://www.youtube.com/watch?v=KKwPKB9g7OY",
+          "creator": "Tony Emerald",
+          "description": "让掉落偏向护符相关奖励的策略。",
+          "takeaway": "若你在刷特定护符很有用。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "掉落策略"
+            },
+            {
+              "time": "03:15",
+              "label": "成年礼方法"
+            }
+          ]
+        },
+        {
+          "label": "+6 技能项链技术",
+          "url": "https://www.youtube.com/watch?v=ys6lEWoYtK0",
+          "creator": "divmaxxing",
+          "description": "与护符插槽内容搭配的项链技术。",
+          "takeaway": "展示项链优化的上限。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "项链技术简介"
+            },
+            {
+              "time": "04:00",
+              "label": "插槽优化"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "无法镶嵌护符",
+          "directAnswer": [
+            "项链没有护符插槽，或插槽尚未解锁。"
+          ],
+          "checks": [
+            "先通过任务/工作台解锁插槽，再重试。"
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "镶嵌步骤"
+            }
+          ]
+        },
+        {
+          "symptom": "护符从不触发",
+          "directAnswer": [
+            "它的触发条件在你的内容中未被满足。"
+          ],
+          "checks": [
+            "换成触发匹配你遭遇危险的护符。"
+          ]
+        },
+        {
+          "symptom": "护符感觉很弱",
+          "directAnswer": [
+            "护符是周期性安全网而非常驻光环；使用后充能。"
+          ],
+          "checks": [
+            "把它当作反应式奖励而非主伤害；与药剂/灌注搭配。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-emotions",
+          "contentType": "item",
+          "title": "蒸馏情绪",
+          "description": "灌注在同一款项链上赋予永久著名被动——不同系统，可共存。",
+          "href": "/zh-cn/items/liquid-emotions/"
+        },
+        {
+          "contentId": "uncut-gems",
+          "contentType": "item",
+          "title": "未切割宝石",
+          "description": "另一个用于选择技能与辅助宝石的 0.5.x 系统。",
+          "href": "/zh-cn/items/uncut-gems-guide/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.2（终局、符文与迷雾）",
+          "changes": [
+            "护符与项链护符插槽作为项链上的反应式、充能制层引入。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "护符仍是项链可镶嵌系统；护符家族与充能行为为当前版本。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2 补丁说明，涵盖 0.5.x 护符与项链插槽系统。",
+          "url": "https://www.pathofexile.com/forum/view-thread/362230"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki 护符数据与护符插槽机制。",
+          "url": "https://www.poe2wiki.net/wiki/Charm"
+        },
+        {
+          "label": "GUIDE",
+          "description": "社区护符攻略与掉落策略文章。",
+          "url": "https://www.poe2wiki.net/wiki/Amulet"
+        }
+      ],
+      "verificationChecklist": [
+        "护符镶嵌进项链护符插槽已确认。",
+        "护符在条件满足时自动触发、随后充能已确认。",
+        "当前客户端每件项链一个护符已确认。",
+        "护符家族（防御/进攻/功能/元素）作为代表性分类已确认。",
+        "具体护符目录与引入版本需在当前客户端复核（待 PC）。"
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-emotions",
+    "uncut-gems"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 官方 0.5.x 补丁说明（护符）",
+      "url": "https://www.pathofexile.com/forum/view-thread/362230",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — 护符",
+      "url": "https://www.poe2wiki.net/wiki/Charm",
+      "sourceType": "tool"
+    },
+    {
+      "label": "PoE2Wiki — 项链",
+      "url": "https://www.poe2wiki.net/wiki/Amulet",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 护符：项链插槽、触发效果与充能",
+    "description": "PoE2 护符如何运作：项链护符插槽、触发式条件效果、充能机制，以及如何按流派需求选择护符。"
+  }
+}

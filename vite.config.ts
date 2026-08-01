@@ -6,15 +6,44 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type Plugin } from "vite";
 
 import {
+  loadLocalBossDraftPreviewPages,
   loadLocalBuildDraftPreviewPages,
   loadStaticContentPages,
 } from "./lib/content/content-page.server";
 import { buildSearchIndexes } from "./lib/search/search-index";
 
+/**
+ * 预热判别联合 schema 的惰性编译缓存。
+ * exile2-content-pages 与 exile2-search-indexes 两个插件在构建期会并发调用
+ * loadStaticContentPages，导致同一判别联合 schema 被并发首次解析；
+ * zod v4 的 discriminatedUnion 在并发首次编译时会偶发
+ * “option at index N / 读取 undefined.values” 的竞态而构建失败。
+ * 在配置阶段（单线程）对每个联合强制编译一次，让插件复用已缓存结果，消除该偶发失败。
+ */
+import { itemSectionSchema } from "./lib/items/schema";
+import { patchSectionSchema } from "./lib/patches/schema";
+import { guideSectionSchema } from "./lib/guides/schema";
+import { bossSectionSchema } from "./lib/bosses/schema";
+import { buildSectionSchema } from "./lib/builds/schema";
+import { skillSectionSchema } from "./lib/skills/schema";
+
+[itemSectionSchema, patchSectionSchema, guideSectionSchema, bossSectionSchema, buildSectionSchema, skillSectionSchema].forEach(
+  (union) => {
+    try {
+      // 传入非法数据仅用于触发惰性编译与缓存，校验错误被 safeParse 吸收。
+      union.safeParse({});
+    } catch {
+      // 预热不应阻断构建；仅作消除并发竞态的保险。
+    }
+  },
+);
+
 const virtualContentPagesId = "virtual:content-pages";
 const resolvedVirtualContentPagesId = `\0${virtualContentPagesId}`;
 const virtualBuildDraftPreviewPagesId = "virtual:build-draft-preview-pages";
 const resolvedVirtualBuildDraftPreviewPagesId = `\0${virtualBuildDraftPreviewPagesId}`;
+const virtualBossDraftPreviewPagesId = "virtual:boss-draft-preview-pages";
+const resolvedVirtualBossDraftPreviewPagesId = `\0${virtualBossDraftPreviewPagesId}`;
 const virtualSearchIndexesId = "virtual:search-indexes";
 const resolvedVirtualSearchIndexesId = `\0${virtualSearchIndexesId}`;
 
@@ -75,6 +104,30 @@ function buildDraftPreviewPagesPlugin(enabled: boolean): Plugin {
   };
 }
 
+/**
+ * 只为本地 Vite 开发服务内联 Boss 草稿。
+ * 生产构建仍解析同一模块，但内容固定为空，避免草稿正文进入部署产物。
+ */
+function bossDraftPreviewPagesPlugin(enabled: boolean): Plugin {
+  return {
+    name: "exile2-boss-draft-preview-pages",
+    /** 仅接管本地 Boss 草稿预览模块，不改变正式内容模块的语义。 */
+    resolveId(id) {
+      return id === virtualBossDraftPreviewPagesId
+        ? resolvedVirtualBossDraftPreviewPagesId
+        : null;
+    },
+    /** 本地开发读取非模板 Boss 草稿，其他命令输出空映射。 */
+    async load(id) {
+      if (id !== resolvedVirtualBossDraftPreviewPagesId) return null;
+      const pages = enabled
+        ? await loadLocalBossDraftPreviewPages(getContentDirectory())
+        : {};
+      return `export default ${JSON.stringify(pages)};`;
+    },
+  };
+}
+
 /** 在构建期导出每种语言独立 JSON，同时提供同一份虚拟数据给浏览器本地搜索。 */
 function searchIndexesPlugin(): Plugin {
   return {
@@ -110,6 +163,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     contentPagesPlugin(),
     buildDraftPreviewPagesPlugin(command === "serve"),
+    bossDraftPreviewPagesPlugin(command === "serve"),
     searchIndexesPlugin(),
     tailwindcss(),
     reactRouter(),
