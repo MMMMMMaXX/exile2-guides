@@ -13,6 +13,7 @@ import {
   BossPrepChecklist,
 } from "../bosses/boss-interactive";
 import { ItemOutcomesTable, ItemValuationTabs } from "./item-interactive";
+import { ItemDataTable } from "./sections/data-table";
 
 /** 每个章节的英文眉标（kicker），与原型 section-heading 内的 <p> 一致。 */
 const sectionKickers: Record<string, string> = {
@@ -44,6 +45,7 @@ const sectionKickers: Record<string, string> = {
   usage: "USE FLOW",
   valuation: "USE / SELL / HOLD",
   verification: "VERIFICATION",
+  "data-table": "DATA TABLE",
 };
 
 const rendererLabels: Record<
@@ -594,6 +596,8 @@ function renderSectionContent(
       );
     case "sources":
       return <SourcesSection categories={section.categories} />;
+    case "data-table":
+      return <ItemDataTable section={section} />;
   }
 }
 

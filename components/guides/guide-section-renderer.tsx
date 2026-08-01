@@ -48,6 +48,87 @@ const rendererLabels: Record<
   },
 };
 
+/** 各章节类型的眉标（小字大写标签），与原型 section-title 的 eyebrow 对应。 */
+const guideEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
+  en: {
+    overview: "OVERVIEW",
+    preparation: "PREPARATION",
+    decisions: "DECISIONS",
+    "common-mistakes": "COMMON MISTAKES",
+    verification: "VERIFICATION",
+    "progression-steps": "PROGRESSION STEPS",
+    "verification-steps": "VERIFICATION STEPS",
+    checklist: "CHECKLIST",
+    faq: "PROBLEMS & ANSWERS",
+    video: "SCREENSHOTS & VIDEO",
+    changelog: "CHANGELOG",
+    sources: "SOURCES & CHANGELOG",
+    "quick-answer": "QUICK ANSWER",
+    "stat-grid": "PROGRESS OVERVIEW",
+    "data-table": "REFERENCE TABLE",
+    tabs: "REFERENCE TABS",
+    "card-grid": "CARD GRID",
+    diagnostic: "DIAGNOSTIC",
+    "master-comparison": "MASTER COMPARISON",
+    "master-unlock-route": "UNLOCK ROUTE",
+    "passive-planner": "PASSIVE PLANNER",
+    "scenario-recommendations": "SCENARIO PICKS",
+    "activation-timing": "ACTIVATION TIMING",
+    "recipe-board": "RECIPE BOARD",
+    "risk-reward-matrix": "RISK / REWARD",
+    "map-modifier-matrix": "MAP MODIFIERS",
+    "filter-installation": "FILTER INSTALL",
+    "strictness-selector": "STRICTNESS PICKER",
+    "compatibility-diagnostic": "COMPAT CHECK",
+    "resource-diagnostic": "RESOURCE CHECK",
+    "respec-matrix": "RESPEC MATRIX",
+    "cost-breakdown": "COST BREAKDOWN",
+    "version-conflicts": "VERSION CONFLICTS",
+  },
+  "zh-cn": {
+    overview: "内容概览",
+    preparation: "准备事项",
+    decisions: "关键决策",
+    "common-mistakes": "常见错误",
+    verification: "核验边界",
+    "progression-steps": "进度步骤",
+    "verification-steps": "核验步骤",
+    checklist: "核查清单",
+    faq: "问题与解答",
+    video: "截图与视频",
+    changelog: "更新记录",
+    sources: "来源与记录",
+    "quick-answer": "速答",
+    "stat-grid": "进度概览",
+    "data-table": "参考表格",
+    tabs: "参考标签",
+    "card-grid": "卡片网格",
+    diagnostic: "诊断器",
+    "master-comparison": "大师对比",
+    "master-unlock-route": "解锁路线",
+    "passive-planner": "天赋规划",
+    "scenario-recommendations": "场景推荐",
+    "activation-timing": "触发时机",
+    "recipe-board": "配方面板",
+    "risk-reward-matrix": "风险收益",
+    "map-modifier-matrix": "地图词缀",
+    "filter-installation": "过滤器安装",
+    "strictness-selector": "严格度选择",
+    "compatibility-diagnostic": "兼容性诊断",
+    "resource-diagnostic": "资源诊断",
+    "respec-matrix": "洗点矩阵",
+    "cost-breakdown": "成本拆解",
+    "version-conflicts": "版本冲突",
+  },
+};
+
+/** 根据章节类型回退眉标；无映射时英文用类型大写、中文用原类型。 */
+function guideEyebrow(type: string, locale: ContentLocale): string {
+  const label = guideEyebrowLabels[locale][type];
+  if (label) return label;
+  return locale === "zh-cn" ? type : type.toUpperCase().replace(/-/g, " ");
+}
+
 /** 根据章节类型输出受控结构；新增章节类型或文案时必须在此显式扩展。 */
 function renderSectionContent(
   section: GuideSection,
@@ -172,20 +253,32 @@ export function GuideSectionRenderer({ article }: { article: GuideArticle }) {
   return sections.map((section) => {
     const Heading = section.toc ? "h2" : "h3";
     if (section.toc) majorSectionIndex += 1;
+    const isMajor = Boolean(section.toc);
 
     return (
       <section
-        className={`guide-section guide-section--${section.type}${section.toc ? " guide-section--major" : " guide-section--minor"}`}
+        className={`guide-section guide-section--${section.type}${isMajor ? " guide-section--major" : " guide-section--minor"}`}
         id={section.id}
         key={section.id}
       >
-        {section.toc ? (
-          <span aria-hidden="true" className="guide-section__number">
-            {majorSectionIndex}
-          </span>
-        ) : null}
+        <header
+          className={`guide-section__header${isMajor ? "" : " guide-section__header--minor"}`}
+        >
+          {isMajor ? (
+            <span aria-hidden="true" className="guide-section__number">
+              {majorSectionIndex}
+            </span>
+          ) : null}
+          <div className="guide-section__heading">
+            {isMajor ? (
+              <p className="guide-section__eyebrow">
+                {guideEyebrow(section.type, article.locale)}
+              </p>
+            ) : null}
+            <Heading>{section.title}</Heading>
+          </div>
+        </header>
         <div className="guide-section__content">
-          <Heading>{section.title}</Heading>
           {renderSectionContent(section, article.locale)}
         </div>
       </section>

@@ -12,6 +12,8 @@ import { Breadcrumbs } from "./breadcrumbs";
 export type ArticleLayoutProps = {
   breadcrumbs: readonly BreadcrumbItem[];
   children: ReactNode;
+  /** 内容分类原始键（patch/guide/build/boss/item/skill），用于按分类注入原型视觉作用域。 */
+  category?: string;
   contentType?: string;
   image?: string;
   imageAlt?: string;
@@ -28,6 +30,7 @@ export type ArticleLayoutProps = {
 /** 渲染详情 Hero 与三栏阅读结构；中小屏按原型依次收起目录和右侧栏。 */
 export function ArticleLayout({
   breadcrumbs,
+  category,
   children,
   contentType = "Guide",
   image,
@@ -42,10 +45,13 @@ export function ArticleLayout({
   updatedAt,
 }: ArticleLayoutProps) {
   const resolvedImage = image ? resolveImageAsset(image) : undefined;
+  const scopedClass = category
+    ? ` v4-article-page--${category}`
+    : "";
   return (
     <>
       <ReadingProgress />
-      <main className="v4-article-page">
+      <main className={`v4-article-page${scopedClass}`}>
         <div className="page-shell">
           <Breadcrumbs items={breadcrumbs} />
         </div>

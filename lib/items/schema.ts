@@ -16,6 +16,7 @@ import {
   paragraphList,
   requiredText,
   sourceSchema,
+  sourceVerificationChecklistSchema,
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
@@ -405,7 +406,29 @@ const itemSourcesSectionSchema = z.strictObject({
       }),
     )
     .default([]),
-  verificationChecklist: paragraphList,
+  verificationChecklist: sourceVerificationChecklistSchema,
+});
+
+/** 可筛选数据表：data-table 章节用于 Essence 等按槽位 / 阶位枚举的保证词缀矩阵。 */
+const itemDataTableSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("data-table"),
+  caption: requiredText.optional(),
+  columns: z
+    .array(z.strictObject({ key: requiredText, label: requiredText }))
+    .min(1),
+  filters: z
+    .array(z.strictObject({ id: requiredText, label: requiredText }))
+    .default([]),
+  rows: z
+    .array(
+      z.strictObject({
+        cells: z.record(requiredText, requiredText),
+        tags: identifierList,
+      }),
+    )
+    .min(1),
+  note: requiredText.optional(),
 });
 
 export const itemSectionSchema = z.discriminatedUnion("type", [
@@ -432,6 +455,7 @@ export const itemSectionSchema = z.discriminatedUnion("type", [
   itemRelatedContentSchema,
   itemPatchHistorySchema,
   itemSourcesSectionSchema,
+  itemDataTableSchema,
 ]);
 
 // --- ItemArticle 顶层结构 ---

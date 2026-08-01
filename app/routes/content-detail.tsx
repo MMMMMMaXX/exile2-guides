@@ -347,6 +347,7 @@ export default function ContentDetailRoute() {
       ) : null}
       <ArticleLayout
         breadcrumbs={breadcrumbs}
+        category={page.frontMatter.contentType}
         contentType={contentTypeLabels[page.frontMatter.contentType]}
         {...(page.frontMatter.image
           ? {

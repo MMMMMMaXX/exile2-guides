@@ -30,6 +30,65 @@ const rendererLabels: Record<
   },
 };
 
+/** 各章节类型的眉标（小字大写标签），与原型 section-heading 的 eyebrow 对应。 */
+const patchEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
+  en: {
+    overview: "OVERVIEW",
+    "important-changes": "KEY CHANGES",
+    "build-impact": "BUILD IMPACT",
+    "re-verification": "RE-VERIFICATION",
+    followup: "FOLLOW-UP",
+    "verification-steps": "VERIFICATION STEPS",
+    checklist: "CHECKLIST",
+    faq: "QUESTIONS",
+    video: "VIDEO",
+    changelog: "CHANGELOG",
+    sources: "SOURCES",
+    "impact-dashboard": "IMPACT DASHBOARD",
+    "change-explorer": "CHANGE EXPLORER",
+    "historical-context": "HISTORICAL CONTEXT",
+    "current-applicability": "CURRENT APPLICABILITY",
+    "then-vs-now": "THEN VS NOW",
+    "affected-content": "AFFECTED CONTENT",
+    "boss-impact": "BOSS IMPACT",
+    "item-impact": "ITEM IMPACT",
+    "patch-family-timeline": "PATCH FAMILY",
+    "returning-player-checklist": "RETURNING PLAYER",
+    "community-evidence": "COMMUNITY EVIDENCE",
+  },
+  "zh-cn": {
+    overview: "内容概览",
+    "important-changes": "重点改动",
+    "build-impact": "对 Build 影响",
+    "re-verification": "重新核验",
+    followup: "后续跟进",
+    "verification-steps": "核验步骤",
+    checklist: "核查清单",
+    faq: "常见问题",
+    video: "视频",
+    changelog: "更新记录",
+    sources: "来源",
+    "impact-dashboard": "影响总览",
+    "change-explorer": "改动探索",
+    "historical-context": "历史背景",
+    "current-applicability": "当前适用性",
+    "then-vs-now": "今昔对比",
+    "affected-content": "受影响内容",
+    "boss-impact": "对 Boss 影响",
+    "item-impact": "对物品影响",
+    "patch-family-timeline": "版本家族",
+    "returning-player-checklist": "回归玩家",
+    "community-evidence": "社区证据",
+  },
+};
+
+/** 根据章节类型回退眉标；无映射时英文用类型大写、中文用原类型。 */
+function patchEyebrow(type: string, locale: ContentLocale): string {
+  const label = patchEyebrowLabels[locale][type];
+  if (label) return label;
+  return locale === "zh-cn" ? type : type.toUpperCase().replace(/-/g, " ");
+}
+
 /** 根据章节类型输出受控结构；新增章节类型或文案时必须在此显式扩展。 */
 function renderSectionContent(
   section: PatchSection,
@@ -107,20 +166,32 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
     historicalBanner,
     ...numberedSections.map(({ section, majorNumber }) => {
       const Heading = section.toc ? "h2" : "h3";
+      const isMajor = Boolean(section.toc);
 
       return (
         <section
-          className={`patch-section patch-section--${section.type}${section.toc ? " patch-section--major" : " patch-section--minor"}`}
+          className={`patch-section patch-section--${section.type}${isMajor ? " patch-section--major" : " patch-section--minor"}`}
           id={section.id}
           key={section.id}
         >
-          {section.toc ? (
-            <span aria-hidden="true" className="patch-section__number">
-              {majorNumber}
-            </span>
-          ) : null}
+          <header
+            className={`patch-section__header${isMajor ? "" : " patch-section__header--minor"}`}
+          >
+            {isMajor ? (
+              <span aria-hidden="true" className="patch-section__number">
+                {majorNumber}
+              </span>
+            ) : null}
+            <div className="patch-section__heading">
+              {isMajor ? (
+                <p className="patch-section__eyebrow">
+                  {patchEyebrow(section.type, article.locale)}
+                </p>
+              ) : null}
+              <Heading>{section.title}</Heading>
+            </div>
+          </header>
           <div className="patch-section__content">
-            <Heading>{section.title}</Heading>
             {renderSectionContent(section, article.locale)}
           </div>
         </section>

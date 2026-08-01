@@ -61,7 +61,7 @@ const skillSupportsSectionSchema = z.strictObject({
       z.strictObject({
         label: requiredText,
         notes: paragraphList,
-        priority: z.enum(["core", "situational", "optional"]).default("core"),
+        priority: z.enum(["core", "situational", "optional", "incompatible"]).default("core"),
       }),
     )
     .default([]),
@@ -148,6 +148,10 @@ const skillArticleBaseSchema = z.strictObject({
   // Skill 语义字段（nullable，允许待核验内容发布）
   skillType: z.enum(skillTypes).nullable().default(null),
   requiredLevel: z.string().trim().nullable().default(null),
+  gemLevel: z.string().trim().nullable().default(null),
+  uncutGemTier: z.number().int().positive().nullable().default(null),
+  minimumCharacterLevel: z.number().int().nonnegative().nullable().default(null),
+  spiritReservation: z.number().int().nonnegative().nullable().default(null),
   skillCategory: z.enum(skillCategorySlugs).nullable().default(null),
   skillTags: identifierList,
 

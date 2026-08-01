@@ -42,8 +42,18 @@ const rendererLabels: Record<
 };
 
 const priorityLabels: Record<ContentLocale, Record<string, string>> = {
-  en: { core: "Core", situational: "Situational", optional: "Optional" },
-  "zh-cn": { core: "核心", situational: "情境", optional: "可选" },
+  en: {
+    core: "Core",
+    situational: "Situational",
+    optional: "Optional",
+    incompatible: "Incompatible",
+  },
+  "zh-cn": {
+    core: "核心",
+    situational: "情境",
+    optional: "可选",
+    incompatible: "不兼容",
+  },
 };
 
 /** 根据章节类型输出受控结构；新增章节类型或文案时必须在此显式扩展。 */

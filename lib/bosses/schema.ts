@@ -16,6 +16,7 @@ import {
   paragraphList,
   requiredText,
   sourceSchema,
+  sourceVerificationChecklistSchema,
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
@@ -61,6 +62,48 @@ export const bossMediaItemSchema = z.strictObject({
   timestamps: z
     .array(z.strictObject({ time: requiredText, label: requiredText }))
     .optional(),
+}).superRefine((media, context) => {
+  // 域名门禁：仅当来源确为 GGG 官方域名时才允许标记为 official，
+  // 防止把第三方（sportskeeda / ign / destructoid / youtube 等）配图误标为官方。
+  if (media.rights !== "official") return;
+  const OFFICIAL_HOSTS = [
+    "pathofexile.com",
+    "www.pathofexile.com",
+    "poe2.com",
+    "www.poe2.com",
+  ];
+  const url = media.sourceUrl;
+  if (!url) {
+    context.addIssue({
+      code: "custom",
+      message: "official media requires an official GGG sourceUrl",
+      path: ["sourceUrl"],
+    });
+    return;
+  }
+  const parsed = (() => {
+    try {
+      return new URL(url);
+    } catch {
+      return null;
+    }
+  })();
+  if (!parsed) {
+    context.addIssue({
+      code: "custom",
+      message: "official media sourceUrl must be a valid URL",
+      path: ["sourceUrl"],
+    });
+    return;
+  }
+  const host = parsed.hostname;
+  if (!OFFICIAL_HOSTS.includes(host)) {
+    context.addIssue({
+      code: "custom",
+      message: `official media sourceUrl must be a GGG domain, got ${host}`,
+      path: ["sourceUrl"],
+    });
+  }
 });
 
 // --- Boss 专属 Section 判别联合（V5 富内容结构） ---
@@ -313,7 +356,7 @@ const bossSourcesSectionSchema = z.strictObject({
       }),
     )
     .default([]),
-  verificationChecklist: paragraphList,
+  verificationChecklist: sourceVerificationChecklistSchema,
 });
 
 /** FAQ 复用共享结构。 */

@@ -31,6 +31,8 @@ export const baseSectionShape = {
 
 /** 统一来源结构；各模块顶层 sources 数组共用，不在每个 Section 中重复维护。 */
 export const sourceSchema = z.strictObject({
+  /** 可选稳定标识，供文章内 attack/sourceId 等字段交叉引用；缺失时仅作展示用途。 */
+  id: stableIdentifier.optional(),
   label: requiredText,
   sourceType: z.enum(["official", "in-game", "community", "tool", "other"]),
   url: z.url(),
@@ -43,10 +45,29 @@ export const sourceCategorySchema = z.strictObject({
   url: z.url().optional(),
 });
 
-/** 来源与核验章节的核验清单结构，供各内容模块复用。 */
+/**
+ * 来源与核验章节的核验清单结构，供各内容模块复用。
+ * 原为字符串数组占位（["Verification completed"]），已改为结构化对象，
+ * 以承载核验状态、方式与客户端版本等可追溯元数据，避免误导性的“已完成”字面量。
+ */
 export const sourceVerificationChecklistSchema = z
-  .array(requiredText)
-  .default([]);
+  .strictObject({
+    /** 核验状态：pending-pc 表示待客户端核验，verified 表示已通过核验。 */
+    status: z.enum(["pending-pc", "verified"]).default("pending-pc"),
+    /** 核验方式：官方资料 / 实机 / 社区 / 工具 / 其他。 */
+    method: z
+      .enum(["official", "in-game", "community", "tool", "other"])
+      .optional(),
+    /** 核验所依据的客户端版本。 */
+    verifiedClientVersion: z.string().trim().optional(),
+    /** 核验完成日期（ISO），已核验时填写。 */
+    verifiedAt: isoDate.optional(),
+    /** 核验执行者或流程标识。 */
+    verifiedBy: z.string().trim().optional(),
+    /** 自由核验备注，承载交叉核验、待客户端核验等可追溯说明。 */
+    notes: z.array(requiredText).optional(),
+  })
+  .default({ status: "pending-pc" });
 
 /** 文章配图结构；非 generated 来源必须附带 sourceUrl 以尊重版权。 */
 export const figureImageSchema = z

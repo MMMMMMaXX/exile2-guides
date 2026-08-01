@@ -40,6 +40,8 @@ const optionalScalarText = z.preprocess(
 );
 
 const sourceSchema = z.strictObject({
+  /** 可选稳定标识，供文章内 attack/sourceId 等字段交叉引用；缺失时仅作展示用途。 */
+  id: stableIdentifier.optional(),
   label: requiredText,
   url: z
     .url()
