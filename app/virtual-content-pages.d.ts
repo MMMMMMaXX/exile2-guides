@@ -12,3 +12,10 @@ declare module "virtual:build-draft-preview-pages" {
   const pages: StaticContentPageMap;
   export default pages;
 }
+
+declare module "virtual:boss-draft-preview-pages" {
+  import type { StaticContentPageMap } from "../lib/content/content-page";
+
+  const pages: StaticContentPageMap;
+  export default pages;
+}

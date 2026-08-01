@@ -56,7 +56,6 @@ const rendererLabels: Record<
     source: string;
     takeaway: string;
     timestamps: string;
-    verificationChecklist: string;
     videoPreview: string;
     why: string;
   }
@@ -72,7 +71,6 @@ const rendererLabels: Record<
     source: "Open source",
     takeaway: "What to watch for",
     timestamps: "Key timestamps",
-    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
     why: "Why it matters",
   },
@@ -87,7 +85,6 @@ const rendererLabels: Record<
     source: "查看来源",
     takeaway: "建议重点观看",
     timestamps: "重要节点",
-    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
     why: "为什么重要",
   },
@@ -140,7 +137,12 @@ function renderSectionContent(
           {section.links.length > 0 ? (
             <div className="boss-inline-links">
               {section.links.map((link) => (
-                <a href={link.href} key={link.href} rel="noopener noreferrer" target="_blank">
+                <a
+                  href={link.href}
+                  key={link.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   {link.label}
                 </a>
               ))}
@@ -295,7 +297,9 @@ function renderSectionContent(
                 {problem.directAnswer.length > 0 ? (
                   <p>
                     <b>
-                      {locale === "zh-cn" ? "直接答案：" : "Direct answer:"}{" "}
+                      {locale === "zh-cn"
+                        ? "直接答案："
+                        : "Direct answer:"}{" "}
                     </b>
                     {problem.directAnswer.join(" ")}
                   </p>
@@ -314,10 +318,7 @@ function renderSectionContent(
       );
     case "community-evidence":
       return (
-        <BossCommunityGrid
-          locale={locale}
-          totalCount={section.entries.length}
-        >
+        <BossCommunityGrid locale={locale} totalCount={section.entries.length}>
           {section.entries.map((entry, index) => (
             <article
               className={`boss-community-card${index >= 2 ? " boss-community-extra" : ""}`}
@@ -385,8 +386,16 @@ function renderSectionContent(
       return (
         <div className="boss-related-grid">
           {section.items.map((item) => (
-            <a className="boss-related-card" href={item.href} key={item.contentId} rel="noopener noreferrer" target="_blank">
-              <span className={`boss-card-type boss-card-type--${item.contentType}`}>
+            <a
+              className="boss-related-card"
+              href={item.href}
+              key={item.contentId}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span
+                className={`boss-card-type boss-card-type--${item.contentType}`}
+              >
                 {item.contentType}
               </span>
               <h3>{item.title}</h3>
@@ -396,13 +405,7 @@ function renderSectionContent(
         </div>
       );
     case "sources-section":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
     case "faq":
       return <FaqList items={section.items} />;
     case "video":

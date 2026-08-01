@@ -15,20 +15,17 @@ const rendererLabels: Record<
   {
     source: string;
     takeaway: string;
-    verificationChecklist: string;
     videoPreview: string;
   }
 > = {
   en: {
     source: "Open source",
     takeaway: "What to watch for",
-    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
   },
   "zh-cn": {
     source: "查看来源",
     takeaway: "建议重点观看",
-    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
   },
 };
@@ -82,13 +79,7 @@ function renderSectionContent(
     case "changelog":
       return <ChangelogList entries={section.entries} />;
     case "sources":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
     default:
       return renderPatchRichSection(section, locale);
   }
@@ -115,25 +106,25 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
   return [
     historicalBanner,
     ...numberedSections.map(({ section, majorNumber }) => {
-    const Heading = section.toc ? "h2" : "h3";
+      const Heading = section.toc ? "h2" : "h3";
 
-    return (
-      <section
-        className={`patch-section patch-section--${section.type}${section.toc ? " patch-section--major" : " patch-section--minor"}`}
-        id={section.id}
-        key={section.id}
-      >
-        {section.toc ? (
-          <span aria-hidden="true" className="patch-section__number">
-            {majorNumber}
-          </span>
-        ) : null}
-        <div className="patch-section__content">
-          <Heading>{section.title}</Heading>
-          {renderSectionContent(section, article.locale)}
-        </div>
-      </section>
-    );
+      return (
+        <section
+          className={`patch-section patch-section--${section.type}${section.toc ? " patch-section--major" : " patch-section--minor"}`}
+          id={section.id}
+          key={section.id}
+        >
+          {section.toc ? (
+            <span aria-hidden="true" className="patch-section__number">
+              {majorNumber}
+            </span>
+          ) : null}
+          <div className="patch-section__content">
+            <Heading>{section.title}</Heading>
+            {renderSectionContent(section, article.locale)}
+          </div>
+        </section>
+      );
     }),
   ].filter(Boolean) as ReactNode[];
 }
@@ -179,7 +170,9 @@ function HistoricalPatchBanner({
         {article.currentBaseline ? (
           <p className="patch-historical-banner__line">
             <b>
-              {locale === "zh-cn" ? "当前对照基线" : "Current comparison baseline"}
+              {locale === "zh-cn"
+                ? "当前对照基线"
+                : "Current comparison baseline"}
               :
             </b>{" "}
             {article.currentBaseline}

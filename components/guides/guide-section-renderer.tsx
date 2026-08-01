@@ -14,26 +14,36 @@ import { DataTable } from "./sections/data-table";
 import { Tabbed } from "./sections/tabs";
 import { CardGrid } from "./sections/card-grid";
 import { Diagnostic } from "./sections/diagnostic";
+import { MasterComparison } from "./sections/master-comparison";
+import { MasterUnlockRoute } from "./sections/master-unlock-route";
+import { PassivePlanner } from "./sections/passive-planner";
+import { ScenarioRecommendations } from "./sections/scenario-recommendations";
+import { ActivationTiming } from "./sections/activation-timing";
+import { RecipeBoard } from "./sections/recipe-board";
+import { RiskRewardMatrix } from "./sections/risk-reward-matrix";
+import { MapModifierMatrix } from "./sections/map-modifier-matrix";
+import { FilterInstallation } from "./sections/filter-installation";
+import { RespecMatrix } from "./sections/respec-matrix";
+import { CostBreakdown } from "./sections/cost-breakdown";
+import { VersionConflicts } from "./sections/version-conflicts";
+import { InteractiveSelector } from "./sections/interactive-selector";
 
 const rendererLabels: Record<
   ContentLocale,
   {
     source: string;
     takeaway: string;
-    verificationChecklist: string;
     videoPreview: string;
   }
 > = {
   en: {
     source: "Open source",
     takeaway: "What to watch for",
-    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
   },
   "zh-cn": {
     source: "查看来源",
     takeaway: "建议重点观看",
-    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
   },
 };
@@ -88,13 +98,7 @@ function renderSectionContent(
     case "changelog":
       return <ChangelogList entries={section.entries} />;
     case "sources":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
     case "quick-answer":
       return <QuickAnswer section={section} />;
     case "stat-grid":
@@ -107,6 +111,54 @@ function renderSectionContent(
       return <CardGrid section={section} />;
     case "diagnostic":
       return <Diagnostic section={section} />;
+    case "master-comparison":
+      return <MasterComparison section={section} />;
+    case "master-unlock-route":
+      return <MasterUnlockRoute section={section} />;
+    case "passive-planner":
+      return <PassivePlanner section={section} />;
+    case "scenario-recommendations":
+      return <ScenarioRecommendations section={section} />;
+    case "activation-timing":
+      return <ActivationTiming section={section} />;
+    case "recipe-board":
+      return <RecipeBoard section={section} />;
+    case "risk-reward-matrix":
+      return <RiskRewardMatrix section={section} />;
+    case "map-modifier-matrix":
+      return <MapModifierMatrix section={section} />;
+    case "filter-installation":
+      return <FilterInstallation section={section} />;
+    case "strictness-selector":
+      return (
+        <InteractiveSelector
+          resultLabel="推荐"
+          runLabel="生成推荐严格度"
+          section={section}
+        />
+      );
+    case "compatibility-diagnostic":
+      return (
+        <InteractiveSelector
+          resultLabel="诊断结果"
+          runLabel="诊断兼容性"
+          section={section}
+        />
+      );
+    case "resource-diagnostic":
+      return (
+        <InteractiveSelector
+          resultLabel="检查顺序"
+          runLabel="生成检查顺序"
+          section={section}
+        />
+      );
+    case "respec-matrix":
+      return <RespecMatrix section={section} />;
+    case "cost-breakdown":
+      return <CostBreakdown section={section} />;
+    case "version-conflicts":
+      return <VersionConflicts section={section} />;
   }
 }
 

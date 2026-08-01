@@ -18,7 +18,6 @@ const rendererLabels: Record<
     support: string;
     takeaway: string;
     value: string;
-    verificationChecklist: string;
     videoPreview: string;
   }
 > = {
@@ -29,7 +28,6 @@ const rendererLabels: Record<
     support: "Support",
     takeaway: "What to watch for",
     value: "Value",
-    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
   },
   "zh-cn": {
@@ -39,7 +37,6 @@ const rendererLabels: Record<
     support: "辅助宝石",
     takeaway: "建议重点观看",
     value: "数值",
-    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
   },
 };
@@ -118,13 +115,7 @@ function renderSectionContent(
     case "changelog":
       return <ChangelogList entries={section.entries} />;
     case "sources":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
     case "data-table":
       return (
         <div className="skill-data-table-wrap">
@@ -140,10 +131,7 @@ function renderSectionContent(
               {section.rows.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <td
-                      key={cellIndex}
-                      style={{ whiteSpace: "pre-line" }}
-                    >
+                    <td key={cellIndex} style={{ whiteSpace: "pre-line" }}>
                       {cell}
                     </td>
                   ))}

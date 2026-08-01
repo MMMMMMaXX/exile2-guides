@@ -1,4 +1,5 @@
-/** 文件职责：合并正式页面与仅由本地开发插件提供的 Build 草稿，集中维护运行时可见内容边界。 */
+/** 文件职责：合并正式页面与仅由本地开发插件提供的 Build / Boss 草稿，集中维护运行时可见内容边界。 */
+import bossDraftPreviewPages from "virtual:boss-draft-preview-pages";
 import buildDraftPreviewPages from "virtual:build-draft-preview-pages";
 import publishedContentPages from "virtual:content-pages";
 
@@ -9,4 +10,5 @@ import publishedContentPages from "virtual:content-pages";
 export const locallyVisibleContentPages = Object.freeze({
   ...publishedContentPages,
   ...buildDraftPreviewPages,
+  ...bossDraftPreviewPages,
 });

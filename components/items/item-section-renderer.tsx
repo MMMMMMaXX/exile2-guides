@@ -19,31 +19,31 @@ const sectionKickers: Record<string, string> = {
   "build-usage": "BUILD USAGE",
   "common-mistakes": "COMMON MISTAKES",
   "community-evidence": "COMMUNITY EVIDENCE",
-  "effect": "EFFECT",
-  "eligibility": "VALID TARGET MATRIX",
+  effect: "EFFECT",
+  eligibility: "VALID TARGET MATRIX",
   "family-overview": "ITEM FAMILY",
   "media-gallery": "MEDIA GALLERY",
-  "modifiers": "MODIFIERS",
-  "outcomes": "OUTCOME ANALYSIS",
-  "overview": "OVERVIEW",
+  modifiers: "MODIFIERS",
+  outcomes: "OUTCOME ANALYSIS",
+  overview: "OVERVIEW",
   "patch-history": "PATCH HISTORY",
   "pre-use-checklist": "PRE-USE CHECKLIST",
   "quick-answer": "QUICK ANSWER",
   "quick-facts": "QUICK FACTS",
   "risk-analysis": "RISK ANALYSIS",
-  "acquisition": "ACQUISITION",
+  acquisition: "ACQUISITION",
   "acquisition-steps": "ACQUISITION STEPS",
-  "alternatives": "ALTERNATIVES",
-  "crafting": "CRAFTING",
-  "properties": "PROPERTIES",
+  alternatives: "ALTERNATIVES",
+  crafting: "CRAFTING",
+  properties: "PROPERTIES",
   "related-content": "CONNECTED CONTENT",
   "skill-interactions": "SKILL INTERACTIONS",
-  "sources": "SOURCES & VERIFICATION",
-  "troubleshooting": "PROBLEMS & DIRECT ANSWERS",
+  sources: "SOURCES & VERIFICATION",
+  troubleshooting: "PROBLEMS & DIRECT ANSWERS",
   "use-cases": "USE CASES",
-  "usage": "USE FLOW",
-  "valuation": "USE / SELL / HOLD",
-  "verification": "VERIFICATION",
+  usage: "USE FLOW",
+  valuation: "USE / SELL / HOLD",
+  verification: "VERIFICATION",
 };
 
 const rendererLabels: Record<
@@ -55,7 +55,6 @@ const rendererLabels: Record<
     source: string;
     takeaway: string;
     timestamps: string;
-    verificationChecklist: string;
     videoPreview: string;
     why: string;
   }
@@ -67,7 +66,6 @@ const rendererLabels: Record<
     source: "Open source",
     takeaway: "What to watch for",
     timestamps: "Key timestamps",
-    verificationChecklist: "Verification checklist",
     videoPreview: "Open the original video",
     why: "Why it matters",
   },
@@ -78,7 +76,6 @@ const rendererLabels: Record<
     source: "查看来源",
     takeaway: "建议重点观看",
     timestamps: "重要节点",
-    verificationChecklist: "发布前核验清单",
     videoPreview: "打开原始视频",
     why: "为什么重要",
   },
@@ -322,7 +319,11 @@ function renderSectionContent(
                   <p key={paragraph}>{paragraph}</p>
                 ))}
                 {route.href ? (
-                  <a href={route.href} rel="noopener noreferrer" target="_blank">
+                  <a
+                    href={route.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     ↗
                   </a>
                 ) : null}
@@ -347,17 +348,13 @@ function renderSectionContent(
           {section.compare ? (
             <div className="item-compare">
               <div>
-                <strong>
-                  {locale === "zh-cn" ? "使用前" : "Before"}
-                </strong>
+                <strong>{locale === "zh-cn" ? "使用前" : "Before"}</strong>
                 {section.compare.before.map((text) => (
                   <p key={text}>{text}</p>
                 ))}
               </div>
               <div>
-                <strong>
-                  {locale === "zh-cn" ? "使用后" : "After"}
-                </strong>
+                <strong>{locale === "zh-cn" ? "使用后" : "After"}</strong>
                 {section.compare.after.map((text) => (
                   <p key={text}>{text}</p>
                 ))}
@@ -430,7 +427,11 @@ function renderSectionContent(
                 <h3>{build.title}</h3>
                 <p>{build.description}</p>
                 {build.href ? (
-                  <a href={build.href} rel="noopener noreferrer" target="_blank">
+                  <a
+                    href={build.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     ↗
                   </a>
                 ) : null}
@@ -441,10 +442,7 @@ function renderSectionContent(
       );
     case "community-evidence":
       return (
-        <BossCommunityGrid
-          locale={locale}
-          totalCount={section.entries.length}
-        >
+        <BossCommunityGrid locale={locale} totalCount={section.entries.length}>
           {section.entries.map((entry, index) => (
             <article
               className={`boss-community-card${
@@ -456,9 +454,7 @@ function renderSectionContent(
                 <span
                   className={`boss-avatar${avatarColors[index % avatarColors.length]}`}
                 >
-                  {(entry.question ?? entry.sourceId)
-                    .charAt(0)
-                    .toUpperCase()}
+                  {(entry.question ?? entry.sourceId).charAt(0).toUpperCase()}
                 </span>
                 <div>
                   <b>{entry.sourceId.replace(/-/g, " ")}</b>
@@ -505,7 +501,9 @@ function renderSectionContent(
                 {problem.directAnswer.length > 0 ? (
                   <p>
                     <b>
-                      {locale === "zh-cn" ? "直接答案：" : "Direct answer:"}{" "}
+                      {locale === "zh-cn"
+                        ? "直接答案："
+                        : "Direct answer:"}{" "}
                     </b>
                     {problem.directAnswer.join(" ")}
                   </p>
@@ -595,13 +593,7 @@ function renderSectionContent(
         </div>
       );
     case "sources":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
   }
 }
 

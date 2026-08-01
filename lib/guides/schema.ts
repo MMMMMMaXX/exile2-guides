@@ -225,6 +225,312 @@ const guideDiagnosticSectionSchema = z.strictObject({
     .optional(),
 });
 
+/** Atlas Masters 三方对比：卡片 + 场景推荐表。 */
+const masterComparisonSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("master-comparison"),
+  intro: requiredText.optional(),
+  masters: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        tagline: requiredText,
+        unlock: requiredText,
+        strengths: paragraphList,
+        watchOuts: paragraphList,
+      }),
+    )
+    .min(1),
+  scenarios: z
+    .array(
+      z.strictObject({
+        goal: requiredText,
+        recommendedMaster: requiredText,
+        why: requiredText,
+        cost: requiredText,
+        stage: requiredText,
+        verifiedAt: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** Atlas Master 解锁与四点分配路线。 */
+const masterUnlockRouteSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("master-unlock-route"),
+  intro: requiredText.optional(),
+  masters: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        location: requiredText,
+        unlockSteps: paragraphList,
+      }),
+    )
+    .min(1),
+});
+
+/** 至多四点的交互式节点 Planner。 */
+const passivePlannerSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("passive-planner"),
+  intro: requiredText.optional(),
+  maxPoints: z.number().int().positive().default(4),
+  masters: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        maxPoints: z.number().int().positive().default(4),
+        nodes: z
+          .array(
+            z.strictObject({
+              id: stableIdentifier,
+              name: requiredText,
+              effect: requiredText,
+              tier: requiredText,
+            }),
+          )
+          .min(1),
+      }),
+    )
+    .min(1),
+});
+
+/** 场景 → 推荐 Master 与依据。 */
+const scenarioRecommendationsSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("scenario-recommendations"),
+  intro: requiredText.optional(),
+  scenarios: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        scenario: requiredText,
+        recommendedMaster: requiredText,
+        alternatives: requiredText,
+        rationale: requiredText,
+        cost: requiredText,
+        verifiedAt: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** Master 切换生效时机规则。 */
+const activationTimingSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("activation-timing"),
+  intro: requiredText.optional(),
+  rules: z
+    .array(
+      z.strictObject({
+        situation: requiredText,
+        takesEffect: requiredText,
+        note: requiredText,
+      }),
+    )
+    .min(1),
+  note: requiredText.optional(),
+});
+
+/** Runes of Aldur Remnant 配方看板。 */
+const recipeBoardSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("recipe-board"),
+  intro: requiredText.optional(),
+  runes: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        description: requiredText,
+        risk: requiredText,
+        reward: requiredText,
+      }),
+    )
+    .min(1),
+  recipes: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        runeCount: requiredText,
+        waves: requiredText,
+        danger: requiredText,
+        reward: requiredText,
+        suitableFor: requiredText,
+        exitCondition: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 风险 / 收益矩阵（绿黄红分级）。 */
+const riskRewardMatrixSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("risk-reward-matrix"),
+  intro: requiredText.optional(),
+  rows: z
+    .array(
+      z.strictObject({
+        choice: requiredText,
+        riskLevel: z.enum(["green", "yellow", "red"]),
+        risk: requiredText,
+        reward: requiredText,
+        when: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** Waystone 词缀矩阵（按 Build 类型定危险等级）。 */
+const mapModifierMatrixSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("map-modifier-matrix"),
+  intro: requiredText.optional(),
+  modifiers: z
+    .array(
+      z.strictObject({
+        modifier: requiredText,
+        affects: requiredText,
+        danger: z.enum(["green", "yellow", "red"]),
+        symptom: requiredText,
+        action: requiredText,
+        version: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** Loot Filter 安装方法。 */
+const filterInstallationSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("filter-installation"),
+  intro: requiredText.optional(),
+  methods: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        name: requiredText,
+        platform: requiredText,
+        steps: paragraphList,
+        note: requiredText.optional(),
+      }),
+    )
+    .min(1),
+});
+
+/** 交互式选择器基类结构（严格度 / 兼容性 / 资源诊断复用）。 */
+const interactiveSelectorSchema = z.strictObject({
+  intro: requiredText.optional(),
+  controls: z
+    .array(
+      z.strictObject({
+        id: stableIdentifier,
+        label: requiredText,
+        options: z
+          .array(z.strictObject({ label: requiredText, value: requiredText }))
+          .min(1),
+      }),
+    )
+    .min(1),
+  rules: z
+    .array(
+      z.strictObject({
+        link: z.url().optional(),
+        linkLabel: requiredText.optional(),
+        steps: paragraphList,
+        title: requiredText,
+        when: z.record(requiredText, requiredText),
+      }),
+    )
+    .default([]),
+  defaultResult: z
+    .strictObject({
+      link: z.url().optional(),
+      linkLabel: requiredText.optional(),
+      steps: paragraphList,
+      title: requiredText,
+    })
+    .optional(),
+});
+
+const strictnessSelectorSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("strictness-selector"),
+  ...interactiveSelectorSchema.shape,
+});
+
+const compatibilityDiagnosticSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("compatibility-diagnostic"),
+  ...interactiveSelectorSchema.shape,
+});
+
+const resourceDiagnosticSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("resource-diagnostic"),
+  ...interactiveSelectorSchema.shape,
+});
+
+/** Respec 边界矩阵。 */
+const respecMatrixSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("respec-matrix"),
+  intro: requiredText.optional(),
+  rows: z
+    .array(
+      z.strictObject({
+        respecType: requiredText,
+        npc: requiredText,
+        prerequisite: requiredText,
+        risk: requiredText,
+        needsTrial: z.boolean(),
+        cost: requiredText,
+      }),
+    )
+    .min(1),
+});
+
+/** 重置成本明细。 */
+const costBreakdownSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("cost-breakdown"),
+  intro: requiredText.optional(),
+  rows: z
+    .array(
+      z.strictObject({
+        item: requiredText,
+        cost: requiredText,
+        detail: requiredText.optional(),
+        currency: requiredText.optional(),
+      }),
+    )
+    .min(1),
+  note: requiredText.optional(),
+});
+
+/** 版本冲突 / 旧推荐失效记录。 */
+const versionConflictsSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.literal("version-conflicts"),
+  intro: requiredText.optional(),
+  conflicts: z
+    .array(
+      z.strictObject({
+        recommendation: requiredText,
+        status: z.enum(["valid", "outdated", "conflict", "fixed"]),
+        detail: requiredText,
+        sinceVersion: requiredText,
+      }),
+    )
+    .min(1),
+});
+
 export const guideSectionSchema = z.discriminatedUnion("type", [
   guideNarrativeSectionSchema,
   guideStepsSectionSchema,
@@ -238,6 +544,21 @@ export const guideSectionSchema = z.discriminatedUnion("type", [
   guideTabsSectionSchema,
   guideCardGridSectionSchema,
   guideDiagnosticSectionSchema,
+  masterComparisonSchema,
+  masterUnlockRouteSchema,
+  passivePlannerSchema,
+  scenarioRecommendationsSchema,
+  activationTimingSchema,
+  recipeBoardSchema,
+  riskRewardMatrixSchema,
+  mapModifierMatrixSchema,
+  filterInstallationSchema,
+  strictnessSelectorSchema,
+  compatibilityDiagnosticSchema,
+  resourceDiagnosticSchema,
+  respecMatrixSchema,
+  costBreakdownSchema,
+  versionConflictsSchema,
 ]);
 
 // --- GuideArticle 顶层结构 ---

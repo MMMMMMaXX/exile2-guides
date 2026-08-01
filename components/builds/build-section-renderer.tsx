@@ -32,7 +32,6 @@ const rendererLabels: Record<
     tierRecommended: string;
     tierOptional: string;
     tierLuxury: string;
-    verificationChecklist: string;
     plannerImport: string;
     plannerOpen: string;
     plannerDownload: string;
@@ -58,7 +57,6 @@ const rendererLabels: Record<
     tierRecommended: "Recommended",
     tierOptional: "Optional",
     tierLuxury: "Luxury",
-    verificationChecklist: "Verification checklist",
     plannerImport: "Import Build",
     plannerOpen: "Open Build Planner",
     plannerDownload: "Download .build",
@@ -83,7 +81,6 @@ const rendererLabels: Record<
     tierRecommended: "推荐",
     tierOptional: "可选",
     tierLuxury: "奢侈升级",
-    verificationChecklist: "发布前核验清单",
     plannerImport: "导入配置",
     plannerOpen: "打开 Build Planner",
     plannerDownload: "下载 .build",
@@ -114,13 +111,7 @@ function renderSectionContent(
         />
       );
     case "sources":
-      return (
-        <SourcesSection
-          categories={section.categories}
-          verificationChecklist={section.verificationChecklist}
-          verificationChecklistLabel={labels.verificationChecklist}
-        />
-      );
+      return <SourcesSection categories={section.categories} />;
     case "pros-cons":
       return (
         <div className="build-section-columns">
@@ -178,9 +169,7 @@ function renderSectionContent(
                   ) : null}
                 </div>
               ) : (
-                step.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))
+                step.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
               )}
             </li>
           ))}
@@ -215,7 +204,8 @@ function renderSectionContent(
               ) : null}
               {skill.whenReplace?.length ? (
                 <p>
-                  <strong>When to replace:</strong> {skill.whenReplace.join(" ")}
+                  <strong>When to replace:</strong>{" "}
+                  {skill.whenReplace.join(" ")}
                 </p>
               ) : null}
               {skill.mappingBossingDiff?.length ? (
@@ -364,7 +354,12 @@ function renderSectionContent(
                 <nav aria-label={`${labels.related}: ${item.question}`}>
                   <strong>{labels.related}</strong>
                   {item.relatedLinks.map((link) => (
-                    <a href={link.href} key={link.href} rel="noopener noreferrer" target="_blank">
+                    <a
+                      href={link.href}
+                      key={link.href}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
                       {link.label} →
                     </a>
                   ))}
@@ -385,11 +380,7 @@ function renderSectionContent(
           <ul className="build-planner-actions">
             {section.importUrl ? (
               <li>
-                <a
-                  href={section.importUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
+                <a href={section.importUrl} rel="noreferrer" target="_blank">
                   {labels.plannerImport} ↗
                 </a>
               </li>
@@ -407,22 +398,14 @@ function renderSectionContent(
             ) : null}
             {section.downloadUrl ? (
               <li>
-                <a
-                  href={section.downloadUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
+                <a href={section.downloadUrl} rel="noreferrer" target="_blank">
                   {labels.plannerDownload} ↗
                 </a>
               </li>
             ) : null}
             {section.creatorUrl ? (
               <li>
-                <a
-                  href={section.creatorUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
+                <a href={section.creatorUrl} rel="noreferrer" target="_blank">
                   {section.creatorName
                     ? `${labels.plannerCreator} · ${section.creatorName}`
                     : labels.plannerCreator}{" "}
