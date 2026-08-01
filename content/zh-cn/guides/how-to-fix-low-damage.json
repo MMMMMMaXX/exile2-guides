@@ -7,9 +7,12 @@
   "featured": true,
   "title": "如何修复《流放之路 2》中的低伤害",
   "shortTitle": "修复低伤害",
-  "summary": "《流放之路 2》中伤害低的真正原因——技能宝石等级低、缺第六孔、武器 DPS 弱、辅助链接错误、无暴击倍率、无品质或催化剂、宝石孔空置——以及逐一修复方法。",
+  "summary": "《流放之路 2》中伤害低的真正原因——技能宝石等级低、辅助孔空置、武器 DPS 弱、辅助宝石错误、无暴击倍率、无品质或催化剂、宝石孔空置——以及逐一修复方法。",
   "description": "一份《流放之路 2》低伤害排查指南：真正影响你 DPS 的因素清单及修复方式。",
   "guideCategory": "troubleshooting",
+  "heroImage": "/images/skills/tempest-bell.webp",
+  "cardImage": "/images/skills/tempest-bell.webp",
+  "imageAlt": "风暴钟，流放之路2中用于解决低伤害问题的强力技能",
   "estimatedReadingMinutes": 13,
   "prerequisites": [
     "处于战役或早期终局的角色",
@@ -25,7 +28,9 @@
   "createdAt": "2026-07-28",
   "publishedAt": "2026-07-28",
   "updatedAt": "2026-07-28",
-  "tags": ["guide", "troubleshooting", "damage", "dps"],
+  "tags": [
+    "troubleshooting"
+  ],
   "sections": [
     {
       "id": "quick-answer",
@@ -38,7 +43,7 @@
         {
           "title": "最常见原因",
           "body": [
-            "技能宝石等级低与缺孔。1-5 级的技能宝石在 6 连中的伤害只是 properly 升级、6 连配置的一小部分。每次能升级就把主技能宝石升满，并补全武器或护甲的孔。"
+            "技能宝石等级低与辅助孔空置。1-5 级主技能宝石（没插辅助）的伤害只是插满辅助配置的一小部分。每次能升级就把主技能宝石升满，并用伤害辅助填满其辅助孔（默认 2 个，用珠宝匠宝珠最多 5 个）。"
           ]
         },
         {
@@ -64,9 +69,9 @@
       "toc": true,
       "stats": [
         {
-          "label": "单件装备最大孔数",
-          "value": "6",
-          "note": "6 连成倍放大技能伤害"
+          "label": "单颗技能宝石的辅助孔",
+          "value": "2（最多 5）",
+          "note": "辅助直接插进技能宝石本身；珠宝匠宝珠增加孔数（次级 3、大型 4、完美 5）。"
         },
         {
           "label": "宝石品质甜点",
@@ -89,18 +94,38 @@
       "toc": true,
       "caption": "从上到下检查。靠前的行通常解释了 80% 的低伤害抱怨。",
       "columns": [
-        { "key": "factor", "label": "因素" },
-        { "key": "why", "label": "为何重要" },
-        { "key": "fix", "label": "修复" }
+        {
+          "key": "factor",
+          "label": "因素"
+        },
+        {
+          "key": "why",
+          "label": "为何重要"
+        },
+        {
+          "key": "fix",
+          "label": "修复"
+        }
       ],
       "filters": [
-        { "id": "skill", "label": "技能配置" },
-        { "id": "gear", "label": "装备" },
-        { "id": "tree", "label": "被动树" }
+        {
+          "id": "skill",
+          "label": "技能配置"
+        },
+        {
+          "id": "gear",
+          "label": "装备"
+        },
+        {
+          "id": "tree",
+          "label": "被动树"
+        }
       ],
       "rows": [
         {
-          "tags": ["skill"],
+          "tags": [
+            "skill"
+          ],
           "cells": {
             "factor": "宝石等级",
             "why": "伤害随宝石等级剧烈增长",
@@ -108,15 +133,19 @@
           }
         },
         {
-          "tags": ["skill"],
+          "tags": [
+            "skill"
+          ],
           "cells": {
-            "factor": "第六孔 / 6 连",
-            "why": "每个链接的辅助都倍增伤害",
-            "fix": "补全孔；使用 6 连身体或武器"
+            "factor": "辅助孔填满",
+            "why": "技能宝石上每个辅助都倍增伤害",
+            "fix": "用伤害辅助填满主技能宝石的每个辅助孔（默认 2，用珠宝匠宝珠最多 5）"
           }
         },
         {
-          "tags": ["skill"],
+          "tags": [
+            "skill"
+          ],
           "cells": {
             "factor": "辅助宝石选择",
             "why": "错误辅助浪费链接",
@@ -124,7 +153,9 @@
           }
         },
         {
-          "tags": ["gear"],
+          "tags": [
+            "gear"
+          ],
           "cells": {
             "factor": "武器基础 DPS",
             "why": "多数技能继承武器伤害",
@@ -132,7 +163,9 @@
           }
         },
         {
-          "tags": ["gear"],
+          "tags": [
+            "gear"
+          ],
           "cells": {
             "factor": "属性需求",
             "why": "未花的属性点可能卡住更高宝石",
@@ -140,7 +173,9 @@
           }
         },
         {
-          "tags": ["gear"],
+          "tags": [
+            "gear"
+          ],
           "cells": {
             "factor": "暴击率与暴击倍率",
             "why": "暴击倍增爆发伤害",
@@ -148,7 +183,9 @@
           }
         },
         {
-          "tags": ["gear"],
+          "tags": [
+            "gear"
+          ],
           "cells": {
             "factor": "品质与催化剂",
             "why": "20% 品质与催化剂提供免费修正",
@@ -156,7 +193,9 @@
           }
         },
         {
-          "tags": ["tree"],
+          "tags": [
+            "tree"
+          ],
           "cells": {
             "factor": "空的宝石孔",
             "why": "宝石提供暴击倍率 / 附加伤害",
@@ -164,7 +203,9 @@
           }
         },
         {
-          "tags": ["tree"],
+          "tags": [
+            "tree"
+          ],
           "cells": {
             "factor": "装备上的抗性",
             "why": "装备堆满抗性可腾出被动点",
@@ -175,8 +216,71 @@
       "note": "始终先升级主技能宝石——这是单次影响最大、零成本的改动。"
     },
     {
-      "id": "fix-tabs",
+      "id": "crit-by-build",
       "order": 4,
+      "title": "按流派看暴击",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "暴击能倍增爆发伤害，但并非每个流派都需要。在下方找到你的流派。",
+      "columns": [
+        { "key": "build", "label": "流派类型" },
+        { "key": "matters", "label": "暴击重要？" },
+        { "key": "why", "label": "原因" },
+        { "key": "action", "label": "怎么做" }
+      ],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "build": "攻击（近战 / 远程）",
+            "matters": "通常要",
+            "why": "暴击倍增每一次命中；多数攻击技能吃暴击收益极大",
+            "action": "装备堆暴击率；宝石堆暴击倍率"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "命中型法术",
+            "matters": "常常要",
+            "why": "暴击作用于法术命中（不作用于 DoT）；对爆发流派收益大",
+            "action": "装备堆暴击率、宝石堆暴击倍率；确认该法术能暴击"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "持续伤害（点燃 / 中毒 / 流血）",
+            "matters": "不要",
+            "why": "DoT 无法暴击",
+            "action": "跳过暴击；投资异常强度与持续时间"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "召唤",
+            "matters": "通常不要",
+            "why": "随从命中只有在专门投资暴击时才暴击，一般非优先",
+            "action": "忽略角色暴击；投资随从伤害"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "触发 / 技能宝石堆叠",
+            "matters": "视情况",
+            "why": "取决于被触发的命中能否暴击",
+            "action": "投资前先确认具体技能"
+          }
+        }
+      ],
+      "note": "若你的流派属于“不要”或“视情况”，把那些点数与词缀用于持续伤害、穿透或附加伤害。"
+    },
+    {
+      "id": "fix-tabs",
+      "order": 5,
       "title": "去哪里看：技能、装备、树",
       "type": "tabs",
       "visible": true,
@@ -186,10 +290,12 @@
         {
           "id": "skill",
           "label": "技能配置",
-          "paragraphs": ["你的技能宝石及其链接是所有伤害的基础。"],
+          "paragraphs": [
+            "你的技能宝石及其链接是所有伤害的基础。"
+          ],
           "bullets": [
             "检查主技能的宝石等级——若远未到角色等级，那就是问题。",
-            "确认持有主技能的物品上有 6 连（至少 5 连）。",
+            "确认主技能宝石的辅助孔都已插上辅助（默认 2，用珠宝匠宝珠最多 5）。",
             "核实辅助宝石匹配技能标签（物理、元素、法术、攻击）。"
           ],
           "steps": []
@@ -210,7 +316,9 @@
         {
           "id": "tree",
           "label": "被动树",
-          "paragraphs": ["被动树应当放大，而非补偿一个薄弱的配置。"],
+          "paragraphs": [
+            "被动树应当放大，而非补偿一个薄弱的配置。"
+          ],
           "bullets": [
             "装备上堆满抗性，以便把树上的点用于伤害节点。",
             "用暴击倍率或属性宝石填满空宝石孔。",
@@ -222,7 +330,7 @@
     },
     {
       "id": "damage-diagnostic",
-      "order": 5,
+      "order": 6,
       "title": "为什么我伤害低？",
       "type": "diagnostic",
       "visible": true,
@@ -233,26 +341,42 @@
           "id": "context",
           "label": "何时伤害低？",
           "options": [
-            { "label": "所有内容都低", "value": "everywhere" },
-            { "label": "仅首领", "value": "boss" },
-            { "label": "仅清小怪", "value": "packs" },
-            { "label": "换装备后", "value": "swap" }
+            {
+              "label": "所有内容都低",
+              "value": "everywhere"
+            },
+            {
+              "label": "仅首领",
+              "value": "boss"
+            },
+            {
+              "label": "仅清小怪",
+              "value": "packs"
+            },
+            {
+              "label": "换装备后",
+              "value": "swap"
+            }
           ]
         }
       ],
       "rules": [
         {
           "title": "先检查宝石等级与链接",
-          "when": { "context": "everywhere" },
+          "when": {
+            "context": "everywhere"
+          },
           "steps": [
             "把主技能宝石升到角色等级。",
-            "确认持有主技能的物品上有 6 连。",
+            "确认主技能宝石的辅助孔都已插满。",
             "升级武器基础 DPS——它直接缩放多数技能。"
           ]
         },
         {
           "title": "你缺单体配置",
-          "when": { "context": "boss" },
+          "when": {
+            "context": "boss"
+          },
           "steps": [
             "首领抵抗清图配置；添加单体技能或辅助。",
             "检查穿透与暴击倍率——首领有效生命更高。",
@@ -261,7 +385,9 @@
         },
         {
           "title": "你的清图配置弱",
-          "when": { "context": "packs" },
+          "when": {
+            "context": "packs"
+          },
           "steps": [
             "为小怪添加范围或弹幕数量辅助。",
             "确认技能命中多个敌人（穿透、连锁或 AoE）。",
@@ -270,10 +396,12 @@
         },
         {
           "title": "属性或孔断裂",
-          "when": { "context": "swap" },
+          "when": {
+            "context": "swap"
+          },
           "steps": [
             "换装备可能把属性降到某宝石需求以下，使其失效。",
-            "把宝石移到新装备后重新检查孔链接。",
+            "换装备后重新确认技能宝石仍带着它的辅助宝石。",
             "若新装备改变了所需属性，重新对宝石用催化剂。"
           ]
         }
@@ -281,7 +409,7 @@
       "defaultResult": {
         "title": "系统性伤害审查",
         "steps": [
-          "升满主宝石、完成 6 连、升级武器 DPS，再叠加暴击、品质与宝石。",
+          "升满主宝石、填满辅助孔、升级武器 DPS，再叠加暴击、品质与宝石。",
           "装备上堆满抗性，把被动点腾给伤害。",
           "若仍低，对照你职业的已知构筑指南比较配置。"
         ]
@@ -289,7 +417,7 @@
     },
     {
       "id": "video-guide",
-      "order": 6,
+      "order": 7,
       "title": "完整伤害指南视频",
       "type": "video",
       "visible": true,
@@ -302,21 +430,45 @@
           "takeaway": "升满宝石、完成链接、升级武器 DPS，再叠加暴击、品质与宝石。",
           "url": "https://www.youtube.com/watch?v=-sjsnGMcKCI",
           "timestamps": [
-            { "label": "理解伤害", "time": "0:45" },
-            { "label": "提升你的伤害", "time": "3:36" },
-            { "label": "技能等级", "time": "3:51" },
-            { "label": "伤害类型", "time": "5:31" },
-            { "label": "寻找升级", "time": "6:47" },
-            { "label": "暴击伤害", "time": "9:03" },
-            { "label": "品质与催化剂", "time": "10:26" },
-            { "label": "宝石", "time": "12:51" }
+            {
+              "label": "理解伤害",
+              "time": "0:45"
+            },
+            {
+              "label": "提升你的伤害",
+              "time": "3:36"
+            },
+            {
+              "label": "技能等级",
+              "time": "3:51"
+            },
+            {
+              "label": "伤害类型",
+              "time": "5:31"
+            },
+            {
+              "label": "寻找升级",
+              "time": "6:47"
+            },
+            {
+              "label": "暴击伤害",
+              "time": "9:03"
+            },
+            {
+              "label": "品质与催化剂",
+              "time": "10:26"
+            },
+            {
+              "label": "宝石",
+              "time": "12:51"
+            }
           ]
         }
       ]
     },
     {
       "id": "faq",
-      "order": 7,
+      "order": 8,
       "title": "常见问题",
       "type": "faq",
       "visible": true,
@@ -329,9 +481,9 @@
           ]
         },
         {
-          "question": "我需要 6 连才能打出伤害吗？",
+          "question": "我需要插满辅助的技能宝石才能打出伤害吗？",
           "answer": [
-            "并非绝对，但每个链接的辅助宝石都倍增你的伤害。对多数流派，6 连是基于装备的单个最大 DPS 跃升。"
+            "并非绝对，但技能宝石上每个辅助宝石都倍增你的伤害。插满所有辅助孔（用珠宝匠宝珠最多 5）对多数流派是基于装备的单个最大 DPS 跃升。"
           ]
         },
         {
@@ -346,7 +498,7 @@
       "id": "sources",
       "type": "sources",
       "title": "来源与核验",
-      "order": 8,
+      "order": 9,
       "toc": true,
       "visible": true,
       "categories": [
@@ -366,7 +518,11 @@
           "url": "https://www.poe2wiki.net/wiki/Skill_Gem"
         }
       ],
-      "verificationChecklist": ["已核验完成"]
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
     }
   ],
   "relatedBuildIds": [],
@@ -393,6 +549,7 @@
   ],
   "seo": {
     "title": "流放之路 2 低伤害修复：宝石等级、链接、武器 DPS、暴击与宝石",
-    "description": "《流放之路 2》中伤害低的原因及精确修复方法：宝石等级、6 连、武器 DPS、辅助宝石、暴击倍率、品质、催化剂与宝石。"
+    "description": "《流放之路 2》中伤害低的原因及精确修复方法：宝石等级、辅助孔、武器 DPS、辅助宝石、暴击倍率、品质、催化剂与宝石。",
+    "noindex": true
   }
 }
