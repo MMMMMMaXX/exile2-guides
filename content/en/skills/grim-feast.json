@@ -1,0 +1,590 @@
+{
+  "id": "grim-feast",
+  "slug": "grim-feast",
+  "locale": "en",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Grim Feast Guide — Grim Remnants, Minion Revival and the Reworked Skill",
+  "shortTitle": "Grim Feast",
+  "summary": "Grim Feast no longer restores Energy Shield — in the current 0.5.4 client it is a Spirit gem that turns fallen minions into Grim Remnants, each storing a portion of the minion's Life, and can revive minions through Grim Resurrection. This guide explains why old build guides are obsolete, which minions create remnants, how much Life is stored, how revival chooses which minions return, the 30 Spirit cost, Quality, the 0.5 cooldown change, and the mapping / bossing rotations used by Lich, Infernalist and Gemling minion builds.",
+  "description": "Grim Feast deep guide: the rework from ES remnant to minion remnant / revive, which minions generate remnants, stored Life per remnant and the cap, Grim Resurrection order and limits, 30 Spirit budget, Quality storage ratio, persistent supports, mapping collection and bossing mass-death handling, troubleshooting (no remnant, no revive, expired) and real community questions answered directly.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "spirit",
+  "spiritReservation": 30,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "minion",
+    "remnant",
+    "spell",
+    "spirit"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/grim-feast.webp",
+  "cardImage": "/images/skills/grim-feast.webp",
+  "imageAlt": "Grim Feast spirit gem icon",
+  "tags": [
+    "buff",
+    "persistent",
+    "minion",
+    "remnant",
+    "spell",
+    "spirit"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick Answer: It Revives Minions, Not Energy Shield",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "In the current client Grim Feast does NOT restore Energy Shield. It is a Spirit gem that converts fallen minions into Grim Remnants and can bring minions back through Grim Resurrection.",
+        "Every old 'ES overflow' build guide is obsolete. If you are following a pre-0.3 guide for Grim Feast, discard it and use the minion-revival version."
+      ]
+    },
+    {
+      "id": "old-name-migration",
+      "order": 20,
+      "title": "Old Version vs Current Version",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Before the rework, Grim Feast produced Energy Shield remnants / overflow and was a defensive tool. That design is gone.",
+        "From 0.3 onward Grim Feast is a minion tool: dead minions leave Grim Remnants that store Life, and Grim Resurrection spends them to revive minions. The 0.5 patch added a resurrection cooldown and bug fixes that change how aggressively you can revive."
+      ],
+      "bullets": [
+        "Pre-0.3: ES remnant / overflow (defense).",
+        "0.3+: minion remnant / revive (fast revival).",
+        "0.5: Grim Resurrection cooldown + bug fixes (operation limits)."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 30,
+      "title": "Key Stats and Acquisition",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Spirit Gem · Buff · Persistent · Minion",
+          "notes": [
+            "Tagged buff, persistent, minion, remnant, spell."
+          ]
+        },
+        {
+          "label": "Spirit cost",
+          "value": "30 Spirit",
+          "notes": [
+            "Reserves 30 Spirit while enabled; confirm current client value."
+          ]
+        },
+        {
+          "label": "Remnant",
+          "value": "Stores a % of minion Life",
+          "notes": [
+            "Each fallen minion leaves a remnant holding part of its Life."
+          ]
+        },
+        {
+          "label": "Duration",
+          "value": "Remnants expire after a time",
+          "notes": [
+            "Unused remnants fade; verify the current client duration."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 40,
+      "title": "Requirements and Setup",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast needs Reviving Minions — minions that, on death, leave a Grim Remnant the skill can later spend. Minions that simply dissolve on death without a remnant do not feed the revival loop.",
+        "It is a Spirit gem, so it competes with other persistent buffs for your 30 Spirit reservation. You enable it once and it runs in the background."
+      ],
+      "keyValues": [
+        {
+          "label": "Minions",
+          "value": "Must be Reviving Minions",
+          "notes": [
+            "Only reviving minions leave usable remnants."
+          ]
+        },
+        {
+          "label": "Spirit",
+          "value": "30 reserved",
+          "notes": [
+            "Enabled as a persistent buff."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "persistent-buff",
+      "order": 50,
+      "title": "Persistent Buff and Spirit",
+      "type": "persistent-buff",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast is a persistent buff: once enabled it stays active and reserves 30 Spirit for the whole map. You do not recast it; you manage it through Spirit budget and revival timing.",
+        "Because it is always on, the value is in what it does passively — collecting remnants and enabling Grim Resurrection — not in active casting."
+      ],
+      "keyValues": [
+        {
+          "label": "Reservation",
+          "value": "30 Spirit (persistent)",
+          "notes": [
+            "Count it against your total Spirit pool."
+          ]
+        },
+        {
+          "label": "State",
+          "value": "Always on while enabled",
+          "notes": [
+            "No recast; manage via revival timing."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remnant-revival",
+      "order": 60,
+      "title": "Remnants and Grim Resurrection",
+      "type": "remnant-revival",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "When a Reviving Minion dies it drops a Grim Remnant storing a portion of its Life. Grim Resurrection consumes remnants to bring minions back, but it does not revive every minion at once — it revives a subset, and the order is determined by the remnant queue, not by which minion you 'want' back.",
+        "If many minions die together (common in boss fights), the revival only covers what the stored Life can pay for, so some minions stay dead until more remnants accumulate. The 0.5 patch added a resurrection cooldown, so you cannot spam revival every frame."
+      ],
+      "keyValues": [
+        {
+          "label": "Per remnant",
+          "value": "Stores % of minion Life",
+          "notes": [
+            "Verify the exact stored percentage on client 0.5.4."
+          ]
+        },
+        {
+          "label": "Revival",
+          "value": "Subset, queue-ordered",
+          "notes": [
+            "Not all minions return at once; order follows the remnant queue."
+          ]
+        },
+        {
+          "label": "Cooldown",
+          "value": "0.5 added limit",
+          "notes": [
+            "Grim Resurrection now has an operation cooldown."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "version-comparison",
+      "order": 65,
+      "title": "Version Comparison",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Version",
+        "Main effect",
+        "Player goal",
+        "Currently valid"
+      ],
+      "rows": [
+        [
+          "0.1",
+          "ES Remnant / Overflow",
+          "Defense",
+          "No"
+        ],
+        [
+          "0.2",
+          "Disabled",
+          "Unusable",
+          "No"
+        ],
+        [
+          "0.3+",
+          "Minion Remnant / Revive",
+          "Fast revival",
+          "Yes"
+        ],
+        [
+          "0.5",
+          "Grim Resurrection cooldown / bug fix",
+          "Operation limit",
+          "Current (verified)"
+        ]
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 70,
+      "title": "Spirit Budget Trade-offs",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast costs 30 Spirit, the same pool used by Herald buffs, auras and other persistent minion supports. On a minion build you must decide whether the revival safety net is worth more than an extra aura or damage buff.",
+        "Most minion builds that already run Reviving Minions keep Grim Feast, but tight-Spirit builds may drop it for more damage."
+      ],
+      "keyValues": [
+        {
+          "label": "Cost",
+          "value": "30 Spirit",
+          "notes": [
+            "Same pool as Herald / auras."
+          ]
+        },
+        {
+          "label": "Trade-off",
+          "value": "Revival vs damage aura",
+          "notes": [
+            "Drop it only if Spirit is the bottleneck."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 80,
+      "title": "Quality",
+      "type": "quality",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Quality on Grim Feast increases the portion of minion Life stored per remnant, so higher quality means each remnant revives more or revives minions more reliably.",
+        "Verify the exact quality roll on the current client; it scales the stored-Life ratio, not the revival count directly."
+      ],
+      "keyValues": [
+        {
+          "label": "Quality effect",
+          "value": "Higher remnant storage ratio",
+          "notes": [
+            "Confirm the current client roll."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "Support Compatibility",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Persistent supports that boost minion survival or additive minion damage pair well, since Grim Feast is itself a persistent minion buff. Clarity and other Spirit-affecting supports indirectly help by easing the reservation pressure.",
+        "Avoid supports that assume you actively cast the gem — Grim Feast is enabled, not spammed."
+      ],
+      "keyValues": [
+        {
+          "label": "Persistent minion supports",
+          "value": "Core",
+          "notes": [
+            "Stack with the persistent revival theme."
+          ]
+        },
+        {
+          "label": "Clarity / Spirit supports",
+          "value": "Situational",
+          "notes": [
+            "Ease the 30 Spirit reservation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "Mapping Rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Collect",
+          "action": "Let Reviving Minions die to trash and leave remnants",
+          "result": "A bank of remnants builds up passively."
+        },
+        {
+          "label": "Revive",
+          "action": "Grim Resurrection tops up the army between packs",
+          "result": "Minions return without manual resummon."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Bossing Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Mass death",
+          "action": "Minions die together to boss AoE",
+          "result": "Many remnants drop at once."
+        },
+        {
+          "label": "Revive window",
+          "action": "Grim Resurrection within the cooldown window",
+          "result": "A subset returns; repeat as remnants accumulate."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "Where It Is Used",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lich and Infernalist minion builds use Grim Feast as a revival safety net so their army stays alive through map and boss attrition. Gemling Legionnaire variants use it when they already run Reviving Minions and can spare the 30 Spirit.",
+        "In every case the build values the passive revival more than the lost damage aura."
+      ],
+      "bullets": [
+        "Lich: minion revival safety net.",
+        "Infernalist: keeps the army alive through attrition.",
+        "Gemling Legionnaire: revival when Spirit allows."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Troubleshooting",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "No remnants appear",
+          "action": "Minions are not Reviving Minions",
+          "result": "Swap to minions that leave remnants on death."
+        },
+        {
+          "label": "Minions will not revive",
+          "action": "Remnants expired or cooldown active",
+          "result": "Keep remnants fresh and respect the 0.5 resurrection cooldown."
+        },
+        {
+          "label": "Sometimes no revive",
+          "action": "Stored Life only covers a subset",
+          "result": "Let more minions die to build enough remnant Life."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "Community Evidence",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "The biggest community trap is following pre-0.3 'ES overflow' guides for Grim Feast — they describe a skill that no longer exists. Client testing confirms the current version is minion revival only.",
+        "The 0.5 'sometimes will not revive' reports are mostly the new resurrection cooldown plus the subset limitation, not a hard bug; waiting out the cooldown and accumulating remnants resolves most cases."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Video Walkthrough and Timestamps",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Lilith",
+          "label": "Minion Witch 0.5 — revival loop",
+          "description": "Minion Witch showcase that demonstrates minion death to remnant and the Grim Resurrection recovery.",
+          "takeaway": "Watch the death-to-revival loop and how remnants refill the army.",
+          "url": "https://www.youtube.com/watch?v=Kl5SyQgLtRk",
+          "timestamps": [
+            {
+              "label": "Revival loop",
+              "time": "0:00"
+            },
+            {
+              "label": "Boss mass death",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG official forum Patch Notes confirm the Grim Feast rework (0.3 minion revival) and the 0.5 resurrection cooldown / bug fixes in the current 0.5.4 client.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB and Community Wiki provide skill id, tags, Spirit cost and hidden remnant behaviour.",
+          "url": "https://www.poe2wiki.net/wiki/Grim_Feast"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Mobalytics Lich / Infernalist minion builds and the Lilith showcase video, used to cross-check the revival loop.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit and official forums surface real issues like obsolete ES guides, no remnant and no revive, reproduced on client and answered directly.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Grim%20Feast&restrict_sr=1"
+        },
+        {
+          "label": "Official Forums",
+          "description": "Official GGG forums where staff confirm Spirit gem and minion revival mechanics and patch changes.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit Community",
+          "description": "Reddit r/PathOfExile2 discussions and help threads for Grim Feast, useful for version feedback and mainstream builds.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Confirmed Grim Feast is minion revival, not ES, on client 0.5.4.",
+          "Remnant stores a % of minion Life; revival is subset / queue-ordered.",
+          "0.5 resurrection cooldown confirmed as an operation limit."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "Patch History",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-09-01",
+          "changes": [
+            "0.2: Grim Feast disabled; not usable this patch."
+          ]
+        },
+        {
+          "date": "2026-01-20",
+          "changes": [
+            "0.3: reworked into a minion remnant / revive Spirit gem."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: added Grim Resurrection cooldown and bug fixes; current client numbers used in this guide."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Initial release: rework explanation, remnant / revival mechanics, 30 Spirit budget, Quality, persistent supports, mapping and bossing rotations, troubleshooting and community evidence."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich",
+    "sniper-minion-infernalist",
+    "corrupting-wings-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [],
+  "relatedPatchIds": [
+    "patch-0-2-0-dawn-of-the-hunt",
+    "patch-0-3-0-third-edict",
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Grim Feast",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Grim_Feast"
+    },
+    {
+      "label": "Mobalytics — Minion builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Grim Feast discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Grim%20Feast&restrict_sr=1"
+    },
+    {
+      "label": "Lilith — Minion Witch 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Kl5SyQgLtRk"
+    }
+  ],
+  "seo": {
+    "title": "Grim Feast Guide — Grim Remnants, Minion Revival and the Reworked Skill",
+    "description": "Grim Feast spirit gem guide: the rework from ES remnant to minion revival, which minions create remnants, stored Life and cap, Grim Resurrection order and limits, 30 Spirit budget, Quality, 0.5 cooldown, mapping and bossing rotations, troubleshooting and community evidence.",
+    "noindex": false
+  }
+}

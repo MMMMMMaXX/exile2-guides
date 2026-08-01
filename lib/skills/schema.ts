@@ -119,6 +119,65 @@ const skillDataTableSectionSchema = z.strictObject({
   rows: z.array(z.array(requiredText)).default([]),
 });
 
+/**
+ * 富结构章节：承载第三批所需的多种复用业务模型
+ * （quick-answer、requirements、ammunition-reload、deployed-object、hit-sequence 等）。
+ * 统一携带叙述(paragraphs/bullets)、步骤(steps)、键值(keyValues)与表格(columns/rows)等可选字段，
+ * 由渲染层按可用字段渲染，避免为单篇文章引入一次性类型。
+ */
+const skillRichSectionSchema = z.strictObject({
+  ...baseSectionShape,
+  type: z.enum([
+    "quick-answer",
+    "requirements",
+    "ammunition-reload",
+    "detonator-interaction",
+    "deployed-object",
+    "object-limits",
+    "skill-interactions",
+    "combo-sequence",
+    "weapon-set",
+    "mapping-rotation",
+    "bossing-rotation",
+    "support-compatibility",
+    "support-loadouts",
+    "troubleshooting",
+    "community-evidence",
+    "attack-empowerment",
+    "charge-generation",
+    "hit-sequence",
+    "hit-behaviour",
+    "persistent-buff",
+    "remnant-revival",
+    "spirit-budget",
+    "quality",
+    "clone-meta",
+    "socketed-attacks",
+  ]),
+  paragraphs: paragraphList,
+  bullets: paragraphList,
+  steps: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        action: requiredText,
+        result: requiredText,
+      }),
+    )
+    .optional(),
+  keyValues: z
+    .array(
+      z.strictObject({
+        label: requiredText,
+        value: requiredText,
+        notes: paragraphList,
+      }),
+    )
+    .optional(),
+  columns: z.array(requiredText).optional(),
+  rows: z.array(z.array(requiredText)).optional(),
+});
+
 export const skillSectionSchema = z.discriminatedUnion("type", [
   skillNarrativeSectionSchema,
   skillSupportsSectionSchema,
@@ -128,6 +187,7 @@ export const skillSectionSchema = z.discriminatedUnion("type", [
   skillChangelogSectionSchema,
   skillSourcesSectionSchema,
   skillDataTableSectionSchema,
+  skillRichSectionSchema,
 ]);
 
 // --- SkillArticle 顶层结构 ---
@@ -179,6 +239,7 @@ const skillArticleBaseSchema = z.strictObject({
   relatedGuideIds: identifierList,
   relatedItemIds: identifierList,
   relatedPatchIds: identifierList,
+  relatedSkillIds: identifierList,
   sources: z.array(sourceSchema).default([]),
 
   seo: z.strictObject({
@@ -288,5 +349,6 @@ export const skillArticleSchema = skillArticleBaseSchema.superRefine(
 
 export type SkillArticle = z.infer<typeof skillArticleSchema>;
 export type SkillSection = z.infer<typeof skillSectionSchema>;
+export type SkillRichSection = z.infer<typeof skillRichSectionSchema>;
 export type SkillType = (typeof skillTypes)[number];
 export type SkillCategory = (typeof skillCategorySlugs)[number];

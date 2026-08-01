@@ -1,0 +1,702 @@
+{
+  "id": "mirage-archer",
+  "slug": "mirage-archer",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "幻影弓手（Mirage Archer）攻略 — 闪避触发、镶嵌攻击、冷却与限制",
+  "shortTitle": "幻影弓手",
+  "summary": "幻影弓手是一颗元（Meta）宝石，当你闪避翻滚（Dodge Roll）时，会生成一个「幻影」，使用镶嵌在其中的攻击。幻影以伤害惩罚模仿你的远程攻击（弓 / 长矛 / 弩），拥有独立于你的物件上限，且无法使用标注「你自己使用的技能」的辅助。本攻略解释闪避触发、冷却、多重幻影、镶嵌攻击优先级、与电流之杆 / 闪电箭的交互，以及追猎者、猎巫人与杰姆林流派在刷图与打王时的循环。",
+  "description": "幻影弓手深度攻略：闪避翻滚触发与幻影生成、60 点精魄消耗、持续时长与冷却、单一与多重镶嵌攻击及优先级、独立于玩家的物件上限、使用次数 / 装填 / 引导行为、与电流之杆和闪电箭的交互、标注「你自己」的辅助、精魄预算与传令官 / 战斗狂热之争、刷图与打王循环、排错及社区实证。",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "skillCategory": "meta",
+  "spiritReservation": 60,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/mirage-archer.webp",
+  "cardImage": "/images/skills/mirage-archer.webp",
+  "imageAlt": "幻影弓手元宝石图标",
+  "tags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速回答：闪避翻滚生成幻影",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "幻影弓手本身不发射任何东西。当你闪避翻滚时，它会生成一个「幻影」，使用你镶嵌在该宝石中的攻击，但附带伤害惩罚。",
+        "在其持续期间，幻影有效地翻倍了你的远程输出——只要镶嵌的技能是有效的远程攻击且冷却就绪。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "核心数值与获取方式",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "分类",
+          "value": "元宝石 · 增益 · 常驻 · 触发",
+          "notes": [
+            "标签为 buff、persistent、trigger、duration、meta。"
+          ]
+        },
+        {
+          "label": "精魄消耗",
+          "value": "60 点精魄",
+          "notes": [
+            "启用时预留 60 点精魄；以当前客户端数值为准。"
+          ]
+        },
+        {
+          "label": "触发",
+          "value": "闪避翻滚",
+          "notes": [
+            "幻影在闪避之后生成，受冷却限制。"
+          ]
+        },
+        {
+          "label": "武器",
+          "value": "弓 / 长矛 / 弩",
+          "notes": [
+            "只有镶嵌在宝石中的远程攻击被模仿。"
+          ]
+        },
+        {
+          "label": "伤害惩罚",
+          "value": "幻影造成降低的伤害",
+          "notes": [
+            "以客户端 0.5.4 的精确惩罚为准。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "需求与配置",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "幻影弓手需要装备弓、长矛或弩，并将至少一个有效的远程攻击镶嵌进宝石。幻影只能使用本身就是远程攻击的技能——近战与无支援技能会被忽略。",
+        "由于它是元宝石，你将它与你想要模仿的攻击镶嵌在一起；宝石本身是触发器，而非伤害来源。"
+      ],
+      "keyValues": [
+        {
+          "label": "武器",
+          "value": "弓 / 长矛 / 弩",
+          "notes": [
+            "近战技能不会被模仿。"
+          ]
+        },
+        {
+          "label": "镶嵌技能",
+          "value": "必须为远程攻击",
+          "notes": [
+            "只有有效的远程攻击才会被幻影使用。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clone-meta",
+      "order": 40,
+      "title": "幻影生成与限制",
+      "type": "clone-meta",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "幻影在闪避翻滚时生成，并在短暂持续后过期。在当前客户端中，冷却在幻影生成时开始计时，因此在前一个幻影被消耗或其持续结束之前你无法生成新的幻影——以客户端 0.5.4 的精确冷却为准。",
+        "通常情况下多个幻影无法共存；一次闪避只产生一个幻影，而下一次闪避受冷却限制。幻影的物件计数与你自己部署的物件分开追踪。"
+      ],
+      "keyValues": [
+        {
+          "label": "触发",
+          "value": "闪避翻滚",
+          "notes": [
+            "幻影在闪避之后生成。"
+          ]
+        },
+        {
+          "label": "冷却",
+          "value": "从生成时开始",
+          "notes": [
+            "以当前客户端冷却为准。"
+          ]
+        },
+        {
+          "label": "多重",
+          "value": "同时一个（通常）",
+          "notes": [
+            "受生成冷却限制。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socketed-attacks",
+      "order": 50,
+      "title": "镶嵌攻击与优先级",
+      "type": "socketed-attacks",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "你可以镶嵌单个攻击或多个攻击。若存在多个镶嵌攻击，幻影会按照优先级 / 轮换来使用它们，而不是一次性全部使用。带有内建使用次数、榴弹或弹药的技能表现特殊——幻影可能需要装填，或在缺乏初始使用次数时不会开火。",
+        "一个常见的不匹配是「冰霜齐射（Freezing Salvo）」：它可以镶嵌，但幻影若没有可用的初始使用次数可能不开火，因此看起来像「什么都没发生」。"
+      ],
+      "keyValues": [
+        {
+          "label": "单一技能",
+          "value": "幻影模仿它",
+          "notes": [
+            "最简单、最可预测的搭配。"
+          ]
+        },
+        {
+          "label": "多重技能",
+          "value": "优先级 / 轮换",
+          "notes": [
+            "幻影按内部优先级选取。"
+          ]
+        },
+        {
+          "label": "使用次数 / 榴弹 / 弹药",
+          "value": "特殊处理",
+          "notes": [
+            "可能需要装填或缺乏初始使用次数（例如冰霜齐射）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-compatibility-matrix",
+      "order": 55,
+      "title": "技能兼容性矩阵",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "技能",
+        "可镶嵌？",
+        "幻影可用？",
+        "使用次数 / 装填",
+        "已知限制"
+      ],
+      "rows": [
+        [
+          "爆裂射击（Explosive Shot）",
+          "是",
+          "是",
+          "需装填",
+          "幻影上的弹匣行为"
+        ],
+        [
+          "闪电箭（Lightning Arrow）",
+          "是",
+          "是",
+          "无",
+          "与电流之杆的交互"
+        ],
+        [
+          "电流之杆（Lightning Rod）",
+          "是",
+          "有限",
+          "物件上限",
+          "玩家箭矢 bug 交互"
+        ],
+        [
+          "瞄准射击（Snipe）",
+          "0.5+ 支持",
+          "是",
+          "引导",
+          "释放时机"
+        ],
+        [
+          "冰霜齐射（Freezing Salvo）",
+          "是",
+          "可能不开火",
+          "使用次数",
+          "若无初始使用次数则常见不匹配"
+        ]
+      ]
+    },
+    {
+      "id": "object-limits",
+      "order": 60,
+      "title": "独立于玩家的物件上限",
+      "type": "object-limits",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "幻影部署的物件（例如它放置的电流之杆）计入幻影自身的上限，与你玩家的上限分开。这意味着你和幻影各自可以拥有自己的一组杆，直到各自的 cap。",
+        "这种独立性也正是已知的「电流之杆 + 闪电箭」bug 出现之处：幻影的杆与你玩家的杆可能以意外的方式交互，因此依赖该组合前请在当前客户端上测试。"
+      ],
+      "keyValues": [
+        {
+          "label": "幻影上限",
+          "value": "与玩家分离",
+          "notes": [
+            "各自追踪自己的部署物件 cap。"
+          ]
+        },
+        {
+          "label": "交互 bug",
+          "value": "杆 + 箭",
+          "notes": [
+            "已知问题；以客户端 0.5.4 行为为准。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 70,
+      "title": "机制：使用次数、装填与冷却",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "幻影继承镶嵌攻击的机制，包括使用次数与装填。需要装填的攻击也会让幻影装填，这正是爆裂射击的弹匣行为也会出现在幻影身上的原因。",
+        "幻影的存活时间很短，因此那些需要很长前摇或很多使用次数的技能可能在它过期前无法完成。请选择能快速见效的镶嵌攻击。"
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 80,
+      "title": "技能交互",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "爆裂射击能通过幻影运作，但保留其弹匣 / 装填行为。闪电箭是干净的模仿，无需装填。电流之杆作用有限且存在已知的玩家箭矢 bug，因此「电流之杆 + 闪电箭」组合需要在幻影上测试。",
+        "瞄准射击从 0.5 起作为引导攻击被支持；幻影会引导它，但释放时机很重要。"
+      ],
+      "keyValues": [
+        {
+          "label": "爆裂射击",
+          "value": "可用（需装填）",
+          "notes": [
+            "弹匣行为在幻影上同步。"
+          ]
+        },
+        {
+          "label": "闪电箭",
+          "value": "干净模仿",
+          "notes": [
+            "无装填麻烦。"
+          ]
+        },
+        {
+          "label": "电流之杆",
+          "value": "有限 + bug",
+          "notes": [
+            "在客户端上测试箭矢交互。"
+          ]
+        },
+        {
+          "label": "瞄准射击",
+          "value": "0.5+ 引导",
+          "notes": [
+            "释放时机很重要。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "辅助兼容性",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "持续（Duration）类辅助延长幻影的寿命，这是让它多打出几次攻击的主要杠杆。冷却类辅助缩短闪避与闪避之间的间隔。避免使用明确标注「你自己使用的技能」的辅助——幻影不是你，因此这些辅助不适用于它的攻击。"
+      ],
+      "keyValues": [
+        {
+          "label": "持续类辅助",
+          "value": "核心",
+          "notes": [
+            "更长的幻影 = 更多被模仿的攻击。"
+          ]
+        },
+        {
+          "label": "冷却类辅助",
+          "value": "视情况",
+          "notes": [
+            "缩短闪避间隔。"
+          ]
+        },
+        {
+          "label": "「你自己使用的技能」",
+          "value": "不适用",
+          "notes": [
+            "幻影不是玩家本身。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 100,
+      "title": "精魄预算取舍",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "以 60 点精魄计，幻影弓手价格高昂，与传令官增益和战斗狂热争夺同一精魄池。在远程流派中，你必须权衡被模仿的伤害是否比一个光环或充能生成器更有价值。",
+        "大多数追猎者与猎巫人远程流派都会保留它，因为翻倍的远程输出很大，但精魄吃紧的流派可能会放弃它。"
+      ],
+      "keyValues": [
+        {
+          "label": "消耗",
+          "value": "60 点精魄",
+          "notes": [
+            "与传令官 / 战斗狂热同池。"
+          ]
+        },
+        {
+          "label": "取舍",
+          "value": "模仿 vs 光环 / 充能生成",
+          "notes": [
+            "仅在精魄成为瓶颈时才放弃。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "刷图循环",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "定位",
+          "action": "在怪群附近闪避翻滚",
+          "result": "幻影生成并模仿你的镶嵌攻击。"
+        },
+        {
+          "label": "爆发",
+          "action": "你与幻影同时开火",
+          "result": "对怪群的远程清场翻倍。"
+        },
+        {
+          "label": "恢复",
+          "action": "冷却结束后再次闪避",
+          "result": "为下一组怪刷新幻影。"
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "打王循环",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "预先放置",
+          "action": "在伤害窗口之前闪避翻滚",
+          "result": "王开打时幻影已就绪。"
+        },
+        {
+          "label": "维持",
+          "action": "战斗期间按冷却再次闪避",
+          "result": "保持幻影以维持远程输出。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "使用场景",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "追猎者与猎巫人的远程流派使用幻影弓手来翻倍其弓 / 弩输出。杰姆林军团兵变体在能负担 60 点精魄且想要被模仿伤害时会使用它。",
+        "在所有情况下，该流派都更看重翻倍的远程攻击，而非损失的精魄光环。"
+      ],
+      "bullets": [
+        "追猎者：翻倍的弓清场。",
+        "猎巫人：翻倍的弩输出。",
+        "杰姆林军团兵：精魄充裕时模仿。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "排错",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "幻影从不出现",
+          "action": "冷却未就绪或没有有效的镶嵌攻击",
+          "result": "冷却结束后、镶嵌远程攻击时再闪避。"
+        },
+        {
+          "label": "幻影不开火",
+          "action": "镶嵌技能是近战 / 无支援",
+          "result": "镶嵌一个有效的弓 / 长矛 / 弩攻击。"
+        },
+        {
+          "label": "幻影不装填",
+          "action": "技能需要它缺乏的初始使用次数",
+          "result": "使用无需装填的攻击，或先给它使用次数。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "社区实证",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "社区反馈集中在电流之杆 bug（幻影的杆与玩家的箭矢交互）以及技能选择（为何冰霜齐射「什么都没做」）。客户端测试确认幻影按优先级使用镶嵌的远程攻击，且带使用次数 / 装填的技能表现特殊。",
+        "「你自己」辅助的误解很常见：标注「你自己使用的技能」的辅助不适用于幻影的攻击。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "视频讲解与时间节点",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "KaidGames2",
+          "label": "闪电箭 0.5 — 幻影配置",
+          "description": "闪电箭演示，展示通过幻影弓手使用镶嵌的远程攻击。",
+          "takeaway": "观察幻影模仿了哪些攻击以及闪避时机。",
+          "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg",
+          "timestamps": [
+            {
+              "label": "幻影配置",
+              "time": "0:00"
+            },
+            {
+              "label": "多技能演示",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Dr Dark Walker",
+          "label": "远程元宝石 0.5",
+          "description": "元宝石概览，包括幻影弓手的闪避触发与镶嵌攻击。",
+          "takeaway": "了解闪避到幻影循环与限制的好参考。",
+          "url": "https://www.youtube.com/watch?v=Imh1eVd43TU",
+          "timestamps": [
+            {
+              "label": "触发概览",
+              "time": "0:00"
+            },
+            {
+              "label": "限制",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方论坛补丁说明确认了幻影弓手的闪避触发、镶嵌攻击行为及当前 0.5.4 客户端中的 0.5 改动。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区 Wiki 提供技能 id、标签、精魄消耗及隐藏的幻影行为。",
+          "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+        },
+        {
+          "label": "流派与视频",
+          "description": "Mobalytics 的追猎者 / 猎巫人流派以及 KaidGames2 / Dr Dark Walker 演示视频，用于交叉核对闪避循环与镶嵌攻击。",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 与官方论坛反映了电流之杆 bug、冰霜齐射不匹配等真实问题，已在客户端复现并直接解答。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+        },
+        {
+          "label": "官方论坛",
+          "description": "GGG 官方论坛，官方人员在此确认元宝石与幻影机制及补丁改动。",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 社区",
+          "description": "Reddit r/PathOfExile2 关于幻影弓手的讨论与求助帖，适合了解版本反馈与主流流派。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "在客户端 0.5.4 确认闪避翻滚触发与幻影生成。",
+          "镶嵌的远程攻击以伤害惩罚被模仿，已确认。",
+          "电流之杆 + 闪电箭交互被标记为需测试的已知问题。"
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "补丁历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-01-20",
+          "changes": [
+            "0.3：幻影弓手作为元宝石引入，带闪避翻滚触发。"
+          ]
+        },
+        {
+          "date": "2026-04-10",
+          "changes": [
+            "0.4：镶嵌攻击优先级与物件上限调整。"
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 远古归来：支持瞄准射击引导；本攻略采用当前客户端数值。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "首发：闪避触发、镶嵌攻击与优先级、物件上限、机制、技能交互、辅助兼容性、精魄预算、刷图与打王循环、排错及社区实证。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye",
+    "explosive-witchhunter",
+    "corrupting-wings-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "explosive-shot",
+    "lightning-arrow",
+    "snipe",
+    "lightning-rod"
+  ],
+  "relatedPatchIds": [
+    "patch-0-3-0-third-edict",
+    "patch-0-4-0-last-of-the-druids",
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 官方补丁说明论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — 幻影弓手",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+    },
+    {
+      "label": "Mobalytics — 远程流派",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — 幻影弓手讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+    },
+    {
+      "label": "KaidGames2 — 闪电箭 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg"
+    },
+    {
+      "label": "Dr Dark Walker — 远程元 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Imh1eVd43TU"
+    }
+  ],
+  "seo": {
+    "title": "幻影弓手（Mirage Archer）攻略 — 闪避触发、镶嵌攻击、冷却与限制",
+    "description": "幻影弓手元宝石攻略：闪避翻滚触发与幻影生成、60 点精魄消耗、持续时长与冷却、镶嵌攻击优先级、物件上限、与电流之杆 / 闪电箭的交互、标注「你自己」的辅助、精魄预算、刷图与打王循环、排错及社区实证。",
+    "noindex": false
+  }
+}

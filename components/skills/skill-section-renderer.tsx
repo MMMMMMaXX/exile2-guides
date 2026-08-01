@@ -2,7 +2,11 @@
 import type { ReactNode } from "react";
 
 import type { ContentLocale } from "../../lib/content/constants";
-import type { SkillArticle, SkillSection } from "../../lib/skills/schema";
+import type {
+  SkillArticle,
+  SkillRichSection,
+  SkillSection,
+} from "../../lib/skills/schema";
 import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
@@ -55,6 +59,84 @@ const priorityLabels: Record<ContentLocale, Record<string, string>> = {
     incompatible: "不兼容",
   },
 };
+
+/**
+ * 富结构章节渲染：按可用字段（叙述 / 步骤 / 键值 / 表格）组合输出，
+ * 供第三批新增的 25 种复用业务模型章节共用，避免为单篇引入一次性 JSX。
+ */
+function RichSection({
+  section,
+  locale,
+}: {
+  section: SkillRichSection;
+  locale: ContentLocale;
+}) {
+  const hasSteps = section.steps && section.steps.length > 0;
+  const hasKeyValues = section.keyValues && section.keyValues.length > 0;
+  const hasTable =
+    section.columns && section.rows && section.columns.length > 0;
+
+  return (
+    <div className="skill-rich-section">
+      {(section.paragraphs.length > 0 || section.bullets.length > 0) && (
+        <NarrativeContent
+          bullets={section.bullets}
+          paragraphs={section.paragraphs}
+        />
+      )}
+      {hasKeyValues ? (
+        <dl className="skill-properties">
+          {section.keyValues!.map((kv) => (
+            <div className="skill-property-row" key={kv.label}>
+              <dt>{kv.label}</dt>
+              <dd>{kv.value}</dd>
+              {kv.notes.map((note) => (
+                <dd className="skill-property-note" key={note}>
+                  {note}
+                </dd>
+              ))}
+            </div>
+          ))}
+        </dl>
+      ) : null}
+      {hasSteps ? (
+        <ol className="skill-steps">
+          {section.steps!.map((step, index) => (
+            <li className="skill-step-row" key={index}>
+              <span className="skill-step-label">{step.label}</span>
+              <span className="skill-step-action">{step.action}</span>
+              <span className="skill-step-result">{step.result}</span>
+            </li>
+          ))}
+        </ol>
+      ) : null}
+      {hasTable ? (
+        <div className="skill-data-table-wrap">
+          <table className="skill-data-table">
+            <thead>
+              <tr>
+                {section.columns!.map((column, index) => (
+                  <th key={`${column}-${index}`}>{column}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.rows!.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} style={{ whiteSpace: "pre-line" }}>
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 /** 根据章节类型输出受控结构；新增章节类型或文案时必须在此显式扩展。 */
 function renderSectionContent(
@@ -151,6 +233,32 @@ function renderSectionContent(
           </table>
         </div>
       );
+    case "quick-answer":
+    case "requirements":
+    case "ammunition-reload":
+    case "detonator-interaction":
+    case "deployed-object":
+    case "object-limits":
+    case "skill-interactions":
+    case "combo-sequence":
+    case "weapon-set":
+    case "mapping-rotation":
+    case "bossing-rotation":
+    case "support-compatibility":
+    case "support-loadouts":
+    case "troubleshooting":
+    case "community-evidence":
+    case "attack-empowerment":
+    case "charge-generation":
+    case "hit-sequence":
+    case "hit-behaviour":
+    case "persistent-buff":
+    case "remnant-revival":
+    case "spirit-budget":
+    case "quality":
+    case "clone-meta":
+    case "socketed-attacks":
+      return <RichSection section={section} locale={locale} />;
   }
 }
 

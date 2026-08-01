@@ -1,4 +1,4 @@
-/** 文件职责：验证 TASK-025 仓库草稿模板的数量、双语关系和生产消费者隔离边界。 */
+/** 文件职责：验证结构模板隔离，以及真实文章生成即发布并允许索引的仓库边界。 */
 import { describe, expect, it } from "vitest";
 
 import { loadContentIndex } from "../../lib/content";
@@ -46,7 +46,7 @@ describe("repository content templates", () => {
     }
   });
 
-  it("marks every sample as unverified draft content", async () => {
+  it("keeps every structural template in draft state", async () => {
     const editingIndex = await loadContentIndex(undefined, {
       includeDrafts: true,
     });
@@ -57,11 +57,8 @@ describe("repository content templates", () => {
     for (const entry of templateEntries) {
       expect(entry.frontMatter).toMatchObject({
         draft: true,
-        patchStatus: "under-review",
         status: "draft",
       });
-      expect(entry.frontMatter.patch).toContain("REPLACE_WITH_");
-      expect(entry.frontMatter.verifiedAt).toBeUndefined();
       expect(entry.frontMatter.publishedAt).toBeUndefined();
     }
   });
@@ -97,33 +94,8 @@ describe("repository content templates", () => {
     }
   });
 
-  it("loads non-template Build drafts only through the local preview source", async () => {
+  it("does not leave non-template Build drafts for local-only preview", async () => {
     const previewPages = await loadLocalBuildDraftPreviewPages();
-    const entries = Object.entries(previewPages);
-    const expectedSlugs = [
-      "bear-shaman-druid",
-      "cold-caster-chronomancer",
-      "ed-contagion-lich",
-      "explosive-witchhunter",
-      "fire-bear-smith-of-kitava",
-      "ice-shot-deadeye",
-      "twister-spirit-walker",
-      "whirling-assault-martial-artist",
-    ];
-
-    for (const slug of expectedSlugs) {
-      expect(previewPages[`/en/builds/${slug}/`]).toBeDefined();
-      expect(previewPages[`/zh-cn/builds/${slug}/`]).toBeDefined();
-    }
-    expect(entries.length).toBeGreaterThanOrEqual(expectedSlugs.length * 2);
-    for (const [route, page] of entries) {
-      expect(route).toMatch(/^\/(en|zh-cn)\/builds\//);
-      expect(page.frontMatter).toMatchObject({
-        contentType: "build",
-        draft: true,
-        status: "draft",
-      });
-      expect(page.frontMatter.contentId).not.toMatch(/-template$/);
-    }
+    expect(previewPages).toEqual({});
   });
 });

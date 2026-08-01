@@ -1,0 +1,659 @@
+{
+  "id": "lightning-rod",
+  "slug": "lightning-rod",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "雷霆之柱攻略 — 柱体上限、蓄力、闪电箭与 Boss 布置",
+  "shortTitle": "雷霆之柱",
+  "summary": "雷霆之柱是一个部署物技能：你在某位置放下一根雷柱，它会蓄力，当闪电箭（或任何连锁到它的链）经过时，雷柱释放一次爆发。本攻略讲解雷柱上限、蓄力需求、为何 0.4 之前的「瞬间全柱触发」视频已过时、闪电箭到底如何触发爆发、幻影射手的互动限制，以及清图与 Boss 的雷柱数量取舍。",
+  "description": "雷霆之柱深度攻略：部署物规则与雷柱上限、蓄力与爆发触发、闪电箭连锁互动、0.4 改动让旧瞬间触发视频失效、辅助选择（散射 / 连锁 / 集中范围）、武器组归属、连招顺序、清图与 Boss 数量、幻影射手已知限制、故障排查与社区实证。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "lightning",
+    "duration",
+    "deployed-object"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides 编辑部",
+  "reviewer": "Exile2 Guides 编辑部",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/lightning-rod.webp",
+  "cardImage": "/images/skills/lightning-rod.webp",
+  "imageAlt": "雷霆之柱部署雷柱技能图标",
+  "tags": [
+    "attack",
+    "projectile",
+    "lightning",
+    "duration",
+    "deployed-object"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论：先放雷柱，再用闪电箭触发",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "雷霆之柱不是直接伤害攻击——它是部署物。你在某位置放下一根雷柱；它会蓄力；当闪电箭（或连锁到它的链）穿过时，雷柱释放爆发。",
+        "所以循环是：预先放几根雷柱，再让闪电箭穿过雷柱和敌人。如果雷柱还没蓄力完，或闪电箭从未连锁到它，就不会有爆发。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "核心数据与获取",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "分类",
+          "value": "主动（部署物 · 闪电 · 持续时间）",
+          "notes": [
+            "带有攻击、弹道、闪电与持续时间标签。"
+          ]
+        },
+        {
+          "label": "武器需求",
+          "value": "弓",
+          "notes": [
+            "通常与闪电箭一同放在弓武器组上。"
+          ]
+        },
+        {
+          "label": "获取",
+          "value": "未切割技能宝石（技能阶）",
+          "notes": [
+            "从未切割技能宝石刻印而来。"
+          ]
+        },
+        {
+          "label": "定位",
+          "value": "触发时的定点闪电爆发",
+          "notes": [
+            "需闪电箭射击的持续范围伤害。"
+          ]
+        },
+        {
+          "label": "触发",
+          "value": "闪电箭 / 连锁到达雷柱",
+          "notes": [
+            "不是自爆陷阱；需要外部连锁。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deployed-object",
+      "order": 30,
+      "title": "雷柱部署规则",
+      "type": "deployed-object",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "每次使用在目标地面位置放下一根雷柱。雷柱存在时间有限，且只有在蓄力完成后才能爆发。",
+        "同时存在的雷柱数量有硬性上限。那些展示满屏瞬间齐发的旧视频是在 0.4 上限与蓄力改动之前录制的，已不再反映当前客户端。"
+      ],
+      "keyValues": [
+        {
+          "label": "同时上限",
+          "value": "当前客户端有上限",
+          "notes": [
+            "请核实 0.5.4 的具体上限；0.4 之前的「多柱齐发」画面已过时。"
+          ]
+        },
+        {
+          "label": "持续时间",
+          "value": "有限存活",
+          "notes": [
+            "雷柱若在窗口内未被触发会消失；按需重新放置。"
+          ]
+        },
+        {
+          "label": "蓄力",
+          "value": "爆发前必须完成",
+          "notes": [
+            "0.4 之后闪电箭不再跳过雷柱蓄力时间。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rod-rules-table",
+      "order": 35,
+      "title": "雷柱行为表",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "属性",
+        "当前行为",
+        "实践提示"
+      ],
+      "rows": [
+        [
+          "同时雷柱数",
+          "0.5.4 客户端有硬上限",
+          "不要预置超过上限；多余的不会生成"
+        ],
+        [
+          "蓄力",
+          "爆发前必须完成",
+          "0.4 移除了瞬间触发捷径"
+        ],
+        [
+          "触发",
+          "闪电箭 / 连锁到雷柱",
+          "没有连锁到达雷柱 = 无爆发"
+        ],
+        [
+          "存活",
+          "未使用则消失",
+          "长时间 Boss 阶段中重新放置雷柱"
+        ]
+      ]
+    },
+    {
+      "id": "object-limits",
+      "order": 40,
+      "title": "玩家、幻影与上限关系",
+      "type": "object-limits",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "雷柱上限统计来自所有来源的雷柱，包括幻影射手分身创建的雷柱。若你的幻影也在放雷柱，你会更快撞上共享上限，并挤占自己的放置额度。",
+        "由于上限共享，围绕它规划雷柱数量：Boss 战中通常优先放自己的雷柱，若还有余量再让幻影补几根。"
+      ],
+      "keyValues": [
+        {
+          "label": "共享上限",
+          "value": "玩家 + 幻影雷柱共享",
+          "notes": [
+            "幻影雷柱会占用与你相同的额度。"
+          ]
+        },
+        {
+          "label": "Boss 数量",
+          "value": "更少、放置更精准",
+          "notes": [
+            "把雷柱放在 Boss 路径上，而非散开。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 50,
+      "title": "闪电箭触发逻辑",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "闪电箭射出的箭会向附近敌人连锁闪电。当该连锁到达一根已蓄力的雷柱时，雷柱爆发。爆发是雷柱自身的闪电伤害，独立于箭与连锁。",
+        "触发要求雷柱已蓄力且连锁真正到达它。密集怪群有帮助，因为连锁在敌人之间跳跃，更可能碰到雷柱；远离战斗的孤立雷柱可能永远不被连锁。",
+        "幻影创建的闪电箭与玩家雷柱互动（反之亦然）在当前客户端有已知限制——请将跨持有者的雷柱触发视为不可靠，并按补丁核实。"
+      ],
+      "keyValues": [
+        {
+          "label": "需蓄力",
+          "value": "雷柱必须已蓄力",
+          "notes": [
+            "未蓄力的雷柱被连锁时毫无反应。"
+          ]
+        },
+        {
+          "label": "连锁到达",
+          "value": "闪电箭连锁必须碰到雷柱",
+          "notes": [
+            "把雷柱放在连锁路径内。"
+          ]
+        },
+        {
+          "label": "幻影交叉触发",
+          "value": "受限 / 有 bug",
+          "notes": [
+            "玩家雷柱 + 幻影闪电箭互动当前受限制。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "机制：蓄力、爆发与频率",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "雷柱的价值完全来自它的爆发，因此爆发频率等于闪电箭到达已蓄力雷柱的频繁程度。连锁路径上雷柱越多，爆发越频繁，直到上限。",
+        "由于 0.4 强制雷柱蓄力，旧「放柱、瞬间爆发」玩法已消失。你现在要在战斗稍前预置雷柱，让它们在闪电箭到达时已蓄好。",
+        "爆发伤害与半径随技能等级与辅助放大；雷柱本身不动，因此放置位置是主要操作体现。"
+      ],
+      "bullets": [
+        "雷柱必须先蓄力才能爆发。",
+        "闪电箭连锁是触发器，而非伤害来源。",
+        "连锁路径上雷柱越多 = 爆发越多，直到上限。",
+        "在交战前预置雷柱。"
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "辅助宝石兼容",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "keyValues": [
+        {
+          "label": "集中范围",
+          "value": "核心（Boss）",
+          "notes": [
+            "在单体上收拢爆发，提升 Boss 伤害。"
+          ]
+        },
+        {
+          "label": "散射",
+          "value": "情境（清图）",
+          "notes": [
+            "每次使用放置更多雷柱有助于全屏清图，但很快吃满上限。"
+          ]
+        },
+        {
+          "label": "连锁",
+          "value": "情境",
+          "notes": [
+            "帮助闪电箭到达雷柱，但与雷柱爆发是独立系统。"
+          ]
+        },
+        {
+          "label": "闪电穿透",
+          "value": "核心",
+          "notes": [
+            "对抗闪电抗性敌人时放大雷柱爆发伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 80,
+      "title": "分阶段辅助配置",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "练级",
+          "action": "闪电穿透 + 1 个范围辅助",
+          "result": "仍能在战役抗性下爆发的廉价雷柱。"
+        },
+        {
+          "label": "清图",
+          "action": "散射 + 连锁",
+          "result": "路径上更多雷柱，流畅清群。"
+        },
+        {
+          "label": "巅峰",
+          "action": "集中范围 + 闪电穿透",
+          "result": "在 Boss 上聚焦、更重的雷柱爆发。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "武器组与技能归属",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "雷柱归属于携带雷霆之柱的武器组。雷柱的伤害与辅助来自该组，而非闪电箭所在处。",
+        "把雷霆之柱与闪电箭放在同一弓组上，确保雷柱的辅助与触发箭一致。把它们分到不同组是「我的雷柱没伤害」报告的常见来源。"
+      ],
+      "keyValues": [
+        {
+          "label": "组归属",
+          "value": "雷柱使用雷霆之柱武器组",
+          "notes": [
+            "雷柱伤害按该组的辅助放大。"
+          ]
+        },
+        {
+          "label": "与闪电箭同组",
+          "value": "同一弓组",
+          "notes": [
+            "避免辅助不匹配与触发混乱。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 100,
+      "title": "连招顺序",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "预放置",
+          "action": "在怪群前 / Boss 路径上放雷柱",
+          "result": "雷柱开始蓄力。"
+        },
+        {
+          "label": "蓄力",
+          "action": "等待雷柱蓄力完成",
+          "result": "雷柱准备爆发。"
+        },
+        {
+          "label": "触发",
+          "action": "让闪电箭穿过雷柱与敌人",
+          "result": "连锁到达已蓄力雷柱，它们爆发。"
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "清图循环",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "快速清图中你常常完全跳过雷柱，只用闪电箭清怪，因为放置和蓄力会拖慢清图。当怪群密集或稀有怪很肉时，雷柱才划算。",
+        "清图要用时，在隘口预置 2-3 根雷柱，再连锁穿过。不要停下来放满上限的雷柱。"
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Boss 循环",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "布置",
+          "action": "交战前在 Boss 移动路径上预置雷柱",
+          "result": "战斗开始时雷柱已蓄力。"
+        },
+        {
+          "label": "重置",
+          "action": "雷柱消失或爆发后重新放置",
+          "result": "在持久战中维持稳定雷柱场。"
+        },
+        {
+          "label": "触发",
+          "action": "冷却时让闪电箭连锁穿过雷柱",
+          "result": "对 Boss 规律爆发。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "适用流派",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "雷霆之柱是闪电箭神射手与许多冰霜箭练级流派的单体与定点 DPS 支柱。它把闪电箭从清图技能变成对稀有怪与 Boss 的爆发工具。",
+        "部分闪电箭farm 配置也插它，用持续的雷柱爆发替代对肉盾目标的重复射箭。"
+      ],
+      "bullets": [
+        "闪电箭神射手：稀有怪与 Boss 的雷柱爆发。",
+        "冰霜箭练级：借用为定点闪电补充。",
+        "闪电箭farm：对肉盾目标的持续爆发。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "故障排查",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "雷柱不爆发",
+          "action": "尚未蓄力，或闪电箭从未连锁到它",
+          "result": "更早预置，并把闪电箭瞄准穿过雷柱。"
+        },
+        {
+          "label": "雷柱很少出现",
+          "action": "撞上共享同时上限",
+          "result": "减少放置，或阻止幻影也放雷柱。"
+        },
+        {
+          "label": "雷柱消失",
+          "action": "触发前已过期",
+          "result": "在长阶段中重新放置；不要过早预置。"
+        },
+        {
+          "label": "没伤害",
+          "action": "雷柱与辅助在不同武器组",
+          "result": "把雷霆之柱与其辅助放在同一组。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "社区实证",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "最大的社区错配是旧画面：0.4 之前的视频展示雷柱瞬间、大量齐发。在当前客户端，上限与蓄力让这不可能，因此照那些视频的玩家看到「雷柱什么都不做」。",
+        "第二簇是关于幻影射手：玩家期望幻影的闪电箭触发自己的雷柱（或反之）却撞上当前互动限制。在补丁说明确认前，请将跨持有者触发视为不可靠。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "视频讲解与时间戳",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Dr Dark Walker",
+          "label": "Chainstorm 神射手 — 闪电箭 + 雷霆之柱",
+          "description": "神射手流派用雷霆之柱作为闪电箭的爆发层，含雷柱蓄力与爆发的慢动作。",
+          "takeaway": "看雷柱如何预置，再被闪电箭连锁。",
+          "url": "https://www.youtube.com/watch?v=Imh1eVd43TU",
+          "timestamps": [
+            {
+              "label": "配置与雷柱布置",
+              "time": "0:00"
+            },
+            {
+              "label": "雷柱蓄力与爆发",
+              "time": "5:00"
+            },
+            {
+              "label": "Boss 雷柱放置",
+              "time": "12:00"
+            }
+          ]
+        },
+        {
+          "creator": "KaidGames2",
+          "label": "闪电箭游侠构建 0.5",
+          "description": "0.5 围绕闪电箭构建的游侠流派，同时把雷霆之柱作为爆发层。",
+          "takeaway": "在真实清图与 Boss 场景中展示闪电箭 + 雷柱组合。",
+          "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg",
+          "timestamps": [
+            {
+              "label": "技能设置",
+              "time": "0:00"
+            },
+            {
+              "label": "雷柱爆发演示",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方论坛补丁说明，确认 0.4 雷柱上限与蓄力改动。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区 Wiki 提供雷柱上限、持续时间、蓄力与触发数据。",
+          "url": "https://www.poe2wiki.net/wiki/Lightning_Rod"
+        },
+        {
+          "label": "流派与视频",
+          "description": "Mobalytics 闪电箭farm 与 Dr Dark Walker / KaidGames2 展示，用于雷柱放置与触发循环。",
+          "url": "https://mobalytics.gg/poe-2/builds/lightning-arrow-farmer-fubgun"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 帖记录过时的 0.4 前雷柱视频与幻影射手互动限制。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Lightning%20Rod&restrict_sr=1"
+        },
+        {
+          "label": "官方论坛",
+          "description": "GGG 官方论坛，工作人员在此确认部署物与闪电箭行为。",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 社区",
+          "description": "r/PathOfExile2 关于雷霆之柱的版本反馈讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides 编辑部",
+        "notes": [
+          "雷柱上限与蓄力确认在 0.4 后于 0.5.4 客户端改变。",
+          "闪电箭连锁触发已通过在连锁路径放置雷柱确认。",
+          "幻影跨持有者触发标记为受限。"
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "版本历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-02-10",
+          "changes": [
+            "0.2 引入雷霆之柱作为部署物技能，由闪电箭触发其爆发。"
+          ]
+        },
+        {
+          "date": "2026-04-20",
+          "changes": [
+            "0.4 调整同时雷柱上限并强制雷柱蓄力；闪电箭不再跳过蓄力时间。旧瞬间触发视频失效。"
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients：雷霆之柱保留 0.4 上限与蓄力；此处使用当前客户端数值。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "首次发布：雷柱上限、蓄力、闪电箭触发、0.4 迁移、辅助兼容、武器组归属、连招、清图 / Boss 数量、幻影限制与社区实证。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 官方补丁说明论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Lightning Rod",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Lightning_Rod"
+    },
+    {
+      "label": "Mobalytics — 闪电箭farm",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/lightning-arrow-farmer-fubgun"
+    },
+    {
+      "label": "Reddit — 雷霆之柱讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Lightning%20Rod&restrict_sr=1"
+    },
+    {
+      "label": "Dr Dark Walker — Chainstorm 神射手",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Imh1eVd43TU"
+    },
+    {
+      "label": "KaidGames2 — 闪电箭游侠 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg"
+    }
+  ],
+  "seo": {
+    "title": "雷霆之柱攻略 — 柱体上限、蓄力、闪电箭与 Boss 布置",
+    "description": "雷霆之柱攻略：雷柱上限与蓄力、闪电箭连锁触发、0.4 让旧视频失效的改动、辅助选择、武器组归属、连招、清图与 Boss 数量、幻影射手限制与故障排查。",
+    "noindex": false
+  }
+}

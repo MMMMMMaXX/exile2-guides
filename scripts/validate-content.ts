@@ -41,6 +41,42 @@ import {
   loadPatchArticles,
 } from "../lib/patches/json-repository.server";
 
+type ProductionArticle = {
+  locale: string;
+  seo: { noindex?: boolean | undefined };
+  slug: string;
+  status: "archived" | "draft" | "published";
+};
+
+/** 模板是唯一允许留在 content/ 中但不直接发布索引的结构示例。 */
+function isContentTemplate(article: ProductionArticle): boolean {
+  return article.slug.endsWith("-template");
+}
+
+/**
+ * 强制真实文章生成即上线：进入 content/ 的非模板 JSON 必须同时发布并允许索引。
+ * 未完成的研究材料应留在 research/，不能靠 draft 或 noindex 混入生产内容目录。
+ */
+function findPublicationBoundaryIssues(
+  articles: readonly ProductionArticle[],
+): string[] {
+  return articles.flatMap((article) => {
+    if (isContentTemplate(article)) return [];
+    const issues: string[] = [];
+    if (article.status !== "published") {
+      issues.push(
+        `${article.locale}/${article.slug}: real article must use status=published`,
+      );
+    }
+    if (article.seo.noindex !== false) {
+      issues.push(
+        `${article.locale}/${article.slug}: real article must use seo.noindex=false`,
+      );
+    }
+    return issues;
+  });
+}
+
 /** 执行内容校验并汇总全部错误，避免编辑者一次只能修复一个文件。 */
 async function main() {
   const contentDirectory = path.resolve(process.cwd(), "content");
@@ -183,6 +219,22 @@ async function main() {
         console.error(`  - ${sourcePath}`),
       );
     }
+    process.exitCode = 1;
+    return;
+  }
+
+  const publicationBoundaryIssues = findPublicationBoundaryIssues([
+    ...buildArticles,
+    ...bossArticles,
+    ...itemArticles,
+    ...skillArticles,
+    ...guideArticles,
+    ...patchArticles,
+  ]);
+  if (publicationBoundaryIssues.length > 0) {
+    console.error("\nPublish-and-index validation failed:");
+    for (const issue of publicationBoundaryIssues)
+      console.error(`  - ${issue}`);
     process.exitCode = 1;
     return;
   }

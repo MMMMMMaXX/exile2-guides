@@ -8467,6 +8467,65 @@ a {
   }
 }
 
+/* ===== 富结构章节（第三批新增 25 种复用业务模型） ===== */
+
+.skill-rich-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skill-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: skill-step;
+}
+
+.skill-step-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) 1fr;
+  grid-template-areas: "label body";
+  gap: 4px 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(104, 220, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(104, 220, 255, 0.03);
+}
+
+.skill-step-label {
+  grid-area: label;
+  font-weight: 600;
+  color: #9fe3ff;
+}
+
+.skill-step-action {
+  grid-area: body;
+  color: var(--text-strong, #e7eef5);
+}
+
+.skill-step-result {
+  grid-area: body;
+  grid-row: 2;
+  color: #9fb0c0;
+  font-size: 0.92em;
+}
+
+.skill-step-result::before {
+  content: "→ ";
+  color: #68dcff;
+}
+
+@media (max-width: 720px) {
+  .skill-step-row {
+    grid-template-columns: 1fr;
+    grid-template-areas: "label" "body";
+  }
+}
+
 /* ===== 历史 Patch 模块（第二批） ===== */
 
 /* 首屏历史状态横幅：明确标注非当前版本、对照基线与最近核验日期 */

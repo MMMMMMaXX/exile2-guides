@@ -1,16 +1,16 @@
-<!-- 文件职责：统一 Exile2 Guides 后续中英文草稿的术语、版本、来源、原创性与审核表达，避免翻译和事实口径漂移。 -->
+<!-- 文件职责：统一 Exile2 Guides 后续中英文可上线文章的术语、版本、来源、原创性与发布表达，避免翻译和事实口径漂移。 -->
 
 # Exile2 Guides 双语术语与写作规范
 
-> 文档更新时间：2026-07-27 20:42（Asia/Shanghai）
+> 文档更新时间：2026-08-02 01:36（Asia/Shanghai）
 
 ## 1. 适用范围与优先级
 
-> 本节更新时间：2026-07-27 20:42（Asia/Shanghai）
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
 
-本规范适用于 Build、Boss、Item、Skill、Guide、Patch 六类内容的英文和简体中文版本，以及相关的 Metadata、FAQ、图片 Alt、来源说明和审核记录。`EXILE2-GUIDES-PRD.md` 仍是 MVP 唯一需求事实源；游戏事实以 GGG 第一方公告和 Max 的 PC 实机核验为准。
+本规范适用于 Build、Boss、Item、Skill、Guide、Patch 六类内容的英文和简体中文版本，以及相关的 Metadata、FAQ、图片 Alt、来源说明和发布记录。`EXILE2-GUIDES-PRD.md` 仍是 MVP 唯一需求事实源；游戏事实优先使用 GGG 第一方公告，并用可追溯的社区资料或 PC 实机记录交叉检查。
 
-所有未核验正文继续使用 `status: draft` 和 `draft: true`。本规范不授予发布权限，也不替代每篇文章的 `reviewer`、`verifiedAt`、来源和 Patch 字段。
+本项目采用“生成即上线”流程：进入 `content/` 的真实文章必须完整生成并直接使用 `status: published` 与 `seo.noindex: false`。尚未完成的材料留在 `research/`；`verificationStatus: pending-pc` 只声明实机核验边界，不构成禁止发布或禁止索引的理由。结构模板仍保持草稿与禁止索引状态。
 
 ## 2. 名称与双语表达
 
@@ -91,16 +91,16 @@ Result: <observed fact only>.
 | Build | 职业/升华、技能、升级阶段、装备门槛、优缺点、实测边界   | “最强/必玩”、未验证预算、精确 DPS 或跨平台承诺。     |
 | Boss  | 名称、进入条件、阶段、关键攻击、应对、失败恢复          | 虚构攻击名、掉落、阶段顺序或无证据的安全承诺。       |
 
-## 7. 草稿到发布的编辑检查
+## 7. 生成即发布检查
 
-> 本节更新时间：2026-07-27 20:42（Asia/Shanghai）
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
 
-- 英文审核者 Max 与中文审核者 Max 分别确认语义一致，不以机器翻译代替审核。
-- 游戏事实审核者 Max 对 Patch、来源和 PC 复现结果签字；`reviewer` 与 `verifiedAt` 写入 front matter。
-- 关联内容只链接已发布且同 Patch 仍有效的页面；草稿、模板、未核验样例不得出现在正文、Sitemap 或搜索索引。
+- 内容生成 Agent 在同一任务中完成英文与中文语义核对，不把逐篇人工审批留给单人维护者。
+- 每篇真实文章必须写入责任主体、Patch、来源和核验状态；没有 PC 复现时保留 `pending-pc` 并明确未知边界，不伪造 `verifiedAt`。
+- 关联内容只链接已发布且同 Patch 仍有效的页面；模板和未完成研究材料不得出现在正文、Sitemap 或搜索索引。
 - 元描述不堆砌关键词，不许承诺收益、DPS、掉率或“官方合作”。
 - 引入图片前确认原创性或授权，Alt 只描述图片实际内容，不把未核验游戏事实塞进 Alt。
-- 发布前运行 `npm run quality`，并抽查构建 HTML、canonical、hreflang、Sitemap 与搜索索引。
+- 真实文章提交前必须是 `status: published`、`seo.noindex: false`，运行 `npm run quality`，并抽查构建 HTML、canonical、hreflang、Sitemap 与搜索索引。
 
 ## 8. 维护规则
 

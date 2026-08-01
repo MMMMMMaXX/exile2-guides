@@ -63,6 +63,7 @@ function createArticle(locale: "en" | "zh-cn"): BuildArticle {
             label: "Core",
             skills: [
               {
+                displayName: "Whirling Assault",
                 skillId: "whirling-assault",
                 role: "Primary",
                 supportSkillIds: ["test-support"],

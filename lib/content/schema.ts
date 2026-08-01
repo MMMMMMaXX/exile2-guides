@@ -11,8 +11,13 @@ export const patchStatuses = [
   "under-review",
 ] as const;
 
-/** 公开内容的核验状态；pending-pc 允许已批准内容先上线，但不得伪造实机结论。 */
-export const verificationStatuses = ["pending-pc", "verified"] as const;
+/** 公开内容的核验状态；pending-pc 允许已批准内容先上线，但不得伪造实机结论。
+ * source-reviewed 表示已通过官方/数据库/独立攻略/Planner/视频交叉审核，但本站未声称亲自实测。 */
+export const verificationStatuses = [
+  "pending-pc",
+  "source-reviewed",
+  "verified",
+] as const;
 
 const requiredText = z.string().trim().min(1);
 const optionalText = z.string().trim().default("");

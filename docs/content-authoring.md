@@ -1,69 +1,74 @@
-<!-- 文件职责：说明 TASK-025 草稿模板的使用方式、核验流程和安全发布清单。 -->
+<!-- 文件职责：说明结构模板隔离、真实文章生成即上线和自动发布门禁。 -->
 
 # 内容编写与发布流程
 
-> 本节更新时间：2026-07-27 23:38（Asia/Shanghai）
+> 文档更新时间：2026-08-02 01:36（Asia/Shanghai）
 
-## 模板范围
+## 核心发布原则
 
-`content/` 中保留每种内容类型一组中英双语模板，共 12 个模板文件；另有 9 个真实研究主题（Patch 1 个、Guide 4 个、Item 1 个、Boss 2 个）的中英双语草稿，共 18 个文件，仍不公开：
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
 
-| 类型  | 英文文件 | 中文文件 | 当前状态 |
-| ----- | -------- | -------- | -------- |
-| Boss  | 1        | 1        | 草稿     |
-| Item  | 1        | 1        | 草稿     |
-| Guide | 3        | 3        | 草稿     |
-| Patch | 1        | 1        | 草稿     |
-
-真实草稿为 `patch-0-5-4-runes-of-aldur`、`expedition-atlas-first-points`、`liquid-verisium-safety-checklist`、`skill-granting-unique-scaling`、`liquid-verisium`、`orb-of-sacrifice-currencies`、`atziri-red-queen` 与 `arbiter-of-ash`。它们同样使用 `status: draft`、`draft: true` 与 `patchStatus: under-review`，包含来源和待核验范围，但未填写审核人或 `verifiedAt`，因此不会进入生产消费者。三个候选核验文件已移至 `research/verification/`，不属于首发文章。
-
-这些文件只演示 Schema、文章结构和双语映射，不代表真实游戏内容。所有模板均显式使用：
-
-```yaml
-status: draft
-draft: true
-patchStatus: under-review
-patch: "REPLACE_WITH_VERIFIED_PATCH"
-```
-
-因此它们不会进入生产详情路由、Sitemap 或搜索索引。
-
-## 创建真实文章
-
-1. 复制对应类型和语言的模板，不要直接把模板标题当成正式选题。
-2. 为真实主题设置稳定的 `contentId` 和 `slug`；同一文章的中英文版本必须共享这两个值。
-3. 根据实际 Patch 完整重写 Front Matter 和正文，不保留模板中的虚构字段。
-4. 优先使用官方补丁说明、官方游戏资料和可复现的游戏内验证。社区讨论只用于发现选题或补充背景，不能代替事实来源。
-5. 保持草稿状态运行 `npm run validate:content`，先解决字段、Markdown、重复路由和翻译关系问题。
-6. 由独立审核者检查事实、版本、来源、版权、内链和语言质量。
-
-## 发布前核验清单
-
-只有下列项目全部完成，才能把单个文件切换为已发布：
-
-- 标题、SEO 说明、摘要和正文已经针对真实主题完整重写。
-- `patch` 是实际核验版本，`verifiedClientVersion` 是实际核验客户端版本，`patchStatus` 与当前支持状态一致。
-- 所有游戏机制、数值、等级、阶段、掉落和推荐均可追溯。
-- `sources` 不包含 `example.invalid`，并至少有一个支持核心事实的真实来源。
-- `verifiedAt` 是实际完成核验的日期，`reviewer` 记录真实审核责任。
-- `publishedAt`、`updatedAt` 与实际编辑记录一致。
-- 图片如存在，属于原创或已获得明确授权，使用 WebP/AVIF 并提供准确替代文本。
-- 相关内容在相同语言中已经发布；不能让已发布文章关联草稿。
-- 正文没有 `TODO`、`REPLACE_WITH_` 或其他占位文本。
-- 中英文内容分别经过语言审核，不使用未审校的机器直译直接发布。
-
-完成后才可同时修改：
+本项目由单人维护，不采用“Agent 先生成草稿、用户再逐篇审批”的默认流程。任何进入
+`content/` 的真实文章都必须在生成任务内达到可上线质量，并直接满足：
 
 ```yaml
 status: published
-draft: false
+seo:
+  noindex: false
 ```
 
-不要提前填写未来日期，也不要为了通过门禁伪造核验或审核记录。
+`verificationStatus: pending-pc` 可以诚实表示尚未完成 PC 实机验证，但不能被 Agent
+用作 `draft` 或 `noindex` 的理由。文章必须同时写清适用 Patch、已确认来源、尚未验证的
+边界和责任主体；不得把猜测、未知数值或未验证结论包装成事实。
 
-## 发布验证
+如果材料尚不足以生成完整文章，应继续保存在 `research/`，而不是在 `content/` 创建
+不会上线的真实文章。生成任务不能把逐篇审核债务转交给用户。
 
-> 本节更新时间：2026-07-27 21:15（Asia/Shanghai）
+## 模板隔离
+
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
+
+`content/` 中每种内容类型保留一组中英双语结构模板，共 12 个 `-template.json` 文件。
+模板只演示 Schema 和章节结构，不代表真实游戏内容，是唯一允许保留以下状态的 JSON：
+
+```yaml
+status: draft
+seo:
+  noindex: true
+```
+
+模板不得进入生产详情路由、Sitemap 或静态搜索索引，也不得直接改名后发布；复制模板后
+必须完整替换主题、事实、来源、媒体、SEO、关联内容和责任字段。
+
+## 创建真实文章
+
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
+
+1. 从对应类型模板建立中英文文章；同一文章的双语版本共享稳定 `id` 与 `slug`。
+2. 在同一任务中完整写出正文、摘要、SEO、FAQ/问答、来源、图片或视频权利信息和内链。
+3. 优先使用 GGG 第一方公告、游戏官网资料和可复现记录；社区资料用于发现问题与交叉检查。
+4. 对尚无 PC 实测的内容使用 `verificationStatus: pending-pc`，明确已确认事实和未知边界。
+5. 写入真实 Patch、客户端版本、责任主体、发布日期和更新时间；不能伪造未来日期或实测日期。
+6. 生成结果必须直接使用 `status: published` 和 `seo.noindex: false`。
+7. 运行内容、图片、类型、Lint、测试和生产构建门禁；失败时继续修复，不能靠恢复 `noindex` 绕过。
+
+## 生成完成清单
+
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
+
+- 标题、SEO 描述、摘要和正文针对真实搜索意图完整编写，不含占位文本。
+- `patch`、`verifiedClientVersion`、`patchStatus` 与 `verificationStatus` 彼此一致。
+- 游戏机制、数值、等级、阶段、掉落和推荐有来源，或明确标记为未完成的 PC 核验范围。
+- `sources` 不含占位 URL，并至少有一条支持核心事实的可靠来源。
+- `reviewer`/责任主体、`publishedAt` 与 `updatedAt` 已填写；没有实测时不伪造 `lastVerifiedAt`。
+- 图片和视频具有可追溯来源或嵌入权利信息，Alt 与 Caption 描述实际内容。
+- 关联链接指向相同语言的真实已发布页面，不指向模板或不存在的路由。
+- 中英文语义一致，无 `TODO`、`REPLACE_WITH_`、`example.invalid`、虚构精确数值或机器翻译残留。
+- `status: published` 且 `seo.noindex: false`。
+
+## 自动门禁与生产验证
+
+> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
 
 每次内容变更至少运行：
 
@@ -72,11 +77,11 @@ npm run validate:content
 npm run quality
 ```
 
-生产构建后还要确认：
+`scripts/validate-content.ts` 会拒绝任何非模板文章的 `draft` 或 `seo.noindex != false`，
+防止后续 Agent 擅自恢复人工逐篇审批流程。生产构建后还要确认：
 
-1. 只有已经核验并发布的详情页出现在 `build/client/`。
-2. 草稿 Slug 不存在于 `build/client/sitemap.xml`。
-3. 草稿标题和 Slug 不存在于 `build/client/search-index/*.json`。
-4. 每个公开详情 URL 都包含完整静态正文、Canonical、语言替代链接和来源信息。
-
-如果任一步失败，应恢复该文章的草稿状态并重新核验，不能绕过校验脚本。
+1. 所有真实文章详情页均出现在 `build/client/`。
+2. 所有真实文章规范 URL 均进入 `build/client/sitemap.xml`。
+3. 双语文章进入对应静态搜索索引，并输出正确 canonical 与 hreflang。
+4. 页面没有 `noindex`，模板、搜索页、404 和其他明确非内容页面继续保持隔离。
+5. 任一门禁失败时修复内容或实现；不得用 `draft`、`noindex` 或删除 Sitemap 条目掩盖失败。

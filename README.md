@@ -157,7 +157,7 @@ npm run dev
 - `docs/content-schema.md`：内容字段和发布门禁
 - `docs/build-article-json-spec.md`：Build JSON 字段、章节结构、路由和生成规范
 - `docs/content-index.md`：内容索引、翻译与关联关系
-- `docs/content-authoring.md`：草稿模板、事实核验和安全发布流程
+- `docs/content-authoring.md`：模板隔离、生成即上线和自动发布门禁
 - `docs/launch-execution-plan.md`：MVP 完成后的真实内容、上线与维护执行方案
 - `docs/static-prerender.md`：公共路径与静态 HTML 构建门禁
 - `docs/deployment.md`：静态托管配置、上线验收与回滚流程

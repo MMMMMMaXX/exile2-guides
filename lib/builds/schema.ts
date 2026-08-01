@@ -434,6 +434,22 @@ export const buildArticleSchema = buildArticleBaseSchema.superRefine(
 
     if (article.status !== "published") return;
 
+    // 第四批流程调整：已发布文章不得停留在待实机核验或版本复核中。
+    if (article.verificationStatus === "pending-pc") {
+      context.addIssue({
+        code: "custom",
+        message: "published build cannot remain pending-pc",
+        path: ["verificationStatus"],
+      });
+    }
+    if (article.patchStatus === "under-review") {
+      context.addIssue({
+        code: "custom",
+        message: "published build cannot remain under-review",
+        path: ["patchStatus"],
+      });
+    }
+
     if (
       /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
         JSON.stringify(article),

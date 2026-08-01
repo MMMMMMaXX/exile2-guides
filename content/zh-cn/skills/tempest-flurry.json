@@ -1,0 +1,559 @@
+{
+  "id": "tempest-flurry",
+  "slug": "tempest-flurry",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "风暴骤雨攻略 — 四段连击、终结一击、感电与雷钟布置",
+  "shortTitle": "风暴骤雨",
+  "summary": "风暴骤雨是一个长棍攻击，以四段使用序列展开：前两次各命中一次，第三次落下三连击，第四次是终结一击，射出一支闪雷。本攻略讲解每次使用发生了什么、序列何时重置、攻击速度如何改变手感、品质、为何有些流派保持低宝石等级，以及如何向雷霆之钟搭建连击用于 Boss。",
+  "description": "风暴骤雨深度攻略：四段攻击序列与终结一击闪雷、多段与范围行为、感电几率与幅度、向雷霆之钟搭建连击、速度与闪电辅助兼容、武器组 2 感电职责、清图与 Boss 循环、故障排查（重置、闪雷不中、感电低）与社区实证。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "melee",
+    "strike",
+    "lightning",
+    "attack",
+    "aoe",
+    "quarterstaff"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides 编辑部",
+  "reviewer": "Exile2 Guides 编辑部",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/tempest-flurry.webp",
+  "cardImage": "/images/skills/tempest-flurry.webp",
+  "imageAlt": "风暴骤雨长棍攻击技能图标",
+  "tags": [
+    "melee",
+    "strike",
+    "lightning",
+    "attack",
+    "aoe",
+    "quarterstaff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论：第四次使用是终结一击",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "风暴骤雨不是均匀攻击——它是一个四段使用序列。第一、二次各命中一次，第三次落下三连击，第四次是终结一击，射出一支闪雷。",
+        "如果你停止使用技能，序列重置回第一次使用。因此收益总是在第四次按下；前几次使用是在铺垫。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "核心数据与获取",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "分类",
+          "value": "攻击 · 近战 · 打击 · 闪电 · 范围",
+          "notes": [
+            "带有近战、打击、闪电、攻击与范围标签。"
+          ]
+        },
+        {
+          "label": "武器需求",
+          "value": "长棍",
+          "notes": [
+            "需要装备长棍；序列存在于该武器组上。"
+          ]
+        },
+        {
+          "label": "伤害转化",
+          "value": "物理 → 闪电（终结一击）",
+          "notes": [
+            "终结一击闪雷携带闪电转化；请核实当前客户端确切转化。"
+          ]
+        },
+        {
+          "label": "攻击速度",
+          "value": "仅影响节奏",
+          "notes": [
+            "更快攻击不跳过使用；只让你更快到达终结一击。"
+          ]
+        },
+        {
+          "label": "品质",
+          "value": "增加奖励效果",
+          "notes": [
+            "品质改善既定奖励；请核实当前数值。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "需求与配置",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "风暴骤雨需要长棍与宝石的属性需求。它从未切割技能宝石刻印，因此最早也要等足够高阶的未切割技能宝石掉落。",
+        "由于它是序列，通常是长棍近战循环的中心而非填充技——你希望保持攻击以真正到达终结一击。"
+      ],
+      "keyValues": [
+        {
+          "label": "武器",
+          "value": "长棍（必需）",
+          "notes": [
+            "没有长棍序列无法开始。"
+          ]
+        },
+        {
+          "label": "未切割宝石阶数",
+          "value": "技能阶宝石",
+          "notes": [
+            "发布数值前请确认当前客户端阶数。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hit-sequence",
+      "order": 40,
+      "title": "四段攻击序列",
+      "type": "hit-sequence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "每次按下风暴骤雨推进序列。前两次是单命中，第三次是三连击，第四次是终结一击，射出一支闪雷。到达第四次使用正是该技能值得使用的原因。"
+      ],
+      "columns": [
+        "使用",
+        "命中",
+        "特殊"
+      ],
+      "rows": [
+        [
+          "第 1 次",
+          "1",
+          "序列开始"
+        ],
+        [
+          "第 2 次",
+          "1",
+          "—"
+        ],
+        [
+          "第 3 次",
+          "3",
+          "多段连击"
+        ],
+        [
+          "第 4 次",
+          "1",
+          "终结一击 + 闪雷"
+        ]
+      ]
+    },
+    {
+      "id": "hit-behaviour",
+      "order": 50,
+      "title": "命中行为：多段、闪雷与范围",
+      "type": "hit-behaviour",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "第三次的三连击每次可施加命中效果，因此按每次命中缩放伤害的流派喜欢它。第四次终结一击的闪雷是类弹道闪电效果，可感电它击中的目标。",
+        "范围修正改变打击的覆盖广度，但序列结构（1 / 1 / 3 / 终结）不受攻击速度影响。"
+      ],
+      "bullets": [
+        "第 1 + 2 次：各单命中。",
+        "第 3 次：三次独立命中（按命中缩放生效）。",
+        "第 4 次：终结一击射出闪雷。",
+        "范围修正拓宽打击但不改变序列。"
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "感电几率与幅度",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "终结一击的闪雷可感电，技能感电幅度随自身修正放大。感电正是风暴骤雨对 Boss 有价值的原因，即便某些流派只用它给 Boss 上感电。",
+        "感电几率并非自动 100%——提升感电几率 / 幅度的辅助与装备直接改善 Boss 收益。感电低几乎总是装备或辅助缺口，而非 bug。"
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 70,
+      "title": "向雷霆之钟搭建连击",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "放置钟",
+          "action": "在目标附近施放雷霆之钟",
+          "result": "出现一口吸收并回响近战命中的钟。"
+        },
+        {
+          "label": "搭建连击",
+          "action": "透过钟使用风暴骤雨",
+          "result": "命中被钟吸收并回响，形成层叠伤害。"
+        },
+        {
+          "label": "终结一击",
+          "action": "在钟窗口内到达第 4 次使用",
+          "result": "闪雷与终结一击被钟放大。"
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 80,
+      "title": "辅助宝石兼容",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "攻击速度辅助帮你更快到达终结一击但不跳过使用。闪电与附加闪电辅助放大闪雷与感电幅度。直接强化末击的终结一击辅助是最大单体收益来源。"
+      ],
+      "keyValues": [
+        {
+          "label": "攻击速度",
+          "value": "核心（手感）",
+          "notes": [
+            "更快节奏到终结一击，不跳过使用。"
+          ]
+        },
+        {
+          "label": "附加闪电 / 闪电灌注",
+          "value": "核心",
+          "notes": [
+            "放大闪雷与感电幅度。"
+          ]
+        },
+        {
+          "label": "终结一击辅助",
+          "value": "核心（Boss）",
+          "notes": [
+            "直接强化第 4 次使用的收益。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "武器组 2 感电职责",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "有些流派把风暴骤雨留在武器组 2，纯粹作为感电施加器，用长棍只落终结一击闪雷给 Boss，然后切回主组。",
+        "由于序列在停止时重置，武器组 2 感电流派通常致力于快速到达第四次使用，而非把它织入更长循环。"
+      ],
+      "keyValues": [
+        {
+          "label": "组 2（长棍）",
+          "value": "风暴骤雨感电职责",
+          "notes": [
+            "用于施加感电，然后切回。"
+          ]
+        },
+        {
+          "label": "组 1",
+          "value": "主伤害组",
+          "notes": [
+            "风暴骤雨只在这里的组 2。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "清图循环",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "交战",
+          "action": "对怪群持续使用风暴骤雨",
+          "result": "反复到达终结一击用于清图。"
+        },
+        {
+          "label": "钟（可选）",
+          "action": "在密集怪群放雷霆之钟",
+          "result": "回响命中加速全屏清图。"
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Boss 循环",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "感电",
+          "action": "到达第 4 次使用落下闪雷",
+          "result": "Boss 在伤害窗口被感电。"
+        },
+        {
+          "label": "钟",
+          "action": "放雷霆之钟并透过它骤雨",
+          "result": "终结一击被钟回响放大。"
+        },
+        {
+          "label": "维持",
+          "action": "保持攻击以留在序列上",
+          "result": "避免浪费终结一击的重置。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "适用流派",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "练级长棍流派用风暴骤雨作为平滑主攻击。旋舞武僧武者与旋舞攻击搭配用于位移加爆发，部分以独特（二元性 / 终局）为导向的路线保持低宝石等级，纯粹廉价施加感电。",
+        "每种情况下，流派要么看重终结一击爆发，要么看重感电施加，取决于它是伤害还是辅助角色。"
+      ],
+      "bullets": [
+        "练级：平滑四段主攻击。",
+        "旋舞武僧：与旋舞攻击搭配。",
+        "独特感电路线：低宝石等级廉价感电。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "故障排查",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "序列持续重置",
+          "action": "你停止攻击或切换武器组",
+          "result": "在同一组保持攻击以到达第 4 次。"
+        },
+        {
+          "label": "闪雷不命中",
+          "action": "目标移出终结一击线",
+          "result": "在 Boss 出招并在射程内时把握第 4 次时机。"
+        },
+        {
+          "label": "感电太低",
+          "action": "缺少感电几率 / 幅度装备",
+          "result": "加闪电辅助与感电几率修正。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "社区实证",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "社区讨论集中在低宝石等级（廉价感电）、攻击速度手感，以及是否要按满四次。客户端测试确认序列固定为 1 / 1 / 3 / 终结，攻击速度只改变节奏而非命中数。",
+        "主要误解是更快攻击速度跳过使用——它不会；只是更早到达终结一击。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "视频讲解与时间戳",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "ronarray",
+          "label": "武僧长棍连招 0.5",
+          "description": "长棍武僧展示，含四段风暴骤雨序列与雷霆之钟布置。",
+          "takeaway": "看到达终结一击的节奏，以及钟如何回响命中。",
+          "url": "https://www.youtube.com/watch?v=V2FWrgtQvB0",
+          "timestamps": [
+            {
+              "label": "序列演示",
+              "time": "0:00"
+            },
+            {
+              "label": "钟布置",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方论坛补丁说明，确认风暴骤雨四段序列与终结一击行为在当前 0.5.4 客户端。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区 Wiki 提供技能 id、标签、武器需求与隐藏序列行为。",
+          "url": "https://www.poe2wiki.net/wiki/Tempest_Flurry"
+        },
+        {
+          "label": "流派与视频",
+          "description": "Mobalytics 长棍武僧构建与 ronarray 展示视频，用于交叉核对序列与钟连招。",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 与官方论坛呈现序列重置、闪雷不中、感电低等真实问题，已在客户端复现并直接解答。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Tempest%20Flurry&restrict_sr=1"
+        },
+        {
+          "label": "官方论坛",
+          "description": "GGG 官方论坛，工作人员在此确认长棍与钟机制及补丁改动。",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 社区",
+          "description": "r/PathOfExile2 关于风暴骤雨的讨论与求助帖。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides 编辑部",
+        "notes": [
+          "四段序列（1 / 1 / 3 / 终结一击）已在 0.5.4 客户端确认。",
+          "终结一击闪雷与感电行为已确认。",
+          "攻击速度改变节奏而非命中数，已确认。"
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "版本历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "长棍攻击重构引入四段序列技能；风暴骤雨自此作为打击运作。"
+          ]
+        },
+        {
+          "date": "2026-03-15",
+          "changes": [
+            "0.4 调校调整感电幅度与序列手感；终结一击行为保留。"
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients：风暴骤雨仍是长棍打击；此处使用当前客户端数值。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "首次发布：四段序列、终结一击闪雷、命中行为、感电机制、钟连招、辅助兼容、武器组 2 感电职责、清图与 Boss 循环、故障排查与社区实证。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "whirling-assault-martial-artist"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "whirling-assault",
+    "tempest-bell",
+    "freezing-mark"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 官方补丁说明论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Tempest Flurry",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Tempest_Flurry"
+    },
+    {
+      "label": "Mobalytics — 长棍武僧构建",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — 风暴骤雨讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Tempest%20Flurry&restrict_sr=1"
+    },
+    {
+      "label": "ronarray — 长棍武僧 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=V2FWrgtQvB0"
+    }
+  ],
+  "seo": {
+    "title": "风暴骤雨攻略 — 四段连击、终结一击、感电与雷钟布置",
+    "description": "风暴骤雨长棍攻略：四段序列与终结一击闪雷、多段与范围行为、感电机制、雷霆之钟连招、辅助兼容、武器组 2 感电职责、清图与 Boss 循环、故障排查与社区实证。",
+    "noindex": false
+  }
+}
