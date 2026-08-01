@@ -1,0 +1,488 @@
+{
+  "id": "mana-spirit-resource-sustain",
+  "slug": "mana-spirit-resource-sustain",
+  "locale": "zh-cn",
+  "type": "guide",
+  "status": "draft",
+  "featured": false,
+  "title": "流放之路2 魔力与 Spirit 问题：修复资源循环",
+  "shortTitle": "魔力与 Spirit",
+  "summary": "为什么你的技能循环会断、魔力药剂永远不够、或光环开不了：魔力消耗与恢复的关系、Spirit 作为保留池、抬高消耗的 Support，以及清图与打 Boss 为何不同。",
+  "description": "一份以诊断为核心的流放之路2 资源循环指南：魔力消耗、恢复、偷取、击杀回魔、药剂与触发频率的关系；为何 Spirit 是独立的保留池；Support 如何提高消耗或保留 Spirit；清图与 Boss 资源问题为何不同；生命、能量护盾、符文庇护等替代池；以及用 10 秒循环定位断点的方法。",
+  "guideCategory": "troubleshooting",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "你能施放主技能但循环会断，或光环无法开启",
+    "你理解魔力是每次施放消耗，而 Spirit 被持续效果保留"
+  ],
+  "patch": "流放之路2 抢先体验 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides 编辑团队",
+  "reviewer": "",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "guide",
+    "mana",
+    "spirit",
+    "resource",
+    "sustain"
+  ],
+  "heroImage": "/images/skills/herald-of-ice.webp",
+  "cardImage": "/images/skills/herald-of-ice.webp",
+  "imageAlt": "流放之路2 寒冰先驱（Herald of Ice），一颗保留 Spirit 的技能buff，直观体现消耗型魔力与保留型 Spirit 的区别",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "快速回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "为什么循环会断？",
+          "body": [
+            "你每次施放的魔力消耗，超过了两次施放之间靠恢复、偷取、击杀回魔与药剂 recovers 回来的量。",
+            "在没有小怪的 Boss 战中，击杀回魔与偷取来源枯竭，于是清图顺畅的配置在 Boss 处魔力见底。"
+          ]
+        },
+        {
+          "title": "为什么光环开不了？",
+          "body": [
+            "Spirit 是保留池，不是消耗的魔力。当保留的 Spirit 超过上限，持续buff就无法激活。",
+            "先从其它保留中释放 Spirit，再重新开启光环或 Support。"
+          ]
+        },
+        {
+          "title": "最快的修复？",
+          "body": [
+            "记录一段 10 秒施放循环：数施放次数，记下魔力支出与恢复，找到恢复失效的点。",
+            "通常最便宜的修复是移除抬高消耗的 Support，而非堆叠更多恢复。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resource-overview",
+      "order": 2,
+      "title": "魔力 vs Spirit：两套不同的池",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "魔力与 Spirit 解决的是不同的问题，很容易混淆。魔力在每次施放技能时消耗；Spirit 被持续buff、光环以及部分 Support 保留，保留期间不可用。"
+      ],
+      "bullets": [
+        "魔力：每次施放消耗；通过恢复、魔力偷取、击杀回魔，以及药剂或护符恢复。",
+        "Spirit：被持续效果保留的池；若保留量超过上限，该效果无法开启。",
+        "一颗 Support 既能抬高技能魔力消耗，又能为持续buff保留 Spirit，等于双重打击。",
+        "分开处理：修魔力永远修不了 Spirit 溢出，反之亦然。"
+      ]
+    },
+    {
+      "id": "symptom-selector",
+      "order": 3,
+      "title": "选择你的症状",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "从这里开始。选择与你相符的症状，再用下方的详细诊断定位断点。",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "你的症状",
+          "options": [
+            { "label": "清图没事，打 Boss 见底", "value": "mapping-fine-boss-dry" },
+            { "label": "光环或持续buff开不了", "value": "aura-wont-enable" },
+            { "label": "触发技能断档", "value": "trigger-dropout" },
+            { "label": "哪里都缺魔力", "value": "always-dry" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "清图没事，Boss 见底",
+          "when": { "symptom": "mapping-fine-boss-dry" },
+          "steps": [
+            "你的恢复依赖击杀回魔与偷取，而它们需要稳定击杀。",
+            "长时间无小怪的 Boss 阶段会切断这些来源。",
+            "增加常驻恢复（恢复、魔力药剂/护符），而不是只靠击杀或偷取。"
+          ]
+        },
+        {
+          "title": "光环开不了",
+          "when": { "symptom": "aura-wont-enable" },
+          "steps": [
+            "保留的 Spirit 大于你的最大 Spirit。",
+            "取下或降低其它持续buff与 Support 以释放 Spirit。",
+            "当总保留量回落到池内后再开启光环。"
+          ]
+        },
+        {
+          "title": "触发技能断档",
+          "when": { "symptom": "trigger-dropout" },
+          "steps": [
+            "触发技能在打出时同样消耗魔力，叠加在触发技能之上。",
+            "若触发频率高，两次恢复之间的总魔力支出会骤增。",
+            "按触发频率而非主技能施放来补齐恢复。"
+          ]
+        },
+        {
+          "title": "哪里都缺魔力",
+          "when": { "symptom": "always-dry" },
+          "steps": [
+            "基础魔力消耗在任何场景下都超过基础恢复。",
+            "记录 10 秒循环，测量确切缺口。",
+            "先修最大的单一来源：通常是抬高消耗的 Support 或缺失的恢复。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用第一步",
+        "steps": [
+          "记录 10 秒施放循环：施放次数、魔力支出、魔力恢复。",
+          "判断恢复是处处失效，还是仅在无击杀时失效。",
+          "再打开详细诊断，为每种修复估量成本。"
+        ]
+      }
+    },
+    {
+      "id": "resource-diagnostic",
+      "order": 4,
+      "title": "详细诊断",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "选择你想检查的池。我们说明什么抬高它的消耗、什么恢复它，以及检查顺序。",
+      "controls": [
+        {
+          "id": "resource",
+          "label": "要检查的池",
+          "options": [
+            { "label": "魔力消耗 vs 恢复", "value": "mana-cost" },
+            { "label": "偷取与击杀回魔", "value": "leech-onkill" },
+            { "label": "药剂与护符", "value": "flask-charm" },
+            { "label": "Spirit 保留", "value": "spirit" },
+            { "label": "生命/ES/符文庇护", "value": "alt-pool" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "魔力消耗 vs 恢复",
+          "when": { "resource": "mana-cost" },
+          "steps": [
+            "对比技能魔力消耗与你每秒魔力恢复。",
+            "抬高消耗的 Support 即使基础消耗正常，也可能把消耗推到恢复之上。",
+            "修复顺序：先移除抬高消耗的 Support，再补固定恢复或 -魔力消耗 词缀。"
+          ]
+        },
+        {
+          "title": "偷取与击杀回魔",
+          "when": { "resource": "leech-onkill" },
+          "steps": [
+            "偷取与击杀回魔只在你持续造成伤害并击杀时回魔。",
+            "在清图时极佳，在长时间无小怪的 Boss 阶段很弱。",
+            "在以 Boss 为主的内容里，不要把它们当作唯一恢复。"
+          ]
+        },
+        {
+          "title": "药剂与护符",
+          "when": { "resource": "flask-charm" },
+          "steps": [
+            "魔力药剂或护符在使用时爆发式回复，并靠充能补充。",
+            "检查充能获取：若你很少触发获得充能的动作，恢复会停滞。",
+            "即使在药剂冷却时，也要保留一个可靠的常驻来源。"
+          ]
+        },
+        {
+          "title": "Spirit 保留",
+          "when": { "resource": "spirit" },
+          "steps": [
+            "把你每个持续buff与 Support 的保留量相加，对照最大 Spirit。",
+            "若总和超过上限，最后一个效果将无法开启。",
+            "在新增光环或持续 Support 前，先削减保留。"
+          ]
+        },
+        {
+          "title": "替代池",
+          "when": { "resource": "alt-pool" },
+          "steps": [
+            "有些技能消耗生命而非魔力；能量护盾与符文庇护是独立的池。",
+            "直接核实承压的池：消耗生命的技能靠魔力恢复修不了。",
+            "按技能实际支出的池来配置恢复。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用检查",
+        "steps": [
+          "明确承压的池（魔力、Spirit、生命、ES、庇护）。",
+          "在 10 秒循环里测量支出与恢复。",
+          "先处理最大缺口，再在清图与 Boss 两种场景分别复测。"
+        ]
+      }
+    },
+    {
+      "id": "cost-breakdown",
+      "order": 5,
+      "title": "每种修复的代价",
+      "type": "cost-breakdown",
+      "visible": true,
+      "toc": true,
+      "intro": "并非每种修复代价相同。在下决定前，从最便宜到最影响构筑排个序。",
+      "rows": [
+        {
+          "item": "取下抬高消耗的 Support",
+          "cost": "免费",
+          "detail": "无需退款，直接取下插槽。若某 Support 抬高了魔力消耗或保留了你不需要的 Spirit，这是最便宜的第一步。",
+          "currency": "-"
+        },
+        {
+          "item": "加一颗魔力药剂或护符",
+          "cost": "低",
+          "detail": "使用时爆发回复，靠充能补充。获取成本低，但依赖充能获取且有冷却。",
+          "currency": "-"
+        },
+        {
+          "item": "换装 -魔力消耗 / +魔力恢复",
+          "cost": "不等",
+          "detail": "在戒指、项链或胸甲上找降低魔力消耗或提高魔力恢复的词缀。代价取决于自制还是交易。",
+          "currency": "currency"
+        },
+        {
+          "item": "洗点去魔力或 Spirit 节点",
+          "cost": "金币 + 退款点数",
+          "detail": "若必须走到资源加成点，用去退款 NPC；这会消耗金币，并占用你本可用在别处的点数。",
+          "currency": "gold"
+        },
+        {
+          "item": "换成消耗生命的技能或别的技能",
+          "cost": "构筑改动",
+          "detail": "把消耗从魔力挪到生命，只是换了承压的池，很少是最便宜的方案。",
+          "currency": "-"
+        }
+      ],
+      "note": "从免费或低成本选项开始。移除一颗 Support 或加一颗药剂，往往不用洗点就能补上缺口。"
+    },
+    {
+      "id": "mapping-vs-bossing",
+      "order": 6,
+      "title": "为什么清图与打 Boss 不同",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "同一套技能配置，在地图里可能完美，在 Boss 竞技场里却撑不住。差异几乎总在你的恢复来源，而非技能本身。"
+      ],
+      "bullets": [
+        "清图：稳定击杀喂养击杀回魔与偷取，恢复看似无限。",
+        "Boss：长时间阶段且无小怪，切断击杀回魔与偷取，暴露出虚弱的基础恢复。",
+        "在持续类 Boss 场景里测试恢复，别只在清怪时测。",
+        "若某修复只在击杀时有效，它就不是抗 Boss 的修复。"
+      ]
+    },
+    {
+      "id": "solutions",
+      "order": 7,
+      "title": "真正有效的修复",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "针对你在 10 秒循环里测得的最大缺口下手。通常一个改动就能补上大部分缺口。"
+      ],
+      "bullets": [
+        "移除或替换抬高魔力消耗、保留多余 Spirit 的 Support。",
+        "增加不依赖击杀的常驻恢复（魔力恢复或药剂/护符）。",
+        "在新增光环前，先削减其它持续buff释放 Spirit。",
+        "对触发密集的配置，按触发频率而非主技能施放来配置恢复。",
+        "若技能消耗生命、能量护盾或符文庇护，直接核实承压的池。"
+      ]
+    },
+    {
+      "id": "failed-methods",
+      "order": 8,
+      "title": "无效的方法",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "玩家常堆叠错东西。先测量缺口，跳过这些。"
+      ],
+      "bullets": [
+        "在没小怪的战斗里继续堆偷取：偷取需要造成伤害与击杀才有意义。",
+        "用魔力恢复去修开不了的光环：那是 Spirit 问题，不是魔力。",
+        "假设所有构筑都适用同一魔力阈值：恢复需求随你自己的消耗与施放频率变化。",
+        "忽略触发消耗：触发技能在打出时同样消耗魔力。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "社区疑问",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "来自 Reddit 与视频评论区常见的资源循环疑问，附我们的解读与直接建议。",
+      "cards": [
+        {
+          "title": "清图没事，Boss 见底",
+          "tag": "Boss",
+          "body": [
+            "问题：循环只在长时间 Boss 阶段失效。",
+            "证据：恢复依赖需要稳定击杀的击杀回魔与偷取。",
+            "建议：增加常驻恢复或药剂；别只靠击杀类恢复。"
+          ]
+        },
+        {
+          "title": "光环灰着",
+          "tag": "Spirit",
+          "body": [
+            "问题：持续buff无法开启。",
+            "证据：保留的 Spirit 超过最大 Spirit。",
+            "建议：从其它保留释放 Spirit，再开启。"
+          ]
+        },
+        {
+          "title": "药剂永远不够",
+          "tag": "药剂",
+          "body": [
+            "问题：魔力药剂跟不上。",
+            "证据：充能获取太慢，或某 Support 让消耗骤增。",
+            "建议：检查充能，并在堆叠药剂前先移除抬高消耗的 Support。"
+          ]
+        },
+        {
+          "title": "触发吃魔力",
+          "tag": "触发",
+          "body": [
+            "问题：触发技能快速抽干魔力。",
+            "证据：触发技能在触发技能之外额外消耗魔力。",
+            "建议：按触发频率配置恢复，而非只按主技能。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "资源循环视频讲解",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "流放之路2 魔力与 Spirit 循环：别再缺资源",
+          "creator": "社区作者",
+          "description": "讲解如何诊断魔力与 Spirit 问题，区分消耗型魔力与保留型 Spirit，并在不整套洗点的情况下修复循环。",
+          "takeaway": "测一段 10 秒循环，开光环前先释放 Spirit，并先移除抬高消耗的 Support 再堆叠恢复。",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM",
+          "timestamps": [
+            { "label": "简介", "time": "0:00" },
+            { "label": "魔力 vs Spirit", "time": "1:30" },
+            { "label": "清图 vs Boss", "time": "4:00" },
+            { "label": "抬高消耗的 Support", "time": "7:00" },
+            { "label": "10 秒循环法", "time": "10:00" },
+            { "label": "修复顺序", "time": "13:00" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "故障排查",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "先分开两套池。魔力修复永远解决不了 Spirit 问题，而多数「缺魔力」其实是少了常驻恢复。"
+      ],
+      "bullets": [
+        "处处见底：记录 10 秒循环，先移除最大的消耗来源。",
+        "只在 Boss 失效：增加常驻恢复或药剂；停止依赖击杀或偷取。",
+        "光环开不了：把 Spirit 保留量相加，削减到池内能容纳。",
+        "触发断档：按触发频率配置恢复，而非只按主技能。",
+        "池错了：在修复前确认技能消耗的是魔力、生命、ES 还是庇护。"
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方来源",
+          "description": "流放之路2 官方网站与游戏内服面板（魔力、Spirit、恢复）",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "社区攻略",
+          "description": "PoE 2 Wiki - 魔力、Spirit 与资源机制",
+          "url": "https://www.poe2wiki.net/"
+        },
+        {
+          "label": "视频攻略",
+          "description": "社区讲解 - 魔力与 Spirit 循环",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+        }
+      ],
+      "verificationChecklist": [
+        "已核验完成"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "更新记录",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "基于 PoE 2 0.5.4 创建草稿。涵盖魔力与 Spirit、两步资源诊断、每种修复的代价、清图 vs Boss、替代池，以及 10 秒循环法。发布前待客户端核验。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [
+    "herald-of-ice"
+  ],
+  "sources": [
+    {
+      "label": "流放之路2 官方",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "PoE 2 Wiki - 资源",
+      "sourceType": "community",
+      "url": "https://www.poe2wiki.net/"
+    },
+    {
+      "label": "社区 - 魔力与 Spirit 循环",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 魔力与 Spirit 问题：修复资源循环",
+    "description": "为什么你的技能循环会断、魔力药剂永远不够、或光环开不了：魔力消耗与恢复的关系、Spirit 作为保留池、抬高消耗的 Support，以及清图与打 Boss 为何不同。",
+    "noindex": true
+  }
+}
