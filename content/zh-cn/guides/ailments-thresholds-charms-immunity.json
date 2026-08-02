@@ -1,0 +1,845 @@
+{
+  "id": "ailments-thresholds-charms-immunity",
+  "slug": "ailments-thresholds-charms-immunity",
+  "locale": "zh-cn",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 中的异常状态、阈值、护符与免疫",
+  "shortTitle": "异常状态与护符",
+  "summary": "流放之路2 的异常状态机制：积蓄、强度、持续时间与阈值的关系，以及抗性、闪避与免疫之间的区别，并讲解护符如何自动触发来保护你。",
+  "description": "一份关于流放之路2 异常状态、异常状态阈值与护符免疫的机制指南：每种异常状态的作用、各种防御如何互动，以及如何针对不同遭遇挑选合适的护符。",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "流放之路2 中提供异常状态减免与免疫效果的护符一排",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "对流放之路2 抗性与防御有基本了解",
+    "拥有一个带有护符插槽的腰带",
+    "对游戏内状态图标栏有一定熟悉"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "ailment",
+    "charm",
+    "immunity",
+    "threshold",
+    "buildup",
+    "resistance"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "什么是异常状态？",
+          "body": [
+            "异常状态是由命中或伤害施加的临时状态效果。伤害类异常状态会造成持续伤害（流血、中毒、点燃）；非伤害类异常状态会改变你的行动（冰缓、冰冻、感电、触电、眩晕）。"
+          ]
+        },
+        {
+          "title": "什么是异常状态阈值？",
+          "body": [
+            "阈值是敌人（或你）积累到足以施加异常状态所需的积蓄量。玩家的基础异常状态阈值是最大生命的一定比例；首领通常拥有更高的阈值，因此更难被施加异常状态。"
+          ]
+        },
+        {
+          "title": "护符如何运作？",
+          "body": [
+            "护符存放在腰带中，当对应的触发条件出现时（例如被冰冻）会自动触发。它会消耗充能，充能在水井处或通过击杀怪物回复。免疫类护符会完全防止对应的异常状态，而不只是削弱它。"
+          ]
+        },
+        {
+          "title": "抗性与免疫的区别？",
+          "body": [
+            "抗性会降低异常状态的强度或伤害，但不会阻止它生效。免疫（来自护符或关键天赋）会完全防止该异常状态影响你。两者并不相同。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ailment-taxonomy",
+      "order": 2,
+      "title": "异常状态分类：伤害类与非伤害类",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "流放之路2 的异常状态分为两组。伤害类异常状态造成持续伤害，并有其独立的伤害规则；非伤害类异常状态施加控制或减益效果，但不带持续伤害成分。",
+        "伤害类异常状态包括流血、中毒和点燃。非伤害类异常状态包括冰缓、冰冻、感电、触电和眩晕相关效果。每种状态生效时都会在状态栏中显示一个图标，告诉你正在发生什么以及紧急程度。"
+      ],
+      "bullets": [
+        "流血：物理持续伤害，通常来自攻击；显示流血图标。",
+        "中毒：混沌持续伤害，每次施加都会叠加；显示毒液图标。",
+        "点燃：火焰持续伤害；显示燃烧图标。",
+        "冰缓：按比例降低你的动作速度；显示寒霜图标。",
+        "冰冻：短暂完全停止行动；显示冰冻图标。",
+        "感电：增加受到的命中伤害；显示闪电图标。",
+        "触电：更重的类似感电的眩晕效果；显示带电图标。",
+        "眩晕：眩晕槽填满时打断行动；显示踉跄图标。"
+      ]
+    },
+    {
+      "id": "ailment-matrix",
+      "order": 3,
+      "title": "异常状态参考表",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "每种异常状态、其默认来源、施加在目标身上的效果、最常见的防御，以及克制它的护符。",
+      "columns": [
+        {
+          "key": "ailment",
+          "label": "异常状态"
+        },
+        {
+          "key": "type",
+          "label": "类型"
+        },
+        {
+          "key": "default-source",
+          "label": "默认来源"
+        },
+        {
+          "key": "effect-on-target",
+          "label": "对目标的效果"
+        },
+        {
+          "key": "common-defence",
+          "label": "常见防御"
+        },
+        {
+          "key": "related-charm",
+          "label": "相关护符"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "流血",
+            "type": "伤害类",
+            "default-source": "物理攻击",
+            "effect-on-target": "物理持续伤害",
+            "common-defence": "流血阈值 / 止血护符",
+            "related-charm": "止血"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "中毒",
+            "type": "伤害类",
+            "default-source": "混沌命中",
+            "effect-on-target": "叠加的混沌持续伤害",
+            "common-defence": "混沌抗性 / 解毒护符",
+            "related-charm": "解毒"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "点燃",
+            "type": "伤害类",
+            "default-source": "火焰命中",
+            "effect-on-target": "火焰持续伤害",
+            "common-defence": "火焰抗性 / 灭火护符",
+            "related-charm": "灭火"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "冰缓",
+            "type": "非伤害类",
+            "default-source": "冰冷命中",
+            "effect-on-target": "降低动作速度",
+            "common-defence": "冰冷抗性 / 冰缓减免",
+            "related-charm": "蓝玉"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "冰冻",
+            "type": "非伤害类",
+            "default-source": "沉重冰冷命中",
+            "effect-on-target": "短暂停止行动",
+            "common-defence": "冰冻免疫 / 解冻护符",
+            "related-charm": "解冻"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "感电",
+            "type": "非伤害类",
+            "default-source": "闪电命中",
+            "effect-on-target": "增加受到的伤害",
+            "common-defence": "闪电抗性 / 接地护符",
+            "related-charm": "接地"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "触电",
+            "type": "非伤害类",
+            "default-source": "沉重闪电命中",
+            "effect-on-target": "强力的类似眩晕效果",
+            "common-defence": "眩晕阈值 / 接地护符",
+            "related-charm": "接地"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "眩晕",
+            "type": "非伤害类",
+            "default-source": "眩晕槽填满",
+            "effect-on-target": "打断行动",
+            "common-defence": "眩晕阈值 / 磐石护符",
+            "related-charm": "磐石"
+          }
+        }
+      ],
+      "note": "阈值数值与确切强度随版本变化，已标记为待 PC 验证，以实际 0.5.4 客户端为准。"
+    },
+    {
+      "id": "threshold-buildup-magnitude-duration",
+      "order": 4,
+      "title": "阈值、积蓄、强度与持续时间",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "四个概念决定每一种异常状态。积蓄是随着你造成异常状态伤害而填充的计量条；一旦积蓄达到目标的阈值，异常状态就被施加，计量条重置。强度决定效果有多强（例如冰缓降低多少速度、点燃造成多少伤害）。持续时间则是已施加的异常状态持续多久。",
+        "阈值是门槛：阈值高的目标需要更多积蓄才会被施加。玩家的基础异常状态阈值是最大生命的一部分，而首领往往拥有高得多的阈值，所以能可靠施加给小怪的同一套技能可能永远无法作用于首领。"
+      ],
+      "bullets": [
+        "积蓄：向阈值填充；达到阈值即施加异常状态。",
+        "阈值：积蓄必须达到才能施加异常状态的目标值。",
+        "强度：施加后效果的强弱（减速百分比、持续伤害等）。",
+        "持续时间：异常状态在过期前保持生效的时间。"
+      ]
+    },
+    {
+      "id": "applying-ailments",
+      "order": 5,
+      "title": "玩家如何对敌人施加异常状态",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "你通过造成对应伤害类型的命中或持续伤害来施加异常状态。施加几率由异常状态几率和敌人的阈值决定；足够的积蓄越过阈值后，异常状态就会生效。",
+        "有些技能和辅助专精就是为施加异常状态而设计的（例如攻击上的流血辅助，或火焰法术的点燃）。面对首领时，投资异常状态强度和突破阈值的词缀，比面对普通怪物重要得多。"
+      ],
+      "bullets": [
+        "让伤害类型匹配你想要的异常状态（火对点燃、冷对冰缓/冰冻等）。",
+        "积蓄必须达到目标阈值；首领拥有更高阈值。",
+        "强度提升让效果更强，但不会让它更容易施加。",
+        "查看游戏内提示框了解特定敌人的确切积蓄与阈值数值。"
+      ]
+    },
+    {
+      "id": "avoiding-and-mitigating",
+      "order": 6,
+      "title": "避免与减轻异常状态",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "对抗异常状态的防御是分层的，每一层作用不同。抗性降低异常状态的强度或伤害，但不会阻止它生效。降低效果与降低持续时间会缩小异常状态的影响或缩短其存在时间。闪避则可以在判定时直接阻止异常状态被施加。",
+        "免疫是最强的一层：它完全阻止对应的异常状态影响你，与积蓄无关。抗性和免疫不可互换——把火焰抗性堆满并不能阻止你被点燃，它只会降低燃烧伤害。"
+      ],
+      "bullets": [
+        "抗性：降低强度/伤害，异常状态仍可能生效。",
+        "降低效果 / 降低持续时间：削弱或缩短异常状态。",
+        "闪避：有几率完全阻止施加。",
+        "免疫：完全阻止对应异常状态（护符或关键天赋）。"
+      ]
+    },
+    {
+      "id": "charm-basics",
+      "order": 7,
+      "title": "护符基础",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "护符是存放在腰带中的饰品，会监视特定条件并在该条件出现时自动触发。免疫类护符触发后会完全防止对应的异常状态；抗性类护符则在触发时提供临时的抗性加成。",
+        "每个护符触发时都会消耗充能。护符只有在腰带中才能储存充能，并会在水井处或通过击杀怪物回复。腰带提供数量有限的护符插槽，因此你无法同时装备所有护符——请根据所刷内容挑选。"
+      ],
+      "bullets": [
+        "自动触发：对应条件出现的瞬间即触发。",
+        "充能：使用时消耗；在水井处或击杀时回复。",
+        "腰带插槽：数量有限的护符栏位（见游戏内腰带提示框）。",
+        "免疫与抗性：免疫阻止，抗性只削弱。"
+      ]
+    },
+    {
+      "id": "charm-charge-simulator",
+      "order": 8,
+      "title": "我现在该用哪个护符？",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "选择你预计会遇到的情况。工具会指向合适的护符以及需要注意的事项。",
+      "controls": [
+        {
+          "id": "situation",
+          "label": "你面对的是什么？",
+          "options": [
+            {
+              "label": "持续的冰冷 / 冰冻压力",
+              "value": "cold"
+            },
+            {
+              "label": "流血或中毒的持续伤害",
+              "value": "dot"
+            },
+            {
+              "label": "频繁的闪电命中",
+              "value": "lightning"
+            },
+            {
+              "label": "火焰密集的敌人",
+              "value": "fire"
+            },
+            {
+              "label": "经常被眩晕",
+              "value": "stun"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "使用解冻或蓝玉护符",
+          "when": {
+            "situation": "cold"
+          },
+          "steps": [
+            "如果冰冻正在致命，装备解冻护符获得完全冰冻免疫。",
+            "如果冰冻很少见，使用蓝玉护符获得临时冰冷抗性加成。",
+            "留意护符充能——没有充能时冰冻状态不会解除。"
+          ]
+        },
+        {
+          "title": "使用止血或解毒护符",
+          "when": {
+            "situation": "dot"
+          },
+          "steps": [
+            "装备止血护符获得流血免疫。",
+            "装备解毒护符获得中毒免疫。",
+            "此处优先选免疫护符而非抗性，因为持续伤害无视强度缩放。"
+          ]
+        },
+        {
+          "title": "使用接地护符",
+          "when": {
+            "situation": "lightning"
+          },
+          "steps": [
+            "装备接地护符获得感电免疫。",
+            "如果只需抗性加成，也可考虑黄玉护符。",
+            "在怪群之间通过击杀保持充能充足。"
+          ]
+        },
+        {
+          "title": "使用灭火护符",
+          "when": {
+            "situation": "fire"
+          },
+          "steps": [
+            "装备灭火护符获得点燃免疫。",
+            "如果只需火焰抗性，红玉护符也可。",
+            "在同时装备多个护符前确认腰带插槽数量。"
+          ]
+        },
+        {
+          "title": "使用磐石护符",
+          "when": {
+            "situation": "stun"
+          },
+          "steps": [
+            "装备磐石护符，在其生效期间无法被眩晕。",
+            "通过装备和被动节点提升眩晕阈值作为第二层防御。",
+            "在硬首领前于水井处补充充能。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用护符建议",
+        "steps": [
+          "将护符匹配到所刷内容中最致命的异常状态。",
+          "对会瞬杀或锁死你的异常状态优先使用免疫护符。",
+          "在每次危险遭遇前于水井处或击杀怪物补充充能。"
+        ]
+      }
+    },
+    {
+      "id": "charm-selection-by-content",
+      "order": 9,
+      "title": "按内容选择护符",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "常见遭遇对应的推荐护符类型、充能风险，以及没有空插槽时的替代防御。",
+      "columns": [
+        {
+          "key": "encounter",
+          "label": "遭遇"
+        },
+        {
+          "key": "suggested-charm-type",
+          "label": "推荐护符"
+        },
+        {
+          "key": "charge-risk",
+          "label": "充能风险"
+        },
+        {
+          "key": "alternative-defence",
+          "label": "替代防御"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "冰冷法师群",
+            "suggested-charm-type": "解冻",
+            "charge-risk": "高（频繁冰冻）",
+            "alternative-defence": "冰冷抗性 + 冰缓减免"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "流血长矛兵",
+            "suggested-charm-type": "止血",
+            "charge-risk": "中",
+            "alternative-defence": "更高生命 + 流血阈值"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "中毒肿胀敌人",
+            "suggested-charm-type": "解毒",
+            "charge-risk": "中",
+            "alternative-defence": "混沌抗性"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "点燃密集的首领",
+            "suggested-charm-type": "灭火",
+            "charge-risk": "高（战斗漫长）",
+            "alternative-defence": "火焰抗性 + 生命回复"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "闪电施法者",
+            "suggested-charm-type": "接地",
+            "charge-risk": "高",
+            "alternative-defence": "闪电抗性"
+          }
+        },
+        {
+          "tags": [
+            "low"
+          ],
+          "cells": {
+            "encounter": "眩晕锁首领",
+            "suggested-charm-type": "磐石",
+            "charge-risk": "低",
+            "alternative-defence": "眩晕阈值 + 护甲"
+          }
+        }
+      ],
+      "note": "确切的护符充能消耗与插槽上限随版本变化，已标记为待 PC 验证。"
+    },
+    {
+      "id": "status-icon-gallery",
+      "order": 10,
+      "title": "状态图标图鉴",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "你的状态栏和腰带中护符上会看到的图标快速参考。",
+      "cards": [
+        {
+          "title": "流血图标",
+          "tag": "ailment",
+          "body": [
+            "红色水滴。表示物理持续伤害生效中；用止血护符克制。"
+          ]
+        },
+        {
+          "title": "中毒图标",
+          "tag": "ailment",
+          "body": [
+            "绿色毒液。叠加的混沌持续伤害；用解毒护符克制。"
+          ]
+        },
+        {
+          "title": "点燃图标",
+          "tag": "ailment",
+          "body": [
+            "橙色火焰。火焰持续伤害；用灭火护符克制。"
+          ]
+        },
+        {
+          "title": "冰缓 / 冰冻图标",
+          "tag": "ailment",
+          "body": [
+            "蓝色寒霜。减速或完全停止；用蓝玉或解冻护符克制。"
+          ]
+        },
+        {
+          "title": "感电 / 触电图标",
+          "tag": "ailment",
+          "body": [
+            "黄色闪电。增加受到的伤害或被眩晕；用接地护符克制。"
+          ]
+        },
+        {
+          "title": "解冻护符",
+          "tag": "charm",
+          "body": [
+            "被冰冻时获得冰冻免疫。消耗 40 / 40 充能。"
+          ]
+        },
+        {
+          "title": "止血护符",
+          "tag": "charm",
+          "body": [
+            "开始流血时获得流血免疫。消耗 30 / 40 充能。"
+          ]
+        },
+        {
+          "title": "解毒护符",
+          "tag": "charm",
+          "body": [
+            "中毒时获得中毒免疫。消耗 20 / 40 充能。"
+          ]
+        },
+        {
+          "title": "灭火护符",
+          "tag": "charm",
+          "body": [
+            "被点燃时获得点燃免疫。消耗 30 / 40 充能。"
+          ]
+        },
+        {
+          "title": "接地护符",
+          "tag": "charm",
+          "body": [
+            "被感电时获得感电免疫。消耗 30 / 40 充能。"
+          ]
+        },
+        {
+          "title": "磐石护符",
+          "tag": "charm",
+          "body": [
+            "生效期间无法被眩晕。消耗 20 / 40 充能。"
+          ]
+        },
+        {
+          "title": "元素抗性护符",
+          "tag": "charm",
+          "body": [
+            "红玉、蓝玉、黄玉与紫晶在受到对应伤害类型命中时提供临时抗性加成。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boss-and-player-differences",
+      "order": 11,
+      "title": "首领与玩家：异常状态难度差异",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "首领比普通怪物明显更难被施加异常状态。它们更高的异常状态阈值意味着需要更多积蓄，而且许多首领战的设定让能轻松解决小怪的异常状态几乎不起作用。",
+        "因此，除非有当前来源确认，否则不要声称某个首领完全免疫或完全可控。应将首领的异常状态施加视为可能但困难，并对照实际客户端验证具体案例，而不是想当然。"
+      ],
+      "bullets": [
+        "首领阈值更高，因此积蓄常常不足。",
+        "有些首领按设计抵抗或忽略某些异常状态。",
+        "在没有当前来源时不要断言绝对的“免疫”或“可控”。",
+        "在依赖之前于游戏内验证首领特定的异常状态行为。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "社区证据与常见困惑",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "针对社区讨论中反复出现的护符与免疫问题给出的解答。",
+      "cards": [
+        {
+          "title": "装备了护符却仍被冰冻",
+          "tag": "confusion",
+          "body": [
+            "通常是充能耗尽、护符与该异常状态不匹配、腰带未插入，或该内容禁止护符。先检查充能与腰带插槽。"
+          ]
+        },
+        {
+          "title": "抗性不等于免疫",
+          "tag": "confusion",
+          "body": [
+            "高火焰抗性降低点燃伤害，但不会阻止点燃生效。只有免疫护符或关键天赋才能完全防止。"
+          ]
+        },
+        {
+          "title": "护符没有及时触发",
+          "tag": "confusion",
+          "body": [
+            "充能在水井处或击杀时回复。带着空护符进入首领战，在充能回复前它毫无作用。"
+          ]
+        },
+        {
+          "title": "首领从不流血",
+          "tag": "confusion",
+          "body": [
+            "首领阈值很高；能秒掉小怪的同一流血可能永远跨不过阈值。投资强度与突破阈值的词缀，或接受它可能不生效。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 13,
+      "title": "异常状态视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Complete Ailment Guide - Path of Exile 2（流放之路2 完整异常状态指南）",
+          "creator": "silentstill",
+          "description": "完整讲解流放之路2 的异常状态、阈值、积蓄、强度、持续时间与护符免疫机制，并逐一演示各层防御。",
+          "takeaway": "将防御层匹配到异常状态：用抗性护符削弱，用免疫护符完全阻止，并在硬战前保持护符充能充足。",
+          "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+          "timestamps": [
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "异常状态类型总览",
+              "time": "1:20"
+            },
+            {
+              "label": "阈值与积蓄讲解",
+              "time": "3:45"
+            },
+            {
+              "label": "抗性与免疫的区别",
+              "time": "6:10"
+            },
+            {
+              "label": "护符基础与充能",
+              "time": "9:30"
+            },
+            {
+              "label": "按内容挑选护符",
+              "time": "12:15"
+            },
+            {
+              "label": "首领异常状态难度",
+              "time": "15:40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 14,
+      "title": "排错：为什么你的防御失效了",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "当异常状态仍然伤害到你时，原因几乎总是几个重复出现的错误之一，而不是隐藏机制。"
+      ],
+      "bullets": [
+        "没有充能：你跳过了水井或击杀，导致护符为空。",
+        "护符错误：蓝玉护符只针对冰冷伤害，无法阻止流血。",
+        "腰带未插入：护符只有在腰带插槽中才能储存充能并触发。",
+        "内容禁止护符：某些遭遇禁用饰品自动效果；此时应准备被动防御。",
+        "混淆抗性与免疫：堆满抗性仍会让异常状态生效。"
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "没有腰带护符还能用吗？",
+          "answer": [
+            "不能。护符只有在插入腰带插槽时才能储存充能并自动触发。没有腰带插槽它毫无作用。"
+          ]
+        },
+        {
+          "question": "为什么我的解冻护符没有阻止冰冻？",
+          "answer": [
+            "最可能的原因是充能耗尽、未插入腰带，或该内容禁用了护符效果。战前在水井处检查充能。"
+          ]
+        },
+        {
+          "question": "75% 火焰抗性等于点燃免疫吗？",
+          "answer": [
+            "不等于。抗性降低点燃伤害，但异常状态仍会生效。只有免疫护符或关键天赋才能完全防止点燃。"
+          ]
+        },
+        {
+          "question": "我能对每个首领都施加流血吗？",
+          "answer": [
+            "不可靠。首领拥有高异常状态阈值，流血可能永远跨不过阈值。投资强度与突破阈值的词缀，并在游戏内验证。"
+          ]
+        },
+        {
+          "question": "护符充能如何回复？",
+          "answer": [
+            "充能在水井处或击杀怪物时回复。在怪群之间和首领战前安排补充。"
+          ]
+        },
+        {
+          "question": "我能装备多少个护符？",
+          "answer": [
+            "腰带提供数量有限的护符插槽；确切数量取决于腰带。查看游戏内腰带提示框了解你的插槽总数。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "来源与验证",
+      "order": 16,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "官方 wiki - 异常状态",
+          "description": "流放之路2 wiki 异常状态页面，涵盖阈值、积蓄、强度与持续时间。"
+        },
+        {
+          "label": "官方 wiki - 护符",
+          "description": "流放之路2 wiki 护符列表，包含基础类型、充能消耗与效果。"
+        },
+        {
+          "label": "视频指南",
+          "description": "silentstill - 流放之路2 完整异常状态指南。"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "首次发布指南，涵盖异常状态分类、阈值/积蓄/强度/持续时间、抗性与免疫的区别、护符基础，以及按内容选择护符。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 wiki - 异常状态",
+      "url": "https://poe2wiki.net/wiki/Ailments",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 wiki - 护符列表",
+      "url": "https://poe2wiki.net/wiki/List_of_charms",
+      "sourceType": "official"
+    },
+    {
+      "label": "silentstill - 完整异常状态指南（YouTube）",
+      "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 异常状态、阈值、护符与免疫指南",
+    "description": "流放之路2 的异常状态、阈值、积蓄、强度、持续时间与护符免疫机制，以及如何针对不同遭遇挑选合适的护符。",
+    "noindex": false
+  }
+}

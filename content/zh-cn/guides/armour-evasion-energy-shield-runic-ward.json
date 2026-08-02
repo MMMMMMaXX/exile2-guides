@@ -1,0 +1,786 @@
+{
+  "id": "armour-evasion-energy-shield-runic-ward",
+  "slug": "armour-evasion-energy-shield-runic-ward",
+  "locale": "zh-cn",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "护甲、闪避、能量护盾与符文护盾详解",
+  "shortTitle": "防御层",
+  "summary": "解析流放之路2中四种防御层如何运作与组合：护甲、闪避、能量护盾，以及0.5版本新增的符文护盾，并说明抗性、格挡与偏转所处的位置。",
+  "description": "一份关于流放之路2防御机制的指南——护甲、闪避、能量护盾与符文护盾——以及如何搭配它们，让你不再被一击秒杀。",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/liquid-verisium-hero.webp",
+  "cardImage": "/images/items/liquid-verisium-hero.webp",
+  "imageAlt": "代表符文护盾的液态瓦里斯液，流放之路2 多种防御层之一",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "已拥有处于剧情或终局阶段的角色",
+    "基本了解角色面板与抗性系统",
+    "已通过法罗的任务解锁瓦里斯熔炉以使用符文护盾（0.5版本）"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "armour",
+    "evasion",
+    "energy-shield",
+    "runic-ward",
+    "defence",
+    "defense"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "四种防御层是什么？",
+          "body": [
+            "护甲、闪避、能量护盾是三大经典防御层。符文护盾是0.5版本新增的独立层，在生命降至1点时作为最后的保险。"
+          ]
+        },
+        {
+          "title": "护甲是固定的百分比减伤吗？",
+          "body": [
+            "不是。护甲减免命中的物理部分，其效果随命中大小而变化：对小攻击效果好，对单次巨大攻击效果差。"
+          ]
+        },
+        {
+          "title": "闪避能减少伤害吗？",
+          "body": [
+            "不能。闪避是躲开整次命中的概率。成功命中的伤害为全额，所以它有时仍会让人感觉不可靠。"
+          ]
+        },
+        {
+          "title": "如何获得符文护盾？",
+          "body": [
+            "在瓦里斯熔炉（通过法罗的任务解锁）消耗瓦里斯液为护甲添加符文护盾。高物品等级的装备可能会用部分基础防御来换取它——打造前先预览。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "damage-order-diagram",
+      "order": 2,
+      "title": "伤害如何结算：从命中到生命",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "当敌人攻击时，游戏会按固定的防御层顺序结算命中。理解这个顺序，就能明白为什么单靠一层防御并不足够。",
+        "首先判定闪避：若闪避成功，整次命中被躲开，后续流程不再发生。若命中落地，护甲随后按命中大小减免其中的物理部分。",
+        "护甲之后，能量护盾（若有）会在任何伤害触及生命前吸收剩余伤害。最后，符文护盾是一个独立的最后层屏障，仅当你的生命本将降至0时才启动，接住致命一击，让你以1点生命存活。"
+      ],
+      "bullets": [
+        "闪避完全躲开命中；它不会减少已落地的伤害。",
+        "护甲只影响物理伤害，且随命中大小而变化。",
+        "能量护盾保护生命，并在延迟后重新充能。",
+        "符文护盾是最后的保险，而非其他层的替代品。"
+      ]
+    },
+    {
+      "id": "protection-layer-matrix",
+      "order": 3,
+      "title": "防御层对照表",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "每一层防御的行为、能减免与不能减免什么，以及常见的失效点。",
+      "columns": [
+        { "key": "layer", "label": "防御层" },
+        { "key": "mainly-mitigates", "label": "主要减免" },
+        { "key": "does-not-mitigate", "label": "不减免" },
+        { "key": "strength", "label": "优势" },
+        { "key": "common-failure", "label": "常见失效" },
+        { "key": "gear-need", "label": "装备需求" }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["physical"],
+          "cells": {
+            "layer": "护甲",
+            "mainly-mitigates": "物理伤害（随命中大小变化）",
+            "does-not-mitigate": "非物理伤害、持续伤害",
+            "strength": "擅长应对大量小攻击",
+            "common-failure": "对单次巨大攻击效果差",
+            "gear-need": "力量向装备"
+          }
+        },
+        {
+          "tags": ["avoidance"],
+          "cells": {
+            "layer": "闪避",
+            "mainly-mitigates": "完全躲开命中（含异常状态）",
+            "does-not-mitigate": "已落地命中的伤害",
+            "strength": "被闪避的命中也不会附带异常状态",
+            "common-failure": "可能连续失败（被一击秒杀风险）",
+            "gear-need": "敏捷向装备"
+          }
+        },
+        {
+          "tags": ["buffer"],
+          "cells": {
+            "layer": "能量护盾",
+            "mainly-mitigates": "在生命之前吸收伤害",
+            "does-not-mitigate": "流血/中毒穿透；混沌双倍",
+            "strength": "叠加于生命之上的可充能缓冲",
+            "common-failure": "混沌与持续伤害可穿透",
+            "gear-need": "智慧向装备"
+          }
+        },
+        {
+          "tags": ["last-layer"],
+          "cells": {
+            "layer": "符文护盾",
+            "mainly-mitigates": "生命为1点时的致命一击",
+            "does-not-mitigate": "非伤害导致的生命流失",
+            "strength": "第二条命 / 最后保险",
+            "common-failure": "高物品等级装备可能牺牲基础防御",
+            "gear-need": "瓦里斯液打造"
+          }
+        },
+        {
+          "tags": ["resist"],
+          "cells": {
+            "layer": "抗性",
+            "mainly-mitigates": "特定类型（火/冰/雷/混沌）",
+            "does-not-mitigate": "物理、无类型伤害",
+            "strength": "廉价且必不可少",
+            "common-failure": "未满抗等于承受双倍伤害",
+            "gear-need": "任意装备"
+          }
+        },
+        {
+          "tags": ["avoid-reduce"],
+          "cells": {
+            "layer": "格挡 / 偏转",
+            "mainly-mitigates": "躲开或减免命中的概率",
+            "does-not-mitigate": "持续伤害",
+            "strength": "与闪避叠加",
+            "common-failure": "并非100%可靠",
+            "gear-need": "盾牌 / 闪避装备"
+          }
+        }
+      ],
+      "note": "以上为定性描述；精确数值见游戏内提示框与PoE2维基，并对照实时0.5.4客户端标记为待PC验证。"
+    },
+    {
+      "id": "armour",
+      "order": 4,
+      "title": "护甲",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "护甲是三大经典防御层之一。它减免实际落在你身上的命中的物理伤害部分。",
+        "护甲不是固定的百分比减伤。它的效果随命中大小而变化：对大量小攻击减免比例更高，对单次巨大攻击减免比例更低。这就是为什么在杂兵身上很安全的构筑，可能突然被首领的一次重击打死。"
+      ],
+      "bullets": [
+        "只减免物理伤害；元素、混沌与持续伤害不受护甲影响。",
+        "对频繁的小攻击比对单次巨大攻击更有效。",
+        "主要从力量向装备与护甲加成中获取收益。",
+        "需与生命和抗性搭配；仅靠护甲无法阻止被秒杀。"
+      ]
+    },
+    {
+      "id": "evasion",
+      "order": 5,
+      "title": "闪避",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "闪避给予你完全躲开一次命中的概率。判定成功意味着该次命中从未发生——也意味着你不会受到该次命中的异常状态（点燃、冰冻、感电、流血、中毒）。",
+        "由于闪避是概率性的，它可能连续失败多次。成功落地的命中以全额伤害计算：闪避不会减少已连接命中的伤害。这就是经典的“闪避还是被打中”的抱怨来源。"
+      ],
+      "bullets": [
+        "概率性完全躲开命中，包括其附带的异常状态。",
+        "不减少已落地命中的伤害——要么全躲要么全中。",
+        "可能连续失败；需搭配缓冲层（能量护盾、格挡或符文护盾）保安全。",
+        "随敏捷向装备成长良好，也是偏转的基础。"
+      ]
+    },
+    {
+      "id": "energy-shield",
+      "order": 6,
+      "title": "能量护盾",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "能量护盾（ES）是叠加在生命之上的额外缓冲，在生命被触及前吸收伤害。它与智慧相关，并在你短时间不承受伤害后随时间重新充能。",
+        "能量护盾与伤害类型有特定交互。混沌伤害对能量护盾的消耗是其他伤害类型的两倍，而流血与中毒造成的伤害完全穿透能量护盾，直接作用于生命。精确的充能速率与延迟见游戏内提示框与PoE2维基，并应对照实时0.5.4客户端确认（待PC验证）。"
+      ],
+      "bullets": [
+        "在生命之前吸收伤害；在无伤害延迟后重新充能。",
+        "混沌伤害对能量护盾造成双倍效果。",
+        "流血与中毒穿透能量护盾，直接作用于生命。",
+        "在智慧向构筑中很强，但需留意混沌与持续伤害。"
+      ]
+    },
+    {
+      "id": "runic-ward",
+      "order": 7,
+      "title": "符文护盾",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "符文护盾是0.5版本新增的独立防御层。它不是护甲、闪避或能量护盾——它是自身独立的屏障，来源于通过瓦里斯熔炉（由法罗的任务解锁）获取的瓦里斯液。",
+        "符文护盾充当最后的保险：当一次命中本将使你的生命降至0时，你以1点生命存活，由符文护盾吸收剩余伤害。它独立于生命自行再生。为装备添加符文护盾，可能会将现有的一部分护甲、闪避或能量护盾转化为护盾，尤其在高物品等级的装备上——打造前务必查看游戏内预览（精确数值待PC验证）。"
+      ],
+      "bullets": [
+        "独立的层，与护甲、闪避、能量护盾相分离。",
+        "仅在生命为1点时启动，接住致命一击。",
+        "通过瓦里斯熔炉由瓦里斯液提供来源。",
+        "高物品等级装备可能以部分基础防御换取护盾；先预览。"
+      ]
+    },
+    {
+      "id": "resistance-block-deflect-boundary",
+      "order": 8,
+      "title": "抗性、格挡、偏转与秘术护盾的位置",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "抗性、格挡、偏转、秘术护盾及类似系统，与三大基础防御相互独立，并与它们交互而非替代它们。",
+        "抗性减免特定类型（火、冰、雷、混沌）的伤害，是廉价且必不可少的防御——未满的抗性实际上会使该类型伤害翻倍。格挡与偏转是躲开或减免命中的概率，叠加在闪避之上。秘术护盾（及类似护盾变体）是与符文护盾类似的独立屏障。这些都不会消除对基础层的需求。"
+      ],
+      "bullets": [
+        "抗性削减特定伤害类型；推进内容前先堆满。",
+        "格挡与偏转减免或躲开命中，并与闪避叠加。",
+        "秘术护盾 / 符文护盾是独立屏障，而非替代品。",
+        "用它们来补充基础防御，而非取代基础防御。"
+      ]
+    },
+    {
+      "id": "hybrid-defence-bases",
+      "order": 9,
+      "title": "混合防御基底",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "常见的基底组合及其最适合的场景。",
+      "columns": [
+        { "key": "base-type", "label": "基底类型" },
+        { "key": "attribute-req", "label": "属性需求" },
+        { "key": "two-defences", "label": "两种防御" },
+        { "key": "best-for", "label": "适合" },
+        { "key": "tradeoff", "label": "取舍" }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "护甲 + 能量护盾",
+            "attribute-req": "力量 + 智慧",
+            "two-defences": "护甲与能量护盾",
+            "best-for": "坚韧施法者 / 混合流",
+            "tradeoff": "需要两种属性"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "闪避 + 能量护盾",
+            "attribute-req": "敏捷 + 智慧",
+            "two-defences": "闪避与能量护盾",
+            "best-for": "既要躲避又要缓冲的施法者",
+            "tradeoff": "护甲较低"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "护甲 + 闪避",
+            "attribute-req": "力量 + 敏捷",
+            "two-defences": "护甲与闪避",
+            "best-for": "近战混合流",
+            "tradeoff": "无能量护盾缓冲"
+          }
+        },
+        {
+          "tags": ["pure-str"],
+          "cells": {
+            "base-type": "纯护甲",
+            "attribute-req": "力量",
+            "two-defences": "仅护甲",
+            "best-for": "近战猛汉",
+            "tradeoff": "无叠层时怕大攻击"
+          }
+        },
+        {
+          "tags": ["pure-int"],
+          "cells": {
+            "base-type": "纯能量护盾",
+            "attribute-req": "智慧",
+            "two-defences": "仅能量护盾",
+            "best-for": "纯施法者",
+            "tradeoff": "混沌 / 持续伤害穿透风险"
+          }
+        }
+      ],
+      "note": "属性倾向只是倾向，并非强制的职业选择。"
+    },
+    {
+      "id": "defence-selector",
+      "order": 10,
+      "title": "防御选择器",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "选择你的情况。工具会建议主防御层与副防御层。",
+      "controls": [
+        {
+          "id": "class",
+          "label": "你的职业倾向",
+          "options": [
+            { "label": "力量向", "value": "str" },
+            { "label": "敏捷向", "value": "dex" },
+            { "label": "智慧向", "value": "int" },
+            { "label": "混合 / 任意", "value": "hybrid" }
+          ]
+        },
+        {
+          "id": "gear",
+          "label": "你拥有什么装备？",
+          "options": [
+            { "label": "力量 / 护甲装备", "value": "armour" },
+            { "label": "闪避装备", "value": "evasion" },
+            { "label": "能量护盾装备", "value": "es" },
+            { "label": "混合", "value": "mixed" }
+          ]
+        },
+        {
+          "id": "death",
+          "label": "你通常怎么死？",
+          "options": [
+            { "label": "单次巨大攻击", "value": "big-hit" },
+            { "label": "大量小攻击", "value": "small-hits" },
+            { "label": "混沌 / 持续伤害", "value": "chaos-dot" },
+            { "label": "首领重击", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "护甲主防御构筑",
+          "when": { "class": "str" },
+          "steps": [
+            "以护甲与最大生命作为基础堆叠。",
+            "添加能量护盾作为副缓冲。",
+            "推进内容前堆满所有元素抗性。"
+          ]
+        },
+        {
+          "title": "闪避主防御构筑",
+          "when": { "class": "dex" },
+          "steps": [
+            "堆叠闪避以获得躲避。",
+            "添加能量护盾或格挡作为落地命中的后备。",
+            "考虑偏转，它随闪避成长。"
+          ]
+        },
+        {
+          "title": "能量护盾构筑",
+          "when": { "class": "int" },
+          "steps": [
+            "以能量护盾作为主要缓冲堆叠。",
+            "添加护甲或符文护盾作为副层。",
+            "留意混沌与持续伤害，它们会穿透或对ES造成双倍。"
+          ]
+        },
+        {
+          "title": "混沌 / 持续伤害防护",
+          "when": { "death": "chaos-dot" },
+          "steps": [
+            "提升混沌抗性；面对中毒或流血时不要依赖ES。",
+            "为这些伤害类型添加生命与固定缓冲（护甲）。",
+            "在实时0.5.4客户端确认ES的混沌具体表现（待PC验证）。"
+          ]
+        },
+        {
+          "title": "大攻击生存",
+          "when": { "death": "big-hit" },
+          "steps": [
+            "堆叠护甲与最大生命，软化巨大攻击。",
+            "添加符文护盾作为1点生命的最后保险。",
+            "在难度内容中避免玻璃大炮配置。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用分层防御",
+        "steps": [
+          "选择一种主基础层（护甲、闪避或能量护盾）。",
+          "添加第二层并堆满抗性。",
+          "将符文护盾视为最后的保险，而非主防御。"
+        ]
+      }
+    },
+    {
+      "id": "build-archetype-examples",
+      "order": 11,
+      "title": "构筑原型示例",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "仅为结构性示例——展示各层如何组合，并非完整构筑推荐。",
+      "cards": [
+        {
+          "title": "纯护甲",
+          "tag": "结构",
+          "body": [
+            "力量向构筑，堆叠护甲与生命，并搭配抗性。",
+            "结构性示例，并非完整构筑推荐。"
+          ]
+        },
+        {
+          "title": "纯闪避",
+          "tag": "结构",
+          "body": [
+            "敏捷向构筑，最大化躲避，并以格挡或能量护盾作为后备。",
+            "结构性示例，并非完整构筑推荐。"
+          ]
+        },
+        {
+          "title": "纯能量护盾",
+          "tag": "结构",
+          "body": [
+            "智慧向构筑，以ES作为主要缓冲，留意混沌与持续伤害。",
+            "结构性示例，并非完整构筑推荐。"
+          ]
+        },
+        {
+          "title": "混合（护甲 + ES）",
+          "tag": "结构",
+          "body": [
+            "将固定缓冲与可充能缓冲结合，获得更稳定的减伤。",
+            "结构性示例，并非完整构筑推荐。"
+          ]
+        },
+        {
+          "title": "符文护盾保险",
+          "tag": "结构",
+          "body": [
+            "任意基础防御加上通过瓦里斯液获得的符文护盾作为最后安全层。",
+            "结构性示例，并非完整构筑推荐。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "failure-diagnostic",
+      "order": 12,
+      "title": "为什么我仍被一击秒杀？",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "仍被秒杀？选择你的症状，找出缺失的防御层。",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "发生了什么？",
+          "options": [
+            { "label": "死于单次巨大攻击", "value": "big-hit" },
+            { "label": "死于大量小攻击", "value": "small-hits" },
+            { "label": "死于混沌 / 持续伤害", "value": "chaos-dot" },
+            { "label": "死于首领重击", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "缺失护甲 / 生命",
+          "when": { "symptom": "big-hit" },
+          "steps": [
+            "提升护甲与最大生命。",
+            "添加符文护盾作为最后保险。",
+            "堆满所有抗性。"
+          ]
+        },
+        {
+          "title": "缺失闪避 / 格挡",
+          "when": { "symptom": "small-hits" },
+          "steps": [
+            "提升闪避或格挡 / 偏转。",
+            "为落地命中添加能量护盾缓冲。",
+            "考虑致盲以降低敌人命中。"
+          ]
+        },
+        {
+          "title": "缺失混沌处理",
+          "when": { "symptom": "chaos-dot" },
+          "steps": [
+            "提升混沌抗性。",
+            "面对中毒或流血时不要依赖ES。",
+            "为这些类型添加生命与固定缓冲。"
+          ]
+        },
+        {
+          "title": "缺失分层防御",
+          "when": { "symptom": "slam" },
+          "steps": [
+            "组合两层基础防御，而非仅一层。",
+            "添加符文护盾作为最后保险。",
+            "改善恢复能力（偷取、再生、药剂）。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用修复",
+        "steps": [
+          "先堆满抗性。",
+          "选择一种主基础层并添加第二层。",
+          "添加符文护盾作为最后的保险层。"
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "社区实证",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "常见的玩家反馈，以及各防御层如何解释它们。",
+      "cards": [
+        {
+          "title": "抄了ES构筑但现在很脆",
+          "tag": "反馈",
+          "body": [
+            "ES很可能搭配了混沌 / 持续伤害，或构筑失去了缓冲。",
+            "混沌对ES造成双倍，流血 / 中毒会穿透它——重新检查抗性与第二层。"
+          ]
+        },
+        {
+          "title": "我的闪避还是被打中",
+          "tag": "反馈",
+          "body": [
+            "闪避是概率而非保证；落地的命中为全额伤害。",
+            "为成功连接的命中添加能量护盾或格挡作为后备。"
+          ]
+        },
+        {
+          "title": "符文护盾没救下我",
+          "tag": "反馈",
+          "body": [
+            "符文护盾仅在生命为1点时启动，且可能被耗尽。",
+            "它是最后保险而非主防御，非伤害导致的生命流失会穿透它。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "符文护盾视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "流放之路2 0.5.0版本符文护盾完整指南：是什么、如何叠加与最佳构筑",
+          "creator": "ExitLag Tips",
+          "description": "0.5版本符文护盾的完整指南：它是什么，如何从瓦里斯液叠加，以及将其作为最后保险层的示例构筑。",
+          "takeaway": "符文护盾是来源于瓦里斯液的独立最后层屏障；应搭配真正的基础防御，而非单独依赖它。",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+          "timestamps": [
+            { "label": "简介", "time": "0:00" },
+            { "label": "什么是符文护盾", "time": "1:15" },
+            { "label": "符文护盾如何叠加 / 来源", "time": "3:40" },
+            { "label": "通过瓦里斯液添加符文护盾", "time": "6:20" },
+            { "label": "符文护盾最佳构筑", "time": "9:05" },
+            { "label": "0.5版本改动总结", "time": "12:30" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "常见错误",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "大多数“我总在死”的问题源于误解各层如何组合，而非某个单一缺失的属性。"
+      ],
+      "bullets": [
+        "误以为护甲是固定百分比减伤，忽视对大攻击的脆弱。",
+        "单独依赖闪避，并在其失败时就被秒杀。",
+        "忘记混沌与流血 / 中毒会穿透能量护盾。",
+        "添加符文护盾时未检查高物品等级装备的基础防御取舍。",
+        "放任抗性未满，使承受伤害翻倍。",
+        "将符文护盾当作主防御，而非最后的保险层。"
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "护甲是固定的百分比减伤吗？",
+          "answer": [
+            "不是。护甲减免命中的物理部分，其效果随命中大小而变化——对小攻击强，对单次巨大攻击弱。"
+          ]
+        },
+        {
+          "question": "闪避能减少已落地命中的伤害吗？",
+          "answer": [
+            "不能。闪避是躲开整次命中的概率。成功连接的命中造成全额伤害，所以它可能让人感觉不可靠。"
+          ]
+        },
+        {
+          "question": "混沌伤害会穿透能量护盾吗？",
+          "answer": [
+            "混沌伤害对能量护盾的消耗是其他类型的两倍，而流血与中毒完全穿透能量护盾直接作用于生命。精确数值请在实时客户端确认（待PC验证）。"
+          ]
+        },
+        {
+          "question": "符文护盾和能量护盾一样吗？",
+          "answer": [
+            "不一样。符文护盾是0.5版本新增的独立层，仅在生命为1点时启动以接住致命一击。它来源于瓦里斯液，而非智慧。"
+          ]
+        },
+        {
+          "question": "使用护甲需要力量吗？",
+          "answer": [
+            "力量、敏捷与智慧只是倾向——而非强制。任何职业都可构筑任意层；属性主要影响你能装备什么装备。"
+          ]
+        },
+        {
+          "question": "如何获得符文护盾？",
+          "answer": [
+            "通过瓦里斯熔炉（由法罗的任务解锁）消耗瓦里斯液为护甲添加；高物品等级装备可能以部分基础防御换取护盾——打造前先预览。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 17,
+      "title": "来源与验证",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方维基 — 护甲",
+          "description": "PoE2维基关于护甲防御层的页面。",
+          "url": "https://www.poe2wiki.net/wiki/Armour"
+        },
+        {
+          "label": "官方维基 — 闪避",
+          "description": "PoE2维基关于闪避防御层的页面。",
+          "url": "https://www.poe2wiki.net/wiki/Evasion"
+        },
+        {
+          "label": "官方维基 — 能量护盾",
+          "description": "PoE2维基关于能量护盾、充能与混沌交互的页面。",
+          "url": "https://www.poe2wiki.net/wiki/Energy_Shield"
+        },
+        {
+          "label": "官方维基 — 符文护盾",
+          "description": "PoE2维基关于符文护盾层的页面。",
+          "url": "https://www.poe2wiki.net/wiki/Runic_Ward"
+        },
+        {
+          "label": "视频指南",
+          "description": "ExitLag Tips — 流放之路2 0.5.0版本符文护盾完整指南。",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM"
+        },
+        {
+          "label": "社区防御指南",
+          "description": "ConquestCapped — 0.5版本流放之路2配装指南（防御优先级）。",
+          "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "首次发布，涵盖0.5.4版本下的护甲、闪避、能量护盾与符文护盾。",
+            "新增伤害结算流程、防御层对照表、防御选择器与失败诊断。",
+            "符文护盾的精确数值已对照实时0.5.4客户端标记为待PC验证。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2维基 — 护甲",
+      "url": "https://www.poe2wiki.net/wiki/Armour",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2维基 — 闪避",
+      "url": "https://www.poe2wiki.net/wiki/Evasion",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2维基 — 能量护盾",
+      "url": "https://www.poe2wiki.net/wiki/Energy_Shield",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2维基 — 符文护盾",
+      "url": "https://www.poe2wiki.net/wiki/Runic_Ward",
+      "sourceType": "official"
+    },
+    {
+      "label": "ExitLag Tips — 符文护盾指南（YouTube）",
+      "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+      "sourceType": "community"
+    },
+    {
+      "label": "ConquestCapped — 0.5版本流放之路2配装指南",
+      "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2防御层：护甲、闪避、能量护盾与符文护盾指南",
+    "description": "了解流放之路2中护甲、闪避、能量护盾与符文护盾如何运作与组合，以及抗性、格挡与偏转。",
+    "noindex": false
+  }
+}
