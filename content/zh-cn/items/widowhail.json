@@ -1,0 +1,849 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "寡妇之嚎（Widowhail）：箭袋加成放大、最佳roll与符文锻造——流放之路2 0.5",
+  "shortTitle": "寡妇之嚎",
+  "summary": "寡妇之嚎是流放之路2中的一件独特粗糙弓（Crude Bow），其唯一词缀为（150-250）% 提升从已装备箭袋获得的加成，能够放大箭袋上的数值型加成。弓本身伤害无关紧要，箭袋才是核心引擎。本文讲解精确放大公式、哪些箭袋词缀会被放大、低roll与高roll的差距、什么档次的箭袋才配得上250%的roll、符文锻造版本，以及哪些流派不应照搬他人的箭袋。",
+  "description": "寡妇之嚎在0.5版本中的运作机制：（150-250）% 提升从已装备箭袋获得的加成这一乘法系数、基础值 ×（1 + W%）公式、哪些箭袋词缀会被放大（全局、隐性、腐蚀、投射物、附加伤害）与哪些不会（箭袋的本地词缀）、低roll与高roll的价值、箭袋选择、符文锻造，以及分流派的注意事项。",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "流放之路2中的独特粗糙弓寡妇之嚎，一把能够放大已装备箭袋数值加成的箭袋放大弓",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "寡妇之嚎的唯一词缀（150-250）% 提升从已装备箭袋获得的加成，会将你箭袋上每一个可被放大的数值加成乘以（1 + W/100）。150%时为×2.5，200%时为×3.0，250%时为×3.5。弓本身的基础物理DPS刻意压低：箭袋才是武器。一把好箭袋才让高roll物有所值；一把弱箭袋即使配上250%的寡妇之嚎也毫无意义。",
+      "calloutDetail": [
+        "该系数作用于箭袋提供的全局、隐性及腐蚀加成，包括额外箭矢词缀、附加伤害、攻速提升、抗性、生命、命中等等。",
+        "它不会凭空新增属性，只会放大箭袋已有的东西。一把没有可放大数值的箭袋，给你带来的增益为零。",
+        "寡妇之嚎可以进行符文锻造（第三章解锁的独特符文锻造），只要它是一件低等级独特；其独特的箭袋加成词缀会被保留，基底获得更高物理伤害和一个符文锻造基底。"
+      ],
+      "answers": [
+        {
+          "label": "适合使用，如果你",
+          "text": [
+            "已经拥有（或买得起）一把强力箭袋，其数值加成你想成倍放大——附加伤害、攻击或投射物速度、技能等级、生命、抗性。"
+          ]
+        },
+        {
+          "label": "建议跳过，如果你",
+          "text": [
+            "你的流派依赖武器本地属性（高额的固定物理、弓自身的高攻速），或无法搞到一把值得放大的箭袋。一把稀有弓可能更适合你。"
+          ]
+        },
+        {
+          "label": "roll的目标",
+          "text": [
+            "自然roll上限为250%。240-248%几乎同样强力，却只需远少的通货。瓦尔宝珠腐蚀可以突破250%（社区报告约290%+）。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "系数如何运作"
+        },
+        {
+          "href": "#properties",
+          "label": "当前词缀与roll区间"
+        },
+        {
+          "href": "#build-usage",
+          "label": "使用它的流派"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "基础类型",
+          "value": "粗糙弓（Crude Bow）",
+          "note": [
+            "一把开荒弓。其基础物理伤害（5-13）与攻击速度（1.40）很低，因为该物品的力量完全来自箭袋而非武器本身。"
+          ]
+        },
+        {
+          "label": "独特词缀",
+          "value": "（150-250）% 提升从已装备箭袋获得的加成",
+          "note": [
+            "唯一的显式词缀。roll以50%为步进（150/200/250），因此不存在187%这样的roll——它会吸附到某个档位。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "1（14 敏捷）",
+          "note": [
+            "从战役一开始就可用，这也是它既可作为开荒弓、又可作为终局箭袋力量倍增器的原因。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "value": "任意掉落；可机遇；可交易",
+          "note": [
+            "25级以上怪物（第二章起）相对常见掉落。也可对白色粗糙弓使用机会石（Orb of Chance）获得。商店售价为6个炼金石碎片。"
+          ]
+        },
+        {
+          "label": "腐蚀上限",
+          "value": "可超过250%",
+          "note": [
+            "瓦尔宝珠腐蚀可突破自然250%上限（社区报告最高约290%+）。确切上限请以游戏内为准。"
+          ]
+        },
+        {
+          "label": "符文锻造",
+          "value": "符合条件（低等级独特）",
+          "note": [
+            "作为1级独特，它在第三章解锁后即可进行独特符文锻造；其箭袋加成词缀被保留，基底伤害提升。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "当前词缀面板与roll区间（0.5.4）",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "基础物理伤害",
+          "value": "5-13",
+          "notes": [
+            "刻意压低。寡妇之嚎不是伤害载体，而是箭袋放大器。"
+          ]
+        },
+        {
+          "label": "暴击率",
+          "value": "5.00%",
+          "notes": [
+            "继承自粗糙弓基底。"
+          ]
+        },
+        {
+          "label": "每秒攻击次数",
+          "value": "1.40",
+          "notes": [
+            "继承自粗糙弓基底。"
+          ]
+        },
+        {
+          "label": "独特词缀（可变）",
+          "value": "（150-250）% 提升从已装备箭袋获得的加成",
+          "notes": [
+            "唯一的显式词缀。以50%档位roll：150%、200%、250%。这个数字决定了弓的价值。"
+          ]
+        },
+        {
+          "label": "需求",
+          "value": "等级1，14敏捷",
+          "notes": [
+            "无力量或智慧需求，使任意敏捷系职业从1级起即可装备。"
+          ]
+        },
+        {
+          "label": "隐性词缀",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "物品上显示的风格化隐性行；它不是一条独立的、可放大的属性。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "箭袋加成系数如何运作",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "寡妇之嚎的词缀写作（150-250）% 提升从已装备箭袋获得的加成。关键词是\"提升（increased）\"：它取箭袋加成的数值，并以寡妇之嚎的roll对其进行提升。一把提供+40最大生命的箭袋，在250%的寡妇之嚎下变为+40 ×（1 + 2.50）= +140最大生命。通用公式为：放大后的箭袋加成 = 箭袋基础加成 ×（1 + W/100），其中W为寡妇之嚎的roll（150、200或250）。",
+        "由于系数为（1 + W/100），实际倍率为150%时×2.5、200%时×3.0、250%时×3.5。这一点由文档化的箭矢示例证实：一把箭袋的隐性为\"弓攻击额外发射一支箭\"（+1），配合显式\"+1投射物数量\"合计在寡妇之嚎之前为2；在250%效果下，这个2变为2 × 3.5 = 7支额外箭矢。属性先相加，再相乘。",
+        "实践中\"从已装备箭袋获得的加成\"指的是箭袋赋予你角色的所有可被放大的数值加成——包括其隐性行、显式词缀，以及腐蚀隐性。这包含附加伤害（固定值）、提升百分比（攻速、暴击、伤害）、属性、抗性、生命、命中、投射物速度、穿透次数与额外箭矢词缀。该系数不会凭空创造新属性，只放大已有属性。",
+        "许多玩家忽略的一个细微点：加成是相乘，而非作为第二份复制叠加。一把+20%提升攻击速度的箭袋配合200%寡妇之嚎，得到的是+20% × 3.0 = +60%提升攻击速度——而非+20% + 200%。寡妇之嚎的roll本身就是作用于箭袋底层加成数值的\"提升\"幅度。",
+        "为何弓自身DPS低但流派仍能成立：寡妇之嚎用\"优质箭袋属性被放大\"取代了\"优质武器属性\"。一把稀有箭袋可轻松承载大量固定附加伤害、两位数攻速提升、技能等级、生命与抗性。将其全部乘以3.5带来的攻防总价值，超过了普通弓提供的固定物理伤害，代价是需要一把强力、roll好的箭袋来支撑这个武器槽位。"
+      ],
+      "bullets": [
+        "公式：放大值 = 基础值 ×（1 + W/100）。倍率：150% → ×2.5，200% → ×3.0，250% → ×3.5。",
+        "箭袋的隐性、显式与腐蚀加成全部计入。",
+        "弓忽略自身低物理伤害；箭袋才是武器。",
+        "箭袋上的属性先求和再相乘——因此+1隐性箭与+1显式箭在250%下变为7。",
+        "它不会新增词缀，只放大已有词缀。"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "放大临界点与箭袋词缀矩阵",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "额外箭矢箭袋（隐性+1，显式+1）= 2支基础箭",
+          "audience": "Spark / 投射物流派",
+          "benefit": "2 → 5 / 6 / 7 支额外箭（150 / 200 / 250%）",
+          "risk": "只有你的技能受益于投射物数量时，更多箭才有用",
+          "level": "high",
+          "recommendation": "强力放大；250%把一把2箭箭袋变成7支投射物。",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "箭袋上的+40最大生命",
+          "audience": "任意流派",
+          "benefit": "40 → 100 / 120 / 140 生命（150 / 200 / 250%）",
+          "risk": "如果你的流派不重视生命则收益低",
+          "level": "medium",
+          "recommendation": "生命干净利落地放大；高roll大致将箭袋的生命加成翻三倍。",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "箭袋上的+20%提升攻击速度",
+          "audience": "攻击流派",
+          "benefit": "20% → 50 / 60 / 70% 提升攻击速度（150 / 200 / 250%）",
+          "risk": "低；攻速几乎总是有用",
+          "level": "medium",
+          "recommendation": "最安全的可放大箭袋词缀之一。",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "固定附加伤害（如+5至30冰冷攻击）在箭袋上",
+          "audience": "元素 / 转化流派",
+          "benefit": "5-30 → 12.5-75 / 15-90 / 17.5-105（150 / 200 / 250%）",
+          "risk": "取决于转化与技能标签",
+          "level": "medium",
+          "recommendation": "在转化Spark或元素弓流派中表现出色；请确认伤害类型受支持。",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "使用寡妇之嚎的流派",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "寡妇之嚎是一个箭袋投放系统。它在任何通过箭袋槽位汇集价值、并能提供一把强力箭袋的流派中大放异彩。以下是该弓现实中的归宿；每一种都有一个硬性前提（箭袋），你必须在弓产生收益前满足它。"
+      ],
+      "builds": [
+        {
+          "title": "冰霜射击（Ice Shot）神射手（Deadeye）",
+          "description": "天然归宿：神射手奖励投射物数量，一把堆满附加冰/物理伤害、攻速与+投射物技能等级的箭袋会被放大数倍。目标为一把230%+的寡妇之嚎，配一把带+2投射物技能等级与高额附加伤害的箭袋。",
+          "href": "/zh-cn/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Spark / 转化Spark施法者（Blood Mage、Stormweaver）",
+          "description": "寡妇之嚎用于放大一把提供+投射物技能等级与投射物速度的箭袋；被放大的投射物缩放供给投射加速度（Projectile Acceleration）与Spark的多段命中伤害。预算版本只需几十崇高石（Exalted Orb）即可清早期地图。",
+          "href": "/zh-cn/skills/ice-shot/"
+        },
+        {
+          "title": "闪电箭（Lightning Arrow）/ 避雷针（Lightning Rod）游侠开荒",
+          "description": "从第二章起，寡妇之嚎配一把频繁更新的稀有箭袋是最强力的开荒弓之一，因为你会随着逐级超越每把箭袋，放大其附加伤害与攻速。",
+          "href": "/zh-cn/skills/ice-shot/"
+        },
+        {
+          "title": "剧毒合剂（Poisonous Concoction）探路者（Pathfinder）",
+          "description": "高roll寡妇之嚎配一把带+2全投射物技能等级、命中与攻速的箭袋，通过大师箭术（Master Fletching）与箭袋系数猛增中毒DPS。",
+          "href": "/zh-cn/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "替代品：稀有弓与其他独特",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "寡妇之嚎不是一把\"无论如何都更高DPS\"的弓。它的价值取决于箭袋。如果你无法搞到一把值得放大的箭袋，一把roll好的稀有弓会表现更佳，因为稀有弓自带固定物理伤害、攻速、暴击词缀与插槽。",
+        "与其他独特弓相比，寡妇之嚎占据一个独特定位：它没有自身的伤害机制，只有箭袋系数。那些附加固定伤害、穿透或异常状态转化的弓使用更简单，且不需要一把精心打造的箭袋。当你想要一把自包含武器而非箭袋引擎时，使用它们。",
+        "在箭袋放大这一幻想内，没有直接竞争者——寡妇之嚎是唯一一把放大已装备箭袋的弓。因此真正的替代抉择是\"投资箭袋+寡妇之嚎\"还是\"把同等通货币投入更强的自包含稀有弓或独特弓\"。战役早期与中期，箭袋路线通常每点力量的成本更低；在极高端，镜像级稀有弓可以超过它，但成本高得多。"
+      ],
+      "bullets": [
+        "稀有弓：当你缺乏强力箭袋时更佳；自带伤害与插槽。",
+        "其他独特弓：更简单、自包含的机制；无箭袋依赖。",
+        "没有其他弓放大箭袋——寡妇之嚎是实现这一幻想的唯一选择。",
+        "抉择：箭袋+寡妇之嚎早期通常更便宜；镜像稀有弓在后期可超过它但成本高得多。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "如何获取寡妇之嚎",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "寡妇之嚎是一件相对常见的独特，这使得即便高roll也比其他镜像级物品便宜。有三条现实的获取路径。"
+      ],
+      "routes": [
+        {
+          "label": "随机掉落（25级以上怪物，第二章起）",
+          "body": [
+            "寡妇之嚎从25级及以上怪物处任何地点掉落。你无法定向获取它，但通过\"提高物品稀有度（Increased Rarity of Items Found）\"与强化的界石（Waystone）提升整体独特掉落率，可提高独特出现频率。"
+          ]
+        },
+        {
+          "label": "对白色粗糙弓使用机会石（Orb of Chance）",
+          "body": [
+            "对普通粗糙弓使用机会石可产生寡妇之嚎，但成功率低，且这些通货更值得用于博取更稀有的独特。多数玩家跳过此路径，因为该弓在交易中已很常见。"
+          ]
+        },
+        {
+          "label": "玩家交易",
+          "body": [
+            "交易站是获取特定roll最可靠的方式。由于掉落率高，240-248%的roll常以完美250%的零头价格可得，而一把250%弓仍可能远比镜像级稀有弓便宜。价格随联赛与地区波动——请查询实时交易站获取当前快照。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用、出售还是保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "寡妇之嚎的价格几乎完全由箭袋加成roll驱动。低roll（150-180%）往往近乎免费；240%+尤其是250%有溢价。由于它常见掉落，即便完美roll也非镜像级昂贵。任何价格都必须结合日期、联赛与地区来解读。"
+      ],
+      "use": {
+        "condition": "你拥有把值得放大的强力箭袋，且你的流派通过箭袋汇集价值（投射物、附加伤害、攻速、生命）。",
+        "first": "装备你能负担的最高roll寡妇之嚎（240%+为价值甜点），并随等级持续升级箭袋。",
+        "risk": "弱箭袋会让弓成为累赘；单凭roll本身并不创造力量。",
+        "text": [
+          "最佳情形是箭袋已承载大量固定附加伤害、两位数提升攻速、+投射物技能等级、生命与抗性。",
+          "若你每5-10级升级一次箭袋，可整场战役保留这把弓。"
+        ]
+      },
+      "sell": {
+        "condition": "你有一把低roll（150-180%）且无箭袋计划，或你玩的流派需要武器本地伤害。",
+        "first": "低价出售低roll；它们很常见，多数买家想要230%+。",
+        "risk": "持有低roll指望价格飙升不太可能——供给稳定。",
+        "text": [
+          "一把150%且无箭袋投资的寡妇之嚎，对多数买家而言价值仅略高于白色粗糙弓。",
+          "如实标注roll；交易站显示精确百分比，买家会据此筛选。"
+        ]
+      },
+      "hold": {
+        "condition": "你有一把240%+ roll或瓦尔腐蚀的250%+ roll，并可能在日后转投箭袋流派。",
+        "first": "保留高roll；它们保值，因为终局箭袋流派始终需要这个系数。",
+        "risk": "针对箭袋词缀或符文锻造的版本改动可能改变需求，但核心幻想稳定。",
+        "text": [
+          "高roll具有流动性，只要箭袋流派存在就不太可能大幅贬值。",
+          "腐蚀的250%+是一个战利品级roll，相较自然250%有溢价。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "买了一套250%寡妇之嚎但你的箭袋很弱",
+          "gain": "最大可能系数可用",
+          "loss": "未获得任何力量；通货花在弓而非箭袋上",
+          "level": "high",
+          "recommendation": "在箭袋上的投入应多于弓。箭袋是引擎；弓是放大器。"
+        },
+        {
+          "scenario": "在不同升华/技能上照搬某个热门流派的箭袋",
+          "gain": "你在纸面上匹配了一个经过验证的配置",
+          "loss": "你的技能标签、转化或辅助宝石可能不使用相同的箭袋加成，浪费系数",
+          "level": "high",
+          "recommendation": "根据你的技能伤害标签与转化调整箭袋。不要盲目照搬箭袋。"
+        },
+        {
+          "scenario": "依赖箭袋本地词缀（如箭袋物品上的本地提升闪避）",
+          "gain": "无——这些并非你角色\"获得\"的加成",
+          "loss": "预期中来自箭袋的ES/防御从未出现",
+          "level": "medium",
+          "recommendation": "只计算箭袋的全局、隐性与腐蚀加成。本地物品词缀不会被放大。"
+        },
+        {
+          "scenario": "腐蚀突破250%却砖了",
+          "gain": "成功则潜在~290%+系数",
+          "loss": "瓦尔宝珠可能添加不良隐性或未能提升roll",
+          "level": "medium",
+          "recommendation": "只腐蚀你可以替换的250%基底；上行真实但代价是一把被消耗掉的独特。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区证据与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "官方论坛流派帖",
+          "question": "我看到有人用寡妇之嚎配Spark——一把弓怎么用在施法者身上，哪些箭袋属性重要？",
+          "summary": [
+            "一名玩家对Spark施法者流派中出现一把弓（寡妇之嚎）感到困惑，并询问应优先哪些箭袋词缀。"
+          ],
+          "editorialAnalysis": [
+            "寡妇之嚎纯粹用于其箭袋系数。该流派选取一把提供+2投射物技能等级与极高投射物速度的箭袋；被放大的投射物缩放供给投射加速度（Projectile Acceleration）与Spark的每段命中伤害。弓本身从不攻击。"
+          ],
+          "officialAnswer": [
+            "优先选择带+2全投射物技能等级与150%+投射物速度的箭袋；寡妇之嚎的roll放大这些数值。一把230%+寡妇之嚎是该流派的实际下限。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "使用寡妇之嚎的流派"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "社区论坛帖",
+          "question": "对于剧毒合剂（Poisonous Concoction）流派，我应在寡妇之嚎上最大化哪些箭袋词缀？",
+          "summary": [
+            "一名玩家询问应堆叠哪些箭袋词缀，以使寡妇之嚎放大最多伤害。"
+          ],
+          "editorialAnalysis": [
+            "该流派从+2全投射物技能等级、+X%攻速（至少14%）与命中评级（Accuracy Rating）缩放。这些都是寡妇之嚎系数放大的数值箭袋加成，与大师箭术（Master Fletching）被动叠加。"
+          ],
+          "officialAnswer": [
+            "堆叠+2投射物技能等级（最重要），其次是箭袋上的攻速与命中。寡妇之嚎roll同时放大这三者，大师箭术进一步提供乘数。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "系数如何运作"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "攻略 / 开荒分析",
+          "question": "寡妇之嚎对于开荒真的好用，还是仅为终局弓？",
+          "summary": [
+            "一名读者质疑寡妇之嚎是应在战役中使用，还是仅在终局使用。"
+          ],
+          "editorialAnalysis": [
+            "开荒分析显示，寡妇之嚎配一把频繁升级的稀有箭袋，在相近价位下优于同价位稀有开荒弓，因为你会在逐级超越每把箭袋时，放大其附加固定伤害、攻速、击中回生命乃至宝石等级。"
+          ],
+          "officialAnswer": [
+            "是的——约35级起，一把配好箭袋的寡妇之嚎击败同等成本的稀有开荒弓，而放大其他加成（击中获得生命、技能速度、宝石等级）使其成为强力的战役弓。"
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "如何获取寡妇之嚎"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "攻略",
+          "question": "我该买哪个roll的寡妇之嚎，能超过250%吗？",
+          "summary": [
+            "一名买家想了解价值临界点，以及腐蚀是否超出自然上限。"
+          ],
+          "editorialAnalysis": [
+            "自然roll上限为250%。社区指引称240-248%几乎与250%同样强力，却只需远少通货；而瓦尔宝珠腐蚀可突破250%（报告最高约290%+），但有获得不良隐性的风险。"
+          ],
+          "officialAnswer": [
+            "购买240%+以获得最佳价值；只有在预算允许时才为自然250%支付溢价。腐蚀可超过250%，但可能添加不想要的隐性——请腐蚀一把可替换的副本。"
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "使用、出售还是保留"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "装备寡妇之嚎后我的DPS没有提升",
+          "directAnswer": [
+            "寡妇之嚎只放大箭袋加成。如果你的箭袋几乎没有值得放大的东西（或你用的是词缀并非数值加成的独特箭袋），弓几乎不提供任何东西。请检查你箭袋的全局、隐性与腐蚀加成。"
+          ],
+          "checks": [
+            "打开箭袋，列出其全局加成（附加伤害、攻速、生命、抗性、技能等级）。",
+            "确认这些加成是数值型且为全局，而非箭袋物品本地。",
+            "确认寡妇之嚎roll较高（理想230%+）。"
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "系数如何运作"
+            }
+          ]
+        },
+        {
+          "symptom": "我照搬了主播的箭袋，但我的流派手感很弱",
+          "directAnswer": [
+            "箭袋价值因流派而异。为Spark投射物缩放打造的箭袋，若伤害标签或转化不同，在闪电箭流派上可能毫无用处。请为你的技能量身定制箭袋。"
+          ],
+          "checks": [
+            "检查你主技能实际使用的伤害类型与标签。",
+            "选择匹配这些标签的箭袋加成（附加冰冷 vs 物理、投射物速度 vs 攻速）。"
+          ]
+        },
+        {
+          "symptom": "我预期的箭袋本地词缀没有被放大",
+          "directAnswer": [
+            "只有你角色从箭袋\"获得\"的加成才会被放大。仅影响箭袋物品本身的本地词缀并非\"获得\"，因此不会被相乘。"
+          ],
+          "checks": [
+            "对比箭袋的全局加成与其本地词缀。",
+            "依赖隐性、显式与腐蚀加成，而非本地物品属性。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark血法师：寡妇之嚎预算变体如何运作（goldfarmingGUIDE）",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE（经由 Mobalytics 流派攻略）",
+          "takeaway": "预算版寡妇之嚎Spark血法师变体的讲解，包括箭袋选择与箭袋系数如何驱动伤害。章节标记为近似值。",
+          "timestamps": [
+            {
+              "label": "为何采用寡妇之嚎预算变体",
+              "time": "00:00"
+            },
+            {
+              "label": "箭袋选择与roll",
+              "time": "03:30"
+            },
+            {
+              "label": "伤害缩放讲解",
+              "time": "08:00"
+            },
+            {
+              "label": "刷图演示",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "媒体库",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "寡妇之嚎当前词缀面板（粗糙弓，（150-250）% 提升从已装备箭袋获得的加成）",
+          "note": "展示独特词缀与50% roll档位。基础物理伤害刻意压低。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "寡妇之嚎系数前后的箭袋对比",
+          "note": "展示单一箭袋行（如+40生命）在150/200/250%下变为+100/+120/+140。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "低roll与高roll对比",
+          "note": "将150%与250%寡妇之嚎并排展示，呈现同一箭袋上的系数差距。",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "符文锻造版寡妇之嚎基底",
+          "note": "描述符文锻造基底获得更高物理伤害与符文守卫（Runic Ward）基底；独特的箭袋加成词缀被保留。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "冰霜射击神射手",
+          "description": "寡妇之嚎的主要归宿：投射物数量与附加伤害随箭袋系数强力放大。",
+          "href": "/zh-cn/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "冰霜射击",
+          "description": "受益于被放大的箭袋投射物与伤害加成的招牌神射手技能。",
+          "href": "/zh-cn/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "符文与灵魂核心",
+          "description": "在你的箭袋中镶嵌正确的符文，可添加一个随后被寡妇之嚎放大的加成。",
+          "href": "/zh-cn/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "液态维里西姆（Liquid Verisium）",
+          "description": "在维里西姆铁砧（Verisium Anvil）进行符文锻造所用的材料，包括符文锻造版寡妇之嚎。",
+          "href": "/zh-cn/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "奥杜尔符文残响配方",
+          "description": "符文锻造与符文精通（Runemastered）打造如何运作，与符文锻造版寡妇之嚎相关。",
+          "href": "/zh-cn/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "0.5.4版本 - 奥杜尔符文",
+          "description": "引入符文锻造的当前版本，该系统可升级寡妇之嚎等低等级独特。",
+          "href": "/zh-cn/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "版本历史与当前 vs 旧版",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "当前（0.5.4，自然掉落）",
+          "changes": [
+            "寡妇之嚎是一件独特粗糙弓，带（150-250）% 提升从已装备箭袋获得的加成。roll以50%档位（150/200/250）。这是唯一的当前版本；不存在需要与之混淆的独立旧版箭袋加成数值。"
+          ]
+        },
+        {
+          "version": "符文锻造（0.5.0 联赛 - 奥杜尔符文）",
+          "changes": [
+            "引入了独特符文锻造，可升级低等级独特（需求等级低于55）。寡妇之嚎（1级）符合条件：其独特箭袋加成词缀被保留，基底获得更高物理伤害与符文锻造基底。没有针对箭袋加成roll的神圣宝珠（Divine Orb）改动——它是一个固定区间，而非可变重roll。"
+          ]
+        },
+        {
+          "version": "交易如何识别版本",
+          "changes": [
+            "交易站显示精确的\"提升从已装备箭袋获得的加成\"百分比。买家直接据此筛选。符文锻造版寡妇之嚎是带有符文守卫（Runic Ward）的独立基底类型，与普通独特分开列出。"
+          ]
+        },
+        {
+          "version": "关于神圣宝珠与腐蚀的说明",
+          "changes": [
+            "箭袋加成roll是固定区间，因此神圣宝珠不会改变它。瓦尔宝珠腐蚀可超过250%（社区报告最高约290%+），但可能添加不想要的隐性。确切腐蚀上限请以游戏内为准。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "流放之路2 0.5.4 版本说明（官方论坛）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - 寡妇之嚎（基础数值、机制、箭矢示例）",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "攻略",
+          "description": "GameRant - 如何获取寡妇之嚎（掉落、roll价值、腐蚀）",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "攻略",
+          "description": "MaxRoll - 最佳开荒独特（寡妇之嚎箭袋放大分析）",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "社区",
+          "description": "官方论坛流派帖 - 寡妇之嚎Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "社区",
+          "description": "社区论坛帖 - 寡妇之嚎剧毒合剂配置",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "视频",
+          "description": "goldfarmingGUIDE - Spark血法师寡妇之嚎预算变体",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "变更日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布，涵盖寡妇之嚎箭袋加成系数公式、哪些箭袋词缀会被放大、低roll与高roll价值、箭袋选择、符文锻造，以及分流派注意事项。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "流放之路2 0.5.4 版本说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - 寡妇之嚎",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - 寡妇之嚎",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - 如何获取寡妇之嚎",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - 最佳开荒独特",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "官方论坛 - 寡妇之嚎Spark Infernalist流派",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "社区论坛 - 寡妇之嚎剧毒合剂配置",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Spark血法师寡妇之嚎变体",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "寡妇之嚎攻略：箭袋加成放大、最佳roll与符文锻造（流放之路2 0.5）",
+    "description": "寡妇之嚎在流放之路2中如何运作：（150-250）% 提升从已装备箭袋获得的加成系数、基础值 ×（1 + W%）公式、哪些箭袋词缀会被放大、roll价值、箭袋选择以及符文锻造。",
+    "noindex": false
+  }
+}

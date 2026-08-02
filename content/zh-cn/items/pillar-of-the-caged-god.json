@@ -1,0 +1,885 @@
+{
+  "id": "pillar-of-the-caged-god",
+  "slug": "pillar-of-the-caged-god",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "笼神之柱（Pillar of the Caged God）：力量武器伤害、敏捷攻击速度、智慧范围——PoE2 0.5 当前与旧版对比",
+  "shortTitle": "笼神之柱",
+  "summary": "笼神之柱（Pillar of the Caged God）是流放之路2中一把独特的长细杖，把你的三大属性转化为武器强度：每 10 点力量提供增加 10% 武器伤害，每 10 点敏捷提供增加 1% 攻击速度，每 10 点智慧提供增加 1% 攻击的范围效果。它只需等级 4 与 9 点敏捷，全图掉落且可被机会石制造，是属性堆叠细杖流派的核心武器。本指南详解精确加成、0.2.0 的削弱及其如何自动应用，以及何时该从稀有细杖切换过来。",
+  "description": "笼神之柱在流放之路2 0.5 中的运作方式：每 10 力量武器伤害、每 10 敏捷攻击速度、每 10 智慧范围效果，需求等级 4，全图掉落且可机会石化，当前与旧版（0.2.0 前每 5 点）加成、等级时间线、与古灵军团的使用方式及属性堆叠协同。",
+  "itemType": "quarterstaff",
+  "rarity": "unique",
+  "requiredLevel": "4",
+  "useCases": [
+    "strength-stacking",
+    "dexterity-stacking",
+    "intelligence-stacking",
+    "attribute-stacking",
+    "attack-builds"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-quarterstaves",
+  "itemClass": "quarterstaff",
+  "baseType": "long-quarterstaff",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-quarterstaff",
+    "attribute-stacking",
+    "weapon-damage",
+    "attack-speed",
+    "area-of-effect",
+    "strength",
+    "dexterity",
+    "intelligence"
+  ],
+  "heroImage": "/images/items/pillar-of-the-caged-god-hero.webp",
+  "cardImage": "/images/items/pillar-of-the-caged-god-hero.webp",
+  "imageAlt": "流放之路2中独特的长细杖「笼神之柱」，以力量提升武器伤害、以敏捷提升攻击速度、以智慧提升攻击范围效果",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速解答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "笼神之柱（Pillar of the Caged God）是一把独特的长细杖，把你的三大属性转化为纯粹的武器强度：每 10 点力量增加 10% 武器伤害，每 10 点敏捷增加 1% 攻击速度，每 10 点智慧增加 1% 攻击的范围效果。它是属性堆叠细杖流派的核心武器，但仅影响使用该武器进行的攻击（不包括徒手攻击或图腾自带武器的攻击），且其基础伤害（9 至 18）在属性叠高之前很低。",
+      "calloutDetail": [
+        "这些加成叠加在其他所有加成之上，并随你的力量、敏捷与智慧总量线性增长，因此你堆叠得越多，这根杖就越强。",
+        "它全图掉落，也可用机会石制造，因此远比 HOWA 这类首领限定独特更容易获得。",
+        "0.2.0 的重做改变了每属性加成率，并自动应用到已有物品上，因此不存在带有旧版更强加成的可交易「旧版」版本。"
+      ],
+      "answers": [
+        {
+          "label": "使用它如果",
+          "text": [
+            "你运行一把细杖攻击流派，堆叠 200+ 力量（理想情况下还有敏捷与智慧），并希望武器本身提供武器伤害百分比。"
+          ]
+        },
+        {
+          "label": "跳过如果",
+          "text": [
+            "你使用法术、副手武器，或属性保持较低的流派——这根杖的基础伤害低且仅有武器加成，收益很小。"
+          ]
+        },
+        {
+          "label": "从何处获得",
+          "text": [
+            "游戏中任何怪物、宝箱或强箱，或对白色长细杖使用机会石。不绑定首领。"
+          ]
+        }
+      ],
+      "links": [
+        { "href": "#attribute-scaling", "label": "属性加成表" },
+        { "href": "#current-vs-legacy", "label": "当前与旧版" }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "物品类型",
+          "value": "独特细杖（长细杖）",
+          "note": [
+            "当前基底为长细杖；杖本身的基础物理伤害为 9 至 18。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "4（9 敏捷）",
+          "note": [
+            "需求极低——很早即可使用，但其强度来自堆叠的属性，而非等级。"
+          ]
+        },
+        {
+          "label": "核心词条 1",
+          "value": "每 10 点力量增加 10% 武器伤害",
+          "note": [
+            "对武器命中全局生效；不适用于徒手攻击或使用自身武器的图腾。"
+          ]
+        },
+        {
+          "label": "核心词条 2",
+          "value": "每 10 点敏捷增加 1% 攻击速度",
+          "note": [
+            "与其他攻击速度来源叠加。"
+          ]
+        },
+        {
+          "label": "核心词条 3",
+          "value": "每 10 点智慧增加 1% 攻击的范围效果",
+          "note": [
+            "作用于攻击的范围效果（例如蓄力杖、骤雨乱舞的横扫）。"
+          ]
+        },
+        {
+          "label": "隐性",
+          "value": "16% 增加近战打击范围",
+          "note": [
+            "固定值；非每属性词条。"
+          ]
+        },
+        {
+          "label": "掉落来源",
+          "value": "全图掉落；机会石",
+          "note": [
+            "无掉落限制；可对白色长细杖机会石化获得。"
+          ]
+        },
+        {
+          "label": "可交易",
+          "value": "是（玩家市场）",
+          "note": [
+            "因可被机会石化且全图掉落，供给充足，价格通常不高。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "当前词缀与数值范围",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "基底物品",
+          "value": "长细杖（quarterstaff）",
+          "notes": [
+            "物理伤害 9 至 18，暴击率 10%，每秒攻击 1.40，范围 1.3 米。"
+          ]
+        },
+        {
+          "label": "需求",
+          "value": "等级 4，9 敏捷",
+          "notes": [
+            "无力量或智慧需求。"
+          ]
+        },
+        {
+          "label": "隐性：16% 增加近战打击范围",
+          "value": "固定",
+          "notes": [
+            "各版本未变。"
+          ]
+        },
+        {
+          "label": "每 10 点力量增加 10% 武器伤害",
+          "value": "当前（0.2.0 后）",
+          "notes": [
+            "旧版为每 5 力量 10%（翻倍）。削弱已自动应用到旧物品。"
+          ]
+        },
+        {
+          "label": "每 10 点敏捷增加 1% 攻击速度",
+          "value": "当前（0.2.0 后）",
+          "notes": [
+            "旧版为每 10 敏捷 2%。已自动应用。"
+          ]
+        },
+        {
+          "label": "每 10 点智慧增加 1% 攻击的范围效果",
+          "value": "当前（0.2.0 后）",
+          "notes": [
+            "旧版为每 10 智慧 2%。已自动应用。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "笼神之柱如何运作",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "笼神之柱是一把独特的长细杖，其全部价值在于把你的属性总量转化为武器强度。它有三条绑定三大核心属性的加成：力量提供增加武器伤害，敏捷提供增加攻击速度，智慧提供增加攻击的范围效果。每条词条以每 10 点对应属性触发。",
+        "这三条加成都明确绑定于使用该武器进行的攻击与命中。「武器伤害」指使用你的武器进行命中造成的伤害——不适用于徒手攻击（包括药剂瓶）或使用自身武器的图腾的攻击（例如震波图腾）。攻击速度与范围效果词条同样限定于攻击。因此这根杖奖励基于细杖的攻击技能，而非法术。",
+        "实例计算：在 500 力量、500 敏捷、500 智慧时，力量层数 = 500 / 10 = 50，提供 +500% 增加武器伤害；敏捷层数 = 50，提供 +50% 增加攻击速度；智慧层数 = 50，提供 +50% 增加攻击的范围效果。由于这些是加法性的百分比乘区，你堆叠得越多，这根杖就变得越强——一根 4 级的杖在属性爬到数百时，可以超越终局稀有装备。",
+        "关键一点：这根杖本身不提供命中、生命或能量护盾、抗性，也不提供资源。你仍需命中（命中值）、生存（防御）并自行解决魔力或spirit。天然使用者是细杖职业如武僧，或在属性效率上最优的古灵军团佣兵，它可转换属性点并叠加三大属性。常见搭档是全属性护符（阿斯特拉门提斯）与把属性转化为攻击强度的手套智慧与行动之手，它们喂给同一批属性。"
+      ],
+      "bullets": [
+        "力量 -> 增加武器伤害（每 10 力量 10%）。",
+        "敏捷 -> 增加攻击速度（每 10 敏捷 1%）。",
+        "智慧 -> 增加攻击的范围效果（每 10 智慧 1%）。",
+        "仅限武器：徒手攻击与图腾自带武器的攻击不享受。",
+        "无内置防御、命中或资源——需由流派在其他位置提供。"
+      ]
+    },
+    {
+      "id": "attribute-scaling",
+      "order": 45,
+      "title": "属性加成表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "当前（0.2.0 后）在代表性属性断点的加成，假设力量/敏捷/智慧相等。「旧版」列仅用于展示削弱差距——该加成已自动应用到所有物品，游戏中不再存在。",
+      "columns": [
+        { "key": "attrs", "label": "属性（力量 / 敏捷 / 智慧）" },
+        { "key": "wd", "label": "增加武器伤害" },
+        { "key": "as", "label": "增加攻击速度" },
+        { "key": "aoe", "label": "增加范围效果（攻击）" },
+        { "key": "legacyNote", "label": "旧版（0.2.0 前）等效" }
+      ],
+      "rows": [
+        { "cells": { "attrs": "100 / 100 / 100", "wd": "+100%", "as": "+10%", "aoe": "+10%", "legacyNote": "旧版：+200% 武器伤害，+20% 攻击速度，+20% 范围" } },
+        { "cells": { "attrs": "300 / 300 / 300", "wd": "+300%", "as": "+30%", "aoe": "+30%", "legacyNote": "旧版：+600% 武器伤害，+60% 攻击速度，+60% 范围" } },
+        { "cells": { "attrs": "500 / 500 / 500", "wd": "+500%", "as": "+50%", "aoe": "+50%", "legacyNote": "旧版：+1000% 武器伤害，+100% 攻击速度，+100% 范围" } },
+        { "cells": { "attrs": "800 / 800 / 800", "wd": "+800%", "as": "+80%", "aoe": "+80%", "legacyNote": "旧版：+1600% 武器伤害，+160% 攻击速度，+160% 范围" } },
+        { "cells": { "attrs": "1000 / 1000 / 1000", "wd": "+1000%", "as": "+100%", "aoe": "+100%", "legacyNote": "旧版：+2000% 武器伤害，+200% 攻击速度，+200% 范围" } }
+      ],
+      "note": "旧版数值仅作对比。由于 0.2.0 重做自动应用，游戏中每根笼神之柱都使用当前（左列）数值。武器伤害仅作用于武器命中。"
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "按属性投入的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "build",
+        "decision"
+      ],
+      "rows": [
+        {
+          "scenario": "低属性（力量 < 150）",
+          "audience": "非堆叠者、早期角色",
+          "benefit": "少量武器伤害百分比与很低的基础 9 至 18；16% 打击范围隐性",
+          "risk": "伤害回报低；基础伤害逊于稀有细杖",
+          "level": "low",
+          "recommendation": "在堆叠属性前，使用带固定伤害 + 抗性的稀有细杖。",
+          "tags": [ "decision" ]
+        },
+        {
+          "scenario": "中属性（力量 200 至 400，部分敏捷/智慧）",
+          "audience": "过渡期属性堆叠者",
+          "benefit": "+200 至 400% 武器伤害与 +20 至 40% 攻速/范围；强力刷图伤害",
+          "risk": "中等（防御成型前较脆）",
+          "level": "medium",
+          "recommendation": "一旦力量跨过约 200 就装备笼神之柱；此时伤害已超越多数稀有细杖。",
+          "tags": [ "build" ]
+        },
+        {
+          "scenario": "高属性（力量 600+，敏捷/智慧 500+）",
+          "audience": "终局属性堆叠者",
+          "benefit": "+600 至 1000% 武器伤害，+60 至 100% 攻速/范围；最佳武器伤害百分比来源之一",
+          "risk": "中等（玻璃大炮；需 CI/混沌抗与魔力维持）",
+          "level": "high",
+          "recommendation": "保留笼神之柱；与智慧与行动之手及全属性护符搭配。",
+          "tags": [ "build" ]
+        },
+        {
+          "scenario": "纯法术流派",
+          "audience": "施法者",
+          "benefit": "加成词条无任何收益",
+          "risk": "高（浪费独特装备栏）",
+          "level": "high",
+          "recommendation": "不要使用笼神之柱；其加成为武器/攻击限定，不适用于法术。",
+          "tags": [ "decision" ]
+        }
+      ]
+    },
+    {
+      "id": "switch-thresholds",
+      "order": 52,
+      "title": "等级与属性时间线",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "等级与属性时间线——何时值得装备笼神之柱。假设流派其余部分已提供命中、防御与资源。",
+      "columns": [
+        { "key": "stage", "label": "等级 / 属性" },
+        { "key": "ctx", "label": "背景" },
+        { "key": "gain", "label": "笼神之柱贡献" },
+        { "key": "verdict", "label": "结论" }
+      ],
+      "rows": [
+        { "cells": { "stage": "等级 4，基础属性", "ctx": "4 级即可用的首把独特细杖；基础伤害 9 至 18；属性词条几乎无感", "gain": "收益可忽略；仅 16% 打击范围隐性", "verdict": "暂缓——在堆叠前稀有细杖更好" } },
+        { "cells": { "stage": "等级约 30 至 40，力量 100 至 200", "ctx": "古灵/属性天赋开始堆叠力量", "gain": "+100 至 200% 武器伤害", "verdict": "力量越过约 150 即装备笼神之柱" } },
+        { "cells": { "stage": "等级 60+，力量 300 至 500", "ctx": "中期三属性堆叠", "gain": "+300 至 500% 武器伤害，+30 至 50% 攻速/范围", "verdict": "属性堆叠流派的核心武器" } },
+        { "cells": { "stage": "终局，力量 800 至 1000+", "ctx": "配全属性护符 + 珠宝的满堆叠", "gain": "+800 至 1000% 武器伤害，+80 至 100% 攻速/范围", "verdict": "保留；与 HOWA 并列的流派基石" } }
+      ],
+      "note": "笼神之柱从 4 级即可用，但只有在属性堆叠起来后才转为伤害正收益；低需求是便利，而非强度。"
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "流派用法",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "笼神之柱是一件赋能武器，而非独立流派。以下四种情境说明它适合的位置、需要搭配什么、它不提供什么，以及哪些技能无法受益。"
+      ],
+      "builds": [
+        {
+          "title": "早期属性堆叠者（战役到早期地图）",
+          "description": "满足 9 敏捷后于 4 级装备。搭配任意细杖攻击技能（如蓄力杖、骤雨乱舞、虚空穿梭）。入手：全图farm或对白色长细杖机会石化。缺失防御：杖的基础低闪避且不提供抗性/生命，防御须来自其余装备。不支持：法术与徒手攻击。"
+        },
+        {
+          "title": "中期三属性过渡（地图）",
+          "description": "约 200 至 400 力量，敏捷与智慧同步攀升且抗性达标。保留笼神之柱为核心武器；因防御已在别处解决，后缀可腾给属性。缺失防御：杖本身仍无内置防御。不支持：法术。"
+        },
+        {
+          "title": "终局属性堆叠者（古灵军团）",
+          "description": "典型 500 至 1000 力量（配全属性护符 + 巧手 + 属性珠宝），且高敏捷/智慧。运行笼神之柱（武器）+ 智慧与行动之手（手套）+ 全属性护符。古灵军团的可适应特性把属性点重投为全力量以最大化武器伤害。缺失防御：玻璃大炮；需 CI/混沌抗与魔力维持。不支持：法术 / 图腾自带武器的攻击。"
+        },
+        {
+          "title": "副武器组赋能",
+          "description": "部分弩/攻击流派把笼神之柱留在第二武器组，仅用于近战范围的爆发（如骤雨乱舞）。装备期间每属性加成依然生效。缺失：它占用武器栏，因此主武器组须为另一把武器。"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "替代选择",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "对比一把高roll的稀有长细杖，差别在于加成方式。稀有细杖可以提供固定的物理伤害、固定的增加攻击速度，外加抗性、生命/能量护盾与命中。笼神之柱则让其武器伤害%、攻击速度与范围效果随你的属性增长——你堆叠的 Str/Dex/Int 越多，每条词条越值钱。若你的流派已堆叠 300+ 力量，笼神之柱在伤害上几乎总能击败稀有细杖；若你并非属性堆叠（力量低），带固定伤害 + 抗性 + 生命的稀有细杖通常更好，因为笼神之柱的加成被浪费且基础伤害很低。",
+        "当前没有其他独特细杖提供每属性武器伤害加成，因此笼神之柱是 0.5 中唯一的「属性加成武器」。相关独特装备担任不同角色：智慧与行动之手（手套）提供固定闪电（智慧）与攻击速度（敏捷），是互补而非替代——标准属性堆叠者两者都用。阿斯特拉门提斯（护符）提供喂养笼神之柱乘区的大量属性。催化剂与符文/魂核可加敏捷或攻击速度以放大乘区。"
+      ],
+      "bullets": [
+        "稀有细杖：固定伤害 + 防御；属性低时更好。",
+        "笼神之柱：随属性增长的武器伤害% + 攻速 + 范围；属性高时更好。",
+        "智慧与行动之手：互补手套，非替代。",
+        "阿斯特拉门提斯 / 催化剂 / 符文：喂养同一批属性。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "获取方式",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "没有首领门槛。你要么从任意掉落来源farm，要么机会石化，要么在玩家市场购买。"
+      ],
+      "routes": [
+        {
+          "label": "全图掉落",
+          "body": [
+            "笼神之柱可从游戏中任何怪物、宝箱或强箱（战役、地图、终局）掉落。它不绑定特定首领或区域。"
+          ]
+        },
+        {
+          "label": "机会石",
+          "body": [
+            "对白色长细杖使用机会石可制造笼神之柱。因其可被机会石化且全图掉落，供给充足，这件独特相对便宜。"
+          ]
+        },
+        {
+          "label": "玩家交易",
+          "body": [
+            "在官方交易站购买。价格随联赛经济浮动；因其常见，一枚roll通常远比首领限定独特便宜。请核对基底（长细杖）以及是否为当前 0.2.0 后版本。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用、出售还是保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "笼神之柱是属性堆叠细杖流派常见、可被机会石化的独特。其市场价值随联赛经济与属性堆叠者热度浮动；未注明联赛/日期/地区的报价不可靠。"
+      ],
+      "use": {
+        "condition": "你运行细杖攻击流派，拥有 200+ 力量（理想情况下还有敏捷/智慧），或计划堆叠属性。",
+        "first": "作为核心武器装备；它随你的力量提供武器伤害%，并与其他乘区叠加。",
+        "risk": "该栏位无防御——须在别处解决抗性/生命/能量护盾与命中，否则你会暴毙。",
+        "text": [
+          "当流派已提供命中、防御与资源维持时最佳。",
+          "与智慧与行动之手及全属性护符强力协同。"
+        ]
+      },
+      "sell": {
+        "condition": "你不堆叠属性，或你玩的是法术流派。",
+        "first": "在交易站出售；即使低roll也有价值，因为属性堆叠者总想要一根。",
+        "risk": "因可被机会石化且全图掉落，价格温和，别期待溢价。",
+        "text": [
+          "施法者从武器/攻击限定的词条中一无所获。",
+          "低属性攻击流派伤害低且无防御，这根杖是累赘。"
+        ]
+      },
+      "hold": {
+        "condition": "你正朝属性堆叠者发展但还未到位。",
+        "first": "保留备用；力量/敏捷/智慧总量会随装备与珠宝在联赛中攀升。",
+        "risk": "库存与货币的潜在机会成本。",
+        "text": [
+          "若力量低于约 150，暂时稀有细杖可能更适合你。",
+          "为终局体系保留最高roll的基底。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "装备笼神之柱却忽视防御",
+          "gain": "强力武器伤害%加成",
+          "loss": "你不断暴毙——这根杖不提供生命/能量护盾/抗性",
+          "level": "high",
+          "recommendation": "仅在抗性达标且具备防御层（生命/能量护盾/CI）后装备。"
+        },
+        {
+          "scenario": "在法术流派使用笼神之柱",
+          "gain": "无",
+          "loss": "浪费独特武器栏",
+          "level": "medium",
+          "recommendation": "不要——词条为武器/攻击限定，不适用于法术。"
+        },
+        {
+          "scenario": "以旧版价格买入，期待旧加成",
+          "gain": "无额外收益",
+          "loss": "溢价；旧更强加成已不存在",
+          "level": "medium",
+          "recommendation": "核对词条文本：当前物品为每 10 力量 10% 武器伤害、每 10 敏捷 1% 攻速、每 10 智慧 1% 范围。旧加成已被自动削弱。"
+        },
+        {
+          "scenario": "低属性总量（力量 < 150）",
+          "gain": "少量武器伤害%",
+          "loss": "无防御且伤害弱于稀有细杖",
+          "level": "low",
+          "recommendation": "改用带固定伤害 + 抗性 + 生命的稀有细杖。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-flicker-pillar",
+          "kind": "论坛流派帖",
+          "question": "笼神之柱是否需要特定职业？",
+          "summary": [
+            "一个热门的古灵军团虚空穿梭流派完全围绕这根杖构建。"
+          ],
+          "editorialAnalysis": [
+            "这根杖无职业需求（仅等级 4、9 敏捷）。其属性加成与职业无关，但古灵军团的可适应特性与增效使其全力量堆叠尤为高效。"
+          ],
+          "officialAnswer": [
+            "任何职业都可装备；最强使用者把属性点重投为全力量（如古灵军团）或堆叠全部三属性。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "流派用法"
+        },
+        {
+          "sourceId": "forum-tempest-pillar",
+          "kind": "论坛流派帖",
+          "question": "笼神之柱能否用于第二武器组？",
+          "summary": [
+            "一个骤雨惊雷古灵流派把笼神之柱作为第二武器用于近战范围爆发。"
+          ],
+          "editorialAnalysis": [
+            "由于每属性加成在装备期间生效，切到第二武器组的笼神之柱会在该组攻击时提供其武器伤害%。其余流派可保持弩。"
+          ],
+          "officialAnswer": [
+            "可以——笼神之柱可用于副武器组；只要它是已装备的武器，其加成即生效。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "流派用法"
+        },
+        {
+          "sourceId": "wiki-pillar",
+          "kind": "Wiki 注记",
+          "question": "武器伤害加成是全局还是仅限武器？",
+          "summary": [
+            "有读者询问每 10 力量 10% 是否作用于所有伤害。"
+          ],
+          "editorialAnalysis": [
+            "PoE2Wiki 指出「武器伤害」指使用你的武器进行命中造成的伤害。它不适用于徒手攻击（包括药剂瓶）或使用自身武器的图腾的攻击。"
+          ],
+          "officialAnswer": [
+            "仅限武器。徒手攻击与图腾自带武器的攻击不享受武器伤害%。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "笼神之柱如何运作"
+        },
+        {
+          "sourceId": "official-02-0",
+          "kind": "补丁说明",
+          "question": "旧的 0.2.0 前每属性 2% 笼神之柱还能获得吗？",
+          "summary": [
+            "有玩家看到旧攻略引用更强数值，疑惑这些物品是否仍掉落。"
+          ],
+          "editorialAnalysis": [
+            "0.2.0 重改了加成率，补丁说明指出每属性变更会影响已有物品。因此旧加成已在每根拥有的笼神之柱上自动转换。"
+          ],
+          "officialAnswer": [
+            "不能。游戏中每根笼神之柱现在均为每 10 力量 10% 武器伤害、每 10 敏捷 1% 攻速、每 10 智慧 1% 范围。仅基底名称不同；旧更强比率已消失。神圣石只影响可roll的数值范围——这些每属性词条均无可roll范围。"
+          ],
+          "linkHref": "#current-vs-legacy",
+          "linkLabel": "当前与旧版"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "我的笼神之柱流派几乎没伤害",
+          "directAnswer": [
+            "你的力量可能太低。低于约 200 力量时武器伤害%很小，且基础仅 9 至 18。堆叠力量（以及敏捷/智慧用于攻速/范围）——在 500 力量时仅这根杖就提供 +500% 武器伤害。"
+          ],
+          "checks": [
+            "查看角色面板上的总力量、敏捷与智慧。",
+            "确认你的技能是细杖攻击，而非法术。",
+            "确认你有其它增加武器/攻击伤害的乘区来放大这个%。"
+          ],
+          "links": [
+            { "href": "#attribute-scaling", "label": "加成表" }
+          ]
+        },
+        {
+          "symptom": "装备笼神之柱后我不断死亡",
+          "directAnswer": [
+            "笼神之柱不提供生命、能量护盾、抗性或命中。这根杖只是进攻赋能；你的防御必须来自其余装备与天赋树。"
+          ],
+          "checks": [
+            "堆满元素抗性（75%）。",
+            "从其它栏位补充防御层（生命/能量护盾/CI）与命中。",
+            "不要把笼神之柱当防御独特。"
+          ]
+        },
+        {
+          "symptom": "我的法术没有吃到加成",
+          "directAnswer": [
+            "正确——词条为武器/攻击限定。法术命中不享受武器伤害%、攻击速度或范围效果。"
+          ],
+          "checks": [
+            "切换到细杖攻击技能，或为法术流派选用其它独特。"
+          ]
+        },
+        {
+          "symptom": "机会石没有造出笼神之柱",
+          "directAnswer": [
+            "笼神之柱确实在长细杖的机会石池内，失败只是运气不好。再试一次，或改为farm掉落。"
+          ],
+          "checks": [
+            "对白色长细杖使用机会石。",
+            "或farm任意怪物/宝箱——它全图掉落。"
+          ],
+          "links": [
+            { "href": "#acquisition", "label": "获取方式" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "[PoE 2] 笼神之柱完整流派攻略实况（6幕速通）",
+          "url": "https://www.youtube.com/watch?v=iEa5n_x5h3o",
+          "creator": "Lazy Exile（PoE 论坛流派作者）",
+          "takeaway": "一个围绕笼神之柱构建的真实属性堆叠实况攻略，含升级配置、天赋树与转型建议。",
+          "timestamps": [
+            { "label": "必备独特与概览", "time": "00:00" },
+            { "label": "升级配置（全职业）", "time": "09:46" },
+            { "label": "第一章至第二章推进", "time": "11:35" },
+            { "label": "范围/单体配置", "time": "12:26" },
+            { "label": "终局转型", "time": "13:37" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "媒体画廊",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "当前 0.5 词缀——长细杖基底，每 10 力量 10% 武器伤害，每 10 敏捷 1% 攻速，每 10 智慧 1% 范围。",
+          "note": "展示当前（0.2.0 后）词条文本，而非旧版每 5 点数值。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Pillar_of_the_Caged_God"
+        },
+        {
+          "caption": "旧版（0.2.0 前）变体——每 5 力量 10% 武器伤害，每 10 属性 2% 攻速/范围。",
+          "note": "展示当前与旧版对比；旧加成在 0.2.0 被自动削弱。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Pillar_of_the_Caged_God"
+        },
+        {
+          "caption": "机制图：力量 -> 武器伤害，敏捷 -> 攻击速度，智慧 -> 范围，汇入武器命中。",
+          "note": "原创图示；展示武器伤害仅作用于武器命中。"
+        },
+        {
+          "caption": "终局角色面板（800 力量 / 800 敏捷 / 800 智慧）配笼神之柱 + HOWA + 全属性护符。",
+          "note": "展示笼神之柱超越稀有细杖的断点。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "hand-of-wisdom-and-action",
+          "contentType": "item",
+          "title": "智慧与行动之手",
+          "description": "与笼神之柱互补的属性加成手套：智慧 -> 固定闪电，敏捷 -> 攻击速度。",
+          "href": "/zh-cn/items/hand-of-wisdom-and-action/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "符文与魂核",
+          "description": "符文可提供敏捷/攻击速度词缀，放大笼神之柱的乘区。",
+          "href": "/zh-cn/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "catalysts",
+          "contentType": "item",
+          "title": "催化剂",
+          "description": "品质与属性珠宝制作， complement 属性堆叠装备。",
+          "href": "/zh-cn/items/catalysts/"
+        },
+        {
+          "contentId": "whirling-assault-martial-artist",
+          "contentType": "build",
+          "title": "旋风突袭武者",
+          "description": "可利用笼神之柱武器伤害%的细杖攻击流派。",
+          "href": "/zh-cn/builds/whirling-assault-martial-artist/"
+        },
+        {
+          "contentId": "hollow-palm-martial-artist",
+          "contentType": "build",
+          "title": "空心掌武者",
+          "description": "可受益于笼神之柱加成的武者攻击流派候选。",
+          "href": "/zh-cn/builds/hollow-palm-martial-artist/"
+        },
+        {
+          "contentId": "mana-spirit-resource-sustain",
+          "contentType": "guide",
+          "title": "魔力、魂能与资源维持",
+          "description": "如何为高攻击速度攻击流派维持魔力/魂能。",
+          "href": "/zh-cn/guides/mana-spirit-resource-sustain/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "洗点、天赋与升华指南",
+          "description": "如何将属性点洗向全力量以最大化笼神之柱加成。",
+          "href": "/zh-cn/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "weapon-set-passive-points-explained",
+          "contentType": "guide",
+          "title": "武器组天赋点详解",
+          "description": "第二武器组天赋点如何让你切出笼神之柱进行爆发。",
+          "href": "/zh-cn/guides/weapon-set-passive-points-explained/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "补丁历史与当前/旧版",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "当前（0.2.0 后，0.5.x 自然掉落）",
+          "changes": [
+            "基底长细杖（物理 9 至 18，暴击 10%，每秒攻击 1.40）。隐性 16% 增加近战打击范围。词条：每 10 力量增加 10% 武器伤害、每 10 敏捷增加 1% 攻击速度、每 10 智慧增加 1% 攻击的范围效果。",
+            "全图掉落；可机会石化。"
+          ]
+        },
+        {
+          "version": "当前 vs 旧版（0.2.0 前）",
+          "changes": [
+            "旧版比率更强：每 5 力量增加 10% 武器伤害（翻倍）、每 10 敏捷增加 2% 攻击速度、每 10 智慧增加 2% 范围效果。",
+            "神圣石行为：0.2.0 补丁说明称每属性变更会自动影响已有物品，而神圣石可获取其余数值变更。由于笼神之柱的每属性词条均无可roll范围，神圣石对其毫无改变。",
+            "自动应用 vs 仅新物品：加成率自动应用到旧物品；基底与隐性未变。因此不存在带旧加成的可交易旧版笼神之柱——游戏中每根都使用当前比率。",
+            "交易如何辨别版本：看词条文本。「每 10 力量 10%」= 当前；「每 5 力量 10%」= 旧版（已不可获得）。"
+          ]
+        },
+        {
+          "version": "0.2.0（猎捕黎明）",
+          "changes": [
+            "重做笼神之柱：现为每 10 力量增加 10% 武器伤害（原每 5）、每 10 敏捷增加 1% 攻击速度（原 2%）、每 10 智慧增加 1% 攻击的范围效果（原 2%）。每属性变更影响已有物品；神圣石可获取其余数值变更。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "笼神之柱加入游戏（长细杖基底）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "流放之路2 0.2.0 补丁说明（猎捕黎明）——笼神之柱重做与自动应用注记",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki — 笼神之柱（当前词缀、需求、掉落/机会石化、仅限武器范围）",
+          "url": "https://www.poe2wiki.net/wiki/Pillar_of_the_Caged_God"
+        },
+        {
+          "label": "工具",
+          "description": "poedb — 笼神之柱（数值范围与词条族）",
+          "url": "https://poe2db.tw/us/Pillar_of_the_Caged_God"
+        },
+        {
+          "label": "攻略",
+          "description": "Sportskeeda — 如何围绕笼神之柱构建（获取、属性协同）",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-how-build-around-pillar-the-caged-god"
+        },
+        {
+          "label": "社区",
+          "description": "PoE 论坛 — 虚空穿梭古灵军团完整攻略（围绕笼神之柱构建的流派）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3705446"
+        },
+        {
+          "label": "社区",
+          "description": "PoE 论坛 — 骤雨惊雷古灵（笼神之柱作副武器，Mobalytics/Lazy Exile）",
+          "url": "https://www.pathofexile.com/forum/view-post/25980464"
+        },
+        {
+          "label": "视频",
+          "description": "YouTube — 笼神之柱完整流派攻略实况（Lazy Exile）",
+          "url": "https://www.youtube.com/watch?v=iEa5n_x5h3o"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "变更日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首发：覆盖当前 0.5 笼神之柱加成（每 10 力量 10% 武器伤害、每 10 敏捷 1% 攻速、每 10 智慧 1% 范围）、需求等级 4、全图掉落/可机会石化、当前与旧版（0.2.0 前每 5 点）及 0.2.0 自动应用行为、三属性加成表、等级时间线、流派用法与社区问答。"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-02-0",
+      "label": "流放之路2 0.2.0 补丁说明（猎捕黎明）",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "wiki-pillar",
+      "label": "PoE2Wiki — 笼神之柱",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Pillar_of_the_Caged_God"
+    },
+    {
+      "id": "poedb-pillar",
+      "label": "poedb — 笼神之柱",
+      "sourceType": "other",
+      "url": "https://poe2db.tw/us/Pillar_of_the_Caged_God"
+    },
+    {
+      "id": "guide-sportskeeda-pillar",
+      "label": "Sportskeeda — 如何围绕笼神之柱构建",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-how-build-around-pillar-the-caged-god"
+    },
+    {
+      "id": "forum-flicker-pillar",
+      "label": "PoE 论坛 — 虚空穿梭古灵军团（笼神之柱流派）",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3705446"
+    },
+    {
+      "id": "forum-tempest-pillar",
+      "label": "PoE 论坛 — 骤雨惊雷古灵（笼神之柱副武器）",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-post/25980464"
+    },
+    {
+      "id": "video-pillar",
+      "label": "YouTube — 笼神之柱完整流派攻略（Lazy Exile）",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=iEa5n_x5h3o"
+    }
+  ],
+  "relatedItemIds": ["hand-of-wisdom-and-action", "runes-and-soul-cores", "catalysts"],
+  "relatedBuildIds": ["whirling-assault-martial-artist", "hollow-palm-martial-artist"],
+  "relatedGuideIds": ["mana-spirit-resource-sustain", "respec-passive-ascendancy-guide", "weapon-set-passive-points-explained"],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedPatchIds": [],
+  "seo": {
+    "title": "笼神之柱攻略：力量武器伤害、敏捷速度、智慧范围——PoE2 0.5",
+    "description": "笼神之柱在流放之路2 0.5 中如何以力量缩放武器伤害、敏捷缩放攻击速度、智慧缩放范围效果，外加需求等级 4、全图掉落/可机会石化，以及当前与旧版加成对比。",
+    "noindex": false
+  }
+}

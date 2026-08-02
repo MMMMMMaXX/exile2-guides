@@ -1,0 +1,849 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "en",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Widowhail: Quiver Bonus Scaling, Best Rolls and Runeforging in Path of Exile 2 0.5",
+  "shortTitle": "Widowhail",
+  "summary": "Widowhail is a unique Crude Bow in Path of Exile 2 whose only modifier, (150-250)% increased bonuses gained from Equipped Quiver, multiplies the numeric bonuses on your quiver. The bow's own damage is irrelevant; the quiver is the engine. This guide covers the exact scaling formula, which quiver modifiers scale, how low vs high rolls compare, what quiver justifies a 250% roll, the Runeforged version, and which builds must not copy someone else's quiver.",
+  "description": "How Widowhail works in PoE2 0.5: the (150-250)% increased bonuses gained from Equipped Quiver multiplier, the Base x (1 + W%) formula, which quiver mods scale (global, implicit, corruption, projectile, added damage) versus which do not (local quiver mods), low vs high roll value, quiver selection, Runeforging, and build-specific cautions.",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Widowhail unique Crude Bow from Path of Exile 2, a quiver-scaling bow that multiplies the numeric bonuses of the equipped quiver",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick answer",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Widowhail's single modifier, (150-250)% increased bonuses gained from Equipped Quiver, multiplies every scalable numeric bonus on your quiver by (1 + W/100). At 150% that is x2.5, at 200% x3.0, at 250% x3.5. The bow's own physical DPS is low on purpose: the quiver is the weapon. A good quiver is what makes a high roll worth it; a weak quiver makes even a 250% Widowhail pointless.",
+      "calloutDetail": [
+        "The multiplier applies to global, implicit and corruption bonuses granted by the quiver, including additional-arrow mods, added damage, increased attack speed, resistances, life, accuracy and more.",
+        "It does NOT add new stats. It only amplifies what the quiver already grants. A quiver with nothing worth scaling gives you nothing.",
+        "Widowhail can be Runeforged (Unique Runeforging, unlocked in Act 3) once it is a low-level unique; the unique quiver-bonus mod is retained and the base gains higher physical damage plus a Runeforged base."
+      ],
+      "answers": [
+        {
+          "label": "Use it if",
+          "text": [
+            "You already own (or can afford) a strong quiver whose numeric bonuses you want multiplied several times over - added damage, attack or projectile speed, skill levels, life, resistances."
+          ]
+        },
+        {
+          "label": "Skip it if",
+          "text": [
+            "You are a build that relies on weapon-local stats (big flat phys, high attack speed on the bow itself) or you cannot source a quiver worth amplifying. A rare bow may serve you better."
+          ]
+        },
+        {
+          "label": "Roll to aim for",
+          "text": [
+            "250% is the ceiling from the natural roll. 240-248% is nearly as strong for far less currency. A Vaal Orb corruption can push past 250% (community reports ~290%+)."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "How the multiplier works"
+        },
+        {
+          "href": "#properties",
+          "label": "Current tooltip and roll ranges"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds that use it"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick facts",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Base type",
+          "value": "Crude Bow",
+          "note": [
+            "A starter bow. The base physical damage (5-13) and attack speed (1.40) are low because the item's power comes entirely from the quiver, not the weapon."
+          ]
+        },
+        {
+          "label": "Unique modifier",
+          "value": "(150-250)% increased bonuses gained from Equipped Quiver",
+          "note": [
+            "The only explicit modifier. The roll comes in 50% steps (150 / 200 / 250), so there is no 187% roll - it snaps to a tier."
+          ]
+        },
+        {
+          "label": "Required level",
+          "value": "1 (14 Dexterity)",
+          "note": [
+            "Equippable from the very start of the campaign, which is why it doubles as a leveling bow and an endgame quiver-force-multiplier."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Drops anywhere; can be chanced; tradeable",
+          "note": [
+            "Relatively common drop from level 25+ monsters (Act 2 onward). Can also be created by using an Orb of Chance on a white Crude Bow. Vendor value is 6x Alchemy Shard."
+          ]
+        },
+        {
+          "label": "Corruption ceiling",
+          "value": "Above 250% possible",
+          "note": [
+            "A Vaal Orb corruption can exceed the natural 250% cap (community reports up to ~290%+). Verify the exact ceiling in-game."
+          ]
+        },
+        {
+          "label": "Runeforging",
+          "value": "Eligible (low-level unique)",
+          "note": [
+            "As a level-1 unique it qualifies for Unique Runeforging once unlocked in Act 3; the quiver-bonus mod is retained and the base damage is improved."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Current tooltip and roll ranges (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Physical Damage",
+          "value": "5-13",
+          "notes": [
+            "Low on purpose. Widowhail is not a damage carrier; it is a quiver amplifier."
+          ]
+        },
+        {
+          "label": "Critical Strike Chance",
+          "value": "5.00%",
+          "notes": [
+            "Inherited from the Crude Bow base."
+          ]
+        },
+        {
+          "label": "Attacks per Second",
+          "value": "1.40",
+          "notes": [
+            "Inherited from the Crude Bow base."
+          ]
+        },
+        {
+          "label": "Unique modifier (variable)",
+          "value": "(150-250)% increased bonuses gained from Equipped Quiver",
+          "notes": [
+            "The single explicit. Rolls in 50% tiers: 150%, 200%, 250%. This is the number that decides the bow's value."
+          ]
+        },
+        {
+          "label": "Requirements",
+          "value": "Level 1, 14 Dexterity",
+          "notes": [
+            "No Strength or Intelligence requirement, making it accessible to any Dex-based class from level 1."
+          ]
+        },
+        {
+          "label": "Implicit",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "Flavour implicit line shown on the item; it is not a separate scalable stat."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "How the quiver bonus multiplier works",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Widowhail's modifier reads (150-250)% increased bonuses gained from Equipped Quiver. The key word is 'increased': it takes the numeric value of a quiver bonus and increases it by the Widowhail roll. A quiver bonus of +40 to Maximum Life with a 250% Widowhail becomes +40 x (1 + 2.50) = +140 to Maximum Life. The general formula is: Scaled Quiver Bonus = Base Quiver Bonus x (1 + W/100), where W is the Widowhail roll (150, 200 or 250).",
+        "Because the multiplier is (1 + W/100), the effective factors are x2.5 at 150%, x3.0 at 200%, and x3.5 at 250%. This is confirmed by the documented arrow example: a quiver whose implicit grants 'Bow Attacks fire an Additional Arrow' (+1) combined with an explicit '+1 to Projectile Count' sums to 2 before Widowhail; at a 250% effect that 2 becomes 2 x 3.5 = 7 additional arrows. The stats are added together first, then multiplied.",
+        "What 'bonuses gained from Equipped Quiver' means in practice is every scalable numeric bonus the quiver grants to your character - both its implicit line and its explicit affixes, and also corruption implicits. This includes added damage (flat), increased percentages (attack speed, crit, damage), attributes, resistances, life, accuracy, projectile speed, pierce counts and additional-arrow mods. The multiplier does not invent new stats; it only scales the ones already present.",
+        "A subtle point many players miss: the bonus is multiplied, not added as a second copy. A quiver with +20% increased Attack Speed and a 200% Widowhail yields +20% x 3.0 = +60% increased Attack Speed from that line - it does not become +20% + 200%. The Widowhail roll is itself the 'increased' magnitude applied to the quiver's underlying bonus value.",
+        "Why the bow's own DPS is low but the build works: Widowhail replaces 'good weapon stats' with 'good quiver stats, amplified'. A Rare quiver can easily carry large flat added damage, double-digit increased attack speed, skill levels, life and resistances. Multiplying all of that by 3.5 produces more total offensive and defensive value than the flat physical damage a normal bow would provide, at the cost of needing a strong, well-rolled quiver to justify the bow slot."
+      ],
+      "bullets": [
+        "Formula: Scaled = Base x (1 + W/100). Factors: 150% -> x2.5, 200% -> x3.0, 250% -> x3.5.",
+        "Implicit, explicit and corruption quiver bonuses all count.",
+        "The bow ignores its own low physical damage; the quiver is the weapon.",
+        "Stats on the quiver are summed, then multiplied - so +1 implicit and +1 explicit arrow become 7 at 250%.",
+        "It does not add new affixes, only amplifies existing ones."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Scaling breakpoints and quiver-modifier matrix",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "Additional-arrow quiver (implicit +1, explicit +1) = 2 base arrows",
+          "audience": "Spark / projectile builds",
+          "benefit": "2 -> 5 / 6 / 7 extra arrows at 150 / 200 / 250%",
+          "risk": "More arrows only help if your skill benefits from projectile count",
+          "level": "high",
+          "recommendation": "Strong scaling; 250% turns a 2-arrow quiver into 7 projectiles.",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "+40 to Maximum Life on the quiver",
+          "audience": "Any build",
+          "benefit": "40 -> 100 / 120 / 140 Life at 150 / 200 / 250%",
+          "risk": "Low if your build does not value life",
+          "level": "medium",
+          "recommendation": "Life scales cleanly; a high roll roughly triples the quiver's life bonus.",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "+20% increased Attack Speed on the quiver",
+          "audience": "Attack builds",
+          "benefit": "20% -> 50 / 60 / 70% increased Attack Speed at 150 / 200 / 250%",
+          "risk": "Low; attack speed is almost always useful",
+          "level": "medium",
+          "recommendation": "One of the safest quiver mods to amplify.",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "Flat added damage (e.g. +5 to 30 Cold to Attacks) on the quiver",
+          "audience": "Elemental / conversion builds",
+          "benefit": "5-30 -> 12.5-75 / 15-90 / 17.5-105 at 150 / 200 / 250%",
+          "risk": "Depends on conversion and skill tags",
+          "level": "medium",
+          "recommendation": "Excellent on converted-spark or elemental bow builds; confirm the damage type is supported.",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds that use Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Widowhail is a quiver-delivery system. It shines in any build that funnels value through the quiver slot and can supply a strong quiver. The following are the realistic homes for the bow; each has a hard prerequisite (the quiver) that you must meet before the bow pays off."
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "A natural home: Deadeye rewards projectile count, and a quiver stacked with added cold/physical damage, attack speed and +projectile-skill levels gets multiplied several times. Aim for a 230%+ Widowhail and a quiver with +2 projectile skill levels plus high added damage.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Spark / converted-spark casters (Blood Mage, Stormweaver)",
+          "description": "Widowhail is used to amplify a quiver that grants +projectile skill levels and projectile speed; the multiplied projectile scaling feeds Projectile Acceleration and Spark's multi-hit damage. Budget versions clear early maps for the cost of a few dozen Exalted Orbs.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Lightning Arrow / Lightning Rod Ranger leveling",
+          "description": "From Act 2, a Widowhail plus a frequently-upgraded rare quiver is one of the strongest leveling bows because you multiply the quiver's added damage and attack speed as you out-level each quiver.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "A high-rolled Widowhail paired with a quiver carrying +2 Levels of all Projectile Skills, accuracy and attack speed spikes poison DPS through Master Fletching and the quiver multiplier.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternatives: Rare bows and other uniques",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Widowhail is not a 'more DPS no matter what' bow. Its value is conditional on the quiver. If you cannot source a quiver worth amplifying, a well-rolled Rare bow will outperform it because Rare bows bring their own flat physical damage, attack speed, critical modifiers and sockets.",
+        "Compared with other unique bows, Widowhail occupies a unique niche: it has no damage mechanic of its own, only the quiver multiplier. Bows that add flat damage, penetration or ailment conversion are simpler to use and do not require a carefully crafted quiver. Use those when you want a self-contained weapon rather than a quiver engine.",
+        "Within the quiver-scaling fantasy, there is no direct competitor - Widowhail is the only bow that scales the equipped quiver. So the real alternative decision is 'invest in a quiver + Widowhail' versus 'invest the same currency in a stronger self-contained Rare or unique bow'. Early and mid campaign the quiver route is often cheaper per point of power; at the very top end a mirror-tier Rare bow can exceed it but costs far more."
+      ],
+      "bullets": [
+        "Rare bow: better when you lack a strong quiver; brings its own damage and sockets.",
+        "Other unique bows: simpler, self-contained mechanics; no quiver dependency.",
+        "No other bow scales the quiver - Widowhail is the only option for this fantasy.",
+        "Decision: quiver+Widowhail is usually cheaper early; mirror Rare bow can exceed it late but costs far more."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "How to get Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Widowhail is a relatively common unique, which keeps even high rolls affordable compared with mirror-tier items. There are three realistic paths to ownership."
+      ],
+      "routes": [
+        {
+          "label": "Random drop (level 25+ monsters, Act 2 onward)",
+          "body": [
+            "Widowhail drops anywhere from monsters at level 25 and above. You cannot target it specifically, but increasing overall unique drop rate via 'Increased Rarity of Items Found' and juiced Waystones raises how often uniques appear."
+          ]
+        },
+        {
+          "label": "Orb of Chance on a white Crude Bow",
+          "body": [
+            "Using an Orb of Chance on a normal Crude Bow can produce Widowhail, but the success rate is low and the currency is better spent gambling for rarer uniques. Most players skip this route because the bow is already common on trade."
+          ]
+        },
+        {
+          "label": "Player trade",
+          "body": [
+            "The trade site is the most reliable way to get a specific roll. Because the drop rate is high, 240-248% rolls are often available for a fraction of the price of a perfect 250%, and a 250% bow can still be far cheaper than a mirror-tier Rare bow. Prices fluctuate by league and region - check the live trade site for the current snapshot."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Use, sell or hold",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Widowhail's price is driven almost entirely by the quiver-bonus roll. Low rolls (150-180%) are often nearly free; 240%+ and especially 250% carry a premium. Because it drops commonly, even perfect rolls are not mirror-tier expensive. Any price must be read with a date, league and region."
+      ],
+      "use": {
+        "condition": "You own a strong quiver whose numeric bonuses are worth multiplying, and your build funnels value through the quiver (projectiles, added damage, attack speed, life).",
+        "first": "Equip the best-rolled Widowhail you can afford (240%+ is the value sweet spot) and keep upgrading the quiver as you level.",
+        "risk": "A weak quiver makes the bow dead weight; the roll alone does not create power.",
+        "text": [
+          "Best when the quiver already carries large flat added damage, double-digit increased attack speed, +projectile skill levels, life and resistances.",
+          "Keep the bow for the whole campaign if you keep upgrading the quiver every 5-10 levels."
+        ]
+      },
+      "sell": {
+        "condition": "You have a low roll (150-180%) and no quiver plan, or you play a build that needs weapon-local damage.",
+        "first": "Sell low rolls cheaply; they are common and most buyers want 230%+.",
+        "risk": "Holding a low roll hoping for a price spike is unlikely - supply is steady.",
+        "text": [
+          "A 150% Widowhail with no quiver investment is worth little more than a white Crude Bow to most buyers.",
+          "List rolls honestly; the trade site shows the exact percentage and buyers filter on it."
+        ]
+      },
+      "hold": {
+        "condition": "You have a 240%+ roll or a Vaal-corrupted 250%+ roll and may switch to a quiver-based build later.",
+        "first": "Hold high rolls; they retain value because endgame quiver builds always want the multiplier.",
+        "risk": "Patch changes to quiver mods or Runeforging could shift demand, but the core fantasy is stable.",
+        "text": [
+          "High rolls are liquid and unlikely to depreciate sharply while quiver builds exist.",
+          "A corrupted 250%+ is a trophy roll that commands a premium over natural 250%."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risk and failure cost",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Bought a 250% Widowhail but your quiver is weak",
+          "gain": "Maximum possible multiplier is available",
+          "loss": "No power realized; currency spent on the bow instead of the quiver",
+          "level": "high",
+          "recommendation": "Spend more on the quiver than the bow. The quiver is the engine; the bow is the amplifier."
+        },
+        {
+          "scenario": "Copied a popular build's exact quiver on a different ascendancy/skill",
+          "gain": "You match a proven setup on paper",
+          "loss": "Your skill tags, conversions or support gems may not use the same quiver bonuses, wasting the multiplier",
+          "level": "high",
+          "recommendation": "Adapt the quiver to YOUR skill's damage tags and conversion. Do not copy a quiver blind."
+        },
+        {
+          "scenario": "Relied on local quiver mods (e.g. local increased Evasion on the quiver item)",
+          "gain": "None - these are not 'bonuses gained' by your character",
+          "loss": "Expected ES/defence from the quiver that never appears",
+          "level": "medium",
+          "recommendation": "Only count global, implicit and corruption quiver bonuses. Local item mods do not scale."
+        },
+        {
+          "scenario": "Corrupted past 250% and it bricked",
+          "gain": "Potential ~290%+ multiplier if successful",
+          "loss": "A Vaal Orb can add a bad implicit or fail to improve the roll",
+          "level": "medium",
+          "recommendation": "Only corrupt a 250% base you can replace; the upside is real but the cost is a consumed unique."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Community evidence and direct answers",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "Official forum build thread",
+          "question": "I see people running Widowhail with Spark - how does a bow work on a spell caster, and what quiver stats matter?",
+          "summary": [
+            "A player was confused that a bow (Widowhail) appears in a Spark caster build and asked which quiver affixes to prioritize."
+          ],
+          "editorialAnalysis": [
+            "Widowhail is used purely for its quiver multiplier. The build takes a quiver granting +2 to projectile skill levels and very high projectile speed; the multiplied projectile scaling feeds Projectile Acceleration and Spark's per-hit damage. The bow itself never attacks."
+          ],
+          "officialAnswer": [
+            "Prioritize a quiver with +2 Levels to all Projectile Skills and 150%+ projectile speed; the Widowhail roll amplifies those numbers. A 230%+ Widowhail is the practical floor for the build."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds that use Widowhail"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "Community forum thread",
+          "question": "For a Poisonous Concoction build, what quiver affixes should I maximize on Widowhail?",
+          "summary": [
+            "A player asked which quiver mods to stack so Widowhail multiplies the most damage."
+          ],
+          "editorialAnalysis": [
+            "The build scales from +2 Levels of all Projectile Skills, +X% Attack Speed (at least 14%) and Accuracy Rating. These are all numeric quiver bonuses that the Widowhail multiplier amplifies, stacking with the Master Fletching passive."
+          ],
+          "officialAnswer": [
+            "Stack +2 Projectile Skill Levels (most important), then attack speed and accuracy on the quiver. The Widowhail roll multiplies all three, and Master Fletching adds further multipliers."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "How the multiplier works"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "Guide / leveling analysis",
+          "question": "Is Widowhail actually good for leveling, or is it only an endgame bow?",
+          "summary": [
+            "A reader questioned whether Widowhail is worth using during the campaign or only at endgame."
+          ],
+          "editorialAnalysis": [
+            "Leveling analysis shows a Widowhail plus a frequently upgraded Rare quiver outperforms comparable Rare leveling bows at similar price points, because you multiply the quiver's added flat damage, attack speed, life-on-kill and even gem levels as you out-level each quiver."
+          ],
+          "officialAnswer": [
+            "Yes - from around level 35 a well-quivered Widowhail beats Rare leveling bows of equal cost, and scaling other bonuses (life gain on hit, skill speed, gem levels) makes it a strong campaign bow."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "How to get Widowhail"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "Guide",
+          "question": "What roll of Widowhail should I buy, and can I get more than 250%?",
+          "summary": [
+            "A buyer wanted to know the value breakpoint and whether corruption exceeds the natural cap."
+          ],
+          "editorialAnalysis": [
+            "The natural roll tops out at 250%. Community guidance is that 240-248% is nearly as strong as 250% for much less currency, and a Vaal Orb corruption can push past 250% (reports up to ~290%+), at the risk of a bad implicit."
+          ],
+          "officialAnswer": [
+            "Buy 240%+ for best value; only pay the premium for a natural 250% if budget allows. Corruption can exceed 250% but may add an unwanted implicit - corrupt a replaceable copy."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Use, sell or hold"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problems and direct answers",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "My DPS did not go up after equipping Widowhail",
+          "directAnswer": [
+            "Widowhail only amplifies quiver bonuses. If your quiver has little worth scaling (or you use a unique quiver whose mods are not numeric bonuses), the bow adds almost nothing. Check your quiver's global, implicit and corruption bonuses."
+          ],
+          "checks": [
+            "Open the quiver and list its global bonuses (added damage, attack speed, life, resistances, skill levels).",
+            "Confirm those bonuses are numeric and global, not local to the quiver item.",
+            "Verify the Widowhail roll is high (230%+ ideal)."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "How the multiplier works"
+            }
+          ]
+        },
+        {
+          "symptom": "I copied a streamer's quiver but my build feels weak",
+          "directAnswer": [
+            "Quiver value is build-specific. A quiver built for Spark's projectile scaling may be useless on a Lightning Arrow build if the damage tags or conversions differ. Tailor the quiver to your skill."
+          ],
+          "checks": [
+            "Check which damage types and tags your main skill actually uses.",
+            "Pick quiver bonuses that match those tags (added cold vs physical, projectile speed vs attack speed)."
+          ]
+        },
+        {
+          "symptom": "Local quiver mods I expected did not scale",
+          "directAnswer": [
+            "Only bonuses your character gains from the quiver scale. Local mods that only affect the quiver item itself are not 'gained' and are not multiplied."
+          ],
+          "checks": [
+            "Compare the quiver's global bonuses with its local modifiers.",
+            "Rely on implicit, explicit and corruption bonuses, not local item stats."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Video walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage: how the Widowhail budget variant works (goldfarmingGUIDE)",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE (via Mobalytics build guide)",
+          "takeaway": "Walkthrough of the budget Widowhail Spark Blood Mage variant, including quiver selection and how the quiver multiplier drives damage. Section labels are approximate.",
+          "timestamps": [
+            {
+              "label": "Why Widowhail budget variant",
+              "time": "00:00"
+            },
+            {
+              "label": "Quiver selection and rolls",
+              "time": "03:30"
+            },
+            {
+              "label": "Damage scaling walkthrough",
+              "time": "08:00"
+            },
+            {
+              "label": "Mapping demonstration",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Media gallery",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Widowhail current tooltip (Crude Bow, (150-250)% increased bonuses gained from Equipped Quiver)",
+          "note": "Show the unique modifier and the 50% roll tiers. The base physical damage is intentionally low.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Quiver before/after Widowhail multiplier",
+          "note": "Illustrate a single quiver line (e.g. +40 Life) becoming +100 / +120 / +140 at 150 / 200 / 250%.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Low roll vs high roll comparison",
+          "note": "Side-by-side of a 150% and a 250% Widowhail to show the multiplier gap on the same quiver.",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "Runeforged Widowhail base",
+          "note": "Describe the Runeforged base gaining higher physical damage and a Runic Ward base; the unique quiver-bonus mod is retained.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Connected content",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "A prime Widowhail home: projectile count and added damage scale hard with the quiver multiplier.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "The signature Deadeye skill that benefits from multiplied quiver projectile and damage bonuses.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "Socketing the right rune in your quiver can add a bonus that Widowhail then amplifies.",
+          "href": "/en/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "The material used at the Verisium Anvil for Runeforging, including the Runeforged Widowhail.",
+          "href": "/en/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runes of Aldur Remnant Recipes",
+          "description": "How Runeforging and Runemastered crafting work, relevant to the Runeforged Widowhail.",
+          "href": "/en/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runes of Aldur",
+          "description": "The current patch that introduced Runeforging, the system that upgrades low-level uniques like Widowhail.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Patch history and current vs legacy",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Current (0.5.4, natural drop)",
+          "changes": [
+            "Widowhail is a unique Crude Bow with (150-250)% increased bonuses gained from Equipped Quiver. The roll is in 50% tiers (150 / 200 / 250). This is the only current version; there is no separate legacy quiver-bonus value to confuse with it."
+          ]
+        },
+        {
+          "version": "Runeforging (0.5.0 league - Runes of Aldur)",
+          "changes": [
+            "Unique Runeforging was introduced, letting low-level uniques (level requirement below 55) be upgraded. Widowhail (level 1) qualifies: the unique quiver-bonus mod is retained and the base gains higher physical damage plus a Runeforged base. There is no Divine Orb change to the quiver-bonus roll - it is a fixed range, not a variable re-roll."
+          ]
+        },
+        {
+          "version": "How Trade identifies the version",
+          "changes": [
+            "The trade site shows the exact 'increased bonuses gained from Equipped Quiver' percentage. Buyers filter on it directly. A Runeforged Widowhail is a distinct base type with Runic Ward and is listed separately from the normal unique."
+          ]
+        },
+        {
+          "version": "Note on Divine Orb and corruption",
+          "changes": [
+            "The quiver-bonus roll is a fixed range, so a Divine Orb does not change it. A Vaal Orb corruption can exceed 250% (community reports up to ~290%+) but may add an unwanted implicit. Verify the exact corruption ceiling in-game."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 Patch Notes (official forum)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Widowhail (base stats, mechanic, arrow example)",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant - How to Get Widowhail (drop, roll value, corruption)",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "MaxRoll - Best Leveling Uniques (Widowhail quiver-scaling analysis)",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Official forum build thread - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Community forum thread - Widowhail Poisonous Concoction setup",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "VIDEO",
+          "description": "goldfarmingGUIDE - Spark Blood Mage Widowhail budget variant",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication covering the Widowhail quiver-bonus multiplier formula, which quiver mods scale, low vs high roll value, quiver selection, Runeforging, and build-specific cautions."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - How to Get Widowhail",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Best Leveling Uniques",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "Official forum - Widowhail Spark Infernalist build",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "Community forum - Widowhail Poisonous Concoction setup",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Spark Blood Mage Widowhail variant",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "Widowhail Guide: Quiver Bonus Scaling, Best Rolls and Runeforging (PoE2 0.5)",
+    "description": "How Widowhail works in Path of Exile 2: the (150-250)% increased bonuses gained from Equipped Quiver multiplier, the Base x (1 + W%) formula, which quiver mods scale, roll value, quiver selection and Runeforging.",
+    "noindex": false
+  }
+}

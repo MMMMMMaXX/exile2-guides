@@ -1,0 +1,780 @@
+{
+  "id": "ghostwrithe",
+  "slug": "ghostwrithe",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "幽冥之衣（Ghostwrithe）：生命转能量护盾、命中路由与纯ES防御——流放之路2 0.5",
+  "shortTitle": "幽冥之衣",
+  "summary": "幽冥之衣是流放之路2中的一件独特维尔礼袍（Vaal Regalia），其三词缀将你的防御塌缩为单一能量护盾池：100%最大生命来自能量护盾，（20-30）%命中所受伤害先从能量护盾扣除再扣生命，且你无法从药剂获得或再生生命、也无法吸取生命。本文讲解转化数学、为何所有生命续航手段失效、如何重建以能量护盾为基础的防御、它赋能的流派（类混沌免疫施法者与ES僧侣），以及roll临界点的取舍。",
+  "description": "幽冥之衣在0.5版本中如何运作：100%最大生命来自能量护盾的转化、（20-30）%命中所受伤害先扣ES再扣生命的路由、生命吸取/再生/药剂续航的丧失、由此产生的单一能量护盾防御、流派示例、roll价值与失败成本。",
+  "itemType": "body-armour",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "es-conversion",
+    "ci-style",
+    "es-defence"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-armour",
+  "itemClass": "body-armour",
+  "baseType": "vaal-regalia",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-armour",
+    "es-conversion",
+    "ghostwrithe"
+  ],
+  "heroImage": "/images/items/ghostwrithe-hero.webp",
+  "cardImage": "/images/items/ghostwrithe-hero.webp",
+  "imageAlt": "流放之路2中的独特维尔礼袍幽冥之衣，一件将你整个生命池转化为能量护盾并禁用生命续航的护甲",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "幽冥之衣的三词缀把你的角色变成纯能量护盾单位。\"100%最大生命来自能量护盾\"将你的整个生命总量并入能量护盾——最终你拥有0点独立生命。\"（20-30）%命中所受伤害先从能量护盾扣除再扣生命\"进一步把每一下命中的额外一部分先压到你的ES上。由于已无生命池，生命吸取、生命再生与生命药剂全部失效：你必须完全依靠能量护盾存活。回报是一个单一的、可充能的池子，随ES投资而增长，并实现类混沌免疫（Chaos Inoculation）流派，而无需实际点出CI核心天赋。",
+      "calloutDetail": [
+        "该转化将你的最大生命加进最大能量护盾。一个拥有2500生命与3000能量护盾的角色，会变成约5500能量护盾与0生命。",
+        "任何以\"生命\"为目标的效应（药剂回复、生命吸取、生命再生、击中回生命）都因没有池子可作用而失效。",
+        "你必须转而依靠ES充能、ES吸取、ES再生、击中回ES与格挡回ES来维持。"
+      ],
+      "answers": [
+        {
+          "label": "适合使用，如果你",
+          "text": [
+            "你本就围绕能量护盾构建（施法者、ES僧侣），想停止在生命与ES之间分散点数；或你想在仍使用生命被动的情况下，建立一个类混沌免疫、以ES维持不朽的角色。"
+          ]
+        },
+        {
+          "label": "建议跳过，如果你",
+          "text": [
+            "你的流派依赖生命药剂、生命吸取或生命再生（多数攻击与召唤流派），或你无法堆到足够的ES来替代你的生命池。"
+          ]
+        },
+        {
+          "label": "roll的目标",
+          "text": [
+            "（20-30）%命中路由词缀只是转化之上的次要加成。优先追求高基底能量护盾的维尔礼袍与你的总ES，而非roll档位。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "转化如何运作"
+        },
+        {
+          "href": "#properties",
+          "label": "当前词缀与roll区间"
+        },
+        {
+          "href": "#build-usage",
+          "label": "使用它的流派"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "基础类型",
+          "value": "维尔礼袍（Vaal Regalia）",
+          "note": [
+            "一件智慧系护甲，拥有高能量护盾基底——当你要堆叠一个巨大ES池时，这正是你想要的。"
+          ]
+        },
+        {
+          "label": "独特词缀",
+          "value": "100%生命来自ES；（20-30）%命中伤害先扣ES；无法吸取/再生生命、无法从药剂获得生命",
+          "note": [
+            "三条词缀全部针对你的生命池。它们共同将生命作为防御层彻底移除。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "1（智慧）",
+          "note": [
+            "从一开始即可装备，因此只要ES池足够大，它可伴随ES施法者度过整个战役。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "value": "任意掉落；可交易",
+          "note": [
+            "一件相对常见的独特护甲。多数玩家在交易中购买特定基底ES的roll，而非靠farm。"
+          ]
+        },
+        {
+          "label": "它禁用了什么",
+          "value": "生命药剂、生命吸取、生命再生",
+          "note": [
+            "这三者因你的生命池为0而停止运作，是你的三大续航手段失效。"
+          ]
+        },
+        {
+          "label": "roll相关性",
+          "value": "低——基底ES更重要",
+          "note": [
+            "（20-30）%档位几乎不改变存活能力。购买时追求最高基底能量护盾的roll与你的总ES，而非后缀roll。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "当前词缀面板与roll区间（0.5.4）",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "基底能量护盾",
+          "value": "高（维尔礼袍基底）",
+          "notes": [
+            "维尔礼袍是能量护盾基底最高的智慧系护甲。具体roll因掉落而异；购买时优先高基底ES的roll。"
+          ]
+        },
+        {
+          "label": "词缀1（固定）",
+          "value": "100%最大生命来自能量护盾",
+          "notes": [
+            "你的最大生命被直接加进最大能量护盾。这不是伤害的百分比——而是池子本身被合并。"
+          ]
+        },
+        {
+          "label": "词缀2（可变）",
+          "value": "（20-30）%命中所受伤害先从能量护盾扣除再扣生命",
+          "notes": [
+            "以档位roll；每一下命中的一部分在生命之前先从ES扣除。一旦生命因词缀1已为0，此条意义不大。"
+          ]
+        },
+        {
+          "label": "词缀3（固定）",
+          "value": "无法吸取或再生生命，且无法从药剂获得生命",
+          "notes": [
+            "硬性封锁全部三条生命续航路径。这些效应的ES版本不受影响，成为你唯一的续航。"
+          ]
+        },
+        {
+          "label": "需求",
+          "value": "等级1，智慧",
+          "notes": [
+            "无力量或敏捷需求；维尔礼袍基底设定了智慧需求。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "生命转能量护盾的转化如何运作",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "幽冥之衣的第一条词缀写作\"100%最大生命来自能量护盾\"。这不会减少伤害；它重新安置了你的血量。你的最大生命值被直接加进你的最大能量护盾。净效果是一个单一防御池：最大能量护盾 =（其它所有来源的最大能量护盾）+（所有来源的最大生命），而最大生命变为0。",
+        "演算示例：一个角色其天赋树与装备提供2500最大生命，其护甲、天赋树、装备与光环提供3000能量护盾，随后装备一件幽冥之衣。转化后该角色拥有2500 + 3000 = 5500最大能量护盾与0最大生命。你本要花在生命上的每一个点现在都只是让ES池更大，因为生命已被并入其中。",
+        "第二条词缀\"（20-30）%命中所受伤害先从能量护盾扣除再扣生命\"，在生命已为0后基本是冗余的，但它是一条明确的规则，将伤害保持在能量护盾上。在普通流放之路2中，一次命中先消耗ES，溢出部分才扣生命；幽冥之衣保证每一下命中的额外20-30%被路由到ES，在生命被触及之前。既然生命已为0，实际含义很简单：你所有受到的命中伤害都落在可充能的能量护盾上。",
+        "第三条词缀是代价：\"无法吸取或再生生命，且无法从药剂获得生命\"。没有生命池，生命药剂回不了血、生命吸取回不来、生命再生在一个空条上跳动。你完全依赖能量护盾续航。这是该物品真正的成本，也正是为何幽冥之衣只在已经投资ES续航（充能速率、ES吸取、格挡回ES、ES再生）的角色身上才划算。",
+        "为何玩家仍要使用它：将生命并入ES让你拥有一个非常巨大的池子，而非两个较小的池子，而这个池子受益于能量护盾充能——一旦你投资\"能量护盾充能速率\"与\"降低ES开始充能延迟\"，它往往比生命药剂的上线更快更可靠。它也让你接近混沌免疫：拥有0生命，混沌伤害无法通过生命杀死你，因此你只需用单一ES条抵御所有伤害类型。"
+      ],
+      "bullets": [
+        "公式：最大ES =（其它所有最大ES）+（所有最大生命）；最大生命变为0。",
+        "示例：2500生命 + 3000 ES → 5500 ES 与 0 生命。",
+        "词缀2将命中伤害保持在ES优先；一旦生命为0基本冗余。",
+        "词缀3杀死生命药剂/生命吸取/生命再生——你必须依靠ES续航。",
+        "无需CI核心天赋即可实现类CI的单一池防御。"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "转化矩阵与防御结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "conversion",
+        "energy-shield",
+        "defence"
+      ],
+      "rows": [
+        {
+          "scenario": "装备幽冥之衣前 2500生命 + 3000 ES",
+          "audience": "任意ES施法者",
+          "benefit": "单一5500 ES池，0生命——一条巨大的可充能条",
+          "risk": "无生命缓冲：若ES破裂你即死亡",
+          "level": "high",
+          "recommendation": "与ES充能 + ES吸取搭配时强力；总池大于保留两个薄池。",
+          "tags": [
+            "energy-shield",
+            "pool-size"
+          ]
+        },
+        {
+          "scenario": "（20-30）%命中所受伤害先扣ES",
+          "audience": "所有流派",
+          "benefit": "每一下命中的额外一部分被强制压到ES（若仍有剩余生命则重要）",
+          "risk": "低；微小存活波动",
+          "level": "low",
+          "recommendation": "视作转化之上的风味；不要追高roll。",
+          "tags": [
+            "routing",
+            "hit-damage"
+          ]
+        },
+        {
+          "scenario": "生命药剂 / 生命吸取 / 生命再生被禁用",
+          "audience": "攻击 / 召唤流派",
+          "benefit": "对这些流派毫无益处",
+          "risk": "常用续航完全丧失 → 往往是死角色",
+          "level": "high",
+          "recommendation": "除非你已运行ES续航（Ghostshroud、ES吸取、充能缩放），否则避开幽冥之衣。",
+          "tags": [
+            "sustain",
+            "anti-synergy"
+          ]
+        },
+        {
+          "scenario": "0生命（对生命混沌免疫）",
+          "audience": "类CI施法者",
+          "benefit": "混沌伤害无法通过生命杀死你；所有伤害只击中一条ES",
+          "risk": "必须针对混沌超量堆叠ES；需保护的仅一条池",
+          "level": "medium",
+          "recommendation": "对于想要最大ES缩放却不愿承受CI核心天赋取舍的类CI流派极佳。",
+          "tags": [
+            "chaos",
+            "ci-style"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "使用幽冥之衣的流派",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "幽冥之衣适用于本就生活在能量护盾上、并想停止在生命与ES之间分散防御的角色。以下是现实的归宿；每一种都假设你已有ES续航方案。"
+      ],
+      "builds": [
+        {
+          "title": "风暴编织者（Stormweaver）大法师（Archmage）",
+          "description": "天然归宿：大法师将法力缩放进伤害与ES，因此被转化的生命只是喂进同一个巨大池子。配合ES充能缩放与一个ES吸取来源，使单一条保持充盈。",
+          "href": "/zh-cn/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "类混沌免疫的感召者（Invoker）僧侣",
+          "description": "僧侣可堆叠ES并将生命转入同一ES条，获得类CI的不朽（混沌无法通过生命杀死你），同时让生命被动继续为ES工作。需要严律的ES充能与吸取。",
+          "href": "/zh-cn/builds/storm-wave-flicker-invoker/"
+        },
+        {
+          "title": "低血能量护盾圣堂武士（Templar）",
+          "description": "想要低血幻想却不愿处理痛苦加身（Pain Attunement）复杂性的玩家，用幽冥之衣合并池子，运行一条由光环与海盗（Corsair）药剂（仍作用于ES）供养的巨大ES条。",
+          "href": "/zh-cn/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "闪现/烙印类能量护盾秘术师（Occultist）风格",
+          "description": "任意本就忽略生命药剂、依靠ES充能与击杀回ES维生的施法者，可将生命并入以获得更大、更简单的池子。",
+          "href": "/zh-cn/builds/storm-wave-flicker-invoker/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "替代品：普通ES胸甲、CI核心天赋、生命护甲",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "幽冥之衣并非一件roll好的稀有维尔礼袍的严格升级。稀有ES胸甲可给出更高的基底能量护盾与有用的后缀（ES%、降低ES开始延迟、属性需求），且不强迫你放弃生命续航。当你仍想要一个生命缓冲时，使用稀有胸甲。",
+        "与混沌免疫核心天赋相比，幽冥之衣达成类似的\"以ES不朽、对生命混沌安全\"结果，却无需将最大生命设为1。CI下你的生命为1，你仍需构建ES；幽冥之衣下你的生命为0，你的生命被动转而膨胀ES。CI更干净，且不会在独立条上禁用生命吸取/再生，但幽冥之衣让重生命的被动树仍能以ES兑现。",
+        "对比普通生命系护甲，幽冥之衣对任何依赖生命药剂或生命吸取的流派严格更差——而那正是多数攻击流派。它们绝不该考虑它。真正的抉择是\"全押单一ES池\"（幽冥之衣）还是\"保留生命+ES分离\"（稀有胸甲或CI）。"
+      ],
+      "bullets": [
+        "稀有维尔礼袍：可能更高基底ES，保留生命续航——当你想要缓冲时使用。",
+        "混沌免疫核心天赋：结果类似，但生命变为1，独立条上的生命吸取/再生仍存在。",
+        "生命护甲：对药剂/吸取流派严格更优——它们应避开幽冥之衣。",
+        "抉择：只有当你完全投入单一ES池时才选幽冥之衣。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "如何获取幽冥之衣",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "幽冥之衣是一件相对常见的独特护甲，因此现实的路径是交易而非farm。"
+      ],
+      "routes": [
+        {
+          "label": "随机掉落（任意等级，第一章起）",
+          "body": [
+            "一旦达到需求等级，它可从任意怪物掉落。你无法定向获取；通过\"提高物品稀有度（Increased Rarity of Items Found）\"与强化的界石（Waystone）提升整体独特掉落率会增加独特出现频率，但对一件特定护甲来说很慢。"
+          ]
+        },
+        {
+          "label": "对白色维尔礼袍使用机会石（Orb of Chance）",
+          "body": [
+            "对普通维尔礼袍使用机会石可获得幽冥之衣，但概率低，且这些通货更值得花在别处。多数玩家跳过此路径。"
+          ]
+        },
+        {
+          "label": "玩家交易（推荐）",
+          "body": [
+            "在交易中购买是获取特定基底ES roll的可靠方式。由于它常见，即便高基底ES的roll也负担得起。购买你能负担的最高基底能量护盾；后缀（20-30）%几乎无关紧要。价格随联赛与地区波动——请查询实时交易站。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用、出售还是保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "幽冥之衣的价格由维尔礼袍的基底能量护盾roll驱动，而非后缀档位。高基底ES的roll有溢价；低的近乎免费。它并非镜像级昂贵。任何价格都必须结合日期、联赛与地区来解读。"
+      ],
+      "use": {
+        "condition": "你运行一个基于ES的角色，且已有ES续航方案（充能缩放、ES吸取、格挡回ES）。",
+        "first": "装备你能负担的最高基底ES幽冥之衣，将生命并入池子；将被动点投入ES、ES充能速率与降低开始充能延迟。",
+        "risk": "无生命缓冲——一次击穿ES的爆发在无药剂备份下可能致命。",
+        "text": [
+          "最佳情形是你的整个防御本就生活在能量护盾上。",
+          "若你的流派是纯ES，可保留整场联赛。"
+        ]
+      },
+      "sell": {
+        "condition": "你玩的是生命药剂或生命吸取流派，或你的ES池太小无法替代生命。",
+        "first": "出售它；对那些流派它是累赘，且足够常见可快速出手。",
+        "risk": "持有指望涨价不太可能——供给稳定。",
+        "text": [
+          "低基底ES的roll对需要大池子的ES施法者价值甚微。",
+          "如实标注基底ES的roll；买家会据此筛选。"
+        ]
+      },
+      "hold": {
+        "condition": "你拥有高基底ES的roll，并可能在日后转投ES施法者。",
+        "first": "保留高基底ES的roll；只要ES流派存在它们就保持流动。",
+        "risk": "未来改变ES充能或转化的版本可能改变需求，但幻想稳定。",
+        "text": [
+          "高基底ES的roll保值，因为转化奖励更大的起始条。",
+          "腐蚀隐性（通过瓦尔宝珠）可添加ES%或充能，提升价值。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "装备了幽冥之衣但ES池太小",
+          "gain": "生命并入ES以获得更大的单一条",
+          "loss": "无生命缓冲；击穿ES的爆发在无药剂下致命",
+          "level": "high",
+          "recommendation": "只有在你的总ES（生命+ES）明显超过旧有生命+ES时再装备。"
+        },
+        {
+          "scenario": "依赖生命药剂作为应急手段",
+          "gain": "无——药剂回复0生命",
+          "loss": "在你指望药剂救场的时刻死亡",
+          "level": "high",
+          "recommendation": "装备前以ES充能与ES吸取替代药剂依赖。"
+        },
+        {
+          "scenario": "天赋树中已点出生命吸取/生命再生",
+          "gain": "无——那些被动现在无效",
+          "loss": "浪费的被动点与续航天洞",
+          "level": "medium",
+          "recommendation": "将生命吸取/再生节点重置为ES充能、ES吸取与最大ES节点。"
+        },
+        {
+          "scenario": "仅一条池面对混沌伤害",
+          "gain": "混沌无法通过生命杀死你（生命为0）",
+          "loss": "所有混沌击中你须同时防御物理的同一ES条",
+          "level": "medium",
+          "recommendation": "超量堆叠ES并叠混沌抗性；不要假设混沌是免费的。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区证据与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-ghostwrithe-es",
+          "kind": "官方论坛流派帖",
+          "question": "如果我的100%生命来自能量护盾，我的生命药剂和生命吸取就停摆了吗？",
+          "summary": [
+            "一名玩家询问该转化是否悄悄禁用了他惯用的生命续航。"
+          ],
+          "editorialAnalysis": [
+            "是的。一旦最大生命并入能量护盾，你的生命池为0，因此生命药剂、生命吸取与生命再生无从作用。第三条词缀明确了这一点。你必须在能量护盾上重建续航：充能速率、ES吸取、格挡回ES、ES再生。"
+          ],
+          "officialAnswer": [
+            "以ES续航替代生命续航。堆叠\"能量护盾充能速率\"，削减ES开始充能延迟，并获取一个ES吸取来源（如Ghostshroud或ES吸取辅助）。生命药剂沦为装饰。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "转化如何运作"
+        },
+        {
+          "sourceId": "forum-ghostwrithe-ci",
+          "kind": "社区论坛帖",
+          "question": "幽冥之衣基本就是没有核心天赋的免费混沌免疫？",
+          "summary": [
+            "一名读者想知道将生命并入ES是否给出与CI相同的混沌免疫感。"
+          ],
+          "editorialAnalysis": [
+            "接近。拥有0生命，混沌伤害无法通过生命杀死你，因此你获得类CI的\"对生命混沌安全\"收益，而无需将生命设为1。区别在于：你的生命被动现在喂进ES而非被浪费，且你仍禁用生命吸取/再生。它是类CI，而非完全相同。"
+          ],
+          "officialAnswer": [
+            "将其视作类CI：超量堆叠ES并添加混沌抗性，因为所有伤害类型现在击中同一条ES。不要因为生命为0就假设混沌免费。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "使用幽冥之衣的流派"
+        },
+        {
+          "sourceId": "maxroll-es-chests",
+          "kind": "攻略 / 分析",
+          "question": "我该买幽冥之衣，还是买基底ES更高的稀有维尔礼袍？",
+          "summary": [
+            "一名买家将该独特与roll好的稀有ES胸甲比较。"
+          ],
+          "editorialAnalysis": [
+            "若你想保留生命缓冲与生命药剂，稀有维尔礼袍严格更优（可能更高基底ES加有用后缀，无续航封锁）。幽冥之衣只在你完全投入单一ES池且已有ES续航时胜出。无论哪种都购买最高基底ES的roll。"
+          ],
+          "officialAnswer": [
+            "仅为全押ES流派选择幽冥之衣。否则购买最高基底ES%的稀有胸甲，并保留你的生命药剂。"
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "使用、出售还是保留"
+        },
+        {
+          "sourceId": "gamerant-ghostwrithe",
+          "kind": "攻略",
+          "question": "（20-30）%的roll重要吗？我能用瓦尔腐蚀获得更好的隐性吗？",
+          "summary": [
+            "一名买家询问后缀roll有多重要，以及腐蚀是否值得。"
+          ],
+          "editorialAnalysis": [
+            "（20-30）%命中路由roll在生命为0后几乎无关紧要；基底能量护盾才是关键。瓦尔宝珠腐蚀可添加ES%或ES充能隐性，真正有帮助，但它消耗一件独特且可能砖。只腐蚀可替换的副本。"
+          ],
+          "officialAnswer": [
+            "购买时忽略后缀roll；为基底ES付费。仅腐蚀一把多余的副本以换取ES%隐性。"
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "当前词缀面板与roll区间"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "我装备了幽冥之衣，生命药剂毫无作用",
+          "directAnswer": [
+            "预期之中。你的生命现在为0，已并入能量护盾，且该物品也封锁了来自药剂的生命。请以ES充能与ES吸取替代药剂依赖。"
+          ],
+          "checks": [
+            "打开角色面板，确认最大生命显示为0。",
+            "检查你的总能量护盾是否等于旧ES + 旧生命。",
+            "添加ES充能速率与一个ES吸取来源。"
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "转化如何运作"
+            }
+          ]
+        },
+        {
+          "symptom": "我以前能扛住的爆发现在瞬间暴毙",
+          "directAnswer": [
+            "你失去了生命缓冲。拥有单一ES池，一次击穿ES的命中会立即致命。在依赖它之前先扩大池子（更多ES、ES%）并叠加充能/吸取。"
+          ],
+          "checks": [
+            "将转化后的总ES与旧有生命+ES比较。",
+            "添加\"降低能量护盾开始充能延迟\"与充能速率。"
+          ]
+        },
+        {
+          "symptom": "我的生命吸取辅助感觉死掉了",
+          "directAnswer": [
+            "确实。生命吸取返回你不再拥有的生命。换用能量护盾吸取辅助或击中回ES效应。"
+          ],
+          "checks": [
+            "确认该辅助提供的是生命吸取（已禁用）还是ES吸取（有效）。",
+            "改用Ghostshroud或ES吸取宝石。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "生命转能量护盾幽冥之衣展示（社区流派）",
+          "url": "https://youtu.be/ToDEiQfo6mM",
+          "creator": "社区PoE2创作者",
+          "takeaway": "演示一个运行幽冥之衣的ES施法者，展示合并后的池子、ES充能配置，以及为何丢弃生命续航。章节标记为近似值。",
+          "timestamps": [
+            {
+              "label": "为何将生命并入ES",
+              "time": "00:00"
+            },
+            {
+              "label": "ES充能与吸取配置",
+              "time": "04:15"
+            },
+            {
+              "label": "以单一ES池刷图",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "媒体库",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "幽冥之衣当前词缀面板（维尔礼袍，100%生命来自ES）",
+          "note": "展示三条词缀与高基底能量护盾。注意角色面板中最大生命显示为0。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "caption": "生命+ES合并为单一池",
+          "note": "演示2500生命 + 3000 ES在装备后变为5500 ES与0生命。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "液态维里西姆（Liquid Verisium）",
+          "description": "在维里西姆铁砧（Verisium Anvil）进行符文锻造所用的材料，包括基底ES更高的符文锻造版幽冥之衣。",
+          "href": "/zh-cn/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "符文与灵魂核心",
+          "description": "镶嵌正确的符文可添加与合并池协同的ES%或充能词缀。",
+          "href": "/zh-cn/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "瓦尔宝珠（Vaal Orb）",
+          "description": "用于腐蚀幽冥之衣以争取潜在的ES%或ES充能隐性；只腐蚀可替换的副本。",
+          "href": "/zh-cn/items/vaal-orb/"
+        },
+        {
+          "contentId": "architects-orb",
+          "contentType": "item",
+          "title": "建筑师之珠（Architect's Orb）",
+          "description": "可为维尔礼袍基底添加额外隐性，一种推高合并后ES池的方式。",
+          "href": "/zh-cn/items/architects-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "版本历史与当前 vs 旧版",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "当前（0.5.4）",
+          "changes": [
+            "幽冥之衣是一件独特维尔礼袍，带：100%最大生命来自能量护盾；（20-30）%命中所受伤害先从能量护盾扣除再扣生命；无法吸取或再生生命，且无法从药剂获得生命。这是唯一的当前版本。"
+          ]
+        },
+        {
+          "version": "抢先体验引入（0.2.0）",
+          "changes": [
+            "幽冥之衣作为转化系护甲独特进入流放之路2抢先体验。核心三词缀自引入以来稳定；请在平衡调整发生时以游戏内确切roll档位为准。"
+          ]
+        },
+        {
+          "version": "符文锻造（0.5.0 联赛 - 奥杜尔符文）",
+          "changes": [
+            "低等级独特变得可符文锻造。幽冥之衣（1级）符合条件：三条词缀被保留，维尔礼袍基底获得更高能量护盾与符文锻造基底。"
+          ]
+        },
+        {
+          "version": "关于神圣宝珠与腐蚀的说明",
+          "changes": [
+            "后缀roll是固定区间，因此神圣宝珠不会改变（20-30）%档位。瓦尔宝珠腐蚀可添加ES%或ES充能隐性，但消耗一件独特——请腐蚀可替换的副本。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "流放之路2 0.5.4 版本说明（官方论坛）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - 幽冥之衣（基础数值、机制）",
+          "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "label": "工具",
+          "description": "poedb - 幽冥之衣（数据）",
+          "url": "https://poedb.tw/us/Ghostwrithe"
+        },
+        {
+          "label": "社区",
+          "description": "官方论坛 - 幽冥之衣ES转化讨论",
+          "url": "https://www.pathofexile.com/forum/"
+        },
+        {
+          "label": "视频",
+          "description": "社区 - 生命转能量护盾幽冥之衣展示",
+          "url": "https://youtu.be/ToDEiQfo6mM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "变更日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布，涵盖幽冥之衣生命转能量护盾的转化数学、生命续航的丧失、纯ES防御、流派示例、roll价值与失败成本。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "architects-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "流放之路2 0.5.4 版本说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-ghostwrithe",
+      "label": "PoE2Wiki - 幽冥之衣",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+    },
+    {
+      "id": "poedb-ghostwrithe",
+      "label": "poedb - 幽冥之衣",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Ghostwrithe"
+    },
+    {
+      "id": "forum-ghostwrithe",
+      "label": "流放之路2官方论坛（幽冥之衣讨论）",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/"
+    },
+    {
+      "id": "video-ghostwrithe",
+      "label": "社区展示 - 生命转能量护盾幽冥之衣",
+      "sourceType": "other",
+      "url": "https://youtu.be/ToDEiQfo6mM"
+    }
+  ],
+  "seo": {
+    "title": "幽冥之衣攻略：生命转能量护盾、命中路由与纯ES防御（流放之路2 0.5）",
+    "description": "幽冥之衣在流放之路2中如何运作：100%最大生命来自能量护盾的转化、（20-30）%命中所受伤害先扣ES再扣生命的路由、生命吸取/再生/药剂续航的丧失，以及由此产生的单一池ES防御。",
+    "noindex": false
+  }
+}

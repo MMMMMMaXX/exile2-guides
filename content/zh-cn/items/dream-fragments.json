@@ -1,0 +1,994 @@
+{
+  "id": "dream-fragments",
+  "slug": "dream-fragments",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "梦境碎片（Dream Fragments）：冰霜伤害、魔力回复与无法被冰冻（流放之路2 0.5）",
+  "shortTitle": "梦境碎片",
+  "summary": "梦境碎片是流放之路2中的一件独特 Sapphire Ring（蓝玉戒指），提供 +(20-30)% 冰霜伤害、(40-60)% 增加魔力回复速率，并让你无法被冰冻。本指南解释「无法被冰冻」到底防什么（只防冰冻状态、不防冰缓与冰霜伤害），冰霜伤害如何放大冰系技能，魔力回复速率对施法续航的意义，与稀有戒指的机会成本，以及瓦尔多加工（Vaal Orb）可能带来的变异。",
+  "description": "梦境碎片在流放之路2 0.5 中如何运作：无法被冰冻的范围、+(20-30)% 冰霜伤害放大、40-60% 魔力回复速率的续航意义、蓝玉戒指基底、当前与历史版本、瓦尔多加工变异、与稀有戒指的机会成本。",
+  "itemType": "ring",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "cold-damage",
+    "mana-regen",
+    "freeze-immunity"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-rings",
+  "itemClass": "ring",
+  "baseType": "sapphire-ring",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/dream-fragments-hero.webp",
+  "cardImage": "/images/items/dream-fragments-hero.webp",
+  "imageAlt": "流放之路2 梦境碎片独特蓝玉戒指，提供冰霜伤害、魔力回复与无法被冰冻",
+  "tags": [
+    "unique-ring",
+    "cold-damage",
+    "dream-fragments"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "一句话结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "梦境碎片是一枚独特蓝玉戒指，提供 +(20-30)% 冰霜伤害、(40-60)% 增加魔力回复速率，并让你无法被冰冻。它把「进攻冰伤 + 施法续航 + 冰冻免疫」三件事塞进一个戒指位：冰系技能直接吃加成，魔力回复让你更不容易空蓝，而冰冻免疫在高冰系 boss 与地图里能避免被锁死。它不防冰缓（Chill）、不防冰霜伤害本身，也没有冰抗或大量属性，所以仍是机会成本较高的独特位。",
+      "calloutDetail": [
+        "「无法被冰冻」只移除冰冻状态，不防冰缓、不防冰霜伤害、不防冰缓衍生的脆弱（Brittle）。它是对状态的免疫，不是对冰霜伤害的免疫。",
+        "+(20-30)% 冰霜伤害直接放大你所有冰霜伤害（在冰霜伤害乘区生效），对冰系攻击与法术都有用。",
+        "(40-60)% 魔力回复速率加快蓝量回充，是续航属性而非蓝量上限；缺蓝的施法者最受益。"
+      ],
+      "answers": [
+        {
+          "label": "用它当",
+          "text": [
+            "冰系流派的伤害与续航补充，以及冰系 boss/地图里避免被冰冻锁死。"
+          ]
+        },
+        {
+          "label": "先看",
+          "text": [
+            "确认你的流派真的打冰霜伤害、真的缺魔力回复；并清楚它不提供冰抗与属性，别指望它解决所有冰系问题。"
+          ]
+        },
+        {
+          "label": "避免",
+          "text": [
+            "别以为它防所有冰系异常或冰霜伤害；也别假设它能替代一枚补齐属性/生命/抗性的高 roll 稀有戒指。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "当前词缀与区间"
+        },
+        {
+          "href": "#defense-decision",
+          "label": "防御决策表"
+        },
+        {
+          "href": "#current-vs-legacy",
+          "label": "当前与历史对照"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "物品类型",
+          "value": "戒指（Sapphire Ring 蓝玉戒指）",
+          "note": [
+            "独特珠宝件；与任意稀有蓝玉戒指或其他独特戒指争夺戒指位。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "1",
+          "note": [
+            "开荒期（1 幕起）只要运气好就能出，因为 1 级以上怪物即可掉落。"
+          ]
+        },
+        {
+          "label": "稀有度",
+          "value": "Unique",
+          "note": [
+            "掉落时数值固定；神圣石可重 roll 区间但不改变有哪些词缀。"
+          ]
+        },
+        {
+          "label": "签名词缀 1",
+          "value": "+(20-30)% 冰霜伤害",
+          "note": [
+            "放大所有冰霜伤害，在冰霜伤害乘区生效。"
+          ]
+        },
+        {
+          "label": "签名词缀 2",
+          "value": "(40-60)% 增加魔力回复速率",
+          "note": [
+            "加快蓝量回充，是续航属性。"
+          ]
+        },
+        {
+          "label": "签名词缀 3",
+          "value": "无法被冰冻",
+          "note": [
+            "永久免疫冰冻状态。这是它被广泛追求的原因（仅冰冻，不防冰缓）。"
+          ]
+        },
+        {
+          "label": "掉落来源",
+          "value": "通用掉落 / 机会石可赌",
+          "note": [
+            "来自通用独特池，也可对白色 Sapphire Ring 用机会石；同基底还有其它独特，精准命中概率有限。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "当前词缀与数值区间（0.5.4）",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "冰霜伤害",
+          "value": "+(20-30)%",
+          "notes": [
+            "对所有冰霜伤害生效，攻击与法术都吃。越高对冰系收益越大。"
+          ]
+        },
+        {
+          "label": "魔力回复速率",
+          "value": "(40-60)% 增加",
+          "notes": [
+            "加快魔力池回充。对频繁施法、蓝耗高的流派价值高。"
+          ]
+        },
+        {
+          "label": "无法被冰冻",
+          "value": "状态免疫",
+          "notes": [
+            "移除冰冻状态；不防冰缓、不防冰霜伤害、不防脆弱。"
+          ]
+        },
+        {
+          "label": "需求",
+          "value": "等级 1",
+          "notes": [
+            "无额外属性门槛，几乎任何角色都能戴。"
+          ]
+        },
+        {
+          "label": "瓦尔多变异",
+          "value": "腐化可加词缀",
+          "notes": [
+            "瓦尔加工（Vaal Orb）可能附加：10% 伤害优先从魔力扣除、冰晶生命 (40-60)% 增加、击杀回复 (1-2)% 最大魔力之一。"
+          ]
+        },
+        {
+          "label": "风味文本",
+          "value": "Doryani stumbled into a realm of madness / And awoke its Master.",
+          "notes": [
+            "纯装饰，无机制影响。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "「无法被冰冻」与另外两条词缀分别保护什么",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "梦境碎片要解决的是流放之路2里最恼人的一件事之一：被冰霜机制锁在原地。冰冻会让你完全停住；本戒指让你「无法被冰冻」，即装备期间冰冻状态被彻底移除——没有药剂充能、没有持续窗口要管理，永久生效。在冰系 boss 与地图里，这能让你在被危险攻击命中的瞬间仍可走位，是巨大的生存与手感提升。",
+        "但边界要讲精确：「无法被冰冻」是对状态的免疫，不是对冰霜的 blanket 免疫。你仍然会吃冰霜伤害、仍然会被冰缓（Chill，减速）、仍然可能进入脆弱（Brittle，类似冰霜曝露降低冰抗）。戒指不提供「无视冰霜伤害」，所以冰霜穿透、冰霜曝露与脆弱依旧有效，你仍需要冰抗来应对伤害本身——而本戒指并不自带冰抗，这点要心里有数。",
+        "另外两条词缀让它有了第二、第三重价值。+(20-30)% 冰霜伤害直接放大你造成的冰霜伤害，在冰霜伤害乘区生效，对冰系攻击与法术都有效。(40-60)% 增加魔力回复速率则加快魔力池的回充——这是续航属性，和「魔力上限」是两回事：魔力上限决定池子多大，魔力回复速率决定池子 refill 多快。一个靠蓝量吃饭的施法者，既想要上限也想要回复；本戒指给的是后者（回复），所以最适合「蓝耗高、经常空蓝」的流派。",
+        "由于它是 Sapphire Ring 基底，蓝玉戒指本身自带冰霜相关底色，使它在「冰系珠宝位」里天然适配。即便抛开冰冻免疫与冰伤，它也是一枚可用的冰系戒指位——这正是它泛用性强、交易价长期偏高的原因之一。"
+      ],
+      "bullets": [
+        "冰冻被移除，你不会被冰霜控制锁死。",
+        "你不免疫冰霜伤害、冰缓或脆弱——只免疫冰冻状态。",
+        "冰霜伤害在冰霜乘区放大冰系技能；魔力回复速率是续航（ refill）而非上限。",
+        "蓝玉戒指基底让它天然契合冰系配装。"
+      ]
+    },
+    {
+      "id": "cold-damage-scaling",
+      "order": 45,
+      "title": "冰霜伤害加成演算",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "在常见冰霜技能基础伤害下，+(20-30)% 冰霜伤害带来的提升（仅本戒指一层，未计入其他冰霜乘区）。",
+      "columns": [
+        {
+          "key": "base",
+          "label": "基础冰霜伤害"
+        },
+        {
+          "key": "low",
+          "label": "+20%（低 roll）"
+        },
+        {
+          "key": "high",
+          "label": "+30%（高 roll）"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "base": "1000",
+            "low": "1200",
+            "high": "1300"
+          }
+        },
+        {
+          "cells": {
+            "base": "3000",
+            "low": "3600",
+            "high": "3900"
+          }
+        },
+        {
+          "cells": {
+            "base": "6000",
+            "low": "7200",
+            "high": "7800"
+          }
+        }
+      ],
+      "note": "这是「增加冰霜伤害」类加成，会与你其它的冰霜/元素/技能伤害乘区相乘，所以实际总提升大于表内差值。"
+    },
+    {
+      "id": "mana-regen-scaling",
+      "order": 47,
+      "title": "魔力回复速率演算",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "在常见基础魔力回复下，(40-60)% 增加带来的每秒回蓝增量。",
+      "columns": [
+        {
+          "key": "base",
+          "label": "基础回复/秒"
+        },
+        {
+          "key": "low",
+          "label": "+40%（低 roll）"
+        },
+        {
+          "key": "high",
+          "label": "+60%（高 roll）"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "base": "100",
+            "low": "140",
+            "high": "160"
+          }
+        },
+        {
+          "cells": {
+            "base": "250",
+            "low": "350",
+            "high": "400"
+          }
+        },
+        {
+          "cells": {
+            "base": "500",
+            "low": "700",
+            "high": "800"
+          }
+        }
+      ],
+      "note": "魔力回复速率是 refill 速度，不是池子大小；蓝耗高的持续施法流派最吃这一条。"
+    },
+    {
+      "id": "defense-decision",
+      "order": 48,
+      "title": "防御决策表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "何时梦境碎片是合适的戒指，何时别的更好。",
+      "columns": [
+        {
+          "key": "scenario",
+          "label": "场景"
+        },
+        {
+          "key": "value",
+          "label": "梦境碎片价值"
+        },
+        {
+          "key": "stillNeed",
+          "label": "它不解决什么"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "scenario": "冰冻致死风险高",
+            "value": "高——直接移除致命的锁死。",
+            "stillNeed": "生命/魔盾、防御与伤害仍靠其余装备。"
+          },
+          "tags": [
+            "freeze",
+            "survival"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "只缺冰抗",
+            "value": "低到中——带更大冰抗 roll 与属性的稀有戒指可能更完整。",
+            "stillNeed": "属性、生命与其它抗性需稀有补。"
+          },
+          "tags": [
+            "cold-res"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "冰系流派要伤害",
+            "value": "高——+(20-30)% 冰霜伤害直接放大输出。",
+            "stillNeed": "其它冰霜/元素乘区仍重要。"
+          },
+          "tags": [
+            "cold",
+            "damage"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "施法经常空蓝",
+            "value": "高——魔力回复速率直接缓解续航。",
+            "stillNeed": "魔力上限与其它回蓝手段仍相关。"
+          },
+          "tags": [
+            "mana",
+            "regen"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "boss 临时替换",
+            "value": "可行——冰系 boss 前换上免冰冻，打完换回。",
+            "stillNeed": "换上后抗性/属性会变化，需规划。"
+          },
+          "tags": [
+            "boss-swap"
+          ]
+        }
+      ],
+      "note": "戒指在「冰冻致死是真实风险」或「你打冰霜伤害且缺续航」时最强；当你只想要一个冰抗数字、稀有戒指还能顺带给属性与生命时最弱。"
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "戒指何时值得占个位",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "survival",
+        "cold",
+        "tradeoff"
+      ],
+      "rows": [
+        {
+          "scenario": "冰系 boss（冰冻机制）",
+          "audience": "所有流派",
+          "benefit": "读条攻击期间不被冻锁，走位更顺。",
+          "risk": "低——用一个戒指位换安全。",
+          "level": "low",
+          "recommendation": "为该战佩戴；之后若稀有戒指更合适再换下。",
+          "tags": [
+            "survival"
+          ]
+        },
+        {
+          "scenario": "冰系攻击/法术流派",
+          "audience": "施法/攻击",
+          "benefit": "冰霜伤害直接放大输出，魔力回复保续航。",
+          "risk": "中——完美 roll 交易价偏高。",
+          "level": "medium",
+          "recommendation": "买得起的最高冰伤/回复 roll；是核心伤害与续航件。",
+          "tags": [
+            "cold"
+          ]
+        },
+        {
+          "scenario": "缺属性/生命/抗性",
+          "audience": "装备匮乏流派",
+          "benefit": "一点冰伤与回复。",
+          "risk": "高——稀有戒指通常给更多你缺的东西。",
+          "level": "high",
+          "recommendation": "除非冰冻免疫或冰伤是瓶颈，否则优先稀有戒指。",
+          "tags": [
+            "tradeoff"
+          ]
+        },
+        {
+          "scenario": "冰霜地面地图刷图",
+          "audience": "刷图玩家",
+          "benefit": "在冰缓区也能顺畅移动施法。",
+          "risk": "低——手感提升。",
+          "level": "low",
+          "recommendation": "冰系主题内容的常驻实用戒指。",
+          "tags": [
+            "survival"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "流派用法",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "梦境碎片服务三类需求：进攻（冰伤）、续航（魔力回复）、生存（免冰冻）。下面流派各取其一或兼得。"
+      ],
+      "builds": [
+        {
+          "title": "冰系施法（如冰霜/电冰混合）",
+          "description": "冰霜伤害放大输出，魔力回复缓解空蓝，免冰冻保证走位。是冰系法术的核心戒指候选。",
+          "href": "/zh-cn/items/charms-guide/"
+        },
+        {
+          "title": "冰霜攻击（如冰霜箭/冰霜打击）",
+          "description": "攻击类冰伤同样吃 +(20-30)% 冰霜伤害；魔力回复对高蓝耗攻击技能有帮助，免冰冻保机动。",
+          "href": "/zh-cn/items/runes-and-soul-cores/"
+        },
+        {
+          "title": "高蓝耗持续施法",
+          "description": "任何蓝耗高、频繁施法的流派都受益于 (40-60)% 魔力回复速率；免冰冻是附赠的生存。",
+          "href": "/zh-cn/items/liquid-verisium/"
+        },
+        {
+          "title": "条件：你缺属性或生命",
+          "description": "若流派缺属性、生命或抗性，高 roll 稀有戒指通常优于本戒指。仅当冰冻免疫或冰伤是真正瓶颈时才用它。"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "替代选择：稀有与其它独特戒指",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "梦境碎片不一定是最优戒指。一把 roll 好的稀有蓝玉戒指（或任意稀有戒指）能给更大的冰抗、属性、生命、魔盾与其它抗性——这些正是装备匮乏流派真正需要的。若冰冻不是你内容的真实威胁，稀有戒指的整体包通常赢下这个位。",
+        "其它独特戒指各有职责。侧重冰霜伤害与碎冰协同的，侧重闪电与感电的，把点燃转混沌的——都不提供冰冻免疫，所以都不是直接的防御替代；但如果你不需要免冰冻，它们在纯伤害上可能胜过本戒指。",
+        "就冰伤/回复本身，本戒指的 (20-30)% 与 (40-60)% 只是多个乘区之一；珠宝、天赋树与符文都能补冰伤或回蓝。若你已从这些渠道拿到大量冰伤，本戒指的边缘收益会下降，其高价也更难用「稀有戒指补抗性/属性」来 justify。"
+      ],
+      "bullets": [
+        "稀有戒指：当你更需要属性、生命、魔盾或抗性时更优。",
+        "其它独特戒指：角色不同，均不提供冰冻免疫。",
+        "冰伤/回复还有其它来源（珠宝、天赋、符文），可能稀释本戒指的边际价值。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "如何获取梦境碎片",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "梦境碎片属于通用独特掉落池，没有定向 farm，靠掉落运气、机会石赌或交易获得。"
+      ],
+      "routes": [
+        {
+          "label": "随机世界掉落",
+          "body": [
+            "1 级以上怪物任何地点都可能掉，理论上 1 幕起就有机会。单件独特的基础掉率偏低；物品稀有度与 atlas 词缀会整体提升独特掉落，但无法定向必出本件。"
+          ]
+        },
+        {
+          "label": "机会石（Orb of Chance）",
+          "body": [
+            "对白色（普通）Sapphire Ring 用机会石可能变为独特。蓝玉戒指基底上有多件独特共享，所以精准命中梦境碎片的概率有限。"
+          ]
+        },
+        {
+          "label": "玩家交易",
+          "body": [
+            "这是拿到理想 roll 最现实的方式。作为 Early Access 奢侈品级独特，价格随冰伤/回复 roll 与冰冻免疫需求浮动；购买前请以你所在区服、赛季的实时价格为准（2026-08-03 校验）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "用、卖还是留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "梦境碎片是 Early Access 奢侈品级独特，价值由冰伤 roll、魔力回复 roll 与冰冻免疫需求驱动。以下为指示性快照而非实时报价；请以交易行你所在区服与赛季的 2026-08-03 实时价为准。"
+      ],
+      "use": {
+        "condition": "你面临冰冻致死风险，或流派吃冰霜伤害/缺魔力回复。",
+        "first": "佩戴；冰系流派买得起的最高冰伤/回复 roll。",
+        "risk": "完美 roll 交易价高；若稀有戒指更能补你的真实缺口，别溢价。",
+        "text": [
+          "生存价值永久且跨流派（永不冰冻）。",
+          "伤害/续航价值完全取决于你的流派是否打冰霜、是否缺蓝。"
+        ]
+      },
+      "sell": {
+        "condition": "你不需要冰冻免疫或冰伤/回复，或找到更强的稀有戒指。",
+        "first": "上架；高 roll（30% 冰伤 / 60% 回复）相对低 roll 大幅溢价。",
+        "risk": "按 roll 错位定价；市场偏薄，定价要有竞争力。",
+        "text": [
+          "奢侈品级独特——按 roll 与赛季需求定价。",
+          "低 roll 与高 roll 价差显著（实时校验）。"
+        ]
+      },
+      "hold": {
+        "condition": "你预期未来角色会玩冰系或冰霜内容。",
+        "first": "留一枚高 roll 作灵活替换件。",
+        "risk": "无稀缺保证；掉率变动可能压价。",
+        "text": [
+          "值得为高 roll 留一枚，用于 boss 替换与冰系流派。",
+          "非长期投资，当作可用资产而非保值品。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "为不吃的流派溢价购买",
+          "gain": "冰冻免疫",
+          "loss": "花高价占了一个稀有戒指更合适的位",
+          "level": "medium",
+          "recommendation": "仅当冰冻免疫或冰伤/回复是你的真实瓶颈才买。"
+        },
+        {
+          "scenario": "以为它提供全面冰霜免疫",
+          "gain": "无",
+          "loss": "仍吃冰霜伤害、仍会被冰缓/脆弱，防御误判",
+          "level": "low",
+          "recommendation": "仍堆冰抗、尊重冰霜曝露；本戒指只免疫状态。"
+        },
+        {
+          "scenario": "为 boss 换上后掉属性",
+          "gain": "不冰冻",
+          "loss": "换下属性型稀有戒指后低于技能/装备属性门槛",
+          "level": "medium",
+          "recommendation": "规划替换；确保换上后仍满足属性与抗性。"
+        },
+        {
+          "scenario": "把它当唯一回蓝来源",
+          "gain": "一些回复",
+          "loss": "若其余装备弱，蓝池仍太小撑不住高频施法",
+          "level": "low",
+          "recommendation": "把它当一个乘区之一；蓝池也靠天赋与珠宝撑大。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区实证",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-dream-all-cold",
+          "kind": "Reddit 提问",
+          "question": "梦境碎片说无法被冰冻，是不是我就免疫所有冰系异常了？",
+          "summary": [
+            "玩家误以为本戒指提供 blanket 冰霜免疫，包括冰缓与冰霜伤害。"
+          ],
+          "editorialAnalysis": [
+            "本戒指只移除冰冻状态。你仍会被冰缓、仍会进入脆弱、仍吃冰霜伤害。它是对状态的免疫，不是对伤害或全异常的免疫。"
+          ],
+          "officialAnswer": [
+            "不。你只免疫冰冻。冰霜伤害、冰缓、脆弱依旧生效，所以仍要堆冰抗。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "免疫覆盖范围"
+        },
+        {
+          "sourceId": "forum-dream-cold",
+          "kind": "论坛提问",
+          "question": "+(20-30)% 冰霜伤害对我的冰霜法术提升大吗？",
+          "summary": [
+            "玩家想知道冰伤词缀对冰系技能的实际价值。"
+          ],
+          "editorialAnalysis": [
+            "这是「增加冰霜伤害」类加成，作用于冰霜伤害乘区，与你的元素/技能伤害乘区相乘。基础冰伤越高，绝对提升越大；高 roll（30%）比低 roll（20%）多 10% 冰霜乘区。"
+          ],
+          "officialAnswer": [
+            "直接放大所有冰霜伤害，适合冰系攻击与法术；越高 roll 冰系收益越大。"
+          ],
+          "linkHref": "#cold-damage-scaling",
+          "linkLabel": "冰霜伤害演算"
+        },
+        {
+          "sourceId": "forum-dream-regen",
+          "kind": "论坛提问",
+          "question": "(40-60)% 魔力回复速率能解决我空蓝吗？",
+          "summary": [
+            "玩家高频施法、经常空蓝，问回复速率是否够。"
+          ],
+          "editorialAnalysis": [
+            "魔力回复速率加快 refill，是续航属性而非蓝量上限。若你蓝池本身太小，单靠回复仍可能不够；需配合魔力上限（天赋/珠宝）一起撑。高 roll（60%）回蓝明显更快。"
+          ],
+          "officialAnswer": [
+            "能缓解续航，但它是 refill 速度不是池子大小；蓝池也要从别处撑大。"
+          ],
+          "linkHref": "#mana-regen-scaling",
+          "linkLabel": "魔力回复演算"
+        },
+        {
+          "sourceId": "forum-dream-rare",
+          "kind": "论坛提问",
+          "question": "梦境碎片值得占戒指位，还是高属性稀有戒指更好？",
+          "summary": [
+            "玩家把它与补齐属性/生命的稀有戒指比较。"
+          ],
+          "editorialAnalysis": [
+            "若冰冻不是真实威胁、且流派不靠冰伤/回复，带属性、生命与抗性的稀有戒指通常整体更优。本戒指在冰冻致死真实或冰伤/回复是瓶颈时取胜。"
+          ],
+          "officialAnswer": [
+            "当冰冻锁死或冰伤/回复是瓶颈时用本戒指；否则稀有戒指更合适。"
+          ],
+          "linkHref": "#alternatives",
+          "linkLabel": "替代选择"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "我仍被冰缓/吃了冰霜伤害",
+          "directAnswer": [
+            "正常。本戒指只移除冰冻。冰缓、脆弱与冰霜伤害仍生效，所以继续堆冰抗、尊重曝露。"
+          ],
+          "checks": [
+            "确认戒指已装备（不在别的仓库页）。",
+            "堆冰抗并从别处缓解冰霜曝露。",
+            "把它当状态免疫而非伤害免疫。"
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "免疫覆盖范围"
+            }
+          ]
+        },
+        {
+          "symptom": "冰系伤害提升不明显",
+          "directAnswer": [
+            "+(20-30)% 冰霜伤害只是一个冰霜乘区。若你基础冰伤低，绝对增量小。先抬其它冰霜/元素乘区，让本戒指的 20-30% 更有意义。"
+          ],
+          "checks": [
+            "确认你的技能确实造成冰霜伤害。",
+            "检查其它冰霜/元素乘区是否已堆。"
+          ]
+        },
+        {
+          "symptom": "换上后属性不够技能需求",
+          "directAnswer": [
+            "本戒指无属性词缀，换下属性型稀有戒指可能让你跌破阈值。规划替换并在别处补偿。"
+          ],
+          "checks": [
+            "替换前检查技能与装备的属性需求。",
+            "仅当冰冻免疫值得属性损失时才换。"
+          ]
+        },
+        {
+          "symptom": "空蓝仍在发生",
+          "directAnswer": [
+            "回复速率是 refill 速度，不是池子大小。配合魔力上限（天赋/珠宝/其它装备）一起撑大蓝池。"
+          ],
+          "checks": [
+            "检查魔力上限来源是否充足。",
+            "必要时降低蓝耗或加其他回蓝手段。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "风暴编织者大法师 + 冬之眼实战（提及梦境碎片）",
+          "url": "https://youtu.be/3jQnGredkYg",
+          "creator": "PoE2 流派论坛贡献者",
+          "takeaway": "展示一个冰系/魔力堆叠大法师流派，说明梦境碎片这类戒指对魔力续航与冰伤的意义，以及作者为何权衡是否上这枚贵戒指。",
+          "timestamps": [
+            {
+              "label": "流派总览与魔力堆叠",
+              "time": "00:00"
+            },
+            {
+              "label": "为何斟酌梦境碎片",
+              "time": "03:00"
+            },
+            {
+              "label": "配装与魔力计算",
+              "time": "06:00"
+            },
+            {
+              "label": "boss 实战展示",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "媒体图库",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "梦境碎片词缀（当前 0.5）",
+          "note": "蓝玉戒指展示 +(20-30)% 冰霜伤害、(40-60)% 魔力回复速率、无法被冰冻。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Dream_Fragments"
+        },
+        {
+          "caption": "机制示意：冰伤放大 + 魔力回复 + 免冰冻",
+          "note": "自绘图；强调只免疫冰冻状态，不防冰缓与冰霜伤害。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "相关阅读",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "液态维里西铝（Liquid Verisium）",
+          "description": "维里西铝铁砧（Runeforging）所用材料，可用于加工低等级独特，与本戒指的强化路线相关。",
+          "href": "/zh-cn/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "符文与魂核（Runes and Soul Cores）",
+          "description": "在装备上镶嵌符文可补冰伤或回蓝，与本戒指的冰系/续航方向叠加。",
+          "href": "/zh-cn/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "瓦尔宝珠（Vaal Orb）",
+          "description": "对本戒指腐化可能附加额外词缀（如击杀回魔、冰晶生命），但也可能 brick，决策需谨慎。",
+          "href": "/zh-cn/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "版本历史与当前/历史对照",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "当前（0.5.4，Early Access）",
+          "changes": [
+            "梦境碎片词缀：+(20-30)% 冰霜伤害、(40-60)% 增加魔力回复速率、无法被冰冻。",
+            "蓝玉戒指基底，1 级可用，来自通用独特池。"
+          ],
+          "date": "2026-08-03"
+        },
+        {
+          "version": "历史对照提示",
+          "changes": [
+            "旧版若曾以不同冰伤/回复区间或「无法被冰缓或冰冻」形式出现，差异仅体现在数值与状态范围；当前版本仅免疫冰冻。购买时以词缀文本为准核对。"
+          ]
+        },
+        {
+          "version": "0.5.x 备注",
+          "changes": [
+            "本戒指在 0.5.x 延续「冰伤 + 魔力回复 + 冰冻免疫」框架；具体区间以当前 0.5.4 为准。"
+          ]
+        },
+        {
+          "version": "0.3 / 0.2 备注",
+          "changes": [
+            "冰系与魔力类独特在 0.2–0.3 期间经历过数值与基底调整。若你持有旧基底版本，以当前词缀文本为准。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "梦境碎片加入游戏（蓝玉戒指基底）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与校验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "流放之路2 0.5.4 版本说明（官方论坛）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki — 梦境碎片（物品数据、历史变异）",
+          "url": "https://www.poe2wiki.net/wiki/Dream_Fragments"
+        },
+        {
+          "label": "TOOL",
+          "description": "PoE2DB — 梦境碎片数值与需求",
+          "url": "https://poe2db.tw/Dream_Fragments"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant — 如何获取梦境碎片蓝玉戒指",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-dream-fragments-sapphire-ring-poe2"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Reddit r/PathOfExile2 — 玩家关于独特与魔力的提问",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "PoE 官方论坛 — 讨论梦境碎片与 Everlasting Gaze 的反馈帖",
+          "url": "https://ru.pathofexile.com/forum/view-thread/3690944"
+        },
+        {
+          "label": "VIDEO",
+          "description": "YouTube — 风暴编织者大法师实战（提及梦境碎片）",
+          "url": "https://youtu.be/3jQnGredkYg"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布，覆盖 0.5.4 梦境碎片：无法被冰冻的范围、+(20-30)% 冰霜伤害放大、(40-60)% 魔力回复速率的续航意义、蓝玉戒指基底、与稀有戒指的机会成本，以及瓦尔多加工变异可能。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "charms-guide"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "流放之路2 0.5.4 版本说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-dream",
+      "label": "PoE2Wiki — 梦境碎片",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Dream_Fragments"
+    },
+    {
+      "id": "poe2db-dream",
+      "label": "PoE2DB — 梦境碎片",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Dream_Fragments"
+    },
+    {
+      "id": "gamerant-dream",
+      "label": "GameRant — 如何获取梦境碎片",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-dream-fragments-sapphire-ring-poe2"
+    },
+    {
+      "id": "reddit-poe2",
+      "label": "Reddit r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "forum-dream-bug",
+      "label": "PoE 论坛 — 梦境碎片反馈帖",
+      "sourceType": "community",
+      "url": "https://ru.pathofexile.com/forum/view-thread/3690944"
+    },
+    {
+      "id": "video-dream",
+      "label": "YouTube — 风暴编织者大法师实战",
+      "sourceType": "other",
+      "url": "https://youtu.be/3jQnGredkYg"
+    }
+  ],
+  "seo": {
+    "title": "梦境碎片（Dream Fragments）指南：冰霜伤害、魔力回复与无法被冰冻 — 流放之路2 0.5",
+    "description": "梦境碎片在流放之路2 0.5 中如何运作：无法被冰冻的范围、+(20-30)% 冰霜伤害放大、(40-60)% 魔力回复速率的续航意义、蓝玉戒指基底、与稀有戒指的机会成本，以及瓦尔多加工变异。",
+    "noindex": false
+  }
+}

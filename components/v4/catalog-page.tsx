@@ -289,14 +289,18 @@ export function V4BuildContentCard({
   const article = page.buildArticle;
   const zh = locale === "zh-cn";
   const image = getBuildCardImage(page, fallbackImage);
-  const identity = [article.classId, article.ascendancyId]
-    .filter(Boolean)
-    .join(" · ");
-  // 与 Boss/Item/Skill/Guide/Patch 主列表卡片统一：用受控词表把 tag slug
-  // 渲染为当前语言显示名，保证标签样式（滚动芯片）与其他分类一致。
-  const displayTags = page.frontMatter.tags.map((tag) =>
+  // 模块 1：左侧标签轮播。职业/升华始终置顶显示，随后是文章 tags；既保留
+  // 身份识别，又与 Boss/Item/Skill/Guide/Patch 卡片保持一致的芯片轮播样式。
+  const identityTags = [article.classId, article.ascendancyId]
+    .filter((id): id is string => Boolean(id))
+    .map((id) => formatTag("build", id, zh));
+  const baseTags = page.frontMatter.tags.map((tag) =>
     formatTag("build", tag, zh),
   );
+  const displayTags = [
+    ...identityTags,
+    ...baseTags.filter((tag) => !identityTags.includes(tag)),
+  ];
 
   return (
     <a
@@ -341,7 +345,6 @@ export function V4BuildContentCard({
             </span>
           ) : null}
           <span className="v4-card-meta__info">
-            {identity ? `${identity} · ` : ""}
             {article.patch} · {article.updatedAt}
           </span>
         </small>

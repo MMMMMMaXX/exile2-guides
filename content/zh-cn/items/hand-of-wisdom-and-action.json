@@ -1,0 +1,967 @@
+{
+  "id": "hand-of-wisdom-and-action",
+  "slug": "hand-of-wisdom-and-action",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "智慧与行动之手（HOWA）：智力闪电伤害、敏捷攻击速度，以及 PoE2 0.5 当前与旧版加成对比",
+  "shortTitle": "HOWA",
+  "summary": "智慧与行动之手（Hand of Wisdom and Action，HOWA）是流放之路2中一把独特的螺旋裹腕手套，它把属性转化为攻击强度：每 20 点智力为你的攻击附加固定闪电伤害（1 至 10），每 20 点敏捷提供增加攻击速度（1%）。它只掉落自「我们即为一者，谢斯特」（Xesht, We That Are One），无法用机会石获得，是属性堆叠攻击流派的核心装备。本指南详解精确加成、0.2.0 的削弱及其如何自动应用，以及何时该从稀有手套切换过来。",
+  "description": "智慧与行动之手在流放之路2 0.5 中的运作方式：每 20 智力附加闪电伤害（仅攻击）、每 20 敏捷增加攻击速度、需求等级 33、谢斯特掉落、机会石限制、当前与旧版（隐蔽裹腕）加成、与阿斯特拉门提斯/笼神之柱的协同，以及属性堆叠流派的用法。",
+  "itemType": "gloves",
+  "rarity": "unique",
+  "requiredLevel": "33",
+  "useCases": [
+    "intelligence-stacking",
+    "dexterity-stacking",
+    "attack-builds"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-gloves",
+  "itemClass": "gloves",
+  "baseType": "spiral-wraps",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-gloves",
+    "attribute-stacking",
+    "lightning",
+    "attack-speed",
+    "intelligence",
+    "dexterity",
+    "breach",
+    "xesht"
+  ],
+  "heroImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "cardImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "imageAlt": "流放之路2中独特的螺旋裹腕手套「智慧与行动之手」，以智力提升攻击闪电伤害、以敏捷提升攻击速度",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速解答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "智慧与行动之手（HOWA）是一把独特的手套，把你的属性转化为攻击强度：每 20 点智力为你的攻击附加固定闪电伤害（1 至 10），每 20 点敏捷提供增加攻击速度（1%）。它是属性堆叠攻击流派的核心独特装备，但它只影响攻击（不影响法术），且自身不提供防御、命中或资源。",
+      "calloutDetail": [
+        "附加的闪电伤害与攻击速度叠加在你已有的其他加成之上；它们随你的智力和敏捷总量线性增长，因此你堆叠得越多，这件装备越强。",
+        "它只掉落自「我们即为一者，谢斯特」（Xesht, We That Are One，裂隙巅峰首领），无法用机会石制造。",
+        "0.2.0 的重做削弱了倍率，并自动应用到已有物品上，因此不存在带有旧版更强加成的可交易版本。"
+      ],
+      "answers": [
+        {
+          "label": "在下列情况使用",
+          "text": [
+            "你玩一个已经堆叠 200+ 智力与 200+ 敏捷、且需要在一只手套栏位上同时获得固定闪电伤害与攻击速度的攻击流派。"
+          ]
+        },
+        {
+          "label": "在下列情况跳过",
+          "text": [
+            "你是施法者（词缀仅限攻击），或者你的流派属性很低、加成几乎不产生额外伤害。"
+          ]
+        },
+        {
+          "label": "获取方式",
+          "text": [
+            "通过扭曲领域（Twisted Domain）中使用裂隙石（Breachstone）抵达的谢斯特。无法用机会石获得，也无法从普通怪物 farm。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#attribute-scaling",
+          "label": "属性加成表"
+        },
+        {
+          "href": "#current-vs-legacy",
+          "label": "当前与旧版"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键信息",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "物品类型",
+          "value": "独特手套（螺旋裹腕）",
+          "note": [
+            "当前基础为螺旋裹腕；0.2.0 之前的物品使用隐蔽裹腕基础（闪避/灵能护盾略高）。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "33（24 敏捷，24 智力）",
+          "note": [
+            "经 poe2wiki 与 exileindex 确认。"
+          ]
+        },
+        {
+          "label": "核心词缀1",
+          "value": "每 20 点智力为攻击附加 1 至 10 闪电伤害",
+          "note": [
+            "仅限攻击，非法术。随智力提升。"
+          ]
+        },
+        {
+          "label": "核心词缀2",
+          "value": "每 20 点敏捷 +1% 增加攻击速度",
+          "note": [
+            "仅限攻击。随敏捷提升。"
+          ]
+        },
+        {
+          "label": "固定词缀",
+          "value": "+(15–25) 敏捷 与 +(15–25) 智力",
+          "note": [
+            "随机数值范围；神圣石会重roll 这些，但无法恢复旧版加成。"
+          ]
+        },
+        {
+          "label": "掉落来源",
+          "value": "谢斯特，我们即为一者（裂隙巅峰）",
+          "note": [
+            "掉落受限。无法用机会石获得。"
+          ]
+        },
+        {
+          "label": "可交易",
+          "value": "是（玩家市场）",
+          "note": [
+            "价格随赛季、地区与日期波动；赛季初期一把高 roll 可能价值数枚神圣石。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "当前词缀与数值范围",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "基础物品",
+          "value": "螺旋裹腕（手套）",
+          "notes": [
+            "当前基础闪避约 43，灵能护盾约 15。"
+          ]
+        },
+        {
+          "label": "需求",
+          "value": "等级 33，24 敏捷，24 智力",
+          "notes": [
+            "对于一件此等强度的独特装备，属性需求很低。"
+          ]
+        },
+        {
+          "label": "+(15–25) 敏捷",
+          "value": "数值范围 15–25",
+          "notes": [
+            "更高 roll 意味着更多属性，同时喂养两个加成词缀与技能需求。"
+          ]
+        },
+        {
+          "label": "+(15–25) 智力",
+          "value": "数值范围 15–25",
+          "notes": [
+            "同上；两个属性都对加成有影响。"
+          ]
+        },
+        {
+          "label": "每 20 点敏捷 +1% 增加攻击速度",
+          "value": "当前（0.2.0 之后）",
+          "notes": [
+            "旧版为每 25 点敏捷 +3%（更强）。削弱已自动应用到旧物品。"
+          ]
+        },
+        {
+          "label": "每 20 点智力为攻击附加 1 至 10 闪电伤害",
+          "value": "当前（0.2.0 之后）",
+          "notes": [
+            "旧版为每 10 点智力 +1 至 10（翻倍）。仅攻击的固定闪电。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "智慧与行动之手的运作方式",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "智慧与行动之手（HOWA）是一把独特的手套，其全部价值在于把你的属性总量转化为攻击强度。它有两个加成词缀。第一个「每 20 点智力为攻击附加 1 至 10 闪电伤害」为每次攻击命中附加固定闪电伤害；你的智力越高，附加的固定伤害越大。第二个「每 20 点敏捷 +1% 增加攻击速度」提供同样随敏捷成长的攻击速度。",
+        "两个词缀都明确写着「对攻击」。法术不会受益，且非武器命中的效果（例如由法术驱动的先驱碎裂触发、或使用自身武器的图腾/召唤物命中）也不会获得固定闪电。附加的闪电是正常的固定元素伤害，因此会被你已有的每一个「增加闪电伤害」「增加元素伤害（攻击）」「增加攻击伤害」以及「更多」乘数放大。",
+        "演算示例：在 600 智力与 400 敏捷时，智力层数 = 600 / 20 = 30，因此手套每次攻击附加 30 ×（1 至 10）= 30 至 300 闪电伤害。敏捷层数 = 400 / 20 = 20，提供 20% 增加攻击速度。这还只是手套在其它装备之前的全部贡献；因为它是固定且百分比的数值，它会与属性堆叠流派的其余乘数叠加。",
+        "关键在于，HOWA 不提供命中、生命或灵能护盾、抗性或资源。你仍然需要命中（命中值）、存活（防御）以及维持魔力/灵能。因此你不能只堆叠属性：手套是一个使能件，嵌入必须自行解决命中、防御与资源的属性堆叠体系中。常见的搭配是全属性护符（阿斯特拉门提斯）与属性加成的长偃月枪笼中神之柱，二者都放大同样的属性。"
+      ],
+      "bullets": [
+        "智力 -> 每次攻击附加固定闪电（每 20 智力 1 至 10）。",
+        "敏捷 -> 增加攻击速度（每 20 敏捷 1%）。",
+        "仅限攻击；法术与非武器命中不受益。",
+        "固定闪电会被你已有的闪电/元素/攻击伤害乘数放大。",
+        "自身没有防御、命中或资源——这些必须由流派的其他部分提供。"
+      ]
+    },
+    {
+      "id": "attribute-scaling",
+      "order": 45,
+      "title": "属性加成表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "当前（0.2.0 之后）在代表性属性断点下的加成。「旧版」列仅展示 0.2.0 之前的数值以说明削弱幅度——该加成已自动应用到所有物品，游戏内已不存在。",
+      "columns": [
+        {
+          "key": "attrs",
+          "label": "属性（智力 / 敏捷）"
+        },
+        {
+          "key": "lightMin",
+          "label": "附加闪电下限"
+        },
+        {
+          "key": "lightMax",
+          "label": "附加闪电上限"
+        },
+        {
+          "key": "asPct",
+          "label": "增加攻击速度"
+        },
+        {
+          "key": "legacyNote",
+          "label": "旧版（0.2.0 之前）等效"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "attrs": "200 智力 / 200 敏捷",
+            "lightMin": "+10",
+            "lightMax": "+100",
+            "asPct": "10%",
+            "legacyNote": "旧版：+20–200 闪电，24% 攻速"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "400 智力 / 300 敏捷",
+            "lightMin": "+20",
+            "lightMax": "+200",
+            "asPct": "15%",
+            "legacyNote": "旧版：+40–400 闪电，36% 攻速"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "600 智力 / 400 敏捷",
+            "lightMin": "+30",
+            "lightMax": "+300",
+            "asPct": "20%",
+            "legacyNote": "旧版：+60–600 闪电，48% 攻速"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "800 智力 / 500 敏捷",
+            "lightMin": "+40",
+            "lightMax": "+400",
+            "asPct": "25%",
+            "legacyNote": "旧版：+80–800 闪电，60% 攻速"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "1000 智力 / 600 敏捷",
+            "lightMin": "+50",
+            "lightMax": "+500",
+            "asPct": "30%",
+            "legacyNote": "旧版：+100–1000 闪电，72% 攻速"
+          }
+        }
+      ],
+      "note": "旧版数值仅作对比。由于 0.2.0 重做自动应用，每把游戏内 HOWA 都使用当前（左侧）数值，与基础类型无关。"
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "按属性投入划分的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "build",
+        "decision"
+      ],
+      "rows": [
+        {
+          "scenario": "低属性（智力 <200）",
+          "audience": "非堆叠者、早期角色",
+          "benefit": "少量固定闪电与一些攻击速度，外加 +敏/+智 roll",
+          "risk": "伤害回报低；手套不提供防御",
+          "level": "low",
+          "recommendation": "除非你已经在堆叠属性，否则优先选带固定闪电+抗性+生命的稀有手套。"
+        },
+        {
+          "scenario": "中属性（200–400 智力，200–300 敏捷）",
+          "audience": "过渡期属性堆叠者",
+          "benefit": "+10–200 闪电与 10–15% 攻速，战役/刷图伤害强",
+          "risk": "中等（解决抗性/防御前较脆）",
+          "level": "medium",
+          "recommendation": "属性跨过约 200 智力且抗性堆满后，将 HOWA 作为核心手套装备。"
+        },
+        {
+          "scenario": "高属性（600+ 智力，400+ 敏捷）",
+          "audience": "终局属性堆叠者",
+          "benefit": "+30–500 闪电与 20–30% 攻速；最好的固定闪电手套来源之一",
+          "risk": "中等（玻璃大炮；需要 CI/混沌抗与魔力续航）",
+          "level": "high",
+          "recommendation": "保留 HOWA；与笼中神之柱及全属性护符搭配。"
+        },
+        {
+          "scenario": "纯法术流派",
+          "audience": "施法者",
+          "benefit": "加成词缀无任何收益",
+          "risk": "高（浪费独特栏位）",
+          "level": "high",
+          "recommendation": "不要使用 HOWA；固定闪电与攻速仅限攻击。"
+        }
+      ]
+    },
+    {
+      "id": "switch-thresholds",
+      "order": 52,
+      "title": "何时该从稀有手套切换到 HOWA",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "用稀有手套替换 HOWA 的决策阈值。「净收益」假设流派的其余部分已提供命中、防御与资源。",
+      "columns": [
+        {
+          "key": "int",
+          "label": "总智力"
+        },
+        {
+          "key": "rareEq",
+          "label": "可比稀有手套"
+        },
+        {
+          "key": "howaGain",
+          "label": "HOWA 附加值"
+        },
+        {
+          "key": "verdict",
+          "label": "结论"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "int": "< 150",
+            "rareEq": "固定闪电 1–15 + 抗性 + 生命",
+            "howaGain": "< +8–75 闪电，无防御",
+            "verdict": "稀有手套更好"
+          }
+        },
+        {
+          "cells": {
+            "int": "200–400",
+            "rareEq": "固定闪电 1–20 + 抗性",
+            "howaGain": "+10–200 闪电 + 攻速，无防御",
+            "verdict": "若堆叠属性则选 HOWA"
+          }
+        },
+        {
+          "cells": {
+            "int": "600+",
+            "rareEq": "固定闪电 1–30 + 抗性",
+            "howaGain": "+30–500 闪电 + 20%+ 攻速",
+            "verdict": "HOWA 明显更优"
+          }
+        }
+      ],
+      "note": "HOWA 从不提供防御，因此比较的前提是你已在别处解决抗性/生命/灵能护盾。"
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "流派用法",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "HOWA 是一个使能件，而非独立流派。以下四种情境说明它适合的位置、需要搭配什么、它不提供什么，以及它无法支持的技能。"
+      ],
+      "builds": [
+        {
+          "title": "早期属性堆叠者（战役到早期地图）",
+          "description": "在达到 24 敏/24 智的等级 33 时装备。搭配任何受益于固定闪电+攻击速度的攻击技能。入口：击杀谢斯特获取掉落。缺失防御：手套闪避/灵能护盾很低，因此生命/灵能护盾/抗性必须来自其余装备。不支持：纯施法者（仅攻击词缀）。"
+        },
+        {
+          "title": "中期 HOWA 过渡（地图，全属性护符之前）",
+          "description": "约 200 智力 / 200 敏捷，抗性堆满，并具备属性堆叠的被动骨架。将 HOWA 作为核心手套保留；因为防御已在别处解决，戒指/护符后缀可 freed 给属性。缺失防御：手套本身仍无固有防御。不支持：法术。"
+        },
+        {
+          "title": "终局属性堆叠者（全属性护符之后）",
+          "description": "典型 500+ 智力与 400+ 敏捷（顶级断点达 800 智力 / 600 敏捷）。运行 HOWA（手套）+ 笼中神之柱（武器）+ 全属性护符 + 巧手（Ingenuity，戒指）+ 属性珠宝。缺失防御：玻璃大炮；需要 CI/混沌抗与魔力续航。不支持：法术 / 使用自身武器的图腾命中。"
+        },
+        {
+          "title": "旧版物品对比（隐蔽裹腕 vs 螺旋裹腕）",
+          "description": "0.2.0 之前的 HOWA 保留隐蔽裹腕基础（闪避/灵能护盾约 50/19 更高），但因重做自动应用，使用完全相同的当前加成。神圣石只会重roll +(15–25) 敏/智 的 roll。买 roll 更好的那把即可；基础类型对输出几乎无影响。"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "替代方案",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "与一把高 roll 的稀有螺旋裹腕 / 隐蔽裹腕相比，差别在于加成。稀有手套可以提供固定的小幅闪电 roll、固定的增加攻击速度 roll，外加抗性、生命/灵能护盾与命中。HOWA 则让它的固定闪电与攻击速度随你的属性成长——因此你堆叠的智力/敏捷越多，每个手套词缀就越值钱。如果你的流派已经堆叠 300+ 智力与 200+ 敏捷，HOWA 在伤害上几乎总是胜过稀有手套；如果你不堆叠属性（低智力），带固定闪电+抗性+生命的稀有手套通常更好，因为 HOWA 的加成被浪费且它不提供防御。",
+        "当前没有其他独特手套提供按属性的固定闪电加成，因此 HOWA 是 0.5 中唯一的「属性加成攻击手套」。相关的独特手套承担不同角色：吉科托之潮（Kitoko's Current）提供闪电命中的触电（Electrocution）积累（异常状态控制），而非伤害替代；幽写之袍（Ghostwrithe）是将生命转为灵能护盾的胸甲。与笼中神之柱（武器）相比，HOWA 是互补而非替代——标准属性堆叠者两者都用，因为笼中神之柱提供武器伤害%（力量），而 HOWA 提供固定闪电（智力）与攻速（敏捷）。"
+      ],
+      "bullets": [
+        "稀有手套：固定数值+防御；属性低时更好。",
+        "HOWA：随属性成长的固定闪电+攻速；属性高时更好。",
+        "吉科托之潮 / 幽写之袍：不同角色，非直接替代。",
+        "笼中神之柱：互补武器，非替代。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "获取方式",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "只有一条非交易掉落来源，且没有机会石路径。你要么击杀巅峰首领，要么在玩家市场购买。"
+      ],
+      "routes": [
+        {
+          "label": "谢斯特，我们即为一者（裂隙巅峰）",
+          "body": [
+            "HOWA 是掉落受限的独特装备，掉落自谢斯特，我们即为一者。谢斯特通过扭曲领域（Atlas Realmgate）中使用裂隙石抵达。裂隙石由在裂隙终局地图中 farm 的 300 枚裂隙碎片合成。",
+            "它可以在谢斯特任意难度掉落，因此即便一次早期扭曲领域探索也可能产出。"
+          ]
+        },
+        {
+          "label": "玩家交易",
+          "body": [
+            "在官方交易站购买。价格随赛季、地区与日期波动；赛季初期一把高 roll 可能价值数枚神圣石，而低 roll 则便宜得多。务必检查当前的 roll 范围（15–25）与基础类型。"
+          ]
+        },
+        {
+          "label": "机会石——不可行",
+          "body": [
+            "HOWA 被排除在机会石池之外。对白色螺旋裹腕 / 隐蔽裹腕使用机会石永远不会产出它。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用、出售还是保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "HOWA 是属性堆叠攻击流派的追逐型独特装备。它的市场价值跟随赛季经济与属性堆叠者的流行度；不带赛季/日期/地区的报价不可靠。"
+      ],
+      "use": {
+        "condition": "你玩一个 200+ 智力与 200+ 敏捷（或打算堆叠属性）的攻击流派。",
+        "first": "作为核心手套装备；它随你的属性成长，并与闪电/元素乘数叠加。",
+        "risk": "该栏位不提供防御——务必在别处解决抗性/生命/灵能护盾与命中，否则你会暴毙。",
+        "text": [
+          "当流派已提供命中、防御与资源续航时最佳。",
+          "与笼中神之柱及全属性护符协同极强。"
+        ]
+      },
+      "sell": {
+        "condition": "你不堆叠属性，或你玩的是法术流派。",
+        "first": "在交易站出售；即便低 roll 也保值，因为属性堆叠者总是想要一对。",
+        "risk": "随着赛季推进、供给增长，价格会下跌；在新赛季尽早而非更晚出售。",
+        "text": [
+          "施法者从仅攻击的词缀中一无所获。",
+          "低属性攻击流派伤害低且无防御，因此手套是累赘。"
+        ]
+      },
+      "hold": {
+        "condition": "你正朝属性堆叠者发展但尚未到位。",
+        "first": "保留一对备用；属性总量会随装备与珠宝在整个赛季中攀升。",
+        "risk": "库存与货币未能立即投入的机会成本。",
+        "text": [
+          "若你的智力低于约 150，稀有手套在此期间可能更适合你。",
+          "为终局体系保留 roll 最高的一对。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "装备 HOWA 却忽略防御",
+          "gain": "强力的固定闪电 + 攻速加成",
+          "loss": "你频繁死亡——手套不提供生命/灵能护盾/抗性",
+          "level": "high",
+          "recommendation": "只有在抗性堆满且拥有防御层（生命/灵能护盾/CI）后才装备。"
+        },
+        {
+          "scenario": "在法术流派上使用 HOWA",
+          "gain": "无",
+          "loss": "浪费独特手套栏位",
+          "level": "medium",
+          "recommendation": "不要——词缀仅限攻击，不适用于法术。"
+        },
+        {
+          "scenario": "以旧版价格买入，期待旧加成",
+          "gain": "无额外收益",
+          "loss": "多付钱；旧更强加成已不存在",
+          "level": "medium",
+          "recommendation": "检查词缀文本：当前物品是每 20 敏捷 +1% 与每 20 智力 +1–10。旧加成已自动削弱。"
+        },
+        {
+          "scenario": "低属性总量（智力 <150）",
+          "gain": "少量固定闪电",
+          "loss": "无防御且伤害弱于稀有手套",
+          "level": "low",
+          "recommendation": "改用带固定闪电+抗性+生命的稀有手套。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-howa-spells",
+          "kind": "论坛提问",
+          "question": "HOWA 附加的闪电对法术有效，还是仅限攻击？",
+          "summary": [
+            "一名玩家不确定固定闪电是否惠及他的闪电法术技能。"
+          ],
+          "editorialAnalysis": [
+            "词缀文本写的是「每 20 点智力为攻击附加 1 至 10 闪电伤害」。「攻击」一词将其限制为攻击命中。法术命中，以及由法术驱动的先驱/次要效果，不获得固定闪电。"
+          ],
+          "officialAnswer": [
+            "仅限攻击。将这些固定伤害转化为另一种元素（例如混沌）的流派，仍需要该伤害首先是一次攻击。纯施法者从 HOWA 一无所获。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "HOWA 的运作方式"
+        },
+        {
+          "sourceId": "forum-howa-600int",
+          "kind": "类 Reddit 提问",
+          "question": "在 600 智力时我能获得多少闪电？",
+          "summary": [
+            "一名玩家想要常见终局属性总量下的精确固定闪电。"
+          ],
+          "editorialAnalysis": [
+            "加成是线性的：层数 = floor(智力 / 20)，每层附加 1 至 10 闪电。在 600 智力时为 30 层。"
+          ],
+          "officialAnswer": [
+            "在 600 智力时，你获得 30 ×（1 至 10）= 每次攻击 30 至 300 附加闪电伤害，在其它乘数之前。"
+          ],
+          "linkHref": "#attribute-scaling",
+          "linkLabel": "属性加成表"
+        },
+        {
+          "sourceId": "forum-howa-chance",
+          "kind": "论坛提问",
+          "question": "我能用机会石 farm 出 HOWA 吗？",
+          "summary": [
+            "一名玩家询问对白色螺旋裹腕使用机会石能否产出 HOWA。"
+          ],
+          "editorialAnalysis": [
+            "HOWA 掉落限自谢斯特，并明确排除在机会石池外，经 poe2wiki 与多个攻略确认。"
+          ],
+          "officialAnswer": [
+            "不能。你必须击杀谢斯特，我们即为一者（通过扭曲领域的裂隙石），或在交易站购买。机会石永远不会产出它。"
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "获取方式"
+        },
+        {
+          "sourceId": "forum-howa-legacy",
+          "kind": "论坛提问",
+          "question": "旧的 0.2.0 之前、每 25 敏捷 +3% 的 HOWA 还能获得吗？",
+          "summary": [
+            "一名玩家看到老攻略引用更强数值，想知道那些物品是否仍在掉落。"
+          ],
+          "editorialAnalysis": [
+            "0.2.0 重做改变了倍率，且补丁说明指出按属性的改动影响已有物品。因此旧加成已自动转换到每一把拥有的 HOWA 上。"
+          ],
+          "officialAnswer": [
+            "不能。每把游戏内 HOWA 现在都使用每 20 敏捷 +1% 与每 20 智力 +1–10。只有基础类型名称（隐蔽裹腕 vs 螺旋裹腕）不同；旧的更强倍率已消失。神圣石只会重roll +(15–25) 敏/智 的 roll。"
+          ],
+          "linkHref": "#current-vs-legacy",
+          "linkLabel": "当前与旧版"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "问题与直接解答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "我的 HOWA 流派几乎没伤害",
+          "directAnswer": [
+            "你的智力可能太低。在约 200 智力以下，固定闪电很小。堆叠智力（以及敏捷换取攻速）——在 600 智力时，单手套就为每次命中附加 30–300 闪电。"
+          ],
+          "checks": [
+            "检查角色面板上的总智力与敏捷。",
+            "确认你的技能是攻击，而非法术。",
+            "确认你有闪电/元素伤害乘数来放大固定值。"
+          ],
+          "links": [
+            {
+              "href": "#attribute-scaling",
+              "label": "加成表"
+            }
+          ]
+        },
+        {
+          "symptom": "装备 HOWA 后我频繁死亡",
+          "directAnswer": [
+            "HOWA 不提供生命、灵能护盾、抗性或命中。手套仅为进攻使能件；你的防御必须来自其余装备与被动树。"
+          ],
+          "checks": [
+            "堆满元素抗性（75%）。",
+            "从其它栏位添加防御层（生命/灵能护盾/CI）与命中。",
+            "不要将 HOWA 当作防御型独特装备。"
+          ]
+        },
+        {
+          "symptom": "我的法术没获得闪电",
+          "directAnswer": [
+            "正确——词缀是「对攻击」。法术命中不获得固定闪电或攻击速度。"
+          ],
+          "checks": [
+            "改用攻击技能，或为法术流派使用其它独特装备。"
+          ]
+        },
+        {
+          "symptom": "机会石没有产出 HOWA",
+          "directAnswer": [
+            "符合预期。HOWA 不在机会石池中；它只掉落自谢斯特或在交易站购买。"
+          ],
+          "checks": [
+            "farm 裂隙碎片 -> 裂隙石 -> 谢斯特，或在交易站购买。"
+          ],
+          "links": [
+            {
+              "href": "#acquisition",
+              "label": "获取方式"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "[PoE 2] HoWA 熔融冲击流派 | 宝石军团兵",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc",
+          "creator": "wishdropper（PoE 论坛流派作者）",
+          "takeaway": "一个真实的属性堆叠者使用 HOWA，在 92 级达到 901 智力，含技能配置与升级建议。",
+          "timestamps": [
+            {
+              "label": "流派概览与为何选 HOWA",
+              "time": "00:00"
+            },
+            {
+              "label": "属性堆叠（L92 时 901 智力）",
+              "time": "02:30"
+            },
+            {
+              "label": "技能配置（熔融冲击 + 闪电灌注）",
+              "time": "05:00"
+            },
+            {
+              "label": "升级建议（先用电击碎片）",
+              "time": "08:00"
+            },
+            {
+              "label": "终局加成与断点",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "媒体图库",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "当前 0.5 词缀面板——螺旋裹腕基础，每 20 敏捷 +1% 攻速，每 20 智力 +1–10 闪电。",
+          "note": "展示当前（0.2.0 之后）词缀文本，而非旧版数值。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "旧版（0.2.0 之前）隐蔽裹腕变体——基础闪避/灵能护盾更高，旧更强加成。",
+          "note": "说明当前与旧版对比；旧加成在 0.2.0 中已自动削弱。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "机制示意图：智力 -> 固定闪电，敏捷 -> 攻击速度，汇入一次攻击命中。",
+          "note": "原创示意图；展示固定值被增加闪电/元素（攻击）伤害放大。"
+        },
+        {
+          "caption": "终局角色面板（800 智力 / 600 敏捷）搭配 HOWA + 笼中神之柱 + 全属性护符。",
+          "note": "展示 HOWA 超越稀有手套的断点。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "pillar-of-the-caged-god",
+          "contentType": "item",
+          "title": "笼中神之柱",
+          "description": "互补的属性加成长偃月枪：力量 -> 武器伤害，敏捷 -> 攻击速度，智慧 -> 范围。",
+          "href": "/zh-cn/items/pillar-of-the-caged-god/"
+        },
+        {
+          "contentId": "catalysts",
+          "contentType": "item",
+          "title": "催化剂",
+          "description": "珠宝品质与属性制作，补充属性堆叠装备。",
+          "href": "/zh-cn/items/catalysts/"
+        },
+        {
+          "contentId": "spark-gemling-legionnaire",
+          "contentType": "build",
+          "title": "火花宝石军团兵",
+          "description": "受益于 HOWA 固定闪电的属性堆叠宝石军团兵流派。",
+          "href": "/zh-cn/builds/spark-gemling-legionnaire/"
+        },
+        {
+          "contentId": "twister-spirit-walker",
+          "contentType": "build",
+          "title": "旋风灵行者",
+          "description": "可作为 HOWA 使用者的敏/智混合攻击流派。",
+          "href": "/zh-cn/builds/twister-spirit-walker/"
+        },
+        {
+          "contentId": "mana-spirit-resource-sustain",
+          "contentType": "guide",
+          "title": "魔力、灵能与资源续航",
+          "description": "如何为依赖光环与高攻速的攻击流派维持魔力/灵能。",
+          "href": "/zh-cn/guides/mana-spirit-resource-sustain/"
+        },
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "谢斯特，我们即为一者",
+          "description": "裂隙巅峰首领，也是智慧与行动之手的唯一掉落来源。",
+          "href": "/zh-cn/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "版本历史与当前/旧版对比",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "当前（0.2.0 之后，0.5.x 自然掉落）",
+          "changes": [
+            "基础类型螺旋裹腕（闪避约 43，灵能护盾约 15）。词缀：+(15–25) 敏捷，+(15–25) 智力，每 20 敏捷 +1% 增加攻击速度，每 20 智力为攻击附加 1 至 10 闪电伤害。",
+            "掉落自谢斯特，我们即为一者；无法用机会石获得。"
+          ]
+        },
+        {
+          "version": "当前与旧版（0.2.0 之前）",
+          "changes": [
+            "旧版基础为隐蔽裹腕（闪避约 50，灵能护盾约 19）——比当前螺旋裹腕防御略高。",
+            "旧版加成更强：每 25 敏捷 +3% 增加攻击速度，且每 10 智力为攻击附加 1 至 10 闪电伤害（约为当前闪电的两倍，约 2.4 倍攻速）。",
+            "神圣石行为：0.2.0 补丁说明指出按属性的改动自动影响已有物品，而神圣石可获取其余数值改动。因此旧加成已自动应用（削弱）到每一把拥有的 HOWA；神圣石只会重roll +(15–25) 敏/智 的 roll。",
+            "自动应用 vs 仅新掉落的差别：加成倍率自动应用到旧物品；只有基础类型切换（隐蔽裹腕 -> 螺旋裹腕）不影响旧物品。因此不存在带有旧加成的可交易旧版 HOWA——每把游戏内 HOWA 都使用当前倍率。",
+            "交易如何识别版本：看基础类型名称。「Hand of Wisdom and Action Furtive Wraps」= 0.2.0 之前时代（保留旧基础，当前加成）；「Hand of Wisdom and Action Spiral Wraps」= 当前掉落（当前基础，当前加成）。词缀文本完全相同，因此唯一真实差别是基础闪避/灵能护盾。"
+          ]
+        },
+        {
+          "version": "0.2.0（猎神的黎明）",
+          "changes": [
+            "重做 HOWA：现在每 20 智力为攻击附加 1 至 10 闪电伤害（之前每 10），且每 20 敏捷 +1% 增加攻击速度（之前每 25 敏捷 +3%）。按属性的改动自动影响已有物品；神圣石可获取其余数值改动。现在以螺旋裹腕而非隐蔽裹腕出现（基础切换不影响已有物品）。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "智慧与行动之手加入游戏（隐蔽裹腕基础）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "流放之路2 0.2.0 版本说明（猎神的黎明）——HOWA 重做与自动应用说明",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki——智慧与行动之手（当前词缀、需求、掉落限制、旧版变体）",
+          "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "label": "攻略",
+          "description": "Sportskeeda——如何获取智慧与行动之手（获取、机会石限制）",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+        },
+        {
+          "label": "攻略",
+          "description": "exileindex——智慧与行动之手（当前数值、谢斯特掉落、不可机会石）",
+          "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+        },
+        {
+          "label": "社区",
+          "description": "PoE 论坛——[PoE 2] HoWA 熔融冲击流派 | 宝石军团兵（真实流派 + 视频）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+        },
+        {
+          "label": "社区",
+          "description": "PoE 论坛——武僧唤者求助帖（HOWA 被称为必备独特）",
+          "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+        },
+        {
+          "label": "视频",
+          "description": "YouTube——HoWA 熔融冲击流派，宝石军团兵（真实观看地址）",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布，涵盖当前 0.5 HOWA 加成（每 20 敏捷 +1% 攻速，每 20 智力 +1–10 闪电）、需求等级 33、谢斯特掉落、机会石限制、含 0.2.0 自动应用行为的当前与旧版（隐蔽裹腕）对比、属性加成表、流派用法、替代方案与社区问答。"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-02-0",
+      "label": "流放之路2 0.2.0 版本说明（猎神的黎明）",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "wiki-howa",
+      "label": "PoE2Wiki——智慧与行动之手",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+    },
+    {
+      "id": "guide-sportskeeda-howa",
+      "label": "Sportskeeda——如何获取智慧与行动之手",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+    },
+    {
+      "id": "guide-exileindex-howa",
+      "label": "exileindex——智慧与行动之手",
+      "sourceType": "other",
+      "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+    },
+    {
+      "id": "forum-howa-build",
+      "label": "PoE 论坛——HoWA 熔融冲击流派（宝石军团兵）",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+    },
+    {
+      "id": "forum-howa-help",
+      "label": "PoE 论坛——武僧唤者求助（HOWA 必备）",
+      "sourceType": "community",
+      "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+    },
+    {
+      "id": "video-howa",
+      "label": "YouTube——HoWA 熔融冲击流派（宝石军团兵）",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+    }
+  ],
+  "seo": {
+    "title": "智慧与行动之手（HOWA）指南：智力闪电、敏捷速度、当前与旧版对比——PoE2 0.5",
+    "description": "智慧与行动之手在流放之路2 0.5 中如何以智力提升攻击闪电伤害、以敏捷提升攻击速度，以及需求等级、谢斯特掉落、机会石限制与当前/旧版加成对比。",
+    "noindex": false
+  }
+}

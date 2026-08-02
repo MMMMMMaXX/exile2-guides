@@ -1,0 +1,979 @@
+{
+  "id": "hand-of-wisdom-and-action",
+  "slug": "hand-of-wisdom-and-action",
+  "locale": "en",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Hand of Wisdom and Action (HOWA): Intelligence Lightning Damage, Dexterity Attack Speed, and Current vs Legacy Scaling in PoE2 0.5",
+  "shortTitle": "HOWA",
+  "summary": "Hand of Wisdom and Action is a unique Spiral Wraps glove in Path of Exile 2 that adds flat Lightning damage to your attacks scaling with Intelligence (1 to 10 per 20 Int) and increased Attack Speed scaling with Dexterity (1% per 20 Dex). It drops only from Xesht, We That Are One, cannot be chanced, and is the core enabler of attribute-stacking attack builds. This guide covers exact scaling, the 0.2.0 nerf and how it auto-applied, and when the breakpoint justifies switching from Rare gloves.",
+  "description": "How Hand of Wisdom and Action works in Path of Exile 2 0.5: per-20-Intelligence added Lightning (attacks only), per-20-Dexterity attack speed, required level 33, Xesht drop, Chance Orb restriction, current vs legacy (Furtive Wraps) scaling, Astramentis/Pillar synergy, and attribute-stacker build use.",
+  "itemType": "gloves",
+  "rarity": "unique",
+  "requiredLevel": "33",
+  "useCases": [
+    "intelligence-stacking",
+    "dexterity-stacking",
+    "attack-builds"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-gloves",
+  "itemClass": "gloves",
+  "baseType": "spiral-wraps",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-gloves",
+    "attribute-stacking",
+    "lightning",
+    "attack-speed",
+    "intelligence",
+    "dexterity",
+    "breach",
+    "xesht"
+  ],
+  "heroImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "cardImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "imageAlt": "Hand of Wisdom and Action unique Spiral Wraps gloves in Path of Exile 2, scaling Lightning attack damage with Intelligence and attack speed with Dexterity",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick answer",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Hand of Wisdom and Action (HOWA) is a unique glove that converts your attributes into attack power: every 20 Intelligence adds 1 to 10 Lightning Damage to your Attacks, and every 20 Dexterity adds 1% increased Attack Speed. It is the core unique for attribute-stacking attack builds, but it only affects Attacks (not spells) and gives no defenses, Accuracy, or resource on its own.",
+      "calloutDetail": [
+        "The flat Lightning and the attack speed are added on top of everything else; they grow linearly with your Int and Dex totals, so the item gets stronger the more you stack.",
+        "It drops only from Xesht, We That Are One (Breach pinnacle) and cannot be created with an Orb of Chance.",
+        "The 0.2.0 rebalance nerfed the rates and auto-applied the change to existing items, so there is no tradeable 'legacy' version with the old stronger scaling."
+      ],
+      "answers": [
+        {
+          "label": "Use it if",
+          "text": [
+            "You run an attack build that already stacks 200+ Intelligence and 200+ Dexterity and needs flat Lightning damage plus attack speed from one glove slot."
+          ]
+        },
+        {
+          "label": "Skip if",
+          "text": [
+            "You are a spell caster (the mods are attack-only), or your build has low attributes where the scaling produces little bonus damage."
+          ]
+        },
+        {
+          "label": "Get it from",
+          "text": [
+            "Xesht, We That Are One, reached via a Breachstone in the Twisted Domain. Not chanceable, not farmable from normal monsters."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#attribute-scaling",
+          "label": "Attribute scaling table"
+        },
+        {
+          "href": "#current-vs-legacy",
+          "label": "Current vs legacy"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick facts",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Item type",
+          "value": "Unique gloves (Spiral Wraps)",
+          "note": [
+            "Current base is Spiral Wraps; pre-0.2.0 items used the Furtive Wraps base (slightly higher evasion/ES)."
+          ]
+        },
+        {
+          "label": "Required level",
+          "value": "33 (24 Dex, 24 Int)",
+          "note": [
+            "Confirmed on poe2wiki and exileindex."
+          ]
+        },
+        {
+          "label": "Core mod 1",
+          "value": "Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence",
+          "note": [
+            "Attacks only, not spells. Scales with Intelligence."
+          ]
+        },
+        {
+          "label": "Core mod 2",
+          "value": "1% increased Attack Speed per 20 Dexterity",
+          "note": [
+            "Attacks only. Scales with Dexterity."
+          ]
+        },
+        {
+          "label": "Fixed mods",
+          "value": "+(15–25) to Dexterity and +(15–25) to Intelligence",
+          "note": [
+            "Roll range; a Divine Orb re-rolls these but cannot restore old scaling."
+          ]
+        },
+        {
+          "label": "Drop source",
+          "value": "Xesht, We That Are One (Breach pinnacle)",
+          "note": [
+            "Drop restricted. Cannot be obtained with an Orb of Chance."
+          ]
+        },
+        {
+          "label": "Tradeable",
+          "value": "Yes (on the player market)",
+          "note": [
+            "Price varies by league, region and date; early league a well-rolled pair can cost several Divine Orbs."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Current tooltip and roll ranges",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base item",
+          "value": "Spiral Wraps (gloves)",
+          "notes": [
+            "Evasion ~43, Energy Shield ~15 on the current base."
+          ]
+        },
+        {
+          "label": "Requirements",
+          "value": "Level 33, 24 Dex, 24 Int",
+          "notes": [
+            "Low attribute requirement for a unique of this power."
+          ]
+        },
+        {
+          "label": "+(15–25) to Dexterity",
+          "value": "Roll range 15–25",
+          "notes": [
+            "Higher roll = more attributes feeding both scaling mods and gem requirements."
+          ]
+        },
+        {
+          "label": "+(15–25) to Intelligence",
+          "value": "Roll range 15–25",
+          "notes": [
+            "Same as above; both attributes matter for the scaling."
+          ]
+        },
+        {
+          "label": "1% increased Attack Speed per 20 Dexterity",
+          "value": "Current (post-0.2.0)",
+          "notes": [
+            "Legacy was 3% per 25 Dexterity (stronger). The nerf auto-applied to old items."
+          ]
+        },
+        {
+          "label": "Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence",
+          "value": "Current (post-0.2.0)",
+          "notes": [
+            "Legacy was 1 to 10 per 10 Intelligence (double). Attack-only flat Lightning."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "How Hand of Wisdom and Action works",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Hand of Wisdom and Action (HOWA) is a unique glove whose entire value comes from turning your attribute totals into attack power. It has two scaling modifiers. The first, 'Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence', grants flat Lightning damage on every attack hit; the more Intelligence you have, the bigger the flat added. The second, '1% increased Attack Speed per 20 Dexterity', grants attack speed that also scales with your Dexterity.",
+        "Both modifiers are explicitly 'to Attacks'. Spells do not benefit, and effects that are not attacks (such as Herald shatter procs that are spell-driven, or minion/totem hits using their own weapons) do not receive the flat Lightning. The added Lightning is normal flat elemental damage, so it is then multiplied by every 'increased Lightning Damage', 'increased Elemental Damage with Attacks', 'increased Attack Damage' and 'more' multiplier you already have.",
+        "Worked example: at 600 Intelligence and 400 Dexterity, Intelligence stacks = 600 / 20 = 30, so the gloves add 30 × (1 to 10) = 30 to 300 Lightning Damage per attack. Dexterity stacks = 400 / 20 = 20, giving 20% increased Attack Speed. That is the glove's entire contribution before any other gear — and because it is flat and percentage-based, it compounds with the rest of an attribute-stacker's multipliers.",
+        "Crucially, HOWA gives you no Accuracy, no Life or Energy Shield, no resistances and no resource sustain. You still need to land hits (Accuracy), survive (defenses), and sustain mana/spirit. This is why you cannot only stack attributes: the glove is an enabler that slots into an attribute-stacking shell which must solve accuracy, defense and resource elsewhere. A common complement is the all-attribute amulet (Astramentis) and the attribute-scaling quarterstaff Pillar of the Caged God, both of which multiply the same attributes."
+      ],
+      "bullets": [
+        "Intelligence -> flat Lightning added to each attack (1 to 10 per 20 Int).",
+        "Dexterity -> increased Attack Speed (1% per 20 Dex).",
+        "Attacks only; spells and non-weapon hits do not benefit.",
+        "Flat Lightning is amplified by your existing Lightning/Elemental/Attack damage multipliers.",
+        "No inherent defense, Accuracy or resource — the build must supply those."
+      ]
+    },
+    {
+      "id": "attribute-scaling",
+      "order": 45,
+      "title": "Attribute scaling table",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Current (post-0.2.0) scaling at representative attribute breakpoints. The 'Legacy' column shows the pre-0.2.0 values only to illustrate the nerf gap — that scaling was auto-applied to all items and no longer exists in-game.",
+      "columns": [
+        {
+          "key": "attrs",
+          "label": "Attributes (Int / Dex)"
+        },
+        {
+          "key": "lightMin",
+          "label": "Added Lightning min"
+        },
+        {
+          "key": "lightMax",
+          "label": "Added Lightning max"
+        },
+        {
+          "key": "asPct",
+          "label": "Increased Attack Speed"
+        },
+        {
+          "key": "legacyNote",
+          "label": "Legacy (pre-0.2.0) equivalent"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "attrs": "200 Int / 200 Dex",
+            "lightMin": "+10",
+            "lightMax": "+100",
+            "asPct": "10%",
+            "legacyNote": "Legacy: +20–200 Lightning, 24% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "400 Int / 300 Dex",
+            "lightMin": "+20",
+            "lightMax": "+200",
+            "asPct": "15%",
+            "legacyNote": "Legacy: +40–400 Lightning, 36% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "600 Int / 400 Dex",
+            "lightMin": "+30",
+            "lightMax": "+300",
+            "asPct": "20%",
+            "legacyNote": "Legacy: +60–600 Lightning, 48% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "800 Int / 500 Dex",
+            "lightMin": "+40",
+            "lightMax": "+400",
+            "asPct": "25%",
+            "legacyNote": "Legacy: +80–800 Lightning, 60% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "1000 Int / 600 Dex",
+            "lightMin": "+50",
+            "lightMax": "+500",
+            "asPct": "30%",
+            "legacyNote": "Legacy: +100–1000 Lightning, 72% AS"
+          }
+        }
+      ],
+      "note": "Legacy values are shown for comparison only. Because the 0.2.0 rebalance auto-applied, every in-game HOWA uses the current (left) numbers regardless of base type."
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Outcomes by attribute investment",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "build",
+        "decision"
+      ],
+      "rows": [
+        {
+          "scenario": "Low attributes (<200 Int)",
+          "audience": "Non-stackers, early characters",
+          "benefit": "Small flat Lightning and a little attack speed plus the +Dex/+Int rolls",
+          "risk": "Low damage return; glove offers no defenses",
+          "level": "low",
+          "recommendation": "Prefer a Rare glove with flat Lightning + resists + Life unless you are already stacking.",
+          "tags": [
+            "decision"
+          ]
+        },
+        {
+          "scenario": "Mid attributes (200–400 Int, 200–300 Dex)",
+          "audience": "Transitioning attribute stackers",
+          "benefit": "+10–200 Lightning and 10–15% AS from the glove; strong campaign/mapping damage",
+          "risk": "Medium (squishy until resists/defenses sorted)",
+          "level": "medium",
+          "recommendation": "Equip HOWA as the core glove once attributes cross ~200 Int and you cap resists.",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "High attributes (600+ Int, 400+ Dex)",
+          "audience": "Endgame attribute stackers",
+          "benefit": "+30–500 Lightning and 20–30% AS; among the best flat-Lightning glove sources",
+          "risk": "Medium (glass-cannon; needs CI/chaos res and mana sustain)",
+          "level": "high",
+          "recommendation": "Keep HOWA; pair with the Pillar of the Caged God and an all-attribute amulet.",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "Spell-only build",
+          "audience": "Casters",
+          "benefit": "None from the scaling mods",
+          "risk": "High (wasted unique slot)",
+          "level": "high",
+          "recommendation": "Do not use HOWA; the flat Lightning and AS are attack-only.",
+          "tags": [
+            "decision"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "switch-thresholds",
+      "order": 52,
+      "title": "When the breakpoint justifies switching to HOWA",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Decision thresholds for replacing Rare gloves with HOWA. 'Net gain' assumes the rest of the build already supplies Accuracy, defenses and resource.",
+      "columns": [
+        {
+          "key": "int",
+          "label": "Total Intelligence"
+        },
+        {
+          "key": "rareEq",
+          "label": "Comparable Rare glove"
+        },
+        {
+          "key": "howaGain",
+          "label": "HOWA added value"
+        },
+        {
+          "key": "verdict",
+          "label": "Verdict"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "int": "< 150",
+            "rareEq": "Flat Lightning 1–15 + resists + Life",
+            "howaGain": "< +8–75 Lightning, no defense",
+            "verdict": "Rare glove better"
+          }
+        },
+        {
+          "cells": {
+            "int": "200–400",
+            "rareEq": "Flat Lightning 1–20 + resists",
+            "howaGain": "+10–200 Lightning + AS, no defense",
+            "verdict": "HOWA if attributes stack"
+          }
+        },
+        {
+          "cells": {
+            "int": "600+",
+            "rareEq": "Flat Lightning 1–30 + resists",
+            "howaGain": "+30–500 Lightning + 20%+ AS",
+            "verdict": "HOWA clearly better"
+          }
+        }
+      ],
+      "note": "HOWA never provides defenses, so the comparison assumes you already solve resists/Life/ES elsewhere."
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Build usage",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "HOWA is an enabler, not a standalone build. The four contexts below show where it fits, what you need alongside it, what it does not provide, and which skills it cannot support."
+      ],
+      "builds": [
+        {
+          "title": "Early Attribute Stacker (campaign to early maps)",
+          "description": "Equip at Level 33 once you reach 24 Dex/24 Int. Pair with any attack skill that benefits from flat Lightning + attack speed. Entry: Xesht kill for the drop. Missing defense: the glove is low-evasion/ES, so Life/ES/resists must come from the rest of the gear. Unsupported: pure spellcasters (attack-only mods)."
+        },
+        {
+          "title": "Midgame HOWA Transition (maps, pre-all-attribute amulet)",
+          "description": "Around 200 Int / 200 Dex with capped resists and an attribute-stacking passive skeleton. Keep HOWA as the core glove; free ring/amulet suffixes for attributes because defenses are solved elsewhere. Missing defense: still no innate defense from the glove. Unsupported: spells."
+        },
+        {
+          "title": "Endgame Attribute Stacker (post-all-attribute amulet)",
+          "description": "500+ Int and 400+ Dex typical (800 Int / 600 Dex for top breakpoints). Runs HOWA (gloves) + Pillar of the Caged God (weapon) + all-attribute amulet + Ingenuity (rings) + attribute jewels. Missing defense: glass-cannon; needs CI/chaos res and mana sustain. Unsupported: spells / totem-own-weapon hits."
+        },
+        {
+          "title": "Legacy Item Comparison (Furtive Wraps vs Spiral Wraps)",
+          "description": "Pre-0.2.0 HOWA kept the Furtive Wraps base (higher evasion/ES ~50/19) but uses the SAME current scaling because the rebalance auto-applied. A Divine Orb only re-rolls the +Dex/+Int (15–25) rolls. Buy whichever roll is better; base type barely matters for offense."
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternatives",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Against a well-rolled Rare Spiral Wraps / Furtive Wraps, the difference is scaling. A Rare glove can give a fixed small flat Lightning roll, a fixed increased Attack Speed roll, plus resistances, Life/ES and Accuracy. HOWA instead makes its flat Lightning and attack speed grow with your attributes — so the more Int/Dex you stack, the more each glove mod is worth. If your build already stacks 300+ Int and 200+ Dex, HOWA almost always beats a Rare glove for damage; if you are not attribute-stacking (low Int), a Rare glove with flat Lightning + resists + Life is usually better because HOWA's scaling is wasted and it provides no defenses.",
+        "No other unique glove currently provides per-attribute flat Lightning scaling, so HOWA is the only 'attribute-scaling attack glove' in 0.5. Related unique gloves fill different roles: Kitoko's Current grants Lightning-hit Electrocution buildup (ailment control), not a damage substitute; Ghostwrithe is a body armour for Life→ES conversion. Versus the Pillar of the Caged God (a weapon), HOWA is complementary rather than an alternative — the standard attribute stacker runs both, since Pillar adds Weapon Damage % (Str) and HOWA adds flat Lightning (Int) and AS (Dex)."
+      ],
+      "bullets": [
+        "Rare gloves: fixed flat + defenses; better when attributes are low.",
+        "HOWA: scaling flat Lightning + AS; better when attributes are high.",
+        "Kitoko's Current / Ghostwrithe: different roles, not direct substitutes.",
+        "Pillar of the Caged God: complementary weapon, not an alternative."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Acquisition",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "There is exactly one non-trade drop source and no Orb of Chance path. You either kill the pinnacle boss or buy it on the player market."
+      ],
+      "routes": [
+        {
+          "label": "Xesht, We That Are One (Breach pinnacle)",
+          "body": [
+            "HOWA is a drop-restricted unique that drops from Xesht, We That Are One. Xesht is reached by using a Breachstone in the Twisted Domain (Atlas Realmgate). Breachstones are made from 300 Breach Splinters farmed in Breach endgame maps.",
+            "It can drop at any difficulty of Xesht, so even an early Twisted Domain run can yield it."
+          ]
+        },
+        {
+          "label": "Player Trade",
+          "body": [
+            "Buy a pair on the official trade site. Price varies by league, region and date; early league a well-rolled pair can cost several Divine Orbs, while a low-roll pair is far cheaper. Always check the current roll range (15–25) and base type."
+          ]
+        },
+        {
+          "label": "Orb of Chance — not possible",
+          "body": [
+            "HOWA is excluded from the Orb of Chance pool. Using a Chance Orb on a white Spiral Wraps / Furtive Wraps will never produce it."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Use, sell, or hold",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "HOWA is a chase unique for attribute-stacking attack builds. Its market value tracks the league economy and the popularity of attribute stackers; prices stated without a league/date/region are not reliable."
+      ],
+      "use": {
+        "condition": "You run an attack build with 200+ Int and 200+ Dex (or plan to stack attributes).",
+        "first": "Equip as the core glove; it scales with your attributes and compounds with Lightning/Elemental multipliers.",
+        "risk": "No defenses from the slot — solve resists/Life/ES and Accuracy elsewhere or you will die.",
+        "text": [
+          "Best when the build already supplies Accuracy, defenses and resource sustain.",
+          "Pairs strongly with the Pillar of the Caged God and an all-attribute amulet."
+        ]
+      },
+      "sell": {
+        "condition": "You do not stack attributes, or you play a spell build.",
+        "first": "Sell on Trade; even a low roll retains value because attribute stackers always want a pair.",
+        "risk": "Prices fall as the league progresses and supply grows; sell earlier rather than later in a fresh league.",
+        "text": [
+          "Spell casters gain nothing from the attack-only mods.",
+          "Low-attribute attack builds get little damage and no defense, so the glove is dead weight."
+        ]
+      },
+      "hold": {
+        "condition": "You are building toward an attribute stacker but not there yet.",
+        "first": "Hold a spare pair; attribute totals climb through gear and jewels over the league.",
+        "risk": "Opportunity cost of inventory and currency that could be invested now.",
+        "text": [
+          "If your attributes are below ~150 Int, a Rare glove likely serves you better in the meantime.",
+          "Keep the highest-roll pair for the endgame shell."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risk and failure cost",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Equip HOWA but ignore defenses",
+          "gain": "Strong flat Lightning + AS scaling",
+          "loss": "You die constantly — the glove gives no Life/ES/resists",
+          "level": "high",
+          "recommendation": "Only equip once resists are capped and you have a defensive layer (Life/ES/CI)."
+        },
+        {
+          "scenario": "Use HOWA on a spell build",
+          "gain": "None",
+          "loss": "Wasted unique glove slot",
+          "level": "medium",
+          "recommendation": "Do not — the mods are attack-only and do not apply to spells."
+        },
+        {
+          "scenario": "Buy a legacy-priced pair expecting old scaling",
+          "gain": "None extra",
+          "loss": "Overpay; the old stronger scaling no longer exists",
+          "level": "medium",
+          "recommendation": "Check the modifier text: current items are 1% per 20 Dex and +1–10 per 20 Int. Legacy scaling was auto-nerfed."
+        },
+        {
+          "scenario": "Low attribute total (<150 Int)",
+          "gain": "Small flat Lightning",
+          "loss": "No defense and weak damage vs a Rare glove",
+          "level": "low",
+          "recommendation": "Use a Rare glove with flat Lightning + resists + Life instead."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Community evidence",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-howa-spells",
+          "kind": "Forum question",
+          "question": "Does HOWA's added Lightning work with spells, or only attacks?",
+          "summary": [
+            "A player was unsure whether the flat Lightning benefited their Lightning spell skills."
+          ],
+          "editorialAnalysis": [
+            "The modifier text reads 'Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence'. The word 'Attacks' restricts it to attack hits. Spell hits, and Herald/secondary effects that are spell-driven, do not receive the flat Lightning."
+          ],
+          "officialAnswer": [
+            "Only attacks. Builds that convert the flat to another element (e.g. Chaos) still need the damage to be an attack first. Spell-only casters get nothing from HOWA."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "How HOWA works"
+        },
+        {
+          "sourceId": "forum-howa-600int",
+          "kind": "Reddit-style question",
+          "question": "How much Lightning do I get at 600 Int?",
+          "summary": [
+            "A player wanted the exact flat Lightning at a common endgame attribute total."
+          ],
+          "editorialAnalysis": [
+            "Scaling is linear: stacks = floor(Intelligence / 20), and each stack adds 1 to 10 Lightning. At 600 Int that is 30 stacks."
+          ],
+          "officialAnswer": [
+            "At 600 Intelligence you get 30 × (1 to 10) = 30 to 300 added Lightning Damage per attack, before any other multipliers."
+          ],
+          "linkHref": "#attribute-scaling",
+          "linkLabel": "Attribute scaling table"
+        },
+        {
+          "sourceId": "forum-howa-chance",
+          "kind": "Forum question",
+          "question": "Can I farm HOWA with an Orb of Chance?",
+          "summary": [
+            "A player asked whether chancing a white Spiral Wraps could yield HOWA."
+          ],
+          "editorialAnalysis": [
+            "HOWA is drop-restricted to Xesht and is explicitly excluded from the Orb of Chance pool, confirmed by poe2wiki and multiple guides."
+          ],
+          "officialAnswer": [
+            "No. You must kill Xesht, We That Are One (via Breachstone in the Twisted Domain) or buy it on Trade. A Chance Orb will never produce it."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Acquisition"
+        },
+        {
+          "sourceId": "forum-howa-legacy",
+          "kind": "Forum question",
+          "question": "Is the old pre-0.2.0 HOWA with 3% per 25 Dex still obtainable?",
+          "summary": [
+            "A player saw older guides quoting stronger stats and wondered if those items still drop."
+          ],
+          "editorialAnalysis": [
+            "The 0.2.0 rebalance changed the rates and the patch note states the per-attribute changes affect existing items. So the old scaling was automatically converted on every owned HOWA."
+          ],
+          "officialAnswer": [
+            "No. Every in-game HOWA now uses 1% per 20 Dex and +1–10 per 20 Int. Only the base-type name (Furtive Wraps vs Spiral Wraps) differs; the old stronger rates are gone. A Divine Orb only re-rolls the +Dex/+Int rolls."
+          ],
+          "linkHref": "#current-vs-legacy",
+          "linkLabel": "Current vs legacy"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problems and direct answers",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "My HOWA build does almost no damage",
+          "directAnswer": [
+            "Your Intelligence is likely too low. Below ~200 Int the flat Lightning is small. Stack Intelligence (and Dex for attack speed) — at 600 Int the glove alone adds 30–300 Lightning per hit."
+          ],
+          "checks": [
+            "Check total Intelligence and Dexterity on the character sheet.",
+            "Confirm your skill is an attack, not a spell.",
+            "Verify you have Lightning/Elemental damage multipliers to amplify the flat."
+          ],
+          "links": [
+            {
+              "href": "#attribute-scaling",
+              "label": "Scaling table"
+            }
+          ]
+        },
+        {
+          "symptom": "I keep dying with HOWA equipped",
+          "directAnswer": [
+            "HOWA provides no Life, Energy Shield, resistances or Accuracy. The glove is an offensive enabler only; your defenses must come from the rest of the gear and the passive tree."
+          ],
+          "checks": [
+            "Cap elemental resistances (75%).",
+            "Add a defensive layer (Life/ES/CI) and Accuracy from other slots.",
+            "Do not treat HOWA as a defensive unique."
+          ]
+        },
+        {
+          "symptom": "My spells do not get the Lightning",
+          "directAnswer": [
+            "Correct — the mod is 'to Attacks'. Spell hits do not receive the flat Lightning or the attack speed."
+          ],
+          "checks": [
+            "Switch to an attack skill, or use a different unique for spell builds."
+          ]
+        },
+        {
+          "symptom": "Chance Orb did not produce HOWA",
+          "directAnswer": [
+            "Expected. HOWA is not in the Chance Orb pool; it only drops from Xesht or is bought on Trade."
+          ],
+          "checks": [
+            "Farm Breach Splinters -> Breachstone -> Xesht, or buy on Trade."
+          ],
+          "links": [
+            {
+              "href": "#acquisition",
+              "label": "Acquisition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Video walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "[PoE 2] HoWA Molten Blast Build | Gemling Legionnaire",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc",
+          "creator": "wishdropper (PoE Forum build author)",
+          "takeaway": "A real attribute-stacker using HOWA, reaching 901 Intelligence at level 92, with gem setup and leveling advice.",
+          "timestamps": [
+            {
+              "label": "Build overview & why HOWA",
+              "time": "00:00"
+            },
+            {
+              "label": "Attribute stacking (901 Int at L92)",
+              "time": "02:30"
+            },
+            {
+              "label": "Gem setup (Molten Blast + Lightning Infusion)",
+              "time": "05:00"
+            },
+            {
+              "label": "Leveling advice (Galvanic Shards first)",
+              "time": "08:00"
+            },
+            {
+              "label": "Endgame scaling & breakpoints",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Media gallery",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Current 0.5 tooltip — Spiral Wraps base, 1% AS per 20 Dex, +1–10 Lightning per 20 Int.",
+          "note": "Show the current (post-0.2.0) modifier text, not the legacy numbers.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "Legacy (pre-0.2.0) Furtive Wraps variant — higher base evasion/ES, old stronger scaling.",
+          "note": "Illustrates Current vs Legacy; the old scaling was auto-nerfed in 0.2.0.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "Mechanic diagram: Intelligence -> flat Lightning, Dexterity -> attack speed, into an attack hit.",
+          "note": "Original diagram; show the flat amplified by increased Lightning/Elemental Damage with Attacks."
+        },
+        {
+          "caption": "Endgame character sheet (800 Int / 600 Dex) with HOWA + Pillar + all-attribute amulet.",
+          "note": "Demonstrates the breakpoint where HOWA surpasses Rare gloves."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Connected content",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "pillar-of-the-caged-god",
+          "contentType": "item",
+          "title": "Pillar of the Caged God",
+          "description": "The attribute-scaling quarterstaff that complements HOWA: Str -> Weapon Damage, Dex -> Attack Speed, Int -> AoE.",
+          "href": "/en/items/pillar-of-the-caged-god/"
+        },
+        {
+          "contentId": "catalysts",
+          "contentType": "item",
+          "title": "Catalysts",
+          "description": "Quality and attribute jewel crafting that complements attribute-stacker gear.",
+          "href": "/en/items/catalysts/"
+        },
+        {
+          "contentId": "spark-gemling-legionnaire",
+          "contentType": "build",
+          "title": "Spark Gemling Legionnaire",
+          "description": "An attribute-stacking Gemling build that benefits from HOWA's flat Lightning.",
+          "href": "/en/builds/spark-gemling-legionnaire/"
+        },
+        {
+          "contentId": "twister-spirit-walker",
+          "contentType": "build",
+          "title": "Twister Spirit Walker",
+          "description": "A Dex/Int hybrid attack build that is a candidate HOWA user.",
+          "href": "/en/builds/twister-spirit-walker/"
+        },
+        {
+          "contentId": "mana-spirit-resource-sustain",
+          "contentType": "guide",
+          "title": "Mana, Spirit and Resource Sustain",
+          "description": "How to sustain mana/spirit for attack builds that lean on auras and high attack speed.",
+          "href": "/en/guides/mana-spirit-resource-sustain/"
+        },
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, We That Are One",
+          "description": "The Breach pinnacle boss and only drop source of Hand of Wisdom and Action.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "Patch history and current vs legacy",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Current (post-0.2.0, 0.5.x natural drop)",
+          "changes": [
+            "Base type Spiral Wraps (Evasion ~43, ES ~15). Mods: +(15–25) Dex, +(15–25) Int, 1% increased Attack Speed per 20 Dexterity, Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence.",
+            "Drops from Xesht, We That Are One; cannot be chanced."
+          ]
+        },
+        {
+          "version": "Current vs Legacy (pre-0.2.0)",
+          "changes": [
+            "Legacy base was Furtive Wraps (Evasion ~50, ES ~19) — slightly higher defenses than the current Spiral Wraps.",
+            "Legacy scaling was stronger: 3% increased Attack Speed per 25 Dexterity, and Adds 1 to 10 Lightning Damage to Attacks per 10 Intelligence (roughly double the current Lightning, ~2.4x the attack speed).",
+            "Divine Orb behavior: the 0.2.0 patch note says the per-attribute changes affect existing items automatically, while a Divine Orb can obtain the remaining value changes. So the old scaling was auto-applied (nerfed) to every owned HOWA; a Divine Orb only re-rolls the +(15–25) Dex/Int rolls.",
+            "What auto-applies vs new-only: the scaling rates auto-applied to old items; only the base-type swap (Furtive Wraps -> Spiral Wraps) did NOT affect old items. Thus there is no tradeable legacy HOWA with old scaling — every in-game HOWA uses current rates.",
+            "How Trade identifies the version: by base-type name. 'Hand of Wisdom and Action Furtive Wraps' = pre-0.2.0 era (kept old base, current scaling); 'Hand of Wisdom and Action Spiral Wraps' = current drop (current base, current scaling). The modifier text is identical, so the only real difference is base evasion/ES."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "Rebalanced HOWA: now Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence (previously per 10), and 1% increased Attack Speed per 20 Dexterity (previously 3% per 25). The per-attribute changes affect existing items; a Divine Orb can obtain remaining value changes. Now found as Spiral Wraps instead of Furtive Wraps (base change does not affect existing items)."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Hand of Wisdom and Action introduced to the game (Furtive Wraps base)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.2.0 Patch Notes (Dawn of the Hunt) — HOWA rebalance and auto-apply note",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki — Hand of Wisdom and Action (current tooltip, requirements, drop restriction, legacy variant)",
+          "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Sportskeeda — How to get Hand of Wisdom and Action (acquisition, Chance Orb restriction)",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "exileindex — Hand of Wisdom and Action (current stats, Xesht drop, not chanced)",
+          "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "PoE Forum — [PoE 2] HoWA Molten Blast Build | Gemling Legionnaire (real build + video)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "PoE Forum — Monk Invoker help thread (HOWA named as the essential unique)",
+          "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+        },
+        {
+          "label": "VIDEO",
+          "description": "YouTube — HoWA Molten Blast Build, Gemling Legionnaire (real watch URL)",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication covering current 0.5 HOWA scaling (1% AS per 20 Dex, +1–10 Lightning per 20 Int), required level 33, Xesht drop, Chance Orb restriction, current vs legacy (Furtive Wraps) with the 0.2.0 auto-apply behavior, attribute scaling table, build usage, alternatives and community questions."
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-02-0",
+      "label": "Path of Exile 2 0.2.0 Patch Notes (Dawn of the Hunt)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "wiki-howa",
+      "label": "PoE2Wiki — Hand of Wisdom and Action",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+    },
+    {
+      "id": "guide-sportskeeda-howa",
+      "label": "Sportskeeda — How to get Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+    },
+    {
+      "id": "guide-exileindex-howa",
+      "label": "exileindex — Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+    },
+    {
+      "id": "forum-howa-build",
+      "label": "PoE Forum — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+    },
+    {
+      "id": "forum-howa-help",
+      "label": "PoE Forum — Monk Invoker help (HOWA essential)",
+      "sourceType": "community",
+      "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+    },
+    {
+      "id": "video-howa",
+      "label": "YouTube — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+    }
+  ],
+  "seo": {
+    "title": "Hand of Wisdom and Action (HOWA) Guide: Intelligence Lightning, Dexterity Speed, Current vs Legacy — PoE2 0.5",
+    "description": "How Hand of Wisdom and Action scales Lightning attack damage with Intelligence and attack speed with Dexterity in Path of Exile 2 0.5, plus required level, Xesht drop, Chance Orb limit, and current vs legacy scaling.",
+    "noindex": false
+  }
+}
