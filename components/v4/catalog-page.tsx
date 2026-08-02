@@ -292,6 +292,11 @@ export function V4BuildContentCard({
   const identity = [article.classId, article.ascendancyId]
     .filter(Boolean)
     .join(" · ");
+  // 与 Boss/Item/Skill/Guide/Patch 主列表卡片统一：用受控词表把 tag slug
+  // 渲染为当前语言显示名，保证标签样式（滚动芯片）与其他分类一致。
+  const displayTags = page.frontMatter.tags.map((tag) =>
+    formatTag("build", tag, zh),
+  );
 
   return (
     <a
@@ -324,6 +329,17 @@ export function V4BuildContentCard({
         <h3>{article.title}</h3>
         <p>{article.summary}</p>
         <small className="v4-card-meta">
+          {displayTags.length > 0 ? (
+            <span className="v4-card-meta__tags">
+              <span className="v4-card-meta__tags-track">
+                {displayTags.map((tag) => (
+                  <span className="v4-card-meta__tag" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </span>
+            </span>
+          ) : null}
           <span className="v4-card-meta__info">
             {identity ? `${identity} · ` : ""}
             {article.patch} · {article.updatedAt}
