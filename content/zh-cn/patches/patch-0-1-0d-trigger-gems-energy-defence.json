@@ -1,0 +1,617 @@
+{
+  "id": "patch-0-1-0d-trigger-gems-energy-defence",
+  "slug": "patch-0-1-0d-trigger-gems-energy-defence",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路 2 0.1.0d 机制补丁:触发宝石能量重做、偷取增强与格挡/闪避改动",
+  "shortTitle": "0.1.0d 机制补丁",
+  "summary": "0.1.0d 机制补丁重做了触发宝石能量(怪物强度与异状强度)、增强了偷取、改动格挡与闪避,并澄清了试炼钥匙。本页记录 0.1.0d 究竟改了什么,以及后续补丁如何再次改动机制。",
+  "description": "流放之路 2 0.1.0d 机制补丁的完整历史。涵盖基于怪物强度与异状强度的触发宝石能量重做、偷取增强、格挡与闪避改动、试炼钥匙澄清,以及这些机制如何对照客户端 0.5.4e。",
+  "patchCategory": "balance",
+  "patchVersion": "0.1.0d",
+  "patch": "0.1.0d",
+  "league": "Early Access Launch",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/tempest-bell.webp",
+  "cardImage": "/images/skills/tempest-bell.webp",
+  "imageAlt": "流放之路 2 0.1.0d 机制补丁,重做了触发宝石能量、偷取、格挡与闪避",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "0-1-0d",
+    "mechanics",
+    "balance",
+    "trigger",
+    "defence",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Trigger Gem Energy",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0d 基于怪物强度与异状强度重建了触发宝石能量,后续补丁做了细化。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0d",
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "tempest-bell",
+        "twister"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Leech",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0d 增强了偷取,后续补丁调整了恢复机制。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0d",
+        "0.2.0"
+      ],
+      "affectedContentIds": [
+        "combat-frenzy"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Block and Dodge",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0d 改动格挡与闪避,后续防御补丁再次变动。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0d",
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "weapon-set-passive-points-explained"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速概览",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.0d 机制补丁在首发不到两周后,重做了触发宝石获取与消耗能量的方式,并基于新的怪物强度与异状强度重建。它还增强了偷取、调整了格挡与闪避,并让试炼钥匙更清晰。",
+        "本页是 0.1.0d 的完整历史:它在机制层改了什么、为何对防御与触发构筑重要,以及哪些机制仍与当前客户端相似、哪些被后续补丁重建。"
+      ],
+      "bullets": [
+        "0.1.0d 于 2024-12-17 上线,距首发不到两周",
+        "触发宝石能量基于怪物强度与异状强度重做",
+        "偷取增强、格挡/闪避改动、试炼钥匙澄清"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提醒",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路 2 抢先体验 — 0.1.0d 机制时代",
+      "baselineNote": "本页当前状态描述均以客户端 0.5.4e 为基准核对。",
+      "paragraphs": [
+        "0.1.0d 是历史机制补丁,而非当前机制指南。它触及的触发宝石能量、偷取、格挡与闪避规则在抢先体验的第一年里被反复重做。",
+        "今天阅读首日的触发或防御指南会误导人:它所展示的能量模型与防御公式,在 0.1.0d 被改动,之后又被 0.2 至 0.5 再次修改。请把 0.1.0d 视频视为首发机制的记录,而非当前教程。"
+      ],
+      "bullets": [
+        "0.1.0d = 机制起点,而非最终设计",
+        "首日触发/防御指南是历史记录,不是当前指南",
+        "下列所有当前规则描述均以 0.5.4e 核对"
+      ]
+    },
+    {
+      "id": "mechanics-scope",
+      "order": 3,
+      "title": "0.1.0d 究竟改了什么",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "最显眼的机制改动是触发宝石能量。不同于旧模型,触发现在随怪物强度与异状强度缩放,因此同一辅助在不同内容数值下表现不同。这对依赖暴击触发或异状触发的构筑影响最大。",
+        "防御与恢复也变动:偷取被增强,续航更舒适,而格挡与闪避被调整以改变命中被闪避的频率。最后,试炼钥匙被澄清,玩家得以理解如何进入试炼。"
+      ],
+      "bullets": [
+        "触发宝石能量基于怪物强度与异状强度",
+        "偷取增强,续航更佳",
+        "格挡与闪避调整,试炼钥匙澄清"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "版本族时间线",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "抢先体验首发",
+          "summary": "首发机制,含最初触发宝石与防御模型。",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0b",
+          "date": "2024-12-09",
+          "kind": "热修",
+          "summary": "技能与崩溃修复。",
+          "tags": [
+            "hotfixes",
+            "balance"
+          ]
+        },
+        {
+          "code": "0.1.0c",
+          "date": "2024-12-13",
+          "kind": "经济补丁",
+          "summary": "战利品与通货再平衡。",
+          "tags": [
+            "balance",
+            "economy"
+          ]
+        },
+        {
+          "code": "0.1.0d",
+          "date": "2024-12-17",
+          "kind": "机制补丁",
+          "summary": "触发宝石能量重做、偷取增强、格挡/闪避改动、试炼钥匙澄清。",
+          "tags": [
+            "balance",
+            "mechanics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics-impact",
+      "order": 5,
+      "title": "0.1.0d 机制改动及其归宿",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "触发宝石能量",
+          "verdict": "重做并细化",
+          "detail": "0.1.0d 基于怪物强度与异状强度重建,后续补丁细化了触发。"
+        },
+        {
+          "area": "偷取",
+          "verdict": "增强后调整",
+          "detail": "0.1.0d 增强偷取,后续补丁调整了恢复。"
+        },
+        {
+          "area": "格挡",
+          "verdict": "后续调整",
+          "detail": "0.1.0d 改动格挡,后续防御补丁再次变动。"
+        },
+        {
+          "area": "闪避",
+          "verdict": "后续调整",
+          "detail": "0.1.0d 改动闪避,后续防御补丁再次变动。"
+        },
+        {
+          "area": "试炼钥匙",
+          "verdict": "已澄清",
+          "detail": "0.1.0d 让试炼入口更清晰,后续试炼重做了房间。"
+        }
+      ]
+    },
+    {
+      "id": "mechanics-table",
+      "order": 6,
+      "title": "0.1.0d 机制对比当前客户端",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0d 改了什么,是否与客户端 0.5.4e 一致。",
+      "columns": [
+        {
+          "key": "system",
+          "label": "系统"
+        },
+        {
+          "key": "launch",
+          "label": "0.1.0d 状态"
+        },
+        {
+          "key": "status",
+          "label": "当前状态 (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "站内当前入口"
+        }
+      ],
+      "rows": [
+        {
+          "system": "触发宝石能量",
+          "launch": "基于怪物强度/异状强度重做。",
+          "status": "后续细化",
+          "entry": "tempest-bell / twister 技能页"
+        },
+        {
+          "system": "偷取",
+          "launch": "0.1.0d 增强。",
+          "status": "后续调整",
+          "entry": "combat-frenzy 技能页"
+        },
+        {
+          "system": "格挡",
+          "launch": "0.1.0d 改动。",
+          "status": "后续变动",
+          "entry": "weapon-set-passive-points-explained 指南"
+        },
+        {
+          "system": "闪避",
+          "launch": "0.1.0d 改动。",
+          "status": "后续变动",
+          "entry": "weapon-set-passive-points-explained 指南"
+        },
+        {
+          "system": "试炼钥匙",
+          "launch": "0.1.0d 澄清。",
+          "status": "试炼已重做",
+          "entry": "respec-passive-ascendancy-guide"
+        }
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "首发机制 vs 0.1.0d 之后",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "首发当日 0.1.0 机制(0.1.0d 之前)",
+      "oldText": "触发宝石使用旧能量模型,偷取较弱,格挡/闪避与试炼入口也不清晰。",
+      "newLabel": "0.1.0d 之后",
+      "newText": "触发随怪物强度与异状强度缩放,偷取被增强,格挡/闪避调整,试炼钥匙澄清。后续补丁再次细化这些。"
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "当前适用性 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "触发宝石能量",
+          "status": "changed-later",
+          "currentSummary": "0.1.0d 基于怪物强度与异状强度重建触发,后续补丁细化。",
+          "supersededBy": "0.1.0d, 0.2.0, 0.3.0",
+          "affectedContent": "tempest-bell / twister 技能页"
+        },
+        {
+          "topic": "偷取",
+          "status": "changed-later",
+          "currentSummary": "0.1.0d 增强偷取,后续补丁调整恢复。",
+          "supersededBy": "0.1.0d, 0.2.0",
+          "affectedContent": "combat-frenzy 技能页"
+        },
+        {
+          "topic": "格挡与闪避",
+          "status": "changed-later",
+          "currentSummary": "0.1.0d 调整防御,后续补丁再次变动。",
+          "supersededBy": "0.1.0d, 0.2.0, 0.3.0",
+          "affectedContent": "weapon-set-passive-points-explained 指南"
+        },
+        {
+          "topic": "试炼钥匙",
+          "status": "changed-later",
+          "currentSummary": "0.1.0d 澄清,随后试炼被重做。",
+          "supersededBy": "0.1.0d, 0.2.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "当时 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "触发能量",
+          "thenText": "0.1.0d 前的旧能量模型。",
+          "nowText": "0.1.0d 基于怪物强度/异状强度重建,后续细化。"
+        },
+        {
+          "aspect": "偷取",
+          "thenText": "首发时较弱。",
+          "nowText": "0.1.0d 增强,后续调整恢复。"
+        },
+        {
+          "aspect": "格挡/闪避",
+          "thenText": "最初形态的防御公式。",
+          "nowText": "0.1.0d 调整,后续防御补丁变动。"
+        },
+        {
+          "aspect": "试炼入口",
+          "thenText": "首发时不清晰。",
+          "nowText": "0.1.0d 澄清钥匙,试炼随后重做。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "回归玩家清单",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "重新学习触发宝石",
+          "detail": "0.1.0d 改变了触发的缩放方式,请使用当前技能页。"
+        },
+        {
+          "priority": "high",
+          "label": "忽略首日触发指南",
+          "detail": "0.1.0d 重建了能量模型,后续补丁又细化,首发指南应视为历史。"
+        },
+        {
+          "priority": "medium",
+          "label": "防御公式已变",
+          "detail": "格挡与闪避在 0.1.0d 改动且之后再次变动,请遵循当前指南。"
+        },
+        {
+          "priority": "medium",
+          "label": "试炼现在更清晰",
+          "detail": "0.1.0d 澄清了钥匙,尽管试炼后来被重做。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "社区佐证",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "论坛(0.1.0 首发周)",
+          "context": "玩家发现触发不可预测。",
+          "quote": "我的触发宝石触发频率随机,我搞不清为什么。",
+          "analysis": "对应 0.1.0d 基于内容数值重建触发宝石能量。"
+        },
+        {
+          "source": "Reddit(0.1.0d)",
+          "context": "观众询问首发触发指南是否仍可靠。",
+          "quote": "这些触发指南还有用吗,还是能量被重做了?",
+          "analysis": "0.1.0d 重建了能量,后续补丁细化,首发指南应视为历史。"
+        },
+        {
+          "source": "YouTube 评论(0.1.0 视频)",
+          "context": "玩家混淆首发防御公式与当前。",
+          "quote": "为什么我的格挡和 0.1.0 视频完全不一样?",
+          "analysis": "预料之中:格挡与闪避在 0.1.0d 之后被调整。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "雷霆钟技能页",
+          "type": "skill",
+          "trigger": "0.1.0d 触发宝石重做",
+          "action": "记录当前触发行为对比首发。",
+          "status": "reviewing"
+        },
+        {
+          "name": "旋风技能页",
+          "type": "skill",
+          "trigger": "0.1.0d 触发宝石重做",
+          "action": "记录当前触发行为对比首发。",
+          "status": "reviewing"
+        },
+        {
+          "name": "战斗狂热技能页",
+          "type": "skill",
+          "trigger": "0.1.0d 偷取增强",
+          "action": "记录当前偷取行为对比首发。",
+          "status": "queued"
+        },
+        {
+          "name": "武器组与被动点指南",
+          "type": "guide",
+          "trigger": "0.1.0d 格挡/闪避改动",
+          "action": "按当前防御规则刷新。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方抢先体验公告",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "官方公布的 0.1.0 职业与终局方向。结合首发热修说明,了解第一周内发生的变化。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Class reveal",
+              "time": "00:30"
+            },
+            {
+              "label": "Endgame and Atlas",
+              "time": "04:10"
+            },
+            {
+              "label": "Launch state",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.1.0d 在机制上改了什么?",
+          "answer": [
+            "它基于怪物强度与异状强度重做了触发宝石能量,增强了偷取,改动格挡与闪避,并澄清了试炼钥匙。"
+          ]
+        },
+        {
+          "question": "为什么我的首日触发构筑现在不一样了?",
+          "answer": [
+            "0.1.0d 已重建能量模型,后续补丁又细化了触发。请信任当前技能页。"
+          ]
+        },
+        {
+          "question": "0.1.0d 的防御改动还保留吗?",
+          "answer": [
+            "更清晰的触发与增强的偷取方向保留,但格挡、闪避与触发缩放被后续补丁再次变动。"
+          ]
+        },
+        {
+          "question": "哪些 0.1.0d 改动仍保留?",
+          "answer": [
+            "试炼钥匙清晰的方向保留,但具体触发能量与防御公式在之后被重调。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+          "description": "Official launch communication confirming the class, campaign and endgame scope of 0.1.0.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+          "description": "Official detail on the launch systems, progression model and endgame.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 launch notes",
+          "description": "Official launch notes covering the class, campaign and endgame scope.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced above.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedSkillIds": [
+    "tempest-bell",
+    "twister",
+    "combat-frenzy"
+  ],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Path of Exile 2 official 0.1.0 launch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路 2 0.1.0d 机制补丁 — 触发宝石、偷取、格挡与闪避",
+    "description": "0.1.0d 机制补丁改了什么:触发宝石能量重做、偷取增强、格挡/闪避改动、试炼钥匙澄清。",
+    "noindex": false
+  }
+}

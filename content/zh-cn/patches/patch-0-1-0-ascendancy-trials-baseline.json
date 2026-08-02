@@ -1,0 +1,601 @@
+{
+  "id": "patch-0-1-0-ascendancy-trials-baseline",
+  "slug": "patch-0-1-0-ascendancy-trials-baseline",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路 2 0.1.0 升华试炼基线:首发时的赛克哈玛斯试炼与混沌试炼",
+  "shortTitle": "0.1.0 升华试炼基线",
+  "summary": "0.1.0 中,升华通过幸存于赛克哈玛斯试炼(基于荣誉的闯关)与混沌试炼获得。本页记录原始试炼系统究竟如何运作,以及后续补丁如何改动它。",
+  "description": "流放之路 2 0.1.0 升华试炼基线的完整历史。涵盖首发赛克哈玛斯试炼的荣誉机制与混沌试炼、钥匙与房间如何运作,以及哪些试炼规则被后续补丁重写、哪些在客户端 0.5.4e 中仍然适用。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.0",
+  "patch": "0.1.0",
+  "league": "Early Access Launch",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/bosses/trialmaster-hero.webp",
+  "cardImage": "/images/bosses/trialmaster-hero.webp",
+  "imageAlt": "流放之路 2 0.1.0 原始升华试炼系统:赛克哈玛斯试炼与混沌试炼",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "ascendancy",
+    "trials",
+    "historical",
+    "sekhemas",
+    "chaos"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Trial of Sekhemas",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0 基于荣誉的闯关被重做,后续补丁改变了房间与奖励规则。"
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "respec-passive-ascendancy-guide"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Trial of Chaos",
+      "status": "still-current",
+      "currentSummary": [
+        "混沌试炼仍作为获得升华的替代途径保留,只是奖励调整过。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [
+        "weapon-set-passive-points-explained"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Respec of ascendancy",
+      "status": "changed-later",
+      "currentSummary": [
+        "升华的洗点成本与途径在 0.1.0e 及之后改变,缓解了试炼压力。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0e",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "respec-passive-ascendancy-guide"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速概览",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "在 0.1.0 中,获得升华需要幸存于两类试炼之一。赛克哈玛斯试炼是多房间闯关,由荣誉资源追踪,受击时荣誉流失;混沌试炼是基于波次、带随机房间修正的挑战。",
+        "两类试炼由特定内容掉落,完成后给予升华点。本页是这套原始试炼系统的完整历史:0.1.0 发布了什么、首周如何调整,以及哪些试炼规则仍与当前客户端相似、哪些被后续补丁重建。"
+      ],
+      "bullets": [
+        "两条试炼路径:赛克哈玛斯试炼(荣誉)与混沌试炼(波次)",
+        "试炼完成后给予升华点",
+        "首次调整出现在 0.1.0d(试炼钥匙说明)与 0.1.0e(洗点成本)"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提醒",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路 2 抢先体验 — 0.1.0 试炼时代",
+      "baselineNote": "本页当前状态描述均以客户端 0.5.4e 为基准核对。",
+      "paragraphs": [
+        "0.1.0 是历史基线,而非当前试炼指南。荣誉机制与混沌房间规则在首周被调整,之后又被 0.2、0.3、0.4、0.5 修改。",
+        "今天观看首日的试炼通关会误导人:它所展示的荣誉流失、房间修正与奖励步骤,已被首发热修与后续补丁改动。请把 0.1.0 视频视为首发状态的记录。"
+      ],
+      "bullets": [
+        "0.1.0 = 试炼系统起点,而非最终设计",
+        "首日试炼通关是历史记录,不是当前指南",
+        "下列所有当前规则描述均以 0.5.4e 核对"
+      ]
+    },
+    {
+      "id": "trials-at-launch",
+      "order": 3,
+      "title": "0.1.0 试炼系统包含什么",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "赛克哈玛斯试炼是一连串房间,荣誉条代表整次闯关的剩余生命;无论角色血量如何,荣誉归零即试炼失败。混沌试炼呈现波次,并带随机房间修正以提升难度。",
+        "两类试炼提供不同风味的升华进程,角色要达成完整升华须经历两者。钥匙掉落与房间组合都处于最初形态,不久后便被改动。"
+      ],
+      "bullets": [
+        "赛克哈玛斯:荣誉条追踪整次闯关",
+        "混沌:基于波次,带随机房间修正",
+        "两类试炼共同构成升华进程"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "版本族时间线",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "抢先体验首发",
+          "summary": "赛克哈玛斯试炼(荣誉)与混沌试炼作为两条升华路径首发。",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0d",
+          "date": "2024-12-17",
+          "kind": "机制补丁",
+          "summary": "试炼钥匙说明改善了玩家寻找与理解试炼入口的方式。",
+          "tags": [
+            "balance",
+            "mechanics"
+          ]
+        },
+        {
+          "code": "0.1.0e",
+          "date": "2024-12-20",
+          "kind": "稳定补丁",
+          "summary": "洗点成本下调缓解了对升华抉择的压力。",
+          "tags": [
+            "balance",
+            "progression"
+          ]
+        },
+        {
+          "code": "0.2.0+",
+          "date": "2025-04-04",
+          "kind": "后续主线",
+          "summary": "当前主线(基线 0.5.4e),重做了试炼房间与奖励。",
+          "tags": [
+            "current-baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trials-impact",
+      "order": 5,
+      "title": "原始试炼系统及其归宿",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "赛克哈玛斯试炼",
+          "verdict": "首发后重做",
+          "detail": "荣誉闯关的房间与奖励被后续补丁改动。"
+        },
+        {
+          "area": "混沌试炼",
+          "verdict": "仍保留",
+          "detail": "混沌仍是替代升华路径,仅奖励有调整。"
+        },
+        {
+          "area": "荣誉机制",
+          "verdict": "首发时调整",
+          "detail": "近身荣誉流失在 0.1.0e 修复,之后还有更大重做。"
+        },
+        {
+          "area": "试炼钥匙",
+          "verdict": "0.1.0d 澄清",
+          "detail": "0.1.0d 改善了玩家寻找与理解试炼入口的方式。"
+        }
+      ]
+    },
+    {
+      "id": "trials-table",
+      "order": 6,
+      "title": "首发试炼对比当前客户端",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0 发布了什么,是否与客户端 0.5.4e 一致。",
+      "columns": [
+        {
+          "key": "system",
+          "label": "系统"
+        },
+        {
+          "key": "launch",
+          "label": "0.1.0 状态"
+        },
+        {
+          "key": "status",
+          "label": "当前状态 (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "站内当前入口"
+        }
+      ],
+      "rows": [
+        {
+          "system": "赛克哈玛斯试炼",
+          "launch": "荣誉闯关,最初形态房间。",
+          "status": "房间已重做",
+          "entry": "respec-passive-ascendancy-guide"
+        },
+        {
+          "system": "混沌试炼",
+          "launch": "基于波次,带随机修正。",
+          "status": "仍是核心路径",
+          "entry": "weapon-set-passive-points-explained"
+        },
+        {
+          "system": "荣誉流失",
+          "launch": "近身流失过于严苛。",
+          "status": "0.1.0e 修复",
+          "entry": "respec-passive-ascendancy-guide"
+        },
+        {
+          "system": "试炼钥匙",
+          "launch": "首发入口不清晰。",
+          "status": "0.1.0d 澄清",
+          "entry": "weapon-set-passive-points-explained"
+        }
+      ]
+    },
+    {
+      "id": "trials-before-after",
+      "order": 7,
+      "title": "首发试炼 vs 当前",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "首发当日 0.1.0 试炼(2024 年 12 月)",
+      "oldText": "荣誉闯关与混沌波次为最初形态。近身荣誉流失过于严苛,试炼钥匙入口也不清晰。",
+      "newLabel": "当前试炼(客户端 0.5.4e)",
+      "newText": "试炼房间与奖励在 0.2 至 0.5 间被重做,荣誉流失已修复,钥匙入口更清晰。旧视频已不再描述当前试炼。"
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "当前适用性 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "赛克哈玛斯试炼",
+          "status": "changed-later",
+          "currentSummary": "荣誉闯关的房间与奖励被后续补丁重做。",
+          "supersededBy": "0.2.0, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        },
+        {
+          "topic": "混沌试炼",
+          "status": "still-current",
+          "currentSummary": "混沌仍是替代升华路径,奖励有调整。",
+          "supersededBy": "—",
+          "affectedContent": "weapon-set-passive-points-explained"
+        },
+        {
+          "topic": "荣誉流失",
+          "status": "changed-later",
+          "currentSummary": "近身荣誉流失在 0.1.0e 修复,之后又重做。",
+          "supersededBy": "0.1.0e, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        },
+        {
+          "topic": "升华洗点",
+          "status": "changed-later",
+          "currentSummary": "洗点成本与途径改变,缓解了试炼压力。",
+          "supersededBy": "0.1.0e, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "当时 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "赛克哈玛斯房间",
+          "thenText": "首发荣誉闯关为最初形态房间。",
+          "nowText": "房间与奖励在 0.2 至 0.5 间重做。"
+        },
+        {
+          "aspect": "混沌波次",
+          "thenText": "首发即基于波次带随机修正。",
+          "nowText": "仍是替代路径,奖励有调整。"
+        },
+        {
+          "aspect": "荣誉流失",
+          "thenText": "首发近身流失过于严苛。",
+          "nowText": "0.1.0e 修复,之后又重做。"
+        },
+        {
+          "aspect": "洗点成本",
+          "thenText": "早期洗点昂贵,给试炼抉择施压。",
+          "nowText": "0.1.0e 及之后下调,缓解压力。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "回归玩家清单",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "重新学习试炼房间",
+          "detail": "赛克哈玛斯房间已重做,请遵循当前 respec-passive-ascendancy 指南。"
+        },
+        {
+          "priority": "high",
+          "label": "忽略首日试炼通关",
+          "detail": "0.1.0 视频不描述当前试炼,请使用当前页面。"
+        },
+        {
+          "priority": "medium",
+          "label": "混沌仍在",
+          "detail": "混沌试炼仍是替代升华路径。"
+        },
+        {
+          "priority": "medium",
+          "label": "洗点现在更便宜",
+          "detail": "后续补丁下调洗点成本,试炼抉择不再那么惩罚性。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "社区佐证",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "论坛(0.1.0 首发周)",
+          "context": "玩家认为近身荣誉流失过于惩罚。",
+          "quote": "赛克哈玛斯的荣誉在近战里瞬间消失,这感觉不对。",
+          "analysis": "对应 0.1.0e 对近身荣誉流失的修复。"
+        },
+        {
+          "source": "Reddit(0.1.0 试炼)",
+          "context": "观众询问首发试炼指南是否仍可靠。",
+          "quote": "这些试炼指南还有用吗,还是房间被重做了?",
+          "analysis": "房间在 0.2 至 0.5 间重做,首发指南应视为历史。"
+        },
+        {
+          "source": "YouTube 评论(0.1.0 视频)",
+          "context": "玩家混淆了首发试炼状态与当前。",
+          "quote": "为什么试炼和 0.1.0 视频完全不一样?",
+          "analysis": "预料之中:试炼在首发后被重做。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "洗点与被动/升华指南",
+          "type": "guide",
+          "trigger": "试炼房间在 0.5 前重做",
+          "action": "按当前试炼与洗点规则刷新。",
+          "status": "reviewing"
+        },
+        {
+          "name": "武器组与被动点指南",
+          "type": "guide",
+          "trigger": "混沌试炼仍当前",
+          "action": "记录当前混沌路径行为。",
+          "status": "queued"
+        },
+        {
+          "name": "雷霆钟技能页",
+          "type": "skill",
+          "trigger": "首发技能组,后续辅助重做",
+          "action": "记录当前技能行为对比首发。",
+          "status": "queued"
+        },
+        {
+          "name": "旋风技能页",
+          "type": "skill",
+          "trigger": "首发技能组,后续辅助重做",
+          "action": "记录当前技能行为对比首发。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方抢先体验公告",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "官方公布的 0.1.0 职业与终局方向。结合首发热修说明,了解第一周内发生的变化。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Class reveal",
+              "time": "00:30"
+            },
+            {
+              "label": "Endgame and Atlas",
+              "time": "04:10"
+            },
+            {
+              "label": "Launch state",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.1.0 如何授予升华?",
+          "answer": [
+            "通过幸存于赛克哈玛斯试炼(荣誉闯关)与混沌试炼,各自在完成时给予升华点。"
+          ]
+        },
+        {
+          "question": "为什么我的试炼和 0.1.0 视频不一样?",
+          "answer": [
+            "试炼房间与奖励在 0.2 至 0.5 间被重做,荣誉流失也已修复。首发视频描述的是原始状态。"
+          ]
+        },
+        {
+          "question": "混沌试炼还在游戏里吗?",
+          "answer": [
+            "在。混沌试炼仍是获得升华的替代路径,只是奖励调整过。"
+          ]
+        },
+        {
+          "question": "哪些 0.1.0 试炼规则仍保留?",
+          "answer": [
+            "双试炼结构保留,但赛克哈玛斯房间与荣誉流失已被重做,不再与首发视频一致。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+          "description": "Official launch communication confirming the class, campaign and endgame scope of 0.1.0.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+          "description": "Official detail on the launch systems, progression model and endgame.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 launch notes",
+          "description": "Official launch notes covering the class, campaign and endgame scope.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced above.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedSkillIds": [
+    "tempest-bell",
+    "twister"
+  ],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Path of Exile 2 official 0.1.0 launch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路 2 0.1.0 升华试炼基线 — 赛克哈玛斯与混沌对比 0.5.4e",
+    "description": "0.1.0 赛克哈玛斯试炼的荣誉闯关与混沌试炼如何运作,以及 0.5.4e 改动了哪些试炼规则。",
+    "noindex": false
+  }
+}

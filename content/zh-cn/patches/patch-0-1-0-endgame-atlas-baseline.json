@@ -1,0 +1,639 @@
+{
+  "id": "patch-0-1-0-endgame-atlas-baseline",
+  "slug": "patch-0-1-0-endgame-atlas-baseline",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路 2 0.1.0 万象终界与终局基线:原始地图、界石与异界机制如何运作",
+  "shortTitle": "0.1.0 终界与终局基线",
+  "summary": "0.1.0 的终局是一套独立的万象终界,包含界石、尖塔、石板与城邦,地图中还有裂界、远征、仪式与迷妄。本页记录原始终局究竟包含什么,以及哪些部分被后续补丁重写。",
+  "description": "流放之路 2 0.1.0 终局基线的完整历史。涵盖原始的万象终界结构、界石分级与前缀、尖塔与石板、城邦,以及首发异界机制(裂界、远征、仪式、迷妄),并逐项对照客户端 0.5.4e。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.0",
+  "patch": "0.1.0",
+  "league": "Early Access Launch",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/waystones-hero.webp",
+  "cardImage": "/images/items/waystones-hero.webp",
+  "imageAlt": "流放之路 2 0.1.0 原始的万象终界终局,包含界石、尖塔与石板",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "atlas",
+    "endgame",
+    "historical",
+    "waystones"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Atlas of Worlds structure",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0 的万象终界以早期形态使用界石、尖塔、石板与城邦,后续补丁对其做了重构。"
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.3.1",
+        "0.5.0"
+      ],
+      "affectedContentIds": [
+        "early-atlas-progression-waystone-sustain"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Launch league mechanics",
+      "status": "still-current",
+      "currentSummary": [
+        "裂界、远征、仪式与迷妄在首发即进入地图,至今仍是核心终局机制,只是后续数值被调整。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [
+        "expedition-logbooks"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Pinnacle bosses",
+      "status": "changed-later",
+      "currentSummary": [
+        "早期巅峰首领的重试成本更高,后续补丁引入了恢复机制。"
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "arbiter-of-ash",
+        "xesht-we-that-are-one"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速概览",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "流放之路 2 在 0.1.0 以一套独立的万象终界开启终局。首发终局并非单一地图池,而是结合了开启地图节点的界石、向区域投射增益的尖塔、改造尖塔的石板,以及锚定后期地图环的城邦。",
+        "在万象终界之上,裂界、远征、仪式、迷妄四种异界机制从第一天起就存在于地图中。本页是这套原始终局的完整历史:0.1.0 发布了什么、首周如何稳定,以及哪些系统仍与当前客户端相似、哪些被后续补丁重建。"
+      ],
+      "bullets": [
+        "首发即独立的万象终界,包含界石、尖塔、石板、城邦",
+        "裂界、远征、仪式、迷妄从首日即活跃于地图",
+        "首周调整了界石前缀与地图续航,之后才是更大规模的重建"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提醒",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路 2 抢先体验 — 0.1.0 终局时代",
+      "baselineNote": "本页当前状态描述均以客户端 0.5.4e 为基准核对。",
+      "paragraphs": [
+        "0.1.0 是历史基线,而非当前终局指南。万象终界及其支撑系统在抢先体验的第一年里被反复扩展与重建。",
+        "把 0.1.0 的终界视频当作当前教程会误导人:界石分级、尖塔行为与地图续航在首周就被改动,之后又被 0.2、0.3、0.4、0.5 再次修改。"
+      ],
+      "bullets": [
+        "0.1.0 = 终局起点,而非最终设计",
+        "首发终界视频是历史记录,不是当前指南",
+        "下列所有当前规则描述均以 0.5.4e 核对"
+      ]
+    },
+    {
+      "id": "atlas-at-launch",
+      "order": 3,
+      "title": "0.1.0 万象终界包含什么",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "首发万象终界呈现一圈地图节点,玩家使用界石向前推进。尖塔位于大地图之上,占领后会向附近地图节点投射修正;石板插入尖塔以改变该修正;城邦出现在外圈,作为高威胁遭遇。",
+        "这套结构让不同区域各有特色,但界石稀有度、尖塔覆盖范围与石板效果的精确规则都处于最初形态,不久后便被改动。"
+      ],
+      "bullets": [
+        "界石开启万象终界上的地图节点",
+        "尖塔投射修正,石板改变这些修正",
+        "城邦锚定外圈高威胁区域"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "版本族时间线",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "抢先体验首发",
+          "summary": "独立的万象终界,含界石、尖塔、石板、城邦;地图中已有裂界、远征、仪式、迷妄。",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0c",
+          "date": "2024-12-13",
+          "kind": "经济补丁",
+          "summary": "界石前缀增强与通货再分配改善了早期地图续航。",
+          "tags": [
+            "balance",
+            "economy"
+          ]
+        },
+        {
+          "code": "0.1.0e",
+          "date": "2024-12-20",
+          "kind": "稳定补丁",
+          "summary": "检查点快速传送与洗点成本下调改善了终局节奏。",
+          "tags": [
+            "balance",
+            "progression"
+          ]
+        },
+        {
+          "code": "0.2.0+",
+          "date": "2025-04-04",
+          "kind": "后续主线",
+          "summary": "当前主线(基线 0.5.4e),重建了 0.1.0 万象终界的众多部分。",
+          "tags": [
+            "current-baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atlas-impact",
+      "order": 5,
+      "title": "原始终界系统及其归宿",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "界石",
+          "verdict": "反复改动",
+          "detail": "界石分级与前缀在 0.1.0c 及之后多次调整,旧的续航建议已过时。"
+        },
+        {
+          "area": "尖塔",
+          "verdict": "首发后重写",
+          "detail": "尖塔覆盖范围与修正规则被后续补丁重构。"
+        },
+        {
+          "area": "石板",
+          "verdict": "首发后重写",
+          "detail": "石板效果及其作用位置在 0.2 至 0.5 间变动。"
+        },
+        {
+          "area": "城邦",
+          "verdict": "当时成本更高",
+          "detail": "早期城邦进入的重试成本高于后来的恢复机制。"
+        },
+        {
+          "area": "异界机制",
+          "verdict": "仍保留",
+          "detail": "裂界、远征、仪式、迷妄仍是核心终局机制。"
+        }
+      ]
+    },
+    {
+      "id": "atlas-table",
+      "order": 6,
+      "title": "首发终局对比当前客户端",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0 发布了什么,是否与客户端 0.5.4e 一致。",
+      "columns": [
+        {
+          "key": "system",
+          "label": "系统"
+        },
+        {
+          "key": "launch",
+          "label": "0.1.0 状态"
+        },
+        {
+          "key": "status",
+          "label": "当前状态 (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "站内当前入口"
+        }
+      ],
+      "rows": [
+        {
+          "system": "界石",
+          "launch": "最初形态的分级与前缀。",
+          "status": "反复重建",
+          "entry": "early-atlas-progression-waystone-sustain 指南"
+        },
+        {
+          "system": "尖塔",
+          "launch": "向区域投射修正。",
+          "status": "0.2 起重构",
+          "entry": "终界推进指南"
+        },
+        {
+          "system": "石板",
+          "launch": "插入尖塔。",
+          "status": "效果已变动",
+          "entry": "终界推进指南"
+        },
+        {
+          "system": "城邦",
+          "launch": "外圈高威胁。",
+          "status": "后续加入恢复",
+          "entry": "巅峰首领页"
+        },
+        {
+          "system": "异界机制",
+          "launch": "裂界、远征、仪式、迷妄。",
+          "status": "仍是核心",
+          "entry": "expedition-logbooks 物品页"
+        }
+      ]
+    },
+    {
+      "id": "atlas-before-after",
+      "order": 7,
+      "title": "首发终界 vs 当前",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "首发当日 0.1.0 终界(2024 年 12 月)",
+      "oldText": "界石、尖塔、石板、城邦都处于最初形态。地图续航与界石稀有度尚粗糙,早期巅峰进入的重试成本很高。",
+      "newLabel": "当前终界(客户端 0.5.4e)",
+      "newText": "万象终界在 0.2 至 0.5 间被重建:界石规则、尖塔覆盖范围与城邦恢复均不同于首发。旧的视频与指南已不再描述当前地图。"
+    },
+    {
+      "id": "league-mechanics",
+      "order": 8,
+      "title": "首发异界机制",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "裂界",
+          "verdict": "仍保留",
+          "detail": "裂界在首发即出现在地图中,至今仍是核心终局机制,后续做了调整。"
+        },
+        {
+          "area": "远征",
+          "verdict": "仍保留",
+          "detail": "远征日志与炸药在首发即进入终局,当前行为在后续补丁中调整。"
+        },
+        {
+          "area": "仪式",
+          "verdict": "仍保留",
+          "detail": "仪式在首发地图中即存在,仍是核心机制。"
+        },
+        {
+          "area": "迷妄",
+          "verdict": "仍保留",
+          "detail": "迷妄镜像在首发即进入地图,仍是终局的一部分。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "当前适用性 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "原始终界结构",
+          "status": "changed-later",
+          "currentSummary": "界石、尖塔、石板、城邦在 0.2 至 0.5 间被重建。",
+          "supersededBy": "0.2.0, 0.3.1, 0.5.0",
+          "affectedContent": "early-atlas-progression-waystone-sustain 指南"
+        },
+        {
+          "topic": "首发异界机制",
+          "status": "still-current",
+          "currentSummary": "裂界、远征、仪式、迷妄仍是核心终局机制。",
+          "supersededBy": "—",
+          "affectedContent": "expedition-logbooks 物品页"
+        },
+        {
+          "topic": "界石前缀",
+          "status": "changed-later",
+          "currentSummary": "0.1.0c 的前缀增强只是界石诸多改动中的第一次。",
+          "supersededBy": "0.1.0c, 0.2.0+",
+          "affectedContent": "early-atlas-progression-waystone-sustain 指南"
+        },
+        {
+          "topic": "巅峰重试成本",
+          "status": "changed-later",
+          "currentSummary": "后续补丁降低了巅峰进入的重试成本。",
+          "supersededBy": "0.2.0, 0.3.0",
+          "affectedContent": "arbiter-of-ash / xesht-we-that-are-one 页面"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "当时 vs 现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "界石规则",
+          "thenText": "首发界石为最初形态,续航粗糙。",
+          "nowText": "0.2 至 0.5 的反复重写改变了界石分级与前缀。"
+        },
+        {
+          "aspect": "尖塔覆盖",
+          "thenText": "尖塔以最初形态投射修正。",
+          "nowText": "尖塔覆盖范围与效果被后续补丁重构。"
+        },
+        {
+          "aspect": "异界机制",
+          "thenText": "裂界、远征、仪式、迷妄首发即入地图。",
+          "nowText": "四种机制仍是核心,数值历经多补丁调整。"
+        },
+        {
+          "aspect": "巅峰进入",
+          "thenText": "早期巅峰重试成本高。",
+          "nowText": "后续补丁加入恢复,降低了重试成本。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "回归玩家清单",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "重新学习万象终界与界石",
+          "detail": "首发地图规则已重建,请遵循当前 early-atlas-progression 指南。"
+        },
+        {
+          "priority": "high",
+          "label": "忽略首日的终界视频",
+          "detail": "0.1.0 视频并不描述当前地图,请使用当前页面。"
+        },
+        {
+          "priority": "medium",
+          "label": "异界机制仍在",
+          "detail": "裂界、远征、仪式、迷妄仍是核心,只是做了调整。"
+        },
+        {
+          "priority": "medium",
+          "label": "巅峰进入现在更便宜",
+          "detail": "后续补丁降低了重试成本,不必畏惧挑战巅峰。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "社区佐证",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "论坛(0.1.0 首发周)",
+          "context": "玩家反映早期界石续航很粗糙。",
+          "quote": "我的地图界石消耗太快了,这不可能是最终形态。",
+          "analysis": "对应官方 0.1.0c 增强早期地图续航的改动。"
+        },
+        {
+          "source": "Reddit(0.1.0 终界)",
+          "context": "观众询问首发终界指南是否仍可靠。",
+          "quote": "这些终界指南还有用吗,还是地图已经被重做了?",
+          "analysis": "终界在 0.2 至 0.5 间被重建,首发指南应视为历史。"
+        },
+        {
+          "source": "YouTube 评论(0.1.0 视频)",
+          "context": "玩家混淆了首发城邦状态与当前。",
+          "quote": "为什么我的终界和 0.1.0 视频完全不一样?",
+          "analysis": "预料之中:终界在首发后被重建。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Early Atlas 推进指南",
+          "type": "guide",
+          "trigger": "首发终界在 0.5 前被重建",
+          "action": "按当前终界与界石规则刷新。",
+          "status": "reviewing"
+        },
+        {
+          "name": "远征日志物品页",
+          "type": "item",
+          "trigger": "首发异界机制,后续调整",
+          "action": "记录当前远征行为对比首发。",
+          "status": "queued"
+        },
+        {
+          "name": "灰烬仲裁者首领页",
+          "type": "boss",
+          "trigger": "巅峰重试成本变动",
+          "action": "标注当前恢复机制对比首发。",
+          "status": "queued"
+        },
+        {
+          "name": "我们合一·谢什特首领页",
+          "type": "boss",
+          "trigger": "巅峰重试成本变动",
+          "action": "标注当前恢复机制对比首发。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方抢先体验公告",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "官方公布的 0.1.0 职业与终局方向。结合首发热修说明,了解第一周内发生的变化。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Class reveal",
+              "time": "00:30"
+            },
+            {
+              "label": "Endgame and Atlas",
+              "time": "04:10"
+            },
+            {
+              "label": "Launch state",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.1.0 有终局吗?",
+          "answer": [
+            "有。0.1.0 发布了一套独立的万象终界,包含界石、尖塔、石板、城邦,以及地图中的四种异界机制。"
+          ]
+        },
+        {
+          "question": "为什么我的终界和 0.1.0 视频不一样?",
+          "answer": [
+            "万象终界在 0.2 至 0.5 间被反复重建。首发视频描述的是原始结构,而非当前地图。"
+          ]
+        },
+        {
+          "question": "首发的异界机制还在游戏里吗?",
+          "answer": [
+            "裂界、远征、仪式、迷妄仍是核心终局机制,只是数值在后续补丁中做了调整。"
+          ]
+        },
+        {
+          "question": "哪些 0.1.0 终局系统仍保留?",
+          "answer": [
+            "四种异界机制仍是核心。界石、尖塔、石板、城邦已被重建,不再与首发视频一致。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+          "description": "Official launch communication confirming the class, campaign and endgame scope of 0.1.0.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+          "description": "Official detail on the launch systems, progression model and endgame.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Path of Exile 2 official 0.1.0 launch notes",
+          "description": "Official launch notes covering the class, campaign and endgame scope.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced above.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "arbiter-of-ash",
+    "xesht-we-that-are-one"
+  ],
+  "relatedItemIds": [
+    "waystones-guide",
+    "expedition-logbooks"
+  ],
+  "relatedGuideIds": [
+    "early-atlas-progression-waystone-sustain"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Path of Exile 2 official 0.1.0 Early Access announcement",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "Path of Exile 2 official 0.1.0 FAQ and systems",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Path of Exile 2 official 0.1.0 launch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路 2 0.1.0 终界与终局基线 — 首发对比 0.5.4e",
+    "description": "0.1.0 的万象终界、界石、尖塔与异界机制究竟包含什么,以及 0.5.4e 重写了哪些终局系统。",
+    "noindex": false
+  }
+}
