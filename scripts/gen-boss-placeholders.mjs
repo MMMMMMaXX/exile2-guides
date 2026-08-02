@@ -1,4 +1,3 @@
-/* eslint-env node */
 /** 文件职责：为第二批 8 个 Boss 生成本地占位 webp 图（hero/arena/phase/attack/annotated）。
  * 这些不是 AI 生成的艺术图，而是带明确“官方原画待补”标识的编辑占位图，
  * 以满足 schema 的 /images/...webp 本地指纹契约与 check:images 门禁。

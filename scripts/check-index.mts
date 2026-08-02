@@ -4,9 +4,9 @@ import { loadContentIndex } from "../lib/content/content-index";
 try {
   const idx = await loadContentIndex();
   console.log("CONTENT INDEX OK — articles:", idx.size);
-} catch (e: any) {
+} catch (e: unknown) {
   console.error("CONTENT INDEX FAILED:");
-  const issues = e.issues ?? [];
+  const issues = (e as { issues?: unknown[] }).issues ?? [];
   const seen = new Set<string>();
   for (const i of issues) {
     const paths = (i.sourcePaths ?? []).join(", ");

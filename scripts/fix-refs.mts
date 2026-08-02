@@ -16,7 +16,7 @@ let changed = 0;
 for (const loc of ["en","zh-cn"]) {
   for (const type of ["items","guides","skills","bosses","builds"]) {
     const dir = `content/${loc}/${type}`;
-    let files: string[] = [];
+    let files: string[];
     try { files = readdirSync(dir).filter(f=>f.endsWith(".json")); } catch { continue; }
     for (const f of files) {
       const p = `${dir}/${f}`;

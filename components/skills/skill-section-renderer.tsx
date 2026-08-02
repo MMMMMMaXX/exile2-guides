@@ -66,7 +66,6 @@ const priorityLabels: Record<ContentLocale, Record<string, string>> = {
  */
 function RichSection({
   section,
-  locale,
 }: {
   section: SkillRichSection;
   locale: ContentLocale;

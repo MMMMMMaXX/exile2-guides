@@ -31,7 +31,7 @@ const revert: Record<string, string> = {
 };
 for (const p of Object.keys(revert)) {
   const raw = readFileSync(p, "utf8");
-  let out = raw
+  const out = raw
     .split('"waystones"')
     .join('"waystones-guide"')
     .split('"uncut-gems"')

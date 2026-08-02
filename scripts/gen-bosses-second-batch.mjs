@@ -1,4 +1,3 @@
-/* eslint-env node */
 /** 文件职责：生成 Bosses 第二批 8 篇 Draft（EN + ZH 各一篇，共 16 个 JSON）。
  * 严格遵循 lib/bosses/schema.ts 的判别联合章节类型；把方案里的新页面模型
  * （encounter-loop / reward-decision / modifier-builder / wave-context / failure-cost /
