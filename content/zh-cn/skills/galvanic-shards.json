@@ -1,0 +1,726 @@
+{
+  "id": "galvanic-shards",
+  "slug": "galvanic-shards",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Galvanic Shards 电光碎片指南 — 碎片、连锁光束、装填与辅助宝石",
+  "shortTitle": "Galvanic Shards",
+  "summary": "Galvanic Shards 是闪电弩的清图技能：每次射击会喷出一片碎片击中敌人，每一枚命中敌人的碎片都会立刻生成一道连锁光束连接到附近目标。0.3 重做用单发快速装填的弹匣取代了旧的五发弹仓，移除了装填速度惩罚，提高了碎片数量，并把品质从弹仓容量改为碎片数量。",
+  "description": "Galvanic Shards 深度指南：0.3 从五发弹仓重做为单发弹匣、碎片加连锁光束、弹道伤害与光束伤害、Fork 与 Chain 的取舍、Scattershot 与闪电穿透、装填与武器组规则、Galvanic 到 Shockburst 的切换、清图与 Boss 循环、推荐辅助宝石以及真实社区疑问。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 3,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "lightning"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/galvanic-shards.webp",
+  "cardImage": "/images/skills/galvanic-shards.webp",
+  "imageAlt": "Galvanic Shards 闪电弩技能图标",
+  "tags": [
+    "crossbow",
+    "lightning",
+    "mapping",
+    "projectile",
+    "ammunition"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Galvanic Shards 是闪电弩的清图技能。每次射击会喷出一片碎片；每一枚连接到敌人的碎片会立刻生成一道连锁光束，弧射到附近敌人，所以一次射击就能打穿一整群怪。",
+        "自 0.3 重做后，它使用单发快速装填的弹匣，而不是旧的五发弹仓，并且旧的装填速度惩罚已被移除。品质现在增加碎片数量，而不是弹仓容量。",
+        "它非常适合清图，但在打单个 Boss 时很弱：光束在单一目标上分摊得很薄，所以闪电弩 Build 一旦给目标上了感电（Shock），就会切换到 Shockburst Rounds（或 Stormblast Bolts）。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "速览",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "分类",
+          "value": "弩弹药 / 闪电",
+          "notes": [
+            "标签为 attack、projectile、ammunition、lightning。在碎片装填并发射前本身不造成伤害。"
+          ]
+        },
+        {
+          "label": "弹匣与装填",
+          "value": "单发，快速装填",
+          "notes": [
+            "0.3 移除了五发弹仓和装填速度惩罚；每次射击后快速装填一发。"
+          ]
+        },
+        {
+          "label": "每次射击碎片数",
+          "value": "多枚（随等级与品质提升）",
+          "notes": [
+            "每枚碎片都是独立弹道，可命中并生成自己的光束。"
+          ]
+        },
+        {
+          "label": "获取",
+          "value": "未切割技能宝石（3 阶）",
+          "notes": [
+            "由未切割技能宝石获得，插入任意弩技能槽。"
+          ]
+        },
+        {
+          "label": "品质",
+          "value": "增加碎片数量",
+          "notes": [
+            "品质不再影响弹仓容量；它增加碎片数量，直接扩大清图覆盖面。"
+          ]
+        },
+        {
+          "label": "最佳定位",
+          "value": "清图，然后打 Boss 时切换",
+          "notes": [
+            "清图强，单体弱；对感电 Boss 切换到 Shockburst Rounds。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patch-warning",
+      "order": 30,
+      "title": "概述：0.3 重做",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "如果你在参考 0.3 之前的攻略，Galvanic Shards 几乎一切都变了。0.3 之前它使用五发弹仓并带有装填速度惩罚，品质增加弹仓容量。那种“扫射＋自动装填”的玩法已经消失。",
+        "当前版本发射单发，释放一片碎片。装填一发很快且没有惩罚，所以手感更像一把快速单发弩，而不是自动射击的弹仓。",
+        "实际结论是：清图速度现在来自碎片数量和光束连锁，而不是弹仓的弹药量。过去投在装填速度上的投入，现在应该投到碎片数量（品质）、弹道增幅和光束连锁规则上。"
+      ],
+      "bullets": [
+        "旧版：五发弹仓、装填速度惩罚、品质＝弹仓容量。",
+        "新版：单发快速装填、无装填惩罚、品质＝碎片。",
+        "清图能力现在随碎片与连锁光束提升，而非弹仓弹药量。"
+      ]
+    },
+    {
+      "id": "ammunition-reload",
+      "order": 40,
+      "title": "弹药与装填",
+      "type": "ammunition-reload",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Galvanic Shards 每次射击消耗一发弹药。由于弹匣只有一发，每次射击后都会快速装填。装填很快且没有惩罚，所以持续射击很顺滑。",
+        "装填速度仍然影响总输出时间，但旧的专属装填速度惩罚已被移除，因此你不再需要过度投资装填恢复来让技能手感变好。"
+      ],
+      "steps": [
+        {
+          "label": "装填一发",
+          "action": "弩装有一发 Galvanic 弹药；发射后释放碎片扇面。",
+          "result": "一片碎片朝你的准星／目标飞出。"
+        },
+        {
+          "label": "碎片命中",
+          "action": "每枚连接到敌人的碎片造成伤害并生成连锁光束。",
+          "result": "附近敌人被光束击中，伤害在怪群中扩散。"
+        },
+        {
+          "label": "装填",
+          "action": "射击后单发自动快速装填。",
+          "result": "下一发准备就绪，无惩罚延迟。"
+        }
+      ]
+    },
+    {
+      "id": "fragment-beam",
+      "order": 50,
+      "title": "碎片与连锁光束",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "碎片扇面是初始弹道层：多枚碎片从你的射击中散开。每枚落在敌人身上的碎片造成一次弹道命中，然后触发一道连锁光束。",
+        "连锁光束是一个独立的伤害实例，从被命中的敌人弧射到附近敌人。光束按距离就近选择目标，而不是按你的准星，这正是 Galvanic Shards 能清屏的原因——一枚碎片在怪群中落地可以连锁穿过多个敌人。",
+        "光束并不是简单地重复弹道命中。它有自己独立的伤害结算和增幅（见对比表）。重要的是，单一敌人不会被同一道光束链反复命中从而让你的单体伤害翻倍——面对单一 Boss 时光束无处可链，这就是单体伤害偏弱的原因。"
+      ],
+      "bullets": [
+        "碎片＝初始弹道命中；连锁光束＝碎片命中后触发的次级弧射。",
+        "光束按就近原则锁定附近敌人，实现清屏。",
+        "孤立目标几乎得不到光束收益，所以单体伤害弱。"
+      ]
+    },
+    {
+      "id": "beam-comparison",
+      "order": 55,
+      "title": "弹道 vs 连锁光束",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "层级",
+        "触发条件",
+        "主要作用",
+        "受影响于",
+        "常见误区"
+      ],
+      "rows": [
+        [
+          "碎片弹道",
+          "弩射击",
+          "对扇面内每个目标的初始命中",
+          "弹道、Fork、穿透、碎片数量",
+          "误以为它只是纯视觉特效"
+        ],
+        [
+          "连锁光束",
+          "碎片连接到敌人",
+          "弧射到附近敌人实现清屏",
+          "连锁规则、光束目标数",
+          "误以为它等于普通的弹道连锁"
+        ]
+      ]
+    },
+    {
+      "id": "hit-behaviour",
+      "order": 60,
+      "title": "命中行为：Chain、Fork 与穿透",
+      "type": "hit-behaviour",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "碎片和连锁光束对辅助配置的不同部分有不同反应。Fork 会增加额外弹道让碎片扇面铺得更宽，有助于清图但会降低单体集中度。Chain 会延长光束到更远敌人的距离。",
+        "穿透让碎片穿过敌人，在直线上一连命中多个目标——在密集怪群中很强。连锁光束本身有自己的连锁行为，与弹道连锁相互独立，所以不要假设两者完全相同。",
+        "一个常见疑惑：“为什么我的面板 DPS 跟实际清图对不上？”因为面板 DPS 通常只显示碎片弹道命中本身，而真正的清图伤害来自光束在怪群中连锁。正是这些光束让这个技能在游戏内的手感比面板显示的更强。"
+      ],
+      "keyValues": [
+        {
+          "label": "Fork",
+          "value": "碎片铺面更宽，清图更好，单体更弱",
+          "notes": [
+            "清图极佳，对定身 Boss 用处不大。"
+          ]
+        },
+        {
+          "label": "Chain",
+          "value": "延长光束到更多敌人",
+          "notes": [
+            "放大清屏；光束连锁与弹道连锁相互独立。"
+          ]
+        },
+        {
+          "label": "穿透",
+          "value": "碎片穿过敌人，直线更多命中",
+          "notes": [
+            "密集怪群中很强；Boss 收益一般。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "辅助宝石兼容性",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Galvanic Shards 最受益于增加碎片数量、闪电伤害和覆盖面的辅助宝石。下表区分了推荐、情境和不兼容选项，避免你插入会损害技能主要定位的辅助。"
+      ],
+      "keyValues": [
+        {
+          "label": "Scattershot",
+          "value": "推荐（清图）",
+          "notes": [
+            "增加碎片，是这个技能最大的清图倍增器。"
+          ]
+        },
+        {
+          "label": "闪电穿透",
+          "value": "推荐（Boss）",
+          "notes": [
+            "提升闪电命中伤害；弥补较弱的单体表现。"
+          ]
+        },
+        {
+          "label": "Fork",
+          "value": "情境（清图）",
+          "notes": [
+            "覆盖面更广但分摊伤害；地图中强，Boss 上弱。"
+          ]
+        },
+        {
+          "label": "Chain",
+          "value": "情境（清图）",
+          "notes": [
+            "延长光束连锁；利于清屏。"
+          ]
+        },
+        {
+          "label": "集中效应",
+          "value": "不兼容（清图）",
+          "notes": [
+            "缩小范围；直接违背技能的清屏定位。"
+          ]
+        }
+      ],
+      "columns": [
+        "辅助宝石",
+        "清图",
+        "Boss",
+        "影响",
+        "代价"
+      ],
+      "rows": [
+        [
+          "Scattershot",
+          "高",
+          "情境",
+          "碎片数量",
+          "单发成本"
+        ],
+        [
+          "闪电穿透",
+          "中",
+          "高",
+          "闪电命中",
+          "辅助槽"
+        ],
+        [
+          "Fork",
+          "高",
+          "低",
+          "碎片铺面",
+          "单体下降"
+        ],
+        [
+          "Chain",
+          "高",
+          "低或中",
+          "光束距离",
+          "伤害惩罚"
+        ]
+      ]
+    },
+    {
+      "id": "projectile-behaviour",
+      "order": 80,
+      "title": "弹道行为与面板 DPS 为何误导",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "详细面板通常只显示碎片弹道命中本身。这个数字低估了真实表现，因为它忽略了每次碎片命中时触发的连锁光束。",
+        "在密集怪群中，一次射击可以产生多个光束实例（每一枚命中的碎片一个），每道光束还能连锁到更多敌人。所以有效清图伤害是面板弹道数字的倍数，而不是等于它。",
+        "这也是 Scattershot 手感如此强的原因：更多碎片＝更多连接事件＝更多光束。技能的强度随碎片数量和敌人密度相乘，而不是随单次命中相加。"
+      ],
+      "bullets": [
+        "面板只显示碎片弹道命中；光束是额外伤害。",
+        "真实清图＝碎片 × 光束 × 连锁，而非面板数字。",
+        "Scattershot 同时放大这三层。"
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 90,
+      "title": "辅助宝石配置",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "两套配置覆盖大多数闪电弩玩家：一套围绕碎片数量和连锁构建的清图配置，以及一套把清图辅助换成穿透和单体增幅的 Boss 配置。"
+      ],
+      "steps": [
+        {
+          "label": "清图配置",
+          "action": "插入 Scattershot、Fork、闪电穿透以及一个弹道／闪电伤害辅助。",
+          "result": "最大碎片铺面与光束连锁，快速清屏。"
+        },
+        {
+          "label": "Boss 配置",
+          "action": "用闪电穿透替换 Fork，并加入单体伤害辅助；若碎片数量仍有帮助则保留 Scattershot。",
+          "result": "当光束无处可链时获得更好的集中伤害。"
+        },
+        {
+          "label": "品质优先级",
+          "action": "优先把品质投入碎片数量。",
+          "result": "每枚碎片都增加一个连接事件和一道光束，直接放大清图。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 100,
+      "title": "武器组规则",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Galvanic Shards 存在于一个武器组中。一个常见失败是把它设在武器组 1，却用武器组 2 在战斗，于是技能显示为未装填或毫无作用。",
+        "如果你把武器组 2 留给 Boss 技能（Shockburst Rounds 或 Stormblast Bolts），请确保 Galvanic Shards 及其辅助插在你实际用于清图的那个组里。在怪群中切换到没有该技能的组，是“我的弩突然不发射了”的常见原因。"
+      ],
+      "keyValues": [
+        {
+          "label": "组 1（清图）",
+          "value": "Galvanic Shards ＋ 清图辅助",
+          "notes": [
+            "清图时保持这个组激活。"
+          ]
+        },
+        {
+          "label": "组 2（Boss）",
+          "value": "Shockburst Rounds / Stormblast Bolts",
+          "notes": [
+            "仅当目标感电且你需要单体时切换过来。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "清图循环",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "清图循环很简单：站位让碎片扇面落入怪群，射击，让光束连锁，装填，重复。保持移动，让每次射击都找到新鲜的敌群。"
+      ],
+      "steps": [
+        {
+          "label": "接近怪群",
+          "action": "走进射程，把碎片扇面瞄准最密集的簇。",
+          "result": "碎片连接，光束在群体中连锁。"
+        },
+        {
+          "label": "射击与装填",
+          "action": "开火，让快速装填完成，继续推进。",
+          "result": "持续清图，无惩罚空窗。"
+        },
+        {
+          "label": "连锁到下一群",
+          "action": "不要停下；光束常自动够到下一组。",
+          "result": "无需每群手动重新瞄准即可全屏清图。"
+        }
+      ]
+    },
+    {
+      "id": "bossing-transition",
+      "order": 120,
+      "title": "Boss 切换",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "面对单一 Boss，Galvanic Shards 表现不佳，因为光束没有周围敌人可连锁。标准闪电弩方案是上感电（通过 Herald of Thunder、闪电技能或感电辅助），然后切换到单体技能。",
+        "一旦目标感电，Shockburst Rounds 就是自然的 Boss 技能：它对感电敌人脉冲额外爆炸。Stormblast Bolts 则是预载爆发伤害的替代方案。"
+      ],
+      "steps": [
+        {
+          "label": "施加感电",
+          "action": "使用感电源，使 Boss 携带感电异常。",
+          "result": "Boss 已为感电收益技能做好准备。"
+        },
+        {
+          "label": "切换到 Shockburst Rounds",
+          "action": "切换到装有 Shockburst Rounds 的武器组 2。",
+          "result": "对感电 Boss 脉冲爆炸，强力单体。"
+        },
+        {
+          "label": "回到 Galvanic 清图",
+          "action": "打完 Boss 后切回 Galvanic Shards 处理下一群。",
+          "result": "恢复清图定位。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Build 用法",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "闪电弩审判官（Witchhunter）：Galvanic Shards 是默认清图技能，配合 Shockburst Rounds 打 Boss，Herald of Thunder 提供感电与清图连锁。这是该技能最常见的归宿。",
+        "战术家（Tactician）弩：Galvanic Shards 清图，同时预载 Stormblast Bolts 用于 Boss 爆发。这里 Galvanic 明确是双技能方案中的“清图”一半。",
+        "通用弩练级：Galvanic Shards 凭借快速装填和光束连锁撑起早期清图，之后过渡到终局闪电弩收益技能。"
+      ],
+      "bullets": [
+        "审判官闪电弩：Galvanic 清图 ＋ Shockburst Boss。",
+        "战术家：Galvanic 清图 ＋ Stormblast Bolts Boss 爆发。",
+        "练级：Galvanic 撑起早期清图，再专精化。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "故障排查",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "技能不发射／显示无弹药：你在错误的武器组。直接回答：确认 Galvanic Shards 及其辅助插在当前激活的武器组中。",
+        "0.3 后清图变弱：你在沿用旧的弹仓 Build。直接回答：投资碎片数量（品质）和 Scattershot；旧装填速度投入已不再重要。",
+        "Boss 伤害低：这很正常——光束需要怪群才能连锁。直接回答：上感电并切换到 Shockburst Rounds（或 Stormblast Bolts）打单体。",
+        "面板 DPS 看起来低得不真实：面板只显示碎片弹道命中。直接回答：连锁光束提供了真正的清图伤害；用游戏内清图表现而非面板数字来判断。"
+      ],
+      "steps": [
+        {
+          "label": "错误武器组",
+          "action": "检查当前激活的是哪个组，以及 Galvanic Shards 是否插在那里。",
+          "result": "把技能和辅助移到激活组。"
+        },
+        {
+          "label": "旧弹仓 Build",
+          "action": "用碎片数量和 Scattershot 替换装填速度投入。",
+          "result": "清图恢复到预期水平。"
+        },
+        {
+          "label": "Boss 伤害弱",
+          "action": "上感电，切换到 Shockburst Rounds / Stormblast Bolts。",
+          "result": "单体输出恢复。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "社区证据",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "论坛和 Reddit 反复有人问“Galvanic Shards 现在只有一发了吗”和“五发弹仓去哪了”——这都是 0.3 重做的问题，答案是弹仓被单发快速装填取代了。",
+        "玩家也反馈“为什么这技能在地图里像卡车、对 Boss 却毫无作用”的困惑——这正符合光束连锁的定位：没有怪群，没有连锁，没有清图倍增。",
+        "几位 Build 作者指出 Scattershot 是重做后该技能最大的清图提升，印证碎片数量才是核心增幅杠杆。"
+      ],
+      "bullets": [
+        "反复出现的问题：“为什么只有一发？”——答案是 0.3 单弹匣重做。",
+        "反复出现的观察：地图强、Boss 弱，源于光束连锁。",
+        "共识：Scattershot／碎片数量是首要清图投入。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "视频讲解与时间节点",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "KaidGames2",
+          "label": "Explosive Shockburst Tactician with Tempest",
+          "description": "一个闪电弩战术家 Build，清图用 Galvanic Shards，Boss 用 Shockburst Rounds，展示了真实地图中的碎片扇面和光束连锁。",
+          "takeaway": "观察碎片扇面加光束如何清屏，然后 Build 切换到 Boss 技能。",
+          "url": "https://youtu.be/yye5P8CBmCA",
+          "timestamps": [
+            {
+              "label": "Build 与技能分工",
+              "time": "0:00"
+            },
+            {
+              "label": "地图中 Galvanic Shards 清图",
+              "time": "2:30"
+            },
+            {
+              "label": "碎片扇面与光束连锁",
+              "time": "5:00"
+            },
+            {
+              "label": "Boss 切换到 Shockburst",
+              "time": "8:00"
+            }
+          ]
+        },
+        {
+          "creator": "KaidGames2",
+          "label": "Explosive Shockburst Tactician Works",
+          "description": "另一个闪电弩展示，印证 0.3 重做后的单弹匣 Galvanic Shards 清图循环与装填手感。",
+          "takeaway": "印证快速单发装填与基于碎片的清图。",
+          "url": "https://youtu.be/vdKsk6NmaME",
+          "timestamps": [
+            {
+              "label": "技能配置",
+              "time": "0:00"
+            },
+            {
+              "label": "清图循环",
+              "time": "3:00"
+            },
+            {
+              "label": "Boss 单体",
+              "time": "6:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方论坛补丁说明，确认 0.3 的 Galvanic Shards 重做（单弹匣、移除装填惩罚、品质改为碎片）以及 0.5.4 当前状态。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区 Wiki 提供技能 id、标签、碎片行为、光束连锁与获取阶位。",
+          "url": "https://poe2db.tw/Galvanic_Shards"
+        },
+        {
+          "label": "Build 与视频",
+          "description": "KaidGames2 闪电弩战术家展示，用于交叉核验碎片扇面、光束连锁、装填手感与 Boss 切换。",
+          "url": "https://youtu.be/yye5P8CBmCA"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 与官方论坛呈现反复出现的 0.3 重做与 Boss 伤害疑问，已在客户端复现并直接回答。"
+        },
+        {
+          "label": "官方论坛",
+          "description": "GGG 官方论坛，工作人员在此确认弩弹药与装填机制。",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 社区",
+          "description": "Reddit r/PathOfExile2 关于 Galvanic Shards 重做与闪电弩 Build 的讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Galvanic%20Shards&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "补丁历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-08-01",
+          "changes": [
+            "0.3.0 (2025-08)：从五发弹仓重做为单发快速装填。",
+            "移除装填速度惩罚。",
+            "提高碎片数量与弹道／光束伤害。",
+            "品质从弹仓容量改为碎片数量。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08)：当前基线：单弹匣碎片扇面加连锁光束；无装填惩罚；品质增加碎片。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布：0.3 重做摘要、碎片与连锁光束机制、弹道 vs 光束表、辅助矩阵、装填与武器组规则、清图与 Boss 循环、故障排查与社区疑问。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "shockburst-rounds",
+    "stormblast-bolts",
+    "herald-of-thunder"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 官方补丁说明论坛",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Galvanic Shards",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Galvanic_Shards"
+    },
+    {
+      "label": "PoE2 社区 Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Galvanic_Shards"
+    },
+    {
+      "label": "KaidGames2 闪电弩战术家",
+      "sourceType": "community",
+      "url": "https://youtu.be/yye5P8CBmCA"
+    },
+    {
+      "label": "KaidGames2 Explosive Shockburst Tactician",
+      "sourceType": "community",
+      "url": "https://youtu.be/vdKsk6NmaME"
+    },
+    {
+      "label": "KaidGames2 CRAZIEST Galvanic Shards Build 0.5",
+      "sourceType": "community",
+      "url": "https://youtu.be/7U6b5IyvGuo"
+    },
+    {
+      "label": "Reddit — Galvanic Shards 重做讨论",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Galvanic%20Shards&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Galvanic Shards 电光碎片指南 — 碎片、连锁光束、装填与辅助宝石",
+    "description": "Galvanic Shards 深度指南：0.3 重做为单弹匣、碎片加连锁光束、Fork 与 Chain 取舍、装填与武器组规则、Galvanic 到 Shockburst 的切换、清图与 Boss 循环、推荐辅助宝石。",
+    "noindex": false
+  }
+}

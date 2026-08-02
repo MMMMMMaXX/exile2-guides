@@ -1,0 +1,619 @@
+{
+  "id": "cast-on-critical-strike",
+  "slug": "cast-on-critical-strike",
+  "locale": "en",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Cast on Critical Strike Guide — Energy, Critical Hits, Triggered Spells and Spirit",
+  "shortTitle": "Cast on Critical Strike",
+  "summary": "Cast on Critical Strike is a Meta gem that reserves 100 Spirit. Your Critical Hits build Energy; when the Energy bar fills, the Spell socketed into the gem is triggered automatically. It rewards a Critical-Hit build, not a raw-damage build, and it is different from Cast on Elemental Ailment, which triggers on ailments instead of crits.",
+  "description": "Cast on Critical Strike deep guide: how crits generate Energy, Attack vs Spell crit, Minion crits, triggered-spell crit, per-hit and multi-projectile accounting, how the socketed spell sets Maximum Energy, the one-instance limit, why a full bar will not cast, supports on the Meta gem vs the spell, Mapping vs Boss config, and how it compares to Cast on Elemental Ailment.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 9,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": 100,
+  "skillCategory": "meta",
+  "skillTags": [
+    "meta",
+    "trigger",
+    "critical",
+    "spirit",
+    "spell"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/cast-on-critical-strike.webp",
+  "cardImage": "/images/skills/cast-on-critical-strike.webp",
+  "imageAlt": "Cast on Critical Strike meta skill icon",
+  "tags": [
+    "meta",
+    "trigger",
+    "critical",
+    "spirit"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick Answer",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cast on Critical Strike is a Meta gem that reserves 100 Spirit. Instead of being cast directly, you socket a Spell into it, and every time you score a Critical Hit, the gem gains Energy.",
+        "When the Energy bar fills, the socketed Spell is cast automatically. A Critical-Hit-focused build is what makes the gem fire often; a build that never crits will never trigger it.",
+        "It is not the same as Cast on Elemental Ailment. Cast on Critical Strike triggers off Critical Hits, while Cast on Elemental Ailment triggers when you inflict an elemental ailment. Pick the one that matches how your build actually deals damage."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick Facts",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Meta / Trigger / Spirit",
+          "notes": [
+            "Tagged meta, trigger, critical, spirit, spell."
+          ]
+        },
+        {
+          "label": "Spirit",
+          "value": "Reserves 100 Spirit",
+          "notes": [
+            "A large reservation; plan your other Spirit skills around it."
+          ]
+        },
+        {
+          "label": "Trigger",
+          "value": "Critical Hit builds Energy",
+          "notes": [
+            "Energy fills from your own crits, then the socketed spell casts."
+          ]
+        },
+        {
+          "label": "Socket",
+          "value": "One Spell into the gem",
+          "notes": [
+            "The socketed spell defines the trigger's Maximum Energy."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Skill Gem (Tier 9)",
+          "notes": [
+            "Obtained from an Uncut Skill Gem; enabled in the skill panel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requirements",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "No special attribute gate to enable the Meta gem itself. The real requirement is that your build crits reliably and often.",
+        "The socketed Spell has its own requirements. If that Spell needs a specific weapon, attribute, or Weapon Set that you are not meeting at the moment, the trigger will not fire even when the Energy bar is full."
+      ],
+      "keyValues": [
+        {
+          "label": "Reliable Critical Chance",
+          "value": "Required for uptime",
+          "notes": [
+            "Without crits, Energy never builds and the spell never casts."
+          ]
+        },
+        {
+          "label": "Socketed spell requirements",
+          "value": "Must be met at fire time",
+          "notes": [
+            "Weapon, attribute and Weapon Set must all be valid when triggered."
+          ]
+        },
+        {
+          "label": "100 Spirit",
+          "value": "Reserved while active",
+          "notes": [
+            "You cannot run many other Spirit skills at the same time."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "critical-energy",
+      "order": 40,
+      "title": "Critical Hits and Energy",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Every Critical Hit you land adds Energy to the gem. Both Attack Critical Hits and Spell Critical Hits count; the gem does not care which kind of hit crit, only that it was a Critical Hit dealt by you.",
+        "Critical Hits from your Minions do NOT add Energy. Only hits that originate from you fill the bar. Triggered-spell Critical Hits also do NOT add Energy, which is what prevents an infinite trigger loop: the spell that the gem casts cannot feed Energy back into itself.",
+        "Each hit is counted separately, so a single skill that lands several Critical Hits adds Energy several times. When multiple projectiles from one attack crit on the same target on the same frame, they each contribute, but the game applies a per-frame cap on how much Energy a single action can grant, so a 20-projectile screen clear is not twenty times better than a few crits."
+      ],
+      "bullets": [
+        "Attack crit and Spell crit both generate Energy.",
+        "Minion crits and triggered-spell crits do not generate Energy.",
+        "Each qualifying hit counts separately; a per-frame cap prevents abuse."
+      ]
+    },
+    {
+      "id": "socketed-spells",
+      "order": 50,
+      "title": "Socketed Spells and Maximum Energy",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "You socket exactly one Spell into Cast on Critical Strike. That Spell decides the Maximum Energy threshold: higher-cost, slower Spells raise the threshold you must fill before the trigger fires, while cheaper, faster Spells lower it and let the gem cast more often.",
+        "Cast Time matters because it sets how long the triggered Spell takes to cast. A long Cast Time means the triggered Spell occupies you longer and fires less smoothly between crits; a short Cast Time keeps the loop responsive.",
+        "This is a mechanic estimate, not a DPS calculator. It does not model missed hits, target count, server tick behaviour or downtime, so the theoretical fill time is only a planning aid, not a guarantee of in-combat performance."
+      ],
+      "bullets": [
+        "The socketed Spell sets Maximum Energy (cost and cast time).",
+        "Slower, costlier spells = higher threshold, less frequent casts.",
+        "Cheaper, faster spells = lower threshold, more frequent casts."
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 60,
+      "title": "Spirit Budget",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cast on Critical Strike reserves 100 Spirit, which is one of the largest reservations in the game. After enabling it, most characters have little Spirit left for other persistent skills."
+      ],
+      "keyValues": [
+        {
+          "label": "Reservation",
+          "value": "100 Spirit",
+          "notes": [
+            "Plan other Spirit skills (Heralds, auras, Wind Dancer) around the leftover."
+          ]
+        },
+        {
+          "label": "One instance only",
+          "value": "No stacking",
+          "notes": [
+            "A character can only have one active Cast on Critical Strike; a second copy does not stack."
+          ]
+        },
+        {
+          "label": "Opportunity cost",
+          "value": "High",
+          "notes": [
+            "If you need Heralds or Combat Frenzy, weigh whether the trigger is worth the 100 Spirit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "energy-examples",
+      "order": 70,
+      "title": "Energy Fill Examples",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Scenario",
+        "Crits / sec",
+        "Energy per crit",
+        "Approx. fill time",
+        "Note"
+      ],
+      "rows": [
+        [
+          "High crit-rate attack, cheap spell",
+          "~6",
+          "Moderate",
+          "Short",
+          "Fast, frequent triggers; good mapping feel"
+        ],
+        [
+          "Low crit-rate attack, cheap spell",
+          "~1.5",
+          "Moderate",
+          "Long",
+          "Rarely fires; needs more crit investment"
+        ],
+        [
+          "High crit-rate attack, costly spell",
+          "~6",
+          "Moderate",
+          "Longer",
+          "Each cast is stronger but fires less often"
+        ],
+        [
+          "Boss, low target count",
+          "~3",
+          "Moderate",
+          "Medium",
+          "Fewer hits than a pack; still works if you crit"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 80,
+      "title": "Support Compatibility",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "The most common mistake is socketing the wrong support in the wrong place. Supports that change how the trigger behaves (Energy gain, trigger rate, or the gem's own stats) go on the Meta gem. Supports that change the Spell's damage or behaviour go on the socketed Spell."
+      ],
+      "keyValues": [
+        {
+          "label": "Supports on the Meta gem",
+          "value": "Trigger behaviour",
+          "notes": [
+            "Socket gems that affect Energy, trigger cadence, or the gem itself here."
+          ]
+        },
+        {
+          "label": "Supports on the socketed Spell",
+          "value": "Spell damage / behaviour",
+          "notes": [
+            "Damage, penetration and cast-time supports belong on the triggered Spell."
+          ]
+        },
+        {
+          "label": "Critical-focused supports",
+          "value": "Recommended",
+          "notes": [
+            "Anything that raises Critical Chance or Critical Damage helps the trigger rate."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 90,
+      "title": "Support Loadouts",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A crit-focused loadout puts Critical Chance and Critical Damage supports on the trigger path, while the socketed Spell carries its own damage supports."
+      ],
+      "steps": [
+        {
+          "label": "Meta gem",
+          "action": "Socket Critical Chance / Critical Damage supports that affect the trigger.",
+          "result": "More Energy per second, more frequent casts."
+        },
+        {
+          "label": "Socketed Spell",
+          "action": "Socket the Spell's own damage, penetration and cast-time supports.",
+          "result": "Each triggered cast hits harder and resolves faster."
+        }
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 100,
+      "title": "Skill Interactions",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cast on Elemental Ailment: a separate Meta gem that triggers on elemental ailments instead of crits. If your build already chills / freezes / shocks reliably but does not crit much, that gem may be the better fit.",
+        "Spell and Attack tags: both crit types feed Energy, so a hybrid crit build (crit attacks plus a crit spell) still works; just remember Minion crits do not count.",
+        "Weapon Sets: because the socketed Spell must meet its requirements at fire time, switching Weapon Sets can disable the trigger if the new set cannot meet the Spell's needs."
+      ],
+      "bullets": [
+        "No link to Cast on Elemental Ailment; different triggers.",
+        "Minion crits never feed Energy.",
+        "Weapon Set must meet the socketed Spell's requirements."
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "Mapping Rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "In maps, packs give you many crits per second, so the Energy bar fills quickly and the socketed Spell fires almost continuously. This is where Cast on Critical Strike feels best."
+      ],
+      "steps": [
+        {
+          "label": "Crit the pack",
+          "action": "Land Critical Hits on the group with your main skill.",
+          "result": "Energy fills fast from many hits."
+        },
+        {
+          "label": "Spell triggers",
+          "action": "The socketed Spell auto-casts as the bar fills.",
+          "result": "Screen-wide secondary damage with no manual casting."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Bossing Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "On a single boss you have far fewer hits per second, so the trigger fires less often. It still works if your crit rate is high, but the payoff is smaller than in maps. Keep your main crit skill on the boss and let the trigger add burst between your own casts."
+      ],
+      "steps": [
+        {
+          "label": "Sustain crits",
+          "action": "Keep Critical Hits landing on the boss.",
+          "result": "Steady, if slower, Energy gain."
+        },
+        {
+          "label": "Let it burst",
+          "action": "Allow the socketed Spell to fire on fill.",
+          "result": "Extra burst layered on your own rotation."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Build Usage",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Critical Occult / Infernalist: CoC-style builds socket a cold or lightning Spell and lean on Critical Chance to fire it constantly.",
+        "Cold Caster Chronomancer: a crit-caster shell that uses the trigger as a passive damage layer while the main spell is cast manually.",
+        "Spell-on-Crit Stormweaver: pairs a cheap socketed Spell with high crit rate for near-continuous secondary casts."
+      ],
+      "bullets": [
+        "Critical Occult / Infernalist CoC shells.",
+        "Cold Caster Chronomancer secondary layer.",
+        "Any high-crit-rate caster that can spare 100 Spirit."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Troubleshooting",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bar is full but nothing casts: the socketed Spell's requirements are not met at that moment — wrong Weapon Set, missing attribute, or the Spell is on cooldown / you are silenced. Direct answer: meet the Spell's requirements or switch back to the correct Weapon Set.",
+        "Gem never fires: you are not critting. Direct answer: raise Critical Chance; without crits there is no Energy.",
+        "Trigger feels weak on bosses: fewer hits per second means slower fills. Direct answer: that is expected; invest more crit rate or accept lower boss uptime.",
+        "Second copy does nothing: only one instance is allowed. Direct answer: remove the duplicate; it does not stack."
+      ],
+      "steps": [
+        {
+          "label": "Full bar, no cast",
+          "action": "Check Weapon Set, attributes and Spell cooldown.",
+          "result": "Meet requirements to allow the trigger."
+        },
+        {
+          "label": "Never fires",
+          "action": "Raise Critical Chance.",
+          "result": "Energy starts building from crits."
+        },
+        {
+          "label": "Duplicate gem",
+          "action": "Remove the second copy.",
+          "result": "Only one instance is active."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "Community Evidence",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Players routinely report the 'full bar, no cast' case, which almost always traces back to the socketed Spell's Weapon Set or attribute requirement not being met at fire time.",
+        "The Minion-crit question is common: people expect their Spectres or minions to feed the bar, but only the player's own crits count.",
+        "The biggest build-level debate is 100 Spirit versus running Heralds or Combat Frenzy; most crit builds accept the cost only when the trigger is central to the damage plan."
+      ],
+      "bullets": [
+        "Recurring issue: full bar but Spell will not cast.",
+        "Recurring question: do Minion crits count? No.",
+        "Debate: 100 Spirit vs other Spirit skills."
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 160,
+      "title": "Known Issues and Limits",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Trigger loop is intentionally blocked: the triggered Spell's own crits do not add Energy, so you cannot spiral the trigger infinitely.",
+        "Per-frame Energy cap means a huge multi-projectile hit does not grant a disproportionate burst of Energy in a single frame.",
+        "One-instance limit: equipping a second Cast on Critical Strike does not stack or add a second trigger."
+      ],
+      "bullets": [
+        "Triggered-spell crits do not feed Energy (no loop).",
+        "Per-frame Energy cap prevents burst abuse.",
+        "Single instance per character."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 170,
+      "title": "Video Walkthrough and Timestamps",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "ZiggyD Gaming",
+          "label": "Cast on Critical Strike CoC Build Guide",
+          "description": "A Critical-strike trigger build showing how crit rate drives the socketed spell and how the Spirit budget is managed.",
+          "takeaway": "Watch how crit investment keeps the trigger firing and how the 100 Spirit reservation shapes the rest of the build.",
+          "url": "https://youtu.be/NKWFVsZPv_Q",
+          "timestamps": [
+            {
+              "label": "Build overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Crit and trigger setup",
+              "time": "3:00"
+            },
+            {
+              "label": "Boss demonstration",
+              "time": "6:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 180,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG official Patch Notes and the 0.5.4 skill behaviour for Meta trigger gems, including Spirit reservation and trigger rules.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB and Community Wiki provide the gem id, Spirit reservation, socketed-spell behaviour and Energy rules.",
+          "url": "https://poe2db.tw/en/Cast_on_Critical_Strike"
+        },
+        {
+          "label": "Builds and video",
+          "description": "YouTube CoC builds used to cross-check crit-driven trigger uptime and the 100 Spirit tradeoff.",
+          "url": "https://youtu.be/NKWFVsZPv_Q"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit and forums surface the 'full bar no cast' and Minion-crit confusion, reproduced on client and answered directly.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Cast%20on%20Critical%20Strike&restrict_sr=1"
+        },
+        {
+          "label": "Official Forums",
+          "description": "Official GGG forums where staff confirm Meta gem and trigger mechanics.",
+          "url": "https://www.pathofexile.com/forum"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 190,
+      "title": "Patch History",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-09-01",
+          "changes": [
+            "0.4.0 (2025-09): Meta trigger gems established; Cast on Critical Strike reserves 100 Spirit and triggers the socketed Spell from Critical-Hit Energy."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): Current baseline: Critical Hits build Energy, triggered-spell crits do not loop, one instance per character."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial release: Energy from crits, Attack vs Spell vs Minion crit, socketed-spell Maximum Energy, one-instance limit, support placement, Mapping vs Boss config, and comparison with Cast on Elemental Ailment."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer",
+    "coc-frostbolt-comet-infernalist",
+    "spark-coc-comet-stormweaver",
+    "crit-comet-disciple-of-varashta"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "cast-on-elemental-ailment"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Cast on Critical Strike",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/en/Cast_on_Critical_Strike"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Cast_on_Critical_Strike"
+    },
+    {
+      "label": "ZiggyD Cast on Critical Strike video",
+      "sourceType": "community",
+      "url": "https://youtu.be/NKWFVsZPv_Q"
+    },
+    {
+      "label": "Reddit — Cast on Critical Strike discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Cast%20on%20Critical%20Strike&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Cast on Critical Strike Guide — Energy, Critical Hits, Triggered Spells and Spirit",
+    "description": "Cast on Critical Strike deep guide: how crits generate Energy, Attack vs Spell crit, Minion crits, triggered-spell crit, per-hit and multi-projectile accounting, socketed-spell Maximum Energy, the one-instance limit, support placement and Mapping vs Boss config.",
+    "noindex": false
+  }
+}
