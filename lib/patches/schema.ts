@@ -603,6 +603,55 @@ export const patchArticleSchema = patchArticleBaseSchema.superRefine(
 
     if (article.status !== "published") return;
 
+    // 构建期 slug 检测守卫：已发布 Patch 的叙述字段（段落/答案/变更/正文等）不得为纯 slug 串，
+    // 防止正文被 slug 化腐化后随内容生成流入生产。草稿/模板文章经上方 status 早退已自动豁免。
+    const SLUG_PROSE = /^[a-z0-9]+(?:-[a-z0-9]+){2,}$/;
+    const PROSE_KEYS = new Set([
+      "paragraphs",
+      "bullets",
+      "answer",
+      "body",
+      "changes",
+      "summary",
+      "description",
+      "note",
+      "detail",
+      "text",
+      "caption",
+      "takeaway",
+      "lead",
+      "introduction",
+      "headline",
+      "subheading",
+      "value",
+      "currentSummary",
+      "baselineNote",
+    ]);
+    const hasSlugProse = (node: unknown, key: string): boolean => {
+      if (typeof node === "string") {
+        if (PROSE_KEYS.has(key)) {
+          const t = node.trim();
+          return t.length >= 12 && SLUG_PROSE.test(t);
+        }
+        return false;
+      }
+      if (Array.isArray(node)) {
+        return node.some((item) => hasSlugProse(item, key));
+      }
+      if (node && typeof node === "object") {
+        return Object.entries(node).some(([k, v]) => hasSlugProse(v, k));
+      }
+      return false;
+    };
+    if (article.sections.some((section) => hasSlugProse(section, "section"))) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "published patch contains slug-like prose (content was corrupted into slugs)",
+        path: ["sections"],
+      });
+    }
+
     if (
       /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
         JSON.stringify(article),

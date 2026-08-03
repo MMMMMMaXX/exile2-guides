@@ -5920,6 +5920,18 @@ a {
   background: #0b121b;
 }
 
+/* 2026-08-03 修复：阶段视图网格最小宽度导致容器溢出截断。
+   通过新增工具类覆盖原网格定义，避免构建缓存回退旧规则。 */
+.boss-phase-view-fix {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  min-width: 0;
+}
+
+.boss-phase-view-fix > * {
+  min-width: 0;
+  min-height: 0;
+}
+
 .boss-phase-copy {
   padding: 1.1875rem;
 }
@@ -5990,6 +6002,24 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* 阶段切换视图：禁用强制剪裁，按自然比例显示阶段截图，下方允许留白 */
+.boss-phase-view .boss-annotated-media {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+
+.boss-phase-view .boss-annotated-media img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 32rem !important;
+  object-fit: contain !important;
 }
 
 .boss-annotated-media figcaption {
@@ -6341,7 +6371,7 @@ a {
 /* --- 来源与核验 --- */
 .boss-source-layout {
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
 }
 
@@ -6351,29 +6381,43 @@ a {
 }
 
 .boss-source-list article {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr 2.125rem;
+  display: flex;
+  flex-wrap: nowrap;
   gap: 0.625rem;
   align-items: center;
   padding: 0.625rem;
   border: 1px solid #2a3745;
   border-radius: 0.5rem;
   background: #0b121b;
+  min-width: 0;
 }
 
 .boss-source-list article > span {
+  flex: 0 0 4.5rem;
   color: #ffb53d;
   font-weight: 900;
   font-size: 0.76rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.boss-source-list article > div {
+  flex: 1 1 0%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .boss-source-list p {
   margin: 0;
   color: #8998a9;
   font-size: 0.76rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .boss-source-list a {
+  flex: 0 0 auto;
   display: grid;
   place-items: center;
   width: 2rem;
@@ -6382,6 +6426,26 @@ a {
   border-radius: 0.4375rem;
   background: #121b26;
   color: #cdd5de;
+}
+
+@media (max-width: 57.5rem) {
+  .boss-source-list article {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .boss-source-list article > span {
+    flex: 1 1 auto;
+    max-width: calc(100% - 2.625rem);
+  }
+
+  .boss-source-list article > div {
+    flex: 1 1 100%;
+  }
+
+  .boss-source-list article > a {
+    margin-left: auto;
+  }
 }
 
 .boss-verification-card {
