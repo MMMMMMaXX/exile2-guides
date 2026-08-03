@@ -1,0 +1,567 @@
+{
+  "id": "patch-0-2-0g-loot-tier-rework",
+  "slug": "patch-0-2-0g-loot-tier-rework",
+  "locale": "en",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0g Loot Tier Rework: Boss Drops, Tiered Rares, Simulacrum and Filter Risks",
+  "shortTitle": "0.2.0g Loot Tier Rework",
+  "summary": "0.2.0g rebuilt item rarity tiers so high-tier monsters drop fewer worthless whites and better crafting bases, changed boss drop protection, and briefly broke gems before a rollback.",
+  "description": "How 0.2.0g's loot tier rework changed boss drops, tiered rares, Simulacrum, league mechanics and loot filters — and what still applies in client 0.5.4e.",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.0g",
+  "patch": "0.2.0g",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/catalysts-hero.webp",
+  "cardImage": "/images/items/catalysts-hero.webp",
+  "imageAlt": "Catalysts and currency on the ground after a 0.2.0g loot run.",
+  "tags": [
+    "patch",
+    "0-2-0g",
+    "loot",
+    "item-tier",
+    "filter",
+    "simulacrum"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "item-tier",
+      "status": "changed-later",
+      "currentSummary": [
+        "Item Tier as a concept survived, but the exact tier thresholds and which mods scale with tier were adjusted by later patches."
+      ],
+      "supersededByPatchIds": [
+        "patch-0-2-0h-item-filter-jewellers-qol"
+      ],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "boss-drop-protection",
+      "status": "still-current",
+      "currentSummary": [
+        "Boss drop protection from 0.2.0g still informs how pinnacle and map bosses guarantee rewards in 0.5.4e."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "gem-rollback",
+      "status": "removed",
+      "currentSummary": [
+        "The 0.2.0g gem-disappear bug was fixed within days and is not present in 0.5.4e."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Quick summary",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0g is the patch the community calls the Loot Patch. It introduced Item Tier: a layer on top of rarity that makes high-tier monsters drop fewer worthless white items and more of the Magic and Rare bases players actually want to craft with.",
+        "It also changed boss drop protection, rebalanced how Campaign and endgame sources feel, and touched Simulacrum, Trials, Expedition, Delirium and Strongboxes. Right after deployment a gem-disappear bug appeared and was rolled back, which is the part most Day-1 footage shows out of context.",
+        "This page explains what 0.2.0g actually changed, the deployment and rollback, and which parts of its loot model still describe client 0.5.4e versus what later patches rewrote."
+      ],
+      "bullets": [
+        "Item Tier added above normal rarity",
+        "Boss drop protection changed",
+        "A gem-disappear bug shipped then rolled back",
+        "Later patches (0.2.0h, 0.5.x) adjusted the model"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Historical warning",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — the 0.2.0 era",
+      "baselineNote": "Current-status claims on this page are measured against client 0.5.4e.",
+      "paragraphs": [
+        "0.2.0g is a historical stability patch for the Dawn of the Hunt era. Its loot model was a starting point; later patches tuned tier thresholds, filter behaviour and league drops.",
+        "Reading a Day-1 0.2.0g video today is misleading: the exact numbers and the gem bug it shipped were changed within days."
+      ],
+      "bullets": [
+        "0.2.0g = loot-model starting point, not final design",
+        "Day-1 footage includes a bug that was rolled back"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 3,
+      "title": "Patch family timeline",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.2.0",
+          "date": "2025-04-04",
+          "kind": "Major update",
+          "summary": "Dawn of the Hunt: Huntress, new ascendancies, Acts, Atlas and league systems.",
+          "tags": [
+            "major-updates"
+          ]
+        },
+        {
+          "code": "0.2.0c",
+          "date": "2025-04",
+          "kind": "Balance",
+          "summary": "Minion scaling and spear/boss corrections.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0e",
+          "date": "2025-05",
+          "kind": "Balance",
+          "summary": "Act 3 layout, attribute runes and player balance.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0g",
+          "date": "2025-05",
+          "kind": "Balance",
+          "summary": "Loot Tier rework, boss drop protection and league loot tuning.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0h",
+          "date": "2025-06",
+          "kind": "Major update",
+          "summary": "Item Tier filter property, Jeweller's Orbs and endgame QoL.",
+          "tags": [
+            "major-updates"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "Loot source before and after",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "How common loot sources behaved before and after 0.2.0g, and what still matches 0.5.4e.",
+      "columns": [
+        {
+          "key": "source",
+          "label": "Source"
+        },
+        {
+          "key": "before",
+          "label": "Pre-0.2.0g"
+        },
+        {
+          "key": "after",
+          "label": "0.2.0g"
+        },
+        {
+          "key": "now",
+          "label": "Current (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "source": "White items",
+          "before": "Common from high-tier monsters",
+          "after": "Greatly reduced from high-tier monsters",
+          "now": "Low-value whites stay suppressed"
+        },
+        {
+          "source": "Magic / Rare bases",
+          "before": "Mixed quality",
+          "after": "Higher-tier monsters favour crafting bases",
+          "now": "Tiering refined by later patches"
+        },
+        {
+          "source": "Boss drops",
+          "before": "Variable",
+          "after": "Drop protection adjusted",
+          "now": "Protection still active"
+        },
+        {
+          "source": "Simulacrum",
+          "before": "Old reward weighting",
+          "after": "Tuned with tier model",
+          "now": "Continued tuning since"
+        }
+      ]
+    },
+    {
+      "id": "item-impact",
+      "order": 5,
+      "title": "Item and crafting impact",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "system",
+          "title": "Item Tier",
+          "detail": "A new layer above rarity. High-tier monsters now drop fewer whites and more of the Magic/Rare bases worth picking up. Filter rules that only matched rarity could hide these tiered bases.",
+          "tags": [
+            "tier",
+            "rarity",
+            "filter"
+          ]
+        },
+        {
+          "kind": "base",
+          "title": "Tiered Magic / Rare bases",
+          "detail": "Higher tier correlates with better mod rolls, making them stronger crafting targets than before 0.2.0g.",
+          "tags": [
+            "crafting",
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 6,
+      "title": "Filter and farming impact",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "The biggest practical trap of 0.2.0g was loot filters. Filters keyed only to rarity could hide the new tiered bases, so players upgrading from an old filter suddenly stopped seeing good drops.",
+        "Because tier meaning changed again in 0.2.0h and beyond, any filter written against 0.2.0g alone is incomplete for the current client."
+      ],
+      "bullets": [
+        "Old rarity-only filters can hide tiered bases",
+        "Re-verify filters against the current client"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "White items vs tiered drops",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Before 0.2.0g",
+      "oldText": "High-tier monsters dropped a lot of white items and low-value gold, so screen-clearing felt rewarding but the pickups were mostly vendor trash.",
+      "newLabel": "After 0.2.0g",
+      "newText": "High-tier monsters drop far fewer whites and more of the Magic and Rare bases that are worth identifying and crafting, which reshaped how players filtered and what they picked up."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 8,
+      "title": "Then vs now",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Item Tier concept",
+          "thenText": "Introduced in 0.2.0g as a new rarity layer.",
+          "nowText": "Still present in 0.5.4e but with adjusted thresholds and tier-based mods."
+        },
+        {
+          "aspect": "Boss drop protection",
+          "thenText": "Rebalanced in 0.2.0g.",
+          "nowText": "Continues to govern pinnacle and map boss reward guarantees."
+        },
+        {
+          "aspect": "Gem bug",
+          "thenText": "A gem-disappear bug shipped with 0.2.0g.",
+          "nowText": "Fixed within days; absent from 0.5.4e."
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 9,
+      "title": "Deployment and rollback",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "Shortly after 0.2.0g deployed, some players reported skills gems disappearing from skill gems; this was a regression that was rolled back via a hotfix within days.",
+          "status": "fixed"
+        },
+        {
+          "text": "Players on old loot filters temporarily stopped seeing tiered bases until they updated their filters.",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "Current applicability (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Item Tier concept",
+          "status": "changed-later",
+          "currentSummary": "Present but tuned by later patches.",
+          "supersededBy": "0.2.0h, 0.5.x",
+          "affectedContent": "Loot filter and crafting guides"
+        },
+        {
+          "topic": "Boss drop protection",
+          "status": "still-current",
+          "currentSummary": "Still governs boss reward guarantees.",
+          "supersededBy": "—",
+          "affectedContent": "Boss and endgame guides"
+        },
+        {
+          "topic": "0.2.0g gem bug",
+          "status": "removed",
+          "currentSummary": "Not present in 0.5.4e.",
+          "supersededBy": "—",
+          "affectedContent": "—"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 11,
+      "title": "Community evidence",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.2.0g week)",
+          "context": "Players noticed far fewer whites dropping from tanky monsters.",
+          "quote": "Finally the screen isn't 80% white items I instantly ignore.",
+          "analysis": "Matches the intended shift toward useful crafting bases rather than trash."
+        },
+        {
+          "source": "Reddit (filters)",
+          "context": "Users asked why good rares vanished from their filter.",
+          "quote": "My old filter hid the new tiered bases after this patch.",
+          "analysis": "Confirms the filter-awareness risk called out above; not a drop-rate bug."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 12,
+      "title": "Later changes to watch",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "loot-filter-guide",
+          "kind": "guide",
+          "issue": "Filter tutorials written for 0.2.0g alone miss the 0.2.0h Item Tier property.",
+          "action": "Update with the 0.2.0h UnidentifiedItemTier rule.",
+          "status": "queued"
+        },
+        {
+          "contentId": "crafting-bases-guide",
+          "kind": "guide",
+          "issue": "Tier-to-mod mapping changed after 0.2.0g.",
+          "action": "Re-verify tier scaling against 0.5.4e.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 13,
+      "title": "Affected content",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Loot Filter Setup guide",
+          "type": "guide",
+          "trigger": "0.2.0g changed what filters must show",
+          "action": "Add Item Tier and tiered-base rules.",
+          "status": "queued"
+        },
+        {
+          "name": "Crafting Bases guide",
+          "type": "guide",
+          "trigger": "Tiered bases shifted crafting value",
+          "action": "Re-verify tier scaling.",
+          "status": "queued"
+        },
+        {
+          "name": "0.2.0h Item Filter patch",
+          "type": "patch",
+          "trigger": "Direct sequel to this loot rework",
+          "action": "Cross-link the filter-property follow-up.",
+          "status": "reviewing"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "Historical video",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — official patch communication",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Official communication for this version family. Read alongside the patch notes for what changed and how later patches rewrote it.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "Patch overview",
+              "time": "00:30"
+            },
+            {
+              "label": "Loot and system changes",
+              "time": "04:10"
+            },
+            {
+              "label": "Current impact",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Did 0.2.0g increase drop rates or just hide whites?",
+          "answer": [
+            "It mostly reduced low-value whites from high-tier monsters and shifted weight toward useful Magic/Rare bases. It was not a blanket drop-rate buff, and later patches kept tuning the model."
+          ]
+        },
+        {
+          "question": "Why did my old filter stop showing good items?",
+          "answer": [
+            "Filters keyed only to rarity could hide the new tiered bases. Update the filter and re-check the Item Tier rules against the current client."
+          ]
+        },
+        {
+          "question": "Is the gem-disappear bug still around?",
+          "answer": [
+            "No. It was a short-lived 0.2.0g regression fixed by a hotfix; it does not exist in 0.5.4e."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.2.0g patch notes",
+          "description": "Official patch thread carrying the version's stated changes, deployment order and follow-up clarifications.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced on this page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Current skill, item, boss and modifier data cross-checked against the live client for current-applicability claims.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Database entries for the skills, items and modifiers referenced in this article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Community build and system guides used for player-impact cross-checks, not as a primary fact source.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Published the historical patch article with current-applicability checks against client 0.5.4e."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3774669",
+      "label": "Path of Exile 2 official 0.2.0g patch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0g Loot Tier Rework: Boss Drops, Tiered Rares and Filter Risks",
+    "description": "0.2.0g loot rework explained: item tiers, boss drop protection, Simulacrum and why old filters hid new bases.",
+    "noindex": false
+  }
+}

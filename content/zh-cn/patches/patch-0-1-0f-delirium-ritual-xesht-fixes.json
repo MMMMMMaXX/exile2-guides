@@ -1,0 +1,504 @@
+{
+  "id": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "slug": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.1.0f：迷雾、仪式、谢什特与永恒珠宝修复",
+  "shortTitle": "0.1.0f 迷雾与仪式修复",
+  "summary": "0.1.0f 是 0.1.0e 周之后的首个修复包：它修复了稀有怪过早暂停迷雾、保险箱暂停规则、永恒珠宝与“被 adorn 者”的交互、溢出资源、仪式祭坛、谢什特无限投手,以及多个任务阻塞——部分需要重启客户端。",
+  "description": "解读 0.1.0f：迷雾暂停 bug、保险箱暂停时间线、永恒珠宝/被 adorn 者修复、资源上限、仪式祭坛、谢什特与任务阻塞,以及无重启部署——并附 0.5.4e 中仍适用的部分。",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.1.0f",
+  "patch": "0.1.0f",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/dream-fragments-hero.webp",
+  "cardImage": "/images/items/dream-fragments-hero.webp",
+  "imageAlt": "与迷雾内容相关的梦境碎片。",
+  "tags": [
+    "patch",
+    "0-1-0f",
+    "delirium",
+    "ritual",
+    "xesht",
+    "bug-fix"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "strongbox-pause",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0f 的保险箱暂停规则(10秒)为历史;后续补丁再次改变了保险箱行为。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "timeless-jewel-adorned",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0f 修复的永恒珠宝/被 adorn 者交互须对照当前客户端行为重新核验。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "xesht-attacks",
+      "status": "changed-later",
+      "currentSummary": [
+        "谢什特的攻击模式在 0.1.0f 修复,并被后续 Boss 更新重新平衡。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.0f 是繁忙的 0.1.0e 周之后的首个修复包。它处理了：稀有怪在镜像开启前出现导致迷雾过早暂停、保险箱开启暂停规则、永恒珠宝词缀修饰与“被 adorn 者”的交互、溢出生命/护盾/魔力资源、有时无法激活的仪式祭坛、谢什特无限投手,以及多个任务阻塞。",
+        "部分修复无需重启;其他需要重启客户端才能生效。本页将 bug 修复与成为当前 Boss 或异界机制的行为区分开。"
+      ],
+      "bullets": [
+        "迷雾暂停修复",
+        "保险箱暂停规则",
+        "永恒珠宝/被 adorn 者修复",
+        "仪式祭坛、谢什特与任务修复"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提示",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验 —— 0.1.0 时代",
+      "baselineNote": "当前状态结论以客户端 0.5.4e 为基准。",
+      "paragraphs": [
+        "0.1.0f 是上线周修复包。其保险箱暂停值与谢什特模式为历史;后续补丁重写了两者。"
+      ],
+      "bullets": [
+        "0.1.0f 是上线周修复包",
+        "其保险箱暂停值与谢什特模式为历史,后被重写"
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 3,
+      "title": "问题 vs 修复",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0f 的关键修复及其当前状态。",
+      "columns": [
+        {
+          "key": "issue",
+          "label": "问题"
+        },
+        {
+          "key": "symptom",
+          "label": "玩家症状"
+        },
+        {
+          "key": "fix",
+          "label": "0.1.0f 修复"
+        },
+        {
+          "key": "restart",
+          "label": "需重启"
+        },
+        {
+          "key": "now",
+          "label": "当前(0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "issue": "迷雾暂停",
+          "symptom": "镜像开启前迷雾暂停",
+          "fix": "修正稀有怪暂停",
+          "restart": "否",
+          "now": "迷雾此后重做"
+        },
+        {
+          "issue": "保险箱暂停",
+          "symptom": "开启时迷雾滞留",
+          "fix": "暂停设为 10 秒",
+          "restart": "否",
+          "now": "保险箱后来改变"
+        },
+        {
+          "issue": "永恒珠宝/被 adorn 者",
+          "symptom": "词缀缩放错误",
+          "fix": "交互修复",
+          "restart": "否",
+          "now": "实时重新核验"
+        },
+        {
+          "issue": "谢什特投手",
+          "symptom": "无限投手",
+          "fix": "攻击修正",
+          "restart": "否",
+          "now": "Boss 重新平衡"
+        }
+      ]
+    },
+    {
+      "id": "boss-impact",
+      "order": 4,
+      "title": "谢什特与 Boss 修复",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "我们合一·谢什特",
+          "detail": "无限投手 bug 在 0.1.0f 修正;当前攻击模式由后续 Boss 更新调整,请使用实时 Boss 页。",
+          "action": "交叉链接当前谢什特 Boss 页。"
+        },
+        {
+          "name": "扎尔玛拉斯/翻滚猛击/疯狼任务",
+          "detail": "0.1.0f 期间针对这些的具体修复。",
+          "action": "对照当前 Boss/任务页核验。"
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "对构筑与异界的影响",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "永恒珠宝/被 adorn 者修复对基于珠宝的构筑堆叠很重要;溢出资源修复防止了某些词缀导致的资源不可能状态。",
+        "迷雾与仪式行为在后续补丁再次变化,因此来自 0.1.0f 的异界专属建议为历史。"
+      ],
+      "bullets": [
+        "珠宝堆叠修复",
+        "溢出资源修复",
+        "迷雾/仪式后来重做"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "保险箱暂停前后",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.1.0f 前",
+      "oldText": "开启保险箱可能让迷雾暂停约五秒,使迷雾滞留在尴尬位置。",
+      "newLabel": "0.1.0f 后",
+      "newText": "保险箱开启暂停设为十秒,这是一条刻意的历史规则,后续补丁再次改变。"
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "当时与现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "迷雾",
+          "thenText": "0.1.0f 上线时的暂停 bug。",
+          "nowText": "迷雾系统此后重做,当前规则不同。"
+        },
+        {
+          "aspect": "谢什特",
+          "thenText": "0.1.0f 修复无限投手 bug。",
+          "nowText": "Boss 被后续更新重新平衡。"
+        },
+        {
+          "aspect": "永恒珠宝/被 adorn 者",
+          "thenText": "0.1.0f 修复交互。",
+          "nowText": "对照实时客户端重新核验。"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "当前适用性(0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "保险箱暂停规则",
+          "status": "changed-later",
+          "currentSummary": "10 秒规则为历史;保险箱后来改变。",
+          "supersededBy": "0.2+",
+          "affectedContent": "保险箱指南"
+        },
+        {
+          "topic": "永恒珠宝/被 adorn 者",
+          "status": "changed-later",
+          "currentSummary": "0.1.0f 修复;实时重新核验。",
+          "supersededBy": "0.5.x",
+          "affectedContent": "珠宝构筑页"
+        },
+        {
+          "topic": "谢什特模式",
+          "status": "changed-later",
+          "currentSummary": "0.1.0f 修正;Boss 此后重新平衡。",
+          "supersededBy": "0.5.x",
+          "affectedContent": "谢什特 Boss 页"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "官方论坛(迷雾)",
+          "context": "玩家问为何镜像开启后没有怪物。",
+          "quote": "我开了迷雾镜像却什么都没有。",
+          "analysis": "符合 0.1.0f 修复的稀有怪过早暂停 bug;当前迷雾不同。"
+        },
+        {
+          "source": "Reddit(被 adorn 者)",
+          "context": "玩家问被 adorn 者是否应缩放永恒珠宝词缀。",
+          "quote": "被 adorn 者应该放大这个永恒词缀吗?",
+          "analysis": "0.1.0f 修复了错误的交互;请对照实时客户端重新核验。"
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "后续改动提醒",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "delirium-guide",
+          "kind": "guide",
+          "issue": "0.1.0f 后迷雾重做。",
+          "action": "对照 0.5.4e 重新核验迷雾规则。",
+          "status": "queued"
+        },
+        {
+          "contentId": "xesht-boss-page",
+          "kind": "boss",
+          "issue": "谢什特自 0.1.0f 后重新平衡。",
+          "action": "用当前机制更新。",
+          "status": "reviewing"
+        },
+        {
+          "contentId": "jewel-build",
+          "kind": "build",
+          "issue": "被 adorn 者交互变化。",
+          "action": "实时重新核验缩放。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "迷雾指南",
+          "type": "guide",
+          "trigger": "迷雾暂停修复",
+          "action": "重新核验当前迷雾规则。",
+          "status": "queued"
+        },
+        {
+          "name": "谢什特 Boss 页",
+          "type": "boss",
+          "trigger": "无限投手修复",
+          "action": "用当前机制更新。",
+          "status": "reviewing"
+        },
+        {
+          "name": "仪式指南",
+          "type": "guide",
+          "trigger": "祭坛激活修复",
+          "action": "确认当前祭坛行为。",
+          "status": "queued"
+        },
+        {
+          "name": "永恒珠宝构筑",
+          "type": "build",
+          "trigger": "被 adorn 者交互修复",
+          "action": "重新核验缩放。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方补丁说明",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "该版本家族的官方说明。结合补丁说明了解改动内容以及后续补丁如何重写。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Patch overview",
+              "time": "00:30"
+            },
+            {
+              "label": "Loot and system changes",
+              "time": "04:10"
+            },
+            {
+              "label": "Current impact",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "为何开启迷雾镜像后没有怪物?",
+          "answer": [
+            "那是 0.1.0f 时代的稀有怪暂停 bug。迷雾此后已重做,因此当前行为不同——请查实时迷雾指南。"
+          ]
+        },
+        {
+          "question": "被 adorn 者应该放大我的永恒珠宝词缀吗?",
+          "answer": [
+            "一个错误交互在 0.1.0f 被修复。由于珠宝行为此后已变化,请对照当前客户端重新核验确切缩放,而非想当然。"
+          ]
+        },
+        {
+          "question": "0.1.0f 需要重启客户端吗?",
+          "answer": [
+            "部分修复无需重启,部分需重启才能生效。若打补丁后修复未出现,当时预期步骤就是重启。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.1.0f patch notes",
+          "description": "Official patch thread carrying the version's stated changes, deployment order and follow-up clarifications.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced on this page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Current skill, item, boss and modifier data cross-checked against the live client for current-applicability claims.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Database entries for the skills, items and modifiers referenced in this article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Community build and system guides used for player-impact cross-checks, not as a primary fact source.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "发布历史补丁文章,并依据客户端 0.5.4e 核验当前适用性。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3686378",
+      "label": "Path of Exile 2 official 0.1.0f patch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.1.0f：迷雾、仪式、谢什特与永恒珠宝修复",
+    "description": "0.1.0f 修复：迷雾暂停、保险箱、永恒珠宝、仪式祭坛、谢什特与任务。",
+    "noindex": false
+  }
+}

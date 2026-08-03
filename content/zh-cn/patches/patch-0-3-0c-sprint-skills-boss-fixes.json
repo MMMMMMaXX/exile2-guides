@@ -1,0 +1,480 @@
+{
+  "id": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "slug": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.3.0c：冲刺、弩、技能交互与 Boss 修复",
+  "shortTitle": "0.3.0c 玩法修复包",
+  "summary": "0.3.0c 是一个广泛的玩法修复包：它为冲刺起步加入重击硬直宽限期,修复了弩的装填/射击卡顿与逐发弹药 roll,修正了技能缩放与图腾/武器组交互,并修复了多个 Boss 与手柄 UI。",
+  "description": "解读 0.3.0c：冲刺宽限期、弩弹药、宝石 Legion 元宝石、技能缩放修复、图腾/武器组、Boss 修复与手柄/UI——以及 0.5.4e 中仍适用的部分。",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.3.0c",
+  "patch": "0.3.0c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/barrage.webp",
+  "cardImage": "/images/skills/barrage.webp",
+  "imageAlt": "冲刺移动中释放的技能。",
+  "tags": [
+    "patch",
+    "0-3-0c",
+    "sprint",
+    "crossbow",
+    "bug-fix",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "sprint-grace",
+      "status": "still-current",
+      "currentSummary": [
+        "0.3.0c 的冲刺重击硬直宽限期仍是 0.5.4e 中移动手感的一部分。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "crossbow-ammo",
+      "status": "changed-later",
+      "currentSummary": [
+        "弩的装填/射击与逐发弹药规则在 0.3.0c 修复,但被后续补丁重新调整。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.3.0c 是一个广泛的玩法修复包,而非平衡重写。它将修复按冲刺与移动、弩弹药、宝石 Legion 元宝石、技能缩放、图腾与武器组、Boss、手柄/UI 与性能分组。",
+        "重点：冲刺起步的重击硬直宽限期,弩装填/射击卡顿修复且弹药逐发 roll,此前忽略范围伤害/辅助/品质的技能缩放被修正,以及多个 Boss 与手柄修复。"
+      ],
+      "bullets": [
+        "冲刺重击硬直宽限期",
+        "弩装填/弹药修复",
+        "技能缩放修正",
+        "Boss 与手柄修复"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提示",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验 —— 0.3.0 时代",
+      "baselineNote": "当前状态结论以客户端 0.5.4e 为基准。",
+      "paragraphs": [
+        "0.3.0c 修复了第三谕令上线窗口的 bug。此处的修复是修正而非增强;后续补丁可能再次改动相同技能。"
+      ],
+      "bullets": [
+        "0.3.0c 修复第三谕令上线窗口的 bug",
+        "这些是修正而非增强,后续可能再改"
+      ]
+    },
+    {
+      "id": "change-explorer",
+      "order": 3,
+      "title": "修复分类",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "冲刺重击硬直宽限",
+          "detail": "冲刺起步时加入宽限期,避免一开门就被重击硬直。",
+          "scope": "官方 0.3.0c 补丁说明"
+        },
+        {
+          "category": "fix",
+          "title": "装填/射击卡顿",
+          "detail": "修复可能卡住弩装填或射击的指令;弹药逐发 roll。",
+          "scope": "官方 0.3.0c 补丁说明"
+        },
+        {
+          "category": "fix",
+          "title": "技能缩放",
+          "detail": "修正了未正确随范围伤害/辅助/品质缩放的技能。",
+          "scope": "官方 0.3.0c 补丁说明"
+        },
+        {
+          "category": "boss",
+          "title": "Boss 修复",
+          "detail": "容器、第四章终局 Boss、Torvian、Diamora 等获得修复。",
+          "scope": "官方 0.3.0c 补丁说明"
+        },
+        {
+          "category": "technical",
+          "title": "UI 与性能",
+          "detail": "处理了手柄仓库导航与性能问题。",
+          "scope": "官方 0.3.0c 补丁说明"
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "bug 与修复",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.3.0c 的代表性修复及其当前状态。",
+      "columns": [
+        {
+          "key": "bug",
+          "label": "bug/改动"
+        },
+        {
+          "key": "target",
+          "label": "受影响"
+        },
+        {
+          "key": "fix",
+          "label": "0.3.0c 修复"
+        },
+        {
+          "key": "now",
+          "label": "当前(0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "bug": "冲刺瞬间硬直",
+          "target": "移动",
+          "fix": "加入宽限期",
+          "now": "仍存在"
+        },
+        {
+          "bug": "弩卡顿",
+          "target": "弩",
+          "fix": "修复装填/射击,逐发 roll",
+          "now": "此后重新调整"
+        },
+        {
+          "bug": "技能缩放错误",
+          "target": "多个技能",
+          "fix": "应用范围/辅助/品质",
+          "now": "后续补丁可能不同"
+        },
+        {
+          "bug": "Boss 问题",
+          "target": "容器/第四章/Torvian/Diamora",
+          "fix": "各类修复",
+          "now": "请查当前 Boss 页"
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "构筑影响",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "技能缩放修正可能看起来像伤害飙升,但它们是 bug 修复;任何描述破损行为的构筑指南都应更新,而非当作增强。",
+        "宝石 Legion 战士的“集成效率”与召唤物及元宝石的交互被澄清,影响该升华的描述方式。"
+      ],
+      "bullets": [
+        "修复不是增强——请更新指南",
+        "宝石 Legion 交互澄清"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "冲刺前后对比",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.3.0c 前冲刺",
+      "oldText": "起步冲刺可能瞬间重击硬直,使该机制在起步时显得惩罚性。",
+      "newLabel": "0.3.0c 后",
+      "newText": "宽限期让你能起步冲刺而不会被瞬间重击硬直,进入移动后硬直仍会生效。"
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "当时与现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "冲刺硬直",
+          "thenText": "0.3.0c 前起步即触发。",
+          "nowText": "加入宽限期;0.5.4e 仍存在。"
+        },
+        {
+          "aspect": "弩手感",
+          "thenText": "0.3.0 上线时卡顿与错误弹药 roll。",
+          "nowText": "0.3.0c 修复,此后重新调整。"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "当前适用性(0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "冲刺宽限期",
+          "status": "still-current",
+          "currentSummary": "仍是 0.5.4e 中移动的一部分。",
+          "supersededBy": "—",
+          "affectedContent": "移动指南"
+        },
+        {
+          "topic": "弩弹药规则",
+          "status": "changed-later",
+          "currentSummary": "0.3.0c 修复,此后重新调整。",
+          "supersededBy": "0.5.x",
+          "affectedContent": "弩构筑页"
+        },
+        {
+          "topic": "技能缩放修复",
+          "status": "changed-later",
+          "currentSummary": "0.3.0c 修正;后续补丁可能不同。",
+          "supersededBy": "0.5.x",
+          "affectedContent": "受影响技能页"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit(冲刺)",
+          "context": "玩家问为何冲刺起步仍被硬直。",
+          "quote": "为什么我一冲刺就被重击硬直?",
+          "analysis": "宽限期有帮助,但进入移动后硬直仍生效,并非完全移除。"
+        },
+        {
+          "source": "官方论坛(弩)",
+          "context": "玩家报告偶尔无法装填箭矢。",
+          "quote": "我的弩有时不装填。",
+          "analysis": "符合 0.3.0c 修复的装填/射击卡顿;请对照当前客户端核验。"
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "后续改动提醒",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "crossbow-build-guide",
+          "kind": "build",
+          "issue": "描述了 0.3.0c 前的弹药行为。",
+          "action": "用当前弹药规则更新。",
+          "status": "queued"
+        },
+        {
+          "contentId": "skill-page",
+          "kind": "skill",
+          "issue": "0.3.0c 修正的缩放可能再次变化。",
+          "action": "对照 0.5.4e 重新核验。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "弩构筑页",
+          "type": "build",
+          "trigger": "弹药规则修复",
+          "action": "重新核验当前行为。",
+          "status": "queued"
+        },
+        {
+          "name": "宝石 Legion 战士页",
+          "type": "build",
+          "trigger": "集成效率澄清",
+          "action": "更新交互描述。",
+          "status": "queued"
+        },
+        {
+          "name": "受影响技能页",
+          "type": "skill",
+          "trigger": "缩放修正",
+          "action": "重新核验数值。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方补丁说明",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "该版本家族的官方说明。结合补丁说明了解改动内容以及后续补丁如何重写。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Patch overview",
+              "time": "00:30"
+            },
+            {
+              "label": "Loot and system changes",
+              "time": "04:10"
+            },
+            {
+              "label": "Current impact",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "冲刺修复是增强吗?",
+          "answer": [
+            "不是。它加入宽限期,使冲刺能起步而不被瞬间重击硬直;进入移动后硬直仍生效。请将其视为修正。"
+          ]
+        },
+        {
+          "question": "为何 0.3.0c 后我的技能伤害变了?",
+          "answer": [
+            "部分技能此前未正确随范围伤害、辅助或品质缩放。0.3.0c 修正了这一点;这是 bug 修复,后续补丁可能再次改动相同技能。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.3.0c patch notes",
+          "description": "Official patch thread carrying the version's stated changes, deployment order and follow-up clarifications.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced on this page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Current skill, item, boss and modifier data cross-checked against the live client for current-applicability claims.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Database entries for the skills, items and modifiers referenced in this article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Community build and system guides used for player-impact cross-checks, not as a primary fact source.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "发布历史补丁文章,并依据客户端 0.5.4e 核验当前适用性。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3851306",
+      "label": "Path of Exile 2 official 0.3.0c patch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.3.0c：冲刺、弩、技能交互与 Boss 修复",
+    "description": "0.3.0c 玩法修复：冲刺宽限、弩弹药、技能缩放与 Boss 修复。",
+    "noindex": false
+  }
+}

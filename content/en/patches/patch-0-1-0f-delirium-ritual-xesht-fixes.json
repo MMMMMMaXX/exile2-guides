@@ -1,0 +1,504 @@
+{
+  "id": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "slug": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "locale": "en",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.1.0f: Delirium Mist, Ritual, Xesht and Timeless Jewel Fixes",
+  "shortTitle": "0.1.0f Delirium & Ritual Fixes",
+  "summary": "0.1.0f was the first fix pack after the 0.1.0e week: it fixed Rare monsters pausing Delirium Mist early, the Strongbox pause rule, a Timeless Jewel and The Adorned interaction, overcapped resources, Ritual Altars, Xesht's infinite hands, and several quest blockers — some requiring a client restart.",
+  "description": "0.1.0f explained: Delirium Mist pause bugs, Strongbox pause timeline, Timeless Jewel/Adorned fix, resource cap, Ritual Altar, Xesht and quest blockers, plus restartless deployment — and what still applies in 0.5.4e.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.1.0f",
+  "patch": "0.1.0f",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/dream-fragments-hero.webp",
+  "cardImage": "/images/items/dream-fragments-hero.webp",
+  "imageAlt": "Dream Fragments associated with Delirium content.",
+  "tags": [
+    "patch",
+    "0-1-0f",
+    "delirium",
+    "ritual",
+    "xesht",
+    "bug-fix"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "strongbox-pause",
+      "status": "changed-later",
+      "currentSummary": [
+        "The 0.1.0f Strongbox pause rule (10s) is historical; later patches changed Strongbox behaviour again."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "timeless-jewel-adorned",
+      "status": "changed-later",
+      "currentSummary": [
+        "The Timeless Jewel / The Adorned interaction fixed in 0.1.0f must be re-verified against current client behaviour."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "xesht-attacks",
+      "status": "changed-later",
+      "currentSummary": [
+        "Xesht's attack patterns were fixed in 0.1.0f and retuned by later boss updates."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Quick summary",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.0f was the first fix pack after the busy 0.1.0e week. It addressed Delirium Mist pausing early when a Rare monster appeared before the mirror opened, the Strongbox open pause rule, a Timeless Jewel modifier interaction with The Adorned, overcapped Life/ES/Mana resources, Ritual Altars that sometimes would not activate, Xesht throwing infinite hands, and several quest blockers.",
+        "Some fixes were restartless; others required a client restart to apply. This page separates what was a bug fix from what became current boss or league behaviour."
+      ],
+      "bullets": [
+        "Delirium Mist pause fixes",
+        "Strongbox pause rule",
+        "Timeless Jewel/Adorned fix",
+        "Ritual Altar, Xesht and quest fixes"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Historical warning",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — the 0.1.0 era",
+      "baselineNote": "Current-status claims measured against client 0.5.4e.",
+      "paragraphs": [
+        "0.1.0f is a launch-week fix pack. Its Strongbox pause value and Xesht patterns are historical; later patches rewrote both."
+      ],
+      "bullets": [
+        "0.1.0f 是上线周修复包",
+        "其保险箱暂停值与谢什特模式为历史,后被重写"
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 3,
+      "title": "Problem vs fix",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Key 0.1.0f fixes and their current status.",
+      "columns": [
+        {
+          "key": "issue",
+          "label": "Issue"
+        },
+        {
+          "key": "symptom",
+          "label": "Player symptom"
+        },
+        {
+          "key": "fix",
+          "label": "0.1.0f fix"
+        },
+        {
+          "key": "restart",
+          "label": "Restart needed"
+        },
+        {
+          "key": "now",
+          "label": "Current (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "issue": "Delirium Mist pause",
+          "symptom": "Mist paused before mirror opened",
+          "fix": "Rare-monster pause corrected",
+          "restart": "No",
+          "now": "Delirium reworked since"
+        },
+        {
+          "issue": "Strongbox pause",
+          "symptom": "Mist lingered on open",
+          "fix": "Pause set to 10s",
+          "restart": "No",
+          "now": "Strongbox changed later"
+        },
+        {
+          "issue": "Timeless Jewel/Adorned",
+          "symptom": "Wrong modifier scaling",
+          "fix": "Interaction fixed",
+          "restart": "No",
+          "now": "Re-verify live"
+        },
+        {
+          "issue": "Xesht hands",
+          "symptom": "Infinite hand throws",
+          "fix": "Attack corrected",
+          "restart": "No",
+          "now": "Boss retuned"
+        }
+      ]
+    },
+    {
+      "id": "boss-impact",
+      "order": 4,
+      "title": "Xesht and boss fixes",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "Xesht, We That Are One",
+          "detail": "The infinite-hand throw bug was corrected in 0.1.0f; current attack patterns are tuned by later boss updates, so use the live boss page.",
+          "action": "Cross-link the current Xesht boss page."
+        },
+        {
+          "name": "Zalmarath / Rolling Slam / Mad Wolf quest",
+          "detail": "Specific fixes addressed these during 0.1.0f.",
+          "action": "Verify against current boss/quest pages."
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "Impact on builds and leagues",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "The Timeless Jewel / The Adorned fix mattered for jewel-based build stacking; the overcapped-resource fix prevented impossible resource states from certain modifiers.",
+        "Delirium and Ritual behaviours changed again in later patches, so league-specific advice from 0.1.0f is historical."
+      ],
+      "bullets": [
+        "Jewel stacking fix",
+        "Overcapped resource fix",
+        "Delirium/Ritual later reworked"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "Strongbox pause before vs after",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Pre-0.1.0f",
+      "oldText": "Opening a Strongbox could pause the Delirium Mist for around five seconds, letting Mist linger in awkward spots.",
+      "newLabel": "After 0.1.0f",
+      "newText": "The Strongbox open pause was set to ten seconds, a deliberate historical rule that later patches changed again."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "Then vs now",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Delirium Mist",
+          "thenText": "Pause bugs at 0.1.0f launch.",
+          "nowText": "Delirium system reworked since; current rules differ."
+        },
+        {
+          "aspect": "Xesht",
+          "thenText": "Infinite-hand bug fixed in 0.1.0f.",
+          "nowText": "Boss retuned by later updates."
+        },
+        {
+          "aspect": "Timeless Jewel/Adorned",
+          "thenText": "Interaction fixed in 0.1.0f.",
+          "nowText": "Re-verify against live client."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "Current applicability (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Strongbox pause rule",
+          "status": "changed-later",
+          "currentSummary": "10s rule was historical; Strongbox changed later.",
+          "supersededBy": "0.2+",
+          "affectedContent": "Strongbox guides"
+        },
+        {
+          "topic": "Timeless Jewel/Adorned",
+          "status": "changed-later",
+          "currentSummary": "Fixed in 0.1.0f; re-verify live.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Jewel build pages"
+        },
+        {
+          "topic": "Xesht patterns",
+          "status": "changed-later",
+          "currentSummary": "Corrected in 0.1.0f; boss retuned since.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Xesht boss page"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Community evidence",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (Delirium)",
+          "context": "Players asked why the mirror showed no monsters.",
+          "quote": "I open the Delirium mirror and there's nothing.",
+          "analysis": "Matches the Rare-monster-early-pause bug fixed in 0.1.0f; current Delirium differs."
+        },
+        {
+          "source": "Reddit (Adorned)",
+          "context": "Players asked if The Adorned should scale Timeless Jewel modifiers.",
+          "quote": "Is The Adorned supposed to multiply this Timeless mod?",
+          "analysis": "The 0.1.0f fix addressed the incorrect interaction; re-verify against live client."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "Later changes to watch",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "delirium-guide",
+          "kind": "guide",
+          "issue": "Delirium reworked after 0.1.0f.",
+          "action": "Re-verify Mist rules against 0.5.4e.",
+          "status": "queued"
+        },
+        {
+          "contentId": "xesht-boss-page",
+          "kind": "boss",
+          "issue": "Xesht retuned since 0.1.0f.",
+          "action": "Update with current Patterns.",
+          "status": "reviewing"
+        },
+        {
+          "contentId": "jewel-build",
+          "kind": "build",
+          "issue": "Adorned interaction changed.",
+          "action": "Re-verify scaling live.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "Affected content",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Delirium guide",
+          "type": "guide",
+          "trigger": "Mist pause fixed",
+          "action": "Re-verify current Mist rules.",
+          "status": "queued"
+        },
+        {
+          "name": "Xesht boss page",
+          "type": "boss",
+          "trigger": "Infinite-hand fix",
+          "action": "Update with current Patterns.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Ritual guide",
+          "type": "guide",
+          "trigger": "Altar activation fix",
+          "action": "Confirm current altar behaviour.",
+          "status": "queued"
+        },
+        {
+          "name": "Timeless Jewel build",
+          "type": "build",
+          "trigger": "Adorned interaction fix",
+          "action": "Re-verify scaling.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Historical video",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — official patch communication",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Official communication for this version family. Read alongside the patch notes for what changed and how later patches rewrote it.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "Patch overview",
+              "time": "00:30"
+            },
+            {
+              "label": "Loot and system changes",
+              "time": "04:10"
+            },
+            {
+              "label": "Current impact",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Why is there no monster after I open the Delirium mirror?",
+          "answer": [
+            "That was a 0.1.0f-era Rare-monster pause bug. Delirium has been reworked since, so current behaviour is different — check the live Delirium guide."
+          ]
+        },
+        {
+          "question": "Should The Adorned multiply my Timeless Jewel modifier?",
+          "answer": [
+            "A wrong interaction was fixed in 0.1.0f. Because jewel behaviour has moved since, re-verify the exact scaling against the current client rather than assuming."
+          ]
+        },
+        {
+          "question": "Did 0.1.0f require a client restart?",
+          "answer": [
+            "Some fixes were restartless and some required a restart to apply. If a fix did not appear after patching, a restart was the expected step at the time."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.1.0f patch notes",
+          "description": "Official patch thread carrying the version's stated changes, deployment order and follow-up clarifications.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced on this page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Current skill, item, boss and modifier data cross-checked against the live client for current-applicability claims.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Database entries for the skills, items and modifiers referenced in this article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Community build and system guides used for player-impact cross-checks, not as a primary fact source.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Published the historical patch article with current-applicability checks against client 0.5.4e."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3686378",
+      "label": "Path of Exile 2 official 0.1.0f patch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.0f: Delirium Mist, Ritual, Xesht and Timeless Jewel Fixes",
+    "description": "0.1.0f fixes: Delirium Mist pause, Strongbox, Timeless Jewel, Ritual Altar, Xesht and quests.",
+    "noindex": false
+  }
+}

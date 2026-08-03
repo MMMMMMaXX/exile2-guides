@@ -1,0 +1,567 @@
+{
+  "id": "patch-0-2-0g-loot-tier-rework",
+  "slug": "patch-0-2-0g-loot-tier-rework",
+  "locale": "zh-cn",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 0.2.0g 战利品层级重做：Boss 掉落、分级稀有、幻象与过滤器风险",
+  "shortTitle": "0.2.0g 战利品层级重做",
+  "summary": "0.2.0g 重做了物品稀有度层级：高 Tier 怪物更少掉落无价值白装、更多掉落优质底材，调整了 Boss 掉落保护，并曾短暂导致宝石消失后被回滚。",
+  "description": "0.2.0g 的战利品层级重做如何改变 Boss 掉落、分级稀有、幻象、异界机制与战利品过滤器——以及客户端 0.5.4e 中仍适用的部分。",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.0g",
+  "patch": "0.2.0g",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/catalysts-hero.webp",
+  "cardImage": "/images/items/catalysts-hero.webp",
+  "imageAlt": "0.2.0g 战利品跑图中散落的催化剂与通货。",
+  "tags": [
+    "patch",
+    "0-2-0g",
+    "loot",
+    "item-tier",
+    "filter",
+    "simulacrum"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "item-tier",
+      "status": "changed-later",
+      "currentSummary": [
+        "物品层级概念保留,但具体层级阈值与随层级缩放的词缀在后续补丁中被调整。"
+      ],
+      "supersededByPatchIds": [
+        "patch-0-2-0h-item-filter-jewellers-qol"
+      ],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "boss-drop-protection",
+      "status": "still-current",
+      "currentSummary": [
+        "0.2.0g 的 Boss 掉落保护仍影响 0.5.4e 中巅峰与地图 Boss 的奖励保底。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "gem-rollback",
+      "status": "removed",
+      "currentSummary": [
+        "0.2.0g 宝石消失的 bug 已在数日内修复,0.5.4e 中不存在。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0g 被社区称为“战利品补丁”。它引入了物品层级(Item Tier)：在稀有度之上再加一层,让高 Tier 怪物更少掉落无价值的白装,更多掉落玩家真正想用来制作的魔法与稀有底材。",
+        "它还改变了 Boss 掉落保护,重新平衡了战役与终局来源的体感,并波及幻象、试炼、远征、迷雾与保险箱。部署后立刻出现宝石消失 bug 并被回滚——这正是多数首日视频断章取义展示的部分。",
+        "本页解释 0.2.0g 实际改了什么、部署与回滚过程,以及其战利品模型中哪些仍描述 0.5.4e、哪些被后续补丁重写。"
+      ],
+      "bullets": [
+        "在普通稀有度之上新增物品层级",
+        "Boss 掉落保护改变",
+        "宝石消失 bug 上线后回滚",
+        "后续补丁(0.2.0h、0.5.x)调整了该模型"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "历史提示",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "流放之路2 抢先体验 —— 0.2.0 时代",
+      "baselineNote": "本页当前状态结论以客户端 0.5.4e 为基准。",
+      "paragraphs": [
+        "0.2.0g 是“狩猎黎明”时代的战利品稳定化补丁。其战利品模型只是起点,后续补丁调整了层级阈值、过滤器行为与异界掉落。",
+        "今天看 0.2.0g 首日视频会产生误导：其具体数值与上线携带的宝石 bug 都在数日内被改动。"
+      ],
+      "bullets": [
+        "0.2.0g = 战利品模型起点,非最终设计",
+        "首日视频包含已被回滚的 bug"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 3,
+      "title": "补丁家族时间线",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.2.0",
+          "date": "2025-04-04",
+          "kind": "大型更新",
+          "summary": "狩猎黎明：女猎手、新升华、章节、Atlas 与异界机制。",
+          "tags": [
+            "major-updates"
+          ]
+        },
+        {
+          "code": "0.2.0c",
+          "date": "2025-04",
+          "kind": "平衡",
+          "summary": "召唤物缩放与长矛/Boss 修正。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0e",
+          "date": "2025-05",
+          "kind": "平衡",
+          "summary": "第三章布局、属性符文与玩家平衡。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0g",
+          "date": "2025-05",
+          "kind": "平衡",
+          "summary": "战利品层级重做、Boss 掉落保护与异界战利品调整。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0h",
+          "date": "2025-06",
+          "kind": "大型更新",
+          "summary": "物品层级过滤属性、珠宝匠之球与终局 QoL。",
+          "tags": [
+            "major-updates"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "战利品来源前后对比",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "常见战利品来源在 0.2.0g 前后的表现,以及与 0.5.4e 的吻合度。",
+      "columns": [
+        {
+          "key": "source",
+          "label": "来源"
+        },
+        {
+          "key": "before",
+          "label": "0.2.0g 前"
+        },
+        {
+          "key": "after",
+          "label": "0.2.0g 后"
+        },
+        {
+          "key": "now",
+          "label": "当前(0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "source": "白装",
+          "before": "高 Tier 怪物常见",
+          "after": "高 Tier 怪物大幅减少",
+          "now": "低价值白装仍被压制"
+        },
+        {
+          "source": "魔法/稀有底材",
+          "before": "质量参差",
+          "after": "高 Tier 怪物偏向制作底材",
+          "now": "层级被后续补丁细化"
+        },
+        {
+          "source": "Boss 掉落",
+          "before": "不稳定",
+          "after": "掉落保护调整",
+          "now": "保护仍生效"
+        },
+        {
+          "source": "幻象",
+          "before": "旧奖励权重",
+          "after": "随层级模型调整",
+          "now": "此后持续调整"
+        }
+      ]
+    },
+    {
+      "id": "item-impact",
+      "order": 5,
+      "title": "物品与制作影响",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "system",
+          "title": "物品层级",
+          "detail": "稀有度之上新增的一层。高 Tier 怪物现在更少掉落白装,更多掉落值得拾取的魔法/稀有底材。只匹配稀有度的过滤规则可能隐藏这些分级底材。",
+          "tags": [
+            "tier",
+            "rarity",
+            "filter"
+          ]
+        },
+        {
+          "kind": "base",
+          "title": "分级魔法/稀有底材",
+          "detail": "更高层级对应更好的词缀 roll,使其成为比 0.2.0g 前更强的制作目标。",
+          "tags": [
+            "crafting",
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 6,
+      "title": "过滤器与刷图影响",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "0.2.0g 最实际的陷阱是战利品过滤器。只按稀有度匹配的过滤器可能隐藏新的分级底材,因此从旧过滤器升级的玩家会突然看不见好掉落。",
+        "由于层级含义在 0.2.0h 及之后再次变化,任何仅针对 0.2.0g 编写的过滤器对当前客户端都不完整。"
+      ],
+      "bullets": [
+        "只按稀有度的旧过滤器可能隐藏分级底材",
+        "针对当前客户端重新核验过滤器"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "白装与分级掉落对比",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0g 前",
+      "oldText": "高 Tier 怪物掉落大量白装与低价值金币,清屏有成就感但拾取物大多是卖给商人的垃圾。",
+      "newLabel": "0.2.0g 后",
+      "newText": "高 Tier 怪物大幅减少白装,更多掉落值得鉴定与制作的魔法/稀有底材,重塑了玩家的过滤与拾取习惯。"
+    },
+    {
+      "id": "then-vs-now",
+      "order": 8,
+      "title": "当时与现在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "物品层级概念",
+          "thenText": "0.2.0g 作为新稀有度层引入。",
+          "nowText": "0.5.4e 仍存在,但阈值与随层级的词缀已调整。"
+        },
+        {
+          "aspect": "Boss 掉落保护",
+          "thenText": "0.2.0g 中重新平衡。",
+          "nowText": "继续约束巅峰与地图 Boss 的奖励保底。"
+        },
+        {
+          "aspect": "宝石 bug",
+          "thenText": "0.2.0g 携带宝石消失 bug。",
+          "nowText": "数日内修复,0.5.4e 中不存在。"
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 9,
+      "title": "部署与回滚",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.2.0g 部署后不久,部分玩家报告技能宝石从技能宝石中消失;这是一个在被热修回滚前短暂存在的回归问题。",
+          "status": "fixed"
+        },
+        {
+          "text": "使用旧战利品过滤器的玩家在更新过滤器前暂时看不见分级底材。",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "当前适用性(0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "物品层级概念",
+          "status": "changed-later",
+          "currentSummary": "存在但被后续补丁调整。",
+          "supersededBy": "0.2.0h、0.5.x",
+          "affectedContent": "战利品过滤器与制作指南"
+        },
+        {
+          "topic": "Boss 掉落保护",
+          "status": "still-current",
+          "currentSummary": "仍约束 Boss 奖励保底。",
+          "supersededBy": "—",
+          "affectedContent": "Boss 与终局指南"
+        },
+        {
+          "topic": "0.2.0g 宝石 bug",
+          "status": "removed",
+          "currentSummary": "0.5.4e 中不存在。",
+          "supersededBy": "—",
+          "affectedContent": "—"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 11,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "官方论坛(0.2.0g 当周)",
+          "context": "玩家注意到高血量怪物掉落的白装大幅减少。",
+          "quote": "终于屏幕上不再是占 80% 的白装。",
+          "analysis": "符合从垃圾转向有用制作底材的设计意图。"
+        },
+        {
+          "source": "Reddit(过滤器)",
+          "context": "用户问为何好稀有从过滤器中消失。",
+          "quote": "这次补丁后我的旧过滤器隐藏了新分级底材。",
+          "analysis": "印证上文的过滤器风险,并非掉率 bug。"
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 12,
+      "title": "后续改动提醒",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "loot-filter-guide",
+          "kind": "guide",
+          "issue": "仅针对 0.2.0g 写的过滤教程遗漏了 0.2.0h 的物品层级属性。",
+          "action": "补充 0.2.0h 的未鉴定物品层级规则。",
+          "status": "queued"
+        },
+        {
+          "contentId": "crafting-bases-guide",
+          "kind": "guide",
+          "issue": "层级到词缀的映射在 0.2.0g 后变化。",
+          "action": "对照 0.5.4e 重新核验层级缩放。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 13,
+      "title": "受影响内容",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "战利品过滤器设置指南",
+          "type": "guide",
+          "trigger": "0.2.0g 改变了过滤器必须显示的内容",
+          "action": "补充物品层级与分级底材规则。",
+          "status": "queued"
+        },
+        {
+          "name": "制作底材指南",
+          "type": "guide",
+          "trigger": "分级底材改变了制作价值",
+          "action": "重新核验层级缩放。",
+          "status": "queued"
+        },
+        {
+          "name": "0.2.0h 物品过滤器补丁",
+          "type": "patch",
+          "trigger": "本次战利品重做的直接续作",
+          "action": "交叉链接过滤器属性后续。",
+          "status": "reviewing"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "历史视频",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "流放之路 2 — 官方补丁说明",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "该版本家族的官方说明。结合补丁说明了解改动内容以及后续补丁如何重写。",
+          "creator": "流放之路 2 官方",
+          "timestamps": [
+            {
+              "label": "Patch overview",
+              "time": "00:30"
+            },
+            {
+              "label": "Loot and system changes",
+              "time": "04:10"
+            },
+            {
+              "label": "Current impact",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "常见问题",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.2.0g 是提高掉率还是只是隐藏白装?",
+          "answer": [
+            "它主要是减少高 Tier 怪物掉落的低价值白装,并将权重移向有用的魔法/稀有底材。这不是整体的掉率提升,后续补丁持续调整该模型。"
+          ]
+        },
+        {
+          "question": "为何我的旧过滤器不再显示好物品?",
+          "answer": [
+            "只按稀有度匹配的过滤器可能隐藏新的分级底材。请更新过滤器,并针对当前客户端重新检查物品层级规则。"
+          ]
+        },
+        {
+          "question": "宝石消失 bug 还在吗?",
+          "answer": [
+            "不在。它是 0.2.0g 短暂的回归问题,已被热修修复,0.5.4e 中不存在。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.2.0g patch notes",
+          "description": "Official patch thread carrying the version's stated changes, deployment order and follow-up clarifications.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum index",
+          "description": "Index of all official EA patch and hotfix threads referenced on this page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Current skill, item, boss and modifier data cross-checked against the live client for current-applicability claims.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Database entries for the skills, items and modifiers referenced in this article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Community build and system guides used for player-impact cross-checks, not as a primary fact source.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "发布历史补丁文章,并依据客户端 0.5.4e 核验当前适用性。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3774669",
+      "label": "Path of Exile 2 official 0.2.0g patch notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum index",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 0.2.0g 战利品层级重做：Boss 掉落、分级稀有与过滤器风险",
+    "description": "解读 0.2.0g 战利品重做：物品层级、Boss 掉落保护、幻象,以及旧过滤器为何隐藏新底材。",
+    "noindex": false
+  }
+}
