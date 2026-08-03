@@ -1,0 +1,724 @@
+{
+  "id": "resistance-curse-exposure-penetration",
+  "slug": "resistance-curse-exposure-penetration",
+  "locale": "en",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Resistance, Curses, Exposure, and Penetration in Path of Exile 2",
+  "shortTitle": "Resistance, Curses & Penetration",
+  "summary": "How enemy resistances, resistance-reduction Curses, Exposure, Ignore Resistance, and Penetration interact in the Path of Exile 2 damage pipeline, and how to choose the right debuff for your build.",
+  "description": "A mechanics guide to Path of Exile 2 resistance interaction: the difference between Curses, Exposure, Penetration, and Ignore Resistance, the order they apply in the damage pipeline, how they affect Damage over Time, uptime and coverage conditions, and a decision aid for prioritising debuffs.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/freezing-mark.webp",
+  "cardImage": "/images/skills/freezing-mark.webp",
+  "imageAlt": "A Path of Exile 2 mark skill icon representing curses, exposure and penetration debuffs",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "A basic understanding of how enemy resistances reduce incoming damage of each type",
+    "Familiarity with applying curses, marks, or exposure to enemies in combat"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "resistance",
+    "curse",
+    "exposure",
+    "penetration",
+    "damage",
+    "debuff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Direct answers",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "What is the difference between a Curse, Exposure, and Penetration?",
+          "body": [
+            "All three help your damage beat enemy resistances, but they act in different places. A Curse and Exposure are debuffs applied to the enemy, so they reduce the enemy's actual resistance while they are active. Penetration is a property of your hit that lowers the resistance value your hit is calculated against — it never changes the enemy's persistent resistance."
+          ]
+        },
+        {
+          "title": "Does Penetration reduce the enemy's real resistance?",
+          "body": [
+            "No. In Path of Exile 2, Penetration is local to your hit and is applied last in the resistance pipeline. It reduces the resistance value used for that hit, but it does not alter the enemy's stored or persistent resistance, and it generally cannot push that value below 0%."
+          ]
+        },
+        {
+          "title": "Do Exposure and Curses reduce the enemy's actual resistance?",
+          "body": [
+            "Yes, for their duration. Exposure and resistance Curses (such as Elemental Weakness) are debuffs on the enemy, so while they are active the enemy's actual resistance is lower. They also carry coverage and uptime conditions you must keep in mind, such as the Curse Limit and boss curse-effect reduction."
+          ]
+        },
+        {
+          "title": "Do these mechanics affect Damage over Time?",
+          "body": [
+            "Because Exposure and Curses lower the enemy's actual resistance, Damage over Time benefits from them. Penetration is applied per hit, so a standalone Damage over Time instance that is not itself a hit generally does not receive Penetration. The exact Damage over Time interaction is version-sensitive — see the worked examples and treat precise values as pending PC verification."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "Definitions",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "These four terms describe four different ways damage interacts with enemy resistance in Path of Exile 2. Keeping them distinct is the single most common fix for resistance confusion, because two of them (Curse and Exposure) change the enemy, while one (Penetration) changes only your hit.",
+        "Resistance is the enemy's defensive stat. A Curse and Exposure are debuffs applied to the enemy that lower its resistance for a duration. Penetration and Ignore Resistance are properties attached to your damage that change how the resistance check resolves for the hit."
+      ],
+      "bullets": [
+        "Resistance: the enemy's percentage reduction against a damage type (Fire, Cold, Lightning, Chaos). The player-facing default resistance cap is 75%.",
+        "Resistance Reduction: any effect that lowers the enemy's resistance value — most commonly delivered through Exposure and Curses.",
+        "Exposure: a debuff placed on the enemy that reduces its resistance to the relevant element(s) by a percentage for a duration. It is a debuff on the enemy, not a property of your hit.",
+        "Penetration: a property of your hit that reduces the resistance value the hit is calculated against. It is local to you, applied last, and typically cannot reduce the value below 0%. It does not change the enemy's persistent resistance.",
+        "Ignore Resistance: a rare effect that treats the relevant resistance as 0% for that damage instance and bypasses further resistance modification for it. It does not lower the enemy's stored resistance."
+      ]
+    },
+    {
+      "id": "interaction-matrix",
+      "order": 30,
+      "title": "How each mechanic interacts",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "The core comparison. The key split is whether the mechanic changes the enemy's actual persistent resistance (Curse, Exposure) or only the value used for your hit (Penetration, Ignore Resistance).",
+      "columns": [
+        {
+          "key": "mechanic",
+          "label": "Mechanic"
+        },
+        {
+          "key": "changes-actual",
+          "label": "Changes actual resistance?"
+        },
+        {
+          "key": "affects-hit",
+          "label": "Affects Hit?"
+        },
+        {
+          "key": "affects-dot",
+          "label": "Affects DoT?"
+        },
+        {
+          "key": "stacks",
+          "label": "Stacks with others?"
+        },
+        {
+          "key": "upkeep",
+          "label": "Needs active upkeep?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "curse"
+          ],
+          "cells": {
+            "mechanic": "Curse (e.g. Elemental Weakness)",
+            "changes-actual": "Yes, while active (debuff on enemy)",
+            "affects-hit": "Yes",
+            "affects-dot": "Yes (enemy resistance is lower)",
+            "stacks": "Yes, with Exposure and Penetration",
+            "upkeep": "Yes (duration, limited by Curse Limit)"
+          }
+        },
+        {
+          "tags": [
+            "exposure"
+          ],
+          "cells": {
+            "mechanic": "Exposure",
+            "changes-actual": "Yes, while active (debuff on enemy)",
+            "affects-hit": "Yes",
+            "affects-dot": "Yes (enemy resistance is lower)",
+            "stacks": "Yes, with Curse and Penetration",
+            "upkeep": "Yes (duration, must be refreshed)"
+          }
+        },
+        {
+          "tags": [
+            "penetration"
+          ],
+          "cells": {
+            "mechanic": "Penetration",
+            "changes-actual": "No (applied to the hit only)",
+            "affects-hit": "Yes",
+            "affects-dot": "Generally no (applied per hit)",
+            "stacks": "Yes, with Curse and Exposure",
+            "upkeep": "No (passive property of your hit)"
+          }
+        },
+        {
+          "tags": [
+            "ignore-resistance"
+          ],
+          "cells": {
+            "mechanic": "Ignore Resistance",
+            "changes-actual": "No (bypasses it for the instance)",
+            "affects-hit": "Yes (treats resistance as 0%)",
+            "affects-dot": "Implementation-dependent; treat as pending PC verification",
+            "stacks": "Rare; generally separate from other reduction for that instance",
+            "upkeep": "No"
+          }
+        }
+      ],
+      "note": "The exact Exposure percentage and Curse Limit are version-sensitive — phrase specific numbers as pending PC verification. The structural behavior above reflects the current PoE2 pipeline."
+    },
+    {
+      "id": "order",
+      "order": 40,
+      "title": "Order of operations in the damage pipeline",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Enemy resistance modification follows a strict sequence. Penetration is always applied last and is local to the attacker, so it never changes the enemy's persistent resistance.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Step"
+        },
+        {
+          "key": "what-applies",
+          "label": "What applies"
+        },
+        {
+          "key": "note",
+          "label": "Note"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "step": "1. Baseline",
+            "what-applies": "Enemy total resistance (including map and waystone modifiers)",
+            "note": "The starting value all later steps modify"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "2. Resistance reduction",
+            "what-applies": "Exposure and Curses",
+            "note": "Debuffs on the enemy; can push resistance below zero"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "3. Inversion (optional)",
+            "what-applies": "Effects such as Rakiata's Flow",
+            "note": "Flips the current resistance value, positive or negative; lineage-limited"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "4. Penetration",
+            "what-applies": "Your hit's Penetration",
+            "note": "Applied last, local to you, typically cannot reduce below 0%"
+          }
+        }
+      ],
+      "note": "Because Penetration is the final step and local to the attacker, it does not alter the enemy's persistent resistance and does not interfere with inversion the way Exposure and Curses do."
+    },
+    {
+      "id": "boss-scenario",
+      "order": 50,
+      "title": "Worked examples: normal monster vs boss",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Illustrative calculations using an enemy with 75% Lightning Resistance and a 1000-damage Lightning hit. Numbers are teaching examples; exact Exposure values and boss curse-reduction percentages are pending PC verification.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Case"
+        },
+        {
+          "key": "setup",
+          "label": "Setup"
+        },
+        {
+          "key": "calculation",
+          "label": "Calculation"
+        },
+        {
+          "key": "result",
+          "label": "Result"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "no-debuff"
+          ],
+          "cells": {
+            "case": "Normal monster, no debuffs",
+            "setup": "Enemy 75% Lightning Res, 1000 hit, no Penetration or Exposure",
+            "calculation": "1000 x (1 - 0.75)",
+            "result": "250 damage"
+          }
+        },
+        {
+          "tags": [
+            "exposure",
+            "penetration"
+          ],
+          "cells": {
+            "case": "Normal monster with Exposure and Penetration",
+            "setup": "Enemy 75% Res, Exposure -25%, 20% Penetration, 1000 hit",
+            "calculation": "Exposure lowers enemy to 50%; Penetration lowers the value used to 30%; 1000 x (1 - 0.30)",
+            "result": "700 damage"
+          }
+        },
+        {
+          "tags": [
+            "boss",
+            "curse"
+          ],
+          "cells": {
+            "case": "Boss with reduced curse effect",
+            "setup": "Enemy 75% Res, Exposure -25% but boss takes 50% reduced curse effect, 20% Penetration, 1000 hit",
+            "calculation": "Effective Exposure only -12.5%, enemy at 62.5%; Penetration to 42.5%; 1000 x (1 - 0.425)",
+            "result": "575 damage (coverage differs from a normal monster)"
+          }
+        }
+      ],
+      "note": "The boss example shows why uptime and coverage matter: the same Exposure is weakened by boss curse-effect reduction, so the real damage gain is smaller than on a normal monster."
+    },
+    {
+      "id": "hit-vs-dot",
+      "order": 60,
+      "title": "Hit builds vs Damage over Time builds",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Whether your build should invest in Penetration versus Exposure or Curses depends on whether your damage is a hit or Damage over Time.",
+      "columns": [
+        {
+          "key": "build-type",
+          "label": "Build type"
+        },
+        {
+          "key": "benefits-penetration",
+          "label": "Benefits from Penetration?"
+        },
+        {
+          "key": "benefits-exposure",
+          "label": "Benefits from Exposure?"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hit"
+          ],
+          "cells": {
+            "build-type": "Hit build (direct hits)",
+            "benefits-penetration": "Yes, directly",
+            "benefits-exposure": "Yes (enemy resistance is lower)",
+            "notes": "Both layers apply; Penetration is checked last after Exposure and Curses."
+          }
+        },
+        {
+          "tags": [
+            "dot"
+          ],
+          "cells": {
+            "build-type": "Damage over Time build",
+            "benefits-penetration": "Generally no (DoT is not a hit)",
+            "benefits-exposure": "Yes (enemy resistance is lower while debuffed)",
+            "notes": "Prioritise Exposure and Curses; Penetration usually does nothing for standalone DoT."
+          }
+        },
+        {
+          "tags": [
+            "hybrid"
+          ],
+          "cells": {
+            "build-type": "Hybrid (hit that also applies DoT)",
+            "benefits-penetration": "Only the hit portion",
+            "benefits-exposure": "Yes, for both portions",
+            "notes": "The initial hit gets Penetration; the ensuing DoT benefits from the enemy's reduced resistance."
+          }
+        }
+      ],
+      "note": "The precise Penetration-versus-DoT rule is version-sensitive; treat exact behavior as pending PC verification."
+    },
+    {
+      "id": "debuff-uptime",
+      "order": 70,
+      "title": "Debuff uptime and coverage",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Exposure and Curses are only as strong as their uptime. A Curse must be applied to the target and stays only for its debuff duration, and the number of Curses an enemy can suffer at once is limited by the Curse Limit. In Path of Exile 2 the default Curse Limit is low (often one), and specific items or support gems can raise it — confirm the exact number for 0.5.4 as pending PC verification.",
+        "Bosses and other powerful enemies frequently have reduced Curse Effect, which shrinks the resistance reduction a Curse provides against them. Exposure must also be refreshed; it does not last forever, and some skills apply it as an aura or on hit while others require a dedicated skill. Plan your rotation so the debuff is actually on the enemy when your damage lands."
+      ],
+      "bullets": [
+        "Curse Limit: caps how many Curses can be active on a single enemy at once (default low; raise via specific items or supports — pending PC verification for the 0.5.4 value).",
+        "Curse Effect: increases or decreases how strong a Curse is; bosses commonly have reduced Curse Effect.",
+        "Exposure duration: must be refreshed; coverage depends on how you apply it (on hit, as an aura, or via a dedicated skill).",
+        "Penetration has no uptime concern — it is a property of each hit and applies automatically."
+      ]
+    },
+    {
+      "id": "choose-your-scaling",
+      "order": 80,
+      "title": "Which debuff should your build prioritise?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Answer the questions below to find where to invest your debuff budget.",
+      "controls": [
+        {
+          "id": "damage-shape",
+          "label": "What is your main damage?",
+          "options": [
+            {
+              "label": "Direct hits",
+              "value": "hits"
+            },
+            {
+              "label": "Damage over Time",
+              "value": "dot"
+            },
+            {
+              "label": "Mixed / secondary skills matter",
+              "value": "mixed"
+            }
+          ]
+        },
+        {
+          "id": "uses-inversion",
+          "label": "Does your main skill use resistance inversion (e.g. Rakiata's Flow)?",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Stack reduction then penetration",
+          "when": {
+            "damage-shape": "hits",
+            "uses-inversion": "no"
+          },
+          "steps": [
+            "Apply Exposure and/or a resistance Curse to lower the enemy's actual resistance.",
+            "Add Penetration on your main skill to reduce the value used at the final step.",
+            "Keep the debuff active and refresh it during the fight."
+          ]
+        },
+        {
+          "title": "Avoid reduction on the inverted skill",
+          "when": {
+            "damage-shape": "hits",
+            "uses-inversion": "yes"
+          },
+          "steps": [
+            "Do not apply Exposure or resistance Curses that consistently hit your inverted main skill — reduction is applied before inversion and shrinks the payoff.",
+            "Invest Penetration into secondary damage sources (Heralds, triggers) that do not have inversion.",
+            "Keep inversion on the main skill and reduction off its targets."
+          ]
+        },
+        {
+          "title": "Prioritise Exposure and Curses",
+          "when": {
+            "damage-shape": "dot"
+          },
+          "steps": [
+            "Focus on Exposure and resistance Curses, since they lower the enemy's actual resistance and DoT benefits from that.",
+            "Do not invest in Penetration for the DoT portion — it generally does not apply to standalone DoT.",
+            "Maintain uptime, since the debuff must be active when the DoT deals damage."
+          ]
+        },
+        {
+          "title": "Split the budget",
+          "when": {
+            "damage-shape": "mixed"
+          },
+          "steps": [
+            "Give Exposure/Curses to the hit that also seeds DoT, so both portions benefit.",
+            "Add Penetration for the direct-hit portion and for secondary non-inverted sources.",
+            "Treat exact split as pending PC verification and measure in-game."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "General guidance",
+        "steps": [
+          "Lower the enemy's actual resistance with Exposure or a Curse when you are not using inversion.",
+          "Use Penetration for direct hits and for secondary non-inverted damage.",
+          "Keep debuff uptime high and respect the Curse Limit and boss curse-effect reduction."
+        ]
+      }
+    },
+    {
+      "id": "troubleshooting",
+      "order": 90,
+      "title": "Common mistakes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Most resistance problems come from mixing up which mechanic changes the enemy and which changes only your hit. The following pitfalls are the ones players report most often."
+      ],
+      "bullets": [
+        "Adding lots of Penetration but seeing no damage change: the enemy's resistance may already be near 0% after Exposure/Curses, or your main skill uses inversion where Penetration becomes irrelevant.",
+        "Conflating Penetration with resistance reduction: Penetration does not change the enemy's persistent resistance, so it will not help other damage sources or Damage over Time.",
+        "Forgetting the Curse Limit: only a limited number of Curses can be active at once, so extra Curses do nothing if the limit is reached.",
+        "Ignoring boss curse-effect reduction: a Curse that looks huge on a normal monster may be heavily weakened on a boss.",
+        "Assuming Exposure lasts forever: it has a duration and must be refreshed, or your damage falls back to the enemy's full resistance.",
+        "Applying Exposure or Curses to an inverted main skill: reduction is applied before inversion and shrinks the inversion payoff, sometimes badly."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 100,
+      "title": "Community debates",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Frequently discussed confusions about resistance interaction in Path of Exile 2.",
+      "cards": [
+        {
+          "title": "Negative vs zero resistance",
+          "tag": "resistance",
+          "body": [
+            "Players debate whether Exposure or Curses can push an enemy below 0% resistance. They can lower the actual value below zero, but Penetration is typically capped at reducing the used value to 0%, so negative resistance usually comes from reduction, not Penetration."
+          ]
+        },
+        {
+          "title": "Why bosses shrug off curses",
+          "tag": "curse",
+          "body": [
+            "A Curse that feels strong on packs can look weak on a boss because bosses commonly have reduced Curse Effect. The debuff is still applied, just weaker."
+          ]
+        },
+        {
+          "title": "Penetration glove implicits",
+          "tag": "penetration",
+          "body": [
+            "Some players avoid Penetration implicits, fearing they harm inversion-based main skills. Penetration is local and checked last, so it does not reduce the inverted value; it is best spent on secondary damage."
+          ]
+        },
+        {
+          "title": "Does Penetration work on DoT?",
+          "tag": "dot",
+          "body": [
+            "A common question with a subtle answer: Penetration is per hit, so standalone Damage over Time generally does not receive it, while Exposure and Curses do help DoT. Exact behavior is pending PC verification."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 110,
+      "title": "Video guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "How to Scale Elemental Damage in Path of Exile 2 | Curses vs Exposure vs Penetration",
+          "creator": "MisoxShiru",
+          "description": "A focused walkthrough comparing Curses, Exposure, and Penetration in Path of Exile 2, how they stack in the damage pipeline, and when to use each.",
+          "takeaway": "Curses and Exposure lower the enemy's actual resistance; Penetration is a per-hit property applied last. Choose the debuff that matches your damage type and watch inversion anti-synergy.",
+          "url": "https://www.youtube.com/watch?v=isve7nLuW48",
+          "timestamps": [
+            {
+              "label": "Introduction",
+              "time": "0:00"
+            },
+            {
+              "label": "Curses and resistance reduction",
+              "time": "1:30"
+            },
+            {
+              "label": "Exposure explained",
+              "time": "4:00"
+            },
+            {
+              "label": "Penetration explained",
+              "time": "7:20"
+            },
+            {
+              "label": "How they stack in the damage pipeline",
+              "time": "10:10"
+            },
+            {
+              "label": "Summary and build advice",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 120,
+      "title": "Frequently asked questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Does Penetration stack with Exposure and Curses?",
+          "answer": [
+            "Yes. They operate in different stages of the pipeline. Exposure and Curses lower the enemy's actual resistance, then Penetration is applied last to the value your hit uses. All three can be active together."
+          ]
+        },
+        {
+          "question": "Why did adding more Penetration not increase my damage?",
+          "answer": [
+            "Common reasons: the enemy's resistance was already near 0% after Exposure and Curses, or your main skill uses resistance inversion (such as Rakiata's Flow) where Penetration becomes irrelevant, or you are hitting an enemy whose resistance is already negative from inversion."
+          ]
+        },
+        {
+          "question": "Does Penetration work against Damage over Time?",
+          "answer": [
+            "Generally no for standalone Damage over Time, because Penetration is applied per hit and DoT is not a hit. Exposure and Curses do help DoT because they lower the enemy's actual resistance. The exact rule is version-sensitive and is pending PC verification."
+          ]
+        },
+        {
+          "question": "Can Exposure apply to multiple elements at once?",
+          "answer": [
+            "Elemental Exposure typically reduces the relevant element(s), and some sources reduce all elemental resistances. The exact coverage depends on the skill or support granting it; confirm specifics as pending PC verification."
+          ]
+        },
+        {
+          "question": "What is the Curse Limit and why does my boss take less curse effect?",
+          "answer": [
+            "The Curse Limit caps how many Curses can be active on a single enemy at once (the default is low; specific items or supports can raise it — pending PC verification for the 0.5.4 value). Bosses commonly have reduced Curse Effect, which weakens the resistance reduction a Curse provides against them."
+          ]
+        },
+        {
+          "question": "Should I use Exposure or Curses with Rakiata's Flow?",
+          "answer": [
+            "Usually no for the inverted main skill. Resistance reduction is applied before inversion and shrinks the inversion payoff, and can even flip a low-resistance enemy into higher resistance after inversion. Keep reduction off the targets your inverted main skill hits, and invest Penetration into secondary damage instead."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 130,
+      "title": "Sources and verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official wiki - Resistance",
+          "description": "PoE2 wiki reference for resistance, resistance reduction, exposure, curses, and penetration behavior",
+          "url": "https://poe2wiki.net/wiki/Resistance"
+        },
+        {
+          "label": "Mobalytics - Resistances Explained",
+          "description": "Community guide covering resistance caps, negative resistance, and how resistances mitigate damage in Path of Exile 2",
+          "url": "https://mobalytics.gg/poe-2/guides/resistances"
+        },
+        {
+          "label": "Elyxir - PoE 2 Elemental Resistance Mechanics",
+          "description": "Community guide detailing the order of operations for reduction, inversion, and penetration, and that penetration is local and checked last",
+          "url": "https://www.elyxir.gg/guide/path-of-exile-2/poe-2-elemental-resistance-mechanics-using-rakiatas-flow-penetration-and-curses-the-right-way"
+        },
+        {
+          "label": "Video guide (MisoxShiru)",
+          "description": "Video comparing Curses, Exposure, and Penetration in Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=isve7nLuW48"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 140,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication of the resistance, curse, exposure, and penetration guide for Path of Exile 2 Early Access 0.5.4.",
+            "Added direct answers, definitions, an interaction matrix, the damage-pipeline order of operations, worked examples for normal monsters vs bosses, a hit vs DoT comparison, debuff uptime and coverage, a scaling diagnostic, common mistakes, community debates, a video guide, FAQ, and sources.",
+            "Penetration is documented as a per-hit, locally applied, last-step mechanic that does not change the enemy's persistent resistance; exact Exposure values, Curse Limit, and the Penetration-versus-DoT rule are flagged for PC verification."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Resistance",
+      "url": "https://poe2wiki.net/wiki/Resistance",
+      "sourceType": "official"
+    },
+    {
+      "label": "Mobalytics - Resistances Explained",
+      "url": "https://mobalytics.gg/poe-2/guides/resistances",
+      "sourceType": "community"
+    },
+    {
+      "label": "Elyxir - PoE 2 Elemental Resistance Mechanics",
+      "url": "https://www.elyxir.gg/guide/path-of-exile-2/poe-2-elemental-resistance-mechanics-using-rakiatas-flow-penetration-and-curses-the-right-way",
+      "sourceType": "community"
+    },
+    {
+      "label": "MisoxShiru - Curses vs Exposure vs Penetration (YouTube)",
+      "url": "https://www.youtube.com/watch?v=isve7nLuW48",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Resistance, Curses, Exposure & Penetration Guide",
+    "description": "How enemy resistances, Curses, Exposure, and Penetration interact in the Path of Exile 2 damage pipeline, and how to choose the right debuff for your build.",
+    "noindex": false
+  }
+}

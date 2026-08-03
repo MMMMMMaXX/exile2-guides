@@ -1,0 +1,681 @@
+{
+  "id": "accuracy-distance-penalty-hit-chance",
+  "slug": "accuracy-distance-penalty-hit-chance",
+  "locale": "zh-cn",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "流放之路2 命中率、距离惩罚与击中几率",
+  "shortTitle": "命中率与击中",
+  "summary": "在流放之路2中，命中率、闪避以及远程距离惩罚如何决定你的攻击是否命中，以及如何在不靠猜测的情况下解决低命中率问题。",
+  "description": "一篇关于流放之路2击中几率的机制指南：命中率如何与闪避对比，远程攻击在远距离如何损失有效命中率，以及提升命中率的实用方法，同时避免常见误读。",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/snipe.webp",
+  "cardImage": "/images/skills/snipe.webp",
+  "imageAlt": "流放之路2 狙击技能图标，代表命中率与远距离命中",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "了解角色面板与物品悬浮窗的基本用法",
+    "熟悉装备上显示的命中率与闪避属性"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "accuracy",
+    "evasion",
+    "hit-chance",
+    "distance",
+    "attack",
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "直接回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "攻击需要命中率才能命中吗？",
+          "body": [
+            "需要。攻击会将你的命中率与目标的闪避进行判定，以决定击中几率。近战或远程攻击若无法压过闪避判定，就会未命中。"
+          ]
+        },
+        {
+          "title": "法术会检测命中率吗？",
+          "body": [
+            "通常不会。流放之路2中大多法术完全绕过命中率与闪避的判定。部分技能明确标注“必定命中”或“无法被闪避”，但法术的默认行为是不依赖你的命中率。"
+          ]
+        },
+        {
+          "title": "为什么显示100%仍会在远距离未命中？",
+          "body": [
+            "面板几率是在参考距离下计算的。远程攻击随着目标变远会损失有效命中率，因此在远距离时真实几率可能远低于显示数值——即便读数为接近100%也可能在极限距离未命中。"
+          ]
+        },
+        {
+          "title": "什么能让闪避不再成为因素？",
+          "body": [
+            "“击中无法被闪避”或“坚决技巧（Resolute Technique）”这类效果会阻止目标的闪避降低你的命中率，但它们有取舍（例如放弃暴击收益），需按构筑权衡。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "关键术语",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "你的伤害能否命中有四个核心概念。命中率是攻击方用于对抗目标闪避的进攻数值；闪避率是目标用于躲避攻击的防御数值。击中几率是最终决定单次攻击是否命中的百分比。距离是你与目标之间的间隔，它特别影响远程攻击。",
+        "法术是另一类：在流放之路2中，大多数法术完全不进行命中率判定，因此它们的命中由其他规则决定，而非命中率与闪避的对抗。"
+      ],
+      "bullets": [
+        "命中率：攻击用于尝试压过目标闪避的属性。",
+        "闪避率：让目标躲避来袭攻击的防御属性。",
+        "击中几率：显示攻击是否会命中的百分比。",
+        "距离：你与目标的间隔；它会对远程命中率施加惩罚。"
+      ]
+    },
+    {
+      "id": "chance-to-hit-structure",
+      "order": 30,
+      "title": "击中几率如何构成",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "攻击所显示的击中几率，是通过将你的命中率与目标的闪避对比得出的。该关系呈收益递减的形状：当你已远超目标闪避时，继续提升命中率的收益变小；当你远低于目标闪避时，提升命中率收益很大。",
+        "精确的曲线系数在流放之路2抢先体验版本中是随版本变化的，应在当前客户端内确认，而非套用固定公式。可将其结构理解为“命中率相对闪避决定一个百分比，随着你的命中率超过对方闪避而向高值攀升”，具体数值请在游戏内确认。",
+        "除了该曲线之外，远程攻击还会施加一个距离系数，随着目标越远而降低有效命中率。正是这个系数让面板读数在远距离显得过于乐观。"
+      ],
+      "bullets": [
+        "相对闪避更高的命中率意味着更高的命中几率。",
+        "当你已远超目标闪避时，每点命中率的收益递减。",
+        "距离系数专门降低远程攻击的有效命中率。",
+        "精确系数随版本变化，请在当前客户端确认。"
+      ]
+    },
+    {
+      "id": "formula-variables",
+      "order": 40,
+      "title": "击中计算中的变量",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "影响击中结果的输入项。精确系数随版本变化，必须在当前客户端确认。",
+      "columns": [
+        {
+          "key": "variable",
+          "label": "变量"
+        },
+        {
+          "key": "meaning",
+          "label": "含义"
+        },
+        {
+          "key": "effect",
+          "label": "如何影响命中率"
+        },
+        {
+          "key": "confidence",
+          "label": "把握度"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "accuracy"
+          ],
+          "cells": {
+            "variable": "命中率",
+            "meaning": "你用于攻击的进攻属性",
+            "effect": "更高的命中率会提高对既定闪避目标的命中几率",
+            "confidence": "结构稳定；精确曲线系数随版本变化"
+          }
+        },
+        {
+          "tags": [
+            "evasion"
+          ],
+          "cells": {
+            "variable": "闪避率（目标）",
+            "meaning": "目标对抗攻击的防御属性",
+            "effect": "更高的闪避会降低你命中该目标的几率",
+            "confidence": "结构稳定；精确曲线系数随版本变化"
+          }
+        },
+        {
+          "tags": [
+            "distance"
+          ],
+          "cells": {
+            "variable": "距离系数",
+            "meaning": "随距离增长而施加于远程攻击的惩罚",
+            "effect": "在远距离降低有效命中率；近战不受影响",
+            "confidence": "确为机制；起始距离与衰减幅度随版本变化"
+          }
+        },
+        {
+          "tags": [
+            "result"
+          ],
+          "cells": {
+            "variable": "最终命中几率",
+            "meaning": "攻击显示的百分比",
+            "effect": "随命中率提升、随闪避与距离降低",
+            "confidence": "显示在悬浮窗；远距离真实值可能更低"
+          }
+        }
+      ],
+      "note": "不要套用从旧资料复制的固定数值公式；请在当前客户端确认系数。"
+    },
+    {
+      "id": "distance-penalty",
+      "order": 50,
+      "title": "远程攻击的距离惩罚",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "流放之路2中的远程攻击承受距离惩罚：目标越远，你的有效命中率越低。这正是狙击或弓系角色近身显示高面板命中率、却在屏幕另一端敌人远处开始未命中的原因。",
+        "该惩罚是远程攻击专属机制。在贴身距离命中的近战攻击不受同样的距离命中率损失影响。惩罚具体从何处开始、衰减有多陡，均随版本变化，因此请在游戏内确认，而非死记固定数字。",
+        "一个实际后果：即便面板读数接近100%也不能保证在极限距离命中。距离系数会把真实几率拉到显示值以下，因此走位对远程构筑很重要。"
+      ],
+      "bullets": [
+        "远程攻击随距离增长而损失有效命中率。",
+        "近战攻击不受同样的距离惩罚影响。",
+        "接近100%的面板几率在远距离仍可能未命中。",
+        "起始距离与衰减幅度随版本变化。"
+      ]
+    },
+    {
+      "id": "skill-matrix",
+      "order": 60,
+      "title": "哪些技能类型检测命中率？",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "在流放之路2中准确率检查如何作用于各技能类别。法术通常绕过它；攻击通常使用它。",
+      "columns": [
+        {
+          "key": "skill-type",
+          "label": "技能类型"
+        },
+        {
+          "key": "checks-accuracy",
+          "label": "是否检测命中率？"
+        },
+        {
+          "key": "notes",
+          "label": "说明"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-type": "攻击",
+            "checks-accuracy": "是",
+            "notes": "大多攻击将命中率与闪避进行判定。远程攻击还承受距离惩罚。"
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-type": "法术",
+            "checks-accuracy": "通常不",
+            "notes": "大多法术绕过命中率与闪避的判定。部分技能明确为必定命中或无法被闪避。"
+          }
+        },
+        {
+          "tags": [
+            "minion"
+          ],
+          "cells": {
+            "skill-type": "召唤物",
+            "checks-accuracy": "取决于召唤物",
+            "notes": "召唤物使用自身命中率规则，与玩家不同。不要假定玩家命中率适用于召唤物。"
+          }
+        },
+        {
+          "tags": [
+            "totem"
+          ],
+          "cells": {
+            "skill-type": "图腾",
+            "checks-accuracy": "是（继承技能）",
+            "notes": "使用攻击技能的图腾会像施法者一样执行该技能的命中率判定。"
+          }
+        },
+        {
+          "tags": [
+            "triggered"
+          ],
+          "cells": {
+            "skill-type": "触发",
+            "checks-accuracy": "取决于触发来源",
+            "notes": "触发的攻击会检测命中率；触发的法术通常不检测。请遵循底层技能类型。"
+          }
+        }
+      ],
+      "note": "召唤物命中率行为随版本变化；请确认当前规则，勿照搬旧资料。"
+    },
+    {
+      "id": "worked-examples",
+      "order": 70,
+      "title": "实例演示",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "展示距离与技能类型如何改变命中结果的示例。数值为定性说明，非精确系数。",
+      "columns": [
+        {
+          "key": "case",
+          "label": "情形"
+        },
+        {
+          "key": "distance",
+          "label": "距离"
+        },
+        {
+          "key": "result",
+          "label": "结果"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "melee"
+          ],
+          "cells": {
+            "case": "近身攻击普通敌人",
+            "distance": "贴身 / 近战",
+            "result": "面板命中率具有代表性；攻击几乎总是命中。"
+          }
+        },
+        {
+          "tags": [
+            "ranged"
+          ],
+          "cells": {
+            "case": "远距离攻击普通敌人",
+            "distance": "屏幕另一端",
+            "result": "距离惩罚降低有效命中率；高面板几率仍可能未命中。"
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "case": "任意距离的法术",
+            "distance": "不适用",
+            "result": "法术绕过命中率判定，因此距离惩罚不适用于命中判定。"
+          }
+        },
+        {
+          "tags": [
+            "range-penalty"
+          ],
+          "cells": {
+            "case": "极限距离显示接近100%",
+            "distance": "最大射程",
+            "result": "距离系数仍可能导致未命中；显示数值在远距离并非保证。"
+          }
+        }
+      ],
+      "note": "仅作为心智模型；真实阈值请在当前客户端确认。"
+    },
+    {
+      "id": "fix-low-hit-chance",
+      "order": 80,
+      "title": "解决低命中率",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "选择你未命中的可能原因，工具会指向下一步。",
+      "controls": [
+        {
+          "id": "cause",
+          "label": "未命中来自动哪里？",
+          "options": [
+            {
+              "label": "装备命中率过低",
+              "value": "gear"
+            },
+            {
+              "label": "天赋或技能树无命中率",
+              "value": "passives"
+            },
+            {
+              "label": "与目标距离过远",
+              "value": "positioning"
+            },
+            {
+              "label": "Boss或高闪避敌人",
+              "value": "keystone"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "提升装备命中率",
+          "when": {
+            "cause": "gear"
+          },
+          "steps": [
+            "查看武器、戒指与项链上的命中率。",
+            "优先选择固定命中率及装备上的百分比加成。",
+            "每次替换后复查悬浮窗命中率。"
+          ]
+        },
+        {
+          "title": "从天赋树获取命中率",
+          "when": {
+            "cause": "passives"
+          },
+          "steps": [
+            "点出提供命中率的天赋节点与 notable 集群。",
+            "查看职业与升华节点中的命中率加成。",
+            "洗点后确认悬浮窗命中率上升。"
+          ]
+        },
+        {
+          "title": "改善走位",
+          "when": {
+            "cause": "positioning"
+          },
+          "steps": [
+            "靠近目标以减小远程攻击的距离惩罚。",
+            "使用位移技能拉近与高闪避敌人的距离。",
+            "在同一目标近距离下重新测试，观察惩罚消失。"
+          ]
+        },
+        {
+          "title": "应对高闪避或Boss敌人",
+          "when": {
+            "cause": "keystone"
+          },
+          "steps": [
+            "考虑“击中无法被闪避”或“坚决技巧”来忽略闪避。",
+            "权衡取舍：坚决技巧会放弃暴击收益。",
+            "若仍依赖暴击或其他判定，仅在此情形下配合命中率使用。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用解决路径",
+        "steps": [
+          "先确认未命中是命中率问题，而非抗性或缺伤害问题。",
+          "优先通过装备与天赋提升命中率。",
+          "再修正走位，最后才考虑关键天赋的取舍。"
+        ]
+      }
+    },
+    {
+      "id": "crit-interaction",
+      "order": 90,
+      "title": "命中率与闪避如何与暴击互动",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "暴击只能发生在已命中的攻击上。若攻击未通过命中率与闪避的判定，就不可能造成暴击——暴击根本不会判定。这意味着你的有效暴击率受命中率限制，而非仅由你列出的暴击几率决定。",
+        "对暴击流构筑而言，提升命中率因此有双重价值：它既让更多攻击命中，又释放了这些攻击本可携带的更多暴击。相反，暴击几率很高但命中率低时，大部分潜力都浪费在了未命中上。"
+      ],
+      "bullets": [
+        "未命中无法暴击——必须先命中。",
+        "有效暴击率等于命中率乘以列出的暴击几率。",
+        "对暴击流而言，命中率投入收益翻倍。",
+        "低命中率会悄悄浪费暴击几率。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 100,
+      "title": "常见误读",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "大多数命中率问题源于把面板当作全部真相。以下是最常让玩家踩坑的地方。"
+      ],
+      "bullets": [
+        "面板显示接近100%却在远处未命中，因为近距离读数未体现距离惩罚。",
+        "假定每个投射物都需要命中率——许多法术完全绕过该判定。",
+        "忘记Boss与高闪避敌人拥有高闪避率，因此你在普通地图的命中率打它们会大幅下降。",
+        "把显示几率当作任意距离的保证命中——它并非如此。",
+        "假定召唤物命中率等于你自己的命中率——召唤物遵循自身规则。",
+        "认为坚决技巧或击中无法被闪避能解决一切，忽略暴击收益的取舍。"
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 110,
+      "title": "玩家常见问题",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "玩家经常提出的关于命中率与击中几率的困惑（转述）。",
+      "cards": [
+        {
+          "title": "显示100%为何仍会未命中？",
+          "tag": "distance",
+          "body": [
+            "面板几率是在参考距离下测量的。远程攻击在远距离损失有效命中率，因此真实几率可能低于读数。"
+          ]
+        },
+        {
+          "title": "我的法术需要命中率吗？",
+          "tag": "spell",
+          "body": [
+            "大多法术不进行命中率与闪避的判定。玩家常常在法术构筑上过度投资命中率却毫无收益。"
+          ]
+        },
+        {
+          "title": "召唤物用我的命中率吗？",
+          "tag": "minion",
+          "body": [
+            "召唤物遵循自身命中率规则，与玩家不同。不要假定命中率共享。"
+          ]
+        },
+        {
+          "title": "Boss闪避一切",
+          "tag": "boss",
+          "body": [
+            "高闪避Boss会大幅拉低你的命中率，远低于你清图的数值。为打Boss请规划命中率或忽略闪避的方案。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 120,
+      "title": "视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "如何在流放之路2中查看你的命中率（命中率评分）",
+          "creator": "Bue",
+          "description": "清晰讲解在哪里找到并阅读你的命中率、命中率如何与闪避对比，以及流放之路2中远程距离惩罚如何运作。",
+          "takeaway": "打开角色面板读取真实命中率，然后提升命中率或缩短距离，以停止在远距离未命中。",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+          "timestamps": [
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "在哪里查看命中率",
+              "time": "1:05"
+            },
+            {
+              "label": "命中率与闪避对比",
+              "time": "3:40"
+            },
+            {
+              "label": "距离惩罚",
+              "time": "6:20"
+            },
+            {
+              "label": "解决低命中率",
+              "time": "9:10"
+            },
+            {
+              "label": "总结",
+              "time": "11:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 130,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "命中几率和悬浮窗上的数字一样吗？",
+          "answer": [
+            "近距离时它具代表性，但远程攻击的距离惩罚意味着远距离真实几率可能低于悬浮窗显示。请将其视为参考距离下的数值。"
+          ]
+        },
+        {
+          "question": "流放之路2中法术使用命中率吗？",
+          "answer": [
+            "大多法术不与闪避进行命中率判定。为纯法术构筑投资命中率通常对命中率毫无帮助。部分技能无论何种情况都明确为必定命中或无法被闪避。"
+          ]
+        },
+        {
+          "question": "为什么我打Boss未命中之清小怪却不会？",
+          "answer": [
+            "Boss与高闪避敌人拥有高得多的闪避率，从而降低你对它们的命中率。你清图的命中率对Boss内容可能过低。"
+          ]
+        },
+        {
+          "question": "坚决技巧让我必定命中吗？",
+          "answer": [
+            "它让闪避不再成为你命中的因素，但通常也会放弃暴击收益，因此是取舍而非免费升级。请对照你构筑对暴击的依赖来权衡。"
+          ]
+        },
+        {
+          "question": "召唤物共享我的命中率吗？",
+          "answer": [
+            "不共享。召唤物使用自身命中率规则，与玩家不同。不要假定提升你的命中率能改善召唤物的命中率。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 140,
+      "title": "来源与验证",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方wiki - 命中率",
+          "description": "PoE2 wiki 关于命中率、闪避与击中几率关系的参考",
+          "url": "https://poe2wiki.net/wiki/Accuracy"
+        },
+        {
+          "label": "Maxroll PoE2 中心",
+          "description": "覆盖流放之路2命中率与闪避的社区机制中心",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Mobalytics PoE2 中心",
+          "description": "提供构筑与命中率指引的社区机制中心",
+          "url": "https://mobalytics.gg/path-of-exile-2/"
+        },
+        {
+          "label": "视频指南（Bue）",
+          "description": "讲解流放之路2中读取命中率与距离惩罚的YouTube视频",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "为流放之路2抢先体验0.5.4首发命中率、距离惩罚与击中几率指南。",
+            "新增直接回答、关键术语、击中结构、变量表、距离惩罚、技能矩阵、实例演示、诊断、暴击互动、常见误读、社区案例、视频、常见问题与来源。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - 命中率",
+      "url": "https://poe2wiki.net/wiki/Accuracy",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Path of Exile 2 中心",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Mobalytics - Path of Exile 2 中心",
+      "url": "https://mobalytics.gg/path-of-exile-2/",
+      "sourceType": "community"
+    },
+    {
+      "label": "Bue - 如何在PoE2查看命中率（YouTube）",
+      "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 命中率、距离惩罚与击中几率指南",
+    "description": "命中率如何与闪避对比、远程攻击如何在远距离损失命中率，以及如何解决流放之路2中的低命中率问题。",
+    "noindex": false
+  }
+}

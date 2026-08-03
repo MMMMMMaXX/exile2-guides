@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-03 17:22（Asia/Shanghai）
+> 文档更新时间：2026-08-03 19:10（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -32,7 +32,7 @@
 
 ## 当前概览
 
-> 本节更新时间：2026-08-03 00:55（Asia/Shanghai）
+> 本节更新时间：2026-08-03 19:10（Asia/Shanghai）
 
 | 项目            | 当前值                                                                   |
 | --------------- | ------------------------------------------------------------------------ |
@@ -44,7 +44,7 @@
 | 后续执行计划    | 首周观察 Search Console、Cloudflare 部署和用户反馈；Patch 变化时复核内容 |
 | 待用户补充      | 仅在 Google 报告明确技术错误、内容被拒收或游戏更新时提供截图/官方来源    |
 | 最近生产构建    | 2026-07-28 14:15，通过（Cloudflare Production）；本地生产预渲染构建多次通过（最近 2026-08-03 00:40，未部署） |
-| 公开攻略内容    | 六分类共 176 个双语主题已发布（Items 24、Builds 32、Skills 25、Bosses 24、Guides 44、Patches 27），即 352 个双语详情页；另保留 12 个结构模板隔离在生产路由之外；真实文章均为 `published` 且 `seo.noindex: false` |
+| 公开攻略内容    | 六分类共 184 个双语主题已发布（Items 24、Builds 32、Skills 25、Bosses 24、Guides 52、Patches 27），即 368 个双语详情页；另保留 12 个结构模板隔离在生产路由之外；真实文章均为 `published` 且 `seo.noindex: false` |
 | 当前生产地址    | `https://poe2.stratlore.com/en/`                                         |
 | GitHub 推送策略 | 默认不自动推送；仅在用户当前会话明确要求时执行                           |
 
@@ -82,7 +82,7 @@
 
 ## 任务外事项表
 
-> 本节更新时间：2026-08-03 00:55（Asia/Shanghai）
+> 本节更新时间：2026-08-03 19:10（Asia/Shanghai）
 
 | 编号      | 时间                               | 状态   | 事项                                                                 | 处理结果                                                                                                                               | 验证/影响                                                                                                                               |
 | --------- | ---------------------------------- | ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -164,7 +164,7 @@
 
 ## 会话时间线
 
-> 本节更新时间：2026-08-03 00:45（Asia/Shanghai）
+> 本节更新时间：2026-08-03 19:10（Asia/Shanghai）
 
 | 会话        | 时间范围                          | 用户目标                                 | 处理内容                                                                                                                                        | 结果与验证                                                                              | 会话结束时下一步                                    |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -309,8 +309,10 @@
 
 | SESSION-120 | 2026-08-03 01:30 | Bosses 第四批 8 篇双语文章生成与自动审批展示 | 依据 BOSSES-FOURTH-BATCH-CONTENT-PLAN.md 生成 balbala-the-traitor、king-in-the-mists-freythorn、lythara-the-wayward-spear、mighty-silverfist、the-crowbell、candlemass-the-living-rite、beira-of-the-rotten-pack、oswin-the-dread-warden 共 16 份双语 `published` Boss JSON 并接入 lib/bosses 渲染；逐项落实用户要求：自动审批为 published（status=published、seo.noindex=false、verificationStatus=verified、reviewer 留空、reviewMethod=automated-evidence-gate）、封面用仓库真实 webp（非 AI 生成）、单一来源与核验模块、视频页内播放（真实 `watch?v=` ID）、去 AI 味详实机制/阶段/访问/奖励正文；修复 5 处 access.steps 字符串数组→`{label,body}` 对象数组、4 个 boss quick-answer 坏锚点；为支持 reviewer 可选落地 schema 改动（commonFrontMatterShape 加 reviewMethod/verificationMethod、published 强校验放宽为 reviewer 或 reviewMethod 二选一、adapter 透传、article-sidebar 去"待核验"禁用词） | `validate:content`（66 Boss JSON 全过 0 error）通过；生产构建 EXIT=1 唯一原因为并行 item 文件（ghostwrithe/pillar/ingenuity）的 verify-build 死链（`/builds/invoker-monk/`、`/builds/stormweaver-archmage/`、`/guides/charms-guide/`、`/images/items/ghostwrithe-hero.webp/`），属并行代理内容缺口，未改；16 篇 boss 预渲染 HTML 验收全过（单一 H1、指纹化图片、YouTube 内嵌、canonical、无 noindex、无禁用词）；预览服务器 `python3 -m http.server 5180 --directory /tmp/exile2-client` | 按 AGENTS.md 默认本地（未 push/PR/部署）；safe-delete shim 在沙箱内会隔离 build/，采用 build 后立刻 cp -r build/client /tmp/exile2-client 的可靠副本方案；并行 item 死链待用户确认是否一并修复 |
 | SESSION-121 | 2026-08-03，具体分钟未保留 | Items 第四批收尾：台账/记忆/本地提交 | 接续被中断的第四批生成：确认根因为前序会话子代理中断致 10 篇缺失、build/ 陈旧；补全 10 篇并清理 seo 非法键/itemCategory 枚举、批量修复死链与锚点；运行 validate:content/typecheck/lint/生产构建四道门禁（全绿）并抽样 16 页（HTTP 200、单一 Sources、无 noindex、无禁用词、youtube 内嵌）；按项目白名单纪律将 14 JSON（astramentis 除外）+ 7 research 目录（astramentis 除外）+ 7 hero webp + catalog-page.tsx 门禁修复 + 本台账更新本地提交（排除并行代理在途的 astranmentis 与 liquid-emotions 等） | 14 篇双语 Item JSON 已本地提交（astramentis 因并行代理实时写入 JSON 间歇性非法，按项目约定不提交，待负责代理完成/协调）；生产构建 EXIT=0；本地提交（未 push）；台账追加 EXTRA-087/SESSION-121、记忆已记 | 按 AGENTS.md 默认本地（未 push/PR/部署）；如需推送/部署请明确告知 |
+| SESSION-122 | 2026-08-03 18:40–19:10 | Guides 第五批 8 篇双语文章生成与自动审批展示（生产构建因并行 items WIP 暂阻，改出离线预览） | 依据 GUIDES-FIFTH-BATCH-CONTENT-PLAN.md 生成 attack-spell-hit-damage-over-time-tags、damage-scaling-order-conversion-gain-as-extra、resistance-curse-exposure-penetration、accuracy-distance-penalty-hit-chance、critical-hit-chance-damage-bonus-transition、life-mana-recovery-leech-regeneration-recoup-recharge、projectile-pierce-fork-chain-return、power-frenzy-endurance-charges 共 16 份双语 `published` Guide JSON（guideCategory=mechanics、verificationStatus=pending-pc、seo.noindex=false），接入 lib/guides 渲染；逐项落实用户要求：自动审批为 published、封面用仓库真实 webp（lightning-arrow/explosive-shot/freezing-mark/snipe/cast-on-critical-strike/charms-hero/chain-support/combat-frenzy，非 AI 生成）、单一来源与核验模块（仅 sources 章节）、视频页内播放（8 个真实 `watch?v=` PoE2 相关 ID 各带 5–7 个双语关键节点）、去 AI 味详实机制正文、lowercase-hyphen 标签、移除禁用词；为 8 篇各生成 10 文件研究包（source-ledger/claim-matrix/community-questions/video-timestamps/screenshot-shot-list/version-diff/terminology-map/formula-check/related-content-map/publish-gate-report）。运行 validate:content/typecheck/lint/check:comments/check:images 四道门禁：typecheck/check:images 全绿；lint 与 check:comments 各报 1 个非本批脚本错误（gen_fifth_batch_preview.cjs 未用变量 e、validate-fifths.ts 缺中文注释，均属 Patches/Items 第五批遗留脚本，按白名单纪律不碰）；validate:content exit=1 仅因 24 条与历史 Items 文件相关的 missing-related-content 警告，本批 16 文件全部通过。生产构建尝试：因并行代理在途的 items 文件（against-the-darkness/jewels-and-jewel-sockets 引用 6 个尚未发布的 jewel 项）触发 content index 24 个 missing-related-content 而硬失败（GUIDE ISSUES=0），依本仓第五批惯例改出离线自包含预览 preview/guides-fifth-batch-preview.html（内联 8 张真实封面、iframe 内嵌 8 个真实 YouTube、渲染 11 类 section）供页面展示与核验 | validate:content（本批 16 Guide 0 error）/typecheck/check:images 全绿；本批 16 文件逐项核验：seo.noindex=false、status=published、verificationStatus 合法、heroImage 均为 .webp、0 禁用词、16 个真实 watch?v= YouTube 内嵌且各≥5 时间戳；离线预览生成成功（16 articles、8 hero 内联）。生产构建 EXIT=1 根因为并行 items WIP，非本批内容问题 | 按 AGENTS.md 默认本地（未 push/PR/部署）；生产构建待 Items 第五批发布那 6 个 jewel 项或移除悬空 relatedContentIds 后即可全绿；预览可启动 python3 -m http.server 直接打开 |
 | EXTRA-088 | 2026-08-03，具体分钟未保留 | 已完成 | 修复六类详情页“来源与核验”模块响应式缺陷（用户截图反馈：手机横向溢出可滑动、PC 右侧空余） | 根因：`.boss-source-layout` 用 `grid-template-columns:1.35fr 0.65fr` 但 SourcesSection 仅渲染一个子节点（.boss-source-list），0.65fr 列恒为空导致 PC 右侧空余；`.boss-source-list article` 用固定列宽 4.5rem/2.125rem 的 grid，长 URL/标签不可折行导致手机横向溢出。修复：`app/styles/app.css` 将 `.boss-source-layout` 改为 `1fr` 单列；`.boss-source-list article` 改为 `display:flex; flex-wrap:nowrap; min-width:0` 且子项 `min-width:0` + `overflow-wrap:anywhere; word-break:break-word`，新增 `@media (max-width:57.5rem)` 在窄屏 `flex-wrap:wrap` 让标签换行、描述占满整行、链接靠右；该组件与类名被 Boss/Build/Item/Skill/Guide/Patch 六类详情页共用，一次改动覆盖全部 | validate:content/typecheck/lint 全绿；生产构建 EXIT=0（NODE_OPTIONS="--max-old-space-size=8192"）；grep 编译产物 build/client/assets/root-DFvCWCc7.css 确认含 `boss-source-layout{grid-template-columns:1fr` 与 `boss-source-list article{...flex-wrap:nowrap...min-width:0;display:flex}`；未提交/未推送 |
 | EXTRA-089 | 2026-08-03 13:42–14:07 | 已完成 | 修复腐化 Patch 页 + 构建期 slug 守卫（三项治理请求 #3，遵从发布优先规则） | 根因：批量生成时正文被 slug 化（段落/答案/变更串变成纯 slug 如 `content-update-0-3-0-the-third-edict-...`）。修复：脚本对 21 个 Patch JSON（en 11 + zh-cn 10，排除 patch-summary-template）共 155 处 slug 化叙述串做反 slug 化（版本号点化 `0-3-0`→`0.3.0`、连字符转空格、首字母大写）；en 页恢复为可读英文正文（仅缺句中大小写与标点，待人工润色），zh-cn 页恢复为可读版本/标识注记（原为版本桩，需后续补中文翻译，已向用户标注）。`lib/patches/schema.ts` 在 `patchArticleSchema.superRefine` 的已发布分支新增 slug 检测守卫：递归扫描 sections 叙述字段（paragraphs/bullets/answer/body/changes/summary/description/note/detail/text 等），若已发布文章含纯 slug 串（len≥12 且全小写字母数字连字符）则报错；草稿/模板经 status 早退自动豁免（patch-summary-template 为 draft+noindex 故不受影响） | validate:content（66 Patch 0 error，守卫未误报）/typecheck/lint（0 error，21 既有 react-refresh 警告）/check:comments（185 文件）/生产构建 EXIT=0；grep 编译产物确认恢复正文已入 HTML；未提交/未推送 |
 | EXTRA-090 | 2026-08-03 13:42–14:07 | 已完成（澄清） | 三项治理请求 #2 现状澄清（verificationChecklist） | 核查发现：`content/` 中已无 `"Verification completed"`/`已核验完成` 占位数组；`sourceVerificationChecklistSchema` 当前即为结构化对象（status/method/verifiedClientVersion/verifiedAt/verifiedBy/notes），400 处 verificationChecklist 均为该对象形态，由早前 EXTRA-072/074 引入。故 #2「替换占位数组为结构化对象」的前提已不存在。用户早前提到的 7 字段布尔清单（officialSourcesChecked 等）为另一结构形态；因与现有 status/method/notes 发布核验模型及 SourcesSection 渲染不一致，且 publish-first 规则禁止据此阻塞发布，未采纳、保持现状。如需改为布尔清单形态需另议 | 无代码改动；台账记录 |
 | EXTRA-091 | 2026-08-03 16:52–17:06 | 已完成 | 补全 10 个 ZH-CN Patch 页缺中文正文（EXTRA-089 标注的翻译缺口） | EXTRA-089 反 slug 化后，10 个 zh-cn Patch 页正文仍是英文/版本桩（非中文）。本任务用对应 EN 原文作含义来源，仅翻译「缺中文的正文字段」（paragraphs/bullets/faq answer/changelog changes/描述/小结/impact-dashboard area 等），保留技术字段与双语专有名词风格（Boss/技能/物品名、版本号、UI/品牌如 PoE2 Wiki、Steam + Vulkan、The Master's Reach 保留英文）。脚本提取 62 处待译字段（路径级精确回填，2 空格缩进 UTF-8 重写），覆盖：support-gem-overhaul(5)/third-edict(10)/druid-shapeshift(9)/fate-of-vaal(5)/last-of-druids(13)/0-4-hotfix-timeline(2)/0-5-4-hotfix-timeline(1)/runes-of-aldur(11)/0-5-4b(5)/0-5-4e(1)。残留无中文字段仅剩 4 处 `PoE2 Wiki` 来源标签 + `Boss`/`Steam + Vulkan` 等双语术语，均非 slug，不触发 EXTRA-089 守卫 | validate:content（66 Patch 0 error）/typecheck/lint（0 error，21 既有 react-refresh 警告）/生产构建 EXIT=0（NODE_OPTIONS="--max-old-space-size=8192"）；grep 编译产物确认译文已入 HTML（如「0.5.4b 是一波修复与可读性优化」「0.5.4 引入了奥尔杜符文」「液态范钢」）；未提交/未推送 |
 | EXTRA-092 | 2026-08-03 17:06–17:22 | 已完成 | ZH-CN Patch 翻译第二轮补齐（EXTRA-091 遗漏项） | EXTRA-091 的「EN/ZH 并行等长遍历」提取器因数组长度不一致提前返回，漏掉真实缺口：① 10 个文件的 `sections[0].bullets` 整组是版本桩（如 "11"/"0-3-0"/"cpu"），需整组按 EN 重译并补齐缺失项（last-of-druids 7 条、0-4-hotfix 5 条等）；② 多个段落/FAQ 答案被截断为 `?` 或版本桩（0-4-hotfix p[0]、0-5-4-hotfix p[0..2]+faq、0-5-4e p[0..2]+faq、runes faq、0-5-4b faq 等），需按 EN 补全翻译并扩展数组。改用「独立遍历 ZH-CN + CJK 检测」提取器找全缺口，脚本路径级回填（含数组扩展，FAQ 段动态索引定位）。共补 24 处（bullets 整组 6 文件 + 段落/FAQ 元素 4 文件）。最终仅剩 7 个可接受双语术语无中文：4×`PoE2 Wiki` 来源标签、`Boss`、`The Master's Reach`（物品名）、`Steam + Vulkan`（技术术语），均非 slug 不触发 EXTRA-089 守卫 | validate:content（66 Patch 0 error）/typecheck/lint（0 error）/生产构建 EXIT=0；grep 编译产物确认补全内容已入 HTML（如「0.4.x 热修链（0.4.0c 至 0.4.0i）」「本汇总页将零散的 0.5.4 热修」「大多数不依赖装备赋予技能」「0.5.4e 改进了着色器加载」）；未提交/未推送 |
+| EXTRA-093 | 2026-08-03 18:40–19:10 | 已完成 | Guides 第五批 8 篇内容生成与展示（离线预览替代被阻生产构建） | 同 SESSION-122：16 份双语 published Guide JSON + 80 研究文件 + 离线预览脚本与 HTML；生产构建因并行 items WIP（24 missing-related-content）暂阻，沿本仓第五批惯例出离线预览 | validate:content/typecheck/check:images 本批全绿；预览可查看 16 页真实渲染；未提交/未推送 |

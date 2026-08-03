@@ -1,0 +1,677 @@
+{
+  "id": "life-mana-recovery-leech-regeneration-recoup-recharge",
+  "slug": "life-mana-recovery-leech-regeneration-recoup-recharge",
+  "locale": "zh-cn",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "生命与法力恢复：流放之路2 中的偷取、再生、补偿、充能护盾与药剂",
+  "shortTitle": "恢复机制",
+  "summary": "流放之路2 中五种恢复方式到底如何运作：偷取、再生、补偿、能量护盾充能以及药剂——各自由什么触发、恢复哪种资源，以及 0.5 版本对偷取的改动如何改变了整个体系。",
+  "description": "流放之路2 生命与法力恢复机制指南：偷取规则与 0.5 伤害上限、再生速率、作为延迟恢复的补偿、能量护盾充能的启动与中断，以及药剂爆发恢复，并附有对比表与「选择你的恢复」诊断。",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "流放之路2 护符图标，代表生命与法力的恢复方式",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "基本理解生命、法力与能量护盾作为角色资源的含义",
+    "熟悉角色面板、增益图标以及物品词缀的阅读"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "leech",
+    "regeneration",
+    "recoup",
+    "recharge",
+    "flask",
+    "recovery",
+    "resource"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接结论",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "偷取（Leech）",
+          "body": [
+            "把你造成伤害的一部分按生命、法力或能量护盾的形式回收——但只针对偷取词缀所指定的伤害类型与命中类型。多数偷取为物理攻击偷取，因此在完全转为元素伤害的流派中毫无作用。"
+          ]
+        },
+        {
+          "title": "再生（Regeneration）",
+          "body": [
+            "持续、常驻的资源随时间恢复。不与命中或受击挂钩，且在资源已满时也不会停止。生命与能量护盾没有基础再生；法力会自动再生。"
+          ]
+        },
+        {
+          "title": "补偿（Recoup）",
+          "body": [
+            "把你受到命中伤害的一部分，在持续时间内以生命、法力或能量护盾的形式返还。它是延迟恢复，与再生相互独立，即便资源已满也会继续结算。"
+          ]
+        },
+        {
+          "title": "充能（Recharge）",
+          "body": [
+            "仅限能量护盾。在你短时间未受伤害后，能量护盾开始回充；任何造成伤害的命中都会打断它。0.5 版本削弱了充能起始加成。"
+          ]
+        },
+        {
+          "title": "药剂（Flask）",
+          "body": [
+            "使用即触发、瞬间爆发恢复生命或法力。当你无法稳定命中（偷取偏弱）或很少受击（补偿偏弱）时最可靠，但受药剂充能限制。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comparison",
+      "order": 2,
+      "title": "恢复方式对比",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "五种恢复方式并排对比：由什么触发、恢复哪种资源、是否需要命中、资源已满时的表现，以及在 Boss 战中的稳定性。",
+      "columns": [
+        {
+          "key": "recovery",
+          "label": "恢复方式"
+        },
+        {
+          "key": "trigger",
+          "label": "触发条件"
+        },
+        {
+          "key": "resource",
+          "label": "资源"
+        },
+        {
+          "key": "needs-hit",
+          "label": "需要命中？"
+        },
+        {
+          "key": "full-behavior",
+          "label": "资源已满时"
+        },
+        {
+          "key": "boss-stability",
+          "label": "Boss 战稳定性"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "leech"
+          ],
+          "cells": {
+            "recovery": "偷取",
+            "trigger": "造成匹配伤害类型与命中类型的伤害",
+            "resource": "生命、法力或能量护盾",
+            "needs-hit": "是——你打出的命中",
+            "full-behavior": "资源满后通常停止，需持续命中",
+            "boss-stability": "在无命中或免疫阶段不稳定"
+          }
+        },
+        {
+          "tags": [
+            "regeneration"
+          ],
+          "cells": {
+            "recovery": "再生",
+            "trigger": "被动，常驻生效",
+            "resource": "生命、法力或能量护盾",
+            "needs-hit": "否",
+            "full-behavior": "持续，资源满也不停止",
+            "boss-stability": "稳定，空闲时也能生效"
+          }
+        },
+        {
+          "tags": [
+            "recoup"
+          ],
+          "cells": {
+            "recovery": "补偿",
+            "trigger": "受到命中伤害",
+            "resource": "生命、法力或能量护盾",
+            "needs-hit": "是——你受到的命中",
+            "full-behavior": "资源满仍继续（溢出浪费）",
+            "boss-stability": "持续受击时稳定，但延迟"
+          }
+        },
+        {
+          "tags": [
+            "recharge"
+          ],
+          "cells": {
+            "recovery": "充能",
+            "trigger": "短时间未受伤害",
+            "resource": "仅能量护盾",
+            "needs-hit": "否——需要不受伤害",
+            "full-behavior": "延迟后回充，受击即中断",
+            "boss-stability": "脆弱——任何命中都会打断"
+          }
+        },
+        {
+          "tags": [
+            "flask"
+          ],
+          "cells": {
+            "recovery": "药剂",
+            "trigger": "使用药剂 / 获得充能",
+            "resource": "生命或法力",
+            "needs-hit": "否——充能来自击杀或时间",
+            "full-behavior": "瞬间爆发，受充能上限限制",
+            "boss-stability": "爆发强，但受充能收入限制"
+          }
+        }
+      ],
+      "note": "以上为当前流放之路2 抢先体验版本中的行为；具体阈值与速率随客户端版本变化。"
+    },
+    {
+      "id": "leech",
+      "order": 3,
+      "title": "偷取",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "偷取把你造成伤害的一部分以生命、法力或能量护盾的形式回收。流放之路2 中的关键规则是：偷取仅作用于偷取词缀所指明的伤害类型与命中类型。物品上最常见的偷取为物理攻击偷取，只计算攻击造成的物理伤害。一次命中若不含任何匹配的伤害类型，则完全不会触发偷取。",
+        "0.5 版本对偷取进行了重做。每种资源同时只能存在一个偷取实例——若多个被触发，仅有恢复速率最高的那个生效，其余被忽略。此外还有伤害上限：单此命中在偷取计算中最多只按 40000 点伤害计算，因此超高伤害不再能无限放大偷取。单次实例的恢复速率与持续时间为客户端版本相关，具体系数请以游戏内为准。"
+      ],
+      "bullets": [
+        "偷取要求你打出匹配伤害类型的命中——并非「任何伤害」都生效。",
+        "物理攻击偷取在完全将物理伤害转为元素的流派中会失效。",
+        "每种资源仅一个实例（0.5）：恢复速率最高者胜出。",
+        "偷取的单次命中伤害上限为 40000（0.5）。",
+        "资源满后偷取通常停止，因此必须持续命中才能持续偷取。"
+      ]
+    },
+    {
+      "id": "regeneration",
+      "order": 4,
+      "title": "再生",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "再生是持续、常驻的资源随时间恢复。它不与造成或承受伤害挂钩。生命与能量护盾默认没有基础再生；法力有少量基础再生（约为最大法力的 4%/秒）。其余再生全部来自天赋节点、装备或光环。",
+        "再生可以是每秒固定数值，也可以是资源最大值的一定百分比。它在资源已满时不会停止，且与偷取、补偿、充能是相互独立的机制——再生词缀不会影响其他几种恢复类型。"
+      ],
+      "bullets": [
+        "生命与能量护盾：无基础再生，需通过词缀获取。",
+        "法力：基础再生约为最大法力的 4%/秒。",
+        "固定再生与百分比再生对基础的加成方式不同，但都会贡献。",
+        "再生是持续的，在 Boss 免疫阶段也能生效——非常适合持久 Boss 战。",
+        "恢复速率（Recovery Rate）词缀会与其他恢复类型一起乘算再生。"
+      ]
+    },
+    {
+      "id": "recoup",
+      "order": 5,
+      "title": "补偿",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "补偿把你受到命中伤害的一部分，在持续时间内以生命、法力或能量护盾的形式返还（当前流放之路2 默认持续 8 秒）。你受到的每次命中都会创建独立的补偿实例，且同时存在的实例数量没有上限。",
+        "补偿并非再生，也不受再生词缀影响。与偷取不同，即便资源已满，补偿仍会继续结算，只是溢出部分被浪费。持续伤害（Damage over Time）不会触发补偿。具体的默认持续时间为客户端版本相关（部分社区页面仍引用较早的 4 秒数值），请以游戏内为准。"
+      ],
+      "bullets": [
+        "由受到命中触发，而非由造成伤害触发。",
+        "随时间返还（默认 8 秒）——是延迟恢复，而非瞬发。",
+        "与再生相互独立，使用各自的词缀池。",
+        "持续伤害效果不会激活补偿。",
+        "每次命中产生的实例相互独立，数量无上限。"
+      ]
+    },
+    {
+      "id": "recharge",
+      "order": 6,
+      "title": "充能",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "充能仅作用于能量护盾。在你短时间未受伤害后，能量护盾开始按最大能量护盾的速率回充。任何造成伤害的命中都会打断充能并重置启动延迟。",
+        "在 0.5 版本中，天赋树上的充能起始阈值被下调（例如神秘姿态节点由 30% 降为 12%），因此受击后能量护盾一般比之前更慢才开始回充。具体节点数值为客户端版本相关。"
+      ],
+      "bullets": [
+        "仅限能量护盾——生命与法力不会充能。",
+        "在你一段时间不受伤害后的延迟后启动。",
+        "任何造成伤害的命中都会打断。",
+        "0.5 削弱了充能起始加成，受击后恢复更慢。",
+        "最契合高闪避，让你能够停止受击。"
+      ]
+    },
+    {
+      "id": "flasks",
+      "order": 7,
+      "title": "药剂",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "药剂在使用时提供瞬间的生命或法力爆发恢复（或其他效果）。它们通过击杀获得充能，部分药剂类型也可随时间回充。药剂是最可靠的爆发恢复，因为它不依赖命中或受击。",
+        "在 Boss 战中，当你难以稳定命中（偷取偏弱）且很少受击（补偿偏弱）时，药剂充能成为你主要的计划性恢复。请勿在未测试的情况下给出固定的药剂恢复数值——具体数值取决于药剂等级、词缀与充能获取，均为客户端版本相关。"
+      ],
+      "bullets": [
+        "使用即触发，瞬间恢复生命或法力。",
+        "充能主要来自击杀；部分药剂随时间回充。",
+        "在偷取与补偿都不可靠时是最佳爆发恢复。",
+        "Boss 战恢复取决于充能收入，而非固定数字。",
+        "药剂恢复与再生相互独立。"
+      ]
+    },
+    {
+      "id": "choose-recovery",
+      "order": 8,
+      "title": "选择你的恢复",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "选择符合你流派的画像，工具会指向最合适的恢复方式。",
+      "controls": [
+        {
+          "id": "build-profile",
+          "label": "你属于哪种流派画像？",
+          "options": [
+            {
+              "label": "攻击流派（物理）",
+              "value": "attack"
+            },
+            {
+              "label": "施法 / 法术流派",
+              "value": "caster"
+            },
+            {
+              "label": "能量护盾流派",
+              "value": "es"
+            },
+            {
+              "label": "持续伤害流派",
+              "value": "dot"
+            },
+            {
+              "label": "重度 Boss 战流派",
+              "value": "bossing"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "攻击流派恢复",
+          "when": {
+            "build-profile": "attack"
+          },
+          "steps": [
+            "若你的命中造成物理伤害，使用物理攻击偷取。",
+            "若将物理转为元素，请改用匹配的偷取，或改用补偿 / 药剂。",
+            "保留一瓶生命药剂应对爆发，并考虑少量再生作为稳定续航。"
+          ]
+        },
+        {
+          "title": "施法流派恢复",
+          "when": {
+            "build-profile": "caster"
+          },
+          "steps": [
+            "添加法力偷取或法力再生，避免技能消耗把你抽干。",
+            "仅当偷取词缀支持法术时，才使用法术伤害偷取。",
+            "保留法力药剂，并准备一些生命恢复以维持生存。"
+          ]
+        },
+        {
+          "title": "能量护盾流派恢复",
+          "when": {
+            "build-profile": "es"
+          },
+          "steps": [
+            "依赖能量护盾在闪避后的充能。",
+            "能量护盾偷取可行，但充能更稳定；注意 0.5 放慢了充能起始。",
+            "提升闪避，避免充能被打断。"
+          ]
+        },
+        {
+          "title": "持续伤害流派恢复",
+          "when": {
+            "build-profile": "dot"
+          },
+          "steps": [
+            "偷取偏弱，因为持续伤害不是命中——不要依赖它。",
+            "使用补偿（你仍会受击）配合再生以获得稳定续航。",
+            "在补偿延迟危险的时刻用药剂应对爆发。"
+          ]
+        },
+        {
+          "title": "重度 Boss 战流派恢复",
+          "when": {
+            "build-profile": "bossing"
+          },
+          "steps": [
+            "优先再生与药剂——二者在免疫阶段都能生效。",
+            "无法命中时，不要依赖偷取。",
+            "若战斗持续对你造成接触伤害，使用补偿。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "通用恢复建议",
+        "steps": [
+          "至少叠加两层相互独立的恢复，而非只有一层。",
+          "使偷取匹配你实际的伤害类型与命中类型。",
+          "每场战斗都保留药剂作为可靠的爆发兜底。"
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 9,
+      "title": "实例解析",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "三个示例说明伤害类型、命中类型与资源如何影响正确的恢复选择。不承诺任何固定数值。",
+      "columns": [
+        {
+          "key": "case",
+          "label": "情形"
+        },
+        {
+          "key": "setup",
+          "label": "配置"
+        },
+        {
+          "key": "result",
+          "label": "结果"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "leech"
+          ],
+          "cells": {
+            "case": "元素转化的攻击流派",
+            "setup": "攻击流派将 100% 物理伤害转化为火焰",
+            "result": "物理攻击偷取完全不生效——转化移除了匹配的伤害类型。应改用火焰 / 混沌偷取，或改用补偿、药剂。"
+          }
+        },
+        {
+          "tags": [
+            "recoup"
+          ],
+          "cells": {
+            "case": "持续伤害流派",
+            "setup": "中毒或点燃的施法者，很少打出直接命中",
+            "result": "偷取偏弱，因为持续伤害不是命中。使用补偿（你仍会受击）配合再生以获得稳定续航。"
+          }
+        },
+        {
+          "tags": [
+            "recharge"
+          ],
+          "cells": {
+            "case": "能量护盾流派",
+            "setup": "高闪避、投入一定充能起始的能量护盾流派",
+            "result": "在闪避后用能量护盾充能。能量护盾偷取可行但充能更稳定；0.5 的充能起始削弱使受击后回充更慢。"
+          }
+        }
+      ],
+      "note": "以上为教学示例；实际续航取决于你的词缀与客户端版本。"
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "常见错误",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "多数恢复问题源于伤害类型不匹配，或误解了哪种机制触发哪一层恢复，而非运气不佳。重roll 装备前先检查这些。"
+      ],
+      "bullets": [
+        "有偷取却看不到恢复：你的伤害类型与偷取词缀不匹配（例如完全转化的流派上的物理偷取）。",
+        "法力不稳定：没有法力偷取或法力再生，技能消耗把你抽干。应添加法力偷取、法力再生或药剂。",
+        "充能永远不启动：你一直在持续受击。提升闪避或改用其他层。",
+        "把补偿当作再生（或反之）——它们使用相互独立的词缀。",
+        "期望在 Boss 免疫、无法命中的阶段靠偷取生效。",
+        "以为 0.5 之后偷取还能随超高伤害放大——单次命中有 40000 伤害上限。"
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 11,
+      "title": "常见疑惑",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "玩家经常提出的关于恢复机制的疑惑（转述）。",
+      "cards": [
+        {
+          "title": "转化流派上的物理偷取",
+          "tag": "leech",
+          "body": [
+            "玩家把全部物理伤害转为火焰，却疑惑为何物理攻击偷取毫无恢复。匹配的伤害类型已消失，偷取无物可算。"
+          ]
+        },
+        {
+          "title": "Boss 战中偷取不生效",
+          "tag": "leech",
+          "body": [
+            "在免疫或无法被选中的阶段，玩家无法打出命中，因此偷取不触发。此时由再生与药剂维持生存。"
+          ]
+        },
+        {
+          "title": "补偿与再生混淆",
+          "tag": "recoup",
+          "body": [
+            "玩家堆叠再生词缀，以为补偿会随之增长。二者是不同的池子，再生词缀不会提升补偿。"
+          ]
+        },
+        {
+          "title": "充能不断被打断",
+          "tag": "recharge",
+          "body": [
+            "能量护盾玩家站在伤害里，充能始终无法完成。任何命中都会重置启动延迟；闪避才是让能量护盾回充的关键。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "流放之路2 偷取机制详解 | 偷取还生效吗？",
+          "creator": "HumbleHazard",
+          "description": "社区视频讲解流放之路2 中偷取的运作方式、触发条件、偷取抗性，以及 0.5 改动后转化与偷取的交互。",
+          "takeaway": "偷取只计算偷取词缀指定的伤害类型与命中类型；0.5 重做为单次命中偷取设上限，并限制每种资源仅一个实例。",
+          "url": "https://www.youtube.com/watch?v=9Fg_uniySKE",
+          "timestamps": [
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "什么是偷取",
+              "time": "1:10"
+            },
+            {
+              "label": "偷取触发条件",
+              "time": "3:25"
+            },
+            {
+              "label": "偷取抗性",
+              "time": "6:40"
+            },
+            {
+              "label": "转化交互",
+              "time": "9:15"
+            },
+            {
+              "label": "0.5 偷取改动",
+              "time": "12:00"
+            },
+            {
+              "label": "总结",
+              "time": "15:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "常见问题",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "偷取对所有伤害都生效吗？",
+          "answer": [
+            "不。偷取仅作用于偷取词缀所指明的伤害类型与命中类型。常见的物理攻击偷取只计算攻击造成的物理伤害，因此元素或法术伤害可能完全不触发偷取。"
+          ]
+        },
+        {
+          "question": "为什么我的物理偷取在火伤流派里毫无作用？",
+          "answer": [
+            "若你的流派将 100% 物理伤害转为火焰，就不再有物理伤害可供物理攻击偷取计算。请改用匹配实际伤害类型的偷取，或改用补偿与药剂。"
+          ]
+        },
+        {
+          "question": "补偿和再生是一回事吗？",
+          "answer": [
+            "不是。补偿把你受到命中伤害的一部分在持续时间内返还，是独立的机制，拥有自己的词缀。再生是不依赖受击的持续恢复，二者词缀互不影响。"
+          ]
+        },
+        {
+          "question": "为什么我的能量护盾不充能？",
+          "answer": [
+            "充能仅在短时间未受伤害后启动，任何造成伤害的命中都会打断它。0.5 版本还下调了充能起始加成，使其启动更慢。提升闪避才能让延迟走完。"
+          ]
+        },
+        {
+          "question": "一次超高伤害能否靠偷取回满血？",
+          "answer": [
+            "0.5 重做后不行。单次命中在偷取计算中最多只按 40000 点伤害计算，超出部分不再放大偷取。更高的偷取百分比仍有帮助，但单次命中上限不变。"
+          ]
+        },
+        {
+          "question": "药剂恢复算再生吗？",
+          "answer": [
+            "不算。药剂是使用时瞬间爆发的独立恢复来源。恢复速率词缀可能与其他类型一起乘算药剂恢复，但药剂本身不是再生。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方 wiki - 偷取",
+          "description": "流放之路2 wiki 关于偷取机制及其伤害类型 / 命中要求的参考",
+          "url": "https://poe2wiki.net/wiki/Leech"
+        },
+        {
+          "label": "官方 wiki - 补偿",
+          "description": "流放之路2 wiki 关于补偿作为受击后延迟恢复的参考",
+          "url": "https://poe2wiki.net/wiki/Recoup"
+        },
+        {
+          "label": "Mobalytics - 流放之路2 机制中心",
+          "description": "涵盖再生、补偿、偷取与充能机制的社区中心",
+          "url": "https://mobalytics.gg/path-of-exile-2/"
+        },
+        {
+          "label": "视频指南（HumbleHazard）",
+          "description": "讲解流放之路2 偷取机制的社区视频",
+          "url": "https://www.youtube.com/watch?v=9Fg_uniySKE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布流放之路2 抢先体验 0.5.4 的生命与法力恢复指南，涵盖偷取、再生、补偿、充能与药剂。",
+            "记录 0.5 偷取重做：每种资源仅一个实例，且单次命中偷取伤害上限为 40000。",
+            "将版本相关系数（偷取速率 / 持续、补偿持续、充能起始阈值）标注为客户端版本相关。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "流放之路2 wiki - 偷取",
+      "url": "https://poe2wiki.net/wiki/Leech",
+      "sourceType": "official"
+    },
+    {
+      "label": "流放之路2 wiki - 补偿",
+      "url": "https://poe2wiki.net/wiki/Recoup",
+      "sourceType": "official"
+    },
+    {
+      "label": "Mobalytics - 流放之路2 机制",
+      "url": "https://mobalytics.gg/path-of-exile-2/",
+      "sourceType": "community"
+    },
+    {
+      "label": "HumbleHazard - 流放之路2 偷取详解（YouTube）",
+      "url": "https://www.youtube.com/watch?v=9Fg_uniySKE",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 生命与法力恢复：偷取、再生、补偿、充能、药剂",
+    "description": "流放之路2 中生命与法力恢复如何运作：偷取规则、0.5 伤害上限、再生、补偿、能量护盾充能与药剂续航，附对比表与诊断。",
+    "noindex": false
+  }
+}

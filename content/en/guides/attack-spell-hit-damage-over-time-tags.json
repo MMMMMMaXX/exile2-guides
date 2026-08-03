@@ -1,0 +1,735 @@
+{
+  "id": "attack-spell-hit-damage-over-time-tags",
+  "slug": "attack-spell-hit-damage-over-time-tags",
+  "locale": "en",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Attack, Spell, Hit, and Damage over Time Tags in Path of Exile 2",
+  "shortTitle": "Attack vs Spell vs Hit vs DoT",
+  "summary": "Clear up the four most confused skill concepts in Path of Exile 2: Attack, Spell, Hit, and Damage over Time. Learn which modifiers apply to which skills and how behaviour tags work.",
+  "description": "A concise Path of Exile 2 mechanics guide explaining the difference between Attack and Spell (skill category), Hit and Damage over Time (damage form), and behaviour tags such as Projectile, AoE, Melee, Duration, Minion, and Totem. Includes a modifier-compatibility diagnostic and worked examples.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/lightning-arrow.webp",
+  "cardImage": "/images/skills/lightning-arrow.webp",
+  "imageAlt": "A Path of Exile 2 skill icon illustrating the difference between attack, spell, hit and damage over time skill tags",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Basic understanding of the Path of Exile 2 skill gem and support gem system",
+    "Familiarity with reading a skill tooltip and its listed tags",
+    "Awareness that damage has types (Physical, Fire, Cold, Lightning, Chaos)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "attack",
+    "spell",
+    "hit",
+    "damage-over-time",
+    "skill-tags",
+    "tags"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Direct answers",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "What is an Attack?",
+          "body": [
+            "An Attack is a skill that directly uses your equipped weapon to damage enemies. Attacks can deal any damage type and usually roll a hit against the target's evasion using your Accuracy."
+          ]
+        },
+        {
+          "title": "What is a Spell?",
+          "body": [
+            "A Spell is a skill that uses raw magic rather than a weapon. Spells are not Attacks, they ignore Accuracy and evasion, and their base damage and critical chance come from the skill itself."
+          ]
+        },
+        {
+          "title": "What is a Hit?",
+          "body": [
+            "A Hit is a single, discrete instance of damage dealt at a moment in time. Most Attacks and Spells deal damage as Hits, and Hits can crit, leech, and trigger on-hit effects."
+          ]
+        },
+        {
+          "title": "What is Damage over Time?",
+          "body": [
+            "Damage over Time (DoT) is damage applied gradually across a duration instead of all at once. DoT is not a Hit, so it normally cannot crit, leech, or trigger on-hit effects the way a Hit does."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "order": 2,
+      "title": "Key terms",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Four different concepts get tangled together when players talk about 'tags'. They answer different questions and are mostly independent of one another.",
+        "Skill Type (Attack vs Spell) answers how the skill is delivered. Damage Type (Physical, Fire, Cold, Lightning, Chaos) answers what element or form the damage is. Hit Type answers whether the damage arrives as a single Hit or as Damage over Time. Behaviour Tags (Projectile, AoE, Melee, Duration, Minion, Totem) answer how the skill is delivered or who owns it. None of these four layers determines another by itself."
+      ],
+      "bullets": [
+        "Skill Type: Attack (uses a weapon) or Spell (uses magic). This is the skill's category.",
+        "Damage Type: Physical, Fire, Cold, Lightning, or Chaos. Any skill type can deal any damage type.",
+        "Hit Type: a Hit (instant) or Damage over Time (gradual). Ailments such as Ignite and Poison are forms of DoT.",
+        "Behaviour Tag: Projectile, AoE, Melee, Duration, Minion, Totem. These describe delivery and ownership, not damage type."
+      ]
+    },
+    {
+      "id": "relationship-map",
+      "order": 3,
+      "title": "Skill category relationship map",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "How the Attack and Spell categories relate to damage type, accuracy, and hit status. Skill type and damage type are orthogonal.",
+      "columns": [
+        {
+          "key": "skill-category",
+          "label": "Skill category"
+        },
+        {
+          "key": "deals-physical",
+          "label": "Deals Physical?"
+        },
+        {
+          "key": "deals-elemental",
+          "label": "Deals Elemental?"
+        },
+        {
+          "key": "deals-chaos",
+          "label": "Deals Chaos?"
+        },
+        {
+          "key": "requires-accuracy",
+          "label": "Requires Accuracy?"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Is a Hit?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-category": "Attack",
+            "deals-physical": "Sometimes - can deal any type",
+            "deals-elemental": "Sometimes - can deal any type",
+            "deals-chaos": "Sometimes - can deal any type",
+            "requires-accuracy": "Yes - rolls against evasion",
+            "is-a-hit": "Usually yes, per instance"
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-category": "Spell",
+            "deals-physical": "Sometimes - can deal any type",
+            "deals-elemental": "Sometimes - can deal any type",
+            "deals-chaos": "Sometimes - can deal any type",
+            "requires-accuracy": "No - ignores accuracy and evasion",
+            "is-a-hit": "Usually yes, per instance"
+          }
+        }
+      ],
+      "note": "A Spell can deal Fire, Cold, Lightning, or Chaos; an Attack can deal Fire (for example with a converted or elemental weapon). The category never fixes the damage type."
+    },
+    {
+      "id": "hit-vs-dot",
+      "order": 4,
+      "title": "Hit vs Damage over Time",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "How different damage forms behave in Path of Exile 2. Based on the PoE2 wiki: Damage over Time is not a Hit, so it is unaffected by penetration, and resistances still mitigate it.",
+      "columns": [
+        {
+          "key": "damage-form",
+          "label": "Damage form"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Is a Hit?"
+        },
+        {
+          "key": "can-crit",
+          "label": "Can Crit?"
+        },
+        {
+          "key": "can-leech",
+          "label": "Can Leech?"
+        },
+        {
+          "key": "affected-by-penetration",
+          "label": "Affected by Penetration?"
+        },
+        {
+          "key": "triggers-on-hit",
+          "label": "Triggers On-Hit?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hit"
+          ],
+          "cells": {
+            "damage-form": "Hit",
+            "is-a-hit": "Yes",
+            "can-crit": "Yes",
+            "can-leech": "Yes (per recovery mechanics in 0.5.4, pending PC verification)",
+            "affected-by-penetration": "Yes",
+            "triggers-on-hit": "Yes"
+          }
+        },
+        {
+          "tags": [
+            "ailment"
+          ],
+          "cells": {
+            "damage-form": "Ailment (Ignite, Bleed, Poison)",
+            "is-a-hit": "No",
+            "can-crit": "No - ailments do not crit by default",
+            "can-leech": "No (pending PC verification)",
+            "affected-by-penetration": "No",
+            "triggers-on-hit": "No"
+          }
+        },
+        {
+          "tags": [
+            "ground-effect"
+          ],
+          "cells": {
+            "damage-form": "Ground Effect",
+            "is-a-hit": "No",
+            "can-crit": "No",
+            "can-leech": "No",
+            "affected-by-penetration": "No",
+            "triggers-on-hit": "No"
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time"
+          ],
+          "cells": {
+            "damage-form": "Damage over Time (non-ailment)",
+            "is-a-hit": "No",
+            "can-crit": "No",
+            "can-leech": "No (pending PC verification)",
+            "affected-by-penetration": "No - penetration only applies to hits",
+            "triggers-on-hit": "No"
+          }
+        }
+      ],
+      "note": "Resistances in the matching damage type still mitigate DoT, but armour and penetration do not, because those only apply to Hits. Recovery (Leech) behaviour is version-sensitive in 0.5.4 and flagged for PC confirmation."
+    },
+    {
+      "id": "tags",
+      "order": 5,
+      "title": "What behaviour tags do and do not imply",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Behaviour tags describe how a skill is delivered or who owns it. They are separate from both Skill Type and Damage Type. A tag such as Projectile tells you the skill fires a projectile; it does not tell you whether the skill is an Attack or a Spell, nor what damage type it deals.",
+        "The same is true for AoE, Melee, Duration, Minion, and Totem. A Minion skill is cast by your minion, a Totem skill is cast by a totem you place, and a Duration skill persists for a time - none of these fix the damage type or the Attack/Spell category."
+      ],
+      "bullets": [
+        "Projectile: the skill travels as a projectile. It can be an Attack (Bow shot) or a Spell (a spell projectile).",
+        "AoE: deals damage in an area. Applies to both Attacks and Spells.",
+        "Melee: delivered at close range. Almost always an Attack, but the tag alone does not set the damage type.",
+        "Duration: the effect lasts for a duration (for example a ground effect or aura). Not a Hit by itself.",
+        "Minion / Totem: describe ownership of the skill, not its damage type. Support-gem compatibility still depends on the underlying skill tags."
+      ]
+    },
+    {
+      "id": "modifier-compatibility",
+      "order": 6,
+      "title": "Modifier compatibility diagnostic",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Use this to check whether a damage modifier or support gem will apply to your skill. Pick your skill type, then the modifier scope.",
+      "controls": [
+        {
+          "id": "skill-type",
+          "label": "What is your skill's category?",
+          "options": [
+            {
+              "label": "Attack",
+              "value": "attack"
+            },
+            {
+              "label": "Spell",
+              "value": "spell"
+            }
+          ]
+        },
+        {
+          "id": "modifier-type",
+          "label": "What does the modifier or support say?",
+          "options": [
+            {
+              "label": "Attack Damage",
+              "value": "attack-damage"
+            },
+            {
+              "label": "Spell Damage",
+              "value": "spell-damage"
+            },
+            {
+              "label": "Projectile Damage",
+              "value": "projectile-damage"
+            },
+            {
+              "label": "Generic Damage / Elemental Damage",
+              "value": "generic"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Attack Damage applies",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "The modifier or support targets Attack Damage.",
+            "Your skill is an Attack, so it receives the bonus."
+          ]
+        },
+        {
+          "title": "Spell Damage applies",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "The modifier or support targets Spell Damage.",
+            "Your skill is a Spell, so it receives the bonus."
+          ]
+        },
+        {
+          "title": "Projectile Damage - check the tag",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "The modifier targets Projectile Damage.",
+            "It applies only if your Attack also has the Projectile tag (for example a Bow or Crossbow skill)."
+          ]
+        },
+        {
+          "title": "Projectile Damage on a Spell - check the tag",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "The modifier targets Projectile Damage.",
+            "It applies only if your Spell also has the Projectile tag (for example a spell that fires a projectile)."
+          ]
+        },
+        {
+          "title": "Mismatch - Attack Damage on a Spell",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "Attack Damage modifiers do not apply to Spells.",
+            "A support gem with the Attack tag will show as incompatible on a Spell skill."
+          ]
+        },
+        {
+          "title": "Mismatch - Spell Damage on an Attack",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "Spell Damage modifiers do not apply to Attacks.",
+            "A support gem with the Spell tag will show as incompatible on an Attack skill."
+          ]
+        },
+        {
+          "title": "Generic Damage applies",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Generic Damage or Elemental Damage modifiers apply to any skill regardless of category.",
+            "They still must match the damage type (for example Fire Damage only helps Fire skills)."
+          ]
+        },
+        {
+          "title": "Generic Damage applies",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Generic Damage or Elemental Damage modifiers apply to any skill regardless of category.",
+            "They still must match the damage type (for example Cold Damage only helps Cold skills)."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Still unsure?",
+        "steps": [
+          "Read the exact wording on the modifier or support gem.",
+          "Match the category word (Attack / Spell / Projectile) to your skill's tags.",
+          "If the tag is missing, the modifier will not apply and the support may show as incompatible."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 7,
+      "title": "Worked examples",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Four common builds showing skill type, tags, and which damage modifiers apply. This is illustrative, not exhaustive.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Case"
+        },
+        {
+          "key": "skill",
+          "label": "Skill"
+        },
+        {
+          "key": "tags",
+          "label": "Tags"
+        },
+        {
+          "key": "what-applies",
+          "label": "What applies"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "cells": {
+            "case": "Bow physical attack",
+            "skill": "A Bow skill dealing physical damage",
+            "tags": "Attack, Projectile, Physical",
+            "what-applies": "Attack Damage, Projectile Damage, and Physical Damage modifiers all apply. Evasion matters for the hit."
+          }
+        },
+        {
+          "tags": [
+            "attack",
+            "fire"
+          ],
+          "cells": {
+            "case": "Fire elemental attack",
+            "skill": "A weapon attack converted to Fire",
+            "tags": "Attack, Fire",
+            "what-applies": "Attack Damage and Fire Damage modifiers apply. Spell Damage does not. Penetration affects the hit."
+          }
+        },
+        {
+          "tags": [
+            "spell",
+            "cold"
+          ],
+          "cells": {
+            "case": "Pure cold spell",
+            "skill": "A spell dealing Cold damage",
+            "tags": "Spell, Cold",
+            "what-applies": "Spell Damage and Cold Damage modifiers apply. Attack Damage does not. Accuracy is irrelevant."
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time",
+            "ailment"
+          ],
+          "cells": {
+            "case": "Ignite or Poison DoT",
+            "skill": "An ailment dealing Damage over Time",
+            "tags": "Damage over Time, Ailment",
+            "what-applies": "DoT and ailment multipliers apply. It is not a Hit, so crit, leech, on-hit, and penetration do not apply the same way. Resistance still mitigates."
+          }
+        }
+      ],
+      "note": "Exact modifier names vary by patch. Always read the skill tooltip tags and the modifier wording in game."
+    },
+    {
+      "id": "common-misreads",
+      "order": 8,
+      "title": "Common misreads",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Most build mistakes around these tags come from assuming one layer controls another. Watch for the traps below."
+      ],
+      "bullets": [
+        "Assuming an Attack is always Physical - Attacks can deal Fire, Cold, Lightning, or Chaos.",
+        "Assuming a Spell cannot deal Physical - Spell base damage is set by the skill, not the weapon, but the damage type is still independent.",
+        "Adding Attack Damage to a Spell, or Spell Damage to an Attack - the bonus simply will not apply.",
+        "Expecting a DoT or ailment to crit, leech, or trigger on-hit effects - these are not Hits.",
+        "Expecting penetration to help a DoT - penetration only applies to Hits; use exposure or ailment magnitude instead.",
+        "Reading a Projectile or Minion tag as a damage-type signal - it only describes delivery or ownership."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 9,
+      "title": "Common player confusions",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Paraphrased confusions players frequently raise about skill tags in Path of Exile 2.",
+      "cards": [
+        {
+          "title": "My spell did no damage from Attack support",
+          "tag": "support-gem",
+          "body": [
+            "A Spell skill with no Attack tag will reject Attack-type support gems. The gem shows incompatible because the category does not match."
+          ]
+        },
+        {
+          "title": "Why did my ignite not crit?",
+          "tag": "damage-over-time",
+          "body": [
+            "Ignite is Damage over Time, not a Hit. By default ailments do not crit and do not benefit from critical damage bonuses."
+          ]
+        },
+        {
+          "title": "Penetration felt useless on poison",
+          "tag": "penetration",
+          "body": [
+            "Poison is a DoT. Penetration only applies to Hits, so it does not help the damage-over-time portion. Resistance still reduces it."
+          ]
+        },
+        {
+          "title": "Minion skill ignored my spell gems",
+          "tag": "minion",
+          "body": [
+            "Minion describes who casts the skill. Whether spell supports apply depends on the minion skill's own tags, which are version-sensitive - confirm in game."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Video guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE2 How to do Damage | Spells vs Attacks",
+          "creator": "Exiled RPGs",
+          "description": "A clear walkthrough of how damage works in Path of Exile 2, contrasting Attacks and Spells, explaining Hits and Damage over Time, and showing which modifiers apply to which skills.",
+          "takeaway": "Match the modifier's category word (Attack, Spell, Projectile) to your skill's tags; remember that Damage over Time is not a Hit.",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+          "timestamps": [
+            {
+              "label": "Introduction",
+              "time": "0:00"
+            },
+            {
+              "label": "Attacks vs spells explained",
+              "time": "1:30"
+            },
+            {
+              "label": "What counts as a hit",
+              "time": "4:10"
+            },
+            {
+              "label": "Damage over time and ailments",
+              "time": "7:25"
+            },
+            {
+              "label": "Which modifiers apply to which skills",
+              "time": "10:40"
+            },
+            {
+              "label": "Summary and common traps",
+              "time": "13:15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 11,
+      "title": "Frequently asked questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Is an Attack always Physical damage?",
+          "answer": [
+            "No. An Attack is a skill category defined by using your weapon. Attacks can deal Physical, Fire, Cold, Lightning, or Chaos damage. The damage type is independent of the Attack/Spell category."
+          ]
+        },
+        {
+          "question": "Does a Spell use Accuracy or hit chance?",
+          "answer": [
+            "No. Spells are not affected by Accuracy or evasion. Their base damage, cast speed, and critical chance come from the skill itself, not from a weapon."
+          ]
+        },
+        {
+          "question": "Is Damage over Time a Hit?",
+          "answer": [
+            "No. Damage over Time is applied gradually across a duration and does not count as a Hit. Because of that, bonuses and defences that apply to hits (such as penetration and armour) do not affect it, while resistance in the matching damage type still mitigates it."
+          ]
+        },
+        {
+          "question": "Can Damage over Time crit or leech?",
+          "answer": [
+            "By default, Damage over Time and ailments such as Ignite, Bleed, and Poison do not crit and do not trigger on-hit effects. Whether they can leech depends on the current recovery mechanics in 0.5.4 and is flagged for PC confirmation."
+          ]
+        },
+        {
+          "question": "Do behaviour tags like Projectile or Minion set the damage type?",
+          "answer": [
+            "No. Projectile, AoE, Melee, Duration, Minion, and Totem describe how a skill is delivered or who owns it. They do not determine whether the skill is an Attack or a Spell, nor what damage type it deals."
+          ]
+        },
+        {
+          "question": "Why does my support gem show as incompatible?",
+          "answer": [
+            "A support gem only applies if its required tags match the skill's tags. A gem requiring the Attack tag will not slot into a Spell, and one requiring Spell will not slot into an Attack. Read both the skill and the support tooltip tags."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Sources and verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2 Wiki - Damage over time",
+          "description": "Official wiki page confirming DoT is not a Hit and is unaffected by penetration or armour",
+          "url": "https://poe2wiki.net/wiki/Damage_over_time"
+        },
+        {
+          "label": "PoE2 Wiki - Attack",
+          "description": "Official wiki page defining Attacks and confirming they can deal any damage type",
+          "url": "https://poe2wiki.net/wiki/Attack"
+        },
+        {
+          "label": "PoE2 Wiki - Spell",
+          "description": "Official wiki page defining Spells and confirming they ignore accuracy and evasion",
+          "url": "https://poe2wiki.net/wiki/Spell"
+        },
+        {
+          "label": "Exiled RPGs - PoE2 How to do Damage (YouTube)",
+          "description": "Community video explaining Attacks vs Spells, Hits, and Damage over Time",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog"
+        },
+        {
+          "label": "Maxroll - PoE2 resources",
+          "description": "Community hub of Path of Exile 2 mechanics and build guides",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication of the Attack, Spell, Hit, and Damage over Time tags guide for Path of Exile 2 Early Access 0.5.4.",
+            "Added quick answers, terminology, relationship map, hit vs DoT table, behaviour tags, modifier compatibility diagnostic, worked examples, common misreads, community cases, video, FAQ, and sources."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Wiki - Damage over time",
+      "url": "https://poe2wiki.net/wiki/Damage_over_time",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Attack",
+      "url": "https://poe2wiki.net/wiki/Attack",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Spell",
+      "url": "https://poe2wiki.net/wiki/Spell",
+      "sourceType": "official"
+    },
+    {
+      "label": "Exiled RPGs - PoE2 How to do Damage (YouTube)",
+      "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+      "sourceType": "community"
+    },
+    {
+      "label": "Maxroll - PoE2 resources",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Attack, Spell, Hit & Damage over Time Tags Guide",
+    "description": "Understand Path of Exile 2 skill tags: Attack vs Spell, Hit vs Damage over Time, and behaviour tags like Projectile, AoE, Minion, and Totem. Learn which modifiers apply.",
+    "noindex": false
+  }
+}

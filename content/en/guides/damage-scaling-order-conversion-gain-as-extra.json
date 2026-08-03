@@ -1,0 +1,730 @@
+{
+  "id": "damage-scaling-order-conversion-gain-as-extra",
+  "slug": "damage-scaling-order-conversion-gain-as-extra",
+  "locale": "en",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Damage Scaling Order, Conversion, and Gain as Extra in Path of Exile 2",
+  "shortTitle": "Damage Scaling & Conversion",
+  "summary": "Learn the Path of Exile 2 damage pipeline: base, added, increased (additive), more (multiplicative), conversion, gain as extra, crit, and enemy resistance, with worked examples.",
+  "description": "A mechanics guide to the order of damage calculations in Path of Exile 2, how increased bonuses add while more multipliers multiply, and how conversion differs from gain as extra damage.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/explosive-shot.webp",
+  "cardImage": "/images/skills/explosive-shot.webp",
+  "imageAlt": "A Path of Exile 2 skill icon representing damage scaling, conversion and gain as extra damage",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Basic understanding that a skill deals damage of a type (physical, fire, cold, lightning, chaos)",
+    "Familiarity with item and passive 'increased' and 'more' modifiers",
+    "Awareness that crit and enemy resistances affect the final damage dealt"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "damage",
+    "scaling",
+    "increased",
+    "more",
+    "conversion",
+    "gain-as-extra"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Direct answers",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "In what order is damage calculated in Path of Exile 2?",
+          "body": [
+            "The pipeline runs: skill base damage, then flat added damage, then all same-category Increased bonuses added together, then every More/Less multiplier multiplied in, then conversion, then Gain as Extra, then a critical hit multiplier, and finally the enemy's resistances and Damage Taken modifiers."
+          ]
+        },
+        {
+          "title": "Do different 'increased' bonuses multiply each other?",
+          "body": [
+            "No. All '% increased' modifiers of the same damage category are additive with each other and apply once as a single multiplier. Only More/Less modifiers are multiplicative."
+          ]
+        },
+        {
+          "title": "What is the difference between Conversion and Gain as Extra?",
+          "body": [
+            "Conversion changes damage of one type into another. 'Gain X% of Y as Extra Z' instead adds damage of type Z while keeping the original Y, so the original damage is not removed. They are separate steps in the current PoE2 pipeline."
+          ]
+        },
+        {
+          "title": "Does my 'Damage Taken' modifier boost my own damage?",
+          "body": [
+            "No. Damage Taken modifiers affect incoming damage on the target, not your outgoing scaling. Personal damage comes from base, added, increased, more, conversion, gain as extra, and crit stages."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terms",
+      "order": 2,
+      "title": "Key terms",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Before following the pipeline, lock down what each modifier word means. The PoE2 tooltip uses consistent language, but players often confuse 'increased' with 'more' and 'conversion' with 'gain as extra'.",
+        "All examples below use clearly assumed teaching numbers; your real skill values come from the in-game tooltip and the live client, which supersede anything written here."
+      ],
+      "bullets": [
+        "Base Damage: the skill's innate damage of its inherent type before any modifiers.",
+        "Added Damage: flat numbers such as 'Adds X to Y damage' that are summed and added to the base.",
+        "Increased: percentage bonuses that are additive within the same damage category and apply once.",
+        "More / Less: percentage multipliers that always multiply the running total (More up, Less down).",
+        "Conversion: changes damage of one type into another type at a set percentage.",
+        "Gain as Extra: 'Gain X% of Y as Extra Z' adds damage of type Z while keeping the original Y."
+      ]
+    },
+    {
+      "id": "order",
+      "order": 3,
+      "title": "Order of operations",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "The current PoE2 damage pipeline, in the order the game resolves it. Describing the behavior qualitatively; exact coefficient positions are version-sensitive and should be confirmed in the live client.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Step"
+        },
+        {
+          "key": "stage",
+          "label": "Stage"
+        },
+        {
+          "key": "what-happens",
+          "label": "What happens"
+        },
+        {
+          "key": "note",
+          "label": "Note"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "base"
+          ],
+          "cells": {
+            "step": "0",
+            "stage": "Base damage",
+            "what-happens": "The skill's base damage of its inherent type is established.",
+            "note": "Starting point before any modifiers."
+          }
+        },
+        {
+          "tags": [
+            "added"
+          ],
+          "cells": {
+            "step": "1",
+            "stage": "Added (flat) damage",
+            "what-happens": "Flat 'Added X damage' modifiers are summed and added to the base.",
+            "note": "Flat numbers, not percentages."
+          }
+        },
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "step": "2",
+            "stage": "Increased (additive)",
+            "what-happens": "All '% increased' of the same category add together, then apply once to the running total.",
+            "note": "Same-category Increased bonuses are additive, not multiplicative."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "step": "3",
+            "stage": "More / Less (multiplicative)",
+            "what-happens": "Every More/Less multiplier multiplies the running total in sequence.",
+            "note": "More and Less always multiply and stack multiplicatively with each other."
+          }
+        },
+        {
+          "tags": [
+            "conversion"
+          ],
+          "cells": {
+            "step": "4",
+            "stage": "Conversion",
+            "what-happens": "Damage of one type is converted into another type at a set percentage.",
+            "note": "In PoE2 this is a distinct step; conversion changes the type of damage dealt."
+          }
+        },
+        {
+          "tags": [
+            "gain-as-extra"
+          ],
+          "cells": {
+            "step": "5",
+            "stage": "Gain as Extra",
+            "what-happens": "'Gain X% of Y as Extra Z' adds damage of type Z while keeping the original Y.",
+            "note": "Separate from conversion; the original damage is not removed."
+          }
+        },
+        {
+          "tags": [
+            "crit"
+          ],
+          "cells": {
+            "step": "6",
+            "stage": "Critical hit",
+            "what-happens": "If the hit crits, a critical damage multiplier applies to the final scaled amount.",
+            "note": "Crit applies after the scaling above, not before it."
+          }
+        },
+        {
+          "tags": [
+            "resistance"
+          ],
+          "cells": {
+            "step": "7",
+            "stage": "Enemy resistance / Damage Taken",
+            "what-happens": "The enemy's resistances and any Damage Taken modifiers are applied last.",
+            "note": "Damage Taken affects incoming damage on the enemy, not your outgoing scaling."
+          }
+        }
+      ],
+      "note": "Step numbers are a teaching ordering; the design intent is base to added to increased to more to conversion to gain as extra to crit to enemy mitigation."
+    },
+    {
+      "id": "additive-vs-multiplicative",
+      "order": 4,
+      "title": "Additive vs multiplicative",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "How each kind of modifier combines. The single most common scaling mistake is treating two Increased bonuses as if they multiply.",
+      "columns": [
+        {
+          "key": "modifier",
+          "label": "Modifier"
+        },
+        {
+          "key": "how-combined",
+          "label": "How combined"
+        },
+        {
+          "key": "example",
+          "label": "Example"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "modifier": "Two '% increased' of the same category",
+            "how-combined": "Add together within the category, then apply once",
+            "example": "50% + 30% = 80% increased, total x1.8 (not x1.5 then x1.3)."
+          }
+        },
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "modifier": "Generic and specific Increased",
+            "how-combined": "Add into the appropriate bucket where the rules allow",
+            "example": "Generic 'increased Damage' and 'increased Physical Damage' may share one bucket."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "modifier": "One '% more Damage'",
+            "how-combined": "Multiplies the running total",
+            "example": "x1.2 multiplies whatever total came before it."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "modifier": "Two separate More bonuses",
+            "how-combined": "Each More multiplies, and they multiply with each other",
+            "example": "x1.2 and x1.5 combine to x1.8 overall."
+          }
+        },
+        {
+          "tags": [
+            "less"
+          ],
+          "cells": {
+            "modifier": "'% less' modifiers",
+            "how-combined": "Multiply like More, but reduce the total",
+            "example": "A 20% Less is x0.8 applied to the running total."
+          }
+        }
+      ],
+      "note": "Because More multipliers multiply, a few of them often beat stacking many Increased bonuses of the same category."
+    },
+    {
+      "id": "conversion",
+      "order": 5,
+      "title": "Conversion vs Gain as Extra",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Conversion and Gain as Extra are distinct mechanics and sit at different points of the pipeline. Conversion takes a percentage of damage of one type and turns it into another type. If you convert 90% of physical to fire, 90% of that damage becomes fire and only the remaining 10% stays physical.",
+        "Gain as Extra is different. 'Gain X% of Y as Extra Z' adds a chunk of damage of type Z on top of the original, without removing the original Y. For example, 'Gain 20% of Physical as Extra Fire' keeps all your physical damage and adds 20% more fire damage calculated from your physical total.",
+        "The exact ordering and any type-ordering rules for conversion in PoE2 are version-sensitive; confirm the live behavior in the current client rather than copying older PoE1 chain assumptions, which do not apply here."
+      ],
+      "bullets": [
+        "Conversion: changes a damage type into another, removing the original portion converted.",
+        "Gain as Extra: adds a new damage type while keeping the original damage.",
+        "Both happen after Increased and More, before the enemy's resistance step.",
+        "PoE2's conversion rules differ from the older strict PoE1 chain; do not assume the same order."
+      ]
+    },
+    {
+      "id": "worked-example-one",
+      "order": 6,
+      "title": "Worked example one: added damage and conversion",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "A single physical attack. Every number is an assumed teaching value; replace them with your real skill's base, added, increased, and conversion from the tooltip.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Case"
+        },
+        {
+          "key": "setup",
+          "label": "Setup"
+        },
+        {
+          "key": "calculation",
+          "label": "Calculation"
+        },
+        {
+          "key": "result",
+          "label": "Result"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Bare physical hit",
+            "setup": "Base 100 physical, no added, no increased",
+            "calculation": "100 x 1.00 = 100",
+            "result": "100 physical"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Physical + Added + 90% conversion to fire",
+            "setup": "Base 100 physical, +50 added physical, 100% increased physical",
+            "calculation": "(100 + 50) x 2.00 = 300 physical; convert 90% to fire = 270 fire + 30 physical",
+            "result": "270 fire, 30 physical"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Same hit, 0% conversion",
+            "setup": "Base 100 physical, +50 added, 100% increased, no conversion",
+            "calculation": "(100 + 50) x 2.00 = 300 physical",
+            "result": "300 physical"
+          }
+        }
+      ],
+      "note": "The conversion step changes the type after Increased and More have already been applied to the physical total."
+    },
+    {
+      "id": "worked-example-two",
+      "order": 7,
+      "title": "Worked example two: the full pipeline",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "A full chain with two Increased, two More, a crit, and enemy resistance. All numbers are assumed teaching values.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Case"
+        },
+        {
+          "key": "setup",
+          "label": "Setup"
+        },
+        {
+          "key": "calculation",
+          "label": "Calculation"
+        },
+        {
+          "key": "result",
+          "label": "Result"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "crit"
+          ],
+          "cells": {
+            "case": "Full pipeline with crit",
+            "setup": "Base 100; increased 50% + 30% (80%); More 20%; More 50%; crit 150%; enemy 75% resist",
+            "calculation": "100 x 1.8 = 180; x1.2 = 216; x1.5 = 324; x1.5 crit = 486; x(1 - 0.75) = 121.5",
+            "result": "121.5 damage dealt"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Same without the crit",
+            "setup": "Same as above but no crit multiplier",
+            "calculation": "100 x 1.8 = 180; x1.2 = 216; x1.5 = 324; x(1 - 0.75) = 81",
+            "result": "81 damage dealt"
+          }
+        }
+      ],
+      "note": "Resistance is applied last, on the enemy side, after crit and all of your scaling."
+    },
+    {
+      "id": "scaling-matrix",
+      "order": 8,
+      "title": "Where each modifier type applies",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "A map of common modifier buckets and where they sit in the pipeline. Match the bucket to how your skill actually deals damage.",
+      "columns": [
+        {
+          "key": "modifier-type",
+          "label": "Modifier type"
+        },
+        {
+          "key": "where-applies",
+          "label": "Where it applies"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "modifier-type": "Attack / Spell damage",
+            "where-applies": "Scales the base category of the hit",
+            "notes": "'Increased Attack Damage' is one bucket; pick it based on how the skill deals damage."
+          }
+        },
+        {
+          "tags": [
+            "projectile"
+          ],
+          "cells": {
+            "modifier-type": "Projectile damage",
+            "where-applies": "Applies when the hit is a projectile",
+            "notes": "Has its own Increased and More buckets where the skill is a projectile."
+          }
+        },
+        {
+          "tags": [
+            "elemental"
+          ],
+          "cells": {
+            "modifier-type": "Elemental damage",
+            "where-applies": "Applies to all fire, cold, and lightning dealt",
+            "notes": "Especially strong after conversion turns physical into an element."
+          }
+        },
+        {
+          "tags": [
+            "gem-level"
+          ],
+          "cells": {
+            "modifier-type": "Skill / gem level",
+            "where-applies": "Raises the base skill damage directly",
+            "notes": "Leveling the gem is often the largest single scaling lever."
+          }
+        },
+        {
+          "tags": [
+            "dot"
+          ],
+          "cells": {
+            "modifier-type": "Ailment / damage over time",
+            "where-applies": "Separate scaling for damage over time",
+            "notes": "DoT does not use the hit crit pipeline the same way as a direct hit."
+          }
+        }
+      ],
+      "note": "Cross-guide context: see the Attack/Spell/Hit/DoT, Resistance & Penetration, and Critical Hit guides for deeper detail on each bucket."
+    },
+    {
+      "id": "planner-vs-tooltip",
+      "order": 9,
+      "title": "Why the planner and tooltip can differ",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Build planners and the in-game tooltip are both estimates. Neither is the absolute truth until you test against the real skill in the live client. They can disagree because of rounding, unsupported modifiers, or assumptions about buffs and enemies."
+      ],
+      "bullets": [
+        "Treating the Build Planner number as guaranteed final damage without checking the real skill.",
+        "Treating the in-game tooltip as exact when it may exclude buffs, ailments, or enemy-specific conditions.",
+        "Forgetting that conversion and gain as extra change the damage type, which the tooltip may show split across types.",
+        "Comparing a planner's assumed crit chance to your real hit rate without accounting for accuracy and distance penalties.",
+        "Assuming resistances shown in a planner match the enemy you are actually fighting."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 10,
+      "title": "Common points of confusion",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Paraphrased confusions players frequently raise about damage scaling in Path of Exile 2.",
+      "cards": [
+        {
+          "title": "Two increased do not multiply",
+          "tag": "increased",
+          "body": [
+            "Players expect 50% and 30% increased to multiply into a bigger boost; they actually add to 80% and apply once."
+          ]
+        },
+        {
+          "title": "Conversion removes the original",
+          "tag": "conversion",
+          "body": [
+            "Some players think converting to fire keeps the physical too; pure conversion replaces the converted portion with the new type."
+          ]
+        },
+        {
+          "title": "Gain as Extra keeps the base",
+          "tag": "gain-as-extra",
+          "body": [
+            "The opposite confusion: players miss that 'Gain X% as Extra Z' adds new damage on top without removing the original."
+          ]
+        },
+        {
+          "title": "Damage Taken is not your damage",
+          "tag": "resistance",
+          "body": [
+            "Players sometimes read enemy 'Damage Taken' modifiers as boosting their own outgoing scaling; it only affects incoming damage on the target."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 11,
+      "title": "Video guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Complete Damage Guide - Path of Exile 2",
+          "creator": "silentstill",
+          "description": "A complete walkthrough of how damage is calculated in Path of Exile 2, covering base, added, increased, more, conversion, gain as extra, crit, and enemy mitigation.",
+          "takeaway": "Remember the order: base to added to increased (additive) to more (multiplicative) to conversion to gain as extra to crit to enemy resistance.",
+          "url": "https://www.youtube.com/watch?v=MvwmmjVIes0",
+          "timestamps": [
+            {
+              "label": "Introduction",
+              "time": "0:00"
+            },
+            {
+              "label": "Base and added damage",
+              "time": "2:10"
+            },
+            {
+              "label": "Increased modifiers",
+              "time": "6:30"
+            },
+            {
+              "label": "More and less multipliers",
+              "time": "10:45"
+            },
+            {
+              "label": "Conversion and gain as extra",
+              "time": "15:20"
+            },
+            {
+              "label": "Worked example",
+              "time": "20:05"
+            },
+            {
+              "label": "Summary",
+              "time": "25:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 12,
+      "title": "Frequently asked questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Does conversion happen before or after increased and more?",
+          "answer": [
+            "In the current PoE2 pipeline, conversion happens after the Increased (additive) and More (multiplicative) scaling stages, and before the enemy resistance step. The converted amount is based on the already-scaled damage."
+          ]
+        },
+        {
+          "question": "If I have 200% increased damage, do I deal triple damage?",
+          "answer": [
+            "Yes, assuming all of it falls in the same category. 200% increased means a x3.00 multiplier on that category. Different categories each scale their own portion."
+          ]
+        },
+        {
+          "question": "Is a 20% More better than a 20% Increased?",
+          "answer": [
+            "It depends, but More multipliers multiply while Increased add. A 20% More multiplies the whole running total by 1.2, whereas a 20% Increased only adds to others in its category. More is usually stronger when you already have a large total."
+          ]
+        },
+        {
+          "question": "Can I convert and also gain as extra from the same damage?",
+          "answer": [
+            "Yes. They are separate steps. You can convert part of a damage type to another and separately gain an extra portion of a type without removing the original, producing multiple damage types in one hit."
+          ]
+        },
+        {
+          "question": "Does crit multiply my conversion and gain as extra?",
+          "answer": [
+            "Crit is applied after conversion and gain as extra in the pipeline, so the crit multiplier scales the already-converted and extra-augmented total rather than the base alone."
+          ]
+        },
+        {
+          "question": "Why does my tooltip not match my planner?",
+          "answer": [
+            "They use different assumptions about buffs, enemy resists, accuracy, and distance. Treat both as estimates and confirm against the real skill in the live client."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 13,
+      "title": "Sources and verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official wiki - Damage",
+          "description": "PoE2 wiki reference for damage, conversion, and modifier types",
+          "url": "https://poe2wiki.net/wiki/Damage"
+        },
+        {
+          "label": "Community hub - Maxroll PoE2",
+          "description": "PoE2 mechanics and build hub with damage scaling discussion",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Video guide (silentstill)",
+          "description": "Complete Damage Guide for Path of Exile 2 covering the full pipeline",
+          "url": "https://www.youtube.com/watch?v=MvwmmjVIes0"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 14,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication of the damage scaling order, conversion, and gain as extra guide for Path of Exile 2 Early Access 0.5.4.",
+            "Added quick answers, key terms, order of operations, additive vs multiplicative, conversion vs gain as extra, two worked examples, scaling matrix, planner vs tooltip, community cases, video, FAQ, and sources."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Damage",
+      "url": "https://poe2wiki.net/wiki/Damage",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Path of Exile 2 hub",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "silentstill - Complete Damage Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=MvwmmjVIes0",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Damage Scaling Order, Conversion & Gain as Extra Guide",
+    "description": "Learn the Path of Exile 2 damage pipeline: base, added, increased, more, conversion, gain as extra, crit, and enemy resistance, with worked examples.",
+    "noindex": false
+  }
+}
