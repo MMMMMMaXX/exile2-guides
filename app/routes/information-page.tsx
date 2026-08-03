@@ -1,5 +1,4 @@
-/** 文件职责：以 V4 信息页布局渲染多语言 About、Contact 与法律内容，支持段落、列表、卡片网格、表格与表单。 */
-import { useState } from "react";
+/** 文件职责：以 V4 信息页布局渲染多语言 About、Contact 与法律内容，支持段落、列表、卡片网格与表格。 */
 import { useParams } from "react-router";
 
 import { Breadcrumbs } from "../../components/layout/breadcrumbs";
@@ -10,7 +9,6 @@ import {
 import {
   getInformationPageCopy,
   isInformationPageSlug,
-  type InformationContactField,
   type InformationPageSlug,
 } from "../../lib/i18n/information-copy";
 import {
@@ -46,103 +44,6 @@ export function createInformationMeta(slug: InformationPageSlug) {
       title: `${copy.title} | Exile2 Guides`,
     });
   };
-}
-
-/** 渲染单个表单字段，按类型输出 select / input / textarea。 */
-function ContactFormField({
-  field,
-  locale,
-}: {
-  field: InformationContactField;
-  locale: ContentLocale;
-}) {
-  const placeholder =
-    locale === "zh-cn"
-      ? field.type === "select"
-        ? `请选择`
-        : field.type === "email"
-          ? "your@email.com"
-          : field.type === "url"
-            ? "https://..."
-            : ""
-      : field.type === "select"
-        ? "Select"
-        : field.type === "email"
-          ? "your@email.com"
-          : field.type === "url"
-            ? "https://..."
-            : "";
-
-  return (
-    <label>
-      {field.label}
-      {field.type === "select" ? (
-        <select name={field.name} required={field.required}>
-          <option value="">{placeholder}</option>
-          {field.options?.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      ) : field.type === "textarea" ? (
-        <textarea
-          name={field.name}
-          placeholder={placeholder}
-          required={field.required}
-          rows={6}
-        />
-      ) : (
-        <input
-          name={field.name}
-          placeholder={placeholder}
-          required={field.required}
-          type={field.type}
-        />
-      )}
-    </label>
-  );
-}
-
-/** 渲染联系表单，包含客户端校验和提交反馈。 */
-function ContactForm({
-  form,
-  locale,
-}: {
-  form: NonNullable<
-    ReturnType<typeof getInformationPageCopy>["form"]
-  >;
-  locale: ContentLocale;
-}) {
-  const [submitted, setSubmitted] = useState(false);
-  const zh = locale === "zh-cn";
-
-  /** 阻止默认提交并展示校验通过提示（MVP 无后端）。 */
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
-
-  return (
-    <form
-      className="info-contact-form"
-      onSubmit={handleSubmit}
-    >
-      {form.fields.map((field) => (
-        <ContactFormField field={field} key={field.name} locale={locale} />
-      ))}
-      <button className="info-contact-form__submit" type="submit">
-        {form.submitLabel}
-      </button>
-      {submitted ? (
-        <p className="info-contact-form__message" aria-live="polite">
-          {zh
-            ? "✓ 表单校验通过。当前 MVP 尚未接入后端，消息未实际发送。"
-            : "✓ Form validated. The current MVP has no backend — message was not actually sent."}
-        </p>
-      ) : null}
-    </form>
-  );
 }
 
 /** 渲染指定静态信息页正文；全部文案来自受控本地副本，不依赖网络或用户数据。 */
@@ -246,11 +147,6 @@ export function InformationPage({ slug }: { slug: InformationPageSlug }) {
               </div>
             </section>
           ))}
-          {copy.form ? (
-            <section className="v4-information-page__form-section">
-              <ContactForm form={copy.form} locale={route.locale} />
-            </section>
-          ) : null}
         </div>
       </div>
     </main>

@@ -33,6 +33,8 @@ export function bossArticleToFrontMatter(
       ...article.relatedPatchIds,
     ],
     reviewer: article.reviewer,
+    reviewMethod: article.reviewMethod,
+    verificationMethod: article.verificationMethod,
     seoDescription: article.seo.description,
     seoTitle: article.seo.title,
     slug: article.slug,

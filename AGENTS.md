@@ -30,14 +30,15 @@
 
 ## 内容生成、发布与索引
 
-> 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
+> 本节更新时间：2026-08-03 00:30（Asia/Shanghai）
 
 1. 本项目由单人维护，进入 `content/` 的真实文章必须在生成时达到可上线质量，直接使用 `status: published` 与 `seo.noindex: false`。
 2. Agent 不得以“等待独立人工审核”或“等待 PC 实机核验”为由，擅自把真实文章设为 `draft` 或 `noindex: true`。
-3. `verificationStatus: pending-pc` 可以用于诚实声明尚未完成的实机核验范围，但不能阻止已完成文章进入生产路由、Sitemap 与搜索索引。
+3. `verificationStatus: pending-pc` 允许通过自动来源审核但未进行第一方实机测试的内容上线；它不自动导致 `noindex`，也不代表内容仍是草稿，不能阻止已完成文章进入生产路由、Sitemap 与搜索索引。
 4. 结构模板是唯一可以保留 `draft` 与 `noindex: true` 的内容 JSON；未完成研究材料必须放在 `research/`，不得以真实文章形式混入 `content/`。
 5. 内容生成任务必须在同一任务中补齐双语正文、来源、版本、SEO、图片/视频权利信息、内链和责任字段，并通过 `npm run validate:content` 与适用质量门禁；不能把审核债务转交给用户。
 6. `scripts/validate-content.ts` 必须持续阻止任何非模板文章恢复为草稿或禁止索引状态。
+7. 自 Items 第四批起，内容生成采用 publish-first：自动化来源审核与构建校验即为发布门禁；逐篇人工批准不再是发布前置条件，Agent 直接以 `status: published` 与 `seo.noindex: false` 上线，不等待用户逐篇确认。
 
 ## GitHub 推送权限
 

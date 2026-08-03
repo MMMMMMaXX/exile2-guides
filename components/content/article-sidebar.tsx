@@ -101,7 +101,7 @@ export function ArticleSidebar({
         <h2>{zh ? "核验边界" : "Verification boundary"}</h2>
         <p>
           {zh
-            ? "来源、Patch 与待实机核验范围会在正文中明确区分；本站不会把待核验内容表述为实测结论。"
+            ? "来源与 Patch 范围会在正文中明确区分；本站不会把尚未经实机确认的内容表述为实测结论。"
             : "Sources, patch scope and pending in-game checks remain visibly separated. Pending work is never presented as tested fact."}
         </p>
       </section>

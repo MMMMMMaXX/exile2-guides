@@ -168,9 +168,11 @@ Build
 | INFO-009 | 已确认 | 全球英语用户，优先美国/加拿大/英国/澳大利亚；语言 English、简体中文，日语及其他后续评估     | 法律复核、语言质量与上线顺序 | LAUNCH-003 前 |
 | INFO-010 | 已确认 | Launch/Preview 均关闭 Analytics、Ads 和第三方行为追踪，待法律/Cookie/Consent 评估及明确批准 | 隐私政策与 Cookie 范围       | LAUNCH-011 前 |
 
-> 本节更新时间：2026-07-28 14:36（Asia/Shanghai）
+> 本节更新时间：2026-08-03 00:31（Asia/Shanghai）
 
 当前发布边界：生产 Pages 和 `poe2.stratlore.com` 已启用；尚未向 Search Console 提交 Sitemap，不申请 AdSense，且不启用 Analytics、Ads 或第三方追踪。已批准但未完成 Steam PC 实机核验的内容可按 PRD 的 `pending-pc` 规则公开；其余未经审核内容继续保持 `draft` 或留在内部 research。
+
+自 Items 第四批起，发布策略升级为 publish-first：**人工逐篇审核不再是发布门禁，自动化来源审核与构建校验即为发布门禁**。内容通过 `validate:content`、类型检查、Lint 与适用测试/生产构建后，直接以 `status: published` + `seo.noindex: false` 进入预渲染、路由、Sitemap 与搜索索引，`pending-pc` 仅声明未完成第一方实机测试，不得因此回退为草稿或禁止索引。
 
 请不要在聊天、仓库或 `VITE_*` 环境变量中提供账户密码、银行卡信息、API 私钥、恢复码或
 其他敏感凭据。需要登录时应由用户在自己的浏览器完成登录，再明确授权相应操作。

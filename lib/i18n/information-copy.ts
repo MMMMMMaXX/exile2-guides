@@ -1,4 +1,4 @@
-/** 文件职责：集中维护 About、Contact 与法律页的完整线上正式文案，支持段落、列表、卡片网格、表格与表单。 */
+/** 文件职责：集中维护 About、Contact 与法律页的完整线上正式文案，支持段落、列表、卡片网格与表格。 */
 import type { ContentLocale } from "../content/constants";
 
 export const informationPageSlugs = [
@@ -28,19 +28,6 @@ export type InformationTable = {
   rows: ReadonlyArray<ReadonlyArray<string>>;
 };
 
-export type InformationContactField = {
-  label: string;
-  name: string;
-  options?: readonly string[];
-  required?: boolean;
-  type: "email" | "select" | "textarea" | "url";
-};
-
-export type InformationContactForm = {
-  fields: readonly InformationContactField[];
-  submitLabel: string;
-};
-
 export type InformationSection = {
   bullets?: readonly string[];
   connectionLinks?: readonly InformationConnectionLink[];
@@ -52,12 +39,11 @@ export type InformationSection = {
 
 export type InformationPageCopy = {
   description: string;
-  form?: InformationContactForm;
   sections: readonly InformationSection[];
   title: string;
 };
 
-const contactEmail = "contact@exile2guides.com";
+const contactEmail = "contact@stratlore.com";
 
 const informationCopyByLocale: Record<
   ContentLocale,
@@ -66,100 +52,135 @@ const informationCopyByLocale: Record<
   en: {
     about: {
       description:
-        "Learn about Exile2 Guides \u2014 our mission, editorial process, content coverage, and the team behind this community-driven Path of Exile 2 guide resource.",
+        "Learn how Exile2 Guides is independently operated, researched, and published as an unofficial Path of Exile 2 guide resource.",
       title: "About Exile2 Guides",
       sections: [
         {
           title: "Our Mission",
           paragraphs: [
-            "Exile2 Guides is a community-driven Path of Exile 2 guide resource built to provide clear, accurate, and patch-aware information for players of all experience levels. Whether you are starting your first act or optimising an endgame build, our goal is to help you find reliable answers without wading through outdated forum threads or unverified theorycraft.",
-            "We believe that high-quality game guides should be freely accessible, well-structured, and maintained by people who actually play the game. Every article on this site is written and reviewed with that principle in mind.",
+            "Exile2 Guides is independently operated by one developer as an unofficial Path of Exile 2 guide resource. The goal is to organise useful, patch-aware answers without presenting research summaries as personal gameplay experience.",
+            "The site is read-only and free to access. Articles are published after structured research and automated quality checks, with uncertainty and verification boundaries shown on the page when they matter.",
           ],
         },
         {
           title: "What We Cover",
           connectionLinks: [
-            { description: "Leveling builds, endgame setups, gear priorities, passive tree paths, and gem link configurations for every class.", href: "/en/builds/", label: "Builds" },
-            { description: "Boss mechanics, phase breakdowns, loot tables, resistances requirements, and step-by-step strategy guides.", href: "/en/bosses/", label: "Bosses" },
-            { description: "Unique item databases, currency mechanics, crafting references, and affix tier explanations.", href: "/en/items/", label: "Items" },
-            { description: "Active skill gem breakdowns, support gem pairings, scaling mechanics, and level progression data.", href: "/en/skills/", label: "Skills" },
-            { description: "Mechanics deep-dives, beginner tutorials, FAQ answers, and general progression guides.", href: "/en/guides/", label: "Guides" },
+            {
+              description:
+                "Leveling builds, endgame setups, gear priorities, passive tree paths, and gem link configurations for every class.",
+              href: "/en/builds/",
+              label: "Builds",
+            },
+            {
+              description:
+                "Boss mechanics, phase breakdowns, loot tables, resistances requirements, and step-by-step strategy guides.",
+              href: "/en/bosses/",
+              label: "Bosses",
+            },
+            {
+              description:
+                "Unique item databases, currency mechanics, crafting references, and affix tier explanations.",
+              href: "/en/items/",
+              label: "Items",
+            },
+            {
+              description:
+                "Active skill gem breakdowns, support gem pairings, scaling mechanics, and level progression data.",
+              href: "/en/skills/",
+              label: "Skills",
+            },
+            {
+              description:
+                "Mechanics deep-dives, beginner tutorials, FAQ answers, and general progression guides.",
+              href: "/en/guides/",
+              label: "Guides",
+            },
           ],
         },
         {
           title: "Editorial Standards",
           paragraphs: [
-            "Every published guide carries its patch context, source references, reviewer attribution, and verification status so readers can judge how current and reliable the information is.",
-            "Our workflow follows a structured process: topic selection based on community demand, research using in-game testing and official data, drafting by experienced writers, peer review by domain experts, and final verification against the current game version.",
-            "When information cannot be fully verified before a major patch, articles clearly state the uncertainty and are flagged for priority review once the patch goes live.",
+            "Articles are researched using official patch notes, current databases, established community guides, gameplay videos, and player discussions. Claims are linked to their sources where possible and written with the relevant patch context.",
+            "Automated QA checks the content structure, required metadata, internal links, publication state, indexability, and build output before an article is released.",
+            "When a conclusion has not been personally tested in game, it is presented as source-verified rather than first-hand tested. Version-sensitive uncertainty stays visible instead of being hidden behind confident wording.",
           ],
         },
         {
           title: "Independence",
           paragraphs: [
-            "Exile2 Guides is an independent, fan-made resource operated by Path of Exile community members. We are not affiliated with, endorsed by, or sponsored by Grinding Gear Games or any other company.",
-            "We do not accept payment, early access, or sponsorship in exchange for coverage. All content is created voluntarily by contributors who are passionate about the game. Our editorial decisions are made independently and are not influenced by external parties.",
+            "Exile2 Guides is an independent, fan-made resource. It is not affiliated with, endorsed by, or sponsored by Grinding Gear Games or any other company.",
+            "The publication is maintained by one operator, and the research process does not present first-hand gameplay testing as completed when it has not been performed.",
           ],
         },
         {
           title: "Corrections and Feedback",
           paragraphs: [
             "Game mechanics change frequently, and no guide is perfect. If you find a factual error, outdated mechanic, or missing source, please reach out through our Contact page or email us directly.",
-            "We review every correction and prioritise updates to popular articles after each game patch. We also welcome suggestions for new topics and improvements to existing content.",
+            "Corrections and copyright reports are reviewed as time permits. High-impact factual errors are prioritised, but response times are not guaranteed.",
           ],
         },
       ],
     },
     contact: {
-      description: "Contact the Exile2 Guides editorial team for content corrections, copyright concerns, or general feedback.",
-      form: {
-        fields: [
-          { label: "Topic", name: "topic", options: ["Content correction", "General feedback", "Copyright or attribution", "Other"], required: true, type: "select" },
-          { label: "Email", name: "email", required: true, type: "email" },
-          { label: "Page URL", name: "pageUrl", required: false, type: "url" },
-          { label: "Message", name: "message", required: true, type: "textarea" },
-        ],
-        submitLabel: "Send message",
-      },
+      description:
+        "Contact the independent Exile2 Guides operator about content corrections, copyright reports, or general feedback.",
       title: "Contact Us",
       sections: [
         {
           title: "Get in Touch",
           paragraphs: [
-            `The fastest way to reach us is by email at ${contactEmail}. We read every message and prioritise factual corrections and copyright concerns.`,
-            "For structured requests, use the contact form below. It validates required fields before submission and helps us route your message to the appropriate team member.",
-            "Please note that this is a read-only static site with no backend contact system. Messages sent via the form are validated client-side only and are not transmitted to any server. For any urgent matter, please use the email address above.",
+            `The only public contact channel is email: ${contactEmail}. We review corrections and copyright reports as time permits. High-impact factual errors are prioritised, but response times are not guaranteed.`,
+            "This is a read-only static site with no server-side contact form. Please use the direct email link below; there is no message submission button that can silently discard your request.",
+          ],
+          connectionLinks: [
+            {
+              description:
+                "Open your email client to send a correction, copyright report, or other note.",
+              href: `mailto:${contactEmail}`,
+              label: contactEmail,
+            },
           ],
         },
         {
           title: "Contact Scenarios",
           issueCards: [
-            { description: "Include the page URL, the specific claim that is incorrect, the game version or patch you tested in, and a reliable source or clear reproduction steps.", title: "Content correction" },
-            { description: "Provide the asset or page URL, a description of the copyrighted material, proof of ownership or authorisation, and the specific action you are requesting.", title: "Copyright or attribution" },
-            { description: "Tell us which area needs attention \u2014 builds, bosses, items, skills, or general site experience \u2014 along with your detailed suggestion.", title: "General feedback" },
+            {
+              description:
+                "Include the page URL, the specific claim that is incorrect, the game version or patch you tested in, and a reliable source or clear reproduction steps.",
+              title: "Content correction",
+            },
+            {
+              description:
+                "Provide the asset or page URL, a description of the copyrighted material, proof of ownership or authorisation, and the specific action you are requesting.",
+              title: "Copyright or attribution",
+            },
+            {
+              description:
+                "Tell us which area needs attention \u2014 builds, bosses, items, skills, or general site experience \u2014 along with your detailed suggestion.",
+              title: "General feedback",
+            },
           ],
         },
         {
           title: "What to Include",
           bullets: [
             "The exact page URL where the issue appears, along with a screenshot or quoted text if possible.",
-            "A reliable source for the correction \u2014 official patch notes, in-game test results, or Grinding Gear Games announcements.",
-            "Clear reproduction steps for any mechanic discrepancies, including your character level, passive tree, and equipped items.",
+            "A reliable source for the correction \u2014 official patch notes, a current database entry, or a clear community test/report.",
+            "Clear reproduction details for any mechanic discrepancy, including the game version and relevant setup if known.",
             "Only the minimum personal information needed for us to respond to your inquiry.",
           ],
         },
         {
-          title: "Response Times",
+          title: "Review Policy",
           paragraphs: [
-            "We aim to acknowledge receipt of every correction within 3 business days. High-priority issues \u2014 factual errors on popular articles, copyright concerns, and security vulnerabilities \u2014 are reviewed within 24 hours.",
-            "Complex topics that require in-game testing may take up to 7 business days. We will follow up by email if additional information is needed.",
-            "General feedback and suggestions are reviewed on a rolling basis and may not receive individual responses, but every submission is read and considered.",
+            "We review corrections and copyright reports as time permits. High-impact factual errors are prioritised, but response times are not guaranteed.",
           ],
         },
       ],
     },
     "cookie-policy": {
-      description: "Complete cookie and browser storage disclosure for Exile2 Guides \u2014 what cookies are, what we use, third-party cookies, and how to manage your preferences.",
+      description:
+        "Complete cookie and browser storage disclosure for Exile2 Guides \u2014 what cookies are, what we use, third-party cookies, and how to manage your preferences.",
       title: "Cookie Policy",
       sections: [
         {
@@ -180,13 +201,43 @@ const informationCopyByLocale: Record<
         {
           title: "Cookie Categories",
           table: {
-            headers: ["Cookie category", "Purpose", "Duration", "Status on this site"],
+            headers: [
+              "Cookie category",
+              "Purpose",
+              "Duration",
+              "Status on this site",
+            ],
             rows: [
-              ["Strictly necessary", "Site functionality, security, load balancing", "Session", "Not used"],
-              ["Preferences", "Language, theme, display settings", "Up to 1 year", "Not used"],
-              ["Analytics", "Usage statistics, page performance", "Up to 2 years", "Not used"],
-              ["Advertising", "Ad targeting, campaign tracking", "Up to 2 years", "Not used"],
-              ["Social media", "Social sharing, embedded content", "Varies", "Not used"],
+              [
+                "Strictly necessary",
+                "Site functionality, security, load balancing",
+                "Session",
+                "Not used",
+              ],
+              [
+                "Preferences",
+                "Language, theme, display settings",
+                "Up to 1 year",
+                "Not used",
+              ],
+              [
+                "Analytics",
+                "Usage statistics, page performance",
+                "Up to 2 years",
+                "Not used",
+              ],
+              [
+                "Advertising",
+                "Ad targeting, campaign tracking",
+                "Up to 2 years",
+                "Not used",
+              ],
+              [
+                "Social media",
+                "Social sharing, embedded content",
+                "Varies",
+                "Not used",
+              ],
             ],
           },
         },
@@ -206,7 +257,9 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Managing Cookies in Your Browser",
-          paragraphs: ["You have the right to control how websites use cookies on your device. Most modern browsers provide the following controls:"],
+          paragraphs: [
+            "You have the right to control how websites use cookies on your device. Most modern browsers provide the following controls:",
+          ],
           bullets: [
             "View and delete existing cookies \u2014 see all cookies stored by each website and remove them individually or in bulk.",
             "Block all cookies \u2014 prevents any website from storing cookies. This may cause some sites to malfunction.",
@@ -226,12 +279,15 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Contact Us",
-          paragraphs: [`If you have questions about our cookie practices, please contact us at ${contactEmail}.`],
+          paragraphs: [
+            `If you have questions about our cookie practices, please contact us at ${contactEmail}.`,
+          ],
         },
       ],
     },
     disclaimer: {
-      description: "Important legal disclaimers covering the unofficial status, content accuracy, financial advice, external links, and user responsibility for Exile2 Guides.",
+      description:
+        "Important legal disclaimers covering the unofficial status, content accuracy, financial advice, external links, and user responsibility for Exile2 Guides.",
       title: "Disclaimer",
       sections: [
         {
@@ -278,14 +334,17 @@ const informationCopyByLocale: Record<
           title: "Fair Use and Intellectual Property",
           paragraphs: [
             "Game-related content on this site, including references to game mechanics, item names, skill descriptions, and boss strategies, is used under the principles of fair use and for the purpose of providing community-created game guides and commentary.",
-            "We respect the intellectual property rights of Grinding Gear Games and all other rights holders. If you believe that any content on this site infringes upon your intellectual property rights, please contact us immediately at " + contactEmail + " with the details of your claim.",
+            "We respect the intellectual property rights of Grinding Gear Games and all other rights holders. If you believe that any content on this site infringes upon your intellectual property rights, please contact us immediately at " +
+              contactEmail +
+              " with the details of your claim.",
             "All original editorial content, design elements, and site infrastructure created by the Exile2 Guides team may not be reproduced, distributed, or used for commercial purposes without prior written consent.",
           ],
         },
       ],
     },
     "privacy-policy": {
-      description: "Complete privacy policy for Exile2 Guides \u2014 data practices, cookie usage, third-party services, your rights under GDPR and CCPA, and how we protect your information.",
+      description:
+        "Complete privacy policy for Exile2 Guides \u2014 data practices, cookie usage, third-party services, your rights under GDPR and CCPA, and how we protect your information.",
       title: "Privacy Policy",
       sections: [
         {
@@ -297,7 +356,9 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Information We Collect",
-          paragraphs: ["Exile2 Guides is a read-only static content website. We do not collect, store, process, or transmit personal data. Specifically:"],
+          paragraphs: [
+            "Exile2 Guides is a read-only static content website. We do not collect, store, process, or transmit personal data. Specifically:",
+          ],
           bullets: [
             "We do not require user registration, accounts, or authentication of any kind.",
             "We do not collect names, email addresses, IP addresses, or any other personally identifiable information.",
@@ -343,7 +404,9 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Your Data Protection Rights",
-          paragraphs: ["Depending on your jurisdiction, you may have the following data protection rights:"],
+          paragraphs: [
+            "Depending on your jurisdiction, you may have the following data protection rights:",
+          ],
           bullets: [
             "Right of access (GDPR Article 15) \u2014 request copies of your personal data. Since we do not collect personal data, there is no data to provide.",
             "Right to rectification (GDPR Article 16) \u2014 request correction of inaccurate personal data. Not applicable as we hold no personal data.",
@@ -385,7 +448,8 @@ const informationCopyByLocale: Record<
       ],
     },
     "terms-of-use": {
-      description: "Complete terms and conditions governing your use of Exile2 Guides \u2014 acceptance, user conduct, intellectual property, disclaimers, liability limitations, and dispute resolution.",
+      description:
+        "Complete terms and conditions governing your use of Exile2 Guides \u2014 acceptance, user conduct, intellectual property, disclaimers, liability limitations, and dispute resolution.",
       title: "Terms of Use",
       sections: [
         {
@@ -421,7 +485,9 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Prohibited Conduct",
-          paragraphs: ["You agree not to engage in any of the following prohibited activities:"],
+          paragraphs: [
+            "You agree not to engage in any of the following prohibited activities:",
+          ],
           bullets: [
             "Using automated systems (bots, scrapers, crawlers) to access, collect, or monitor content without prior written permission.",
             "Attempting to gain unauthorised access to any part of the site, its servers, or any connected systems.",
@@ -489,107 +555,143 @@ const informationCopyByLocale: Record<
         },
         {
           title: "Contact Information",
-          paragraphs: [`For questions about these Terms of Use, please contact us at ${contactEmail}.`],
+          paragraphs: [
+            `For questions about these Terms of Use, please contact us at ${contactEmail}.`,
+          ],
         },
       ],
     },
   },
   "zh-cn": {
     about: {
-      description: "了解 Exile2 Guides \u2014 我们的使命、编辑流程、内容覆盖范围以及 Path of Exile 2 社区攻略资源背后的团队。",
+      description:
+        "了解 Exile2 Guides 如何由独立开发者运营、整理资料并发布非官方 Path of Exile 2 攻略。",
       title: "关于 Exile2 Guides",
       sections: [
         {
           title: "我们的使命",
           paragraphs: [
-            "Exile2 Guides 是一个社区驱动的 Path of Exile 2 攻略资源站，旨在为各经验阶段的玩家提供清晰、准确、适配版本的攻略信息。无论你正在开始第一章还是优化终局 Build，我们的目标都是帮助你找到可靠的答案，而无需在过时的论坛帖子或未经验证的理论中翻找。",
-            "我们相信高质量的游戏攻略应该是免费获取、结构良好、并由真正玩这款游戏的人来维护。本站上的每一篇文章都本着这一原则撰写和审阅。",
+            "Exile2 Guides 由一名独立开发者运营，是一个非官方的 Path of Exile 2 攻略资源站。我们的目标是整理清晰、适配版本的资料，而不会把资料汇总描述成个人游戏体验。",
+            "本站是只读且免费访问的站点。文章经过结构化研究和自动化 QA 检查后发布；重要的不确定性和核验边界会直接显示在页面上。",
           ],
         },
         {
           title: "内容覆盖范围",
           connectionLinks: [
-            { description: "升级 Build、终局配置、装备优先级、天赋树路线和宝石连接方案，覆盖所有职业。", href: "/zh-cn/builds/", label: "Build" },
-            { description: "Boss 机制解析、阶段拆解、掉落表、抗性需求与分步攻略指南。", href: "/zh-cn/bosses/", label: "Boss" },
-            { description: "暗金物品数据库、通货机制、制作参考与词缀等级说明。", href: "/zh-cn/items/", label: "物品" },
-            { description: "主动技能宝石解析、辅助宝石搭配、成长机制与等级数据。", href: "/zh-cn/skills/", label: "技能" },
-            { description: "机制深度解析、新手教程、常见问题解答与通用成长指南。", href: "/zh-cn/guides/", label: "攻略" },
+            {
+              description:
+                "升级 Build、终局配置、装备优先级、天赋树路线和宝石连接方案，覆盖所有职业。",
+              href: "/zh-cn/builds/",
+              label: "Build",
+            },
+            {
+              description:
+                "Boss 机制解析、阶段拆解、掉落表、抗性需求与分步攻略指南。",
+              href: "/zh-cn/bosses/",
+              label: "Boss",
+            },
+            {
+              description: "暗金物品数据库、通货机制、制作参考与词缀等级说明。",
+              href: "/zh-cn/items/",
+              label: "物品",
+            },
+            {
+              description:
+                "主动技能宝石解析、辅助宝石搭配、成长机制与等级数据。",
+              href: "/zh-cn/skills/",
+              label: "技能",
+            },
+            {
+              description:
+                "机制深度解析、新手教程、常见问题解答与通用成长指南。",
+              href: "/zh-cn/guides/",
+              label: "攻略",
+            },
           ],
         },
         {
           title: "编辑标准",
           paragraphs: [
-            "每篇已发布的攻略都标注版本背景、来源引用、审核人归属和核验状态，让读者清楚判断信息的时效性和可靠性。",
-            "我们的编辑流程遵循结构化步骤：基于社区需求和游戏相关性确定选题，使用游戏内测试和官方数据进行研究，由经验丰富的作者撰写初稿，由领域专家进行同行审阅，最终在发布前对照当前游戏版本完成核验。",
-            "当信息在大型版本更新前无法完全核验时，文章会明确标注不确定性，并在版本上线后优先安排审阅。",
+            "文章会标注版本背景、来源引用和核验状态，让读者清楚判断信息的时效性和可靠性。",
+            "文章结合官方补丁、当前数据库、成熟攻略、实战视频和玩家讨论整理；来源可支持的结论会尽量附上链接。自动化 QA 会检查内容结构、必要元数据、内链、发布状态、索引状态和构建产物。",
+            "未经第一方游戏内测试的内容，会标记为来源核验，而不会声称已经实测。版本敏感的不确定性会保留在正文中，不用笼统的肯定语气掩盖。",
           ],
         },
         {
           title: "独立性",
           paragraphs: [
-            "Exile2 Guides 是由 Path of Exile 社区成员运营的独立非官方资源站。我们与 Grinding Gear Games 不存在隶属、授权或赞助关系。",
-            "我们不接受付款、提前访问或赞助以换取报道。所有内容均由热爱这款游戏的贡献者自愿创作。我们的编辑决策独立做出，不受外部方影响。",
+            "Exile2 Guides 是独立的非官方资源站。我们与 Grinding Gear Games 不存在隶属、授权或赞助关系。",
+            "本站由一名运营者维护；研究过程不会把尚未完成的第一方游戏内测试说成已经实测。",
           ],
         },
         {
           title: "更正与反馈",
           paragraphs: [
             "游戏机制频繁变化，没有攻略是完美的。如果你发现事实错误、过时的机制描述或缺失的来源引用，请通过联系页面或直接发送邮件告诉我们。",
-            "我们会审阅每一份更正提交，并在每次游戏更新后优先更新热门文章。我们也欢迎关于新攻略选题的建议和对现有内容的改进意见。",
+            "更正和版权报告会在时间允许时处理。高影响的事实错误会优先处理，但不保证回复时效。",
           ],
         },
       ],
     },
     contact: {
-      description: "联系 Exile2 Guides 编辑团队，提交内容更正、版权问题或一般反馈。",
-      form: {
-        fields: [
-          { label: "主题", name: "topic", options: ["内容更正", "一般反馈", "版权与归属", "其他"], required: true, type: "select" },
-          { label: "邮箱", name: "email", required: true, type: "email" },
-          { label: "页面 URL", name: "pageUrl", required: false, type: "url" },
-          { label: "留言内容", name: "message", required: true, type: "textarea" },
-        ],
-        submitLabel: "发送留言",
-      },
+      description:
+        "联系独立运营的 Exile2 Guides，提交内容更正、版权报告或一般反馈。",
       title: "联系我们",
       sections: [
         {
           title: "联系方式",
           paragraphs: [
-            `联系编辑团队最快的方式是发送邮件至 ${contactEmail}。我们会阅读每一封邮件，优先处理事实更正和版权问题。`,
-            "你也可以使用下方的联系表单提交结构化请求。表单会在提交前校验必填字段，帮助我们更快将你的消息转交给对应团队成员。",
-            "请注意，本站是只读静态站点，没有后端联系系统。通过表单提交的消息仅在客户端校验，不会传输到任何服务器。如有紧急事项，请使用上述邮箱地址。",
+            `公开联系渠道只有邮箱：${contactEmail}。更正和版权报告会在时间允许时处理。高影响的事实错误会优先处理，但不保证回复时效。`,
+            "本站是只读静态站点，没有服务端联系表单。请使用下方的直接邮件链接；页面不会保留一个看似可发送、实际不会送达的按钮。",
+          ],
+          connectionLinks: [
+            {
+              description: "打开邮件客户端，发送内容更正、版权报告或其他留言。",
+              href: `mailto:${contactEmail}`,
+              label: contactEmail,
+            },
           ],
         },
         {
           title: "联系场景",
           issueCards: [
-            { description: "请提供页面 URL、具体错误内容、你测试的游戏版本或 Patch，以及可靠来源或清晰的复现步骤。", title: "内容更正" },
-            { description: "请提供相关资产或页面 URL、版权材料描述、所有权或授权证明，以及你要求的具体处理措施。", title: "版权与归属" },
-            { description: "请说明需要关注的领域\u2014\u2014Build、Boss、物品、技能或整体站点体验\u2014\u2014以及你的详细建议。", title: "一般反馈" },
+            {
+              description:
+                "请提供页面 URL、具体错误内容、你测试的游戏版本或 Patch，以及可靠来源或清晰的复现步骤。",
+              title: "内容更正",
+            },
+            {
+              description:
+                "请提供相关资产或页面 URL、版权材料描述、所有权或授权证明，以及你要求的具体处理措施。",
+              title: "版权与归属",
+            },
+            {
+              description:
+                "请说明需要关注的领域\u2014\u2014Build、Boss、物品、技能或整体站点体验\u2014\u2014以及你的详细建议。",
+              title: "一般反馈",
+            },
           ],
         },
         {
           title: "建议提供的信息",
           bullets: [
             "出现问题的确切页面 URL，如有可能请附截图或引用文本。",
-            "更正的可靠来源\u2014\u2014官方 Patch Notes、游戏内测试结果或 Grinding Gear Games 公告。",
-            "机制差异的清晰复现步骤，包括角色等级、天赋树和装备物品。",
+            "更正的可靠来源——官方 Patch Notes、当前数据库条目或清晰的社区测试/报告。",
+            "机制差异的清晰复现信息，包括游戏版本和已知的相关配置。",
             "仅提供回复你的咨询所必需的最少个人信息。",
           ],
         },
         {
-          title: "响应时间",
+          title: "处理说明",
           paragraphs: [
-            "我们目标在 3 个工作日内确认收到每一份更正请求。高优先级问题\u2014\u2014热门文章的事实错误、版权问题和安全隐患\u2014\u2014会在 24 小时内审阅。",
-            "需要游戏内测试或交叉比对多个来源的复杂问题可能需要最多 7 个工作日。如果需要更多信息，我们会通过邮件跟进。",
-            "一般反馈和建议按滚动方式审阅，可能不会收到个别回复，但每一份提交都会被阅读并纳入未来更新考虑。",
+            "更正和版权报告会在时间允许时处理。高影响的事实错误会优先处理，但不保证回复时效。",
           ],
         },
       ],
     },
     disclaimer: {
-      description: "Exile2 Guides 的重要法律声明\u2014\u2014涵盖非官方身份、内容准确性、财务建议、外部链接和用户责任。",
+      description:
+        "Exile2 Guides 的重要法律声明\u2014\u2014涵盖非官方身份、内容准确性、财务建议、外部链接和用户责任。",
       title: "免责声明",
       sections: [
         {
@@ -671,9 +773,21 @@ const informationCopyByLocale: Record<
           table: {
             headers: ["类型", "用途", "持续时间"],
             rows: [
-              ["严格必要", "确保网站核心功能正常运行，包括页面导航、安全验证和语言偏好存储。缺少这些 Cookie 将导致网站无法正常运行。", "会话 / 持久"],
-              ["功能性", "记住您的偏好设置，如首选语言、区域、暗色模式选择和阅读进度，以提供个性化的浏览体验。", "持久（最多 12 个月）"],
-              ["分析性", "帮助我们了解访问者如何使用本站，收集匿名统计数据以改进网站内容和结构。所有数据均为聚合形式，不与个人身份关联。", "持久（最多 24 个月）"],
+              [
+                "严格必要",
+                "确保网站核心功能正常运行，包括页面导航、安全验证和语言偏好存储。缺少这些 Cookie 将导致网站无法正常运行。",
+                "会话 / 持久",
+              ],
+              [
+                "功能性",
+                "记住您的偏好设置，如首选语言、区域、暗色模式选择和阅读进度，以提供个性化的浏览体验。",
+                "持久（最多 12 个月）",
+              ],
+              [
+                "分析性",
+                "帮助我们了解访问者如何使用本站，收集匿名统计数据以改进网站内容和结构。所有数据均为聚合形式，不与个人身份关联。",
+                "持久（最多 24 个月）",
+              ],
             ],
           },
         },
@@ -727,7 +841,7 @@ const informationCopyByLocale: Record<
         {
           title: "概述",
           paragraphs: [
-            "Exile2 Guides（\"本站\"）由 Exile2 Guides 团队（\"我们\"）运营。我们重视您的隐私，并致力于保护您的个人信息。本隐私政策说明了我们如何收集、使用、存储和分享您的信息，以及您享有的相关权利。",
+            'Exile2 Guides（"本站"）由 Exile2 Guides 团队（"我们"）运营。我们重视您的隐私，并致力于保护您的个人信息。本隐私政策说明了我们如何收集、使用、存储和分享您的信息，以及您享有的相关权利。',
             "通过使用本站，即表示您同意本隐私政策中描述的做法。如果您不同意本政策的任何部分，请停止使用本站。",
           ],
         },
@@ -794,13 +908,11 @@ const informationCopyByLocale: Record<
         },
         {
           title: "您的数据保护权利",
-          paragraphs: [
-            "根据您所在的司法管辖区，您可能享有以下数据保护权利：",
-          ],
+          paragraphs: ["根据您所在的司法管辖区，您可能享有以下数据保护权利："],
           bullets: [
             "访问权：您有权请求获取我们持有的关于您的个人信息的副本",
             "更正权：您有权要求更正任何不准确或不完整的信息",
-            "删除权：在特定情况下，您有权要求删除您的个人信息（\"被遗忘权\"）",
+            '删除权：在特定情况下，您有权要求删除您的个人信息（"被遗忘权"）',
             "限制处理权：您有权要求限制我们对您个人信息的使用",
             "数据可携带权：您有权请求将您的信息以结构化、机器可读的格式传输给您或另一方",
             "撤回同意权：如果我们基于同意处理您的信息，您有权随时撤回同意",
@@ -822,7 +934,9 @@ const informationCopyByLocale: Record<
         {
           title: "儿童隐私",
           paragraphs: [
-            "本站不面向 13 岁以下儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果您认为我们无意中收集了儿童的信息，请立即通过 " + contactEmail + " 联系我们，我们将在核实后删除相关信息。",
+            "本站不面向 13 岁以下儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果您认为我们无意中收集了儿童的信息，请立即通过 " +
+              contactEmail +
+              " 联系我们，我们将在核实后删除相关信息。",
           ],
         },
         {
@@ -834,7 +948,7 @@ const informationCopyByLocale: Record<
         {
           title: "隐私政策变更",
           paragraphs: [
-            "我们可能会不时更新本隐私政策。重大变更将通过网站通知或在政策页面顶部更新\"最后生效日期\"的方式告知。建议您定期查阅本政策以了解最新信息。",
+            '我们可能会不时更新本隐私政策。重大变更将通过网站通知或在政策页面顶部更新"最后生效日期"的方式告知。建议您定期查阅本政策以了解最新信息。',
           ],
         },
         {
@@ -855,7 +969,7 @@ const informationCopyByLocale: Record<
         {
           title: "条款接受",
           paragraphs: [
-            "欢迎访问 Exile2 Guides（\"本站\"）。通过使用本站，即表示您同意受本使用条款（\"条款\"）的约束。如果您不同意本条款的任何部分，请勿使用本站。",
+            '欢迎访问 Exile2 Guides（"本站"）。通过使用本站，即表示您同意受本使用条款（"条款"）的约束。如果您不同意本条款的任何部分，请勿使用本站。',
             "我们保留随时修改、更新或替换本条款任何部分的权利。修改后的条款将在发布时立即生效。您继续使用本站即表示接受更新后的条款。",
           ],
         },
@@ -880,9 +994,7 @@ const informationCopyByLocale: Record<
         },
         {
           title: "禁止的行为",
-          paragraphs: [
-            "使用本站时，您同意不从事以下行为：",
-          ],
+          paragraphs: ["使用本站时，您同意不从事以下行为："],
           bullets: [
             "将本站内容用于任何商业目的，包括但不限于出售、许可或创建衍生商业产品",
             "复制、镜像或爬取本站的全部或实质性部分，除非获得我们的明确书面授权",
@@ -899,13 +1011,15 @@ const informationCopyByLocale: Record<
           paragraphs: [
             "本站的原创内容（包括但不限于文字、图形设计、页面布局、代码和编辑分析）采用知识共享署名-非商业性使用 4.0 国际许可协议（CC BY-NC 4.0）授权。",
             "Path of Exile 2 的名称、标志、游戏截图和相关资产归 Grinding Gear Games 所有。本站对这些素材的使用基于合理使用原则，仅用于教育和信息目的。",
-            "未经授权复制本站内容可能违反版权法、商标法和其他法律。如果您认为本站内容侵犯了您的知识产权，请通过 " + contactEmail + " 联系我们。",
+            "未经授权复制本站内容可能违反版权法、商标法和其他法律。如果您认为本站内容侵犯了您的知识产权，请通过 " +
+              contactEmail +
+              " 联系我们。",
           ],
         },
         {
           title: "免责声明",
           paragraphs: [
-            "本站所有内容均按\"现状\"和\"可用\"的基础提供，不提供任何形式的明示或暗示的保证，包括但不限于对适销性、特定用途适用性和非侵权性的保证。",
+            '本站所有内容均按"现状"和"可用"的基础提供，不提供任何形式的明示或暗示的保证，包括但不限于对适销性、特定用途适用性和非侵权性的保证。',
             "我们不保证本站将始终可用、无错误、安全或不含病毒。您使用本站的风险自行承担。在法律允许的最大范围内，我们不对因使用或无法使用本站而产生的任何直接、间接、附带、特殊或后果性损害负责。",
           ],
         },
@@ -937,7 +1051,7 @@ const informationCopyByLocale: Record<
         {
           title: "条款修改",
           paragraphs: [
-            "我们保留随时修改本条款的权利。修改后的条款将在发布时立即生效。我们将在政策页面顶部更新\"最后生效日期\"以标示最近一次修订。",
+            '我们保留随时修改本条款的权利。修改后的条款将在发布时立即生效。我们将在政策页面顶部更新"最后生效日期"以标示最近一次修订。',
             "继续使用本站即表示您接受修改后的条款。如果您不同意更新后的条款，请停止使用本站。",
           ],
         },
@@ -968,7 +1082,9 @@ const informationCopyByLocale: Record<
 };
 
 /** 判断给定字符串是否为有效的信息页 slug */
-export function isInformationPageSlug(value: string): value is InformationPageSlug {
+export function isInformationPageSlug(
+  value: string,
+): value is InformationPageSlug {
   return (informationPageSlugs as readonly string[]).includes(value);
 }
 

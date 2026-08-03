@@ -76,6 +76,8 @@ const commonFrontMatterShape = {
   patchStatus: z.enum(patchStatuses),
   author: requiredText,
   reviewer: optionalText,
+  reviewMethod: optionalText,
+  verificationMethod: optionalText,
   publishedAt: isoDate.optional(),
   updatedAt: isoDate,
   verifiedAt: isoDate.optional(),
@@ -292,10 +294,11 @@ export const contentFrontMatterSchema = rawContentFrontMatterSchema.superRefine(
       });
     }
 
-    if (!data.reviewer) {
+    if (!data.reviewer && !data.reviewMethod) {
       context.addIssue({
         code: "custom",
-        message: "reviewer is required for published content",
+        message:
+          "reviewer is required for published content unless reviewMethod is set",
         path: ["reviewer"],
       });
     }

@@ -16,8 +16,12 @@ describe("information page copy", () => {
     const copy = getInformationPageCopy("en", "contact");
 
     expect(copy.title).toBe("Contact Us");
+    expect("form" in copy).toBe(false);
     expect(copy.sections[0]?.paragraphs?.join(" ")).toMatch(
-      /contact@exile2guides\.com/i,
+      /contact@stratlore\.com/i,
+    );
+    expect(copy.sections[0]?.connectionLinks?.[0]?.href).toBe(
+      "mailto:contact@stratlore.com",
     );
   });
 });

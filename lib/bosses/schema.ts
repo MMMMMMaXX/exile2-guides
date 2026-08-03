@@ -434,6 +434,8 @@ const bossArticleBaseSchema = z.strictObject({
 
   author: requiredText,
   reviewer: z.string().trim().default(""),
+  reviewMethod: z.string().trim().optional(),
+  verificationMethod: z.string().trim().optional(),
   createdAt: isoDate,
   publishedAt: isoDate.optional(),
   updatedAt: isoDate,
@@ -526,10 +528,17 @@ export const bossArticleSchema = bossArticleBaseSchema.superRefine(
       });
     }
 
-    if (!article.reviewer || !article.publishedAt) {
+    if (!article.publishedAt) {
       context.addIssue({
         code: "custom",
-        message: "published boss requires reviewer and publication date",
+        message: "published boss requires publication date",
+      });
+    }
+    if (!article.reviewer && !article.reviewMethod) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "published boss requires either a reviewer or a reviewMethod",
       });
     }
 

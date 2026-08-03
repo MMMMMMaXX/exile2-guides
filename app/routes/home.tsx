@@ -19,6 +19,9 @@ import {
 import type { Route } from "./+types/home";
 
 const homeHeroImage = resolveImageAsset("/images/prototype-v2/hero-home.webp");
+const currentGameVersion = "0.5.4e";
+const latestMajorPatchVersion = "0.5.4";
+const historicalPatchRange = `0.3.0–${currentGameVersion}`;
 
 const homeSectionOrder = [
   "build",
@@ -35,7 +38,7 @@ const sectionLabels = {
     build: ["Build library", "Builds"],
     guide: ["Recently updated", "Latest Guides"],
     item: ["Browse mechanics", "Items Database"],
-    patch: ["Current release", "Latest Patch"],
+    patch: ["Patch library", "Major Patches"],
     skill: ["Skill reference", "Skills"],
   },
   "zh-cn": {
@@ -43,7 +46,7 @@ const sectionLabels = {
     build: ["Build 资料库", "Build 攻略"],
     guide: ["最近更新", "最新攻略"],
     item: ["机制速查", "物品资料"],
-    patch: ["当前版本", "最新 Patch"],
+    patch: ["补丁资料库", "大型补丁"],
     skill: ["技能速查", "技能资料"],
   },
 } as const;
@@ -145,7 +148,7 @@ function HomeContentSection({
   );
 }
 
-/** 渲染当前 Patch 和编辑状态侧栏，避免原型中的虚构排行、数量和社区数据进入生产页。 */
+/** 渲染版本范围和编辑状态侧栏，避免把历史补丁误标为当前版本。 */
 function HomeSidebar({
   items,
   locale,
@@ -153,8 +156,10 @@ function HomeSidebar({
   items: readonly StaticContentPage[];
   locale: "en" | "zh-cn";
 }) {
-  const latestPatch = items.find(
-    (item) => item.frontMatter.contentType === "patch",
+  const latestMajorPatch = items.find(
+    (item) =>
+      item.frontMatter.contentType === "patch" &&
+      item.patchArticle?.patchVersion === latestMajorPatchVersion,
   );
   const zh = locale === "zh-cn";
 
@@ -163,19 +168,35 @@ function HomeSidebar({
       className="home-sidebar"
       aria-label={zh ? "补充内容" : "More content"}
     >
-      {latestPatch ? (
+      {latestMajorPatch ? (
         <section className="home-sidebar__panel">
           <header className="home-sidebar__heading">
-            <h2>{zh ? "当前版本" : "Current Patch"}</h2>
-            <span>{zh ? "最新" : "Current"}</span>
+            <h2>{zh ? "最新大型内容补丁" : "Latest major content patch"}</h2>
+            <span>{zh ? "大型补丁" : "Major patch"}</span>
           </header>
-          <p className="home-sidebar__patch">{latestPatch.frontMatter.patch}</p>
-          <p>{latestPatch.frontMatter.summary}</p>
-          <a href={`/${locale}/patches/${latestPatch.frontMatter.slug}/`}>
+          <p className="home-sidebar__patch">
+            {latestMajorPatch.frontMatter.patch}
+          </p>
+          <p>{latestMajorPatch.frontMatter.summary}</p>
+          <a href={`/${locale}/patches/${latestMajorPatch.frontMatter.slug}/`}>
             {zh ? "阅读版本分析" : "Read patch analysis"} →
           </a>
         </section>
       ) : null}
+
+      <section className="home-sidebar__panel">
+        <h2>{zh ? "版本范围" : "Version scope"}</h2>
+        <p>
+          <strong>{zh ? "当前游戏版本" : "Current game version"}</strong>
+          <br />
+          {currentGameVersion}
+        </p>
+        <p>
+          <strong>{zh ? "历史补丁资料库" : "Historical patch library"}</strong>
+          <br />
+          {historicalPatchRange}
+        </p>
+      </section>
 
       <section className="home-sidebar__panel">
         <h2>{zh ? "公开内容状态" : "Published content"}</h2>
@@ -259,8 +280,8 @@ export default function HomeRoute() {
             <div className="home-stat-chip">
               <span aria-hidden="true">◉</span>
               <span>
-                <strong>0.5.4</strong>
-                <small>{zh ? "跟踪版本" : "Tracked patch"}</small>
+                <strong>{currentGameVersion}</strong>
+                <small>{zh ? "当前游戏版本" : "Current game version"}</small>
               </span>
             </div>
             <div className="home-stat-chip">
@@ -316,7 +337,7 @@ export default function HomeRoute() {
           </form>
           <div className="home-popular-searches">
             <span>{zh ? "快速搜索：" : "Popular:"}</span>
-            {["Liquid Verisium", "Atziri", "0.5.4"].map((term) => (
+            {["Liquid Verisium", "Atziri", currentGameVersion].map((term) => (
               <a
                 href={`/${locale}/search/?q=${encodeURIComponent(term)}`}
                 key={term}
