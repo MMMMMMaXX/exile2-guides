@@ -1,0 +1,1042 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "en",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Jewels and Jewel Sockets: Types, Radius, Corruption and Passive Tree Use in 0.5.4",
+  "shortTitle": "Jewels and Jewel Sockets",
+  "summary": "How Jewels work in Path of Exile 2 0.5.4: where Jewel Sockets are, whether they must be allocated first, the Ruby/Emerald/Sapphire/Diamond base differences, Normal/Magic/Rare/Unique modifier counts, Corrupted versus normal jewels, why Time-Lost jewels affect nodes in radius, how Timeless differs from Time-Lost, Sinister Socket rules, how Radius is shown, Limited to, and the 0.2 /reclaimjewels fix. Includes a Jewel Value Formula for deciding if a socket is worth the passive point.",
+  "description": "Path of Exile 2 Jewels and Jewel Sockets guide 0.5.4: jewel socket allocation, base types, modifier counts, corruption, Time-Lost radius, Timeless vs Time-Lost, Sinister Sockets, radius overlap, Limited to, the /reclaimjewels command, and a jewel value formula.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Path of Exile 2 passive skill tree showing an allocated Jewel Socket and a white Radius circle projected by a Time-Lost jewel",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick answer",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "A Jewel is inserted into an allocated Jewel Socket on the Passive Skill Tree and grants bonuses to your character or, for Time-Lost and unique radius jewels, to passive nodes inside a Radius circle. Basic jewels apply their own explicit mods; Time-Lost jewels and unique radius jewels (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac, and Voices) rewrite nodes inside their Radius. Only allocate a socket when the jewel's value beats the passive point and path cost.",
+      "calloutDetail": [
+        "Jewel Sockets are passive nodes and must be allocated (connected to your tree) before a jewel can be socketed.",
+        "Time-Lost and unique radius jewels project a white circle; only nodes inside that circle are affected.",
+        "Use the cost formula in the Jewel Value section to decide whether a socket is worth the points."
+      ],
+      "answers": [
+        {
+          "label": "Use for",
+          "text": [
+            "Adding attributes, life, resistances, damage, or specialised allocation mechanics to a build through the passive tree."
+          ]
+        },
+        {
+          "label": "Check first",
+          "text": [
+            "Confirm the socket is allocated, read the jewel's Radius and Limited to, and price the passive points the socket costs."
+          ]
+        },
+        {
+          "label": "Avoid",
+          "text": [
+            "Spending 3-4 path points just to reach a low-value socket, assuming Timeless equals Time-Lost, or putting a unique jewel into a Sinister Socket."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Jewel family comparison"
+        },
+        {
+          "href": "#valuation",
+          "label": "Jewel value formula"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick facts",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Item class",
+          "value": "Jewel",
+          "note": [
+            "All jewels share the Jewel item class and slot into passive-tree Jewel Sockets (or Sinister Sockets on gear for some)."
+          ]
+        },
+        {
+          "label": "Socket must be allocated",
+          "value": "Yes",
+          "note": [
+            "A Jewel Socket is a passive node; it must be allocated and connected before you can right-click a jewel into it."
+          ]
+        },
+        {
+          "label": "Base types",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "Colored bases gate the explicit affix pool; Diamond is the prismatic (unique) base."
+          ]
+        },
+        {
+          "label": "Modifier count",
+          "value": "Normal 2 / Magic 2 / Rare up to 4",
+          "note": [
+            "A regular jewel rolls two explicit modifiers; Magic rolls two; Rare can reach four; Unique jewels carry fixed unique lines."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "Time-Lost and unique radius jewels only",
+          "note": [
+            "Basic jewels apply their own mods directly; only Time-Lost and unique radius jewels project a Radius circle."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "Per unique jewel",
+          "note": [
+            "Most unique jewels are Limited to 1 (or 3 for Grand Spectrum), so only one of that unique can be equipped."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Jewel family comparison",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Six jewel groups matter for build planning in 0.5.4. They differ in where they go, whether they project a Radius, and what they do. This is the Family Comparison Table from the content plan, presented as member cards."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Socketables",
+          "title": "Basic Jewel",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "Fits any allocated normal Jewel Socket. Applies its own explicit mods directly with no Radius.",
+            "Base color gates the affix pool: Ruby favours armour/martial, Sapphire favours ES/caster, Emerald favours evasion/ranged, Diamond is prismatic."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Time-Lost Jewel",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "Drops from Time-Lost Caches in the Trial of the Sekhemas. Has a Radius (Medium to Large).",
+            "Its modifiers 'in Radius also grant' bonuses to nodes inside the circle. Common mistake: buying the wrong modifier for your tree."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Diamond Unique Jewel",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "Unique jewels on the Diamond base with special allocation or Radius mechanics.",
+            "Common mistake: not understanding the Keystone or Radius behaviour before buying."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Timeless Jewel",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Drops from Expedition pinnacle bosses. Has a historic Radius and transforms passives by Seed and Keystone.",
+            "Common mistake: reading only the name and ignoring the Seed, which defines the result."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "Gear socket",
+          "title": "Sinister Jewel",
+          "sub": "Via Voices",
+          "body": [
+            "Appears on gear through Voices, not on the passive tree. Has no ordinary Radius.",
+            "Grants an independent jewel effect. Common mistake: trying to place a Unique Jewel into a Sinister Socket."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "Corruption",
+          "title": "Corrupted Jewel",
+          "sub": "Any base, after corruption",
+          "body": [
+            "Gains a corruption implicit and can no longer be altered by normal crafting currency.",
+            "Common mistake: assuming it can still be normally modified or Divined like a clean jewel."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Properties and representative tooltips",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Item class",
+          "value": "Jewel",
+          "notes": [
+            "All jewels share the Jewel item class and socket into passive-tree Jewel Sockets."
+          ]
+        },
+        {
+          "label": "Socket requirement",
+          "value": "Allocated Jewel Socket",
+          "notes": [
+            "The socket node must be allocated (connected to your tree) before a jewel can be inserted."
+          ]
+        },
+        {
+          "label": "Base types",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "Colored bases gate the explicit affix pool: Ruby favours armour/martial, Sapphire favours ES/caster, Emerald favours evasion/ranged, Diamond is prismatic."
+          ]
+        },
+        {
+          "label": "Explicit mods (normal)",
+          "value": "2 by default",
+          "notes": [
+            "A regular jewel rolls two explicit modifiers; Magic rolls two; Rare can reach four."
+          ]
+        },
+        {
+          "label": "Radius (Time-Lost only)",
+          "value": "Medium to Large",
+          "notes": [
+            "Only Time-Lost and unique radius jewels project a radius circle; basic jewels apply their own mods directly."
+          ]
+        },
+        {
+          "label": "Corrupted",
+          "value": "Adds a corruption modifier",
+          "notes": [
+            "A corrupted jewel gains a corruption implicit and can no longer be altered by crafting currency."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Overview: how jewels and sockets work",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "A Jewel Socket is a passive skill node. You allocate it like any other node, and once it is connected to your tree you can right-click a jewel into it. Basic jewels then grant their own explicit modifiers to your character. Time-Lost jewels and unique radius jewels do something different: they project a white Radius circle on the tree, and their modifiers are applied to the passive nodes that sit inside that circle.",
+        "Base type matters. Ruby, Emerald and Sapphire jewels are coloured bases whose explicit affix pool is biased toward armour/martial, evasion/ranged, and energy-shield/caster mods respectively. Diamond is the prismatic base used by unique jewels (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac) and can roll any modifier across the affix lists.",
+        "Modifier count by rarity: a normal jewel rolls two explicit modifiers, a Magic jewel rolls two, and a Rare jewel can roll up to four. Unique jewels replace these with fixed unique lines. A Corrupted jewel gains an extra corruption implicit and can no longer be altered by normal crafting currency, which is exactly why The Adorned wants corrupted Magic jewels.",
+        "Time-Lost versus Timeless is the single most common confusion. A Time-Lost jewel (Ruby/Emerald/Sapphire, or the unique Against the Darkness on Diamond) comes from the Trial of the Sekhemas and modifies nodes inside its Radius with random-affix-style bonuses. A Timeless jewel (Heroic Tragedy, Undying Hate) comes from Expedition and conquers or replaces passives inside its historic Radius based on a numeric Seed and a Keystone. They are different systems with different drop sources and different rules.",
+        "Sinister Sockets are not passive-tree sockets. They appear on gear (for example via the Voices unique jewel) and accept a specific set of jewels with an independent effect and no ordinary Radius. You cannot place a Unique Jewel into a Sinister Socket.",
+        "Radius is shown as a white circle the moment a radius jewel is socketed; the passive tree planner also previews it. Multiple radii can overlap, and a node sitting inside more than one radius receives the effect of each. Unique jewels are often Limited to 1, so only one copy of that unique can be equipped at a time.",
+        "After the 0.2 passive-tree rebuild some jewel sockets were removed from older characters. Affected jewels could be recovered with the /reclaimjewels chat command; that is a historical fix, but it remains the correct step for any old character that still shows missing jewels after a tree update."
+      ],
+      "bullets": [
+        "Socket first: a Jewel Socket must be allocated and connected before socketing.",
+        "Colored base gates affix pool; Diamond is prismatic (unique).",
+        "Normal/Magic = 2 mods, Rare = up to 4, Unique = fixed lines.",
+        "Time-Lost = Sekhemas radius bonuses; Timeless = Expedition Seed/Keystone conquest.",
+        "Sinister Sockets are on gear, not the tree, and reject Unique Jewels.",
+        "Radii can overlap; Limited to caps how many of a unique you can wear."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Socket eligibility matrix",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Which jewel fits which socket, whether it projects a Radius, and its special rule. 'text' cells give the relevant detail rather than a yes/no."
+      ],
+      "columns": [
+        "Jewel type",
+        "Normal Socket",
+        "Sinister Socket",
+        "Radius",
+        "Special rule"
+      ],
+      "rows": [
+        {
+          "label": "Basic (Ruby/Emerald/Sapphire/Diamond)",
+          "values": [
+            { "kind": "yes", "text": "Fits any allocated normal Jewel Socket" },
+            { "kind": "no", "text": "Not valid in Sinister Sockets" },
+            { "kind": "text", "text": "None (direct mods)" },
+            { "kind": "text", "text": "Grants its own explicit mods only" }
+          ]
+        },
+        {
+          "label": "Time-Lost Jewel",
+          "values": [
+            { "kind": "yes", "text": "Fits any allocated normal Jewel Socket" },
+            { "kind": "no", "text": "Not valid in Sinister Sockets" },
+            { "kind": "text", "text": "Medium to Large" },
+            { "kind": "text", "text": "Modifies nodes inside Radius" }
+          ]
+        },
+        {
+          "label": "Diamond Unique (Against the Darkness, etc.)",
+          "values": [
+            { "kind": "yes", "text": "Fits any allocated normal Jewel Socket" },
+            { "kind": "no", "text": "Not valid in Sinister Sockets" },
+            { "kind": "text", "text": "Medium (varies by jewel)" },
+            { "kind": "text", "text": "Special allocation or Radius mechanic" }
+          ]
+        },
+        {
+          "label": "Timeless Jewel",
+          "values": [
+            { "kind": "yes", "text": "Fits any allocated normal Jewel Socket" },
+            { "kind": "no", "text": "Not valid in Sinister Sockets" },
+            { "kind": "text", "text": "Historic (varies)" },
+            { "kind": "text", "text": "Conquers/replaces passives by Seed" }
+          ]
+        },
+        {
+          "label": "Sinister Jewel",
+          "values": [
+            { "kind": "no", "text": "Not valid in normal sockets" },
+            { "kind": "yes", "text": "Fits a Sinister Socket on gear" },
+            { "kind": "text", "text": "None (no ordinary Radius)" },
+            { "kind": "text", "text": "Independent jewel effect" }
+          ]
+        },
+        {
+          "label": "Corrupted Jewel",
+          "values": [
+            { "kind": "text", "text": "Yes if the base fits a normal socket" },
+            { "kind": "text", "text": "Corrupted Magic fits Sinister" },
+            { "kind": "text", "text": "Depends on its base" },
+            { "kind": "text", "text": "Extra corruption mod, no further crafting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "How to socket and preview a jewel",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Reach and allocate the socket",
+          "body": [
+            "Plan a path to the Jewel Socket and allocate it so it connects to your tree. The socket must be allocated before a jewel can go in."
+          ]
+        },
+        {
+          "label": "Pick the right jewel for the socket",
+          "body": [
+            "Match the base/affix to your build. For radius jewels, check which nodes fall inside the Radius on your actual tree."
+          ]
+        },
+        {
+          "label": "Socket and preview the Radius",
+          "body": [
+            "Right-click the jewel into the socket. A white circle appears; hover nodes to confirm which Small and Notable passives are affected."
+          ]
+        },
+        {
+          "label": "Allocate inside the Radius (if needed)",
+          "body": [
+            "For Time-Lost and unique radius jewels, the bonuses apply to nodes you allocate inside the Radius. Some special rolls extend to unallocated nodes."
+          ]
+        },
+        {
+          "label": "Remove or swap",
+          "body": [
+            "Right-click the socket to remove the jewel. Removed jewels return to your inventory; allocated nodes inside a radius jewel's area lose its bonus."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "A jewel socket sits allocated but empty; the surrounding nodes give only their printed values."
+        ],
+        "after": [
+          "After socketing a radius jewel, every allocated Small and Notable node inside the white circle gains the jewel's 'also grant' bonuses."
+        ],
+        "note": "The value added is the sum of the affected nodes' bonuses minus the passive points spent to reach and use the socket."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Outcomes by situation",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Attribute-stacking build passing a socket",
+          "audience": "Attribute stackers (Astramentis/HOWA)",
+          "benefit": "A socket on the path adds attributes, life or resistances for free",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Socket a strong explicit jewel; the path cost is already paid.",
+          "tags": [
+            "passive-tree"
+          ]
+        },
+        {
+          "scenario": "4 points detour to a low-value socket",
+          "audience": "Tight passive budgets",
+          "benefit": "Marginal jewel mods",
+          "risk": "High opportunity cost",
+          "level": "high",
+          "recommendation": "Skip the socket; those 4 points likely buy more elsewhere.",
+          "tags": [
+            "build-planning"
+          ]
+        },
+        {
+          "scenario": "Buying a specific unique jewel",
+          "audience": "Traders",
+          "benefit": "Predictable unique payoff",
+          "risk": "Medium (price by roll/socket)",
+          "level": "medium",
+          "recommendation": "Confirm the exact Socket and Radius before paying; see the unique jewel guides.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Old character missing jewels after 0.2",
+          "audience": "Returning players",
+          "benefit": "Recovers affected jewels",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Use the /reclaimjewels chat command; do not re-buy on trade.",
+          "tags": [
+            "build-planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Build usage",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Jewels are build-defining whenever a socket sits on your path or a radius jewel can cover nodes you already want. The personas below show the main ways jewels are used."
+      ],
+      "builds": [
+        {
+          "title": "Attribute stacking",
+          "description": "Attribute-stacking builds (Astramentis, Hand of Wisdom and Action) use sockets on the path for flat attributes and strength/dexterity/intelligence scaling.",
+          "href": "/en/items/astramentis/"
+        },
+        {
+          "title": "Defensive life/resist jewels",
+          "description": "Basic jewels with life and resistances fill holes that gear cannot, especially for characters short on elemental resistances."
+        },
+        {
+          "title": "Radius-enabling uniques",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned and Megalomaniac turn a single socket into multiple allocated or boosted nodes.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "title": "Passive-tree planning",
+          "description": "Plan socket paths in the build planner before committing points; import/export planner files to share the exact tree.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternatives",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "If a socket is far off your path, the opportunity cost of reaching it usually beats any jewel you could place there. In that case, spend the points on ordinary passive nodes or reroute your tree to pass a socket naturally.",
+        "For attribute or resistance needs, gear suffixes, catalyst quality, and charms often deliver the same stats more cheaply than a detour socket. The Adorned and other unique amplifiers are alternatives only when you already invest in corrupted Magic jewels.",
+        "Timeless jewels are an alternative to Time-Lost jewels only when your build wants Seed-driven passive conquest rather than simple radius bonuses; they are not interchangeable."
+      ],
+      "bullets": [
+        "Spend detour points on normal nodes instead of a far socket.",
+        "Gear, catalysts and charms can replace jewel stats.",
+        "Timeless is not a drop-in replacement for Time-Lost."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Valuation: use, sell, or hold",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Jewel value is not a single currency price; it is a decision about passive points. Use the Jewel Value Formula below and the three worked examples to decide."
+      ],
+      "use": {
+        "condition": "The socket is on your path or the radius covers nodes you want",
+        "first": "Socket the jewel; the path cost is already paid",
+        "risk": "Occupies one socket and any points spent to reach it",
+        "text": [
+          "Use when net benefit (jewel stats minus point and path cost minus opportunity cost) is positive."
+        ]
+      },
+      "sell": {
+        "condition": "You found a duplicate or a jewel that does not fit your tree",
+        "first": "List on trade by base, corruption and explicit mods",
+        "risk": "Liquid but value depends on the exact roll and meta demand",
+        "text": [
+          "Sell when a different build would value it more than your current tree does."
+        ]
+      },
+      "hold": {
+        "condition": "You may rebuild around jewels later",
+        "first": "Keep well-rolled rares and uniques; they retain value across leagues",
+        "risk": "Inventory space only",
+        "text": [
+          "Hold high-roll jewels; they are long-term build assets."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Risk and failure cost",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "4-point detour to a low-value socket",
+          "gain": "Small jewel mods",
+          "loss": "4 passive points that could buy a notable or key node",
+          "level": "high",
+          "recommendation": "Only take the socket if it is on your natural path."
+        },
+        {
+          "scenario": "Wrong Time-Lost modifier for your tree",
+          "gain": "Radius coverage",
+          "loss": "Modifier bonuses wasted on nodes you do not allocate",
+          "level": "medium",
+          "recommendation": "Preview the Radius and pick the modifier that matches allocated nodes."
+        },
+        {
+          "scenario": "Assuming Timeless equals Time-Lost",
+          "gain": "None",
+          "loss": "Bought the wrong jewel system for the build",
+          "level": "medium",
+          "recommendation": "Confirm drop source and mechanic before buying."
+        },
+        {
+          "scenario": "Unique jewel into a Sinister Socket",
+          "gain": "None",
+          "loss": "Wasted attempt; unique jewels are rejected by Sinister Sockets",
+          "level": "low",
+          "recommendation": "Use Sinister Sockets only for their supported jewel set."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Community evidence",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Reddit question",
+          "question": "Do I need to allocate the Jewel Socket before socketing a jewel?",
+          "summary": [
+            "A player asked whether a jewel can be placed into an unallocated socket node."
+          ],
+          "editorialAnalysis": [
+            "Jewel Sockets are passive nodes. They must be allocated and connected to your tree before a jewel can be inserted; an unallocated socket shows no jewel slot."
+          ],
+          "officialAnswer": [
+            "Allocate the socket first; only then can you right-click a jewel into it."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "How to socket a jewel"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "Guide",
+          "question": "Is Timeless the same as Time-Lost?",
+          "summary": [
+            "A guide mixed up Timeless (Expedition) and Time-Lost (Sekhemas) jewels."
+          ],
+          "editorialAnalysis": [
+            "They are different systems. Time-Lost jewels come from the Trial of the Sekhemas and add radius bonuses; Timeless jewels come from Expedition and conquer/replace passives by Seed and Keystone."
+          ],
+          "officialAnswer": [
+            "Treat them as separate families; read the drop source and mechanic before buying."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Jewel family comparison"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "Guide",
+          "question": "Why did my jewels disappear after a passive-tree update?",
+          "summary": [
+            "Returning players reported missing jewels after the 0.2 tree rebuild."
+          ],
+          "editorialAnalysis": [
+            "The 0.2 passive-tree changes removed some sockets from older characters. Affected jewels are recoverable with the /reclaimjewels command rather than re-bought."
+          ],
+          "officialAnswer": [
+            "Use /reclaimjewels to recover jewels from removed sockets; this is a historical fix, not a current drop change."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Patch history"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problems and direct answers",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Right-click does nothing on the socket",
+          "directAnswer": [
+            "The Jewel Socket is not allocated or not connected to your tree. Allocate it first, then socket the jewel."
+          ],
+          "checks": [
+            "Open the passive tree, confirm the socket node is lit and connected, then retry."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Socketing steps"
+            }
+          ]
+        },
+        {
+          "symptom": "Radius circle is tiny and covers nothing useful",
+          "directAnswer": [
+            "The jewel's Radius is small or your allocated nodes are outside it. Re-plan the socket or pick a jewel with a larger Radius for that area."
+          ],
+          "checks": [
+            "Preview the Radius in the planner and count allocated nodes inside it."
+          ]
+        },
+        {
+          "symptom": "Unique jewel won't go into a Sinister Socket",
+          "directAnswer": [
+            "Sinister Sockets reject Unique Jewels; they accept only their supported jewel set (e.g. Corrupted Magic)."
+          ],
+          "checks": [
+            "Use a normal passive-tree socket for unique jewels."
+          ]
+        },
+        {
+          "symptom": "Jewels missing after a tree update",
+          "directAnswer": [
+            "If a socket was removed, recover the jewel with /reclaimjewels rather than buying a new one."
+          ],
+          "checks": [
+            "Run /reclaimjewels in chat; check inventory and stash."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Video walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 Jewels, Corruption and Passive Tree Specialisation",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "Community creator",
+          "description": "Covers jewel corruption, passive-tree specialisation and an Against the Darkness mention in a live build walkthrough.",
+          "takeaway": "Shows how jewels and corruption fit into a real passive-tree plan and where a radius jewel like Against the Darkness changes allocated nodes.",
+          "timestamps": [
+            { "label": "Passive tree specialisation", "time": "01:54" },
+            { "label": "Corruption and jewels", "time": "03:03" },
+            { "label": "Against the Darkness mention", "time": "02:49" },
+            { "label": "Build summary", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Media gallery",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Allocated Jewel Socket on the passive skill tree",
+          "note": "Shows the socket node lit and connected before socketing."
+        },
+        {
+          "caption": "Unallocated versus allocated socket comparison",
+          "note": "A jewel slot only appears once the socket is allocated."
+        },
+        {
+          "caption": "White Radius circle projected by a Time-Lost jewel",
+          "note": "Nodes inside the circle receive the jewel's bonuses."
+        },
+        {
+          "caption": "Basic, Time-Lost, Timeless and Diamond unique comparison",
+          "note": "Four jewel groups with different sockets and Radius behaviour."
+        },
+        {
+          "caption": "Sinister Socket location on gear",
+          "note": "Appears via Voices, separate from passive-tree sockets."
+        },
+        {
+          "caption": "The /reclaimjewels command result",
+          "note": "Recovers jewels from sockets removed by the 0.2 tree rebuild."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Connected content",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "Unique Time-Lost Diamond with two random radius modifiers.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Unique Diamond that allocates a Keystone without connection.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "Unique Diamond with a ring-shaped remote allocation area.",
+          "href": "/en/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "Amplifies corrupted Magic jewels in radius.",
+          "href": "/en/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "Unique Diamond that allocates Random Notables.",
+          "href": "/en/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices and Sinister Jewel Sockets",
+          "description": "Adds Sinister Sockets on gear for specific jewels.",
+          "href": "/en/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless Jewels",
+          "description": "Heroic Tragedy and Undying Hate Seed-driven conquest.",
+          "href": "/en/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "Drops Against the Darkness in the Trial of the Sekhemas.",
+          "href": "/en/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Respec, Passive and Ascendancy Guide",
+          "description": "How passive points and respecs work in 0.5.4.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Build Planner: Build Files Import/Export",
+          "description": "Plan socket paths and share trees.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "The current Early Access patch context.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Patch history",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, current)",
+          "changes": [
+            "Jewels and Jewel Sockets function as described: allocated sockets, colored base affix pools, and Radius behaviour for Time-Lost and unique radius jewels."
+          ]
+        },
+        {
+          "version": "0.2.1 (Socketables and Unique Drops)",
+          "changes": [
+            "Adjusted unique drop access for socketable and unique jewel sources."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "Passive-tree rebuild removed some Jewel Sockets from older characters; /reclaimjewels recovers affected jewels."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Jewels and Jewel Sockets introduced in Early Access."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Sources and verification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 patch notes and official item documentation.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2Wiki and poe2db jewel and Against the Darkness data.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Sportskeeda Time-Lost Jewel guide and GameRant Against the Darkness guide.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Reddit r/PathOfExile2 discussion of sockets, radius and missing jewels.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Community video covering jewel corruption and passive-tree specialisation.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial publication covering Jewel Sockets, base types, modifier counts, corruption, Time-Lost versus Timeless, Sinister Sockets, Radius overlap, Limited to, the /reclaimjewels fix, and the Jewel Value Formula for 0.5.4."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - How to get Time-Lost Jewels",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - How to get Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 Jewels and Corruption",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Jewels and Jewel Sockets Guide (0.5.4)",
+    "description": "How Jewels and Jewel Sockets work in PoE2 0.5.4: socket allocation, Ruby/Emerald/Sapphire/Diamond bases, modifier counts, corruption, Time-Lost radius, Timeless vs Time-Lost, Sinister Sockets, and a jewel value formula.",
+    "noindex": false
+  }
+}

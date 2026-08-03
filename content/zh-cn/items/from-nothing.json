@@ -1,0 +1,1192 @@
+{
+  "id": "from-nothing",
+  "slug": "from-nothing",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "From Nothing 指南：远程 Keystone 分配、天赋点节省与交易搜索（0.5）",
+  "shortTitle": "From Nothing",
+  "summary": "From Nothing 是流放之路2 0.5.4 中的一枚传奇钻石珠宝，掉落时会绑定到一个特定的 Keystone，并在该 Keystone 周围生成一圈固定的小型范围，让你无需连线即可分配范围内的天赋。本文讲解远程分配机制、必定腐化且只能由迷雾之王（+4 深渊）掉落的设定、天赋点节省计算、Keystone 池、如何按精确 Keystone 搜索交易，以及与 Controlled Metamorphosis 的区别。",
+  "description": "From Nothing 在 PoE2 0.5.4 中的运作方式：绑定 Keystone 的传奇钻石，远程分配周围天赋、天赋点节省、迷雾之王 +4 掉落、按 Keystone 交易搜索与天赋规划。",
+  "itemType": "remote-allocation",
+  "rarity": "unique",
+  "requiredLevel": null,
+  "useCases": [
+    "remote-allocation",
+    "passive-point-saving",
+    "build-enabling"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-jewels",
+  "itemClass": "jewel",
+  "baseType": "diamond",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/audience-with-the-king-hero.webp",
+  "cardImage": "/images/items/audience-with-the-king-hero.webp",
+  "imageAlt": "流放之路2 From Nothing 传奇钻石珠宝，在天赋树上围绕绑定的 Keystone 实现远程分配周围天赋",
+  "tags": [
+    "unique-jewel",
+    "remote-allocation",
+    "passive-point-saving",
+    "keystone",
+    "diamond",
+    "build-enabling",
+    "ritual",
+    "king-in-the-mists"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "From Nothing 是一枚传奇钻石珠宝，掉落时绑定到一个特定 Keystone，并在该 Keystone 周围生成一圈固定的小型范围。范围内的所有小型与精华天赋都可以在不连线的情况下分配，但你仍需为每个节点支付天赋点，且 Keystone 本身不会被授予。它必定腐化、无法用机会石或神圣石、只能由迷雾之王在 +4 深渊难度掉落。",
+      "calloutDetail": [
+        "珠宝与目标的 Keystone 是两个不同的概念：珠宝插在哪里由你决定，但范围出现在珠宝所绑定的 Keystone 周围，无论该 Keystone 在天赋树的哪个位置。",
+        "你省下的是路径点，而不是节点点——每个被分配的节点仍然消耗一个天赋点。"
+      ],
+      "answers": [
+        {
+          "label": "适用场景",
+          "text": [
+            "在不花费中间路径点的前提下，触达一个遥远且能定义流派（build-defining）的 Keystone 附近的天赋。"
+          ]
+        },
+        {
+          "label": "先确认",
+          "text": [
+            "读取词缀中精确的绑定 Keystone；绑定到错误 Keystone 的副本对你的流派几乎一文不值。"
+          ]
+        },
+        {
+          "label": "避免",
+          "text": [
+            "误以为珠宝会授予 Keystone，或以为它可以机会石/神圣石化——它永久腐化且锁定 Keystone。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#passive-point-savings",
+          "label": "天赋点节省"
+        },
+        {
+          "href": "#trade-search",
+          "label": "按 Keystone 交易搜索"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "基础类型",
+          "value": "钻石",
+          "note": [
+            "From Nothing 是钻石珠宝基底的传奇变体。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "20",
+          "note": [
+            "由 poe2db 与 poe2dictionary 条目确认；对一件终局珠宝而言等级门槛很低。"
+          ]
+        },
+        {
+          "label": "装备上限",
+          "value": "1",
+          "note": [
+            "同一棵天赋树上只能激活一枚 From Nothing。"
+          ]
+        },
+        {
+          "label": "范围",
+          "value": "小型（固定于绑定 Keystone 周围）",
+          "note": [
+            "固定的小型范围围绕绑定的 Keystone 生成，而非围绕珠宝插槽。"
+          ]
+        },
+        {
+          "label": "腐化",
+          "value": "是，必定",
+          "note": [
+            "掉落即腐化：无法用机会石、神圣石或其他通货修改。"
+          ]
+        },
+        {
+          "label": "掉落来源",
+          "value": "迷雾之王（+4 深渊）",
+          "note": [
+            "由深渊虚无之十字（Crux of Nothingness）的迷雾之王在难度4掉落；无法用机会石化。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "家族概览：钻石传奇珠宝",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "From Nothing 属于钻石传奇珠宝家族——五枚能改写天赋树使用方式的流派赋能珠宝。每个成员解决不同的天赋树问题。"
+      ],
+      "members": [
+        {
+          "id": "against-the-darkness",
+          "eyebrow": "范围属性",
+          "title": "Against the Darkness",
+          "sub": "时光失落钻石",
+          "body": [
+            "随机生成两条范围词缀强化范围内的小型天赋；与 From Nothing 固定 Keystone 的思路正好相反。"
+          ],
+          "tags": [
+            "radius",
+            "attribute-stacking"
+          ]
+        },
+        {
+          "id": "controlled-metamorphosis",
+          "eyebrow": "环形分配",
+          "title": "Controlled Metamorphosis",
+          "sub": "环形半径钻石",
+          "body": [
+            "生成环形（annulus）半径进行远程分配，但附带元素抗性惩罚。"
+          ],
+          "tags": [
+            "ring-radius",
+            "passive-point-saving"
+          ]
+        },
+        {
+          "id": "the-adorned",
+          "eyebrow": "魔法珠宝放大",
+          "title": "The Adorned",
+          "sub": "腐化魔法放大",
+          "body": [
+            "放大附近腐化魔法珠宝的效果；属于不同的珠宝放大细分领域。"
+          ],
+          "tags": [
+            "magic-jewels",
+            "effect-scaling"
+          ]
+        },
+        {
+          "id": "megalomaniac",
+          "eyebrow": "随机精华",
+          "title": "Megalomaniac",
+          "sub": "精华分配者",
+          "body": [
+            "直接授予一到三个随机精华，无需路径即可分配。"
+          ],
+          "tags": [
+            "notable-allocation",
+            "passive-point-saving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "属性与词缀",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "基础类型",
+          "value": "钻石",
+          "notes": [
+            "占据天赋树上珠宝插槽的珠宝基底。"
+          ]
+        },
+        {
+          "label": "稀有度",
+          "value": "传奇",
+          "notes": [
+            "一枚流派赋能传奇珠宝。"
+          ]
+        },
+        {
+          "label": "需求等级",
+          "value": "20",
+          "notes": [
+            "角色达到 20 级即可装备。"
+          ]
+        },
+        {
+          "label": "装备上限",
+          "value": "1",
+          "notes": [
+            "每棵天赋树仅可激活一枚。"
+          ]
+        },
+        {
+          "label": "范围",
+          "value": "小型，固定于绑定 Keystone 周围",
+          "notes": [
+            "范围以词缀中命名的 Keystone 为中心，无论它在天赋树何处。"
+          ]
+        },
+        {
+          "label": "显式 - 远程分配",
+          "value": "范围内的 [Keystone] 被动可在不与天赋树连接的情况下分配",
+          "notes": [
+            "每枚副本命名一个 Keystone；该 Keystone 本身不被此条词缀分配。"
+          ]
+        },
+        {
+          "label": "腐化",
+          "value": "是，必定",
+          "notes": [
+            "掉落即腐化：没有机会石、神圣石或其他通货能改变它。"
+          ]
+        },
+        {
+          "label": "掉落",
+          "value": "迷雾之王，深渊虚无之十字，难度4",
+          "notes": [
+            "需要“面见国王”（An Audience with the King）以及 +4 深渊仪式地图进度。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "概览与新旧版本对比",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "From Nothing 是流放之路2 中最能定义流派的珠宝之一，因为它消除了你的天赋树与一组天赋之间的路径成本。当插入任意已分配珠宝插槽时，它会命名一个 Keystone（例如 Mind Over Matter、Chaos Inoculation 或 Resolute Technique），并在该 Keystone 周围绘制一圈固定的小型范围。该范围内每个小型与精华天赋都可以用天赋点分配，即使它们没有与天赋树其余部分相连。",
+        "有两个概念容易混淆。第一，珠宝插槽与目标 Keystone 是不同位置：你决定把珠宝插在哪里，但范围出现在绑定的 Keystone 周围，无论它在天赋树的哪个位置。第二，珠宝不会授予 Keystone——它只触达周围的被动。如果你想要 Keystone 本身，仍需正常路径过去。",
+        "你始终为每个分配的节点支付天赋点；节省的是你跳过的路径点。由于每枚副本都永久腐化并绑定到 30+ 个 Keystone 池中的某一个随机 Keystone，交易市场完全围绕副本携带哪个 Keystone 来组织。",
+        "当前版本与旧版对比：核心词缀自 0.1.0 起保持稳定，但可roll的 Keystone 池已经变化。0.3.0 补丁新增 Blackflame Covenant、Hollow Palm Technique、Ritual Cadence 与 Walker of the Wilds，同时移除 Acrobatics；0.4.0 补丁新增 Primal Hunger、Scarred Faith 与 Wildsurge Incantation，同时移除 Walker of the Wilds。基于 0.3 之前 Keystone 池的旧社区建议可能与当前掉落池不符，因此购买任何副本前都要核实精确 Keystone。"
+      ],
+      "bullets": [
+        "固定的小型范围围绕绑定的 Keystone，而非围绕插槽。",
+        "Keystone 本身不被珠宝分配。",
+        "你仍需为每个节点付费；只跳过路径。",
+        "必定腐化，上限1，无法机会石或神圣石化。",
+        "由迷雾之王在 +4 深渊难度掉落。",
+        "Keystone 池随补丁变化——购买前核对当前池。"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "适用性：珠宝能触达什么",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "范围是以绑定 Keystone 为中心的固定小型圆盘。只有圆盘内的节点可达；Keystone 本身被明确排除。"
+      ],
+      "columns": [
+        "结果",
+        "详情"
+      ],
+      "rows": [
+        {
+          "label": "绑定的 Keystone",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不被珠宝分配"
+            },
+            {
+              "kind": "text",
+              "text": "只有周围的被动被远程分配；Keystone 仍锁定，除非你路径过去。"
+            }
+          ]
+        },
+        {
+          "label": "范围内小型天赋",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可远程分配"
+            },
+            {
+              "kind": "text",
+              "text": "固定范围内的任意小型节点都可在不与天赋树相连的情况下获取。"
+            }
+          ]
+        },
+        {
+          "label": "范围内精华",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "可远程分配"
+            },
+            {
+              "kind": "text",
+              "text": "范围内的精华通常是最有价值的获取目标。"
+            }
+          ]
+        },
+        {
+          "label": "范围外节点",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不可分配"
+            },
+            {
+              "kind": "text",
+              "text": "只有小型范围内的节点才算数；远处节点仍需正常路径。"
+            }
+          ]
+        },
+        {
+          "label": "第二枚 From Nothing",
+          "values": [
+            {
+              "kind": "no",
+              "text": "上限为1"
+            },
+            {
+              "kind": "text",
+              "text": "同一棵天赋树只能激活一枚 From Nothing。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "使用：插入、分配、规划",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "到达一个已分配的珠宝插槽",
+          "body": [
+            "将 From Nothing 放入天赋树上任意已分配的珠宝插槽。插槽本身必须先被分配，范围才能形成。"
+          ]
+        },
+        {
+          "label": "确认绑定的 Keystone",
+          "body": [
+            "读取词缀，了解副本绑定到哪个 Keystone。固定的小型范围会在该 Keystone 周围生成，无论它在天赋树何处。"
+          ]
+        },
+        {
+          "label": "分配范围内的节点",
+          "body": [
+            "用天赋点分配范围内任意小型或精华节点，无需将它们与主线相连。你仍需支付每个节点的点成本。"
+          ]
+        },
+        {
+          "label": "规划 Keystone 路径",
+          "body": [
+            "如果你还想要 Keystone 本身，仍须正常路径过去；珠宝不授予它。"
+          ]
+        },
+        {
+          "label": "需要时移除",
+          "body": [
+            "右键点击珠宝即可移除。所有远程分配的节点会取消分配并返还其点数。"
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "路径到一个遥远 Keystone 的邻居需要花费你和该簇之间的每个中间节点。"
+        ],
+        "after": [
+          "同样的邻居直接从范围分配，完全跳过连接路径。"
+        ],
+        "note": "珠宝用一枚珠宝插槽加上固定的绑定 Keystone 限制，换取你跳过的路径点。"
+      }
+    },
+    {
+      "id": "passive-point-savings",
+      "order": 66,
+      "title": "天赋点节省表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "示意性节省。净节省 = 正常到达目标节点所需的路径点 减去 通过珠宝支付的点数（目标节点 + 插槽路径）。你仍需为每个分配的节点付费。",
+      "columns": [
+        {
+          "key": "scenario",
+          "label": "场景"
+        },
+        {
+          "key": "normal",
+          "label": "正常路径点"
+        },
+        {
+          "key": "jewel",
+          "label": "通过珠宝的点数"
+        },
+        {
+          "key": "net",
+          "label": "净节省"
+        },
+        {
+          "key": "gained",
+          "label": "获得的精华/节点"
+        },
+        {
+          "key": "lost",
+          "label": "放弃的普通珠宝价值"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "scenario": "低价值示例",
+            "normal": "5",
+            "jewel": "3（2节点 + 1插槽）",
+            "net": "2",
+            "gained": "两个边缘小型节点",
+            "lost": "一枚普通稀有珠宝的属性"
+          },
+          "tags": [
+            "low-value"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "合理示例",
+            "normal": "12",
+            "jewel": "6（精华 + 4小型 + 1插槽）",
+            "net": "6",
+            "gained": "一个实用精华 + 四个小型节点",
+            "lost": "一枚普通稀有珠宝的属性"
+          },
+          "tags": [
+            "reasonable"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "无效示例（节省多但流派不匹配）",
+            "normal": "14",
+            "jewel": "5（Keystone区精华 + 3小型 + 1插槽）",
+            "net": "9",
+            "gained": "一个不适合流派的精华",
+            "lost": "一枚普通稀有珠宝的属性"
+          },
+          "tags": [
+            "invalid"
+          ]
+        }
+      ],
+      "note": "数字为示意；你的实际节省取决于绑定 Keystone 相对天赋树的位置以及哪些节点落在固定范围内。购买前务必在天赋树规划器中规划。"
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "不同情境下的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "remote-allocation",
+        "passive-point-saving",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "流派需要遥远 Keystone 附近的天赋",
+          "audience": "跨系 / 混合流派玩家",
+          "benefit": "跳过大量路径点触达远处簇",
+          "risk": "低（若 Keystone 匹配）",
+          "level": "low",
+          "recommendation": "当绑定 Keystone 符合流派需求时是强力选择。",
+          "tags": [
+            "build-enabling"
+          ]
+        },
+        {
+          "scenario": "绑定 Keystone 错误",
+          "audience": "冲动购买者",
+          "benefit": "对流派无收益",
+          "risk": "高（浪费插槽）",
+          "level": "high",
+          "recommendation": "只购买流派确切需要的 Keystone；按 Keystone 名称过滤交易。",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "路径本就很短",
+          "audience": "中央天赋树流派",
+          "benefit": "极少或没有",
+          "risk": "中（浪费插槽）",
+          "level": "medium",
+          "recommendation": "若目标节点正常路径很便宜则跳过。",
+          "tags": [
+            "passive-point-saving"
+          ]
+        },
+        {
+          "scenario": "在交易上购买",
+          "audience": "交易者",
+          "benefit": "按 Keystone 清晰的估值曲线",
+          "risk": "中（为热门 Keystone 溢价）",
+          "level": "medium",
+          "recommendation": "付款前将绑定 Keystone 与你的流派对照。",
+          "tags": [
+            "trade"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "流派用法",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "当流派需要靠近某个特定 Keystone、却又无法高效路径过去时，From Nothing 就会发挥作用。以下四种人格展示了它的亮点。"
+      ],
+      "builds": [
+        {
+          "title": "跨系 / 混合流派赋能",
+          "description": "触达天赋树另一侧靠近 Keystone 的簇，否则会浪费大量路径点。",
+          "href": "/zh-cn/items/astramentis/"
+        },
+        {
+          "title": "属性堆叠配置",
+          "description": "在 Keystone 附近获取属性小型节点，无需绕道属性轮。"
+        },
+        {
+          "title": "远处精华速取",
+          "description": "第一天就拿走范围内高价值精华，而无需走长路。"
+        },
+        {
+          "title": "流派定义型 Keystone 接入",
+          "description": "触达流派定义型 Keystone 的邻居（例如 Chaos Inoculation 区域），而无需投入整条分支。",
+          "href": "/zh-cn/items/ghostwrithe/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "替代方案",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "一枚普通或稀有钻石珠宝为同一插槽提供固定属性（生命、属性、抗性、伤害），没有 Keystone 依赖，也没有路径技巧。如果你的目标节点路径很便宜，稀有珠宝几乎总是胜出。",
+        "Controlled Metamorphosis 是更近的表亲：它也远程分配，但通过环形带并以元素抗性为代价。Megalomaniac 直接授予随机精华。Against the Darkness 强化范围内的小型天赋。每个解决不同的天赋树问题，因此按流派实际需要选择。",
+        "由于 From Nothing 锁定 Keystone，真正的替代方案往往是正常路径到 Keystone，并把插槽留给稀有珠宝——只有当跳过的路径明显胜过稀有珠宝属性时才使用它。"
+      ],
+      "bullets": [
+        "稀有钻石珠宝：灵活属性，无 Keystone 依赖。",
+        "Controlled Metamorphosis：带抗性成本的环形远程分配。",
+        "Megalomaniac：直接随机精华分配。",
+        "正常路径：通常比错误 Keystone 的副本更便宜。"
+      ]
+    },
+    {
+      "id": "trade-search",
+      "order": 106,
+      "title": "按精确 Keystone 交易搜索",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "如何在官方交易站找到流派需要的副本。不要复制旧交易链接——请实时过滤。",
+      "columns": [
+        {
+          "key": "step",
+          "label": "步骤"
+        },
+        {
+          "key": "action",
+          "label": "操作"
+        },
+        {
+          "key": "detail",
+          "label": "为何重要"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "step": "1",
+            "action": "搜索“From Nothing Diamond”",
+            "detail": "打开官方交易站，在主栏输入珠宝名称。"
+          },
+          "tags": [
+            "search"
+          ]
+        },
+        {
+          "cells": {
+            "step": "2",
+            "action": "添加词缀过滤：Keystone 名称",
+            "detail": "过滤“范围内的 [Keystone] 被动可在不连接的情况下分配”——例如 Conduit、Resonance 或 Mind Over Matter。"
+          },
+          "tags": [
+            "filter"
+          ]
+        },
+        {
+          "cells": {
+            "step": "3",
+            "action": "确认腐化",
+            "detail": "每枚副本都必定腐化；非腐化列表是错误或不同物品。"
+          },
+          "tags": [
+            "verify"
+          ]
+        },
+        {
+          "cells": {
+            "step": "4",
+            "action": "确认上限：1",
+            "detail": "确保是传奇（而非改名的稀有）；只能激活一枚 From Nothing。"
+          },
+          "tags": [
+            "verify"
+          ]
+        },
+        {
+          "cells": {
+            "step": "5",
+            "action": "确认当前联盟",
+            "detail": "过滤到当前 Early Access 联盟与在线卖家；不要复用旧交易链接。"
+          },
+          "tags": [
+            "league"
+          ]
+        }
+      ],
+      "note": "由于每枚珠宝永久绑定到一个随机 Keystone，请按流派确切需要的 Keystone 过滤，而不是买你看到的第一枚副本。"
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "估值：使用、出售或保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "From Nothing 的价值几乎完全由它绑定到哪个 Keystone 决定。绑定到热门流派定义型 Keystone（例如 Mind Over Matter、Chaos Inoculation 或 Resolute Technique）的副本可能价值许多神圣石，而偏门 Keystone 可能近乎一文不值。",
+        "以下价格反映 Early Access 0.5.4 交易站在 2026 年 8 月初的情况，并随供需不断变化。"
+      ],
+      "use": {
+        "condition": "你的流派需要此副本绑定到的精确 Keystone 附近的天赋",
+        "first": "插入它并分配你需要的范围内节点",
+        "risk": "占用珠宝插槽；仅一枚生效；错误 Keystone = 浪费",
+        "text": [
+          "对正确 Keystone 而言，它是游戏中最强的流派赋能珠宝之一。"
+        ]
+      },
+      "sell": {
+        "condition": "绑定 Keystone 对你偏门，或你找到重复",
+        "first": "按精确 Keystone 名称与交易过滤上架；热门 Keystone 高价出售",
+        "risk": "高度依赖 Keystone 的需求",
+        "text": [
+          "交易需求集中在少数热门 Keystone 上。"
+        ]
+      },
+      "hold": {
+        "condition": "你找到热门 Keystone 副本，并可能日后围绕它构建",
+        "first": "保留；热门 Keystone 跨联盟保值",
+        "risk": "仅占用背包空间",
+        "text": [
+          "好的 Keystone 副本是长期资产。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "错误 Keystone",
+          "gain": "若节点匹配则跳过路径",
+          "loss": "珠宝对流派近乎一文不值",
+          "level": "high",
+          "recommendation": "只购买流派确切需要的 Keystone；按 Keystone 名过滤交易。"
+        },
+        {
+          "scenario": "浪费珠宝插槽",
+          "gain": "少量远程节点",
+          "loss": "放弃了一枚稀有或传奇珠宝插槽",
+          "level": "medium",
+          "recommendation": "将跳过的路径点与普通珠宝属性对比。"
+        },
+        {
+          "scenario": "误以为授予 Keystone",
+          "gain": "无",
+          "loss": "Keystone 仍锁定，流派未启用",
+          "level": "medium",
+          "recommendation": "你仍须路径到 Keystone；珠宝只触达其邻居。"
+        },
+        {
+          "scenario": "机会石/神圣石赌博",
+          "gain": "无",
+          "loss": "浪费通货",
+          "level": "low",
+          "recommendation": "From Nothing 必定腐化，无法机会石或神圣石化；刷或交易。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-from-nothing",
+          "kind": "Reddit 提问",
+          "question": "From Nothing 是分配 Keystone 本身，还是只分配周围的被动？",
+          "summary": [
+            "有玩家问插入珠宝是否会授予命名的 Keystone，还是只授予周围节点。"
+          ],
+          "editorialAnalysis": [
+            "词缀写作“范围内的 [Keystone] 被动可在不连接的情况下分配”。Keystone 节点在此意义上不是“范围内被动”的目标——它仍锁定，除非路径过去。只有周围的小型与精华节点可远程分配。"
+          ],
+          "officialAnswer": [
+            "只有绑定 Keystone 周围的被动被远程分配；Keystone 本身仍须正常路径。"
+          ],
+          "linkHref": "#eligibility",
+          "linkLabel": "适用性矩阵"
+        },
+        {
+          "sourceId": "gamerant-from-nothing",
+          "kind": "攻略",
+          "question": "为什么两枚同名 From Nothing 价格相差巨大？",
+          "summary": [
+            "一篇攻略解释每枚副本绑定到不同随机 Keystone，因此价格随 Keystone 相关性变化。"
+          ],
+          "editorialAnalysis": [
+            "由于 Keystone 在掉落时roll定且被腐化锁定，绑定到热门流派 Keystone 的副本价值许多神圣石，而偏门副本近乎卖店。物品名称相同；词缀才是关键。"
+          ],
+          "officialAnswer": [
+            "价值由绑定的 Keystone 决定，而非物品名称——交易时按精确 Keystone 过滤。"
+          ],
+          "linkHref": "#trade-search",
+          "linkLabel": "按 Keystone 交易搜索"
+        },
+        {
+          "sourceId": "gamesrecon-from-nothing",
+          "kind": "攻略",
+          "question": "通过珠宝分配的节点我仍需支付天赋点吗？",
+          "summary": [
+            "一篇攻略澄清远程分配消除的是路径要求，而非节点成本。"
+          ],
+          "editorialAnalysis": [
+            "你节省的是天赋树与范围之间的中间路径节点。你实际获取的每个节点仍消耗其天赋点。净节省仅为路径点。"
+          ],
+          "officialAnswer": [
+            "你仍为每个分配的节点支付点；珠宝只跳过连接路径。"
+          ],
+          "linkHref": "#passive-point-savings",
+          "linkLabel": "天赋点节省"
+        },
+        {
+          "sourceId": "wiki-from-nothing",
+          "kind": "数据库",
+          "question": "天赋树更新后我的珠宝消失了——没了吗？",
+          "summary": [
+            "数据库记录显示 0.2 补丁移除了部分珠宝插槽，导致一些玩家的珠宝被移位。"
+          ],
+          "editorialAnalysis": [
+            "当插槽因天赋树更新被移除时，受影响的珠宝不会被删除——它们可以被找回。/reclaimjewels 命令会将它们退回背包。"
+          ],
+          "officialAnswer": [
+            "在城镇使用 /reclaimjewels 找回因插槽移除而移位的珠宝；它们并未丢失。"
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "补丁历史"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "问题与直接答案",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Keystone 本身未被分配",
+          "directAnswer": [
+            "From Nothing 只分配绑定 Keystone 周围的被动；Keystone 节点本身仍须正常路径。"
+          ],
+          "checks": [
+            "确认你并非期望珠宝授予 Keystone；若需要它请路径过去。"
+          ]
+        },
+        {
+          "symptom": "范围内某节点角色面板无变化",
+          "directAnswer": [
+            "你仍需为节点支付点；若属性无变化，可能该节点已封顶或珠宝已被移除。"
+          ],
+          "checks": [
+            "确认珠宝仍插入且节点在范围内，而非仅在其附近。"
+          ],
+          "links": [
+            {
+              "href": "#properties",
+              "label": "属性"
+            }
+          ]
+        },
+        {
+          "symptom": "两枚副本看起来相同但一枚便宜很多",
+          "directAnswer": [
+            "每枚副本永久绑定到不同 Keystone；价格随 Keystone 相关性而非物品名称变化。"
+          ],
+          "checks": [
+            "购买前检查词缀以读取精确绑定的 Keystone。"
+          ],
+          "links": [
+            {
+              "href": "#trade-search",
+              "label": "交易搜索"
+            }
+          ]
+        },
+        {
+          "symptom": "天赋树更新后珠宝消失",
+          "directAnswer": [
+            "0.2 补丁移除了部分珠宝插槽；受影响的珠宝可用 /reclaimjewels 命令找回，而非丢失。"
+          ],
+          "checks": [
+            "在城镇运行 /reclaimjewels；珠宝会退回背包。"
+          ],
+          "links": [
+            {
+              "href": "#patch-history",
+              "label": "补丁历史"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "所有传奇珠宝最佳用法（PoE2）- From Nothing 部分",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8",
+          "creator": "SnooBae85",
+          "description": "涵盖每个传奇珠宝的社区视频；From Nothing 深度讲解从 13:01 开始，交易搜索演示在 24:18。",
+          "takeaway": "展示真实珠宝摆放、Keystone 绑定概念，以及如何在交易上搜索这些珠宝。",
+          "timestamps": [
+            {
+              "label": "简介与珠宝概览",
+              "time": "00:00"
+            },
+            {
+              "label": "Against the Darkness 背景",
+              "time": "06:48"
+            },
+            {
+              "label": "Controlled Metamorphosis 背景",
+              "time": "09:13"
+            },
+            {
+              "label": "From Nothing 深度讲解",
+              "time": "13:01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "媒体画廊",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "From Nothing 工具提示，显示绑定 Keystone 与远程分配词缀",
+          "note": "文章卡片与头图的主要捕获。"
+        },
+        {
+          "caption": "天赋树：绑定 Keystone 周围的固定小型范围",
+          "note": "显示哪些节点变为可远程分配。"
+        },
+        {
+          "caption": "交易站针对特定 Keystone 的词缀过滤",
+          "note": "如何搜索“范围内的 [Keystone] 被动可在不连接的情况下分配”。"
+        },
+        {
+          "caption": "各补丁 Keystone 池对比",
+          "note": "当前 0.5.4 池与旧补丁对比。"
+        },
+        {
+          "caption": "深渊虚无之十字的迷雾之王竞技场",
+          "note": "+4 深渊掉落来源。"
+        },
+        {
+          "caption": "From Nothing 与 Controlled Metamorphosis 范围形状",
+          "note": "固定圆盘 vs 环形带。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "相关内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "king-in-the-mists-pinnacle",
+          "contentType": "boss",
+          "title": "迷雾之王",
+          "description": "在深渊虚无之十字于 +4 深渊难度掉落 From Nothing 的仪式巅峰 Boss。",
+          "href": "/zh-cn/bosses/king-in-the-mists-pinnacle/"
+        },
+        {
+          "contentId": "audience-with-the-king",
+          "contentType": "item",
+          "title": "面见国王",
+          "description": "进入迷雾之王战斗所需的邀请物品。",
+          "href": "/zh-cn/items/audience-with-the-king/"
+        },
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "解决相反天赋树问题的范围属性钻石传奇。",
+          "href": "/zh-cn/items/against-the-darkness/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "带抗性成本的环形远程分配钻石。",
+          "href": "/zh-cn/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "洗点、天赋与升华指南",
+          "description": "天赋点、洗点与升华如何与珠宝规划交互。",
+          "href": "/zh-cn/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "补丁 0.5.4（Aldur 符文）",
+          "description": "本物品的当前 Early Access 补丁背景。",
+          "href": "/zh-cn/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "补丁历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4（Aldur 符文，当前）",
+          "changes": [
+            "From Nothing 仍是绑定 Keystone 周围固定小型范围的传奇钻石；范围内被动可在不连接的情况下分配；必定腐化；由迷雾之王在 +4 深渊难度掉落。"
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "changes": [
+            "Keystone 池更新：现在可roll Primal Hunger、Scarred Faith 与 Wildsurge Incantation；不再可roll Walker of the Wilds。"
+          ]
+        },
+        {
+          "version": "0.3.0",
+          "changes": [
+            "现在可roll Blackflame Covenant、Hollow Palm Technique、Ritual Cadence 与 Walker of the Wilds；不再可roll Acrobatics。"
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "changes": [
+            "所有受难度影响的 Boss 可在任意难度掉落其特定传奇，尽管稀有传奇在较低难度更稀有。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "From Nothing 加入游戏。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "流放之路2 0.5.4 补丁说明与官方物品文档。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "From Nothing 的 PoE2Wiki 与 poe2db 物品数据。",
+          "url": "https://poe2wiki.net/wiki/From_Nothing"
+        },
+        {
+          "label": "攻略",
+          "description": "GameRant 与 GamesRecon 关于获取与使用 From Nothing 的教程。",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-from-nothing-diamond-jewel-poe2"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit r/PathOfExile2 关于 Keystone 绑定与掉落的讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "视频",
+          "description": "涵盖包括 From Nothing 在内传奇珠宝的社区视频。",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首发：涵盖 0.5.4 中 From Nothing 围绕绑定 Keystone 的远程分配、天赋点节省计算、Keystone 池与交易搜索、迷雾之王 +4 掉落，以及与 Controlled Metamorphosis 的区别。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "jewels-and-jewel-sockets",
+    "against-the-darkness",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "audience-with-the-king",
+    "the-masters-reach",
+    "astramentis"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "流放之路2 0.5.4 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-from-nothing",
+      "label": "PoE2Wiki - From Nothing",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/From_Nothing"
+    },
+    {
+      "id": "poe2db-from-nothing",
+      "label": "poe2db - From Nothing",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/From_Nothing"
+    },
+    {
+      "id": "reddit-from-nothing",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "gamerant-from-nothing",
+      "label": "GameRant - 如何获取 From Nothing Diamond",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-from-nothing-diamond-jewel-poe2"
+    },
+    {
+      "id": "gamesrecon-from-nothing",
+      "label": "GamesRecon - From Nothing Diamond",
+      "sourceType": "other",
+      "url": "https://gamesrecon.com/how-to-get-and-use-from-nothing-diamond-in-path-of-exile-2-poe2"
+    },
+    {
+      "id": "youtube-from-nothing",
+      "label": "YouTube - 传奇珠宝选项（From Nothing @13:01）",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+    }
+  ],
+  "seo": {
+    "title": "流放之路2 From Nothing：远程 Keystone 分配与天赋点节省（0.5.4）",
+    "description": "From Nothing 在 PoE2 0.5.4 中的运作方式：绑定 Keystone 的传奇钻石，远程分配周围天赋、天赋点节省、迷雾之王 +4 掉落、按 Keystone 交易搜索与流派规划。",
+    "noindex": false
+  }
+}

@@ -1,0 +1,1039 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "zh-cn",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Jewel 与 Jewel Socket 完整指南：类型、范围、腐化与天赋树使用（0.5.4）",
+  "shortTitle": "Jewel 与 Jewel Socket",
+  "summary": "Path of Exile 2 0.5.4 中 Jewel 的完整指南：Jewel Socket 在哪里、是否需要先分配、Ruby/Emerald/Sapphire/Diamond 基础类型的区别、Normal/Magic/Rare/Unique 词缀数量、腐化 Jewel 与普通 Jewel 的区别、Time-Lost Jewel 为何影响范围内节点、Timeless 与 Time-Lost 不是同一种、Sinister Socket 的规则、范围如何显示、多个范围能否重叠、Unique 的 Limited to 如何执行，以及 0.2 之后用 /reclaimjewels 找回消失 Jewel。包含判断 Socket 是否值得花费天赋点的 Jewel 价值公式。",
+  "description": "Path of Exile 2 Jewel 与 Jewel Socket 指南 0.5.4：Socket 分配、基础类型、词缀数量、腐化、Time-Lost 范围、Timeless 与 Time-Lost 区别、Sinister Socket、范围重叠、Limited to，以及 Jewel 价值公式。",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Path of Exile 2 天赋树截图：一个已分配的 Jewel Socket，以及 Time-Lost Jewel 投射的白色范围圆圈",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速结论",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Jewel 插入天赋树上已分配的 Jewel Socket，为角色提供加成；对于 Time-Lost 和带范围的 Unique Jewel，则会为范围圆圈内的被动节点提供加成。基础 Jewel 直接生效自身词缀；Time-Lost 与带范围的 Unique Jewel（Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac、Voices）会改写范围内节点。只有在 Jewel 的价值高于所花费的天赋点与路径成本时才分配该 Socket。",
+      "calloutDetail": [
+        "Jewel Socket 是被动节点，必须先分配（与天赋树连通）才能插入 Jewel。",
+        "Time-Lost 与带范围的 Unique Jewel 会投射白色圆圈，只有圆圈内的节点受影响。",
+        "用下方 Jewel 价值公式判断该 Socket 是否值得花费天赋点。"
+      ],
+      "answers": [
+        {
+          "label": "用于",
+          "text": [
+            "通过天赋树为 Build 增加属性、生命、抗性、伤害或特殊的分配机制。"
+          ]
+        },
+        {
+          "label": "先确认",
+          "text": [
+            "确认 Socket 已分配、读取 Jewel 的范围与 Limited to，并核算该 Socket 花费的天赋点。"
+          ]
+        },
+        {
+          "label": "避免",
+          "text": [
+            "为低价值 Socket 绕路花费 3-4 点；把 Timeless 当成 Time-Lost；把 Unique Jewel 放入 Sinister Socket。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Jewel 家族对比"
+        },
+        {
+          "href": "#valuation",
+          "label": "Jewel 价值公式"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "物品类别",
+          "value": "Jewel",
+          "note": [
+            "所有 Jewel 同属 Jewel 类别，插入天赋树上的 Jewel Socket（或部分装备上的 Sinister Socket）。"
+          ]
+        },
+        {
+          "label": "Socket 需先分配",
+          "value": "是",
+          "note": [
+            "Jewel Socket 是被动节点，必须先分配并与天赋树连通，才能右键放入 Jewel。"
+          ]
+        },
+        {
+          "label": "基础类型",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "有色基础决定词缀池；Diamond 为棱彩（Unique）基础。"
+          ]
+        },
+        {
+          "label": "词缀数量",
+          "value": "普通 2 / 魔法 2 / 稀有最多 4",
+          "note": [
+            "普通 Jewel 固定 2 条词缀，魔法 2 条，稀有最多 4 条；Unique 为固定特有词缀。"
+          ]
+        },
+        {
+          "label": "范围",
+          "value": "仅 Time-Lost 与带范围 Unique",
+          "note": [
+            "基础 Jewel 直接生效自身词缀；只有 Time-Lost 与带范围的 Unique Jewel 才会投射范围圆圈。"
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "按 Unique 而定",
+          "note": [
+            "多数 Unique Jewel 限制为 1（Grand Spectrum 为 3），即同时只能装备一个该 Unique。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Jewel 家族对比",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "0.5.4 中 Build 规划涉及六类 Jewel。它们在放置位置、是否投射范围、作用方式上各不相同。下方即内容方案中的家族对比表，以成员卡片呈现。"
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Socketables",
+          "title": "基础 Jewel",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "可放入任意已分配的正常 Jewel Socket，直接生效自身词缀，无范围。",
+            "基础颜色决定词缀池：Ruby 偏护甲/武艺，Sapphire 偏 ES/法术，Emerald 偏闪避/远程，Diamond 为棱彩。"
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Time-Lost Jewel",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "掉落自 Trial of the Sekhemas 的 Time-Lost Cache，拥有范围（Medium 到 Large）。",
+            "其词缀“范围内也给予”范围内节点的加成。常见错误：为你的天赋树买错词缀。"
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Diamond Unique Jewel",
+          "sub": "Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac",
+          "body": [
+            "Diamond 基础 Unique，拥有特殊分配或范围机制。",
+            "常见错误：购买前未理解其 Keystone 或范围行为。"
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Timeless Jewel",
+          "sub": "Heroic Tragedy、Undying Hate",
+          "body": [
+            "掉落自 Expedition  pinnacle Boss，拥有历史范围（Historic Radius），按 Seed 与 Keystone 改写被动。",
+            "常见错误：只看名称忽略 Seed，而 Seed 决定结果。"
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "装备插槽",
+          "title": "Sinister Jewel",
+          "sub": "经由 Voices",
+          "body": [
+            "通过 Voices 出现在装备上，而非天赋树，没有普通范围。",
+            "提供独立的 Jewel 效果。常见错误：试图把 Unique Jewel 放入 Sinister Socket。"
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "腐化",
+          "title": "Corrupted Jewel",
+          "sub": "任意基础，腐化后",
+          "body": [
+            "获得腐化词缀，且无法再用普通制作通货修改。",
+            "常见错误：以为仍可正常修改或像干净 Jewel 一样用 Divine。"
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "属性与代表性 Tooltip",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "物品类别",
+          "value": "Jewel",
+          "notes": [
+            "所有 Jewel 同属 Jewel 类别，插入天赋树上的 Jewel Socket。"
+          ]
+        },
+        {
+          "label": "Socket 需求",
+          "value": "已分配的 Jewel Socket",
+          "notes": [
+            "该 Socket 节点必须先分配（与天赋树连通）才能插入 Jewel。"
+          ]
+        },
+        {
+          "label": "基础类型",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "有色基础决定词缀池：Ruby 偏护甲/武艺，Sapphire 偏 ES/法术，Emerald 偏闪避/远程，Diamond 为棱彩。"
+          ]
+        },
+        {
+          "label": "词缀数量（普通）",
+          "value": "默认 2 条",
+          "notes": [
+            "普通 Jewel 固定 2 条词缀，魔法 2 条，稀有最多 4 条。"
+          ]
+        },
+        {
+          "label": "范围（仅 Time-Lost）",
+          "value": "Medium 到 Large",
+          "notes": [
+            "只有 Time-Lost 与带范围的 Unique Jewel 投射范围圆圈；基础 Jewel 直接生效自身词缀。"
+          ]
+        },
+        {
+          "label": "腐化",
+          "value": "增加腐化词缀",
+          "notes": [
+            "腐化 Jewel 获得腐化词缀，且无法再用制作通货修改。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "概述：Jewel 与 Socket 如何运作",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Jewel Socket 是一个被动技能节点。像其他节点一样分配它，连通天赋树后右键即可放入 Jewel。之后基础 Jewel 为角色提供自身词缀；Time-Lost 与带范围的 Unique Jewel 则不同：它们会在天赋树上投射白色范围圆圈，其词缀作用于圆圈内的被动节点。",
+        "基础类型很重要。Ruby、Emerald、Sapphire 是有色基础，其词缀池分别偏向护甲/武艺、闪避/远程、能量护盾/法术；Diamond 是棱彩基础，用于 Unique Jewel（Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac），可跨词缀池roll任何词缀。",
+        "按稀有度划分词缀数量：普通 Jewel 固定 2 条词缀，魔法 2 条，稀有最多 4 条；Unique 以固定特有词缀替代。腐化 Jewel 额外获得腐化词缀且无法再用普通制作通货修改——这正是 The Adorned 需要腐化魔法 Jewel 的原因。",
+        "Time-Lost 与 Timeless 是最常被混淆的一对。Time-Lost Jewel（Ruby/Emerald/Sapphire，或 Diamond 上的 Unique Against the Darkness）来自 Trial of the Sekhemas，以随机词缀式加成为范围内节点提供加成。Timeless Jewel（Heroic Tragedy、Undying Hate）来自 Expedition，按数字 Seed 与 Keystone 征服或替换历史范围内的被动。二者系统不同、掉落来源不同、规则也不同。",
+        "Sinister Socket 不是天赋树上的 Socket。它们出现在装备上（例如经由 Voices Unique Jewel），接受特定一组 Jewel，拥有独立效果且无普通范围。你不能把 Unique Jewel 放入 Sinister Socket。",
+        "范围在插入带范围 Jewel 的瞬间以白色圆圈显示，天赋树规划器也会预览。多个范围可以重叠，落在多个范围内的节点会获得每个范围的加成。Unique Jewel 常有 Limited to 1，因此同时只能装备一个该 Unique。",
+        "0.2 天赋树重建后，部分旧角色的天赋树 Jewel Socket 被移除。受影响的 Jewel 可用聊天命令 /reclaimjewels 找回；这是历史性修复，但在天赋树更新后仍显示 Jewel 消失的旧角色上仍然是正确的处理步骤。"
+      ],
+      "bullets": [
+        "先分配 Socket：Jewel Socket 必须先分配并与天赋树连通才能插 Jewel。",
+        "有色基础决定词缀池；Diamond 为棱彩（Unique）。",
+        "普通/魔法 = 2 条词缀，稀有 = 最多 4 条，Unique = 固定词缀。",
+        "Time-Lost = Sekhemas 范围加成；Timeless = Expedition Seed/Keystone 征服。",
+        "Sinister Socket 在装备上而非天赋树，且拒绝 Unique Jewel。",
+        "范围可重叠；Limited to 限制同款 Unique 的装备数量。"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Socket 兼容性矩阵",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "哪种 Jewel 适合哪种 Socket、是否投射范围，以及其特殊规则。'text' 单元格给出相关说明而非简单的“是/否”。"
+      ],
+      "columns": [
+        "Jewel 类型",
+        "正常 Socket",
+        "Sinister Socket",
+        "范围",
+        "特殊规则"
+      ],
+      "rows": [
+        {
+          "label": "基础（Ruby/Emerald/Sapphire/Diamond）",
+          "values": [
+            { "kind": "yes", "text": "可放入任意已分配正常 Jewel Socket" },
+            { "kind": "no", "text": "不能放入 Sinister Socket" },
+            { "kind": "text", "text": "无（直接生效词缀）" },
+            { "kind": "text", "text": "仅生效自身词缀" }
+          ]
+        },
+        {
+          "label": "Time-Lost Jewel",
+          "values": [
+            { "kind": "yes", "text": "可放入任意已分配正常 Jewel Socket" },
+            { "kind": "no", "text": "不能放入 Sinister Socket" },
+            { "kind": "text", "text": "Medium 到 Large" },
+            { "kind": "text", "text": "修改范围内节点" }
+          ]
+        },
+        {
+          "label": "Diamond Unique（Against the Darkness 等）",
+          "values": [
+            { "kind": "yes", "text": "可放入任意已分配正常 Jewel Socket" },
+            { "kind": "no", "text": "不能放入 Sinister Socket" },
+            { "kind": "text", "text": "Medium（因 Jewel 而异）" },
+            { "kind": "text", "text": "特殊分配或范围机制" }
+          ]
+        },
+        {
+          "label": "Timeless Jewel",
+          "values": [
+            { "kind": "yes", "text": "可放入任意已分配正常 Jewel Socket" },
+            { "kind": "no", "text": "不能放入 Sinister Socket" },
+            { "kind": "text", "text": "历史范围（因 Jewel 而异）" },
+            { "kind": "text", "text": "按 Seed 征服/替换被动" }
+          ]
+        },
+        {
+          "label": "Sinister Jewel",
+          "values": [
+            { "kind": "no", "text": "不能放入正常 Socket" },
+            { "kind": "yes", "text": "可放入装备上的 Sinister Socket" },
+            { "kind": "text", "text": "无（无普通范围）" },
+            { "kind": "text", "text": "独立的 Jewel 效果" }
+          ]
+        },
+        {
+          "label": "Corrupted Jewel",
+          "values": [
+            { "kind": "text", "text": "若基础适合正常 Socket 则可" },
+            { "kind": "text", "text": "腐化魔法 Jewel 可放入 Sinister" },
+            { "kind": "text", "text": "取决于其基础" },
+            { "kind": "text", "text": "额外腐化词缀，无法继续制作" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "如何插入与预览 Jewel",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "到达并分配 Socket",
+          "body": [
+            "规划通往 Jewel Socket 的路径并分配它，使其与天赋树连通。必须先分配才能插 Jewel。"
+          ]
+        },
+        {
+          "label": "为 Socket 选择合适的 Jewel",
+          "body": [
+            "将基础/词缀与 Build 匹配。对于范围 Jewel，需在实际天赋树上确认哪些节点落在范围内。"
+          ]
+        },
+        {
+          "label": "插入并预览范围",
+          "body": [
+            "右键将 Jewel 放入 Socket，会出现白色圆圈；悬停节点确认哪些 Small 与 Notable 被动受影响。"
+          ]
+        },
+        {
+          "label": "在范围内分配（如需）",
+          "body": [
+            "对于 Time-Lost 与带范围的 Unique Jewel，其加成作用于范围内已分配的节点。部分特殊 roll 可延伸到未分配节点。"
+          ]
+        },
+        {
+          "label": "移除或替换",
+          "body": [
+            "右键 Socket 可移除 Jewel。移除后 Jewel 回到背包；范围内已分配节点失去其加成。"
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Jewel Socket 已分配但为空；周围节点只提供其本身数值。"
+        ],
+        "after": [
+          "插入范围 Jewel 后，白色圆圈内每个已分配的 Small 与 Notable 节点都获得该 Jewel 的“也给予”加成。"
+        ],
+        "note": "新增价值 = 受影响节点加成之和，减去为到达并使用该 Socket 所花费的天赋点。"
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "按情形的结果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "属性堆叠 Build 途经一个 Socket",
+          "audience": "属性堆叠（Astramentis/HOWA）",
+          "benefit": "路径上的 Socket 免费提供属性、生命或抗性",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "插入强力词缀 Jewel；路径成本已经支付。",
+          "tags": [
+            "passive-tree"
+          ]
+        },
+        {
+          "scenario": "绕路 4 点去一个低价值 Socket",
+          "audience": "天赋点紧张",
+          "benefit": "微弱 Jewel 词缀",
+          "risk": "机会成本高",
+          "level": "high",
+          "recommendation": "跳过该 Socket；这 4 点往往能买到更多别处。"
+        },
+        {
+          "scenario": "购买特定 Unique Jewel",
+          "audience": "交易者",
+          "benefit": "可预测的 Unique 收益",
+          "risk": "中（按 roll/Socket 定价）",
+          "level": "medium",
+          "recommendation": "购买前确认具体 Socket 与范围；见各 Unique Jewel 指南。",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "0.2 后旧角色 Jewel 消失",
+          "audience": "回归玩家",
+          "benefit": "找回受影响 Jewel",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "使用 /reclaimjewels 聊天命令，不要去交易站重买。",
+          "tags": [
+            "build-planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Build 用法",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "只要 Socket 在路径上，或范围 Jewel 能覆盖你本就想点的节点，Jewel 就是 Build 定义性的。以下角色展示主要使用方式。"
+      ],
+      "builds": [
+        {
+          "title": "属性堆叠",
+          "description": "属性堆叠 Build（Astramentis、Hand of Wisdom and Action）利用路径上的 Socket 获得平直属性与力/敏/智缩放。",
+          "href": "/zh-cn/items/astramentis/"
+        },
+        {
+          "title": "防御生命/抗性 Jewel",
+          "description": "带生命与抗性的基础 Jewel 填补装备无法填补的缺口，尤其适合缺乏元素抗性的角色。"
+        },
+        {
+          "title": "范围赋能 Unique",
+          "description": "Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac 把一个 Socket 变成多个已分配或强化的节点。",
+          "href": "/zh-cn/items/against-the-darkness/"
+        },
+        {
+          "title": "天赋树规划",
+          "description": "提交前在 Build Planner 中规划 Socket 路径；导入导出 Planner 文件以分享精确天赋树。",
+          "href": "/zh-cn/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "替代方案",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "若 Socket 远离你的路径，到达它的机会成本通常超过其中任何 Jewel 的价值。此时把点数花在普通被动节点上，或重新规划天赋树自然经过一个 Socket。",
+        "对于属性或抗性需求，装备词缀、Catalyst 品质与 Charm 往往比绕路 Socket 更便宜地提供相同属性。The Adorned 及其他赋能 Unique 仅在你已投资腐化魔法 Jewel 时才是替代。",
+        "Timeless Jewel 仅在 Build 需要 Seed 驱动的被动征服时才替代 Time-Lost，二者不可互换。"
+      ],
+      "bullets": [
+        "把绕路点数花在普通节点上，而非远处 Socket。",
+        "装备、Catalyst 与 Charm 可替代 Jewel 属性。",
+        "Timeless 不是 Time-Lost 的即插即用替代品。"
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "估值：使用、出售或保留",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Jewel 价值不是单一货币价格，而是关于天赋点的决策。使用下方 Jewel 价值公式与三个示例来判断。"
+      ],
+      "use": {
+        "condition": "Socket 在路径上，或范围覆盖你想要的节点",
+        "first": "插入 Jewel；路径成本已支付",
+        "risk": "占用一个 Socket 及为到达它花费的点数",
+        "text": [
+          "当净收益（Jewel 属性减去点数与路径成本减去机会成本）为正时使用。"
+        ]
+      },
+      "sell": {
+        "condition": "你找到重复或不符合天赋树的 Jewel",
+        "first": "按基础、腐化与词缀在交易站上架",
+        "risk": "流动性好，但价值取决于具体 roll 与版本需求",
+        "text": [
+          "当别的 Build 比当前天赋树更看重它时出售。"
+        ]
+      },
+      "hold": {
+        "condition": "你之后可能围绕 Jewel 重构",
+        "first": "保留高 roll 稀有与 Unique；跨版本保值",
+        "risk": "仅占背包空间",
+        "text": [
+          "保留高 roll Jewel；它们是长期 Build 资产。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "风险与失败成本",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "绕路 4 点去低价值 Socket",
+          "gain": "微弱 Jewel 词缀",
+          "loss": "4 个天赋点，本可买到 Notable 或 Keystone",
+          "level": "high",
+          "recommendation": "仅当 Socket 在自然路径上时才取。"
+        },
+        {
+          "scenario": "为天赋树买错 Time-Lost 词缀",
+          "gain": "范围覆盖",
+          "loss": "词缀加成浪费在未被分配的节点上",
+          "level": "medium",
+          "recommendation": "预览范围并选择匹配已分配节点的词缀。"
+        },
+        {
+          "scenario": "把 Timeless 当成 Time-Lost",
+          "gain": "无",
+          "loss": "为 Build 买错 Jewel 系统",
+          "level": "medium",
+          "recommendation": "购买前确认掉落来源与机制。"
+        },
+        {
+          "scenario": "把 Unique Jewel 放入 Sinister Socket",
+          "gain": "无",
+          "loss": "无效尝试；Unique 被 Sinister Socket 拒绝",
+          "level": "low",
+          "recommendation": "Sinister Socket 仅接受其支持的 Jewel 组。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "社区证据",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Reddit 问题",
+          "question": "插入 Jewel 前需要先分配 Jewel Socket 吗？",
+          "summary": [
+            "有玩家问能否把 Jewel 放入未分配的 Socket 节点。"
+          ],
+          "editorialAnalysis": [
+            "Jewel Socket 是被动节点，必须先分配并与天赋树连通才能插入；未分配的 Socket 不显示 Jewel 槽。"
+          ],
+          "officialAnswer": [
+            "先分配 Socket，之后才能右键放入 Jewel。"
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "插入 Jewel 的步骤"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "攻略",
+          "question": "Timeless 和 Time-Lost 一样吗？",
+          "summary": [
+            "某攻略混淆了 Timeless（Expedition）与 Time-Lost（Sekhemas）Jewel。"
+          ],
+          "editorialAnalysis": [
+            "二者系统不同。Time-Lost 来自 Trial of the Sekhemas，为范围内节点加成；Timeless 来自 Expedition，按 Seed 与 Keystone 征服/替换被动。"
+          ],
+          "officialAnswer": [
+            "视为不同家族；购买前阅读掉落来源与机制。"
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Jewel 家族对比"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "攻略",
+          "question": "天赋树更新后我的 Jewel 怎么消失了？",
+          "summary": [
+            "回归玩家反映 0.2 天赋树重建后 Jewel 消失。"
+          ],
+          "editorialAnalysis": [
+            "0.2 天赋树改动移除了旧角色的部分 Socket。受影响的 Jewel 可用 /reclaimjewels 找回，而非重买。"
+          ],
+          "officialAnswer": [
+            "使用 /reclaimjewels 找回被移除 Socket 的 Jewel；这是历史性修复，并非当前掉落改动。"
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "版本历史"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "问题与直接答案",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "右键点击 Socket 没反应",
+          "directAnswer": [
+            "Jewel Socket 未分配或未与天赋树连通。先分配它，再插入 Jewel。"
+          ],
+          "checks": [
+            "打开天赋树，确认 Socket 节点已点亮并连通，然后重试。"
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "插入步骤"
+            }
+          ]
+        },
+        {
+          "symptom": "范围圆圈很小且覆盖不到有用节点",
+          "directAnswer": [
+            "该 Jewel 范围小，或你已分配节点在其外。重新规划 Socket，或在该区域选范围更大的 Jewel。"
+          ],
+          "checks": [
+            "在规划器中预览范围并统计范围内的已分配节点。"
+          ]
+        },
+        {
+          "symptom": "Unique Jewel 无法放入 Sinister Socket",
+          "directAnswer": [
+            "Sinister Socket 拒绝 Unique Jewel，只接受其支持的 Jewel 组（如腐化魔法 Jewel）。"
+          ],
+          "checks": [
+            "Unique Jewel 使用天赋树上的正常 Socket。"
+          ]
+        },
+        {
+          "symptom": "天赋树更新后 Jewel 消失",
+          "directAnswer": [
+            "若 Socket 被移除，用 /reclaimjewels 找回 Jewel，而非购买新的。"
+          ],
+          "checks": [
+            "在聊天中输入 /reclaimjewels；检查背包与仓库。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "视频讲解",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 Jewel、腐化与天赋树专精",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "社区作者",
+          "description": "在实战 Build 讲解中涵盖 Jewel 腐化、天赋树专精，并提及 Against the Darkness。",
+          "takeaway": "展示 Jewel 与腐化如何融入真实天赋树规划，以及 Against the Darkness 这类范围 Jewel 如何改变已分配节点。",
+          "timestamps": [
+            { "label": "天赋树专精", "time": "01:54" },
+            { "label": "腐化与 Jewel", "time": "03:03" },
+            { "label": "Against the Darkness 提及", "time": "02:49" },
+            { "label": "Build 总结", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "媒体画廊",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "天赋树上已分配的 Jewel Socket",
+          "note": "显示 Socket 节点在插入前已点亮并连通。"
+        },
+        {
+          "caption": "未分配与已分配 Socket 对比",
+          "note": "只有 Socket 分配后才出现 Jewel 槽。"
+        },
+        {
+          "caption": "Time-Lost Jewel 投射的白色范围圆圈",
+          "note": "圆圈内节点获得 Jewel 加成。"
+        },
+        {
+          "caption": "基础、Time-Lost、Timeless、Diamond Unique 对比",
+          "note": "四类 Jewel 的 Socket 与范围行为不同。"
+        },
+        {
+          "caption": "装备上的 Sinister Socket 位置",
+          "note": "经由 Voices 出现，与天赋树 Socket 分开。"
+        },
+        {
+          "caption": "/reclaimjewels 命令结果",
+          "note": "找回被 0.2 天赋树重建移除 Socket 的 Jewel。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "关联内容",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "拥有两条随机范围词缀的 Unique Time-Lost Diamond。",
+          "href": "/zh-cn/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "无需连通即可分配 Keystone 的 Unique Diamond。",
+          "href": "/zh-cn/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "拥有环形远程分配区域的 Unique Diamond。",
+          "href": "/zh-cn/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "放大范围内腐化魔法 Jewel。",
+          "href": "/zh-cn/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "分配随机 Notable 的 Unique Diamond。",
+          "href": "/zh-cn/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices 与 Sinister Jewel Socket",
+          "description": "在装备上增加 Sinister Socket。",
+          "href": "/zh-cn/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless Jewels",
+          "description": "Heroic Tragedy 与 Undying Hate 的 Seed 驱动征服。",
+          "href": "/zh-cn/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "在 Trial of the Sekhemas 中掉落 Against the Darkness。",
+          "href": "/zh-cn/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "重置、天赋与升华指南",
+          "description": "0.5.4 中天赋点与重置如何运作。",
+          "href": "/zh-cn/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Build Planner：Build 文件导入导出",
+          "description": "规划 Socket 路径并分享天赋树。",
+          "href": "/zh-cn/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4（Runes of Aldur）",
+          "description": "当前 Early Access 版本背景。",
+          "href": "/zh-cn/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "版本历史",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4（Runes of Aldur，当前）",
+          "changes": [
+            "Jewel 与 Jewel Socket 如上运作：已分配 Socket、有色基础词缀池、Time-Lost 与带范围 Unique 的范围行为。"
+          ]
+        },
+        {
+          "version": "0.2.1（Socketables 与 Unique 掉落）",
+          "changes": [
+            "调整了 Socketables 与 Unique Jewel 来源的 Unique 掉落获取。"
+          ]
+        },
+        {
+          "version": "0.2.0（Dawn of the Hunt）",
+          "changes": [
+            "天赋树重建移除了旧角色部分 Jewel Socket；/reclaimjewels 可找回受影响 Jewel。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Jewel 与 Jewel Socket 于 Early Access 中引入。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "来源与核验",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "官方",
+          "description": "Path of Exile 2 0.5.4 补丁说明与官方物品文档。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2Wiki 与 poe2db 的 Jewel 与 Against the Darkness 数据。",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "攻略",
+          "description": "Sportskeeda 的 Time-Lost Jewel 攻略与 GameRant 的 Against the Darkness 攻略。",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit r/PathOfExile2 关于 Socket、范围与消失 Jewel 的讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "视频",
+          "description": "涵盖 Jewel 腐化与天赋树专精的社区视频。",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新日志",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布，涵盖 Jewel Socket、基础类型、词缀数量、腐化、Time-Lost 与 Timeless 区别、Sinister Socket、范围重叠、Limited to、/reclaimjewels 修复，以及 0.5.4 的 Jewel 价值公式。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 补丁说明",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - 如何获取 Time-Lost Jewel",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - 如何获取 Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 Jewel 与腐化",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Jewel 与 Jewel Socket 指南（0.5.4）",
+    "description": "PoE2 0.5.4 中 Jewel 与 Jewel Socket 如何运作：Socket 分配、Ruby/Emerald/Sapphire/Diamond 基础、词缀数量、腐化、Time-Lost 范围、Timeless 与 Time-Lost 区别、Sinister Socket，以及 Jewel 价值公式。",
+    "noindex": false
+  }
+}
