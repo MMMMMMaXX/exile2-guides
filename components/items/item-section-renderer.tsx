@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 
 import type { ContentLocale } from "../../lib/content/constants";
 import type { ItemArticle, ItemSection } from "../../lib/items/schema";
+import {
+  resolveInternalContentHref,
+  resolveRelatedContentHref,
+} from "../../lib/content/related-link";
 import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
@@ -49,7 +53,7 @@ const sectionKickers: Record<string, string> = {
 };
 
 const rendererLabels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     editorialAnalysis: string;
     officialAnswer: string;
@@ -107,7 +111,7 @@ function renderSectionContent(
   article: ItemArticle,
 ): ReactNode {
   const locale = article.locale;
-  const labels = rendererLabels[locale];
+  const labels = rendererLabels[locale === "zh-cn" ? "zh-cn" : "en"];
 
   switch (section.type) {
     case "overview":
@@ -196,7 +200,7 @@ function renderSectionContent(
             <div className="boss-inline-links">
               {section.links.map((link) => (
                 <a
-                  href={link.href}
+                  href={resolveInternalContentHref(link.href, locale)}
                   key={link.href}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -322,7 +326,7 @@ function renderSectionContent(
                 ))}
                 {route.href ? (
                   <a
-                    href={route.href}
+                    href={resolveInternalContentHref(route.href, locale)}
                     rel="noopener noreferrer"
                     target="_blank"
                   >
@@ -430,7 +434,7 @@ function renderSectionContent(
                 <p>{build.description}</p>
                 {build.href ? (
                   <a
-                    href={build.href}
+                    href={resolveInternalContentHref(build.href, locale)}
                     rel="noopener noreferrer"
                     target="_blank"
                   >
@@ -482,7 +486,7 @@ function renderSectionContent(
               {entry.linkHref ? (
                 <a
                   className="boss-community-source"
-                  href={entry.linkHref}
+                  href={resolveInternalContentHref(entry.linkHref, locale)}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -518,11 +522,11 @@ function renderSectionContent(
                   </ol>
                 ) : null}
                 {problem.links.length > 0 ? (
-                  <div className="qa-links">
-                    {problem.links.map((link) => (
-                      <a
-                        href={link.href}
-                        key={link.href}
+                <div className="qa-links">
+                  {problem.links.map((link) => (
+                    <a
+                      href={resolveInternalContentHref(link.href, locale)}
+                      key={link.href}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -562,7 +566,7 @@ function renderSectionContent(
           {section.items.map((item) => (
             <a
               className="boss-related-card"
-              href={item.href}
+              href={resolveRelatedContentHref(item, locale)}
               key={item.contentId}
               rel="noopener noreferrer"
               target="_blank"

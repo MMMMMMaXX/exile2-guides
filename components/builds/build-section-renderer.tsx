@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 
 import type { ContentLocale } from "../../lib/content/constants";
+import { resolveInternalContentHref } from "../../lib/content/related-link";
 import type { BuildArticle, BuildSection } from "../../lib/builds/schema";
 import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
@@ -12,7 +13,7 @@ import { ComparisonTable } from "../content/sections/comparison-table";
 import { SourcesSection } from "../content/sections/sources-section";
 
 const rendererLabels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     cons: string;
     paraphrase: string;
@@ -93,7 +94,7 @@ function renderSectionContent(
   section: BuildSection,
   locale: ContentLocale,
 ): ReactNode {
-  const labels = rendererLabels[locale];
+  const labels = rendererLabels[locale === "zh-cn" ? "zh-cn" : "en"];
 
   switch (section.type) {
     case "overview":
@@ -355,7 +356,7 @@ function renderSectionContent(
                   <strong>{labels.related}</strong>
                   {item.relatedLinks.map((link) => (
                     <a
-                      href={link.href}
+                      href={resolveInternalContentHref(link.href, locale)}
                       key={link.href}
                       rel="noopener noreferrer"
                       target="_blank"
