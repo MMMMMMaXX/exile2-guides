@@ -19,7 +19,7 @@ import {
   buildAscendancySlugs,
   buildClassSlugs,
 } from "../../lib/builds/taxonomy";
-import { TAG_TAXONOMY, formatTag } from "../../lib/content/tag-taxonomy";
+import { TAG_TAXONOMY, formatTag, type TagLabel } from "../../lib/content/tag-taxonomy";
 
 type BuildContentPage = StaticContentPage & {
   buildArticle: NonNullable<StaticContentPage["buildArticle"]>;
@@ -38,6 +38,8 @@ type PrototypeConfig = {
   heroImage: string;
   intro: string;
   title: string;
+  /** 左侧栏标题与面包屑使用的分类中文名，避免 zh 下出现「筛选Builds」混排。 */
+  titleZh: string;
 };
 
 /** 原型图片保留稳定内容路径，由统一资源注册表转换为构建指纹 URL。 */
@@ -52,6 +54,7 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
   build: {
     eyebrow: "Build library",
     title: "Builds",
+    titleZh: "流派",
     heroImage: asset("hero-build.webp"),
     intro:
       "Browse by class, ascendancy, main skill, progression stage, budget and play style.",
@@ -60,14 +63,16 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
   boss: {
     eyebrow: "Encounter library",
     title: "Bosses",
+    titleZh: "首领",
     heroImage: asset("hero-boss.svg"),
     intro:
       "Index campaign, optional, trial, map, endgame and pinnacle encounters before adding complex strategy pages.",
-    filters: ["All", "Index", "Campaign", "Trial", "Endgame", "Pinnacle"],
+    filters: ["All", "Campaign", "Trial", "Endgame", "Pinnacle"],
   },
   item: {
     eyebrow: "Item reference",
     title: "Items",
+    titleZh: "物品",
     heroImage: asset("hero-item.webp"),
     intro:
       "Build a useful item index by category, acquisition, use case and related problem guides.",
@@ -76,21 +81,32 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Equipment",
       "Materials",
       "Endgame",
-      "Reference",
+      "Unique",
       "Currency",
     ],
   },
   skill: {
     eyebrow: "Skill reference",
     title: "Skills",
+    titleZh: "技能",
     heroImage: asset("hero-skill.webp"),
     intro:
       "Organize active, support, spirit, meta, lineage and ascendancy skills before publishing build-specific advice.",
-    filters: ["All", "Active", "Support", "Spirit", "Meta", "Ascendancy"],
+    filters: [
+      "All",
+      "Active",
+      "Support",
+      "Passive",
+      "Spirit",
+      "Meta",
+      "Ascendancy",
+      "Lineage",
+    ],
   },
   guide: {
     eyebrow: "Guide library",
     title: "Guides",
+    titleZh: "攻略",
     heroImage: asset("hero-guide.webp"),
     intro:
       "Plan clear progression, mechanics, crafting, Atlas and troubleshooting guides before publishing long-form answers.",
@@ -101,11 +117,13 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Mechanics",
       "Crafting",
       "Endgame",
+      "Troubleshooting",
     ],
   },
   patch: {
     eyebrow: "Patch archive",
     title: "Patch Notes",
+    titleZh: "补丁说明",
     heroImage: asset("hero-patch.webp"),
     intro:
       "Track major updates, balance changes, hotfixes and bug fixes through a patch-first content graph.",
@@ -117,6 +135,58 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Bug Fixes",
       "Impact",
     ],
+  },
+};
+
+/**
+ * 左侧栏分类按钮的中英显示名。与顶部 facet 不同，这里每个值是某分类的主类别
+ * 聚合标签（如 Equipment 对应 weapons/armour/jewellery/off-hand），因此单独维护
+ * 一份词表而非复用 tag 显示名；"All" 在渲染处统一处理为「全部」。
+ */
+const railFilterLabels: Record<ContentType, Record<string, TagLabel>> = {
+  build: {
+    Starter: { en: "Starter", zh: "开荒" },
+    Leveling: { en: "Leveling", zh: "练级" },
+    Endgame: { en: "Endgame", zh: "终局" },
+    Bossing: { en: "Bossing", zh: "打王" },
+    Budget: { en: "Budget", zh: "预算" },
+  },
+  boss: {
+    Campaign: { en: "Campaign", zh: "剧情" },
+    Trial: { en: "Trial", zh: "试炼" },
+    Endgame: { en: "Endgame", zh: "终局" },
+    Pinnacle: { en: "Pinnacle", zh: "巅峰" },
+  },
+  item: {
+    Equipment: { en: "Equipment", zh: "装备" },
+    Materials: { en: "Materials", zh: "材料" },
+    Endgame: { en: "Endgame", zh: "终局" },
+    Unique: { en: "Unique", zh: "独特" },
+    Currency: { en: "Currency", zh: "通货" },
+  },
+  skill: {
+    Active: { en: "Active", zh: "主动" },
+    Support: { en: "Support", zh: "辅助" },
+    Passive: { en: "Passive", zh: "被动" },
+    Spirit: { en: "Spirit", zh: "灵魄" },
+    Meta: { en: "Meta", zh: "通用" },
+    Ascendancy: { en: "Ascendancy", zh: "升华" },
+    Lineage: { en: "Lineage", zh: "血脉" },
+  },
+  guide: {
+    Beginner: { en: "Beginner", zh: "新手" },
+    Campaign: { en: "Campaign", zh: "剧情" },
+    Mechanics: { en: "Mechanics", zh: "机制" },
+    Crafting: { en: "Crafting", zh: "工艺交易" },
+    Endgame: { en: "Endgame", zh: "终局地图" },
+    Troubleshooting: { en: "Troubleshooting", zh: "排错" },
+  },
+  patch: {
+    "Major Updates": { en: "Major Updates", zh: "大版本" },
+    Balance: { en: "Balance", zh: "平衡" },
+    Hotfixes: { en: "Hotfixes", zh: "热修" },
+    "Bug Fixes": { en: "Bug Fixes", zh: "问题修复" },
+    Impact: { en: "Impact", zh: "影响" },
   },
 };
 
@@ -474,7 +544,7 @@ function createCards(contentType: ContentType): readonly PrototypeCard[] {
   }));
 }
 
-/** Boss 左侧筛选值到 bossCategory 的映射；"All" 和 "Index" 不做过滤。 */
+/** Boss 左侧筛选值到 bossCategory 的映射；"All" 不做过滤。 */
 const bossRailFilterMap: Record<string, string> = {
   Campaign: "campaign",
   Endgame: "endgame",
@@ -511,8 +581,8 @@ const itemRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
       ["waystones", "endgame-access"].includes(
         page.itemArticle?.itemCategory ?? "",
       ),
-    Reference: (page) =>
-      ["currency", "unique-items", "unique-armour"].includes(
+    Unique: (page) =>
+      ["unique-items", "unique-armour"].includes(
         page.itemArticle?.itemCategory ?? "",
       ),
     Currency: (page) => page.itemArticle?.itemCategory === "currency",
@@ -527,6 +597,8 @@ const guideRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
     Crafting: (page) =>
       page.guideArticle?.guideCategory === "crafting-trading",
     Endgame: (page) => page.guideArticle?.guideCategory === "endgame-atlas",
+    Troubleshooting: (page) =>
+      page.guideArticle?.guideCategory === "troubleshooting",
   };
 
 /** Skill 左侧筛选值到 skillType 或 skillTags 的映射；"All" 不做过滤。 */
@@ -534,6 +606,7 @@ const skillRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
   {
     Active: (page) => page.skillArticle?.skillType === "active",
     Support: (page) => page.skillArticle?.skillType === "support",
+    Passive: (page) => page.skillArticle?.skillType === "passive",
     Spirit: (page) =>
       (page.skillArticle?.skillTags ?? []).includes("spirit") ||
       page.frontMatter.tags.includes("spirit"),
@@ -543,6 +616,9 @@ const skillRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
     Ascendancy: (page) =>
       (page.skillArticle?.skillTags ?? []).includes("ascendancy") ||
       page.frontMatter.tags.includes("ascendancy"),
+    Lineage: (page) =>
+      (page.skillArticle?.skillTags ?? []).includes("lineage") ||
+      page.frontMatter.tags.includes("lineage"),
   };
 
 const railFilterMapByContentType: Partial<
@@ -930,7 +1006,9 @@ export function V4CatalogPage({
       >
         <aside className="v4-prototype-filter">
           <p className="section-kicker">{zh ? "浏览内容" : "Browse content"}</p>
-          <h2>{zh ? `筛选${config.title}` : `Filter ${config.title}`}</h2>
+          <h2>
+            {zh ? `筛选${config.titleZh}` : `Filter ${config.title}`}
+          </h2>
           <div>
             {config.filters.map((value) => (
               <button
@@ -951,7 +1029,13 @@ export function V4CatalogPage({
                 }
                 type="button"
               >
-                {value}
+                {value === "All"
+                  ? zh
+                    ? "全部"
+                    : "All"
+                  : zh
+                    ? railFilterLabels[contentType][value]?.zh ?? value
+                    : value}
               </button>
             ))}
           </div>
