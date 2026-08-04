@@ -311,7 +311,9 @@ export function V4BuildContentCard({
       target="_blank"
     >
       <div className="v4-card-image-wrap">
-        <span className={`v4-card-image-label${article.status === "draft" ? " is-draft" : ""}`}>
+        <span
+          className={`v4-card-image-label${article.status === "draft" ? " is-draft" : ""}`}
+        >
           {article.status === "draft"
             ? zh
               ? "本地草稿"
@@ -480,6 +482,78 @@ const bossRailFilterMap: Record<string, string> = {
   Trial: "trial",
 };
 
+/** Patch 左侧筛选值到分类或影响判断的映射；"All" 不做过滤。 */
+const patchRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
+  {
+    "Major Updates": (page) =>
+      page.patchArticle?.patchCategory === "major-updates",
+    Balance: (page) => page.patchArticle?.patchCategory === "balance",
+    Hotfixes: (page) => page.patchArticle?.patchCategory === "hotfixes",
+    "Bug Fixes": (page) => page.patchArticle?.patchCategory === "bug-fixes",
+    Impact: (page) =>
+      page.patchArticle?.sections.some((section) =>
+        section.type.endsWith("-impact"),
+      ) ?? false,
+  };
+
+/** Item 左侧筛选值到 itemCategory 分组的映射；"All" 不做过滤。 */
+const itemRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
+  {
+    Equipment: (page) =>
+      ["weapons", "armour", "jewellery", "off-hand"].includes(
+        page.itemArticle?.itemCategory ?? "",
+      ),
+    Materials: (page) =>
+      ["socketables", "charms", "uncut-gems"].includes(
+        page.itemArticle?.itemCategory ?? "",
+      ),
+    Endgame: (page) =>
+      ["waystones", "endgame-access"].includes(
+        page.itemArticle?.itemCategory ?? "",
+      ),
+    Reference: (page) =>
+      ["currency", "unique-items", "unique-armour"].includes(
+        page.itemArticle?.itemCategory ?? "",
+      ),
+    Currency: (page) => page.itemArticle?.itemCategory === "currency",
+  };
+
+/** Guide 左侧筛选值到 guideCategory 的映射；"All" 不做过滤。 */
+const guideRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
+  {
+    Beginner: (page) => page.guideArticle?.guideCategory === "beginner",
+    Campaign: (page) => page.guideArticle?.guideCategory === "campaign",
+    Mechanics: (page) => page.guideArticle?.guideCategory === "mechanics",
+    Crafting: (page) =>
+      page.guideArticle?.guideCategory === "crafting-trading",
+    Endgame: (page) => page.guideArticle?.guideCategory === "endgame-atlas",
+  };
+
+/** Skill 左侧筛选值到 skillType 或 skillTags 的映射；"All" 不做过滤。 */
+const skillRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
+  {
+    Active: (page) => page.skillArticle?.skillType === "active",
+    Support: (page) => page.skillArticle?.skillType === "support",
+    Spirit: (page) =>
+      (page.skillArticle?.skillTags ?? []).includes("spirit") ||
+      page.frontMatter.tags.includes("spirit"),
+    Meta: (page) =>
+      (page.skillArticle?.skillTags ?? []).includes("meta") ||
+      page.frontMatter.tags.includes("meta"),
+    Ascendancy: (page) =>
+      (page.skillArticle?.skillTags ?? []).includes("ascendancy") ||
+      page.frontMatter.tags.includes("ascendancy"),
+  };
+
+const railFilterMapByContentType: Partial<
+  Record<ContentType, Record<string, (page: StaticContentPage) => boolean>>
+> = {
+  patch: patchRailFilterMap,
+  item: itemRailFilterMap,
+  guide: guideRailFilterMap,
+  skill: skillRailFilterMap,
+};
+
 /** 按 V4 原型结构渲染分类页；Build 真实内容会替换骨架卡片并沿用同一发布布局。 */
 export function V4CatalogPage({
   contentType,
@@ -497,14 +571,6 @@ export function V4CatalogPage({
   // 选中的标签统一存受控 slug，供全部分类的标签筛选与卡片展示复用。
   const [selectedTags, setSelectedTags] = useState<readonly string[]>([]);
   const cards = useMemo(() => createCards(contentType), [contentType]);
-  const visibleCards =
-    filter === "All"
-      ? cards
-      : cards.filter(
-          (card) =>
-            card.type.toLowerCase().includes(filter.toLowerCase()) ||
-            card.title.toLowerCase().includes(filter.toLowerCase()),
-        );
   const buildQuery = useMemo(
     () => parseBuildQuery(searchParams),
     [searchParams],
@@ -542,7 +608,8 @@ export function V4CatalogPage({
       const bossArticle = page.bossArticle;
       if (!bossArticle) return true;
       const railCategory = bossRailFilterMap[filter];
-      if (railCategory && bossArticle.bossCategory !== railCategory) return false;
+      if (railCategory && bossArticle.bossCategory !== railCategory)
+        return false;
       if (
         selectedTags.length > 0 &&
         !selectedTags.some((slug) => bossArticle.tags.includes(slug))
@@ -553,15 +620,21 @@ export function V4CatalogPage({
     });
   }, [contentType, items, filter, selectedTags]);
   /**
-   * 非 Build 分类的真实文章按选中标签过滤：选中任一标签即命中
-   * （OR 语义，便于发现），未选标签时返回全部。
+   * 非 Build/Boss 分类的真实文章按左侧目录筛选和顶部标签过滤：
+   * 左侧筛选优先按分类字段过滤，顶部标签按 OR 语义命中，两者均为空时返回全部。
    */
   const visibleTaggedItems = useMemo(() => {
-    if (selectedTags.length === 0) return items;
-    return items.filter((page) =>
+    const railMap = railFilterMapByContentType[contentType];
+    const railPredicate = railMap?.[filter];
+    let result = items;
+    if (railPredicate && filter !== "All") {
+      result = result.filter(railPredicate);
+    }
+    if (selectedTags.length === 0) return result;
+    return result.filter((page) =>
       selectedTags.some((slug) => page.frontMatter.tags.includes(slug)),
     );
-  }, [items, selectedTags]);
+  }, [contentType, filter, items, selectedTags]);
   /** 统一各分类的可见列表：Build 走 URL 查询，Boss 走左侧+标签，其余走标签。 */
   const visibleItems = useMemo(() => {
     if (contentType === "build") {
@@ -572,11 +645,14 @@ export function V4CatalogPage({
     }
     if (contentType === "boss") return visibleBossItems;
     return visibleTaggedItems;
-  }, [contentType, selectedTags, visibleBuildPages, visibleBossItems, visibleTaggedItems]);
+  }, [
+    contentType,
+    selectedTags,
+    visibleBuildPages,
+    visibleBossItems,
+    visibleTaggedItems,
+  ]);
   const rendersRealBuilds = contentType === "build" && buildPages.length > 0;
-  /** Boss 有真实内容时始终走真实卡片区，筛选为空时显示空状态而非骨架卡片。 */
-  const hasRealBossContent = contentType === "boss" && items.length > 0;
-  const rendersRealContent = visibleItems.length > 0 || hasRealBossContent;
   // Build 的 URL 筛选词 + 本地标签选择合并展示；其余分类直接展示选中 slug。
   const buildUrlTags = [
     buildQuery.filters.class,
@@ -584,9 +660,7 @@ export function V4CatalogPage({
     buildQuery.filters.playstyle,
   ].flatMap((value) => (value ? [value] : []));
   const querySelectedTags =
-    contentType === "build"
-      ? [...buildUrlTags, ...selectedTags]
-      : selectedTags;
+    contentType === "build" ? [...buildUrlTags, ...selectedTags] : selectedTags;
 
   /** 更新一个筛选参数并保留其他筛选；空值会删除参数以恢复规范列表状态。 */
   function updateBuildQuery(name: string, value: string) {
@@ -855,15 +929,7 @@ export function V4CatalogPage({
         id="catalog-modules"
       >
         <aside className="v4-prototype-filter">
-          <p className="section-kicker">
-            {rendersRealBuilds || rendersRealContent
-              ? zh
-                ? "浏览内容"
-                : "Browse content"
-              : zh
-                ? "浏览骨架"
-                : "Browse skeletons"}
-          </p>
+          <p className="section-kicker">{zh ? "浏览内容" : "Browse content"}</p>
           <h2>{zh ? `筛选${config.title}` : `Filter ${config.title}`}</h2>
           <div>
             {config.filters.map((value) => (
@@ -898,19 +964,15 @@ export function V4CatalogPage({
                   ? zh
                     ? "Build 攻略"
                     : "Build guides"
-                  : rendersRealContent
-                    ? zh
-                      ? `${config.title}攻略`
-                      : `${config.title} guides`
-                    : `${config.title} page types`}
+                  : zh
+                    ? `${config.title}攻略`
+                    : `${config.title} guides`}
               </h2>
             </div>
             <span>
               {rendersRealBuilds
                 ? visibleBuildPages.length
-                : rendersRealContent
-                  ? visibleItems.length
-                  : visibleCards.length}{" "}
+                : visibleItems.length}{" "}
               {zh ? "条结果" : "results"}
             </span>
           </header>
@@ -938,56 +1000,15 @@ export function V4CatalogPage({
                     page={page}
                   />
                 ))
-              : rendersRealContent
-                ? visibleItems.map((page, index) => (
-                    <V4ContentPageCard
-                      contentType={contentType}
-                      fallbackImage={cards[index % cards.length]!.image}
-                      key={page.frontMatter.contentId}
-                      locale={locale}
-                      page={page}
-                    />
-                  ))
-                : visibleCards.map((card) => {
-                    /** 带 href 的骨架卡片渲染为链接，沿用正式内容卡的交互样式。 */
-                    const cardBody = (
-                      <>
-                        <div className="v4-card-image-wrap">
-                          <span className="v4-card-image-label">{config.title}</span>
-                          <img
-                            alt=""
-                            decoding="async"
-                            height="788"
-                            loading="lazy"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 22vw"
-                            src={card.image}
-                            srcSet={`${card.image} 1400w`}
-                            width="1400"
-                          />
-                        </div>
-                        <div className="v4-card-text">
-                          <h3>{card.title}</h3>
-                          <p>{card.summary}</p>
-                          <small className="v4-card-meta">
-                            <span className="v4-card-meta__info">V4 skeleton · replace mock data</span>
-                          </small>
-                        </div>
-                      </>
-                    );
-                    return card.href ? (
-                      <a
-                        className="v4-prototype-card v4-prototype-card--content"
-                        href={`/${locale}${card.href}`}
-                        key={card.title}
-                      >
-                        {cardBody}
-                      </a>
-                    ) : (
-                      <article className="v4-prototype-card" key={card.title}>
-                        {cardBody}
-                      </article>
-                    );
-                  })}
+              : visibleItems.map((page, index) => (
+                  <V4ContentPageCard
+                    contentType={contentType}
+                    fallbackImage={cards[index % cards.length]!.image}
+                    key={page.frontMatter.contentId}
+                    locale={locale}
+                    page={page}
+                  />
+                ))}
           </div>
           {rendersRealBuilds && visibleBuildPages.length === 0 ? (
             <div className="empty-state v4-prototype-catalog__empty">
@@ -1006,8 +1027,7 @@ export function V4CatalogPage({
                 {zh ? "清除筛选" : "Clear filters"}
               </button>
             </div>
-          ) : null}
-          {!rendersRealBuilds && rendersRealContent && visibleItems.length === 0 ? (
+          ) : !rendersRealBuilds && visibleItems.length === 0 ? (
             <div className="empty-state v4-prototype-catalog__empty">
               <h2>
                 {zh
@@ -1026,17 +1046,6 @@ export function V4CatalogPage({
           ) : null}
         </section>
         <aside className="v4-prototype-rail">
-          <section>
-            <p className="section-kicker">Implementation order</p>
-            <h2>Skeleton first</h2>
-            <ol>
-              <li>Index and filters</li>
-              <li>Subtype aggregation</li>
-              <li>Detail template</li>
-              <li>Search integration</li>
-              <li>Content generation later</li>
-            </ol>
-          </section>
           <section>
             <h2>Required connections</h2>
             <a href={`/${locale}/search/`}>

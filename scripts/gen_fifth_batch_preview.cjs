@@ -47,7 +47,7 @@ for (const p of heroPaths) {
     const buf = fs.readFileSync(path.join(ROOT, fp));
     const ext = fp.split(".").pop();
     IMG_MAP[p] = "data:image/" + (ext === "jpg" ? "jpeg" : ext) + ";base64," + buf.toString("base64");
-  } catch (e) {
+  } catch {
     /* 缺失文件则回退到路径 */
   }
 }
