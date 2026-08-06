@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-06 16:19（Asia/Shanghai）
+> 文档更新时间：2026-08-06 18:35（Asia/Shanghai）
 
 ## 必须遵守的更新说明
 
@@ -348,3 +348,4 @@
 | SESSION-135 | 2026-08-06 12:19–14:03 | 修复所有语言分类顶部标签变成中文 | 仅使用 WorkBuddy Hy3 分块更新六类 taxonomy 的十语言标签词表，修正 `formatTag` 的 locale 选择和 facet 标题渲染，并对类型/Lint 问题做 Hy3 收尾 | `typecheck`、受影响文件 ESLint、i18n/翻译/内容校验、生产构建和十 locale SSR 抽样通过；全局 lint/测试中的既有失败已记录，未提交、未推送 | 后续可重新启动 `npm run dev`，刷新各语言分类页观察热更新 |
 | SESSION-136 | 2026-08-06 14:46–14:56 | 修复 V4 分类页左侧目录与右侧边栏未本地化（续 EXTRA-104） | 用户贴截图反馈「每种语言这几部分都没有进行翻译」，定位为分类页左侧单值目录按钮（filter 值），以及右侧 v4-prototype-rail 边栏标题与三个链接漏翻。新增 `RAIL_FILTER_LABELS_10`（10 语言目录值词表）并导出 `localeToTagKey`，在 `components/v4/catalog-page.tsx` 接线左侧目录按钮与右侧边栏 `catalogLabels[locale]`；生产构建后 grep 日/德编译产物确认全部本地化 | typecheck/lint（仅工作树既有项）/生产构建全绿；ja 与 de items 编译产物均含本地化目录按钮与边栏；未提交、未推送 | 如需上线可走正常提交/构建发布流程；其他分类（Boss/Skill/Guide/Patch/Build）同样覆盖 |
 | SESSION-137 | 2026-08-06 14:57–16:19 | 接手并完成首屏加载性能重构 | WorkBuddy 当前无活动会话；定位到全量内容虚拟模块被根布局、路由和详情 metadata 同时加载，导致页面可见但 hydration、语言切换和导航被拖延，并在翻译扩展后放大开发态堆内存压力。实现紧凑路由索引、按语言目录/文章动态加载、服务端 loader 保留静态预渲染，以及首屏 JS 依赖体积门禁 | typecheck、目标单测 6/6、目标 ESLint/Prettier、生产构建通过；默认 dev 启动成功，首次分类页响应约 5.73 秒、重复请求约 0.04 秒；全量注释/Lint 的剩余失败均为既有翻译临时文件问题；未提交、未推送 | 用户可重新运行 `npm run dev`，重点复测刷新后语言切换、菜单和跨 Tab 是否立即可用 |
+| EXTRA-107 | 2026-08-06 17:50–18:35 | 基于 Search Console 数据重写首页与六分类文案（CTR 优化） | 用户贴三张 Search Console 截图与 2026-08-06 搜索表现导出 zip，指出主页与分类页展现量高但 CTR 显著低于详情页，根因为搜索摘要与用户查询相关性差。重写 `lib/i18n/home-copy.ts`（hero/description/meta 点名 builds、boss guides、item answers、skill DB 并标注 patch 0.5.4e；CTA 改为 "Browse Builds"/"Boss Guides"；修复韩语笔误 템플릿과 낮은 연구는→내부 연구는）与 `lib/i18n/category-copy.ts`（新增 Item/Skill/Guide/Patch 四类专属文案——此前为通用占位导致这些分类 meta 相关性差；精简 Build/Boss 导语；全部 metaDescription 标注 0.5.4e/适配当前版本）。十语言完整性由 `Record<ContentLocale,...>` 类型强制 | `typecheck`、`lint`（仅本两文件，其余为工作树既有 `translate-en-es.cjs` 全局未定义错误）、`validate:content`（330 Build/410×4/450 Guide/410 Patch 全通过）、生产构建（前缀 `BASH_ENV=/dev/null NODE_OPTIONS="--use-system-ca"` 规避 rm 安全拦截）均通过；grep 编译产物确认 en/zh-cn 首页与各分类 meta/intro 已含新版版本化价值点文案；已本地提交 `ffd3da6`，未 push（AGENTS.md 默认） | 等 Search Console 重新抓取后观察 CTR 是否回升；如需进一步强化可考虑详情页 rich result 结构化数据与 FAQ 摘要 |
