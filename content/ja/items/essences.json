@@ -1,0 +1,928 @@
+{
+  "id": "essences",
+  "slug": "essences",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "エッセンスガイド：階層、確定モッドとクラフトのリスク",
+  "shortTitle": "エッセンス",
+  "summary": "エッセンスは、装備に特定のモッドを一つ確定で付与するターゲット型クラフト通貨です。このガイドでは、階層のラダー、エッセンス系統ごとにアイテムスロット別に付与されるモッド、Perfect および Corrupted エッセンスの挙動、そしてオーメンと組み合わせて接頭辞／接尾辞の削除を制御する方法を解説します。",
+  "description": "Path of Exile 2 のエッセンスに関する出典付きリファレンス：階層ラダー、確定モッド表、Perfect と Corrupted のリスク、結晶化オーメンの組み合わせ、有効な対象、およびクラフト順序。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "targeted-crafting",
+    "essence"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "corruption",
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/essences-hero.webp",
+  "cardImage": "/images/items/essences-hero.webp",
+  "imageAlt": "Path of Exile 2 のエッセンス通貨アイコン - 装備に使用すると確定モッドを付与する、輝く結晶球",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "ランダムなロールではなく一つの確定モッドが欲しい場合にエッセンスを使います。Lesser、Normal、Greater の各エッセンスはマジックアイテムをレアに昇格させ、固定モッドを一つ追加します。Perfect エッセンスはレアからランダムなモッドを一つ削除し、より強力な確定モッドに置き換えます。",
+      "calloutDetail": [
+        "Perfect および Corrupted エッセンスは、保持したかったモッドを削除してしまうことがあります。それが主なリスクです。",
+        "結晶化の左（Sinistral）または右（Dextral）オーメンは、Perfect／Corrupted エッセンスが削除してよい側（接頭辞または接尾辞）を制限します。"
+      ],
+      "answers": [
+        {
+          "label": "使いどころ",
+          "text": [
+            "ターゲット型クラフト：ランダム通貨では確実に狙えない、特定の防御・属性・ライフモッドに対して。"
+          ]
+        },
+        {
+          "label": "組み合わせるもの",
+          "text": [
+            "すでに良いモッドが揃ったアイテムに Perfect や Corrupted エッセンスを使う際は、結晶化の左／右オーメンと併用する。"
+          ]
+        },
+        {
+          "label": "控えるべき場合",
+          "text": [
+            "現状のどのモッドを失ってもアイテムが台無しになるような、完成済みのレアベースの場合。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "エッセンス系統 →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "クラフトのリスク →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "階層",
+          "value": "Lesser → Normal → Greater → Perfect",
+          "note": [
+            "捕らえられたエッセンスモンスターにヴァールのオーブを使用すると、Perfect を Corrupted エッセンスに昇格させることがある。"
+          ]
+        },
+        {
+          "label": "Lesser/Normal/Greater",
+          "value": "Magic → Rare + 1 mod",
+          "note": [
+            "これらは確定モッドを一つ追加し、アイテムをレアに昇格させる。"
+          ]
+        },
+        {
+          "label": "Perfect",
+          "value": "Rare: ランダムなモッドを1つ削除、強力なモッドを1つ追加",
+          "note": [
+            "結晶化オーメンが有効でない限り、削除されるモッドはランダム。"
+          ]
+        },
+        {
+          "label": "入手元",
+          "value": "Essence monsters in maps",
+          "note": [
+            "結晶の檻は捕らえられたモンスターを召喚する。それを倒すと表示されたエッセンスがドロップする。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "エッセンスの系統と付与内容",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "各エッセンス系統は一つのステータスに紐づいています。実際のモッドとその階層は、系統と使用するアイテムスロット（武器・防具・アクセサリ）によって決まります。以下はプレイヤーが最も頻繁に使う系統です。"
+      ],
+      "members": [
+        {
+          "id": "essence-body",
+          "eyebrow": "Life",
+          "title": "エッセンス・オブ・ザ・ボディ",
+          "sub": "最大ライフ",
+          "tags": [
+            "defense",
+            "life"
+          ],
+          "body": [
+            "大きな固定値または％のライフモッドを付与します。ボディアーマーでは Perfect ロールで約＋8〜10％最大ライフを得られ、アクセサリでは固定ライフを付与します。"
+          ]
+        },
+        {
+          "id": "essence-abrasion",
+          "eyebrow": "Physical",
+          "title": "エッセンス・オブ・アブレイジョン",
+          "sub": "物理ダメージ（固定値）",
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "body": [
+            "武器に物理ダメージ（固定値）を追加します。Perfect ロールでは「与えるダメージの X％ を追加の物理ダメージとして獲得」を付与でき、強力な攻撃クラフト用接頭辞となります。"
+          ]
+        },
+        {
+          "id": "essence-elemental",
+          "eyebrow": "Elemental",
+          "title": "エッセンス・オブ・フレイム／アイス／エレクトリシティ",
+          "sub": "元素ダメージ（％）",
+          "tags": [
+            "elemental",
+            "attack",
+            "spell"
+          ],
+          "body": [
+            "それぞれの属性の元素ダメージ（％）を付与します。下位階層はマジック武器に元素ダメージ（固定値）を追加し、Perfect はレア武器に「与えるダメージの X％ を追加として獲得」を付与します。"
+          ]
+        },
+        {
+          "id": "essence-resists",
+          "eyebrow": "Resistance",
+          "title": "エッセンス・オブ・インシュレーション／ソーイング／グラウンディング／ルイン",
+          "sub": "耐性",
+          "tags": [
+            "defense",
+            "resistance"
+          ],
+          "body": [
+            "それぞれ火炎／冷気／雷／カオス耐性を付与します。Perfect ロールでは該当耐性に約＋26〜30％に達し、ルインは「受ける物理ダメージの一部をカオスダメージとして」を追加します。"
+          ]
+        },
+        {
+          "id": "essence-infinite",
+          "eyebrow": "Attributes",
+          "title": "エッセンス・オブ・ザ・インフィニット",
+          "sub": "属性値",
+          "tags": [
+            "attribute",
+            "requirements"
+          ],
+          "body": [
+            "ストリングス、デクスタリティ、インテリジェンスを上昇させます。ツリーを経由せずにジェムや装備のステータス要件を満たす必要がある場合に有用です。"
+          ]
+        },
+        {
+          "id": "essence-command",
+          "eyebrow": "Aura",
+          "title": "エッセンス・オブ・コマンド",
+          "sub": "オーラの効果量",
+          "tags": [
+            "aura",
+            "support"
+          ],
+          "body": [
+            "セプターのオーラの効果量を上昇させます。味方のダメージを強化するサポートや召喚ビルドに関連します。"
+          ]
+        },
+        {
+          "id": "essence-battle",
+          "eyebrow": "Skill Levels",
+          "title": "エッセンス・オブ・バトル",
+          "sub": "武器スキルレベル",
+          "tags": [
+            "attack",
+            "skill-levels"
+          ],
+          "body": [
+            "武器にスキルレベルのボーナスを付与します。武器種別ごとの正確な値は、以下のスキルレベル表に記載しています。"
+          ]
+        },
+        {
+          "id": "essence-sorcery",
+          "eyebrow": "Spell Damage",
+          "title": "エッセンス・オブ・ソーサリー",
+          "sub": "スペルスキルレベル",
+          "tags": [
+            "spell",
+            "skill-levels"
+          ],
+          "body": [
+            "キャスターにスペルスキルレベルのボーナスを付与します。武器種別ごとの正確な値は、以下のスキルレベル表に記載しています。"
+          ]
+        },
+        {
+          "id": "essence-haste",
+          "eyebrow": "Attack Speed",
+          "title": "エッセンス・オブ・ヘイスト",
+          "sub": "攻撃速度／オンスロート",
+          "tags": [
+            "attack-speed",
+            "clear"
+          ],
+          "body": [
+            "武器に攻撃速度を追加します。Perfect では撃殺時にオンスロートを発動するチャンスを付与でき、クリア速度向上に強力です。"
+          ]
+        },
+        {
+          "id": "essence-enhancement",
+          "eyebrow": "Defenses",
+          "title": "エッセンス・オブ・エンハンスメント",
+          "sub": "全体防御",
+          "tags": [
+            "defense",
+            "es"
+          ],
+          "body": [
+            "アミュレットに全体防御を付与し、エナジーシールドや複合防御を積むビルドに有用です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-level-grants",
+      "order": 35,
+      "title": "武器種別ごとのスキルレベル付与",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "エッセンス・オブ・バトルによる武器スキルレベルと、エッセンス・オブ・ソーサリーによるスペルスキルレベルを武器種別に分けた表。",
+      "columns": [
+        {
+          "key": "essence",
+          "label": "エッセンス"
+        },
+        {
+          "key": "itemClass",
+          "label": "アイテムクラス"
+        },
+        {
+          "key": "modifier",
+          "label": "付与されるモッド"
+        }
+      ],
+      "filters": [
+        {
+          "id": "battle",
+          "label": "エッセンス・オブ・バトル"
+        },
+        {
+          "id": "sorcery",
+          "label": "エッセンス・オブ・ソーサリー"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "One-handed weapon",
+            "modifier": "+4 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "Two-handed weapon",
+            "modifier": "+6 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Wand / Focus",
+            "modifier": "+3 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Staff",
+            "modifier": "+5 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        }
+      ],
+      "note": "これらの数値はエッセンスの階層（Lesser → Normal → Greater → Perfect）に応じてスケールする。上記の数値は最も参照される Greater 階層の値である。"
+    },
+    {
+      "id": "eligibility",
+      "order": 40,
+      "title": "エッセンスが作用するアイテム",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "対象は階層に依存します。Lesser／Normal／Greater はマジックアイテムをレアに昇格させます。Perfect と Corrupted はすでにレアのアイテムにのみ作用します。"
+      ],
+      "columns": [
+        "ノーマルアイテム",
+        "マジックアイテム",
+        "レアアイテム"
+      ],
+      "rows": [
+        {
+          "label": "Lesser / Normal / Greater",
+          "note": "マジックアイテムを昇格させ、確定モッドを一つ追加",
+          "values": [
+            {
+              "kind": "no",
+              "text": "不可 - マジックが必要"
+            },
+            {
+              "kind": "yes",
+              "text": "可（マジック）"
+            },
+            {
+              "kind": "no",
+              "text": "不可 - すでにレア"
+            }
+          ]
+        },
+        {
+          "label": "Perfect / Corrupted",
+          "note": "モッドを一つ削除し、強力なモッドを一つ追加",
+          "values": [
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "yes",
+              "text": "はい"
+            }
+          ]
+        },
+        {
+          "label": "識別済みユニーク",
+          "note": "エッセンスはユニークを対象としない",
+          "values": [
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "エッセンスの入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "エッセンスは主にマップのエンカウントから得られ、補助的な経路がいくつかある。"
+      ],
+      "routes": [
+        {
+          "label": "マップ内のエッセンスモンスター",
+          "body": [
+            "結晶の檻はマップ全体に出現します。結晶を破壊すると捕らえられたモンスターが解放され、これを倒すと結晶に表示された種類のエッセンスがドロップします。"
+          ]
+        },
+        {
+          "label": "捕らえられたモンスターへのヴァールのオーブ",
+          "body": [
+            "解放前に結晶にヴァールのオーブを使用すると、何も起きない、モンスターを即座に解放する、エッセンスを追加で得る、あるいは階層を一つ昇格させる（Normal → Greater → Perfect → Corrupted）ことがある。"
+          ]
+        },
+        {
+          "label": "ベンダー／リフォージングベンチ",
+          "body": [
+            "同じ種類・階層のエッセンス3つを組み合わせて1つ上の階層のものにできます。ベンダーの挙動はパッチ間で変化するため、正確なレシピは現行クライアントで確認してください。"
+          ]
+        },
+        {
+          "label": "通貨交換／取引",
+          "body": [
+            "必要な上位階層が手に入らない場合は、他のプレイヤーから特定のエッセンスを購入する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 60,
+      "title": "エッセンスを使ったクラフト",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "あらかじめ望ましいモッドを一つ持ったマジックベースから始めます。Lesser／Normal／Greater エッセンスはこれをレアに昇格させ、確定モッドを追加するため、実質的にエッセンスとベースのコストで良い一つのプリフィックスを「固定」できます。",
+        "完成済みアイテムに対しては、Perfect エッセンスがランダムなモッドを一つ削除し、強力な確定モッドを追加します。削除されるモッドがランダムであるため、どの単一モッドを失っても許容できるレアにのみ Perfect エッセンスを使うべきです。あるいは結晶化オーメンと組み合わせて側を選択します。"
+      ],
+      "bullets": [
+        "結晶化の左（Sinistral）オーメン：次に使う Perfect／Corrupted エッセンスは接頭辞モッドのみを削除する。",
+        "結晶化の右（Dextral）オーメン：次に使う Perfect／Corrupted エッセンスは接尾辞モッドのみを削除する。",
+        "同じインベントリ内でこのオーメンを他のクラフトオーメン（例：栄華）と重ねて効果を組み合わせる。"
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "エッセンスの使い方",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "ベースを選ぶ",
+          "body": [
+            "Lesser〜Greater にはマジックアイテムを、Perfect／Corrupted にはレアを選ぶ。"
+          ]
+        },
+        {
+          "label": "オーメンを有効化",
+          "body": [
+            "インベントリ内の結晶化オーメンを右クリックし、赤い有効枠が表示されるようにする。"
+          ]
+        },
+        {
+          "label": "エッセンスを適用",
+          "body": [
+            "エッセンスを右クリックし、次に対象アイテムをクリックする。結果は即時かつ確定である。"
+          ]
+        }
+      ],
+      "compare": {
+        "note": "下位階層はモッドを追加して昇格させ、Perfect は一つのモッドをより強いものと交換する。",
+        "before": [
+          "＋ライフの接尾辞と弱い冷気耐性の接頭辞を持つレアチェスト。"
+        ],
+        "after": [
+          "Perfect エッセンス・オブ・ザ・ボディが弱い接頭辞を削除し、新たな接頭辞として＋8〜10％最大ライフを追加する。"
+        ]
+      }
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前チェックリスト",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "ベースに合った階層",
+          "checks": [
+            "Lesser〜Greater にはマジックベース、Perfect／Corrupted にはレアベース。"
+          ],
+          "why": "階層が違えばそもそも適用されない。",
+          "fix": "先に栄華／変異のオーブを使うか、別のエッセンスを選ぶ。"
+        },
+        {
+          "label": "失ってもよいモッドか",
+          "checks": [
+            "Perfect／Corrupted を使う際、現在のどのモッドも欠かせないものでないことを確認する。"
+          ],
+          "why": "ランダムなモッドが一つ削除される。",
+          "fix": "結晶化オーメンを有効にして保持する側を固定する。"
+        },
+        {
+          "label": "オーメンが有効",
+          "checks": [
+            "オーメンがインベントリ内で赤い有効枠を表示している。"
+          ],
+          "why": "無効なオーメンは何もしない。",
+          "fix": "エッセンスを適用する前にオーメンを右クリックする。"
+        },
+        {
+          "label": "コストとベース価値",
+          "checks": [
+            "成功・失敗した場合のベースの価値とエッセンスのコストを比較する。"
+          ],
+          "why": "安いベースに高価なエッセンスを使うと通貨を無駄にする。",
+          "fix": "上位階層は価値の高いベースに取っておく。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "シナリオ別の想定結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "upgrade",
+        "perfect",
+        "corrupted"
+      ],
+      "rows": [
+        {
+          "scenario": "良い接頭辞を一つ持つマジック武器",
+          "audience": "レベリング中のプレイヤー",
+          "benefit": "確定した2つ目のモッドとともにレアに昇格",
+          "risk": "低 - ベースは代替可能だった",
+          "level": "low",
+          "recommendation": "Greater エッセンスの理想的な最初の使い方",
+          "tags": [
+            "upgrade"
+          ]
+        },
+        {
+          "scenario": "失ってもよい弱いモッドを持つレア",
+          "audience": "エンドゲームのクラフター",
+          "benefit": "強力な確定モッドが追加される",
+          "risk": "中 - 有用なモッドが削除される可能性がある",
+          "level": "medium",
+          "recommendation": "結晶化オーメンと併用する",
+          "tags": [
+            "perfect"
+          ]
+        },
+        {
+          "scenario": "ほぼ最高クラスのレア、すべてのモッドが欲しい",
+          "audience": "高額投資のクラフター",
+          "benefit": "可能性のある最高クラスのモッド",
+          "risk": "高 - どのモッドを失っても痛手",
+          "level": "high",
+          "recommendation": "両方の結晶化オーメンと予備のベースがある場合のみ",
+          "tags": [
+            "perfect",
+            "corrupted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "リスク分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "オーメンなしで完成済みレアに Perfect を使用",
+          "gain": "一つの強力な確定モッド",
+          "loss": "既存のランダムなモッドが削除される",
+          "level": "high",
+          "recommendation": "現在のすべてのモッドが捨ててよい場合のみ、あるいは結晶化オーメンを使う。"
+        },
+        {
+          "scenario": "ヴァール昇格による Corrupted エッセンス",
+          "gain": "最高クラスのユニーク効果モッド（例：Horror、Hysteria）",
+          "loss": "ヴァールの段階でモンスターを無駄にするか何も得られない可能性がある",
+          "level": "medium",
+          "recommendation": "余裕のある Perfect エッセンスに対して価値がある。"
+        },
+        {
+          "scenario": "レベリング中のマジックベースへの Greater",
+          "gain": "固定モッドを持つ信頼できるレア",
+          "loss": "わずかな通貨コスト",
+          "level": "low",
+          "recommendation": "安全で、レベリング中は推奨される。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "エッセンスを頼りにするビルド",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "ビルドが序盤で一つの特定かつ価値の高いモッドを必要とする場合、エッセンスは定番のターゲット型クラフトです。"
+      ],
+      "builds": [
+        {
+          "title": "キャスタービルド",
+          "description": "＋3 スペルスキル用のエッセンス・オブ・ソーサリー、またはアミュレットの全体防御用のエッセンス・オブ・エンハンスメント。"
+        },
+        {
+          "title": "攻撃／物理ビルド",
+          "description": "武器へのエッセンス・オブ・アブレイジョン（追加物理）またはエッセンス・オブ・バトル（＋スキルレベル）。"
+        },
+        {
+          "title": "硬い／HC ビルド",
+          "description": "エッセンス・オブ・ザ・ボディで最大ライフを確保し、耐性上限調整用に耐性エッセンスと組み合わせる。"
+        },
+        {
+          "title": "属性積みビルド",
+          "description": "ツリーへの投資なしでジェムや装備の要件を満たすためのエッセンス・オブ・ザ・インフィニット。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-perfect-deleted",
+          "kind": "Reddit の質問",
+          "question": "なぜ Perfect エッセンスが一番良いモッドを削除したのか？",
+          "summary": [
+            "プレイヤーが気に入ったレアに Perfect エッセンスを使用し、保持したかったモッドを失った。"
+          ],
+          "editorialAnalysis": [
+            "結晶化オーメンで側を制限しない限り、Perfect はランダムなモッドを一つ削除する。"
+          ],
+          "officialAnswer": [
+            "Perfect エッセンスの前に、結晶化の左（Sinistral）または右（Dextral）オーメンを有効にして接頭辞か接尾辞の削除を選択する。"
+          ]
+        },
+        {
+          "sourceId": "forum-direct-or-currency",
+          "kind": "フォーラムの質問",
+          "question": "直接エッセンスを使うべきか、先に通常通貨で下準備すべきか？",
+          "summary": [
+            "プレイヤーはエッセンスから始めるか、先にオーブでベースを作るか議論している。"
+          ],
+          "editorialAnalysis": [
+            "すでに良いモッドを持ったベースを昇格させるには Lesser／Greater エッセンスを使い、Perfect への交換前に他のロールは通常通貨で仕上げる。"
+          ],
+          "officialAnswer": [
+            "先にエッセンスで確定モッドを固定し、残りのプリフィックスは他の通貨で埋める。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "動画とタイムスタンプ",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "完璧なアイテムをクラフトする（エッセンス＋オーメンの手順）",
+          "url": "https://www.youtube.com/watch?v=9oFGFT-X1OA",
+          "creator": "P4wnyhof",
+          "description": "決定論的なエッセンスクラフトと、オーメンが結果をどう制御するかのウォークスルー。",
+          "takeaway": "安全な Perfect クラフトのため、エッセンスと結晶化オーメンを組み合わせる章を見る。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "エッセンスクラフトの概要"
+            },
+            {
+              "time": "02:30",
+              "label": "Greater エッセンスでベースを昇格させる"
+            },
+            {
+              "time": "06:10",
+              "label": "Perfect エッセンス＋結晶化オーメンの組み合わせ"
+            },
+            {
+              "time": "11:45",
+              "label": "実践的なエンドゲームクラフト"
+            }
+          ]
+        },
+        {
+          "label": "Path of Exile 2 のエッセンス総合ガイド",
+          "url": "https://www.youtube.com/watch?v=BxDQaXc0LIw",
+          "creator": "EODGamerz",
+          "description": "エッセンスの系統、階層、およびそれぞれを使う価値がある場面の完全解説。",
+          "takeaway": "どのエッセンス系統が自分のスロットとビルドに合うかの良い参照。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "エッセンスの役割"
+            },
+            {
+              "time": "03:20",
+              "label": "階層ラダーとヴァール昇格"
+            },
+            {
+              "time": "08:00",
+              "label": "系統ごとの例"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "エッセンスが適用されない",
+          "directAnswer": [
+            "階層がベースと一致しない：Lesser〜Greater はマジックアイテムが、Perfect／Corrupted はレアが必要。"
+          ],
+          "checks": [
+            "アイテムのレア度と識別済みかどうかを確認する。"
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "有効な対象を開く"
+            }
+          ]
+        },
+        {
+          "symptom": "欲しかったモッドが消えた",
+          "directAnswer": [
+            "Perfect／Corrupted エッセンスがランダムなモッドを削除した。次回は結晶化オーメンを使う。"
+          ],
+          "checks": [
+            "Perfect への交換前に予備のベースを確保しておく。"
+          ]
+        },
+        {
+          "symptom": "同じエッセンスでも装備によって結果が異なる",
+          "directAnswer": [
+            "確定モッドはアイテムスロット（武器／防具／アクセサリ）に依存する。"
+          ],
+          "checks": [
+            "エッセンスにカーソルを合わせるか、自分のスロットの系統表を確認する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "omens",
+          "contentType": "item",
+          "title": "オーメン",
+          "description": "Perfect エッセンスが削除する側を制御する結晶化オーメン。",
+          "href": "/ja/items/omens/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "ヴァールのオーブ",
+          "description": "捕らえられたエッセンスモンスターに使用し、Corrupted エッセンスへと階層を昇格させる。",
+          "href": "/ja/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "パッチ履歴",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.0",
+          "date": "2026-05-29",
+          "changes": [
+            "エッセンスの階層名称が調整された（複数系統で Grand が Normal に改名）。Corrupted エッセンスは引き続き Perfect エッセンスのヴァール・オーブによる昇格である。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "エッセンスは引き続き主力のターゲット型クラフト通貨であり、結晶化オーメンは Perfect および Corrupted エッセンスの接頭辞／接尾辞削除を引き続き制御する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "エッセンスの階層とクラフト通貨を扱う Path of Exile 2 パッチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DB のエッセンス系統とモッドデータ。",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Perfect／Corrupted の挙動に関するコミュニティのクラフトガイドと Reddit の報告。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "エッセンスガイドを作成（第2弾アイテムバッチのテンプレート記事）。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "omens",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 公式 0.5.4 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Essences",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    },
+    {
+      "label": "Mobalytics — Omen Crafting (Crystallisation)",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 エッセンスガイド：階層、確定モッドとクラフトのリスク",
+    "description": "PoE2 のエッセンスの仕組み：階層ラダー、スロット別の確定モッド表、Perfect と Corrupted のリスク、そして安全なターゲット型クラフトのための結晶化オーメンの組み合わせ。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "essences",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

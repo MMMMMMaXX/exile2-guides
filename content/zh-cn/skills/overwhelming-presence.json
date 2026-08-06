@@ -1,0 +1,512 @@
+{
+  "id": "overwhelming-presence",
+  "slug": "overwhelming-presence",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Overwhelming Presence 指南 —— 异常状态阈值、眩晕阈值与光环价值",
+  "shortTitle": "Overwhelming Presence",
+  "summary": "Overwhelming Presence 是一颗灵魄宝石，会辐射一圈光环，降低其范围内敌人的元素异常状态阈值与眩晕阈值。它不直接增加伤害；而是让你已有的异常状态与眩晕更容易施加。本指南涵盖光环半径、阈值降低影响的内容、光环强度缩放、当前上限，以及与 Combat Frenzy、Freezing Mark 和 Herald of Thunder 的协同。",
+  "description": "Overwhelming Presence 深度指南：灵魄消耗、光环半径、降低的元素异常状态阈值、冻结 / 感电 / 点燃 / 电击的覆盖范围、降低的眩晕阈值对比更多眩晕积累、首领特殊阈值、光环强度缩放、当前上限、无减益图标、技能交互、地图与首领价值、故障排查与社区问答。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 5,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": 60,
+  "skillCategory": "spirit",
+  "skillTags": [
+    "spirit",
+    "aura",
+    "ailment",
+    "stun",
+    "debuff"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/overwhelming-presence.webp",
+  "cardImage": "/images/skills/overwhelming-presence.webp",
+  "imageAlt": "Overwhelming Presence 灵魄光环技能图标",
+  "tags": [
+    "spirit",
+    "aura",
+    "ailment",
+    "stun",
+    "debuff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速解答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Overwhelming Presence 是一道光环，降低其半径内敌人的元素异常状态阈值与眩晕阈值，使你的冻结、感电、点燃与眩晕更易施加。",
+        "它不会直接提升你的伤害；它降低敌人需要跨越的阈值，因此你已有的攻击会更高频地触发异常状态与眩晕。",
+        "敌人不会为阈值降低显示可见的减益图标——只要它们处于范围内，效果就是被动的。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "关键事实",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "分类",
+          "value": "灵魄 / 光环 / 减益",
+          "notes": [
+            "标记了 spirit、aura、ailment、stun、debuff 标签。"
+          ]
+        },
+        {
+          "label": "灵魄",
+          "value": "60",
+          "notes": [
+            "生效期间保留 60 点灵魄。"
+          ]
+        },
+        {
+          "label": "半径",
+          "value": "环绕你的光环",
+          "notes": [
+            "范围内的敌人获得降低的阈值。"
+          ]
+        },
+        {
+          "label": "收益",
+          "value": "更易触发异常状态与眩晕",
+          "notes": [
+            "不提供直接伤害。"
+          ]
+        },
+        {
+          "label": "获取",
+          "value": "未切割灵魄宝石（5 阶）",
+          "notes": [
+            "中后期灵魄宝石。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "需求",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Overwhelming Presence 保留 60 点灵魄，因此它会与其他光环及 Herald 效果竞争。你需要某种施加异常状态或眩晕的手段，它才能发挥作用。"
+      ]
+    },
+    {
+      "id": "persistent-buff",
+      "order": 40,
+      "title": "常驻增益",
+      "type": "persistent-buff",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "在保留期间，该光环始终环绕着你。进入半径的敌人立即承受降低的阈值；离开半径则效果消失。"
+      ],
+      "bullets": [
+        "灵魄保留期间光环常驻。",
+        "效果仅在半径内生效。",
+        "离开半径即失去减益。"
+      ]
+    },
+    {
+      "id": "threshold-aura",
+      "order": 50,
+      "title": "阈值光环",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "该光环降低范围内敌人的元素异常状态阈值与眩晕阈值。更低的阈值意味着只需更少的积累即可冻结、感电、点燃或眩晕。",
+        "首领可能拥有特殊阈值或免疫；该光环对普通敌人和许多首领有帮助，但无法移除硬性的眩晕免疫。"
+      ],
+      "bullets": [
+        "降低异常状态与眩晕阈值。",
+        "对普通敌人和许多首领有帮助。",
+        "首领免疫仍然生效。"
+      ]
+    },
+    {
+      "id": "ailment-analysis",
+      "order": 60,
+      "title": "异常状态分析",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "冻结受益，因为完成冻结的阈值更低。感电受益，因为达到感电阈值更容易，尽管该光环不保证高感电强度。",
+        "若按当前规则点燃阈值被降低，则点燃受益，但该光环不会直接提升点燃 DPS。电击同属眩晕 / 异常状态家族，更易施加。",
+        "该光环影响的是阈值，而非你的命中伤害——你仍然需要真正造成该异常状态。"
+      ],
+      "bullets": [
+        "冻结：完成阈值更低。",
+        "感电：更易达到，强度不被提升。",
+        "点燃 / 电击：更易施加。"
+      ]
+    },
+    {
+      "id": "stun-analysis",
+      "order": 70,
+      "title": "眩晕分析",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "降低的眩晕阈值使敌人以更少的积累即可被眩晕。这与更多眩晕积累不同，后者增加的是你自身的眩晕贡献。",
+        "当你希望敌人更可靠地被眩晕时使用该光环；并将其与构建眩晕的攻击搭配以获得最佳效果。"
+      ],
+      "bullets": [
+        "降低敌人的眩晕阈值。",
+        "不同于更多眩晕积累。",
+        "与构建眩晕的攻击搭配。"
+      ]
+    },
+    {
+      "id": "aura-magnitude",
+      "order": 80,
+      "title": "光环强度",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "光环强度（Aura Magnitude）会缩放降低的数值。当前客户端设有最大降低上限，因此超过某一点后，更多强度不再有帮助。",
+        "品质可能增加降低值或强度；请查阅实时悬浮提示以获取确切的当前数值。"
+      ],
+      "bullets": [
+        "强度缩放降低值。",
+        "当前上限限制了最大降低。",
+        "品质可能增加降低值或强度。"
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 90,
+      "title": "灵魄预算",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "以 60 点灵魄计，Overwhelming Presence 是一项重大保留。你必须在它与其他同样需要灵魄的光环或 Herald 效果之间做出取舍。",
+        "当你的配装已经施加大量异常状态或眩晕，并希望它们更稳定地触发时，它才值得。"
+      ],
+      "bullets": [
+        "60 点灵魄保留。",
+        "与其他光环及 Herald 竞争。",
+        "对异常 / 眩晕密集型配装值得。"
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 100,
+      "title": "技能交互",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "当敌人已处于异常状态时，Combat Frenzy 与 Freezing Mark 更易触发或激活，而降低的阈值有助于施加初始异常状态。",
+        "Herald of Thunder 从你的闪电攻击中更易获得感电，尽管你仍然需要击杀来触发其效果。Tempest Flurry 的感电与眩晕用法受益于降低的阈值。",
+        "它与 Withering Presence 不同，后者施加的是不同的减益家族。"
+      ],
+      "bullets": [
+        "Combat Frenzy / Freezing Mark：更易触发。",
+        "Herald of Thunder：更易感电，但仍需击杀。",
+        "Tempest Flurry：更好的感电与眩晕。"
+      ]
+    },
+    {
+      "id": "mapping-value",
+      "order": 110,
+      "title": "地图价值",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "在地图中，该光环在你穿行怪物群时持续将其冻结、感电与眩晕，这对清图速度与安全性是强力的 crowd control（群体控制）。",
+        "由于它是光环，近战与近距离配装会停留在其中；远程配装可能超出自身光环范围而失去收益。"
+      ],
+      "bullets": [
+        "对怪物群有强力的群体控制。",
+        "最适合近战与近距离。",
+        "远程可能离开光环半径。"
+      ]
+    },
+    {
+      "id": "bossing-value",
+      "order": 120,
+      "title": "首领战价值",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "面对首领时，降低的眩晕阈值有助于锁定可被眩晕的首领，而更易获得的感电则支撑 Herald of Thunder 的触发。",
+        "拥有眩晕免疫的首领收益较低，因此请按每场战斗权衡这 60 点灵魄与其他选择。"
+      ],
+      "bullets": [
+        "有助于眩晕锁住可被眩晕的首领。",
+        "更易感电以支撑 Herald 触发。",
+        "对眩晕免疫首领价值较低。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "配装用法",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Overwhelming Presence 适合异常状态与眩晕密集的法术配装，例如 Cold Caster Chronomancer，其中冻结与感电的覆盖率很重要。",
+        "它是一项高灵魄投入，因此适合在核心光环之外仍有富余灵魄的配装。"
+      ],
+      "bullets": [
+        "Cold Caster Chronomancer：冻结 / 感电覆盖率。",
+        "眩晕流近战：封锁控制。",
+        "需要富余灵魄。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "故障排查",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "若敌人没有显示减益图标，那是正常的——阈值降低是被动的，没有图标。若异常状态仍然无法触发，说明你的攻击太弱或敌人免疫。",
+        "若光环在远处感觉无用，说明你超出了它的范围；靠近一些，或在远程配装上放弃它。"
+      ],
+      "bullets": [
+        "无图标：正常，效果为被动。",
+        "异常仍失败：攻击太弱或免疫。",
+        "远处无用：你离开了半径。",
+        "无伤害提升：它降低阈值，而非伤害。",
+        "灵魄冲突：与其他光环权衡。"
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 150,
+      "title": "常见问题",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "一个常见错误是期望光环提供直接伤害；它只降低阈值。另一个错误是假设降低没有上限——当前客户端对其设有限制。"
+      ],
+      "bullets": [
+        "光环不提供直接伤害。",
+        "降低值受当前上限限制。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 160,
+      "title": "社区佐证",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "在 0.5 版本的讨论中，Overwhelming Presence 被视为异常状态与眩晕配装的强力光环，主要注意事项是 60 点灵魄消耗。",
+        "玩家指出缺少可见的减益图标会让新手困惑。"
+      ],
+      "bullets": [
+        "对异常 / 眩晕配装强力，消耗 60 灵魄。",
+        "无图标导致困惑。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 170,
+      "title": "视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Charges and Adonia",
+          "label": "获取充能并绕过 Adonia（0.5）",
+          "description": "一份涵盖充能与阈值机制的指南，与光环及眩晕配装相关。",
+          "takeaway": "关注阈值与眩晕讨论的背景。",
+          "url": "https://youtu.be/HnQGBKlyZqI",
+          "timestamps": [
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "阈值讲解",
+              "time": "3:00"
+            }
+          ]
+        },
+        {
+          "creator": "State of the Meta",
+          "label": "0.5 版本的元流派现状",
+          "description": "一段 0.5 元流派概览，其中讨论了光环与减益配装。",
+          "takeaway": "观察减益光环在元流派中的位置。",
+          "url": "https://youtu.be/25ysZmq56jQ",
+          "timestamps": [
+            {
+              "label": "元流派概览",
+              "time": "0:00"
+            },
+            {
+              "label": "光环配装",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 180,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方补丁说明与论坛，确认了 Overwhelming Presence 的光环、阈值降低及在 0.5.4 中的上限。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区维基提供了 Overwhelming Presence 的技能 id、标签与光环数值。",
+          "url": "https://poe2db.tw/Overwhelming_Presence"
+        },
+        {
+          "label": "维基",
+          "description": "Overwhelming Presence 的社区维基页面，含光环详情。",
+          "url": "https://www.poe2wiki.net/wiki/Overwhelming_Presence"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 与论坛中有关光环与阈值的讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Overwhelming%20Presence&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 190,
+      "title": "补丁历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0（Return of the Ancients）：Overwhelming Presence 光环降低元素异常状态与眩晕阈值。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4（2026-08）：当前基准：60 灵魄、光环半径、阈值降低、强度上限、无可见减益图标。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布：光环半径、异常状态与眩晕阈值分析、光环强度上限、技能交互、地图与首领价值、故障排查与社区问答。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "combat-frenzy",
+    "freezing-mark",
+    "tempest-flurry",
+    "tempest-bell",
+    "herald-of-thunder"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Overwhelming Presence",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Overwhelming_Presence"
+    },
+    {
+      "label": "PoE2 Community Wiki — Overwhelming Presence",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Overwhelming_Presence"
+    },
+    {
+      "label": "Charges and Adonia video",
+      "sourceType": "community",
+      "url": "https://youtu.be/HnQGBKlyZqI"
+    },
+    {
+      "label": "State of the Meta video",
+      "sourceType": "community",
+      "url": "https://youtu.be/25ysZmq56jQ"
+    },
+    {
+      "label": "Reddit — Overwhelming Presence discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Overwhelming%20Presence&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Overwhelming Presence 指南 —— 异常状态阈值、眩晕阈值与光环价值",
+    "description": "Overwhelming Presence 深度指南：灵魄消耗、光环半径、降低的元素异常状态阈值、冻结 / 感电 / 点燃 / 电击的覆盖范围、降低的眩晕阈值对比更多眩晕积累、光环强度上限、技能交互、地图与首领价值、故障排查与社区问答。",
+    "noindex": false
+  }
+}

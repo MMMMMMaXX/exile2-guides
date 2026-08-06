@@ -13,7 +13,7 @@ export function isKnownSkillCollection(collection: SkillCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Skill，供页面和 Sitemap 共用同一规则。 */
 export function matchesSkillCollection(
-  article: SkillArticle,
+  article: Pick<SkillArticle, "skillCategory">,
   collection: SkillCollection,
 ): boolean {
   return article.skillCategory === collection.value;

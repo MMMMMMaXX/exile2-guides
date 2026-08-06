@@ -1,0 +1,887 @@
+{
+  "id": "plant-oracle-druid",
+  "slug": "plant-oracle-druid",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "플랜트 오라클 드루이드 빌드 가이드: 레벨링, CoC 선더스톰, 엔드게임",
+  "shortTitle": "플랜트 오라클 드루이드",
+  "summary": "0.5.4 식물 계열 스펠 툴킷: 클리어용 엔탱글, 강제 결과(Forced Outcome)와 치명 시 시전(Cast on Critical)으로 유지되는 선더스톰. 스테이지 전환, 마나 유지, 보스 로테이션, 예산 등급을 다룹니다.",
+  "description": "패스 오브 엑자일 2 플랜트 오라클 드루이드 0.5.4 가이드: 레벨링 단계, 강제 결과, CoC 선더스톰, 마나 관리, 실제 영상 타임스탬프 포함.",
+  "classId": "druid",
+  "ascendancyId": "oracle",
+  "mainSkillIds": [
+    "entangle",
+    "thrashing-vines"
+  ],
+  "secondarySkillIds": [
+    "thunderstorm",
+    "cast-on-critical",
+    "mana-remnants",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "plant",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "low-input"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "cardImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "imageAlt": "전투 중 선더스톰을 불러내며 엔탱글로 덩굴을 소환하는 드루이드 오라클",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "oracle",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "빌드 개요",
+      "paragraphs": [
+        "플랜트 오라클은 드루이드의 식물 계열 스펠 툴킷입니다. 엔탱글이 균열을 만들어 그 안에서 자라난 덩굴이 근처 적에게 붙어 둔화시키고, 선더스톰은 머리 위로 번개를 쏟아내어 과성장(Overgrown)을 유지합니다. 오라클 승천의 '강제 결과'는 피할 수 없는 치명타 적중을 부여하므로, 치명 시 시전(Cast on Critical)이 선더스톰을 안정적으로 촉발하게 해줍니다 — 이것이 이 빌드가 적은 조작으로도 넓은 범위를 커버할 수 있는 이유입니다.",
+        "이 빌드는 레벨 1부터 폭발적인 화력을 내는 형태가 아닙니다. 엔탱글은 아주 초반에도 사용할 수 있지만, 선더스톰이 안정적으로 촉발되려면 강제 결과, 치명 시 시전, 그리고 충분한 마나가 갖춰져야 합니다. 이 조건들이 맞물리기 전에는 엔탱글 + 스래싱 바인즈로 클리어와 단일 대상을 처리하며, 구르기와 마나 잔재(Mana Remnants)로 마나를 유지합니다.",
+        "이 가이드는 레벨 순서대로 나열하는 방식이 아니라 스테이지별로 구성했습니다. 먼저 '엔탱글 중심 플레이'에서 '선더스톰 촉발 루프'로 넘어가는 시점을 다루고, 그다음 장비, 패시브, 예산 등급을 설명합니다. 모든 클라이언트 기준 수치와 스킬 메커니즘은 PC 검증 대상임을 표시하며, 검증되지 않은 DPS는 사실로 서술하지 않습니다."
+      ],
+      "bullets": [
+        "맵핑은 엔탱글 + 스래싱 바인즈로 쓸어버리며, 거의 원버튼으로 동작합니다.",
+        "보싱은 강제 결과 / CoC로 유지되는 선더스톰으로 마무리합니다.",
+        "긴 보스 전투에서 마나가 바닥나는 것은 반드시 대처해야 할 실제 병목입니다."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "장단점",
+      "pros": [
+        "거의 원버튼으로 맵핑 가능. 덩굴이 잡몹을 자동으로 처리해 매우 여유롭습니다.",
+        "강제 결과가 촉발 루프를 안정화하여 보스 대상 커버리지가 강력합니다.",
+        "식물 상태(Plant status)가 부드러운 군중 제어를 제공하고 포위당할 위험을 낮춥니다.",
+        "초반 저예산에서도 작동하며 고예산으로 매끄럽게 전환됩니다."
+      ],
+      "cons": [
+        "선더스톰이 촉발되기 전에는 피해가 낮습니다. 승천과 마나가 먼저 필요합니다.",
+        "관리하지 않으면 긴 보스 전투에서 마나가 바닥나 루프가 끊깁니다.",
+        "카오스 저항은 후반 필수 수치이지만 빌드 자체에서 기본 제공되지 않습니다.",
+        "방어는 수동형(passive)이며, 버스트 창은 위치 잡기가 아닌 상태(Status)에 의존합니다."
+      ]
+    },
+    {
+      "id": "plant-loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "루프의 흐름: 엔탱글 → 선더스톰",
+      "paragraphs": [
+        "맵핑 루프: 무리에 엔탱글을 떨어뜨리면 덩굴이 사거리 안의 모든 적을 계속 휩쓸고, 당신은 대개 엔탱글만 다시 시전하고 구르기만 하면 됩니다. 이것이 커뮤니티에서 이 빌드를 '원버튼 맵핑'이라 부르는 이유입니다.",
+        "보스 루프: 보스에게 엔탱글을 걸어 덩굴을 부착하고 식물 상태를 쌓은 다음, 강제 결과 / 치명 시 시전이 선더스톰을 머리 위에 계속 유지해 과성장을 지키도록 합니다. 스래싱 바인즈는 주된 단일 대상 보상이며, 힘의 인장(Sigil of Power)이 피해와 치명타를 지원합니다.",
+        "'식물에 물 주기(watering the plants)' 같은 표현은 보통 식물 상태를 쌓아 얻는 피해/범위 증가를 뜻하지, 별도의 시스템을 의미하지 않습니다. 스킬 설명과 클라이언트에서 확인하고, 숨겨진 별개 메커니즘으로 취급하지 마십시오."
+      ],
+      "bullets": [
+        "맵핑 = 엔탱글 + 구르기. 나머지는 덩굴이 처리합니다.",
+        "보스 = 엔탱글(부착 + 둔화) → 강제 결과/CoC가 선더스톰(과성장) 유지.",
+        "스래싱 바인즈는 주된 단일 대상 / 보스 피해이며, 측면 채우기가 아닙니다."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "레벨링 경로",
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "엔탱글로 시작하십시오. 아주 초반에도 사용할 수 있으며 실제 맵핑 스킬입니다. 아직 선더스톰 촉발 사슬을 억지로 돌리지 마십시오 — 마나와 승천이 준비되지 않았습니다."
+          ]
+        },
+        {
+          "label": "레벨 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "측면 마무리기로 스래싱 바인즈를 추가하고 생명력/마나/범위 노드를 찍기 시작하십시오. 핵심은 엔탱글입니다."
+          ]
+        },
+        {
+          "label": "레벨 30–42 — 오라클 해금",
+          "levelRange": "30–42",
+          "body": [
+            "오라클을 선택하고 강제 결과 노드를 찍으십시오. 치명 시 시전으로 촉발되는 선더스톰이 안정화되며 보스 피해가 크게 뛰어오릅니다."
+          ]
+        },
+        {
+          "label": "레벨 43–60 — 초반 맵",
+          "levelRange": "43–60",
+          "body": [
+            "비치명 저예산으로 촉발 루프를 가동하십시오. 저항을 상한까지 채우고, 생명력/마나를 보정하며, 레어 몬스터에게 선더스톰을 유지하십시오."
+          ]
+        },
+        {
+          "label": "레벨 60+ — 엔드게임 준비",
+          "levelRange": "60+",
+          "body": [
+            "예산 업그레이드로 넘어가십시오: 집중(Focus) 스펠 피해, 시전 속도, 마나 풀, 카오스 저항을 챙기십시오. 업그레이드 우선순위 체크리스트를 통과한 후에만 고급 장비를 노리십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "스킬 구성",
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "엔탱글",
+              "skillId": "entangle",
+              "role": "맵핑 코어: 균열을 만들어 덩굴이 근처 적에게 붙어 둔화시키며, 보스전 식물 상태 구성을 위한 스킬이기도 합니다.",
+              "supportSkillIds": [
+                "branching-fissures",
+                "accelerated-growth",
+                "rapid-casting",
+                "magnified-area"
+              ],
+              "whyUse": [
+                "전체 루프의 시작점입니다. 엔탱글로 덩굴이 붙지 않으면 선더스톰 커버리지와 식물 상태를 쌓을 수 없습니다."
+              ],
+              "whenReplace": [
+                "절대 대체되지 않습니다. 보싱에서는 주 피해에서 상태 구성 역할로 바뀔 뿐입니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 덩굴을 유지하기 위해 엔탱글을 계속 시전. 보스: 먼저 상태를 쌓기 위해 엔탱글을 건 다음 촉발 사슬을 돌림."
+              ],
+              "notes": [
+                "정확한 서포트 연결과 젬 레벨은 PC 검증 대기 중입니다."
+              ]
+            },
+            {
+              "displayName": "선더스톰",
+              "skillId": "thunderstorm",
+              "role": "강제 결과 / 치명 시 시전으로 머리 위에 유지되는 번개. 임무는 식물에 과성장을 유지하는 것이며, 주 피해원이 아닙니다.",
+              "supportSkillIds": [
+                "magnified-area",
+                "prolonged-duration",
+                "rapid-casting",
+                "living-lightning"
+              ],
+              "whyUse": [
+                "과성장의 촉매제입니다. 촉발이 안정화되면 번개가 거의 영구적으로 유지되어 식물에 물을 주는 상태가 됩니다."
+              ],
+              "whenReplace": [
+                "대체되지 않으나, 빛나려면 강제 결과/CoC와 마나가 제자리에 있어야 합니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 식물을 과성장시키는 용도. 보스: 과성장을 유지하기 위해 촉발 사슬로 머리 위에 계속 유지."
+              ],
+              "notes": [
+                "시전 타이밍은 수동 시전이 아닌 촉발 조건에 의해 결정됩니다."
+              ]
+            },
+            {
+              "displayName": "스래싱 바인즈",
+              "skillId": "thrashing-vines",
+              "role": "주된 단일 대상 및 보스 피해. 식물이 과성장한 뒤 나오는 일차적인 보상입니다.",
+              "supportSkillIds": [
+                "concentrated-area",
+                "accelerated-growth",
+                "physical-mastery",
+                "rapid-casting"
+              ],
+              "whyUse": [
+                "엔탱글 범위 내에서 자동으로 채찍질하며, 이 빌드의 가장 높은 단일 대상 피해를 냅니다."
+              ],
+              "whenReplace": [
+                "마무리기로 유지하십시오. 더 강한 범위 식물 스킬이 등장하는 경우에만 교체."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 보조 클리어. 보스: 페이즈 전환 시 주된 단일 대상 피해."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "촉발 및 버프",
+          "skills": [
+            {
+              "displayName": "치명 시 시전",
+              "skillId": "cast-on-critical",
+              "role": "치명타 발생 시 선더스톰을 방출하는 촉발 캐리어.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "안정적인 선더스톰 촉발의 전제 조건입니다. 없으면 리듬이 깨집니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 촉발 구조의 일부입니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하나, 보싱은 안정적인 촉발에 더 의존합니다."
+              ],
+              "notes": [
+                "충분한 치명타와 마나가 필요합니다."
+              ]
+            },
+            {
+              "displayName": "힘의 인장",
+              "skillId": "sigil-of-power",
+              "role": "피해/치명타를 높이는 지면 버프로 촉발 사슬을 강화합니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "피해와 치명타 지원을 더해 선더스톰의 해상도(resolution)를 강화합니다."
+              ],
+              "whenReplace": [
+                "버프로 유지하십시오."
+              ],
+              "mappingBossingDiff": [
+                "맵핑에서는 선택 사항, 보싱에서는 버스트 창을 강화하도록 배치."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "마나 잔재",
+              "skillId": "mana-remnants",
+              "role": "긴 보스 전투의 마나 고갈을 완화하는 마나 유지 수단.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "긴 보스 전투에서 마나가 바닥나면, 마나 풀을 단순히 쌓는 것보다 이 스킬이 더 직접적인 해결책입니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 마나 관리의 핵심입니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하나, 보싱에서 더 중요합니다."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "승천 순서",
+      "steps": [
+        {
+          "label": "오라클 — 첫 노드",
+          "body": [
+            "오라클을 선택하십시오. 강제 결과 노드를 우선하십시오. 그 안의 '피할 수 없는 치명타 적중' 덕분에 치명 시 시전이 선더스톰을 안정적으로 촉발할 수 있습니다. 이것이 빌드의 전제 조건입니다."
+          ]
+        },
+        {
+          "label": "마나 및 방어 점검",
+          "body": [
+            "T15 이상에서 생존이 불안하면, 순수 피해를 위해 식물/스펠 피해 노드를 포기하지 마십시오. 먼저 마나 유지와 카오스 저항을 확보하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "패시브 트리",
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "엔탱글 / 식물 범위 / 마나 / 생명력을 지지하는 노드만 찍고, 치명타 휠로 미리 갈 필요는 없습니다."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "촉발 사슬 변형으로 전환하고 생명력, 마나 풀, 카오스 저항, 시전 속도를 우선하십시오."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "방어와 마나 바닥이 해결된 후에 치명타/스펠 피해 휠에 투자하십시오. 같은 등급에서 장비 상태를 비교하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "장비",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "스킬 레벨과 번개/스펠 피해를 올려주는 베이스를 고르고, 선더스톰 연결용 소켓이 충분해야 합니다."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "스펠 스킬 레벨 / 번개 스펠 피해",
+              "reason": "선더스톰의 해상도를 직접 상승시킵니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "마나 풀과 재생",
+              "reason": "긴 보스 전투에서 루프를 유지하는 핵심입니다."
+            },
+            {
+              "tier": "optional",
+              "label": "시전 속도",
+              "reason": "촉발 리듬을 faster하게 하지만 필수 바닥은 아닙니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명타 확률 / 치명타 피해",
+              "reason": "촉발과 마나가 안정된 후에만."
+            }
+          ],
+          "notes": [
+            "집중(Focus)이 주무기입니다. 스펠 피해와 마나를 우선하십시오."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "생명력, 카오스 저항, 저항. 부츠는 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 상한에 도달한 저항 두 개",
+              "reason": "죽는 것을 피해로 보상할 수는 없습니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "카오스 저항",
+              "reason": "후반 필수 수치이며 기본 제공되지 않습니다."
+            },
+            {
+              "tier": "optional",
+              "label": "이동 속도",
+              "reason": "위치 잡기와 구르기 리듬을 향상시킵니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 스펠 피해",
+              "reason": "방어가 해결된 후에만 의미가 있습니다."
+            }
+          ],
+          "notes": [
+            "카오스 저항은 베이스에서 나올 수 없으므로 반드시 쌓아야 합니다."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "속성, 저항, 생명력, 마나. 필요한 곳에 마나 유지."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "스태프와 젬을 장착하기 위한 속성",
+              "reason": "장착할 수 없으면 무용지물입니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명력",
+              "reason": "방어 셸을 완성합니다."
+            },
+            {
+              "tier": "optional",
+              "label": "마나 풀 / 재생",
+              "reason": "장신구에서 얻는 무료 유지 수단."
+            },
+            {
+              "tier": "luxury",
+              "label": "스펠 스킬 레벨",
+              "reason": "후반 피해."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "스탯 우선순위",
+      "priorities": [
+        {
+          "label": "스펠 스킬 레벨",
+          "reason": "선더스톰과 엔탱글을 함께 상승시키며, 최우선 진척 점검 항목입니다."
+        },
+        {
+          "label": "마나 풀과 재생",
+          "reason": "긴 보스 전투에서 루프를 유지하는 바닥(floor)입니다."
+        },
+        {
+          "label": "카오스 저항",
+          "reason": "후반 필수 수치이며 기본 제공되지 않습니다."
+        },
+        {
+          "label": "시전 속도",
+          "reason": "방어와 마나 이후에 더 빠른 촉발을 제공합니다."
+        },
+        {
+          "label": "치명타",
+          "reason": "CoC의 전제 조건이며, 마나가 안정된 후에만."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "업그레이드 우선순위",
+      "steps": [
+        {
+          "label": "클리어 지연",
+          "symptom": "무리가 죽기 위해 엔탱글을 여러 차례 시전해야 합니다.",
+          "checks": [
+            "스태프가 여전히 해당 등급에 맞는 베이스인가?",
+            "저항과 생명력이 해결되었는가(즉, 스태프가 진짜 병목인가)?"
+          ],
+          "upgrade": "장신구를 건드리기 전에 등급 미달 스태프를 먼저 교체하십시오."
+        },
+        {
+          "label": "보스 마나 고갈",
+          "symptom": "단일 대상 상황에서 마나가 비면 선더스톰이 끊깁니다.",
+          "checks": [
+            "처치 재생에만 의존하고 있는가?",
+            "보싱 중 마나 잔재 / 흡혈 / 플라스크가 활성화되어 있는가?"
+          ],
+          "upgrade": "피해를 키우기 전에 마나 유지를 먼저 해결하십시오."
+        },
+        {
+          "label": "보스 폭풍 누락",
+          "symptom": "선더스톰 창이 결코 안정되지 않습니다.",
+          "checks": [
+            "강제 결과를 찍었는가?",
+            "치명 시 시전의 치명타가 충분한가?",
+            "마나가 연속 촉발을 지원하는가?"
+          ],
+          "upgrade": "스태프가 아닌 촉발 사슬(강제 결과 → CoC → 마나)을 고치십시오."
+        },
+        {
+          "label": "T15 이후 정체",
+          "symptom": "피해가 더 이상 개선되지 않습니다.",
+          "checks": [
+            "스펠 레벨이 상한에 도달했는가?",
+            "집중의 스펠 피해가 자리 잡았는가?",
+            "카오스 저항이 최대화되었는가?"
+          ],
+          "upgrade": "순서대로 업그레이드: 스펠 레벨 → 집중 → 카오스 저항."
+        },
+        {
+          "label": "고급 장비 고려",
+          "symptom": "더 높은 보스 피해를 원하고 고급 장비를 노립니다.",
+          "checks": [
+            "촉발 사슬과 마나가 안정적인가?",
+            "고급 장비가 저항 상한을 깨거나 생명력을 낮출까?"
+          ],
+          "upgrade": "한 조각씩 사고 체크리스트를 통과한 후 재테스트하십시오. 생존을 수치와 맞바꾸지 마십시오."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "맵핑",
+      "paragraphs": [
+        "무리에 엔탱글을 떨어뜨리면 덩굴이 자동으로 채찍질합니다. 당신은 엔탱글만 다시 시전하고 구르기만 하면 됩니다. 잡몹에게 선더스톰은 필요 없으며, 촉발하러 멈추면 오히려 느려집니다.",
+        "클리어가 느려지면 먼저 스태프를 업그레이드하십시오. 맵핑이 멈추지 않도록 일부 마나 유지(처치 재생 / 마나 잔재 / 플라스크)를 항상 활성화해 두십시오."
+      ],
+      "bullets": [
+        "엔탱글 + 구르기가 맵핑 리듬의 전부입니다.",
+        "잡몹에게는 선더스톰 촉발을 생략하십시오.",
+        "클리어가 느려지면 반응형으로 스태프를 업그레이드하십시오."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "보싱",
+      "paragraphs": [
+        "보싱은 일련의 순서입니다: 피해를 위한 힘의 인장, 덩굴 부착과 식물 상태 축적을 위한 엔탱글, 그다음 강제 결과 / 치명 시 시전이 선더스톰을 머리 위에 유지해 과성장을 지킵니다. 스래싱 바인즈가 주된 단일 대상 보상을 냅니다.",
+        "폭풍이 오지 않으면 문제는 촉발 사슬(강제 결과 / 치명타 / 마나)이지 스태프가 아닙니다. 긴 전투에서 마나가 바닥나면 풀을 억지로 밀어붙이기보다 구르기와 마나 잔재로 유지하십시오."
+      ],
+      "bullets": [
+        "엔탱글(부착 + 둔화) → 인장 → 강제 결과/CoC가 선더스톰(과성장) 유지.",
+        "스래싱 바인즈가 주된 단일 대상 보상.",
+        "마나 하락 = 무기 교체가 아니라 촉발과 유지를 수정하십시오."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "예산 등급: 진짜 저렴 vs 고급 차이",
+      "paragraphs": [
+        "저렴: 저예산 스태프에 저항/생명력/마나가 해결된 상태로, 촉발 사슬만으로 대부분의 콘텐츠를 맵핑·보싱합니다. 이것은 플레이 가능 여부를 바꾸지, 피해 수치를 바꾸지는 않습니다.",
+        "고급: 높은 스펠 레벨의 집중, 특정 유니크, 상한에 도달한 카오스 저항과 치명타로 선더스톰의 해상도와 생존력을 함께 끌어올립니다. 이것은 천장과 허용 오차를 바꾸지, 저렴함을 완전히 다른 빌드로 바꾸지는 않습니다.",
+        "미러 등급은 저렴/고급 통과와 클라이언트 수치 확인 이후에만 고려하십시오. DPS를 위해 카오스 저항과 마나를 희생하지 마십시오."
+      ],
+      "bullets": [
+        "먼저 저렴: 생명력, 저항, 마나, 적당한 스태프.",
+        "나중에 고급: 스펠 레벨, 카오스 저항, 치명타.",
+        "미러 등급은 방어 바닥을 절대 깨지 않습니다."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "커뮤니티 근거",
+      "note": "이 가이드는 커뮤니티 논의를 재현 가능한 체크리스트로 활용하며, 그들이 보여준 DPS에 대한 약속으로 취급하지 않습니다.",
+      "entries": [
+        {
+          "context": "플레이어들이 T15 이후 피해가 정체되어 무엇을 업그레이드해야 할지 모른다고 보고합니다.",
+          "label": "Raxxanterax 0.5 Plant Oracle guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "이 가이드는 저렴/고급/미러 등급을 구분하여, 각각이 메커니즘이 아닌 장비 한계를 바꾼다고 명확히 합니다.",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "context": "플레이어들이 '식물에 물 주기'가 숨겨진 메커니즘인지 논쟁합니다.",
+          "label": "P4wnyhof Plant Druid leveling experience",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "레벨링 경험은 엔탱글 + 덩굴 채찍의 원버튼 느낌을 강조합니다. 식물 상태는 쌓이는 레이어일 뿐, 별도 시스템이 아닙니다.",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "문제 해결",
+      "problems": [
+        {
+          "symptom": "보스 폭풍이 촉발되지 않음",
+          "checks": [
+            "강제 결과를 찍었는가?",
+            "치명 시 시전의 치명타가 충분한가?",
+            "마나가 연속 촉발을 지원하는가?"
+          ]
+        },
+        {
+          "symptom": "긴 보스 전투에서 마나 고갈",
+          "checks": [
+            "처치 재생에만 의존하고 있는가?",
+            "보싱 중 마나 잔재 / 흡혈 / 플라스크가 활성화되어 있는가?"
+          ]
+        },
+        {
+          "symptom": "맵핑 지연",
+          "checks": [
+            "스태프가 여전히 해당 등급의 베이스인가?",
+            "저항과 생명력이 먼저 해결되었는가?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "몇 레벨부터 엔탱글 사용을 시작하나요?",
+          "answer": [
+            "아주 초반에도 사용할 수 있으며 실제 맵핑 스킬입니다. 선더스톰 촉발 사슬은 오라클과 마나를 기다립니다."
+          ],
+          "bullets": [
+            "레벨 1부터 엔탱글 맵핑."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "더 좋은 스태프로 교체했는데도 폭풍이 여전히 약한가요?",
+          "answer": [
+            "폭풍은 스태프 단독이 아닌 촉발 사슬(강제 결과 / 치명 시 시전 / 마나)로 유지됩니다. 먼저 촉발과 마나를 고치십시오."
+          ],
+          "bullets": [
+            "보스 전투를 녹화하고 촉발 아이콘을 확인하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSF로 플레이할 수 있나요?",
+          "answer": [
+            "가능합니다. 저예산 촉발 사슬로 SSF에서도 대부분의 콘텐츠를 맵핑·보싱합니다. 고급 유니크는 천장일 뿐, 장벽이 아닙니다."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ko/guides/campaign-early-maps-gearing-crafting/",
+              "label": "캠페인 및 초반 맵 장비 가이드 보기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "빌드 플래너 및 가져오기",
+      "note": "PoE2에는 이제 기본 빌드 플래너가 포함되어 있습니다. 붙여넣기용 가져오기 문자열과 .build 파일은 여전히 PC 검증 대기 중입니다. 그동안 아래 제작자 가이드와 공식 플래너를 이용하십시오. 항상 자신의 클라이언트에서 노드를 재확인하십시오.",
+      "creatorName": "Raxxanterax",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "레벨링과 폭풍 리듬 시청",
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 플랜트 오라클 레벨링 가이드",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4",
+          "description": "엔탱글 맵핑에서 형성된 선더스톰 촉발 사슬까지 전체 경로를 보여주는 긴 참고 영상.",
+          "takeaway": "악트마다 캠페인 보스 하나를 샘플링하십시오. 클리어 속도가 아닌 촉발 순서를 기록하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개 및 개념"
+            },
+            {
+              "time": "2:10",
+              "label": "악트 1 맵핑"
+            },
+            {
+              "time": "5:30",
+              "label": "오라클 승천과 강제 결과"
+            },
+            {
+              "time": "9:00",
+              "label": "선더스톰 촉발 사슬"
+            },
+            {
+              "time": "13:20",
+              "label": "초반 맵과 장비"
+            }
+          ]
+        },
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 플랜트 오라클 엔드게임 가이드",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0",
+          "description": "엔드게임: 마나 관리, 저렴/고급/미러 장비, 패시브 트리.",
+          "takeaway": "무분별한 DPS 추격이 아닌 마나 관리와 장비 한계에 집중하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "1:40",
+              "label": "마나 관리"
+            },
+            {
+              "time": "4:30",
+              "label": "저렴 유니크와 장비"
+            },
+            {
+              "time": "8:15",
+              "label": "고급 / 미러 장비"
+            },
+            {
+              "time": "12:00",
+              "label": "패시브 트리 및 요약"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "출처 및 검증",
+      "categories": [
+        {
+          "label": "공식",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "변경 로그",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "출처가 검증된 0.5.4 플랜트 오라클 드루이드 빌드 가이드 작성. PC 검증 진행 중."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+    },
+    {
+      "label": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+    }
+  ],
+  "seo": {
+    "title": "플랜트 오라클 드루이드 빌드 가이드 | Exile2 Guides",
+    "description": "0.5.4 플랜트 오라클 드루이드: 엔탱글 클리어, 강제 결과와 CoC 선더스톰, 마나 유지, 보스 로테이션, 예산 등급.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "plant-oracle-druid",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

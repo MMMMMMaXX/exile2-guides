@@ -1,0 +1,640 @@
+{
+  "id": "dangerous-waystone-map-modifiers",
+  "slug": "dangerous-waystone-map-modifiers",
+  "locale": "ja",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "危険なウェイストーンモディファイア：振り直すか、潜るか、スキップするか（PoE 2 0.5）",
+  "shortTitle": "ウェイストーンモディファイア",
+  "summary": "PoE 2 0.5 におけるウェイストーンモディファイアの読み方：自分のビルドにとって危険なマップモッド、モッド数に応じたリバイブの変動、そして振り直し・潜入・売却・スキップのタイミング。",
+  "description": "危険な PoE 2 ウェイストーンモディファイアを判断優先で解説するガイド：モッドの読み方、モッド危険度マトリックス、ビルド別診断、リスク・リワードマトリックス、振り直し・潜入・売却・スキップのルール、潜入前チェックリスト、そして死因診断。",
+  "guideCategory": "endgame-atlas",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "アトラスマップデバイスへのアクセスとウェイストーンの在庫",
+    "自分のビルドの防御とダメージを理解し、悪いモッドを見抜ける程度の知識"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "endgame-atlas",
+    "map"
+  ],
+  "heroImage": "/images/items/waystones-hero.webp",
+  "cardImage": "/images/items/waystones-hero.webp",
+  "imageAlt": "Path of Exile 2 エンドゲームでマップを開くアイテムであるウェイストーンの山積み",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接的な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "モッドは報酬と危険性にどう影響する？",
+          "body": [
+            "ウェイストーンに追加されるモッドはすべて、報酬と危険性の両方を高める。モッドが増えるほど、マップを開いた際に得られるリバイブの回数も減る。"
+          ]
+        },
+        {
+          "title": "リバイブは何回もらえる？",
+          "body": [
+            "目安として：ノーマル（0モッド）のウェイストーンが最も多くのリバイブを与え、マジック（2モッド）は少なく、レア4モッドはさらに少なく、レア6モッドやコラプトマップはゼロ——つまり1回死ぬとその走行は終了する。正確な回数はクライアントで再確認すること。"
+          ]
+        },
+        {
+          "title": "どのモッドがすべてのビルドにとって危険？",
+          "body": [
+            "ノーリジェネ / 回復減少、反射・元素回避モッド、カオスグラウンド、そしてコラプト6モッドマップ（リバイブゼロ）は、ビルドを問わず危険。ビルド固有のモッドも重要——マトリックスを参照。"
+          ]
+        },
+        {
+          "title": "いつマップをスキップすべき？",
+          "body": [
+            "自分のビルドが耐えられない複合モッドを持つマップ、特にリバイブゼロのコラプトマップは、キャラクターが安定して T15 コンテンツを突破できるようになるまでスキップすること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how-to-read-waystone",
+      "order": 2,
+      "title": "ウェイストーンの読み方",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "ウェイストーンはアトラスのマップを開き、そのモディファイアを設定する。接頭辞も接尾辞もモンスターの難易度を上げ、報酬を向上させるため、その1行はトレードオフであり、タダのボーナスではない。",
+        "リバイブは安全予算である。ウェイストーンが持つモッドが多いほど、Retryの回数は減る——そして強く変質した、あるいはコラプトされたマップでは一切得られない可能性がある。開く前に必ずマップデバイスでリバイブ数を確認すること。"
+      ],
+      "bullets": [
+        "モッド数はドロップと危険性の両方を左右する——多ければ良いというわけではない。",
+        "コラプトおよび6モッドのマップはふつうリバイブゼロを付与する。1回死ぬとマップとその中身すべてを失う。",
+        "タブレットは地域全体のボーナスを追加する。マジックマップはスロット1つ、レアは2つ、6モッドは3つを解放する。",
+        "進行中のマップモッドは、内部にいる間ミニマップの右上に表示される。"
+      ]
+    },
+    {
+      "id": "map-modifier-matrix",
+      "order": 3,
+      "title": "モッド危険度マトリックス",
+      "type": "map-modifier-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "各モッドを自分のビルドと照らし合わせて評価すること。正確なモッドの文言と数値は、実際の 0.5.4 クライアントで再確認すべき。",
+      "modifiers": [
+        {
+          "modifier": "No Regeneration / Reduced Recovery",
+          "affects": "All builds",
+          "danger": "red",
+          "symptom": "フラスコやスキルでの回復が効かなくなり、小刻みなダメージが致死になる。",
+          "action": "回復の薄いビルドではスキップ。潜る前にライフオンヒットやリーチを追加すること。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Monsters reflect / avoid Elemental damage",
+          "affects": "Casters and elemental builds",
+          "danger": "yellow",
+          "symptom": "主力ダメージが耐性を持たれるか、自分に反射して返ってくる。",
+          "action": "耐性を確認。軽減できない場合は反射マップを完全に避けること。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Extra / Faster Projectiles",
+          "affects": "Melee and slow-reaction builds",
+          "danger": "yellow",
+          "symptom": "予備動作のある弾幕を避けにくくなる。",
+          "action": "遮蔽物を使い、機動力のあるビルドのときだけ潜ること。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Increased Monster Speed / Teleport",
+          "affects": "Slow, stationary builds",
+          "danger": "yellow",
+          "symptom": "モンスターが距離を詰め、囲い込む。",
+          "action": "潜る前に移動や脱出手段を用意すること。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "No Life / Mana Leech",
+          "affects": "Leech-dependent builds",
+          "danger": "red",
+          "symptom": "サステイン層がすべて消え失せる。",
+          "action": "リーチのみのビルドでは絶対に潜らないこと。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Reduced Armour / Evasion",
+          "affects": "Defensive stackers",
+          "danger": "yellow",
+          "symptom": "軽減値が急激に下がる。",
+          "action": "耐性と層状の防御で補うこと。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Chaos damage ground",
+          "affects": "Low chaos-resist builds",
+          "danger": "red",
+          "symptom": "継続的なカオスダメージがほとんどの防御をすり抜ける。",
+          "action": "T15以上のコラプトマップの前にカオス耐性を上限まで上げること。",
+          "version": "0.5"
+        },
+        {
+          "modifier": "Corrupted / 6-modifier (zero revives)",
+          "affects": "All builds",
+          "danger": "red",
+          "symptom": "1回死ぬとRetryなしでマップが終了する。",
+          "action": "安定して T15 コンテンツを生き残れるようになったときのみ。",
+          "version": "0.5"
+        }
+      ]
+    },
+    {
+      "id": "build-profile",
+      "order": 4,
+      "title": "ビルド別の禁忌モッド",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "自分のビルドタイプを選び、どのモッドが赤信号になるべきか確認しよう。",
+      "controls": [
+        {
+          "id": "archetype",
+          "label": "あなたのビルドタイプ",
+          "options": [
+            {
+              "label": "Melee",
+              "value": "melee"
+            },
+            {
+              "label": "Caster / elemental",
+              "value": "caster"
+            },
+            {
+              "label": "Summoner",
+              "value": "summoner"
+            },
+            {
+              "label": "Leech-dependent",
+              "value": "leech"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "近接の赤信号",
+          "when": {
+            "archetype": "melee"
+          },
+          "steps": [
+            "追加・高速の投擲物とモンスター速度アップは、近接の位置取りを残酷なものにする。",
+            "ノーリジェネも痛いが、ヒット時リーチでふつうはカバーできる。",
+            "速度＋投擲物が組み合わさったマップは、防御が固まるまで避けること。"
+          ]
+        },
+        {
+          "title": "キャスター / 元素の赤信号",
+          "when": {
+            "archetype": "caster"
+          },
+          "steps": [
+            "反射と元素回避モッドは、あなたのダメージを直接削る。",
+            "自分のダメージ種を回避するモンスターは、切り替えられないならハードスキップ。",
+            "フラスコでのサステインがあればノーリジェネは対処可能。"
+          ]
+        },
+        {
+          "title": "召喚士の赤信号",
+          "when": {
+            "archetype": "summoner"
+          },
+          "steps": [
+            "マップ全体のモンスター速度とテレポートは、ミニオンの位置取りを圧倒することがある。",
+            "反射はミニオンのダメージではめったに問題にならないが、オーラ予約モッドを確認すること。",
+            "カオスグラウンドは低カオス耐性を今でも罰する。"
+          ]
+        },
+        {
+          "title": "リーチ依存の赤信号",
+          "when": {
+            "archetype": "leech"
+          },
+          "steps": [
+            "ライフ／マナノーリーチは唯一のサステインを奪う——ハードスキップ。",
+            "ノーリジェネが問題をさらに悪化させる。",
+            "これらのマップを潜るのは、フラスコかヒット時ライフ回復のバックアップがあるときのみ。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "一般的な禁忌モッドリスト",
+        "steps": [
+          "ノーリジェネ、ノーリーチ、反射、リバイブゼロのコラプトマップを、大半のビルドで赤と扱う。",
+          "自分の防御に基づいた個人的な禁忌モッドリストを作る。",
+          "コアアイテムやサポートを交換するたびに再確認すること。"
+        ]
+      }
+    },
+    {
+      "id": "risk-reward-matrix",
+      "order": 5,
+      "title": "リスクとリワード",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "強化されたマップを開く価値があるか判断する。",
+      "rows": [
+        {
+          "choice": "進行用のノーマルまたはマジックウェイストーン",
+          "riskLevel": "green",
+          "risk": "リバイブ最多、危険性最低",
+          "reward": "着実なマップ攻略とアトラスポイント",
+          "when": "アトラス序盤およびリーグ開始時"
+        },
+        {
+          "choice": "レア4モッド『アルケミー・アンド・ゴー』",
+          "riskLevel": "yellow",
+          "risk": "リバイブ減、本物の危険",
+          "reward": "大がかりな投資なしで良いドロップ",
+          "when": "完成し、装備の揃ったビルド"
+        },
+        {
+          "choice": "コラプト6モッドマップ",
+          "riskLevel": "red",
+          "risk": "リバイブゼロ——1回死ぬとすべてを失う",
+          "reward": "最高ティアの数値とT16の可能性",
+          "when": "安定して T15 を生き残れるようになったときのみ"
+        },
+        {
+          "choice": "ビルドが耐えられないモッドを潜る",
+          "riskLevel": "red",
+          "risk": "ほぼ確実な死",
+          "reward": "なし",
+          "when": "絶対しない——代わりに売却かスキップ"
+        }
+      ]
+    },
+    {
+      "id": "reroll-run-sell-skip",
+      "order": 6,
+      "title": "振り直し、潜入、売却、スキップ",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "すべてのマップを必ず潜るべきものとして扱ってはならない。マップをビルドの現在の強さに合わせること。"
+      ],
+      "bullets": [
+        "振り直し：結果が明らかに自分のビルドにとって安全または報酬的になった場合のみ、オーブ・オブ・アルケミー／カオス／ヴァールでモッドを変更する。",
+        "潜入：進行用にノーマル／マジックを開き、装備が揃えばレア4モッドを潜る。",
+        "売却：自分のビルドが嫌うモッドのマップを取引で手放す——他の誰かが使える。",
+        "スキップ：まだ耐えられないリバイブゼロのコラプトマップを削除または保管し、後で見直す。"
+      ]
+    },
+    {
+      "id": "before-opening-checklist",
+      "order": 7,
+      "title": "マップを開く前に",
+      "type": "checklist",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "リバイブ数を確認する",
+          "body": [
+            "マップデバイス上でウェイストーンが何回のリバイブを与えるか確認する。",
+            "リバイブゼロのマップには、実証された生き残れるビルドが必要。"
+          ]
+        },
+        {
+          "label": "すべてのモッド行を読む",
+          "body": [
+            "各モッドを自分の個人的な禁忌モッドリストと照合する。",
+            "組み合わせ（速度＋投擲物、反射＋ノーリジェネ）に注意する。"
+          ]
+        },
+        {
+          "label": "防御を確認する",
+          "body": [
+            "耐性上限、フラスコのサステイン、脱出手段の装備が完了。",
+            "モッドがサステインを奪う場合は、交換するかマップをスキップすること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "death-diagnostic",
+      "order": 8,
+      "title": "死因診断：ボスかモッドか？",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "死んだが理由がわからない？パターンを選ぼう。",
+      "controls": [
+        {
+          "id": "death",
+          "label": "どう死んだ？",
+          "options": [
+            {
+              "label": "Slow chip damage, never healed",
+              "value": "chip"
+            },
+            {
+              "label": "One-shot out of nowhere",
+              "value": "oneshot"
+            },
+            {
+              "label": "Swarmed and surrounded",
+              "value": "swarm"
+            },
+            {
+              "label": "Fine until a specific mod",
+              "value": "mod"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "回復モッドがあなたを沈黙させている",
+          "when": {
+            "death": "chip"
+          },
+          "steps": [
+            "ノーリジェネ / 回復減少はフラスコとスキルの回復を奪う。",
+            "リーチに頼っているなら、リーチ抑制モッドを確認すること。",
+            "ヒット時ライフ回復を運用するか、これらのマップをスキップすること。"
+          ]
+        },
+        {
+          "title": "倍率モッドがボスの一撃を拡大した",
+          "when": {
+            "death": "oneshot"
+          },
+          "steps": [
+            "モンスターのダメージ増加やクリティカルモッドは、装備不足のビルドを一撃で殺せる。",
+            "これはマップモッドであり、必ずしもボスの仕組みではない。",
+            "再挑戦前に耐性を上限まで上げ、層状の防御を追加すること。"
+          ]
+        },
+        {
+          "title": "速度／テレポートモッドに圧倒された",
+          "when": {
+            "death": "swarm"
+          },
+          "steps": [
+            "モンスター速度アップやテレポートは距離を急速に詰める。",
+            "移動スキルを持ち、防御可能な位置から殲滅すること。",
+            "遅く、静止したビルドではこれらのモッドを避けること。"
+          ]
+        },
+        {
+          "title": "特定のモッドが原因だった",
+          "when": {
+            "death": "mod"
+          },
+          "steps": [
+            "自分のビルドを崩した正確なモッドを特定する。",
+            "それを永久に禁忌モッドリストに加える。",
+            "今後は似たマップを振り直し、売却、またはスキップすること。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "一般的な死後の対処",
+        "steps": [
+          "モッドの行と自分のリバイブ数を再読する。",
+          "ボスの仕組みとマップモッドを切り分ける。",
+          "防御を調整するか、マップをスキップする。"
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "コミュニティの質問に答える",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Reddit や動画のコメントから寄せられる一般的なウェイストーンの質問。それぞれに分析と直接的な提案を添える。",
+      "cards": [
+        {
+          "title": "なぜ高報酬マップに何度も殺される？",
+          "tag": "Danger",
+          "body": [
+            "質問：マップは儲かりそうに見えたのに、何度も死んだ。",
+            "根拠：モッドが多いほどリバイブが減り、危険性が増す。単にドロップが増えるわけではない。",
+            "提案：T15 を生き残れるようになるまで、コラプト6モッドではなくレア4モッドを潜ること。"
+          ]
+        },
+        {
+          "title": "いつでもアルケミー・アンド・ゴー？",
+          "tag": "Strategy",
+          "body": [
+            "質問：レア4モッドは常に正解？",
+            "根拠：それは装備の揃ったビルドにとって安全な中間地点。",
+            "提案：農業にはイエス。耐えられないコラプトマップはスキップ。"
+          ]
+        },
+        {
+          "title": "ビルドは問題ないのにモッドで消される",
+          "tag": "Matchup",
+          "body": [
+            "質問：特定のマップでの突然の死。",
+            "根拠：反射／ノーリーチ／ノーリジェネは特定のビルドを狙う。",
+            "提案：個人的な禁忌モッドリストを作り、毎マップ確認すること。"
+          ]
+        },
+        {
+          "title": "タブレットモッドはウェイストーンモッドと別？",
+          "tag": "Mechanic",
+          "body": [
+            "質問：タブレットは危険に積み重なる？",
+            "根拠：タブレットはウェイストーンの行に加えて地域ボーナスを追加する。",
+            "提案：マップの危険性を判断する際、両方を考慮に入れること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "ウェイストーン強化動画",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 0.5 初心者マッピング＆ウェイストーンガイド",
+          "creator": "PoE 2 creator guide",
+          "description": "ウェイストーンを安全に強化する実践的なウォークスルー：いつ強化するか、モッドが危険性をどう拡大するか、いつ止めるか。",
+          "takeaway": "進行にはノーマル／マジックを、農業にはレア4モッドを使用。リバイブゼロのコラプトマップを潜るのは、T15 を生き残れるようになってからのみ。",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "timestamps": [
+            {
+              "label": "はじめに",
+              "time": "0:00"
+            },
+            {
+              "label": "Mapping foundation",
+              "time": "1:20"
+            },
+            {
+              "label": "When to upgrade",
+              "time": "3:40"
+            },
+            {
+              "label": "Alchemy and Go",
+              "time": "6:10"
+            },
+            {
+              "label": "Corrupted maps",
+              "time": "9:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "トラブルシューティング",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "『悪いマップ』での死のほとんどは、その行を読めば予測可能。失敗の二つの形態は：ビルドがモッドが奪う防御（リジェネ、リーシ、耐性）を欠いているか、モッド数がリバイブを奪い、一回のミスで走行が終わること。"
+      ],
+      "bullets": [
+        "なぜ死んだか名指しできないなら、モッドの行とリバイブ数を再読すること。",
+        "ボスを責める前に、ボスの仕組みとマップモッドを切り分けること。",
+        "書かれた禁忌モッドリストを保持し、マップを開くたびに確認すること。"
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Path of Exile 2 official site and 0.5 patch notes",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Creator guide",
+          "description": "MMOExp - PoE2 0.5 beginner mapping and Waystone juicing guide",
+          "url": "https://www.mmoexp.com/News/path-of-exile-2-0-5-beginner-mapping-guide-how-to-juice-waystones-for-better-rewards-and-faster-endgame-progress.html"
+        },
+        {
+          "label": "コミュニティ Wiki",
+          "description": "PoE2 Wiki - Waystone and map modifier reference",
+          "url": "https://poe2wiki.net/wiki/Waystone"
+        },
+        {
+          "label": "Strategy site",
+          "description": "Maxroll - Rolling Waystones and Precursor Tablets",
+          "url": "https://maxroll.gg/poe2/resources/rolling-waystones-and-precursor-tablets"
+        },
+        {
+          "label": "動画ガイド",
+          "description": "PoE 2 0.5 beginner mapping and Waystone walkthrough",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "notes": [
+          "Modifier count raises both reward and danger (cross-checked vs multiple mapping guides)",
+          "Revive scaling by modifier count (Normal/Magic/Rare/Corrupted) confirmed; exact numbers pending PC verification",
+          "Dangerous mod categories (no regen, reflect, chaos ground, zero-revive corrupted) identified from community guides",
+          "Tablet slots scale with rarity (Magic 1 / Rare 2 / 6-mod 3) confirmed",
+          "No fixed reward percentages given - danger is matched to build, not encouraged"
+        ]
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Published for PoE 2 0.5.4. Covers reading Waystones, a modifier danger matrix, a build-profile diagnostic, risk-reward, reroll/run/sell/skip, a checklist and a death diagnostic. Client verification remains pending for the stated boundaries."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "waystones-guide",
+    "tablets"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients",
+    "patch-0-5-1-atlas-player-changes"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official site",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "MMOExp - 0.5 mapping guide",
+      "sourceType": "community",
+      "url": "https://www.mmoexp.com/News/path-of-exile-2-0-5-beginner-mapping-guide-how-to-juice-waystones-for-better-rewards-and-faster-endgame-progress.html"
+    },
+    {
+      "label": "PoE2 Wiki - Waystone",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Waystone"
+    },
+    {
+      "label": "Maxroll - Rolling Waystones",
+      "sourceType": "community",
+      "url": "https://maxroll.gg/poe2/resources/rolling-waystones-and-precursor-tablets"
+    },
+    {
+      "label": "PoE 2 mapping walkthrough",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    }
+  ],
+  "seo": {
+    "title": "危険なウェイストーンモディファイア：振り直すか、潜るか、スキップするか（PoE 2 0.5）",
+    "description": "PoE 2 0.5 におけるウェイストーンモディファイアの読み方：自分のビルドにとって危険なマップモッド、モッド数に応じたリバイブの変動、そして振り直し・潜入・売却・スキップのタイミング。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-02",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "dangerous-waystone-map-modifiers",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

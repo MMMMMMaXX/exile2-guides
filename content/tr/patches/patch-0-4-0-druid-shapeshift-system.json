@@ -1,0 +1,427 @@
+{
+  "id": "patch-0-4-0-druid-shapeshift-system",
+  "slug": "patch-0-4-0-druid-shapeshift-system",
+  "locale": "tr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 Druid ve Şekil Değiştirme Sistemi: Totem, İlkel Beceriler ve Eski Yapılar Neden Bozuluyor",
+  "shortTitle": "0.4.0 Druid / Şekil Değiştirme",
+  "summary": "Druid, Oracle ve Shaman'in 0.4.0'da oyuna nasıl girdiği, Totem'in neden bir dönüşüm silahı olduğu ve 0.4.0 öncesi Druid yapılarının neden beceri kimliği, silah ve pasif kontrollerinden geçemediği.",
+  "description": "0.4.0 Druid ve Şekil Değiştirme çatısının sistem düzeyinde bir tarihi: Hayvan Formları, İlkel Beceriler, Soy Desteği, Totem silah kuralları, 0.4.0i eleştiri (crit) koşulu düzeltmesi ve eski Druid düzenleri için bir geçiş rehberi.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "Path of Exile 2 Druid, ateş ayısı şekil değiştirme formunda",
+  "tags": [
+    "builds",
+    "major-updates",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Hızlı özet",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Druid çatısı, 0.4.0'ın mekanik kalbidir; bu tek bir beceri hattı değil, hayvan formları (şekil değiştirme), yalnızca bu formların içinde veya çevresinde işlev gören ilkel beceriler, yalnızca ilkel becerilerle sınırlı soy destekleri ve tüm sistemi kapatan totem silahlarından oluşan bir sistemdir.",
+        "Sistem beceri kimliklerine, silah gereksinimlerine ve pasif ağaca aynı anda dokunduğu için, eski harici Druid yapıları üç bağımsız noktada bozulur; bu sayfa her hatayı ayrı ayrı ele alır ve güncel kuralı sunar."
+      ],
+      "bullets": [
+        "Druid, Oracle ve Shaman yükselişleriyle (ascendancy) birlikte gelir",
+        "Şekil değiştirme sıradan asalar değil, totem silahları kullanır",
+        "İlkel beceriler ve soy destekleri forma bağlıdır (form-gated)",
+        "0.4.0i, yakın zamanda şekil değiştirmiş eleştiri (crit) koşulunu düzeltti",
+        "0.4.0 öncesi Druid yapıları, var olmayan bir sınıfa atıfta bulunuyordu"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "Sistemin kökeni",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.4.0",
+      "sourceId": "official-0-4-0",
+      "paragraphs": [
+        "Şekil değiştirme, baştan itibaren bir güçlendirme (buff) değil bir dönüşüm olarak tasarlandı; bir forma girmek silah setinizi totemin forma özel affix'leriyle değiştirir ve aksi halde etkisiz olan ilkel becerileri etkinleştirir.",
+        "Soy destekleri, ilkel becerilere genel becerilere kopyalanamayacak bir destek katmanı sağlamak ve Druid'in kimliğini diğer büyücülerden ayırt etmek için özel olarak tanıtıldı."
+      ],
+      "bullets": [
+        "Hayvan formu bir geçiş güçlendirmesi değil, bir durumdur",
+        "İlkel beceriler amaçlanan etkiyi yapmak için aktif veya yakın zamanda bir form gerektirir",
+        "Soy destekleri yalnızca ilkel becerilere takılır"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 3,
+      "title": "Tarihsel bağlam",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Erken Erişim — 0.4.0 Druid çatısı",
+      "baselineNote": "Aşağıdaki güncel kurallar 0.5.4e istemcisine göre ölçülmüştür.",
+      "paragraphs": [
+        "0.4.0'dan önce Druid yoktu; bu yüzden önceki dönemlere ait her Druid yapı videosu ya spekülatiftir ya da farklı bir oyunun sınıfına atıfta bulunur.",
+        "Çatı işlevsel olarak tamamlanmış halde yayımlandı ancak 0.4.0i'nin bir ay içinde çözdüğü bir eleştiri koşulu hatasıyla birlikte geldi."
+      ],
+      "bullets": [
+        "0.4.0 tam Druid çatısı lansmanı",
+        "0.4.0i şekil değiştirme eleştiri koşulu ve totem gereksinimi düzeltmeleri"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 4,
+      "title": "Sınıf ve yükseliş haritası",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Druid (temel sınıf)",
+          "verdict": "Hâlâ güncel",
+          "detail": "0.5.4e'de seçilebilir sınıf; Şekil Değiştirme kimliği bozulmadı."
+        },
+        {
+          "area": "Oracle (yükseliş)",
+          "verdict": "Hâlâ güncel",
+          "detail": "Kalkan (ward)/kehanet ağırlıklı Druid yükselişi; düğüm kümesi kimlik açısından değişmedi."
+        },
+        {
+          "area": "Shaman (yükseliş)",
+          "verdict": "Hâlâ güncel",
+          "detail": "Elementel/çağırma ağırlıklı Druid yükselişi."
+        },
+        {
+          "area": "Pasif ağaç düğümleri",
+          "verdict": "250+ eklendi, hâlâ güncel",
+          "detail": "Druid'e özel kümeler mevcut; eski 'Druid düğümü yok' rehberleri yanlış."
+        }
+      ]
+    },
+    {
+      "id": "weapon-rel",
+      "order": 5,
+      "title": "Silah ve beceri ilişkisi",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.4.0 öncesi varsayım",
+      "oldText": "Bir 'Druid' herhangi bir büyücü gibi sadece bir asa veya sceptre kullanır ve genel destekleri takardı.",
+      "newLabel": "0.4.0 kuralı (0.5.4e'de hâlâ geçerli)",
+      "newText": "Şekil değiştirme bir Totem silahı gerektirir; aktif veya yakın zamanda bir form olmadan İlkel Beceriler etkisizdir; Soy Desteği yalnızca İlkel Becerilere uygun."
+    },
+    {
+      "id": "passive-impact",
+      "order": 6,
+      "title": "Pasif ağaç etkisi",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "250+ Druid pasif becerisi",
+          "detail": "Şekil değiştirme süresi, İlkel Beceri etkisi ve form eleştirisi için yeni kümeler. 0.4.0 öncesi pasif planlayıcılarında böyle düğümler yoktu.",
+          "scope": "Resmi 0.4.0 notları"
+        },
+        {
+          "category": "new",
+          "title": "Pasiflerde forma bağlılık",
+          "detail": "Bazı Druid pasifleri yalnızca dönüşmüş haldeyken bonus verir; eski ağaç bu durumu temsil edemezdi.",
+          "scope": "Resmi 0.4.0 notları"
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "order": 7,
+      "title": "Önem taşıyan 0.4.x düzeltmeleri",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "0.4.0i 'yakın zamanda Şekil Değiştirmiş' eleştirisi",
+          "detail": "Eleştiri koşulu artık formdan ayrıldıktan sonra güvenilir şekilde tetikleniyor; Ayı/Spriggan eleştiri yapıları düzeltildi.",
+          "scope": "Resmi 0.4.0i notları"
+        },
+        {
+          "category": "fix",
+          "title": "0.4.0i Totem gereksinimi kontrolleri",
+          "detail": "İstemci artık dönüşüm affix'lerini etkinleştirmeden önce Totem silah gereksinimlerini doğru şekilde doğruluyor.",
+          "scope": "Resmi 0.4.0i notları"
+        },
+        {
+          "category": "fix",
+          "title": "Konsol çökme düzeltmeleri",
+          "detail": "0.4.0i, form değişimi sırasında Xbox/PS5'teki birkaç istemci çökmesini giderdi.",
+          "scope": "Resmi 0.4.0i notları"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 8,
+      "title": "Yapı geçiş rehberi",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "Asa + genel destekler kullanan eski 'Druid' düzeni",
+          "to": "Totem silahı + İlkel Beceriler + Soy Desteği",
+          "note": "Önce silah tabanını değiştir; Totem olmadan İlkel Beceriler etkisizdir."
+        },
+        {
+          "from": "Diğer büyücülerden kopyalanmış destekler",
+          "to": "Yalnızca İlkel Beceriler için Soy Desteği",
+          "note": "Soy Desteği, ilkel olmayan becerilere takılmaz; ilkel olmayan bağlantılar için genel destekleri koruyun."
+        },
+        {
+          "from": "Druid kümeleri olmayan pasif ağaç",
+          "to": "0.4.0 Druid kümelerini ekleyin (form süresi, İlkel etki)",
+          "note": "0.4.0 öncesi planlayıcılarında bu düğümler hiç yoktu."
+        },
+        {
+          "from": "Form durumunu yok sayan eleştiri yığılması",
+          "to": "'Yakın zamanda Şekil Değiştirmiş' koşulunu hesaba katın (0.4.0i'de düzeltildi)",
+          "note": "0.4.0i'den sonra koşul form sonrasında güvenilir şekilde tetiklenir."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "Güncel uygulanabilirlik (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Totem silah gereksinimi",
+          "status": "still-current",
+          "currentSummary": "Şekil değiştirme hâlâ bir Totem gerektirir; 0.4.0i gereksinim-kontrol düzeltmesi yürürlüktedir.",
+          "supersededBy": "—",
+          "affectedContent": "Totem eşya sayfası"
+        },
+        {
+          "topic": "İlkel Beceri forma bağlılığı",
+          "status": "still-current",
+          "currentSummary": "İlkel Beceriler 0.5.4e'de hâlâ forma bağlıdır.",
+          "supersededBy": "—",
+          "affectedContent": "İlkel Beceriler sayfası"
+        },
+        {
+          "topic": "Soy Desteği kısıtlaması",
+          "status": "still-current",
+          "currentSummary": "Soy Desteği hâlâ yalnızca İlkel Becerilere takılır.",
+          "supersededBy": "—",
+          "affectedContent": "Destek (Support) Gem sayfası"
+        },
+        {
+          "topic": "Şekil değiştirme eleştiri koşulu",
+          "status": "changed-later",
+          "currentSummary": "0.4.0i bunu düzeltti; sonraki denge eleştiri sayılarını ayarlamış olabilir ancak koşul çalışıyor.",
+          "supersededBy": "0.4.0i, 0.5.x balance",
+          "affectedContent": "Ayı Şaman Druid yapısı"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 10,
+      "title": "Topluluk kanıtı",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.4.0–0.4.0i)",
+          "context": "Ayı yapıları, formdan ayrıldıktan sonra eleştirilerin tetiklenmediğini bildirdi.",
+          "quote": "My crit condition never triggers after I un-bear.",
+          "analysis": "0.4.0i'de düzeltildi. 0.5.4e'de koşul çalışıyor, dolayısıyla eski şikayetler artık geçerli değil."
+        },
+        {
+          "source": "Reddit (0.4.0 öncesi 'Druid' videoları)",
+          "context": "0.4.0 öncesine ait 'Druid yapı' başlıklı videolar, var olmayan bir sınıfı anlatıyor.",
+          "quote": "This whole guide is for a class that isn't in the game yet.",
+          "analysis": "O dönemde doğruydu; artık eski. Yalnızca 0.4.0 sonrası Druid içeriği kullanın."
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "Etkilenen yapılar ve beceriler",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Ayı Şaman Druid yapısı",
+          "type": "build",
+          "trigger": "Druid + Totem + Şekil Değiştirme",
+          "action": "Totem kurallarını ve 0.4.0i eleştiri düzeltmesini doğrulayın.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Fire Bear Smith of Kitava",
+          "type": "build",
+          "trigger": "Druid Şekil Değiştirme",
+          "action": "İlkel Beceri bağlantılarını onaylayın.",
+          "status": "ready"
+        },
+        {
+          "name": "İlkel Beceriler sayfası",
+          "type": "skill",
+          "trigger": "Forma bağlılık",
+          "action": "Form gereksinimini açıkça belgeleyin.",
+          "status": "queued"
+        },
+        {
+          "name": "Totem eşya sayfası",
+          "type": "item",
+          "trigger": "Silah gereksinimi",
+          "action": "Şekil Değiştirme ön koşulunu belirtin.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Tarihsel video",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 Druid Şekil Değiştirme derinlemesine inceleme",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "Lansman haftası Druid tanıtımı; gösterilen Totem/İlkel kuralları hâlâ büyük ölçüde doğru, ancak eleştiri davranışı 0.4.0i öncesini yansıtıyor.",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "SSS",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Eski Druid yapım neden becerilerin geçersiz olduğunu söylüyor?",
+          "answer": [
+            "Çünkü Druid 0.4.0'dan önce yoktu ve sistem bir totem silahı ile forma bağlı ilkel beceriler gerektiriyor; güncel Druid çatısı üzerinde yeniden kurun."
+          ]
+        },
+        {
+          "question": "Soy Desteği, ilkel olmayan becerilerde çalışır mı?",
+          "answer": [
+            "Hayır, soy destekleri yalnızca ilkel becerilere takılır; tasarım gereği diğer bağlantılar için genel destekleri kullanın."
+          ]
+        },
+        {
+          "question": "Şekil değiştirme eleştiri düzeltmesi oyunda kaldı mı?",
+          "answer": [
+            "Evet, 0.4.0i 'yakın zamanda şekil değiştirmiş' eleştiri koşulu düzeltmesi 0.5.4e'de hâlâ yürürlükte; yalnızca sonraki denge sayıları farklılık gösterebilir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Kaynaklar ve doğrulama",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 resmi 0.4.0 Yama Notları",
+          "description": "Druid, Totem, İlkel Beceriler, Soy Desteği ve pasif eklemeleri.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Path of Exile 2 resmi 0.4.0i Yama Notları",
+          "description": "Şekil değiştirme eleştiri koşulu ve Totem gereksinimi düzeltmeleri.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        },
+        {
+          "label": "PoE2 Wiki — Druid",
+          "description": "Güncel Durum Druid sınıfı ve Şekil Değiştirme verileri.",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid",
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 resmi 0.4.0 Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 resmi 0.4.0i Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 Druid ve Şekil Değiştirme — Totem, İlkel Beceriler ve eski yapı geçişi",
+    "description": "0.4.0 öncesi Druid yapıları neden bozuluyor ve Totem / İlkel Beceri / Soy Desteği sistemi 0.5.4e'de nasıl çalışıyor.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-druid-shapeshift-system",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "id": "omens",
+  "slug": "omens",
+  "locale": "ru",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Гайд по Оменам: активация, комбинации крафта и момент расхода",
+  "shortTitle": "Омены",
+  "summary": "Омены — это предметы из инвентаря, которые меняют работу следующей подходящей валюты. В гайде разбирается их активация, какой Омен сочетается с какой валютой, как избежать случайного срабатывания дорогого Омена и некрафтовые Омены для выживания и механик лиги.",
+  "description": "Справочник по Оменам в Path of Exile 2 с привязкой к источникам: правила активации, схема имён Sinistral/Dextral, комбинации Омен + валюта, проверки ложного срабатывания и оценка стоимости.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "omen",
+    "targeted-crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "Значок предмета-валюты Омен из Path of Exile 2 — синий ритуальный тотем, изменяющий следующее использование подходящей валюты",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Краткий ответ",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Активируйте Омен в инвентаре (кликайте правой кнопкой, пока не появится красная рамка). После этого он меняет самое следующее подходящее действие с валютой. Омен расходуется, только когда это действие реально происходит, — если условие никогда не выполняется, Омен остаётся.",
+      "calloutDetail": [
+        "Sinistral влияет на префиксы, Dextral — на суффиксы; остальная часть названия указывает нужную валюту.",
+        "Одновременно может быть активен только один некрафтовый (выживание/лига) Омен."
+      ],
+      "answers": [
+        {
+          "label": "Новичок в крафте",
+          "text": [
+            "Начните с Омена Sinistral/Dextral Exaltation и Омена Crystallisation."
+          ]
+        },
+        {
+          "label": "Высокие вложения",
+          "text": [
+            "Добавьте Greater Exaltation, Homogenising Exaltation и Whittling для детерминированного крафта."
+          ]
+        },
+        {
+          "label": "Чего избегать",
+          "text": [
+            "Оставлять активным дорогой Омен, когда по ошибке используете другую валюту."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#effect",
+          "label": "Как работают Омены →"
+        },
+        {
+          "href": "#pre-use-checklist",
+          "label": "Чек-лист ложного срабатывания →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Основные факты",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Где",
+          "value": "Активен в инвентаре",
+          "note": [
+            "Кликните правой кнопкой, чтобы переключить красную активную рамку."
+          ]
+        },
+        {
+          "label": "Триггер",
+          "value": "Следующее подходящее использование валюты",
+          "note": [
+            "Расходуется только при выполнении условия."
+          ]
+        },
+        {
+          "label": "Именование",
+          "value": "Sinistral = префикс, Dextral = суффикс",
+          "note": [
+            "«of Exaltation» и т.п. называет валюту."
+          ]
+        },
+        {
+          "label": "Источник",
+          "value": "В основном Ritual",
+          "note": [
+            "Также Abyss Omens и Currency Exchange."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Семейства Оменов",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Омены делятся на управляющие крафтом и некрафтовые (выживание / лига). Среди крафтовых Оменов префикс Sinistral/Dextral указывает, на какую сторону модификатора влияет эффект."
+      ],
+      "members": [
+        {
+          "id": "omen-exaltation",
+          "eyebrow": "Exalted Orb",
+          "title": "Sinistral / Dextral / Greater Exaltation",
+          "sub": "Префикс / суффикс / два модификатора",
+          "tags": [
+            "crafting",
+            "exalt"
+          ],
+          "body": [
+            "Sinistral добавляет только префикс-модификаторы, Dextral — только суффикс-модификаторы. Greater Exaltation добавляет два случайных модификатора и складывается с Оменом Sinistral/Dextral, добавляя два модификатора выбранной стороны."
+          ]
+        },
+        {
+          "id": "omen-annulment",
+          "eyebrow": "Orb of Annulment",
+          "title": "Sinistral / Dextral Annulment",
+          "sub": "Удалить префикс / суффикс",
+          "tags": [
+            "crafting",
+            "annul"
+          ],
+          "body": [
+            "Ограничивает сторону, с которой Orb of Annulment может снять модификатор."
+          ]
+        },
+        {
+          "id": "omen-erasure",
+          "eyebrow": "Chaos Orb",
+          "title": "Sinistral / Dextral Erasure",
+          "sub": "Chaos перебирает одну сторону",
+          "tags": [
+            "crafting",
+            "chaos"
+          ],
+          "body": [
+            "Заставляет Chaos Orb перебросить только блок префиксов или только блок суффиксов."
+          ]
+        },
+        {
+          "id": "omen-crystallisation",
+          "eyebrow": "Perfect / Corrupted Essence",
+          "title": "Sinistral / Dextral Crystallisation",
+          "sub": "Эссенция удаляет одну сторону",
+          "tags": [
+            "crafting",
+            "essence"
+          ],
+          "body": [
+            "Следующая Perfect или Corrupted Essence удаляет только префикс- или только суффикс-модификаторы — безопасный способ использования эссенций."
+          ]
+        },
+        {
+          "id": "omen-homogenising",
+          "eyebrow": "Exalted / Regal",
+          "title": "Homogenising Exaltation / Coronation",
+          "sub": "Модификаторы с одним тегом",
+          "tags": [
+            "crafting",
+            "advanced"
+          ],
+          "body": [
+            "Следующий Exalted/Regal Orb может добавить только модификатор, у которого есть общий тег с уже имеющимся на предмете."
+          ]
+        },
+        {
+          "id": "omen-whittling",
+          "eyebrow": "Chaos Orb",
+          "title": "Whittling",
+          "sub": "Удалить мод низшего уровня",
+          "tags": [
+            "crafting",
+            "value"
+          ],
+          "body": [
+            "Следующий Chaos Orb удаляет модификатор низшего уровня вместо случайного. Высокая ценность на торговых лигах."
+          ]
+        },
+        {
+          "id": "omen-catalysing",
+          "eyebrow": "Exalted Orb",
+          "title": "Catalysing Exaltation",
+          "sub": "Тратит качество катализатора",
+          "tags": [
+            "crafting",
+            "jewellery"
+          ],
+          "body": [
+            "Следующий Exalted Orb расходует всё качество Catalyst, смещая результат в сторону этого типа модификаторов. См. гайд по Catalysts."
+          ]
+        },
+        {
+          "id": "omen-survival",
+          "eyebrow": "Некрафтовый",
+          "title": "Amelioration / Refreshment / Resurgence",
+          "sub": "Выживание",
+          "tags": [
+            "defense",
+            "survival"
+          ],
+          "body": [
+            "Снижают потерю опыта при смерти, восполняют заряды фляг/чармов при Low Life или восстанавливают Life/Mana/ES при Low Life. Одновременно активен только один некрафтовый Омен."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "Как Омен меняет валюту",
+      "toc": true,
+      "visible": true,
+      "type": "effect",
+      "paragraphs": [
+        "Омен не меняет предмет напрямую. Он переписывает правила следующей валюты, подходящей под его условие. Например, при активном Омене Dextral Exaltation следующий Exalted Orb добавляет только суффикс-модификаторы вместо случайного модификатора.",
+        "Несколько Оменов могут быть активны одновременно, и их эффекты складываются, если они совместимы. Несовместимые Омены (например, два, претендующих на роль «контроллера следующего Exalted») отключают более ранний при активации более позднего."
+      ],
+      "bullets": [
+        "Активные Омены отображаются с красной рамкой в инвентаре.",
+        "Омен тратится только при наступлении соответствующего действия.",
+        "Если подходящее действие никогда не выполняется, Омен не расходуется и остаётся в инвентаре."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 50,
+      "title": "Что запускает Омен",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Каждый Омен называет точную валюту и сторону модификатора, за которыми следит. На любое другое действие он не влияет."
+      ],
+      "columns": [
+        "Exalted Orb",
+        "Orb of Annulment",
+        "Perfect / Corrupted Essence"
+      ],
+      "rows": [
+        {
+          "label": "Omen of Sinistral Exaltation",
+          "note": "Добавляет только префикс-модификаторы",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Да"
+            },
+            {
+              "kind": "no",
+              "text": "Нет"
+            },
+            {
+              "kind": "no",
+              "text": "Нет"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Annulment",
+          "note": "Удаляет только префикс-модификаторы",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Нет"
+            },
+            {
+              "kind": "yes",
+              "text": "Да"
+            },
+            {
+              "kind": "no",
+              "text": "Нет"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Crystallisation",
+          "note": "Эссенция удаляет только префикс-модификаторы",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Нет"
+            },
+            {
+              "kind": "no",
+              "text": "Нет"
+            },
+            {
+              "kind": "yes",
+              "text": "Да"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 60,
+      "title": "Как получить Омены",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Омены — это ресурс эндгейм-крафта, получаемый в основном из одной механики, с парой дополнительных путей."
+      ],
+      "routes": [
+        {
+          "label": "Алтари Ritual",
+          "body": [
+            "Основной источник. Тратьте Tribute на Алтаре Ritual ради шанса получить Омены; некоторые чрезвычайно ценны."
+          ]
+        },
+        {
+          "label": "Механика Abyss",
+          "body": [
+            "Abyss Omens выпадают из контента Abyss и подчиняются тем же правилам активации."
+          ]
+        },
+        {
+          "label": "Currency Exchange",
+          "body": [
+            "На торговых лигах можно напрямую обменивать валюту на многие распространённые Омены."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Как использовать Омен",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Выберите Омен",
+          "body": [
+            "Подберите Омен, соответствующий валюте и стороне, которыми хотите управлять."
+          ]
+        },
+        {
+          "label": "Активируйте его",
+          "body": [
+            "Кликайте правой кнопкой в инвентаре, пока не появится красная рамка."
+          ]
+        },
+        {
+          "label": "Используйте валюту",
+          "body": [
+            "Выполните подходящее действие с валютой; Омен расходуется, и применяется его правило."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Чек-лист перед использованием",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "Омен соответствует валюте",
+          "checks": [
+            "Убедитесь, что Омен называет именно ту валюту, которую собираетесь использовать."
+          ],
+          "why": "Несовпадающий Омен не сработает, и вы зря потратите валюту.",
+          "fix": "Перечитайте название Омена перед использованием валюты."
+        },
+        {
+          "label": "Нужная сторона",
+          "checks": [
+            "Sinistral = префикс, Dextral = суффикс; подтвердите, какая нужна вам."
+          ],
+          "why": "Неверная сторона впустую тратит дорогой Омен.",
+          "fix": "Переключитесь на правильный Омен Sinistral/Dextral."
+        },
+        {
+          "label": "Нет активного несовместимого Омена",
+          "checks": [
+            "Проверьте, что более ранний Омен той же валюты уже не активен."
+          ],
+          "why": "Несовместимый Омен отключает более ранний.",
+          "fix": "Активируйте правильный последним."
+        },
+        {
+          "label": "Предмет готов",
+          "checks": [
+            "На целевом предмете есть ожидаемые модификаторы до использования валюты."
+          ],
+          "why": "Омен необратимо меняет одно действие.",
+          "fix": "Сначала завершите прочую подготовку."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Результаты по Омен + валюта",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "exalt",
+        "annul",
+        "essence"
+      ],
+      "rows": [
+        {
+          "scenario": "Dextral Exaltation на Rare с 1 суффиксом",
+          "audience": "Целевые крафтеры",
+          "benefit": "Безопасно заполняет блок суффиксов",
+          "risk": "Низкий",
+          "level": "low",
+          "recommendation": "Отличный вариант по умолчанию для завершения Rare",
+          "tags": [
+            "exalt"
+          ]
+        },
+        {
+          "scenario": "Sinistral Crystallisation + Perfect Essence",
+          "audience": "Крафтеры эссенций",
+          "benefit": "Сохраняет суффикс-моды, меняет префикс",
+          "risk": "Средний",
+          "level": "medium",
+          "recommendation": "Безопасный способ Perfect-крафта",
+          "tags": [
+            "essence"
+          ]
+        },
+        {
+          "scenario": "Sinistral Annulment на Rare с 1 префиксом",
+          "audience": "Исправляющие",
+          "benefit": "Удаляет только плохой префикс",
+          "risk": "Низкий",
+          "level": "low",
+          "recommendation": "Чище, чем обычный Annulment",
+          "tags": [
+            "annul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 100,
+      "title": "Рабочие комбинации крафта",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "Самая распространённая детерминированная комбинация — Омен Dextral Exaltation плюс Омен Greater Exaltation: следующий Perfect Exalted Orb добавляет минимум два суффикс-модификатора. Наложение Sinistral и Dextral Омена с Greater Omen позволяет полностью контролировать обе стороны.",
+        "Для эссенций сочетайте Омен Sinistral или Dextral Crystallisation с Perfect/Corrupted эссенцией, чтобы вы всегда теряли только ту сторону, которая вам безразлична. Homogenising Exaltation — продвинутый вариант: он ограничивает следующий Exalted/Regal модификаторами, имеющими общий тег с уже имеющимися на предмете."
+      ],
+      "bullets": [
+        "Dextral Exaltation + Greater Exaltation = два суффикс-мода от одного Perfect Exalted.",
+        "Sinistral Crystallisation + Perfect Essence = безопасная замена префикса.",
+        "Homogenising Exaltation требует хорошего понимания тегов модификаторов."
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "Анализ рисков",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Дорогой Омен оставлен активным по ошибке",
+          "gain": "Нет",
+          "loss": "Омен потрачен на неподходящую валюту",
+          "level": "high",
+          "recommendation": "Активируйте Омен лишь непосредственно перед подходящей валютой."
+        },
+        {
+          "scenario": "Активны два Омена одной валюты",
+          "gain": "Нет",
+          "loss": "Более ранний Омен незаметно отключён",
+          "level": "medium",
+          "recommendation": "Держите активным только один контроллер-Омен на валюту."
+        },
+        {
+          "scenario": "Whittling на готовом предмете",
+          "gain": "Удаляет только мод низшего уровня",
+          "loss": "Всё равно удаляет мод, который может быть нужен",
+          "level": "low",
+          "recommendation": "Используйте только когда низший мод нежелателен."
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 120,
+      "title": "Использовать, продать или оставить",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Рыночные ценности меняются в зависимости от лиги и патча. Приведённые ниже цифры — снимок разговоров торговой лиги Early Access 0.5.x и требуют повторной проверки в игре перед любой сделкой."
+      ],
+      "use": {
+        "condition": "Вы завершаете дорогой крафт и нуждаетесь в детерминированном контроле",
+        "first": "Активируйте подходящий Омен Sinistral/Dextral",
+        "risk": "Расходует обмениваемый предмет",
+        "text": [
+          "Оправдано, когда ценность крафта явно превышает цену Омена."
+        ]
+      },
+      "sell": {
+        "condition": "Вы не крафтите, а Омен пользуется спросом",
+        "first": "Выложите на торговом сайте по текущему курсу",
+        "risk": "Цены падают по мере роста предложения",
+        "text": [
+          "Ценные Омены (например, Whittling) могут профинансировать другую экипировку."
+        ]
+      },
+      "hold": {
+        "condition": "Ожидаете крафта позже или цены растут",
+        "first": "Оставьте в тайнике",
+        "risk": "Изменения патча могут переоценить Омены",
+        "text": [
+          "Держите, если ваш план лиги включает детерминированный крафт."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Свидетельства сообщества",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-mistrigger",
+          "kind": "Вопрос с Reddit",
+          "question": "Почему мой дорогой Омен исчез, ничего не сделав?",
+          "summary": [
+            "Игрок активировал Омен, затем использовал другую валюту и потерял его."
+          ],
+          "editorialAnalysis": [
+            "Омен расходуется только соответствующим действием; использование неподходящей валюты его не тратит. Потеря, вероятно, вызвана отключением несовместимым Оменом или использованием не той валюты после активации."
+          ],
+          "officialAnswer": [
+            "Активируйте Омен сразу перед самой подходящей валютой; держите только один контроллер на валюту."
+          ]
+        },
+        {
+          "sourceId": "forum-prefix-suffix",
+          "kind": "Вопрос с форума",
+          "question": "Омен только блокирует удаление или также контролирует добавление?",
+          "summary": [
+            "Игроки путались, ограничивают ли Омены Crystallisation/Exaltation также добавление."
+          ],
+          "editorialAnalysis": [
+            "Омены Exaltation контролируют то, что добавляется (только префикс/суффикс). Омены Crystallisation/Annulment/Erasure контролируют то, что удаляется."
+          ],
+          "officialAnswer": [
+            "Сопоставьте Омен с действием: Exaltation = сторона добавления, Annulment/Erasure/Crystallisation = сторона удаления."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Проблемы и прямые ответы",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Омен не сработал",
+          "directAnswer": [
+            "Использованная валюта не та, за которой следит Омен."
+          ],
+          "checks": [
+            "Перечитайте название Омена; подтвердите точную валюту."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "Открыть матрицу триггеров"
+            }
+          ]
+        },
+        {
+          "symptom": "Затронута не та сторона",
+          "directAnswer": [
+            "Вы использовали Sinistral, когда нужен был Dextral, или наоборот."
+          ],
+          "checks": [
+            "Sinistral = префикс, Dextral = суффикс; переключитесь перед следующим использованием."
+          ]
+        },
+        {
+          "symptom": "Омен неожиданно исчез",
+          "directAnswer": [
+            "Несовместимый Омен той же валюты отключил его при активации более нового."
+          ],
+          "checks": [
+            "Держите активным один контроллер-Омен на валюту."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Связанный контент",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "essences",
+          "contentType": "item",
+          "title": "Эссенции",
+          "description": "Омены Crystallisation контролируют, какую сторону удаляет Perfect эссенция.",
+          "href": "/ru/items/essences/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "Другая высокорисковая валюта, используемая в цепочках крафта.",
+          "href": "/ru/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "История патчей",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.x",
+          "date": "2026-07-31",
+          "changes": [
+            "Омены остаются активируемыми через инвентарь контроллерами крафта; именование Sinistral/Dextral и семейства Crystallisation/Exaltation/Annulment/Erasure не изменились в 0.5.4."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Источники и верификация",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "COMMUNITY",
+          "description": "Гайд по крафту Оменов на Mobalytics с полным списком Оменов и схемой имён.",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "OFFICIAL",
+          "description": "Патч-ноуты Path of Exile 2, охватывающие получение Ritual и Оменов.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Данные Оменов на PoE2DB.",
+          "url": "https://poe2db.tw/us"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "essences",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Mobalytics — Omen Crafting",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Omens",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "Гайд по Оменам Path of Exile 2: активация, комбинации крафта и расход",
+    "description": "Как работают Омены PoE2: активация через инвентарь, схема имён Sinistral/Dextral, комбинации Омен + валюта, проверки ложного срабатывания и оценка стоимости.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "omens",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

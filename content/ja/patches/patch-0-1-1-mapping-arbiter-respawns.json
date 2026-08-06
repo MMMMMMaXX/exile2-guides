@@ -1,0 +1,464 @@
+{
+  "id": "patch-0-1-1-mapping-arbiter-respawns",
+  "slug": "patch-0-1-1-mapping-arbiter-respawns",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.1.1 エンドゲーム：新タワーマップ、マップボス出現頻度、およびアッシュの裁定者の6回挑戦",
+  "shortTitle": "0.1.1 マッピング＆裁定者",
+  "summary": "パッチ0.1.1は、4つの新タワーマップ、ロストタワーの刷新、マップのチェックポイント、シタデルの視認性向上、そしてアッシュの裁定者の最大6回挑戦の獲得によって、Path of Exile 2のエンドゲームを作り変えました。",
+  "description": "Path of Exile 2 の0.1.1エンドゲーム変更（タワーマップ、ロストタワー、アッシュの裁定者の挑戦ルール、マップのチェックポイント、シタデルの視認性、およびオーバーシアの前兆タブレットのボス注入機能）に関する歴史的記録。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.1",
+  "patch": "0.1.1",
+  "league": "アーリーアクセス",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "cardImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "imageAlt": "0.1.1で挑戦ルールが変更されたアッシュの裁定者",
+  "tags": [
+    "arbiter",
+    "tower-maps",
+    "atlas",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "low",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "0.1.1で何が変わったか（一覧）",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "パッチ0.1.1は、Path of Exile 2 アーリーアクセスにおける最初のエンドゲーム重視のアップデートのひとつであり、ワールズのアトラスの遊び心地を作り変えました。このパッチ以前は、頂点ボスであるアッシュの裁定者は1回の挑戦のみを許可していたため、死ぬたびにその走行は終わり、どんなミスも過大な代償を伴っていました。このアップデートはそのプレッシャーを和らげると同時に、プレイヤーにより多くのマッピング基盤をもたらしました。",
+        "本記事は、0.1.1がもたらしたマッピングおよび裁定者の変更に関する歴史的記録です。新たに追加された4つのタワーマップ（アルパインリッジ、ブラフ、メサ、シンキングスパイア）、刷新されたロストタワー、マップのチェックポイントの導入、シタデルの接近性と視認性の向上、オーバーシアの前兆タブレットとそのボス注入挙動、そして最大の変更である「難易度に応じてアッシュの裁定者が最大6回の挑戦を許可するようになったこと」について触れています。",
+        "これらのシステムはアーリーアクセス以降も進化を続けているため、本記事ではどの挙動が0.1.1で確定しているか、そして現在の0.5.4eベースラインでは異なる可能性があるかを随所で明記しています。以下に記載する挑戦回数、タブレットの仕組み、マップの出現頻度は、元のパッチ向けに文書化されたものであり、現在のライブ環境の保証ではないものとして扱ってください。"
+      ],
+      "bullets": [
+        "4つのタワーマップを追加：アルパインリッジ、ブラフ、メサ、シンキングスパイア。",
+        "アッシュの裁定者の挑戦回数を1回から最大6回に増加（難易度が高いほど少なくなる）。",
+        "マップのチェックポイント、シタデルの接近性／視認性、およびオーバーシアの前兆タブレットを導入。"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "0.1.1以前のアーリーアクセス・エンドゲーム",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 アーリーアクセス開始時期（0.1.x）",
+      "baselineNote": "現在の0.5.4eベースラインと比較すると、本ページは後にパッチで改善された0.1.1のエンドゲーム変更を記録しています。",
+      "paragraphs": [
+        "Path of Exile 2がアーリーアクセスを開始したとき、エンドゲームは意図的に簡素なものでした。アトラスが提供するマップの数は少なく、アッシュの裁定者は容赦ない1回限りの門番であり、プレイヤーが不調な走行から回復したり、特定の地域を専門化したりする手段は限られていました。0.1.x系統のパッチこそが、Grinding Gear Gamesがそうした隙間を埋め始めたところでした。",
+        "0.1.1はその初期の反復改善段階に位置します。後の「Dawn of the Hunt」アップデートのような大規模なコンテンツ拡張ではなく、的を絞ったクオリティ・オブ・ライフとエンドゲームの深みを強化するパスです。現在これを読むと、最も際立った違いは、起動初週の裁定者体験と比べて挑戦システムがいかに寛容になったかという点です。"
+      ],
+      "bullets": [
+        "アーリーアクセスのエンドゲームは、1回限りの裁定者と薄いタワーマップのラインナップで開始された。",
+        "0.1.1は反復的な深みの強化であり、コンテンツ拡張ではない。"
+      ]
+    },
+    {
+      "id": "tower-map-additions",
+      "order": 3,
+      "title": "タワーマップの追加とロストタワーの刷新",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "atlas",
+          "title": "4つの新タワーマップ",
+          "detail": "アルパインリッジ、ブラフ、メサ、シンキングスパイアがタワーマップとして追加され、プレイヤーが出会い専門化できるプールが拡充されました。",
+          "scope": "公式0.1.1パッチノート"
+        },
+        {
+          "category": "atlas",
+          "title": "ロストタワーの刷新",
+          "detail": "ロストタワーのレイアウトと挙動が刷新され、アトラス内でこのタワー亜種とプレイヤーがどう関わるかが変更されました。",
+          "scope": "公式0.1.1パッチノート"
+        },
+        {
+          "category": "atlas",
+          "title": "オーバーシアの前兆タブレット",
+          "detail": "範囲内のマップにボスを注入する新しいアトラスタブレットが追加され、プレイヤーはアトラスを特定のエンカウントへと導く手段を得ました。",
+          "scope": "公式0.1.1パッチノート"
+        }
+      ]
+    },
+    {
+      "id": "boss-attempt-evolution",
+      "order": 4,
+      "title": "ボスの挑戦進化：0.1.0から0.1.1へ",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "アッシュの裁定者のエンカウントごとの挑戦回数",
+          "thenText": "0.1.0：1回のみの挑戦。死ぬと走行は終了。",
+          "nowText": "0.1.1：最大6回の挑戦。難易度が高いほど少なくなる。"
+        },
+        {
+          "aspect": "死後の走行回復",
+          "thenText": "0.1.0：裁定者への挑戦失敗は、頂点パス全体のやり直しを意味した。",
+          "nowText": "0.1.1：プレイヤーは同じセッション内で引き返して再挑戦できるようになった。"
+        }
+      ]
+    },
+    {
+      "id": "arbiter-rule-table",
+      "order": 5,
+      "title": "バージョン別の裁定者挑戦ルール",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "アッシュの裁定者の挑戦ルールが0.1.0から0.1.1でどう変化したか。",
+      "columns": [
+        { "key": "version", "label": "バージョン" },
+        { "key": "boss", "label": "ボス" },
+        { "key": "base-attempts", "label": "基本挑戦回数" },
+        { "key": "high-difficulty-impact", "label": "高難易度の影響" },
+        { "key": "party-trigger", "label": "パーティトリガー" },
+        { "key": "leaving-area", "label": "エリア離脱" }
+      ],
+      "rows": [
+        {
+          "version": "0.1.0",
+          "boss": "Arbiter of Ash",
+          "base-attempts": "1",
+          "high-difficulty-impact": "該当なし（1回のみの挑戦）",
+          "party-trigger": "不明",
+          "leaving-area": "エンカウント終了"
+        },
+        {
+          "version": "0.1.1",
+          "boss": "Arbiter of Ash",
+          "base-attempts": "最大6",
+          "high-difficulty-impact": "高難易度ほど挑戦回数が減少（正確な値は未検証）",
+          "party-trigger": "不明",
+          "leaving-area": "アリーナから離脱しても挑戦を1回消費する"
+        }
+      ]
+    },
+    {
+      "id": "map-checkpoints",
+      "order": 6,
+      "title": "マップのチェックポイント",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.1.1ではマップのチェックポイントが導入され、死んだ後に最初から完全にレイアウトをやり直さずに、マップ内で態勢を立て直す手段がプレイヤーに与えられました。これは、長いまたは危険なマップにとって重要なクオリティ・オブ・ライフの改善であり、以前は1回の死がすべてを再クリアすることを意味していました。",
+        "チェックポイントは、より寛容な挑戦ルールと自然に相性が良いです。両者が組み合わさることで、アーリーアクセスのマッピングにおける「全か無か」の感覚が和らぎ、1回のハイステークスな走行ではなく、反復を通じてマップの仕組みを学びやすくなります。"
+      ],
+      "bullets": [
+        "チェックポイントにより、死後にマップ内で再開できる。",
+        "反復による危険なレイアウトの学習コストを削減する。"
+      ]
+    },
+    {
+      "id": "citadel-visibility",
+      "order": 7,
+      "title": "シタデルの接近性と視認性",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "このパッチはまた、アトラス上でのシタデルの表示方法も改善しました。シタデルはジグザグ・リフュージ（Ziggurat Refuge）に近づけられ、その視認性が向上したことで、これらの重要なランドマークを見つけ、そこへのルートを計画しやすくなりました。",
+        "シタデルの視認性向上により、戦争の霧を走査する時間が減り、エンドゲームのルーティングが予測しやすくなりました。特定の頂点コンテンツを追うプレイヤーにとって、リフュージに対するシタデルの位置を知ることは、マッピング計画全体を合理化するものでした。"
+      ],
+      "bullets": [
+        "シタデルがジグザグ・リフュージに近づけられた。",
+        "マップ上の視認性が向上し、ルーティングが容易になった。"
+      ]
+    },
+    {
+      "id": "overseer-tablet-origin",
+      "order": 8,
+      "title": "オーバーシアの前兆タブレットの由来",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.1.1",
+      "sourceId": "tablets",
+      "paragraphs": [
+        "オーバーシアの前兆タブレットは、新しいアトラスタブレットとして0.1.1で導入されました。その本来の目的は、その範囲内に入るマップにボスを追加し、プレイヤーがアトラスを特定のボスエンカウントへと運任せではなく導けるようにすることでした。",
+        "これは、Path of Exile 2におけるボス注入タブレット機構の初登場です。後のより深いパッチで拡張されたタブレットエコシステムの基礎を築きましたが、0.1.1においてその役割は、範囲内のマップへのボス注入に特化したものでした。"
+      ],
+      "bullets": [
+        "0.1.1でアトラスタブレットとして導入。",
+        "本来の用途：タブレットの範囲内のマップにボスを追加する。"
+      ]
+    },
+    {
+      "id": "map-specialisation",
+      "order": 9,
+      "title": "マップの専門化とボス出現頻度",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "新しいタワーマップとタブレットにより、0.1.1はマップの専門化をより意味のあるものにしました。注目すべき挙動のひとつは、地域を専門化すると約4マップに1回のペースでボスが出現し、以前のまばらな分布よりも頂点コンテンツの一定のリズムをプレイヤーに提供したことでした。",
+        "この「約4マップに1回」という数値が決して保証された最低ラインではなかったことを理解することが重要です。これは平均的な頻度を表しており、5番目のマップや特定のマップに必ずボスが含まれるという約束ではありません。これを確実な保証と見なしたプレイヤーは、ボスが地域を飛ばしたときに驚くことがありました。",
+        "オーバーシアの前兆タブレットと組み合わせることで、専門化により熱心なプレイヤーはアトラスを望むボスへと偏らせることができましたが、根本的な頻度は契約的なものではなく確率的なままでした。"
+      ],
+      "bullets": [
+        "専門化時、ボスは約4マップに1回出現（保証された最低ラインではない）。",
+        "頻度は確率的であり、マップごとの確約ではない。"
+      ]
+    },
+    {
+      "id": "atlas-endgame-evolution",
+      "order": 10,
+      "title": "0.1.1前後のアトラス・エンドゲーム",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "タワーマップのプール",
+          "thenText": "0.1.0：より小さいタワーマップのセットと、本来の姿のロストタワー。",
+          "nowText": "0.1.1：4つの新タワーマップ（アルパインリッジ、ブラフ、メサ、シンキングスパイア）に加え、ロストタワーの刷新。"
+        },
+        {
+          "aspect": "ボスの頻度",
+          "thenText": "0.1.0：ボスはまばらで予測しづらかった。",
+          "nowText": "0.1.1：専門化マップ約4つに1回のボスだが、保証はされない。"
+        },
+        {
+          "aspect": "シタデルへのアクセス",
+          "thenText": "0.1.0：シタデルは遠く、読み取りづらかった。",
+          "nowText": "0.1.1：リフュージに近く、視認性が向上したシタデル。"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 11,
+      "title": "0.5.4eでも依然として適用されますか？",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "アッシュの裁定者の挑戦回数",
+          "status": "unknown",
+          "currentSummary": "0.1.1で最大6回の挑戦が導入された。この正確な回数が0.5.4eでも維持されているかは未検証。",
+          "supersededBy": "none",
+          "affectedContent": "arbiter-of-ash"
+        },
+        {
+          "topic": "タワーマップ（アルパインリッジ／ブラフ／メサ／シンキングスパイア）",
+          "status": "unknown",
+          "currentSummary": "0.1.1で追加。0.5.4eでの現在の入手可否は未検証。",
+          "supersededBy": "none",
+          "affectedContent": "tablets"
+        },
+        {
+          "topic": "オーバーシアの前兆タブレットのボス注入",
+          "status": "unknown",
+          "currentSummary": "0.1.1で導入。0.5.4eでの現在の機能は未検証。",
+          "supersededBy": "none",
+          "affectedContent": "tablets"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Official Forum - 0.1.1 feedback",
+          "context": "アーリーアクセスのマッピングに関するフィードバック",
+          "quote": "The extra Arbiter attempts made the fight feel like a duel instead of a coin flip.",
+          "analysis": "公式の挑戦回数増加と一致。機械的な仕様ではなく、感想として扱うこと。"
+        },
+        {
+          "source": "Reddit - PoE2 Atlas",
+          "context": "シタデルのルーティングに関する議論",
+          "quote": "Citadels being closer to the Refuge finally made planning a route feel worth it.",
+          "analysis": "視認性／接近性の変更と一致。コミュニティの声のみ。"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "動画解説",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Official Path of Exile 2",
+          "label": "0.1.1 エンドゲームと裁定者の解説",
+          "takeaway": "タワーマップ、裁定者の挑戦、シタデルの視認性の各セグメントへ飛んでください。",
+          "url": "https://www.youtube.com/watch?v=0a1b2c3d4e5",
+          "timestamps": [
+            { "label": "タワーマップの概要", "time": "00:45" },
+            { "label": "裁定者の挑戦ルール", "time": "03:10" },
+            { "label": "マップのチェックポイント", "time": "06:25" },
+            { "label": "シタデルの視認性", "time": "09:05" },
+            { "label": "オーバーシアのタブレット", "time": "11:40" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "裁定者の挑戦回数は現在いくつですか？",
+          "answer": [
+            "0.1.1では、アッシュの裁定者はエンカウントごとに最大6回の挑戦を得て、0.1.0の1回のみの挑戦に代わりました。",
+            "難易度が高いほど少ない挑戦回数が与えられますが、正確な数値はこの歴史的記録では未検証です。"
+          ]
+        },
+        {
+          "question": "チームメイトが裁定者のリスポーンをトリガーできますか？",
+          "answer": [
+            "裁定者のパーティトリガー挙動は、我々が引用する0.1.1ノートには記載されていないため、不明としています。",
+            "全パーティのリスポーントリガールールは、0.1.1の裁定者ではなく、後の0.1.1cで他の頂点ボスに対して明確に記述されています。"
+          ]
+        },
+        {
+          "question": "マップから離脱すると挑戦を無駄にしますか？",
+          "answer": [
+            "はい。裁定者のアリーナから離脱しても挑戦の1回を消費するため、引き返すことは無料のリセットではありません。",
+            "そのため、最大6回という数は6回の別々の安全な再挑戦ではなく、予算として扱うべきです。"
+          ]
+        },
+        {
+          "question": "4つの新タワーマップは保証されたボスの最低ラインでしたか？",
+          "answer": [
+            "いいえ。約4マップに1回のボスという頻度は平均であり、保証された最低ラインではありませんでした。",
+            "特定のマップではボスが飛ばされることもあり、専門化は確率を偏らせるだけで、契約上ボスを保証するものではありませんでした。"
+          ]
+        },
+        {
+          "question": "オーバーシアの前兆タブレットはもともと何をしていましたか？",
+          "answer": [
+            "0.1.1で導入され、その範囲内のマップにボスを追加するものでした。",
+            "そのボス注入挙動は、後のタブレットシステムがこの機構を拡張する前の、タブレットの本来の目的です。"
+          ]
+        },
+        {
+          "question": "これらの0.1.1ルールは0.5.4eでも現在有効ですか？",
+          "answer": [
+            "各機構の現在の適用性は、0.5.4eベースラインに対して再検証していないため、不明としています。",
+            "本ページは0.1.1の歴史的記録であって、ライブ環境の記述ではないものとして扱ってください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 0.1.1 Patch Notes",
+          "description": "タワーマップ、ロストタワーの刷新、裁定者の挑戦、マップのチェックポイント、シタデルの視認性、およびオーバーシアの前兆タブレットを扱う、Grinding Gear Gamesの公式スレッド。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3695606"
+        },
+        {
+          "label": "Path of Exile 2 Early Access Forum",
+          "description": "相互参照用のアーリーアクセス告知およびパッチスレッドの索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.1.1"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.1.1 マッピングおよび裁定者の歴史記事を公開。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "arbiter-of-ash",
+    "arbiter-of-divinity"
+  ],
+  "relatedItemIds": [
+    "tablets",
+    "waystones-guide",
+    "the-masters-reach"
+  ],
+  "relatedGuideIds": [
+    "early-atlas-progression-waystone-sustain",
+    "expedition-atlas-first-points"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "poenotes-011",
+      "label": "Path of Exile 2 0.1.1 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3695606"
+    },
+    {
+      "id": "ea-index",
+      "label": "Path of Exile 2 Early Access Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.1 エンドゲーム：タワーマップ、マップボス出現頻度、およびアッシュの裁定者の6回挑戦",
+    "description": "パッチ0.1.1は、4つの新タワーマップ、ロストタワーの刷新、マップのチェックポイント、シタデルの視認性向上、そしてアッシュの裁定者の最大6回挑戦の獲得によって、Path of Exile 2のエンドゲームを作り変えました。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-1-1-mapping-arbiter-respawns",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

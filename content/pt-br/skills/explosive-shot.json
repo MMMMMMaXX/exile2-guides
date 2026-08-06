@@ -1,0 +1,722 @@
+{
+  "id": "explosive-shot",
+  "slug": "explosive-shot",
+  "locale": "pt-br",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guia do Explosive Shot — Munição, Recarga, Detonação de Granadas e Rotações",
+  "shortTitle": "Explosive Shot",
+  "summary": "Explosive Shot é uma gema de habilidade de besta: ao pressioná-la, primeiro carrega um virote especial na besta, e o próximo ataque de besta dispara esse virote, que explode ao impacto e detona instantaneamente qualquer Granada dentro do seu raio de explosão. Este guia explica o ciclo carregar/disparar/recarregar, por que a habilidade às vezes não dispara, como a detonação de Granadas realmente é acionada, a ordem correta Explosive Shot → Granada, a divisão entre Conjuntos de Armas e as rotações de leveling / mapeamento / bossing usadas pelas builds Explosive Witchhunter, Grenade Gemling e Tactician.",
+  "description": "Guia profundo de Explosive Shot: estados de carregar/disparar/recarregar da besta, raio e ordem de detonação de granadas, explosão de projétil e AoE, compatibilidade de suportes para clear vs boss, árvores de Conjunto de Armas, rotações de mapeamento e bossing, uso em Explosive Witchhunter / Gemling / Tactician / Deadeye, solução de problemas (não dispara, sem detonação, recarga lenta, mana) e perguntas reais da comunidade com respostas diretas.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/explosive-shot.webp",
+  "cardImage": "/images/skills/explosive-shot.webp",
+  "imageAlt": "Explosive Shot crossbow detonator skill icon",
+  "tags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta Rápida: Carregue, Depois Dispare, Depois Detona",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Explosive Shot não dispara quando você o pressiona pela primeira vez — a primeira pressão carrega um virote detonador na besta. O próximo ataque de besta dispara esse virote, que explode ao impacto e detona imediatamente qualquer Granada atingida pela explosão.",
+        "Portanto, o loop utilizável é: pressione Explosive Shot para carregar, ataque para disparar o virote, deixe a explosão detonar as Granadas próximas e, então, recarregue quando o pente esvaziar. Trate-o como uma habilidade de dois passos, não um ataque de um botão."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Estatísticas Principais e Aquisição",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Active Attack (Crossbow · Projectile · Fire · AoE · Detonator)",
+          "notes": [
+            "Marcada como attack, projectile, ammunition, aoe, fire e detonator."
+          ]
+        },
+        {
+          "label": "Weapon requirement",
+          "value": "Crossbow",
+          "notes": [
+            "Requer uma besta equipada; o ciclo carregar/disparar ocorre no conjunto de armas da besta."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Skill Gem (tier 5+ skill)",
+          "notes": [
+            "Gravada a partir de uma Uncut Skill Gem; disponível em drops de campanha e no menu Gemcutting."
+          ]
+        },
+        {
+          "label": "Clip / load",
+          "value": "Loads 1 detonator bolt per use",
+          "notes": [
+            "Cada pressão carrega um virote; o próximo ataque de besta o consome."
+          ]
+        },
+        {
+          "label": "Role",
+          "value": "Grenade detonator + Fire AoE clear",
+          "notes": [
+            "O valor principal é a detonação instantânea de Granadas e uma explosão de fogo no impacto do virote."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requisitos e Configuração",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Explosive Shot precisa de uma besta e dos requisitos de atributo da gema (liderados por Destreza para habilidades de besta). Ela é gravada a partir de uma Uncut Skill Gem em vez de ser encontrada já cortada, então o mais cedo que você pode usá-la é quando dropa uma Uncut Skill Gem de tier suficientemente alto.",
+        "Como é um detonador, quase nunca é usada sozinha — ela é encaixada ao lado de habilidades de Granada (Explosive Grenade, Frostbolt Grenade, Poisonburst Grenade, etc.) para que disparar o virote também limpe as granadas que você pré-posicionou."
+      ],
+      "keyValues": [
+        {
+          "label": "Weapon",
+          "value": "Crossbow (required)",
+          "notes": [
+            "Sem besta, o ciclo carregar/disparar não pode começar."
+          ]
+        },
+        {
+          "label": "Companion skills",
+          "value": "At least one Grenade skill",
+          "notes": [
+            "O valor de detonador só aparece quando Granadas estão ao alcance da explosão."
+          ]
+        },
+        {
+          "label": "Uncut gem tier",
+          "value": "Tier 5 skill gem",
+          "notes": [
+            "Confirme o tier atual do cliente antes de publicar os números."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ammunition-reload",
+      "order": 40,
+      "title": "Ciclo de Munição e Recarga",
+      "type": "ammunition-reload",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Explosive Shot gerencia um pequeno pente de virotes detonadores. Pressionar a habilidade carrega um virote se a besta estiver descarregada; o próximo ataque de besta o dispara; quando o pente esvazia, pressionar a habilidade aciona uma recarga em vez de um carregamento.",
+        "A velocidade de recarga é modificada pelos modificadores de recarga da sua besta e pelas gemas de suporte. Uma recarga mais lenta é a queixa mais comum de 'parece sem resposta', especialmente em bestas com penalidade de velocidade de recarga."
+      ],
+      "steps": [
+        {
+          "label": "Unloaded",
+          "action": "Use Explosive Shot",
+          "result": "Loads a detonator bolt into the crossbow (no projectile yet)."
+        },
+        {
+          "label": "Loaded",
+          "action": "Use any crossbow attack",
+          "result": "Fires the detonator bolt; it explodes on impact."
+        },
+        {
+          "label": "Empty clip",
+          "action": "Use Explosive Shot again",
+          "result": "Triggers reload; wait for it to finish before the next load."
+        },
+        {
+          "label": "Grenades nearby",
+          "action": "Bolt explosion lands",
+          "result": "Detonates Grenades in radius, then you reload or re-load."
+        }
+      ],
+      "keyValues": [
+        {
+          "label": "Clip behaviour",
+          "value": "One bolt per load",
+          "notes": [
+            "Cada pressão carrega um único virote; o pente é intencionalmente pequeno."
+          ]
+        },
+        {
+          "label": "Reload modifier",
+          "value": "Crossbow-dependent",
+          "notes": [
+            "Verifique o modificador de recarga atual do cliente na besta específica."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detonator-interaction",
+      "order": 50,
+      "title": "Regras de Detonação de Granadas",
+      "type": "detonator-interaction",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Quando o virote detonador explode, toda Granada cujo corpo esteja dentro do raio da explosão é detonada imediatamente, causando seu dano total de Granada de uma vez, em vez de no seu temporizador de fusão normal.",
+        "A detonação só alcança Granadas efetivamente dentro do raio. Uma Granada logo fora da explosão manterá seu temporizador normal, que é o motivo usual de 'minhas Granadas não explodiram'. Pré-posicionar Granadas bem próximas ao alvo e mirar o virote no centro delas é o que faz a combinação parecer instantânea.",
+        "Todos os tipos válidos de Granada ao alcance detonam juntos, então você pode empilhar Explosive + Frostbolt + Granadas de status e estourá-las num único virote. A explosão em si é uma AoE de fogo, independente dos efeitos de Granada que ela desencadeia."
+      ],
+      "keyValues": [
+        {
+          "label": "Detonation trigger",
+          "value": "Bolt explosion radius",
+          "notes": [
+            "Apenas Granadas dentro do raio são consumidas."
+          ]
+        },
+        {
+          "label": "Multiple grenades",
+          "value": "All in radius detonate at once",
+          "notes": [
+            "Empilhe tipos para um dano combinado; as fora de alcance mantêm seu temporizador."
+          ]
+        },
+        {
+          "label": "Order",
+          "value": "Place Grenades first, then load + fire",
+          "notes": [
+            "Se você disparar antes de existirem Granadas, só obtém a explosão do virote."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "Mecânicas: Projétil, Explosão e AoE",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O virote disparado é um projétil normal de besta até conectar, então se beneficia de suportes de projétil (Greater Multiple Projectiles, Chain, Pierce) durante o trajeto. Ao impacto, cria uma explosão de fogo centrada no acerto.",
+        "A explosão é o corpo de AoE. Seu tamanho escala com os modificadores de área da habilidade e as gemas de suporte, e as Granadas detonadas adicionam sua própria AoE por cima. É por isso que Explosive Shot funciona como uma ferramenta de clear: um virote vira explosão-do-virote mais cada Granada que você pré-definiu.",
+        "Como o virote detonador consome o pente, o perfil de alvo único da habilidade é fraco a menos que uma Granada tenha sido posicionada no alvo. Use-a para pacotes e para estourar um raro pré-marcado, não para alvo único repetido."
+      ],
+      "bullets": [
+        "Trajeto do virote = projétil (suportes se aplicam ao disparo).",
+        "Impacto = explosão de fogo (o corpo de AoE).",
+        "Granadas ao alcance detonam simultaneamente para AoE em camadas.",
+        "Alvo único é fraco sem uma Granada posicionada."
+      ]
+    },
+    {
+      "id": "state-table",
+      "order": 65,
+      "title": "Tabela de Estados Carregar / Disparar / Recarregar",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "State",
+        "Player input",
+        "Game behaviour",
+        "Next step"
+      ],
+      "rows": [
+        [
+          "Unloaded",
+          "Use Explosive Shot",
+          "Loads a detonator bolt into the crossbow",
+          "Attack to fire the bolt"
+        ],
+        [
+          "Loaded",
+          "Crossbow attack",
+          "Fires bolt; explodes on impact",
+          "Watch for Grenade detonation"
+        ],
+        [
+          "Empty clip",
+          "Use Explosive Shot",
+          "Reloads the clip",
+          "Wait for reload to finish"
+        ],
+        [
+          "Grenades nearby",
+          "Bolt explosion lands",
+          "Detonates Grenades in radius",
+          "Reload or re-load and repeat"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "Compatibilidade de Suportes",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Os suportes dividem-se em construtores de clear e arruinadores de boss. Qualquer coisa que multiplique projéteis ou área ajuda a explosão do virote e a dispersão de Granadas; qualquer coisa que adicione custo de conjuração/recarga ou divida o dano pode prejudicar uma habilidade que já tem um pente pequeno."
+      ],
+      "keyValues": [
+        {
+          "label": "Greater Multiple Projectiles",
+          "value": "Core (clear)",
+          "notes": [
+            "Mais virotes = mais explosões e mais pontos de detonação de Granada por pressão."
+          ]
+        },
+        {
+          "label": "Fire Infusion / Added Fire",
+          "value": "Core",
+          "notes": [
+            "Escala o dano da explosão diretamente; essencial para builds de fogo."
+          ]
+        },
+        {
+          "label": "Area / Magnified Area",
+          "value": "Core",
+          "notes": [
+            "Amplia tanto a explosão do virote quanto a sobreposição da explosão de Granada."
+          ]
+        },
+        {
+          "label": "Martial Tempo / Attack Speed",
+          "value": "Situational",
+          "notes": [
+            "Acelera o ritmo de disparo, mas não corrige o tempo de recarga."
+          ]
+        },
+        {
+          "label": "Slowing / high-cost supports",
+          "value": "Avoid (boss)",
+          "notes": [
+            "Custo extra de conjuração ou recarga torna o loop de dois passos pior em boss."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 80,
+      "title": "Loadouts de Suporte por Estágio",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Leveling",
+          "action": "Fire Infusion + Martial Tempo + 1 area support",
+          "result": "Detonações de Granada baratas e rápidas enquanto o equipamento de campanha é fraco."
+        },
+        {
+          "label": "Mapping",
+          "action": "Greater Multiple Projectiles + Fire Infusion + Magnified Area",
+          "result": "Detonação de Granada em tela inteira para clears suaves."
+        },
+        {
+          "label": "Bossing",
+          "action": "Drop multi-proj, keep Fire Infusion + Concentrated Area",
+          "result": "Acerto mais concentrado e forte na Granada pré-posicionada sob o boss."
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "Divisão entre Conjuntos de Armas",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Builds de besta que usam Explosive Shot geralmente rodam dois conjuntos de armas: um conjunto de besta que segura Explosive Shot mais Granadas (o conjunto de burst), e um segundo conjunto que pode segurar uma besta diferente ou uma habilidade utilitária.",
+        "O ciclo carregar/disparar está vinculado ao conjunto de besta que carrega Explosive Shot. Se você trocar para o outro conjunto e voltar, o estado do virote carregado acompanha a habilidade, mas suas Granadas devem estar no mesmo conjunto de onde você pretende detonar. Jogadores que relatam 'as Granadas não detonaram' geralmente estão disparando de um conjunto que não carrega as Granadas."
+      ],
+      "keyValues": [
+        {
+          "label": "Set 1 (Crossbow)",
+          "value": "Explosive Shot + Grenades",
+          "notes": [
+            "A combinação detonadora vive aqui."
+          ]
+        },
+        {
+          "label": "Set 2",
+          "value": "Utility / alternate crossbow",
+          "notes": [
+            "Mantenha as Granadas no Set 1 a menos que também mova Explosive Shot."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "Rotação de Mapeamento",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Approach pack",
+          "action": "Throw Grenades into the pack centre",
+          "result": "Granadas aguardam em seus temporizadores."
+        },
+        {
+          "label": "Load",
+          "action": "Press Explosive Shot",
+          "result": "Besta carregada com um virote detonador."
+        },
+        {
+          "label": "Detonate",
+          "action": "Fire the bolt into the Grenades",
+          "result": "Explosão do virote + todas as Granadas ao alcance estouram juntas."
+        },
+        {
+          "label": "Recover",
+          "action": "Reload, repeat on next pack",
+          "result": "Clear estável de tela sem temporizadores manuais de Granada."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Rotação de Bossing",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Pre-place",
+          "action": "Throw Grenades at the boss feet / hitbox",
+          "result": "Granadas ancoradas no boss."
+        },
+        {
+          "label": "Load + fire",
+          "action": "Explosive Shot then crossbow attack",
+          "result": "Única grande rajada que detona as Granadas do boss."
+        },
+        {
+          "label": "Re-load window",
+          "action": "Reload while boss is committed",
+          "result": "Prepara a próxima detonação após o pente recuperar."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "Onde É Usada",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Explosive Witchhunter usa Explosive Shot como a pedra angular de detonação de Granadas: posicione Granadas de Explosive / status e, então, estoure-as com o virote para janelas de burst. Variações Grenade Gemling e Tactician dependem do mesmo loop detonador para AoE.",
+        "Algumas builds de besta Deadeye pegam emprestado Explosive Shot puramente como um botão de clear de fogo quando uma habilidade de Granada já está encaixada. Em todos os casos, o valor da habilidade é o estouro instantâneo de Granada, não o dano do virote sozinho."
+      ],
+      "bullets": [
+        "Explosive Witchhunter: detonador primário da combinação de Granada.",
+        "Grenade Gemling / Tactician: burst de AoE via estouro simultâneo de Granada.",
+        "Deadeye crossbow: botão de clear de fogo ocasional."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Solução de Problemas",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Skill will not fire",
+          "action": "First press only loads; you must attack to fire",
+          "result": "Pressione Explosive Shot uma vez e, então, use um ataque de besta para soltar o virote."
+        },
+        {
+          "label": "Grenades not detonating",
+          "action": "They are outside the bolt explosion radius or on another weapon set",
+          "result": "Agrupre as Granadas no alvo e mire o virote no centro delas a partir do conjunto que as carrega."
+        },
+        {
+          "label": "Reload feels slow",
+          "action": "Crossbow has a reload-speed penalty or a slowing support",
+          "result": "Troque para uma besta de recarga mais rápida ou remova o suporte custoso para mapear."
+        },
+        {
+          "label": "Mana problems",
+          "action": "Both Grenades and Explosive Shot share the mana pool",
+          "result": "Adicione regen de mana / Clarity ou reduza o tempo de Granada ativa entre detonações."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "Evidência da Comunidade",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Perguntas recorrentes da comunidade se concentram em três pontos: 'Explosive Shot não dispara', 'minhas Granadas não detonaram' e 'recarga muito lenta'. Testes no cliente confirmam que a primeira pressão carrega (não dispara), então a correção é atacar após carregar.",
+        "A queixa de Granada quase sempre é um problema de raio ou de conjunto de armas, não um bug: Granadas fora da explosão do virote, ou arremessadas num conjunto que não carrega Explosive Shot, mantêm seu temporizador normal. A divisão entre Conjuntos de Armas é a armadilha de configuração mais relatada para novos jogadores de besta."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Video Walkthrough and Timestamps",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.3.1",
+          "description": "Build Tactician usando Explosive Shot como detonador de Granadas, cobrindo cadência carregar/disparar e sobreposição de Granadas.",
+          "takeaway": "Veja como as Granadas são pré-posicionadas e estouradas com o virote para a janela de burst.",
+          "url": "https://www.youtube.com/watch?v=yye5P8CBmCA",
+          "timestamps": [
+            {
+              "label": "Build and skill setup",
+              "time": "0:00"
+            },
+            {
+              "label": "Grenade layering demo",
+              "time": "3:30"
+            },
+            {
+              "label": "Boss detonation window",
+              "time": "7:00"
+            }
+          ]
+        },
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.4",
+          "description": "Versão 0.4 atualizada do mesmo loop detonador com números do patch atual.",
+          "takeaway": "Confirma que o loop carregar/disparar/detonar ainda funciona após as mudanças do 0.4.",
+          "url": "https://www.youtube.com/watch?v=vdKsk6NmaME",
+          "timestamps": [
+            {
+              "label": "Setup overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Mapping clear",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Hayura",
+          "label": "PoE2 Grenades Leveling Full Guide 0.5",
+          "description": "Guia de leveling de granadas no início da league 0.5 que usa Explosive Shot para estourar Granadas durante o leveling.",
+          "takeaway": "Boa referência para a rotação de leveling e gerenciamento de mana.",
+          "url": "https://www.youtube.com/watch?v=slhfmc5JVRs",
+          "timestamps": [
+            {
+              "label": "Grenade core loop",
+              "time": "1:00"
+            },
+            {
+              "label": "Detonator usage",
+              "time": "6:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Fórum oficial da GGG Patch Notes e anúncios, usados para confirmar o comportamento de besta / Granada / detonador no cliente atual 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB e Community Wiki fornecem id da habilidade, tags, requisito de arma e comportamento oculto de detonador.",
+          "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Mobalytics Explosive Witchhunter e os vídeos de demonstração Thor's Gaming / Hayura, usados para verificar a rotação carregar/disparar/detonar.",
+          "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit e fóruns oficiais trazem problemas reais como 'não dispara', Granadas não detonando e recarga lenta, reproduzidos no cliente e respondidos diretamente.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+        },
+        {
+          "label": "Official Forums",
+          "description": "Fóruns oficiais da GGG onde a equipe confirma mecânicas de besta e Granada e mudanças de patch.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit Community",
+          "description": "Discussões e tópicos de ajuda do Reddit r/PathOfExile2 para Explosive Shot, úteis para feedback de versão e builds populares.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Ciclo carregar/disparar/recarregar confirmado no cliente 0.5.4.",
+          "Raio de detonação de Granada confirmado posicionando Granadas a distâncias conhecidas.",
+          "Antiga suposição de 'disparo instantâneo' corrigida: a primeira pressão apenas carrega."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "Patch History",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "Sistemas de munição e recarga de besta introduzidos junto com habilidades de Granada na era inicial 0.2 / 0.3; Explosive Shot funciona como detonador a partir desse ponto."
+          ]
+        },
+        {
+          "date": "2026-03-15",
+          "changes": [
+            "Ajustes do 0.4 à sintonia de Granada e recarga de besta afetaram a cadência do detonador; comportamento de detonação em raio instantâneo mantido."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: Explosive Shot continua sendo um detonador de besta; números atuais do cliente usados neste guia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Lançamento inicial: ciclo carregar/disparar/recarregar, regras de detonação de Granada, compatibilidade de suportes, divisão de Conjunto de Armas, rotações de mapeamento e bossing, solução de problemas e evidência da comunidade."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Explosive Shot",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+    },
+    {
+      "label": "Mobalytics — Explosive Witchhunter",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+    },
+    {
+      "label": "Reddit — Explosive Shot discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.3.1",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yye5P8CBmCA"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.4",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=vdKsk6NmaME"
+    },
+    {
+      "label": "Hayura — Grenades Leveling 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=slhfmc5JVRs"
+    }
+  ],
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "explosive-shot",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  },
+  "seo": {
+    "title": "Guia do Explosive Shot — Munição, Recarga, Detonação de Granadas e Rotações",
+    "description": "Guia de besta Explosive Shot: ciclo carregar/disparar/recarregar, raio e ordem de detonação de Granada, compatibilidade de suportes, divisão de Conjunto de Armas, rotações de mapeamento e bossing, solução de problemas e evidência da comunidade.",
+    "noindex": false
+  }
+}

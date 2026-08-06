@@ -1,0 +1,566 @@
+{
+  "id": "mana-tempest",
+  "slug": "mana-tempest",
+  "locale": "ja",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "マナ・テンペスト ガイド — マナ消費、スキル強化、Split（分裂）と配置",
+  "shortTitle": "マナ・テンペスト",
+  "summary": "マナ・テンペストは、発動中は毎秒マナを消費し、その範囲内で詠唱されたスキルに自身のマナに基づく追加の雷ダメージを与える静止した嵐を作り出します。これはマナ蓄積型のオラクルおよびタイタンビルドの中核となるスキルです。本ガイドでは、消費量の計算式、消費にカウントされるもの、スキル強化の範囲、Split（分裂）、および嵐を離脱した後バフがどの程度残るかを解説します。",
+  "description": "マナ・テンペストの詳細ガイド：毎秒のマナ消費、嵐の消費を押し上げる要因、雷ダメージとしてのダメージ付与、スキル強化の範囲、SplitとChain（連鎖）/Fork（分岐）の違い、離脱後の残効、クオリティ、嵐が早期終了する理由、マナの計画、アークメイジとの相互作用、マッピングとボスでの運用、トラブルシューティングとコミュニティの質問。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 6,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "aura",
+    "lightning",
+    "mana",
+    "empower"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/mana-tempest.webp",
+  "cardImage": "/images/skills/mana-tempest.webp",
+  "imageAlt": "マナ・テンペストの嵐スキルアイコン",
+  "tags": [
+    "spell",
+    "lightning",
+    "mana",
+    "mana-stacking",
+    "empower"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストは静止した嵐を展開します。嵐が持続している間は毎秒マナを消費し、範囲内で詠唱すればするほど消費量が増加します。",
+        "嵐の範囲内で詠唱されたスキルは、自身の最大マナに比例した追加の雷ダメージを得ます——これこそがマナ蓄積型ビルドの真髄です。",
+        "嵐から離脱しても、強化効果は短時間残るため、範囲外に出た後もしばらく恩恵を受けられます。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "カテゴリ",
+          "value": "Spell / Aura / Lightning",
+          "notes": [
+            "spell、aura、lightning、mana、empower のタグ付き。"
+          ]
+        },
+        {
+          "label": "コスト",
+          "value": "持続中は毎秒マナ消費",
+          "notes": [
+            "嵐の範囲内で詠唱すると毎秒の消費量が上がります。"
+          ]
+        },
+        {
+          "label": "リターン",
+          "value": "雷ダメージとしてのダメージ付与",
+          "notes": [
+            "嵐内のスキルは最大マナに基づく雷ダメージを得ます。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "Uncut Skill Gem（Tier 6）",
+          "notes": [
+            "マナ蓄積型ビルド向けの中盤〜終盤のジェム。"
+          ]
+        },
+        {
+          "label": "最適な役割",
+          "value": "マナ蓄積の起動役",
+          "notes": [
+            "オラクルおよびタイタンのマナビルドの中核。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "必要条件",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "特別な属性の要件はありません。マナ・テンペストはスペルジェムであり、その価値は最大マナとマナリジェネに比例して大きくなるため、マナ蓄積型のキャラクターが最も恩恵を受けます。"
+      ]
+    },
+    {
+      "id": "mana-storm",
+      "order": 40,
+      "title": "マナの嵐",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストを発動すると、自分の位置に嵐が展開されます。嵐には基本の毎秒マナ消費と持続時間があり、その中に立って詠唱すると毎秒の消費量が上昇します。",
+        "マナがゼロになったり持続時間が尽きたりすると嵐は早期終了するため、範囲内に留まる時間帯に合わせてマナプールとリジェネを計画する必要があります。",
+        "この強化こそが消費に耐える理由です。範囲内で詠唱されたスキルは、自身の最大マナの割合として雷ダメージを得ます。"
+      ],
+      "bullets": [
+        "基本の毎秒消費に加え、詠唱による増加倍率の消費。",
+        "マナ枯渇または持続時間終了で終了。",
+        "強化こそが消費に対する見返り。"
+      ]
+    },
+    {
+      "id": "cost-breakdown",
+      "order": 50,
+      "title": "マナ消費の内訳",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "消費の要因",
+        "嵐の毎秒消費を上げる",
+        "確認方法",
+        "よくある誤り"
+      ],
+      "rows": [
+        [
+          "嵐の基本消費",
+          "はい",
+          "ツールチップ",
+          "この行だけを見ている"
+        ],
+        [
+          "嵐内での詠唱に消費したマナ",
+          "はい",
+          "ツールチップ / クライアント",
+          "高速なSparkを無視している"
+        ],
+        [
+          "嵐内で支払ったライフ",
+          "はい",
+          "現行のテキスト",
+          "マナだけがカウントすると考えている"
+        ],
+        [
+          "その他のリソース",
+          "現行ルールに準拠",
+          "クライアント",
+          "類推で想定してはいけない"
+        ],
+        [
+          "トリガーされたスキル",
+          "要確認",
+          "クライアントでの検証",
+          "消費がないと想定している"
+        ]
+      ]
+    },
+    {
+      "id": "spell-empowerment",
+      "order": 60,
+      "title": "スキル強化の範囲",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "嵐の範囲内で詠唱したスキルは、自身の最大マナの一部を追加の雷ダメージとして得ます。これが、マナ蓄積型ビルドが最大マナを極限まで積み上げる理由です。",
+        "マナを消費しない武器内在スキルも、嵐の範囲内で詠唱されるスペルであれば強化の対象となります——強化はスキルがマナを消費するかどうかではなく、どこで詠唱したかによるものです。",
+        "嵐の範囲内からトリガーされたスキルも強化されるため、トリガーされたSparkやCometがテンペストの恩恵を受ける仕組みです。"
+      ],
+      "bullets": [
+        "強化は最大マナに比例して拡大。",
+        "マナを消費しないスキルも範囲内なら恩恵あり。",
+        "範囲内のトリガーされたスキルも強化される。"
+      ]
+    },
+    {
+      "id": "split-mechanics",
+      "order": 70,
+      "title": "Split と Chain / Fork の違い",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストのSplitは、Chain（連鎖）やFork（分岐）とは異なる挙動です。Splitは詠唱から追加の飛翔物の経路を作り出し、ChainとForkはそれぞれ独立したサポートの挙動です。",
+        "スキルにすでにChainやForkがついていても、Splitは追加飛翔物の別の供給源として重畳し、嵐の範囲内での画面覆蓋を多重度に増やせます。",
+        "SplitがChainと同じターゲティングルールに従うとは想定せず、独立したレイヤーとして扱ってください。"
+      ],
+      "bullets": [
+        "SplitはChainやForkから独立。",
+        "それらのサポートと重畳し飛翔物を増やせる。",
+        "ターゲティングルールはChainと異なる。"
+      ]
+    },
+    {
+      "id": "linger-and-position",
+      "order": 80,
+      "title": "残効と配置",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "嵐から離脱した後も、強化はしばらく残るため、位置取りを変えたり回避しながらも強化されたスキルを放ち続けられます。",
+        "嵐は入場する場所ではなく、戦う場所に置いてください。ボス戦では、ダンスの最中も詠唱が強化されたままとなるよう、ボスエリアの中央に展開しましょう。",
+        "マップ内では立ち止まって留まることはめったに望ましくありません。嵐を展開し、一気に詠唱して、消費が響く前に移動しましょう。"
+      ],
+      "bullets": [
+        "離脱後も強化はわずかに残る。",
+        "嵐は入場ではなく戦闘地点に置く。",
+        "マップ：重い消費を避けるため爆発的に詠唱して移動。"
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "サポートとの互換性",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペスト自体はオーラに近いスペルであり、スペルオーラや持続時間を助けるサポートが適用されます。範囲内で詠唱するスキルは、それぞれ自身のサポートの恩恵を受けます。"
+      ],
+      "bullets": [
+        "持続時間延長は嵐の持続を助ける。",
+        "スペルサポートは強化された弾に適用される。",
+        "マナ関連のサポートは消費に耐えるために有用。"
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 100,
+      "title": "サポート装備",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "テンペストのジェムには、持続時間とマナ効率のサポートで嵐を維持します。弾となるスキルには、通常通り雷とクリティカルのサポートを使用してください。"
+      ],
+      "bullets": [
+        "テンペスト：持続時間延長、マナ効率。",
+        "弾：雷ダメージ、クリティカル、貫通。",
+        "クオリティはしばしば強化か持続を追加。"
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 110,
+      "title": "スキルの相互作用",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストは、その範囲内で詠唱されたSpark、Comet、Eye of Winterを強化し、マナ蓄積型キャスタービルドの要となります。",
+        "アークメイジ型のマナ拡大は、マナプール（強化の増大）とスキル消費の両方を押し上げるため、嵐の消費は速くなります——投資とリジェネのバランスを取る必要があります。",
+        "cast-on-crit構成からのトリガーされたスキルも、トリガーが範囲内に立っている間に発火すれば、嵐内での詠唱としてカウントされます。"
+      ],
+      "bullets": [
+        "Spark、Comet、Eye of Winterを強化。",
+        "アークメイジは強化を増すが消費も増す。",
+        "範囲内のトリガーされたスキルも強化される。"
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 120,
+      "title": "マッピングでの運用",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マップ内では、嵐を展開して立ち止まるのはたいてい罠です。爆発窓として使いましょう。展開し、画面消去スキルを数回詠唱し、その後去ります。",
+        "残効により、離脱後の数回の詠唱も強化されたままとなるため、移動への移行が滑らかになります。"
+      ],
+      "bullets": [
+        "範囲内で爆発的に詠唱し、その後移動。",
+        "離脱時の詠唱には残効を活用。",
+        "マップでは嵐に留まらないこと。"
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 130,
+      "title": "ボス戦ローテーション",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "ボスに対しては、戦闘開始時か静止フェーズ中に嵐を展開し、その窓を通して強化された単体スキルを詠唱します。",
+        "実際に立って詠唱できるタイミングに嵐を合わせましょう。激しい移動フェーズでは省略し、それ以前の残効に頼ります。"
+      ],
+      "bullets": [
+        "戦闘開始か静止フェーズに嵐を展開。",
+        "窓を通して強化されたCometを詠唱。",
+        "激しい移動時は省略し残効を利用。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 140,
+      "title": "ビルドの使い方",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストは、最大マナを極限まで押し上げるマナ蓄積型オラクルおよびタイタンのキャスタービルドを象徴する起動役です。",
+        "同じ構成内で強化される弾として、SparkやCometと自然に組み合わせられます。"
+      ],
+      "bullets": [
+        "マナ蓄積オラクル：テンペスト＋トーテム。",
+        "Twisted Empyrean マナタイタン：テンペスト＋スキル。",
+        "Spark / Comet を強化された弾として。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 150,
+      "title": "トラブルシューティング",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "嵐が早期終了する場合、マナが枯渇しています——リジェネを上げるか範囲内での詠唱を減らしてください。強化が弱く感じる場合、ビルドに対して最大マナが低すぎます。",
+        "アークメイジがより速く空にするように見えるなら、それは想定通りです。マナリジェネかフラスコによる維持を追加してください。"
+      ],
+      "bullets": [
+        "嵐が早期終了：マナ枯渇、リジェネを追加。",
+        "強化が弱い：最大マナを上げる。",
+        "アークメイジが速く消費：維持とバランスを。",
+        "嵐外で効果なし：範囲内で詠唱する。",
+        "残効切れ：再進入か再展開。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 160,
+      "title": "コミュニティの証拠",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マナ・テンペストを特徴とするマナ蓄積型オラクルおよびタイタンビルドは、0.5メタのスレッドで天井の高いキャスタービルドとして繰り返し取り上げられています。",
+        "コミュニティの主な警告はマナ消費についてです。リジェネがなければ嵐は負債になるとプレイヤーは注意しています。"
+      ],
+      "bullets": [
+        "テンペスト オラクル / タイタンは0.5メタの選択肢。",
+        "リジェネなき消費が一般的な失敗。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 170,
+      "title": "動画ガイド",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Spark Mana Tempest Oracle",
+          "label": "Spark Mana Tempest Oracle ビルドガイド (0.5)",
+          "description": "最大マナ拡大でSparkを強化するためのマナ・テンペストを用いたオラクルビルド。",
+          "takeaway": "嵐が消去スキルをどう強化するかを観察。",
+          "url": "https://youtu.be/-Ibvxo_0UqM",
+          "timestamps": [
+            {
+              "label": "ビルド概要",
+              "time": "0:00"
+            },
+            {
+              "label": "テンペスト構成",
+              "time": "3:00"
+            },
+            {
+              "label": "マッピング",
+              "time": "6:00"
+            }
+          ]
+        },
+        {
+          "creator": "Broken Oracle Builds",
+          "label": "Top Broken Oracle Builds (0.5)",
+          "description": "マナ蓄積型テンペスト派生を含む強力なオラクルビルドのまとめ。",
+          "takeaway": "メタ内でのマナ・テンペストの位置を確認。",
+          "url": "https://youtu.be/LxaaPy-4IvA",
+          "timestamps": [
+            {
+              "label": "オラクル概要",
+              "time": "0:00"
+            },
+            {
+              "label": "テンペスト派生",
+              "time": "4:00"
+            },
+            {
+              "label": "実演",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 180,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "公式",
+          "description": "GGG公式のパッチノートとフォーラムで、0.5.4におけるマナ・テンペストの消費、強化、Splitを確認。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DBおよびコミュニティWikiが、マナ・テンペストのスキルid、タグ、強化値を提供。",
+          "url": "https://poe2db.tw/Mana_Tempest"
+        },
+        {
+          "label": "Wiki",
+          "description": "マナ・テンペストの消費と強化の詳細を示すコミュニティWikiページ。",
+          "url": "https://www.poe2wiki.net/wiki/Mana_Tempest"
+        },
+        {
+          "label": "ビルドと動画",
+          "description": "テンペストの運用を相互検証するために使用したYouTubeのオラクル マナ蓄積ビルド。",
+          "url": "https://youtu.be/-Ibvxo_0UqM"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Redditやフォーラムで浮上するマナ蓄積とテンペストの議論。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mana%20Tempest&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 190,
+      "title": "パッチ履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients): マナ・テンペストが、嵐の消費と強化を持つマナ蓄積型キャスターの起動役として実装。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): 現行ベースライン：詠唱に比例する毎秒消費、最大マナからの雷ダメージ付与、Split挙動、離脱後の短い残効。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "初回公開：嵐の消費、消費の内訳、強化の範囲、SplitとChainの違い、残効、サポート装備、アークメイジとの相互作用、マッピングとボスでの運用、トラブルシューティングとコミュニティの質問。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twisted-empyrean-mana-stacking-titan"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain",
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "spark",
+    "comet"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 公式パッチノート フォーラム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Mana Tempest",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Mana_Tempest"
+    },
+    {
+      "label": "PoE2 Community Wiki — Mana Tempest",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Mana_Tempest"
+    },
+    {
+      "label": "Spark Mana Tempest Oracle 動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/-Ibvxo_0UqM"
+    },
+    {
+      "label": "Broken Oracle Builds 動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/LxaaPy-4IvA"
+    },
+    {
+      "label": "Reddit — Mana Tempest 議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mana%20Tempest&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "マナ・テンペスト ガイド — マナ消費、スキル強化、Split（分裂）と配置",
+    "description": "マナ・テンペストの詳細ガイド：毎秒のマナ消費、嵐の消費を押し上げる要因、雷ダメージとしてのダメージ付与、強化の範囲、SplitとChain（連鎖）/Fork（分岐）の違い、離脱後の残効、アークメイジとの相互作用、マッピングとボスでの運用、トラブルシューティングとコミュニティの質問。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "mana-tempest",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

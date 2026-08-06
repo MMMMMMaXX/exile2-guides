@@ -1,0 +1,752 @@
+{
+  "id": "omens",
+  "slug": "omens",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "オーメンガイド：発動方法、クラフトの組み合わせ、消費されるタイミング",
+  "shortTitle": "オーメン",
+  "summary": "オーメンはインベントリ内のアイテムで、次に使用する該当する通貨の動作を変化させます。本ガイドでは、発動方法、どのオーメンがどの通貨に対応するか、高価なオーメンを誤発動させない方法、そしてサバイバルやリーグメカニクスに用いられるクラフト外のオーメンについて解説します。",
+  "description": "Path of Exile 2 のオーメンに関する出典付きリファレンス：発動ルール、Sinistral/Dextral の命名規則、オーメン＋通貨の組み合わせ、誤発動の確認、および価値評価。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "omen",
+    "targeted-crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "Path of Exile 2 のオーメン通貨アイテムのアイコン - 次に使用する該当する通貨の動作を変化させる青い儀式のトーテム",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "インベントリ内でオーメンを発動してください（赤い枠が表示されるまで右クリックします）。そうすると、次に行う該当する通貨の動作が変化します。オーメンはその動作が実際に発生したときにのみ消費され、条件が満たされなければオーメンはそのまま残ります。",
+      "calloutDetail": [
+        "Sinistral は接頭辞（Prefix）、Dextral は接尾辞（Suffix）に影響します。名前の残りの部分でどの通貨かが分かります。",
+        "発動できるクラフト外（サバイバル／リーグ）のオーメンは、同時に 1 つだけです。"
+      ],
+      "answers": [
+        {
+          "label": "クラフト初心者",
+          "text": [
+            "Omen of Sinistral/Dextral Exaltation と Omen of Crystallisation から始めましょう。"
+          ]
+        },
+        {
+          "label": "高額投資向け",
+          "text": [
+            "Omen of Greater Exaltation、Homogenising Exaltation、Whittling を追加して、確定的なクラフトを行います。"
+          ]
+        },
+        {
+          "label": "避けるべき",
+          "text": [
+            "うっかり別の通貨を使用した際に、高価なオーメンを発動したままにしておくこと。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#effect",
+          "label": "オーメンの仕組み →"
+        },
+        {
+          "href": "#pre-use-checklist",
+          "label": "誤発動チェックリスト →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "場所",
+          "value": "インベントリ内で発動",
+          "note": [
+            "右クリックで赤い発動枠を切り替えます。"
+          ]
+        },
+        {
+          "label": "トリガー",
+          "value": "次の該当する通貨の使用",
+          "note": [
+            "条件が満たされたときにのみ消費されます。"
+          ]
+        },
+        {
+          "label": "命名規則",
+          "value": "Sinistral = 接頭辞、Dextral = 接尾辞",
+          "note": [
+            "「of Exaltation」などは通貨の名前を示します。"
+          ]
+        },
+        {
+          "label": "入手元",
+          "value": "主に儀式（Ritual）",
+          "note": [
+            "アビス（Abyss）のオーメンや通貨交換所（Currency Exchange）でも入手可能です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "オーメンの系統",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "オーメンはクラフト制御用のオーメンと、クラフト外（サバイバル／リーグ）のオーメンに分かれます。クラフト用オーメンの中では、Sinistral/Dextral という接頭辞によって、どちらの修正（mod）側に影響するかが示されます。"
+      ],
+      "members": [
+        {
+          "id": "omen-exaltation",
+          "eyebrow": "Exalted Orb",
+          "title": "Sinistral / Dextral / Greater Exaltation",
+          "sub": "接頭辞 / 接尾辞 / 2 つの修正",
+          "tags": [
+            "crafting",
+            "exalt"
+          ],
+          "body": [
+            "Sinistral は接頭辞の修正のみを追加し、Dextral は接尾辞の修正のみを追加します。Greater Exaltation はランダムな修正を 2 つ追加し、Sinistral/Dextral のオーメンと重ねがけすると、選んだ側の修正を 2 つ追加します。"
+          ]
+        },
+        {
+          "id": "omen-annulment",
+          "eyebrow": "Orb of Annulment",
+          "title": "Sinistral / Dextral Annulment",
+          "sub": "接頭辞 / 接尾辞を削除",
+          "tags": [
+            "crafting",
+            "annul"
+          ],
+          "body": [
+            "Orb of Annulment が修正を削除できる側を制限します。"
+          ]
+        },
+        {
+          "id": "omen-erasure",
+          "eyebrow": "Chaos Orb",
+          "title": "Sinistral / Dextral Erasure",
+          "sub": "Chaos が片側のみを再ロール",
+          "tags": [
+            "crafting",
+            "chaos"
+          ],
+          "body": [
+            "Chaos Orb に強制的に、接頭辞のみ、または接尾辞のみのブロックを再ロールさせます。"
+          ]
+        },
+        {
+          "id": "omen-crystallisation",
+          "eyebrow": "Perfect / Corrupted Essence",
+          "title": "Sinistral / Dextral Crystallisation",
+          "sub": "Essence が片側を削除",
+          "tags": [
+            "crafting",
+            "essence"
+          ],
+          "body": [
+            "次に使用する Perfect または Corrupted Essence が、接頭辞のみ、または接尾辞のみの修正を削除します。これはエッセンスを安全に使用する方法です。"
+          ]
+        },
+        {
+          "id": "omen-homogenising",
+          "eyebrow": "Exalted / Regal",
+          "title": "Homogenising Exaltation / Coronation",
+          "sub": "同じタグの修正",
+          "tags": [
+            "crafting",
+            "advanced"
+          ],
+          "body": [
+            "次の Exalted/Regal Orb は、アイテムにすでに存在する修正とタグを共有する修正のみを追加できるようになります。"
+          ]
+        },
+        {
+          "id": "omen-whittling",
+          "eyebrow": "Chaos Orb",
+          "title": "Whittling",
+          "sub": "最下位ティアの修正を削除",
+          "tags": [
+            "crafting",
+            "value"
+          ],
+          "body": [
+            "次の Chaos Orb は、ランダムな修正ではなく最下位ティアの修正を削除します。トレードリーグでは価値が高くなります。"
+          ]
+        },
+        {
+          "id": "omen-catalysing",
+          "eyebrow": "Exalted Orb",
+          "title": "Catalysing Exaltation",
+          "sub": "Catalyst の Quality を消費",
+          "tags": [
+            "crafting",
+            "jewellery"
+          ],
+          "body": [
+            "次の Exalted Orb は、すべての Catalyst Quality を消費して、その修正タイプに偏らせます。Catalysts ガイドを参照してください。"
+          ]
+        },
+        {
+          "id": "omen-survival",
+          "eyebrow": "Non-crafting",
+          "title": "Amelioration / Refreshment / Resurgence",
+          "sub": "サバイバル",
+          "tags": [
+            "defense",
+            "survival"
+          ],
+          "body": [
+            "死亡時の経験値（XP）ロスを軽減、Low Life 時にフラスコ／チャームのチャージを満タンに補充、または Low Life 時に Life/Mana/ES を回復します。クラフト外のオーメンは同時に 1 つしか発動できません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "オーメンが通貨をどう変化させるか",
+      "toc": true,
+      "visible": true,
+      "type": "effect",
+      "paragraphs": [
+        "オーメンはアイテムを直接変化させるものではありません。条件に一致する次の通貨のルールを書き換えます。たとえば、Omen of Dextral Exaltation を発動している場合、次の Exalted Orb はランダムな修正ではなく、接尾辞の修正のみを追加します。",
+        "複数のオーメンを同時に発動でき、互換性があれば効果は重複します。互換性のないオーメン（たとえばどちらも「次の Exalted」の制御役になりたい 2 つ）は、後から発動したものによって先のものが無効化されます。"
+      ],
+      "bullets": [
+        "発動中のオーメンはインベントリ内で赤い枠で表示されます。",
+        "オーメンは対応する動作が発生したときにのみ消費されます。",
+        "対応する動作を一度も行わなければ、オーメンは消費されずインベントリに残ります。"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 50,
+      "title": "オーメンを発動させるもの",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "各オーメンは、監視対象となる通貨と修正の側を正確に指定しています。それ以外の動作には何も効果を発揮しません。"
+      ],
+      "columns": [
+        "Exalted Orb",
+        "Orb of Annulment",
+        "Perfect / Corrupted Essence"
+      ],
+      "rows": [
+        {
+          "label": "Omen of Sinistral Exaltation",
+          "note": "接頭辞の修正のみを追加",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "はい"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Annulment",
+          "note": "接頭辞の修正のみを削除",
+          "values": [
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "yes",
+              "text": "はい"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Crystallisation",
+          "note": "Essence が接頭辞の修正のみを削除",
+          "values": [
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "no",
+              "text": "いいえ"
+            },
+            {
+              "kind": "yes",
+              "text": "はい"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 60,
+      "title": "オーメンの入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "オーメンは主に 1 つのメカニクスから得られるエンドゲームのクラフト資源で、いくつかの追加ルートも存在します。"
+      ],
+      "routes": [
+        {
+          "label": "Ritual の祭壇",
+          "body": [
+            "主な入手元です。Ritual Altar で Tribute を消費してオーメンを入手できるチャンスがあり、中には非常に価値の高いものもあります。"
+          ]
+        },
+        {
+          "label": "Abyss メカニクス",
+          "body": [
+            "Abyss のコンテンツから Abyss のオーメンがドロップし、同じ発動ルールに従います。"
+          ]
+        },
+        {
+          "label": "Currency Exchange",
+          "body": [
+            "トレードリーグでは、多くの一般的なオーメンを通貨と直接交換できます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "オーメンの使い方",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "オーメンを選ぶ",
+          "body": [
+            "制御したい通貨と側に対応するオーメンを選びます。"
+          ]
+        },
+        {
+          "label": "発動する",
+          "body": [
+            "赤い枠が表示されるまでインベントリ内で右クリックします。"
+          ]
+        },
+        {
+          "label": "通貨を使用する",
+          "body": [
+            "対応する通貨の動作を実行します。オーメンは消費され、そのルールが適用されます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前チェックリスト",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "オーメンが通貨と一致している",
+          "checks": [
+            "オーメンの名前が、これから使用する通貨と完全に一致することを確認してください。"
+          ],
+          "why": "一致しないオーメンは発動せず、通貨を無駄にします。",
+          "fix": "通貨を使う前にオーメンの名前を再確認してください。"
+        },
+        {
+          "label": "側が意図したものである",
+          "checks": [
+            "Sinistral = 接頭辞、Dextral = 接尾辞です。どちらが必要か確認してください。"
+          ],
+          "why": "側を間違えると高価なオーメンを無駄にします。",
+          "fix": "正しい Sinistral/Dextral のオーメンに交換してください。"
+        },
+        {
+          "label": "互換性のないオーメンが発動していない",
+          "checks": [
+            "同じ通貨の以前のオーメンがすでに発動していないか確認してください。"
+          ],
+          "why": "互換性のないオーメンは、先のものを無効化します。",
+          "fix": "正しいものを最後に発動させてください。"
+        },
+        {
+          "label": "アイテムの準備ができている",
+          "checks": [
+            "通貨を使う前に、対象アイテムに期待する修正が揃っていること。"
+          ],
+          "why": "オーメンは 1 回の動作を不可逆的に変化させます。",
+          "fix": "他の準備を先に済ませてください。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "オーメン＋通貨ごとの結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "exalt",
+        "annul",
+        "essence"
+      ],
+      "rows": [
+        {
+          "scenario": "接尾辞が 1 つのレアに対する Dextral Exaltation",
+          "audience": "ターゲットクラフター",
+          "benefit": "接尾辞ブロックを安全に埋める",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "レアの仕上げには優れたデフォルト選択",
+          "tags": [
+            "exalt"
+          ]
+        },
+        {
+          "scenario": "Sinistral Crystallisation + Perfect Essence",
+          "audience": "エッセンスクラフター",
+          "benefit": "接尾辞の修正を維持し、接頭辞を入れ替える",
+          "risk": "中",
+          "level": "medium",
+          "recommendation": "Perfect クラフトを行う安全な方法",
+          "tags": [
+            "essence"
+          ]
+        },
+        {
+          "scenario": "接頭辞が 1 つのレアに対する Sinistral Annulment",
+          "audience": "修正者",
+          "benefit": "不要な接頭辞のみを削除",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "通常の Annulment よりきれい",
+          "tags": [
+            "annul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 100,
+      "title": "有効なクラフトの組み合わせ",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "最も一般的な確定的な組み合わせは、Omen of Dextral Exaltation と Omen of Greater Exaltation の併用です。次の Perfect Exalted Orb は最低ティアで接尾辞の修正を 2 つ追加します。Sinistral と Dextral のオーメンを Greater のオーメンと重ねがけすると、両方の側を完全に制御できます。",
+        "エッセンスについては、Omen of Sinistral または Dextral Crystallisation を Perfect/Corrupted エッセンスと組み合わせて、気にしない側だけを失うようにします。Homogenising Exaltation は上級者向けの選択肢です。次の Exalted/Regal を、すでにアイテムにある修正とタグを共有する修正に制限します。"
+      ],
+      "bullets": [
+        "Dextral Exaltation + Greater Exaltation = 1 回の Perfect Exalted で接尾辞の修正を 2 つ。",
+        "Sinistral Crystallisation + Perfect Essence = 安全な接頭辞の入れ替え。",
+        "Homogenising Exaltation には修正のタグに対する十分な理解が必要です。"
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "リスク分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "うっかり高価なオーメンを発動したままにした",
+          "gain": "なし",
+          "loss": "間違った通貨でオーメンを無駄にした",
+          "level": "high",
+          "recommendation": "オーメンは対応する通貨の直前にのみ発動させてください。"
+        },
+        {
+          "scenario": "同じ通貨のオーメンが 2 つ発動している",
+          "gain": "なし",
+          "loss": "先のオーメンが静かに無効化される",
+          "level": "medium",
+          "recommendation": "通貨ごとに制御用オーメンは 1 つだけ発動させてください。"
+        },
+        {
+          "scenario": "完成したアイテムへの Whittling",
+          "gain": "最下位ティアの修正のみを削除",
+          "loss": "それでも欲しい修正を削除してしまう可能性がある",
+          "level": "low",
+          "recommendation": "最下位の修正が不要な場合にのみ使用してください。"
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 120,
+      "title": "使うか、売るか、持っておくか",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "市場価値はリーグやパッチによって変動します。以下の数値は Early Access 0.5.x のトレードリーグの噂話をもとにしたスナップショットであり、取引前にゲーム内で再確認する必要があります。"
+      ],
+      "use": {
+        "condition": "高価値なクラフトを仕上げており、確定的な制御が必要な場合",
+        "first": "対応する Sinistral/Dextral のオーメンを発動する",
+        "risk": "取引可能なアイテムを消費する",
+        "text": [
+          "クラフトの価値がオーメンの価格を明らかに上回る場合に価値があります。"
+        ]
+      },
+      "sell": {
+        "condition": "クラフトをせず、オーメンに需要がある場合",
+        "first": "現在の相場で取引サイトに出品する",
+        "risk": "供給が増えると価格は下落する",
+        "text": [
+          "価値の高いオーメン（例：Whittling）は他の装備の資金になります。"
+        ]
+      },
+      "hold": {
+        "condition": "後でクラフトする予定がある、または価格が上昇している場合",
+        "first": "スタッシュに保管する",
+        "risk": "パッチの変更によってオーメンの価値が変動する可能性がある",
+        "text": [
+          "リーグの計画に確定的なクラフトが含まれる場合は持っておきます。"
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-mistrigger",
+          "kind": "Reddit の質問",
+          "question": "なぜ高価なオーメンが何もせずに消えたのですか？",
+          "summary": [
+            "あるプレイヤーがオーメンを発動し、その後別の通貨を使用して失いました。"
+          ],
+          "editorialAnalysis": [
+            "オーメンは対応する動作によってのみ消費され、一致しない通貨を使用しても消費されません。その損失は、おそらく互換性のないオーメンによる無効化、または発動後に間違った通貨を使用したことによるものです。"
+          ],
+          "officialAnswer": [
+            "正確に一致する通貨の直前にオーメンを発動させ、通貨ごとに制御用オーメンは 1 つだけにしてください。"
+          ]
+        },
+        {
+          "sourceId": "forum-prefix-suffix",
+          "kind": "フォーラムの質問",
+          "question": "オーメンは削除の防止だけでなく、追加されるものも制御するのですか？",
+          "summary": [
+            "プレイヤーは、Crystallisation/Exaltation のオーメンが追加も制限するかどうかを勘違いしていました。"
+          ],
+          "editorialAnalysis": [
+            "Exaltation のオーメンは追加されるもの（接頭辞／接尾辞のみ）を制御します。Crystallisation/Annulment/Erasure のオーメンは削除されるものを制御します。"
+          ],
+          "officialAnswer": [
+            "オーメンを動作に合わせてください。Exaltation = 追加側、Annulment/Erasure/Crystallisation = 削除側。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "オーメンが発動しなかった",
+          "directAnswer": [
+            "使用した通貨が、オーメンが監視対象とする通貨ではありませんでした。"
+          ],
+          "checks": [
+            "オーメンの名前を再確認し、正確な通貨を確認してください。"
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "発動マトリックスを開く"
+            }
+          ]
+        },
+        {
+          "symptom": "間違った側に影響した",
+          "directAnswer": [
+            "必要なのが Dextral なのに Sinistral を使用した、あるいはその逆です。"
+          ],
+          "checks": [
+            "Sinistral = 接頭辞、Dextral = 接尾辞です。次に使用する前に交換してください。"
+          ]
+        },
+        {
+          "symptom": "オーメンが予期せず消えた",
+          "directAnswer": [
+            "新しいものを発動させたときに、同じ通貨の互換性のないオーメンによって無効化されました。"
+          ],
+          "checks": [
+            "通貨ごとに制御用オーメンは 1 つだけ発動させてください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "essences",
+          "contentType": "item",
+          "title": "Essences",
+          "description": "Crystallisation のオーメンは、Perfect エッセンスがどちらの側を削除するかを制御します。",
+          "href": "/ja/items/essences/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "クラフトチェーンで使用される、他のハイリスク通貨です。",
+          "href": "/ja/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "パッチ履歴",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.x",
+          "date": "2026-07-31",
+          "changes": [
+            "オーメンは引き続きインベントリ発動型のクラフト制御役であり、Sinistral/Dextral の命名規則および Crystallisation/Exaltation/Annulment/Erasure の系統は 0.5.4 でも変更ありません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "コミュニティ",
+          "description": "Mobalytics のオーメンクラフトガイド。オーメンの全リストと命名規則を掲載。",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "公式",
+          "description": "Ritual およびオーメンの入手に関する Path of Exile 2 のパッチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DB のオーメンデータ。",
+          "url": "https://poe2db.tw/us"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "essences",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Mobalytics — Omen Crafting",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 公式 0.5.4 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Omens",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 オーメンガイド：発動方法、クラフトの組み合わせ、消費タイミング",
+    "description": "PoE2 のオーメンの仕組み：インベントリでの発動、Sinistral/Dextral の命名規則、オーメン＋通貨の組み合わせ、誤発動の確認、および価値評価。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "omens",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

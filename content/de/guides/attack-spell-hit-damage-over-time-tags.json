@@ -1,0 +1,744 @@
+{
+  "id": "attack-spell-hit-damage-over-time-tags",
+  "slug": "attack-spell-hit-damage-over-time-tags",
+  "locale": "de",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Attack-, Spell-, Hit- und Damage-over-Time-Tags in Path of Exile 2",
+  "shortTitle": "Attack vs Spell vs Hit vs DoT",
+  "summary": "Klärung der vier am häufigsten verwechselten Skill-Konzepte in Path of Exile 2: Attack, Spell, Hit und Damage over Time. Lerne, welche Modifikatoren auf welche Skills greifen und wie Verhaltenstags funktionieren.",
+  "description": "Ein prägnanter Path of Exile 2-Mechanik-Guide, der den Unterschied zwischen Angriff und Zauber (Skill-Kategorie), Treffer und Schaden over Time (Schadensform) und Verhaltenstags wie Projektil, AoE, Nahkampf, Dauer, Minion und Totem erklärt. Enthält eine Modifikator-Kompatibilitäts-Diagnose und ausgearbeitete Beispiele.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/lightning-arrow.webp",
+  "cardImage": "/images/skills/lightning-arrow.webp",
+  "imageAlt": "Ein Path of Exile 2-Fähigkeitssymbol, das den Unterschied zwischen Angriff-, Zauber-, Treffer- und Schaden-over-time-Tags veranschaulicht",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Grundverständnis des Path of Exile 2-Skillgem- und Supportgem-Systems",
+    "Vertrautheit mit dem Lesen eines Skill-Tooltips und dessen aufgeführter Tags",
+    "Bewusstsein dafür, dass Schaden Typen hat (Physisch, Feuer, Kälte, Blitz, Chaos)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "attack",
+    "spell",
+    "hit",
+    "damage-over-time",
+    "skill-tags",
+    "tags"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Direktantworten",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Was ist ein Attack?",
+          "body": [
+            "Ein Attack ist ein Skill, der deine ausgerüstete Waffe direkt nutzt, um Gegner zu schädigen. Attacks können jeden SchadensTyp verursachen und würfeln normalerweise mit deiner Treffergenauigkeit (Accuracy) gegen die Ausweichwertung des Ziels."
+          ]
+        },
+        {
+          "title": "Was ist ein Spell?",
+          "body": [
+            "Ein Spell ist ein Skill, der rohe Magie statt einer Waffe nutzt. Spells sind keine Attacks, sie ignorieren Treffergenauigkeit und Ausweichwertung, und ihr Basis-Schaden sowie ihre kritische Trefferchance stammen aus dem Skill selbst."
+          ]
+        },
+        {
+          "title": "Was ist ein Hit?",
+          "body": [
+            "Ein Hit ist eine einzelne, diskrete Schadensinstantanz, die zu einem Zeitpunkt verursacht wird. Die meisten Attacks und Spells verursachen Schaden als Hits, und Hits können kritisch treffen, Leben rauben (Leech) und On-Hit-Effekte auslösen."
+          ]
+        },
+        {
+          "title": "Was ist Damage over Time?",
+          "body": [
+            "Damage over Time (DoT) ist Schaden, der schrittweise über eine Dauer hinweg angewendet wird, statt auf einmal. DoT ist kein Hit, kann also normalerweise nicht kritisch treffen, kein Leben rauben und keine On-Hit-Effekte auslösen wie ein Hit das tut."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "order": 2,
+      "title": "Schlüsselbegriffe",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Vier verschiedene Konzepte verheddern sich miteinander, wenn Spieler über „Tags“ sprechen. Sie beantworten unterschiedliche Fragen und sind größtenteils unabhängig voneinander.",
+        "Skill-Typ (Attack vs Spell) beantwortet, wie der Skill ausgeführt wird. SchadensTyp (Physisch, Feuer, Kälte, Blitz, Chaos) beantwortet, welches Element oder welche Form der Schaden hat. Hit-Typ beantwortet, ob der Schaden als einzelner Hit oder als Damage over Time ankommt. Verhaltenstags (Projectile, AoE, Melee, Duration, Minion, Totem) beantworten, wie der Skill ausgeführt wird oder wem er gehört. Keine dieser vier Ebenen bestimmt von selbst eine andere."
+      ],
+      "bullets": [
+        "Skill-Typ: Attack (nutzt eine Waffe) oder Spell (nutzt Magie). Das ist die Kategorie des Skills.",
+        "SchadensTyp: Physisch, Feuer, Kälte, Blitz oder Chaos. Jeder Skill-Typ kann jeden SchadensTyp verursachen.",
+        "Hit-Typ: ein Hit (sofort) oder Damage over Time (allmählich). Zustände wie Ignite und Poison sind Formen von DoT.",
+        "Verhaltenstag: Projectile, AoE, Melee, Duration, Minion, Totem. Diese beschreiben Ausführung und Besitz, nicht den SchadensTyp."
+      ]
+    },
+    {
+      "id": "relationship-map",
+      "order": 3,
+      "title": "Beziehungskarte der Skill-Kategorien",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Wie die Kategorien Attack und Spell mit SchadensTyp, Treffergenauigkeit und Hit-Status zusammenhängen. Skill-Typ und SchadensTyp sind orthogonal.",
+      "columns": [
+        {
+          "key": "skill-category",
+          "label": "Skill-Kategorie"
+        },
+        {
+          "key": "deals-physical",
+          "label": "Verursacht Physisch?"
+        },
+        {
+          "key": "deals-elemental",
+          "label": "Verursacht Elementar?"
+        },
+        {
+          "key": "deals-chaos",
+          "label": "Verursacht Chaos?"
+        },
+        {
+          "key": "requires-accuracy",
+          "label": "Benötigt Treffergenauigkeit?"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Ist ein Treffer?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-category": "Attacke",
+            "deals-physical": "Manchmal – kann jeden Typ verursachen",
+            "deals-elemental": "Manchmal – kann jeden Typ verursachen",
+            "deals-chaos": "Manchmal – kann jeden Typ verursachen",
+            "requires-accuracy": "Ja – würfelt gegen Ausweichwertung",
+            "is-a-hit": "Meistens ja, pro Instanz"
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-category": "Zauber",
+            "deals-physical": "Manchmal – kann jeden Typ verursachen",
+            "deals-elemental": "Manchmal – kann jeden Typ verursachen",
+            "deals-chaos": "Manchmal – kann jeden Typ verursachen",
+            "requires-accuracy": "Nein – ignoriert Treffergenauigkeit und Ausweichwertung",
+            "is-a-hit": "Meistens ja, pro Instanz"
+          }
+        }
+      ],
+      "note": "Ein Zauber kann Feuer, Kälte, Blitz oder Chaos verursachen; ein Angriff kann Feuer verursachen (z. B. mit einer konvertierten oder elementaren Waffe). Die Kategorie legt den SchadensTyp nie fest."
+    },
+    {
+      "id": "hit-vs-dot",
+      "order": 4,
+      "title": "Hit vs Damage over Time",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Wie sich unterschiedliche Schadensformen in Path of Exile 2 verhalten. Basierend auf dem PoE2-Wiki: Damage over Time ist kein Hit, bleibt also von Penetration unberührt, während Resistenzen ihn dennoch mindern.",
+      "columns": [
+        {
+          "key": "damage-form",
+          "label": "Schadensform"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Ist ein Treffer?"
+        },
+        {
+          "key": "can-crit",
+          "label": "Kann kritisch treffen?"
+        },
+        {
+          "key": "can-leech",
+          "label": "Kann Leben rauben?"
+        },
+        {
+          "key": "affected-by-penetration",
+          "label": "Von Penetration betroffen?"
+        },
+        {
+          "key": "triggers-on-hit",
+          "label": "Löst On-Hit aus?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hit"
+          ],
+          "cells": {
+            "damage-form": "Hit",
+            "is-a-hit": "Ja",
+            "can-crit": "Ja",
+            "can-leech": "Ja (gemäß Recovery-Mechanik in 0.5.4, ausstehende PC-Verifizierung)",
+            "affected-by-penetration": "Ja",
+            "triggers-on-hit": "Ja"
+          }
+        },
+        {
+          "tags": [
+            "ailment"
+          ],
+          "cells": {
+            "damage-form": "Zustand (Ignite, Blutung, Poison)",
+            "is-a-hit": "Nein",
+            "can-crit": "Nein – Zustände treffen standardmäßig nicht kritisch",
+            "can-leech": "Nein (ausstehende PC-Verifizierung)",
+            "affected-by-penetration": "Nein",
+            "triggers-on-hit": "Nein"
+          }
+        },
+        {
+          "tags": [
+            "ground-effect"
+          ],
+          "cells": {
+            "damage-form": "Boden-Effekt",
+            "is-a-hit": "Nein",
+            "can-crit": "Nein",
+            "can-leech": "Nein",
+            "affected-by-penetration": "Nein",
+            "triggers-on-hit": "Nein"
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time"
+          ],
+          "cells": {
+            "damage-form": "Damage over Time (ohne Zustand)",
+            "is-a-hit": "Nein",
+            "can-crit": "Nein",
+            "can-leech": "Nein (ausstehende PC-Verifizierung)",
+            "affected-by-penetration": "Nein – Penetration gilt nur für Hits",
+            "triggers-on-hit": "Nein"
+          }
+        }
+      ],
+      "note": "Resistenzen im passenden SchadensTyp mindern DoT weiterhin, aber Rüstung und Penetration tun das nicht, da diese nur für Hits gelten. Das Recovery-(Leech-)Verhalten ist in 0.5.4 versionsabhängig und für PC-Bestätigung markiert."
+    },
+    {
+      "id": "tags",
+      "order": 5,
+      "title": "Was Verhaltenstags aus- und nicht ausschließen",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Verhaltenstags beschreiben, wie ein Skill ausgeführt wird oder wem er gehört. Sie sind sowohl vom Skill-Typ als auch vom SchadensTyp getrennt. Ein Tag wie Projectile sagt dir, dass der Skill ein Projektil abfeuert; er sagt dir nicht, ob der Skill ein Attack oder ein Spell ist, noch welchen SchadensTyp er verursacht.",
+        "Dasselbe gilt für AoE, Melee, Duration, Minion und Totem. Ein Minion-Skill wird von deinem Minion gewirkt, ein Totem-Skill wird von einem Totem gewirkt, das du platzierst, und ein Duration-Skill hält eine Zeit lang an – keines davon legt den SchadensTyp oder die Attack/Spell-Kategorie fest."
+      ],
+      "bullets": [
+        "Projectile: der Skill reist als Projektil. Kann ein Attack sein (Bogenschuss) oder ein Spell (ein Zauber-Projektil).",
+        "AoE: verursacht Schaden in einem Bereich. Gilt für sowohl Attacks als auch Spells.",
+        "Melee: in Nahkampfreichweite ausgeführt. Fast immer ein Attack, aber der Tag allein legt den SchadensTyp nicht fest.",
+        "Duration: der Effekt hält für eine Dauer an (z. B. ein Boden-Effekt oder Aura). An sich kein Hit.",
+        "Minion / Totem: beschreiben den Besitz des Skills, nicht seinen SchadensTyp. Die Supportgem-Kompatibilität hängt weiterhin von den zugrunde liegenden Skill-Tags ab."
+      ]
+    },
+    {
+      "id": "modifier-compatibility",
+      "order": 6,
+      "title": "Diagnose zur Modifikator-Kompatibilität",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Nutze dies, um zu prüfen, ob ein Schadens-Modifikator oder Supportgem auf deinen Skill anwendbar ist. Wähle deinen Skill-Typ und dann den Modifikator-Bereich.",
+      "controls": [
+        {
+          "id": "skill-type",
+          "label": "Was ist die Kategorie deines Skills?",
+          "options": [
+            {
+              "label": "Attacke",
+              "value": "attack"
+            },
+            {
+              "label": "Zauber",
+              "value": "spell"
+            }
+          ]
+        },
+        {
+          "id": "modifier-type",
+          "label": "Was sagt der Modifikator oder das Supportgem?",
+          "options": [
+            {
+              "label": "Attack Damage",
+              "value": "attack-damage"
+            },
+            {
+              "label": "Zauberschaden",
+              "value": "spell-damage"
+            },
+            {
+              "label": "Projektilschaden",
+              "value": "projectile-damage"
+            },
+            {
+              "label": "Generischer Schaden / Elementarschaden",
+              "value": "generic"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Attack Damage greift",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "Der Modifikator oder das Supportgem zielt auf Attack Damage ab.",
+            "Dein Skill ist ein Attack, erhält also den Bonus."
+          ]
+        },
+        {
+          "title": "Spell Damage greift",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "Der Modifikator oder das Supportgem zielt auf Spell Damage ab.",
+            "Dein Skill ist ein Spell, erhält also den Bonus."
+          ]
+        },
+        {
+          "title": "Projektilschaden – prüfe den Tag",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "Der Modifikator zielt auf Projektilschaden ab.",
+            "Er greift nur, wenn dein Attack auch den Projectile-Tag hat (z. B. ein Bogen- oder Armbrust-Skill)."
+          ]
+        },
+        {
+          "title": "Projektilschaden bei einem Spell – prüfe den Tag",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "Der Modifikator zielt auf Projektilschaden ab.",
+            "Er greift nur, wenn dein Spell auch den Projectile-Tag hat (z. B. ein Zauber, der ein Projektil abfeuert)."
+          ]
+        },
+        {
+          "title": "Konflikt – Attack Damage bei einem Spell",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "Attack-Damage-Modifikatoren greifen nicht bei Spells.",
+            "Ein Supportgem mit dem Attack-Tag wird bei einem Spell-Skill als inkompatibel angezeigt."
+          ]
+        },
+        {
+          "title": "Konflikt – Spell Damage bei einem Attack",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "Spell-Damage-Modifikatoren greifen nicht bei Attacks.",
+            "Ein Supportgem mit dem Spell-Tag wird bei einem Attack-Skill als inkompatibel angezeigt."
+          ]
+        },
+        {
+          "title": "Generischer Schaden greift",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Generische Schadens- oder Elementarschadens-Modifikatoren greifen bei jedem Skill unabhängig von der Kategorie.",
+            "Sie müssen dennoch zum SchadensTyp passen (z. B. hilft Feuerschaden nur Feuer-Skills)."
+          ]
+        },
+        {
+          "title": "Generischer Schaden greift",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Generische Schadens- oder Elementarschadens-Modifikatoren greifen bei jedem Skill unabhängig von der Kategorie.",
+            "Sie müssen dennoch zum SchadensTyp passen (z. B. hilft Kälteschaden nur Kälte-Skills)."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Immer noch unsicher?",
+        "steps": [
+          "Lies die genaue Formulierung auf dem Modifikator oder Supportgem.",
+          "Gleiche das Kategorie-Wort (Attack / Spell / Projectile) mit den Tags deines Skills ab.",
+          "Fehlt der Tag, greift der Modifikator nicht und das Supportgem kann als inkompatibel angezeigt werden."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 7,
+      "title": "Durchgerechnete Beispiele",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Vier gängige Builds mit Skill-Typ, Tags und passenden Schadens-Modifikatoren. Dies ist beispielhaft, nicht erschöpfend.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Fall"
+        },
+        {
+          "key": "skill",
+          "label": "Skill"
+        },
+        {
+          "key": "tags",
+          "label": "Tags"
+        },
+        {
+          "key": "what-applies",
+          "label": "Was greift"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "cells": {
+            "case": "Physischer Bogen-Angriff",
+            "skill": "Eine Bogenfähigkeit, die physischen Schaden verursacht",
+            "tags": "Attack, Projectile, Physical",
+            "what-applies": "Attack Damage, Projektilschaden und Physischer Schaden greifen alle. Ausweichwertung ist für den Hit relevant."
+          }
+        },
+        {
+          "tags": [
+            "attack",
+            "fire"
+          ],
+          "cells": {
+            "case": "Elementarer Feuer-Angriff",
+            "skill": "Ein in Feuer konvertierter Waffenangriff",
+            "tags": "Attack, Fire",
+            "what-applies": "Attack Damage und Feuerschaden greifen. Spell Damage greift nicht. Penetration beeinflusst den Hit."
+          }
+        },
+        {
+          "tags": [
+            "spell",
+            "cold"
+          ],
+          "cells": {
+            "case": "Reiner Kälte-Zauber",
+            "skill": "Ein Zauber, der Kälteschaden verursacht",
+            "tags": "Spell, Cold",
+            "what-applies": "Spell Damage und Kälteschaden greifen. Attack Damage greift nicht. Treffergenauigkeit ist irrelevant."
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time",
+            "ailment"
+          ],
+          "cells": {
+            "case": "Ignite- oder Poison-DoT",
+            "skill": "Ein Zustand, der Damage over Time verursacht",
+            "tags": "Damage over Time, Ailment",
+            "what-applies": "DoT- und Zustands-Multiplikatoren greifen. Es ist kein Hit, daher greifen kritisch, Leech, On-Hit und Penetration nicht auf dieselbe Weise. Resistenz mindert weiterhin."
+          }
+        }
+      ],
+      "note": "Genauen Modifikatornamen variieren je nach Patch. Lies im Spiel stets die Skill-Tooltip-Tags und die Modifikator-Formulierung."
+    },
+    {
+      "id": "common-misreads",
+      "order": 8,
+      "title": "Häufige Fehlinterpretationen",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die meisten Build-Fehler rund um diese Tags entstehen aus der Annahme, eine Ebene steuere eine andere. Achte auf die folgenden Fallen."
+      ],
+      "bullets": [
+        "Zu glauben, ein Attack sei immer Physisch – Attacks können Feuer, Kälte, Blitz oder Chaos verursachen.",
+        "Zu glauben, ein Spell könne keinen Physischen Schaden verursachen – der Basis-Schaden eines Spells wird vom Skill gesetzt, nicht von der Waffe, aber der SchadensTyp ist dennoch unabhängig.",
+        "Attack Damage zu einem Spell hinzuzufügen oder Spell Damage zu einem Attack – der Bonus greift schlicht nicht.",
+        "Zu erwarten, dass ein DoT oder Zustand kritisch trifft, Leben raubt oder On-Hit-Effekte auslöst – das sind keine Hits.",
+        "Zu erwarten, dass Penetration einem DoT hilft – Penetration gilt nur für Hits; nutze stattdessen Exposure oder Zustandsstärke.",
+        "Einen Projectile- oder Minion-Tag als Signal für den SchadensTyp zu lesen – er beschreibt nur Ausführung oder Besitz."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 9,
+      "title": "Häufige Verwirrung der Spieler",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Paraphrasierte Verwirrungen, die Spieler zu Skill-Tags in Path of Exile 2 häufig äußern.",
+      "cards": [
+        {
+          "title": "Mein Spell hat keinen Schaden vom Attack-Support erhalten",
+          "tag": "support-gem",
+          "body": [
+            "Ein Spell-Skill ohne Attack-Tag weist Attack-Typ-Supportgems zurück. Das Gem wird als inkompatibel angezeigt, weil die Kategorie nicht passt."
+          ]
+        },
+        {
+          "title": "Warum hat mein Ignite nicht kritisch getroffen?",
+          "tag": "damage-over-time",
+          "body": [
+            "Ignite ist Damage over Time, kein Hit. Standardmäßig treffen Zustände nicht kritisch und profitieren nicht von kritischen Schadensboni."
+          ]
+        },
+        {
+          "title": "Penetration hat bei Poison nicht geholfen",
+          "tag": "penetration",
+          "body": [
+            "Poison ist ein DoT. Penetration gilt nur für Hits, hilft also nicht beim Damage-over-Time-Anteil. Resistenz mindert ihn weiterhin."
+          ]
+        },
+        {
+          "title": "Minion-Skill hat meine Zaubergems ignoriert",
+          "tag": "minion",
+          "body": [
+            "Minion beschreibt, wer den Skill wirkt. Ob Spell-Supports greifen, hängt von den eigenen Tags des Minion-Skills ab, die versionsabhängig sind – im Spiel bestätigen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Video-Leitfaden",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE2 How to do Damage | Spells vs Attacks",
+          "creator": "Exiled RPGs",
+          "description": "Ein klarer Walkthrough, wie Schaden in Path of Exile 2 funktioniert, mit Kontrast von Angriffen und Zaubern, Erklärung von Treffern und Damage over Time, und welche Modifikatoren auf welche Fähigkeiten wirken.",
+          "takeaway": "Gleiche das Kategorie-Wort des Modifikators (Attack, Spell, Projectile) mit den Tags deines Skills ab; denk daran, dass Damage over Time kein Hit ist.",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+          "timestamps": [
+            {
+              "label": "Einleitung",
+              "time": "0:00"
+            },
+            {
+              "label": "Attacks vs Spells erklärt",
+              "time": "1:30"
+            },
+            {
+              "label": "Was zählt als Hit",
+              "time": "4:10"
+            },
+            {
+              "label": "Damage over Time und Zustände",
+              "time": "7:25"
+            },
+            {
+              "label": "Welche Modifikatoren auf welche Skills greifen",
+              "time": "10:40"
+            },
+            {
+              "label": "Zusammenfassung und häufige Fallen",
+              "time": "13:15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 11,
+      "title": "Häufig gestellte Fragen",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Ist ein Attack immer Physischer Schaden?",
+          "answer": [
+            "Nein. Ein Attack ist eine durch die Nutzung deiner Waffe definierte Skill-Kategorie. Attacks können Physischen, Feuer-, Kälte-, Blitz- oder Chaos-Schaden verursachen. Der SchadensTyp ist unabhängig von der Attack/Spell-Kategorie."
+          ]
+        },
+        {
+          "question": "Nutzt ein Spell Treffergenauigkeit oder Trefferchance?",
+          "answer": [
+            "Nein. Spells werden nicht von Treffergenauigkeit oder Ausweichwertung beeinflusst. Ihr Basis-Schaden, ihre Zaubergeschwindigkeit und ihre kritische Trefferchance stammen aus dem Skill selbst, nicht aus einer Waffe."
+          ]
+        },
+        {
+          "question": "Ist Damage over Time ein Hit?",
+          "answer": [
+            "Nein. Damage over Time wird schrittweise über eine Dauer angewendet und zählt nicht als Hit. Dadurch beeinflussen Boni und Verteidigungen, die für Hits gelten (wie Penetration und Rüstung), ihn nicht, während Resistenz im passenden SchadensTyp ihn dennoch mindert."
+          ]
+        },
+        {
+          "question": "Kann Damage over Time kritisch treffen oder Leben rauben?",
+          "answer": [
+            "Standardmäßig treffen Damage over Time und Zustände wie Ignite, Blutung und Poison nicht kritisch und lösen keine On-Hit-Effekte aus. Ob sie Leben rauben können, hängt von der aktuellen Recovery-Mechanik in 0.5.4 ab und ist für PC-Bestätigung markiert."
+          ]
+        },
+        {
+          "question": "Legen Verhaltenstags wie Projectile oder Minion den SchadensTyp fest?",
+          "answer": [
+            "Nein. Projectile, AoE, Melee, Duration, Minion und Totem beschreiben, wie ein Skill ausgeführt wird oder wem er gehört. Sie bestimmen weder, ob der Skill ein Attack oder ein Spell ist, noch welchen SchadensTyp er verursacht."
+          ]
+        },
+        {
+          "question": "Warum wird mein Supportgem als inkompatibel angezeigt?",
+          "answer": [
+            "Ein Supportgem greift nur, wenn seine benötigten Tags mit den Tags des Skills übereinstimmen. Ein Gem, das den Attack-Tag benötigt, lässt sich nicht in einen Spell einfügen, und eines, das Spell benötigt, nicht in einen Attack. Lies die Tooltip-Tags sowohl des Skills als auch des Supports."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Quellen und Verifizierung",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2-Wiki – Schaden über Zeit",
+          "description": "Offizielle Wikiseite, die bestätigt, dass DoT kein Hit ist und von Penetration oder Rüstung unberührt bleibt",
+          "url": "https://poe2wiki.net/wiki/Damage_over_time"
+        },
+        {
+          "label": "PoE2-Wiki – Attacke",
+          "description": "Offizielle Wikiseite, die Attacks definiert und bestätigt, dass sie jeden SchadensTyp verursachen können",
+          "url": "https://poe2wiki.net/wiki/Attack"
+        },
+        {
+          "label": "PoE2-Wiki – Zauber",
+          "description": "Offizielle Wikiseite, die Spells definiert und bestätigt, dass sie Treffergenauigkeit und Ausweichwertung ignorieren",
+          "url": "https://poe2wiki.net/wiki/Spell"
+        },
+        {
+          "label": "Exiled RPGs - PoE2 How to do Damage (YouTube)",
+          "description": "Community-Video, das Attacks vs Spells, Hits und Damage over Time erklärt",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog"
+        },
+        {
+          "label": "Maxroll – PoE2-Ressourcen",
+          "description": "Community-Hub für Path of Exile 2-Mechaniken und Build-Guides",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Erstveröffentlichung des Guides zu Attack-, Spell-, Hit- und Damage-over-Time-Tags für Path of Exile 2 Early Access 0.5.4.",
+            "Hinzugefügt: Direktantworten, Begriffe, Beziehungskarte, Hit-vs-DoT-Tabelle, Verhaltenstags, Modifikator-Kompatibilitäts-Diagnose, durchgerechnete Beispiele, häufige Fehlinterpretationen, Community-Fälle, Video, FAQ und Quellen."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2-Wiki – Schaden über Zeit",
+      "url": "https://poe2wiki.net/wiki/Damage_over_time",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2-Wiki – Attacke",
+      "url": "https://poe2wiki.net/wiki/Attack",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2-Wiki – Zauber",
+      "url": "https://poe2wiki.net/wiki/Spell",
+      "sourceType": "official"
+    },
+    {
+      "label": "Exiled RPGs - PoE2 How to do Damage (YouTube)",
+      "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+      "sourceType": "community"
+    },
+    {
+      "label": "Maxroll – PoE2-Ressourcen",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Attack-, Spell-, Hit- & Damage-over-Time-Tags – Leitfaden",
+    "description": "Verstehe die Skill-Tags in Path of Exile 2: Attack vs Spell, Hit vs Damage over Time und Verhaltenstags wie Projektil, AoE, Minion und Totem. Lerne, welche Modifikatoren greifen.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "attack-spell-hit-damage-over-time-tags",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

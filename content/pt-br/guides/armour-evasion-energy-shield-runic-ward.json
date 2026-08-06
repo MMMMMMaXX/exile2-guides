@@ -1,0 +1,795 @@
+{
+  "id": "armour-evasion-energy-shield-runic-ward",
+  "slug": "armour-evasion-energy-shield-runic-ward",
+  "locale": "pt-br",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Armadura, Evasão, Energy Shield e Runic Ward Explicados",
+  "shortTitle": "Camadas de Defesa",
+  "summary": "Como as quatro camadas de defesa do Path of Exile 2 funcionam e se combinam: Armadura, Evasão, Energy Shield e a nova Runic Ward, além de onde se encaixam Resistência, Bloqueio e Deflect.",
+  "description": "Um guia mecânico das camadas de defesa do Path of Exile 2 — Armadura, Evasão, Energy Shield e Runic Ward — e como combiná-las para parar de ser morto de um golpe.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/liquid-verisium-hero.webp",
+  "cardImage": "/images/items/liquid-verisium-hero.webp",
+  "imageAlt": "Um frasco de Liquid Verisium representando a Runic Ward, uma das várias camadas de defesa do Path of Exile 2",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Um personagem nos Atos ou no endgame",
+    "Compreensão básica da ficha de personagem e das resistências",
+    "Acesso à Bigorna de Verisium de Farrow para a Runic Ward (Patch 0.5)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "armour",
+    "evasion",
+    "energy-shield",
+    "runic-ward",
+    "defence",
+    "defense"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respostas diretas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Quais são as quatro camadas de defesa?",
+          "body": [
+            "Armadura, Evasão e Energy Shield são as três camadas clássicas. Runic Ward é uma camada separada e mais recente adicionada no Patch 0.5 que age como uma rede de segurança final a 1 de Vida."
+          ]
+        },
+        {
+          "title": "A Armadura é uma redução percentual fixa?",
+          "body": [
+            "Não. A Armadura reduz a porção física dos acertos e sua eficácia escala com o tamanho do acerto: forte contra muitos acertos pequenos, fraca contra um acerto enorme."
+          ]
+        },
+        {
+          "title": "A Evasão reduz o dano?",
+          "body": [
+            "Não. A Evasão é uma chance de evitar o acerto inteiro. Acertos que conectam causam dano total, e é por isso que ainda pode parecer pouco confiável."
+          ]
+        },
+        {
+          "title": "Como consigo a Runic Ward?",
+          "body": [
+            "Gaste Verisium na Bigorna de Verisium (desbloqueada pelas missões de Farrow) para adicionar Runic Ward à armadura. Itens de item level alto podem trocar parte da defesa base por ela — visualize antes de forjar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "damage-order-diagram",
+      "order": 2,
+      "title": "Como o dano é aplicado: do acerto à vida",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Quando um inimigo ataca, o jogo resolve o acerto através de uma ordem fixa de camadas de defesa. Entender essa ordem explica por que nenhuma camada isolada é suficiente por si só.",
+        "Primeiro, a Evasão é verificada: se você rolar uma evasão bem-sucedida, o acerto inteiro é evitado e nada mais acontece. Se o acerto conecta, a Armadura então reduz a porção física daquele acerto com base no seu tamanho.",
+        "Após a Armadura, o Energy Shield (se você tiver) absorve o dano restante antes que qualquer dano alcance sua Vida. Por fim, a Runic Ward é uma barreira separada de última camada que só entra em ação quando sua Vida cairia a 0, capturando o golpe fatal para que você sobreviva com 1 de Vida."
+      ],
+      "bullets": [
+        "A Evasão evita o acerto por completo; não reduz o dano que conecta.",
+        "A Armadura afeta apenas dano físico e escala com o tamanho do acerto.",
+        "O Energy Shield protege a Vida e recarrega após um atraso.",
+        "A Runic Ward é a rede de segurança final, não um substituto para as outras."
+      ]
+    },
+    {
+      "id": "protection-layer-matrix",
+      "order": 3,
+      "title": "Matriz das camadas de proteção",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Como cada camada de defesa se comporta, o que mitiga e o que não mitiga, e onde tende a falhar.",
+      "columns": [
+        { "key": "layer", "label": "Camada" },
+        { "key": "mainly-mitigates", "label": "Mitiga principalmente" },
+        { "key": "does-not-mitigate", "label": "Não mitiga" },
+        { "key": "strength", "label": "Força" },
+        { "key": "common-failure", "label": "Falha comum" },
+        { "key": "gear-need", "label": "Necessidade de equip." }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["physical"],
+          "cells": {
+            "layer": "Armadura",
+            "mainly-mitigates": "Dano físico (escala com o tamanho do acerto)",
+            "does-not-mitigate": "Não físico, dano ao longo do tempo",
+            "strength": "Forte contra muitos acertos pequenos",
+            "common-failure": "Fraca contra um acerto gigante",
+            "gear-need": "Equip. de Força"
+          }
+        },
+        {
+          "tags": ["avoidance"],
+          "cells": {
+            "layer": "Evasão",
+            "mainly-mitigates": "Evita acertos por completo (incluindo males)",
+            "does-not-mitigate": "Dano dos acertos que conectam",
+            "strength": "Também evita males em acertos evadidos",
+            "common-failure": "Pode falhar repetidamente (risco de morte instantânea)",
+            "gear-need": "Equip. de Destreza"
+          }
+        },
+        {
+          "tags": ["buffer"],
+          "cells": {
+            "layer": "Energy Shield",
+            "mainly-mitigates": "Absorve dano antes da Vida",
+            "does-not-mitigate": "Sangramento/Veneno ignoram; chaos dobrado",
+            "strength": "Poço recarregável sobre a Vida",
+            "common-failure": "Chaos e DoT o ignoram",
+            "gear-need": "Equip. de Inteligência"
+          }
+        },
+        {
+          "tags": ["last-layer"],
+          "cells": {
+            "layer": "Runic Ward",
+            "mainly-mitigates": "Golpe fatal a 1 de Vida",
+            "does-not-mitigate": "Perda de Vida sem dano",
+            "strength": "Segunda vida / rede final",
+            "common-failure": "Pode trocar defesa base em equip. de iLvl alto",
+            "gear-need": "Forja de Verisium"
+          }
+        },
+        {
+          "tags": ["resist"],
+          "cells": {
+            "layer": "Resistência",
+            "mainly-mitigates": "Tipos específicos (fogo/frio/raio/chaos)",
+            "does-not-mitigate": "Físico, sem tipo",
+            "strength": "Barata e essencial",
+            "common-failure": "Sem cap = dano dobrado recebido",
+            "gear-need": "Qualquer equip."
+          }
+        },
+        {
+          "tags": ["avoid-reduce"],
+          "cells": {
+            "layer": "Bloqueio / Deflect",
+            "mainly-mitigates": "Chance de evitar ou reduzir acertos",
+            "does-not-mitigate": "Dano ao longo do tempo",
+            "strength": "Soma com a Evasão",
+            "common-failure": "Não é 100% confiável",
+            "gear-need": "Escudo / Equip. de Evasão"
+          }
+        }
+      ],
+      "note": "O comportamento é descrito qualitativamente; valores precisos aparecem nas dicas de jogo e na wiki da PoE2, e estão marcados como pending-pc em relação ao cliente 0.5.4 em vigor."
+    },
+    {
+      "id": "armour",
+      "order": 4,
+      "title": "Armadura",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A Armadura é uma das três camadas clássicas de defesa. Ela reduz a porção de dano físico dos acertos que realmente conectam em você.",
+        "A Armadura NÃO é uma redução percentual fixa. Sua eficácia escala com o tamanho do acerto: mitiga uma parcela maior de muitos acertos pequenos e uma parcela menor de um acerto enorme. É por isso que uma build que se sente segura contra lacaios pode morrer de repente para um único golpe de chefe."
+      ],
+      "bullets": [
+        "Reduz apenas dano físico; elemental, chaos e dano ao longo do tempo não são afetados pela Armadura.",
+        "Mais eficaz contra acertos pequenos frequentes do que contra um acerto gigante.",
+        "Ganha mais com equip. alinhado à Força e modificadores de Armadura fixa.",
+        "Combine com Vida e resistências; a Armadura sozinha não impede mortes instantâneas."
+      ]
+    },
+    {
+      "id": "evasion",
+      "order": 5,
+      "title": "Evasão",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A Evasão dá a você uma chance de evitar um acerto completamente. Uma rolagem bem-sucedida significa que o acerto nunca acontece — e isso também significa que você não recebe males (ignição, congelamento, choque, sangramento, veneno) daquele acerto.",
+        "Como a evasão é probabilística, ela pode falhar várias vezes seguidas. Um acerto que passa conecta com dano total: a evasão não reduz o dano dos acertos que conectam. Esta é a queixa clássica de 'a evasão ainda leva acerto'."
+      ],
+      "bullets": [
+        "Chance de evitar acertos por completo, incluindo seus males.",
+        "Não reduz o dano dos acertos que conectam — rolagem tudo ou nada.",
+        "Pode falhar repetidamente; combine com um poço (Energy Shield, Bloqueio ou Runic Ward) para segurança.",
+        "Escala bem com equip. de Destreza e é a base para o Deflect."
+      ]
+    },
+    {
+      "id": "energy-shield",
+      "order": 6,
+      "title": "Energy Shield",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Energy Shield (ES) é um poço adicional que fica sobre sua Vida e absorve dano antes que sua Vida seja tocada. Está associado à Inteligência e recarrega com o tempo assim que você evita receber dano por um curto atraso.",
+        "O ES interage com tipos de dano de formas específicas. Dano de chaos remove o dobro do Energy Shield em relação a outros tipos de dano, e dano de Sangramento e Veneno ignoram o Energy Shield por completo para atingir a Vida diretamente. A taxa e o atraso exatos de recarga aparecem na dica de jogo e na wiki da PoE2, e devem ser confirmados no cliente 0.5.4 em vigor (pending-pc)."
+      ],
+      "bullets": [
+        "Absorve dano antes da Vida; recarrega após um atraso sem receber dano.",
+        "Dano de chaos é dobrado contra o Energy Shield.",
+        "Sangramento e Veneno ignoram o Energy Shield e atingem a Vida diretamente.",
+        "Forte em builds de Inteligência, mas cuidado com chaos e dano ao longo do tempo."
+      ]
+    },
+    {
+      "id": "runic-ward",
+      "order": 7,
+      "title": "Runic Ward",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Runic Ward é uma camada de defesa separada introduzida no Patch 0.5. NÃO é Armadura, Evasão ou Energy Shield — é sua própria barreira distinta proveniente de Verisium através da Bigorna de Verisium (desbloqueada via missões de Farrow).",
+        "A Runic Ward age como uma rede de segurança final: quando um acerto derrubaria sua Vida a 0, você sobrevive com 1 de Vida e a Runic Ward absorve o dano restante. Ela regenera independentemente da sua Vida. Adicionar Runic Ward ao equipamento pode converter uma parte da Armadura, Evasão ou Energy Shield existentes em Ward, especialmente em peças de item level mais alto — sempre verifique a prévia no jogo antes de forjar (números precisos pending-pc)."
+      ],
+      "bullets": [
+        "Uma camada distinta, separada de Armadura, Evasão e Energy Shield.",
+        "Entra em ação apenas a 1 de Vida para capturar um golpe fatal.",
+        "Proveniente de Verisium via Bigorna de Verisium.",
+        "Pode trocar parte da defesa base por Ward em equip. de item level alto; visualize primeiro."
+      ]
+    },
+    {
+      "id": "resistance-block-deflect-boundary",
+      "order": 8,
+      "title": "Onde se encaixam Resistência, Bloqueio, Deflect e Sorcery Ward",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Resistência, Bloqueio, Deflect, Sorcery Ward e sistemas similares são separados das três defesas base e interagem com elas em vez de substituí-las.",
+        "Resistências reduzem dano de tipos específicos (fogo, frio, raio, chaos) e são defesas baratas e essenciais — uma resistência sem cap efetivamente dobra aquele tipo de dano. Bloqueio e Deflect são chances de evitar ou reduzir acertos, somando sobre a Evasão. Sorcery Ward (e variantes de Ward similares) é uma barreira separada semelhante à Runic Ward. Nenhuma delas remove a necessidade de uma camada base."
+      ],
+      "bullets": [
+        "Resistências cortam tipos específicos de dano; capelas antes de avançar no conteúdo.",
+        "Bloqueio e Deflect reduzem ou evitam acertos e empilham com a Evasão.",
+        "Sorcery Ward / Runic Ward são barreiras separadas, não substitutos.",
+        "Use estas para complementar, não substituir, uma defesa base."
+      ]
+    },
+    {
+      "id": "hybrid-defence-bases",
+      "order": 9,
+      "title": "Bases de defesa híbridas",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Combinações de base comuns e no que cada uma é melhor.",
+      "columns": [
+        { "key": "base-type", "label": "Tipo de base" },
+        { "key": "attribute-req", "label": "Requisito de atributo" },
+        { "key": "two-defences", "label": "Duas defesas" },
+        { "key": "best-for", "label": "Melhor para" },
+        { "key": "tradeoff", "label": "Compromisso" }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Armadura + Energy Shield",
+            "attribute-req": "Força + Inteligência",
+            "two-defences": "Armadura e Energy Shield",
+            "best-for": "Lançadores tanques / híbridos",
+            "tradeoff": "Precisa de dois atributos"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Evasão + Energy Shield",
+            "attribute-req": "Destreza + Inteligência",
+            "two-defences": "Evasão e Energy Shield",
+            "best-for": "Lançadores que querem evasão + poço",
+            "tradeoff": "Menos armadura bruta"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Armadura + Evasão",
+            "attribute-req": "Força + Destreza",
+            "two-defences": "Armadura e Evasão",
+            "best-for": "Híbridos marciais",
+            "tradeoff": "Sem poço de Energy Shield"
+          }
+        },
+        {
+          "tags": ["pure-str"],
+          "cells": {
+            "base-type": "Armadura Pura",
+            "attribute-req": "Força",
+            "two-defences": "Apenas Armadura",
+            "best-for": "Brigões corpo a corpo",
+            "tradeoff": "Fraca a grandes acertos sem camadas"
+          }
+        },
+        {
+          "tags": ["pure-int"],
+          "cells": {
+            "base-type": "Energy Shield Puro",
+            "attribute-req": "Inteligência",
+            "two-defences": "Apenas Energy Shield",
+            "best-for": "Lançadores puros",
+            "tradeoff": "Risco de ignorar Chaos / DoT"
+          }
+        }
+      ],
+      "note": "Tendências de atributo são tendências, não escolhas de classe obrigatórias."
+    },
+    {
+      "id": "defence-selector",
+      "order": 10,
+      "title": "Seletor de defesa",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Escolha sua situação. A ferramenta sugere uma camada de defesa primária e secundária.",
+      "controls": [
+        {
+          "id": "class",
+          "label": "Sua tendência de classe",
+          "options": [
+            { "label": "Baseada em Força", "value": "str" },
+            { "label": "Baseada em Destreza", "value": "dex" },
+            { "label": "Baseada em Inteligência", "value": "int" },
+            { "label": "Híbrida / qualquer", "value": "hybrid" }
+          ]
+        },
+        {
+          "id": "gear",
+          "label": "Que equipamento você tem?",
+          "options": [
+            { "label": "Equip. de Força / Armadura", "value": "armour" },
+            { "label": "Equip. de Evasão", "value": "evasion" },
+            { "label": "Equip. de Energy Shield", "value": "es" },
+            { "label": "Misto", "value": "mixed" }
+          ]
+        },
+        {
+          "id": "death",
+          "label": "Como você costuma morrer?",
+          "options": [
+            { "label": "Um acerto gigante", "value": "big-hit" },
+            { "label": "Muitos acertos pequenos", "value": "small-hits" },
+            { "label": "Chaos / dano ao longo do tempo", "value": "chaos-dot" },
+            { "label": "Golpes de chefe", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Build primária de Armadura",
+          "when": { "class": "str" },
+          "steps": [
+            "Empilhe Armadura e Vida máxima como sua base.",
+            "Adicione Energy Shield como poço secundário.",
+            "Capar todas as resistências elementais antes de avançar no conteúdo."
+          ]
+        },
+        {
+          "title": "Build primária de Evasão",
+          "when": { "class": "dex" },
+          "steps": [
+            "Empilhe Evasão para evitar acertos.",
+            "Adicione Energy Shield ou Bloqueio como retaguarda para acertos que conectam.",
+            "Considere Deflect, que escala a partir da Evasão."
+          ]
+        },
+        {
+          "title": "Build de Energy Shield",
+          "when": { "class": "int" },
+          "steps": [
+            "Empilhe Energy Shield como seu principal poço.",
+            "Adicione Armadura ou Runic Ward como camada secundária.",
+            "Atenção ao chaos e dano ao longo do tempo, que ignoram ou dobram contra ES."
+          ]
+        },
+        {
+          "title": "Proteção contra Chaos / DoT",
+          "when": { "death": "chaos-dot" },
+          "steps": [
+            "Aumente a resistência a chaos; não dependa de ES contra veneno ou sangramento.",
+            "Adicione Vida e um poço fixo (Armadura) para esses tipos de dano.",
+            "Confirme o comportamento exato do chaos no ES no cliente 0.5.4 em vigor (pending-pc)."
+          ]
+        },
+        {
+          "title": "Sobrevivência a grandes acertos",
+          "when": { "death": "big-hit" },
+          "steps": [
+            "Empilhe Armadura e Vida máxima para suavizar acertos gigantes.",
+            "Adicione Runic Ward como rede final a 1 de Vida.",
+            "Evite configurações vidro de um golpe em conteúdo difícil."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Defesa em camadas genérica",
+        "steps": [
+          "Escolha uma camada base primária (Armadura, Evasão ou Energy Shield).",
+          "Adicione uma segunda camada e capar suas resistências.",
+          "Trate a Runic Ward como uma rede de segurança de última camada, não como defesa primária."
+        ]
+      }
+    },
+    {
+      "id": "build-archetype-examples",
+      "order": 11,
+      "title": "Exemplos de arquétipos de build",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Apenas exemplos estruturais — estes mostram como as camadas se combinam, não recomendações completas de build.",
+      "cards": [
+        {
+          "title": "Armadura Pura",
+          "tag": "Estrutura",
+          "body": [
+            "Uma build de Força empilhando Armadura e Vida, acompanhada de resistências.",
+            "Exemplo estrutural, não uma recomendação completa de build."
+          ]
+        },
+        {
+          "title": "Evasão Pura",
+          "tag": "Estrutura",
+          "body": [
+            "Uma build de Destreza maximizando evasão, apoiada por Bloqueio ou Energy Shield.",
+            "Exemplo estrutural, não uma recomendação completa de build."
+          ]
+        },
+        {
+          "title": "Energy Shield Puro",
+          "tag": "Estrutura",
+          "body": [
+            "Uma build de Inteligência usando ES como poço principal, atenta ao chaos e DoT.",
+            "Exemplo estrutural, não uma recomendação completa de build."
+          ]
+        },
+        {
+          "title": "Híbrida (Armadura + ES)",
+          "tag": "Estrutura",
+          "body": [
+            "Combina um poço fixo com um recarregável para mitigação mais estável.",
+            "Exemplo estrutural, não uma recomendação completa de build."
+          ]
+        },
+        {
+          "title": "Rede de Runic Ward",
+          "tag": "Estrutura",
+          "body": [
+            "Qualquer defesa base mais Runic Ward como camada de segurança final via Verisium.",
+            "Exemplo estrutural, não uma recomendação completa de build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "failure-diagnostic",
+      "order": 12,
+      "title": "Por que ainda estou sendo morto de um golpe?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Ainda morrendo de um golpe? Escolha seu sintoma para encontrar a camada faltante.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "O que está acontecendo?",
+          "options": [
+            { "label": "Morro para um grande acerto", "value": "big-hit" },
+            { "label": "Morro para muitos acertos pequenos", "value": "small-hits" },
+            { "label": "Morro para chaos / DoT", "value": "chaos-dot" },
+            { "label": "Morro para um golpe de chefe", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Faltando Armadura / Vida",
+          "when": { "symptom": "big-hit" },
+          "steps": [
+            "Aumente Armadura e Vida máxima.",
+            "Adicione Runic Ward como rede final.",
+            "Capar todas as resistências."
+          ]
+        },
+        {
+          "title": "Faltando Evasão / Bloqueio",
+          "when": { "symptom": "small-hits" },
+          "steps": [
+            "Aumente Evasão ou Bloqueio / Deflect.",
+            "Adicione um poço de Energy Shield para acertos que conectam.",
+            "Considere Cegueira para reduzir a precisão inimiga."
+          ]
+        },
+        {
+          "title": "Faltando tratamento de chaos",
+          "when": { "symptom": "chaos-dot" },
+          "steps": [
+            "Aumente a resistência a chaos.",
+            "Não dependa de ES contra veneno ou sangramento.",
+            "Adicione Vida e um poço fixo para esses tipos."
+          ]
+        },
+        {
+          "title": "Faltando defesa em camadas",
+          "when": { "symptom": "slam" },
+          "steps": [
+            "Combine duas camadas base em vez de uma.",
+            "Adicione Runic Ward como rede final.",
+            "Melhore a recuperação (roubo de vida, regeneração, frascos)."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Correção geral",
+        "steps": [
+          "Capar resistências primeiro.",
+          "Escolha uma camada base primária e adicione uma segunda.",
+          "Adicione Runic Ward como rede de segurança de última camada."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "Evidências da comunidade",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Relatos comuns de jogadores e como as camadas os explicam.",
+      "cards": [
+        {
+          "title": "Copiei uma build de ES mas agora sou frágil",
+          "tag": "Relato",
+          "body": [
+            "O ES provavelmente foi combinado com chaos / DoT, ou a build perdeu seu poço.",
+            "Chaos dobra contra ES e sangramento / veneno o ignoram — reveja resistências e uma segunda camada."
+          ]
+        },
+        {
+          "title": "Minha Evasão ainda leva acerto",
+          "tag": "Relato",
+          "body": [
+            "Evasão é uma chance, não uma garantia; acertos que conectam causam dano total.",
+            "Adicione Energy Shield ou Bloqueio como retaguarda para os acertos que conectam."
+          ]
+        },
+        {
+          "title": "A Runic Ward não me salvou",
+          "tag": "Relato",
+          "body": [
+            "A Runic Ward só dispara a 1 de Vida e pode se esgotar.",
+            "É uma rede final, não uma defesa primária, e perda de Vida sem dano a ignora."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "Vídeo-guia da Runic Ward",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Runic Ward no Path of Exile 2 Patch 0.5.0 Guia Completo: O que é, Como Empilhar e Melhores Builds",
+          "creator": "ExitLag Tips",
+          "description": "Um guia completo da Runic Ward no Patch 0.5: o que é, como empilha a partir de Verisium e builds de exemplo que a usam como camada de segurança final.",
+          "takeaway": "Runic Ward é uma barreira de última camada separada proveniente de Verisium; combine-a com uma defesa base real em vez de depender dela sozinha.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+          "timestamps": [
+            { "label": "Introdução", "time": "0:00" },
+            { "label": "O que é a Runic Ward", "time": "1:15" },
+            { "label": "Como a Runic Ward empilha / fontes", "time": "3:40" },
+            { "label": "Adicionando Runic Ward via Verisium", "time": "6:20" },
+            { "label": "Melhores builds para Runic Ward", "time": "9:05" },
+            { "label": "Resumo das mudanças do Patch 0.5", "time": "12:30" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "Erros comuns",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A maioria dos problemas de 'continuo morrendo' vêm de entender mal como as camadas se combinam, não de uma única estatística faltante."
+      ],
+      "bullets": [
+        "Achar que a Armadura é uma redução % fixa e ignorar a vulnerabilidade a acertos gigantes.",
+        "Depender apenas da Evasão e ser morto de um golpe quando ela falha.",
+        "Esquecer que chaos e sangramento / veneno ignoram o Energy Shield.",
+        "Adicionar Runic Ward sem verificar o compromisso de defesa base em equip. de iLvl alto.",
+        "Deixar resistências sem cap, o que dobra o dano recebido.",
+        "Tratar Runic Ward como defesa primária em vez de rede de última camada."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "Perguntas frequentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "A Armadura é uma redução de dano percentual fixa?",
+          "answer": [
+            "Não. A Armadura reduz a porção física dos acertos e sua eficácia escala com o tamanho do acerto — forte contra muitos acertos pequenos, fraca contra um acerto enorme."
+          ]
+        },
+        {
+          "question": "A Evasão reduz o dano dos acertos que conectam?",
+          "answer": [
+            "Não. A Evasão é uma chance de evitar o acerto inteiro. Acertos que conectam causam dano total, e é por isso que pode parecer pouco confiável."
+          ]
+        },
+        {
+          "question": "O dano de chaos ignora o Energy Shield?",
+          "answer": [
+            "Dano de chaos remove o dobro do Energy Shield em relação a outros tipos, e Sangramento e Veneno ignoram o Energy Shield por completo para atingir a Vida. Confirme valores exatos no cliente em vigor (pending-pc)."
+          ]
+        },
+        {
+          "question": "A Runic Ward é a mesma coisa que o Energy Shield?",
+          "answer": [
+            "Não. Runic Ward é uma camada separada introduzida no 0.5 que entra em ação apenas a 1 de Vida para capturar um golpe fatal. Ela provém de Verisium, não de Inteligência."
+          ]
+        },
+        {
+          "question": "Preciso de Força para usar Armadura?",
+          "answer": [
+            "As tendências de Força, Destreza e Inteligência são apenas isso — tendências. Qualquer classe pode construir qualquer camada; os atributos afetam principalmente qual equipamento você pode usar."
+          ]
+        },
+        {
+          "question": "Como consigo a Runic Ward?",
+          "answer": [
+            "Através da Bigorna de Verisium (desbloqueada via missões de Farrow) gastando Verisium na armadura; equip. de item level alto pode trocar parte da defesa base por Ward — visualize antes de forjar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 17,
+      "title": "Fontes e verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial — Armadura",
+          "description": "Página da wiki da PoE2 sobre a camada de defesa Armadura.",
+          "url": "https://www.poe2wiki.net/wiki/Armour"
+        },
+        {
+          "label": "Wiki oficial — Evasão",
+          "description": "Página da wiki da PoE2 sobre a camada de defesa Evasão.",
+          "url": "https://www.poe2wiki.net/wiki/Evasion"
+        },
+        {
+          "label": "Wiki oficial — Energy Shield",
+          "description": "Página da wiki da PoE2 sobre Energy Shield, recarga e interações com chaos.",
+          "url": "https://www.poe2wiki.net/wiki/Energy_Shield"
+        },
+        {
+          "label": "Wiki oficial — Runic Ward",
+          "description": "Página da wiki da PoE2 sobre a camada Runic Ward.",
+          "url": "https://www.poe2wiki.net/wiki/Runic_Ward"
+        },
+        {
+          "label": "Vídeo-guia",
+          "description": "ExitLag Tips — Runic Ward no PoE 2 Patch 0.5.0 guia completo.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM"
+        },
+        {
+          "label": "Guia de defesa da comunidade",
+          "description": "ConquestCapped — Guia de equipamento da PoE 2 para Patch 0.5 (prioridades de defesa).",
+          "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "Registro de alterações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Publicação inicial cobrindo Armadura, Evasão, Energy Shield e Runic Ward a partir do Patch 0.5.4.",
+            "Adicionado fluxo de ordem de dano, matriz de camadas de proteção, seletor de defesa e diagnóstico de falha.",
+            "Números precisos da Runic Ward marcados como pending-pc no cliente 0.5.4 em vigor."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki — Armadura",
+      "url": "https://www.poe2wiki.net/wiki/Armour",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Evasão",
+      "url": "https://www.poe2wiki.net/wiki/Evasion",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Energy Shield",
+      "url": "https://www.poe2wiki.net/wiki/Energy_Shield",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Runic Ward",
+      "url": "https://www.poe2wiki.net/wiki/Runic_Ward",
+      "sourceType": "official"
+    },
+    {
+      "label": "ExitLag Tips — Guia da Runic Ward (YouTube)",
+      "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+      "sourceType": "community"
+    },
+    {
+      "label": "ConquestCapped — Guia de equipamento da PoE 2 0.5",
+      "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Camadas de Defesa da PoE 2: Guia de Armadura, Evasão, Energy Shield e Runic Ward",
+    "description": "Entenda como Armadura, Evasão, Energy Shield e Runic Ward funcionam e se combinam no Path of Exile 2, além de Resistência, Bloqueio e Deflect.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "armour-evasion-energy-shield-runic-ward",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

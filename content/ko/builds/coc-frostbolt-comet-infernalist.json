@@ -1,0 +1,732 @@
+{
+  "id": "coc-frostbolt-comet-infernalist",
+  "slug": "coc-frostbolt-comet-infernalist",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "CoC 프로스트볼트 코멧 인퍼널리스트 빌드 가이드",
+  "shortTitle": "CoC 프로스트볼트 코멧 인퍼널리스트",
+  "summary": "레벨 1부터 엔드게임까지 육성되는 마녀 인퍼널리스트: 스파크에서 프로스트볼트로, 치명타 시 시전(CoC) 코멧, 리쿱(Recoup), 그리고 워드 스택 변형.",
+  "description": "레벨링 구간의 겹침, 언제 CoC 코멧으로 전환하는지, 리쿱이 해결하는 문제, 왜 워드가 기본이 아닌 변형인지, 그리고 왜 파이널 폼을 그대로 베끼면 실패하는지 알아봅니다. 실제 영상과 레벨링, 장비, 검증된 출처를 포함합니다.",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "cast-on-crit",
+    "comet",
+    "frostbolt"
+  ],
+  "secondarySkillIds": [
+    "spark",
+    "recoup",
+    "ward",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "spellcaster",
+    "trigger",
+    "recoup",
+    "ward",
+    "complex"
+  ],
+  "damageTypes": [
+    "cold",
+    "lightning"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Source Review Pipeline",
+  "createdAt": "2026-07-31",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-07-31",
+  "heroImage": "/images/builds/covers/coc-frostbolt-comet-infernalist.webp",
+  "cardImage": "/images/builds/covers/coc-frostbolt-comet-infernalist.webp",
+  "imageAlt": "치명타 시 시전으로 코멧을 시전하는 인퍼널리스트",
+  "tags": [
+    "witch",
+    "infernalist",
+    "cast-on-crit",
+    "comet",
+    "frostbolt",
+    "recoup",
+    "ward",
+    "spark",
+    "leveling",
+    "bossing"
+  ],
+  "relatedBuildIds": [
+    "sniper-minion-infernalist"
+  ],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain",
+    "how-to-fix-low-damage"
+  ],
+  "sources": [
+    {
+      "id": "src-official",
+      "label": "Path of Exile 2 공식 포럼 (0.5 패치 노트)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "src-ignatius",
+      "label": "Ignatius CoC 프로스트볼트/스파크 코멧 리쿱 가이드",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/coc-spark-comet-recoup-infernalist-by-ignatius"
+    },
+    {
+      "id": "src-wiki",
+      "label": "PoE2 위키 - 인퍼널리스트",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Infernalist"
+    },
+    {
+      "id": "src-wiki2",
+      "label": "PoE2 위키 - 치명타 시 시전",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Cast_on_Critical"
+    }
+  ],
+  "seo": {
+    "title": "CoC 프로스트볼트 코멧 인퍼널리스트 빌드 가이드 (PoE2 0.5)",
+    "description": "레벨 1부터 엔드게임까지 육성되는 인퍼널리스트: CoC 코멧, 리쿱, 워드 변형. 실제 영상과 레벨링, 장비, 출처.",
+    "noindex": false
+  },
+  "changelog": {
+    "entries": [
+      {
+        "date": "2026-07-31",
+        "changes": [
+          "4차 검증 출처 심사 게시물. 공식 0.5 패치 노트, 현재 크리에이터 가이드, 독립 빌드 가이드, 플래너, 현재 게임플레이 영상, 커뮤니티 질문을 교차 검증함."
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "overview",
+      "id": "overview",
+      "title": "개요",
+      "order": 10,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "이 인퍼널리스트는 레벨 1부터 육성됩니다. 스파크로 레벨을 올린 뒤 프로스트볼트를 추가하고, 발동 도구가 갖춰지면 치명타 시 시전(CoC)에 코멧을 연결합니다. 리쿱과 워드는 방어와 상위 변형을 위해 그 위에 얹습니다.",
+        "검증 우선: 정확한 육성 구간의 겹침과 변형 계산은 현재 크리에이터 가이드에서 가져옵니다. 발동 진단과 '워드는 변형'이라는 프레임이 실질적인 핵심입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "pros-cons",
+      "id": "pros-cons",
+      "title": "장점과 단점",
+      "order": 20,
+      "toc": true,
+      "visible": true,
+      "pros": [
+        "명확한 단계로 이어지는 매끄러운 레벨 1~엔드게임 경로.",
+        "리쿱이 인퍼널리스트의 단점을 방어로 바꿉니다.",
+        "워드 변형은 원하는 플레이어를 위해 존재합니다."
+      ],
+      "cons": [
+        "복잡한 발동 상호작용이 있어 초보자용 빌드가 아닙니다.",
+        "치명타/에너지/소켓 규칙이 틀리면 코멧이 발동하지 않을 수 있습니다.",
+        "워드는 무적이 아니며, 지속 시간이 중요합니다.",
+        "파이널 폼은 시작자가 갖추지 못한 예산이 필요합니다."
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "build-readiness",
+      "title": "이 빌드가 내게 맞나요?",
+      "order": 30,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "리그 시작부터 발동 기반 엔드게임으로 성장하는 캐스터를 원하고 CoC 구성에 익숙하다면 이 빌드를 선택하세요. 첫날 복사-붙여넣기 식의 파이널 폼이 아닙니다.",
+        "스파크로 시작해 단계 관문을 따르세요. 레벨 1에서 곧바로 최종 CoC로 건너뛰지 마세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "leveling",
+      "id": "leveling",
+      "title": "레벨링 경로 (진행 상태 머신)",
+      "order": 40,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인 - 스파크",
+          "body": [
+            "스파크로 레벨을 올리세요. 프로스트볼트와 CoC가 나오기 전의 안전한 캠페인 클리어입니다."
+          ],
+          "levelRange": "1-30"
+        },
+        {
+          "label": "초반 프로스트볼트",
+          "body": [
+            "사용 가능해지면 프로스트볼트를 추가하세요. 여전히 발동 이전 단계입니다."
+          ],
+          "levelRange": "30-45"
+        },
+        {
+          "label": "CoC 사용 가능",
+          "body": [
+            "발동 연결과 치명타가 갖춰지면 치명타 시 시전에 코멧을 연결하세요."
+          ],
+          "levelRange": "45-60"
+        },
+        {
+          "label": "저비용 엔드게임",
+          "body": [
+            "적당한 예산으로 운용하는 리쿱 기반 엔드게임."
+          ],
+          "levelRange": "60-75"
+        },
+        {
+          "label": "워드 스택 / 파이널 폼",
+          "body": [
+            "저비용 엔드게임이 편해진 이후에만 고투자 변형으로 나아가세요."
+          ],
+          "levelRange": "75+"
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "trigger-mechanics",
+      "title": "발동 메커니즘",
+      "order": 50,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "치명타 시 시전은 치명타 적중 시 발동 에너지를 소모하고 연결된 코멧을 자동으로 시전합니다. 에너지는 치명타로 생성되므로 제한 요인은 raw 스펠 피해가 아니라 치명타 확률과 시전 속도입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "recoup-mechanics",
+      "title": "리쿱 메커니즘",
+      "order": 60,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "리쿱은 시간에 따라 받은 피해의 일부를 생명/ES로 되돌려줍니다. 인퍼널리스트의 자가 피해 단점을 해결하고 맵핑을 유지하지만, 모든 순간 피해를 덮지는 못합니다. 거대한 원킬은 여전히 죽입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "comparison-table",
+      "id": "trigger-diagnostic",
+      "title": "발동 진단",
+      "order": 70,
+      "toc": true,
+      "visible": true,
+      "caption": "코멧이 왜 발동하지 않을 수 있는지, 순서대로.",
+      "columns": [
+        "증상",
+        "확인",
+        "해결"
+      ],
+      "rows": [
+        {
+          "label": "코멧 미발동",
+          "cells": [
+            "코멧 미발동",
+            "CoC, 치명타, 에너지, 소켓된 스킬",
+            "순서대로 확인"
+          ]
+        },
+        {
+          "label": "발동 후 마나 고갈",
+          "cells": [
+            "발동 후 마나 고갈",
+            "마나 비용 / 회복",
+            "비용 낮추기 / 회복 추가"
+          ]
+        },
+        {
+          "label": "맵핑은 되는데 보스가 멈춤",
+          "cells": [
+            "맵핑은 되는데 보스가 멈춤",
+            "단일 대상 치명타/에너지",
+            "보스 구성"
+          ]
+        },
+        {
+          "label": "워드가 높아도 여전히 죽음",
+          "cells": [
+            "워드가 높아도 여전히 죽음",
+            "워드 지속 시간 / 기타 방어",
+            "워드를 무적으로 취급하지 마세요"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "ward-variant",
+      "title": "워드 변형",
+      "order": 80,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "워드 스택은 기본이 아닌 고급 변형입니다. 일부 자원 규칙을 뒤집으며 0.5 전용일 가능성이 높습니다. 리그 시작 세트가 아닌 선택적 분기로 취급하세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "skills",
+      "id": "skills",
+      "title": "스킬과 보조 젬",
+      "order": 90,
+      "toc": true,
+      "visible": true,
+      "groups": [
+        {
+          "label": "핵심",
+          "skills": [
+            {
+              "displayName": "치명타 시 시전 + 코멧",
+              "skillId": "cast-on-crit",
+              "role": "치명타 시 자동 발동되는 코멧",
+              "supportSkillIds": [
+                "energy-retention",
+                "boundless-energy"
+              ],
+              "notes": [],
+              "whyUse": [
+                "가동되면 주력 단일 대상 및 클리어 엔진이 됩니다."
+              ]
+            },
+            {
+              "displayName": "프로스트볼트",
+              "skillId": "frostbolt",
+              "role": "발동 채우기 및 단일 대상 구성",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "레벨링 / 방어",
+          "skills": [
+            {
+              "displayName": "스파크",
+              "skillId": "spark",
+              "role": "캠페인 및 초반 맵 클리어",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "displayName": "리쿱 레이어",
+              "skillId": "recoup",
+              "role": "자가 피해 단점을 유지(버팀)",
+              "supportSkillIds": [],
+              "notes": [
+                "정확한 리쿱 중첩은 현재 가이드에서 확인하세요."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "gear",
+      "id": "gear",
+      "title": "장비와 유니크",
+      "order": 100,
+      "toc": true,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Body / ES",
+          "recommendations": [
+            "리쿱과 저항을 갖춘 ES 베이스. 방어의 중심축입니다."
+          ],
+          "notes": [
+            "ES + 리쿱"
+          ],
+          "statPriorities": [
+            {
+              "label": "에너지 보호막",
+              "reason": "방어 풀",
+              "tier": "required"
+            },
+            {
+              "label": "리쿱",
+              "reason": "유지",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Wand / Focus",
+          "recommendations": [
+            "스킬 레벨, 치명타, 시전 속도. 피해 업그레이드 우선순위입니다."
+          ],
+          "notes": [
+            "+스킬 레벨 / 치명타"
+          ],
+          "statPriorities": [
+            {
+              "label": "시전 속도",
+              "reason": "발동 빈도",
+              "tier": "recommended"
+            }
+          ]
+        },
+        {
+          "slot": "Ward gear (variant)",
+          "recommendations": [
+            "워드 변환 장비는 고급 변형에만 해당합니다."
+          ],
+          "notes": [
+            "워드 변환"
+          ],
+          "statPriorities": [
+            {
+              "label": "워드",
+              "reason": "변형 상한",
+              "tier": "optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "stat-priority",
+      "id": "stat-priority",
+      "title": "스탯 우선순위",
+      "order": 110,
+      "toc": true,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "치명타 확률",
+          "reason": "CoC 에너지를 구동"
+        },
+        {
+          "label": "시전 속도",
+          "reason": "발동 빈도"
+        },
+        {
+          "label": "에너지 보호막 + 리쿱",
+          "reason": "방어와 유지"
+        },
+        {
+          "label": "마나 / 회복",
+          "reason": "발동 비용"
+        },
+        {
+          "label": "스킬 레벨",
+          "reason": "피해"
+        }
+      ]
+    },
+    {
+      "type": "upgrade-priority",
+      "id": "upgrade-priority",
+      "title": "업그레이드 우선순위",
+      "order": 120,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "스타터 -> 저비용 엔드게임",
+          "body": [
+            "저항을 상한까지 채우고, 리쿱과 ES를 확보하며, CoC를 가동하세요."
+          ]
+        },
+        {
+          "label": "저비용 -> 고비용",
+          "body": [
+            "치명타와 시전 속도를 더하고 스킬 레벨을 높이세요."
+          ]
+        },
+        {
+          "label": "고비용 -> 워드/파이널",
+          "body": [
+            "저비용 엔드게임이 편해진 이후에만. 고투자 분기입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "budget-variants",
+      "title": "예산별 변형",
+      "order": 130,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "저비용 엔드게임이 현실적인 리그 시작 목표입니다. 고비용은 치명타를 더합니다. 워드 스택과 파이널 폼은 고투자 분기이며, 파이널 폼은 저예산 빌드가 아닙니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "defensive-layers",
+      "title": "방어 레이어",
+      "order": 140,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "리쿱과 에너지 보호막이 핵심입니다. 워드는 변형에서 레이어를 더하지만 무적이 아닙니다. 저항을 상한까지 채우고, 리쿱을 우회하는 원킬에 주의하세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "mapping",
+      "id": "mapping",
+      "title": "맵핑 로테이션",
+      "order": 150,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "맵핑에서는: 스파크/프로스트볼트가 CoC를 계속 공급하게 하고, 리쿱 지속 시간을 유지하며, 움직이세요. 발동이 맞춰지면 클리어는 자동으로 이루어집니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "rare-rotation",
+      "title": "레어 로테이션",
+      "order": 160,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "레어에서는: 코멧이 발동하도록 치명타/에너지를 확보하세요. 멈추면 피해 젬을 더 넣기보다 단일 대상 구성을 점검하세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "bossing",
+      "id": "bossing",
+      "title": "보스 로테이션",
+      "order": 170,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "보스전에서는: 사전 시전 구성을 갖추고 CoC가 일하게 하며, 전투 중 마나/리쿱을 관리하세요. 스타터 예산으로 파이널 폼 수치를 기대하지 마세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "community-voices",
+      "id": "community-voices",
+      "title": "커뮤니티 목소리",
+      "order": 820,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "context": "마나와 발동",
+          "label": "Reddit - CoC 마나",
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "statement": "플레이어들은 코멧이 몇 번 발동한 뒤 멈추는 이유를 묻습니다. 보통 원인은 피해가 아니라 마나입니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "context": "워드 관련 질문",
+          "label": "포럼 - 워드 스택",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "많은 이가 워드를 무적이나 다름없다고 가정하지만, 숙련된 플레이어는 지속 시간과 기타 방어도 여전히 중요하다고 설명합니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "context": "전환 혼란",
+          "label": "가이드 댓글 - 언제 갈아탈지",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "신규 플레이어는 언제 스파크를 벗어날지 묻습니다. 가이드는 고정 레벨보다 명확한 단계 관문을 권장합니다.",
+          "url": "https://mobalytics.gg/poe-2/builds/coc-spark-comet-recoup-infernalist-by-ignatius"
+        }
+      ],
+      "note": "가독성을 위해 편집된 일반적인 커뮤니티 질문과 우려의 짧은 요약본입니다. 그대로 인용한 문장이 아닙니다."
+    },
+    {
+      "type": "question-answer",
+      "id": "question-answer",
+      "title": "질문과 답변",
+      "order": 840,
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "왜 레벨링 단계가 겹치나요?",
+          "answer": [
+            "스파크 같은 스킬은 초반 맵까지 이어지는 동안 프로스트볼트/CoC가 도입되기 때문입니다. 겹침은 의도된 것입니다. 단일 레벨이 아닌 단계 관문을 따르세요."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "리쿱은 실제로 무엇을 해결하나요?",
+          "answer": [
+            "시간에 따라 받은 피해의 일부를 생명/ES로 되돌려, 인퍼널리스트의 자가 피해와 맵핑을 유지합니다. 모든 순간 피해를 덮지는 못합니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "왜 워드가 기본이 아닌가요?",
+          "answer": [
+            "워드 스택은 자원 규칙을 뒤집는 고투자 변형이며 0.5 전용일 가능성이 높습니다. 리그 시작 세트는 리쿱 엔드게임입니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "신규 플레이어가 파이널 폼을 베끼면 왜 실패하나요?",
+          "answer": [
+            "파이널 폼은 시작자가 갖추지 못한 치명타 장비, 워드 변환, 예산이 필요합니다. 먼저 저비용 엔드게임을 구성한 뒤 분기하세요."
+          ],
+          "bullets": []
+        }
+      ]
+    },
+    {
+      "type": "troubleshooting",
+      "id": "troubleshooting",
+      "title": "문제 해결",
+      "order": 860,
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "코멧이 절대 발동하지 않음",
+          "checks": [
+            "CoC가 코멧과 소켓 연결되어 있고, 치명타 확률이 실제이며, 발동 에너지가 찬다는 것을 확인하세요. 진단 표에 나열된 순서대로 점검하세요."
+          ]
+        },
+        {
+          "symptom": "전투 중 마나 고갈",
+          "checks": [
+            "스킬 비용을 낮추거나 마나 회복을 추가하세요. 발동된 스킬도 여전히 마나가 듭니다."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "title": "영상 가이드",
+      "order": 900,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "Ignatius 게임플레이 쇼케이스",
+          "url": "https://www.youtube.com/watch?v=awVaapidjwA",
+          "timestamps": [
+            {
+              "label": "빌드 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "레벨링 경로",
+              "time": "6:30"
+            },
+            {
+              "label": "장비와 유니크",
+              "time": "14:00"
+            },
+            {
+              "label": "맵핑 로테이션",
+              "time": "22:00"
+            },
+            {
+              "label": "보스 쇼케이스",
+              "time": "30:00"
+            }
+          ],
+          "creator": "Ignatius",
+          "description": "레벨링, 맵핑, 보스 로테이션을 보여주는 현재 0.5 게임플레이 영상.",
+          "takeaway": "소켓이나 유니크 선택을 그대로 베끼기 전에 로테이션과 장비를 먼저 시청하세요."
+        }
+      ]
+    },
+    {
+      "type": "build-planner",
+      "id": "build-planner",
+      "title": "빌드 플래너",
+      "order": 880,
+      "toc": true,
+      "visible": true,
+      "note": "현재 0.5 변형용 가져오기 가능 플래너. 인게임 공식 빌드 플래너 도구로 가져오기하세요. 스킬 레벨과 유니크는 예산에 맞춰 조정하세요.",
+      "creatorName": "Ignatius",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/coc-spark-comet-recoup-infernalist-by-ignatius",
+      "creatorUrl": "https://mobalytics.gg/poe-2/profile/ignatius/builds"
+    },
+    {
+      "type": "sources",
+      "id": "sources",
+      "title": "출처와 검증",
+      "order": 950,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 / 패치",
+          "description": "인퍼널리스트와 치명타 시 시전에 대한 Path of Exile 2 공식 포럼 및 0.5 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "크리에이터 가이드 (Ignatius)",
+          "description": "현재 0.5 종합 CoC 프로스트볼트/스파크 코멧 리쿱 가이드, 레벨 1부터 엔드게임까지.",
+          "url": "https://mobalytics.gg/poe-2/builds/coc-spark-comet-recoup-infernalist-by-ignatius"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "인퍼널리스트와 치명타 시 시전에 대한 PoE2 위키 항목.",
+          "url": "https://www.poe2wiki.net/wiki/Infernalist"
+        },
+        {
+          "label": "영상",
+          "description": "복잡한 빌드를 설명하는 현재 0.5 게임플레이 영상.",
+          "url": "https://www.youtube.com/watch?v=awVaapidjwA"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "notes": [
+          "공식 패치 노트, 현재 크리에이터 가이드, 독립 빌드 가이드, 플래너, 현재 게임플레이 영상을 교차 검증함. 직접 클라이언트 테스트로는 검증되지 않음."
+        ]
+      }
+    }
+  ],
+  "locale": "ko",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "coc-frostbolt-comet-infernalist",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -3,7 +3,10 @@ import type { ReactNode } from "react";
 
 import { Footer } from "./footer";
 import { Header } from "./header";
-import { locallyVisibleContentPages as contentPages } from "../../lib/content/runtime-pages";
+import contentRoutesModule from "virtual:content-routes";
+import type { StaticContentRouteMap } from "../../lib/content/content-page";
+
+const contentRoutes = contentRoutesModule as StaticContentRouteMap;
 
 /** 包装所有公开页面，保证全站共享导航、页脚和一致的纵向布局。 */
 export function AppShell({ children }: { children: ReactNode }) {
@@ -12,7 +15,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
-      <Header contentPages={contentPages} />
+      <Header contentRoutes={contentRoutes} />
       <div className="site-shell__content" id="main-content" tabIndex={-1}>
         {children}
       </div>

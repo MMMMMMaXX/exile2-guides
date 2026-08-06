@@ -1,0 +1,928 @@
+{
+  "id": "essences",
+  "slug": "essences",
+  "locale": "tr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Esans Rehberi: Basamaklar, Garantili Modlar ve İşçilik Riski",
+  "shortTitle": "Esanslar",
+  "summary": "Esanslar, ekipman üzerinde belirli bir modifier'i garanti eden hedefli bir işçilik para birimidir. Bu rehber; basamak merdivenini, her esans ailesinin öğe yuvasına göre hangi modifier'i verdiğini, Mükemmel ve Çürümüş esansların nasıl davrandığını ve önek (Prefix) veya sonek (Suffix) silmeyi kontrol etmek için bunları Uğurlarla nasıl birleştireceğinizi kapsar.",
+  "description": "Path of Exile 2'deki Esanslar için kaynağa bağlı bir referans: basamak merdiveni, garantili modifier tabloları, Mükemmel ve Çürümüş riski, Kristalleşme Uğuru kombinasyonları, geçerli hedefler ve işçilik sırası.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "targeted-crafting",
+    "essence"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Erken Erişim 0.5.4",
+  "league": "Erken Erişim",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "corruption",
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/essences-hero.webp",
+  "cardImage": "/images/items/essences-hero.webp",
+  "imageAlt": "Path of Exile 2'den bir esans para birimi öğesi simgesi - ekipman üzerinde kullanıldığında garantili bir modifier veren parıldayan kristal bir küre",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Hızlı yanıt",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Rastgele bir atış yerine tek bir garantili modifier istediğinizde bir Esans kullanın. Küçük, Normal ve Büyük esanslar bir Büyülü öğeyi Nadir'e yükseltir ve sabit bir modifier ekler; bir Mükemmel Esans ise Nadir bir öğeden rastgele bir modifier'i siler ve onun yerine daha güçlü bir garantili modifier koyar.",
+      "calloutDetail": [
+        "Mükemmel ve Çürümüş esanslar, korumak istediğiniz bir modifier'i silebilir - asıl risk budur.",
+        "Bir Sol veya Sağ Kristalleşme Uğuru, bir Mükemmel/Çürümüş esansın hangi tarafı (Önek veya Sonek) silebileceğini sınırlar."
+      ],
+      "answers": [
+        {
+          "label": "Şunun için kullanın",
+          "text": [
+            "Hedefli işçilik: rastgele para birimiyle güvenilir şekilde elde edemeyeceğiniz belirli bir savunma, elemental veya can modifier'i."
+          ]
+        },
+        {
+          "label": "Bununla eşleştirin",
+          "text": [
+            "Zaten iyi modları olan bir öğe üzerinde Mükemmel veya Çürümüş esans kullanırken Sol/Sağ Kristalleşme Uğuru'nu."
+          ]
+        },
+        {
+          "label": "Şu durumda beklemeye alın",
+          "text": [
+            "Temel, mevcut herhangi bir modifier'ini kaybetmenin öğeyi mahvedeceği bitmiş bir Nadir öğe ise."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Esans aileleri →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "İşçilik riski →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Hızlı bilgiler",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Basamaklar",
+          "value": "Lesser → Normal → Greater → Perfect",
+          "note": [
+            "Tuzaklı Esans yaratığına kullanılan bir Vaal Küresi, bir Mükemmel esansı Çürümüş esansa yükseltebilir."
+          ]
+        },
+        {
+          "label": "Lesser/Normal/Greater",
+          "value": "Magic → Rare + 1 mod",
+          "note": [
+            "Bir garantili modifier ekler ve öğeyi Nadir'e yükseltir."
+          ]
+        },
+        {
+          "label": "Mükemmel",
+          "value": "Rare: 1 rastgele modu sil, 1 güçlü mod ekle",
+          "note": [
+            "Silinen mod, bir Kristalleşme Uğuru etkin değilse rastgeledir."
+          ]
+        },
+        {
+          "label": "Kaynak",
+          "value": "Haritalardaki esans yaratıkları",
+          "note": [
+            "Kristal hapishaneler tuzaklı bir yaratık doğurur; onu öldürmek gösterilen esansı düşürür."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Esans aileleri ve ne verdikleri",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Her esans ailesi tek bir istatistiğe bağlıdır. Kesin modifier ve onun basamağı, aileye ve üzerinde kullanıldığı öğe yuvasına (silah, zırh veya mücevher) bağlıdır. Aşağıda oyuncuların en sık başvurduğu aileler yer alır."
+      ],
+      "members": [
+        {
+          "id": "essence-body",
+          "eyebrow": "Can",
+          "title": "Essence of the Body",
+          "sub": "Maksimum Can",
+          "tags": [
+            "defense",
+            "life"
+          ],
+          "body": [
+            "Büyük bir sabit veya yüzdesel Can modifier'i verir. Bir Gövde Zırhında Mükemmel atış yaklaşık +%8-10 Maksimum Can verir; mücevherlerde sabit Can verir."
+          ]
+        },
+        {
+          "id": "essence-abrasion",
+          "eyebrow": "Fiziksel",
+          "title": "Essence of Abrasion",
+          "sub": "Sabit Fiziksel Hasar",
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "body": [
+            "Silahlara sabit Fiziksel Hasar ekler. Mükemmel atış, güçlü bir saldırı-işçilik öneki olan 'Hasarın X%'ini Ekstra Fiziksel Hasar olarak Kazan' ekleyebilir."
+          ]
+        },
+        {
+          "id": "essence-elemental",
+          "eyebrow": "Elementel",
+          "title": "Essence of Flame / Ice / Electricity",
+          "sub": "% Elementel Hasar",
+          "tags": [
+            "elemental",
+            "attack",
+            "spell"
+          ],
+          "body": [
+            "Her biri kendi türünde % Elementel Hasar verir. Düşük basamaklar Büyülü silahlara sabit elementel hasar ekler; Mükemmel, Nadir bir silaha 'Hasarın X%'ini Ekstra Olarak Kazan' ekler."
+          ]
+        },
+        {
+          "id": "essence-resists",
+          "eyebrow": "Direnç",
+          "title": "Essence of Insulation / Thawing / Grounding / Ruin",
+          "sub": "Dirençler",
+          "tags": [
+            "defense",
+            "resistance"
+          ],
+          "body": [
+            "Sırasıyla Ateş / Soğuk / Yıldırım / Kaos direnci verir. Mükemmel atışlar ilgili dirence yaklaşık +%26-30 ulaşır; Ruin ise 'Fiziksel Hasarın Kaos olarak Alınması'nı ekler."
+          ]
+        },
+        {
+          "id": "essence-infinite",
+          "eyebrow": "Nitelikler",
+          "title": "Essence of the Infinite",
+          "sub": "Nitelikler",
+          "tags": [
+            "attribute",
+            "requirements"
+          ],
+          "body": [
+            "Artırılmış Güç, Çeviklik veya Zeka verir. Ağaç üzerinden geçiş yapmadan bir beceri taşı veya ekipman istatistik gereksinimini karşılamanız gerektiğinde kullanışlıdır."
+          ]
+        },
+        {
+          "id": "essence-command",
+          "eyebrow": "Aura",
+          "title": "Essence of Command",
+          "sub": "Aura Büyüklüğü",
+          "tags": [
+            "aura",
+            "support"
+          ],
+          "body": [
+            "Asalar üzerinde Aura Büyüklüğünü artırır. Müttefik hasarını ölçeklendiren destek ve çağırıcı build'leri için ilgilidir."
+          ]
+        },
+        {
+          "id": "essence-battle",
+          "eyebrow": "Skill Seviyeleri",
+          "title": "Essence of Battle",
+          "sub": "Silah Skill Seviyeleri",
+          "tags": [
+            "attack",
+            "skill-levels"
+          ],
+          "body": [
+            "Silahlara bonus Skill Seviyeleri verir. Silah sınıfına göre kesin değerler aşağıdaki skill-seviye tablosunda listelenmiştir."
+          ]
+        },
+        {
+          "id": "essence-sorcery",
+          "eyebrow": "Büyü Hasarı",
+          "title": "Essence of Sorcery",
+          "sub": "Büyü Skill Seviyeleri",
+          "tags": [
+            "spell",
+            "skill-levels"
+          ],
+          "body": [
+            "Büyücülere bonus Büyü Skill Seviyeleri verir. Silah sınıfına göre kesin değerler aşağıdaki skill-seviye tablosunda listelenmiştir."
+          ]
+        },
+        {
+          "id": "essence-haste",
+          "eyebrow": "Saldırı Hızı",
+          "title": "Essence of Haste",
+          "sub": "Saldırı Hızı / Hücum (Onslaught)",
+          "tags": [
+            "attack-speed",
+            "clear"
+          ],
+          "body": [
+            "Silahlara Saldırı Hızı ekler; Mükemmel, öldürmede Hücum tetikleme şansı vererek temizleme hızı için güçlü olabilir."
+          ]
+        },
+        {
+          "id": "essence-enhancement",
+          "eyebrow": "Savunmalar",
+          "title": "Essence of Enhancement",
+          "sub": "Genel Savunmalar",
+          "tags": [
+            "defense",
+            "es"
+          ],
+          "body": [
+            "Kolye üzerinde Genel Savunmalar verir; Enerji Kalkanı veya hibrit savunma istifleyen build'ler için kullanışlıdır."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-level-grants",
+      "order": 35,
+      "title": "Öğe sınıfına göre skill-seviye esans vergileri",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Essence of Battle'den Silah Skill Seviyeleri ve Essence of Sorcery'den Büyü Skill Seviyeleri, silah sınıfına göre ayrılmıştır.",
+      "columns": [
+        {
+          "key": "essence",
+          "label": "Esans"
+        },
+        {
+          "key": "itemClass",
+          "label": "Öğe sınıfı"
+        },
+        {
+          "key": "modifier",
+          "label": "Verilen modifier"
+        }
+      ],
+      "filters": [
+        {
+          "id": "battle",
+          "label": "Essence of Battle"
+        },
+        {
+          "id": "sorcery",
+          "label": "Essence of Sorcery"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "One-handed weapon",
+            "modifier": "+4 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "Two-handed weapon",
+            "modifier": "+6 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Wand / Focus",
+            "modifier": "+3 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Staff",
+            "modifier": "+5 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        }
+      ],
+      "note": "Bu büyüklükler esans basamağıyla ölçeklenir (Lesser → Normal → Greater → Perfect); yukarıdaki rakamlar en sık referans verilen Greater-basamak değerleridir."
+    },
+    {
+      "id": "eligibility",
+      "order": 40,
+      "title": "Bir Esans hangi öğelerde çalışır",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Uygunluk basamağa bağlıdır. Lesser/Normal/Greater bir Büyülü öğeyi Nadir'e yükseltir. Mükemmel ve Çürümüş yalnızca halihazırda Nadir olan bir öğe üzerinde etki eder."
+      ],
+      "columns": [
+        "Normal öğe",
+        "Büyülü öğe",
+        "Nadir öğe"
+      ],
+      "rows": [
+        {
+          "label": "Lesser / Normal / Greater",
+          "note": "Bir Büyülü öğeyi yükseltir ve bir garantili mod ekler",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Hayır - Büyülü gerekir"
+            },
+            {
+              "kind": "yes",
+              "text": "Evet (Büyülü)"
+            },
+            {
+              "kind": "no",
+              "text": "Hayır - zaten Nadir"
+            }
+          ]
+        },
+        {
+          "label": "Mükemmel / Çürümüş",
+          "note": "Bir modu siler, bir güçlü mod ekler",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Hayır"
+            },
+            {
+              "kind": "no",
+              "text": "Hayır"
+            },
+            {
+              "kind": "yes",
+              "text": "Evet"
+            }
+          ]
+        },
+        {
+          "label": "Tanımlanmış eşsiz",
+          "note": "Esanslar eşsizleri hedeflemez",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Hayır"
+            },
+            {
+              "kind": "no",
+              "text": "Hayır"
+            },
+            {
+              "kind": "no",
+              "text": "Hayır"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "Esanslar nasıl elde edilir",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Esanslar öncelikle harita karşılaşmalarından gelir, bunun yanı sıra birkaç tamamlayıcı yol vardır."
+      ],
+      "routes": [
+        {
+          "label": "Haritalardaki esans yaratıkları",
+          "body": [
+            "Kristal hapishaneler haritaların her yerinde belirir. Kristali kırarmak tuzaklı bir yaratığı serbest bırakır; onu alt etmek kristalde gösterilen esans türünü düşürür."
+          ]
+        },
+        {
+          "label": "Tuzaklı yaratığa Vaal Küresi",
+          "body": [
+            "Serbest bırakmadan önce kristale bir Vaal Küresi kullanmak şunları yapabilir: hiçbir şey yapma, yaratığı anında serbest bırakma, ekstra esans ekleme veya bir basamak yükseltme (Normal → Greater → Perfect → Corrupted)."
+          ]
+        },
+        {
+          "label": "Satıcı / Yeniden İşleme Tezgahı",
+          "body": [
+            "Aynı esans türünden ve basamağından üç tanesi birleştirilerek bir sonraki basamaktan bir tane elde edilebilir. Satıcı davranışı yamalar arasında değiştiği için kesin tarifi güncel istemcide doğrulayın."
+          ]
+        },
+        {
+          "label": "Para Birimi Takası / ticaret",
+          "body": [
+            "Bulduğunuzdan daha yüksek bir basamağa ihtiyacınız varsa diğer oyunculardan belirli esansları satın alın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 60,
+      "title": "Esanslarla işçilik",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "Zaten bir arzu edilen modifier'e sahip bir Büyülü temelle başlayın. Bir Lesser/Normal/Greater esans onu Nadir'e yükseltir ve garantili modifier'i ekler; böylece esansın ve temelin maliyeti karşılığında etkili bir şekilde bir iyi affix'i 'kilitlersiniz'.",
+        "Bitmiş bir öğe için, bir Mükemmel esans bir rastgele modifier'i siler ve güçlü bir garantili modifier ekler. Silinen modifier rastgele olduğu için, Mükemmel esansı yalnızca herhangi bir tek modifier'i kaybetmenin kabul edilebilir olduğu bir Nadir üzerinde kullanmalı ya da tarafı seçmek için bir Kristalleşme Uğuru ile eşleştirmelisiniz."
+      ],
+      "bullets": [
+        "Sol Kristalleşme Uğuru: bir sonraki Mükemmel/Çürümüş esansınız yalnızca Önek modifier'lerini siler.",
+        "Sağ Kristalleşme Uğuru: bir sonraki Mükemmel/Çürümüş esansınız yalnızca Sonek modifier'lerini siler.",
+        "Uğuru'nu aynı envanterde diğer işçilik Uğurlarıyla (ör. Yücelme) birleştirerek etkileri harmanlayın."
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Bir Esans nasıl kullanılır",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Temeli seçin",
+          "body": [
+            "Lesser-Greater için bir Büyülü öğe, Mükemmel/Çürümüş için bir Nadir öğe seçin."
+          ]
+        },
+        {
+          "label": "Uğuru'nu etkinleştirin",
+          "body": [
+            "Envanterinizdeki Kristalleşme Uğuru'na sağ tıklayın, böylece kırmızı etkin kenarlığı görünsün."
+          ]
+        },
+        {
+          "label": "Esansı uygulayın",
+          "body": [
+            "Esans'a sağ tıklayın, ardından hedef öğeye tıklayın. Sonuç anında ve nihaidir."
+          ]
+        }
+      ],
+      "compare": {
+        "note": "Düşük basamaklar bir mod ekler ve yükseltir; Mükemmel bir modu daha güçlü bir modla değiştirir.",
+        "before": [
+          "+Can soneki ve zayıf bir Soğuk-direnç öneki olan Nadir göğüs zırhı."
+        ],
+        "after": [
+          "Mükemmel Essence of the Body zayıf öneki siler ve yeni önek olarak +%8-10 Maksimum Can ekler."
+        ]
+      }
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Kullanım öncesi kontrol listesi",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "Temel için doğru basamak",
+          "checks": [
+            "Lesser-Greater için Büyülü temel; Mükemmel/Çürümüş için Nadir temel."
+          ],
+          "why": "Yanlış basamak basitçe uygulanmaz.",
+          "fix": "Önce bir Kraliyet/Dönüşüm kullanın ya da farklı bir esans seçin."
+        },
+        {
+          "label": "Güvenli bir mod kaybedilebilir",
+          "checks": [
+            "Mükemmel/Çürümüş kullanımında, mevcut hiçbir tek modifier'in vazgeçilmez olmadığını doğrulayın."
+          ],
+          "why": "Bir rastgele mod silinir.",
+          "fix": "Koruduğunuz tarafı kilitlemek için bir Kristalleşme Uğuru etkinleştirin."
+        },
+        {
+          "label": "Uğur etkin",
+          "checks": [
+            "Uğur, envanterde kırmızı etkin kenarlığını gösteriyor."
+          ],
+          "why": "Etkin olmayan bir uğur hiçbir şey yapmaz.",
+          "fix": "Esansı uygulamadan önce uğura sağ tıklayın."
+        },
+        {
+          "label": "Maliyet vs temel değeri",
+          "checks": [
+            "Esans maliyetini, temelin başarılı veya başarısız olması durumundaki değeriyle karşılaştırın."
+          ],
+          "why": "Ucuz temeller üzerinde pahalı esanslar para birimini israf eder.",
+          "fix": "Yüksek basamakları yüksek değerli temellere saklayın."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Senaryoya göre beklenen sonuçlar",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "upgrade",
+        "perfect",
+        "corrupted"
+      ],
+      "rows": [
+        {
+          "scenario": "İyi bir öneki olan Büyülü silah",
+          "audience": "Seviye atlatan oyuncular",
+          "benefit": "Garantili ikinci modla Nadir'e yükseltildi",
+          "risk": "Düşük - temel genişletilebilirdi",
+          "level": "low",
+          "recommendation": "Greater esansların ideal ilk kullanımı",
+          "tags": [
+            "upgrade"
+          ]
+        },
+        {
+          "scenario": "Kaybedebileceğiniz bir zayıf modu olan Nadir",
+          "audience": "Endgame işçileri",
+          "benefit": "Güçlü garantili mod eklendi",
+          "risk": "Orta - kullanışlı bir mod silinebilir",
+          "level": "medium",
+          "recommendation": "Bir Kristalleşme Uğuru ile kullanın",
+          "tags": [
+            "perfect"
+          ]
+        },
+        {
+          "scenario": "Neredeyse en iyi yuvadaki Nadir, tüm modlar istenen",
+          "audience": "Yüksek yatırımlı işçiler",
+          "benefit": "Olası en üst düzey mod",
+          "risk": "Yüksek - herhangi bir modu kaybetmek zarar verir",
+          "level": "high",
+          "recommendation": "Yalnızca her iki Kristalleşme Uğuru ve yedek bir temel ile",
+          "tags": [
+            "perfect",
+            "corrupted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risk analizi",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Uğursuz olmadan bitmiş bir Nadir üzerinde Mükemmel",
+          "gain": "Bir güçlü garantili mod",
+          "loss": "Rastgele mevcut bir mod silinir",
+          "level": "high",
+          "recommendation": "Yalnızca her mevcut mod vazgeçilebilirse ya da bir Kristalleşme Uğuru kullanın."
+        },
+        {
+          "scenario": "Vaal yükseltmesinden Çürümüş esans",
+          "gain": "En üst düzey eşsiz-etkili modlar (ör. Dehşet, Histriya)",
+          "loss": "Vaal adımı yaratığı israf edebilir veya hiçbir şey vermeyebilir",
+          "level": "medium",
+          "recommendation": "Ayırabileceğiniz Mükemmel esanslar üzerinde değer."
+        },
+        {
+          "scenario": "Seviye atlatan Büyülü bir temel üzerinde Greater",
+          "gain": "Sabit bir moda sahip güvenilir Nadir",
+          "loss": "Küçük para birimi maliyeti",
+          "level": "low",
+          "recommendation": "Seviye atlarken güvenli ve önerilir."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "Hangi build'ler Esanslara dayanır",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Esanslar, bir build erken dönemde tek bir belirli, yüksek değerli modifier'a ihtiyaç duyduğunda başvurulan hedefli işçiliktir."
+      ],
+      "builds": [
+        {
+          "title": "Büyücü build'leri",
+          "description": "Kolyedeki +3 Büyü Skill'i için Essence of Sorcery veya Genel Savunmalar için Essence of Enhancement."
+        },
+        {
+          "title": "Saldırı / fiziksel build'ler",
+          "description": "Silah üzerinde Essence of Abrasion (Ekstra Fiziksel) veya Essence of Battle (+Skill Seviyeleri)."
+        },
+        {
+          "title": "Sağlam / HC build'leri",
+          "description": "Maksimum Can için Essence of the Body, cap düzeltmeleri için direnç esanslarıyla eşleştirilir."
+        },
+        {
+          "title": "Nitelik istifleyen build'ler",
+          "description": "Ağaç yatırımı olmadan beceri veya ekipman gereksinimlerini karşılamak için Essence of the Infinite."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "Topluluk kanıtı",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-perfect-deleted",
+          "kind": "Reddit sorusu",
+          "question": "Mükemmel Esans neden en iyi modifier'imi sildi?",
+          "summary": [
+            "Bir oyuncu, sevdiği bir Nadir üzerinde Mükemmel bir esans kullandı ve korumak istediği bir modifier'i kaybetti."
+          ],
+          "editorialAnalysis": [
+            "Mükemmel, bir Kristalleşme Uğuru tarafı sınırlamadıkça bir rastgele modifier'i siler."
+          ],
+          "officialAnswer": [
+            "Önek veya Sonek silmeyi seçmek için Mükemmel esastan önce bir Sol veya Sağ Kristalleşme Uğuru etkinleştirin."
+          ]
+        },
+        {
+          "sourceId": "forum-direct-or-currency",
+          "kind": "Forum sorusu",
+          "question": "Doğrudan Esans mı uygulamalıyım yoksa önce normal para birimiyle mi hazırlamalıyım?",
+          "summary": [
+            "Oyuncular, bir esansla mı başlayacağı yoksa temeli önce kürelerle mi inşa edeceği konusunda tartışıyor."
+          ],
+          "editorialAnalysis": [
+            "Zaten iyi bir modu olan bir temeli yükseltmek için bir Lesser/Greater esans kullanın; diğer atışları bir Mükemmel değişimi öncesinde normal para birimiyle bitirin."
+          ],
+          "officialAnswer": [
+            "Garantili modu kilitlemek için önce Esans, ardından kalan affix'leri diğer para birimiyle doldurun."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Video ve zaman damgaları",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Mükemmel Öğeler İşçilik (Esans + Uğur iş akışı)",
+          "url": "https://www.youtube.com/watch?v=9oFGFT-X1OA",
+          "creator": "P4wnyhof",
+          "description": "Deterministik esans işçiliğinin ve Uğurların sonucu nasıl kontrol ettiğinin anlatımı.",
+          "takeaway": "Güvenli Mükemmel işçilikler için esansları kristalleşme uğurlarıyla birleştirme bölümlerini izleyin.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Esans işçiliğine genel bakış"
+            },
+            {
+              "time": "02:30",
+              "label": "Greater esanslarla bir temeli yükseltme"
+            },
+            {
+              "time": "06:10",
+              "label": "Mükemmel esans + Kristalleşme Uğuru kombinasyonu"
+            },
+            {
+              "time": "11:45",
+              "label": "Uygulamalı endgame işçilik"
+            }
+          ]
+        },
+        {
+          "label": "Path of Exile 2'de Esans için Nihai Rehber",
+          "url": "https://www.youtube.com/watch?v=BxDQaXc0LIw",
+          "creator": "EODGamerz",
+          "description": "Esans ailelerinin, basamaklarının ve her birinin ne zaman kullanılmaya değer olduğunun tam dökümü.",
+          "takeaway": "Hangi esans ailesinin yuvanıza ve build'inize uyduğu için iyi bir referans.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Esanslar ne yapar"
+            },
+            {
+              "time": "03:20",
+              "label": "Basamak merdiveni ve Vaal yükseltmeleri"
+            },
+            {
+              "time": "08:00",
+              "label": "Aileden aileye örnekler"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Sorunlar ve doğrudan yanıtlar",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Esans uygulanmıyor",
+          "directAnswer": [
+            "Basamak temelle eşleşmiyor: Lesser-Greater bir Büyülü öğe gerektirir, Mükemmel/Çürümüş bir Nadir gerektirir."
+          ],
+          "checks": [
+            "Öğenin nadirliğini ve tanımlanmış olup olmadığını kontrol edin."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "Geçerli hedefleri aç"
+            }
+          ]
+        },
+        {
+          "symptom": "İstenen bir mod kayboldu",
+          "directAnswer": [
+            "Bir Mükemmel/Çürümüş esans rastgele bir modu sildi; bir dahakine bir Kristalleşme Uğuru kullanın."
+          ],
+          "checks": [
+            "Herhangi bir Mükemmel değişiminden önce yedek bir temel bulundurun."
+          ]
+        },
+        {
+          "symptom": "Aynı esans farklı ekipmanda farklı sonuçlar veriyor",
+          "directAnswer": [
+            "Garantili modifier, öğe yuvasına bağlıdır (silah / zırh / mücevher)."
+          ],
+          "checks": [
+            "Esansın üzerine gelin veya aile tablosunda yuvanızı kontrol edin."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Bağlantılı içerik",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "omens",
+          "contentType": "item",
+          "title": "Uğurlar",
+          "description": "Bir Mükemmel esansın hangi tarafı sileceğini kontrol eden Kristalleşme Uğurları.",
+          "href": "/tr/items/omens/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Küresi",
+          "description": "Çürümüş esanslara doğru basamakları yükseltmek için tuzaklı esans yaratıkları üzerinde kullanılır.",
+          "href": "/tr/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Yama geçmişi",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.0",
+          "date": "2026-05-29",
+          "changes": [
+            "Esans basamak adlandırması düzeltildi (birkaç ailede Grand, Normal olarak yeniden adlandırıldı); Çürümüş esanslar Mükemmel esansların bir Vaal-Küre yükseltmesi olmaya devam ediyor."
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "Esanslar birincil hedefli-işçilik para birimi olmaya devam ediyor; Kristalleşme Uğurları, Mükemmel ve Çürümüş esanslar üzerinde Önek/Sonek silmeyi kontrol etmeye devam ediyor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Kaynaklar ve doğrulama",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Esans basamaklarını ve işçilik para birimini kapsayan Path of Exile 2 yama notları.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "VERİTABANI",
+          "description": "PoE2DB esans ailesi ve modifier verileri.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Mükemmel/Çürümüş davranışı üzerine topluluk işçilik rehberleri ve Reddit raporları.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Değişiklik günlüğü",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Esanslar rehberi oluşturuldu (ikinci öğe grubu için şablon makale)."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "omens",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 resmi 0.5.4 Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Esanslar",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    },
+    {
+      "label": "Mobalytics — Uğur İşçiliği (Kristalleşme)",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Esans Rehberi: Basamaklar, Garantili Modlar ve İşçilik Riski",
+    "description": "PoE2 Esansları nasıl çalışır: basamak merdiveni, yuvalara göre garantili modifier tabloları, Mükemmel ve Çürümüş riski ve güvenli hedefli işçilik için Kristalleşme Uğuru kombinasyonları.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "essences",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

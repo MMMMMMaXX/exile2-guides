@@ -1,0 +1,887 @@
+{
+  "id": "plant-oracle-druid",
+  "slug": "plant-oracle-druid",
+  "locale": "es",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Guía de Build Plant Oracle Druid: Progresión, CoC Thunderstorm y Endgame",
+  "shortTitle": "Plant Oracle Druid",
+  "summary": "Kit de hechizos de plantas 0.5.4: Entangle para limpieza, Thunderstorm sostenida por Forced Outcome y Cast on Critical. Cubre cambios de etapa, sostenimiento de Maná, rotación de jefes y niveles de presupuesto.",
+  "description": "Guía de Plant Oracle Druid para Path of Exile 2 en 0.5.4: progresión, Forced Outcome, CoC Thunderstorm, gestión de Maná y marcas de tiempo de vídeo reales.",
+  "classId": "druid",
+  "ascendancyId": "oracle",
+  "mainSkillIds": [
+    "entangle",
+    "thrashing-vines"
+  ],
+  "secondarySkillIds": [
+    "thunderstorm",
+    "cast-on-critical",
+    "mana-remnants",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "plant",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "low-input"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "cardImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "imageAlt": "Un Druid Oracle invocando enredaderas con Entangle mientras hace descender Thunderstorm en combate",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "oracle",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Resumen de la Build",
+      "paragraphs": [
+        "Plant Oracle es el kit de hechizos de plantas del Druid: Entangle crea grietas cuyas enredaderas se adhieren a los enemigos cercanos y los ralentizan, mientras Thunderstorm hace llover relámpagos desde arriba para alimentar Overgrown. La ascensión Oracle, mediante Forced Outcome, otorga Golpes Críticos Inevitables, lo que permite que Cast on Critical active Thunderstorm de forma fiable — esta es la fuente de la sensación de bajo esfuerzo y gran cobertura de esta build.",
+        "Esta no es una build de ráfaga desde nivel 1. Entangle es usable muy temprano, pero el disparo estable de Thunderstorm depende de Forced Outcome, Cast on Critical y suficiente Maná; antes de que todo encaje, limpias y haces daño a objetivo único con Entangle + Thrashing Vines, sosteniendo el Maná con rodamientos y Mana Remnants.",
+        "Esta guía está organizada por etapas en lugar de soltar todo por nivel: primero cuándo pasar de Entangle como principal al bucle de disparo de Thunderstorm, luego equipo, pasivos y niveles de presupuesto. Todos los números del cliente y la mecánica de habilidades están marcados para verificación en PC; el DPS no verificado no se presenta como hecho."
+      ],
+      "bullets": [
+        "El mapeo es un barrido de Entangle + Thrashing Vines, casi de un botón.",
+        "Los jefes se cierran con Thunderstorm sostenida por Forced Outcome / CoC.",
+        "La falta de Maná en combates largos contra jefes es un cuello de botella real que requiere tratamiento."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Pros y Contras",
+      "pros": [
+        "Mapeo casi de un botón; las enredaderas manejan automáticamente a los enemigos, muy relajado.",
+        "Forced Outcome estabiliza el bucle de disparo con gran cobertura contra jefes.",
+        "El estado de planta proporciona control suave y reduce el riesgo de rodeo.",
+        "Funciona con un presupuesto bajo al inicio y transiciona sin problemas."
+      ],
+      "cons": [
+        "El daño es bajo antes de que se dispare Thunderstorm; requiere primero la ascensión y el Maná.",
+        "El Maná se agota en combates largos contra jefes si no se gestiona; el bucle se rompe.",
+        "La Res de Caos es una necesidad difícil en el endgame y no es nativa.",
+        "La defensa es pasiva; las ventanas de ráfaga dependen del estado, no del posicionamiento."
+      ]
+    },
+    {
+      "id": "plant-loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Cómo se lee el bucle: Entangle → Thunderstorm",
+      "paragraphs": [
+        "Bucle de mapeo: suelta Entangle en el grupo; las enredaderas siguen azotando todo lo que esté a su alcance y tú básicamente solo relanzas Entangle y haces rodamiento. Por eso la comunidad lo llama mapeo de un botón.",
+        "Bucle de jefe: aplica Entangle al jefe para adherir enredaderas y acumular estado de planta, luego deja que Forced Outcome / Cast on Critical mantenga Thunderstorm desde arriba para conservar Overgrown. Thrashing Vines es la recompensa principal a objetivo único; Sigil of Power añade daño y soporte de crítico.",
+        "Frases como 'regar las plantas' normalmente se refieren al daño/área ganados al apilar estado de planta, no a un sistema separado; verifícalo contra la descripción de la habilidad y el cliente, no lo trates como una mecánica oculta extra."
+      ],
+      "bullets": [
+        "Mapeo = Entangle + rodamiento; las enredaderas se encargan del resto.",
+        "Jefe = Entangle (adherir + ralentizar) → Forced Outcome/CoC sostiene Thunderstorm (Overgrown).",
+        "Thrashing Vines es el daño principal a objetivo único / jefe, no un relleno de flanco."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Ruta de Progresión",
+      "steps": [
+        {
+          "label": "Niveles 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Empieza con Entangle. Es usable muy temprano y es tu verdadera habilidad de mapeo; no fuerces la cadena de disparo de Thunderstorm todavía — el Maná y la ascensión no están listos."
+          ]
+        },
+        {
+          "label": "Niveles 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Añade Thrashing Vines como finalizador de flanco y empieza a tomar nodos de vida/Maná/área. Mantén Entangle como el núcleo."
+          ]
+        },
+        {
+          "label": "Niveles 30–42 — Desbloqueos de Oracle",
+          "levelRange": "30–42",
+          "body": [
+            "Elige Oracle y toma los nodos de Forced Outcome. Thunderstorm disparada por Cast on Critical se estabiliza y el daño a jefes da un salto."
+          ]
+        },
+        {
+          "label": "Niveles 43–60 — Mapas Iniciales",
+          "levelRange": "43–60",
+          "body": [
+            "Ejecuta el bucle de disparo sin crítico y con presupuesto bajo. Tapa resistencias, arregla vida/Maná, mantén Thunderstorm activa en los raros."
+          ]
+        },
+        {
+          "label": "Nivel 60+ — Preparación para Endgame",
+          "levelRange": "60+",
+          "body": [
+            "Pasa a mejoras de presupuesto: daño de hechizo del Focus, Velocidad de Lanzamiento, reserva de Maná y Res de Caos. Persigue equipo de gama alta solo después de que pase la lista de verificación de prioridad de mejoras."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Configuración de Habilidades",
+      "groups": [
+        {
+          "label": "Habilidades Centrales",
+          "skills": [
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "Núcleo de mapeo: crea grietas cuyas enredaderas se adhieren a los enemigos cercanos y los ralentizan; también es la preparación de estado de planta contra jefes.",
+              "supportSkillIds": [
+                "branching-fissures",
+                "accelerated-growth",
+                "rapid-casting",
+                "magnified-area"
+              ],
+              "whyUse": [
+                "Es el inicio de todo el bucle: sin que Entangle adhiera enredaderas, la cobertura de Thunderstorm y el estado de planta no pueden acumularse."
+              ],
+              "whenReplace": [
+                "Nunca se reemplaza; en jefes pasa de daño principal a preparación de estado."
+              ],
+              "mappingBossingDiff": [
+                "Mapeo: lanza Entangle repetidamente para mantener enredaderas. Jefe: primero Entangle para acumular estado, luego la cadena de disparo."
+              ],
+              "notes": [
+                "Los enlaces de soporte exactos y los niveles de gema están pendientes de verificación en PC."
+              ]
+            },
+            {
+              "displayName": "Thunderstorm",
+              "skillId": "thunderstorm",
+              "role": "Relámpagos desde arriba sostenidos por Forced Outcome / Cast on Critical; su función es mantener Overgrown en las plantas, no ser el daño principal.",
+              "supportSkillIds": [
+                "magnified-area",
+                "prolonged-duration",
+                "rapid-casting",
+                "living-lightning"
+              ],
+              "whyUse": [
+                "Es el catalizador de Overgrown: una vez que el disparo es estable, el relámpago es casi permanente, manteniendo las plantas regadas."
+              ],
+              "whenReplace": [
+                "No se reemplaza, pero necesita Forced Outcome/CoC y Maná en su sitio para brillar."
+              ],
+              "mappingBossingDiff": [
+                "Mapeo: se usa para sobrecrecer plantas. Jefe: sostenida desde arriba vía la cadena de disparo para mantener Overgrown."
+              ],
+              "notes": [
+                "El momento de lanzamiento lo dictan las condiciones de disparo, no el lanzamiento manual."
+              ]
+            },
+            {
+              "displayName": "Thrashing Vines",
+              "skillId": "thrashing-vines",
+              "role": "Daño principal a objetivo único y contra jefes; la recompensa primaria una vez que las plantas están Overgrown.",
+              "supportSkillIds": [
+                "concentrated-area",
+                "accelerated-growth",
+                "physical-mastery",
+                "rapid-casting"
+              ],
+              "whyUse": [
+                "Azota automáticamente dentro del área de Entangle; el mayor daño a objetivo único de la build."
+              ],
+              "whenReplace": [
+                "Consérvala como finalizadora; cámbiala solo si aparece una habilidad de planta de área más fuerte."
+              ],
+              "mappingBossingDiff": [
+                "Mapeo: limpieza complementaria. Jefe: daño principal a objetivo único en los cambios de fase."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Disparo y Buffs",
+          "skills": [
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "Portador de disparo que libera Thunderstorm al golpe crítico.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es un requisito previo para el disparo estable de Thunderstorm; sin él se rompe el ritmo."
+              ],
+              "whenReplace": [
+                "Consérvala; es parte de la arquitectura de disparo."
+              ],
+              "mappingBossingDiff": [
+                "Se usa en ambos, pero los jefes dependen más de su disparo estable."
+              ],
+              "notes": [
+                "Necesita suficiente crítico y Maná."
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "Buff en el suelo de daño/crítico que potencia la cadena de disparo.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Añade daño y soporte de crítico, fortaleciendo la resolución de Thunderstorm."
+              ],
+              "whenReplace": [
+                "Consérvala como buff."
+              ],
+              "mappingBossingDiff": [
+                "Mapeo opcional; en jefes se coloca para potenciar la ventana."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Mana Remnants",
+              "skillId": "mana-remnants",
+              "role": "Sostenimiento de Maná que alivia la falta en combates largos contra jefes.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Cuando el Maná se agota en combates largos contra jefes, esto es más directo que solo apilar reserva."
+              ],
+              "whenReplace": [
+                "Consérvala; esencial para la gestión del Maná."
+              ],
+              "mappingBossingDiff": [
+                "Se usa en ambos, más crítica en jefes."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Orden de Ascensión",
+      "steps": [
+        {
+          "label": "Oracle — Primeros Nodos",
+          "body": [
+            "Elige Oracle. Prioriza los nodos de Forced Outcome para que sus Golpes Críticos Inevitables permitan que Cast on Critical dispare Thunderstorm de forma fiable; esta es la precondición de la build."
+          ]
+        },
+        {
+          "label": "Comprobación de Maná y Defensa",
+          "body": [
+            "Si la supervivencia en T15+ es precaria, no cambies nodos de daño de planta/hechizo por daño puro; asegura primero el sostenimiento de Maná y la Res de Caos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Árbol de Pasivos",
+      "steps": [
+        {
+          "label": "Campaña",
+          "body": [
+            "Toma solo nodos que apoyen Entangle / área de planta / Maná y vida; no traces rutas previas hacia las ruedas de crítico."
+          ]
+        },
+        {
+          "label": "Mapas Iniciales",
+          "body": [
+            "Cambia a la variante de cadena de disparo; prioriza vida, reserva de Maná, Res de Caos y Velocidad de Lanzamiento."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Tras resolver los suelos de defensa y Maná, invierte en ruedas de crítico/daño de hechizo; compara estados de equipo en el mismo nivel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Equipo",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "Elige una base que potencie el nivel de habilidad y el daño de relámpago/hechizo; suficientes engarces para los enlaces de Thunderstorm."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Nivel de habilidad de hechizo / Daño de hechizo de relámpago",
+              "reason": "Escala directamente la resolución de Thunderstorm."
+            },
+            {
+              "tier": "recommended",
+              "label": "Reserva de Maná y regeneración",
+              "reason": "Clave para sostener el bucle en combates largos contra jefes."
+            },
+            {
+              "tier": "optional",
+              "label": "Velocidad de Lanzamiento",
+              "reason": "Ritmo de disparo más rápido, no un suelo."
+            },
+            {
+              "tier": "luxury",
+              "label": "Probabilidad de Crítico / Daño Crítico",
+              "reason": "Solo después de que el disparo y el Maná son estables."
+            }
+          ],
+          "notes": [
+            "Focus es el arma principal; prioriza daño de hechizo y Maná."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "Vida, Res de Caos y resistencias; velocidad de movimiento en botas."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Vida y dos resistencias al máximo",
+              "reason": "Ningún daño compensa morir."
+            },
+            {
+              "tier": "recommended",
+              "label": "Res de Caos",
+              "reason": "Necesidad difícil en el endgame, no nativa."
+            },
+            {
+              "tier": "optional",
+              "label": "Velocidad de movimiento",
+              "reason": "Mejora el posicionamiento y el ritmo de rodamiento."
+            },
+            {
+              "tier": "luxury",
+              "label": "Daño de hechizo explícito",
+              "reason": "Solo importa tras la defensa."
+            }
+          ],
+          "notes": [
+            "La Res de Caos no puede venir de la base; debe apilarse."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "Atributos, resistencias, vida y Maná; sostenimiento de Maná donde se necesite."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Atributos para equipar bastón y gemas",
+              "reason": "Lo que no se puede equipar es inútil."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistencias y vida",
+              "reason": "Completa la capa defensiva."
+            },
+            {
+              "tier": "optional",
+              "label": "Reserva de Maná / regeneración",
+              "reason": "Sostenimiento gratuito de las joyas."
+            },
+            {
+              "tier": "luxury",
+              "label": "Nivel de habilidad de hechizo",
+              "reason": "Daño de endgame."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Prioridad de Atributos",
+      "priorities": [
+        {
+          "label": "Nivel de habilidad de hechizo",
+          "reason": "Escala Thunderstorm y Entangle; principal comprobación de progreso."
+        },
+        {
+          "label": "Reserva de Maná y regeneración",
+          "reason": "Suelo para sostener el bucle en combates largos contra jefes."
+        },
+        {
+          "label": "Res de Caos",
+          "reason": "Necesidad difícil en el endgame, no nativa."
+        },
+        {
+          "label": "Velocidad de Lanzamiento",
+          "reason": "Disparo más rápido, tras defensa y Maná."
+        },
+        {
+          "label": "Crítico",
+          "reason": "Requisito previo para CoC; solo tras estabilizar el Maná."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Prioridad de Mejoras",
+      "steps": [
+        {
+          "label": "Limpieza lenta",
+          "symptom": "Los grupos necesitan muchas rondas de Entangle para morir.",
+          "checks": [
+            "¿El bastón sigue siendo una base de nivel adecuado?",
+            "¿Están resueltas las resistencias y la vida (es decir, el bastón es el cuello de botella real)?"
+          ],
+          "upgrade": "Cambia el bastón de nivel inferior antes de tocar las joyas."
+        },
+        {
+          "label": "Falta de Maná contra jefes",
+          "symptom": "El Maná se vacía en objetivo único, Thunderstorm cae.",
+          "checks": [
+            "¿Depende solo de la regeneración por baja?",
+            "¿Están activos Mana Remnants / leech / frascos en los jefes?"
+          ],
+          "upgrade": "Arregla el sostenimiento de Maná antes de escalar daño."
+        },
+        {
+          "label": "Falta la tormenta contra jefes",
+          "symptom": "La ventana de Thunderstorm nunca es estable.",
+          "checks": [
+            "¿Se ha tomado Forced Outcome?",
+            "¿Es suficiente el crítico de Cast on Critical?",
+            "¿El Maná soporta el disparo continuo?"
+          ],
+          "upgrade": "Arregla la cadena de disparo (Forced Outcome → CoC → Maná), no el bastón."
+        },
+        {
+          "label": "Estancado tras T15",
+          "symptom": "El daño deja de mejorar.",
+          "checks": [
+            "¿Nivel de hechizo al máximo?",
+            "¿Daño de hechizo del Focus en su sitio?",
+            "¿Res de Caos al máximo?"
+          ],
+          "upgrade": "Mejora en orden: nivel de hechizo → Focus → Res de Caos."
+        },
+        {
+          "label": "Considera gama alta",
+          "symptom": "Quieres más daño contra jefes y miras equipo de lujo.",
+          "checks": [
+            "¿La cadena de disparo y el Maná son estables?",
+            "¿La gama alta romperá los topes de resistencia o bajará la vida?"
+          ],
+          "upgrade": "Compra pieza por pieza y vuelve a probar tras pasar la lista de verificación; no cambies supervivencia por números."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapeo",
+      "paragraphs": [
+        "Suelta Entangle en los grupos; las enredaderas azotan solas. Solo relanzas Entangle y haces rodamiento. La basura no necesita Thunderstorm; detenerse a disparar te frena.",
+        "Cuando la limpieza se vuelve lenta, mejora primero el bastón. Mantén algún sostenimiento de Maná (regen por baja / Mana Remnants / frasco) activo para que el mapeo no se detenga."
+      ],
+      "bullets": [
+        "Entangle + rodamiento es todo el ritmo de mapeo.",
+        "Omite el disparo de Thunderstorm en la basura.",
+        "Mejora el bastón de forma reactiva cuando la limpieza se vuelve lenta."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Jefes",
+      "paragraphs": [
+        "Los jefes son una secuencia: Sigil of Power para daño, Entangle para adherir enredaderas y acumular estado de planta, luego Forced Outcome / Cast on Critical mantienen Thunderstorm desde arriba para conservar Overgrown. Thrashing Vines aporta la recompensa principal a objetivo único.",
+        "Si la tormenta nunca llega, el problema es la cadena de disparo (Forced Outcome / crítico / Maná), no el bastón. En combates largos cuando el Maná se agota, usa rodamientos y Mana Remnants para sostener en lugar de forzar la reserva."
+      ],
+      "bullets": [
+        "Entangle (adherir + ralentizar) → Sigil → Forced Outcome/CoC sostiene Thunderstorm (Overgrown).",
+        "Thrashing Vines, recompensa principal a objetivo único.",
+        "Caída de Maná = arregla el disparo y el sostenimiento, no cambies el arma."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Niveles de Presupuesto: Diferencias entre Barato Real y Lujo",
+      "paragraphs": [
+        "Barato: un bastón de bajo presupuesto más resistencias/vida/Maná resueltas, limpiando y venciendo a la mayoría del contenido con la cadena de disparo. Cambia si puedes jugar, no el número de daño.",
+        "Lujo: Focus de alto nivel de hechizo, Uniques específicos, Res de Caos y crítico al máximo, elevando tanto la resolución de Thunderstorm como la supervivencia. Cambia el techo y el margen de error, no convierte lo barato en una build distinta.",
+        "El nivel espejo solo después de que hayas verificado que pasan lo barato/lujo y los números del cliente lo confirmen; no sacrifiques Res de Caos y Maná por DPS."
+      ],
+      "bullets": [
+        "Primero barato: vida, resistencias, Maná, un bastón decente.",
+        "Lujo después: nivel de hechizo, Res de Caos, crítico.",
+        "El nivel espejo nunca rompe el suelo defensivo."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Evidencia de la Comunidad",
+      "note": "Esta guía usa la discusión de la comunidad como una lista de verificación reproducible, no como una promesa de su DPS mostrado.",
+      "entries": [
+        {
+          "context": "Los jugadores reportan daño estancado tras T15, sin saber qué mejorar.",
+          "label": "Raxxanterax 0.5 Plant Oracle guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "La guía separa los niveles barato/lujo/espejo, aclarando que cada uno cambia los límites de equipo, no la mecánica.",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "context": "Los jugadores debaten si 'regar las plantas' es una mecánica oculta.",
+          "label": "P4wnyhof Plant Druid leveling experience",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "La experiencia de progresión enfatiza la sensación de un botón de Entangle + azote de enredadera; el estado de planta son capas apiladas, no un sistema separado.",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Solución de Problemas",
+      "problems": [
+        {
+          "symptom": "La tormenta contra jefes no se dispara",
+          "checks": [
+            "¿Se ha tomado Forced Outcome?",
+            "¿Es suficiente el crítico de Cast on Critical?",
+            "¿El Maná soporta el disparo continuo?"
+          ]
+        },
+        {
+          "symptom": "El Maná se agota en combates largos contra jefes",
+          "checks": [
+            "¿Depende solo de la regeneración por baja?",
+            "¿Están activos Mana Remnants / leech / frascos en los jefes?"
+          ]
+        },
+        {
+          "symptom": "El mapeo se vuelve lento",
+          "checks": [
+            "¿El bastón sigue siendo una base de nivel?",
+            "¿Están resueltas primero las resistencias y la vida?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "Preguntas Frecuentes",
+      "items": [
+        {
+          "question": "¿A qué nivel empiezo a usar Entangle?",
+          "answer": [
+            "Usable muy temprano; es la verdadera habilidad de mapeo. La cadena de disparo de Thunderstorm espera a Oracle y al Maná."
+          ],
+          "bullets": [
+            "Mapeo con Entangle desde nivel 1."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "¿Cambié a un bastón mejor pero la tormenta sigue débil?",
+          "answer": [
+            "La tormenta la sostiene la cadena de disparo (Forced Outcome / Cast on Critical / Maná), no el bastón solo; arregla primero el disparo y el Maná."
+          ],
+          "bullets": [
+            "Graba un combate contra jefe y comprueba los iconos de disparo."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "¿Puedo jugar SSF?",
+          "answer": [
+            "Sí; la cadena de disparo de bajo presupuesto mapea y vence a la mayoría del contenido en SSF. Los Uniques de lujo son un techo, no una puerta."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/en/guides/campaign-early-maps-gearing-crafting/",
+              "label": "Ver guía de equipamiento de campaña y mapas iniciales"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Planificador de Build e Importación",
+      "note": "PoE2 ahora incluye un Planificador de Build nativo. Las cadenas de importación pegables y los archivos .build siguen pendientes de verificación en PC; mientras tanto usa las guías de los creadores y el planificador oficial más abajo. Siempre vuelve a confirmar los nodos en tu propio cliente.",
+      "creatorName": "Raxxanterax",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Mira la Progresión y el Ritmo de la Tormenta",
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "Guía de Progresión Plant Oracle 0.5",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4",
+          "description": "Una referencia larga que muestra el camino completo desde el mapeo con Entangle hasta una cadena de disparo de Thunderstorm formada.",
+          "takeaway": "Toma una muestra de un jefe de campaña por acto; registra el orden de disparo, no la velocidad de limpieza.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introducción y concepto"
+            },
+            {
+              "time": "2:10",
+              "label": "Mapeo del Acto 1"
+            },
+            {
+              "time": "5:30",
+              "label": "Ascensión Oracle y Forced Outcome"
+            },
+            {
+              "time": "9:00",
+              "label": "Cadena de disparo de Thunderstorm"
+            },
+            {
+              "time": "13:20",
+              "label": "Mapas iniciales y equipo"
+            }
+          ]
+        },
+        {
+          "creator": "Raxxanterax",
+          "label": "Guía de Endgame Plant Oracle 0.5",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0",
+          "description": "Endgame: gestión de Maná, equipo barato/lujo/espejo y árbol de pasivos.",
+          "takeaway": "Céntrate en la gestión de Maná y los límites de equipo, no en perseguir DPS a ciegas.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introducción"
+            },
+            {
+              "time": "1:40",
+              "label": "Gestión de Maná"
+            },
+            {
+              "time": "4:30",
+              "label": "Uniques baratos y equipo"
+            },
+            {
+              "time": "8:15",
+              "label": "Equipo de lujo / espejo"
+            },
+            {
+              "time": "12:00",
+              "label": "Árbol de pasivos y resumen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Fuentes y Verificación",
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "label": "Community",
+          "description": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Registro de Cambios",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Creé una guía de build Plant Oracle Druid 0.5.4 con fuentes; verificación en PC en curso."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Leveling Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "label": "Raxxanterax — Plant Oracle Druid Endgame Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+    },
+    {
+      "label": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Build Plant Oracle Druid | Exile2 Guides",
+    "description": "Plant Oracle Druid 0.5.4: limpieza con Entangle, Forced Outcome y CoC Thunderstorm, sostenimiento de Maná, rotación de jefes y niveles de presupuesto.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "plant-oracle-druid",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

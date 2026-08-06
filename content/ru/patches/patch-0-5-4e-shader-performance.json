@@ -1,0 +1,363 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "ru",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.5.4e — Шейдеры, Vulkan и производительность при первой загрузке",
+  "shortTitle": "Производительность 0.5.4e (шейдеры)",
+  "summary": "0.5.4e — это технический патч. В нём объясняется, почему первая загрузка после обновления может быть медленнее, что означает перекомпиляция шейдеров, что изменилось для Vulkan/Steam и какие симптомы являются нормой, а какие требуют дальнейшей проверки.",
+  "description": "Страница по устранению неполадок, а не игровой патч. Отчёты по DX12, Vulkan, NVIDIA/AMD и ПК/консолям нельзя объединять в один общий вывод.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "Затемнённый штормом разрушенный город, олицетворяющий обновление 0.5.4e по шейдерам и производительности",
+  "tags": [
+    "bug-fixes"
+  ],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "Влияние на игрока за 30 секунд",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e улучшает загрузку шейдеров и уменьшает их размер, отключает слой Steam Vulkan Fossilize и меняет значение вертикальной синхронизации по умолчанию на ограниченное (capped).",
+        "Более медленная первая загрузка после патча ожидаема, поскольку шейдеры перекомпилируются; не делайте вывод об итоговой производительности лишь по первому заходу.",
+        "Эта страница никогда не утверждает, что фризы полностью устранены; необходимо разделять рендерер, платформу и первый заход от повторных."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "Где 0.5.4e находится в семействе патчей",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "Major Patch",
+          "summary": "Базовый контент, за которым технически следует 0.5.4e.",
+          "tags": [
+            "atlas",
+            "items",
+            "bosses"
+          ]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "Hotfix",
+          "summary": "Исправление руны Oath; не связано с техническими изменениями 0.5.4e.",
+          "tags": [
+            "expedition",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "Technical Patch",
+          "summary": "Изменения загрузки шейдеров, кэша Vulkan и значения VSync по умолчанию на этой странице.",
+          "tags": [
+            "shaders",
+            "vulkan",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "Панель влияния",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Первая загрузка",
+          "verdict": "Ожидайте более медленный первый заход",
+          "detail": "После патча шейдеры перекомпилируются. Это нормально и отличается от реального снижения производительности."
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "Слой Fossilize отключён",
+          "detail": "Направлено на случаи аномального разрастания кэша шейдеров. Одинаково не применяется к DX12 или Standalone."
+        },
+        {
+          "area": "VSync",
+          "verdict": "Теперь по умолчанию «Ограниченная»",
+          "detail": "Адаптивная больше не рекомендуется из-за проблем с равномерностью кадров."
+        },
+        {
+          "area": "Сообщество",
+          "verdict": "Результаты неоднородны",
+          "detail": "Некоторые игроки сообщают о более плавных картах, другие по-прежнему сообщают о вылетах или фризах сцен. Единого универсального вывода нет."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "Официальные изменения, сгруппированные по проблемам игроков",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "Загрузка шейдеров улучшена, размер уменьшен",
+          "detail": "При первом заходе шейдеры могут перекомпилироваться; последующие заходы быстрее. Судите по повторному заходу, а не по первому.",
+          "scope": "official-fact: affects all platforms after update"
+        },
+        {
+          "category": "technical",
+          "title": "Слой Steam Vulkan Fossilize отключён",
+          "detail": "Направлено на аномальный рост кэша шейдеров. Относится только к Steam + Vulkan; не относите к DX12.",
+          "scope": "official-fact: Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "Значение VSync по умолчанию изменено на «Ограниченная»",
+          "detail": "Адаптивная убрана из-за проблем с равномерностью кадров.",
+          "scope": "official-fact: client default"
+        },
+        {
+          "category": "fix",
+          "title": "Остаточные случаи вылетов / фризов",
+          "detail": "Некоторые сообщения сохраняются; они пока не подтверждены как полностью устранённые и остаются в разделе Known Issues.",
+          "scope": "community-report: not upgraded to verified"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "Первый заход против повторного",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Неправильный способ оценки",
+      "oldText": "Измерение FPS только при первом заходе в локацию после патча и вывод о том, что патч ухудшил производительность.",
+      "newLabel": "Правильный способ оценки",
+      "newText": "Отделяйте первый скомпилированный заход от повторных; сравнивайте FPS повторных заходов до и после патча."
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "Матрица технического окружения",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "Сначала проверьте перекомпиляцию шейдеров, размер кэша шейдеров Steam и стабильность Vulkan. Не переносите выводы DX12 или консолей."
+        },
+        {
+          "key": "steam-dx12",
+          "note": "Отделяйте первую компиляцию от последующих загрузок. Изменение Fossilize касается Steam + Vulkan, а не напрямую DX12."
+        },
+        {
+          "key": "standalone",
+          "note": "Standalone не использует слой Steam Fossilize. Проверьте рендерер, драйверы, каталог кэша и поведение после повторных заходов."
+        },
+        {
+          "key": "console",
+          "note": "Официальные примечания 0.5.4e описывают поведение шейдеров и Vulkan/Steam. Отчёты консолей должны записываться отдельно, без смешивания с ПК."
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "Очередь затронутого контента",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Руководство по устранению проблем производительности",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Добавить раздел первый заход против повторного",
+          "status": "reviewing"
+        },
+        {
+          "name": "FAQ по кэшу шейдеров",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Описать отключение Fossilize",
+          "status": "queued"
+        },
+        {
+          "name": "Руководство по настройке Vulkan",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Отметить изменение VSync по умолчанию",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "Данные сообщества",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit — ветка 0.5.4e про шейдеры",
+          "context": "Сводка отзывов о производительности",
+          "quote": "Количество шейдеров заметно снизилось, но результаты по-прежнему зависят от оборудования.",
+          "analysis": "Текст должен разделяться по рендереру, платформе и первому/повторному заходу; нельзя утверждать «0.5.4e полностью устранил фризы»."
+        },
+        {
+          "source": "Официальный форум — 0.5.4e",
+          "context": "Сообщения об остаточных проблемах",
+          "quote": "Некоторые по-прежнему сталкиваются вылетами или фризами в определённых сценах после патча.",
+          "analysis": "Оставьте как отчёт сообщества; не повышайте до проверенного механического утверждения."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "Видео и метки времени",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Official Path of Exile 2",
+          "label": "0.5.4e: объяснение шейдеров и производительности",
+          "description": "Официальное объяснение перекомпиляции шейдеров, кэша Vulkan и значения VSync по умолчанию.",
+          "takeaway": "Посмотрите фрагмент про первый заход против повторного, прежде чем делать выводы.",
+          "url": "https://www.youtube.com/watch?v=XDEJLOHcdWw"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "Прямые ответы",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Почему первая загрузка после 0.5.4e медленнее?",
+          "answer": [
+            "Официально шейдеры перекомпилируются, поэтому первый заход в локацию может быть медленнее.",
+            "Оценивайте эффект, отделяя первый заход от повторных."
+          ]
+        },
+        {
+          "question": "0.5.4e устранил все фризы?",
+          "answer": [
+            "Не подтверждается единый вывод: некоторые игроки сообщают о более плавных картах, другие по-прежнему сообщают о вылетах или фризах сцен.",
+            "Рендерер, платформу и тип захода необходимо разделить перед любым выводом."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "Известные проблемы",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "После 0.5.4e сообщается об остаточных вылетах или фризах в конкретных сценах; пока не подтверждено полное устранение.",
+          "status": "open"
+        },
+        {
+          "text": "Отчёты о шейдерах, специфичные для консолей, отслеживаются отдельно от выводов по ПК.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Источники и проверка",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Официальные примечания к патчу 0.5.4e Path of Exile 2",
+          "description": "Официальный источник изменений по шейдерам, Vulkan и VSync.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Журнал изменений",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Опубликована подробная статья 0.5.4e о шейдерах и производительности"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Официальные примечания к патчу 0.5.4e Path of Exile 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 0.5.4e: производительность шейдеров",
+    "description": "0.5.4e — это технический патч. В нём объясняется, почему первая загрузка после обновления может быть медленнее, что означает перекомпиляция шейдеров, что изменилось для Vulkan/Steam и какие симптомы являются нормой, а какие требуют дальнейшей проверки.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-5-4e-shader-performance",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

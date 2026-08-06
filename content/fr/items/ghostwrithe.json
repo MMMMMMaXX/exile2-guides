@@ -1,0 +1,773 @@
+{
+  "id": "ghostwrithe",
+  "slug": "ghostwrithe",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Ghostwrithe : conversion de la Vie en Bouclier d'Énergie, routage des coups et défense purement ES dans Path of Exile 2 0.5",
+  "shortTitle": "Ghostwrithe",
+  "summary": "Ghostwrithe est une Vaal Regalia unique dont les trois modificateurs comparent votre défense en un unique réservoir de Bouclier d'Énergie : 100 % de la Vie maximale provient du Bouclier d'Énergie, (20-30)% des dégâts des coups sont absorbés par le Bouclier d'Énergie avant la Vie, et vous ne pouvez ni voler de Vie ni la régénérer ni en gagner via les fioles. Ce guide explique les calculs de conversion, pourquoi toute forme de récupération de Vie cesse de fonctionner, comment reconstruire votre défense sur le Bouclier d'Énergie, quels builds cela permet (les incantateurs de style Inoculation du Chaos et les moines ES), ainsi que le palier de roll.",
+  "description": "Comment fonctionne Ghostwrithe dans PoE2 0.5 : la conversion « 100 % de la Vie maximale issue du Bouclier d'Énergie », le routage des dégâts des coups (20-30)% vers l'ES avant la Vie, la perte de la récupération par vol/renaissance/fiole de Vie, la défense ES à réservoir unique qui en résulte, exemples de builds, valeur du roll et coût en cas d'échec.",
+  "itemType": "body-armour",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "es-conversion",
+    "ci-style",
+    "es-defence"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-armour",
+  "itemClass": "body-armour",
+  "baseType": "vaal-regalia",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-armour",
+    "es-conversion",
+    "ghostwrithe"
+  ],
+  "heroImage": "/images/items/ghostwrithe-hero.webp",
+  "cardImage": "/images/items/ghostwrithe-hero.webp",
+  "imageAlt": "Ghostwrithe, Vaal Regalia unique de Path of Exile 2, une armure du corps qui convertit toute votre réserve de Vie en Bouclier d'Énergie et désactive la récupération de Vie",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Les trois modificateurs de Ghostwrithe transforment votre personnage en une unité fonctionnant uniquement au Bouclier d'Énergie. « 100 % de la Vie maximale provient du Bouclier d'Énergie » replie l'intégralité de votre Vie dans votre Bouclier d'Énergie — il vous reste 0 Vie distincte. « (20-30)% des dégâts des coups sont absorbés par le Bouclier d'Énergie avant la Vie » ajoute ensuite une part supplémentaire de chaque coup sur votre ES en premier. Comme il ne reste aucun réservoir de Vie, le vol de Vie, la Régénération de Vie et les fioles de Vie ne servent à rien : vous devez survivre entièrement grâce au Bouclier d'Énergie. L'avantage est un réservoir unique et rechargeable qui profite de l'investissement en ES et permet des builds de style Inoculation du Chaos sans pour autant prendre la pierre angulaire CI.",
+      "calloutDetail": [
+        "La conversion ajoute votre Vie maximale à votre Bouclier d'Énergie maximal. Un personnage avec 2500 de Vie et 3000 d'ES devient ~5500 d'ES et 0 de Vie.",
+        "Tout effet ciblant la « Vie » (récupération de fiole, vol de Vie, régénération de Vie, Vie au toucher) n'a plus de réservoir sur lequel agir, il est donc inopérant.",
+        "Vous devez assurer votre sustain via la recharge d'ES, le vol d'ES, la régénération d'ES, l'ES au toucher et l'ES au blocage à la place."
+      ],
+      "answers": [
+        {
+          "label": "À utiliser si",
+          "text": [
+            "Vous jouez déjà autour du Bouclier d'Énergie (incantateurs, moines ES) et voulez cesser de répartir vos points entre la Vie et l'ES, ou vous voulez un personnage immortel-sur-ES de style Inoculation du Chaos tout en conservant vos passifs de Vie."
+          ]
+        },
+        {
+          "label": "À éviter si",
+          "text": [
+            "Votre build s'appuie sur les fioles de Vie, le vol de Vie ou la régénération de Vie (la plupart des builds d'attaque et d'invocation), ou vous ne pouvez pas atteindre assez d'ES pour remplacer votre réserve de Vie."
+          ]
+        },
+        {
+          "label": "Roll à viser",
+          "text": [
+            "Le roll de routage des coups (20-30)% est un bonus mineur par-dessus la conversion. Privilégiez une Vaal Regalia à haut Bouclier d'Énergie de base et votre ES totale, pas le palier de roll."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Comment fonctionne la conversion"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip actuel et plages de roll"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds qui l'utilisent"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Points clés",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Type de base",
+          "value": "Vaal Regalia",
+          "note": [
+            "Une armure du corps Intelligence avec une base de Bouclier d'Énergie élevée, ce qui est exactement ce que vous voulez quand l'objectif est d'empiler un unique énorme réservoir d'ES."
+          ]
+        },
+        {
+          "label": "Modificateurs uniques",
+          "value": "100% de Vie issue de l'ES ; (20-30)% des dégâts des coups à l'ES en premier ; pas de vol/renaissance/fiole de Vie",
+          "note": [
+            "Les trois modificateurs ciblent votre réserve de Vie. Ensemble, ils suppriment totalement la Vie en tant que couche défensive."
+          ]
+        },
+        {
+          "label": "Niveau requis",
+          "value": "1 (Intelligence)",
+          "note": [
+            "Équipable dès le tout début, il peut donc porter un incantateur ES durant la campagne si le réservoir d'ES est assez grand."
+          ]
+        },
+        {
+          "label": "Obtention",
+          "value": "Tombe n'importe où ; échangeable",
+          "note": [
+            "Une armure du corps unique relativement commune. La plupart des joueurs achètent un roll précis de l'ES de base sur le site d'échange plutôt que de la farmer."
+          ]
+        },
+        {
+          "label": "Ce qu'il désactive",
+          "value": "Fioles de Vie, vol de Vie, régénération de Vie",
+          "note": [
+            "Ce sont les trois outils de sustain qui cessent de fonctionner car votre réserve de Vie est à 0."
+          ]
+        },
+        {
+          "label": "Pertinence du roll",
+          "value": "Faible - l'ES de base compte plus",
+          "note": [
+            "Le palier (20-30)% change à peine la survie. Cherchez le roll d'ES de base le plus élevé et votre ES totale, pas le suffixe de roll."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip actuel et plages de roll (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Bouclier d'Énergie de base",
+          "value": "Élevé (base Vaal Regalia)",
+          "notes": [
+            "La Vaal Regalia est la base d'armure du corps Intelligence à plus haut ES. Le roll exact varie à chaque drop ; privilégiez un roll d'ES de base élevé à l'achat."
+          ]
+        },
+        {
+          "label": "Modificateur 1 (fixe)",
+          "value": "100 % de la Vie maximale provient du Bouclier d'Énergie",
+          "notes": [
+            "Votre Vie maximale est ajoutée à votre Bouclier d'Énergie maximal. Il ne s'agit pas d'un pourcentage de dégâts — c'est le réservoir lui-même qui est fusionné."
+          ]
+        },
+        {
+          "label": "Modificateur 2 (variable)",
+          "value": "(20-30)% des dégâts des coups sont absorbés par le Bouclier d'Énergie avant la Vie",
+          "notes": [
+            "Roule par paliers ; une part de chaque coup est retirée de l'ES avant toute Vie. Mineur une fois que la Vie est déjà à 0 par le modificateur 1."
+          ]
+        },
+        {
+          "label": "Modificateur 3 (fixe)",
+          "value": "Ne peut ni voler ni régénérer la Vie, et ne peut en gagner via les fioles",
+          "notes": [
+            "Verrouillage strict des trois voies de sustain de Vie. Les versions ES de ces effets sont indemnes et deviennent votre seul sustain."
+          ]
+        },
+        {
+          "label": "Prérequis",
+          "value": "Niveau 1, Intelligence",
+          "notes": [
+            "Aucun prérequis en Force ou Dextérité ; la base Vaal Regalia définit le prérequis en Intelligence."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Comment fonctionne la conversion Vie vers Bouclier d'Énergie",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Le premier modificateur de Ghostwrithe indique « 100 % de la Vie maximale provient du Bouclier d'Énergie ». Cela ne réduit pas les dégâts ; cela déplace votre santé. Votre valeur de Vie maximale est ajoutée directement à votre Bouclier d'Énergie maximal. L'effet net est un réservoir défensif unique : Bouclier d'Énergie maximal = (Bouclier d'Énergie maximal de toutes les autres sources) + (Vie maximale de toutes les sources), et la Vie maximale devient 0.",
+        "Exemple chiffré : un personnage dont l'arbre et l'équipement donnent 2500 de Vie maximale, dont le corps, l'arbre, l'équipement et les auras donnent 3000 de Bouclier d'Énergie, et qui équipe ensuite un Ghostwrithe. Après conversion, le personnage a 2500 + 3000 = 5500 de Bouclier d'Énergie maximal et 0 de Vie maximale. Chaque point que vous auriez investi en Vie ne fait désormais qu'agrandir le réservoir d'ES, puisque la Vie y est repliée.",
+        "Le second modificateur, « (20-30)% des dégâts des coups sont absorbés par le Bouclier d'Énergie avant la Vie », est en grande partie redondant une fois la Vie à 0, mais c'est la règle explicite qui maintient les dégâts sur le Bouclier d'Énergie. Dans le PoE2 normal, un coup épuise d'abord l'ES puis déborde sur la Vie ; Ghostwrithe garantit qu'un supplément de 20-30% de chaque coup est routé vers l'ES avant que la Vie ne soit touchée. Comme la Vie est déjà à 0, le message concret est simple : tous vos dégâts de coup entrants atterrissent sur votre Bouclier d'Énergie rechargeable.",
+        "Le troisième modificateur est le piège : « Ne peut ni voler ni régénérer la Vie, et ne peut en gagner via les fioles ». Sans réservoir de Vie, les fioles de Vie ne soignent rien, le vol de Vie ne rend rien, et la régénération de Vie tick sur une barre vide. Vous dépendez entièrement du sustain du Bouclier d'Énergie. C'est le coût réel de l'objet, et c'est pourquoi Ghostwrithe ne porte ses fruits que sur des personnages qui investissent déjà dans le sustain ES (taux de recharge, vol d'ES, ES-au-blocage, régénération d'ES).",
+        "Pourquoi les joueurs le jouent malgré tout : replier la Vie dans l'ES vous offre un réservoir très grand à la place de deux plus petits, et ce réservoir bénéficie de la recharge du Bouclier d'Énergie, souvent plus rapide et plus fiable que la disponibilité des fioles de Vie une fois investi dans « Taux de recharge du Bouclier d'Énergie » et « délai réduit avant recharge de l'ES ». Cela vous rend aussi proche de l'Inoculation du Chaos : à 0 Vie, les dégâts de chaos ne peuvent vous tuer via la Vie, vous n'avez donc qu'à protéger une seule barre d'ES contre tous les types de dégâts."
+      ],
+      "bullets": [
+        "Formule : ES max = (toute l'ES max restante) + (toute la Vie max) ; la Vie max devient 0.",
+        "Exemple : 2500 de Vie + 3000 d'ES -> 5500 d'ES et 0 de Vie.",
+        "Le modificateur 2 garde les dégâts des coups sur l'ES en premier ; largement redondant une fois la Vie à 0.",
+        "Le modificateur 3 tue la fiole de Vie / le vol de Vie / la regen de Vie — vous devez assurer le sustain sur l'ES.",
+        "Permet une défense à réservoir unique de style CI sans la pierre angulaire CI."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Matrice de conversion et issues défensives",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "conversion",
+        "energy-shield",
+        "defence"
+      ],
+      "rows": [
+        {
+          "scenario": "2500 de Vie + 3000 d'ES avant Ghostwrithe",
+          "audience": "Tout incantateur ES",
+          "benefit": "Réservoir unique de 5500 ES, 0 Vie — une grande barre rechargeable",
+          "risk": "Pas de tampon de Vie : si l'ES casse, vous êtes mort",
+          "level": "high",
+          "recommendation": "Solide s'il est couplé à la recharge ES + au vol d'ES ; le réservoir total est plus grand que deux réservoirs minces séparés."
+        },
+        {
+          "scenario": "(20-30)% des dégâts des coups à l'ES en premier",
+          "audience": "Tous les builds",
+          "benefit": "Part supplémentaire de chaque coup forcée sur l'ES (compte si de la Vie reste)",
+          "risk": "Faible ; léger ballant de survie",
+          "level": "low",
+          "recommendation": "À traiter comme un bonus par-dessus la conversion ; ne courez pas après le roll élevé."
+        },
+        {
+          "scenario": "Fiole de Vie / vol de Vie / regen de Vie désactivés",
+          "audience": "Builds d'attaque / d'invocation",
+          "benefit": "Aucun pour ces builds",
+          "risk": "Perte totale du sustain habituel -> souvent un personnage mort",
+          "level": "high",
+          "recommendation": "Évitez Ghostwrithe sauf si vous tournez déjà sur un sustain ES (Ghostshroud, vol d'ES, scaling de recharge)."
+        },
+        {
+          "scenario": "0 Vie (immunisé-au-chaos-sur-la-Vie)",
+          "audience": "Incantateurs de style CI",
+          "benefit": "Le chaos ne peut pas tuer via la Vie ; tous les dégâts frappent une seule barre d'ES",
+          "risk": "Doit surcapitaliser l'ES face au chaos ; un seul réservoir à protéger",
+          "level": "medium",
+          "recommendation": "Excellent pour les builds proches de CI qui veulent un scaling ES max sans le coût de la pierre angulaire CI."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds qui utilisent Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Ghostwrithe s'adresse aux personnages qui vivent déjà sur le Bouclier d'Énergie et veulent cesser de répartir leur défense entre la Vie et l'ES. Voici les foyers réalistes ; chacun suppose que vous avez un plan de sustain ES."
+      ],
+      "builds": [
+        {
+          "title": "Archmage Stormweaver",
+          "description": "Une demeure naturelle : Archmage convertit le mana en dégâts et en ES, donc la Vie convertie ne fait que nourrir le même énorme réservoir. Associez à un scaling de recharge ES et une source de vol d'ES pour que la barre unique reste pleine.",
+          "href": "/fr/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Moine Invoker de style Inoculation du Chaos",
+          "description": "Les moines peuvent empiler l'ES et convertir la Vie dans la même barre, obtenant une immortalité proche de CI (le chaos ne peut tuer via la Vie) tout en gardant leurs passifs de Vie utiles pour l'ES. Requiert une recharge et un vol d'ES disciplinés.",
+          "href": "/fr/builds/storm-wave-flicker-invoker/"
+        },
+        {
+          "title": "Templier Bouclier d'Énergie en low-life",
+          "description": "Les joueurs qui veulent un fantasme low-life sans les complications de Pain Attunement utilisent Ghostwrithe pour fusionner les réservoirs et faire tourner une énorme barre d'ES alimentée par les auras et les fioles de Corsair (qui fonctionnent encore sur l'ES).",
+          "href": "/fr/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Occultiste style ES en blink/brand",
+          "description": "Tout incantateur qui ignore déjà les fioles de Vie et assure son sustain sur la recharge ES et l'ES au kill peut replier la Vie pour un réservoir plus grand et plus simple.",
+          "href": "/fr/builds/storm-wave-flicker-invoker/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternatives : plastron ES classique, pierre angulaire CI, armure de Vie",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Ghostwrithe n'est pas une amélioration stricte par rapport à une Vaal Regalia rare bien rollée. Un plastron ES rare peut offrir une base de Bouclier d'Énergie plus élevée plus des suffixes utiles (ES%, délai de recharge ES réduit, prérequis en caractéristiques) sans vous forcer à abandonner le sustain de Vie. Utilisez un plastron rare quand vous voulez encore un tampon de Vie.",
+        "Comparé à la pierre angulaire Inoculation du Chaos, Ghostwrithe obtient un résultat similaire « immortel sur ES, immunisé-au-chaos-sur-la-Vie » mais sans fixer la Vie maximale à 1. Avec CI votre Vie est à 1 et vous devez quand même construire de l'ES ; avec Ghostwrithe votre Vie est à 0 et vos passifs de Vie inflatent l'ES à la place. CI est plus propre et ne désactive pas le vol/regen de Vie sur une barre séparée, mais Ghostwrithe permet aux arbres lourds en passifs de Vie de rester rentables en ES.",
+        "Face à une armure du corps classique basée sur la Vie, Ghostwrithe est strictement pire pour tout build qui s'appuie sur les fioles de Vie ou le vol de Vie — ce qui couvre la plupart des builds d'attaque. Ceux-là ne doivent jamais l'envisager. La décision revient à « parier tout sur un seul réservoir ES » (Ghostwrithe) contre « garder Vie + ES séparés » (plastron rare ou CI)."
+      ],
+      "bullets": [
+        "Vaal Regalia rare : ES de base plus élevée possible, conserve le sustain de Vie — à utiliser quand vous voulez un tampon.",
+        "Pierre angulaire Inoculation du Chaos : résultat similaire, mais la Vie devient 1 et le vol/regen de Vie sur une barre séparée existent encore.",
+        "Armure de Vie : strictement meilleure pour les builds fiole/vol — ils doivent éviter Ghostwrithe.",
+        "Décision : Ghostwrithe seulement si vous vous engagez pleinement dans un unique réservoir ES."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Comment obtenir Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Ghostwrithe est une armure du corps unique relativement commune, la voie réaliste est donc l'échange plutôt que le farm."
+      ],
+      "routes": [
+        {
+          "label": "Drop aléatoire (tout niveau, Acte 1 et après)",
+          "body": [
+            "Il peut tomber de n'importe quel monstre une fois le niveau requis atteint. Vous ne pouvez pas le cibler ; augmenter le taux de drop des uniques via « Rareté accrue des objets trouvés » et des Waystones surchargés fait apparaître plus souvent des uniques, mais c'est lent pour une armure du corps précise."
+          ]
+        },
+        {
+          "label": "Orbe de Chance sur une Vaal Regalia blanche",
+          "body": [
+            "Utiliser un Orbe de Chance sur une Vaal Regalia normale peut donner Ghostwrithe, mais la chance est faible et la monnaie est mieux dépensée ailleurs. La plupart des joueurs sautent cette voie."
+          ]
+        },
+        {
+          "label": "Échange entre joueurs (recommandé)",
+          "body": [
+            "Acheter à l'échange est le moyen fiable d'obtenir un roll précis de l'ES de base. Comme c'est commun, même un roll d'ES de base élevé reste abordable. Cherchez l'ES de base la plus haute que vous pouvez vous offrir ; le roll de suffixe (20-30)% importe à peine. Les prix varient selon la ligue et la région — consultez le site d'échange en direct."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Utiliser, vendre ou conserver",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Le prix de Ghostwrithe est dicté par le roll d'ES de base de la Vaal Regalia, pas par le palier de suffixe. Un roll d'ES de base élevé porte une prime ; un faible est quasi gratuit. Ce n'est pas au niveau miroir en coût. Lisez tout prix avec une date, une ligue et une région."
+      ],
+      "use": {
+        "condition": "Vous jouez un personnage basé sur l'ES et avez un plan de sustain ES (scaling de recharge, vol d'ES, ES-au-blocage).",
+        "first": "Équipez le Ghostwrithe à plus haut ES de base que vous pouvez vous offrir et fusionnez votre Vie dans le réservoir ; investissez des points de passifs dans l'ES, le taux de recharge ES et la réduction du délai avant recharge.",
+        "risk": "Pas de tampon de Vie — un seul gros coup qui casse l'ES peut être létal sans sauvegarde de fiole.",
+        "text": [
+          "Idéal quand toute votre défense vit déjà sur le Bouclier d'Énergie.",
+          "Gardez-le pour toute la ligue si votre build est purement ES."
+        ]
+      },
+      "sell": {
+        "condition": "Vous jouez un build fiole de Vie ou vol de Vie, ou votre réservoir d'ES est trop petit pour remplacer votre Vie.",
+        "first": "Vendez-le ; c'est du poids mort pour ces builds et assez commun pour partir vite.",
+        "risk": "Le conserver en espérant un pic est peu probable — l'offre est stable.",
+        "text": [
+          "Un roll d'ES de base faible a peu de valeur pour les incantateurs ES qui ont besoin d'un grand réservoir.",
+          "Indiquez honnêtement le roll d'ES de base ; les acheteurs filtrent dessus."
+        ]
+      },
+      "hold": {
+        "condition": "Vous avez un roll d'ES de base élevé et pourriez passer à un incantateur ES plus tard.",
+        "first": "Conservez les rolls d'ES de base élevés ; ils restent liquides tant qu'il existe des builds ES.",
+        "risk": "Un patch futur modifiant la recharge ES ou la conversion pourrait déplacer la demande, mais le fantasme est stable.",
+        "text": [
+          "Les rolls d'ES de base élevés conservent leur valeur car la conversion récompense une barre de départ plus grande.",
+          "Un implicite corrompu (via Orbe de Vaal) peut ajouter ES% ou recharge, augmentant la valeur."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risque et coût en cas d'échec",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Ghostwrithe équipé mais réservoir ES trop petit",
+          "gain": "Vie repliée dans l'ES pour une barre unique plus grande",
+          "loss": "Pas de tampon de Vie ; une burst qui casse l'ES est fatale sans fiole",
+          "level": "high",
+          "recommendation": "N'équipez qu'une fois votre ES totale (Vie+ES) dépasse clairement ce que votre ancienne Vie+ES vous donnait."
+        },
+        {
+          "scenario": "Compté sur le bouton panique de la fiole de Vie",
+          "gain": "Aucun - la fiole soigne 0 Vie",
+          "loss": "Mort à un moment où vous attendiez qu'une fiole vous sauve",
+          "level": "high",
+          "recommendation": "Remplacez la dépendance à la fiole par la recharge ES et le vol d'ES avant d'équiper."
+        },
+        {
+          "scenario": "Vol de Vie / regen de Vie dans l'arbre",
+          "gain": "Aucun - ces passifs ne servent plus à rien",
+          "loss": "Points de passifs gaspillés et un trou de sustain",
+          "level": "medium",
+          "recommendation": "Respec les nœuds vol/regen de Vie en recharge ES, vol d'ES et nœuds ES max."
+        },
+        {
+          "scenario": "Dégâts de chaos avec un seul réservoir",
+          "gain": "Le chaos ne peut tuer via la Vie (Vie à 0)",
+          "loss": "Tout le chaos frappe la même barre d'ES que vous devez aussi protéger du phys",
+          "level": "medium",
+          "recommendation": "Surcapitalisez l'ES et cumulez la résistance au chaos ; n'assumez pas que le chaos est gratuit."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Preuves communautaires et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-ghostwrithe-es",
+          "kind": "Fil de build du forum officiel",
+          "question": "Si 100 % de ma Vie provient du Bouclier d'Énergie, est-ce que mes fioles de Vie et mon vol de Vie cessent simplement de fonctionner ?",
+          "summary": [
+            "Un joueur a demandé si la conversion désactive silencieusement son sustain de Vie habituel."
+          ],
+          "editorialAnalysis": [
+            "Oui. Une fois la Vie maximale repliée dans le Bouclier d'Énergie, votre réservoir de Vie est à 0, donc les fioles de Vie, le vol de Vie et la régénération de Vie n'ont plus rien sur quoi agir. Le troisième modificateur le rend explicite. Vous devez reconstruire le sustain sur le Bouclier d'Énergie : taux de recharge, vol d'ES, ES-au-blocage, régénération d'ES."
+          ],
+          "officialAnswer": [
+            "Remplacez le sustain de Vie par le sustain ES. Empilez « Taux de recharge du Bouclier d'Énergie », réduisez le délai avant recharge de l'ES, et prenez une source de vol d'ES (par ex. Ghostshroud ou un support de vol d'ES). Les fioles de Vie deviennent décoratives."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Comment fonctionne la conversion"
+        },
+        {
+          "sourceId": "forum-ghostwrithe-ci",
+          "kind": "Fil de forum communautaire",
+          "question": "Ghostwrithe est-il fondamentalement une Inoculation du Chaos gratuite sans la pierre angulaire ?",
+          "summary": [
+            "Un lecteur voulait savoir si fusionner la Vie dans l'ES donne la même impression d'immunité au chaos que CI."
+          ],
+          "editorialAnalysis": [
+            "Presque. À 0 Vie, les dégâts de chaos ne peuvent vous tuer via la Vie, vous obtenez donc le bénéfice de style CI « immunisé-au-chaos-sur-la-Vie » sans fixer la Vie à 1. La différence : vos passifs de Vie nourrissent désormais l'ES au lieu d'être gaspillés, et vous désactivez toujours le vol/regen de Vie. C'est proche de CI, pas identique."
+          ],
+          "officialAnswer": [
+            "Traitez-le comme proche de CI : surcapitalisez l'ES et ajoutez de la résistance au chaos, car tous les types de dégâts frappent désormais une seule barre d'ES. N'assumez pas que le chaos est gratuit juste parce que la Vie est à 0."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds qui utilisent Ghostwrithe"
+        },
+        {
+          "sourceId": "maxroll-es-chests",
+          "kind": "Guide / analyse",
+          "question": "Dois-je acheter Ghostwrithe ou une Vaal Regalia rare avec plus d'ES de base ?",
+          "summary": [
+            "Un acheteur a comparé l'unique face à un plastron ES rare bien rollé."
+          ],
+          "editorialAnalysis": [
+            "Si vous voulez garder un tampon de Vie et des fioles de Vie, une Vaal Regalia rare est strictement meilleure (ES de base plus élevée possible plus des suffixes utiles, aucun verrouillage de sustain). Ghostwrithe ne gagne que quand vous vous engagez pleinement dans un seul réservoir ES et avez déjà un sustain ES. Cherchez le roll d'ES de base le plus élevé dans tous les cas."
+          ],
+          "officialAnswer": [
+            "Choisissez Ghostwrithe uniquement pour un build ES total. Sinon achetez le plastron rare avec le plus haut ES% de base et gardez votre fiole de Vie."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Utiliser, vendre ou conserver"
+        },
+        {
+          "sourceId": "gamerant-ghostwrithe",
+          "kind": "Guide",
+          "question": "Le roll (20-30)% compte-t-il, et puis-je le corrompre avec un Orbe de Vaal pour un meilleur implicite ?",
+          "summary": [
+            "Un acheteur a demandé à quel point le roll de suffixe compte et si la corruption en vaut la peine."
+          ],
+          "editorialAnalysis": [
+            "Le roll de routage des coups (20-30)% est quasi sans importance une fois la Vie à 0 ; c'est l'ES de base qui compte. Une corruption par Orbe de Vaal peut ajouter un implicite ES% ou recharge ES qui aide réellement, mais elle consomme un unique et peut bricker. Ne corrompez qu'une copie remplaçable."
+          ],
+          "officialAnswer": [
+            "Ignorez le roll de suffixe à l'achat ; payez pour l'ES de base. Ne corrompez qu'une copie de spare pour un implicite ES%."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "Tooltip actuel et plages de roll"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "J'ai équipé Ghostwrithe et ma fiole de Vie ne fait rien",
+          "directAnswer": [
+            "Normal. Votre Vie est désormais à 0, repliée dans le Bouclier d'Énergie, et l'objet bloque aussi la Vie depuis les fioles. Remplacez la dépendance à la fiole par la recharge ES et le vol d'ES."
+          ],
+          "checks": [
+            "Ouvrez le panneau Personnage et confirmez que la Vie maximale affiche 0.",
+            "Vérifiez que votre Bouclier d'Énergie total égale l'ancien ES + l'ancienne Vie.",
+            "Ajoutez un taux de recharge ES et une source de vol d'ES."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Comment fonctionne la conversion"
+            }
+          ]
+        },
+        {
+          "symptom": "Je meurs instantanément à des bursts que je survivais avant",
+          "directAnswer": [
+            "Vous avez perdu votre tampon de Vie. Avec un seul réservoir ES, un coup qui casse l'ES est immédiatement létal. Grossissez le réservoir (plus d'ES, ES%) et cumulez recharge/vol avant de compter dessus."
+          ],
+          "checks": [
+            "Comparez l'ES totale après conversion avec votre ancienne Vie+ES.",
+            "Ajoutez « délai réduit avant recharge du Bouclier d'Énergie » et un taux de recharge."
+          ]
+        },
+        {
+          "symptom": "Mon support de vol de Vie semble mort",
+          "directAnswer": [
+            "Il l'est. Le vol de Vie rend de la Vie que vous n'avez plus. Passez à un support de vol du Bouclier d'Énergie ou un effet ES-au-toucher."
+          ],
+          "checks": [
+            "Confirmez que le support accorde un vol de Vie (désactivé) vs un vol d'ES (fonctionne).",
+            "Utilisez plutôt Ghostshroud ou une gemme de vol d'ES."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vidéo explicative",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Démonstration Ghostwrithe Energie-de-la-Vie (build communautaire)",
+          "url": "https://youtu.be/ToDEiQfo6mM",
+          "creator": "Créateur communautaire PoE2",
+          "takeaway": "Montre un incantateur ES tournant Ghostwrithe, avec le réservoir fusionné, la configuration de recharge ES et la raison pour laquelle le sustain de Vie est abandonné. Les libellés de section sont approximatifs.",
+          "timestamps": [
+            {
+              "label": "Pourquoi fusionner la Vie dans l'ES",
+              "time": "00:00"
+            },
+            {
+              "label": "Configuration recharge et vol d'ES",
+              "time": "04:15"
+            },
+            {
+              "label": "Mapping avec un seul réservoir ES",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galerie média",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip actuel de Ghostwrithe (Vaal Regalia, 100% de Vie issue de l'ES)",
+          "note": "Montrez les trois modificateurs et le haut Bouclier d'Énergie de base. Notez que la Vie maximale affiche 0 dans le panneau Personnage.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "caption": "Vie+ES fusionnés en un seul réservoir",
+          "note": "Illustrez 2500 de Vie + 3000 d'ES devenant 5500 d'ES et 0 de Vie après l'équipement.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenu lié",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "Le matériau utilisé à l'Enclume de Verisium pour le Runeforging, y compris un Ghostwrithe Runeforgé avec une ES de base plus élevée.",
+          "href": "/fr/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes et Âmes-Cœur",
+          "description": "Encaster la bonne rune peut ajouter un affixe ES% ou recharge qui se synergise avec le réservoir fusionné.",
+          "href": "/fr/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Orbe de Vaal",
+          "description": "Utilisé pour corrompre Ghostwrithe afin d'obtenir potentiellement un implicite ES% ou recharge ES ; ne corrompez qu'une copie remplaçable.",
+          "href": "/fr/items/vaal-orb/"
+        },
+        {
+          "contentId": "architects-orb",
+          "contentType": "item",
+          "title": "Orbe d'Architecte",
+          "description": "Peut ajouter un implicite supplémentaire à la base Vaal Regalia, un moyen de pousser le réservoir ES fusionné plus haut.",
+          "href": "/fr/items/architects-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historique des patches et actuel vs legacy",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Actuel (0.5.4)",
+          "changes": [
+            "Ghostwrithe est une Vaal Regalia unique avec : 100 % de la Vie maximale issue du Bouclier d'Énergie ; (20-30)% des dégâts des coups absorbés par le Bouclier d'Énergie avant la Vie ; ne peut ni voler ni régénérer la Vie, ni en gagner via les fioles. C'est la seule version actuelle."
+          ]
+        },
+        {
+          "version": "Introduction en Accès Anticipé (0.2.0)",
+          "changes": [
+            "Ghostwrithe est entré dans l'Accès Anticipé de Path of Exile 2 en tant qu'unique de corps à conversion. Les trois modificateurs centraux sont stables depuis l'introduction ; vérifiez les paliers de roll exacts en jeu au fil des passes d'équilibrage."
+          ]
+        },
+        {
+          "version": "Runeforging (ligue 0.5.0 - Runes of Aldur)",
+          "changes": [
+            "Les uniques de bas niveau sont devenus Runeforgeables. Ghostwrithe (niveau 1) est éligible : les trois modificateurs sont conservés et la base Vaal Regalia gagne un Bouclier d'Énergie plus élevé plus une base Runeforgée."
+          ]
+        },
+        {
+          "version": "Note sur l'Orbe Divin et la corruption",
+          "changes": [
+            "Le roll de suffixe est une plage fixe, un Orbe Divin ne change donc pas le palier (20-30)%. Une corruption par Orbe de Vaal peut ajouter un implicite ES% ou recharge ES mais consomme un unique — corrompez une copie remplaçable."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notes de patch Path of Exile 2 0.5.4 (forum officiel)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Ghostwrithe (stats de base, mécanique)",
+          "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "label": "TOOL",
+          "description": "poedb - Ghostwrithe (données)",
+          "url": "https://poedb.tw/us/Ghostwrithe"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Forum officiel - discussion sur la conversion ES de Ghostwrithe",
+          "url": "https://www.pathofexile.com/forum/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Communauté - démonstration Energie-de-la-Vie avec Ghostwrithe",
+          "url": "https://youtu.be/ToDEiQfo6mM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale couvrant les calculs de conversion Vie vers Bouclier d'Énergie de Ghostwrithe, la perte du sustain de Vie, la défense purement ES, les exemples de builds, la valeur du roll et le coût en cas d'échec."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "architects-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-ghostwrithe",
+      "label": "PoE2Wiki - Ghostwrithe",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+    },
+    {
+      "id": "poedb-ghostwrithe",
+      "label": "poedb - Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Ghostwrithe"
+    },
+    {
+      "id": "forum-ghostwrithe",
+      "label": "Official Path of Exile 2 Forum (Ghostwrithe discussion)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/"
+    },
+    {
+      "id": "video-ghostwrithe",
+      "label": "Community showcase - Energy Shield-from-Life with Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://youtu.be/ToDEiQfo6mM"
+    }
+  ],
+  "seo": {
+    "title": "Guide Ghostwrithe : conversion Vie vers Bouclier d'Énergie, routage des coups et défense purement ES (PoE2 0.5)",
+    "description": "Comment fonctionne Ghostwrithe dans Path of Exile 2 : la conversion « 100 % de la Vie maximale issue du Bouclier d'Énergie », le routage des dégâts des coups (20-30)% vers l'ES avant la Vie, la perte du sustain vol/regen/fiole de Vie, et la défense ES à réservoir unique qui en résulte.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ghostwrithe",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

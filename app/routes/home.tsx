@@ -1,17 +1,18 @@
-/** 文件职责：按交互原型 V2 渲染高信息密度双语首页，并只展示真实公开内容。 */
-import { useParams } from "react-router";
-import contentPages from "virtual:content-pages";
-
+/** 文件职责：按交互原型 V2 渲染高信息密度多语言首页，并只展示真实公开内容。 */
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { ContentCard } from "../../components/content/content-card";
 import { ReadingProgress } from "../../components/content/reading-progress";
 import {
   contentTypeSegments,
+  type ContentLocale,
   type ContentType,
 } from "../../lib/content/constants";
-import type { StaticContentPage } from "../../lib/content/content-page";
+import type { StaticContentCatalogPage } from "../../lib/content/content-page";
+import { loadContentCatalog } from "../../lib/content/content-catalog";
+import { loadStaticContentCatalogForLocale } from "../../lib/content/content-catalog.server";
 import { getHomeContentItems } from "../../lib/content/home-content";
 import { getHomeCopy } from "../../lib/i18n/home-copy";
+import { t } from "../../lib/i18n/ui";
 import {
   createBilingualAlternatePaths,
   createSeoMetadata,
@@ -23,6 +24,21 @@ const currentGameVersion = "0.5.4e";
 const latestMajorPatchVersion = "0.5.4";
 const historicalPatchRange = `0.3.0–${currentGameVersion}`;
 
+/** 首页只加载当前语言卡片，根级导航仍由更小的路由索引独立提供。 */
+export async function loader({ params }: Route.LoaderArgs) {
+  return { catalog: await loadStaticContentCatalogForLocale(params.locale) };
+}
+
+/** 客户端导航只加载当前语言卡片，根级导航继续复用轻量路由索引。 */
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  return { catalog: await loadContentCatalog(params.locale) };
+}
+
+/** 将内容类型或路径片段的首字母大写，用于派生首页文案键。 */
+function cap<S extends string>(s: S): Capitalize<S> {
+  return (s.charAt(0).toUpperCase() + s.slice(1)) as Capitalize<S>;
+}
+
 const homeSectionOrder = [
   "build",
   "boss",
@@ -32,32 +48,13 @@ const homeSectionOrder = [
   "patch",
 ] as const satisfies readonly ContentType[];
 
-const sectionLabels = {
-  en: {
-    boss: ["Encounter library", "Boss Guides"],
-    build: ["Build library", "Builds"],
-    guide: ["Recently updated", "Latest Guides"],
-    item: ["Browse mechanics", "Items Database"],
-    patch: ["Patch library", "Major Patches"],
-    skill: ["Skill reference", "Skills"],
-  },
-  "zh-cn": {
-    boss: ["首领资料库", "Boss 攻略"],
-    build: ["Build 资料库", "Build 攻略"],
-    guide: ["最近更新", "最新攻略"],
-    item: ["机制速查", "物品资料"],
-    patch: ["补丁资料库", "大型补丁"],
-    skill: ["技能速查", "技能资料"],
-  },
-} as const;
-
 const quickAccessItems = [
-  ["builds", "♙", "Starter Builds", "Build 入门"],
-  ["bosses", "♛", "Boss Guides", "Boss 攻略"],
-  ["guides", "⌁", "Guides", "综合攻略"],
-  ["items", "◆", "Items", "物品资料"],
-  ["skills", "✦", "Skills", "技能资料"],
-  ["patches", "◈", "Patch Notes", "版本更新"],
+  ["builds", "♙"],
+  ["bosses", "♛"],
+  ["guides", "⌁"],
+  ["items", "◆"],
+  ["skills", "✦"],
+  ["patches", "◈"],
 ] as const;
 
 /** 返回对应语言首页的静态 Metadata，未知语言由路由级 404 文案处理。 */
@@ -67,20 +64,20 @@ export function meta({ params }: Route.MetaArgs) {
   return createSeoMetadata({
     alternatePaths: createBilingualAlternatePaths(),
     description: copy.metaDescription,
-    locale: params.locale as "en" | "zh-cn",
+    locale: params.locale as ContentLocale,
     path: `/${params.locale}/`,
     title: copy.metaTitle,
   });
 }
 
 /** 按内容类型分组，首页模块与分类路由继续消费同一份构建期公开数据。 */
-function groupHomeItems(items: readonly StaticContentPage[]) {
+function groupHomeItems(items: readonly StaticContentCatalogPage[]) {
   return Object.fromEntries(
     homeSectionOrder.map((contentType) => [
       contentType,
       items.filter((item) => item.frontMatter.contentType === contentType),
     ]),
-  ) as Record<(typeof homeSectionOrder)[number], StaticContentPage[]>;
+  ) as Record<(typeof homeSectionOrder)[number], StaticContentCatalogPage[]>;
 }
 
 /** 渲染一个真实内容模块；没有公开内容的类型不生成空白“建设中”区块。 */
@@ -90,19 +87,14 @@ function HomeContentSection({
   locale,
 }: {
   contentType: (typeof homeSectionOrder)[number];
-  items: readonly StaticContentPage[];
-  locale: "en" | "zh-cn";
+  items: readonly StaticContentCatalogPage[];
+  locale: ContentLocale;
 }) {
   if (items.length === 0) return null;
-  const [kicker, title] = sectionLabels[locale][contentType];
-  const typeLabels: Record<ContentType, string> = {
-    boss: "Boss",
-    build: "Build",
-    guide: "Guide",
-    item: "Item",
-    patch: "Patch",
-    skill: "Skill",
-  };
+  const [kicker, title] = [
+    t(locale, `home.section${cap(contentType)}Kicker` as const),
+    t(locale, `home.section${cap(contentType)}Title` as const),
+  ];
 
   return (
     <section
@@ -115,8 +107,7 @@ function HomeContentSection({
           <h2 id={`home-${contentType}-title`}>{title}</h2>
         </div>
         <a href={`/${locale}/${contentTypeSegments[contentType]}/`}>
-          {locale === "zh-cn" ? "查看全部" : "View all"}{" "}
-          <span aria-hidden="true">›</span>
+          {t(locale, "home.viewAll")} <span aria-hidden="true">›</span>
         </a>
       </header>
       <div className="content-card-grid home-content-section__grid">
@@ -130,7 +121,10 @@ function HomeContentSection({
                 meta: `${frontMatter.patch} · ${frontMatter.updatedAt}`,
                 summary: frontMatter.summary,
                 title: frontMatter.title,
-                typeLabel: typeLabels[frontMatter.contentType],
+                typeLabel: t(
+                  locale,
+                  `home.type${cap(frontMatter.contentType)}` as const,
+                ),
                 ...(frontMatter.image
                   ? {
                       image: frontMatter.image,
@@ -153,66 +147,68 @@ function HomeSidebar({
   items,
   locale,
 }: {
-  items: readonly StaticContentPage[];
-  locale: "en" | "zh-cn";
+  items: readonly StaticContentCatalogPage[];
+  locale: ContentLocale;
 }) {
   const latestMajorPatch = items.find(
     (item) =>
       item.frontMatter.contentType === "patch" &&
       item.patchArticle?.patchVersion === latestMajorPatchVersion,
   );
-  const zh = locale === "zh-cn";
 
   return (
     <aside
       className="home-sidebar"
-      aria-label={zh ? "补充内容" : "More content"}
+      aria-label={t(locale, "home.publishedContent")}
     >
       {latestMajorPatch ? (
         <section className="home-sidebar__panel">
           <header className="home-sidebar__heading">
-            <h2>{zh ? "最新大型内容补丁" : "Latest major content patch"}</h2>
-            <span>{zh ? "大型补丁" : "Major patch"}</span>
+            <h2>{t(locale, "home.latestMajorPatch")}</h2>
+            <span>{t(locale, "home.majorPatch")}</span>
           </header>
           <p className="home-sidebar__patch">
             {latestMajorPatch.frontMatter.patch}
           </p>
           <p>{latestMajorPatch.frontMatter.summary}</p>
           <a href={`/${locale}/patches/${latestMajorPatch.frontMatter.slug}/`}>
-            {zh ? "阅读版本分析" : "Read patch analysis"} →
+            {t(locale, "home.readPatch")} →
           </a>
         </section>
       ) : null}
 
       <section className="home-sidebar__panel">
-        <h2>{zh ? "版本范围" : "Version scope"}</h2>
+        <h2>{t(locale, "home.versionScope")}</h2>
         <p>
-          <strong>{zh ? "当前游戏版本" : "Current game version"}</strong>
+          <strong>{t(locale, "home.currentVersion")}</strong>
           <br />
           {currentGameVersion}
         </p>
         <p>
-          <strong>{zh ? "历史补丁资料库" : "Historical patch library"}</strong>
+          <strong>{t(locale, "home.historicalPatch")}</strong>
           <br />
           {historicalPatchRange}
         </p>
       </section>
 
       <section className="home-sidebar__panel">
-        <h2>{zh ? "公开内容状态" : "Published content"}</h2>
+        <h2>{t(locale, "home.publishedContent")}</h2>
         <ol className="home-ranking-list">
           {homeSectionOrder.map((contentType, index) => {
             const count = items.filter(
               (item) => item.frontMatter.contentType === contentType,
             ).length;
-            const [, label] = sectionLabels[locale][contentType];
+            const label = t(
+              locale,
+              `home.section${cap(contentType)}Title` as const,
+            );
             return (
               <li key={contentType}>
                 <span>{index + 1}</span>
                 <div>
                   <strong>{label}</strong>
                   <small>
-                    {zh ? `${count} 篇公开内容` : `${count} published page(s)`}
+                    {t(locale, "search.resultsCount", { count: String(count) })}
                   </small>
                 </div>
               </li>
@@ -222,20 +218,19 @@ function HomeSidebar({
       </section>
 
       <section className="home-sidebar__panel home-sidebar__notice">
-        <h2>{zh ? "编辑说明" : "Editorial note"}</h2>
-        <p>
-          {zh
-            ? "所有公开内容均保留 Patch、来源与实机核验状态；待核验不等于已实测。"
-            : "Every public page keeps its patch, sources and verification status visible. Pending verification is not presented as tested fact."}
-        </p>
+        <h2>{t(locale, "home.editorialNote")}</h2>
+        <p>{t(locale, "home.editorialNoteBody")}</p>
       </section>
     </aside>
   );
 }
 
 /** 渲染当前语言首页；内容卡片只消费构建期已发布页面，避免重新发现草稿。 */
-export default function HomeRoute() {
-  const localeParam = useParams().locale;
+export default function HomeRoute({
+  loaderData,
+  params,
+}: Route.ComponentProps) {
+  const localeParam = params.locale;
   const copy = getHomeCopy(localeParam);
   if (!copy) {
     return (
@@ -244,10 +239,9 @@ export default function HomeRoute() {
       </main>
     );
   }
-  const locale = localeParam as "en" | "zh-cn";
-  const items = getHomeContentItems(contentPages, locale, 100);
+  const locale = localeParam as ContentLocale;
+  const items = getHomeContentItems(loaderData.catalog, locale, 100);
   const groupedItems = groupHomeItems(items);
-  const zh = locale === "zh-cn";
   const publishedCountByType = (contentType: ContentType) =>
     items.filter((item) => item.frontMatter.contentType === contentType).length;
 
@@ -275,41 +269,41 @@ export default function HomeRoute() {
 
           <div
             className="home-stat-row"
-            aria-label={zh ? "站点状态" : "Site status"}
+            aria-label={t(locale, "home.siteStatus")}
           >
             <div className="home-stat-chip">
               <span aria-hidden="true">◉</span>
               <span>
                 <strong>{currentGameVersion}</strong>
-                <small>{zh ? "当前游戏版本" : "Current game version"}</small>
+                <small>{t(locale, "home.currentVersion")}</small>
               </span>
             </div>
             <div className="home-stat-chip">
               <span aria-hidden="true">◇</span>
               <span>
                 <strong>{publishedCountByType("guide")}</strong>
-                <small>{zh ? "攻略" : "Guides"}</small>
+                <small>{t(locale, "home.typeGuide")}</small>
               </span>
             </div>
             <div className="home-stat-chip">
               <span aria-hidden="true">♜</span>
               <span>
                 <strong>{publishedCountByType("boss")}</strong>
-                <small>{zh ? "首领" : "Bosses"}</small>
+                <small>{t(locale, "home.typeBoss")}</small>
               </span>
             </div>
             <div className="home-stat-chip">
               <span aria-hidden="true">◇</span>
               <span>
                 <strong>{publishedCountByType("item")}</strong>
-                <small>{zh ? "物品" : "Items"}</small>
+                <small>{t(locale, "home.typeItem")}</small>
               </span>
             </div>
             <div className="home-stat-chip">
               <span aria-hidden="true">✦</span>
               <span>
                 <strong>{publishedCountByType("skill")}</strong>
-                <small>{zh ? "技能" : "Skills"}</small>
+                <small>{t(locale, "home.typeSkill")}</small>
               </span>
             </div>
           </div>
@@ -321,22 +315,18 @@ export default function HomeRoute() {
             role="search"
           >
             <label className="visually-hidden" htmlFor="home-search">
-              {zh ? "搜索攻略" : "Search guides"}
+              {t(locale, "home.searchPlaceholder")}
             </label>
             <input
               id="home-search"
               name="q"
-              placeholder={
-                zh
-                  ? "搜索 Build、Boss、物品、技能与攻略…"
-                  : "Search builds, bosses, items, skills and guides…"
-              }
+              placeholder={t(locale, "home.searchPlaceholder")}
               type="search"
             />
-            <button type="submit">{zh ? "搜索" : "Search"}</button>
+            <button type="submit">{t(locale, "home.searchSubmit")}</button>
           </form>
           <div className="home-popular-searches">
-            <span>{zh ? "快速搜索：" : "Popular:"}</span>
+            <span>{t(locale, "home.popular")}</span>
             {["Liquid Verisium", "Atziri", currentGameVersion].map((term) => (
               <a
                 href={`/${locale}/search/?q=${encodeURIComponent(term)}`}
@@ -357,19 +347,17 @@ export default function HomeRoute() {
           >
             <header className="home-section-heading home-section-heading--compact">
               <div>
-                <p className="section-kicker">
-                  {zh ? "从这里开始" : "Start here"}
-                </p>
-                <h2 id="quick-access-title">
-                  {zh ? "快捷入口" : "Quick Access"}
-                </h2>
+                <p className="section-kicker">{t(locale, "home.startHere")}</p>
+                <h2 id="quick-access-title">{t(locale, "home.quickAccess")}</h2>
               </div>
             </header>
             <div className="home-quick-access__grid">
-              {quickAccessItems.map(([segment, icon, enLabel, zhLabel]) => (
+              {quickAccessItems.map(([segment, icon]) => (
                 <a href={`/${locale}/${segment}/`} key={segment}>
                   <span aria-hidden="true">{icon}</span>
-                  <strong>{zh ? zhLabel : enLabel}</strong>
+                  <strong>
+                    {t(locale, `home.quick${cap(segment)}` as const)}
+                  </strong>
                 </a>
               ))}
             </div>

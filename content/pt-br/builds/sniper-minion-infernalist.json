@@ -1,0 +1,862 @@
+{
+  "id": "sniper-minion-infernalist",
+  "slug": "sniper-minion-infernalist",
+  "locale": "pt-br",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Guia de Build Sniper Minion Infernalist: Sentinelas Atiradoras, Forma Demoníaca e Endgame",
+  "shortTitle": "Sniper Minion Infernalist",
+  "summary": "Kit de invocação da Bruxa na 0.5.4: a Sentinela Elemental como atiradora de longa distância garante dano estável de alvo único, Espíritos Furiosos cuidam do corpo a corpo, e a forma demoníaca do Infernalist abre uma janela de explosão. Cobre posicionamento de sentinela, timing da transformação demoníaca e limites defensivos.",
+  "description": "Guia de Sniper Minion Infernalist para Path of Exile 2 na 0.5.4: posicionamento de sentinelas, forma demoníaca, sinergia com Espírito Furioso, limites defensivos e timestamps de vídeo reais.",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "elemental-sentry",
+    "summon-raging-spirit"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "pain-offering",
+    "contingency",
+    "cast-on-minion-death"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "minion",
+    "sentry",
+    "ranged",
+    "demon",
+    "low-input"
+  ],
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "minion"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-05",
+  "updatedAt": "2026-08-05",
+  "heroImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "cardImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "imageAlt": "Uma Bruxa Infernalist invocando um esquadrão de Sentinela Elemental atiradoras enquanto comanda Espíritos Furiosos em combate",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "infernalist",
+    "leveling",
+    "melee",
+    "minion",
+    "physical",
+    "ranged",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Visão Geral do Build",
+      "paragraphs": [
+        "O Sniper Minion Infernalist é o kit de invocação à distância da Bruxa: a Sentinela Elemental funciona como um atirador posicionável que garante dano estável de alvo único, os Espíritos Furiosos cuidam do corpo a corpo, e a forma demoníaca do Infernalist abre uma janela de explosão quando você se transforma.",
+        "A graça principal é 'posicionar sentinelas e depois kitar': a maior parte do dano é automática, vinda das sentinelas e dos espíritos; sua ação se resume a posicionamento, repor espíritos e disparar a forma demoníaca. Não consome Mana como uma conjuradora pura, mas depende muito da sobrevivência e do limite de invocações.",
+        "Este guia é dividido por estágios: primeiro quando migrar de espíritos puros para o uso de sentinelas, depois equipamentos, passivas, timing da forma demoníaca e faixas de orçamento. Todos os números e mecânicas do cliente estão marcados para verificação em PC; DPS não verificado não é apresentado como fato."
+      ],
+      "bullets": [
+        "No mapeamento, espíritos no corpo a corpo + sentinela à distância como complemento, quase semiautomático.",
+        "Em chefes, termina com snipers de sentinela somado à explosão da forma demoníaca.",
+        "Sobrevivência e limite de invocações são gargalos reais que precisam ser tratados."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Prós e Contras",
+      "pros": [
+        "Sentinelas atiram automaticamente; o mapeamento é quase semiautomático e tranquilo.",
+        "A forma demoníaca oferece uma janela de explosão clara e um fechamento limpo em chefes.",
+        "Sem custo de Mana; a pressão de sustentação é muito menor que a de uma conjuradora pura.",
+        "Funciona com orçamento baixo no início e faz transição suave."
+      ],
+      "cons": [
+        "O limite e o tempo de atividade das sentinelas são restrições rígidas; a produção inicial pode estagnar.",
+        "Inimigos corpo a corpo contornam o alcance das sentinelas; os espíritos precisam cobrir as lacunas.",
+        "Chefes que se movem muito reduzem a taxa de acerto das sentinelas.",
+        "Modificadores de mapa que afetam invocações (ex.: menos dano de invocação) são uma armadilha oculta."
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Como o Loop Funciona: Posicionar Sentinela → Limpeza com Espírito → Explosão Demoníaca",
+      "paragraphs": [
+        "Loop de mapeamento: posicione a Sentinela Elemental na lateral do grupo; os espíritos avançam sozinhos contra o inimigo mais próximo enquanto você kita e repõe espíritos. É por isso que a comunidade chama de mapeamento semiautomático.",
+        "Loop de chefe: pré-posicione uma ou duas sentinelas ao longo da rota do chefe, use os espíritos para tankar/puxar agressão, então transforme-se na forma demoníaca quando o recurso estiver cheio para a janela de explosão, enquanto as sentinelas seguem atirando no núcleo.",
+        "Frases como 'as sentinelas miram sozinhas' geralmente se referem à mira automática das sentinelas, não a um sistema separado; verifique na descrição da habilidade e no cliente, não trate como uma mecânica extra oculta."
+      ],
+      "bullets": [
+        "Mapeamento = posicionar sentinela + kitar; os espíritos cuidam do resto.",
+        "Chefe = pré-posicionar sentinela → espíritos puxam agressão → explosão demoníaca.",
+        "Os espíritos são o finalizador corpo a corpo, não o dano principal."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Caminho de Leveling",
+      "steps": [
+        {
+          "label": "Níveis 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Comece com Espírito Furioso; está disponível bem cedo e é sua invocação real de mapeamento. Não force a quantidade de sentinelas ainda — o limite e os equipamentos não estão prontos."
+          ]
+        },
+        {
+          "label": "Níveis 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Adicione a Sentinela Elemental como complemento à distância e comece a pegar nós de vida/dano de espírito/resistências. Mantenha os espíritos como núcleo."
+          ]
+        },
+        {
+          "label": "Níveis 30–42 — Desbloqueios do Infernalist",
+          "levelRange": "30–42",
+          "body": [
+            "Escolha Infernalist e pegue nós da forma demoníaca. A janela de transformação agora garante explosão em chefes."
+          ]
+        },
+        {
+          "label": "Níveis 43–60 — Mapas Iniciais",
+          "levelRange": "43–60",
+          "body": [
+            "Use sentinela + espíritos sem crítico, com orçamento baixo. Capa resistências, ajuste vida, mantenha sentinelas ativas em raros."
+          ]
+        },
+        {
+          "label": "Nível 60+ — Preparação para Endgame",
+          "levelRange": "60+",
+          "body": [
+            "Migre para melhorias de orçamento: limite de sentinelas, dano de invocação, nível de espírito e Resistência a Caos. Só busque equipamentos de ponta após o checklist de prioridade de melhoria passar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Configuração de Habilidades",
+      "groups": [
+        {
+          "label": "Habilidades Centrais",
+          "skills": [
+            {
+              "displayName": "Sentinela Elemental",
+              "skillId": "elemental-sentry",
+              "role": "Atiradora posicionável à distância que garante dano estável de alvo único; dano principal em chefes.",
+              "supportSkillIds": [
+                "minion-damage",
+                "minion-speed",
+                "added-chaos"
+              ],
+              "whyUse": [
+                "É o núcleo ancorado de todo o loop; sem sentinelas, o combate a chefes volta a um ritmo instável baseado apenas em espíritos."
+              ],
+              "whenReplace": [
+                "Nunca substituída; nos mapas você pode posicionar temporariamente menos para acelerar."
+              ],
+              "mappingBossingDiff": [
+                "Mapeamento: uma na lateral é suficiente. Chefe: uma ou duas na rota para travar o núcleo."
+              ],
+              "notes": [
+                "Links de suporte exatos e limite de sentinelas pendentes de verificação em PC."
+              ]
+            },
+            {
+              "displayName": "Espírito Furioso",
+              "skillId": "summon-raging-spirit",
+              "role": "Espírito corpo a corpo que lida com inimigos que contornam o alcance das sentinelas e puxa agressão de chefes.",
+              "supportSkillIds": [
+                "minion-damage",
+                "meat-shield",
+                "feeding-frenzy"
+              ],
+              "whyUse": [
+                "Cobre o ponto cego do alcance das sentinelas; estável para mapeamento e agressão em chefes."
+              ],
+              "whenReplace": [
+                "Mantenha permanente; troque apenas se aparecer uma invocação corpo a corpo mais forte."
+              ],
+              "mappingBossingDiff": [
+                "Mapeamento: avança sozinho contra as hordas. Chefe: agressão e limpeza corpo a corpo."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Buffs e Gatilhos",
+          "skills": [
+            {
+              "displayName": "Oferenda de Dor",
+              "skillId": "pain-offering",
+              "role": "Sacrifica invocações por dano em todo o time; eleva brevemente a produção de sentinelas/espíritos.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "É o núcleo de dano da janela de explosão; melhor usada com a forma demoníaca e nas fases de chefe."
+              ],
+              "whenReplace": [
+                "Mantenha; faz parte da arquitetura de dano."
+              ],
+              "mappingBossingDiff": [
+                "Usada em ambos, mas o combate a chefes depende mais do seu pico."
+              ],
+              "notes": [
+                "Consome invocações; tempo com cuidado."
+              ]
+            },
+            {
+              "displayName": "Muralha de Chamas",
+              "skillId": "flame-wall",
+              "role": "Parede de fogo no chão; projéteis que a atravessam ganham fogo adicionado, fortalecendo sentinelas/espíritos.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Adiciona fogo e dano em área, fortalecendo a resolução."
+              ],
+              "whenReplace": [
+                "Mantenha como bônus."
+              ],
+              "mappingBossingDiff": [
+                "Mapeamento opcional; em chefes posicionada para potencializar a janela."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Conjuração ao Morrer Invocação",
+              "skillId": "cast-on-minion-death",
+              "role": "Conjura uma magia quando uma invocação morre, adicionando cobertura e autodefesa.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Adiciona automaticamente uma camada de dano/controle quando os espíritos caem, aliviando o tempo ocioso."
+              ],
+              "whenReplace": [
+                "Mantenha; faz parte da arquitetura de defesa."
+              ],
+              "mappingBossingDiff": [
+                "Usada em ambos, mais crítica em chefes."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Ordem de Ascendência",
+      "steps": [
+        {
+          "label": "Infernalist — Primeiros Nós",
+          "body": [
+            "Escolha Infernalist. Priorize nós da forma demoníaca para que a janela de transformação forneça explosão com confiança; esta é a pré-condição do build."
+          ]
+        },
+        {
+          "label": "Verificação de Sobrevivência de Invocações",
+          "body": [
+            "Se em T15+ as invocações morrem com frequência, não troque nós de demônio/dano por dano puro; garanta primeiro o limite de sentinelas e a sobrevivência dos espíritos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Árvore de Passivas",
+      "steps": [
+        {
+          "label": "Campanha",
+          "body": [
+            "Pegue apenas nós que apoiam espíritos/dano de invocação e vida; não abra caminho antecipado até rodas de limite de sentinelas."
+          ]
+        },
+        {
+          "label": "Mapas Iniciais",
+          "body": [
+            "Mude para a variante de sentinela; priorize vida, Resistência a Caos, dano de invocação e limite de sentinelas."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Após resolver defesa e limite de sentinelas, invista em rodas de crítico/dano de invocação; compare estados de equipamento no mesmo tier."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Equipamentos",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "Escolha uma base que aumente nível de invocação e dano de magia/invocação; sockets suficientes para links de espírito e sentinela."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Nível de habilidade de invocação / Dano de invocação",
+              "reason": "Escala diretamente a resolução de sentinela e espírito."
+            },
+            {
+              "tier": "recommended",
+              "label": "Vida e resistências",
+              "reason": "Você precisa sobreviver para comandar."
+            },
+            {
+              "tier": "optional",
+              "label": "Velocidade de Conjuração",
+              "reason": "Reposição de espírito e posicionamento de sentinela mais rápidos."
+            },
+            {
+              "tier": "luxury",
+              "label": "Chance de crítico de invocação / Dano Crítico",
+              "reason": "Só após sobrevivência e limite estarem estáveis."
+            }
+          ],
+          "notes": [
+            "O Focus é a arma principal; priorize afixos de invocação."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "Vida, Resistência a Caos e resistências; velocidade de movimento nas botas para kitar."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Vida e duas resistências capadas",
+              "reason": "Invocações morrem; você não pode."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistência a Caos",
+              "reason": "Necessidade dura de endgame tardio, não nativa."
+            },
+            {
+              "tier": "optional",
+              "label": "Velocidade de movimento",
+              "reason": "Melhora posicionamento e kite de grupo."
+            },
+            {
+              "tier": "luxury",
+              "label": "Afixos explícitos de invocação",
+              "reason": "Só importa após a defesa."
+            }
+          ],
+          "notes": [
+            "A Resistência a Caos deve ser empilhada especificamente."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "Atributos, resistências, vida; limite de sentinelas ou sobrevivência de invocação onde necessário."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Atributos para equipar staff e gemas",
+              "reason": "Não equipável é inútil."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistências e vida",
+              "reason": "Completa a casca defensiva."
+            },
+            {
+              "tier": "optional",
+              "label": "Limite de sentinelas / sobrevivência de invocação",
+              "reason": "Bônus livres de joias."
+            },
+            {
+              "tier": "luxury",
+              "label": "Nível de habilidade de invocação",
+              "reason": "Dano de endgame tardio."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Prioridade de Atributos",
+      "priorities": [
+        {
+          "label": "Nível de habilidade de invocação",
+          "reason": "Escala sentinelas e espíritos; verificação de progresso principal."
+        },
+        {
+          "label": "Limite de sentinelas",
+          "reason": "Decide se a cobertura com múltiplas sentinelas é sustentável."
+        },
+        {
+          "label": "Resistência a Caos",
+          "reason": "Necessidade dura de endgame tardio, não nativa."
+        },
+        {
+          "label": "Vida e resistências",
+          "reason": "Você precisa sobreviver para comandar invocações."
+        },
+        {
+          "label": "Crítico de invocação",
+          "reason": "Só após sobrevivência e limite estarem estáveis."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Prioridade de Melhoria",
+      "steps": [
+        {
+          "label": "Eliminar lentidão de clear",
+          "symptom": "Grupos precisam de muitas rodadas de espírito para morrer.",
+          "checks": [
+            "A staff ainda é uma base adequada ao tier?",
+            "Resistências e vida estão resolvidos (ou seja, a staff é o gargalo real)?"
+          ],
+          "upgrade": "Troque a staff abaixo do tier antes de tocar em joias."
+        },
+        {
+          "label": "Sentinelas continuam morrendo",
+          "symptom": "Sentinelas são eliminadas em lutas de chefe.",
+          "checks": [
+            "Está empilhando só dano, ignorando a sobrevivência das sentinelas?",
+            "Você está kitando para proteger as sentinelas nos chefes?"
+          ],
+          "upgrade": "Corrija sobrevivência e limite de sentinelas antes de escalar dano."
+        },
+        {
+          "label": "A forma demoníaca nunca vem",
+          "symptom": "O recurso de transformação nunca enche.",
+          "checks": [
+            "Está forçando chefes antes de pegar nós de demônio?",
+            "O ritmo de kills está lento demais para ganhar recurso?"
+          ],
+          "upgrade": "Corrija ascendência e ritmo de kills, não a staff."
+        },
+        {
+          "label": "Estagnado após T15",
+          "symptom": "O dano para de melhorar.",
+          "checks": [
+            "Nível de invocação capado?",
+            "Dano de invocação do Focus no lugar?",
+            "Resistência a Caos maxada?"
+          ],
+          "upgrade": "Melhore na ordem: nível de invocação → Focus → Resistência a Caos."
+        },
+        {
+          "label": "Considere equipamentos de ponta",
+          "symptom": "Quer mais dano em chefe e mira equipamentos de luxo.",
+          "checks": [
+            "Sentinelas e sobrevivência estão estáveis?",
+            "Equipamentos de ponta vão quebrar caps de resistência ou derrubar vida?"
+          ],
+          "upgrade": "Compre peça por peça e re-teste após o checklist passar; não troque sobrevivência por números."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapeamento",
+      "paragraphs": [
+        "Posicione a Sentinela Elemental na lateral do grupo; os espíritos avançam sozinhos contra o inimigo mais próximo enquanto você kita e repõe. Lixo não precisa de sentinelas completas; uma é suficiente.",
+        "Assim que o clear lento aparecer, melhore a staff primeiro. Mantenha alguma sobrevivência (resist/life/kite) ativa para o mapeamento nunca estagnar."
+      ],
+      "bullets": [
+        "Posicionar sentinela + kitar é todo o ritmo de mapeamento.",
+        "Uma sentinela é suficiente para lixo.",
+        "Melhore a staff reativamente quando o clear lento aparecer."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Combate a Chefes",
+      "paragraphs": [
+        "O combate a chefes é uma sequência: pré-posicione uma ou duas sentinelas ao longo da rota do chefe, use espíritos para puxar agressão corpo a corpo, então transforme quando o recurso demoníaco estiver cheio para a janela de explosão, enquanto as sentinelas seguem atirando no núcleo.",
+        "Se as sentinelas continuam morrendo, o problema é sobrevivência e posicionamento (kite para protegê-las), não a staff. Quando o chefe se move muito, posicione as sentinelas na passagem estreita que ele precisa cruzar, não aos pés dele."
+      ],
+      "bullets": [
+        "Pré-posicionar sentinela → agressão de espírito → explosão demoníaca.",
+        "Espíritos fazem limpeza corpo a corpo.",
+        "Morte de sentinela = corrija sobrevivência e posicionamento, não troque arma."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Faixas de Orçamento: Diferenças entre Barato Real e Luxo",
+      "paragraphs": [
+        "Barato: uma staff de orçamento baixo mais resistências/vida/limite de sentinelas resolvidos, limpando e enfrentando a maioria do conteúdo com sentinelas + espíritos. Isso muda se você consegue jogar, não o número de dano.",
+        "Luxo: Focus de alto nível de invocação, Uniques específicos, Resistência a Caos capada e crítico de invocação, elevando tanto a resolução de sentinela quanto a sobrevivência. Muda o teto e a margem de erro, não transforma o barato em um build diferente.",
+        "Tier de mirror só após verificar que barato/luxo passam e os números do cliente confirmam; não sacrifique Resistência a Caos e vida por DPS."
+      ],
+      "bullets": [
+        "Barato primeiro: vida, resistências, limite de sentinelas, uma staff decente.",
+        "Luxo depois: nível de invocação, Resistência a Caos, crítico.",
+        "Tier de mirror nunca quebra o piso defensivo."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Evidência da Comunidade",
+      "note": "Este guia usa discussões da comunidade como um checklist reproduzível, não como promessa do DPS mostrado por eles.",
+      "entries": [
+        {
+          "context": "Jogadores relatam dano de sentinela estagnado após T15, sem saber o que melhorar.",
+          "label": "LugoHQ — Guia de Endgame Sniper Minion Infernalist",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "O guia separa faixas barato/luxo, esclarecendo que cada uma muda limites de equipamento, não a mecânica.",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "context": "Jogadores debatem se a forma demoníaca vale a pena pegar.",
+          "label": "LugoHQ — Citadela Sniper Minion Infernalist",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Imagens da Citadela mostram o valor de finalizador da janela de explosão da forma demoníaca em chefes de alta pressão, enfatizando primeiro a sobrevivência das sentinelas.",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Solução de Problemas",
+      "problems": [
+        {
+          "symptom": "Sentinelas do chefe não disparam / morrendo",
+          "checks": [
+            "As sentinelas estão nos estreitos da rota?",
+            "Está empilhando só dano, ignorando a sobrevivência das sentinelas?",
+            "O kite está protegendo-as?"
+          ]
+        },
+        {
+          "symptom": "Recurso demoníaco nunca enche",
+          "checks": [
+            "Nós de demônio pegos?",
+            "O ritmo de kills está lento demais?"
+          ]
+        },
+        {
+          "symptom": "Mapeamento lento",
+          "checks": [
+            "A staff ainda é uma base de tier?",
+            "Resistências e vida estão resolvidos primeiro?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Em que nível começo a usar Espírito Furioso?",
+          "answer": [
+            "Usável bem cedo; é a invocação real de mapeamento. O kit de sentinela espera por equipamentos e limite."
+          ],
+          "bullets": [
+            "Espírito Furioso para mapeamento desde o nível 1."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Troquei para uma staff melhor mas as sentinelas continuam fracas?",
+          "answer": [
+            "Sentinelas dependem de limite e sobrevivência, não só da staff; corrija limite e sobrevivência primeiro."
+          ],
+          "bullets": [
+            "Grave uma luta de chefe e verifique o tempo de atividade das sentinelas."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Posso jogar SSF?",
+          "answer": [
+            "Sim; sentinelas + espíritos de orçamento baixo mapeiam e enfrentam a maior parte do conteúdo em SSF. Uniques de luxo são um teto, não um portão."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/en/guides/campaign-early-maps-gearing-crafting/",
+              "label": "Veja o guia de equipamentos de campanha e mapas iniciais"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Planejador de Build e Importação",
+      "note": "PoE2 agora traz um Build Planner nativo. Strings de importação coláveis e arquivos .build ainda estão pendentes de verificação em PC; enquanto isso, use os guias do criador e o planejador oficial abaixo. Sempre reconfirme nós no seu próprio cliente.",
+      "creatorName": "LugoHQ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Assista às Imagens de Endgame e Citadela",
+      "entries": [
+        {
+          "creator": "LugoHQ",
+          "label": "Guia de Endgame Sniper Minion Infernalist",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "description": "Uma referência longa mostrando o caminho completo de mapeamento com espíritos até o uso de sentinelas e forma demoníaca.",
+          "takeaway": "Amostre um chefe de campanha por ato; registre a ordem de posicionamento das sentinelas, não a velocidade de clear.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introdução e conceito"
+            },
+            {
+              "time": "2:30",
+              "label": "Mapeamento do Ato 1"
+            },
+            {
+              "time": "6:00",
+              "label": "Infernalist e forma demoníaca"
+            },
+            {
+              "time": "10:30",
+              "label": "Posicionamento de sentinela e sinergia de espírito"
+            },
+            {
+              "time": "15:00",
+              "label": "Mapas iniciais e equipamentos"
+            }
+          ]
+        },
+        {
+          "creator": "LugoHQ",
+          "label": "Citadela Sniper Minion Infernalist",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs",
+          "description": "Citadela de alta pressão: sobrevivência de sentinela, finalizador da forma demoníaca e limites de equipamento.",
+          "takeaway": "Foque no posicionamento e sobrevivência de sentinela em chefes de alta pressão, não em busca cega de DPS.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introdução"
+            },
+            {
+              "time": "1:50",
+              "label": "Entrada na Citadela e puxada de grupo"
+            },
+            {
+              "time": "5:20",
+              "label": "Posicionamento e proteção de sentinela"
+            },
+            {
+              "time": "9:10",
+              "label": "Janela de explosão da forma demoníaca"
+            },
+            {
+              "time": "13:00",
+              "label": "Limites de equipamento e resumo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Fontes e Verificação",
+      "categories": [
+        {
+          "label": "Oficial",
+          "description": "Grinding Gear Games — Notas do Patch 0.5.4 de Path of Exile 2",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Comunidade",
+          "description": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "label": "Comunidade",
+          "description": "LugoHQ — Citadela Sniper Minion Infernalist (YouTube)",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        },
+        {
+          "label": "Base de Dados",
+          "description": "Wiki de Path of Exile 2 — Infernalist",
+          "url": "https://poe2wiki.net/wiki/Infernalist"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Registro de Alterações",
+      "entries": [
+        {
+          "date": "2026-08-05",
+          "changes": [
+            "Criado guia de build Sniper Minion Infernalist 0.5.4 com fontes; verificação em PC em andamento."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Notas do Patch 0.5.4 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "label": "LugoHQ — Citadela Sniper Minion Infernalist (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+    },
+    {
+      "label": "Wiki de Path of Exile 2 — Infernalist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Infernalist"
+    }
+  ],
+  "seo": {
+    "title": "Guia de Build Sniper Minion Infernalist | Exile2 Guides",
+    "description": "Sniper Minion Infernalist 0.5.4: Sentinelas Elementais atiradoras, forma demoníaca do Infernalist, sinergia de Espírito Furioso e limites defensivos.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-05",
+  "lastVerifiedAt": "2026-08-05",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "sniper-minion-infernalist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

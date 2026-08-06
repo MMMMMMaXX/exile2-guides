@@ -1,0 +1,487 @@
+{
+  "id": "how-to-stop-getting-one-shot",
+  "slug": "how-to-stop-getting-one-shot",
+  "locale": "ko",
+  "type": "guide",
+  "status": "published",
+  "featured": true,
+  "title": "Path of Exile 2에서 한 방에 죽는 것을 막는 방법",
+  "shortTitle": "한 방 데스를 그만",
+  "summary": "Path of Exile 2에서 왜 한 방에 죽는지, 그리고 저항 상한, 방어구, 회피, 보호막(에너지 실드), 블록, 상태 이상 회피, 부적 같은 겹겹의 방어로 이를 해결하는 방법 - 단 하나의 마법 같은 스탯이 아니라.",
+  "description": "Path of Exile 2에서 순식간에 죽는 상황을 위한 문제 해결 가이드: 실제로 생존을 유지해 주는 방어 레이어와 그 구성 방법.",
+  "guideCategory": "troubleshooting",
+  "heroImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "cardImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "imageAlt": "잿빛의 심판자(Arbiter of Ash), 준비가 부족한 플레이어를 한 방에 보낼 수 있는 강력한 공격을 가하는 Path of Exile 2의 보스",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "액트 또는 초반 엔드게임 단계의 캐릭터",
+    "생명력과 저항 수치에 대한 기본 이해"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4d",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-07-28",
+  "publishedAt": "2026-07-28",
+  "updatedAt": "2026-07-28",
+  "tags": [
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "바로 알기",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "핵심 실수",
+          "body": [
+            "단일 방어에 의존하는 것. 한 방 데스는 어떤 단일 레이어로도 충분하지 않기 때문에 발생합니다 - 저항, 실질적인 생명력 또는 보호막 풀, 일정한 회피(회피, 블록, 주문 억제), 그리고 회복(부적, 플라스크)이 함께 작동해야 합니다."
+          ]
+        },
+        {
+          "title": "가장 먼저 할 일(항상)",
+          "body": [
+            "원소 저항을 75%(화염, 냉기, 전기)로 맞추세요. 저항이 상한에 못 미치는 것은 특히 몬스터 피해가 급증하는 액트 3과 지도에서 갑작스러운 죽음의 가장 흔한 원인입니다."
+          ]
+        },
+        {
+          "title": "혼돈은 다릅니다",
+          "body": [
+            "혼돈 저항은 별도로 상한을 맞추기 까다로운 풀이며, 혼돈 피해는 보호막(Energy Shield)에 대해 2배로 적용됩니다. 보호막 빌드라면 혼돈은 가장 큰 한 방 데스 위험입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stat-overview",
+      "order": 2,
+      "title": "방어 수치 한눈에 보기",
+      "type": "stat-grid",
+      "visible": true,
+      "toc": true,
+      "stats": [
+        {
+          "label": "원소 저항 상한",
+          "value": "75%",
+          "note": "화염, 냉기, 전기 각각"
+        },
+        {
+          "label": "쌓아야 할 방어 레이어",
+          "value": "4+",
+          "note": "저항, 풀, 회피, 회복"
+        },
+        {
+          "label": "혼돈 vs 보호막",
+          "value": "x2",
+          "note": "혼돈 피해가 ES에 대해 2배 적용"
+        }
+      ]
+    },
+    {
+      "id": "defense-layers",
+      "order": 3,
+      "title": "방어 레이어",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "어떤 단일 레이어도 혼자서는 당신을 구하지 못합니다. 여러 개를 동시에 구축하세요.",
+      "columns": [
+        {
+          "key": "layer",
+          "label": "레이어"
+        },
+        {
+          "key": "how",
+          "label": "도움되는 방식"
+        },
+        {
+          "key": "when",
+          "label": "가장 좋은 대상"
+        }
+      ],
+      "filters": [
+        {
+          "id": "mitigate",
+          "label": "피해 경감"
+        },
+        {
+          "id": "avoid",
+          "label": "회피"
+        },
+        {
+          "id": "recover",
+          "label": "회복"
+        }
+      ],
+      "rows": [
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "저항(75% 상한)",
+            "how": "받는 원소 타격 피해 감소",
+            "when": "모두, 항상"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "방어구(Armour)",
+            "how": "물리 타격 피해 감소, 높은 생명력에서 더 효과적",
+            "when": "근접, 고생명력 빌드"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "보호막(Energy Shield)",
+            "how": "별도의 풀, 혼돈은 ES에 대해 2배",
+            "when": "ES / 캐스터 빌드"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "회피 + 주문 억제",
+            "how": "타격 회피 및 주문 억제",
+            "when": "회피 빌드"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "블록 / 주문 블록",
+            "how": "타격을 완전히 무시할 확률",
+            "when": "방패 및 블록 빌드"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "상태 이상 회피",
+            "how": "빙결, 충격, 점화 효과 회피",
+            "when": "지면 효과가 있는 지도"
+          }
+        },
+        {
+          "tags": [
+            "recover"
+          ],
+          "cells": {
+            "layer": "부적 & 플라스크",
+            "how": "즉시 회복 및 상태 이상 제거",
+            "when": "모든 빌드, 보스 전투"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "피해 변환(불꽃의 망토)",
+            "how": "물리를 화염으로 바꾼 뒤 화염 저항으로 경감",
+            "when": "물리 중심 전투"
+          }
+        }
+      ],
+      "note": "불꽃의 망토(Cloak of Flames) 방식의 변환은 경감할 수 없는 피해 유형(물리)을 상한을 맞춘 유형(화염)으로 바꿔주므로, 강력한 겹겹 방어가 됩니다."
+    },
+    {
+      "id": "defense-tabs",
+      "order": 4,
+      "title": "게임 단계별 방어",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "우선순위는 진행도에 따라 달라집니다. 자신의 단계를 선택하세요.",
+      "tabs": [
+        {
+          "id": "acts",
+          "label": "액트 1-3",
+          "paragraphs": [
+            "초반은 기본기를 뒤처지지 않게 하는 것이 핵심입니다."
+          ],
+          "bullets": [
+            "가능한 모든 장비 슬롯에 생명력을 확보하세요.",
+            "퀘스트 보상에서 저항(냉기, 전기, 화염) 롤을 챙기세요.",
+            "플라스크를 적극적으로 사용하세요 - 죽은 플라스크는 죽은 캐릭터입니다."
+          ],
+          "steps": []
+        },
+        {
+          "id": "endgame",
+          "label": "엔드게임 지도",
+          "paragraphs": [
+            "지도는 미완성 방어를 가혹하게 징벌합니다."
+          ],
+          "bullets": [
+            "티어를 올리기 전에 세 원소 저항을 모두 상한에 맞추세요.",
+            "두 번째 레이어 추가: 빌드에 따라 방어구, 회피 또는 블록.",
+            "가능한 곳에 혼돈 저항을 박으세요. 특히 ES 빌드."
+          ],
+          "steps": []
+        },
+        {
+          "id": "boss",
+          "label": "보스 전투",
+          "paragraphs": [
+            "보스는 쓰레기 몹 피해를 훨씬 상회하는 공격을 가합니다."
+          ],
+          "bullets": [
+            "생명력 또는 ES를 쌓고 회복(부적, 플라스크)을 준비하세요.",
+            "예고된 지면 효과에는 상태 이상 회피를 사용하세요.",
+            "가장 큰 공격에는 블록이나 주문 억제를 겹치세요."
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "death-diagnostic",
+      "order": 5,
+      "title": "왜 계속 죽나요?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "죽는 방식을 선택하세요. 도구가 부족한 레이어를 알려줍니다.",
+      "controls": [
+        {
+          "id": "death",
+          "label": "어떻게 죽나요?",
+          "options": [
+            {
+              "label": "보스의 큰 한 방",
+              "value": "boss-hit"
+            },
+            {
+              "label": "혼돈 / 도트로 죽음",
+              "value": "chaos"
+            },
+            {
+              "label": "지면 효과에 서 있음",
+              "value": "ground"
+            },
+            {
+              "label": "전반적으로 허약함",
+              "value": "squishy"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "실질적인 풀과 회복 구축",
+          "when": {
+            "death": "boss-hit"
+          },
+          "steps": [
+            "생명력 또는 보호막(Energy Shield)을 늘리세요. 얇은 풀은 어떤 큰 타격에도 죽습니다.",
+            "두 번째 레이어로 블록, 주문 억제 또는 회피를 추가하세요.",
+            "전투 중 즉시 회복을 위해 부적과 플라스크를 준비하세요."
+          ]
+        },
+        {
+          "title": "혼돈과 ES 약점 해결",
+          "when": {
+            "death": "chaos"
+          },
+          "steps": [
+            "혼돈은 보호막(Energy Shield)에 대해 2배 적용 - ES를 사용한다면 혼돈 저항을 박으세요.",
+            "도트(DoT)로 죽는다면 혼돈 저항과 상태 이상 회피를 추가하세요.",
+            "물리 중심 혼돈 전투에는 불꽃의 망토 변환을 고려하세요."
+          ]
+        },
+        {
+          "title": "상태 이상 회피 추가",
+          "when": {
+            "death": "ground"
+          },
+          "steps": [
+            "지면 효과는 점화, 충격, 독을 부여합니다 - 상태 이상 회피를 추가하세요.",
+            "예고된 구역을 버티지 말고 이동으로 빠져나가세요.",
+            "상태 이상을 제거하는 플라스크 접미어가 큰 도움이 됩니다."
+          ]
+        },
+        {
+          "title": "기초부터 레이어 쌓기",
+          "when": {
+            "death": "squishy"
+          },
+          "steps": [
+            "먼저 원소 저항을 75%로 맞추세요 - 효과가 가장 큰 수정.",
+            "생명력/ES를 늘린 뒤, 하나의 회피 레이어(회피, 블록 또는 억제)를 추가하세요.",
+            "마지막으로 회복(부적, 플라스크)과 변환 트릭으로 마무리하세요."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "일반 생존 계획",
+        "steps": [
+          "원소 저항을 맞추고, 생명력/ES 풀을 키우고, 회피 레이어 하나를 추가하며, 회복을 항상 준비하세요.",
+          "혼돈은 별도로 다루고 ES 빌드를 그로부터 보호하세요.",
+          "레이어의 전체 시각적 분석은 참고한 방어 가이드 영상을 시청하세요."
+        ]
+      }
+    },
+    {
+      "id": "video-guide",
+      "order": 6,
+      "title": "방어 영상 가이드",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2에서 방어력을 높이는 7가지 비밀 방법",
+          "creator": "Spud the King",
+          "description": "Path of Exile 2의 방어 레이어에 대한 실전 분석: 저항, 방어구, 회피, 보호막, 블록, 상태 이상 회피, 그리고 회복.",
+          "takeaway": "여러 방어 레이어를 겹치세요 - 어떤 단일 스탯도 보스와 지도를 통과해 살아남게 해주지 않습니다.",
+          "url": "https://www.youtube.com/watch?v=dthtaESho5A",
+          "timestamps": [
+            {
+              "label": "소개",
+              "time": "0:00"
+            },
+            {
+              "label": "저항과 상한",
+              "time": "1:30"
+            },
+            {
+              "label": "방어구와 회피 레이어",
+              "time": "3:00"
+            },
+            {
+              "label": "보호막",
+              "time": "4:30"
+            },
+            {
+              "label": "블록과 주문 억제",
+              "time": "6:00"
+            },
+            {
+              "label": "상태 이상 회피",
+              "time": "7:30"
+            },
+            {
+              "label": "부적과 플라스크",
+              "time": "9:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 7,
+      "title": "자주 묻는 질문",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "75% 저항만으로 충분한가요?",
+          "answer": [
+            "가장 중요한 단일 레이어이지만, 아니요. 75% 저항을 받은 타격도 얇은 생명력 풀은 여전히 한 방에 보낼 수 있습니다. 실질적인 풀과 보통은 두 번째 레이어가 여전히 필요합니다."
+          ]
+        },
+        {
+          "question": "왜 혼돈이 보호막 빌드에 이리 아프나요?",
+          "answer": [
+            "혼돈 피해는 보호막(Energy Shield)에 대해 2배 적용되며, 혼돈 저항은 상한을 맞추기 까다롭습니다. ES 빌드는 능동적으로 혼돈 저항을 박거나 들어오는 유형을 변환해야 합니다."
+          ]
+        },
+        {
+          "question": "방어구와 회피, 무엇이 더 나은가요?",
+          "answer": [
+            "어느 쪽이 보편적으로 더 낫지는 않습니다. 방어구는 물리 타격을 경감하고 높은 생명력과 비례해 scaling 되며, 회피는 타격을 회피하고 주문 억제와 짝을 이룹니다. 빌드에 따라 선택하고, 다른 하나를 보조 레이어로 추가하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "출처 및 검증",
+      "order": 8,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "영상 가이드",
+          "description": "Spud the King - 7 Ways to Increase Defence (PoE 2)",
+          "url": "https://www.youtube.com/watch?v=dthtaESho5A"
+        },
+        {
+          "label": "공식 출처",
+          "description": "Path of Exile 2 공식 0.5.4 패치 노트 (방어 및 저항 변경사항)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티 위키",
+          "description": "PoE 2 wiki - Defenses and resistances",
+          "url": "https://www.poe2wiki.net/wiki/Resistance"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Spud the King - 7 Ways to Increase Defence (YouTube)",
+      "url": "https://www.youtube.com/watch?v=dthtaESho5A",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.5.4 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE 2 wiki - Resistances",
+      "url": "https://www.poe2wiki.net/wiki/Resistance",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 한 방 데스 해결: 저항, 방어구, 회피, ES, 블록 & 부적",
+    "description": "Path of Exile 2에서 왜 한 방에 죽는지, 그리고 저항 상한, 방어구, 회피, 보호막, 블록, 상태 이상 회피, 부적 같은 겹겹의 방어로 이를 해결하는 방법.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "how-to-stop-getting-one-shot",
+    "sourceRevision": "2026-07-28",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

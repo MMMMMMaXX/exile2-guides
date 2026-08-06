@@ -1,0 +1,1039 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "ジュエルとジュエルソケット：種類、半径、腐敗、およびパッシブツリーでの使い方（0.5.4）",
+  "shortTitle": "ジュエルとジュエルソケット",
+  "summary": "Path of Exile 2 0.5.4 におけるジュエルの仕組み：ジュエルソケットの場所、あらかじめ割り当てが必要か、ルビー／エメラルド／サファイア／ダイヤモンドのベースの違い、ノーマル／マジック／レア／ユニークの修飾数、腐敗ジュエルと通常ジュエルの違い、タイムロストジュエルが半径内のノードに影響する理由、タイムレスとタイムロストの違い、シニスターソケットのルール、半径の表示方法、限定（Limited to）、そして 0.2 の /reclaimjewels 修正。ソケットがパッシブポイントの価値に見合うかを判断するためのジュエル価値計算式も収録。",
+  "description": "Path of Exile 2 のジュエルとジュエルソケット攻略（0.5.4）：ソケットの割り当て、ベース種別、修飾数、腐敗、タイムロストの半径、タイムレスとタイムロストの違い、シニスターソケット、半径の重複、限定（Limited to）、/reclaimjewels コマンド、およびジュエル価値計算式。",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Path of Exile 2 のパッシブスキルツリーにおいて、割り当て済みのジュエルソケットと、タイムロストジュエルが投影する白い半径（Radius）円を示した図",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "ジュエルはパッシブスキルツリー上の割り当て済みジュエルソケットに挿入し、キャラクターにボーナスを付与します。タイムロストやユニークの半径付きジュエルの場合は、半径（Radius）円内のパッシブノードにボーナスを付与します。基本的なジュエルは自身の明示修飾（explicit mod）を適用するだけですが、タイムロストジュエルおよびユニークの半径ジュエル（Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac、Voices）は、その半径内のノードを書き換えます。ソケットの価値が消費するパッシブポイントと経路コストに勝る場合にのみ、ソケットを割り当てましょう。",
+      "calloutDetail": [
+        "ジュエルソケットはパッシブノードであり、ジュエルを挿入する前に割り当て（ツリーに接続）しておく必要があります。",
+        "タイムロストおよびユニークの半径ジュエルは白い円を投影します。円内のノードだけが影響を受けます。",
+        "ソケットがポイントに見合うかは、「ジュエルの価値」セクションのコスト計算式で判断してください。"
+      ],
+      "answers": [
+        {
+          "label": "用途",
+          "text": [
+            "パッシブツリーを通じて、ビルドにステータス、ライフ、耐性、ダメージ、または特殊な割り当て機構を追加する。"
+          ]
+        },
+        {
+          "label": "まず確認",
+          "text": [
+            "ソケットが割り当て済みであることを確認し、ジュエルの半径（Radius）と限定（Limited to）を読み、そのソケットにかかるパッシブポイントのコストを算出する。"
+          ]
+        },
+        {
+          "label": "避けるべき",
+          "text": [
+            "価値の低いソケットにたどり着くだけのために 3〜4 ポイントの経路を消費すること、タイムレスとタイムロストを同じものとみなすこと、ユニークジュエルをシニスターソケットに入れること。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "ジュエル系統の比較"
+        },
+        {
+          "href": "#valuation",
+          "label": "ジュエル価値計算式"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "アイテムクラス",
+          "value": "ジュエル",
+          "note": [
+            "すべてのジュエルは「ジュエル」アイテムクラスを共有し、パッシブツリーのジュエルソケット（あるいは一部は装備のシニスターソケット）にはめ込みます。"
+          ]
+        },
+        {
+          "label": "ソケットは割り当てが必要",
+          "value": "はい",
+          "note": [
+            "ジュエルソケットはパッシブノードです。右クリックでジュエルをはめ込む前に、割り当ててツリーに接続しておく必要があります。"
+          ]
+        },
+        {
+          "label": "ベース種別",
+          "value": "ルビー／エメラルド／サファイア／ダイヤモンド",
+          "note": [
+            "色付きベースは明示プレフィックス／サフィックス（affix）のプールを決定します。ダイヤモンドは虹彩（prismatic、ユニーク）ベースです。"
+          ]
+        },
+        {
+          "label": "修飾数",
+          "value": "ノーマル 2 ／ マジック 2 ／ レア 最大 4",
+          "note": [
+            "通常のジュエルは明示修飾を 2 つ転がります。マジックは 2 つ、レアは最大 4 つに達します。ユニークジュエルは固定されたユニークのラインを持ちます。"
+          ]
+        },
+        {
+          "label": "半径",
+          "value": "タイムロストおよびユニークの半径ジュエルのみ",
+          "note": [
+            "基本的なジュエルは自身の修飾を直接適用するだけです。半径円を投影するのはタイムロストおよびユニークの半径ジュエルのみです。"
+          ]
+        },
+        {
+          "label": "限定（Limited to）",
+          "value": "ユニークジュエルごと",
+          "note": [
+            "ほとんどのユニークジュエルは「限定 1」（Grand Spectrum のみ 3）であるため、そのユニークは 1 つしか装備できません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "ジュエル系統の比較",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "0.5.4 のビルド構成において重要なジュエルグループは 6 つあります。どこにはめるか、半径を投影するか、何をするかが異なります。これはコンテンツ計画の「系統比較表」を、メンバーカード形式で示したものです。"
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "ソケット可能アイテム",
+          "title": "基本ジュエル",
+          "sub": "ルビー／エメラルド／サファイア／ダイヤモンド",
+          "body": [
+            "割り当て済みの通常ジュエルソケットであればどれにはまり、半径なしで自身の明示修飾を直接適用します。",
+            "ベースの色でプレフィックス／サフィックスのプールが決まります。ルビーは防具／武術寄り、サファイアはエネルギーシールド／キャスター寄り、エメラルドは回避／遠隔寄り、ダイヤモンドは虹彩です。"
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "セケマス",
+          "title": "タイムロストジュエル",
+          "sub": "ルビー／エメラルド／サファイア",
+          "body": [
+            "セケマスの試練（Trial of the Sekhemas）のタイムロスト宝箱（Time-Lost Cache）からドロップします。半径（中〜大）を持ちます。",
+            "その修飾は「半径内でも付与（in Radius also grant）」として円内のノードにボーナスを与えます。よくある間違い：自分のツリーに合わない修飾を買ってしまうこと。"
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "ユニーク",
+          "title": "ダイヤモンドのユニークジュエル",
+          "sub": "Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac",
+          "body": [
+            "ダイヤモンドベースで、特殊な割り当てや半径の仕組みを持つユニークジュエルです。",
+            "よくある間違い：購入前にキーストーンや半径の挙動を理解していないこと。"
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "遠征",
+          "title": "タイムレスジュエル",
+          "sub": "Heroic Tragedy、Undying Hate",
+          "body": [
+            "遠征（Expedition）の頂点ボスからドロップします。歴史的（historic）な半径を持ち、シード（Seed）とキーストーンによってパッシブを変換します。",
+            "よくある間違い：名前だけ読んで、結果を決定するシードを無視すること。"
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "装備のソケット",
+          "title": "シニスタージュエル",
+          "sub": "Voices 経由",
+          "body": [
+            "パッシブツリーではなく、Voices を通じて装備に現れます。通常の半径は持ちません。",
+            "独立したジュエル効果を付与します。よくある間違い：ユニークジュエルをシニスターソケットに入れようとすること。"
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "腐敗",
+          "title": "腐敗ジュエル",
+          "sub": "任意のベース（腐敗後）",
+          "body": [
+            "腐敗（corruption）の暗黙（implicit）を得て、通常のクラフト通貨ではもはや変更できなくなります。",
+            "よくある間違い：汚れていないジュエルと同様に通常の修正や神竜（Divine）が効くと思い込むこと。"
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "特性と代表ツールチップ",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "アイテムクラス",
+          "value": "ジュエル",
+          "notes": [
+            "すべてのジュエルは「ジュエル」アイテムクラスを共有し、パッシブツリーのジュエルソケットにはめ込みます。"
+          ]
+        },
+        {
+          "label": "ソケット要件",
+          "value": "割り当て済みのジュエルソケット",
+          "notes": [
+            "ジュエルを挿入する前に、ソケットノードを割り当て（ツリーに接続）しておく必要があります。"
+          ]
+        },
+        {
+          "label": "ベース種別",
+          "value": "ルビー／エメラルド／サファイア／ダイヤモンド",
+          "notes": [
+            "色付きベースは明示プレフィックス／サフィックスのプールを決定します。ルビーは防具／武術寄り、サファイアはエネルギーシールド／キャスター寄り、エメラルドは回避／遠隔寄り、ダイヤモンドは虹彩です。"
+          ]
+        },
+        {
+          "label": "明示修飾（ノーマル）",
+          "value": "標準で 2 つ",
+          "notes": [
+            "通常のジュエルは明示修飾を 2 つ転がります。マジックは 2 つ、レアは最大 4 つに達します。"
+          ]
+        },
+        {
+          "label": "半径（タイムロストのみ）",
+          "value": "中〜大",
+          "notes": [
+            "半径円を投影するのはタイムロストおよびユニークの半径ジュエルのみです。基本的なジュエルは自身の修飾を直接適用します。"
+          ]
+        },
+        {
+          "label": "腐敗",
+          "value": "腐敗修飾を追加",
+          "notes": [
+            "腐敗ジュエルは腐敗の暗黙を得て、クラフト通貨ではもはや変更できなくなります。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "概要：ジュエルとソケットの仕組み",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "ジュエルソケットはパッシブスキルノードです。他のノードと同様に割り当て、ツリーに接続されていれば右クリックでジュエルをはめ込めます。その後、基本的なジュエルは自身の明示修飾をキャラクターに付与します。タイムロストジュエルおよびユニークの半径ジュエルは異なります。ツリー上に白い半径（Radius）円を投影し、その円内にあるパッシブノードに修飾を適用します。",
+        "ベース種別が重要です。ルビー、エメラルド、サファイアのジュエルは色付きベースであり、それぞれ防具／武術、回避／遠隔、エネルギーシールド／キャスターのプレフィックス／サフィックスに偏った明示プールを持ちます。ダイヤモンドはユニークジュエル（Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac）が使う虹彩ベースであり、全プールのあらゆる修飾を転がせます。",
+        "レア度ごとの修飾数：ノーマルジュエルは明示修飾を 2 つ、マジックは 2 つ、レアは最大 4 つ転がします。ユニークジュエルはこれらを固定されたユニークのラインに置き換えます。腐敗ジュエルは追加の腐敗暗黙を得て、通常のクラフト通貨ではもはや変更できなくなります。これこそが The Adorned が腐敗したマジックジュエルを求める理由です。",
+        "タイムロストとタイムレスの混同は最も一般的な誤解です。タイムロストジュエル（ルビー／エメラルド／サファイア、あるいはダイヤモンド上のユニーク Against the Darkness）はセケマスの試練からのドロップで、乱数風のボーナスでその半径内のノードを修正します。一方タイムレスジュエル（Heroic Tragedy、Undying Hate）は遠征からのドロップで、数値のシードとキーストーンに基づいてその歴史的半径内のパッシブを征服または置換します。ドロップ元もルールも異なる別のシステムです。",
+        "シニスターソケットはパッシブツリーのソケットではありません。装備に現れ（例：Voices ユニークジュエル経由）、通常の半径を持たず、独立した効果を持つ特定のジュエル群を受け入れます。ユニークジュエルをシニスターソケットに入れることはできません。",
+        "半径は半径付きジュエルをはめ込んだ瞬間に白い円として表示され、パッシブツリーのプランナーでもプレビューされます。複数の半径は重複でき、2 つ以上の半径に含まれるノードはそれぞれの効果を受けます。ユニークジュエルは多くの場合「限定 1」であるため、そのユニークは同時に 1 つしか装備できません。",
+        "0.2 のパッシブツリー再構築により、古いキャラクターからいくつかのジュエルソケットが削除されました。影響を受けたジュエルは /reclaimjewels チャットコマンドで回収できます。これは過去の修正ですが、ツリー更新後にいまだジュエルが足りない古いキャラクターに対しても、引き続き正しい手順です。"
+      ],
+      "bullets": [
+        "まずソケット：ジュエルソケットははめる前に割り当てて接続しておく必要がある。",
+        "色付きベースがプレフィックス／サフィックスのプールを決定する。ダイヤモンドは虹彩（ユニーク）。",
+        "ノーマル／マジック＝2 修飾、レア＝最大 4、ユニーク＝固定ライン。",
+        "タイムロスト＝セケマスの半径ボーナス。タイムレス＝遠征のシード／キーストーンによる征服。",
+        "シニスターソケットは装備上にありツリー上ではない。ユニークジュエルは拒否される。",
+        "半径は重複可能。限定（Limited to）は装備できるユニークの数を上限する。"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "ソケット適合マトリクス",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "どのジュエルがどのソケットに合うか、半径を投影するか、特殊ルールは何か。「text」セルは yes/no ではなく該当の詳細を記載する。"
+      ],
+      "columns": [
+        "ジュエル種別",
+        "通常ソケット",
+        "シニスターソケット",
+        "半径",
+        "特殊ルール"
+      ],
+      "rows": [
+        {
+          "label": "基本（ルビー／エメラルド／サファイア／ダイヤモンド）",
+          "values": [
+            { "kind": "yes", "text": "割り当て済みの通常ジュエルソケットにはまる" },
+            { "kind": "no", "text": "シニスターソケットでは無効" },
+            { "kind": "text", "text": "なし（直接修飾）" },
+            { "kind": "text", "text": "自身の明示修飾のみを付与" }
+          ]
+        },
+        {
+          "label": "タイムロストジュエル",
+          "values": [
+            { "kind": "yes", "text": "割り当て済みの通常ジュエルソケットにはまる" },
+            { "kind": "no", "text": "シニスターソケットでは無効" },
+            { "kind": "text", "text": "中〜大" },
+            { "kind": "text", "text": "半径内のノードを修正" }
+          ]
+        },
+        {
+          "label": "ダイヤモンドユニーク（Against the Darkness など）",
+          "values": [
+            { "kind": "yes", "text": "割り当て済みの通常ジュエルソケットにはまる" },
+            { "kind": "no", "text": "シニスターソケットでは無効" },
+            { "kind": "text", "text": "中（ジュエルにより異なる）" },
+            { "kind": "text", "text": "特殊な割り当てまたは半径の仕組み" }
+          ]
+        },
+        {
+          "label": "タイムレスジュエル",
+          "values": [
+            { "kind": "yes", "text": "割り当て済みの通常ジュエルソケットにはまる" },
+            { "kind": "no", "text": "シニスターソケットでは無効" },
+            { "kind": "text", "text": "歴史的（異なる）" },
+            { "kind": "text", "text": "シードによってパッシブを征服／置換" }
+          ]
+        },
+        {
+          "label": "シニスタージュエル",
+          "values": [
+            { "kind": "no", "text": "通常ソケットでは無効" },
+            { "kind": "yes", "text": "装備のシニスターソケットにはまる" },
+            { "kind": "text", "text": "なし（通常の半径なし）" },
+            { "kind": "text", "text": "独立したジュエル効果" }
+          ]
+        },
+        {
+          "label": "腐敗ジュエル",
+          "values": [
+            { "kind": "text", "text": "ベースが通常ソケットに合えば可" },
+            { "kind": "text", "text": "腐敗マジックはシニスターに適合" },
+            { "kind": "text", "text": "ベースに依存" },
+            { "kind": "text", "text": "追加の腐敗修飾、これ以上クラフト不可" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "ジュエルのはめ込みとプレビュー方法",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "ソケットに到達し割り当てる",
+          "body": [
+            "ジュエルソケットへの経路を計画し、ツリーに接続するように割り当てます。ジュエルを入れる前にソケットを割り当てておく必要があります。"
+          ]
+        },
+        {
+          "label": "ソケットに合うジュエルを選ぶ",
+          "body": [
+            "ベース／プレフィックス／サフィックスをビルドに合わせます。半径ジュエルの場合は、実際のツリー上でどのノードが半径内に入るか確認してください。"
+          ]
+        },
+        {
+          "label": "はめ込み、半径をプレビューする",
+          "body": [
+            "ジュエルを右クリックでソケットにはめ込みます。白い円が表示されるので、ノードにカーソルを合わせて影響を受ける小ノード（Small）と顕名ノード（Notable）を確認します。"
+          ]
+        },
+        {
+          "label": "半径内を割り当てる（必要な場合）",
+          "body": [
+            "タイムロストおよびユニークの半径ジュエルの場合、ボーナスは半径内で割り当てたノードに適用されます。一部の特殊な転がりは未割り当てのノードにも及びます。"
+          ]
+        },
+        {
+          "label": "取り外しまたは交換",
+          "body": [
+            "ソケットを右クリックしてジュエルを取り外します。取り外したジュエルはインベントリに戻り、半径ジュエルの領域内で割り当てていたノードはそのボーナスを失います。"
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "ジュエルソケットは割り当て済みだが空の状態。周囲のノードは印刷された値のみを与える。"
+        ],
+        "after": [
+          "半径ジュエルをはめ込むと、白い円内のすべての割り当て済み小ノードと顕名ノードが、ジュエルの「も付与（also grant）」ボーナスを得る。"
+        ],
+        "note": "加わる価値は、影響を受けるノードのボーナスの合計から、ソケットに到達して使用するために消費したパッシブポイントを引いたものです。"
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "状況ごとの結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "経路上にソケットがあるステータス堆積ビルド",
+          "audience": "ステータス堆積（Astramentis／HOWA）",
+          "benefit": "経路上のソケットがステータス、ライフ、耐性を無料で追加",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "強力な明示ジュエルをはめる。経路コストはすでに払っている。"
+        },
+        {
+          "scenario": "価値の低いソケットへの 4 ポイントの遠回り",
+          "audience": "パッシブ予算が厳しい場合",
+          "benefit": "わずかなジュエル修飾",
+          "risk": "機会費用が高い",
+          "level": "high",
+          "recommendation": "ソケットはスキップ。その 4 ポイントは他でより多くを得られるはず。"
+        },
+        {
+          "scenario": "特定のユニークジュエルの購入",
+          "audience": "トレーダー",
+          "benefit": "予測可能なユニークのリターン",
+          "risk": "中（転がり／ソケット次第で価格）",
+          "level": "medium",
+          "recommendation": "支払う前に正確なソケットと半径を確認。ユニークジュエルの各ガイドを参照。"
+        },
+        {
+          "scenario": "0.2 後にジュエルが消えた古いキャラクター",
+          "audience": "復帰プレイヤー",
+          "benefit": "影響を受けたジュエルを回収",
+          "risk": "低",
+          "level": "low",
+          "recommendation": "/reclaimjewels チャットコマンドを使う。取引で再購入してはいけない。"
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "ビルドでの使い方",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "ソケットが経路上にある、あるいは半径ジュエルがすでに欲しいノードを覆える場合、ジュエルはビルドを決定づけます。以下のペルソナはジュエルの主な使い方を示します。"
+      ],
+      "builds": [
+        {
+          "title": "ステータス堆積",
+          "description": "ステータス堆積ビルド（Astramentis、Hand of Wisdom and Action）は、経路上のソケットを使って無属性ステータスと力／敏／知のスケーリングを得る。",
+          "href": "/ja/items/astramentis/"
+        },
+        {
+          "title": "防御的なライフ／耐性ジュエル",
+          "description": "ライフと耐性を持つ基本ジュエルは、装備では埋められない穴、特に元素耐性が不足するキャラクターの穴を埋める。"
+        },
+        {
+          "title": "半径を活かすユニーク",
+          "description": "Against the Darkness、From Nothing、Controlled Metamorphosis、The Adorned、Megalomaniac は、1 つのソケットを複数の割り当て済みまたは強化されたノードに変える。",
+          "href": "/ja/items/against-the-darkness/"
+        },
+        {
+          "title": "パッシブツリーの計画",
+          "description": "ポイントを確定する前にビルドプランナーでソケット経路を計画。プランナーのファイルをインポート／エクスポートして正確なツリーを共有する。",
+          "href": "/ja/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "代替案",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "ソケットが経路から遠い場合、そこに到達する機会費用が、そのソケットに置けるどのジュエルよりも大きくなるのが通常です。その場合は、ポイントを通常のパッシブノードに使うか、自然にソケットを通るようにツリーを迂回させましょう。",
+        "ステータスや耐性が必要な場合、装備のサフィックス、触媒（catalyst）の品質、お守り（charm）は、遠回りのソケットよりも安く同じステータスをもたらすことがよくあります。The Adorned などのユニーク増幅枠は、すでに腐敗マジックジュエルに投資している場合にのみ代替となります。",
+        "タイムレスジュエルがタイムロストジュエルの代替になるのは、単純な半径ボーナスではなくシード駆動のパッシブ征服をビルドが求める場合のみです。両者は互換ではありません。"
+      ],
+      "bullets": [
+        "遠いソケットの代わりに、迂回ポイントを通常ノードに使う。",
+        "装備、触媒、お守りでジュエルのステータスを代替できる。",
+        "タイムレスはタイムロストのそのまま置き換えではない。"
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "評価：使用、売却、または保持",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "ジュエルの価値は単一の通貨価格ではなく、パッシブポイントについての意思決定です。以下のジュエル価値計算式と 3 つの実例を用いて判断してください。"
+      ],
+      "use": {
+        "condition": "ソケットが経路上にある、または半径が欲しいノードを覆う",
+        "first": "ジュエルをはめる。経路コストはすでに払っている",
+        "risk": "1 つのソケットと、そこに到達するために消費したポイントを占有する",
+        "text": [
+          "純便益（ジュエルのステータス − ポイントと経路コスト − 機会費用）が正の場合に使用する。"
+        ]
+      },
+      "sell": {
+        "condition": "重複を手に入れた、または自分のツリーに合わないジュエル",
+        "first": "ベース、腐敗、明示修飾で取引所に出品する",
+        "risk": "換金性は高いが価値は転がりとメタ需要に依存",
+        "text": [
+          "現在のツリーよりも別のビルドが高く評価する場合に売却する。"
+        ]
+      },
+      "hold": {
+        "condition": "後でジュエル中心に再構築するかもしれない",
+        "first": "高転がりのレアとユニークを保管。リーグをまたいで価値を維持する",
+        "risk": "インベントリ枠のみ",
+        "text": [
+          "高転がりのジュエルを保持。それらは長期的なビルド資産である。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "リスクと失敗コスト",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "価値の低いソケットへの 4 ポイントの遠回り",
+          "gain": "わずかなジュエル修飾",
+          "loss": "顕名ノードやキーノードを買えるはずの 4 パッシブポイント",
+          "level": "high",
+          "recommendation": "ソケットは自然な経路上にある場合のみ取る。"
+        },
+        {
+          "scenario": "自分のツリーに合わないタイムロスト修飾",
+          "gain": "半径のカバー",
+          "loss": "割り当てないノードに無駄になる修飾ボーナス",
+          "level": "medium",
+          "recommendation": "半径をプレビューし、割り当てたノードに合う修飾を選ぶ。"
+        },
+        {
+          "scenario": "タイムレス＝タイムロストと見なす",
+          "gain": "なし",
+          "loss": "ビルドに合わないジュエルシステムを購入",
+          "level": "medium",
+          "recommendation": "購入前にドロップ元と仕組みを確認する。"
+        },
+        {
+          "scenario": "ユニークジュエルをシニスターソケットに",
+          "gain": "なし",
+          "loss": "無駄な試み。ユニークジュエルはシニスターソケットに拒否される",
+          "level": "low",
+          "recommendation": "シニスターソケットは対応するジュエル群にのみ使用する。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Reddit の質問",
+          "question": "ジュエルをはめる前にジュエルソケットを割り当てる必要がありますか？",
+          "summary": [
+            "プレイヤーが、未割り当てのソケットノードにはジュエルを入れられるか尋ねた。"
+          ],
+          "editorialAnalysis": [
+            "ジュエルソケットはパッシブノードです。ジュエルを挿入する前に割り当ててツリーに接続しておく必要があり、未割り当てのソケットにはジュエルスロットが表示されません。"
+          ],
+          "officialAnswer": [
+            "まずソケットを割り当てる。その後でのみ右クリックでジュエルをはめ込める。"
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "ジュエルのはめ込み方"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "ガイド",
+          "question": "タイムレスはタイムロストと同じですか？",
+          "summary": [
+            "あるガイドがタイムレス（遠征）とタイムロスト（セケマス）のジュエルを混同していた。"
+          ],
+          "editorialAnalysis": [
+            "これらは異なるシステムです。タイムロストジュエルはセケマスの試練からのドロップで半径ボーナスを追加し、タイムレスジュエルは遠征からのドロップでシードとキーストーンによりパッシブを征服／置換します。"
+          ],
+          "officialAnswer": [
+            "別系統として扱う。購入前にドロップ元と仕組みを読む。"
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "ジュエル系統の比較"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "ガイド",
+          "question": "パッシブツリーの更新後にジュエルが消えたのはなぜですか？",
+          "summary": [
+            "復帰プレイヤーが 0.2 のツリー再構築後にジュエルが消えたと報告した。"
+          ],
+          "editorialAnalysis": [
+            "0.2 のパッシブツリー変更により、古いキャラクターからいくつかのソケットが削除された。影響を受けたジュエルは再購入ではなく /reclaimjewels コマンドで回収できる。"
+          ],
+          "officialAnswer": [
+            "削除されたソケットからジュエルを回収するには /reclaimjewels を使用。これは過去の修正であり、現在のドロップ変更ではない。"
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "パッチ履歴"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "ソケットで右クリックしても何も起きない",
+          "directAnswer": [
+            "ジュエルソケットが割り当てられていないか、ツリーに接続されていません。まず割り当ててからジュエルをはめ込んでください。"
+          ],
+          "checks": [
+            "パッシブツリーを開き、ソケットノードが点灯して接続していることを確認してから再試行する。"
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "はめ込みの手順"
+            }
+          ]
+        },
+        {
+          "symptom": "半径円が小さく有用なものを覆わない",
+          "directAnswer": [
+            "ジュエルの半径が小さいか、割り当てたノードがその外にあります。ソケットを再計画するか、その領域に大きな半径を持つジュエルを選んでください。"
+          ],
+          "checks": [
+            "プランナーで半径をプレビューし、その内の割り当て済みノードを数える。"
+          ]
+        },
+        {
+          "symptom": "ユニークジュエルがシニスターソケットに入らない",
+          "directAnswer": [
+            "シニスターソケットはユニークジュエルを拒否する。対応するジュエル群（例：腐敗マジック）のみを受け入れる。"
+          ],
+          "checks": [
+            "ユニークジュエルには通常のパッシブツリーのソケットを使用する。"
+          ]
+        },
+        {
+          "symptom": "ツリー更新後にジュエルが足りない",
+          "directAnswer": [
+            "ソケットが削除された場合は、新しく買うのではなく /reclaimjewels でジュエルを回収する。"
+          ],
+          "checks": [
+            "チャットで /reclaimjewels を実行。インベントリと倉庫を確認する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "動画解説",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 ジュエル、腐敗、パッシブツリーの特殊化",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "コミュニティクリエイター",
+          "description": "ジュエルの腐敗、パッシブツリーの特殊化、および実況ビルド解説での Against the Darkness への言及を扱う。",
+          "takeaway": "ジュエルと腐敗が実際のパッシブツリー計画にどう組み込まれ、Against the Darkness のような半径ジュエルが割り当てたノードをどう変えるかを示す。",
+          "timestamps": [
+            { "label": "パッシブツリーの特殊化", "time": "01:54" },
+            { "label": "腐敗とジュエル", "time": "03:03" },
+            { "label": "Against the Darkness への言及", "time": "02:49" },
+            { "label": "ビルドまとめ", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "パッシブスキルツリー上の割り当て済みジュエルソケット",
+          "note": "はめる前にソケットノードが点灯し接続している様子を示す。"
+        },
+        {
+          "caption": "未割り当てと割り当て済みのソケットの比較",
+          "note": "ジュエルスロットはソケットが割り当てられた後でのみ現れる。"
+        },
+        {
+          "caption": "タイムロストジュエルが投影する白い半径円",
+          "note": "円内のノードはジュエルのボーナスを受ける。"
+        },
+        {
+          "caption": "基本、タイムロスト、タイムレス、ダイヤモンドユニークの比較",
+          "note": "ソケットと半径の挙動が異なる 4 つのジュエルグループ。"
+        },
+        {
+          "caption": "装備上のシニスターソケットの位置",
+          "note": "Voices を通じて現れ、パッシブツリーのソケットとは別。"
+        },
+        {
+          "caption": "/reclaimjewels コマンドの結果",
+          "note": "0.2 のツリー再構築で削除されたソケットからジュエルを回収する。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "2 つのランダムな半径修飾を持つユニークのタイムロストダイヤモンド。",
+          "href": "/ja/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "接続なしでキーストーンを割り当てるユニークダイヤモンド。",
+          "href": "/ja/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "リング状の遠隔割り当て領域を持つユニークダイヤモンド。",
+          "href": "/ja/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "半径内の腐敗マジックジュエルを増幅する。",
+          "href": "/ja/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "ランダムな顕名ノードを割り当てるユニークダイヤモンド。",
+          "href": "/ja/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices とシニスタージュエルソケット",
+          "description": "特定のジュエル用に装備にシニスターソケットを追加する。",
+          "href": "/ja/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "タイムレスジュエル",
+          "description": "Heroic Tragedy と Undying Hate のシード駆動の征服。",
+          "href": "/ja/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "セケマスの試練で Against the Darkness をドロップする。",
+          "href": "/ja/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "リスペック、パッシブ、アセンダンシーガイド",
+          "description": "0.5.4 におけるパッシブポイントとリスペックの仕組み。",
+          "href": "/ja/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "ビルドプランナー：ビルドファイルのインポート／エクスポート",
+          "description": "ソケット経路を計画しツリーを共有する。",
+          "href": "/ja/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "パッチ 0.5.4（Runes of Aldur）",
+          "description": "現在のアーリーアクセスのパッチ状況。",
+          "href": "/ja/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "パッチ履歴",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4（Runes of Aldur、現在）",
+          "changes": [
+            "ジュエルとジュエルソケットは説明のとおりに機能する。割り当て済みソケット、色付きベースのプレフィックス／サフィックスプール、タイムロストおよびユニークの半径ジュエルの半径挙動。"
+          ]
+        },
+        {
+          "version": "0.2.1（ソケット可能アイテムとユニークドロップ）",
+          "changes": [
+            "ソケット可能アイテムおよびユニークジュエルのドロップ取得を調整。"
+          ]
+        },
+        {
+          "version": "0.2.0（Dawn of the Hunt）",
+          "changes": [
+            "パッシブツリーの再構築により古いキャラクターから一部のジュエルソケットが削除。/reclaimjewels で影響を受けたジュエルを回収。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "ジュエルとジュエルソケットがアーリーアクセスで導入。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Path of Exile 2 0.5.4 パッチノートおよび公式アイテムドキュメント。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2Wiki および poe2db のジュエルと Against the Darkness のデータ。",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "ガイド",
+          "description": "Sportskeeda のタイムロストジュエルガイドおよび GameRant の Against the Darkness ガイド。",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Reddit r/PathOfExile2 でのソケット、半径、消えたジュエルに関する議論。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "動画",
+          "description": "ジュエルの腐敗とパッシブツリーの特殊化を扱うコミュニティ動画。",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "0.5.4 向けに、ジュエルソケット、ベース種別、修飾数、腐敗、タイムロストとタイムレスの違い、シニスターソケット、半径の重複、限定（Limited to）、/reclaimjewels 修正、ジュエル価値計算式を網羅した初版を公開。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - タイムロストジュエルの入手方法",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - Against the Darkness の入手方法",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 ジュエルと腐敗",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 ジュエルとジュエルソケット攻略（0.5.4）",
+    "description": "PoE2 0.5.4 におけるジュエルとジュエルソケットの仕組み：ソケットの割り当て、ルビー／エメラルド／サファイア／ダイヤモンドのベース、修飾数、腐敗、タイムロストの半径、タイムレスとタイムロストの違い、シニスターソケット、およびジュエル価値計算式。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

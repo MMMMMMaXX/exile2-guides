@@ -1,0 +1,1251 @@
+{
+  "id": "controlled-metamorphosis",
+  "slug": "controlled-metamorphosis",
+  "locale": "ko",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Controlled Metamorphosis: 0.5의 링 크기, 저항 비용 및 절약된 패시브 포인트",
+  "shortTitle": "Controlled Metamorphosis",
+  "summary": "Controlled Metamorphosis는 Path of Exile 2 0.5.4의 고유 Diamond Jewel로, 원격 패시브 할당을 위한 링 형태(annulus)의 반경을 만들고 모든 원소 저항에 -(20-5)%를 적용합니다. 이 가이드는 여덟 가지 링 크기, 왜 일반 원형 반경이 아닌지, 원소 저항 페널티가 어떻게 계산되는지, 0.4.0에서 과거 카오스 저항 페널티가 제거된 점, Divine Orb 재굴림, 비용-편익 표, 그리고 From Nothing과의 차이점을 다룹니다.",
+  "description": "PoE2 0.5.4에서 Controlled Metamorphosis의 작동 방식: 원격 할당을 위한 가변 링 반경을 지닌 고유 Diamond, 원소 저항 비용, Xesht +4 드롭, 빌드 계획.",
+  "itemType": "ring-radius",
+  "rarity": "unique",
+  "requiredLevel": null,
+  "useCases": [
+    "remote-allocation",
+    "ring-radius",
+    "passive-point-saving"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-jewels",
+  "itemClass": "jewel",
+  "baseType": "diamond",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/the-masters-reach-hero.webp",
+  "cardImage": "/images/items/the-masters-reach-hero.webp",
+  "imageAlt": "Path of Exile 2 Controlled Metamorphosis 고유 Diamond Jewel이 원소 저항 페널티와 함께 원격 패시브 할당을 위한 링 형태의 반경을 만드는 모습",
+  "tags": [
+    "unique-jewel",
+    "ring-radius",
+    "remote-allocation",
+    "passive-point-saving",
+    "elemental-resistance",
+    "diamond",
+    "breach",
+    "xesht"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "빠른 정답",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Controlled Metamorphosis는 소켓 둘레에 두 개의 링(annulus)을 형성하는 고유 Diamond Jewel입니다. 링 밴드 안에 놓인 패시브는 연결되지 않아도 할당할 수 있지만, 안쪽 원 안의 노드는 아무 효과가 없습니다. 모든 원소 저항에 -(20-5)%를 적용하며(과거 카오스 저항 페널티는 0.4.0에서 제거됨), 항상 Corrupted 상태이며 찬스 될 수 없고 Xesht, We That Are One의 +4 Breach에서만 드롭합니다.",
+      "calloutDetail": [
+        "링 크기는 1~8(매우 작음~거대) 사이로 굴려지며 저항 페널티와는 무관합니다. -5% 원소 저항의 거대(Massive) 링이 가장 좋은 사본입니다.",
+        "할당하는 모든 노드의 패시브 포인트는 여전히 지불합니다. 보석은 경로 요구사항만 제거합니다."
+      ],
+      "answers": [
+        {
+          "label": "용도",
+          "text": [
+            "도달 가능한 중앙 소켓을 둘러싼 외곽에 유용한 노드가 있는 넓게 펼쳐진 트리에 사용합니다."
+          ]
+        },
+        {
+          "label": "먼저 확인",
+          "text": [
+            "구매 전 링 크기(1~8)와 원소 저항 굴림을 읽으세요. 크다고 무조건 더 좋은 것은 아닙니다."
+          ]
+        },
+        {
+          "label": "피할 것",
+          "text": [
+            "안쪽 원이 할당된다고 가정하거나, 0.5.4에서 보석에 여전히 카오스 저항 페널티가 있다고 가정하는 것."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#ring-size-comparison",
+          "label": "링 크기 비교"
+        },
+        {
+          "href": "#cost-benefit",
+          "label": "비용-편익 표"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "주요 사실",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Base Type",
+          "value": "Diamond",
+          "note": [
+            "Controlled Metamorphosis는 Diamond Jewel 베이스의 고유 변형입니다."
+          ]
+        },
+        {
+          "label": "Required Level",
+          "value": "20",
+          "note": [
+            "poe2dictionary 항목에서 확인됨; 엔드게임 보석을 위한 낮은 제한."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "1",
+          "note": [
+            "패시브 트리당 활성화할 수 있는 Controlled Metamorphosis는 하나뿐입니다."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "가변 링 (1~8)",
+          "note": [
+            "원판(disc)이 아닌 annulus이며, 링 밴드만 노드를 할당합니다."
+          ]
+        },
+        {
+          "label": "Resistance",
+          "value": "-(20-5)% 모든 원소",
+          "note": [
+            "현재 0.5.4에는 카오스 저항 페널티가 없으며, 이는 0.4.0에서 제거되었습니다."
+          ]
+        },
+        {
+          "label": "Drop source",
+          "value": "Xesht, We That Are One (+4 Breach)",
+          "note": [
+            "Difficulty 4의 Breach 정점 보스에게서 드롭합니다. Chance Orb와는 호환되지 않습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "패밀리 개요: Diamond 고유 Jewel",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Controlled Metamorphosis는 Diamond 고유 Jewel 패밀리에 속합니다 - 패시브 트리의 사용 방식을 재정의하는 5개의 빌드 강화 보석입니다. 각 멤버는 서로 다른 트리 문제를 해결합니다."
+      ],
+      "members": [
+        {
+          "id": "against-the-darkness",
+          "eyebrow": "반경 속성",
+          "title": "Against the Darkness",
+          "sub": "Time-Lost Diamond",
+          "body": [
+            "반경 내 Small 패시브를 강화하는 두 개의 무작위 반경 수식어를 굴립니다."
+          ],
+          "tags": [
+            "radius",
+            "attribute-stacking"
+          ]
+        },
+        {
+          "id": "from-nothing",
+          "eyebrow": "원격 키스톤",
+          "title": "From Nothing",
+          "sub": "고정 원판 반경",
+          "body": [
+            "저항 비용 없이 바운드 키스톤 주위의 원판을 통해 패시브를 원격 할당합니다."
+          ],
+          "tags": [
+            "remote-allocation",
+            "passive-point-saving"
+          ]
+        },
+        {
+          "id": "the-adorned",
+          "eyebrow": "Magic Jewel 증폭",
+          "title": "The Adorned",
+          "sub": "Corrupted Magic 증폭",
+          "body": [
+            "근처에 소켓된 Corrupted Magic Jewel의 효과를 증폭합니다."
+          ],
+          "tags": [
+            "magic-jewels",
+            "effect-scaling"
+          ]
+        },
+        {
+          "id": "megalomaniac",
+          "eyebrow": "무작위 Notable",
+          "title": "Megalomaniac",
+          "sub": "Notable 할당자",
+          "body": [
+            "연결 경로 없이 직접 할당 가능한 1~3개의 무작위 Notable을 부여합니다."
+          ],
+          "tags": [
+            "notable-allocation",
+            "passive-point-saving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "속성 및 수식어 라인",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Type",
+          "value": "Diamond",
+          "notes": [
+            "패시브 트리의 Jewel Socket을 차지하는 보석 베이스."
+          ]
+        },
+        {
+          "label": "Rarity",
+          "value": "Unique",
+          "notes": [
+            "빌드를 강화하는 고유 보석."
+          ]
+        },
+        {
+          "label": "Required Level",
+          "value": "20",
+          "notes": [
+            "캐릭터가 레벨 20에 도달하면 장착합니다."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "1",
+          "notes": [
+            "패시브 트리당 하나의 사본만 활성화 가능."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "가변 링, 1~8 굴림",
+          "notes": [
+            "annulus(두 개의 링). 값: 1 매우 작음, 2 작음, 3 중간-작음, 4 중간, 5 중간-큼, 6 큼, 7 큼-매우 큼, 8 거대."
+          ]
+        },
+        {
+          "label": "명시적 - 원격 할당",
+          "value": "Passives in Radius can be Allocated without being connected to your tree",
+          "notes": [
+            "링 밴드만 할당하며, 안쪽 원은 할당하지 않습니다."
+          ]
+        },
+        {
+          "label": "명시적 - 링 제한",
+          "value": "Only affects Passives in (Very Small-Massive) Ring",
+          "notes": [
+            "전체 원판이 아닌 annulus 형태임을 확인시켜 줍니다."
+          ]
+        },
+        {
+          "label": "명시적 - 저항",
+          "value": "-(20-5)% to all Elemental Resistances",
+          "notes": [
+            "현재 0.5.4에는 카오스 저항 라인이 없으며, 이는 0.4.0에서 제거되었습니다."
+          ]
+        },
+        {
+          "label": "Corrupted",
+          "value": "예, 항상",
+          "notes": [
+            "드롭 시 Corrupted: 찬스될 수 없으며, Divine Orb로 가변 굴림을 재굴림할 수 있습니다."
+          ]
+        },
+        {
+          "label": "Drop",
+          "value": "Xesht, We That Are One, Difficulty 4",
+          "notes": [
+            "Realmgate의 Breachstone과 +4 Breach Atlas 진행도가 필요합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "개요, 링 크기 시각 및 현재 대 레거시",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Controlled Metamorphosis는 할당 구역이 채워진 원이 아닌 링(annulus)인 유일한 고유 Jewel입니다. 할당된 Jewel Socket에 꽂으면 안쪽 링과 바깥쪽 링, 두 개의 동심원을 그립니다. 그 두 링 사이의 밴드, 즉 annulus에 놓인 모든 패시브 노드는 트리에 연결되지 않아도 할당할 수 있습니다. 핵심적으로, 안쪽 원 안의 공간은 죽은 영역입니다. 그곳의 노드는 보석을 통해 취할 수 없으며, 이는 일반적인 원형 반경을 기대하는 신규 사용자에게 가장 큰 놀라움입니다.",
+        "패시브 트리를 노드의 격자로 그려보세요. Jewel Socket을 중심에 둡니다. 그 주위에 반경 r1(안쪽 링)의 작은 원과 반경 r2(바깥쪽 링)의 더 큰 원을 그립니다. annulus는 r1과 r2 사이의 도넛형 밴드입니다. 그 도넛 위에 놓인 노드는 도달 가능하고, r1 strictly 안쪽 노드와 r2 바깥쪽 노드는 도달할 수 없습니다. 밴드가 얇기 때문에 링 크기 굴림(1~8)이 그 위에 얼마나 많은 유용한 노드가 놓이는지 결정합니다. 그래서 더 큰 링이 무조건 더 좋은 것이 아닌 이유이기도 합니다. 그 크기에서 목표 노드가 실제로 밴드 위에 있는지에 달려 있습니다.",
+        "이 보석은 모든 원소 저항에 -(20-5)%도 적용합니다. 이 페널티는 링 크기와 무관합니다. 매우 작음부터 거대까지 모든 사본은 그 범위 내 어디든 굴릴 수 있으며, -5% 굴림의 거대 링이 가장 가치 있는 조합입니다. 할당하는 모든 노드의 패시브 포인트는 여전히 지불합니다. 보석은 경로 요구사항만 제거하므로, 절약되는 것은 건너뛴 경로 포인트입니다.",
+        "현재 대 레거시: 패치 0.4.0 이전에는 Controlled Metamorphosis가 카오스 저항에도 -(23-3)%를 적용했습니다. 그 카오스 라인은 0.4.0에서 제거되었으며 새 0.5.4 드롭에는 돌아오지 않습니다. 카오스 페널티만 남습니다. 0.4.0 이전에 드롭된 레거시 사본은 카오스 페널티를 유지합니다. 또한 9 이상(1~8 범위 밖)의 Corrupted 굴림이 링 크기 수식어를 사라지게 하고 보석이 링을 형성하지 않는 것으로 문서화된 예외 케이스가 있습니다. 그러한 사본은 버그 영향 아웃라이어로 취급하고 유효한 1~8 굴림만 거래하세요."
+      ],
+      "bullets": [
+        "할당 구역은 annulus(두 개의 링)이며 채워진 원판이 아닙니다.",
+        "안쪽 원은 죽은 공간이며, 링 밴드만 할당합니다.",
+        "링 크기는 1~8(매우 작음~거대)로 굴리며 저항과 무관합니다.",
+        "저항 페널티: -(20-5)% 모든 원소; 0.5.4에는 카오스 라인 없음.",
+        "모든 노드의 포인트는 여전히 지불하며, 건너뛰는 것은 경로뿐입니다.",
+        "0.4.0 이전 레거시 사본은 카오스 저항 페널티를 유지하며, 새 드롭은 그렇지 않습니다."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "적격 대상: 링이 도달할 수 있는 것",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "annulus, 즉 안쪽 링과 바깥쪽 링 사이의 밴드만 노드를 할당합니다. 안쪽 원과 바깥쪽 링 너머의 모든 것은 제외됩니다."
+      ],
+      "columns": [
+        "결과",
+        "상세"
+      ],
+      "rows": [
+        {
+          "label": "링 밴드(annulus) 내 노드",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "원격 할당 가능"
+            },
+            {
+              "kind": "text",
+              "text": "annulus의 두 링 모두 노드를 할당하며, 이것이 작동하는 유일한 구역입니다."
+            }
+          ]
+        },
+        {
+          "label": "안쪽 원 내 노드",
+          "values": [
+            {
+              "kind": "no",
+              "text": "할당 불가"
+            },
+            {
+              "kind": "text",
+              "text": "일반적인 원형 반경과 달리 두 링 사이의 공간은 아무 효과가 없습니다."
+            }
+          ]
+        },
+        {
+          "label": "바깥쪽 링 밖 노드",
+          "values": [
+            {
+              "kind": "no",
+              "text": "할당 불가"
+            },
+            {
+              "kind": "text",
+              "text": "바깥쪽 링 너머에서는 일반적으로 경로를 만들어야 합니다."
+            }
+          ]
+        },
+        {
+          "label": "Jewel Socket 자체",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "할당되어 있어야 함"
+            },
+            {
+              "kind": "text",
+              "text": "링이 형성되려면 소켓이 미리 트리에서 할당되어 있어야 합니다."
+            }
+          ]
+        },
+        {
+          "label": "원소 저항",
+          "values": [
+            {
+              "kind": "text",
+              "text": "-(20-5)% 페널티"
+            },
+            {
+              "kind": "text",
+              "text": "모든 사본은 모든 원소 저항을 낮추므로 장비로 보상해야 합니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "사용법: 소켓, 굴림 확인, 할당",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "할당된 Jewel Socket에 도달",
+          "body": [
+            "보석을 할당된 Jewel Socket 아무 곳에나 꽂으세요. 링이 형성되려면 소켓이 미리 할당되어 있어야 합니다."
+          ]
+        },
+        {
+          "label": "굴려진 링 크기 읽기",
+          "body": [
+            "보석은 링 크기 1~8(매우 작음~거대)과 원소 저항 페널티 -(20-5)%를 굴립니다. 둘 다 드롭/부패로 고정됩니다."
+          ]
+        },
+        {
+          "label": "링 밴드 할당",
+          "body": [
+            "두 링(annulus) 안에 놓인 노드는 연결 없이 할당할 수 있습니다. 안쪽 원은 죽은 공간입니다."
+          ]
+        },
+        {
+          "label": "저항 보상",
+          "body": [
+            "장비 접미어(suffix)에서 잃은 원소 저항을 회복하세요. Chaos Inoculation 빌드는 페널티를 완전히 무시합니다."
+          ]
+        },
+        {
+          "label": "Divine로 개선 (선택 사항)",
+          "body": [
+            "Divine Orb는 원소 저항 페널티를 -5% 쪽으로 재굴림하고 링 크기를 1~8 내에서 재굴림할 수 있습니다."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "중앙 소켓을 둘러싼 외곽 클러스터까지 경로를 만드는 데는 트리와 그 밴드 사이의 모든 중간 노드가 듭니다."
+        ],
+        "after": [
+          "동일한 외곽 노드는 링 밴드에서 직접 할당되어 연결 경로를 건너뜁니다."
+        ],
+        "note": "보석은 하나의 Jewel Socket과 원소 저항 접미어를, 건너뛴 경로 포인트와 맞바꿉니다."
+      }
+    },
+    {
+      "id": "ring-size-comparison",
+      "order": 66,
+      "title": "링 크기 비교",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "링 크기 굴림(1~8)이 annulus의 도달 범위를 결정합니다. 크다고 무조건 더 좋은 것은 아닙니다. 목표 노드가 어디에 있는지에 달려 있습니다. 원소 저항 페널티는 링 크기와 무관합니다.",
+      "columns": [
+        {
+          "key": "size",
+          "label": "링 크기 (굴림)"
+        },
+        {
+          "key": "name",
+          "label": "이름"
+        },
+        {
+          "key": "reach",
+          "label": "약칭 링 도달"
+        },
+        {
+          "key": "use",
+          "label": "적합한 경우"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "size": "1",
+            "name": "Very Small",
+            "reach": "가장 조밀한 annulus",
+            "use": "목표 노드가 소켓 바로 바깥에 있음"
+          },
+          "tags": [
+            "very-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "2",
+            "name": "Small",
+            "reach": "작은 annulus",
+            "use": "근처 외곽 노드"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "3",
+            "name": "Medium-Small",
+            "reach": "중간-작은 annulus",
+            "use": "혼합된 근처 클러스터"
+          },
+          "tags": [
+            "medium-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "4",
+            "name": "Medium",
+            "reach": "중간 annulus",
+            "use": "일반적인 균형 배치"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "size": "5",
+            "name": "Medium-Large",
+            "reach": "중간-큰 annulus",
+            "use": "펼쳐진 외곽 노드"
+          },
+          "tags": [
+            "medium-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "6",
+            "name": "Large",
+            "reach": "큰 annulus",
+            "use": "중앙 소켓에서 넓은 도달"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "7",
+            "name": "Large-Very Large",
+            "reach": "큰-매우 큰 annulus",
+            "use": "매우 펼쳐진 외곽 노드"
+          },
+          "tags": [
+            "large-very-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "8",
+            "name": "Massive",
+            "reach": "가장 넓은 annulus",
+            "use": "최대 커버리지; 거래에서 가장 가치 있음"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "두 링 사이의 밴드만 할당합니다. 거대 링은 목표 노드가 실제로 그 밴드 위에 있고 저항 장비가 페널티를 흡수할 수 있을 때 가장 가치 있습니다."
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "상황별 결과",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "ring-radius",
+        "passive-point-saving",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "펼쳐진 트리, 밴드 위의 외곽 노드",
+          "audience": "넓은 패시브 트리 빌드",
+          "benefit": "외곽 클러스터까지의 많은 경로 포인트를 건너뜀",
+          "risk": "낮음 (링 크기가 맞을 경우)",
+          "level": "low",
+          "recommendation": "목표 노드가 굴려진 밴드 위에 있을 때 강력한 선택.",
+          "tags": [
+            "ring-radius"
+          ]
+        },
+        {
+          "scenario": "Chaos Inoculation 빌드",
+          "audience": "CI 빌드",
+          "benefit": "원소 페널티만이 비용이며 링 도달은 무료",
+          "risk": "낮음",
+          "level": "low",
+          "recommendation": "CI는 저항 페널티를 훨씬 수용하기 쉽게 만듭니다.",
+          "tags": [
+            "build-enabling"
+          ]
+        },
+        {
+          "scenario": "빌드에 맞지 않는 링 크기",
+          "audience": "충동 구매자",
+          "benefit": "일부 원격 노드",
+          "risk": "높음 (유용한 노드가 죽은 안쪽 원에 있음)",
+          "level": "high",
+          "recommendation": "목표 노드를 커버하는 링 크기를 고르세요. 크다고 항상 더 좋은 것은 아닙니다.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "보상되지 않은 저항",
+          "audience": "약한 빌드",
+          "benefit": "링 도달",
+          "risk": "높음 (원소 피해로 사망)",
+          "level": "high",
+          "recommendation": "확정하기 전에 접미어에서 원소 저항을 회복하세요."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "빌드 사용법",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Controlled Metamorphosis는 빌드의 유용한 노드가 이미 도달 가능한 소켓을 둘러싼 외곽을 형성할 때 효과가 있습니다. 아래 네 가지 페르소나는 빛을 발하는 지점을 보여줍니다."
+      ],
+      "builds": [
+        {
+          "title": "넓은 패시브 트리 빌드",
+          "description": "유용한 노드가 중앙 소켓을 둘러싼 외곽에 있는 펼쳐진 트리.",
+          "href": "/en/items/jewels-and-jewel-sockets/"
+        },
+        {
+          "title": "Chaos Inoculation 빌드",
+          "description": "CI는 원소(및 과거 카오스) 페널티를 무관하게 만들므로 링 도달을 무료로 유지합니다.",
+          "href": "/en/items/ghostwrithe/"
+        },
+        {
+          "title": "저항 스태킹 빌드",
+          "description": "이미 원소 저항을 최대치 이상으로 쌓은 빌드는 페널티를 흡수하면서도 링 도달을 얻을 수 있습니다."
+        },
+        {
+          "title": "Breach 정점 빌드",
+          "description": "Xesht 파밍 경로 및 Breach 엔드게임 계획과 자연스럽게 어울립니다.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "대안",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "일반 또는 레어 Diamond Jewel은 저항 비용도 링 크기 도박도 없이 동일한 소켓에 평면 능력치를 제공합니다. 목표 노드를 연결하는 비용이 싸다면 레어 보석이 보통 더 안전한 가치입니다.",
+        "From Nothing이 가장 가까운 친척입니다. 이것도 원격 할당하지만 바운드 키스톤 주위의 고정 원판을 통해, 저항 페널티 없이 - 대신 키스톤 고정의 대가를 치릅니다. Megalomaniac은 무작위 Notable을 직접 부여합니다. Against the Darkness는 반경 내 Small 패시브를 강화합니다. 트리가 실제로 필요로 하는 것을 기준으로 고르세요.",
+        "Controlled Metamorphosis는 원소 저항 접미어를 소모하므로, 진짜 대안은 종종 그냥 일반적으로 경로를 만들고 소켓을 레어 보석이나 저항 친화적 고유에 쓰는 것입니다. 건너뛴 경로가 접미어 손실을 명백히 능가할 때만 사용하세요."
+      ],
+      "bullets": [
+        "레어 Diamond Jewel: 유연한 능력치, 저항 비용 없음.",
+        "From Nothing: 고정 원판 원격 할당, 저항 비용 없음, 키스톤 고정.",
+        "Megalomaniac: 직접적인 무작위 Notable 할당.",
+        "일반 경로: 잘못된 링 크기 사본보다 Often 더 저렴."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "가치 평가: 사용, 판매 또는 보관",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Controlled Metamorphosis의 가치는 링 크기와 원소 저항 굴림에 비례합니다. -5% 원소의 거대 링이 가장 비싸고, -20%의 작은 링이 가장 싸습니다.",
+        "아래 가격은 2026년 8월 초 기준 Early Access 0.5.4 거래 사이트를 반영하며 수요와 공급에 따라 끊임없이 변동합니다."
+      ],
+      "use": {
+        "condition": "유용한 외곽 노드가 굴려진 링 안에 있고 저항 손실을 흡수할 수 있음",
+        "first": "소켓에 넣고 링 밴드를 할당한 뒤 장비에서 저항 회복",
+        "risk": "저항 페널티가 접미어 슬롯을 먹음; 잘못된 링 크기는 소켓 낭비",
+        "text": [
+          "맞는 링 크기라면 다른 어떤 보석도 제공하지 않는 원격 할당을 제공합니다."
+        ]
+      },
+      "sell": {
+        "condition": "링 크기나 저항 굴림이 본인 빌드에 맞지 않음",
+        "first": "링 크기(1~8)와 저항 굴림별로 등록; 거대 + 낮은 페널티는 프리미엄",
+        "risk": "유동적이나 크기 민감적",
+        "text": [
+          "거래 가격은 먼저 링 크기, 다음 저항을 따릅니다."
+        ]
+      },
+      "hold": {
+        "condition": "거대 / 낮은 페널티 사본을 발견함",
+        "first": "보관하세요; 큰 낮은 페널티 사본은 가치를 유지합니다.",
+        "risk": "인벤토리 공간뿐",
+        "text": [
+          "잘 굴려진 사본은 링 도달 빌드를 위한 장기 자산입니다."
+        ]
+      }
+    },
+    {
+      "id": "cost-benefit",
+      "order": 116,
+      "title": "비용-편익 표",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "절약된 순 포인트는 예시입니다. 진짜 비용은 원소 저항 페널티를 회복하는 데 쓰는 장비 접미어입니다.",
+      "columns": [
+        {
+          "key": "variant",
+          "label": "링 변형"
+        },
+        {
+          "key": "reach",
+          "label": "도달 가능한 노드"
+        },
+        {
+          "key": "saved",
+          "label": "절약된 순 포인트"
+        },
+        {
+          "key": "resist",
+          "label": "저항 비용"
+        },
+        {
+          "key": "gear",
+          "label": "장비 접미어 비용"
+        },
+        {
+          "key": "build",
+          "label": "빌드 적합성"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "variant": "Small",
+            "reach": "소수의 외곽 노드",
+            "saved": "낮음 (1~3)",
+            "resist": "-(20-5)% 원소",
+            "gear": "회복에 접미어 1~2개",
+            "build": "이미 소켓 근처의 노드"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Medium",
+            "reach": "중간 정도의 외곽",
+            "saved": "중간 (3~6)",
+            "resist": "-(20-5)% 원소",
+            "gear": "접미어 1~3개",
+            "build": "균형 잡힌 일반 용도"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Large",
+            "reach": "많은 외곽 노드",
+            "saved": "높음 (5~9)",
+            "resist": "-(20-5)% 원소",
+            "gear": "접미어 2~3개",
+            "build": "넓은 도달 빌드"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Massive",
+            "reach": "최대 외곽",
+            "saved": "가장 높음 (8+)",
+            "resist": "-(20-5)% 원소",
+            "gear": "접미어 2~4개",
+            "build": "펼쳐진 트리 / 최대 유연성"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "원소 저항 페널티는 모든 링 크기에서 동일한 범위(-(20-5)%)입니다. 달라지는 것은 그 페널티의 굴림과 링 크기뿐입니다. 저항을 회복하면 생명력, 속성 또는 피해를 가질 수 있었던 접미어 슬롯을 먹습니다. 진짜 비용은 그 접미어의 기회비용입니다."
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "위험 및 실패 비용",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "잘못된 링 크기",
+          "gain": "일부 원격 노드",
+          "loss": "유용한 노드가 죽은 안쪽 원이나 바깥에 있음",
+          "level": "high",
+          "recommendation": "목표 노드를 커버하는 링 크기를 고르세요. 크다고 항상 더 좋은 것은 아닙니다."
+        },
+        {
+          "scenario": "보상되지 않은 저항",
+          "gain": "링 도달",
+          "loss": "맵에서 원소 피해로 사망",
+          "level": "high",
+          "recommendation": "접미어에서 원소 저항을 회복하거나 Chaos Inoculation을 사용하세요."
+        },
+        {
+          "scenario": "카오스 페널티가 여전히 있다고 가정",
+          "gain": "없음",
+          "loss": "잘못된 장비 계획",
+          "level": "low",
+          "recommendation": "현재 0.5.4에는 카오스 저항 페널티가 없으며 원소만 있습니다."
+        },
+        {
+          "scenario": "Chance / Divine 오용",
+          "gain": "Divine는 굴림을 개선 가능",
+          "loss": "나쁜 Divine은 페널티를 악화시킬 수 있음",
+          "level": "medium",
+          "recommendation": "Divine는 범위 내에서만 재굴림하며, 보석은 찬스될 수 없습니다."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-controlled",
+          "kind": "Reddit 질문",
+          "question": "반경 안쪽에 보이는 노드를 할당할 수 없는 이유는 무엇인가요?",
+          "summary": [
+            "한 플레이어가 채워진 원형 반경을 기대했고 중앙의 노드를 취할 수 없었습니다."
+          ],
+          "editorialAnalysis": [
+            "Controlled Metamorphosis는 원판이 아닌 annulus를 형성합니다. 안쪽 링과 바깥쪽 링 사이의 밴드만 노드를 할당하며, 안쪽 원은 죽은 공간입니다. '안쪽'에 있어 보이는 노드는 그 죽은 중앙에 있을 수 있습니다."
+          ],
+          "officialAnswer": [
+            "링 밴드(두 링 사이)만 노드를 할당하며, 안쪽 원은 할당하지 않습니다."
+          ],
+          "linkHref": "#ring-size-comparison",
+          "linkLabel": "링 크기 비교"
+        },
+        {
+          "sourceId": "gamerant-controlled",
+          "kind": "가이드",
+          "question": "여전히 카오스 저항 페널티가 있나요?",
+          "summary": [
+            "한 가이드에서 과거 -(23-3)% 카오스 저항을 언급하며 여전히 남아 있는지 물었습니다."
+          ],
+          "editorialAnalysis": [
+            "패치 0.4.0이 카오스 저항 라인을 제거했습니다. 현재 0.5.4 드롭에는 -(20-5)% 모든 원소 저항만 있습니다. 0.4.0 이전 레거시 사본은 카오스 페널티를 유지하며, 새 드롭은 그렇지 않습니다."
+          ],
+          "officialAnswer": [
+            "현재 0.5.4에는 카오스 저항 페널티가 없으며 원소 페널티만 남습니다."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "패치 내역"
+        },
+        {
+          "sourceId": "wiki-controlled",
+          "kind": "데이터베이스",
+          "question": "8보다 높은 부패 굴림이 링에 무슨 영향을 주나요?",
+          "summary": [
+            "데이터베이스 기록은 링 값 9 이상이 링 크기 수식어를 사라지게 한다고 적고 있습니다."
+          ],
+          "editorialAnalysis": [
+            "링 크기는 1~8로 굴립니다. 9+의 부패 값은 유효 범위 밖이며 보석은 링을 형성하지 않습니다(버그로 문서화됨). 유효한 1~8 굴림만 거래하세요. 그러한 아웃라이어는 버그 영향으로 취급해야 합니다."
+          ],
+          "officialAnswer": [
+            "유효한 링 크기는 1~8이며, 그 범위 밖의 값은 링 수식어를 제거하고 보석은 아무것도 할당하지 않습니다."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "속성"
+        },
+        {
+          "sourceId": "youtube-controlled",
+          "kind": "영상",
+          "question": "더 큰 링이 항상 더 나은가요?",
+          "summary": [
+            "한 영상은 링 크기 가치가 유용한 노드가 어디에 있는지에 달려 있다고 설명했습니다."
+          ],
+          "editorialAnalysis": [
+            "밴드만 할당하므로 거대 링은 목표 노드가 그 밴드 위에 놓일 때만 도움이 됩니다. 원하는 노드가 소켓에 더 가까이 있을 때는 더 작은 링이 더 나을 수 있습니다. 거래 가치는 여전히 큰 링을 선호합니다."
+          ],
+          "officialAnswer": [
+            "크다고 자동으로 더 좋은 것은 아니며, 링 크기를 목표 노드에 맞추세요. 다만 거래 가격은 크기에 따라 오릅니다."
+          ],
+          "linkHref": "#cost-benefit",
+          "linkLabel": "비용-편익 표"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제 및 직접적인 답변",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "노드가 소켓과 시각적으로 가까운데 할당할 수 없음",
+          "directAnswer": [
+            "현재 정상 규칙: 두 링(annulus)만 노드를 할당하며, 그 사이 안쪽 원은 아무 효과가 없습니다. 과거 버그: 매우 초기 버전은 안쪽 원을 불일관하게 할당한 적이 있습니다. 현재 재현 가능: 아니오 - 안쪽 원은 설계상 죽은 영역입니다. 목표 노드가 링 밴드에 놓이도록 소켓을 배치하세요."
+          ],
+          "checks": [
+            "노드가 안쪽 원 안에 있는지 확인하세요. 그렇다면 소켓을 옮기거나 다른 링 크기를 고르세요."
+          ]
+        },
+        {
+          "symptom": "노드를 할당했는데 캐릭터 시트가 변하지 않음",
+          "directAnswer": [
+            "현재 정상 규칙: 할당된 모든 노드는 여전히 패시브 포인트를 지불합니다. 보석은 경로만 제거하며 노드 비용은 제거하지 않습니다. 과거 버그: 과거 표시 지연이 오래된 시트 값을 보여준 적이 있습니다. 현재 재현 가능: 규칙상 아니오이며, 시트가 오래됐다면 트리를 다시 여세요. 노드가 진짜로 링 밴드 안에 있는지 확인하세요."
+          ],
+          "checks": [
+            "노드가 링 밴드 안에 있고 보석이 소켓에 있는지 확인하세요. 캐릭터 시트를 다시 여세요."
+          ]
+        },
+        {
+          "symptom": "보석이 제거되지 않음 / 제거 후에도 노드가 할당된 상태로 유지됨",
+          "directAnswer": [
+            "현재 정상 규칙: 보석을 제거하면 모든 링 노드가 할당 해제되고 그 포인트가 환불됩니다. 과거 버그: 구형 클라이언트는 재로그인 전까지 노드를 시각적으로 할당된 상태로 남긴 적이 있습니다. 현재 재현 가능: 아니오 - 제거는 올바르게 환불하며, 노드가 남아 있다면 재로그인 후 다시 확인하세요."
+          ],
+          "checks": [
+            "우클릭하여 제거하세요. 노드가 남아 있다면 재로그인 후 환불을 확인하세요."
+          ]
+        },
+        {
+          "symptom": "카오스 저항 페널티 없이 드롭됨",
+          "directAnswer": [
+            "현재 정상 규칙: 0.5.4 Controlled Metamorphosis는 -(20-5)% 모든 원소 저항만 있습니다. 과거 -(23-3)% 카오스 저항은 0.4.0에서 제거되었으며 새 드롭에는 돌아오지 않습니다. 과거: 0.4.0 이전 사본에는 카오스 페널티가 있었습니다. 현재 재현 가능: 새 드롭에는 카오스 페널티가 절대 없습니다."
+          ],
+          "checks": [
+            "툴팁을 읽으세요. 카오스 페널티가 보인다면 0.4.0 이전 레거시 사본입니다."
+          ],
+          "links": [
+            {
+              "href": "#patch-history",
+              "label": "패치 내역"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "영상 설명",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "All Unique Jewel Options with Best-case Uses (PoE2) - Controlled Metamorphosis 섹션",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8",
+          "creator": "SnooBae85",
+          "description": "모든 고유 보석을 다루는 커뮤니티 영상; Controlled Metamorphosis 섹션은 09:13부터, 거래 검색 설명은 24:18부터입니다.",
+          "takeaway": "링 형태, 저항 트레이드오프, 그리고 거래에서 이러한 보석을 검색하는 방법을 보여줍니다.",
+          "timestamps": [
+            {
+              "label": "소개 및 보석 개요",
+              "time": "00:00"
+            },
+            {
+              "label": "레어 Time-Lost 보석",
+              "time": "01:20"
+            },
+            {
+              "label": "Against the Darkness 맥락",
+              "time": "06:48"
+            },
+            {
+              "label": "Controlled Metamorphosis 심층 분석",
+              "time": "09:13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "미디어 갤러리",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "링 라인과 -(20-5)% 원소를 보여주는 Controlled Metamorphosis 툴팁",
+          "note": "아티클 카드 및 헤더용 주요 히어로 캡처."
+        },
+        {
+          "caption": "패시브 트리: 소켓 주위의 annulus(두 링)",
+          "note": "죽은 안쪽 원과 할당 밴드를 보여줌."
+        },
+        {
+          "caption": "세 가지 링 크기 비교 (Small, Medium, Massive)",
+          "note": "1~8 굴림에 따라 밴드 도달이 어떻게 변하는지 시각화."
+        },
+        {
+          "caption": "장비 접미어의 저항 보상",
+          "note": "원소 페널티를 어떻게 회복하는지."
+        },
+        {
+          "caption": "Xesht, We That Are One 보스 아레나",
+          "note": "+4 Breach 드롭 출처."
+        },
+        {
+          "caption": "Controlled Metamorphosis 대 From Nothing 반경 형태",
+          "note": "annulus 대 고정 원판."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "연결된 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, We That Are One",
+          "description": "Controlled Metamorphosis를 드롭하는 Difficulty 4의 Breach 정점 보스.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        },
+        {
+          "contentId": "breachstones",
+          "contentType": "item",
+          "title": "Breachstones",
+          "description": "Xesht에 접근하는 데 필요한 초대 아이템 (Breach Splinter 300개).",
+          "href": "/en/items/breachstones/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "저항 비용 없는 고정 원판 원격 할당 Diamond.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "the-masters-reach",
+          "contentType": "item",
+          "title": "The Master's Reach",
+          "description": "히어로 이미지와 Breach 콘텐츠에서 참조되는 관련 고유 아이템.",
+          "href": "/en/items/the-masters-reach/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Respec, Passive 및 Ascendancy 가이드",
+          "description": "패시브 포인트, 리스펙, 승천이 보석 계획과 어떻게 상호작용하는지.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "이 아이템에 대한 현재 Early Access 패치 맥락.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "패치 내역",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, 현재)",
+          "changes": [
+            "Controlled Metamorphosis는 가변 링 크기 1~8, 링 밴드의 원격 할당, -(20-5)% 모든 원소 저항을 지닌 고유 Diamond로 유지됩니다. 항상 Corrupted이며 Xesht의 +4 Breach에서 드롭합니다."
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "changes": [
+            "-(23-3)% 카오스 저항 수식어 제거; 기존 레거시 사본은 유지. 링 크기 1~8 범위 확인; 값 9+는 링을 제거함(문서화된 버그)."
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "changes": [
+            "모든 난이도 게이트 보스는 어떤 난이도에서든 자신의 특정 고유 보석을 드롭할 수 있으나, 희귀 고유 보석은 낮은 난이도에서 더 희귀합니다."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Controlled Metamorphosis가 게임에 도입됨."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 패치 노트 및 공식 아이템 문서.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Controlled Metamorphosis에 대한 PoE2Wiki 및 poe2db 아이템 데이터.",
+          "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Controlled Metamorphosis 획득 및 사용에 대한 GameRant 설명서.",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "링 형태와 저항에 대한 Reddit r/PathOfExile2 토론.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Controlled Metamorphosis를 포함한 고유 보석을 다루는 커뮤니티 영상.",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "변경 내역",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "0.5.4의 Controlled Metamorphosis를 다루는 초판 발행: 링(annulus) 할당, 여덟 가지 링 크기, 원소 저항 비용, 0.4.0에서 카오스 페널티 제거, Divine 재굴림, 비용-편익 표, 그리고 From Nothing과의 차이점."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "xesht-we-that-are-one"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export",
+    "breach-genesis-tree-xesht-progression"
+  ],
+  "relatedItemIds": [
+    "jewels-and-jewel-sockets",
+    "against-the-darkness",
+    "from-nothing",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "breachstones",
+    "the-masters-reach",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-controlled",
+      "label": "PoE2Wiki - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+    },
+    {
+      "id": "poe2db-controlled",
+      "label": "poe2db - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Controlled_Metamorphosis"
+    },
+    {
+      "id": "reddit-controlled",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "gamerant-controlled",
+      "label": "GameRant - How to Get Controlled Metamorphosis Diamond",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+    },
+    {
+      "id": "fextralife-controlled",
+      "label": "PoE2 Wiki (Fextralife) - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://pathofexile2.wiki.fextralife.com/Controlled+Metamorphosis+Diamond"
+    },
+    {
+      "id": "youtube-controlled",
+      "label": "YouTube - Unique Jewel Options (Controlled Metamorphosis @09:13)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Controlled Metamorphosis: 링 크기, 저항 비용 및 절약된 포인트 (0.5.4)",
+    "description": "PoE2 0.5.4에서 Controlled Metamorphosis의 작동 방식: 원격 할당을 위한 가변 링 반경을 지닌 고유 Diamond, 원소 저항 비용, Xesht +4 드롭, 빌드 계획.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "controlled-metamorphosis",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

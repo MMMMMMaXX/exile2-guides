@@ -4,8 +4,11 @@ import { randomBytes } from "node:crypto";
 import { describe, expect, it } from "vitest";
 
 import {
+  INITIAL_DEPENDENCY_GZIP_BUDGET,
   INITIAL_JAVASCRIPT_GZIP_BUDGET,
+  getInitialJavaScriptAssetPaths,
   inspectImagePerformance,
+  inspectInitialJavaScriptDependencies,
   inspectJavaScriptBudget,
 } from "../../lib/performance/verify-build";
 
@@ -43,6 +46,37 @@ describe("JavaScript performance budget", () => {
     const oversized = randomBytes(INITIAL_JAVASCRIPT_GZIP_BUDGET * 2);
     expect(inspectJavaScriptBudget(oversized, "/")).toEqual([
       expect.objectContaining({ code: "javascript-budget" }),
+    ]);
+  });
+
+  it("budgets the real initial dependency graph and blocks full content pages", () => {
+    const html =
+      '<link rel="modulepreload" href="/assets/entry.js"><script type="module" src="/assets/root.js"></script>';
+    expect(getInitialJavaScriptAssetPaths(html)).toEqual([
+      "/assets/entry.js",
+      "/assets/root.js",
+    ]);
+    expect(
+      inspectInitialJavaScriptDependencies(
+        html,
+        "/en/skills/",
+        new Map([
+          ["entry.js", new TextEncoder().encode("export default 1")],
+          ["root.js", new TextEncoder().encode("export default 2")],
+        ]),
+      ),
+    ).toEqual([]);
+
+    const oversized = randomBytes(INITIAL_DEPENDENCY_GZIP_BUDGET * 2);
+    expect(
+      inspectInitialJavaScriptDependencies(
+        '<script type="module" src="/assets/content-pages-old.js"></script>',
+        "/en/skills/",
+        new Map([["content-pages-old.js", oversized]]),
+      ),
+    ).toEqual([
+      expect.objectContaining({ code: "full-content-boundary" }),
+      expect.objectContaining({ code: "initial-javascript-budget" }),
     ]);
   });
 });

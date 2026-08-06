@@ -1,0 +1,498 @@
+{
+  "id": "patch-0-2-0c-minion-spear-boss-rebalance",
+  "slug": "patch-0-2-0c-minion-spear-boss-rebalance",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0c: 미니언 스케일링, 창 스킬 및 보스 수정",
+  "shortTitle": "0.2.0c 미니언 & 보스 재조정",
+  "summary": "0.2.0c는 0.2.0의 과도한 미니언 너프 일부를 롤백하고, 스켈레탈 아서니스트와 클레릭을 조정하며, 여러 창 스킬과 보스를 수정했습니다. 대부분의 Day-1 미니언 빌드가 기다려야 했던 패치입니다.",
+  "description": "0.2.0c 설명: 젬 레벨당 미니언 피해 및 생명력 스케일링, 스켈레탈 아서니스트/클레릭, 창 스킬 수정, 보스 수정 및 0.5.4e에서 여전히 적용되는 내용.",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.0c",
+  "patch": "0.2.0c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/tempest-bell.webp",
+  "cardImage": "/images/skills/tempest-bell.webp",
+  "imageAlt": "플레이어와 함께 전투하는 소환 미니언.",
+  "tags": [
+    "patch",
+    "0-2-0c",
+    "minions",
+    "spear",
+    "balance",
+    "boss"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "minion-scaling",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.2.0c 미니언 스케일링 곡선은 교정이었습니다. 미니언 밸런스는 0.3부터 0.5에서 다시 변경되었습니다."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "skeletal-arsonist",
+      "status": "changed-later",
+      "currentSummary": [
+        "스켈레탈 아서니스트와 클레릭은 0.2.0c에서 조정되었고 이후 패치에서 재조정되었습니다."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "한눈에 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0은 캠페인 중반에 미니언의 생명력과 피해 스케일링이 너무 약해져, 보스전에서 미니언 빌드가 플레이 불가능하게 느껴졌습니다. 0.2.0c는 젬 레벨당 미니언 피해 및 생명력 조정으로 이를 교정했습니다.",
+        "또한 스켈레탈 아서니스트와 스켈레탈 클레릭을 함께 조정하고, 헌트리스 레벨링에 영향을 준 여러 창 스킬을 수정하며, 여러 보스를 고쳤습니다. 0.2.0 Day-1 미니언 빌드는 그대로 사용해서는 안 되며, 이 패치부터 다시 제대로 작동하기 시작했습니다."
+      ],
+      "bullets": [
+        "젬 레벨당 미니언 스케일링 교정",
+        "스켈레탈 아서니스트/클레릭 조정",
+        "창 스킬 및 보스 수정",
+        "Day-1 미니언 빌드는 이 패치 필요"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "과거 경고",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — 0.2.0 시대",
+      "baselineNote": "현재 상태 주장은 클라이언트 0.5.4e 기준으로 측정됨.",
+      "paragraphs": [
+        "0.2.0c는 새울의 사냥(Dawn of the Hunt) 출시 창 내의 교정 패치입니다. 그가 설정한 미니언 수치는 이후 0.3부터 0.5 재조정에 의해 덮어쓰여졌습니다."
+      ],
+      "bullets": [
+        "0.2.0c = 0.2.0 창 내의 교정 패치",
+        "그의 미니언 수치는 이후 0.3–0.5에 의해 덮어쓰임"
+      ]
+    },
+    {
+      "id": "change-explorer",
+      "order": 3,
+      "title": "주요 변경 사항",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "미니언 피해 스케일링",
+          "detail": "젬 레벨당 피해 조정이 0.2.0의 과도한 너프 일부를 되돌려, 캠페인 중반 미니언이 속도를 유지했습니다.",
+          "scope": "공식 0.2.0c 패치 노트"
+        },
+        {
+          "category": "balance",
+          "title": "미니언 생명력 스케일링",
+          "detail": "캠페인 초반 미니언 생명력이 복원되었고, 높은 젬 레벨에서 점진적으로 수렴했습니다.",
+          "scope": "공식 0.2.0c 패치 노트"
+        },
+        {
+          "category": "balance",
+          "title": "스켈레탈 아서니스트 / 클레릭",
+          "detail": "스케일링 변경 후에도 시너지가 유지되도록 두 아키타입이 함께 조정되었습니다.",
+          "scope": "공식 0.2.0c 패치 노트"
+        },
+        {
+          "category": "fix",
+          "title": "창 스킬 수정",
+          "detail": "헌트리스 레벨링에 영향을 준 여러 창 스킬이 수정되었습니다.",
+          "scope": "공식 0.2.0c 패치 노트"
+        },
+        {
+          "category": "boss",
+          "title": "보스 수정",
+          "detail": "동일한 패치에서 여러 보스의 동작이 교정되었습니다.",
+          "scope": "공식 0.2.0c 패치 노트"
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "젬 레벨별 미니언 스케일링",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.0, 0.2.0c 및 현재에 걸친 미니언 조정 방향.",
+      "columns": [
+        {
+          "key": "level",
+          "label": "젬 레벨"
+        },
+        {
+          "key": "zeroTwo",
+          "label": "0.2.0"
+        },
+        {
+          "key": "zeroTwoC",
+          "label": "0.2.0c"
+        },
+        {
+          "key": "now",
+          "label": "현재 (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "level": "낮음 (1-10)",
+          "zeroTwo": "캠페인에서 너무 약함",
+          "zeroTwoC": "생명력 복원, 피해 교정됨",
+          "now": "이후 패치로 추가 조정됨"
+        },
+        {
+          "level": "중간 (11-20)",
+          "zeroTwo": "보스전에서 뒤처짐",
+          "zeroTwoC": "제 궤도로 복귀",
+          "now": "이후 재조정 적용됨"
+        },
+        {
+          "level": "높음 (20+)",
+          "zeroTwo": "수렴됨",
+          "zeroTwoC": "수렴됨, 약간 더 강함",
+          "now": "현재 미니언 수치"
+        }
+      ]
+    },
+    {
+      "id": "boss-impact",
+      "order": 5,
+      "title": "보스 수정",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "0.2.0c의 영향을 받은 캠페인 보스",
+          "detail": "여러 보스의 동작이 교정되어, 미니언과 창 플레이스타일을 더 이상 불공평하게 징벌하지 않게 되었습니다.",
+          "action": "최신 패턴은 현재 보스 페이지를 확인하세요."
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 6,
+      "title": "빌드 영향",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "0.2.0 Day-1에서 죽은 것처럼 보이던 미니언 빌드(리치, 인퍼널리스트)는 0.2.0c 이후 다시 플레이 가능해졌지만, 출시 녹화본이 아닌 현재 빌드 페이지와 대조하여 확인해야 합니다.",
+        "수정된 창 스킬이 의도한 대로 동작하게 되어 헌트리스 창 레벨링이 매끄러워졌습니다."
+      ],
+      "bullets": [
+        "0.2.0c 이후 미니언 빌드 다시 플레이 가능",
+        "출시 영상이 아닌 현재 빌드 페이지 확인"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "Day-1 대 0.2.0c 이후",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0 Day-1",
+      "oldText": "미니언의 스케일링이 너무 약해 보스전이 수십 분 걸리고 실수처럼 느껴졌습니다.",
+      "newLabel": "0.2.0c 이후",
+      "newText": "젬 레벨당 교정으로 미니언 피해와 생명력이 복원되어, 동일한 빌드가 합리적인 속도로 콘텐츠를 클리어했습니다."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 8,
+      "title": "과거 대 현재",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "미니언 생존성",
+          "thenText": "0.2.0 Day-1에서 붕괴, 0.2.0c에서 수정됨.",
+          "nowText": "미니언 밸런스는 0.3부터 0.5를 거쳐 다시 이동했습니다."
+        },
+        {
+          "aspect": "창 스킬",
+          "thenText": "0.2.0c에서 여러 개 수정됨.",
+          "nowText": "이후 지속적으로 조정됨; 현재 스킬 페이지 확인."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 9,
+      "title": "현재 적용성 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "미니언 스케일링 곡선",
+          "status": "changed-later",
+          "currentSummary": "0.2.0c에서 교정; 이후 패치에서 다시 이동함.",
+          "supersededBy": "0.3-0.5",
+          "affectedContent": "미니언 빌드 페이지"
+        },
+        {
+          "topic": "스켈레탈 아서니스트/클레릭",
+          "status": "changed-later",
+          "currentSummary": "0.2.0c에서 조정되고 이후 재조정됨.",
+          "supersededBy": "0.3-0.5",
+          "affectedContent": "미니언 스킬 페이지"
+        },
+        {
+          "topic": "창 스킬 수정",
+          "status": "changed-later",
+          "currentSummary": "0.2.0c에서 수정됨; 이후 지속적으로 조정됨.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "창 스킬 페이지"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 10,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (미니언)",
+          "context": "플레이어들이 0.2.0 Day-1에서 보스전이 너무 오래 걸린다고 보고했습니다.",
+          "quote": "My minions just melt and bosses take forever.",
+          "analysis": "0.2.0c 스케일링 교정이 다룬 과도한 너프와 일치합니다."
+        },
+        {
+          "source": "포럼 (헌트리스)",
+          "context": "플레이어들이 레벨링 중 창 스킬이 비정상적으로 동작한다고 언급했습니다.",
+          "quote": "Spear felt off until the c patch.",
+          "analysis": "0.2.0c의 창 스킬 수정과 맞닿아 있습니다."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 11,
+      "title": "주의할 이후 변경 사항",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "minion-build-guide",
+          "kind": "build",
+          "issue": "출시 미니언 빌드는 0.2.0c 및 이후 재조정 이전 것입니다.",
+          "action": "현재 미니언 수치로 업데이트할 것.",
+          "status": "queued"
+        },
+        {
+          "contentId": "spear-skill-page",
+          "kind": "skill",
+          "issue": "창 동작은 0.2.0c 이후 변경되었습니다.",
+          "action": "0.5.4e 기준으로 재검증할 것.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 12,
+      "title": "영향받은 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "미니언 빌드 페이지",
+          "type": "build",
+          "trigger": "0.2.0c에서 스케일링 교정됨",
+          "action": "현재 수치와 대조하여 검증할 것.",
+          "status": "queued"
+        },
+        {
+          "name": "스켈레탈 아서니스트 스킬 페이지",
+          "type": "skill",
+          "trigger": "0.2.0c에서 조정됨",
+          "action": "동작 재검증할 것.",
+          "status": "queued"
+        },
+        {
+          "name": "헌트리스 레벨링 가이드",
+          "type": "guide",
+          "trigger": "창 스킬 수정됨",
+          "action": "레벨링 팁 업데이트할 것.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "과거 영상",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — 공식 패치 소통",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "이 버전 계열에 대한 공식 소통입니다. 무엇이 변경되었고 이후 패치에서 어떻게 재작성되었는지 패치 노트와 함께 읽어보세요.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "패치 개요",
+              "time": "00:30"
+            },
+            {
+              "label": "전리품 및 시스템 변경",
+              "time": "04:10"
+            },
+            {
+              "label": "현재 영향",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.2.0 Day-1 미니언 빌드를 사용해도 되나요?",
+          "answer": [
+            "그대로는 안 됩니다. 최소한 0.2.0c를 기다려야 하며, 미니언 밸런스가 0.3부터 0.5에서 다시 이동했으므로 현재 빌드 페이지를 우선하세요."
+          ]
+        },
+        {
+          "question": "0.2.0c는 버프인가요 아니면 너프 되돌림인가요?",
+          "answer": [
+            "미니언에 대한 0.2.0의 과도한 너프 일부를 되돌렸습니다. 새로운 파워 급등이 아닌 교정으로 취급하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.2.0c 패치 노트",
+          "description": "해당 버전의 명시된 변경 사항, 배포 순서 및 후속 clarifications을 담은 공식 패치 스레드.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3746503"
+        },
+        {
+          "label": "Path of Exile 2 Early Access 포럼 인덱스",
+          "description": "이 페이지에서 참조하는 모든 공식 EA 패치 및 핫픽스 스레드 인덱스.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "현재 적용성 주장에 대해 라이브 클라이언트와 교차 검증된 현재 스킬, 아이템, 보스 및 modifier 데이터.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "이 문서에서 참조하는 스킬, 아이템 및 modifier에 대한 데이터베이스 항목.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "주 사실 출처가 아닌, 플레이어 영향 교차 검증에 사용된 커뮤니티 빌드 및 시스템 가이드.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "변경 이력",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "클라이언트 0.5.4e 기준 현재 적용성 검사와 함께 과거 패치 문서를 게시함."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3746503",
+      "label": "Path of Exile 2 공식 0.2.0c 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3746503"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access 포럼 인덱스",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0c: 미니언 스케일링, 창 스킬 및 보스 수정",
+    "description": "0.2.0c 미니언 재조정: 젬 레벨 스케일링, 스켈레탈 아서니스트/클레릭, 창 및 보스 수정.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0c-minion-spear-boss-rebalance",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

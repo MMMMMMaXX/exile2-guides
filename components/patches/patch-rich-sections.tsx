@@ -4,7 +4,7 @@ import type { PatchSection } from "../../lib/patches/schema";
 
 /** 状态与分类标签本地化映射，避免在 JSON 中写入界面词。 */
 const i18n: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     new: string;
     buff: string;
@@ -89,7 +89,7 @@ const i18n: Record<
   },
 };
 
-const changeCategoryLabel: Record<ContentLocale, Record<string, string>> = {
+const changeCategoryLabel: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     new: "New",
     buff: "Buff",
@@ -116,7 +116,7 @@ const changeCategoryLabel: Record<ContentLocale, Record<string, string>> = {
   },
 };
 
-const affectedTypeLabel: Record<ContentLocale, Record<string, string>> = {
+const affectedTypeLabel: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     boss: "Boss",
     build: "Build",
@@ -138,7 +138,7 @@ const affectedTypeLabel: Record<ContentLocale, Record<string, string>> = {
 };
 
 function statusLabel(locale: ContentLocale, status: string): string {
-  const map = i18n[locale];
+  const map = i18n[locale === "zh-cn" ? "zh-cn" : "en"];
   if (status === "ready") return map.ready;
   if (status === "reviewing") return map.reviewing;
   if (status === "queued") return map.queued;
@@ -150,7 +150,7 @@ function statusLabel(locale: ContentLocale, status: string): string {
 
 /** 把文章内容映射成"官方/编辑/社区"三层语义标记，与本项目内容门禁一致。 */
 function layerBadge(locale: ContentLocale, scope: string): string {
-  const map = i18n[locale];
+  const map = i18n[locale === "zh-cn" ? "zh-cn" : "en"];
   if (/official|官方/.test(scope)) return map.officialLabel;
   if (/community|社区/.test(scope)) return map.communityLabel;
   return "";
@@ -222,7 +222,7 @@ function PatchChangeExplorer({
           key={`${change.category}-${index}`}
         >
           <span className={`patch-change-badge patch-change-badge--${change.category}`}>
-            {changeCategoryLabel[locale][change.category] ?? change.category}
+            {changeCategoryLabel[locale === "zh-cn" ? "zh-cn" : "en"][change.category] ?? change.category}
           </span>
           <h3>{change.title}</h3>
           <p>{change.detail}</p>
@@ -382,7 +382,7 @@ function PatchAffectedContent({
                 <td>
                   <b>{row.name}</b>
                 </td>
-                <td>{affectedTypeLabel[locale][row.type] ?? row.type}</td>
+                <td>{affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][row.type] ?? row.type}</td>
                 <td>{row.trigger}</td>
                 <td>{row.action}</td>
                 <td>
@@ -497,7 +497,7 @@ function PatchFollowup({
 
 /** 历史 Patch 富模块 i18n（状态/优先级/横幅/表头），与文章语言一致。 */
 const historicalI18n: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     stillCurrent: string;
     changedLater: string;
@@ -577,7 +577,7 @@ const historicalI18n: Record<
 };
 
 function applicabilityStatusLabel(locale: ContentLocale, status: string): string {
-  const map = historicalI18n[locale];
+  const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   if (status === "still-current") return map.stillCurrent;
   if (status === "changed-later") return map.changedLater;
   if (status === "removed") return map.removed;
@@ -586,7 +586,7 @@ function applicabilityStatusLabel(locale: ContentLocale, status: string): string
 }
 
 function priorityLabel(locale: ContentLocale, priority: string): string {
-  const map = historicalI18n[locale];
+  const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   if (priority === "high") return map.high;
   if (priority === "medium") return map.medium;
   if (priority === "low") return map.low;
@@ -634,13 +634,13 @@ function PatchCurrentApplicability({
           <thead>
             <tr>
               <th>{locale === "zh-cn" ? "机制" : "Mechanic"}</th>
-              <th>{historicalI18n[locale].status}</th>
+              <th>{historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"].status}</th>
               <th>
                 {locale === "zh-cn"
                   ? "当前规则（0.5.4e）"
                   : "Current rule (0.5.4e)"}
               </th>
-              <th>{historicalI18n[locale].supersededBy}</th>
+              <th>{historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"].supersededBy}</th>
               <th>{locale === "zh-cn" ? "应读页面" : "Read"}</th>
             </tr>
           </thead>
@@ -710,7 +710,7 @@ function PatchSupersededChanges({
   section: Extract<PatchSection, { type: "superseded-changes" }>;
   locale: ContentLocale;
 }) {
-  const map = historicalI18n[locale];
+  const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   return (
     <ul className="patch-superseded">
       {section.items.map((item, index) => (
@@ -781,7 +781,7 @@ function PatchLegacyContentAudit({
                 <td>
                   <b>{row.contentId}</b>
                 </td>
-                <td>{affectedTypeLabel[locale][row.kind] ?? row.kind}</td>
+                <td>{affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][row.kind] ?? row.kind}</td>
                 <td>{row.issue}</td>
                 <td>{row.action}</td>
                 <td>
@@ -806,7 +806,7 @@ function PatchVersionDependencyMap({
   section: Extract<PatchSection, { type: "version-dependency-map" }>;
   locale: ContentLocale;
 }) {
-  const map = historicalI18n[locale];
+  const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   return (
     <div className="patch-version-map">
       {section.nodes.map((node, index) => (
@@ -859,7 +859,7 @@ function PatchMigrationGuide({
   section: Extract<PatchSection, { type: "migration-guide" }>;
   locale: ContentLocale;
 }) {
-  const map = historicalI18n[locale];
+  const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   return (
     <ol className="patch-migration">
       {section.steps.map((step, index) => (

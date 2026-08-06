@@ -1,0 +1,476 @@
+{
+  "id": "skill-support-gem-compatibility",
+  "slug": "skill-support-gem-compatibility",
+  "locale": "tr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "PoE 2 Destek Cüce Uyumu: Bir Destek Neden Yuvalanmaz veya Çalışmaz",
+  "shortTitle": "Destek Uyumu",
+  "summary": "Bir destek cücesinin neden becerinize yuvalanmayı reddettiği ya da yuvalandığı halde savaşta hiçbir şey yapmadığı: beceri etiketleri ile destek etiketleri, yuva ilerlemesi, nitelik ve silah gereksinimleri, kopyalar ve kalıcı/ruh destekleri.",
+  "description": "Öncelikle teşhis odaklı bir PoE 2 destek cüce uyumu rehberi: beceri etiketleri ile destek etiketlerinin bir desteğin yerleştirilip yerleştirilemeyeceğine nasıl karar verdiği, destek yuvalarının cüce seviyelendikçe nasıl büyüdüğü, nitelik/silah/kopya sınırları, tetikleme ve kalıcı destek etkileşimleri, etkileşimli bir uyum teşhisi ve bir ipucu doğrulama yöntemi.",
+  "guideCategory": "mechanics",
+  "estimatedReadingMinutes": 12,
+  "prerequisites": [
+    "Temel gemcutting (cüce kesimi) kavramını anlıyorsunuz: beceriler ve destekler Kesilmemiş Cüceler'den gelir ve destekler beceri cücelerinin içine yerleştirilir",
+    "Yuvalayamadığınız ya da yuvalandığı halde hiçbir şey yapmıyormuş gibi görünen bir destek cüceniz var"
+  ],
+  "patch": "Path of Exile 2 Erken Erişim 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "mechanics"
+  ],
+  "heroImage": "/images/items/uncut-gems-hero.webp",
+  "cardImage": "/images/items/uncut-gems-hero.webp",
+  "imageAlt": "PoE 2 kesilmemiş cüceleri bir kesilmiş destek cücesinin yanında, beceri ve destek uyumunun arkasındaki yapı taşları",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Hızlı yanıt",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Destek neden becerime yuvalanmıyor?",
+          "body": [
+            "Bir destek, yalnızca izin verilen etiketleri becerinin etiketlerinden en az biriyle örtüştüğünde yuvalanabilir. Etiketler eşleşmezse oyun yuvalamayı reddeder.",
+            "Ayrıca, beceri cücesinde boş destek yuvası yoksa ya da desteğin nitelik veya silah gereksinimini karşılamıyorsanız da başarısız olur."
+          ]
+        },
+        {
+          "title": "Yuvalandı ama beceri değişmedi. Neden?",
+          "body": [
+            "Etiketler yuva için yeterince örtüşmüştü, ancak desteğin özel etkisi becerinizin gerçekte nasıl hasar verdiğine veya davrandığına uygulanmıyor.",
+            "Bazı destekler yalnızca becerinizin sahip olmadığı bir anahtar kelimeyi etkiler ya da becerinin kendisini değil yalnızca bağlı destekleri değiştirir. Listelenen etkileşimleri görmek için beceri ipucunu açın."
+          ]
+        },
+        {
+          "title": "Uyumu kendim nasıl doğrularım?",
+          "body": [
+            "Destek cücesinin üzerine gelin: ipucu, uygulandığı etiketleri listeler ve uyumsuz becerileri soluk gösterir.",
+            "Yuvaladıktan sonra, etkinin işlediğini doğrulamak için becerinin ipucundaki DPS ve değiştiricilerini destekli ve desteksiz olarak karşılaştırın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tag-definitions",
+      "order": 2,
+      "title": "Beceri etiketleri ile destek etiketleri",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Her beceri cücesi Saldırı, Büyü, Mermi, Yakın Dövüş, Minyon, Süre veya Alan gibi etiketler taşır. Her destek cücesi değiştirmeye izinli olduğu etiketleri listeler. Uyum, bu örtüşmeye göre belirlenir; desteğin adına veya simgesine göre değil."
+      ],
+      "bullets": [
+        "Mermi gerektiren bir destek, yakın dövüş veya kendi üzerine büyü atan bir beceride hiçbir şey yapmaz çünkü o beceride Mermi etiketi yoktur.",
+        "Saldırı gerektiren bir destek, her ikisi de hasar verse bile Büyü becerisine uygulanmaz.",
+        "Bazı destekler geniştir (çoğu Saldırı'ya veya çoğu Beceri'ye uygulanır), bazıları ise dardır (yalnızca Mermiler, yalnızca Minyonlar, yalnızca Tetiklenen beceriler).",
+        "Cüce ipucu asıl kaynaktır: bir desteğin tam olarak hangi etiketleri hedeflediğini gösterir ve değiştiremediği becerileri soluklaştırır."
+      ]
+    },
+    {
+      "id": "socket-progression",
+      "order": 3,
+      "title": "Destek yuvaları nasıl büyür",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bir beceri cücesi her destek yuvası açık olarak başlamaz. Destek yuvaları, beceri cücesi savaş yoluyla deneyim kazanıp seviye atladıkça açılır. Başlarda bir beceri yalnızca bir veya iki desteği kabul edebilir; daha yüksek cüce seviyelerinde daha fazla yuva kazanır."
+      ],
+      "bullets": [
+        "Bir destek 'sığmıyorsa', becerinin basitçe henüz boş yuvası olmayabilir. Cüceyi seviyelendirin ve yuva panelini yeniden açın.",
+        "Daha yüksek katmanlı Kesilmemiş Cüceler daha güçlü destek varyantları üretebilir, ancak yuva sayısı destek tarafından değil beceri cücesi tarafından belirlenir.",
+        "Şu an kaç destek yuvasının mevcut olduğunu ve ileride kaç tanesini açacağını görmek için beceri cücesinin kendi panelini kontrol edin."
+      ]
+    },
+    {
+      "id": "compatibility-diagnostic",
+      "order": 4,
+      "title": "Uyum teşhisi",
+      "type": "compatibility-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Size uyan durumu seçin. En olası etiket, yuva, nitelik, silah veya kopya nedenini ve ipucunda neyin kontrol edileceğini açıkliyoruz.",
+      "controls": [
+        {
+          "id": "situation",
+          "label": "Durumunuz",
+          "options": [
+            {
+              "label": "Destek hiç yuvalanmıyor",
+              "value": "wont-socket"
+            },
+            {
+              "label": "Yuvalandı ama beceri değişmedi",
+              "value": "socketed-no-change"
+            },
+            {
+              "label": "Farklı bir beceriyi buffladı, bunu değil",
+              "value": "wrong-target"
+            },
+            {
+              "label": "Nitelik veya silah gereksinimi tarafından engellendi",
+              "value": "attribute-weapon"
+            },
+            {
+              "label": "İkinci bir kopya hiçbir şey yapmıyor",
+              "value": "duplicate"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Yuvalanmıyor: etiket, yuva veya gereksinim engeli",
+          "when": {
+            "situation": "wont-socket"
+          },
+          "steps": [
+            "Destek ipucunu okuyun: değiştirebileceği etiketleri listeler ve uyuşmayan becerileri soluklaştırır.",
+            "Beceride boş bir destek yuvası olduğundan emin olun; tüm yuvalar doluysa cüceyi seviyelendirin.",
+            "Nitelik ve silah gereksinimlerini kontrol edin: bazı destekler yuvalanabilmeleri için minimum bir nitelik veya belirli bir silah sınıfı talep eder."
+          ]
+        },
+        {
+          "title": "Yuvalandı ama etki yok: etiketler örtüşüyor, etki örtüşmüyor",
+          "when": {
+            "situation": "socketed-no-change"
+          },
+          "steps": [
+            "Yuva, bir etiket örtüştüğü için izin verildi, ancak desteğin özel bonusu becerinizin kullanmadığı bir anahtar kelimeyi hedefliyor.",
+            "DPS veya değiştiricilerin hiç değişip değişmediğini doğrulamak için beceri ipucunu destekli ve desteksiz olarak karşılaştırın.",
+            "Bazı destekler yalnızca diğer bağlı destekleri değiştirir (meta destekler); beceriye doğrudan pek bir şey yapmayı kasıtlı olarak amaçlamazlar."
+          ]
+        },
+        {
+          "title": "Yanlış beceriyi buffladı",
+          "when": {
+            "situation": "wrong-target"
+          },
+          "steps": [
+            "Bir destek yalnızca içine yuvalandığı beceri cücesini ve o becerinin tetiklediği veya bağlı olduğu becerileri etkiler.",
+            "Destek cücesini tam olarak bufflamak istediğiniz beceriye yuvalayın; A Becerisine takılan bir destek barınızdaki B Becerisini asla güçlendirmez.",
+            "Tetiklenen kurulumlarda, desteği alan şey tetikleyicinin gerçekte hangi beceriyi ateşlediğini doğrulayın."
+          ]
+        },
+        {
+          "title": "Nitelik veya silah engeli",
+          "when": {
+            "situation": "attribute-weapon"
+          },
+          "steps": [
+            "Bazı destekler minimum Güç, Çeviklik veya Zeka ya da yay, tatar yayı veya yakın dövüş silahı gibi belirli bir silah türü gerektirir.",
+            "Karakteriniz veya şu anki silahınız gereksinimi karşılamıyorsa yuva engellenir veya etki bastırılır.",
+            "Gereksinimi karşılayan bir silaha geçin veya nitelikleri yeniden dağıtın, ardından yuveyi yeniden kontrol edin."
+          ]
+        },
+        {
+          "title": "Kopya destek",
+          "when": {
+            "situation": "duplicate"
+          },
+          "steps": [
+            "Aynı desteği aynı beceriye ikinci kez yuvalamak ek bir fayda sağlamaz ve genellikle engellenir.",
+            "Zaten sahip olduğunuz bir desteği tekrarlamak yerine yeni bir etki ekleyen farklı bir destek kullanın.",
+            "İki beceri aynı kurulumu paylaşıyorsa, tek bir kopyanın ikisini birden kapsamasını beklemek yerine desteği her beceriye ayrı ayrı yuvalayın."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Genel kontrol",
+        "steps": [
+          "Önce destek ipucunu açın: izin verilen etiketleri gösterir ve uyumsuz becerileri soluklaştırır.",
+          "Boş bir yuva olduğundan emin olun, ardından nitelik ve silah gereksinimlerini doğrulayın.",
+          "Yuvaladıktan sonra, etkinin uygulandığını kanıtlamak için beceri ipucunu destekli ve desteksiz olarak karşılaştırın."
+        ]
+      }
+    },
+    {
+      "id": "support-requirements",
+      "order": 5,
+      "title": "Nitelik, silah ve kopya sınırları",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Etiketlerin ötesinde, bir desteğin gerçekten katkı sağlayıp sağlamadığına üç sınır karar verir: nitelik engelleri, silah engelleri ve kopya-yok kuralı."
+      ],
+      "bullets": [
+        "Nitelik engeli: Güç, Çeviklik veya Zeka gerektiren destekler, karakteriniz eşiği karşılamadıkça çalışmaz.",
+        "Silah engeli: bazı destekler yalnızca belirttikleri silah sınıfını (örneğin yay, tatar yayı veya yakın dövüş silahı) kuşandığınız sürece çalışır.",
+        "Kopya yok: aynı destek bir beceri üzerinde yığılamaz; ikinci bir kopya boşa gider.",
+        "Bir destek yuvalanıyor ama etkisiz hissediliyorsa, bunun nedeni genellikle bir hata değil, bu üç sessiz engelden biridir."
+      ]
+    },
+    {
+      "id": "trigger-and-persistent-buffs",
+      "order": 6,
+      "title": "Tetiklenen beceriler, kalıcı destekler ve Ruh",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Destek uyumunu bozan iki özel durum vardır: tetiklenen beceriler ve kalıcı destekler (Ruh rezerve eden aura'lar ve benzeri etkiler)."
+      ],
+      "bullets": [
+        "Tetiklenen beceriler: bir beceriyi tetikleyen bir destek, onunla birlikte yuvalanan beceriyi ateşler; manuel büyü atma yerine tetikleme kuralları ve bekleme süreleriyle yönetilir.",
+        "Kalıcı destekler: bazı destekler, Ruh'un bir kısmını rezerve eden aura'lar veya kalıcı etkiler verir; Ruh'unuz yetmezse etki etkinleşemez.",
+        "Ruh rezervasyonu manadan ayrıdır: bir destek etiketler bakımından tamamen uyumlu olsa bile, Ruh'unuz başka yerde zaten rezerve edilmişse yine de açılmayabilir.",
+        "Önce Ruh'u boşaltın (yuvaları çıkarın veya diğer rezervasyonları düşürün), ardından kalıcı desteğin etkinleşip etkinleşmediğini yeniden kontrol edin."
+      ]
+    },
+    {
+      "id": "before-after-example",
+      "order": 7,
+      "title": "Çalışılmış örnek",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Somut bir örnek, aynı desteğin neden tamamen etiketler nedeniyle beceriler arasında farklı davrandığını gösterir."
+      ],
+      "bullets": [
+        "Örnek: Mermi gerektiren bir destek, bir mermi becerisine temiz şekilde yuvalanır ve hasarını artırır.",
+        "Aynı destek, kendi üzerine büyü atan bir beceriye yuvalanmayı reddeder çünkü o beceride Mermi etiketi yoktur.",
+        "Saldırıları hedefleyen daha geniş bir destek hem bir yakın dövüş saldırısına hem de bir mermi saldırısına uyar, ancak bir büyüye uymaz.",
+        "Ders: simgeye değil etiketlere bakın. İpucundaki soluk listesi nihai cevaptır."
+      ]
+    },
+    {
+      "id": "failed-methods",
+      "order": 8,
+      "title": "Düzeltmeyen yöntemler",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Oyuncular sıklıkla uyumu değiştiremeyen geçici çözümler dener. Bunları atlayın ve doğrudan etiket kontrolüne gidin."
+      ],
+      "bullets": [
+        "Yeniden yükleme veya yeniden giriş yapma, etiket eşleşmesini değiştirmez; yuva kararı etiketlerden ve gereksinimlerden belirleyicidir.",
+        "Aynı türden daha yüksek katmanlı bir destek kesmek, etiketlerini hedeflemediği bir beceriye yine sığmaz.",
+        "Destek cücesini barınızdaki farklı bir beceriye eklemek, aslında istediğiniz beceriyi geriye dönük olarak bufflamaz.",
+        "Yalnızca destekteki daha fazla cüce seviyesi, eksik bir etiket, nitelik veya silah eşleşmesini atlatmaz."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Topluluk soruları",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Reddit ve video yorumlarından gelen yaygın destek-uyumu soruları, bizim yorumumuz ve doğrudan bir öneriyle birlikte.",
+      "cards": [
+        {
+          "title": "Destek becerimi soluklaştırıyor",
+          "tag": "Etiketler",
+          "body": [
+            "Sorun: destek beceriye hiç yerleştirilemiyor.",
+            "Kanıt: becerinin etiketleri, desteğin izin verilen etiketleriyle örtüşmüyor.",
+            "Öneri: ipucundaki soluk listeyi kontrol edin ve etiketleri becerinizle eşleşen bir destek seçin."
+          ]
+        },
+        {
+          "title": "Yuvalandı ama DPS değişmedi",
+          "tag": "Etki",
+          "body": [
+            "Sorun: destek sığıyor ama ipucu hiçbir değişiklik göstermiyor.",
+            "Kanıt: yuva için yeterince bir etiket örtüşmüş, ancak bonus becerinin sahip olmadığı bir anahtar kelimeyi hedefliyor.",
+            "Öneri: beceri ipucunu destekli ve desteksiz olarak karşılaştırın; etkisi açıkça uygulanan bir desteğe geçin."
+          ]
+        },
+        {
+          "title": "Aura desteği açılmıyor",
+          "tag": "Ruh",
+          "body": [
+            "Sorun: kalıcı bir buff desteği hiçbir şey yapmıyor.",
+            "Kanıt: Ruh'unuzu diğer aura'lara veya rezervasyonlara zaten harcamış durumda.",
+            "Öneri: diğer rezervasyonları düşürerek Ruh'u boşaltın, ardından etkinleşmeyi yeniden kontrol edin."
+          ]
+        },
+        {
+          "title": "Aynı destek iki kez",
+          "tag": "Kopya",
+          "body": [
+            "Sorun: ikinci bir kopya hiçbir şey yapmıyormuş gibi görünüyor.",
+            "Kanıt: bir becerideki kopya destekler engellenir veya yığılma faydası sağlamaz.",
+            "Öneri: bir tanesini tekrarlamak yerine yeni bir etki ekleyen farklı bir destek kullanın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Destek cücesi video anlatımı",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 Destek Cüceleri Açıklandı: Etiketler, Yuvalar ve Uyum",
+          "creator": "Topluluk içerik üreticisi",
+          "description": "Destek cücelerinin beceri etiketleriyle nasıl etkileştiğinin, yuvaların nasıl açıldığının ve yuvalamadan önce ipucunun nasıl okunacağının bir anlatımı.",
+          "takeaway": "Destek etiketlerini beceri etiketleriyle eşleştirin, boş yuvalarınızı ve Ruh'unuzu izleyin ve bağlı kalmadan önce etkiyi ipucunda doğrulayın.",
+          "url": "https://www.youtube.com/watch?v=LRemyu5I3UI",
+          "timestamps": [
+            {
+              "label": "Giriş",
+              "time": "0:00"
+            },
+            {
+              "label": "Etiketler uyumu nasıl belirler",
+              "time": "1:30"
+            },
+            {
+              "label": "Destek yuvaları ve cüce seviyeleri",
+              "time": "4:00"
+            },
+            {
+              "label": "Nitelik ve silah engelleri",
+              "time": "7:00"
+            },
+            {
+              "label": "Ruh ve kalıcı destekler",
+              "time": "10:00"
+            },
+            {
+              "label": "İpucunda doğrulama",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "Sorun giderme",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "'Destek çalışmıyor' raporlarının çoğu hata değil, etiket veya gereksinim uyuşmazlığıdır. Belirtiyi okuyun, ardından etiketleri kontrol edin."
+      ],
+      "bullets": [
+        "Yuvalanamıyor: destek ipucunu açın ve soluklaştırılmış uyumsuz beceriler listesini okuyun.",
+        "Yuvaladıktan sonra etki yok: bonusun uygulandığını doğrulamak için beceri ipucunu destekli ve desteksiz olarak karşılaştırın.",
+        "Yanlış beceriyi bufflıyor: desteği gerçekten bufflamak istediğiniz beceriye taşıyın.",
+        "Aura etkinleşmiyor: önce Ruh'u diğer rezervasyonlardan boşaltın.",
+        "Şüpheli hata: raporlamadan önce beceri etiketlerini, destek etiketlerini ve niteliklerinizi yakalayın, ardından ipucuyla karşılaştırın."
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Kaynaklar ve doğrulama",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Resmi kaynak",
+          "description": "Path of Exile 2 resmi sitesi ve oyun içi gemcutting ipuçları",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Yama notları",
+          "description": "PoE 2 0.3.0 Destek Cücesi Revizyonu yama notları",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Topluluk rehberi",
+          "description": "PoE 2 Wiki - Destek Cücesi mekanikleri ve etiket sistemi",
+          "url": "https://www.poe2wiki.net/"
+        },
+        {
+          "label": "Video rehberi",
+          "description": "Topluluk anlatımı - Destek Cüceleri Açıklandı",
+          "url": "https://www.youtube.com/watch?v=LRemyu5I3UI"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Değişiklik günlüğü",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "PoE 2 0.5.4 için yayınlandı. Beceri ve destek etiketlerini, yuva ilerlemesini, nitelik/silah/kopya sınırlarını, tetikleme ve kalıcı destek etkileşimlerini, etkileşimli bir uyum teşhisini, çalışılmış bir örneği ve ipucu doğrulamasını kapsar. İstemci doğrulaması belirtilen sınırlar için beklemededir."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-3-0-support-gem-overhaul"
+  ],
+  "relatedSkillIds": [
+    "chain-support"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 Resmi",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "PoE 2 0.3.0 Destek Cücesi Revizyonu",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "PoE 2 Wiki - Destek Cüceleri",
+      "sourceType": "community",
+      "url": "https://www.poe2wiki.net/"
+    },
+    {
+      "label": "Topluluk - Destek Cüceleri Açıklandı",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=LRemyu5I3UI"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Destek Cüce Uyumu: Bir Destek Neden Yuvalanmaz veya Çalışmaz",
+    "description": "Bir destek cücesinin neden becerinize yuvalanmayı reddettiği ya da yuvalandığı halde hiçbir şey yapmadığı: beceri etiketleri ile destek etiketleri, yuva ilerlemesi, nitelik ve silah gereksinimleri, kopyalar ve kalıcı/ruh destekleri.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-02",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "skill-support-gem-compatibility",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

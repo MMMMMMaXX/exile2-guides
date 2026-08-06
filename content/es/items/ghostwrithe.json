@@ -1,0 +1,789 @@
+{
+  "id": "ghostwrithe",
+  "slug": "ghostwrithe",
+  "locale": "es",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Ghostwrithe: conversión de Vida a Escudo de Energía, enrutamiento de golpes y defensa solo con ES en Path of Exile 2 0.5",
+  "shortTitle": "Ghostwrithe",
+  "summary": "Ghostwrithe es una Vaal Regalia única cuyos tres modificadores colapsan tu defensa en una única reserva de Escudo de Energía: el 100 % de la Vida Máxima proviene del Escudo de Energía, el (20-30) % del daño de golpe se recibe del Escudo de Energía antes que de la Vida, y no puedes drenar ni regenerar Vida ni ganar Vida de frascos. Esta guía explica la matemática de la conversión, por qué deja de funcionar cualquier forma de sostenimiento de vida, cómo reconstruir la defensa sobre el Escudo de Energía, qué builds habilita (caster estilo Inoculación del Caos y monjes de ES) y el punto de corte del rollo.",
+  "description": "Cómo funciona Ghostwrithe en PoE2 0.5: la conversión del 100 % de Vida Máxima a Escudo de Energía, el enrutamiento del (20-30) % del daño de golpe a ES antes que a la Vida, la pérdida del drenaje de vida / regeneración de vida / sostenimiento de frascos de vida, la defensa resultante de una única reserva de ES, ejemplos de build, valor del rollo y coste de fallo.",
+  "itemType": "body-armour",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "es-conversion",
+    "ci-style",
+    "es-defence"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-armour",
+  "itemClass": "body-armour",
+  "baseType": "vaal-regalia",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-armour",
+    "es-conversion",
+    "ghostwrithe"
+  ],
+  "heroImage": "/images/items/ghostwrithe-hero.webp",
+  "cardImage": "/images/items/ghostwrithe-hero.webp",
+  "imageAlt": "Ghostwrithe, Vaal Regalia única de Path of Exile 2, una armadura de torso que convierte toda tu reserva de vida en Escudo de Energía y desactiva el sostenimiento de vida",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Los tres modificadores de Ghostwrithe convierten a tu personaje en una unidad solo de Escudo de Energía. 'El 100 % de la Vida Máxima proviene del Escudo de Energía' pliega toda tu vida total en tu Escudo de Energía: acabas con 0 de vida por separado. '(20-30) % del daño de golpe se recibe del Escudo de Energía antes que de la Vida' empuja entonces una porción extra de cada golpe a tu ES primero. Como ya no queda reserva de vida, el drenaje de vida, la regeneración de vida y los frascos de vida no hacen nada: debes mantenerte con vida únicamente con el Escudo de Energía. La recompensa es una única reserva recargable que escala con la inversión en ES y habilita builds estilo Inoculación del Caos sin tomar realmente la piedra angular de IC.",
+      "calloutDetail": [
+        "La conversión suma tu Vida Máxima a tu Escudo de Energía Máximo. Un personaje con 2500 de vida y 3000 de ES pasa a tener ~5500 de ES y 0 de vida.",
+        "Cualquier efecto dirigido a la 'Vida' (recuperación de frascos, drenaje de vida, regeneración de vida, vida al golpe) no tiene reserva sobre la que actuar, así que queda inactivo.",
+        "Debes sostenerte mediante la recarga de ES, el drenaje de ES, la regeneración de ES, la ES al golpe y la ES al bloqueo en su lugar."
+      ],
+      "answers": [
+        {
+          "label": "Úsalo si",
+          "text": [
+            "Ya construyes tu personaje en torno al Escudo de Energía (casters, monjes de ES) y quieres dejar de dividir puntos entre vida y ES, o quieres un personaje inmortal sobre ES estilo Inoculación del Caos mientras sigues usando tus pasivas de vida."
+          ]
+        },
+        {
+          "label": "Evítalo si",
+          "text": [
+            "Tu build depende de frascos de vida, drenaje de vida o regeneración de vida (la mayoría de builds de ataque e invocaciones), o no puedes alcanzar suficiente ES para reemplazar tu reserva de vida."
+          ]
+        },
+        {
+          "label": "Rollo a buscar",
+          "text": [
+            "El rollo de enrutamiento de golpes (20-30) % es un bono menor por encima de la conversión. Prioriza una Vaal Regalia de Escudo de Energía base alto y tu ES total, no la categoría del rollo."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Cómo funciona la conversión"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip actual y rangos de rollo"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds que lo usan"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Datos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Tipo base",
+          "value": "Vaal Regalia",
+          "note": [
+            "Una armadura de torso de Inteligencia con una base de Escudo de Energía alta, que es exactamente lo que quieres cuando el objetivo es apilar una única gran reserva de ES."
+          ]
+        },
+        {
+          "label": "Modificadores únicos",
+          "value": "100 % de Vida desde ES; (20-30) % de daño de golpe a ES primero; sin drenaje/regen/frasco de vida",
+          "note": [
+            "Los tres modificadores apuntan a tu reserva de vida. Juntos eliminan la vida como capa defensiva por completo."
+          ]
+        },
+        {
+          "label": "Nivel requerido",
+          "value": "1 (Inteligencia)",
+          "note": [
+            "Equipable desde el principio mismo, así que puede llevar a un caster de ES durante la campaña si la reserva de ES es suficientemente grande."
+          ]
+        },
+        {
+          "label": "Adquisición",
+          "value": "Cae en cualquier sitio; intercambiable",
+          "note": [
+            "Una armadura única relativamente común. La mayoría de jugadores compra un rollo específico de ES base en el intercambio en lugar de farmearla."
+          ]
+        },
+        {
+          "label": "Qué desactiva",
+          "value": "Frascos de vida, drenaje de vida, regeneración de vida",
+          "note": [
+            "Estas son las tres herramientas de sostenimiento que dejan de funcionar porque tu reserva de vida es 0."
+          ]
+        },
+        {
+          "label": "Relevancia del rollo",
+          "value": "Baja - la ES base importa más",
+          "note": [
+            "La categoría (20-30) % apenas cambia la supervivencia. Busca el rollo de Escudo de Energía base más alto y tu ES total, no el rollo de sufijo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip actual y rangos de rollo (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Escudo de Energía base",
+          "value": "Alto (base Vaal Regalia)",
+          "notes": [
+            "Vaal Regalia es la base de armadura de torso de Inteligencia con mayor ES. El rollo exacto varía por drop; prioriza un rollo alto de ES base al comprar."
+          ]
+        },
+        {
+          "label": "Modificador 1 (fijo)",
+          "value": "100 % de la Vida Máxima proviene del Escudo de Energía",
+          "notes": [
+            "Tu Vida Máxima se suma a tu Escudo de Energía Máximo. No es un porcentaje de daño: es la propia reserva la que se fusiona."
+          ]
+        },
+        {
+          "label": "Modificador 2 (variable)",
+          "value": "(20-30) % del daño de golpe se recibe del Escudo de Energía antes que de la Vida",
+          "notes": [
+            "Varía por categorías; una porción de cada golpe se resta de ES antes que de cualquier vida. Menor una vez que la vida ya es 0 por el Modificador 1."
+          ]
+        },
+        {
+          "label": "Modificador 3 (fijo)",
+          "value": "No puede drenar ni regenerar Vida, y no puede ganar Vida de frascos",
+          "notes": [
+            "Bloqueo total de las tres vías de sostenimiento de vida. Las versiones de ES de estos efectos no se ven afectadas y se convierten en tu único sostenimiento."
+          ]
+        },
+        {
+          "label": "Requisitos",
+          "value": "Nivel 1, Inteligencia",
+          "notes": [
+            "Sin requisito de Fuerza ni de Destreza; la base Vaal Regalia fija el requisito de Inteligencia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Cómo funciona la conversión de vida a Escudo de Energía",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "El primer modificador de Ghostwrithe dice '100 % de la Vida Máxima proviene del Escudo de Energía'. Esto no reduce el daño; reubica tu salud. Tu valor de Vida Máxima se suma directamente a tu Escudo de Energía Máximo. El efecto neto es una única reserva defensiva: Escudo de Energía Máximo = (Escudo de Energía Máximo de todas las demás fuentes) + (Vida Máxima de todas las fuentes), y la Vida Máxima pasa a ser 0.",
+        "Ejemplo resuelto: un personaje cuyo árbol y equipo otorgan 2500 de Vida Máxima, cuyo torso, árbol, equipo y auras otorgan 3000 de Escudo de Energía, y que entonces equipa un Ghostwrithe. Tras la conversión el personaje tiene 2500 + 3000 = 5500 de Escudo de Energía Máximo y 0 de Vida Máxima. Cada punto que habrías gastado en vida ahora simplemente hace la reserva de ES más grande, porque la vida se pliega dentro de ella.",
+        "El segundo modificador, '(20-30) % del daño de golpe se recibe del Escudo de Energía antes que de la Vida', es en su mayoría redundante una vez que la vida es 0, pero es la regla explícita que mantiene el daño sobre el Escudo de Energía. En el PoE2 normal un golpe agota primero la ES y se desborda hacia la vida; Ghostwrithe garantiza que un 20-30 % extra de cada golpe se enrute a la ES antes de que la vida se toque. Como la vida ya es 0, el mensaje práctico es simplemente: todo tu daño de golpe entrante aterriza en tu Escudo de Energía recargable.",
+        "El tercer modificador es la trampa: 'No puede drenar ni regenerar Vida, y no puede ganar Vida de frascos'. Sin reserva de vida, los frascos de vida no curan nada, el drenaje de vida no devuelve nada y la regeneración de vida avanza sobre una barra vacía. Dependen por completo del sostenimiento del Escudo de Energía. Este es el verdadero coste del objeto, y es por eso que Ghostwrithe solo compensa en personajes que ya invierten en sostenimiento de ES (tasa de recarga, drenaje de ES, ES al bloqueo, regeneración de ES).",
+        "Por qué los jugadores lo usan de todos modos: plegar la vida en ES te da una reserva muy grande en lugar de dos más pequeñas, y esa reserva se beneficia de la recarga del Escudo de Energía, que suele ser más rápida y fiable que el tiempo de disponibilidad del frasco de vida una vez inviertes en 'Tasa de recarga del Escudo de Energía' y 'menor retardo de inicio de recarga de ES'. También te acerca a la Inoculación del Caos: con 0 de vida, el daño de caos no puede matarte a través de la vida, así que solo necesitas proteger una única barra de ES de todos los tipos de daño."
+      ],
+      "bullets": [
+        "Fórmula: ES Máx. = (toda la ES Máx. restante) + (toda la Vida Máx.); la Vida Máx. pasa a ser 0.",
+        "Ejemplo: 2500 de vida + 3000 de ES -> 5500 de ES y 0 de vida.",
+        "El Modificador 2 mantiene el daño de golpe primero en ES; en gran parte redundante una vez que la vida es 0.",
+        "El Modificador 3 anula frasco de vida / drenaje de vida / regen de vida: debes sostenerte con ES.",
+        "Habilita defensa de una sola reserva estilo IC sin la piedra angular de IC."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Matriz de conversión y resultados defensivos",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "conversion",
+        "energy-shield",
+        "defence"
+      ],
+      "rows": [
+        {
+          "scenario": "2500 de vida + 3000 de ES antes de Ghostwrithe",
+          "audience": "Cualquier caster de ES",
+          "benefit": "Una única reserva de 5500 de ES, 0 de vida: una barra recargable grande",
+          "risk": "Sin búfer de vida: si la ES se rompe, mueres",
+          "level": "high",
+          "recommendation": "Fuerte si se combina con recarga de ES + drenaje de ES; la reserva total es mayor que mantener dos reservas finas.",
+          "tags": [
+            "energy-shield",
+            "pool-size"
+          ]
+        },
+        {
+          "scenario": "(20-30) % del daño de golpe a ES primero",
+          "audience": "Todos los builds",
+          "benefit": "Porción extra de cada golpe forzada a la ES (importa si queda vida)",
+          "risk": "Bajo; ligero cambio de supervivencia",
+          "level": "low",
+          "recommendation": "Trátalo como un detalle por encima de la conversión; no persigas el rollo alto.",
+          "tags": [
+            "routing",
+            "hit-damage"
+          ]
+        },
+        {
+          "scenario": "Frasco de vida / drenaje de vida / regen de vida desactivados",
+          "audience": "Builds de ataque / invocaciones",
+          "benefit": "Ninguno para estos builds",
+          "risk": "Pérdida total del sostenimiento habitual -> a menudo un personaje muerto",
+          "level": "high",
+          "recommendation": "Evita Ghostwrithe salvo que ya uses sostenimiento de ES (Ghostshroud, drenaje de ES, escalado de recarga).",
+          "tags": [
+            "sustain",
+            "anti-synergy"
+          ]
+        },
+        {
+          "scenario": "0 de vida (inmune a caos en vida)",
+          "audience": "Casters estilo IC",
+          "benefit": "El daño de caos no puede matar vía vida; todo el daño golpea una barra de ES",
+          "risk": "Debes sobrecapitalizar ES frente a caos; una reserva que proteger",
+          "level": "medium",
+          "recommendation": "Ideal para builds cercanos a IC que quieren escalar ES máxima sin el coste de la piedra angular de IC.",
+          "tags": [
+            "chaos",
+            "ci-style"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds que usan Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Ghostwrithe es para personajes que ya viven del Escudo de Energía y quieren dejar de dividir la defensa entre vida y ES. Los siguientes son los hogares realistas; cada uno asume que tienes un plan de sostenimiento de ES."
+      ],
+      "builds": [
+        {
+          "title": "Stormweaver Archmage",
+          "description": "Un hogar natural: Archmage escala el maná tanto en daño como en ES, así que la vida convertida simplemente alimenta la misma gran reserva. Combinado con escalado de recarga de ES y una fuente de drenaje de ES para mantener la barra llena.",
+          "href": "/en/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Monje Invocador estilo Inoculación del Caos",
+          "description": "Los monjes pueden apilar ES y convertir la vida en la misma barra, ganando inmortalidad cercana a IC (el caos no puede matar a través de la vida) mientras mantienen sus pasivas de vida funcionando para la ES. Requiere recarga y drenaje de ES disciplinados.",
+          "href": "/en/builds/storm-wave-flicker-invoker/"
+        },
+        {
+          "title": "Templario de Escudo de Energía de baja vida",
+          "description": "Los jugadores que quieren una fantasía de baja vida sin las complicaciones de Sintonía al Dolor usan Ghostwrithe para fusionar reservas y ejecutar una enorme barra de ES alimentada por auras y los frascos de Corsair (que siguen funcionando en ES).",
+          "href": "/en/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Ocultista estilo Escudo de Energía de parpadeo/marca",
+          "description": "Cualquier caster que ya ignora los frascos de vida y se sostiene con recarga de ES y ES al matar puede plegar la vida para una reserva más grande y simple.",
+          "href": "/en/builds/storm-wave-flicker-invoker/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativas: pechera normal de ES, piedra angular IC, armadura de vida",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Ghostwrithe no es una mejora estricta sobre una Vaal Regalia rara bien rollada. Un pechera de ES rara puede dar una base de Escudo de Energía más alta más sufijos útiles (ES%, menor retardo de inicio de ES, requisitos de atributos) sin forzarte a abandonar el sostenimiento de vida. Usa un pechera rara cuando aún quieras un búfer de vida.",
+        "Frente a la piedra angular de Inoculación del Caos, Ghostwrithe logra un resultado similar de 'inmortal en ES, a salvo de caos en vida' pero sin fijar la Vida Máxima a 1. Con IC tu vida es 1 y aún debes construir ES; con Ghostwrithe tu vida es 0 y tus pasivas de vida en cambio inflan la ES. IC es más limpio y no desactiva el drenaje/regen de vida en una barra separada, pero Ghostwrithe permite que los árboles con muchas pasivas de vida sigan valiendo la pena como ES.",
+        "Frente a una armadura de torso normal basada en vida, Ghostwrithe es estrictamente peor para cualquier build que dependa de frascos de vida o drenaje de vida, que es la mayoría de builds de ataque. Esos nunca deberían considerarlo. La decisión es realmente 'ir a tope con una sola reserva de ES' (Ghostwrithe) contra 'mantener vida + ES separados' (pechera rara o IC)."
+      ],
+      "bullets": [
+        "Vaal Regalia rara: posible ES base más alta, mantiene el sostenimiento de vida: úsala cuando quieras un búfer.",
+        "Piedra angular de Inoculación del Caos: resultado similar, pero la vida pasa a 1 y el drenaje/regen de vida en una barra separada siguen existiendo.",
+        "Armadura de vida: estrictamente mejor para builds de frasco/drenaje: deben evitar Ghostwrithe.",
+        "Decisión: Ghostwrithe solo cuando te comprometes totalmente con una única reserva de ES."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Cómo conseguir Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Ghostwrithe es una armadura única relativamente común, así que la vía realista es el intercambio en lugar de farmear."
+      ],
+      "routes": [
+        {
+          "label": "Caída aleatoria (cualquier nivel, desde Acto 1)",
+          "body": [
+            "Puede caer de cualquier monstruo una vez alcanzas el nivel requerido. No puedes enfocarlo; subir la tasa de caída de únicos mediante 'Mayor rareza de objetos encontrados' y Waystones potenciados aumenta la frecuencia con la que aparecen únicos, pero es lento para una armadura específica."
+          ]
+        },
+        {
+          "label": "Orbe del Azar sobre una Vaal Regalia blanca",
+          "body": [
+            "Usar un Orbe del Azar sobre una Vaal Regalia normal puede dar Ghostwrithe, pero la probabilidad es baja y la moneda se aprovecha mejor en otro sitio. La mayoría de jugadores omiten esta vía."
+          ]
+        },
+        {
+          "label": "Intercambio entre jugadores (recomendado)",
+          "body": [
+            "Comprar en el intercambio es la forma fiable de conseguir un rollo específico de ES base. Como es común, incluso un rollo alto de ES base es asequible. Busca la base de Escudo de Energía más alta que puedas pagar; el rollo de sufijo (20-30) % apenas importa. Los precios varían por liga y región: consulta el sitio de intercambio en vivo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Usar, vender o guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "El precio de Ghostwrithe lo marca el rollo de Escudo de Energía base de la Vaal Regalia, no la categoría de sufijo. Un rollo alto de ES base tiene prima; uno bajo es casi gratis. No es tan caro como para requerir espejo. Lee cualquier precio con fecha, liga y región."
+      ],
+      "use": {
+        "condition": "Juegas un personaje basado en ES y tienes un plan de sostenimiento de ES (escalado de recarga, drenaje de ES, ES al bloqueo).",
+        "first": "Equipa el Ghostwrithe de ES base más alto que puedas pagar y fusiona tu vida en la reserva; invierte puntos pasivos en ES, tasa de recarga de ES y menor retardo de inicio de recarga.",
+        "risk": "Sin búfer de vida: un único golpe grande que rompa la ES puede ser letal sin respaldo de frasco.",
+        "text": [
+          "Mejor cuando toda tu defensa ya vive en el Escudo de Energía.",
+          "Consérvalo toda la liga si tu build es solo ES."
+        ]
+      },
+      "sell": {
+        "condition": "Juegas un build de frasco de vida o drenaje de vida, o tu reserva de ES es demasiado pequeña para reemplazar tu vida.",
+        "first": "Véndelo; es peso muerto para esos builds y lo bastante común para moverse rápido.",
+        "risk": "Guardarlo esperando un pico es poco probable: la oferta es estable.",
+        "text": [
+          "Un rollo bajo de ES base tiene poco valor para casters de ES que necesitan una gran reserva.",
+          "Publica el rollo de ES base con honestidad; los compradores filtran por él."
+        ]
+      },
+      "hold": {
+        "condition": "Tienes un rollo alto de ES base y podrías cambiar a un caster de ES más adelante.",
+        "first": "Guarda rollos altos de ES base; siguen líquidos mientras existan builds de ES.",
+        "risk": "Un parche futuro que cambie la recarga de ES o la conversión podría mover la demanda, pero la fantasía es estable.",
+        "text": [
+          "Los rollos altos de ES base retienen valor porque la conversión premia una barra inicial más grande.",
+          "Un implícito corrupto (vía Orbe Vaal) puede añadir ES% o recarga, aumentando el valor."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Riesgo y coste de fallo",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Equipaste Ghostwrithe pero la reserva de ES es demasiado pequeña",
+          "gain": "Vida plegada en ES para una barra única más grande",
+          "loss": "Sin búfer de vida; una ráfaga que rompa la ES es fatal sin frasco",
+          "level": "high",
+          "recommendation": "Equípalo solo cuando tu ES total (vida+ES) supere claramente lo que te daban tu vida+ES anteriores."
+        },
+        {
+          "scenario": "Confiaste en el frasco de vida como botón de pánico",
+          "gain": "Ninguno: el frasco cura 0 de vida",
+          "loss": "Muerte en un momento en que esperabas que un frasco te salvara",
+          "level": "high",
+          "recommendation": "Reemplaza la dependencia del frasco con recarga de ES y drenaje de ES antes de equiparlo."
+        },
+        {
+          "scenario": "Drenaje de vida / regen de vida en el árbol",
+          "gain": "Ninguno: esas pasivas ya no hacen nada",
+          "loss": "Puntos pasivos desperdiciados y un agujero de sostenimiento",
+          "level": "medium",
+          "recommendation": "Reespecializa nodos de drenaje/regen de vida en recarga de ES, drenaje de ES y nodos de ES máxima."
+        },
+        {
+          "scenario": "Daño de caos con una sola reserva",
+          "gain": "El caos no puede matar vía vida (la vida es 0)",
+          "loss": "Todo el caos golpea la misma barra de ES que también debes proteger del físico",
+          "level": "medium",
+          "recommendation": "Sobrecapitaliza ES y superpones resistencia a caos; no asumas que el caos es gratis."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Evidencia de la comunidad y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-ghostwrithe-es",
+          "kind": "Hilo de build del foro oficial",
+          "question": "Si el 100 % de mi vida proviene del Escudo de Energía, ¿mis frascos de vida y mi drenaje de vida simplemente dejan de funcionar?",
+          "summary": [
+            "Un jugador preguntó si la conversión desactiva silenciosamente su sostenimiento habitual de vida."
+          ],
+          "editorialAnalysis": [
+            "Sí. Una vez que la Vida Máxima se pliega en el Escudo de Energía, tu reserva de vida es 0, así que los frascos de vida, el drenaje de vida y la regeneración de vida no tienen sobre qué actuar. El tercer modificador lo hace explícito. Debes reconstruir el sostenimiento sobre el Escudo de Energía: tasa de recarga, drenaje de ES, ES al bloqueo, regeneración de ES."
+          ],
+          "officialAnswer": [
+            "Reemplaza el sostenimiento de vida con sostenimiento de ES. Apila 'Tasa de recarga del Escudo de Energía', reduce el retardo de inicio de recarga de ES y consigue una fuente de drenaje de ES (p. ej., Ghostshroud o un soporte de drenaje de ES). Los frascos de vida quedan decorativos."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Cómo funciona la conversión"
+        },
+        {
+          "sourceId": "forum-ghostwrithe-ci",
+          "kind": "Hilo del foro de la comunidad",
+          "question": "¿Es Ghostwrithe básicamente una Inoculación del Caos gratis sin la piedra angular?",
+          "summary": [
+            "Un lector quería saber si fusionar la vida en ES da la misma sensación de inmunidad al caos que IC."
+          ],
+          "editorialAnalysis": [
+            "Cerca. Con 0 de vida, el daño de caos no puede matarte a través de la vida, así que obtienes el beneficio estilo IC de 'a salvo de caos en vida' sin fijar la vida a 1. La diferencia: tus pasivas de vida ahora alimentan la ES en lugar de desperdiciarse, y sigues desactivando el drenaje/regen de vida. Es cercano a IC, no idéntico."
+          ],
+          "officialAnswer": [
+            "Trátalo como cercano a IC: sobrecapitaliza ES y añade resistencia a caos, porque ahora todos los tipos de daño golpean una barra de ES. No asumas que el caos es gratis solo porque la vida es 0."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds que usan Ghostwrithe"
+        },
+        {
+          "sourceId": "maxroll-es-chests",
+          "kind": "Guía / análisis",
+          "question": "¿Debo comprar Ghostwrithe o una Vaal Regalia rara con mayor ES base?",
+          "summary": [
+            "Un comprador comparó el único contra un pechera de ES rara bien rollada."
+          ],
+          "editorialAnalysis": [
+            "Si quieres mantener un búfer de vida y frascos de vida, una Vaal Regalia rara es estrictamente mejor (posible ES base más alta más sufijos útiles, sin bloqueo de sostenimiento). Ghostwrithe solo gana cuando te comprometes totalmente con una reserva de ES y ya tienes sostenimiento de ES. Compra el rollo de ES base más alto en cualquier caso."
+          ],
+          "officialAnswer": [
+            "Elige Ghostwrithe solo para un build totalmente de ES. En caso contrario compra el pechera rara con la ES% base más alta y conserva tu frasco de vida."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Usar, vender o guardar"
+        },
+        {
+          "sourceId": "gamerant-ghostwrithe",
+          "kind": "Guía",
+          "question": "¿Importa el rollo (20-30) % y puedo corruptirlo con Vaal para un mejor implícito?",
+          "summary": [
+            "Un comprador preguntó cuánto importa el rollo de sufijo y si la corrupción vale la pena."
+          ],
+          "editorialAnalysis": [
+            "El rollo de enrutamiento de golpes (20-30) % es casi irrelevante una vez que la vida es 0; lo que importa es el Escudo de Energía base. Una corrupción con Orbe Vaal puede añadir un implícito de ES% o recarga de ES que ayuda de verdad, pero consume un único y puede arruinarlo. Solo corrupte una copia reemplazable."
+          ],
+          "officialAnswer": [
+            "Ignora el rollo de sufijo al comprar; paga por la ES base. Corrompe solo una copia de repuesto para un implícito de ES%."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "Tooltip actual y rangos de rollo"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problemas y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Equipé Ghostwrithe y mi frasco de vida no hace nada",
+          "directAnswer": [
+            "Esperado. Tu vida ahora es 0, plegada en el Escudo de Energía, y el objeto también bloquea la vida de los frascos. Reemplaza la dependencia del frasco con recarga de ES y drenaje de ES."
+          ],
+          "checks": [
+            "Abre el panel de Personaje y confirma que la Vida Máxima marca 0.",
+            "Comprueba que tu Escudo de Energía total equivale a tu ES antigua + tu vida antigua.",
+            "Añade tasa de recarga de ES y una fuente de drenaje de ES."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Cómo funciona la conversión"
+            }
+          ]
+        },
+        {
+          "symptom": "Muerte instantánea a ráfagas que antes sobrevivía",
+          "directAnswer": [
+            "Perdiste tu búfer de vida. Con una reserva de ES, un golpe que rompe la ES es inmediatamente letal. Crece la reserva (más ES, ES%) y superpones recarga/drenaje antes de depender de ella."
+          ],
+          "checks": [
+            "Compara la ES total tras la conversión con tu vida+ES antiguas.",
+            "Añade 'menor retardo de inicio de recarga del Escudo de Energía' y tasa de recarga."
+          ]
+        },
+        {
+          "symptom": "Mi soporte de drenaje de vida parece inactivo",
+          "directAnswer": [
+            "Lo está. El drenaje de vida devuelve vida que ya no tienes. Cambia a un soporte de drenaje de Escudo de Energía o un efecto de ES al golpe."
+          ],
+          "checks": [
+            "Confirma que el soporte otorga drenaje de vida (desactivado) frente a drenaje de ES (funciona).",
+            "Usa Ghostshroud o una gema de drenaje de ES en su lugar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vídeo explicativo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Muestrario de Ghostwrithe con Escudo de Energía desde Vida (build de comunidad)",
+          "url": "https://youtu.be/ToDEiQfo6mM",
+          "creator": "Creador comunitario de PoE2",
+          "takeaway": "Demuestra un caster de ES ejecutando Ghostwrithe, mostrando la reserva fusionada, la configuración de recarga de ES y por qué se descarta el sostenimiento de vida. Las etiquetas de sección son aproximadas.",
+          "timestamps": [
+            {
+              "label": "Por qué fusionar vida en ES",
+              "time": "00:00"
+            },
+            {
+              "label": "Configuración de recarga y drenaje de ES",
+              "time": "04:15"
+            },
+            {
+              "label": "Mapeo con una reserva de ES",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galería de medios",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip actual de Ghostwrithe (Vaal Regalia, 100 % de Vida desde ES)",
+          "note": "Muestra los tres modificadores y el Escudo de Energía base alto. Observa que la Vida Máxima marca 0 en el panel de Personaje.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "caption": "Vida+ES fusionadas en una reserva",
+          "note": "Ilustra 2500 de vida + 3000 de ES convirtiéndose en 5500 de ES y 0 de vida tras equipar.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenido conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Verisium Líquido",
+          "description": "El material usado en el Yunque de Verisium para la Forja de Runas, incluido un Ghostwrithe Forjado con Runa con mayor ES base.",
+          "href": "/en/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runas y Núcleos de Alma",
+          "description": "Insertar la runa adecuada puede añadir un afijo de ES% o recarga que sinergiza con la reserva fusionada.",
+          "href": "/en/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Orbe Vaal",
+          "description": "Usado para corruptir Ghostwrithe en busca de un implícito de ES% o recarga de ES; corrupte solo una copia reemplazable.",
+          "href": "/en/items/vaal-orb/"
+        },
+        {
+          "contentId": "architects-orb",
+          "contentType": "item",
+          "title": "Orbe del Arquitecto",
+          "description": "Puede añadir un implícito adicional a la base Vaal Regalia, una forma de empujar la reserva de ES fusionada más alto.",
+          "href": "/en/items/architects-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historial de parches y actual vs heredado",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Actual (0.5.4)",
+          "changes": [
+            "Ghostwrithe es una Vaal Regalia única con: 100 % de la Vida Máxima proviene del Escudo de Energía; (20-30) % del daño de golpe se recibe del Escudo de Energía antes que de la Vida; No puede drenar ni regenerar Vida, y no puede ganar Vida de frascos. Esta es la única versión actual."
+          ]
+        },
+        {
+          "version": "Introducción en Acceso Anticipado (0.2.0)",
+          "changes": [
+            "Ghostwrithe entró en el Acceso Anticipado de Path of Exile 2 como único de torso de conversión. Los tres modificadores centrales han sido estables desde la introducción; verifica las categorías de rollo exactas en el juego conforme ocurran pases de equilibrio."
+          ]
+        },
+        {
+          "version": "Forja de Runas (liga 0.5.0 - Runas de Aldur)",
+          "changes": [
+            "Los únicos de bajo nivel pasaron a ser Forjables con Runas. Ghostwrithe (nivel 1) califica: se conservan los tres modificadores y la base Vaal Regalia gana mayor Escudo de Energía más una base Forjada con Runa."
+          ]
+        },
+        {
+          "version": "Nota sobre Orbe Divino y corrupción",
+          "changes": [
+            "El rollo de sufijo es un rango fijo, así que un Orbe Divino no cambia la categoría (20-30) %. Una corrupción con Orbe Vaal puede añadir un implícito de ES% o recarga de ES pero consume un único: corrupte una copia reemplazable."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFICIAL",
+          "description": "Notas del parche 0.5.4 de Path of Exile 2 (foro oficial)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Ghostwrithe (estadísticas base, mecánica)",
+          "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "label": "TOOL",
+          "description": "poedb - Ghostwrithe (datos)",
+          "url": "https://poedb.tw/us/Ghostwrithe"
+        },
+        {
+          "label": "COMUNIDAD",
+          "description": "Foro oficial - discusión de conversión de ES de Ghostwrithe",
+          "url": "https://www.pathofexile.com/forum/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Comunidad - muestrario de Ghostwrithe con Escudo de Energía desde Vida",
+          "url": "https://youtu.be/ToDEiQfo6mM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de cambios",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial que cubre la matemática de conversión de vida a Escudo de Energía de Ghostwrithe, la pérdida de sostenimiento de vida, la defensa solo de ES, ejemplos de build, valor del rollo y coste de fallo."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "architects-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Notas del parche 0.5.4 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-ghostwrithe",
+      "label": "PoE2Wiki - Ghostwrithe",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+    },
+    {
+      "id": "poedb-ghostwrithe",
+      "label": "poedb - Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Ghostwrithe"
+    },
+    {
+      "id": "forum-ghostwrithe",
+      "label": "Foro oficial de Path of Exile 2 (discusión de Ghostwrithe)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/"
+    },
+    {
+      "id": "video-ghostwrithe",
+      "label": "Muestrario comunitario - Escudo de Energía desde Vida con Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://youtu.be/ToDEiQfo6mM"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Ghostwrithe: conversión de Vida a Escudo de Energía, enrutamiento de golpes y defensa solo con ES (PoE2 0.5)",
+    "description": "Cómo funciona Ghostwrithe en Path of Exile 2: la conversión del 100 % de Vida Máxima a Escudo de Energía, el enrutamiento del (20-30) % de daño de golpe a ES antes que a la Vida, la pérdida de sostenimiento de drenaje/regen/frasco de vida, y la defensa resultante de una única reserva de ES.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ghostwrithe",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

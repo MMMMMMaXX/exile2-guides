@@ -1,0 +1,854 @@
+{
+  "id": "shield-wall-titan",
+  "slug": "shield-wall-titan",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "シールドウォール・タイタンビルドガイド：シールドウォール、チャージ、エンドゲーム",
+  "shortTitle": "シールドウォール・タイタン",
+  "summary": "0.5.4のウォリアー用シールド装備一式：シールドウォールはダメージ軽減と挑発でカバーを作り、シールドチャージは群れを叩きつけ余震を誘発する。壁の配置、チャージのリズム、アーマーとブロックの境界を網羅。",
+  "description": "Path of Exile 2 シールドウォール・タイタンガイド（0.5.4対応）：壁の配置、シールドチャージ、アーマーとブロック、ボス戦のリズム、実際の動画タイムスタンプ。",
+  "classId": "warrior",
+  "ascendancyId": "titan",
+  "mainSkillIds": [
+    "shield-charge",
+    "shield-wall"
+  ],
+  "secondarySkillIds": [
+    "boneshatter",
+    "earthquake",
+    "leap-slam",
+    "sunder"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "shield",
+    "tank",
+    "warrior",
+    "melee",
+    "low-input"
+  ],
+  "damageTypes": [
+    "physical",
+    "fire"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping",
+    "tank"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/shield-wall-titan.webp",
+  "cardImage": "/images/builds/covers/shield-wall-titan.webp",
+  "imageAlt": "シールドウォールを展開し、シールドチャージで群れを戦闘中に叩きつけるウォリアー・タイタン",
+  "tags": [
+    "bossing",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "leveling",
+    "melee",
+    "physical",
+    "starter",
+    "titan",
+    "trigger",
+    "warrior"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "ビルド概要",
+      "paragraphs": [
+        "シールドウォール・タイタンはウォリアーのシールド装備一式だ。シールドウォールは自身の前面に壁を展開してダメージを軽減し、モンスターを阻む（挑発付き）。シールドチャージは群れを叩きつけ、余震を誘発する。タイタンという昇華クラスはアーマー、サイズ、範囲を強化する。",
+        "このビルドの核心は「受けて踏みとどまる」こと。壁による軽減＋アーマー＋ブロックにより、雑魚相手ならほぼ無敵に近い。入力はチャージで引き寄せ、壁の裏でダメージを与えること。機動型ビルドのような引き撃ちには頼らず、アーマーとブロックの積み上げに大きく依存する。",
+        "本ガイドは段階構成。まず壁をいつ展開し、どうチャージで引き寄せるか、次に装備、パッシブ、アーマー／ブロックの境界、予算を扱う。クライアント上の数値と仕様はすべてPC検証待ちとして明示しており、未検証のDPSは事実として記載しない。"
+      ],
+      "bullets": [
+        "マッピングはシールドチャージでの引き寄せ＋壁による軽減で、ほぼセミオート。",
+        "ボス戦は壁による軽減＋アーマーでのタンクと、アースクェイク／サンダーでのフィニッシュで締める。",
+        "アーマーとブロックは本格的に扱うべき本物のボトルネック。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "壁による軽減＋アーマー＋ブロックにより、雑魚相手はほぼ死なない。",
+        "シールドチャージでの引き寄せが、高速で安全なマッピングのリズムを生む。",
+        "タイタンのサイズ／アーマー強化により、陣地を維持しやすい。",
+        "序盤は低予算で動き、その後スムーズに移行できる。タンク初心者にも優しい。"
+      ],
+      "cons": [
+        "アーマーとブロックは元から備わっておらず、積み上げる必要がある。",
+        "ボスのバーストはそれでも突破してくることがあり、壁のタイミングが重要。",
+        "火力は遅めで、クリア速度は機動型ビルドに劣る。",
+        "「ブロック不可／アーマーなし」のマップ修正方は見えない罠。"
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの読み方：シールドチャージ → 壁 → 余震フィニッシュ",
+      "paragraphs": [
+        "マッピングのループ：シールドチャージで群れに突っ込んで引き寄せ、着地と同時にシールドウォールを展開して軽減し、前面のモンスターを阻む。その後、壁の裏からボーンスハッター／アースクェイクを放つ。これがコミュニティでセミオート・マッピングと呼ばれる理由だ。",
+        "ボス戦のループ：ボスの攻撃の合間に壁を展開してダメージを軽減し、その場でタンク。アースクェイク／サンダーの余震でフィニッシュする。シールドチャージは距離を取るため、あるいはボスの詠唱を interrupt するために使う。",
+        "「壁が自分の射弾を遮る」といった表現は、通常は壁のソリッドな衝突のことであり、別系統の仕様ではない。スキル説明とクライアントで確認し、隠れた追加メカニクスとして扱ってはならない。"
+      ],
+      "bullets": [
+        "マッピング＝チャージで引き寄せ → 壁で軽減 → 余震。",
+        "ボス戦＝壁でタンク → アースクェイク／サンダーでフィニッシュ。",
+        "壁は軽減の核であって、主火力ではない。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "まずはシールドチャージから。非常に早い段階で使え、本命の引き寄せと移動スキルになる。壁はまだ無理に使わないこと——アーマーも装備もまだ整っていない。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "メイン火力としてボーンスハッターを加え、ライフ／アーマー／ブロックのノードを取っていく。引き寄せの核心はチャージのまま維持する。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — タイタン解放",
+          "levelRange": "30–42",
+          "body": [
+            "タイタンを選び、アーマー／サイズのノードを取る。壁による軽減とタンクが安定する。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "低予算のままチャージ＋壁で運用する。耐性を上限にし、アーマーとライフを整え、レアには壁を維持する。"
+          ]
+        },
+        {
+          "label": "レベル 60+ — エンドゲーム準備",
+          "levelRange": "60+",
+          "body": [
+            "予算内アップグレードへ：アーマー、ブロック、シールドダメージ、カオス耐性。強力な装備を追うのは、強化優先度のチェックリストをパスしてからのみ。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Shield Charge",
+              "skillId": "shield-charge",
+              "role": "チャージでの引き寄せと移動。余震とヘイトを誘発。マッピングの核心。",
+              "supportSkillIds": [
+                "added-fire",
+                "increased-area",
+                "armour-breaking"
+              ],
+              "whyUse": [
+                "ループ全体の引き寄せとリズムの核。これがないとマッピングと群れの引き寄せがテンポを失う。"
+              ],
+              "whenReplace": [
+                "置き換えなし。マップでは壁がこれをさらに加速させる。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：チャージで強引に引き寄せ。ボス戦：詠唱を interrupt するか距離を取る。"
+              ],
+              "notes": [
+                "正確なサポートリンクとシールドレベルはPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Shield Wall",
+              "skillId": "shield-wall",
+              "role": "軽減と挑発のために壁を展開。踏みとどまるための安全圏。",
+              "supportSkillIds": [
+                "increased-area",
+                "fortify"
+              ],
+              "whyUse": [
+                "軽減の盲点をカバーする。マッピングとボス戦の両方で安定した安全圏。"
+              ],
+              "whenReplace": [
+                "常に維持。より強力な軽減が現れた場合のみ置き換え。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：着地時に展開。ボス戦：攻撃の合間に展開。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "ダメージ＆フィニッシュ",
+          "skills": [
+            {
+              "displayName": "Boneshatter",
+              "skillId": "boneshatter",
+              "role": "チャージする重撃。主火力とスタン。",
+              "supportSkillIds": [
+                "added-fire",
+                "melee-physical"
+              ],
+              "whyUse": [
+                "ボス戦と掃除に安定しており、壁でのフィニッシュと組み合わせる。"
+              ],
+              "whenReplace": [
+                "維持。火力構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使うが、ボス戦はそのバーストにより依存する。"
+              ],
+              "notes": [
+                "チャージ時のみ効率が良い。"
+              ]
+            },
+            {
+              "displayName": "Earthquake",
+              "skillId": "earthquake",
+              "role": "余震を持つ範囲叩きつけ。",
+              "supportSkillIds": [
+                "added-fire"
+              ],
+              "whyUse": [
+                "壁の裏で踏みとどまりながらの範囲フィニッシュ。"
+              ],
+              "whenReplace": [
+                "維持。範囲構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングでは任意。ボス戦では窓を強化するために配置。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Leap Slam",
+              "skillId": "leap-slam",
+              "role": "壁を越える、あるいは距離を取るための跳躍移動。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "ウォリアーの移動の核心。その後チャージを再開。"
+              ],
+              "whenReplace": [
+                "維持。移動構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使うが、ボス戦ではより重要。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "タイタン — 最初のノード",
+          "body": [
+            "タイタンを選ぶ。タンクと壁による軽減が安定するよう、アーマー／サイズのノードを優先する。これがビルドの前提条件だ。"
+          ]
+        },
+        {
+          "label": "アーマー＆防御チェック",
+          "body": [
+            "T15以上でそれでもワンパンされるなら、純ダメージのためにアーマー／ブロックのノードを犠牲にしてはならない。まずアーマー、ブロック、カオス耐性を固める。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "アーマー／ブロックとライフを支援するノードのみを取る。クリティカルのホイールへは事前にパスを通さないこと。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "壁バリアントに切り替え、ライフ、アーマー、ブロック、カオス耐性を優先する。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "防御が解決した後、シールドダメージ／範囲のホイールに投資する。同じ階層で装備状態を比較すること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Shield",
+          "recommendations": [
+            "高アーマー／ブロックのベースを選ぶ。シールドチャージ／シールドウォールのリンクに十分なソケットを。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "アーマー / ブロック耐性",
+              "reason": "軽減と踏みとどまりの安全性を直接強化する。"
+            },
+            {
+              "tier": "recommended",
+              "label": "ライフと耐性",
+              "reason": "軽減では死を補えない。"
+            },
+            {
+              "tier": "optional",
+              "label": "シールドダメージ / 追加炎",
+              "reason": "軽減が安定してから。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ブロックリカバリー / 回避",
+              "reason": "生存が安定してからのみ。"
+            }
+          ],
+          "notes": [
+            "シールドはメイン武器。アーマーとブロックを優先する。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "ライフ、カオス耐性、耐性。チャージのリズムのためブーツの移動速度も。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと2つの上限耐性",
+              "reason": "壁による軽減にもHPの裏付けが必要。"
+            },
+            {
+              "tier": "recommended",
+              "label": "カオス耐性",
+              "reason": "後半必須だが、元から備わっていない。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "チャージと位置取りのリズムを改善する。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なアーマープレフィックス",
+              "reason": "防御の後でのみ意味を持つ。"
+            }
+          ],
+          "notes": [
+            "カオス耐性は特別に積み上げる必要がある。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "能力値、耐性、ライフ、ブロック。必要に応じてアーマーかシールドダメージ。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "シールドとジェムを装備するための能力値",
+              "reason": "装備できなければ無意味。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "アーマー / ブロック",
+              "reason": "アクセサリからのおまけ強化。"
+            },
+            {
+              "tier": "luxury",
+              "label": "シールドスキルレベル",
+              "reason": "後半のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "アーマー",
+          "reason": "壁とタンクの軽減を強化。進捗チェックの最上位。"
+        },
+        {
+          "label": "ブロック耐性",
+          "reason": "踏みとどまりの安全性の床。"
+        },
+        {
+          "label": "ライフと耐性",
+          "reason": "軽減にもHPの裏付けが必要。"
+        },
+        {
+          "label": "カオス耐性",
+          "reason": "後半必須だが、元から備わっていない。"
+        },
+        {
+          "label": "シールドダメージ",
+          "reason": "軽減と生存が安定してからのみ。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "クリアが遅い",
+          "symptom": "群れを倒すのに何度もチャージを回す必要がある。",
+          "checks": [
+            "シールドはまだ階層相応のベースか？",
+            "耐性とライフは解決済みか（つまりシールドが本当のボトルネックか）？"
+          ],
+          "upgrade": "アクセサリに触れる前に、階層未満のシールドを交換する。"
+        },
+        {
+          "label": "それでもボスにワンパンされる",
+          "symptom": "ボスのバーストが突破してくる。",
+          "checks": [
+            "アーマー／ブロックは十分か？",
+            "壁は攻撃の合間に展開されているか？"
+          ],
+          "upgrade": "ダメージを伸ばす前にアーマーとブロックを直す。"
+        },
+        {
+          "label": "T15後で停滞",
+          "symptom": "ダメージの改善が止まる。",
+          "checks": [
+            "シールドレベルは上限か？",
+            "シールドダメージは入っているか？",
+            "カオス耐性は最大か？"
+          ],
+          "upgrade": "順に強化：アーマー → ブロック → カオス耐性。"
+        },
+        {
+          "label": "ハイエンドを検討",
+          "symptom": "より高いボス火力を求め、高級装備に関心。",
+          "checks": [
+            "軽減と生存は安定しているか？",
+            "ハイエンドが耐性上限を崩す、あるいはライフを落とすか？"
+          ],
+          "upgrade": "チェックリストをパスしてから少しずつ購入し、再テストする。数値のために生存を犠牲にしてはならない。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "シールドチャージで群れに突っ込んで引き寄せ、着地と同時にシールドウォールを展開して軽減。その後、壁の裏からボーンスハッター／アースクェイク。やるのはチャージと壁の再展開だけ。雑魚に高い火力は不要、ただ受ければよい。",
+        "クリアが遅くなったら、まずシールドをアップグレードする。マッピングが停滞しないよう、いくらかの生存（耐性／ライフ／ブロック）を維持すること。"
+      ],
+      "bullets": [
+        "チャージでの引き寄せ＋壁による軽減が、マッピングのリズム全体。",
+        "雑魚はそのまま受ける。",
+        "クリアが遅くなったら反応的にシールドを強化する。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "ボス戦は一連の流れ。ボスの攻撃の合間に壁を展開して軽減し、その場でタンク。アースクェイク／サンダーの余震でフィニッシュ。シールドチャージは距離を取る、あるいはボスの詠唱を interrupt するために使う。",
+        "それでもバーストが突破するなら、問題はシールドダメージではなくアーマー／ブロックと壁のタイミングだ。ボスがよく動く場合は、リープスラムで壁を越えて位置を再調整する。"
+      ],
+      "bullets": [
+        "壁による軽減 → タンク → アースクェイク／サンダーでフィニッシュ。",
+        "シールドチャージは詠唱を interrupt ／ 距離を取る。",
+        "突破＝アーマー／ブロックとタイミングを直すこと。シールド交換ではない。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "予算階層：本当の低予算と高級の違い",
+      "paragraphs": [
+        "低予算：低予算のシールドに加え、解決済みのアーマー／ブロック／ライフ。チャージ＋壁でほとんどのコンテンツをクリアし、ボスも倒せる。変わるのは陣地を維持できるかどうかであり、ダメージ数値ではない。",
+        "高級：高アーマー／ブロックのユニークシールド、上限のカオス耐性とシールドダメージで、タンクと生存の両方を引き上げる。変わるのは天井と許容誤差であり、低予算を別ビルドに変えるものではない。",
+        "ミラー階層は、低予算／高級のパスとクライアント数値の確認を済ませてからのみ。DPSのためにアーマーとブロックを犠牲にしてはならない。"
+      ],
+      "bullets": [
+        "まず低予算：ライフ、耐性、アーマー、そこそこのシールド。",
+        "後に高級：ブロック、カオス耐性、シールドダメージ。",
+        "ミラー階層も決して防御の床を崩さない。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "本ガイドはコミュニティの議論を再現可能なチェックリストとして使っており、彼らが示したDPSを約束するものではない。",
+      "entries": [
+        {
+          "context": "プレイヤーから、T15後もボスにワンパンされ、何を強化すべきか分からないとの報告あり。",
+          "label": "Titan Gameplay — Shield Wall Facetank",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "映像は高圧ボスにおける壁による軽減とアーマーでのタンクの価値を示し、まずアーマーとブロックを重視している。",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+        },
+        {
+          "context": "プレイヤーが壁を取る価値があるか議論。",
+          "label": "PoE2 Wiki — Titan",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Wikiは壁による軽減とシナジーを持つタイタンのサイズ／アーマーノードを、硬くタンクするためのものとして記録。",
+          "url": "https://poe2wiki.net/wiki/Titan"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "ボスがそれでも突破してくる",
+          "checks": [
+            "アーマー／ブロックは十分か？",
+            "壁は攻撃の合間に展開されているか？",
+            "軽減を無視してダメージばかり積んでいないか？"
+          ]
+        },
+        {
+          "symptom": "マッピングが遅い",
+          "checks": [
+            "シールドはまだ階層相応のベースか？",
+            "耐性とライフはまず解決済みか？"
+          ]
+        },
+        {
+          "symptom": "マップ修正方がこちらをカウンターする",
+          "checks": [
+            "ブロック不可／アーマーなしのマップに当たったか？",
+            "バックアップ案（例：ライフを積む）はあるか？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "何レベルからシールドチャージを使い始める？",
+          "answer": [
+            "非常に早い段階で使える。本命の引き寄せと移動スキルだ。壁はタイタンと装備を待つ。"
+          ],
+          "bullets": [
+            "レベル1からシールドチャージ。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "より良いシールドに交換したのにそれでもワンパンされる？",
+          "answer": [
+            "陣地の維持はシールド単体ではなく、アーマー／ブロック／壁による軽減に依存する。まずアーマーとブロックを直すこと。"
+          ],
+          "bullets": [
+            "ボス戦を録画し、軽減の源泉を確認する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSFで遊べる？",
+          "answer": [
+            "はい。低予算のチャージ＋壁でSSFでもほとんどのコンテンツをマップし、ボスを倒せる。高級ユニークシールドは天井であり、門ではない。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/guides/campaign-checklist-permanent-rewards/",
+              "label": "キャンペーンの永続報酬チェックリストを見る"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "PoE2には現在ネイティブなビルドプランナーが付属。貼り付け可能なインポート文字列と.buildファイルはまだPC検証待ち。それまでは以下のクリエイターガイドと公式プランナーを使うこと。自らのクライアントでノードを必ず再確認すること。",
+      "creatorName": "Titan Gameplay",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "0.5とFacetankの映像を見る",
+      "entries": [
+        {
+          "creator": "PoE2 Patch",
+          "label": "0.5 Shield Wall Changes Overview",
+          "url": "https://www.youtube.com/watch?v=v1JSFzW79v8",
+          "description": "0.5の壁の仕様と基本的な使い方を示す参考映像。",
+          "takeaway": "コピーした数値ではなく、壁による軽減と挑発の誘発に注目。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "導入と仕様"
+            },
+            {
+              "time": "1:40",
+              "label": "壁による軽減"
+            },
+            {
+              "time": "4:10",
+              "label": "挑発と引き寄せ"
+            },
+            {
+              "time": "7:00",
+              "label": "基本コンボ"
+            },
+            {
+              "time": "10:30",
+              "label": "マップ実演"
+            }
+          ]
+        },
+        {
+          "creator": "Titan Gameplay",
+          "label": "Shield Wall Facetank Footage",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY",
+          "description": "高圧：壁による軽減、アーマーでのタンク、装備の境界。",
+          "takeaway": "盲滅法なDPS追いではなく、高圧ボスにおけるアーマーと踏みとどまりに注目。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:30",
+              "label": "高圧ボス突入"
+            },
+            {
+              "time": "4:20",
+              "label": "壁による軽減とアーマー"
+            },
+            {
+              "time": "8:00",
+              "label": "タンクして踏みとどまる"
+            },
+            {
+              "time": "11:40",
+              "label": "装備の境界とまとめ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — 0.5 Shield Wall changes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Titan Gameplay — Shield Wall Facetank (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+        },
+        {
+          "label": "データベース",
+          "description": "Path of Exile 2 Wiki — Titan",
+          "url": "https://poe2wiki.net/wiki/Titan"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "出典付きの0.5.4 シールドウォール・タイタンビルドガイドを作成。PC検証は進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-checklist-permanent-rewards"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Path of Exile 2 — 0.5 Patch Notes (Shield Wall) ",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Titan Gameplay — Shield Wall Facetank (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zcHXt4G17UY"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Titan",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Titan"
+    }
+  ],
+  "seo": {
+    "title": "シールドウォール・タイタンビルドガイド | Exile2 Guides",
+    "description": "0.5.4 シールドウォール・タイタン：壁によるダメージ軽減、シールドチャージ、アーマーとブロックの境界、ボス戦のリズム。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "shield-wall-titan",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

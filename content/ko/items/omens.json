@@ -1,0 +1,752 @@
+{
+  "id": "omens",
+  "slug": "omens",
+  "locale": "ko",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "오먼(Omen) 가이드: 활성화, 제작 조합, 그리고 소모되는 시점",
+  "shortTitle": "오먼",
+  "summary": "오먼(Omen)은 인벤토리 아이템으로, 다음에 사용하는 해당 통화의 작동 방식을 바꿉니다. 이 가이드는 오먼 활성화 방법, 어떤 오먼이 어떤 통화와 짝을 이루는지, 비싼 오먼을 잘못 발동시키는 것을 피하는 법, 그리고 생존과 리그 메커니즘에 쓰이는 비제작 오먼을 다룹니다.",
+  "description": "패스 오브 엑자일 2의 오먼(Omen)에 대한 출처 연동 레퍼런스: 활성화 규칙, 좌측(Sinistral)/우측(Dextral) 명명 체계, 오먼 + 통화 조합, 오발동 점검, 그리고 가치 평가.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "omen",
+    "targeted-crafting"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "패스 오브 엑자일 2의 오먼 통화 아이콘 — 다음 해당 통화 사용을 변경하는 푸른 의식 토템",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "한 줄 요약",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "인벤토리에서 오먼을 활성화하세요(빨간 테두리가 표시될 때까지 우클릭). 그러면 바로 다음 해당 통화 동작이 변경됩니다. 해당 동작이 실제로 일어날 때만 소모되며, 조건이 충족되지 않으면 오먼은 그대로 남습니다.",
+      "calloutDetail": [
+        "좌측(Sinistral)은 접두어(Prefix), 우측(Dextral)은 접미어(Suffix)에 영향을 줍니다. 이름의 나머지 부분이 어떤 통화인지 알려줍니다.",
+        "비제작(생존/리그) 오먼은 한 번에 하나만 활성화할 수 있습니다."
+      ],
+      "answers": [
+        {
+          "label": "제작 입문",
+          "text": [
+            "좌측/우측 승천(Sinistral/Dextral Exaltation) 오먼과 결정화(Crystallisation) 오먼으로 시작하세요."
+          ]
+        },
+        {
+          "label": "고투자",
+          "text": [
+            "결정적 제작을 위해 대승천(Greater Exaltation) 오먼, 균질화(Homogenising) 승천 오먼, 그리고 휘틀링(Whittling) 오먼을 추가하세요."
+          ]
+        },
+        {
+          "label": "피할 것",
+          "text": [
+            "실수로 다른 통화를 사용할 때 비싼 오먼을 활성화한 채로 두는 것."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#effect",
+          "label": "오먼 작동 방식 →"
+        },
+        {
+          "href": "#pre-use-checklist",
+          "label": "오발동 체크리스트 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "핵심 사실",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "위치",
+          "value": "인벤토리에서 활성화",
+          "note": [
+            "우클릭하여 빨간 활성 테두리를 켜고 끕니다."
+          ]
+        },
+        {
+          "label": "발동",
+          "value": "다음 해당 통화 사용",
+          "note": [
+            "조건이 충족될 때만 소모됩니다."
+          ]
+        },
+        {
+          "label": "명명",
+          "value": "좌측(Sinistral) = 접두어, 우측(Dextral) = 접미어",
+          "note": [
+            "'of Exaltation' 등은 통화 이름을 나타냅니다."
+          ]
+        },
+        {
+          "label": "획득처",
+          "value": "주로 의식(Ritual)",
+          "note": [
+            "심연(Abyss) 오먼과 통화 교환소(Currency Exchange)에서도 얻을 수 있습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "오먼 계열",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "오먼은 제작 제어 오먼과 비제작(생존/리그) 오먼으로 나뉩니다. 제작 오먼 안에서 좌측/우측(Sinistral/Dextral) 접두어는 어떤 수정 효과 쪽이 영향을 받는지 알려줍니다."
+      ],
+      "members": [
+        {
+          "id": "omen-exaltation",
+          "eyebrow": "Exalted Orb",
+          "title": "Sinistral / Dextral / Greater Exaltation",
+          "sub": "접두어 / 접미어 / 두 개의 수정 효과",
+          "tags": [
+            "crafting",
+            "exalt"
+          ],
+          "body": [
+            "좌측(Sinistral)은 접두어(Prefix) 수정 효과만, 우측(Dextral)은 접미어(Suffix) 수정 효과만 추가합니다. 대승천(Greater Exaltation)은 무작위 수정 효과 두 개를 추가하며, 좌측/우측 오먼과 중첩되어 선택한 쪽의 수정 효과 두 개를 추가합니다."
+          ]
+        },
+        {
+          "id": "omen-annulment",
+          "eyebrow": "Orb of Annulment",
+          "title": "Sinistral / Dextral Annulment",
+          "sub": "접두어 / 접미어 제거",
+          "tags": [
+            "crafting",
+            "annul"
+          ],
+          "body": [
+            "무효화 오브(Orb of Annulment)가 어떤 쪽의 수정 효과를 제거할 수 있는지 제한합니다."
+          ]
+        },
+        {
+          "id": "omen-erasure",
+          "eyebrow": "Chaos Orb",
+          "title": "Sinistral / Dextral Erasure",
+          "sub": "혼돈이 한 쪽만 재굴림",
+          "tags": [
+            "crafting",
+            "chaos"
+          ],
+          "body": [
+            "혼돈 오브(Chaos Orb)가 접두어 또는 접미어 블록 중 하나만 재굴림하도록 만듭니다."
+          ]
+        },
+        {
+          "id": "omen-crystallisation",
+          "eyebrow": "Perfect / Corrupted Essence",
+          "title": "Sinistral / Dextral Crystallisation",
+          "sub": "정수가 한 쪽 제거",
+          "tags": [
+            "crafting",
+            "essence"
+          ],
+          "body": [
+            "다음 퍼펙트(Perfect) 또는 타락(Corrupted) 정수가 접두어 또는 접미어 수정 효과 중 하나만 제거합니다 — 정수를 안전하게 사용하는 방법입니다."
+          ]
+        },
+        {
+          "id": "omen-homogenising",
+          "eyebrow": "Exalted / Regal",
+          "title": "Homogenising Exaltation / Coronation",
+          "sub": "동일 태그 수정 효과",
+          "tags": [
+            "crafting",
+            "advanced"
+          ],
+          "body": [
+            "다음 승천/레갈(Exalted/Regal) 오브는 아이템에 이미 있는 수정 효과와 태그(Tag)를 공유하는 수정 효과만 추가할 수 있습니다."
+          ]
+        },
+        {
+          "id": "omen-whittling",
+          "eyebrow": "Chaos Orb",
+          "title": "Whittling",
+          "sub": "최하위 등급 수정 효과 제거",
+          "tags": [
+            "crafting",
+            "value"
+          ],
+          "body": [
+            "다음 혼돈 오브(Chaos Orb)는 무작위 대신 최하위 등급 수정 효과를 제거합니다. 거래 리그에서 가치가 높습니다."
+          ]
+        },
+        {
+          "id": "omen-catalysing",
+          "eyebrow": "Exalted Orb",
+          "title": "Catalysing Exaltation",
+          "sub": "촉매(Catalyst) 품질 소모",
+          "tags": [
+            "crafting",
+            "jewellery"
+          ],
+          "body": [
+            "다음 승천 오브(Exalted Orb)는 모든 촉매(Catalyst) 품질을 소모하여 해당 수정 효과 유형으로 편향시킵니다. 촉매 가이드를 참고하세요."
+          ]
+        },
+        {
+          "id": "omen-survival",
+          "eyebrow": "Non-crafting",
+          "title": "Amelioration / Refreshment / Resurgence",
+          "sub": "생존",
+          "tags": [
+            "defense",
+            "survival"
+          ],
+          "body": [
+            "사망 시 경험치 손실 감소, 낮은 생명(Low Life) 상태에서 플라스크/참 획득량 충전, 또는 낮은 생명 상태에서 생명/마나/에너지 실드(ES) 회복. 비제작 오먼은 한 번에 하나만 활성화할 수 있습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "오먼이 통화를 바꾸는 방식",
+      "toc": true,
+      "visible": true,
+      "type": "effect",
+      "paragraphs": [
+        "오먼은 아이템을 직접 바꾸지 않습니다. 대신 조건에 맞는 다음 통화의 규칙을 다시 씁니다. 예를 들어, 우측 승천(Dextral Exaltation) 오먼이 활성화되어 있으면 다음 승천 오브(Exalted Orb)는 무작위 수정 효과 대신 접미어 수정 효과만 추가합니다.",
+        "여러 오먼을 동시에 활성화할 수 있으며 호환되는 한 그 효과가 중첩됩니다. 호환되지 않는 오먼(예: 둘 다 '다음 승천' 제어자가 되고자 하는 두 오먼)은 나중 것을 활성화할 때 앞의 것을 비활성화합니다."
+      ],
+      "bullets": [
+        "활성화된 오먼은 인벤토리에서 빨간 테두리로 표시됩니다.",
+        "오먼은 해당 동작이 일어날 때만 소모됩니다.",
+        "해당 동작을 전혀 수행하지 않으면 오먼은 소모되지 않고 인벤토리에 남습니다."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 50,
+      "title": "오먼을 발동시키는 것",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "각 오먼은 감시하는 정확한 통화와 수정 효과 쪽을 명시합니다. 다른 동작에는 아무 영향도 없습니다."
+      ],
+      "columns": [
+        "Exalted Orb",
+        "Orb of Annulment",
+        "Perfect / Corrupted Essence"
+      ],
+      "rows": [
+        {
+          "label": "Omen of Sinistral Exaltation",
+          "note": "접두어 수정 효과만 추가",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "예"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Annulment",
+          "note": "접두어 수정 효과만 제거",
+          "values": [
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "yes",
+              "text": "예"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            }
+          ]
+        },
+        {
+          "label": "Omen of Sinistral Crystallisation",
+          "note": "정수가 접두어 수정 효과만 제거",
+          "values": [
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "yes",
+              "text": "예"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 60,
+      "title": "오먼 얻는 법",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "오먼은 주로 하나의 메커니즘에서 얻는 엔드게임 제작 자원이며, 추가 경로가 몇 가지 있습니다."
+      ],
+      "routes": [
+        {
+          "label": "의식(Ritual) 제단",
+          "body": [
+            "주된 획득처입니다. 의식 제단(Ritual Altar)에서 공물(Tribute)을 소비해 오먼을 얻을 기회를 얻습니다. 일부는 매우 가치가 높습니다."
+          ]
+        },
+        {
+          "label": "심연(Abyss) 메커니즘",
+          "body": [
+            "심연(Abyss) 오먼은 심연 콘텐츠에서 드랍되며 동일한 활성화 규칙을 따릅니다."
+          ]
+        },
+        {
+          "label": "통화 교환소(Currency Exchange)",
+          "body": [
+            "거래 리그에서는 통화 교환소에서 많은 일반 오먼을 직접 교환할 수 있습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "오먼 사용 방법",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "오먼 선택",
+          "body": [
+            "제어하려는 통화와 쪽에 맞는 오먼을 고르세요."
+          ]
+        },
+        {
+          "label": "활성화",
+          "body": [
+            "인벤토리에서 빨간 테두리가 나타날 때까지 우클릭하세요."
+          ]
+        },
+        {
+          "label": "통화 사용",
+          "body": [
+            "해당 통화 동작을 수행하세요. 오먼이 소모되고 그 규칙이 적용됩니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "사용 전 체크리스트",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "오먼이 통화와 일치",
+          "checks": [
+            "사용하려는 정확한 통화를 오먼이 명시하는지 확인하세요."
+          ],
+          "why": "통화가 맞지 않는 오먼은 발동하지 않아 통화를 낭비하게 됩니다.",
+          "fix": "통화를 사용하기 전에 오먼 이름을 다시 읽으세요."
+        },
+        {
+          "label": "의도한 쪽인지",
+          "checks": [
+            "좌측(Sinistral) = 접두어, 우측(Dextral) = 접미어; 필요한 쪽을 확인하세요."
+          ],
+          "why": "잘못된 쪽은 비싼 오먼을 낭비합니다.",
+          "fix": "올바른 좌측/우측 오먼으로 교체하세요."
+        },
+        {
+          "label": "호환되지 않는 오먼이 활성화되지 않음",
+          "checks": [
+            "같은 통화의 이전 오먼이 이미 활성화되어 있지 않은지 확인하세요."
+          ],
+          "why": "호환되지 않는 오먼은 앞의 오먼을 비활성화합니다.",
+          "fix": "올바른 오먼을 마지막에 활성화하세요."
+        },
+        {
+          "label": "아이템 준비 완료",
+          "checks": [
+            "통화 사용 전 대상 아이템에 기대하는 수정 효과가 있는지 확인하세요."
+          ],
+          "why": "오먼은 하나의 동작을 되돌릴 수 없게 바꿉니다.",
+          "fix": "다른 준비를 먼저 마치세요."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "오먼 + 통화 조합의 결과",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "exalt",
+        "annul",
+        "essence"
+      ],
+      "rows": [
+        {
+          "scenario": "접미어 1개인 레어(Rare)에 Dextral Exaltation 적용",
+          "audience": "표적 제작자",
+          "benefit": "접미어 블록을 안전하게 채움",
+          "risk": "낮음",
+          "level": "low",
+          "recommendation": "레어 마무리용으로 훌륭한 기본 선택",
+          "tags": [
+            "exalt"
+          ]
+        },
+        {
+          "scenario": "Sinistral Crystallisation + 퍼펙트(Perfect) 정수",
+          "audience": "정수 제작자",
+          "benefit": "접미어 수정 효과 유지, 접두어 교체",
+          "risk": "중간",
+          "level": "medium",
+          "recommendation": "퍼펙트 제작을 안전하게 하는 방법",
+          "tags": [
+            "essence"
+          ]
+        },
+        {
+          "scenario": "접두어 1개인 레어(Rare)에 Sinistral Annulment 적용",
+          "audience": "수정 제작자",
+          "benefit": "나쁜 접두어만 제거",
+          "risk": "낮음",
+          "level": "low",
+          "recommendation": "단순 무효화보다 깔끔함",
+          "tags": [
+            "annul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 100,
+      "title": "효과가 있는 제작 조합",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "가장 흔한 결정적 조합은 우측 승천(Dextral Exaltation) 오먼과 대승천(Greater Exaltation) 오먼입니다. 다음 퍼펙트 승천 오브(Perfect Exalted Orb)는 최소 등급으로 접미어 수정 효과 두 개를 추가합니다. 좌측과 우측 오먼을 대승천 오먼과 중첩하면 양쪽을 모두 완전히 제어할 수 있습니다.",
+        "정수의 경우 좌측 또는 우측 결정화(Crystallisation) 오먼을 퍼펙트/타락 정수와 짝지어, 신경 쓰지 않는 쪽만 잃게 하세요. 균질화(Homogenising) 승천은 고급 옵션으로, 다음 승천/레갈 오브를 아이템에 이미 있는 것과 태그를 공유하는 수정 효과로 제한합니다."
+      ],
+      "bullets": [
+        "우측 승천 + 대승천 = 하나의 퍼펙트 승천으로 접미어 수정 효과 두 개.",
+        "좌측 결정화 + 퍼펙트 정수 = 안전한 접두어 교체.",
+        "균질화 승천은 수정 효과 태그(Tag)에 대한 이해가 필요합니다."
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "리스크 분석",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "실수로 비싼 오먼을 활성화한 채로 둠",
+          "gain": "없음",
+          "loss": "잘못된 통화에 오먼 낭비",
+          "level": "high",
+          "recommendation": "오먼은 해당 통화를 사용 직전에만 활성화하세요."
+        },
+        {
+          "scenario": "같은 통화의 오먼 두 개 활성화",
+          "gain": "없음",
+          "loss": "앞의 오먼이 조용히 비활성화됨",
+          "level": "medium",
+          "recommendation": "통화당 제어 오먼은 하나만 활성화하세요."
+        },
+        {
+          "scenario": "완성된 아이템에 휘틀링(Whittling) 적용",
+          "gain": "최하위 등급 수정 효과만 제거",
+          "loss": "원할 수 있는 수정 효과도 제거됨",
+          "level": "low",
+          "recommendation": "최하위 수정 효과가 불필요할 때만 사용하세요."
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 120,
+      "title": "사용, 판매, 또는 보관",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "시장 가치는 리그와 패치에 따라 변합니다. 아래 수치는 얼리 액세스 0.5.x 거래 리그 대화를 바탕으로 한 스냅샷이며, 거래 전 반드시 인게임에서 다시 확인해야 합니다."
+      ],
+      "use": {
+        "condition": "고가치 제작을 마무리하며 결정적 제어가 필요하다",
+        "first": "해당하는 좌측/우측 오먼 활성화",
+        "risk": "거래 가능한 아이템을 소모함",
+        "text": [
+          "제작 가치가 오먼 가격을 명확히 상회할 때 가치 있습니다."
+        ]
+      },
+      "sell": {
+        "condition": "제작을 하지 않으며 오먼이 수요가 있다",
+        "first": "현재 시세로 거래 사이트에 등록",
+        "risk": "공급이 늘면 가격 하락",
+        "text": [
+          "가치 있는 오먼(예: 휘틀링)은 다른 장비 자금이 됩니다."
+        ]
+      },
+      "hold": {
+        "condition": "추후 제작을 예상하거나 가격이 오르는 중",
+        "first": "창고에 보관",
+        "risk": "패치 변경으로 오먼 가치 재평가 가능",
+        "text": [
+          "리그 계획에 결정적 제작이 포함되어 있으면 보관하세요."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "커뮤니티 사례",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-mistrigger",
+          "kind": "레딧 질문",
+          "question": "비싼 오먼이 아무것도 하지 않고 사라졌나요?",
+          "summary": [
+            "한 플레이어가 오먼을 활성화한 뒤 다른 통화를 사용해 잃었습니다."
+          ],
+          "editorialAnalysis": [
+            "오먼은 해당 동작에 의해서만 소모됩니다. 맞지 않는 통화를 사용한다고 소모되지 않습니다. 그 손실은 호환되지 않는 오먼이 비활성화됐거나, 활성화 후 잘못된 통화를 사용했기 때문일 가능성이 큽니다."
+          ],
+          "officialAnswer": [
+            "정확히 맞는 통화를 사용 직전에 오먼을 활성화하세요. 통화당 제어 오먼은 하나만 두세요."
+          ]
+        },
+        {
+          "sourceId": "forum-prefix-suffix",
+          "kind": "포럼 질문",
+          "question": "오먼은 삭제만 막나요, 아니면 추가되는 것도 제어하나요?",
+          "summary": [
+            "플레이어들이 결정화/승천 오먼이 추가도 제한하는지 혼동했습니다."
+          ],
+          "editorialAnalysis": [
+            "승천 오먼은 추가되는 것(접두어/접미어만)을 제어합니다. 결정화/무효화/소거 오먼은 제거되는 것을 제어합니다."
+          ],
+          "officialAnswer": [
+            "동작에 맞는 오먼을 선택하세요. 승천 = 추가 쪽, 무효화/소거/결정화 = 제거 쪽."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제와 직접적인 답",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "오먼이 발동하지 않음",
+          "directAnswer": [
+            "사용한 통화가 오먼이 감시하는 통화가 아닙니다."
+          ],
+          "checks": [
+            "오먼 이름을 다시 읽고 정확한 통화를 확인하세요."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "발동 매트릭스 열기"
+            }
+          ]
+        },
+        {
+          "symptom": "잘못된 쪽이 영향받음",
+          "directAnswer": [
+            "필요한 것이 우측인데 좌측을, 혹은 그 반대로 사용했습니다."
+          ],
+          "checks": [
+            "좌측 = 접두어, 우측 = 접미어; 다음 사용 전 교체하세요."
+          ]
+        },
+        {
+          "symptom": "오먼이 예상치 못하게 사라짐",
+          "directAnswer": [
+            "같은 통화의 호환되지 않는 오먼이 새것을 활성화할 때 이전 것을 비활성화했습니다."
+          ],
+          "checks": [
+            "통화당 제어 오먼은 하나만 활성화하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "연관 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "essences",
+          "contentType": "item",
+          "title": "Essences",
+          "description": "결정화 오먼은 퍼펙트 정수가 제거하는 쪽을 제어합니다.",
+          "href": "/en/items/essences/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "제작 체인에 쓰이는 다른 고위험 통화.",
+          "href": "/en/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "패치 내역",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.x",
+          "date": "2026-07-31",
+          "changes": [
+            "오먼은 인벤토리 활성화 제작 제어자로 유지됩니다. 0.5.4에서 좌측/우측 명명 체계와 결정화/승천/무효화/소거 계열은 변경되지 않았습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "COMMUNITY",
+          "description": "전체 오먼 목록과 명명 체계가 있는 Mobalytics 오먼 제작 가이드.",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "OFFICIAL",
+          "description": "의식과 오먼 획득을 다루는 패스 오브 엑자일 2 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2DB의 오먼 데이터.",
+          "url": "https://poe2db.tw/us"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "essences",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Mobalytics — Omen Crafting",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Omens",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "패스 오브 엑자일 2 오먼 가이드: 활성화, 제작 조합, 그리고 소모",
+    "description": "PoE2 오먼의 작동 방식: 인벤토리 활성화, 좌측/우측 명명 체계, 오먼 + 통화 조합, 오발동 점검, 그리고 가치 평가.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "omens",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

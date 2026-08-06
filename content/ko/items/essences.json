@@ -1,0 +1,929 @@
+{
+  "id": "essences",
+  "slug": "essences",
+  "locale": "ko",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "정수(Essence) 가이드: 등급, 보장 수정 효과, 그리고 제작 리스크",
+  "shortTitle": "정수",
+  "summary": "정수(Essence)는 장비에 특정 수정 효과 하나를 반드시 부여하는 정밀 제작용 통화입니다. 이 가이드는 등급 사다리, 정수 계열별로 장비 슬롯에 따라 부여되는 수정 효과, 퍼펙트(Perfect) 및 타락(Corrupted) 정수의 동작 방식, 그리고 오먼(Omen)과 조합해 접두어(Prefix) 또는 접미어(Suffix) 제거를 제어하는 법을 다룹니다.",
+  "description": "패스 오브 엑자일 2의 정수(Essence)에 대한 출처 연동 레퍼런스: 등급 사다리, 보장 수정 효과 표, 퍼펙트 대 타락 리스크, 결정화 오먼(Omen of Crystallisation) 조합, 유효 대상, 그리고 제작 순서.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "targeted-crafting",
+    "essence"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "corruption",
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/essences-hero.webp",
+  "cardImage": "/images/items/essences-hero.webp",
+  "imageAlt": "패스 오브 엑자일 2의 정수 통화 아이콘 — 장비에 사용하면 보장된 수정 효과를 부여하는 빛나는 수정 구슬",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "한 줄 요약",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "무작위 굴림 대신 보장된 수정 효과 하나를 원할 때 정수를 사용하세요. 하급(Lesser), 일반(Normal), 상급(Greater) 정수는 매직(Magic) 아이템을 레어(Rare)로 승격시키고 고정 수정 효과 하나를 추가합니다. 퍼펙트(Perfect) 정수는 레어에서 무작위 수정 효과 하나를 제거하고 더 강력한 보장 효과로 교체합니다.",
+      "calloutDetail": [
+        "퍼펙트와 타락 정수는 유지하고 싶었던 수정 효과를 삭제할 수 있습니다 — 이것이 핵심 리스크입니다.",
+        "좌측(Sinistral) 또는 우측(Dextral) 결정화 오먼은 퍼펙트/타락 정수가 제거할 수 있는 쪽(접두어 또는 접미어)을 제한합니다."
+      ],
+      "answers": [
+        {
+          "label": "사용 목적",
+          "text": [
+            "정밀 제작: 무작위 통화로는 안정적으로 얻기 어려운 특정 방어·원소·생명력 수정 효과."
+          ]
+        },
+        {
+          "label": "조합 추천",
+          "text": [
+            "이미 좋은 수정 효과가 있는 아이템에 퍼펙트 또는 타락 정수를 사용할 때 좌측/우측 결정화 오먼."
+          ]
+        },
+        {
+          "label": "보류 권장",
+          "text": [
+            "현재 수정 효과 중 하나라도 잃으면 아이템이 망가지는 완성형 레어 기물일 경우."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "정수 계열 →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "제작 리스크 →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "핵심 사실",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "등급",
+          "value": "Lesser → Normal → Greater → Perfect",
+          "note": [
+            "가둬진 정수 몬스터에 발(Vaal) 오브를 사용하면 퍼펙트를 타락 정수로 승급시킬 수 있습니다."
+          ]
+        },
+        {
+          "label": "하급/일반/상급",
+          "value": "Magic → Rare + 1 mod",
+          "note": [
+            "보장 수정 효과 하나를 추가하고 아이템을 레어로 승격시킵니다."
+          ]
+        },
+        {
+          "label": "퍼펙트",
+          "value": "Rare: remove 1 random mod, add 1 strong mod",
+          "note": [
+            "결정화 오먼이 활성화되어 있지 않으면 제거되는 수정 효과는 무작위입니다."
+          ]
+        },
+        {
+          "label": "획득처",
+          "value": "맵 속 정수 몬스터",
+          "note": [
+            "수정 감옥(Crystalline prison)에서 가둬진 몬스터가 등장하며, 처치하면 표시된 정수가 드랍됩니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "정수 계열과 부여 효과",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "각 정수 계열은 하나의 능력치와 연결되어 있습니다. 정확한 수정 효과와 등급은 계열과 사용하는 장비 슬롯(무기, 방어구, 장신구)에 따라 달라집니다. 아래는 플레이어들이 가장 자주 찾는 계열들입니다."
+      ],
+      "members": [
+        {
+          "id": "essence-body",
+          "eyebrow": "생명력",
+          "title": "Essence of the Body",
+          "sub": "최대 생명력",
+          "tags": [
+            "defense",
+            "life"
+          ],
+          "body": [
+            "큰 고정 또는 비율 생명력 수정 효과를 부여합니다. 갑옷(Body Armour)에서는 퍼펙트 굴림이 약 +8~10% 최대 생명력을 주며, 장신구에서는 고정 생명력을 부여합니다."
+          ]
+        },
+        {
+          "id": "essence-abrasion",
+          "eyebrow": "물리",
+          "title": "Essence of Abrasion",
+          "sub": "물리 피해(고정)",
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "body": [
+            "무기에 고정 물리 피해를 추가합니다. 퍼펙트 굴림은 '피해의 X%를 추가 물리 피해로 획득'을 추가할 수 있는데, 강력한 공격 제작용 접두어입니다."
+          ]
+        },
+        {
+          "id": "essence-elemental",
+          "eyebrow": "원소",
+          "title": "Essence of Flame / Ice / Electricity",
+          "sub": "% 원소 피해",
+          "tags": [
+            "elemental",
+            "attack",
+            "spell"
+          ],
+          "body": [
+            "각각 해당 속성의 % 원소 피해를 부여합니다. 하위 등급은 매직 무기에 고정 원소 피해를 추가하고, 퍼펙트는 레어 무기에 '피해의 X%를 추가로 획득'을 추가합니다."
+          ]
+        },
+        {
+          "id": "essence-resists",
+          "eyebrow": "저항",
+          "title": "Essence of Insulation / Thawing / Grounding / Ruin",
+          "sub": "저항",
+          "tags": [
+            "defense",
+            "resistance"
+          ],
+          "body": [
+            "각각 화염 / 냉기 / 번개 / 혼돈 저항을 부여합니다. 퍼펙트 굴림은 해당 저항에 약 +26~30%에 도달하며, 루인(Ruin)은 '받는 물리 피해를 혼돈 피해로'를 추가합니다."
+          ]
+        },
+        {
+          "id": "essence-infinite",
+          "eyebrow": "속성",
+          "title": "Essence of the Infinite",
+          "sub": "속성",
+          "tags": [
+            "attribute",
+            "requirements"
+          ],
+          "body": [
+            "힘, 민첩, 지능을 증가시킵니다. 트리에 노드를 찍지 않고도 젬이나 장비 능력치 요구치를 맞춰야 할 때 유용합니다."
+          ]
+        },
+        {
+          "id": "essence-command",
+          "eyebrow": "오라",
+          "title": "Essence of Command",
+          "sub": "오라 위력",
+          "tags": [
+            "aura",
+            "support"
+          ],
+          "body": [
+            "견책(Sceptre)의 오라 위력을 증가시킵니다. 아군 피해를 증폭하는 서포트 및 소환 빌드와 관련이 있습니다."
+          ]
+        },
+        {
+          "id": "essence-battle",
+          "eyebrow": "스킬 레벨",
+          "title": "Essence of Battle",
+          "sub": "무기 스킬 레벨",
+          "tags": [
+            "attack",
+            "skill-levels"
+          ],
+          "body": [
+            "무기에 보너스 스킬 레벨을 부여합니다. 무기 클래스별 정확한 수치는 아래 스킬 레벨 표에 정리되어 있습니다."
+          ]
+        },
+        {
+          "id": "essence-sorcery",
+          "eyebrow": "스킬 피해",
+          "title": "Essence of Sorcery",
+          "sub": "스킬(Spell) 스킬 레벨",
+          "tags": [
+            "spell",
+            "skill-levels"
+          ],
+          "body": [
+            "시전자에게 보너스 스펠 스킬 레벨을 부여합니다. 무기 클래스별 정확한 수치는 아래 스킬 레벨 표에 정리되어 있습니다."
+          ]
+        },
+        {
+          "id": "essence-haste",
+          "eyebrow": "공격 속도",
+          "title": "Essence of Haste",
+          "sub": "공격 속도 / Onslaught",
+          "tags": [
+            "attack-speed",
+            "clear"
+          ],
+          "body": [
+            "무기에 공격 속도를 추가하며, 퍼펙트는 처치 시 Onslaught 발동 기회를 부여할 수 있어 청소 속도에 강력합니다."
+          ]
+        },
+        {
+          "id": "essence-enhancement",
+          "eyebrow": "방어력",
+          "title": "Essence of Enhancement",
+          "sub": "전역 방어력",
+          "tags": [
+            "defense",
+            "es"
+          ],
+          "body": [
+            "아뮬릿에 전역 방어력을 부여하며, 에너지 실드나 혼합 방어력 스택 빌드에 유용합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-level-grants",
+      "order": 35,
+      "title": "장비 클래스별 스킬 레벨 정수 부여",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "전투의 정수(Essence of Battle)의 무기 스킬 레벨과 마법의 정수(Essence of Sorcery)의 스펠 스킬 레벨을 무기 클래스별로 정리했습니다.",
+      "columns": [
+        {
+          "key": "essence",
+          "label": "정수"
+        },
+        {
+          "key": "itemClass",
+          "label": "장비 클래스"
+        },
+        {
+          "key": "modifier",
+          "label": "부여 수정 효과"
+        }
+      ],
+      "filters": [
+        {
+          "id": "battle",
+          "label": "Essence of Battle"
+        },
+        {
+          "id": "sorcery",
+          "label": "Essence of Sorcery"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "한 손 무기",
+            "modifier": "+4 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "두 손 무기",
+            "modifier": "+6 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "완드 / 포커스",
+            "modifier": "+3 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "스태프",
+            "modifier": "+5 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        }
+      ],
+      "note": "이 수치는 정수 등급에 따라 증가합니다(하급 → 일반 → 상급 → 퍼펙트). 위 수치는 가장 자주 참조되는 상급(Greater) 등급 값입니다."
+    },
+    {
+      "id": "eligibility",
+      "order": 40,
+      "title": "정수가 적용되는 아이템",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "적용 가능 여부는 등급에 따라 다릅니다. 하급/일반/상급은 매직 아이템을 레어로 승격시킵니다. 퍼펙트와 타락은 이미 레어인 아이템에만 작용합니다."
+      ],
+      "columns": [
+        "일반(Normal) 아이템",
+        "매직(Magic) 아이템",
+        "레어(Rare) 아이템"
+      ],
+      "rows": [
+        {
+          "label": "하급 / 일반 / 상급",
+          "note": "매직 아이템을 승격시키고 보장 수정 효과 하나를 추가",
+          "values": [
+            {
+              "kind": "no",
+              "text": "아니오 - 매직 필요"
+            },
+            {
+              "kind": "yes",
+              "text": "가능 (매직)"
+            },
+            {
+              "kind": "no",
+              "text": "아니오 - 이미 레어"
+            }
+          ]
+        },
+        {
+          "label": "퍼펙트 / 타락",
+          "note": "수정 효과 하나 제거, 강력한 수정 효과 하나 추가",
+          "values": [
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "yes",
+              "text": "가능"
+            }
+          ]
+        },
+        {
+          "label": "확인된 유니크",
+          "note": "정수는 유니크를 대상으로 하지 않음",
+          "values": [
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            },
+            {
+              "kind": "no",
+              "text": "아니오"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "정수 얻는 법",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "정수는 주로 맵 탐험에서 얻으며, 보조 경로가 몇 가지 있습니다."
+      ],
+      "routes": [
+        {
+          "label": "맵 속 정수 몬스터",
+          "body": [
+            "수정 감옥이 맵 전역에 등장합니다. 수정을 부수면 가둬진 몬스터가 풀리며, 처치하면 수정에 표시된 정수 종류가 드랍됩니다."
+          ]
+        },
+        {
+          "label": "가둬진 몬스터에 발 오브",
+          "body": [
+            "풀기 전에 수정에 발(Vaal) 오브를 사용하면 다음 중 하나가 일어납니다: 아무 일도 없음, 즉시 몬스터 해방, 추가 정수 획득, 또는 한 등급 승급(일반 → 상급 → 퍼펙트 → 타락)."
+          ]
+        },
+        {
+          "label": "상인 / 재련대(Reforging Bench)",
+          "body": [
+            "같은 정수 종류와 등급 셋을 합쳐 다음 등급 하나로 만들 수 있습니다. 패치마다 상인 동작이 바뀌므로 정확한 레시피는 현재 클라이언트에서 확인하세요."
+          ]
+        },
+        {
+          "label": "통화 교환소 / 거래",
+          "body": [
+            "찾는 것보다 높은 등급이 필요하면 다른 플레이어에게서 특정 정수를 구매하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 60,
+      "title": "정수로 제작하기",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "이미 원하는 수정 효과 하나가 있는 매직 기물로 시작하세요. 하급/일반/상급 정수는 기물을 레어로 승격시키고 보장 수정 효과를 추가하므로, 정수와 기물 비용만으로 하나의 좋은 접두/접미어를 사실상 '고정'할 수 있습니다.",
+        "완성형 아이템의 경우 퍼펙트 정수는 무작위 수정 효과 하나를 제거하고 강력한 보장 효과 하나를 추가합니다. 제거되는 수정 효과가 무작위이므로, 어떤 단일 수정 효과를 잃어도 괜찮은 레어에만 퍼펙트 정수를 사용하거나, 결정화 오먼과 조합해 쪽을 선택하세요."
+      ],
+      "bullets": [
+        "좌측 결정화 오먼: 다음 퍼펙트/타락 정수는 접두어(Prefix) 수정 효과만 제거합니다.",
+        "우측 결정화 오먼: 다음 퍼펙트/타락 정수는 접미어(Suffix) 수정 효과만 제거합니다.",
+        "같은 인벤토리에서 해당 오먼을 다른 제작 오먼(예: 승천(Exaltation) 오먼)과 겹쳐 효과를 결합하세요."
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "정수 사용 방법",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "기물 선택",
+          "body": [
+            "하급~상급에는 매직 아이템을, 퍼펙트/타락에는 레어를 선택하세요."
+          ]
+        },
+        {
+          "label": "오먼 활성화",
+          "body": [
+            "인벤토리에서 결정화 오먼을 우클릭하여 빨간 활성 테두리가 표시되게 하세요."
+          ]
+        },
+        {
+          "label": "정수 적용",
+          "body": [
+            "정수를 우클릭한 뒤 대상 아이템을 클릭하세요. 결과는 즉시 적용되며 확정적입니다."
+          ]
+        }
+      ],
+      "compare": {
+        "note": "하위 등급은 수정 효과를 추가하고 승격시키며, 퍼펙트는 하나의 수정 효과를 더 강한 것으로 교체합니다.",
+        "before": [
+          "생명력 접미어와 약한 냉기 저항 접두어가 있는 레어 흉갑."
+        ],
+        "after": [
+          "육체의 정수(퍼펙트)는 약한 접두어를 제거하고 새 접두어로 +8~10% 최대 생명력을 추가합니다."
+        ]
+      }
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "사용 전 체크리스트",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "기물에 맞는 올바른 등급",
+          "checks": [
+            "하급~상급은 매직 기물, 퍼펙트/타락은 레어 기물."
+          ],
+          "why": "등급이 틀리면 적용되지 않습니다.",
+          "fix": "먼저 레갈(Regal)/변환(Transmutation) 오브를 쓰거나 다른 정수를 선택하세요."
+        },
+        {
+          "label": "안전한 수정 효과를 잃을 수 있음",
+          "checks": [
+            "퍼펙트/타락 사용 시 현재 수정 효과 중 어느 하나도 대체 불가능하지 않음을 확인하세요."
+          ],
+          "why": "무작위 수정 효과 하나가 제거됩니다.",
+          "fix": "유지할 쪽을 고정하려면 결정화 오먼을 활성화하세요."
+        },
+        {
+          "label": "오먼 활성화 여부",
+          "checks": [
+            "인벤토리에서 오먼의 빨간 활성 테두리가 표시됩니다."
+          ],
+          "why": "비활성 오먼은 아무 효과도 없습니다.",
+          "fix": "정수를 적용하기 전에 오먼을 우클릭하세요."
+        },
+        {
+          "label": "비용 대비 기물 가치",
+          "checks": [
+            "성공/실패 시 기물 가치와 정수 비용을 비교하세요."
+          ],
+          "why": "싼 기물에 비싼 정수를 쓰면 통화를 낭비합니다.",
+          "fix": "높은 등급은 가치 높은 기물에 아껴 쓰세요."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "시나리오별 예상 결과",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "upgrade",
+        "perfect",
+        "corrupted"
+      ],
+      "rows": [
+        {
+          "scenario": "좋은 접두어 하나가 있는 매직 무기",
+          "audience": "육성 단계 플레이어",
+          "benefit": "보장된 두 번째 수정 효과와 함께 레어로 승격",
+          "risk": "낮음 - 기물을 늘릴 수 있었음",
+          "level": "low",
+          "recommendation": "상급 정수의 이상적인 첫 사용",
+          "tags": [
+            "upgrade"
+          ]
+        },
+        {
+          "scenario": "잃어도 되는 약한 수정 효과 하나가 있는 레어",
+          "audience": "엔드게임 제작자",
+          "benefit": "강력한 보장 수정 효과 추가",
+          "risk": "중간 - 유용한 수정 효과가 제거될 수 있음",
+          "level": "medium",
+          "recommendation": "결정화 오먼과 함께 사용",
+          "tags": [
+            "perfect"
+          ]
+        },
+        {
+          "scenario": "슬롯 내 최고급에 가까운 레어, 모든 수정 효과 필요",
+          "audience": "고투자 제작자",
+          "benefit": "최상위 수정 효과 가능성",
+          "risk": "높음 - 어떤 수정 효과를 잃어도 타격",
+          "level": "high",
+          "recommendation": "두 결정화 오먼 모두와 여분 기물이 있을 때만",
+          "tags": [
+            "perfect",
+            "corrupted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "리스크 분석",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "오먼 없이 완성형 레어에 퍼펙트",
+          "gain": "강력한 보장 수정 효과 하나",
+          "loss": "기존 수정 효과 하나가 무작위로 삭제됨",
+          "level": "high",
+          "recommendation": "현재 수정 효과가 모두 소모 가능하거나 결정화 오먼을 사용할 때만."
+        },
+        {
+          "scenario": "발 승급으로 얻은 타락 정수",
+          "gain": "최상위 유니크 효과 수정 (예: 공포(Horror), 히스테리아(Hysteria))",
+          "loss": "발 단계에서 몬스터를 낭비하거나 아무것도 얻지 못할 수 있음",
+          "level": "medium",
+          "recommendation": "여유 있는 퍼펙트 정수에 시도할 가치가 있습니다."
+        },
+        {
+          "scenario": "육성용 매직 기물에 상급",
+          "gain": "고정 수정 효과를 가진 안정적인 레어",
+          "loss": "적은 통화 비용",
+          "level": "low",
+          "recommendation": "육성 중에는 안전하고 추천됩니다."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "정수를 주력으로 쓰는 빌드",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "빌드가 초반에 특정 고가치 수정 효과 하나를 필요로 할 때 정수는 가장 손쉬운 정밀 제작 수단입니다."
+      ],
+      "builds": [
+        {
+          "title": "시전자 빌드",
+          "description": "스펠 스킬 +3을 위한 마법의 정수, 또는 아뮬릿의 전역 방어력을 위한 강화의 정수."
+        },
+        {
+          "title": "공격 / 물리 빌드",
+          "description": "무기의 마모의 정수(추가 물리) 또는 전투의 정수(+스킬 레벨)."
+        },
+        {
+          "title": "탱커 / 하드코어 빌드",
+          "description": "최대 생명력을 위한 육체의 정수, 한계치 맞추기를 위한 저항 정수와 조합."
+        },
+        {
+          "title": "속성 스택 빌드",
+          "description": "트리 투자 없이 젬/장비 요구치를 맞추기 위한 무한의 정수."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "커뮤니티 사례",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-perfect-deleted",
+          "kind": "레딧 질문",
+          "question": "퍼펙트 정수가 내 최고 수정 효과를 지웠나요?",
+          "summary": [
+            "한 플레이어가 마음에 드는 레어에 퍼펙트 정수를 사용했다가 유지하고 싶던 수정 효과를 잃었습니다."
+          ],
+          "editorialAnalysis": [
+            "결정화 오먼이 쪽을 제한하지 않는 한 퍼펙트는 무작위 수정 효과 하나를 제거합니다."
+          ],
+          "officialAnswer": [
+            "접두어 또는 접미어 제거를 선택하려면 퍼펙트 정수를 사용하기 전에 좌측 또는 우측 결정화 오먼을 활성화하세요."
+          ]
+        },
+        {
+          "sourceId": "forum-direct-or-currency",
+          "kind": "포럼 질문",
+          "question": "정수를 바로 쓸까, 아니면 일반 통화로 먼저 준비할까?",
+          "summary": [
+            "플레이어들은 정수로 시작할지 아니면 먼저 오브로 기물을 만들지 논의합니다."
+          ],
+          "editorialAnalysis": [
+            "이미 좋은 수정 효과 하나가 있는 기물을 승격시키려면 하급/상급 정수를 사용하고, 퍼펙트 교체 전에는 다른 굴림을 일반 통화로 마무리하세요."
+          ],
+          "officialAnswer": [
+            "보장 수정 효과를 고정하려면 먼저 정수를 쓰고, 나머지 접두/접미어는 다른 통화로 채우세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "영상 및 타임스탬프",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "완벽한 아이템 제작하기 (정수 + 오먼 워크플로우)",
+          "url": "https://www.youtube.com/watch?v=9oFGFT-X1OA",
+          "creator": "P4wnyhof",
+          "description": "결정적(deterministic) 정수 제작과 오먼이 결과를 제어하는 법에 대한 설명.",
+          "takeaway": "안전한 퍼펙트 제작을 위해 정수를 결정화 오먼과 조합하는 챕터를 보세요.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "정수 제작 개요"
+            },
+            {
+              "time": "02:30",
+              "label": "상급 정수로 기물 승격"
+            },
+            {
+              "time": "06:10",
+              "label": "퍼펙트 정수 + 결정화 오먼 조합"
+            },
+            {
+              "time": "11:45",
+              "label": "실전 엔드게임 제작"
+            }
+          ]
+        },
+        {
+          "label": "패스 오브 엑자일 2 정수 완전 가이드",
+          "url": "https://www.youtube.com/watch?v=BxDQaXc0LIw",
+          "creator": "EODGamerz",
+          "description": "정수 계열, 등급, 그리고 각각을 사용할 가치가 있는 시점의 전체 분석.",
+          "takeaway": "어떤 정수 계열이 내 슬롯과 빌드에 맞는지 참고하기 좋습니다.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "정수의 기능"
+            },
+            {
+              "time": "03:20",
+              "label": "등급 사다리와 발 승급"
+            },
+            {
+              "time": "08:00",
+              "label": "계열별 예시"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제와 직접적인 답",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "정수가 적용되지 않음",
+          "directAnswer": [
+            "등급이 기물과 맞지 않음: 하급~상급은 매직 아이템이, 퍼펙트/타락은 레어가 필요합니다."
+          ],
+          "checks": [
+            "아이템 등급과 확인(identified) 여부를 확인하세요."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "유효 대상 열기"
+            }
+          ]
+        },
+        {
+          "symptom": "원하던 수정 효과가 사라짐",
+          "directAnswer": [
+            "퍼펙트/타락 정수가 무작위 수정 효과를 제거했습니다. 다음에는 결정화 오먼을 사용하세요."
+          ],
+          "checks": [
+            "퍼펙트 교체 전에 여분 기물을 확보하세요."
+          ]
+        },
+        {
+          "symptom": "같은 정수가 다른 장비에서 다른 결과를 냄",
+          "directAnswer": [
+            "보장 수정 효과는 장비 슬롯(무기 / 방어구 / 장신구)에 따라 다릅니다."
+          ],
+          "checks": [
+            "정수에 마우스를 올리거나 해당 슬롯의 계열 표를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "연관 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "omens",
+          "contentType": "item",
+          "title": "Omens",
+          "description": "퍼펙트 정수가 제거할 쪽을 제어하는 결정화 오먼.",
+          "href": "/en/items/omens/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "가둬진 정수 몬스터에 사용해 타락 정수 방향으로 등급을 승급시킵니다.",
+          "href": "/en/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "패치 내역",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.0",
+          "date": "2026-05-29",
+          "changes": [
+            "정수 등급 명칭이 조정되었습니다(여러 계열에서 Grand가 Normal로 변경). 타락 정수는 여전히 퍼펙트 정수의 발(Vaal) 오브 승급 결과입니다."
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "정수는 여전히 주력 정밀 제작 통화입니다. 결정화 오먼은 퍼펙트 및 타락 정수의 접두어/접미어 제거를 계속 제어합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "정수 등급과 제작 통화를 다루는 패스 오브 엑자일 2 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2DB의 정수 계열 및 수정 효과 데이터.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "퍼펙트/타락 동작에 대한 커뮤니티 제작 가이드와 레딧 보고.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "변경 기록",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "정수 가이드 생성 (두 번째 아이템 배치 템플릿 문서)."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "omens",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Essences",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    },
+    {
+      "label": "Mobalytics — Omen Crafting (Crystallisation)",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "패스 오브 엑자일 2 정수 가이드: 등급, 보장 수정 효과, 제작 리스크",
+    "description": "PoE2 정수의 작동 방식: 등급 사다리, 슬롯별 보장 수정 효과 표, 퍼펙트 대 타락 리스크, 그리고 안전한 정밀 제작을 위한 결정화 오먼 조합.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "essences",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "reviewedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

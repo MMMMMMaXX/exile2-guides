@@ -1,0 +1,1052 @@
+{
+  "id": "ed-contagion-lich",
+  "slug": "ed-contagion-lich",
+  "locale": "fr",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Guide de build Liche Drainage d'essence et Contagion",
+  "shortTitle": "ED Contagion Liche",
+  "summary": "Un guide Chaos DoT relié à des sources qui sépare la propagation des packs, l'entretien des boss et les choix de fin de partie en Vie complète ou Vie basse.",
+  "description": "Guide complet d'un build Liche Drainage d'essence et Contagion de Path of Exile 2 sur la base de référence 0.5.4.",
+  "classId": "witch",
+  "ascendancyId": "lich",
+  "mainSkillIds": [
+    "essence-drain",
+    "contagion"
+  ],
+  "secondarySkillIds": [
+    "dark-effigy",
+    "despair",
+    "sigil-of-power",
+    "entangle",
+    "bonestorm"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium"
+  ],
+  "difficulty": "beginner",
+  "playstyleTags": [
+    "caster",
+    "chaos-dot",
+    "damage-over-time",
+    "mobile"
+  ],
+  "damageTypes": [
+    "chaos",
+    "damage-over-time"
+  ],
+  "bestFor": [
+    "league-start",
+    "mapping",
+    "mobile-bossing"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Équipe éditoriale Exile2 Guides",
+  "reviewer": "Équipe éditoriale Exile2 Guides",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "cardImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "imageAlt": "Une Liche répandant un Drainage d'essence violet et une Contagion à travers un pack d'ennemis sombres.",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "dot",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lich",
+    "mobile",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "Aperçu du build",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "ED + Contagion est efficace car il transforme la sélection des cibles en propagation : la Contagion marque le pack, le Drainage d'essence fournit le debuff de dégâts, et une mort propage le paquet plus loin. Le build semble faible quand ces deux incantations touchent des cibles sans rapport ; viser et ordonner le pack comptent donc plus qu'une ligne de dégâts supplémentaire dans le tooltip.",
+        "Contre les boss, la propagation disparaît. Le build devient une configuration d'entretien : maintenir le Drainage d'essence actif, ajouter le Désespoir uniquement quand la cible le justifie, maintenir les totems d'Effigie sombre, et bouger pendant que les dégâts sur la durée continuent. Cette mobilité est la contrepartie d'une rampe de dégâts plus lente et superposée.",
+        "Ce guide sépare les trois rythmes réels — la boucle de clear en Cartographie, la séquence d'ouverture du boss et la boucle de boss soutenue — afin que l'ordre d'incantation du Drainage d'essence, de la Contagion, du Désespoir et de l'Effigie sombre ne soit jamais ambigu."
+      ],
+      "bullets": [
+        "Appliquez le setup de propagation à deux compétences sur un pack, puis déplacez-vous pendant que les dégâts se résolvent.",
+        "Renouvelez le Drainage d'essence et la malédiction choisie avant que leur durée n'expire.",
+        "Contre les boss, n'ajoutez que les compétences auxiliaires vérifiées pour la variante choisie ; ne fusionnez pas tous les boutons de chaque guide."
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "Avantages et inconvénients",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "Plancher d'équipement faible pour la progression de la campagne.",
+        "Les dégâts continuent pendant que le joueur se repositionne.",
+        "La Contagion peut transformer une application réussie en clear du pack."
+      ],
+      "cons": [
+        "Les dégâts sont différés plutôt qu'immédiats.",
+        "Les boss exigent plusieurs debuffs ou compétences auxiliaires.",
+        "Les différents guides de fin de partie divergent sur les compétences auxiliaires et la défense."
+      ],
+      "toc": false
+    },
+    {
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "Rotations de combat",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "Le build a trois rythmes différents. La Cartographie est une boucle de propagation, l'ouverture du boss est une séquence de setup fixe, et le boss soutenu est une boucle d'entretien répétée. Les mélanger — lancer la Contagion sur un boss isolé, ou rester immobile pour spammer le Drainage d'essence — est l'erreur la plus fréquente.",
+        "Rotation de Cartographie (boucle de clear) : lancez d'abord la Contagion pour que le pack soit marqué contagieux, puis posez le Drainage d'essence sur n'importe quelle cible dans cette zone. Comme la cible est contagieuse, la propagation d'ED copie le DoT sur chaque ennemi proche affecté par la Contagion. Déplacez-vous immédiatement ; les dégâts se résolvent pendant le repositionnement. L'Effigie sombre peut être plantée pour maintenir automatiquement ED/Désespoir sur le groupe.",
+        "Rotation d'ouverture du boss (comment commence le combat) : ouvrez avec le Désespoir — la malédiction qui réduit la résistance au chaos et amplifie tout ce qui suit. Ensuite, plantez l'Effigie sombre, le totem/support qui lance automatiquement ED + Désespoir pour une disponibilité sans action. Enfin, appliquez le Drainage d'essence pour poser le DoT principal. La Contagion est normalement ignorée sur un boss seul, car il n'y a rien vers quoi propager.",
+        "Rotation de boss soutenue (la boucle répétée une fois ouverte) : réappliquez le Drainage d'essence avant l'expiration de sa durée, gardez le totem d'Effigie sombre en vie et repositionné (il peut rater un boss mobile, vous devez donc relancer ED vous-même), renouvelez le Désespoir quand il tombe, et continuez de bouger entre les mécaniques. Le rythme est renouveler → repositionner → renouveler, jamais d'incantation statique."
+      ],
+      "bullets": [
+        "Cartographie : Contagion → Drainage d'essence → déplacement (Effigie sombre optionnelle).",
+        "Ouverture boss : Désespoir → Effigie sombre → Drainage d'essence.",
+        "Soutenu : renouveler Drainage d'essence → garder Effigie sombre → renouveler Désespoir → déplacement."
+      ],
+      "toc": false
+    },
+    {
+      "id": "spread-loop-visual",
+      "type": "figure",
+      "title": "Dirigez la propagation vers une cible commune",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ed-contagion-lich-mechanic.webp",
+        "alt": "Schéma éditorial de Contagion et Drainage d'essence se réunissant sur une cible avant de se propager",
+        "caption": "Contagion et Drainage d'essence doivent se rencontrer sur la même cible du pack ; le premier décès entraîne alors le paquet de dégâts vers l'extérieur.",
+        "credit": "Illustration éditoriale originale par Exile2 Guides",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "Leveling",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Début de campagne (pré-core)",
+          "body": [
+            "Avant le déblocage d'ED + Contagion, utilisez un sort de DoT chaos ou de remplissage et stabilisez la vie, les résistances et la vitesse de déplacement. N'forcez pas la chaîne de DoT trop tôt."
+          ]
+        },
+        {
+          "label": "Actes 2 à 4 (core en ligne)",
+          "body": [
+            "Lancez Drainage d'essence + Contagion dès que disponibles. Ajoutez un support mono-cible fiable (Effigie sombre, Désespoir) sans sacrifier la boucle de propagation de base."
+          ]
+        },
+        {
+          "label": "Fin de campagne",
+          "body": [
+            "Construisez le Bouclier d'énergie et la régénération tout en maintenant les niveaux de gemmes."
+          ]
+        },
+        {
+          "label": "Premières cartes",
+          "body": [
+            "Décidez si vous suivez la coque par défaut en Vie complète ou une transition ultérieure en Vie basse."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "Configuration par étapes",
+      "order": 45,
+      "visible": true,
+      "caption": "Que lancer à chaque étape. Les niveaux exacts de gemmes et les liens de supports restent en attente de vérification PC ; les limites des étapes et l'ordre d'incantation sont la partie actionnable.",
+      "columns": [
+        "Étape",
+        "Compétence principale",
+        "Support clé",
+        "Focus passif",
+        "Objectif équipement",
+        "Condition de transition"
+      ],
+      "rows": [
+        {
+          "label": "Niveaux 1 à 31 (pré-core)",
+          "cells": [
+            "Transition chaos / sort, pas encore ED",
+            "Survie + un DoT de remplissage",
+            "Vie, résistances, nœuds chaos",
+            "Toute arme à sort, cap des résistances",
+            "Atteindre le niveau où ED + Contagion se débloquent"
+          ]
+        },
+        {
+          "label": "Leveling 31+",
+          "cells": [
+            "Drainage d'essence + Contagion (Contagion d'abord)",
+            "Supports en attente PC",
+            "DoT chaos, vitesse d'incantation",
+            "Arme sort / chaos, vie/ES",
+            "Entrer en cartes avec une propagation stable"
+          ]
+        },
+        {
+          "label": "Premières cartes (Vie complète)",
+          "cells": [
+            "ED maintenu + Désespoir + Effigie sombre",
+            "Désespoir (malédiction), Effigie sombre (totem)",
+            "Défense Vie complète, scaling chaos",
+            "Vie/ES, caps résistances, arme DoT",
+            "Disponibilité boss stable avant la scission des variantes"
+          ]
+        },
+        {
+          "label": "Fin de partie (Vie basse)",
+          "cells": [
+            "Même kit, coque Vie basse",
+            "Même + activateurs Vie basse",
+            "Nœuds de défense Vie basse",
+            "Unique / mécanisme Vie basse",
+            "Après validation de la checklist Vie complète"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "Compétences",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "Compétences de base",
+          "skills": [
+            {
+              "displayName": "Drainage d'essence",
+              "skillId": "essence-drain",
+              "role": "DoT chaos primaire ; le debuff de dégâts qui se propage via la Contagion.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "C'est la source des dégâts chaos persistants — une fois appliqué à une cible affectée par la Contagion, il se propage à tout le pack, et contre les boss c'est le DoT maintenu."
+              ],
+              "whenReplace": [
+                "Jamais remplacé ; c'est la compétence de dégâts centrale du leveling à la fin de partie. Seuls les supports et les niveaux de gemmes changent."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : lancez d'abord la Contagion, puis le Drainage d'essence sur une cible à l'intérieur pour déclencher la propagation, puis déplacez-vous. Boss : maintenez la disponibilité du Drainage d'essence comme DoT répété ; le totem peut aider mais sur un boss mobile vous devez le réappliquer vous-même."
+              ],
+              "notes": [
+                "Les liens de support exacts et les niveaux de gemmes sont en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Contagion",
+              "skillId": "contagion",
+              "role": "Facilitateur de propagation ; marque les ennemis comme contagieux pour que le Drainage d'essence se propage.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "C'est le prérequis du clear de pack : sans Contagion sur les cibles, le Drainage d'essence ne se propage pas. Lancez-la avant le Drainage d'essence."
+              ],
+              "whenReplace": [
+                "À conserver dans la boîte à outils de cartographie. Sur un boss isolé unique, elle sert peu (rien vers quoi propager) ; certaines variantes l'abandonnent pour les boss."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : lancez d'abord au centre du pack pour permettre la propagation. Boss : généralement ignorée sur un boss seul, sauf présence d'adds."
+              ],
+              "notes": [
+                "La condition de propagation et la portée sont en attente de vérification PC."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Compétences auxiliaires et de soutien",
+          "skills": [
+            {
+              "displayName": "Effigie sombre",
+              "skillId": "dark-effigy",
+              "role": "Totem/support qui lance automatiquement le Drainage d'essence (et le Désespoir) pour maintenir le DoT sans action.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Elle maintient la disponibilité ED/Désespoir pendant le repositionnement, réduisant la charge de renouvellement manuel."
+              ],
+              "whenReplace": [
+                "À conserver pour les boss et la cartographie dense ; sur un boss très mobile, vous devez encore réappliquer ED manuellement car le totem peut rater."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : optionnelle, plantez-la sur un groupe. Boss : plantez-la à l'ouverture du combat, gardez-la en vie et repositionnée."
+              ],
+              "notes": [
+                "La disponibilité sur boss mobile est le point faible connu ; la contribution exacte est en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Désespoir",
+              "skillId": "despair",
+              "role": "Malédiction qui réduit la résistance au chaos de la cible, amplifiant le DoT.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "C'est la malédiction qui augmente directement les dégâts ED sur la cible maudite ; appliquez-la avant d'engager le DoT."
+              ],
+              "whenReplace": [
+                "À conserver ; c'est l'amplificateur mono-cible, pas un concurrent de dégâts."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : optionnelle sur les rares qui survivent. Boss : appliquez-la en premier à l'ouverture, puis maintenez la disponibilité."
+              ],
+              "notes": [
+                "Effet de malédiction / niveau de gemme en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Sceau de pouvoir",
+              "skillId": "sigil-of-power",
+              "role": "Zone de buff dépendante de la variante qui ajoute des dégâts ou de la défense.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Certaines variantes l'utilisent comme amplificateur de dégâts/défense ; traitez-la comme optionnelle jusqu'à ce que le guide choisi la vérifie."
+              ],
+              "whenReplace": [
+                "Choix de variante ; à conserver seulement si votre planificateur sélectionné l'inclut."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : optionnelle. Boss : buff optionnel avant la boucle d'entretien."
+              ],
+              "notes": [
+                "Rôle exact en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Enchevêtrement",
+              "skillId": "entangle",
+              "role": "Racine/contrôle dépendant de la variante qui peut simplifier le ciblage.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Les discussions communautaires la traitent comme une alternative de qualité de vie qui supprime le besoin de viser ED précisément. Pas un concurrent de dégâts."
+              ],
+              "whenReplace": [
+                "Choix de variante ; certains joueurs la préfèrent au ciblage strict en deux étapes."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : contrôle optionnel. Boss : généralement pas dans la boucle du boss."
+              ],
+              "notes": [
+                "Rôle en tant qu'alternative en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Tempête d'os",
+              "skillId": "bonestorm",
+              "role": "AoE dépendante de la variante utilisée pour les packs denses ou comme outil de boss dans certains guides.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Certains guides l'utilisent pour une pression supplémentaire sur les packs denses ou comme option mono-cible. À vérifier selon votre variante sélectionnée."
+              ],
+              "whenReplace": [
+                "Choix de variante ; pas centrale dans la boucle ED + Contagion."
+              ],
+              "mappingBossingDiff": [
+                "Cartographie : optionnelle sur packs denses. Boss : optionnelle dans certaines variantes mono-cible."
+              ],
+              "notes": [
+                "Rôle exact en attente de vérification PC."
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "Ascendance",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Ordre provisoire",
+          "body": [
+            "Suivez le guide actuel sélectionné, puis confirmez chaque nœud dans le client 0.5.4 avant publication."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "Arbre passif",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Campagne",
+          "body": [
+            "Ne prenez que les nœuds qui soutiennent la compétence de leveling actuelle et les besoins défensifs."
+          ]
+        },
+        {
+          "label": "Premières cartes",
+          "body": [
+            "Passez à la variante de build sélectionnée ; ne combinez pas des instantanés de planificateur incompatibles."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "Équipement",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Arme",
+          "recommendations": [
+            "Niveaux aux compétences chaos ou sorts pertinentes",
+            "Scaling chaos ou dégâts sur la durée"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Scaling chaos / dégâts sur la durée sur la base",
+              "reason": "Met directement à l'échelle le package ED persistant."
+            },
+            {
+              "tier": "recommended",
+              "label": "Niveau de compétence / gemme aux compétences chaos pertinentes",
+              "reason": "Augmente le DoT de base."
+            },
+            {
+              "tier": "optional",
+              "label": "Vitesse d'incantation",
+              "reason": "Améliore la cadence de renouvellement, pas le plancher de dégâts."
+            },
+            {
+              "tier": "luxury",
+              "label": "Affixes d'activation Vie basse",
+              "reason": "Pertinent uniquement sur la variante Vie basse."
+            }
+          ],
+          "notes": [
+            "Validez si la baguette, le sceptre ou le focus est utilisé par la route sélectionnée."
+          ]
+        },
+        {
+          "slot": "Focus ou bouclier",
+          "recommendations": [
+            "Bouclier d'énergie",
+            "Suffixes défensifs"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Bouclier d'énergie",
+              "reason": "Couche défensive principale pendant le kite."
+            },
+            {
+              "tier": "recommended",
+              "label": "Suffixes défensifs (résistances, régénération de vie)",
+              "reason": "Complète la coque de défense."
+            },
+            {
+              "tier": "optional",
+              "label": "Modificateurs de réservation / coût de mana",
+              "reason": "Aide à lancer des auras ou des malédictions."
+            },
+            {
+              "tier": "luxury",
+              "label": "Mods de focus spécifiques Vie basse",
+              "reason": "Verrouillé par variante."
+            }
+          ],
+          "notes": [
+            "Ne copiez pas un focus Vie basse dans l'étape Vie complète."
+          ]
+        },
+        {
+          "slot": "Armures et bijoux",
+          "recommendations": [
+            "Bouclier d'énergie, résistances et attributs",
+            "Soutien coût ou mana si besoin"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Résistances et vie/ES",
+              "reason": "Aucun DPS ne compense la mort en cartes."
+            },
+            {
+              "tier": "recommended",
+              "label": "Attributs pour équiper les gemmes",
+              "reason": "Une gemme que vous ne pouvez pas enchâsser est inutile."
+            },
+            {
+              "tier": "optional",
+              "label": "Vitesse de déplacement sur les bottes",
+              "reason": "Aide à se repositionner pendant que le DoT court."
+            },
+            {
+              "tier": "luxury",
+              "label": "Affixes explicites DoT chaos",
+              "reason": "Uniquement après résolution des défenses."
+            }
+          ],
+          "notes": [
+            "Les prix du marché sont intentionnellement omis."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "Priorité des statistiques",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "Niveaux de compétences",
+          "reason": "Soutiennent directement le package principal de dégâts sur la durée."
+        },
+        {
+          "label": "Scaling chaos et DoT",
+          "reason": "Met à l'échelle les dégâts persistants plutôt qu'un coup sans rapport."
+        },
+        {
+          "label": "Vitesse d'incantation",
+          "reason": "Améliore le ressenti d'application mais ne remplace pas la durée des dégâts."
+        },
+        {
+          "label": "Bouclier d'énergie et récupération",
+          "reason": "Le build a encore besoin d'un état défensif complet pendant le kite."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "Priorité de mise à niveau",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Les packs ne se propagent pas / le clear est lent",
+          "symptom": "Les packs normaux nécessitent de nombreuses réincantations et la propagation ne démarre jamais visiblement.",
+          "checks": [
+            "La Contagion est-elle réellement appliquée avant le Drainage d'essence ?",
+            "Les niveaux de gemmes principales et les supports sont-ils à jour pour le palier ?"
+          ],
+          "upgrade": "Corrigez l'ordre d'incantation (Contagion → ED) et montez les gemmes principales au palier avant d'acheter de l'offense."
+        },
+        {
+          "label": "Mourir en cartes ou arènes de boss",
+          "symptom": "Décès fréquents en T15+ ou combats de boss.",
+          "checks": [
+            "Quelles résistances ne sont pas plafonnées ?",
+            "La vie/ES est-elle sous le palier de contenu ?",
+            "Les couches défensives sont-elles actives ?"
+          ],
+          "upgrade": "Plafonnez les résistances et stabilisez ES/vie avant tout équipement de dégâts."
+        },
+        {
+          "label": "Les dégâts du boss sont faibles",
+          "symptom": "La vie du boss bouge à peine malgré les incantations.",
+          "checks": [
+            "Le Désespoir est-il actif sur le boss ?",
+            "L'Effigie sombre est-elle en vie et à portée ?",
+            "La disponibilité du Drainage d'essence est-elle réellement élevée ?"
+          ],
+          "upgrade": "Réparez la disponibilité du boss (Désespoir → Effigie → ED), pas l'arme."
+        },
+        {
+          "label": "Le mana s'épuise",
+          "symptom": "Le mana se vide pendant un combat mono-cible.",
+          "checks": [
+            "Vous fiez-vous uniquement à la fiole ?",
+            "Une réduction de coût / vol / régénération est-elle active ?"
+          ],
+          "upgrade": "Corrigez la survie en mana (réduction de coût, régénération, fiole) avant d'ajouter plus de boutons."
+        },
+        {
+          "label": "Envisager la Vie basse",
+          "symptom": "Vous voulez plus de dégâts de boss et visez des pièces Vie basse.",
+          "checks": [
+            "Le clear Vie complète, la disponibilité boss et la défense sont-ils stables ?",
+            "L'équipement Vie basse cassera-t-il les caps de résistances ou fera-t-il chuter vie/ES ?"
+          ],
+          "upgrade": "Passez en Vie basse seulement après validation de la checklist ; n'échangez pas votre survie contre un simple chiffre de planificateur."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "Cartographie",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "Lancez la Contagion au centre d'un pack connecté, puis posez le Drainage d'essence sur une cible à l'intérieur — le debuff ED se propage à chaque ennemi proche affecté par la Contagion. Déplacez-vous immédiatement et observez si le debuff se propage avant de dépenser une autre incantation. L'Effigie sombre peut être plantée pour maintenir automatiquement ED/Désespoir sur le groupe.",
+        "Marquez un pack dense, confirmez que la propagation démarre, puis avancez. Si la propagation échoue, vérifiez l'ordre des compétences (Contagion d'abord), la portée, la durée et si la première cible est morte avec les deux effets."
+      ],
+      "bullets": [
+        "Contagion → Drainage d'essence → déplacement ; Effigie sombre optionnelle.",
+        "Corrigez l'ordre d'incantation avant de blâmer l'équipement.",
+        "Mise à niveau réactive de l'arme quand la vitesse de clear chute."
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "Bossing",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "Ouvrez le combat de boss dans cet ordre : Désespoir en premier (la malédiction, -résistance chaos), puis Effigie sombre (plantez le totem pour qu'il applique automatiquement ED + Désespoir), puis Drainage d'essence pour poser le DoT principal. La Contagion est normalement ignorée sur un boss seul car il n'y a rien vers quoi propager.",
+        "Maintenez avec une boucle : réappliquez le Drainage d'essence avant l'expiration, gardez le totem d'Effigie sombre en vie et repositionné (il peut rater un boss mobile, vous devez donc relancer ED vous-même), renouvelez le Désespoir quand il tombe, et continuez de bouger entre les mécaniques. Le rythme est renouveler → repositionner → renouveler, pas d'incantation statique."
+      ],
+      "bullets": [
+        "Ouverture : Désespoir → Effigie sombre → Drainage d'essence.",
+        "Soutien : renouveler ED → garder Effigie → renouveler Désespoir → déplacement.",
+        "Aucune Contagion nécessaire sur un boss seul."
+      ],
+      "toc": true
+    },
+    {
+      "id": "defensive-layers",
+      "type": "overview",
+      "title": "Couches défensives",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "Vie complète et Vie basse utilisent des hypothèses de défense et de réservation différentes. Ce guide traite la Vie complète comme la valeur par défaut éditoriale la plus sûre et laisse la Vie basse en revue."
+      ],
+      "bullets": [
+        "Appliquez le setup de propagation à deux compétences sur un pack, puis déplacez-vous pendant que les dégâts se résolvent.",
+        "Renouvelez le Drainage d'essence et la malédiction choisie avant que leur durée n'expire.",
+        "Contre les boss, n'ajoutez que les compétences auxiliaires vérifiées pour la variante choisie ; ne fusionnez pas tous les boutons de chaque guide."
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "Choisissez la bonne action pour la cible",
+      "order": 140,
+      "visible": true,
+      "caption": "Un tableau de rotation pratique synthétisé à partir de deux guides écrits et de discussions de joueurs.",
+      "columns": [
+        "Pack normal",
+        "Rare dans un pack",
+        "Boss isolé"
+      ],
+      "rows": [
+        {
+          "label": "Ouvrir avec",
+          "cells": [
+            "Contagion",
+            "Contagion → Drainage d'essence",
+            "Drainage d'essence"
+          ]
+        },
+        {
+          "label": "Ajouter",
+          "cells": [
+            "Un coup ED",
+            "Désespoir si le rare survit",
+            "Désespoir + Effigie sombre"
+          ]
+        },
+        {
+          "label": "Déplacement",
+          "cells": [
+            "Bougez dès le début de la propagation",
+            "Tournez en rond pendant le DoT",
+            "Renouvelez entre les mécaniques"
+          ]
+        },
+        {
+          "label": "Gaspillages courants",
+          "cells": [
+            "Réincantation avant propagation",
+            "Viser ED hors de la Contagion",
+            "Rester immobile pour spammer ED"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "Dépannage",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "La contagion ne se propage pas",
+          "checks": [
+            "Confirmez que les deux effets sont sur la cible mourante.",
+            "Vérifiez la condition de propagation actuelle et la portée en jeu."
+          ]
+        },
+        {
+          "symptom": "Les dégâts du boss sont faibles",
+          "checks": [
+            "Mesurez la disponibilité plutôt que le seul tooltip.",
+            "Confirmez que la malédiction, l'Effigie et les compétences auxiliaires sont réellement actives."
+          ]
+        },
+        {
+          "symptom": "Le mana s'épuise",
+          "checks": [
+            "Réduisez les incantations répétées inutiles.",
+            "Vérifiez fiole, coût et régénération avant d'ajouter plus de boutons."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "Réponses sur le ciblage et les dégâts sur la durée",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "Pourquoi un pack disparaît-il et le suivant bouge à peine ?",
+          "answer": [
+            "Le pack réussi a probablement reçu Contagion et Drainage d'essence sur le même groupe connecté. Dans le pack raté, ED a pu toucher hors de l'ensemble Contagion ou les monstres étaient trop séparés pour propager."
+          ],
+          "bullets": [
+            "Visez la Contagion au centre du pack.",
+            "Attendez assez longtemps pour observer la première propagation.",
+            "Utilisez le terrain pour regrouper les monstres avant de relancer."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Dois-je plutôt utiliser Enchevêtrement ?",
+          "answer": [
+            "Utilisez-la si vous valorisez un ciblage plus simple. Les discussions communautaires la traitent comme une alternative de qualité de vie, pas comme la preuve que ED + Contagion est invalide. L'échange est un motif de clear et un package de support différents."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "Et si je veux un lanceur de sorts plus immédiat ?",
+          "answer": [
+            "La voie du Chronomancien glacé a un rythme de touche et de gel plus direct, mais nécessite un échange de gemmes par étapes et un positionnement plus proche."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/fr/builds/cold-caster-chronomancer/",
+              "label": "Comparer le Chronomancien lanceur de froid"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "Planificateur de construction et importation",
+      "order": 165,
+      "visible": true,
+      "note": "Chaîne d'importation collable / .build en attente de vérification PC. En attendant, utilisez le guide du créateur et l'outil de planification ci-dessous. Reconfirmez toujours les choix de nœuds dans votre propre client.",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "Sur quoi la communauté est en désaccord",
+      "order": 170,
+      "visible": true,
+      "note": "Les anecdotes montrent des approches viables, pas un plafond de progression garanti.",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "Fil d'expérience 0.5 ED + Contagion",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/",
+          "statement": "Les joueurs rapportent que la paire peut progresser sur plusieurs ascendances et semble facile au début, tandis qu'un intervenant préfère Enchevêtrement car cela supprime le besoin de viser ED et de gérer la propagation d'Exhumation.",
+          "context": "Cela explique pourquoi le build peut être solide tout en restant gênant pour un joueur qui n'aime pas le ciblage en deux étapes."
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Guide Ronarray ED + Contagion Liche",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+          "statement": "Le guide maintenu utilise Contagion puis Drainage d'essence pour les packs, ajoute le Désespoir uniquement quand requis, et garde les totems d'Effigie sombre actifs pour les boss pendant que le joueur se déplace.",
+          "context": "Cette séquence est utilisée ici comme modèle de rotation, et non copiée comme une affirmation que chaque élément listé est obligatoire."
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "Regardez la propagation et l'entretien du boss",
+      "order": 175,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Guide communautaire",
+          "label": "Gameplay ED + Contagion 0.5 étape par étape",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "description": "Une référence orientée campagne pour l'ordre de ciblage et le moment où le setup gagne ses couches de support.",
+          "takeaway": "Regardez où la Contagion atterrit par rapport à la première cible Drainage d'essence.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Build de départ Sorcière Liche Chaos 0.5 de Path of Exile 2"
+            },
+            {
+              "time": "0:43",
+              "label": "Combo Drainage d'essence + Contagion"
+            },
+            {
+              "time": "1:46",
+              "label": "Setup du build aux premiers niveaux"
+            },
+            {
+              "time": "3:47",
+              "label": "Première gemme d'esprit"
+            },
+            {
+              "time": "4:22",
+              "label": "Ajout niveau 14"
+            },
+            {
+              "time": "5:08",
+              "label": "Priorité des gemmes de support"
+            },
+            {
+              "time": "6:32",
+              "label": "Priorités de mise à niveau de l'équipement"
+            },
+            {
+              "time": "7:50",
+              "label": "Progression de l'arbre"
+            },
+            {
+              "time": "8:28",
+              "label": "Ascendance : Liche ou Infernaliste"
+            },
+            {
+              "time": "9:53",
+              "label": "Ajout de l'Orbe des Tempêtes"
+            },
+            {
+              "time": "10:56",
+              "label": "À propos de Tempête d'os"
+            },
+            {
+              "time": "11:41",
+              "label": "Amusez-vous au début de la ligue"
+            }
+          ]
+        },
+        {
+          "creator": "Guide communautaire",
+          "label": "Mécaniques de fin de partie et gameplay de boss",
+          "url": "https://youtu.be/r6ouLO-Y0sk",
+          "description": "Utilisez-le pour comparer la cadence de renouvellement du boss avec la boucle de cartographie plus rapide.",
+          "takeaway": "Comptez les incantations d'entretien, puis notez combien de temps est passé à se déplacer en sécurité.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Aperçu du build de fin de partie (le créateur n'a pas fourni de chapitres)"
+            },
+            {
+              "time": "2:00",
+              "label": "Rotation du setup de boss (approximative, en attente de vérification)"
+            },
+            {
+              "time": "5:00",
+              "label": "Cadence cartographie vs boss (approximative, en attente de vérification)"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Sources et vérification",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Source officielle",
+          "description": "Grinding Gear Games — Notes de mise à jour Path of Exile 2 0.5.4",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Guide Ronarray ED + Contagion Liche",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Guide PoE2Path ED Contagion Liche",
+          "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Guide de campagne ED/C 0.5",
+          "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Vidéo de gameplay étape par étape 0.5",
+          "url": "https://youtu.be/qbrEeLZzuqI"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Vidéo de gameplay et mécaniques de fin de partie",
+          "url": "https://youtu.be/r6ouLO-Y0sk"
+        },
+        {
+          "label": "Export du planificateur de build Mobalytics",
+          "description": "Outil externe",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "Discussion communautaire",
+          "description": "Discussion communautaire : comment se ressent ED + Contagion en 0.5",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "Journal des modifications",
+      "order": 190,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "Création du guide de build sourcé 0.5.4 ; vérification PC en attente."
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "Réécriture vers le schéma étendu : ajout de la rotation de combat avec trois blocs explicites (Cartographie / Ouverture boss / Boss soutenu), tableau de configuration par étapes, entrée du planificateur de build, statPriorities d'équipement par emplacement et priorité de mise à niveau basée sur les symptômes. Séparation de l'ordre d'incantation de Drainage d'essence, Contagion, Désespoir et Effigie sombre."
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Notes de mise à jour Path of Exile 2 0.5.4",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Guide Ronarray ED + Contagion Liche",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "Guide PoE2Path ED Contagion Liche",
+      "sourceType": "community",
+      "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+    },
+    {
+      "label": "Guide de campagne ED/C 0.5",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+    },
+    {
+      "label": "Vidéo de gameplay étape par étape 0.5",
+      "sourceType": "community",
+      "url": "https://youtu.be/qbrEeLZzuqI"
+    },
+    {
+      "label": "Vidéo de gameplay et mécaniques de fin de partie",
+      "sourceType": "community",
+      "url": "https://youtu.be/r6ouLO-Y0sk"
+    },
+    {
+      "label": "Export du planificateur de build Mobalytics",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "Discussion communautaire : comment se ressent ED + Contagion en 0.5",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+    }
+  ],
+  "seo": {
+    "title": "Guide de build Liche Drainage d'essence et Contagion",
+    "description": "Guide complet d'un build Liche Drainage d'essence et Contagion de Path of Exile 2 sur la base de référence 0.5.4.",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ed-contagion-lich",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

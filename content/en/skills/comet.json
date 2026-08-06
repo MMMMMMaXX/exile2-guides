@@ -1,0 +1,563 @@
+{
+  "id": "comet",
+  "slug": "comet",
+  "locale": "en",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Comet Guide — Cast Time, Fire Infusion, Trigger Setups and Supports",
+  "shortTitle": "Comet",
+  "summary": "Comet is a delayed-impact spell that lands at a target location after a cast time. It is a staple single-target spell for cast-on-crit and cast-on-ailment builds. This guide covers base cast time versus total cast time, why close casts hop backward, impact radius, Fire Infusion, Repeat quality, and self-cast versus trigger tradeoffs.",
+  "description": "Comet deep guide: base cast time vs total cast time, close-range backstep, impact radius, Fire Infusion and Infused Comet, Quality Repeat behaviour, self-cast versus trigger versus spell totem, cast-on-crit trigger, mapping and boss rotations, troubleshooting and community questions.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 8,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "aoe",
+    "cold",
+    "delayed-impact",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/comet.webp",
+  "cardImage": "/images/skills/comet.webp",
+  "imageAlt": "Comet cold spell skill icon",
+  "tags": [
+    "spell",
+    "cold",
+    "delayed-impact",
+    "cast-on-crit",
+    "single-target"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick Answer",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet has a base cast time, and the gem's '+1 second to Total Cast Time' modifier adds to the total, not to the base — cast speed only reduces the base portion.",
+        "Casting too close to yourself makes Comet land behind you (a backstep), so keep distance or trigger it from range.",
+        "Fire Infusion makes Comet deal added Fire and creates an Infused Comet that is Cold plus Fire, not a conversion; Quality Repeat fires extra Comets without spending extra mana or infusion."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick Facts",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Spell / AoE / Cold",
+          "notes": [
+            "Tagged spell, aoe, cold, delayed-impact, trigger."
+          ]
+        },
+        {
+          "label": "Impact",
+          "value": "Delayed landing at target",
+          "notes": [
+            "Comet lands after a cast time at the targeted location."
+          ]
+        },
+        {
+          "label": "Fire Infusion",
+          "value": "Adds Fire, makes Infused Comet",
+          "notes": [
+            "Infused Comet is Cold + Fire, not a pure conversion."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Skill Gem (Tier 8)",
+          "notes": [
+            "High-tier gem; a late-game single-target payoff."
+          ]
+        },
+        {
+          "label": "Best role",
+          "value": "Single-target trigger spell",
+          "notes": [
+            "Core payload for cast-on-crit and cast-on-ailment."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requirements",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "No special attribute gate. Comet is a spell gem cast with mana, and it is most often used as a triggered payload rather than self-cast."
+      ]
+    },
+    {
+      "id": "delayed-impact",
+      "order": 40,
+      "title": "Delayed Impact and Cast Time",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet has a base cast time. The gem modifier '+1 second to Total Cast Time' extends the total cast time; cast speed only reduces the base cast time portion, so the added second is not sped up by cast speed.",
+        "Because the landing is delayed, Comet is weak for self-cast chasing — you commit to a location and the meteor falls there after the cast completes.",
+        "This delay is exactly why triggers love Comet: the trigger fires it at the target without you manually aiming and waiting."
+      ],
+      "bullets": [
+        "Base cast time is reduced by cast speed.",
+        "+1s Total Cast Time is added after cast-speed maths.",
+        "The delay rewards trigger and totem usage."
+      ]
+    },
+    {
+      "id": "infusion-mode",
+      "order": 50,
+      "title": "Infusion Mode",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Fire Infusion adds Fire damage to Comet and, when consumed, creates an Infused Comet. The Infused Comet deals Cold plus Fire — it is an added element, not a conversion of the base cold damage.",
+        "Lightning Infusion instead keeps the Lightning tagging and is consumed on the hit; the choice changes which ailments and supports you build around.",
+        "Infusion is a separate resource from mana, so an infused Comet still costs its normal mana on cast."
+      ],
+      "bullets": [
+        "Fire Infusion: Infused Comet is Cold + Fire added.",
+        "Lightning Infusion: consumed on hit, keeps lightning tag.",
+        "Infusion does not replace the mana cost."
+      ]
+    },
+    {
+      "id": "self-cast-vs-trigger",
+      "order": 60,
+      "title": "Self-Cast vs Trigger vs Totem",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Self-cast gives you full control of where Comet lands, but the long cast time makes it easy to interrupt and slow against moving bosses.",
+        "Trigger (cast-on-crit or cast-on-ailment) auto-drops Comet at the target after conditions are met, skipping your own cast time and interrupt risk.",
+        "Spell Totem casts Comet at range on a cadence, useful for Oracle or totem builds that want sustained single-target without standing in danger."
+      ],
+      "bullets": [
+        "Self-cast: control, but long and interruptible.",
+        "Trigger: fast, automatic, no self cast time.",
+        "Spell Totem: ranged sustained casting."
+      ]
+    },
+    {
+      "id": "hit-behaviour",
+      "order": 70,
+      "title": "Hit Behaviour and Impact Radius",
+      "type": "hit-behaviour",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet deals its damage in an area at the impact point. The impact radius is fixed by the gem; enemies outside the radius take no hit.",
+        "If the target moves after you commit, the Comet lands at the original location and can miss — this is the main self-cast weakness against mobile bosses.",
+        "Triggered Comets land on the trigger target's current position, which avoids most whiffs."
+      ],
+      "bullets": [
+        "Impact radius is fixed by the gem.",
+        "Moving targets can dodge a self-cast Comet.",
+        "Triggered Comets track the target better."
+      ]
+    },
+    {
+      "id": "level-scaling",
+      "order": 80,
+      "title": "Level Scaling",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Higher gem levels increase Comet's base damage and area, and improve the Infused Comet payoff. Levelling the gem is the primary single-target upgrade.",
+        "Because Comet is often a triggered payload, gem level also raises the triggered damage directly without changing your trigger setup."
+      ],
+      "bullets": [
+        "More levels: more base damage and area.",
+        "Infused Comet scales with gem level.",
+        "Trigger damage scales with the payload gem level."
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 90,
+      "title": "Quality",
+      "type": "quality",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet Quality that grants Repeat fires an additional Comet without spending extra mana or consuming infusion again.",
+        "Repeat Comets land as extra impacts, raising single-target burst; they do not extend the cast time.",
+        "Older Quality bugs that doubled costs have been addressed in client; current Repeat is a clean extra cast."
+      ],
+      "bullets": [
+        "Repeat: extra Comet, no extra mana.",
+        "Repeat: no extra infusion consumed.",
+        "No extra cast time from Repeat."
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 100,
+      "title": "Support Compatibility",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet is a spell, so spell damage, area, cold, crit and cast-speed supports all apply. Concentrated Effect and Cold Penetration are strong for single-target."
+      ],
+      "bullets": [
+        "Cold Penetration and Concentrated Effect for boss damage.",
+        "Critical Damage and Cast Speed for trigger setups.",
+        "Avoid attack-only supports."
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 110,
+      "title": "Support Loadouts",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A bossing Comet uses cold and area supports. A cast-on-crit Comet leans into crit and cast-speed so the trigger fires often."
+      ],
+      "bullets": [
+        "Boss: Cold Penetration, Concentrated Effect, Area, Control.",
+        "CoC: Critical Damage, Cast Speed, Cold Damage, Energy Retention.",
+        "Fire Infusion: fire and ailment supports."
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 120,
+      "title": "Skill Interactions",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet is the classic payload for Cast on Critical Strike and Cast on Elemental Ailment. Each crit or ailment rolls a triggered Comet at the target.",
+        "Mana Tempest empowers triggered Comets cast inside the storm, and Spark often shares the same trigger economy as the screen clear.",
+        "Spell Totem lets an Oracle or totem build sustain Comet without self-casting."
+      ],
+      "bullets": [
+        "Cast on Critical Strike: primary trigger partner.",
+        "Cast on Elemental Ailment: ailment-trigger variant.",
+        "Mana Tempest: empowers triggered Comets."
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 130,
+      "title": "Mapping Usage",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "In maps, Comet is a single-target tool. Use it on rares and bosses; let a clear spell like Spark handle the trash.",
+        "Triggered Comets auto-target the nearest eligible enemy, so you keep moving while they snipe priority targets."
+      ],
+      "bullets": [
+        "Reserve Comet for rares and boss-like enemies.",
+        "Keep moving; the trigger does the aiming.",
+        "Pair with a clear spell for packs."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 140,
+      "title": "Bossing Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Against a boss, trigger Comets on every crit and time Fire Infusion bursts with staggers. Predict phase transitions so your casts land during vulnerable windows.",
+        "Self-cast Comets should be pre-aimed where the boss will be, not where it is, to avoid whiffs."
+      ],
+      "bullets": [
+        "Trigger Comets on crits for steady boss damage.",
+        "Pre-aim self-cast at the boss's path.",
+        "Burst Fire Infusion during staggers."
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 150,
+      "title": "Build Usage",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet is the signature payload for cast-on-crit Comet Infernalist and Chronomancer builds, and for Oracle totem variants.",
+        "It is a high-tier gem, so it appears in late-game single-target setups rather than league starters."
+      ],
+      "bullets": [
+        "CoC Comet Infernalist: high-budget trigger build.",
+        "Crit Comet Disciple of Varashta: crit-focused variant.",
+        "Oracle Totem: sustained ranged Comet."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 160,
+      "title": "Troubleshooting",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "If Comets land behind you, you are casting too close — back up or trigger from range. If they whiff a moving boss, you are self-casting; switch to a trigger.",
+        "If Repeat feels like it costs more, you are on an old client; current Repeat is free of extra mana and infusion."
+      ],
+      "bullets": [
+        "Backstep: cast from farther away.",
+        "Whiff on move: use a trigger instead of self-cast.",
+        "Slow self-cast: long cast time is expected.",
+        "CoC not firing: check crit chance and trigger setup.",
+        "Low impact: level the gem and add cold supports."
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 170,
+      "title": "Known Issues",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A common mistake is treating Fire Infusion as a conversion; it adds Fire and makes an Infused Comet that is Cold plus Fire, so cold scaling still applies.",
+        "Another is assuming cast speed removes the '+1s Total Cast Time'; only the base portion is reduced."
+      ],
+      "bullets": [
+        "Fire Infusion is added, not a conversion.",
+        "Cast speed does not reduce the added total-cast-time second."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 180,
+      "title": "Community Evidence",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Comet is repeatedly called one of the strongest single-target spells in 0.5 trigger threads, with debate around Infernalist versus Chronomancer hosting.",
+        "Players note the self-cast backstep as the main reason they prefer triggering Comet."
+      ],
+      "bullets": [
+        "CoC Comet is a top single-target pick in 0.5.",
+        "Self-cast backstep pushes players to triggers."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 190,
+      "title": "Video Guides",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "CoC Comet Endgame",
+          "label": "Ultimate Endgame CoC Comet Build Guide (0.5)",
+          "description": "A high-budget cast-on-crit Comet build covering trigger setup and boss damage.",
+          "takeaway": "Watch the trigger and support configuration for steady Comet output.",
+          "url": "https://youtu.be/1quplyhgfVE",
+          "timestamps": [
+            {
+              "label": "Build overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Trigger setup",
+              "time": "3:30"
+            },
+            {
+              "label": "Boss damage",
+              "time": "7:00"
+            }
+          ]
+        },
+        {
+          "creator": "CoC Comet Oracle",
+          "label": "One of the Strongest Builds — CoC Comet Oracle (0.5)",
+          "description": "A Comet Oracle build showing sustained single-target via triggers.",
+          "takeaway": "Watch how the Oracle sustains Comet uptime.",
+          "url": "https://youtu.be/5jErI3gzQAw",
+          "timestamps": [
+            {
+              "label": "Gear targets",
+              "time": "0:00"
+            },
+            {
+              "label": "Rotation",
+              "time": "4:00"
+            },
+            {
+              "label": "Showcase",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 200,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG official Patch Notes and forums confirming Comet cast time, Fire Infusion and Repeat behaviour in 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB and Community Wiki provide Comet skill id, tags, impact radius and infusion data.",
+          "url": "https://poe2db.tw/Comet"
+        },
+        {
+          "label": "Wiki",
+          "description": "Community wiki page for Comet with cast-time and infusion details.",
+          "url": "https://www.poe2wiki.net/wiki/Comet"
+        },
+        {
+          "label": "Builds and video",
+          "description": "YouTube CoC Comet builds used to cross-check trigger and boss usage.",
+          "url": "https://youtu.be/1quplyhgfVE"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit and forums surface Comet single-target and infusion discussions.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Comet&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 210,
+      "title": "Patch History",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients): Comet remains the core trigger single-target spell; Fire Infusion and Infused Comet behaviour confirmed."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): Current baseline: base vs total cast time, close-range backstep, Fire Infusion added (not conversion), Quality Repeat without extra cost."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 220,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial release: cast time maths, backstep, impact radius, Fire Infusion, Repeat quality, self-cast vs trigger vs totem, cast-on-crit usage, mapping and boss rotations, troubleshooting and community questions."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "coc-frostbolt-comet-infernalist",
+    "crit-comet-disciple-of-varashta"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "spark",
+    "mana-tempest",
+    "cast-on-critical-strike",
+    "cast-on-elemental-ailment"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Comet",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Comet"
+    },
+    {
+      "label": "PoE2 Community Wiki — Comet",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Comet"
+    },
+    {
+      "label": "CoC Comet Endgame video",
+      "sourceType": "community",
+      "url": "https://youtu.be/1quplyhgfVE"
+    },
+    {
+      "label": "CoC Comet Oracle video",
+      "sourceType": "community",
+      "url": "https://youtu.be/5jErI3gzQAw"
+    },
+    {
+      "label": "Reddit — Comet discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Comet&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Comet Guide — Cast Time, Fire Infusion, Trigger Setups and Supports",
+    "description": "Comet deep guide: base vs total cast time, close-range backstep, impact radius, Fire Infusion and Infused Comet, Quality Repeat, self-cast vs trigger vs totem, cast-on-crit, mapping and boss rotations, troubleshooting and community questions.",
+    "noindex": false
+  }
+}

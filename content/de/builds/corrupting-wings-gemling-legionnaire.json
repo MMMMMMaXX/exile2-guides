@@ -1,0 +1,824 @@
+{
+  "id": "corrupting-wings-gemling-legionnaire",
+  "slug": "corrupting-wings-gemling-legionnaire",
+  "locale": "de",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Corrupting Wings Gemling Build-Guide: Corrupting Cry, Qualitätsstapeln und Progression",
+  "shortTitle": "Corrupting Wings Gemling",
+  "summary": "0.5.4-Warcry-Werkzeugkasten: Corrupting Cry wurde in 0.5 zu einem ausgelösten Skill, skaliert über Warcry-Stufe/Qualität/Supports. Behandelt Lebensverwaltung, Abklingzeit-Breakpoints, Cast on Dodge und die aufwendige Block-Stufe.",
+  "description": "Path of Exile 2 Corrupting Wings Gemling Legionnaire Guide für 0.5.4: Corrupting-Cry-Auslösung, Qualitätsstapeln, Warcry-Zeitachse, Lebensverwaltung und echte Video-Zeitstempel.",
+  "classId": "mercenary",
+  "ascendancyId": "gemling-legionnaire",
+  "mainSkillIds": [
+    "fortifying-cry",
+    "corrupting-cry"
+  ],
+  "secondarySkillIds": [
+    "decree-of-flight",
+    "cast-on-dodge"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking",
+    "cooldown",
+    "mobility"
+  ],
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "screenwide"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "cardImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "imageAlt": "Mercenary Gemling Legionnaire, der einen Warcry ruft, der Corrupted Blood über das Schlachtfeld auslöst",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "gemling-legionnaire",
+    "leveling",
+    "mercenary",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Build-Überblick",
+      "paragraphs": [
+        "Corrupting Wings Gemling ist der Warcry-Werkzeugkasten des Söldners: Ein Warcry-Ruf löst Corrupting Cry aus und stapelt Corrupted Blood (Chaos-/Physischer DoT) auf Gegner in Reichweite. Die Gemling-Legionnaire-Aufstiegsklasse wandelt Qualität direkt in Attribute und Schaden um, weshalb das „Qualitätsstapeln“ der zentrale Skalierungshebel ist.",
+        "In 0.5 wurde Corrupting Cry zu einem ausgelösten Skill — er ist nicht mehr manuell gedrückter Hauptskill, sondern wird durch den Warcry ausgelöst. Der Schaden kommt daher aus Warcry-Stufe, Supportgems, Qualität und Gemlings Attributs-Umwandlung, nicht aus einzelnen Zaubern.",
+        "Dieser Guide erklärt die Warcry-Zeitachse, die Lebensverwaltung, Abklingzeit-Breakpoints und die aufwendige Block-Stufe, wobei alle Client-Werte für die PC-Verifizierung markiert sind. 0.5-Startfehler und spätere Fixes werden getrennt gehalten."
+      ],
+      "bullets": [
+        "Warcry löst Corrupting Cry aus → Corrupted-Blood-Stapel.",
+        "Gemling-Qualitätsstapeln wandelt Attribute und Schaden um.",
+        "Seit 0.5 wird Corrupting Cry ausgelöst, nicht manuell als Hauptskill genutzt."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Vor- und Nachteile",
+      "pros": [
+        "Warcry-ausgelöste Säuberung ist fast einknöpfig, hervorragendes Flächengefühl.",
+        "Qualitätsstapeln zahlt sich bei Gemling enorm aus.",
+        "Aufwendige Block-Stufe (z. B. Svalinn) bietet großen Fehlerspielraum.",
+        "Mobilität (Cast on Dodge / Decree of Flight) ist flexibel."
+      ],
+      "cons": [
+        "Frühe Lebens- und Mana-Verwaltung ist knapp.",
+        "Abklingzeit- und Roll-Rhythmus braucht Übung.",
+        "Die aufwendige Stufe braucht bestimmte Unikate, hohe Hürde.",
+        "0.5-Startfehler beeinträchtigten das Gefühl; Bestätigung, dass behoben."
+      ]
+    },
+    {
+      "id": "warcry-cycle",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Wie die Schleife läuft: Warcry → Auslösung",
+      "paragraphs": [
+        "Rufe Fortifying Cry für Selbst-Schutz-/Echo-Buffs und um Corrupting-Cry-Stapel auszulösen; Corrupted Blood springt zwischen Gegnern.",
+        "Decree of Flight und Cast on Dodge bieten Mobilität: Ersteres startet aktiv den Flug, Letzteres löst beim Ausweichen aus und reduziert das Stillstehen.",
+        "Die aufwendige Variante nutzt Wings / doppeltes Cast on Dodge für längere Sprünge; die normale Version rollt. Gleiche Schleifenstruktur, der Unterschied liegt in Fehlerspielraum und Reiseweg."
+      ],
+      "bullets": [
+        "Fortifying Cry → löst Corrupting-Cry-Stapel aus.",
+        "Decree of Flight / Cast on Dodge bieten Mobilität.",
+        "Aufwendige Variante = längerer Sprung und mehr Spielraum."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Levelweg",
+      "steps": [
+        {
+          "label": "Stufen 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Karte mit Basis-Schüssen/Granaten; Warcry ist nach Freischaltung ergänzende Verteidigung."
+          ]
+        },
+        {
+          "label": "Stufen 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Nimm Fortifying Cry, beginne mit Warcry zusätzlichen Schaden auszulösen; füge Leben/Resistenz-Knoten hinzu."
+          ]
+        },
+        {
+          "label": "Stufen 30–42 — Gemling-Freischaltungen",
+          "levelRange": "30–42",
+          "body": [
+            "Wähle Gemling Legionnaire; Qualität beginnt Attribute umzuwandeln; Corrupting-Cry-Auslösekette entsteht."
+          ]
+        },
+        {
+          "label": "Stufen 43–60 — Frühe Maps",
+          "levelRange": "43–60",
+          "body": [
+            "Führe die Warcry-Schleife mit geringem Budget aus; fixe Leben/Resistenzen, verwalte Mana und Abklingzeit."
+          ]
+        },
+        {
+          "label": "Stufe 60+ — Endgame-Vorbereitung",
+          "levelRange": "60+",
+          "body": [
+            "Treibe Warcry-Stufe/Qualität, Abklingzeit und Block; jage High-End-Unikate, sobald die Checkliste bestanden ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Fähigkeiten-Setup",
+      "groups": [
+        {
+          "label": "Kernfähigkeiten",
+          "skills": [
+            {
+              "displayName": "Fortifying Cry",
+              "skillId": "fortifying-cry",
+              "role": "Haupt-Warcry: Schutz/Echo und löst Corrupting Cry aus.",
+              "supportSkillIds": [
+                "echoing-cry",
+                "lifetap"
+              ],
+              "whyUse": [
+                "Er ist der Schleifenstart; ohne ihn kein Auslöser und kein Verteidigungs-Buff."
+              ],
+              "whenReplace": [
+                "Nie ersetzt; Kern des Kits."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, Boss verlässt sich mehr auf Schutz."
+              ],
+              "notes": [
+                "Alle paar Sekunden genutzt; Rhythmus durch Abklingzeit bestimmt."
+              ]
+            },
+            {
+              "displayName": "Corrupting Cry",
+              "skillId": "corrupting-cry",
+              "role": "Warcry-ausgelöster Stapel-Skill, Hauptschadensquelle.",
+              "supportSkillIds": [
+                "corrupted-blood",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "Seit 0.5 ausgelöster Skill; Schaden aus Stufe/Qualität/Supports."
+              ],
+              "whenReplace": [
+                "Nicht ersetzt, braucht aber den Warcry-Auslöser."
+              ],
+              "mappingBossingDiff": [
+                "Flächen-Säuberung; fokussierte Stapel auf Boss."
+              ],
+              "notes": [
+                "Seit 0.5 ausgelöst, nicht manueller Hauptskill."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mobilität & Support",
+          "skills": [
+            {
+              "displayName": "Decree of Flight",
+              "skillId": "decree-of-flight",
+              "role": "Aktive Abflug-Mobilität, umgeht Boden-Effekte.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Wichtige Mobilität, reduziert Tode durch Stillstehen."
+              ],
+              "whenReplace": [
+                "Als Mobilität behalten."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Dodge",
+              "skillId": "cast-on-dodge",
+              "role": "Löst Effekte beim Ausweichen aus, mehr Mobilität/Schaden.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Aufwendige Variante nutzt doppeltes Cast on Dodge für Sprung; bei normaler optional."
+              ],
+              "whenReplace": [
+                "Bei aufwendiger Variante nötig, bei normaler optional."
+              ],
+              "mappingBossingDiff": [
+                "Aufwendige Variante verlässt sich mehr darauf."
+              ],
+              "notes": [
+                "Ohne nutzbar, nur weniger mobil."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Aufstiegs-Reihenfolge",
+      "steps": [
+        {
+          "label": "Gemling Legionnaire — Erste Knoten",
+          "body": [
+            "Priorisiere Qualität-zu-Attribut-Knoten; Voraussetzung für Qualitätsstapeln."
+          ]
+        },
+        {
+          "label": "Verteidigungsprüfung",
+          "body": [
+            "Wenn T15+-Überleben wackelig, füge Block/Leben-Knoten hinzu; tausche nicht alles gegen Schaden."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Passivbaum",
+      "steps": [
+        {
+          "label": "Kampagne",
+          "body": [
+            "Nimm Leben-, Resistenz-, Warcry-Buff- und Qualitätsknoten; leite nicht vorzeitig zu Block-Rädern."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Wechsle in die Auslöse-Variante; zuerst Leben, Abklingzeit und Qualität."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Nach gelöster Verteidigung und Abklingzeit in Qualitäts-/Schadensräder investieren; Ausrüstung auf Stufe vergleichen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Ausrüstung",
+      "slots": [
+        {
+          "slot": "Haupthand / Waffenset",
+          "recommendations": [
+            "Wähle eine Basis, die die Warcry-/Auslösekette unterstützt; Waffenset-Wechsel ändert Konfiguration zwischen Säuberung und Boss."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Warcry-Stufe / Gem-Qualität",
+              "reason": "Skaliert Auslösung und Qualitätsstapeln direkt."
+            },
+            {
+              "tier": "recommended",
+              "label": "Leben und Resistenzen",
+              "reason": "Frühe Überlebensbasis."
+            },
+            {
+              "tier": "optional",
+              "label": "Abklingzeitreduzierung",
+              "reason": "Schnellerer Warcry-Rhythmus."
+            },
+            {
+              "tier": "luxury",
+              "label": "Block-bezogene Mods",
+              "reason": "Hürde der aufwendigen Variante."
+            }
+          ],
+          "notes": [
+            "Waffenset-Passivpunkte tauschen zwei Konfigurationen (siehe Waffenset-Guide)."
+          ]
+        },
+        {
+          "slot": "Brust / Stiefel / Helm",
+          "recommendations": [
+            "Leben, Resistenzen und Block; Bewegungstempo der Stiefel."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Leben und zwei abgedeckte Resistenzen",
+              "reason": "Kein Schaden gleicht das Sterben auf."
+            },
+            {
+              "tier": "recommended",
+              "label": "Blockchance",
+              "reason": "Verteidigungsgrenze der aufwendigen Variante."
+            },
+            {
+              "tier": "optional",
+              "label": "Bewegungstempo",
+              "reason": "Bessere Positionierung und Roll."
+            },
+            {
+              "tier": "luxury",
+              "label": "Explizite Qualität/Schaden",
+              "reason": "Nach der Verteidigung."
+            }
+          ],
+          "notes": [
+            "Svalinn ist der Block-Kern der aufwendigen Variante, keine Hürde."
+          ]
+        },
+        {
+          "slot": "Ringe / Amulett / Gürtel",
+          "recommendations": [
+            "Attribute, Resistenzen, Leben und Block; Mananachschub wo nötig."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Attribute, um Waffe und Gems auszurüsten",
+              "reason": "Nicht ausrüstbar ist nutzlos."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistenzen und Leben",
+              "reason": "Vervollständigt die Verteidigungshülle."
+            },
+            {
+              "tier": "optional",
+              "label": "Block / Mana",
+              "reason": "Kostenlose Verteidigung durch Schmuck."
+            },
+            {
+              "tier": "luxury",
+              "label": "Gem-Qualität",
+              "reason": "Schaden im Spätgame."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Stat-Priorität",
+      "priorities": [
+        {
+          "label": "Warcry-Stufe und Gem-Qualität",
+          "reason": "Kern des Qualitätsstapelns; oberste Fortschrittsprüfung."
+        },
+        {
+          "label": "Leben und Resistenzen",
+          "reason": "Frühe Überlebensbasis."
+        },
+        {
+          "label": "Abklingzeitreduzierung",
+          "reason": "Schnellerer Warcry-Auslöserhythmus."
+        },
+        {
+          "label": "Blockchance",
+          "reason": "Verteidigungsgrenze der aufwendigen Variante."
+        },
+        {
+          "label": "Mana-Erhalt",
+          "reason": "Basis für anhaltende Auslösung und Mobilität."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Upgrade-Priorität",
+      "steps": [
+        {
+          "label": "Säuberung wird langsam",
+          "symptom": "Packs brauchen viele Warcry-Runden.",
+          "checks": [
+            "Warcry-Stufe/Qualität vorhanden?",
+            "Leben/Resistenzen zuerst gelöst?"
+          ],
+          "upgrade": "Warcry-Stufe und Qualität upgraden, nicht rohen Schaden."
+        },
+        {
+          "label": "Häufiges Sterben",
+          "symptom": "Tode in Maps oder Boss.",
+          "checks": [
+            "Block/Leben-Lücke?",
+            "Hohe Rollover-Mods?"
+          ],
+          "upgrade": "Zuerst Verteidigung fixen, Schadensstapeln stoppen."
+        },
+        {
+          "label": "Mana/Abklingzeit-Einbruch",
+          "symptom": "Warcry kann nicht gewirkt werden oder Rhythmus bricht.",
+          "checks": [
+            "Mana hält durchgehendes Wirken?",
+            "Abklingzeitreduzierung ausreichend?"
+          ],
+          "upgrade": "Mana-Erhalt und Abklingzeitreduzierung hinzufügen."
+        },
+        {
+          "label": "Svalinn / doppeltes Cast on Dodge erwägen",
+          "symptom": "Mehr Spielraum und Sprung gewünscht.",
+          "checks": [
+            "Normale Stufe bestanden?",
+            "Brechen High-Invest-Unikate die Resistenzen?"
+          ],
+          "upgrade": "Stück für Stück kaufen und nach Checkliste erneut testen."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapping",
+      "paragraphs": [
+        "Rufe bei Packs Fortifying Cry, um Corrupting Cry auszulösen; Corrupted Blood springt zur Säuberung zwischen Gegnern; umpositionieren mit Decree of Flight / Roll.",
+        "Müll braucht keine sorgfältigen Stapel; nur Seltene/Bosse brauchen fokussierte Auslöser. Wenn die Säuberung langsam wird, zuerst Warcry-Stufe und Qualität upgraden."
+      ],
+      "bullets": [
+        "Fortifying Cry löst flächendeckend aus.",
+        "Bei Müll auf sorgfältige Stapel verzichten.",
+        "Bei langsamer Säuberung Warcry-Stufe/Qualität upgraden."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Bossing",
+      "paragraphs": [
+        "Lies Boss-Bewegung vor, rufe Fortifying Cry, um Corrupting Cry auszulösen, stapele Corrupted Blood auf dem Boss; nutze Decree of Flight, um Boden-Effekten auszuweichen.",
+        "Wenn der Schaden stockt, liegt das an Warcry-Stufe/Qualität/Supports, nicht an der Haupthand; die aufwendige Variante nutzt Svalinn / doppeltes Cast on Dodge für Spielraum und Sprung."
+      ],
+      "bullets": [
+        "Fortifying Cry → fokussierte Corrupting-Cry-Stapel.",
+        "Decree-of-Flight-Ausweichung.",
+        "Stocken = Warcry fixen, nicht Waffe tauschen."
+      ]
+    },
+    {
+      "id": "life-management",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Lebensverwaltung",
+      "paragraphs": [
+        "Knappes frühes Leben ist ein echter Engpass: Der Warcry heilt selbst nicht, und anhaltende Auslösung plus Mobilität kosten Mana. Sichere Lebenspool und Resistenzen vor dem Schaden.",
+        "Die aufwendige Block-Stufe dünnt Treffer über Block aus und lindert Lebensdruck; doch Block braucht Ausrüstung, am Anfang nicht verfügbar. Genaue Werte ausstehend für PC-Verifizierung."
+      ],
+      "bullets": [
+        "Leben und Resistenzen vor Schaden.",
+        "Block dünnt Treffer aus, braucht aber Ausrüstung.",
+        "Mana-Erhalt speist die Auslösung."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Community-Belege",
+      "note": "Dieser Guide nutzt Community-Diskussionen als reproduzierbare Checkliste, nicht als Versprechen ihres gezeigten DPS.",
+      "entries": [
+        {
+          "context": "Spieler fragen, wie 0.5 Gemling skaliert.",
+          "label": "pathofky Gemling Legionnaire 0.5 Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Der Guide trennt Mechaniken, Gems, Waffenset-Wechsel und Passivbaum und betont Qualität und Attributs-Umwandlung.",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "context": "Spieler debattieren, ob 0.5-Startfehler das Gefühl verschlechtern.",
+          "label": "P4wnyhof Gemling Legionnaire Kampagne bis Endgame",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Live zeigt durchgehenden Übergang von Akt 1 bis Endgame und betont den Leistungssprung der Aufstiegsknoten.",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Fehlerbehebung",
+      "problems": [
+        {
+          "symptom": "Boss-Schaden stockt",
+          "checks": [
+            "Warcry-Stufe/Qualität vorhanden?",
+            "Passende Supports?"
+          ]
+        },
+        {
+          "symptom": "Häufiges Sterben",
+          "checks": [
+            "Block/Leben-Lücke?",
+            "Hohe Rollover-Mods?"
+          ]
+        },
+        {
+          "symptom": "Warcry lässt sich nicht wirken",
+          "checks": [
+            "Mana hält vor?",
+            "Abklingzeit zu lang?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Ist Corrupting Cry noch ein manueller Hauptskill?",
+          "answer": [
+            "Seit 0.5 wird er durch den Warcry ausgelöst; der Schaden kommt aus Stufe/Qualität/Supports, nicht aus einzelnen Zaubern."
+          ],
+          "bullets": [
+            "Durch Fortifying Cry ausgelöst."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Kann ich ohne Svalinn spielen?",
+          "answer": [
+            "Ja; Svalinn ist der Block-Kern der aufwendigen Variante, die normale Version nutzt Leben/Resistenzen und Roll, um die meisten Inhalte zu mappen und zu bossen."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/de/guides/how-to-stop-getting-one-shot/",
+              "label": "Siehe Anti-One-Shot-Guide"
+            }
+          ]
+        },
+        {
+          "question": "Ich habe eine bessere Waffe ausgetauscht, bin aber immer noch schwach?",
+          "answer": [
+            "Der Schaden kommt aus Warcry-Stufe/Qualität/Supports, nicht aus der Haupthand; fixe zuerst Warcry und Qualitätsstapeln."
+          ],
+          "bullets": [
+            "Bosskampf aufnehmen, Auslöser-Icons prüfen."
+          ],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build-Planer & Import",
+      "note": "Einfügbare Import-Strings und .build-Dateien stehen weiterhin zur PC-Verifizierung aus; nutze inzwischen die Creator-Guides und den offiziellen Planer unten. Bestätige Knoten immer erneut in deinem eigenen Client.",
+      "creatorName": "pathofky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Warcry-Zeitachse und Endgame ansehen",
+      "entries": [
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire Guide",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE",
+          "description": "Mechaniken, Gems, Waffensets, Aufstieg und Passivbaum.",
+          "takeaway": "Fokus auf Warcry-Auslösung und Qualitätsstapeln.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro und Mechaniken"
+            },
+            {
+              "time": "2:30",
+              "label": "Ausrüstungsüberblick"
+            },
+            {
+              "time": "5:00",
+              "label": "Gems und Waffensets"
+            },
+            {
+              "time": "8:30",
+              "label": "Aufstieg und Baum"
+            },
+            {
+              "time": "11:00",
+              "label": "Gameplay-Demo"
+            }
+          ]
+        },
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire Endgame-Update",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k",
+          "description": "Endgame-Update, das Solo-Inhalte und Map-Performance stärkt.",
+          "takeaway": "Sieh dir finale Ausrüstung und Map-Gameplay an.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro"
+            },
+            {
+              "time": "2:00",
+              "label": "Ausrüstungs-Durchgang"
+            },
+            {
+              "time": "5:00",
+              "label": "Map-Gameplay"
+            },
+            {
+              "time": "8:00",
+              "label": "Zusammenfassung"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Quellen & Verifizierung",
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "pathofky — Gemling Legionnaire 0.5 Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "label": "Community",
+          "description": "pathofky — Gemling Legionnaire Endgame-Update 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+        },
+        {
+          "label": "Community",
+          "description": "P4wnyhof — Gemling Legionnaire Akt 1 bis Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Änderungsprotokoll",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Erstellte einen quellenbasierten 0.5.4 Corrupting Wings Gemling Build-Guide; PC-Verifizierung läuft."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "how-to-stop-getting-one-shot"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "pathofky — Arc Totem Gemling Legionnaire 0.5 Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "label": "pathofky — Gemling Legionnaire Endgame-Update 0.5 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+    },
+    {
+      "label": "P4wnyhof — Gemling Legionnaire Akt 1 bis Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+    }
+  ],
+  "seo": {
+    "title": "Corrupting Wings Gemling Build-Guide | Exile2 Guides",
+    "description": "0.5.4 Corrupting Wings Gemling: Corrupting-Cry-Auslösung, Qualitätsstapeln, Warcry-Zeitachse, Lebensverwaltung und Block-Stufe.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "corrupting-wings-gemling-legionnaire",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

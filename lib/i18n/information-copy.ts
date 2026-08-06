@@ -1,5 +1,8 @@
 /** 文件职责：集中维护 About、Contact 与法律页的完整线上正式文案，支持段落、列表、卡片网格与表格。 */
 import type { ContentLocale } from "../content/constants";
+import { esFrJaInfoCopy } from "./information-copy.es-fr-ja";
+import { koTrInfoCopy } from "./information-copy.ko-tr";
+import { ptBrRuDeInfoCopy } from "./information-copy.pt-br-ru-de";
 
 export const informationPageSlugs = [
   "about",
@@ -1079,6 +1082,9 @@ const informationCopyByLocale: Record<
       ],
     },
   },
+  ...ptBrRuDeInfoCopy,
+  ...esFrJaInfoCopy,
+  ...koTrInfoCopy,
 };
 
 /** 判断给定字符串是否为有效的信息页 slug */

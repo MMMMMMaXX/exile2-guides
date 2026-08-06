@@ -19,3 +19,47 @@ declare module "virtual:boss-draft-preview-pages" {
   const pages: StaticContentPageMap;
   export default pages;
 }
+
+declare module "virtual:content-catalog" {
+  import type { StaticContentCatalogPageMap } from "../lib/content/content-page";
+
+  const pages: StaticContentCatalogPageMap;
+  export default pages;
+}
+
+declare module "virtual:content-catalog-loaders" {
+  import type { StaticContentCatalogPage } from "../lib/content/content-page";
+
+  const loaders: Readonly<
+    Record<
+      string,
+      () => Promise<{
+        default: Readonly<Record<string, StaticContentCatalogPage>>;
+      }>
+    >
+  >;
+  export default loaders;
+}
+
+declare module "virtual:content-catalog-metrics" {
+  import type { StaticContentCatalogMetrics } from "../lib/content/content-page";
+
+  const metrics: StaticContentCatalogMetrics;
+  export default metrics;
+}
+
+declare module "virtual:content-routes" {
+  import type { StaticContentRouteMap } from "../lib/content/content-page";
+
+  const routes: StaticContentRouteMap;
+  export default routes;
+}
+
+declare module "virtual:content-page-loaders" {
+  import type { StaticContentPage } from "../lib/content/content-page";
+
+  const loaders: Readonly<
+    Record<string, () => Promise<{ default: StaticContentPage }>>
+  >;
+  export default loaders;
+}

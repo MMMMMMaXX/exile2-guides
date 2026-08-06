@@ -1,0 +1,722 @@
+{
+  "id": "explosive-shot",
+  "slug": "explosive-shot",
+  "locale": "ko",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "익스플로시브 샷(Explosive Shot) 스킬 가이드 — 탄약, 재장전, 수류탄 폭발 및 로테이션",
+  "shortTitle": "익스플로시브 샷",
+  "summary": "익스플로시브 샷은 크로스보우 스킬 젬입니다. 처음 누르면 특수 볼트를 크로스보우에 장전하고, 다음 크로스보우 공격에서 그 볼트를 발사하며, 볼트는 충돌 시 폭발하고 폭발 범위 내의 모든 수류탄(Grenade)을 즉시 폭발시킵니다. 이 가이드에서는 장전/발사/재장전 주기, 스킬이 발사되지 않는 이유, 수류탄 폭발이 실제로 어떻게 트리거되는지, 올바른 익스플로시브 샷 → 수류탄 순서, 무기 세트 분리, 그리고 익스플로시브 위치헌터, 수류탄 젬링, 택티션 빌드가 사용하는 육성/사냥/보스 로테이션을 설명합니다.",
+  "description": "익스플로시브 샷 심층 가이드: 크로스보우 장전/발사/재장전 상태, 수류탄 폭발 반경 및 순서, 투사체 폭발과 범위 피해, 클리어용과 보스용 서포트 호환성, 무기 세트 트리, 사냥과 보스 로테이션, 익스플로시브 위치헌터/젬링/택티션/디아이 사용법, 문제 해결(발사 안 됨, 폭발 안 됨, 재장전 느림, 마나), 그리고 직접 답변하는 실제 커뮤니티 질문.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/explosive-shot.webp",
+  "cardImage": "/images/skills/explosive-shot.webp",
+  "imageAlt": "익스플로시브 샷 크로스보우 뇌관 스킬 아이콘",
+  "tags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "한 줄 요약: 먼저 장전, 그 다음 발사, 그러면 폭발",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "익스플로시브 샷은 처음 눌렀을 때 발사되지 않습니다 — 처음 누르면 뇌관 볼트를 크로스보우에 장전합니다. 다음 크로스보우 공격에서 그 볼트를 발사하며, 볼트는 충돌 시 폭발하고 그 폭발 범위에 들어간 모든 수류탄을 즉시 폭발시킵니다.",
+        "따라서 실제 사용 루프는 다음과 같습니다: 익스플로시브 샷을 눌러 장전하고, 공격하여 볼트를 발사한 뒤, 폭발로 근처 수류탄을 폭발시키고, 탄창이 비면 재장전합니다. 이를 한 번의 버튼으로 발사되는 공격이 아니라 두 단계 스킬로 다루세요."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "주요 수치와 획득",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "분류",
+          "value": "Active Attack (Crossbow · Projectile · Fire · AoE · Detonator)",
+          "notes": [
+            "attack, projectile, ammunition, aoe, fire, detonator 태그가 붙습니다."
+          ]
+        },
+        {
+          "label": "무기 요구 사항",
+          "value": "Crossbow",
+          "notes": [
+            "크로스보우를 장착해야 하며, 장전/발사 주기는 크로스보우 무기 세트에 존재합니다."
+          ]
+        },
+        {
+          "label": "획득",
+          "value": "Uncut Skill Gem (tier 5+ skill)",
+          "notes": [
+            "Uncut Skill Gem에서 각인하며, 캠페인 드롭과 젬커팅 메뉴에서 얻을 수 있습니다."
+          ]
+        },
+        {
+          "label": "탄창 / 장전",
+          "value": "사용 시 뇌관 볼트 1발 장전",
+          "notes": [
+            "누를 때마다 볼트 1발을 장전하며, 이어지는 크로스보우 공격이 그 볼트를 소모합니다."
+          ]
+        },
+        {
+          "label": "역할",
+          "value": "수류탄 뇌관 + 화염 범위 클리어",
+          "notes": [
+            "핵심 가치는 수류탄의 즉시 폭발과 볼트 충돌 시 일어나는 화염 폭발입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "요구 사항 및 세팅",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "익스플로시브 샷에는 크로스보우와 젬의 속성 요구 사항(크로스보우 스킬은 민첩 주도)이 필요합니다. 이는 미리 깎아진 형태로 얻는 것이 아니라 Uncut Skill Gem에서 각인하므로, 충분히 높은 티어의 Uncut Skill Gem이 드롭되어야 가장 빨리 사용할 수 있습니다.",
+        "뇌관 스킬이므로 단독으로 사용되는 경우는 거의 없습니다 — 익스플로시브 수류탄, 프로스트볼트 수류탄, 포이즌버스트 수류탄 등 수류탄 스킬 옆에 슬롯하여, 볼트를 발사할 때 미리 놓아둔 수류탄까지 함께 처리합니다."
+      ],
+      "keyValues": [
+        {
+          "label": "무기",
+          "value": "Crossbow (required)",
+          "notes": [
+            "크로스보우가 없으면 장전/발사 주기를 시작할 수 없습니다."
+          ]
+        },
+        {
+          "label": "동반 스킬",
+          "value": "최소 1개의 수류탄 스킬",
+          "notes": [
+            "뇌관 가치는 수류탄이 폭발 범위 안에 있을 때만 나타납니다."
+          ]
+        },
+        {
+          "label": "Uncut gem tier",
+          "value": "Tier 5 skill gem",
+          "notes": [
+            "수치를 게시하기 전 현재 클라이언트 티어를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ammunition-reload",
+      "order": 40,
+      "title": "탄약 및 재장전 주기",
+      "type": "ammunition-reload",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "익스플로시브 샷은 적은 수의 뇌관 볼트로 이루어진 작은 탄창을 관리합니다. 스킬을 누르면 크로스보우가 비어 있을 때 볼트를 장전하고, 다음 크로스보우 공격에서 그 볼트를 발사하며, 탄창이 비면 스킬을 눌러도 장전 대신 재장전이 일어납니다.",
+        "재장전 속도는 크로스보우의 재장전 수정치와 서포트 젬에 의해 변합니다. 재장전이 느리면 '반응이 없다'는 가장 흔한 불만의 원인이며, 특히 재장전 속도 페널티가 있는 크로스보우에서 두드러집니다."
+      ],
+      "steps": [
+        {
+          "label": "Unloaded",
+          "action": "Use Explosive Shot",
+          "result": "크로스보우에 뇌관 볼트를 장전합니다(아직 투사체는 없음)."
+        },
+        {
+          "label": "Loaded",
+          "action": "Use any crossbow attack",
+          "result": "뇌관 볼트를 발사하며, 충돌 시 폭발합니다."
+        },
+        {
+          "label": "Empty clip",
+          "action": "Use Explosive Shot again",
+          "result": "재장전이 트리거되며, 다음 장전 전까지 끝날 때까지 기다려야 합니다."
+        },
+        {
+          "label": "Grenades nearby",
+          "action": "Bolt explosion lands",
+          "result": "반경 내 수류탄을 폭발시키고, 그 후 재장전하거나 다시 장전합니다."
+        }
+      ],
+      "keyValues": [
+        {
+          "label": "탄창 동작",
+          "value": "장전 시 볼트 1발",
+          "notes": [
+            "누를 때마다 볼트 1발을 장전하며, 탄창은 의도적으로 작게 설정되어 있습니다."
+          ]
+        },
+        {
+          "label": "재장전 수정치",
+          "value": "Crossbow-dependent",
+          "notes": [
+            "해당 크로스보우의 현재 클라이언트 재장전 수정치를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detonator-interaction",
+      "order": 50,
+      "title": "수류탄 폭발 규칙",
+      "type": "detonator-interaction",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "뇌관 볼트가 폭발하면, 폭발 반경 안에 본체가 들어가는 모든 수류탄이 즉시 폭발하여 일반 신관 타이머가 아니라 한 번에 수류탄의 전체 피해를 줍니다.",
+        "폭발은 실제로 반경 안에 있는 수류탄에만 닿습니다. 폭발 범위 바로 바깥에 있는 수류탄은 일반 타이머를 유지하며, 이것이 '내 수류탄이 터지지 않았다'는 흔한 이유입니다. 타깃 주위에 수류탄을 촘촘히 미리 놓고 볼트를 그 중심에 조준하는 것이 콤보를 즉시 느껴지게 만듭니다.",
+        "범위 안의 모든 유효한 수류탄 종류가 함께 폭발하므로, 익스플로시브 + 프로스트볼트 + 상태이상 수류탄을 쌓아 한 발의 볼트로 터뜨릴 수 있습니다. 폭발 자체는 수류탄 효과와 무관하게 화염 범위 피해입니다."
+      ],
+      "keyValues": [
+        {
+          "label": "폭발 트리거",
+          "value": "Bolt explosion radius",
+          "notes": [
+            "반경 안의 수류탄만 소모됩니다."
+          ]
+        },
+        {
+          "label": "다수의 수류탄",
+          "value": "반경 내 전부 동시 폭발",
+          "notes": [
+            "종류를 쌓아 합산 피해를 내며, 범위 밖은 타이머를 유지합니다."
+          ]
+        },
+        {
+          "label": "순서",
+          "value": "먼저 수류탄 배치, 그 후 장전 + 발사",
+          "notes": [
+            "수류탄이 존재하기 전에 발사하면 볼트 폭발만 얻습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "메커니즘: 투사체, 폭발 및 범위",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "발사된 볼트는 충돌하기 전까지 일반 크로스보우 투사체이므로, 이동 구간에서 투사체 서포트(Greater Multiple Projectiles, Chain, Pierce)의 영향을 받습니다. 충돌 시 적중 지점을 중심으로 화염 폭발을 만듭니다.",
+        "폭발이 범위 피해의 본체입니다. 그 크기는 스킬의 범위 수정치와 서포트 젬에 따라 커지며, 폭발된 수류탄이 그 위에 각자의 범위를 더합니다. 이것이 익스플로시브 샷이 클리어 도구로 읽히는 이유입니다: 한 발의 볼트가 볼트 폭발과 미리 세팅한 모든 수류탄으로 변합니다.",
+        "뇌관 볼트가 탄창을 소모하므로, 수류탄이 타깃에 놓여 있지 않으면 스킬의 단일 타깃 성능은 약합니다. 패킹된 몹과 미리 표시한 레어 처치를 위한 버스트용으로 쓰고, 단일 타깃 난사용으로 쓰지 마세요."
+      ],
+      "bullets": [
+        "볼트 이동 = 투사체(서포트가 사격에 적용됨).",
+        "충돌 = 화염 폭발(범위 피해 본체).",
+        "범위 내 수류탄이 겹친 범위를 위해 동시 폭발.",
+        "놓아둔 수류탄이 없으면 단일 타깃이 약함."
+      ]
+    },
+    {
+      "id": "state-table",
+      "order": 65,
+      "title": "장전 / 발사 / 재장전 상태 표",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "상태",
+        "플레이어 입력",
+        "게임 동작",
+        "다음 단계"
+      ],
+      "rows": [
+        [
+          "Unloaded",
+          "Use Explosive Shot",
+          "크로스보우에 뇌관 볼트를 장전함",
+          "공격하여 볼트 발사"
+        ],
+        [
+          "Loaded",
+          "Crossbow attack",
+          "볼트 발사, 충돌 시 폭발",
+          "수류탄 폭발 확인"
+        ],
+        [
+          "Empty clip",
+          "Use Explosive Shot",
+          "탄창 재장전",
+          "재장전 끝날 때까지 대기"
+        ],
+        [
+          "Grenades nearby",
+          "Bolt explosion lands",
+          "반경 내 수류탄 폭발",
+          "재장전 또는 재장전 후 반복"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "서포트 호환성",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "서포트는 클리어를 만드는 것과 보스를 망치는 것으로 나뉩니다. 투사체나 범위를 곱하는 것은 볼트 폭발과 수류탄 확산에 도움이 되고, 시전/재장전 비용을 더하거나 피해를 분산시키는 것은 원래 탄창이 작은 스킬을 해칠 수 있습니다."
+      ],
+      "keyValues": [
+        {
+          "label": "Greater Multiple Projectiles",
+          "value": "Core (clear)",
+          "notes": [
+            "볼트가 많을수록 폭발도 많고, 누를 때마다 수류탄 폭발 지점도 늘어납니다."
+          ]
+        },
+        {
+          "label": "Fire Infusion / Added Fire",
+          "value": "Core",
+          "notes": [
+            "폭발 피해를 직접 증폭하며, 화염 빌드의 핵심입니다."
+          ]
+        },
+        {
+          "label": "Area / Magnified Area",
+          "value": "Core",
+          "notes": [
+            "볼트 폭발과 수류탄 폭발 중첩 모두를 키웁니다."
+          ]
+        },
+        {
+          "label": "Martial Tempo / Attack Speed",
+          "value": "Situational",
+          "notes": [
+            "발사 템포는 빠르게 하지만 재장전 시간은 해결하지 않습니다."
+          ]
+        },
+        {
+          "label": "Slowing / high-cost supports",
+          "value": "Avoid (boss)",
+          "notes": [
+            "추가 시전 또는 재장전 비용은 보스전에서 두 단계 루프를 더 불편하게 만듭니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 80,
+      "title": "단계별 서포트 세팅",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Leveling",
+          "action": "Fire Infusion + Martial Tempo + 범위 서포트 1개",
+          "result": "캠페인 장비가 약할 때 저렴하고 빠른 수류탄 폭발."
+        },
+        {
+          "label": "Mapping",
+          "action": "Greater Multiple Projectiles + Fire Infusion + Magnified Area",
+          "result": "화면 전체 수류탄 폭발로 부드러운 클리어."
+        },
+        {
+          "label": "Bossing",
+          "action": "다중 투사체 제외, Fire Infusion + Concentrated Area 유지",
+          "result": "보스 밑에 미리 놓은 수류탄에 더 촘촘하고 강한 타격."
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "무기 세트 분리",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "익스플로시브 샷을 쓰는 크로스보우 빌드는 보통 두 개의 무기 세트를 돌립니다: 익스플로시브 샷과 수류탄을 함께 두는 크로스보우 세트(버스트 세트), 그리고 다른 크로스보우나 유틸 스킬을 둘 수 있는 두 번째 세트입니다.",
+        "장전/발사 주기는 익스플로시브 샷을 들고 있는 크로스보우 세트에 묶입니다. 다른 세트로 바꿨다 돌아오면 장전된 볼트 상태는 스킬을 따라가지만, 수류탄은 폭발을 일으킬 세트와 동일한 세트에 있어야 합니다. '수류탄이 폭발하지 않았다'고 하는 플레이어는 대개 수류탄을 들고 있지 않은 세트에서 발사하는 경우입니다."
+      ],
+      "keyValues": [
+        {
+          "label": "Set 1 (Crossbow)",
+          "value": "Explosive Shot + Grenades",
+          "notes": [
+            "뇌관 콤보는 여기에 있습니다."
+          ]
+        },
+        {
+          "label": "Set 2",
+          "value": "Utility / alternate crossbow",
+          "notes": [
+            "익스플로시브 샷도 옮기지 않는 한 수류탄은 Set 1에 두세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "사냥 로테이션",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Approach pack",
+          "action": "팩 중앙에 수류탄 투척",
+          "result": "수류탄이 타이머대로 대기 중."
+        },
+        {
+          "label": "Load",
+          "action": "Press Explosive Shot",
+          "result": "크로스보우에 뇌관 볼트 장전."
+        },
+        {
+          "label": "Detonate",
+          "action": "수류탄을 향해 볼트 발사",
+          "result": "볼트 폭발 + 범위 내 모든 수류탄이 한꺼번에 터짐."
+        },
+        {
+          "label": "Recover",
+          "action": "재장전 후 다음 팩 반복",
+          "result": "수동 수류탄 타이머 없이 꾸준한 화면 클리어."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "보스 로테이션",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Pre-place",
+          "action": "보스 발/히트박스에 수류탄 투척",
+          "result": "수류탄이 보스에 고정됨."
+        },
+        {
+          "label": "Load + fire",
+          "action": "Explosive Shot 후 크로스보우 공격",
+          "result": "보스 수류탄을 폭발시키는 단일 대형 버스트."
+        },
+        {
+          "label": "Re-load window",
+          "action": "보스가 경직된 틈에 재장전",
+          "result": "탄창 회복 후 다음 폭발 세팅."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "사용처",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "익스플로시브 위치헌터는 익스플로시브 샷을 수류탄 폭발의 핵심(keystone)으로 사용합니다: 익스플로시브/상태이상 수류탄을 놓고, 버스트 창에 볼트로 터뜨립니다. 수류탄 젬링과 택티션 변형도 범위를 위해 같은 뇌관 루프에 기댑니다.",
+        "일부 디아이 크로스보우 빌드는 수류탄 스킬이 이미 슬롯되어 있을 때 화염 클리어 버튼 용도로만 익스플로시브 샷을 빌려 씁니다. 모든 경우에 이 스킬의 가치는 볼트 피해 자체가 아니라 수류탄의 즉시 폭발입니다."
+      ],
+      "bullets": [
+        "익스플로시브 위치헌터: 수류탄 콤보의 주 뇌관.",
+        "수류탄 젬링 / 택티션: 동시 수류탄 폭발로 범위 버스트.",
+        "디아이 크로스보우: 가끔 화염 클리어 버튼."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "문제 해결",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Skill will not fire",
+          "action": "첫 누름은 장전만 하며, 발사하려면 공격해야 함",
+          "result": "익스플로시브 샷을 한 번 누른 뒤 크로스보우 공격으로 볼트를 방출하세요."
+        },
+        {
+          "label": "Grenades not detonating",
+          "action": "볼트 폭발 반경 밖에 있거나 다른 무기 세트에 있음",
+          "result": "수류탄을 타깃에 모으고, 그걸 들고 있는 세트에서 볼트를 중심에 조준하세요."
+        },
+        {
+          "label": "Reload feels slow",
+          "action": "크로스보우에 재장전 속도 페널티나 느려지는 서포트가 있음",
+          "result": "재장전이 더 빠른 크로스보우로 바꾸거나 사냥용 비싼 서포트를 제거하세요."
+        },
+        {
+          "label": "Mana problems",
+          "action": "수류탄과 익스플로시브 샷이 마나 풀을 공유함",
+          "result": "마나 재생 / Clarity를 추가하거나 폭발 사이 수류탄 유지 시간을 줄이세요."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "커뮤니티 근거",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "반복되는 커뮤니티 질문은 세 가지로 모입니다: '익스플로시브 샷이 발사되지 않는다', '내 수류탄이 폭발하지 않았다', '재장전이 너무 느리다'. 클라이언트 테스트로 첫 누름은 장전(발사 아님)임이 확인되므로, 해결책은 장전 후 공격하는 것입니다.",
+        "수류탄 불만은 버그가 아니라 거의 항상 반경이나 무기 세트 문제입니다: 볼트 폭발 밖에 있거나 익스플로시브 샷을 들지 않은 세트에 던진 수류탄은 일반 타이머를 유지합니다. 무기 세트 분리는 신규 크로스보우 유저에게 가장 많이 보고되는 세팅 함정입니다."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "영상 설명 및 타임스탬프",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.3.1",
+          "description": "익스플로시브 샷을 수류탄 뇌관으로 쓰는 택티션 빌드로, 장전/발사 템포와 수류탄 레이어링을 다룹니다.",
+          "takeaway": "버스트 창에 수류탄을 미리 놓고 볼트로 터뜨리는 방식을 보세요.",
+          "url": "https://www.youtube.com/watch?v=yye5P8CBmCA",
+          "timestamps": [
+            {
+              "label": "빌드 및 스킬 세팅",
+              "time": "0:00"
+            },
+            {
+              "label": "수류탄 레이어링 데모",
+              "time": "3:30"
+            },
+            {
+              "label": "보스 폭발 창",
+              "time": "7:00"
+            }
+          ]
+        },
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.4",
+          "description": "현재 패치 수치를 반영한 동일 뇌관 루프의 0.4 업데이트 버전.",
+          "takeaway": "0.4 변경 후에도 장전/발사/폭발 루프가 여전히 작동함을 확인.",
+          "url": "https://www.youtube.com/watch?v=vdKsk6NmaME",
+          "timestamps": [
+            {
+              "label": "세팅 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "사냥 클리어",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Hayura",
+          "label": "PoE2 Grenades Leveling Full Guide 0.5",
+          "description": "육성 중 익스플로시브 샷으로 수류탄을 터뜨리는 0.5 리그 스타트 수류탄 육성 가이드.",
+          "takeaway": "육성 로테이션과 마나 관리 참고 자료로 좋음.",
+          "url": "https://www.youtube.com/watch?v=slhfmc5JVRs",
+          "timestamps": [
+            {
+              "label": "수류탄 핵심 루프",
+              "time": "1:00"
+            },
+            {
+              "label": "뇌관 사용법",
+              "time": "6:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG 공식 포럼 패치 노트와 발표로, 현재 0.5.4 클라이언트의 크로스보우/수류탄/뇌관 동작을 확인하는 데 사용.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB와 커뮤니티 위키가 스킬 id, 태그, 무기 요구 사항, 숨겨진 뇌관 동작을 제공.",
+          "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Mobalytics 익스플로시브 위치헌터와 Thor's Gaming / Hayura 시연 영상으로, 장전/발사/폭발 로테이션을 교차 검증하는 데 사용.",
+          "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit과 공식 포럼에서 '발사 안 됨', 수류탄 미폭발, 재장전 느림 같은 실제 문제가 나오며, 클라이언트에서 재현하고 직접 답변.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+        },
+        {
+          "label": "Official Forums",
+          "description": "GGG 공식 포럼으로, 스태프가 크로스보우와 수류탄 메커니즘 및 패치 변경을 확인.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit Community",
+          "description": "익스플로시브 샷에 대한 Reddit r/PathOfExile2 토론과 도움글, 버전 피드백과 주류 빌드 파악에 유용.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "장전/발사/재장전 주기를 클라이언트 0.5.4에서 확인.",
+          "수류탄 폭발 반경을 알려진 거리에 수류탄을 놓아 확인.",
+          "과거의 '즉시 발사' 가정은 수정됨: 첫 누름은 장전만 함."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "패치 내역",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "초기 0.2 / 0.3 시절 수류탄 스킬과 함께 크로스보우 탄약 및 재장전 시스템 도입; 이 시점부터 익스플로시브 샷은 뇌관으로 기능."
+          ]
+        },
+        {
+          "date": "2026-03-15",
+          "changes": [
+            "0.4 수류탄 및 크로스보우 재장전 튜닝 조정이 뇌관 템포에 영향; 즉시 반경 폭발 동작은 유지."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: 익스플로시브 샷은 크로스보우 뇌관으로 잔존; 이 가이드에는 현재 클라이언트 수치 사용."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "변경 로그",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "최초 릴리스: 장전/발사/재장전 주기, 수류탄 폭발 규칙, 서포트 호환성, 무기 세트 분리, 사냥 및 보스 로테이션, 문제 해결 및 커뮤니티 근거."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Explosive Shot",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+    },
+    {
+      "label": "Mobalytics — Explosive Witchhunter",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+    },
+    {
+      "label": "Reddit — Explosive Shot discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.3.1",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yye5P8CBmCA"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.4",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=vdKsk6NmaME"
+    },
+    {
+      "label": "Hayura — Grenades Leveling 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=slhfmc5JVRs"
+    }
+  ],
+  "seo": {
+    "title": "익스플로시브 샷(Explosive Shot) 스킬 가이드 — 탄약, 재장전, 수류탄 폭발 및 로테이션",
+    "description": "익스플로시브 샷 크로스보우 가이드: 장전/발사/재장전 주기, 수류탄 폭발 반경 및 순서, 서포트 호환성, 무기 세트 분리, 사냥 및 보스 로테이션, 문제 해결 및 커뮤니티 근거.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "explosive-shot",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

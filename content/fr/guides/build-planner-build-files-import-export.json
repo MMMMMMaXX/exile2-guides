@@ -1,0 +1,731 @@
+{
+  "id": "build-planner-build-files-import-export",
+  "slug": "build-planner-build-files-import-export",
+  "locale": "fr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Importer et exporter les fichiers .build du Build Planner dans Path of Exile 2",
+  "shortTitle": "Fichiers .build du Build Planner",
+  "summary": "Comment le Build Planner intégré à Path of Exile 2 lit les fichiers de données .build : ce qu'ils contiennent, où les placer sur chaque plateforme, comment les importer et les ouvrir, comment choisir le bon stade de niveau/budget, et comment valider et corriger un fichier qui ne se charge pas.",
+  "description": "Un guide pratique sur les fichiers .build du Build Planner de Path of Exile 2 : import, export, chemins par plateforme, sélecteur de stade intégré, validateur de fichiers et compatibilité des versions.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "cardImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "imageAlt": "Une vue du build planner en jeu représentant les fichiers .build importables dans Path of Exile 2",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "Path of Exile 2 installé (PC ou Steam recommandé)",
+    "Un fichier .build provenant d'un créateur de build de confiance",
+    "Accès à votre dossier Documents / fichiers du jeu"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "build-planner",
+    "build-file",
+    "import",
+    "export",
+    "passive-tree",
+    "pob"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Réponses directes",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Qu'est-ce qu'un fichier .build ?",
+          "body": [
+            "Un fichier .build est un fichier DE DONNÉES qui stocke l'arbre passif d'un build, l'ascendance, les compétences, les notes d'équipement et les stades du planner. Ce n'est pas un programme exécutable, et le Build Planner ne calcule pas de DPS réel — il se contente de guider vos choix en jeu."
+          ]
+        },
+        {
+          "title": "Où dois-je le placer ?",
+          "body": [
+            "Sous Windows, placez le fichier dans Documents\\My Games\\Path of Exile 2\\BuildPlanner. Sous Linux via Steam/Proton, utilisez le chemin équivalent du préfixe Proton. Si le dossier n'existe pas, le jeu le crée la première fois que vous enregistrez ou exportez, ou vous pouvez le créer vous-même."
+          ]
+        },
+        {
+          "title": "Comment l'utiliser en jeu ?",
+          "body": [
+            "Ouvrez le menu de l'arbre de compétences passives ou de taille de gemmes (appuyez sur P sur PC par défaut actuel), puis cliquez sur l'icône bleue / le menu déroulant dans le coin supérieur gauche et sélectionnez le build importé. Une ligne bleue trace le chemin passif recommandé."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-build-files-contain",
+      "order": 2,
+      "title": "Ce que contient un fichier .build",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un fichier .build est un fichier de données JSON que le Build Planner lit pour dessiner une superposition guidée à l'intérieur du jeu. Il stocke l'auteur du build, une description, l'ascendance, les allocations passives, les compétences et gemmes de soutien recommandées, ainsi que les notes d'équipement de l'inventaire.",
+        "Il est important de comprendre ce qu'il N'EST PAS. Un fichier .build n'est pas un exécutable — vous ne l'exécutez jamais, et votre système d'exploitation ne doit pas l'ouvrir comme un programme. Le Build Planner n'est pas non plus un simulateur de dégâts : il vous montre les nœuds, gemmes et équipements recommandés par le build, mais il ne calcule pas de DPS réel ni ne compare les builds de manière chiffrée."
+      ],
+      "bullets": [
+        "Contient : plan d'arbre passif, ascendance, compétences, gemmes de soutien, notes d'équipement et stades du planner.",
+        "Ne contient PAS : de code exécutable, de macros ou de calculateur de DPS.",
+        "Considérez chaque fichier .build comme de simples données — ne le téléchargez qu'à partir de sources de confiance."
+      ]
+    },
+    {
+      "id": "platform-support",
+      "order": 3,
+      "title": "Prise en charge par plateforme et méthode d'import",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Où et comment chaque plateforme importe actuellement les fichiers .build. La prise en charge de Mac et des consoles n'est pas vérifiée en 0.5.4 — vérifiez avant de vous y fier.",
+      "columns": [
+        {
+          "key": "platform",
+          "label": "Plateforme"
+        },
+        {
+          "key": "current-import-method",
+          "label": "Méthode d'import actuelle"
+        },
+        {
+          "key": "file-directory",
+          "label": "Dossier des fichiers"
+        },
+        {
+          "key": "needs-restart",
+          "label": "Redémarrage requis"
+        },
+        {
+          "key": "known-limit",
+          "label": "Limite connue"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pc"
+          ],
+          "cells": {
+            "platform": "Windows",
+            "current-import-method": "Copie manuelle dans le dossier BuildPlanner",
+            "file-directory": "Documents\\My Games\\Path of Exile 2\\BuildPlanner",
+            "needs-restart": "Uniquement si le jeu était ouvert avant l'ajout du fichier",
+            "known-limit": "Prise en charge complète, aucune limite connue"
+          }
+        },
+        {
+          "tags": [
+            "linux"
+          ],
+          "cells": {
+            "platform": "Linux (Steam / Proton)",
+            "current-import-method": "Copie dans le dossier BuildPlanner du préfixe Proton",
+            "file-directory": ".../steamapps/compatdata/<appid>/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/BuildPlanner (vérifiez votre appid)",
+            "needs-restart": "Uniquement si le jeu était déjà en cours d'exécution",
+            "known-limit": "L'appid varie selon l'installation — confirmez le chemin exact"
+          }
+        },
+        {
+          "tags": [
+            "mac"
+          ],
+          "cells": {
+            "platform": "Mac",
+            "current-import-method": "Non confirmé en 0.5.4 (vérifié le 2026-08-02)",
+            "file-directory": "Aucun chemin officiel documenté",
+            "needs-restart": "n/a",
+            "known-limit": "Prise en charge non vérifiée — confirmez avant de vous y fier"
+          }
+        },
+        {
+          "tags": [
+            "console"
+          ],
+          "cells": {
+            "platform": "Console (PlayStation / Xbox)",
+            "current-import-method": "Aucune prise en charge des codes .build en 0.5.0 (vérifié le 2026-08-02)",
+            "file-directory": "n/a",
+            "needs-restart": "n/a",
+            "known-limit": "Les consoles n'utilisent pas les fichiers .build"
+          }
+        }
+      ],
+      "note": "La prise en charge par plateforme évolue entre les patchs. Les lignes Mac et console sont signalées comme en attente de vérification PC sur un client 0.5.4 en direct."
+    },
+    {
+      "id": "platform-paths",
+      "order": 4,
+      "title": "Chemins exacts du dossier de build par plateforme",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "Copiez le chemin correspondant à votre plateforme et placez le fichier .build à l'intérieur du dossier BuildPlanner. Créez le dossier s'il n'existe pas.",
+      "tabs": [
+        {
+          "id": "windows",
+          "label": "Windows",
+          "paragraphs": [
+            "Emplacement standard ci-dessous. Vous pouvez le coller dans la barre d'adresse de l'Explorateur de fichiers.",
+            "Documents\\My Games\\Path of Exile 2\\BuildPlanner"
+          ],
+          "bullets": [
+            "Le jeu crée ce dossier automatiquement la première fois que vous enregistrez ou exportez un build.",
+            "Placez le fichier .build directement dans BuildPlanner, pas dans un sous-dossier."
+          ],
+          "steps": []
+        },
+        {
+          "id": "linux-steam-proton",
+          "label": "Linux (Steam / Proton)",
+          "paragraphs": [
+            "Le fichier se trouve à l'intérieur du préfixe Proton qui émule un profil utilisateur Windows. Utilisez ce modèle et remplacez <appid> par l'appid Steam de votre Path of Exile 2 :",
+            ".../steamapps/compatdata/<appid>/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/BuildPlanner"
+          ],
+          "bullets": [
+            "Trouvez votre appid en listant le dossier compatdata et en associant l'installation.",
+            "En cas de doute, lancez le jeu une fois et laissez-le créer le dossier, puis localisez-le."
+          ],
+          "steps": []
+        },
+        {
+          "id": "mac",
+          "label": "Mac",
+          "paragraphs": [
+            "En 0.5.4 (vérifié le 2026-08-02), il n'existe aucun chemin d'import .build officiel documenté pour macOS. Vérifiez la prise en charge actuelle le jour du patch avant de vous y fier."
+          ],
+          "bullets": [
+            "Ne supposez pas qu'un chemin Windows existe sur macOS.",
+            "Reconsultez les notes officielles lorsque le client est mis à jour."
+          ],
+          "steps": []
+        },
+        {
+          "id": "console",
+          "label": "Console",
+          "paragraphs": [
+            "En 0.5.0 (vérifié le 2026-08-02), les consoles n'utilisent pas les codes .build. Il n'y a aucun dossier où placer des fichiers."
+          ],
+          "bullets": [
+            "Utilisez un client PC ou Steam si vous avez besoin d'imports du Build Planner.",
+            "Surveillez les notes de patch officielles pour toute prise en charge console future."
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "download-and-safety",
+      "order": 5,
+      "title": "Téléchargement en toute sécurité",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un fichier .build est de simples données, pas un programme, il ne peut donc pas exécuter de code par lui-même. Cela dit, ne téléchargez des fichiers .build qu'à partir de créateurs et de communautés de confiance que vous reconnaissez."
+      ],
+      "bullets": [
+        "Téléchargez uniquement depuis des sources de confiance ; le fichier est une donnée, ne l'exécutez jamais comme un programme.",
+        "Privilégiez les pages de build intégrant un bouton officiel Export Build Planner plutôt que des miroirs non vérifiés.",
+        "Si un site vous demande d'exécuter ou de « lancer » le fichier .build, c'est un signal d'alarme — fermez-le."
+      ]
+    },
+    {
+      "id": "import-steps",
+      "order": 6,
+      "title": "Import étape par étape",
+      "type": "progression-steps",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Téléchargez le fichier .build",
+          "body": [
+            "Obtenez le fichier auprès d'un créateur de build de confiance. Si le build propose plusieurs variantes de niveau ou de budget, téléchargez celle qui correspond à votre personnage."
+          ]
+        },
+        {
+          "label": "Placez-le dans le dossier BuildPlanner",
+          "body": [
+            "Déplacez ou enregistrez le fichier directement dans Documents\\My Games\\Path of Exile 2\\BuildPlanner (Windows) ou le chemin Proton équivalent."
+          ]
+        },
+        {
+          "label": "Créez le dossier s'il manque",
+          "body": [
+            "Si le dossier BuildPlanner n'existe pas, créez-le, ou ouvrez le planner en jeu et exportez une fois pour que le jeu le crée pour vous."
+          ]
+        },
+        {
+          "label": "Redémarrez si le jeu était déjà ouvert",
+          "body": [
+            "Le surveillant de fichiers détecte les nouveaux fichiers au lancement ou à l'actualisation. Si le jeu était en cours d'exécution, redémarrez-le ou actualisez pour que le build apparaisse."
+          ]
+        },
+        {
+          "label": "Actualisez et sélectionnez",
+          "body": [
+            "Ouvrez le planner en jeu et confirmez que le build apparaît dans le menu déroulant avant de le suivre."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "open-in-game",
+      "order": 7,
+      "title": "Ouverture d'un build en jeu",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Une fois le fichier détecté, ouvrez le menu de l'arbre de compétences passives ou de taille de gemmes. Sur PC, la touche par défaut est P. Une icône bleue apparaît dans le coin supérieur gauche de l'écran du planner."
+      ],
+      "bullets": [
+        "Cliquez sur l'icône bleue pour ouvrir le menu déroulant des builds.",
+        "Sélectionnez le build importé dans la liste.",
+        "Une ligne bleue trace le chemin d'allocation passive recommandé ; les lignes rouge et verte indiquent les liens des jeux d'armes I et II.",
+        "Les notes d'équipement apparaissent lorsque vous survolez l'icône bleue sur chaque emplacement."
+      ]
+    },
+    {
+      "id": "planner-stage-selector",
+      "order": 8,
+      "title": "Choisir le bon stade de progression",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Un build peut proposer plusieurs fichiers Niveau / Budget. Choisissez celui qui correspond au stade actuel de votre personnage.",
+      "controls": [
+        {
+          "id": "character-stage",
+          "label": "Quel est le stade de votre personnage ?",
+          "options": [
+            {
+              "label": "Montée de niveau initiale",
+              "value": "early"
+            },
+            {
+              "label": "Niveau intermédiaire avec équipement de budget",
+              "value": "mid"
+            },
+            {
+              "label": "Endgame / budget élevé",
+              "value": "late"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Utilisez la variante de montée de niveau initiale",
+          "when": {
+            "character-stage": "early"
+          },
+          "steps": [
+            "Choisissez le fichier Niveau / Budget dont les notes décrivent votre plage de niveau actuelle.",
+            "Suivez son chemin passif et ses gemmes suggérées pour ce stade.",
+            "Passez à la variante suivante à mesure que vous montez de niveau."
+          ]
+        },
+        {
+          "title": "Utilisez la variante de budget intermédiaire",
+          "when": {
+            "character-stage": "mid"
+          },
+          "steps": [
+            "Ouvrez la variante étiquetée pour votre budget d'équipement actuel.",
+            "Associez les notes d'équipement à ce que vous pouvez réellement vous permettre."
+          ]
+        },
+        {
+          "title": "Utilisez la variante endgame / finale",
+          "when": {
+            "character-stage": "late"
+          },
+          "steps": [
+            "Sélectionnez le fichier endgame pour l'arbre planifié complet et les notes best-in-slot.",
+            "Confirmez que votre personnage satisfait aux exigences de niveau et de gemmes qu'il indique."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Associez le fichier à votre personnage",
+        "steps": [
+          "Lisez les notes de chaque variante pour trouver la plage de niveau et de budget visée.",
+          "Chargez la variante la plus proche de votre personnage actuel, puis passez à la suivante à mesure que vous progressez."
+        ]
+      }
+    },
+    {
+      "id": "reading-passives-skills-gear-notes",
+      "order": 9,
+      "title": "Lecture des passives, compétences et notes d'équipement",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Après avoir sélectionné un build, le planner superpose ses conseils sur plusieurs panneaux. L'arbre de compétences passives montre le chemin d'allocation recommandé. L'onglet de taille de gemmes liste les gemmes de compétence et de soutien suggérées. Les emplacements d'équipement affichent des notes de priorité de stats lorsque vous survolez l'icône bleue."
+      ],
+      "bullets": [
+        "Arbre passif : suivez la ligne bleue nœud par nœud ; les couleurs des jeux d'armes indiquent les liens I / II.",
+        "Ascendance : le plan marque les choix d'ascendance recommandés.",
+        "Compétences : l'onglet de taille de gemmes montre les gemmes de compétence et de soutien requises à partir de vos gemmes non taillées.",
+        "Notes d'équipement : survolez l'icône bleue sur chaque emplacement pour lire les priorités recommandées."
+      ]
+    },
+    {
+      "id": "edit-export-boundary",
+      "order": 10,
+      "title": "Modifier et exporter votre propre fichier",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Vous pouvez modifier et exporter votre propre build depuis l'intérieur du jeu. Le fichier .build exporté capture les passives, l'ascendance, les compétences, les notes d'équipement et les stades du planner que vous avez configurés, afin que vous puissiez le partager ou le recharger plus tard."
+      ],
+      "bullets": [
+        "Vous contrôlez votre propre fichier exporté — il stocke le plan que vous avez construit, rien d'exécutable.",
+        "Le fichier ne stocke pas les stats en direct du personnage, la monnaie ou un calcul de DPS.",
+        "Réexportez après des modifications majeures pour que votre fichier enregistré reste à jour."
+      ]
+    },
+    {
+      "id": "build-file-validator",
+      "order": 11,
+      "title": "Validateur de fichiers de build",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Utilisez-le pour comprendre pourquoi un fichier ne se charge pas. Le validateur ne vérifie que l'extension, le nom de fichier et la structure de base — il n'exécute jamais de code.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Quel est le problème avec le fichier ?",
+          "options": [
+            {
+              "label": "Mauvaise extension de fichier",
+              "value": "ext"
+            },
+            {
+              "label": "Fichier présent mais non détecté",
+              "value": "nodetect"
+            },
+            {
+              "label": "Fichier présent mais invalide",
+              "value": "invalid"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Renommez avec l'extension .build",
+          "when": {
+            "symptom": "ext"
+          },
+          "steps": [
+            "Le fichier doit se terminer par .build. Renommez-le s'il a été enregistré en .txt ou .json.",
+            "C'est une donnée — ne configurez jamais son ouverture avec un programme en tant qu'exécutable."
+          ]
+        },
+        {
+          "title": "Corrigez l'emplacement du dossier",
+          "when": {
+            "symptom": "nodetect"
+          },
+          "steps": [
+            "Confirmez que le fichier est dans le dossier BuildPlanner, pas dans un sous-dossier.",
+            "Redémarrez le jeu pour que le surveillant de fichiers le récupère.",
+            "Vérifiez que vous avez utilisé le bon chemin de plateforme."
+          ]
+        },
+        {
+          "title": "Re-téléchargez depuis une source de confiance",
+          "when": {
+            "symptom": "invalid"
+          },
+          "steps": [
+            "Le fichier peut être corrompu ou provenir d'un patch incompatible — re-téléchargez-le.",
+            "N'utilisez que des sources de confiance.",
+            "Confirmez que le patch du build correspond à votre version du jeu."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Correctif général",
+        "steps": [
+          "Vérifiez que l'extension est .build, que le dossier est correct et que le jeu a été redémarré.",
+          "Si cela échoue toujours, re-téléchargez une copie propre auprès d'un créateur de confiance."
+        ]
+      }
+    },
+    {
+      "id": "version-compatibility",
+      "order": 12,
+      "title": "Compatibilité des versions",
+      "type": "version-conflicts",
+      "visible": true,
+      "toc": true,
+      "intro": "Les fichiers .build tiers peuvent être obsolètes. Confirmez que le patch du build correspond à votre version du jeu.",
+      "conflicts": [
+        {
+          "recommendation": "Vérifiez que le patch du fichier .build correspond à la version du jeu avant l'import",
+          "status": "valid",
+          "detail": "Un fichier étiqueté pour le client 0.5.4 actuel se charge et se superpose correctement.",
+          "sinceVersion": "0.5.4"
+        },
+        {
+          "recommendation": "Évitez les fichiers tiers étiquetés pour les patchs antérieurs à 0.5",
+          "status": "outdated",
+          "detail": "Le Build Planner a été lancé en 0.5.0 ; les codes antérieurs peuvent ne pas s'appliquer à l'arbre actuel.",
+          "sinceVersion": "0.5.0"
+        },
+        {
+          "recommendation": "Re-téléchargez si le validateur signale le fichier comme invalide",
+          "status": "conflict",
+          "detail": "Un build corrompu ou incompatible ne se chargera pas ; récupérez une copie propre auprès d'une source de confiance.",
+          "sinceVersion": "0.5.4"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "Questions de la communauté résolues",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Problèmes courants signalés par les joueurs et comment ce guide les résout.",
+      "cards": [
+        {
+          "title": "Pas de dossier BuildPlanner",
+          "tag": "folder",
+          "body": [
+            "Créez-le vous-même à l'emplacement Documents\\My Games\\Path of Exile 2\\BuildPlanner, ou exportez une fois en jeu pour que le client le crée."
+          ]
+        },
+        {
+          "title": "Fichier absent du menu déroulant",
+          "tag": "detect",
+          "body": [
+            "Vérifiez que l'extension est .build, que le fichier n'est pas dans un sous-dossier et que le jeu a été redémarré après l'ajout."
+          ]
+        },
+        {
+          "title": "Prise en charge Mac / console",
+          "tag": "platform",
+          "body": [
+            "En 0.5.4 / 0.5.0 (vérifié le 2026-08-02), les chemins Mac ne sont pas vérifiés et les consoles n'utilisent pas les codes .build — utilisez un client PC ou Steam."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "Vidéo d'installation du Build Planner",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "How To Install Path of Exile 2 In Game Build Planner",
+          "creator": "Ydoc",
+          "description": "Une démonstration pour trouver le dossier BuildPlanner, importer un fichier .build, ouvrir le planner en jeu, sélectionner le bon stade et lire les notes du build.",
+          "takeaway": "Placez le fichier .build dans le dossier BuildPlanner, redémarrez si nécessaire, puis ouvrez le planner avec P et choisissez votre stade dans le menu déroulant.",
+          "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc",
+          "timestamps": [
+            {
+              "label": "Trouver le dossier BuildPlanner",
+              "time": "0:00"
+            },
+            {
+              "label": "Télécharger et placer le fichier .build",
+              "time": "1:15"
+            },
+            {
+              "label": "Redémarrer si le jeu était déjà ouvert",
+              "time": "2:40"
+            },
+            {
+              "label": "Ouvrir le build planner en jeu (appuyez sur P)",
+              "time": "3:50"
+            },
+            {
+              "label": "Sélectionner le stade du build dans le menu déroulant",
+              "time": "5:05"
+            },
+            {
+              "label": "Lire les notes passives, de compétences et d'équipement",
+              "time": "6:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "Erreurs fréquentes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La plupart des échecs d'import proviennent d'un petit nombre d'erreurs évitables."
+      ],
+      "bullets": [
+        "Mauvais dossier : le fichier doit se trouver dans BuildPlanner, pas dans Téléchargements ou un sous-dossier.",
+        "Mauvaise extension : elle doit être .build, pas .txt ou .json.",
+        "Jeu non actualisé : le surveillant de fichiers ne voit les nouveaux fichiers qu'après le lancement ou le redémarrage.",
+        "Build obsolète : un fichier d'un ancien patch peut ne pas correspondre à l'arbre actuel — vérifiez sa version.",
+        "Le traiter comme un programme : un fichier .build est une donnée ; ne l'« exécutez » jamais."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "Foire aux questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Un fichier .build est-il sûr à ouvrir ?",
+          "answer": [
+            "Oui — c'est un simple fichier de données, pas un exécutable. Il ne peut pas exécuter de code. Ne le téléchargez qu'à partir de sources de confiance et n'ouvrez-le jamais comme un programme."
+          ]
+        },
+        {
+          "question": "Le Build Planner calcule-t-il le DPS ?",
+          "answer": [
+            "Non. Il superpose un chemin passif recommandé, des gemmes de compétence et des notes d'équipement. Il ne calcule pas les dégâts. Utilisez un planner séparé pour les calculs de DPS."
+          ]
+        },
+        {
+          "question": "Pourquoi mon fichier n'apparaît-il pas ?",
+          "answer": [
+            "Vérifiez trois choses : l'extension est .build, le fichier est directement dans le dossier BuildPlanner (pas dans un sous-dossier), et le jeu a été redémarré après l'ajout."
+          ]
+        },
+        {
+          "question": "Puis-je utiliser les fichiers .build sur console ?",
+          "answer": [
+            "En 0.5.0 (vérifié le 2026-08-02), les consoles ne prennent pas en charge les codes .build. Utilisez un client PC ou Steam pour les imports du Build Planner."
+          ]
+        },
+        {
+          "question": "Comment choisir la bonne variante d'un build ?",
+          "answer": [
+            "Chaque build peut proposer plusieurs fichiers Niveau / Budget. Choisissez celui dont les notes correspondent au niveau et à l'équipement de votre personnage, et passez à la variante suivante à mesure que vous progressez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Sources et vérification",
+      "order": 17,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Source officielle",
+          "description": "Path of Exile 2 developer docs - Build Planner file format and BuildPlanner directory",
+          "url": "https://www.pathofexile.com/developer/docs/game"
+        },
+        {
+          "label": "Guide vidéo",
+          "description": "Ydoc - How To Install Path of Exile 2 In Game Build Planner",
+          "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc"
+        },
+        {
+          "label": "Wiki communautaire",
+          "description": "PoE 2 wiki - Build Planner and related systems",
+          "url": "https://www.poe2wiki.net/wiki/"
+        },
+        {
+          "label": "Guide d'import communautaire",
+          "description": "games.gg - Path of Exile 2 Build Planner Guide: How to Import Builds In-Game",
+          "url": "https://games.gg/path-of-exile-2/guides/path-of-exile-2-build-planner-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Guide initial publié couvrant l'import, l'export, les chemins par plateforme, le sélecteur de stade, le validateur et la compatibilité des versions des fichiers .build pour le patch 0.5.4.",
+            "La prise en charge Mac et console signalée comme en attente de vérification PC (vérifié le 2026-08-02)."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 developer docs - Build Planner file format",
+      "url": "https://www.pathofexile.com/developer/docs/game",
+      "sourceType": "official"
+    },
+    {
+      "label": "Ydoc - How To Install Path of Exile 2 In Game Build Planner (YouTube)",
+      "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc",
+      "sourceType": "community"
+    },
+    {
+      "label": "PoE 2 wiki - Build Planner",
+      "url": "https://www.poe2wiki.net/wiki/",
+      "sourceType": "community"
+    },
+    {
+      "label": "games.gg - Path of Exile 2 Build Planner import guide",
+      "url": "https://games.gg/path-of-exile-2/guides/path-of-exile-2-build-planner-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guide d'import et d'export des fichiers .build du Build Planner PoE 2",
+    "description": "Comment importer, exporter et valider les fichiers .build du Build Planner de Path of Exile 2 : chemins par plateforme, sélecteur de stade intégré et compatibilité des versions.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "build-planner-build-files-import-export",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

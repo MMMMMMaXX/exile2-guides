@@ -1,0 +1,824 @@
+{
+  "id": "corrupting-wings-gemling-legionnaire",
+  "slug": "corrupting-wings-gemling-legionnaire",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "부패의 날개 젬링 빌드 가이드: 부패의 외침, 품질 스태킹 및 성장 단계",
+  "shortTitle": "부패의 날개 젬링",
+  "summary": "0.5.4 워크라이 툴킷: 부패의 외침은 0.5에서 트리거형 스킬로 변경되어 워크라이 레벨/품질/지원 젬으로 강화됩니다. 생명력 관리, 쿨다운 임계치, 회피 시 시전 및 고투자 블록 티어를 다룹니다.",
+  "description": "0.5.4 기준 패스 오브 엑자일 2 부패의 날개 젬링 레기오네어 가이드: 부패의 외침 트리거, 품질 스태킹, 워크라이 타임라인, 생명력 관리와 실제 영상 타임스탬프.",
+  "classId": "mercenary",
+  "ascendancyId": "gemling-legionnaire",
+  "mainSkillIds": [
+    "fortifying-cry",
+    "corrupting-cry"
+  ],
+  "secondarySkillIds": [
+    "decree-of-flight",
+    "cast-on-dodge"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking",
+    "cooldown",
+    "mobility"
+  ],
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "screenwide"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides 편집팀",
+  "reviewer": "Exile2 Guides 편집팀",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "cardImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "imageAlt": "전장에 걸쳐 부패의 피를 유발하는 워크라이를 외치는 용병 젬링 레기오네어",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "gemling-legionnaire",
+    "leveling",
+    "mercenary",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "빌드 개요",
+      "paragraphs": [
+        "부패의 날개 젬링은 용병의 워크라이 툴킷입니다. 워크라이를 외치면 부패의 외침이 발동하여 사거리 내 적에게 부패의 피(혼돈/물리 지속 피해)를 중첩시킵니다. 젬링 레기오네어 승천은 품질을 능력치와 피해로 직접 전환하므로 '품질 스태킹'이 핵심 성장 동력입니다.",
+        "0.5에서 부패의 외침은 트리거형 스킬이 되었습니다. 더 이상 직접 누르는 주 스킬이 아니라 워크라이에 의해 발동됩니다. 따라서 피해는 단일 시전이 아니라 워크라이 레벨, 지원 젬, 품질, 젬링의 능력치 전환에서 나옵니다.",
+        "이 가이드는 워크라이 타임라인, 생명력 관리, 쿨다운 임계치, 고투자 블록 티어를 설명하며, 모든 클라이언트 수치는 PC 검증 대상으로 표시합니다. 0.5 출시 버그와 이후 수정 사항은 별도로 구분합니다."
+      ],
+      "bullets": [
+        "워크라이가 부패의 외침 발동 → 부패의 피 중첩.",
+        "젬링 품질 스태킹이 능력치와 피해 전환.",
+        "0.5 이후 부패의 외침은 트리거형이며 직접 누르는 주 스킬이 아님."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "장단점",
+      "pros": [
+        "워크라이 발동 클리어는 거의 원버튼으로, 화면 전체 처리감이 뛰어남.",
+        "품질 스태킹이 젬링에서 효과가 매우 큼.",
+        "고투자 블록(예: 스발린)은 강력한 안전 여유를 제공.",
+        "기동성(회피 시 시전 / 비상의 선고)이 유연함."
+      ],
+      "cons": [
+        "초반 생명력과 마나 관리가 타이트함.",
+        "쿨다운과 구르기 호흡은 연습이 필요.",
+        "고투자 티어는 특정 유니크가 필요해 진입장벽이 높음.",
+        "0.5 출시 버그가 플레이감에 영향; 수정 여부 확인 필요."
+      ]
+    },
+    {
+      "id": "warcry-cycle",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "루프 구조: 워크라이 → 트리거",
+      "paragraphs": [
+        "강화의 외침을 외쳐 자신에게 보호/메아리 버프를 걸고 부패의 외침 중첩을 발동시키며, 부패의 피가 적 사이를 전이합니다.",
+        "비상의 선고와 회피 시 시전이 기동성을 제공합니다. 전자는 능동적으로 도약하고, 후자는 회피 시 발동하여 정지 시간을 줄입니다.",
+        "고투자는 더 긴 대시를 위해 날개 / 이중 회피 시 시전을 사용하며, 일반 버전은 구릅니다. 루프 구조는 같고 안전 여유와 이동거리만 차이납니다."
+      ],
+      "bullets": [
+        "강화의 외침 → 부패의 외침 중첩 발동.",
+        "비상의 선고 / 회피 시 시전이 기동성 제공.",
+        "고투자 = 더 긴 대시와 더 큰 안전 여유."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "육성 경로",
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "기본 사격/수류탄으로 맵핑; 워크라이는 해금 후 보조 방어 수단."
+          ]
+        },
+        {
+          "label": "레벨 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "강화의 외침을 찍고 워크라이로 추가 피해 발동 시작; 생명력/저항 노드 추가."
+          ]
+        },
+        {
+          "label": "레벨 30–42 — 젬링 해금",
+          "levelRange": "30–42",
+          "body": [
+            "젬링 레기오네어 선택; 품질이 능력치 전환 시작; 부패의 외침 트리거 체인 형성."
+          ]
+        },
+        {
+          "label": "레벨 43–60 — 초반 맵",
+          "levelRange": "43–60",
+          "body": [
+            "저예산으로 워크라이 루프 운영; 생명력/저항 해결, 마나와 쿨다운 관리."
+          ]
+        },
+        {
+          "label": "레벨 60+ — 엔드게임 준비",
+          "levelRange": "60+",
+          "body": [
+            "워크라이 레벨/품질, 쿨다운, 블록을 밀어붙이고 체크리스트 통과 후 고급 유니크 추격."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "스킬 구성",
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "강화의 외침",
+              "skillId": "fortifying-cry",
+              "role": "주 워크라이: 보호/메아리 및 부패의 외침 발동.",
+              "supportSkillIds": [
+                "echoing-cry",
+                "lifetap"
+              ],
+              "whyUse": [
+                "루프의 시작점이며, 없으면 트리거와 방어 버프 모두 불가."
+              ],
+              "whenReplace": [
+                "절대 대체되지 않음; 빌드의 핵심."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용, 보스전은 보호에 더 의존."
+              ],
+              "notes": [
+                "몇 초마다 사용; 호흡은 쿨다운에 따라 결정."
+              ]
+            },
+            {
+              "displayName": "부패의 외침",
+              "skillId": "corrupting-cry",
+              "role": "워크라이 발동 중첩 스킬, 주 피해 원천.",
+              "supportSkillIds": [
+                "corrupted-blood",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "0.5 이후 트리거형 스킬; 피해는 레벨/품질/지원에서."
+              ],
+              "whenReplace": [
+                "대체되지 않으나 워크라이 트리거가 전제되어야 함."
+              ],
+              "mappingBossingDiff": [
+                "화면 전체 클리어; 보스에는 집중 중첩."
+              ],
+              "notes": [
+                "0.5 이후 트리거형, 직접 누르는 주 스킬 아님."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "기동성 및 지원",
+          "skills": [
+            {
+              "displayName": "비상의 선고",
+              "skillId": "decree-of-flight",
+              "role": "능동 도약 기동성, 지면 효과 회피.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "핵심 기동성, 정지 사망 감소."
+              ],
+              "whenReplace": [
+                "기동성 용도로 유지."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "회피 시 시전",
+              "skillId": "cast-on-dodge",
+              "role": "회피 시 효과 발동, 기동성/피해 추가.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "고투자는 대시용 이중 회피 시 시전 사용; 일반에선 선택."
+              ],
+              "whenReplace": [
+                "고투자 필수, 일반 선택."
+              ],
+              "mappingBossingDiff": [
+                "고투자가 더 의존."
+              ],
+              "notes": [
+                "없이도 사용 가능, 다만 기동성 감소."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "승천 순서",
+      "steps": [
+        {
+          "label": "젬링 레기오네어 — 초기 노드",
+          "body": [
+            "품질→능력치 노드 우선; 품질 스태킹 전제 조건."
+          ]
+        },
+        {
+          "label": "방어 점검",
+          "body": [
+            "T15+ 생존이 불안하면 블록/생명력 노드를 추가하되, 전부를 피해로 바꾸지 마십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "패시브 트리",
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "생명력, 저항, 워크라이 버프, 품질 노드를 찍되 블록 휠로 미리 가지 마십시오."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "트리거형 변형으로 전환; 생명력, 쿨다운, 품질 우선."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "방어와 쿨다운 해결 후 품질/피해 휠에 투자; 티어별 장비 비교."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "장비",
+      "slots": [
+        {
+          "slot": "Main hand / Weapon Set",
+          "recommendations": [
+            "워크라이/트리거 체인을 받쳐주는 베이스를 고르고, 무기 세트 교체로 클리어와 보스 간 설정 변경."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "워크라이 레벨 / 젬 품질",
+              "reason": "트리거와 품질 스태킹을 직접 강화."
+            },
+            {
+              "tier": "recommended",
+              "label": "생명력과 저항",
+              "reason": "초반 생존 바닥."
+            },
+            {
+              "tier": "optional",
+              "label": "쿨다운 감소",
+              "reason": "더 빠른 워크라이 호흡."
+            },
+            {
+              "tier": "luxury",
+              "label": "블록 관련 옵션",
+              "reason": "고투자 진입장벽."
+            }
+          ],
+          "notes": [
+            "무기 세트 패시브 포인트로 두 설정 교체(무기 세트 가이드 참조)."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "생명력, 저항, 블록; 신발 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 두 저항 상한",
+              "reason": "죽으면 피해는 의미 없음."
+            },
+            {
+              "tier": "recommended",
+              "label": "블록 확률",
+              "reason": "고투자 방어 경계."
+            },
+            {
+              "tier": "optional",
+              "label": "이동 속도",
+              "reason": "더 나은 위치 잡기와 구르기."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 품질/피해",
+              "reason": "방어 해결 후."
+            }
+          ],
+          "notes": [
+            "스발린은 고투자 블록의 핵심이지 진입장벽이 아님."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "능력치, 저항, 생명력, 블록; 필요 시 마나 유지."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "무기와 젬 착용용 능력치",
+              "reason": "착용 불가능하면 무용지물."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명력",
+              "reason": "방어 망 완성."
+            },
+            {
+              "tier": "optional",
+              "label": "블록 / 마나",
+              "reason": "장신구에서 나오는 무료 방어."
+            },
+            {
+              "tier": "luxury",
+              "label": "젬 품질",
+              "reason": "후반 피해."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "능력치 우선순위",
+      "priorities": [
+        {
+          "label": "워크라이 레벨과 젬 품질",
+          "reason": "품질 스태킹의 핵심; 최우선 성장 체크."
+        },
+        {
+          "label": "생명력과 저항",
+          "reason": "초반 생존 바닥."
+        },
+        {
+          "label": "쿨다운 감소",
+          "reason": "더 빠른 워크라이 트리거 호흡."
+        },
+        {
+          "label": "블록 확률",
+          "reason": "고투자 방어 경계."
+        },
+        {
+          "label": "마나 유지",
+          "reason": "지속 트리거와 기동성의 바닥."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "강화 우선순위",
+      "steps": [
+        {
+          "label": "클리어 지연",
+          "symptom": "팩 처리에 워크라이 회차가 많이 필요.",
+          "checks": [
+            "워크라이 레벨/품질이 갖춰졌는가?",
+            "생명력/저항을 먼저 해결했는가?"
+          ],
+          "upgrade": "순수 피해가 아닌 워크라이 레벨과 품질을 강화."
+        },
+        {
+          "label": "잦은 사망",
+          "symptom": "맵 또는 보스전에서의 사망.",
+          "checks": [
+            "블록/생명력 부족?",
+            "고위험 누적 옵션?"
+          ],
+          "upgrade": "먼저 방어를 고치고 피해 스태킹을 멈출 것."
+        },
+        {
+          "label": "마나/쿨다운 저하",
+          "symptom": "워크라를 시전 못 하거나 호흡이 깨짐.",
+          "checks": [
+            "마나가 지속 시전을 유지하는가?",
+            "쿨다운 감소가 충분한가?"
+          ],
+          "upgrade": "마나 유지와 쿨다운 감소를 추가."
+        },
+        {
+          "label": "스발린 / 이중 회피 시 시전 고려",
+          "symptom": "더 큰 안전 여유와 대시 희망.",
+          "checks": [
+            "일반 티어 통과 가능한가?",
+            "고투자 유니크가 저항을 무너뜨릴까?"
+          ],
+          "upgrade": "조각조각 구입하고 체크리스트 후 재검증."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "맵핑",
+      "paragraphs": [
+        "팩에 강화의 외침을 외쳐 부패의 외침 발동; 부패의 피가 적 사이를 전이하며 클리어; 비상의 선고나 구르기로 위치를 재조정.",
+        "쓰레기몹은 정밀 중첩이 불필요; 레어/보스만 집중 트리거 필요. 클리어가 지연되면 먼저 워크라이 레벨과 품질 강화."
+      ],
+      "bullets": [
+        "강화의 외침이 화면 전체 발동.",
+        "쓰레기몹엔 정밀 중첩 생략.",
+        "클리어 지연 시 워크라이 레벨/품질 강화."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "보스전",
+      "paragraphs": [
+        "보스 이동을 미리 파악하고 강화의 외침을 외쳐 부패의 외침 발동, 보스에 부패의 피 중첩; 지면 효과 회피엔 비상의 선고 사용.",
+        "피해가 정체하면 문제는 주무기 아닌 워크라이 레벨/품질/지원; 고투자는 안전 여유와 대시를 위해 스발린/이중 회피 시 시전 사용."
+      ],
+      "bullets": [
+        "강화의 외침 → 부패의 외침 집중 중첩.",
+        "비상의 선고 회피.",
+        "정체 = 무기 교체가 아닌 워크라이 수정."
+      ]
+    },
+    {
+      "id": "life-management",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "생명력 관리",
+      "paragraphs": [
+        "빡박한 초반 생명력은 진짜 병목입니다. 워크라이 자체는 회복되지 않고, 지속 트리거와 기동성이 마나를 소모합니다. 피해보다 먼저 생명력 풀과 저항을 확보하십시오.",
+        "고투자 블록 티어는 블록으로 피격을 줄여 생명력 부담을 덜지만, 블록은 장비가 필요해 초반엔 불가합니다. 정확한 수치는 PC 검증 대기 중."
+      ],
+      "bullets": [
+        "피해보다 생명력과 저항 먼저.",
+        "블록은 피격을 줄이되 장비 필요.",
+        "마나 유지는 트리거의 연료."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "커뮤니티 근거",
+      "note": "이 가이드는 커뮤니티 논의를 재현 가능한 체크리스트로 활용하며, 그들이 보여준 DPS를 보장하지는 않습니다.",
+      "entries": [
+        {
+          "context": "플레이어들이 0.5 젬링의 성장 방식을 묻습니다.",
+          "label": "pathofky 젬링 레기오네어 0.5 가이드",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "해당 가이드는 메커니즘, 젬, 무기 세트 교체, 패시브 트리를 구분하며 품질과 능력치 전환을 강조.",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "context": "플레이어들은 0.5 출시 버그가 플레이감을 해쳤는지 논의.",
+          "label": "P4wnyhof 젬링 레기오네어 캠페인~엔드게임",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "실황에서는 액트 1부터 엔드게임까지의 연속 전환을 보여주며 승천 노드의 위력 급등을 강조.",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "문제 해결",
+      "problems": [
+        {
+          "symptom": "보스 피해 정체",
+          "checks": [
+            "워크라이 레벨/품질이 갖춰졌는가?",
+            "지원 젬이 맞는가?"
+          ]
+        },
+        {
+          "symptom": "잦은 사망",
+          "checks": [
+            "블록/생명력 부족?",
+            "고위험 누적 옵션?"
+          ]
+        },
+        {
+          "symptom": "워크라이 시전 불가",
+          "checks": [
+            "마나가 유지되는가?",
+            "쿨다운이 너무 긴가?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "부패의 외침은 여전히 직접 누르는 주 스킬인가?",
+          "answer": [
+            "0.5 이후로는 워크라이에 의해 발동되며, 피해는 단일 시전이 아닌 레벨/품질/지원에서 나옵니다."
+          ],
+          "bullets": [
+            "강화의 외침에 의해 발동."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "스발린 없이 플레이할 수 있나요?",
+          "answer": [
+            "가능합니다. 스발린은 고투자 블록의 핵심이며, 일반 버전은 생명력/저항과 구르기로 대부분의 맵과 보스를 공략합니다."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ko/guides/how-to-stop-getting-one-shot/",
+              "label": "원샷 방지 가이드 보기"
+            }
+          ]
+        },
+        {
+          "question": "더 좋은 무기를 바꿨는데도 약한가요?",
+          "answer": [
+            "피해는 워크라이 레벨/품질/지원에서 나오지 주무기에서 나오는 게 아닙니다. 먼저 워크라이와 품질 스태킹을 고치십시오."
+          ],
+          "bullets": [
+            "보스전을 녹화하고 트리거 아이콘을 확인하십시오."
+          ],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "빌드 플래너 및 가져오기",
+      "note": "붙여넣기 가능한 가져오기 문자열과 .build 파일은 아직 PC 검증 대기 중입니다. 그 전까지는 아래 크리에이터 가이드와 공식 플래너를 이용하십시오. 항상 자신의 클라이언트에서 노드를 재확인하십시오.",
+      "creatorName": "pathofky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "워크라이 타임라인과 엔드게임 시청",
+      "entries": [
+        {
+          "creator": "pathofky",
+          "label": "0.5 젬링 레기오네어 가이드",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE",
+          "description": "메커니즘, 젬, 무기 세트, 승천 및 패시브 트리.",
+          "takeaway": "워크라이 트리거와 품질 스태킹에 집중.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "인트로 및 메커니즘"
+            },
+            {
+              "time": "2:30",
+              "label": "장비 개요"
+            },
+            {
+              "time": "5:00",
+              "label": "젬 및 무기 세트"
+            },
+            {
+              "time": "8:30",
+              "label": "승천 및 트리"
+            },
+            {
+              "time": "11:00",
+              "label": "게임플레이 데모"
+            }
+          ]
+        },
+        {
+          "creator": "pathofky",
+          "label": "0.5 젬링 레기오네어 엔드게임 업데이트",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k",
+          "description": "솔로 콘텐츠와 맵 퍼포먼스를 강화하는 엔드게임 업데이트.",
+          "takeaway": "최종 장비와 맵 게임플레이를 시청.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "인트로"
+            },
+            {
+              "time": "2:00",
+              "label": "장비 설명"
+            },
+            {
+              "time": "5:00",
+              "label": "맵 게임플레이"
+            },
+            {
+              "time": "8:00",
+              "label": "요약"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "출처 및 검증",
+      "categories": [
+        {
+          "label": "공식",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "pathofky — 젬링 레기오네어 0.5 가이드 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "pathofky — 젬링 레기오네어 엔드게임 업데이트 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "P4wnyhof — 젬링 레기오네어 액트 1~엔드게임 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "변경 이력",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "출처가 포함된 0.5.4 부패의 날개 젬링 빌드 가이드 작성; PC 검증 진행 중."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "how-to-stop-getting-one-shot"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "pathofky — 아크 토템 젬링 레기오네어 0.5 가이드 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "label": "pathofky — 젬링 레기오네어 엔드게임 업데이트 0.5 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+    },
+    {
+      "label": "P4wnyhof — 젬링 레기오네어 액트 1~엔드게임 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+    }
+  ],
+  "seo": {
+    "title": "부패의 날개 젬링 빌드 가이드 | Exile2 Guides",
+    "description": "0.5.4 부패의 날개 젬링: 부패의 외침 트리거, 품질 스태킹, 워크라이 타임라인, 생명력 관리 및 블록 티어.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "corrupting-wings-gemling-legionnaire",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

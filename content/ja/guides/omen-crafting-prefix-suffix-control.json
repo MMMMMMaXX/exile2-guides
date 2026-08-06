@@ -1,0 +1,872 @@
+{
+  "id": "omen-crafting-prefix-suffix-control",
+  "slug": "omen-crafting-prefix-suffix-control",
+  "locale": "ja",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "オーメンクラフト：プレフィックスとサフィックス修飾のコントロール",
+  "shortTitle": "オーメンのプレ/サフィックス制御",
+  "summary": "オーメンを使うと、次に使う通貨がプレフィックスのみ、あるいはサフィックスのみに作用するようパス・オブ・エグザイル2のクラフトを操ることができます。プレフィックス用はSinistral（左）、サフィックス用はDextral（右）。起動方法、スタック方法、そしてオーメンを使う・売る・持っておくべきタイミングについて解説します。",
+  "description": "パス・オブ・エグザイル2におけるオーメン通貨の実践的なガイドです。プレフィックス／サフィックスの命名規則を理解し、オーメンを正しく起動・消費し、複数オーメンを組み合わせたクラフトを計画し、高価値なオーメンの無駄遣いを避けます。",
+  "guideCategory": "crafting-trading",
+  "heroImage": "/images/items/omens-hero.webp",
+  "cardImage": "/images/items/omens-hero.webp",
+  "imageAlt": "パス・オブ・エグザイル2のクラフト時にプレフィックスとサフィックス修飾を制御するために使われるオーメン通貨",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "アイテムの修飾（modifiers）の基本理解（item-modifiersガイドを参照）",
+    "Ritualコンテンツへのアクセス、またはAlvaの通貨交換所へのアクセス",
+    "レアアイテムと、変更したい対象の通貨オーブ"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "omen",
+    "crafting",
+    "prefix",
+    "suffix",
+    "currency",
+    "control"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接的な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "オーメンは何をするのか？",
+          "body": [
+            "オーメンは、あなたの「次のクラフトアクション」の挙動を変化させる通貨です。インベントリで右クリックして起動し、その後に対応するオーブを使用します。オーメンはその1回のアクションのみを修飾し、消費されます。"
+          ]
+        },
+        {
+          "title": "プレフィックスとサフィックスをどう制御するのか？",
+          "body": [
+            "命名規則を覚えましょう。Sinistralはプレフィックスに、Dextralはサフィックスに作用します。これを通貨の系統（Exalted OrbにはExaltation、Orb of AnnulmentにはAnnulment、Chaos OrbにはErasure、など）と組み合わせることで、その通貨を片方の側だけに強制的に作用させられます。"
+          ]
+        },
+        {
+          "title": "なぜオーメンが発動しなかったのか？",
+          "body": [
+            "オーメンの対象と異なる通貨を使ったか、アイテムが前提条件を満たしていなかったためです（例：Regal Omenには魔法アイテムが必要）。使う前に毎回オーメンのツールチップを再読みしてください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "order": 2,
+      "title": "始める前に",
+      "type": "preparation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーメンは上級者向けのクラフトツールであるため、アイテム上で修飾・プレフィックス・サフィックスがどのように機能するかをすでに理解している必要があります。自信がない場合は、まずitem-modifiersガイドを読んでください。そこではベースが保持できるプレフィックスとサフィックスの数や、アイテムのツールチップの読み方が説明されています。",
+        "また、オーメンの入手手段も必要です。主にRitual（Tributeとして消費）と、隠れ家でAlvaが運営する通貨交換所から入手できます。多くのクラフト用オーメンはスタック可能なので、複数持ち運べます。"
+      ],
+      "bullets": [
+        "オーメンに触れる前に、どちらの側（プレフィックスかサフィックスか）を守りたいか、追加したいか、削除したいかを決める。",
+        "対応する通貨オーブを準備しておく——正しいオーブが使われるまでオーメンは何もしない。",
+        "高価値なオーメン（Erasureなど）は、アイテムの価値がオーメンと通貨の合計を上回る場合にのみ使う。"
+      ]
+    },
+    {
+      "id": "omen-name-decoder",
+      "order": 3,
+      "title": "オーメン名の解読",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "命名規則は各オーメンの効果を示しています。2つの語が組み合わさります。側（Sinistral/Dextral）と通貨の系統です。",
+      "columns": [
+        {
+          "key": "name-part",
+          "label": "名称の構成"
+        },
+        {
+          "key": "targets",
+          "label": "対象"
+        },
+        {
+          "key": "common-action",
+          "label": "一般的な効果"
+        },
+        {
+          "key": "check-before-use",
+          "label": "使用前の確認"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "prefix"
+          ],
+          "cells": {
+            "name-part": "Sinistral",
+            "targets": "プレフィックス",
+            "common-action": "対象通貨をプレフィックス修飾のみに限定する",
+            "check-before-use": "アイテムに空きプレフィックス枠が残っているか確認"
+          }
+        },
+        {
+          "tags": [
+            "suffix"
+          ],
+          "cells": {
+            "name-part": "Dextral",
+            "targets": "サフィックス",
+            "common-action": "対象通貨をサフィックス修飾のみに限定する",
+            "check-before-use": "アイテムに空きサフィックス枠が残っているか確認"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "name-part": "of Exaltation",
+            "targets": "Exalted Orb",
+            "common-action": "修飾を追加（片側に1つ；Greaterは2つ）",
+            "check-before-use": "残りの空き枠の数を数える"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "name-part": "of Annulment",
+            "targets": "Orb of Annulment",
+            "common-action": "修飾を削除（片側に1つ；Greaterは2つ）",
+            "check-before-use": "失っても構わない側を把握しておく"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "name-part": "of Erasure",
+            "targets": "Chaos Orb",
+            "common-action": "カオスベースの削除を片側のみに限定",
+            "check-before-use": "カオス使用の前にバックアップを取る"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "name-part": "of Alchemy",
+            "targets": "Orb of Alchemy",
+            "common-action": "プレフィックスまたはサフィックスを最大数ロールする",
+            "check-before-use": "新しいレアベースに使用する"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "name-part": "of Coronation",
+            "targets": "Regal Orb",
+            "common-action": "修飾を1つ追加し、片側に制限する",
+            "check-before-use": "アイテムは魔法レアリティである必要がある"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "name-part": "of Crystallisation",
+            "targets": "Perfect / Corrupted Essence",
+            "common-action": "エッセンスの削除を片側に制限する",
+            "check-before-use": "エッセンス使用時のみ relevant"
+          }
+        },
+        {
+          "tags": [
+            "advanced"
+          ],
+          "cells": {
+            "name-part": "Homogenising",
+            "targets": "Exalt / Coronation",
+            "common-action": "既存の修飾と同じ種類の修飾を追加する",
+            "check-before-use": "まず修飾タグを理解する"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "name-part": "Whittling",
+            "targets": "Chaos Orb",
+            "common-action": "最も低い階層の修飾を削除する",
+            "check-before-use": "仕上げとして有用"
+          }
+        },
+        {
+          "tags": [
+            "greater"
+          ],
+          "cells": {
+            "name-part": "Greater",
+            "targets": "Exalt / Annulment",
+            "common-action": "効果を倍化（修飾を2つ追加または削除）",
+            "check-before-use": "高価——狙いのアイテムに取っておく"
+          }
+        }
+      ],
+      "note": "これは一例の抜粋です。最新の完全なオーメン一覧はパッチ間で変化します。使用前に必ずゲーム内のオーメンのツールチップで正確な効果を確認してください。名称とスタック規則は、ライブの0.5.4クライアントでのPC検証待ちとしてフラグが立っています。"
+    },
+    {
+      "id": "activation-and-consumption",
+      "order": 4,
+      "title": "起動と消費",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーメンを使うには、インベントリにある状態で右クリックします。起動したオーメンはUI上で明確な視覚インジケーター——アイテムを赤い枠が囲む——で表示されるため、通貨を確定する前に装填されていることを確認できます。",
+        "オーメンは、修飾されたアクションが発生した瞬間に消費されます。対応する通貨を使えば、オーメンはその1回の使用に効果を及ぼし、消費されます。対応する通貨を使わなければ、オーメンは使用するまで（あるいはオーメンによってはログアウトするまで）装填されたままです。"
+      ],
+      "bullets": [
+        "右クリックで起動し、赤い枠のインジケーターが表示されていることを確認する。",
+        "影響を受けるのは次の対応通貨の1回のみ。1つのオーメンが1回の修飾アクションに相当する。",
+        "オーメンの対象と異なる通貨を使った場合、オーメンは消費されず、アクションは通常通りとなる。"
+      ]
+    },
+    {
+      "id": "omen-currency-compatibility",
+      "order": 5,
+      "title": "オーメンと通貨の互換性",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "各クラフト用オーメンは、特定の1つの通貨と、それに合ったアイテム状態でのみ機能します。消費する前に前提条件を確認してください。",
+      "columns": [
+        {
+          "key": "omen",
+          "label": "オーメン"
+        },
+        {
+          "key": "modifies-currency-action",
+          "label": "修飾する通貨アクション"
+        },
+        {
+          "key": "prereq-item-state",
+          "label": "前提となるアイテム状態"
+        },
+        {
+          "key": "consumed-when",
+          "label": "消費されるタイミング"
+        },
+        {
+          "key": "high-risk-point",
+          "label": "高リスクのポイント"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "omen": "Sinistral / Dextral Exaltation",
+            "modifies-currency-action": "Exalted Orbはプレフィックスのみ／サフィックスのみを追加",
+            "prereq-item-state": "その側に少なくとも1つの空き枠",
+            "consumed-when": "次のExalted Orb使用時",
+            "high-risk-point": "両側がすでに満杯なら無駄になる"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "omen": "Sinistral / Dextral Annulment",
+            "modifies-currency-action": "Orb of Annulmentはプレフィックスのみ／サフィックスのみを削除",
+            "prereq-item-state": "対象側に修飾が存在すること",
+            "consumed-when": "次のOrb of Annulment使用時",
+            "high-risk-point": "最良の修飾を消してしまう可能性がある"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "omen": "Sinistral / Dextral Erasure",
+            "modifies-currency-action": "Chaos Orbはプレフィックスのみ／サフィックスのみを削除",
+            "prereq-item-state": "対象側に修飾が存在すること",
+            "consumed-when": "次のChaos Orb使用時",
+            "high-risk-point": "カオスは再ロールもする——意図を確認する"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "omen": "Sinistral / Dextral Alchemy",
+            "modifies-currency-action": "Orb of Alchemyは最大のプレフィックス／サフィックスをロール",
+            "prereq-item-state": "新しいレアベース",
+            "consumed-when": "次のOrb of Alchemy使用時",
+            "high-risk-point": "清浄なベースに使えばリスクなし"
+          }
+        },
+        {
+          "tags": [
+            "add"
+          ],
+          "cells": {
+            "omen": "Sinistral / Dextral Coronation",
+            "modifies-currency-action": "Regal Orbはプレフィックスのみ／サフィックスのみを追加",
+            "prereq-item-state": "魔法レアリティのアイテム",
+            "consumed-when": "次のRegal Orb使用時",
+            "high-risk-point": "Regalは魔法アイテムにのみ機能する"
+          }
+        },
+        {
+          "tags": [
+            "greater"
+          ],
+          "cells": {
+            "omen": "Greater Exaltation",
+            "modifies-currency-action": "Exalted Orbは修飾を2つ追加",
+            "prereq-item-state": "2つの空き枠が利用可能",
+            "consumed-when": "次のExalted Orb使用時",
+            "high-risk-point": "通常のExaltと比べたコスト"
+          }
+        },
+        {
+          "tags": [
+            "greater"
+          ],
+          "cells": {
+            "omen": "Greater Annulment",
+            "modifies-currency-action": "Orb of Annulmentは修飾を2つ削除",
+            "prereq-item-state": "惜しくない修飾が2つ",
+            "consumed-when": "次のOrb of Annulment使用時",
+            "high-risk-point": "良い修飾を2つ消す可能性がある"
+          }
+        },
+        {
+          "tags": [
+            "remove"
+          ],
+          "cells": {
+            "omen": "Whittling",
+            "modifies-currency-action": "Chaos Orbは最も低い階層の修飾を削除",
+            "prereq-item-state": "明らかに最弱の修飾が存在すること",
+            "consumed-when": "次のChaos Orb使用時",
+            "high-risk-point": "最下位修飾もまだ役立つ可能性がある"
+          }
+        },
+        {
+          "tags": [
+            "advanced"
+          ],
+          "cells": {
+            "omen": "Homogenising Exaltation / Coronation",
+            "modifies-currency-action": "既存の修飾とタグを共有する修飾を追加",
+            "prereq-item-state": "アイテムにすでにタグ付き修飾があること",
+            "consumed-when": "次のExalted / Regal Orb使用時",
+            "high-risk-point": "修飾タグの知識が必要"
+          }
+        }
+      ],
+      "note": "前提条件は定性的に記述されています。実際の要件についてはゲーム内の正確なツールチップをお読みください。名称とペアリングは参照したコミュニティのクラフトガイドから確認済みですが、PC検証待ちです。"
+    },
+    {
+      "id": "prefix-suffix-control",
+      "order": 6,
+      "title": "片側の制御",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "プレフィックスとサフィックスを操る際の3つの一般的な目標です。各タブで目的に合ったオーメンを確認してください。",
+      "tabs": [
+        {
+          "id": "protect-one-side",
+          "label": "片側を守る",
+          "paragraphs": [
+            "アイテムの一方の側にすでに良い修飾がある場合、それらを安全に保ちたいものです。次の通貨を「もう一方の側」に限定するオーメンを使えば、守りたい修飾には手を触れられません。"
+          ],
+          "bullets": [
+            "サフィックスを維持したい？ Sinistral Omenを使ってExalt/Annulをプレフィックスに向ける。",
+            "これが決定論的クラフトの核心です。変更してもよい側を隔離する。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "remove-one-side",
+          "label": "片側を削除",
+          "paragraphs": [
+            "悪い修飾を、もう一方の側を危険にさらすことなく削除するには、SinistralまたはDextralのAnnulment、もしくはErasureオーメンを使います。削除は選んだ側のみに制限されます。"
+          ],
+          "bullets": [
+            "Annulmentは対象側の修飾をランダムに1つ削除する。Erasureは同じ制限のためにChaos Orbを使用する。",
+            "その側の修飾を1つ失っても許容できるアイテムでのみ使用する。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "add-a-mod",
+          "label": "修飾を追加",
+          "paragraphs": [
+            "空き枠を確実な側で埋めるには、Exalted Orbを使う前にSinistralまたはDextral Exaltation（修飾1つ）あるいはGreater Exaltation（修飾2つ）のオーメンを使います。"
+          ],
+          "bullets": [
+            "まず、その側に実際に空き枠があるか確認する。",
+            "最大密度を得るには、新しいベースでAlchemy Omenが一度に最多のプレフィックスまたはサフィックスをロールする。"
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "omen-stack-planner",
+      "order": 7,
+      "title": "複数の起動オーメンの計画",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "複数のオーメンを同時に起動できます。それらがどう相互作用するかは特定のオーメンに依存します——各ツールチップを読んでください。以下のタブは一般的な原則を扱います。",
+      "tabs": [
+        {
+          "id": "stack-principle",
+          "label": "原則",
+          "paragraphs": [
+            "各オーメンは特定の将来の通貨アクションを修飾します。2つの起動オーメンが同じ通貨を対象としている場合、それらの効果はその1回の使用に対して組み合わさります。正確な組み合わせはオーメン自身によって定義されるため、決まった順序を前提としてはいけません。"
+          ],
+          "bullets": [
+            "通貨を使う前に、使用予定のすべてのオーメンを起動する。",
+            "すべてのツールチップを読む——組み合わせ方を明示しているオーメンもある。",
+            "不確かなら、まず安価なアイテムで試す。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "combine-exalt",
+          "label": "Exaltationのスタック",
+          "paragraphs": [
+            "一般的なパターンは、Sinistral（またはDextral）ExaltationとGreater Exaltationを同時に起動し、その後Exalted Orbを使うことです。結果は追加される修飾が2つとなり、どちらも選んだ側に限定されます。"
+          ],
+          "bullets": [
+            "これで1回のスラムで片側の2枠を埋める。",
+            "高価——精度が重要なアイテムに取っておく。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "combine-annul",
+          "label": "削除のスタック",
+          "paragraphs": [
+            "側を限定するAnnulmentとGreater Annulmentを組み合わせて、1回のアクションで片側からより多くを削除できます。アイテムがその数の修飾を失っても耐えられるか確認してください。"
+          ],
+          "bullets": [
+            "Greater Annulmentは修飾を2つ削除する。側のロックと組み合わせれば片側に留まる。",
+            "完成したアイテムでは高リスク——まず再構築を計画する。"
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "craft-sequence",
+      "order": 8,
+      "title": "手順を追ったクラフト",
+      "type": "progression-steps",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "対象をロックする",
+          "body": [
+            "どちらの側（プレフィックスかサフィックスか）を維持・追加・削除したいかを決める。",
+            "使用する特定の通貨（Exalted、Annulment、Chaos、Alchemy、またはRegal）を特定する。"
+          ]
+        },
+        {
+          "label": "オーメンを起動する",
+          "body": [
+            "インベントリで対応するオーメンを右クリックする。",
+            "赤い枠のインジケーターで起動していることを確認する。"
+          ]
+        },
+        {
+          "label": "通貨を使う",
+          "body": [
+            "対象のオーブをアイテムに適用する。",
+            "オーメンはその1回のアクションを修飾し、消費される。"
+          ]
+        },
+        {
+          "label": "結果を確認する",
+          "body": [
+            "アイテムのツールチップで期待する変化（片側のみ影響、もう片側は無傷）を確認する。",
+            "結果が誤っている場合は、別のオーメンを使う前に再評価する。"
+          ]
+        },
+        {
+          "label": "繰り返すか止めるか",
+          "body": [
+            "アイテムにまだ手を入れる必要があり、別のオーメンを持っているなら、手順1から繰り返す。",
+            "アイテムが目標を満たしたら、貴重なオーメンを無駄にしないよう止める。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-after-item",
+      "order": 9,
+      "title": "期待される変化（前と後）",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーメンを使う前は、アイテムには固定されたプレフィックスとサフィックスのセットがあり、通常の通貨使用ではいずれかの側にランダムに影響します。正しいオーメン＋通貨の組み合わせの後は、対象側のみが変化し、もう一方の側は保持されます。"
+      ],
+      "bullets": [
+        "例：サフィックスは良いがプレフィックスが悪いレア。Sinistral Annulment＋Orb of Annulmentは悪いプレフィックスのみを削除し、サフィックスはそのまま残る。",
+        "例：空のプレフィックス枠。Sinistral Exaltation＋Exalted Orbはサフィックスに触れずプレフィックスを追加する。",
+        "ロールされる具体的な修飾は依然としてプール内でランダムです——オーメンが制御するのは「側」であり、具体的な数値ではありません。特定の修飾階層を固定するにはessence-craftingガイドを参照。"
+      ]
+    },
+    {
+      "id": "risk-and-replacement-cost",
+      "order": 10,
+      "title": "リスクと代替コスト",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "実行する前に、失敗したクラフトのコストとオーメン・通貨の価格を天秤にかけます。",
+      "rows": [
+        {
+          "choice": "ほぼ完璧なレアに高価値なErasure Omenを使う",
+          "riskLevel": "red",
+          "risk": "カオスの再ロールが失敗するとアイテムとオーメンの両方を失う",
+          "reward": "まさに不要な側を決定論的に削除できる",
+          "when": "オーメンと通貨の合計以上の価値があるアイテムにのみ"
+        },
+        {
+          "choice": "新しいベースに安価なAlchemy Omenを使う",
+          "riskLevel": "green",
+          "risk": "最坏でも使い捨てのレアを再ロールするだけ",
+          "reward": "1回のAlchemyで最大のプレフィックスまたはサフィックス",
+          "when": "交換可能なベースでの序盤のクラフトに"
+        },
+        {
+          "choice": "より良いアイテムのためにオーメンを取っておく",
+          "riskLevel": "yellow",
+          "risk": "機会費用；市場価格が変動する可能性がある",
+          "reward": "弱いアイテムへの無駄遣いを避けられる",
+          "when": "現在のクラフトがその効果を実際に必要としていない場合"
+        }
+      ]
+    },
+    {
+      "id": "use-sell-hold-decision",
+      "order": 11,
+      "title": "オーメンを使う・売る・持っておく",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "すべてのオーメンをすぐに使うべきではありません。目の前のアイテムと取引価値に基づいて決定します。",
+      "rows": [
+        {
+          "choice": "今オーメンを使う",
+          "riskLevel": "green",
+          "risk": "希少で価値のある通貨を消費する",
+          "reward": "現在のクラフトが進行する",
+          "when": "アイテムの価値がオーメンを上回る場合"
+        },
+        {
+          "choice": "オーメンを売る",
+          "riskLevel": "yellow",
+          "risk": "その効果に対する将来のクラフト制御を失う",
+          "reward": "他で使える取引通貨に換金できる",
+          "when": "近いうちにその効果が必要ない場合"
+        },
+        {
+          "choice": "オーメンを持っておく",
+          "riskLevel": "green",
+          "risk": "価格が動く可能性がある；クラフトが遅れる",
+          "reward": "狙いのアイテムに備えて選択肢を維持する",
+          "when": "現在のクラフトがそれを必要としない場合"
+        }
+      ]
+    },
+    {
+      "id": "version-conflicts",
+      "order": 12,
+      "title": "バージョンの不整合と古い情報",
+      "type": "version-conflicts",
+      "visible": true,
+      "toc": true,
+      "intro": "オーメンの名称と完全な一覧はパッチ間で変化しました。古いデータに基づくガイドは避けてください。",
+      "conflicts": [
+        {
+          "recommendation": "2025年のオーメン一覧は古いとみなす",
+          "status": "outdated",
+          "detail": "初期のオーメン命名と完全な一覧はパッチ間で変化しました。現在のセットはゲーム内のツールチップから確認してください。",
+          "sinceVersion": "0.3.0"
+        },
+        {
+          "recommendation": "現在のクラフト用オーメンはSinistral/Dextral命名規則に従う",
+          "status": "valid",
+          "detail": "Sinistralはプレフィックス、Dextralはサフィックスを対象とし、通貨の系統名と組み合わせる。",
+          "sinceVersion": "0.5.4"
+        },
+        {
+          "recommendation": "わずか数個のオーメンしか載せていないガイドは避ける",
+          "status": "conflict",
+          "detail": "完全なセットは最初の数個を大きく超えて拡大しています。いずれの一覧を信用する前も、ライブのオーメンのツールチップと照合してください。",
+          "sinceVersion": "0.5.4"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "コミュニティの疑問への回答",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "このガイドが扱う一般的なプレイヤーの問題です。",
+      "cards": [
+        {
+          "title": "オーメンが発動しない",
+          "tag": "common",
+          "body": [
+            "おそらくオーメンの対象と異なる通貨を使ったか、アイテムの状態が前提条件を満たしていません。使う前に毎回オーメンのツールチップを再読みしてください。"
+          ]
+        },
+        {
+          "title": "最初にどのオーメンを使うべき？",
+          "tag": "common",
+          "body": [
+            "これから使う通貨と、影響させたい側に合ったオーメンを選びます。オーメンとオーブの両方のツールチップを読んでください。"
+          ]
+        },
+        {
+          "title": "オーメンはスタックできる？",
+          "tag": "advanced",
+          "body": [
+            "複数のオーメンを同時に起動できます。組み合わさるかどうかは特定のオーメンに依存します。組み合わせる前に各ツールチップを読んでください。"
+          ]
+        },
+        {
+          "title": "オーメンは戦闘中に機能する？",
+          "tag": "note",
+          "body": [
+            "多くのクラフト用オーメンは次の通貨使用に影響します。戦闘中に発動する実用オーメンも一部あります。このガイドはクラフト用オーメンのみを扱います。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "動画ガイド",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "What Is Prefix and Suffix? | Path of Exile 2",
+          "creator": "Bajheera",
+          "description": "プレフィックス、サフィックス、およびクラフト通貨がそれらとどう相互作用するかを明快に解説する——オーメン制御を理解するための基礎です。",
+          "takeaway": "どの修飾がプレフィックスでどれがサフィックスかを学び、その上でSinistral/Dextralオーメンを使って通貨をまさに一方の側に向けます。",
+          "url": "https://www.youtube.com/watch?v=-fTTvmgcO1s",
+          "timestamps": [
+            {
+              "label": "プレフィックスとサフィックスとは？",
+              "time": "0:00"
+            },
+            {
+              "label": "クラフト通貨が修飾とどう相互作用するか",
+              "time": "1:45"
+            },
+            {
+              "label": "SinistralとDextralの命名",
+              "time": "3:10"
+            },
+            {
+              "label": "Exaltationで片側を狙う",
+              "time": "5:20"
+            },
+            {
+              "label": "AnnulmentまたはErasureで片側を削除",
+              "time": "7:30"
+            },
+            {
+              "label": "実際のクラフトでの組み立て",
+              "time": "9:40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "よくあるミス",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "最も一般的なオーメンのミスは、価値ある通貨を無駄にするか、良いアイテムを損なうものです。ほとんどは行動前にツールチップを読まないことから生じます。"
+      ],
+      "bullets": [
+        "間違った通貨を使う——オーメンは対応するオーブにしか反応しないため、不一致のスラムでは何も起きずオーメンは装填されたまま（あるいは期待していたなら無駄になる）。",
+        "アイテムの前提条件を忘れる——Regal Omenには魔法アイテムが必要、Alchemy Omenは新しいベースを求める。",
+        "低価値なアイテムに高価なオーメンを起動する——オーメンが装備より価値あることが多い。",
+        "決まったスタック順序を前提とする——組み合わせ挙動はオーメンごとに定義される；ツールチップで確認する。",
+        "通貨を確定する前に赤い枠のインジケーターを確認しない。"
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "よくある質問",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "通貨を使わなくてもオーメンは消費される？",
+          "answer": [
+            "いいえ。オーメンは対応する通貨が使われるまで起動したままです。消費されるのは、修飾されたアクションが実際に発生したときのみです。"
+          ]
+        },
+        {
+          "question": "ユニークアイテムにオーメンを使える？",
+          "answer": [
+            "クラフト用オーメンはレアおよび魔法アイテム上の通常の通貨相互作用を対象とします。ユニークは一般的にこの方法で再クラフトできないため、オーメンはレア／魔法のベースに関係します。"
+          ]
+        },
+        {
+          "question": "SinistralとDextralの違いは？",
+          "answer": [
+            "Sinistralはプレフィックス、Dextralはサフィックスに作用します。通貨の系統名（Exaltation、Annulment、Erasure、Alchemy、Coronation）と組み合わせて、その通貨を片側に向けます。"
+          ]
+        },
+        {
+          "question": "オーメンの入手方法は？",
+          "answer": [
+            "主にRitual（Tributeとして消費）と、Alvaが運営する通貨交換所から。多くのクラフト用オーメンはスタック可能です。"
+          ]
+        },
+        {
+          "question": "オーメンは修飾の数値を保証する？",
+          "answer": [
+            "いいえ。オーメンが制御するのは通貨が影響する「側」であり、その側の修飾プール内の具体的なロールではありません。階層を保証するにはessence-craftingガイドを参照。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 17,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE 2 wiki - Omens",
+          "description": "オーメンの効果と命名規則を載せたコミュニティwiki",
+          "url": "https://www.poe2wiki.net/wiki/Omens"
+        },
+        {
+          "label": "Mobalytics - Omen Crafting guide",
+          "description": "詳細なクラフト用オーメン一覧とSinistral/Dextral命名の内訳",
+          "url": "https://mobalytics.gg/poe-2/guides/omen-crafting"
+        },
+        {
+          "label": "Bajheera - What Is Prefix and Suffix? (YouTube)",
+          "description": "プレフィックス、サフィックス、クラフト通貨についての動画解説",
+          "url": "https://www.youtube.com/watch?v=-fTTvmgcO1s"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Path of Exile 2 Early Access 0.5.4向けに初版ガイドを公開。",
+            "オーメンの起動、Sinistral/Dextral命名規則、通貨互換性、スタック、および使う・売る・持っておくの判断を網羅。",
+            "2025年のオーメン一覧は古いものとしてフラグを立て、ライブの一覧をゲーム内で確認するよう記載。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE 2 wiki - Omens",
+      "url": "https://www.poe2wiki.net/wiki/Omens",
+      "sourceType": "community"
+    },
+    {
+      "label": "Mobalytics - Omen Crafting guide",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    },
+    {
+      "label": "Bajheera - What Is Prefix and Suffix? (YouTube)",
+      "url": "https://www.youtube.com/watch?v=-fTTvmgcO1s",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2オーメンクラフト：プレフィックスとサフィックス修飾を制御する",
+    "description": "パス・オブ・エグザイル2でオーメンを使い、次の通貨をプレフィックスまたはサフィックスに強制する方法——SinistralとDextralの違い、起動、スタック、そしてオーメンを使うべきか売るべきか。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "omen-crafting-prefix-suffix-control",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

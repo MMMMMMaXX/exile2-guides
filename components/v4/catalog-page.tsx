@@ -9,7 +9,7 @@ import {
   type ContentLocale,
   type ContentType,
 } from "../../lib/content/constants";
-import type { StaticContentPage } from "../../lib/content/content-page";
+import type { StaticContentCatalogPage } from "../../lib/content/content-page";
 import { getCategoryCopy } from "../../lib/i18n/category-copy";
 import { t } from "../../lib/i18n/ui";
 import {
@@ -29,8 +29,8 @@ import {
   localeToTagKey,
 } from "../../lib/content/tag-taxonomy";
 
-type BuildContentPage = StaticContentPage & {
-  buildArticle: NonNullable<StaticContentPage["buildArticle"]>;
+type BuildContentPage = StaticContentCatalogPage & {
+  buildArticle: NonNullable<StaticContentCatalogPage["buildArticle"]>;
 };
 type PrototypeCard = {
   /** 可选的站内相对路径；存在时骨架卡片渲染为可点击链接。 */
@@ -202,7 +202,9 @@ const buildCardFallbacks: Readonly<Record<string, string>> = {
 };
 
 /** 收窄真实 Build 页面，使列表、筛选和卡片始终读取同一份结构化文章数据。 */
-function isBuildContentPage(page: StaticContentPage): page is BuildContentPage {
+function isBuildContentPage(
+  page: StaticContentCatalogPage,
+): page is BuildContentPage {
   return Boolean(page.buildArticle);
 }
 
@@ -234,7 +236,7 @@ export function V4ContentPageCard({
   contentType: ContentType;
   fallbackImage: string;
   locale: ContentLocale;
-  page: StaticContentPage;
+  page: StaticContentCatalogPage;
 }) {
   const fm = page.frontMatter;
   const image = fm.image ? resolveImageAsset(fm.image) : fallbackImage;
@@ -498,75 +500,83 @@ const bossRailFilterMap: Record<string, string> = {
 };
 
 /** Patch 左侧筛选值到分类或影响判断的映射；"All" 不做过滤。 */
-const patchRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
-  {
-    "Major Updates": (page) =>
-      page.patchArticle?.patchCategory === "major-updates",
-    Balance: (page) => page.patchArticle?.patchCategory === "balance",
-    Hotfixes: (page) => page.patchArticle?.patchCategory === "hotfixes",
-    "Bug Fixes": (page) => page.patchArticle?.patchCategory === "bug-fixes",
-    Impact: (page) =>
-      page.patchArticle?.sections.some((section) =>
-        section.type.endsWith("-impact"),
-      ) ?? false,
-  };
+const patchRailFilterMap: Record<
+  string,
+  (page: StaticContentCatalogPage) => boolean
+> = {
+  "Major Updates": (page) =>
+    page.patchArticle?.patchCategory === "major-updates",
+  Balance: (page) => page.patchArticle?.patchCategory === "balance",
+  Hotfixes: (page) => page.patchArticle?.patchCategory === "hotfixes",
+  "Bug Fixes": (page) => page.patchArticle?.patchCategory === "bug-fixes",
+  Impact: (page) => page.patchArticle?.hasImpact ?? false,
+};
 
 /** Item 左侧筛选值到 itemCategory 分组的映射；"All" 不做过滤。 */
-const itemRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
-  {
-    Equipment: (page) =>
-      ["weapons", "armour", "jewellery", "off-hand"].includes(
-        page.itemArticle?.itemCategory ?? "",
-      ),
-    Materials: (page) =>
-      ["socketables", "charms", "uncut-gems"].includes(
-        page.itemArticle?.itemCategory ?? "",
-      ),
-    Endgame: (page) =>
-      ["waystones", "endgame-access"].includes(
-        page.itemArticle?.itemCategory ?? "",
-      ),
-    Unique: (page) =>
-      ["unique-items", "unique-armour"].includes(
-        page.itemArticle?.itemCategory ?? "",
-      ),
-    Currency: (page) => page.itemArticle?.itemCategory === "currency",
-  };
+const itemRailFilterMap: Record<
+  string,
+  (page: StaticContentCatalogPage) => boolean
+> = {
+  Equipment: (page) =>
+    ["weapons", "armour", "jewellery", "off-hand"].includes(
+      page.itemArticle?.itemCategory ?? "",
+    ),
+  Materials: (page) =>
+    ["socketables", "charms", "uncut-gems"].includes(
+      page.itemArticle?.itemCategory ?? "",
+    ),
+  Endgame: (page) =>
+    ["waystones", "endgame-access"].includes(
+      page.itemArticle?.itemCategory ?? "",
+    ),
+  Unique: (page) =>
+    ["unique-items", "unique-armour"].includes(
+      page.itemArticle?.itemCategory ?? "",
+    ),
+  Currency: (page) => page.itemArticle?.itemCategory === "currency",
+};
 
 /** Guide 左侧筛选值到 guideCategory 的映射；"All" 不做过滤。 */
-const guideRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
-  {
-    Beginner: (page) => page.guideArticle?.guideCategory === "beginner",
-    Campaign: (page) => page.guideArticle?.guideCategory === "campaign",
-    Mechanics: (page) => page.guideArticle?.guideCategory === "mechanics",
-    Crafting: (page) => page.guideArticle?.guideCategory === "crafting-trading",
-    Endgame: (page) => page.guideArticle?.guideCategory === "endgame-atlas",
-    Troubleshooting: (page) =>
-      page.guideArticle?.guideCategory === "troubleshooting",
-  };
+const guideRailFilterMap: Record<
+  string,
+  (page: StaticContentCatalogPage) => boolean
+> = {
+  Beginner: (page) => page.guideArticle?.guideCategory === "beginner",
+  Campaign: (page) => page.guideArticle?.guideCategory === "campaign",
+  Mechanics: (page) => page.guideArticle?.guideCategory === "mechanics",
+  Crafting: (page) => page.guideArticle?.guideCategory === "crafting-trading",
+  Endgame: (page) => page.guideArticle?.guideCategory === "endgame-atlas",
+  Troubleshooting: (page) =>
+    page.guideArticle?.guideCategory === "troubleshooting",
+};
 
 /** Skill 左侧筛选值到 skillType 或 skillTags 的映射；"All" 不做过滤。 */
-const skillRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
-  {
-    Active: (page) => page.skillArticle?.skillType === "active",
-    Support: (page) => page.skillArticle?.skillType === "support",
-    Passive: (page) => page.skillArticle?.skillType === "passive",
-    Spirit: (page) =>
-      (page.skillArticle?.skillTags ?? []).includes("spirit") ||
-      page.frontMatter.tags.includes("spirit"),
-    Meta: (page) =>
-      (page.skillArticle?.skillTags ?? []).includes("meta") ||
-      page.frontMatter.tags.includes("meta"),
-    Ascendancy: (page) =>
-      (page.skillArticle?.skillTags ?? []).includes("ascendancy") ||
-      page.frontMatter.tags.includes("ascendancy"),
-    Lineage: (page) =>
-      (page.skillArticle?.skillTags ?? []).includes("lineage") ||
-      page.frontMatter.tags.includes("lineage"),
-  };
+const skillRailFilterMap: Record<
+  string,
+  (page: StaticContentCatalogPage) => boolean
+> = {
+  Active: (page) => page.skillArticle?.skillType === "active",
+  Support: (page) => page.skillArticle?.skillType === "support",
+  Passive: (page) => page.skillArticle?.skillType === "passive",
+  Spirit: (page) =>
+    (page.skillArticle?.skillTags ?? []).includes("spirit") ||
+    page.frontMatter.tags.includes("spirit"),
+  Meta: (page) =>
+    (page.skillArticle?.skillTags ?? []).includes("meta") ||
+    page.frontMatter.tags.includes("meta"),
+  Ascendancy: (page) =>
+    (page.skillArticle?.skillTags ?? []).includes("ascendancy") ||
+    page.frontMatter.tags.includes("ascendancy"),
+  Lineage: (page) =>
+    (page.skillArticle?.skillTags ?? []).includes("lineage") ||
+    page.frontMatter.tags.includes("lineage"),
+};
 
 const railFilterMapByContentType: Partial<
-  Record<ContentType, Record<string, (page: StaticContentPage) => boolean>>
+  Record<
+    ContentType,
+    Record<string, (page: StaticContentCatalogPage) => boolean>
+  >
 > = {
   patch: patchRailFilterMap,
   item: itemRailFilterMap,
@@ -738,7 +748,7 @@ export function V4CatalogPage({
   locale,
 }: {
   contentType: ContentType;
-  items: readonly StaticContentPage[];
+  items: readonly StaticContentCatalogPage[];
   locale: ContentLocale;
 }) {
   const zh = locale === "zh-cn";

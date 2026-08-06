@@ -1,0 +1,887 @@
+{
+  "id": "plant-oracle-druid",
+  "slug": "plant-oracle-druid",
+  "locale": "ru",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Гайд по билду Plant Oracle Druid: прокачка, CoC Thunderstorm и эндгейм",
+  "shortTitle": "Plant Oracle Druid",
+  "summary": "Набор растительных заклинаний 0.5.4: Entangle для зачистки, Thunderstorm поддерживается через Forced Outcome и Cast on Critical. Охватывает смену этапов, восполнение маны, ротацию по боссам и бюджетные уровни.",
+  "description": "Гайд по Path of Exile 2 Plant Oracle Druid для 0.5.4: лестница прокачки, Forced Outcome, CoC Thunderstorm, управление маной и реальные метки времени в видео.",
+  "classId": "druid",
+  "ascendancyId": "oracle",
+  "mainSkillIds": [
+    "entangle",
+    "thrashing-vines"
+  ],
+  "secondarySkillIds": [
+    "thunderstorm",
+    "cast-on-critical",
+    "mana-remnants",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "plant",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "low-input"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "cardImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "imageAlt": "Друид Оракул призывает лозы с помощью Entangle, одновременно вызывая Thunderstorm в бою",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "oracle",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Обзор билда",
+      "paragraphs": [
+        "Plant Oracle — это набор растительных заклинаний Друида: Entangle создаёт трещины, чьи лозы прикрепляются к ближайшим врагам и замедляют их, а Thunderstorm проливает молнии сверху, питая Overgrown. Вознесение Oracle через Forced Outcome даёт Неизбежные Критические Попадания, что позволяет Cast on Critical надёжно запускать Thunderstorm — именно в этом источник ощущения низких затрат ввода и высокого покрытия у этого билда.",
+        "Это не билд с бурстом на 1-м уровне. Entangle можно использовать очень рано, но стабильный запуск Thunderstorm зависит от Forced Outcome, Cast on Critical и достаточного запаса маны; пока это не совпадёт, вы зачищаете и наносите одиночный урон через Entangle + Thrashing Vines, восполняя ману перекатами и Mana Remnants.",
+        "Это руководство организовано по этапам, а не свалено по уровням: сначала — когда переходить с Entangle как основного на цикл запуска Thunderstorm, затем снаряжение, пассивки и бюджетные уровни. Все игровые (клиентские) цифры и механика заклинаний помечены для проверки на ПК; непроверенный ДПС не приводится как факт."
+      ],
+      "bullets": [
+        "Зачистка — это проход Entangle + Thrashing Vines, почти в одну кнопку.",
+        "Боссинг закрывается через Forced Outcome / поддерживаемый CoC Thunderstorm.",
+        "Нехватка маны в долгих боях с боссами — реальное узкое место, требующее решения."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Плюсы и минусы",
+      "pros": [
+        "Зачистка почти в одну кнопку; лозы сами разбирают мелочь, очень расслабленно.",
+        "Forced Outcome стабилизирует цикл триггеров с сильным покрытием боссов.",
+        "Статус растения даёт мягкий контроль и снижает риск окружения.",
+        "Работает на низком бюджете в начале и плавно переходит дальше."
+      ],
+      "cons": [
+        "Урон низкий до срабатывания Thunderstorm; нужны вознесение и мана.",
+        "Мана кончается в долгих боях с боссами без управления; цикл падает.",
+        "Сопротивление хаосу — жёсткая потребность эндгейма и оно не врождённое.",
+        "Защита пассивна; окна бурста зависят от статуса, а не от позиционирования."
+      ]
+    },
+    {
+      "id": "plant-loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Как работает цикл: Entangle → Thunderstorm",
+      "paragraphs": [
+        "Цикл зачистки: бросаете Entangle по пачке; лозы продолжают хлестать всё в радиусе, а вы в основном лишь заново кастуете Entangle и перекатываетесь. Потому сообщество и называет это зачисткой в одну кнопку.",
+        "Цикл босса: накладываете Entangle на босса, чтобы прикрепить лозы и набрать статус растения, затем Forced Outcome / Cast on Critical удерживают Thunderstorm сверху для поддержания Overgrown. Thrashing Vines — основная отдача по одиночной цели; Sigil of Power добавляет урон и поддержку крита.",
+        "Фразы вроде «watering the plants» обычно относятся к получаемому от стака статуса растения урону/площади, а не к отдельной системе; проверяйте по описанию навыка и клиенту, не воспринимайте это как скрытую дополнительную механику."
+      ],
+      "bullets": [
+        "Зачистка = Entangle + перекат; остальное делают лозы.",
+        "Босс = Entangle (прикрепление + замедление) → Forced Outcome/CoC удерживают Thunderstorm (Overgrown).",
+        "Thrashing Vines — основной урон по одиночной цели / боссам, а не добивание с фланга."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Путь прокачки",
+      "steps": [
+        {
+          "label": "Уровни 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Начните с Entangle. Его можно использовать очень рано, и это ваш настоящий навык зачистки; не форсируйте цепочку запуска Thunderstorm пока — мана и вознесение ещё не готовы."
+          ]
+        },
+        {
+          "label": "Уровни 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Добавьте Thrashing Vines как добивание с фланга и начните брать узлы жизни/маны/площади. Сохраняйте Entangle ядром."
+          ]
+        },
+        {
+          "label": "Уровни 30–42 — Разблокировки Oracle",
+          "levelRange": "30–42",
+          "body": [
+            "Выберите Oracle и возьмите узлы Forced Outcome. Запускаемый через Cast on Critical Thunderstorm стабилизируется, а урон по боссам резко растёт."
+          ]
+        },
+        {
+          "label": "Уровни 43–60 — Ранние карты",
+          "levelRange": "43–60",
+          "body": [
+            "Запускайте цикл триггеров без крита, на низком бюджете. Закройте сопротивления, поправьте жизнь/ману, удерживайте Thunderstorm на редких врагах."
+          ]
+        },
+        {
+          "label": "Уровень 60+ — Подготовка к эндгейму",
+          "levelRange": "60+",
+          "body": [
+            "Переходите к бюджетным улучшениям: фокус на уроне заклинаний, скорости каста, пуле маны и сопротивлению хаосу. Гонитесь за топовым снаряжением только после прохождения чек-листа приоритетов улучшений."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Настройка навыков",
+      "groups": [
+        {
+          "label": "Основные навыки",
+          "skills": [
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "Ядро зачистки: создаёт трещины, чьи лозы прикрепляются к ближайшим врагам и замедляют их; также подготовка статуса растения по боссам.",
+              "supportSkillIds": [
+                "branching-fissures",
+                "accelerated-growth",
+                "rapid-casting",
+                "magnified-area"
+              ],
+              "whyUse": [
+                "Это начало всего цикла: без прикрепления лоз Entangle покрытие Thunderstorm и статус растения набрать нельзя."
+              ],
+              "whenReplace": [
+                "Никогда не заменяется; в боссинге он смещается с основного урона на подготовку статуса."
+              ],
+              "mappingBossingDiff": [
+                "Зачистка: спамьте Entangle, чтобы держать лозы. Босс: сначала Entangle для набора статуса, затем цепочка триггеров."
+              ],
+              "notes": [
+                "Точные связи поддержки и уровни камней — ожидают проверки на ПК."
+              ]
+            },
+            {
+              "displayName": "Thunderstorm",
+              "skillId": "thunderstorm",
+              "role": "Молния сверху, поддерживаемая через Forced Outcome / Cast on Critical; её задача — поддерживать Overgrown на растениях, а не быть основным уроном.",
+              "supportSkillIds": [
+                "magnified-area",
+                "prolonged-duration",
+                "rapid-casting",
+                "living-lightning"
+              ],
+              "whyUse": [
+                "Это катализатор Overgrown: когда запуск стабилизируется, молния почти постоянна, держа растения «политыми»."
+              ],
+              "whenReplace": [
+                "Не заменяется, но нуждается в наличии Forced Outcome/CoC и маны, чтобы раскрыться."
+              ],
+              "mappingBossingDiff": [
+                "Зачистка: используется для перерастания растений. Босс: удерживается сверху через цепочку триггеров, чтобы держать Overgrown."
+              ],
+              "notes": [
+                "Момент срабатывания задаётся условиями триггера, а не ручным кастом."
+              ]
+            },
+            {
+              "displayName": "Thrashing Vines",
+              "skillId": "thrashing-vines",
+              "role": "Основной урон по одиночной цели и боссам; главная отдача, когда растения переросли (Overgrown).",
+              "supportSkillIds": [
+                "concentrated-area",
+                "accelerated-growth",
+                "physical-mastery",
+                "rapid-casting"
+              ],
+              "whyUse": [
+                "Авто-хлёст в зоне Entangle; самый высокий одиночный урон билда."
+              ],
+              "whenReplace": [
+                "Держите как добивание; меняйте только если появится более сильный площадной растительный навык."
+              ],
+              "mappingBossingDiff": [
+                "Зачистка: вспомогательная зачистка. Босс: основной урон по одиночной цели на сменах фаз."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Триггеры и баффы",
+          "skills": [
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "Носитель триггера, высвобождающий Thunderstorm при крите.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Это предусловие для стабильного запуска Thunderstorm; без него ритм ломается."
+              ],
+              "whenReplace": [
+                "Держите; это часть архитектуры триггеров."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих, но боссинг сильнее зависит от его стабильного триггера."
+              ],
+              "notes": [
+                "Нужен достаточный крит и мана."
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "Наземный бафф на урон/крит, усиливающий цепочку триггеров.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Добавляет урон и поддержку крита, усиливая срабатывание Thunderstorm."
+              ],
+              "whenReplace": [
+                "Держите как бафф."
+              ],
+              "mappingBossingDiff": [
+                "Зачистка опционально; при боссинге ставится для усиления окна."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Mana Remnants",
+              "skillId": "mana-remnants",
+              "role": "Восполнение маны, облегчающее нехватку в долгих боях с боссами.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Когда в долгих боях с боссами маны не хватает, это прямее, чем просто стакать пул."
+              ],
+              "whenReplace": [
+                "Держите; ключевое для управления маной."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих, в боссинге критичнее."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Порядок вознесения",
+      "steps": [
+        {
+          "label": "Oracle — Первые узлы",
+          "body": [
+            "Выберите Oracle. Отдавайте приоритет узлам Forced Outcome, чтобы его Неизбежные Критические Попадания позволяли Cast on Critical надёжно запускать Thunderstorm; это предусловие для билда."
+          ]
+        },
+        {
+          "label": "Проверка маны и защиты",
+          "body": [
+            "Если выживаемость на T15+ шатка, не меняйте узлы растения/урона заклинаний на чистый урон; сначала обеспечьте восполнение маны и сопротивление хаосу."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Древо пассивок",
+      "steps": [
+        {
+          "label": "Кампания",
+          "body": [
+            "Берите только узлы, поддерживающие Entangle / площадь растений / ману и жизнь; не идите заранее к колёсам крита."
+          ]
+        },
+        {
+          "label": "Ранние карты",
+          "body": [
+            "Переходите в вариант цепочки триггеров; отдавайте приоритет жизни, пуле маны, сопротивлению хаосу и скорости каста."
+          ]
+        },
+        {
+          "label": "Эндгейм",
+          "body": [
+            "После решения защиты и пола маны вкладывайтесь в колёса крита/урона заклинаний; сравнивайте состояния снаряжения на одном уровне."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Снаряжение",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "Выберите базу, повышающую уровень навыка и урон молнией/заклинаниями; достаточно гнёзд для связей Thunderstorm."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Уровень навыка заклинания / Урон молнией от заклинаний",
+              "reason": "Напрямую масштабирует срабатывание Thunderstorm."
+            },
+            {
+              "tier": "recommended",
+              "label": "Пул маны и реген",
+              "reason": "Ключ к поддержанию цикла в долгих боях с боссами."
+            },
+            {
+              "tier": "optional",
+              "label": "Скорость каста",
+              "reason": "Быстрее ритм триггеров, не пол."
+            },
+            {
+              "tier": "luxury",
+              "label": "Шанс крита / Урон от крита",
+              "reason": "Только после стабилизации триггера и маны."
+            }
+          ],
+          "notes": [
+            "Focus — основная рука; отдавайте приоритет урону заклинаний и мане."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "Жизнь, сопротивление хаосу и сопротивления; скорость передвижения на сапогах."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Жизнь и два закрытых сопротивления",
+              "reason": "Никакой урон не компенсирует смерть."
+            },
+            {
+              "tier": "recommended",
+              "label": "Сопротивление хаосу",
+              "reason": "Жёсткая потребность эндгейма, не врождённое."
+            },
+            {
+              "tier": "optional",
+              "label": "Скорость передвижения",
+              "reason": "Улучшает позиционирование и ритм перекатов."
+            },
+            {
+              "tier": "luxury",
+              "label": "Явный урон заклинаний",
+              "reason": "Важно только после защиты."
+            }
+          ],
+          "notes": [
+            "Сопротивление хаосу не берётся из базы; нужно стакать."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "Характеристики, сопротивления, жизнь и мана; восполнение маны где требуется."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Характеристики для экипировки посоха и камней",
+              "reason": "Неэкипируемое бесполезно."
+            },
+            {
+              "tier": "recommended",
+              "label": "Сопротивления и жизнь",
+              "reason": "Завершает защитную оболочку."
+            },
+            {
+              "tier": "optional",
+              "label": "Пул маны / реген",
+              "reason": "Бесплатное восполнение с бижутерии."
+            },
+            {
+              "tier": "luxury",
+              "label": "Уровень навыка заклинания",
+              "reason": "Урон эндгейма."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет характеристик",
+      "priorities": [
+        {
+          "label": "Уровень навыка заклинания",
+          "reason": "Масштабирует Thunderstorm и Entangle; главная проверка прогресса."
+        },
+        {
+          "label": "Пул маны и реген",
+          "reason": "Пол для поддержания цикла в долгих боях с боссами."
+        },
+        {
+          "label": "Сопротивление хаосу",
+          "reason": "Жёсткая потребность эндгейма, не врождённое."
+        },
+        {
+          "label": "Скорость каста",
+          "reason": "Быстрее триггер, после защиты и маны."
+        },
+        {
+          "label": "Крит",
+          "reason": "Предусловие для CoC; только после стабилизации маны."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет улучшений",
+      "steps": [
+        {
+          "label": "Зачистка замедляется",
+          "symptom": "Пачкам нужно много раундов Entangle, чтобы умереть.",
+          "checks": [
+            "Посох всё ещё подходящей базы по уровню?",
+            "Решены ли сопротивления и жизнь (т.е. посох — реальное узкое место)?"
+          ],
+          "upgrade": "Меняйте недооценённый посох раньше, чем трогать бижутерию."
+        },
+        {
+          "label": "Нехватка маны у боссов",
+          "symptom": "Мана кончается в одиночной цели, Thunderstorm падает.",
+          "checks": [
+            "Полагаетесь только на реген от убийств?",
+            "Активны ли Mana Remnants / вампиризм / флаконы при боссинге?"
+          ],
+          "upgrade": "Сначала исправьте восполнение маны, прежде чем масштабировать урон."
+        },
+        {
+          "label": "У босса нет грозы",
+          "symptom": "Окно Thunderstorm никогда не стабильно.",
+          "checks": [
+            "Взят ли Forced Outcome?",
+            "Достаточен ли крит у Cast on Critical?",
+            "Поддерживает ли мана непрерывный триггер?"
+          ],
+          "upgrade": "Чините цепочку триггеров (Forced Outcome → CoC → Мана), а не посох."
+        },
+        {
+          "label": "Застой после T15",
+          "symptom": "Урон перестаёт расти.",
+          "checks": [
+            "Уровень заклинания упёрся в потолок?",
+            "Урон заклинаний от Focus на месте?",
+            "Сопротивление хаосу максимизировано?"
+          ],
+          "upgrade": "Улучшайте в порядке: уровень заклинания → Focus → Сопротивление хаосу."
+        },
+        {
+          "label": "Рассмотрите топовое",
+          "symptom": "Хотите больше урона по боссам и поглядываете на люксовое снаряжение.",
+          "checks": [
+            "Стабильны ли цепочка триггеров и мана?",
+            "Сломает ли топовое капы сопротивлений или снизит жизнь?"
+          ],
+          "upgrade": "Покупайте по частям и перепроверяйте после прохождения чек-листа; не меняйте выживаемость на цифры."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Зачистка карт",
+      "paragraphs": [
+        "Бросайте Entangle по пачкам; лозы авто-хлещут. Вы лишь заново кастуете Entangle и перекатываетесь. Мелочи не нужен Thunderstorm; остановка ради триггера вас замедляет.",
+        "Как только зачистка замедляется, сначала улучшайте посох. Держите какое-то восполнение маны (реген от убийств / Mana Remnants / флакон) активным, чтобы зачистка не вставала."
+      ],
+      "bullets": [
+        "Entangle + перекат — весь ритм зачистки.",
+        "Пропускайте триггер Thunderstorm на мелочи.",
+        "Реактивно улучшайте посох, когда зачистка замедляется."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Боссинг",
+      "paragraphs": [
+        "Боссинг — это последовательность: Sigil of Power на урон, Entangle для прикрепления лоз и набора статуса растения, затем Forced Outcome / Cast on Critical удерживают Thunderstorm сверху для поддержания Overgrown. Thrashing Vines выдаёт основную отдачу по одиночной цели.",
+        "Если гроза так и не приходит, проблема в цепочке триггеров (Forced Outcome / крит / мана), а не в посохе. В долгих боях, когда маны не хватает, используйте перекаты и Mana Remnants для поддержания, а не грубое наращивание пула."
+      ],
+      "bullets": [
+        "Entangle (прикрепление + замедление) → Sigil → Forced Outcome/CoC удерживают Thunderstorm (Overgrown).",
+        "Thrashing Vines — основная отдача по одиночной цели.",
+        "Просадка маны = чините триггер и поддержку, а не меняйте оружие."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Бюджетные уровни: реальная разница между дёшево и люкс",
+      "paragraphs": [
+        "Дёшево: посох на низком бюджете плюс решённые сопротивления/жизнь/мана, зачистка и боссинг большей части контента на цепочке триггеров. Это меняет то, можете ли вы играть, а не цифру урона.",
+        "Люкс: Focus с высоким уровнем заклинания, конкретные уникальные предметы, закрытое сопротивление хаосу и крит, поднимающие и срабатывание Thunderstorm, и выживаемость. Это меняет потолок и запас ошибки, а не превращает дёшево в другой билд.",
+        "Уровень зеркала — только после того, как вы проверите, что дёшево/люкс проходят, и цифры клиента подтвердят; не жертвуйте сопротивлением хаосу и маной ради ДПС."
+      ],
+      "bullets": [
+        "Сначала дёшево: жизнь, сопротивления, мана, приличный посох.",
+        "Люкс позже: уровень заклинания, сопротивление хаосу, крит.",
+        "Уровень зеркала никогда не ломает пол защиты."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Данные сообщества",
+      "note": "Это руководство использует обсуждения сообщества как воспроизводимый чек-лист, а не как обещание показанного ими ДПС.",
+      "entries": [
+        {
+          "context": "Игроки сообщают о застое урона после T15, не зная, что улучшать.",
+          "label": "Raxxanterax 0.5 Plant Oracle guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Гайд разделяет уровни дёшево/люкс/зеркало, уточняя, что каждый меняет границы снаряжения, а не механику.",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "context": "Игроки спорят, является ли «watering plants» скрытой механикой.",
+          "label": "P4wnyhof Plant Druid leveling experience",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Опыт прокачки подчёркивает ощущение в одну кнопку от Entangle + хлеста лоз; статус растения — это стакающиеся слои, а не отдельная система.",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Устранение неполадок",
+      "problems": [
+        {
+          "symptom": "Гроза у босса не запускается",
+          "checks": [
+            "Взят ли Forced Outcome?",
+            "Достаточен ли крит у Cast on Critical?",
+            "Поддерживает ли мана непрерывный триггер?"
+          ]
+        },
+        {
+          "symptom": "Мана кончается в долгих боях с боссами",
+          "checks": [
+            "Полагаетесь только на реген от убийств?",
+            "Активны ли Mana Remnants / вампиризм / флаконы при боссинге?"
+          ]
+        },
+        {
+          "symptom": "Зачистка замедляется",
+          "checks": [
+            "Посох всё ещё базы по уровню?",
+            "Решены ли сначала сопротивления и жизнь?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "ЧЗВ",
+      "items": [
+        {
+          "question": "С какого уровня начинать использовать Entangle?",
+          "answer": [
+            "Можно очень рано; это настоящий навык зачистки. Цепочка запуска Thunderstorm ждёт Oracle и ману."
+          ],
+          "bullets": [
+            "Зачистка Entangle с 1-го уровня."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Я сменил посох получше, но гроза всё ещё слабая?",
+          "answer": [
+            "Гроза поддерживается цепочкой триггеров (Forced Outcome / Cast on Critical / Мана), а не самим посохом; сначала чините триггер и ману."
+          ],
+          "bullets": [
+            "Запишите бой с боссом и проверьте иконки триггеров."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Можно ли играть в SSF?",
+          "answer": [
+            "Да; цепочка триггеров на низком бюджете зачищает и боссит большую часть контента в SSF. Люксовые уникальные предметы — это потолок, а не порог."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ru/guides/campaign-early-maps-gearing-crafting/",
+              "label": "См. гайд по снаряжению в кампании и ранних картах"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Планировщик билдов и импорт",
+      "note": "В PoE2 теперь встроен родной Планировщик билдов. Вставляемые строки импорта и файлы .build всё ещё ожидают проверки на ПК; пока используйте гайды создателей и официальный планировщик ниже. Всегда переподтверждайте узлы в своём клиенте.",
+      "creatorName": "Raxxanterax",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Смотрите прокачку и ритм грозы",
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "Гайд по прокачке Plant Oracle 0.5",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4",
+          "description": "Долгая справка, показывающая полный путь от зачистки Entangle до сформированной цепочки запуска Thunderstorm.",
+          "takeaway": "Берите по одному боссу кампании за акт; записывайте порядок триггеров, а не скорость зачистки.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Вступление и концепция"
+            },
+            {
+              "time": "2:10",
+              "label": "Зачистка в Акте 1"
+            },
+            {
+              "time": "5:30",
+              "label": "Вознесение Oracle и Forced Outcome"
+            },
+            {
+              "time": "9:00",
+              "label": "Цепочка запуска Thunderstorm"
+            },
+            {
+              "time": "13:20",
+              "label": "Ранние карты и снаряжение"
+            }
+          ]
+        },
+        {
+          "creator": "Raxxanterax",
+          "label": "Эндгейм-гайд Plant Oracle 0.5",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0",
+          "description": "Эндгейм: управление маной, дёшевое/люксовое/зеркальное снаряжение и древо пассивок.",
+          "takeaway": "Фокус на управлении маной и границах снаряжения, а не на слепой погоне за ДПС.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Вступление"
+            },
+            {
+              "time": "1:40",
+              "label": "Управление маной"
+            },
+            {
+              "time": "4:30",
+              "label": "Дёшевые уникальные предметы и снаряжение"
+            },
+            {
+              "time": "8:15",
+              "label": "Люксовое / зеркальное снаряжение"
+            },
+            {
+              "time": "12:00",
+              "label": "Древо пассивок и итог"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Источники и проверка",
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Grinding Gear Games — Патч-ноуты Path of Exile 2 0.5.4",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Гайд по прокачке Plant Oracle Druid (YouTube)",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Эндгейм-гайд Plant Oracle Druid (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "label": "Community",
+          "description": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Журнал изменений",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Создан документированный гайд по билду Plant Oracle Druid 0.5.4; проверка на ПК в процессе."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Патч-ноуты Path of Exile 2 0.5.4",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Raxxanterax — Гайд по прокачке Plant Oracle Druid (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "label": "Raxxanterax — Эндгейм-гайд Plant Oracle Druid (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+    },
+    {
+      "label": "P4wnyhof — Plant Druid Starter Perfected (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+    }
+  ],
+  "seo": {
+    "title": "Гайд по билду Plant Oracle Druid | Exile2 Guides",
+    "description": "Plant Oracle Druid 0.5.4: зачистка Entangle, Forced Outcome и CoC Thunderstorm, восполнение маны, ротация по боссам и бюджетные уровни.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "plant-oracle-druid",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

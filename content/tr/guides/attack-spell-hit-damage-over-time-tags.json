@@ -1,0 +1,744 @@
+{
+  "id": "attack-spell-hit-damage-over-time-tags",
+  "slug": "attack-spell-hit-damage-over-time-tags",
+  "locale": "tr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2'de Saldırı, Büyü, İsabet ve Sürede Hasar Etiketleri",
+  "shortTitle": "Saldırı mı Büyü mü, İsabet mi DoT mu",
+  "summary": "Path of Exile 2'deki en çok karıştırılan dört beceri kavramını netleştirin: Saldırı, Büyü, İsabet ve Sürede Hasar. Hangi değiştiricilerin hangi becerilere uygulandığını ve davranış etiketlerinin nasıl çalıştığını öğrenin.",
+  "description": "Saldırı ile Büyü'nün (beceri kategorisi), İsabet ile Sürede Hasar'ın (hasar biçimi) ve Mızrakçı, Alan, Yakın Dövüş, Süre, Minyon ve Totem gibi davranış etiketlerinin farkını açıklayan özlü bir Path of Exile 2 mekanik rehberi. Bir değiştirici uyumluluğu teşhisini ve örnek uygulamaları içerir.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/lightning-arrow.webp",
+  "cardImage": "/images/skills/lightning-arrow.webp",
+  "imageAlt": "Saldırı, büyü, isabet ve sürede hasar beceri etiketleri arasındaki farkı gösteren bir Path of Exile 2 beceri simgesi",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Path of Exile 2 beceri taşı ve destek taşı sisteminin temel düzeyde anlaşılması",
+    "Bir beceri ipucu balonunu ve listelenen etiketlerini okuma konusunda aşinalık",
+    "Hasarın türleri olduğunu fark etmek (Fiziksel, Ateş, Soğuk, Şimşek, Kaos)"
+  ],
+  "patch": "Path of Exile 2 Erken Erişim 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "attack",
+    "spell",
+    "hit",
+    "damage-over-time",
+    "skill-tags",
+    "tags"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Doğrudan yanıtlar",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Saldırı nedir?",
+          "body": [
+            "Saldırı, düşmanlara doğrudan kuşandığınız silahı kullanarak hasar veren bir beceridir. Saldırılar her tür hasarı verebilir ve genellikle İsabetliliğinizi kullanarak hedefin kaçınmasına karşı bir isabet şansı hesaplar."
+          ]
+        },
+        {
+          "title": "Büyü nedir?",
+          "body": [
+            "Büyü, ham sihiri silah yerine kullanan bir beceridir. Büyüler Saldırı değildir, İsabetlilik ve kaçınma yok sayarlar ve temel hasarları ile kritik şansları becerinin kendisinden gelir."
+          ]
+        },
+        {
+          "title": "İsabet nedir?",
+          "body": [
+            "İsabet, belirli bir anda verilen tek ve ayrık bir hasar olayıdır. Çoğu Saldırı ve Büyü hasarı İsabet olarak verir ve İsabetler kritik vurabilir, emebilir ve isabet efektlerini tetikleyebilir."
+          ]
+        },
+        {
+          "title": "Sürede Hasar nedir?",
+          "body": [
+            "Sürede Hasar (DoT), bir anda değil de bir süreye yayılarak kademeli olarak uygulanan hasardır. DoT bir İsabet değildir; bu nedenle normalde bir İsabet gibi kritik vuramaz, ememez veya isabet efektlerini tetikleyemez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "order": 2,
+      "title": "Anahtar terimler",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Oyuncular 'etiketler' hakkında konuşurken dört farklı kavram birbirine karışır. Bunlar farklı soruları yanıtlar ve çoğunlukla birbirinden bağımsızdır.",
+        "Beceri Türü (Saldırı mı Büyü mü), becerinin nasıl iletildiğini yanıtlar. Hasar Türü (Fiziksel, Ateş, Soğuk, Şimşek, Kaos), hasarın hangi element veya biçimde olduğunu yanıtlar. İsabet Türü, hasarın tek bir İsabet olarak mı yoksa Sürede Hasar olarak mı geldiğini yanıtlar. Davranış Etiketleri (Mızrakçı, Alan, Yakın Dövüş, Süre, Minyon, Totem), becerinin nasıl iletildiğini veya kime ait olduğunu yanıtlar. Bu dört katmanın hiçbiri tek başına diğerini belirlemez."
+      ],
+      "bullets": [
+        "Beceri Türü: Saldırı (silah kullanır) veya Büyü (sihir kullanır). Bu, becerinin kategorisidir.",
+        "Hasar Türü: Fiziksel, Ateş, Soğuk, Şimşek veya Kaos. Herhangi bir beceri türü herhangi bir hasar türünü verebilir.",
+        "İsabet Türü: bir İsabet (anlık) veya Sürede Hasar (kademeli). Ateşte Yanma ve Zehirlenme gibi rahatsızlıklar DoT biçimleridir.",
+        "Davranış Etiketi: Mızrakçı, Alan, Yakın Dövüş, Süre, Minyon, Totem. Bunlar iletim ve sahipliği tanımlar, hasar türünü değil."
+      ]
+    },
+    {
+      "id": "relationship-map",
+      "order": 3,
+      "title": "Beceri kategorisi ilişki haritası",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Saldırı ve Büyü kategorilerinin hasar türü, isabetlilik ve isabet durumuyla nasıl ilişkili olduğu. Beceri türü ve hasar türü birbirinden bağımsızdır.",
+      "columns": [
+        {
+          "key": "skill-category",
+          "label": "Beceri kategorisi"
+        },
+        {
+          "key": "deals-physical",
+          "label": "Fiziksel verir mi?"
+        },
+        {
+          "key": "deals-elemental",
+          "label": "Elementel verir mi?"
+        },
+        {
+          "key": "deals-chaos",
+          "label": "Kaos verir mi?"
+        },
+        {
+          "key": "requires-accuracy",
+          "label": "İsabetlilik gerektirir mi?"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Bir İsabet midir?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-category": "Saldırı",
+            "deals-physical": "Bazen - her türde hasar verebilir",
+            "deals-elemental": "Bazen - her türde hasar verebilir",
+            "deals-chaos": "Bazen - her türde hasar verebilir",
+            "requires-accuracy": "Evet - kaçınmaya karşı şans hesaplar",
+            "is-a-hit": "Genellikle evet, olay başına"
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-category": "Büyü",
+            "deals-physical": "Bazen - her türde hasar verebilir",
+            "deals-elemental": "Bazen - her türde hasar verebilir",
+            "deals-chaos": "Bazen - her türde hasar verebilir",
+            "requires-accuracy": "Hayır - isabetlilik ve kaçınmayı yok sayar",
+            "is-a-hit": "Genellikle evet, olay başına"
+          }
+        }
+      ],
+      "note": "Bir Büyü Ateş, Soğuk, Şimşek veya Kaos verebilir; bir Saldırı Ateş verebilir (örneğin dönüştürülmüş veya elementel bir silahla). Kategori asla hasar türünü sabitlemez."
+    },
+    {
+      "id": "hit-vs-dot",
+      "order": 4,
+      "title": "İsabet mi Sürede Hasar mı",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Farklı hasar biçimlerinin Path of Exile 2'de nasıl davrandığı. PoE2 wiki'sine göre: Sürede Hasar bir İsabet değildir, bu nedenle nüfuzdan etkilenmez ve dirençler yine onu azaltır.",
+      "columns": [
+        {
+          "key": "damage-form",
+          "label": "Hasar biçimi"
+        },
+        {
+          "key": "is-a-hit",
+          "label": "Bir İsabet midir?"
+        },
+        {
+          "key": "can-crit",
+          "label": "Kritik vurabilir mi?"
+        },
+        {
+          "key": "can-leech",
+          "label": "Emebilir mi?"
+        },
+        {
+          "key": "affected-by-penetration",
+          "label": "Nüfuzdan etkilenir mi?"
+        },
+        {
+          "key": "triggers-on-hit",
+          "label": "İsabeti tetikler mi?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hit"
+          ],
+          "cells": {
+            "damage-form": "İsabet",
+            "is-a-hit": "Evet",
+            "can-crit": "Evet",
+            "can-leech": "Evet (0.5.4'teki iyileşme mekanikleri gereği, PC doğrulaması beklemede)",
+            "affected-by-penetration": "Evet",
+            "triggers-on-hit": "Evet"
+          }
+        },
+        {
+          "tags": [
+            "ailment"
+          ],
+          "cells": {
+            "damage-form": "Rahatsızlık (Yanma, Kanama, Zehir)",
+            "is-a-hit": "Hayır",
+            "can-crit": "Hayır - rahatsızlıklar varsayılan olarak kritik vurmaz",
+            "can-leech": "Hayır (PC doğrulaması beklemede)",
+            "affected-by-penetration": "Hayır",
+            "triggers-on-hit": "Hayır"
+          }
+        },
+        {
+          "tags": [
+            "ground-effect"
+          ],
+          "cells": {
+            "damage-form": "Zemin Etkisi",
+            "is-a-hit": "Hayır",
+            "can-crit": "Hayır",
+            "can-leech": "Hayır",
+            "affected-by-penetration": "Hayır",
+            "triggers-on-hit": "Hayır"
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time"
+          ],
+          "cells": {
+            "damage-form": "Sürede Hasar (rahatsızlık dışı)",
+            "is-a-hit": "Hayır",
+            "can-crit": "Hayır",
+            "can-leech": "Hayır (PC doğrulaması beklemede)",
+            "affected-by-penetration": "Hayır - nüfuz yalnızca isabetlere uygulanır",
+            "triggers-on-hit": "Hayır"
+          }
+        }
+      ],
+      "note": "Eşleşen hasar türündeki dirençler DoT'u yine azaltır, ancak zırh ve nüfuz azaltmaz, çünkü bunlar yalnızca İsabetlere uygulanır. İyileşme (Emme) davranışı 0.5.4'te sürüme duyarlıdır ve PC onayı için işaretlenmiştir."
+    },
+    {
+      "id": "tags",
+      "order": 5,
+      "title": "Davranış etiketlerinin neyi ima ettiği ve etmediği",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Davranış etiketleri, bir becerinin nasıl iletildiğini veya kime ait olduğunu tanımlar. Hem Beceri Türü'nden hem de Hasar Türü'nden ayrıdır. Mızrakçı gibi bir etiket, becerinin bir mızrakçı (projectile) fırlattığını söyler; becerinin bir Saldırı mı yoksa Büyü mü olduğunu ya da hangi hasar türünü verdiğini söylemez.",
+        "Aynısı Alan, Yakın Dövüş, Süre, Minyon ve Totem için de geçerlidir. Bir Minyon becerisi minyonunuz tarafından, bir Totem becerisi yerleştirdiğiniz totem tarafından cast edilir ve bir Süre becerisi bir süre boyunca devam eder - bunların hiçbiri hasar türünü veya Saldırı/Büyü kategorisini sabitlemez."
+      ],
+      "bullets": [
+        "Mızrakçı: beceri bir mızrakçı olarak ilerler. Bir Saldırı (yay atışı) veya bir Büyü (bir büyü mızrakçısı) olabilir.",
+        "Alan: bir alanda hasar verir. Hem Saldırılara hem de Büyülere uygulanır.",
+        "Yakın Dövüş: yakın mesafeden iletilir. Neredeyse her zaman bir Saldırıdır, ancak yalnız başına etiket hasar türünü belirlemez.",
+        "Süre: etki bir süre boyunca devam eder (örneğin bir zemin etkisi veya aura). Kendi başına bir İsabet değildir.",
+        "Minyon / Totem: becerinin sahipliğini tanımlar, hasar türünü değil. Destek taşı uyumu hâlâ alttaki beceri etiketlerine bağlıdır."
+      ]
+    },
+    {
+      "id": "modifier-compatibility",
+      "order": 6,
+      "title": "Değiştirici uyumluluğu teşhisi",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Bir hasar değiştiricisinin veya destek taşının becerinize uygulanıp uygulanmayacağını kontrol etmek için bunu kullanın. Beceri türünüzü, ardından değiştirici kapsamını seçin.",
+      "controls": [
+        {
+          "id": "skill-type",
+          "label": "Becerinizin kategorisi nedir?",
+          "options": [
+            {
+              "label": "Saldırı",
+              "value": "attack"
+            },
+            {
+              "label": "Büyü",
+              "value": "spell"
+            }
+          ]
+        },
+        {
+          "id": "modifier-type",
+          "label": "Değiştirici veya destek ne diyor?",
+          "options": [
+            {
+              "label": "Saldırı Hasarı",
+              "value": "attack-damage"
+            },
+            {
+              "label": "Büyü Hasarı",
+              "value": "spell-damage"
+            },
+            {
+              "label": "Mızrakçı Hasarı",
+              "value": "projectile-damage"
+            },
+            {
+              "label": "Genel Hasar / Elementel Hasar",
+              "value": "generic"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Saldırı Hasarı uygulanır",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "Değiştirici veya destek Saldırı Hasar'ını hedefler.",
+            "Beceriniz bir Saldırı olduğu için bonusu alır."
+          ]
+        },
+        {
+          "title": "Büyü Hasarı uygulanır",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "Değiştirici veya destek Büyü Hasar'ını hedefler.",
+            "Beceriniz bir Büyü olduğu için bonusu alır."
+          ]
+        },
+        {
+          "title": "Mızrakçı Hasarı - etiketi kontrol edin",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "Değiştirici Mızrakçı Hasar'ını hedefler.",
+            "Yalnızca Saldırınız aynı zamanda Mızrakçı etiketine sahipse uygulanır (örneğin bir Yay veya Tüfek becerisi)."
+          ]
+        },
+        {
+          "title": "Bir Büyüde Mızrakçı Hasarı - etiketi kontrol edin",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "projectile-damage"
+          },
+          "steps": [
+            "Değiştirici Mızrakçı Hasar'ını hedefler.",
+            "Yalnızca Büyünüz aynı zamanda Mızrakçı etiketine sahipse uygulanır (örneğin bir mızrakçı fırlatan büyü)."
+          ]
+        },
+        {
+          "title": "Uyuşmazlık - Bir Büyüde Saldırı Hasarı",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "attack-damage"
+          },
+          "steps": [
+            "Saldırı Hasarı değiştiricileri Büyülere uygulanmaz.",
+            "Saldırı etiketine sahip bir destek taşı, bir Büyü becerisinde uyumsuz olarak gösterilir."
+          ]
+        },
+        {
+          "title": "Uyuşmazlık - Bir Saldırıda Büyü Hasarı",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "spell-damage"
+          },
+          "steps": [
+            "Büyü Hasarı değiştiricileri Saldırılara uygulanmaz.",
+            "Büyü etiketine sahip bir destek taşı, bir Saldırı becerisinde uyumsuz olarak gösterilir."
+          ]
+        },
+        {
+          "title": "Genel Hasar uygulanır",
+          "when": {
+            "skill-type": "attack",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Genel Hasar veya Elementel Hasar değiştiricileri kategoriden bağımsız olarak her beceriye uygulanır.",
+            "Yine de hasar türüyle eşleşmeleri gerekir (örneğin Ateş Hasarı yalnızca Ateş becerilerine yardımcı olur)."
+          ]
+        },
+        {
+          "title": "Genel Hasar uygulanır",
+          "when": {
+            "skill-type": "spell",
+            "modifier-type": "generic"
+          },
+          "steps": [
+            "Genel Hasar veya Elementel Hasar değiştiricileri kategoriden bağımsız olarak her beceriye uygulanır.",
+            "Yine de hasar türüyle eşleşmeleri gerekir (örneğin Soğuk Hasarı yalnızca Soğuk becerilerine yardımcı olur)."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Hâlâ emin değil misiniz?",
+        "steps": [
+          "Değiştirici veya destek taşındaki tam ifadeyi okuyun.",
+          "Kategori kelimesini (Saldırı / Büyü / Mızrakçı) becerinizin etiketleriyle eşleştirin.",
+          "Etiket eksikse değiştirici uygulanmaz ve destek uyumsuz olarak görünebilir."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 7,
+      "title": "Örnek uygulamalar",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Beceri türünü, etiketleri ve hangi hasar değiştiricilerinin uygulandığını gösteren dört yaygın build. Bu örnek niteliğindedir, kapsamlı değildir.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Durum"
+        },
+        {
+          "key": "skill",
+          "label": "Beceri"
+        },
+        {
+          "key": "tags",
+          "label": "Etiketler"
+        },
+        {
+          "key": "what-applies",
+          "label": "Neler uygulanır"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "cells": {
+            "case": "Yay fiziksel saldırısı",
+            "skill": "Fiziksel hasar veren bir Yay becerisi",
+            "tags": "Saldırı, Mızrakçı, Fiziksel",
+            "what-applies": "Saldırı Hasarı, Mızrakçı Hasarı ve Fiziksel Hasar değiştiricilerinin hepsi uygulanır. Kaçınma isabet için önemlidir."
+          }
+        },
+        {
+          "tags": [
+            "attack",
+            "fire"
+          ],
+          "cells": {
+            "case": "Ateş elementel saldırısı",
+            "skill": "Ateş'e dönüştürülmüş bir silah saldırısı",
+            "tags": "Saldırı, Ateş",
+            "what-applies": "Saldırı Hasarı ve Ateş Hasarı değiştiricileri uygulanır. Büyü Hasarı uygulanmaz. Nüfuz isabeti etkiler."
+          }
+        },
+        {
+          "tags": [
+            "spell",
+            "cold"
+          ],
+          "cells": {
+            "case": "Saf soğuk büyü",
+            "skill": "Soğuk hasar veren bir büyü",
+            "tags": "Büyü, Soğuk",
+            "what-applies": "Büyü Hasarı ve Soğuk Hasarı değiştiricileri uygulanır. Saldırı Hasarı uygulanmaz. İsabetlilik ilgili değildir."
+          }
+        },
+        {
+          "tags": [
+            "damage-over-time",
+            "ailment"
+          ],
+          "cells": {
+            "case": "Yanma veya Zehir DoT",
+            "skill": "Sürede Hasar veren bir rahatsızlık",
+            "tags": "Sürede Hasar, Rahatsızlık",
+            "what-applies": "DoT ve rahatsızlık çarpanları uygulanır. Bu bir İsabet değildir, bu nedenle kritik, emme, isabet ve nüfuz aynı şekilde uygulanmaz. Direnç yine azaltır."
+          }
+        }
+      ],
+      "note": "Tam değiştirici adları yama ya göre değişir. Her zaman oyundaki beceri ipucu etiketlerini ve değiştirici ifadesini okuyun."
+    },
+    {
+      "id": "common-misreads",
+      "order": 8,
+      "title": "Yaygın yanlış okumalar",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bu etiketlerle ilgili çoğu build hatası, bir katmanın diğerini kontrol ettiğini varsaymaktan kaynaklanır. Aşağıdaki tuzaklara dikkat edin."
+      ],
+      "bullets": [
+        "Bir Saldırı'nın her zaman Fiziksel olduğunu varsaymak - Saldırılar Ateş, Soğuk, Şimşek veya Kaos verebilir.",
+        "Bir Büyü'nün Fiziksel veremeyeceğini varsaymak - Büyü temel hasarı silah değil beceri tarafından belirlenir, ancak hasar türü yine de bağımsızdır.",
+        "Bir Büyüye Saldırı Hasarı veya bir Saldırıya Büyü Hasarı eklemek - bonus simply uygulanmaz.",
+        "Bir DoT veya rahatsızlığın kritik vurmasını, emmesini veya isabet efektlerini tetiklemesini beklemek - bunlar İsabet değildir.",
+        "Nüfuzun bir DoT'a yardımcı olmasını beklemek - nüfuz yalnızca İsabetlere uygulanır; bunun yerine maruz bırakma veya rahatsızlık büyüklüğü kullanın.",
+        "Bir Mızrakçı veya Minyon etiketini hasar türü sinyali olarak okumak - bu yalnızca iletim veya sahipliği tanımlar."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 9,
+      "title": "Yaygın oyuncu kafa karışıklıkları",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Path of Exile 2'de beceri etiketleri hakkında oyuncuların sıkça dile getirdiği, paraphrase edilmiş kafa karışıklıkları.",
+      "cards": [
+        {
+          "title": "Büyüm Saldırı desteğinden hasar almadı",
+          "tag": "support-gem",
+          "body": [
+            "Saldırı etiketi olmayan bir Büyü becerisi, Saldırı tipi destek taşlarını reddeder. Taş, kategori eşleşmediği için uyumsuz görünür."
+          ]
+        },
+        {
+          "title": "Yanmam neden kritik vurmadı?",
+          "tag": "damage-over-time",
+          "body": [
+            "Yanma bir Sürede Hasar'dır, bir İsabet değildir. Varsayılan olarak rahatsızlıklar kritik vurmaz ve kritik hasar bonuslarından yararlanmaz."
+          ]
+        },
+        {
+          "title": "Nüfuz zehirde işe yaramaz gibiydi",
+          "tag": "penetration",
+          "body": [
+            "Zehir bir DoT'tur. Nüfuz yalnızca İsabetlere uygulanır, bu nedenle sürede-hasar kısmına yardımcı olmaz. Direnç yine onu azaltır."
+          ]
+        },
+        {
+          "title": "Minyon becerim büyü taşlarımı yok saydı",
+          "tag": "minion",
+          "body": [
+            "Minyon, beceriyi kimin cast ettiğini tanımlar. Büyü desteklerinin uygulanıp uygulanmadığı, minyon becerisinin kendi etiketlerine bağlıdır ve bunlar sürüme duyarlıdır - oyunda doğrulayın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Video rehberi",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE2 Hasar Nasıl Verilir | Büyüler mi Saldırılar mı",
+          "creator": "Exiled RPGs",
+          "description": "Path of Exile 2'de hasarın nasıl çalıştığının, Saldırılar ile Büyüleri karşılaştıran, İsabetleri ve Sürede Hasar'ı açıklayan ve hangi değiştiricilerin hangi becerilere uygulandığını gösteren net bir anlatımı.",
+          "takeaway": "Değiştiricinin kategori kelimesini (Saldırı, Büyü, Mızrakçı) becerinizin etiketleriyle eşleştirin; Sürede Hasar'ın bir İsabet olmadığını unutmayın.",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+          "timestamps": [
+            {
+              "label": "Giriş",
+              "time": "0:00"
+            },
+            {
+              "label": "Saldırılar mı büyüler mi açıklandı",
+              "time": "1:30"
+            },
+            {
+              "label": "İsabet ne sayılır",
+              "time": "4:10"
+            },
+            {
+              "label": "Sürede hasar ve rahatsızlıklar",
+              "time": "7:25"
+            },
+            {
+              "label": "Hangi değiştiriciler hangi becerilere uygulanır",
+              "time": "10:40"
+            },
+            {
+              "label": "Özet ve yaygın tuzaklar",
+              "time": "13:15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 11,
+      "title": "Sıkça sorulan sorular",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Bir Saldırı her zaman Fiziksel hasar mıdır?",
+          "answer": [
+            "Hayır. Saldırı, silah kullanımıyla tanımlanan bir beceri kategorisidir. Saldırılar Fiziksel, Ateş, Soğuk, Şimşek veya Kaos hasar verebilir. Hasar türü, Saldırı/Büyü kategorisinden bağımsızdır."
+          ]
+        },
+        {
+          "question": "Bir Büyü İsabetlilik veya isabet şansı kullanır mı?",
+          "answer": [
+            "Hayır. Büyüler İsabetlilik veya kaçınmadan etkilenmez. Temel hasarları, cast hızları ve kritik şansları becerinin kendisinden, bir silahtan değil, gelir."
+          ]
+        },
+        {
+          "question": "Sürede Hasar bir İsabet midir?",
+          "answer": [
+            "Hayır. Sürede Hasar bir süreye yayılarak kademeli olarak uygulanır ve bir İsabet sayılmaz. Bu nedenle isabetlere uygulanan bonuslar ve savunmalar (nüfuz ve zırh gibi) onu etkilemez, eşleşen hasar türündeki direnç ise yine onu azaltır."
+          ]
+        },
+        {
+          "question": "Sürede Hasar kritik vuabilir veya emebilir mi?",
+          "answer": [
+            "Varsayılan olarak, Sürede Hasar ve Yanma, Kanama ve Zehir gibi rahatsızlıklar kritik vurmaz ve isabet efektlerini tetiklemez. Bunların emip emeyemeyeceği, 0.5.4'teki mevcut iyileşme mekaniklerine bağlıdır ve PC onayı için işaretlenmiştir."
+          ]
+        },
+        {
+          "question": "Mızrakçı veya Minyon gibi davranış etiketleri hasar türünü belirler mi?",
+          "answer": [
+            "Hayır. Mızrakçı, Alan, Yakın Dövüş, Süre, Minyon ve Totem, bir becerinin nasıl iletildiğini veya kime ait olduğunu tanımlar. Becerinin bir Saldırı mı yoksa Büyü mü olduğunu ya da hangi hasar türünü verdiğini belirlemezler."
+          ]
+        },
+        {
+          "question": "Destek taşım neden uyumsuz olarak gösteriliyor?",
+          "answer": [
+            "Bir destek taşı, yalnızca gerektirdiği etiketler becerinin etiketleriyle eşleşiyorsa uygulanır. Saldırı etiketi gerektiren bir taş bir Büyü'ye, Büyü gerektiren bir taş ise bir Saldırı'ya takılmaz. Hem beceri hem de destek ipucu etiketlerini okuyun."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Kaynaklar ve doğrulama",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2 Wiki - Sürede hasar",
+          "description": "DoT'un bir İsabet olmadığını ve nüfuzdan veya zırhaftan etkilenmediğini doğrulayan resmi wiki sayfası",
+          "url": "https://poe2wiki.net/wiki/Damage_over_time"
+        },
+        {
+          "label": "PoE2 Wiki - Saldırı",
+          "description": "Saldırıları tanımlayan ve her tür hasarı verebildiklerini doğrulayan resmi wiki sayfası",
+          "url": "https://poe2wiki.net/wiki/Attack"
+        },
+        {
+          "label": "PoE2 Wiki - Büyü",
+          "description": "Büyüleri tanımlayan ve isabetlilik ile kaçınmayı yok saydıklarını doğrulayan resmi wiki sayfası",
+          "url": "https://poe2wiki.net/wiki/Spell"
+        },
+        {
+          "label": "Exiled RPGs - PoE2 Hasar Nasıl Verilir (YouTube)",
+          "description": "Saldırılar mı Büyüler mi, İsabetler ve Sürede Hasar'ı açıklayan topluluk videosu",
+          "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog"
+        },
+        {
+          "label": "Maxroll - PoE2 kaynakları",
+          "description": "Path of Exile 2 mekanikleri ve build rehberlerinin topluluk merkezi",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Değişiklik günlüğü",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Path of Exile 2 Erken Erişim 0.5.4 için Saldırı, Büyü, İsabet ve Sürede Hasar etiketleri rehberinin ilk yayını.",
+            "Hızlı yanıtlar, terminoloji, ilişki haritası, isabet-DoT tablosu, davranış etiketleri, değiştirici uyumluluğu teşhisi, örnek uygulamalar, yaygın yanlış okumalar, topluluk örnekleri, video, SSS ve kaynaklar eklendi."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Wiki - Sürede hasar",
+      "url": "https://poe2wiki.net/wiki/Damage_over_time",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Saldırı",
+      "url": "https://poe2wiki.net/wiki/Attack",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Büyü",
+      "url": "https://poe2wiki.net/wiki/Spell",
+      "sourceType": "official"
+    },
+    {
+      "label": "Exiled RPGs - PoE2 Hasar Nasıl Verilir (YouTube)",
+      "url": "https://www.youtube.com/watch?v=X9kM7Wuyuog",
+      "sourceType": "community"
+    },
+    {
+      "label": "Maxroll - PoE2 kaynakları",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    }
+  ],
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "attack-spell-hit-damage-over-time-tags",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  },
+  "seo": {
+    "title": "PoE 2 Saldırı, Büyü, İsabet ve Sürede Hasar Etiketleri Rehberi",
+    "description": "Path of Exile 2 beceri etiketlerini anlayın: Saldırı mı Büyü mü, İsabet mi Sürede Hasar mı ve Mızrakçı, Alan, Minyon ve Totem gibi davranış etiketleri. Hangi değiştiricilerin uygulandığını öğrenin.",
+    "noindex": false
+  }
+}

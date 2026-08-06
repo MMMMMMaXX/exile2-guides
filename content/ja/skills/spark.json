@@ -1,0 +1,584 @@
+{
+  "id": "spark",
+  "slug": "spark",
+  "locale": "ja",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Spark ガイド — 連鎖する投射物、インフュージョン、クリティカル発動のスケーリング",
+  "shortTitle": "Spark",
+  "summary": "Spark は一斉に投射物を放ち、近くの敵の間を連鎖し、短い距離を飛んで短いビームを残す。これはクリティカル発動（CoC）やマナ蓄積ビルドのコアとなる殲滅スペルであり、Cold Infusion（冷気付与）と投射速度の恩恵を強く受ける。本ガイドでは命中ルール、インフュージョン、地形の挙動、サポート編成、ボス戦のローテーションを解説する。",
+  "description": "Spark の詳細ガイド：連鎖する投射物とビームの仕組み、同一ターゲットへの命中間隔、Cold Infusion と Lightning Infusion の成果、投射速度と持続時間のトレードオフ、クリティカル発動のエネルギー・スケーリング、サポートとの互換性、マッピングとボス戦のローテーション、トラブルシューティング、そして実際のコミュニティの質問。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 3,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "projectile",
+    "lightning",
+    "chaining",
+    "aoe"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/spark.webp",
+  "cardImage": "/images/skills/spark.webp",
+  "imageAlt": "Spark 雷スペル スキルアイコン",
+  "tags": [
+    "spell",
+    "lightning",
+    "chaining",
+    "cast-on-crit",
+    "clear"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark はファン状の投射物を放ち、自動的に近くの敵へ連鎖し、その後短い距離を飛んで軌跡に沿って短いビームを残す。",
+        "殲滅力の源泉は連鎖とビームの重なりであり、そのため投射速度や持続時間、敵の密度は、単なる投射物の数よりも重要になる。",
+        "Cold Infusion をかけると投射物は冷気属性になり、ビームが円状に多数の投射物へと爆発する。これはクリティカル発動構成で使われる強力なバーストである。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "カテゴリ",
+          "value": "Spell / Projectile / Lightning",
+          "notes": [
+            "spell、projectile、lightning、chaining、aoe のタグを持つ。"
+          ]
+        },
+        {
+          "label": "命中パターン",
+          "value": "Chaining projectiles + beam",
+          "notes": [
+            "投射物は敵の間を連鎖し、その後に短いビームを残す。"
+          ]
+        },
+        {
+          "label": "最適なインフュージョン",
+          "value": "Cold Infusion burst",
+          "notes": [
+            "冷気付与された Spark はビーム上で円状の投射物へと爆発する。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "Uncut Skill Gem (Tier 3)",
+          "notes": [
+            "Uncut Skill Gem（未加工スキルジェム）から入手し、スペル・スキル枠に装着する。"
+          ]
+        },
+        {
+          "label": "最適な役割",
+          "value": "Screen clear + CoC trigger",
+          "notes": [
+            "クリティカル発動やマナ蓄積ビルドと組み合わせる。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "必要条件",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "特別なステータス要件はない。Spark はスキル枠に装着してマナで詠唱するスペルジェムである。",
+        "スペルであるため、スペル系のサポートによって強化され、自己詠唱の代わりにクリティカル発動や異状発動ジェムによってトリガーすることもできる。"
+      ]
+    },
+    {
+      "id": "projectile-field",
+      "order": 40,
+      "title": "投射物フィールドとビーム",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "詠唱時、Spark は前方の扇形に投射物のセットを放出する。各投射物は限られた回数だけ近くの敵へ連鎖し、その後も飛び続けて通過した軌跡に沿ってビームの区間を残す。",
+        "ビームは二次的な命中源である。複数のビームが重なる場所にいる敵はビームのダメージを繰り返し受ける。これが密集した集団が溶けるように感じる理由である。",
+        "投射物の数、連鎖回数、ビームの持続時間は、部屋のどれだけの範囲をカバーするかを変える3つのつまみである。"
+      ],
+      "bullets": [
+        "連鎖は連鎖範囲内の最も近い有効な敵を狙う。",
+        "ビームは投射物の移動が終わった後もしばらく残る。",
+        "Cold Infusion はビームを円状の投射物バーストに置き換える。"
+      ]
+    },
+    {
+      "id": "same-target-hit-rule",
+      "order": 50,
+      "title": "同一ターゲットへの命中間隔",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "同一の詠唱から出た複数の投射物が同じ敵に命中する場合、内部の命中間隔の制御下にあり、これにより1回の Spark がすべての投射物で瞬時に1つのターゲットをショットガン的に攻撃することを防ぐ。",
+        "異なる詠唱は別々に扱われるため、2回目の Spark によるより速い詠唱速度は、時間をかけて同じターゲットへ命中する機会を増やす。",
+        "クリティカル発動構成では、トリガー元の所有関係が重要である。トリガーされた Spark はそれ自体が独立した詠唱であり、同じ詠唱ごとの間隔ルールに従う。"
+      ],
+      "bullets": [
+        "同一詠唱で1敵に複数投射物：命中間隔に制限される。",
+        "別々の詠唱：それぞれ自身の間隔に従って命中を供給できる。",
+        "冷気付与された投射物は独自のパターンに従い、単に通常のビームルールを引き継ぐわけではない。"
+      ]
+    },
+    {
+      "id": "infusion-mode",
+      "order": 60,
+      "title": "インフュージョン・モード",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark はインフュージョン（付与）が可能である。Cold Infusion は投射物を冷気ダメージに変換し、ビームを投射物のリングへと爆発させ、殲滅スペルをバーストへと変える。これは同時に冷気蓄積（chill）を重ね、異状発動のトリガーを供給する。",
+        "Lightning Infusion は雷タグを維持し、投射物またはビームが命中したときに消費される。そのためインフュージョンの恩恵はチャージがある間のみ適用される。",
+        "インフュージョンの選択は Spark を中心としたビルドを変える。Cold Infusion は異状と冷気のスケーリングを求め、Lightning Infusion は純粋な雷ダメージとショックの成果を求める。"
+      ],
+      "bullets": [
+        "Cold Infusion：円状の投射物バースト。異状発動と相性が良い。",
+        "Lightning Infusion：命中時に消費される。安定した付与源が必要。",
+        "インフュージョンのコストはスペルのマナコストとは別である。"
+      ]
+    },
+    {
+      "id": "terrain-analysis",
+      "order": 70,
+      "title": "地形とポジショニング",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark は壁や角にぶつかって引っかかったり、ビームを無駄にしたりすることがある。狭い部屋では投射物はすばやく連鎖するが、ビームが地形を削ってカバー範囲が減ることがある。",
+        "広いマップでは投射物は最大距離を飛び、ビームが広い範囲に重なるため、最も良い殲滅感が得られる。",
+        "小さなアリーナのボスに対しては、わずかに中心から外して狙うことで、連鎖とビームがすぐに壁に跳ね返るのではなくボスを満たすようになる。"
+      ],
+      "bullets": [
+        "広いマップ：投射物の全飛距離、ビームの広い重なり。",
+        "狭いボス部屋：早期の壁めり込みを避けるため中心から外して狙う。",
+        "角は連鎖を閉じ込め、実効的な単体火力を下げることがある。"
+      ]
+    },
+    {
+      "id": "projectile-speed-duration",
+      "order": 80,
+      "title": "投射速度 vs 持続時間",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "目的",
+        "Projectile Speed",
+        "Duration",
+        "結果",
+        "Risk"
+      ],
+      "rows": [
+        [
+          "素早い広域殲滅",
+          "High",
+          "Medium",
+          "遠くの敵を素早くカバー",
+          "各エリアの滞在が短い"
+        ],
+        [
+          "狭いボス戦",
+          "Medium",
+          "High",
+          "より多くの跳ね返りと反復カバー",
+          "感触が遅くなる"
+        ],
+        [
+          "CoC 生成",
+          "Medium-High",
+          "Medium-High",
+          "頻繁な命中",
+          "クリティカルに依存"
+        ],
+        [
+          "Cold Infusion burst",
+          "Current client value",
+          "Current client value",
+          "円状に多くの投射物",
+          "インフュージョンを消費"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "サポート互換性",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark は投射物スペルであるため、投射物の数、連鎖、範囲、スペルダメージ、詠唱速度を増やすサポートはすべて適用される。攻撃やミニオンにしか恩恵のないサポートは避けること。"
+      ],
+      "bullets": [
+        "Added Lightning Damage と Lightning Penetration はショックビルド向け。",
+        "Chain と Return Projectiles は集団内のカバーを広げる。",
+        "Faster Casting と Cast on Crit の補助はトリガー生成を高速化する。"
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 100,
+      "title": "サポート装備",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "殲滅重視の Spark は投射物と範囲のサポートを使う。クリティカル発動の Spark はクリティカルと詠唱速度のサポートに寄せ、エネルギーゲージを満たし続ける。"
+      ],
+      "bullets": [
+        "殲滅：Chain、Lightning Penetration、Area、Energy Retention。",
+        "CoC：Critical Damage、Cast Speed、Lightning Damage、Control。",
+        "Cold Infusion：純粋な雷の代わりに冷気と異状のサポートを使う。"
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 110,
+      "title": "スキルの相互作用",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark はクリティカル発動や異状発動の供給源となる。なぜなら各連鎖とビームの命中は、トリガーを抽選できる独立した命中イベントだからである。",
+        "Mana Tempest（マナの大嵐）は嵐の中でトリガーされた Spark を強化でき、同じクリティカル構成からトリガーされる Comet はエネルギー経済を共有する。",
+        "Herald of Thunder は雷の命中からショックの発生率を得るため、Spark の殲滅でヘラルドの発動を流し続けられる。"
+      ],
+      "bullets": [
+        "Cast on Critical Strike：主要なトリガー相手。",
+        "Cast on Elemental Ailment：Cold Infusion と組む。",
+        "Mana Tempest：嵐の中で詠唱されたスペルを強化する。"
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 120,
+      "title": "マッピング・ローテーション",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マップでは、少し角度をつけて集団に Spark を詠唱し、連鎖で敵をまとめ、ビームを集団に重ねる。",
+        "動き続けること。Spark は画面を素早く殲滅するため、ほとんどの場合立ち止まる必要はない。クールダウンやトリガーの許す限り再詠唱する。"
+      ],
+      "bullets": [
+        "集団の最も密度の高い部分へ中心から外して狙う。",
+        "移動しながら詠唱し続け、複数の集団を連鎖で抜ける。",
+        "異状の連鎖が欲しいときは Cold Infusion を使う。"
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 130,
+      "title": "ボス戦ローテーション",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "ボスに対しては、Spark 単体では単体火力が弱い。これを Comet のトリガー・エンジンとして使うか、メインのダメージスキルが働く間の冷気付与（chill）手段として使うこと。",
+        "ビームがボスを繰り返し横切るように位置取りする。小さなアリーナでは、至近距離の詠唱よりもわずかに角度をつけた詠唱のほうがボスをよくカバーできる。"
+      ],
+      "bullets": [
+        "Spark はメインのボスダメージではなくトリガーとして扱う。",
+        "ビームがボスのヒットボックスを横切るように角度をつけて詠唱する。",
+        "ボスのよろけに合わせて Cold Infusion のバーストのタイミングを取る。"
+      ]
+    },
+    {
+      "id": "coc-usage",
+      "order": 140,
+      "title": "クリティカル発動の使い方",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "クリティカル発動構成では、Spark は通常トリガーされたスペルである。メイン構成からの各クリティカルが Spark を発動し、Spark の多数の命中がトリガーのエネルギーを満たす助けになる。",
+        "エネルギーゲージはクリティカルから溜まる。より速い Spark の詠唱とより多い連鎖はループへ供給する命中を増やすが、それでもトリガー元にクリティカル率とクリティカル倍率が必要である。",
+        "マナ蓄積ビルドは Spark を Archmage 型のマナ・スケーリングと組み合わせ、トリガーされたスペルも最大マナに応じてスケーリングするようにする。"
+      ],
+      "bullets": [
+        "Spark はトリガー源ではなく、トリガーされる弾（payload）である。",
+        "より多い連鎖と詠唱速度がエネルギーゲージを満たす。",
+        "マナ蓄積はトリガーされたダメージを倍増させる。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 150,
+      "title": "ビルドの使い方",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark は Spark クリティカル発動 Stormweaver や Gemling 構成、およびスペルトーテムやトリガー変種を使うマナ蓄積 Oracle や Titan ビルドで輝く。",
+        "また、ジェムの階層が低く、低予算でも殲滅力が強いため、信頼できるリーグスタート（開幕）ビルドでもある。"
+      ],
+      "bullets": [
+        "Spark Cast on Crit Stormweaver：高密度トリガー殲滅。",
+        "Spark Gemling Legionnaire：ステータス蓄積型の変種。",
+        "Mana Tempest Oracle：トリガーされた Spark を強化する。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 160,
+      "title": "トラブルシューティング",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "多くの投射物を放っているのにボスがほとんどダメージを受けない場合、おそらく Spark の連鎖が役立たない単体シナリオにいる。トリガーとして使うか、単体スペルに切り替えること。",
+        "投射物が地形に引っかかる場合は狭い部屋にいるため、角度をつけて詠唱する。より速い投射物で単体火力が落ちる場合は、持続時間と引き換えに速度を取ったのである。"
+      ],
+      "bullets": [
+        "ボスダメージが低い：Spark は殲滅ツールであり単体ではない。",
+        "引っかかる投射物：角度をつけて詠唱し、角を避ける。",
+        "エネルギーゲージが遅い：クリティカル率と詠唱速度を上げる。",
+        "Cold Infusion が消費されない：付与源が有効か確認する。",
+        "武器セット切り替えでサポートが外れる：同じサポートを装着したままにする。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 170,
+      "title": "コミュニティの証拠",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "プレイヤーは 0.5 パッチのスレッドで一貫して Spark を最高クラスの殲滅スペルとして報告しており、主な議論は Cold Infusion のバーストか Lightning Infusion の維持かである。",
+        "クリティカル発動 Spark ビルドは、ジェム階層が低く、投資により天井が高いため、繰り返しリーグスタートの推奨として挙げられる。"
+      ],
+      "bullets": [
+        "Cold Infusion バーストは 0.5 で人気の殲滅選択肢。",
+        "CoC Spark は低予算から高みまで使えるスタートとして推奨。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 180,
+      "title": "動画ガイド",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Spark CoC Ritualist",
+          "label": "Spark Cast on Critical Ritualist ビルドガイド (0.5)",
+          "description": "Ritualist のクリティカル発動 Spark ビルドで、0.5 パッチでの殲滅速度とトリガー構成を紹介。",
+          "takeaway": "Spark のトリガーループが画面をどう殲滅し続けるかを見る。",
+          "url": "https://youtu.be/3qhZjCutAv0",
+          "timestamps": [
+            {
+              "label": "ビルド概要",
+              "time": "0:00"
+            },
+            {
+              "label": "トリガー構成",
+              "time": "3:00"
+            },
+            {
+              "label": "マッピング殲滅",
+              "time": "6:00"
+            }
+          ]
+        },
+        {
+          "creator": "Spark Temporalis",
+          "label": "2.5M ツールチップ Spark Temporalis ビルドガイド (0.5)",
+          "description": "Temporalis による終盤のスケーリングを見せる高予算の Spark ビルド。",
+          "takeaway": "ダメージの裏にあるマナと詠唱速度のスケーリングを見る。",
+          "url": "https://youtu.be/RSGtMff_96Y",
+          "timestamps": [
+            {
+              "label": "装備目標",
+              "time": "0:00"
+            },
+            {
+              "label": "ダメージ内訳",
+              "time": "4:00"
+            },
+            {
+              "label": "ボス実演",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "公式",
+          "description": "現在の 0.5.4 クライアントにおける Spark の挙動、連鎖、インフュージョンを確認する GGG 公式パッチノートとフォーラム。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DB とコミュニティ Wiki は Spark のスキル id、タグ、連鎖回数、インフュージョンの挙動を提供する。",
+          "url": "https://poe2db.tw/Spark"
+        },
+        {
+          "label": "Wiki",
+          "description": "投射物とビームの詳細を含む Spark のコミュニティ Wiki ページ。",
+          "url": "https://www.poe2wiki.net/wiki/Spark"
+        },
+        {
+          "label": "ビルドと動画",
+          "description": "トリガーとスケーリングの相互確認に使われる YouTube の Spark クリティカル発動および Temporalis ビルド。",
+          "url": "https://youtu.be/3qhZjCutAv0"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Reddit とフォーラムは Spark の殲滅とインフュージョンに関する議論を取り上げる。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Spark&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 200,
+      "title": "パッチ履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients): Spark は引き続き中核となる連鎖スペル。Cold Infusion バーストの挙動はクライアントで確認済み。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): 現在の基準：連鎖する投射物＋ビーム、Cold Infusion の円状バースト、クリティカル発動のトリガー・スケーリング。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 210,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "初回リリース：投射物フィールドとビーム、同一ターゲット間隔、インフュージョン・モード、地形の挙動、速度対持続時間表、サポート編成、クリティカル発動の使い方、マッピングとボス戦のローテーション、トラブルシューティング、コミュニティの質問。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "spark-coc-comet-stormweaver",
+    "spark-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "comet",
+    "mana-tempest",
+    "cast-on-critical-strike"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 公式パッチノート フォーラム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Spark",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Spark"
+    },
+    {
+      "label": "PoE2 Community Wiki — Spark",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Spark"
+    },
+    {
+      "label": "Spark CoC Ritualist video",
+      "sourceType": "community",
+      "url": "https://youtu.be/3qhZjCutAv0"
+    },
+    {
+      "label": "Spark Temporalis video",
+      "sourceType": "community",
+      "url": "https://youtu.be/RSGtMff_96Y"
+    },
+    {
+      "label": "Reddit — Spark discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Spark&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Spark ガイド — 連鎖する投射物、インフュージョン、クリティカル発動のスケーリング",
+    "description": "Spark の詳細ガイド：連鎖する投射物とビーム、同一ターゲットへの命中間隔、Cold と Lightning のインフュージョン、投射速度と持続時間、クリティカル発動のエネルギー・スケーリング、サポート、マッピングとボス戦のローテーション、トラブルシューティング、コミュニティの質問。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

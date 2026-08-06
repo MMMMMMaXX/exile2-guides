@@ -1,0 +1,711 @@
+{
+  "id": "mirage-archer",
+  "slug": "mirage-archer",
+  "locale": "fr",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guide de l'Archer Mirage — Déclencheur par Esquive, Attaques insérées, Temps de recharge et limites",
+  "shortTitle": "Archer Mirage",
+  "summary": "L'Archer Mirage est une gemme Méta qui, lorsque vous effectuez une Esquive, invoque un Mirage utilisant les attaques insérées dans la gemme. Le Mirage imite vos attaques à distance (Arc / Lance / Arbalète) avec une pénalité de dégâts, possède sa propre limite d'objets distincte de la vôtre, et ne peut pas utiliser les supports indiquant « les compétences que vous utilisez vous-même ». Ce guide explique le déclencheur par esquive, le temps de recharge, les Mirages multiples, la priorité des attaques insérées, l'interaction Paratonnerre / Flèche éclair, ainsi que les rotations de mapping et de boss utilisées par les builds Deadeye, Witchhunter et Gemling.",
+  "description": "Guide approfondi de l'Archer Mirage : déclencheur par esquive et création du Mirage, coût de 60 Esprit, durée et temps de recharge, attaques insérées uniques ou multiples et priorité, limites d'objets indépendantes du joueur, comportement Utilisations / Rechargement / Canalisation, interaction Paratonnerre et Flèche éclair, supports indiquant « vous-même », budget d'Esprit face à Héraut / Frénésie de combat, rotations de mapping et de boss, dépannage et témoignages communautaires.",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "skillCategory": "meta",
+  "spiritReservation": 60,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/mirage-archer.webp",
+  "cardImage": "/images/skills/mirage-archer.webp",
+  "imageAlt": "Mirage Archer meta gem icon",
+  "tags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide : l'Esquive invoque un Mirage",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "L'Archer Mirage ne tire rien par lui-même. Lorsque vous effectuez une Esquive, il invoque un Mirage qui utilise les attaques que vous avez insérées dans la gemme, avec une pénalité de dégâts.",
+        "Le Mirage double en pratique votre production à distance pendant sa durée — tant que les compétences insérées sont des attaques à distance valides et que le temps de recharge est prêt."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Statistiques clés et obtention",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Catégorie",
+          "value": "Gemme Méta · Buff · Persistant · Déclencheur",
+          "notes": [
+            "Taguée buff, persistant, déclencheur, durée, méta."
+          ]
+        },
+        {
+          "label": "Coût en Esprit",
+          "value": "60 Esprit",
+          "notes": [
+            "Réserve 60 Esprit tant qu'elle est active ; confirmez la valeur sur le client actuel."
+          ]
+        },
+        {
+          "label": "Déclencheur",
+          "value": "Esquive",
+          "notes": [
+            "Le Mirage apparaît après une esquive, sous réserve de temps de recharge."
+          ]
+        },
+        {
+          "label": "Arme",
+          "value": "Arc / Lance / Arbalète",
+          "notes": [
+            "Seules les attaques à distance insérées dans la gemme sont imitées."
+          ]
+        },
+        {
+          "label": "Pénalité de dégâts",
+          "value": "Le Mirage inflige des dégâts réduits",
+          "notes": [
+            "Vérifiez la pénalité exacte sur le client 0.5.4."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Prérequis et configuration",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "L'Archer Mirage nécessite un Arc, une Lance ou une Arbalète équipé(e) et au moins une attaque à distance valide insérée dans la gemme. Le Mirage ne peut utiliser que des compétences qui sont elles-mêmes des attaques à distance — les compétences de mêlée et non prises en charge sont ignorées.",
+        "Comme il s'agit d'une gemme Méta, vous l'insérez à côté des attaques que vous voulez imiter ; la gemme est le déclencheur, pas la source de dégâts."
+      ],
+      "keyValues": [
+        {
+          "label": "Arme",
+          "value": "Arc / Lance / Arbalète",
+          "notes": [
+            "Les compétences de mêlée ne sont pas imitées."
+          ]
+        },
+        {
+          "label": "Compétence insérée",
+          "value": "Doit être une attaque à distance",
+          "notes": [
+            "Seules les attaques à distance valides sont utilisées par le Mirage."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clone-meta",
+      "order": 40,
+      "title": "Création et limites du Mirage",
+      "type": "clone-meta",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Mirage est créé lors d'une Esquive et dure un court instant avant d'expirer. Sur le client actuel, le temps de recharge démarre à la création du Mirage, vous ne pouvez donc pas en invoquer un nouveau tant que le précédent n'est pas consommé ou que sa durée n'est pas écoulée — confirmez le temps de recharge exact sur le client 0.5.4.",
+        "Plusieurs Mirages ne peuvent normalement pas coexister ; une esquive produit un Mirage, et la esquive suivante est bloquée par le temps de recharge. Le nombre d'objets du Mirage est suivi séparément de vos propres objets déployés."
+      ],
+      "keyValues": [
+        {
+          "label": "Déclencheur",
+          "value": "Esquive",
+          "notes": [
+            "Le Mirage apparaît après l'esquive."
+          ]
+        },
+        {
+          "label": "Temps de recharge",
+          "value": "Démarre à la création",
+          "notes": [
+            "Vérifiez le temps de recharge du client actuel."
+          ]
+        },
+        {
+          "label": "Multiple",
+          "value": "Un à la fois (normalement)",
+          "notes": [
+            "Limité par le temps de recharge d'apparition."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socketed-attacks",
+      "order": 50,
+      "title": "Attaques insérées et priorité",
+      "type": "socketed-attacks",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Vous pouvez insérer une seule attaque ou plusieurs. Avec plusieurs attaques insérées, le Mirage les utilise selon une priorité / rotation plutôt que toutes en même temps. Les compétences dotées d'Utilisations intégrées, de Grenades ou de Munitions se comportent de façon spéciale — le Mirage peut devoir recharger ou ne pas tirer s'il lui manque les Utilisations initiales.",
+        "Un décalage fréquent concerne Volée de givre : elle peut être insérée, mais le Mirage peut ne pas tirer si les Utilisations initiales ne sont pas disponibles, ce qui donne l'impression que « rien ne s'est passé »."
+      ],
+      "keyValues": [
+        {
+          "label": "Compétence unique",
+          "value": "Le Mirage la reflète",
+          "notes": [
+            "Configuration la plus simple et la plus prévisible."
+          ]
+        },
+        {
+          "label": "Compétences multiples",
+          "value": "Priorité / rotation",
+          "notes": [
+            "Le Mirage choisit selon sa priorité interne."
+          ]
+        },
+        {
+          "label": "Utilisations / Grenade / Munitions",
+          "value": "Gestion spéciale",
+          "notes": [
+            "Peut nécessiter un rechargement ou manquer d'Utilisations initiales (ex. Volée de givre)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-compatibility-matrix",
+      "order": 55,
+      "title": "Matrice de compatibilité des compétences",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Compétence",
+        "Insérable ?",
+        "Mirage fonctionne ?",
+        "Utilisations / Rechargement",
+        "Limite connue"
+      ],
+      "rows": [
+        [
+          "Tir explosif",
+          "Oui",
+          "Oui",
+          "Recharge",
+          "Comportement du chargeur sur le Mirage"
+        ],
+        [
+          "Flèche éclair",
+          "Oui",
+          "Oui",
+          "Aucun",
+          "Interaction avec le Paratonnerre"
+        ],
+        [
+          "Paratonnerre",
+          "Oui",
+          "Limité",
+          "Limite d'objets",
+          "Interaction avec le bug de la Flèche du joueur"
+        ],
+        [
+          "Snipe",
+          "Prise en charge 0.5+",
+          "Oui",
+          "Canalisation",
+          "Timing au relâchement"
+        ],
+        [
+          "Volée de givre",
+          "Oui",
+          "Peut ne pas tirer",
+          "Utilisations",
+          "Décalage fréquent sans Utilisations initiales"
+        ]
+      ]
+    },
+    {
+      "id": "object-limits",
+      "order": 60,
+      "title": "Limites d'objets indépendantes du joueur",
+      "type": "object-limits",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les objets déployés par le Mirage (comme les Paratonnerres qu'il place) sont comptés dans la limite propre au Mirage, séparée de votre limite de joueur. Cela signifie que vous et le Mirage pouvez chacun avoir votre propre ensemble de paratonnerres jusqu'aux plafonds respectifs.",
+        "Cette indépendance est aussi là où apparaît le bug connu Paratonnerre + Flèche éclair : les paratonnerres du Mirage et les vôtres peuvent interagir de façon inattendue, testez donc la combinaison sur le client actuel avant de compter dessus."
+      ],
+      "keyValues": [
+        {
+          "label": "Limite du Mirage",
+          "value": "Séparée du joueur",
+          "notes": [
+            "Chacun suit son propre plafond d'objets déployés."
+          ]
+        },
+        {
+          "label": "Bug d'interaction",
+          "value": "Paratonnerre + Flèche",
+          "notes": [
+            "Problème connu ; vérifiez le comportement sur le client 0.5.4."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 70,
+      "title": "Mécaniques : Utilisations, Rechargement et temps de recharge",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Mirage hérite des mécaniques de l'attaque insérée, y compris les Utilisations et le Rechargement. Une attaque qui recharge oblige aussi le Mirage à recharger, c'est pourquoi le comportement de chargeur du Tir explosif se retrouve également sur le Mirage.",
+        "La durée de vie du Mirage est courte, les compétences nécessitant un long délai d'amorçage ou de nombreuses Utilisations peuvent donc ne pas se terminer avant son expiration. Choisissez des attaques insérées qui paient rapidement."
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 80,
+      "title": "Interactions entre compétences",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Tir explosif fonctionne via le Mirage mais conserve son comportement de chargeur / rechargement. La Flèche éclair est une imitation propre sans rechargement. Le Paratonnerre est limité et présente le bug connu de la Flèche du joueur, la paire Paratonnerre + Flèche éclair doit donc être testée sur le Mirage.",
+        "Le Snipe est pris en charge à partir de la 0.5 en tant qu'attaque canalisée ; le Mirage la canalise mais le timing au relâchement compte."
+      ],
+      "keyValues": [
+        {
+          "label": "Tir explosif",
+          "value": "Fonctionne (recharge)",
+          "notes": [
+            "Comportement du chargeur reflété sur le Mirage."
+          ]
+        },
+        {
+          "label": "Flèche éclair",
+          "value": "Imitation propre",
+          "notes": [
+            "Aucune complication de rechargement."
+          ]
+        },
+        {
+          "label": "Paratonnerre",
+          "value": "Limité + bug",
+          "notes": [
+            "Testez l'interaction avec la Flèche sur le client."
+          ]
+        },
+        {
+          "label": "Snipe",
+          "value": "Canalisation 0.5+",
+          "notes": [
+            "Le timing au relâchement compte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "Compatibilité des supports",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les supports de Durée prolongent la vie du Mirage, principal levier pour obtenir davantage d'attaques de sa part. Les supports de Temps de recharge raccourcissent l'intervalle entre deux esquives. Évitez les supports indiquant explicitement « les compétences que vous utilisez vous-même » — le Mirage n'est pas vous, ces supports ne s'appliquent donc pas à ses attaques."
+      ],
+      "keyValues": [
+        {
+          "label": "Supports de Durée",
+          "value": "Cœur",
+          "notes": [
+            "Mirage plus long = plus d'attaques imitées."
+          ]
+        },
+        {
+          "label": "Supports de Temps de recharge",
+          "value": "Selon le cas",
+          "notes": [
+            "Raccourcissent l'intervalle entre esquives."
+          ]
+        },
+        {
+          "label": "« Compétences que vous utilisez vous-même »",
+          "value": "Ne s'applique pas",
+          "notes": [
+            "Le Mirage n'est pas le joueur."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 100,
+      "title": "Arbitrages du budget d'Esprit",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "À 60 Esprit, l'Archer Mirage est coûteux et entre en concurrence avec les buffs de Héraut et la Frénésie de combat pour le même réservoir. Sur un build à distance, vous devez décider si les dégâts imités valent plus qu'une aura ou un générateur de charges.",
+        "La plupart des builds à distance Deadeye et Witchhunter le conservent car la production à distance doublée est importante, mais les builds à Esprit serré peuvent s'en passer."
+      ],
+      "keyValues": [
+        {
+          "label": "Coût",
+          "value": "60 Esprit",
+          "notes": [
+            "Même réservoir que Héraut / Frénésie de combat."
+          ]
+        },
+        {
+          "label": "Arbitrage",
+          "value": "Imitation vs aura / gén. de charges",
+          "notes": [
+            "Ne retirez-le qu'en cas de goulot d'étranglement d'Esprit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "Rotation de mapping",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Position",
+          "action": "Esquivez près d'un groupe",
+          "result": "Le Mirage apparaît et imite votre attaque insérée."
+        },
+        {
+          "label": "Burst",
+          "action": "Vous et le Mirage tirez",
+          "result": "Dégagement à distance doublé sur le groupe."
+        },
+        {
+          "label": "Récupération",
+          "action": "Esquivez à nouveau après le temps de recharge",
+          "result": "Rafraîchissez le Mirage pour le groupe suivant."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Rotation de boss",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Pré-positionnement",
+          "action": "Esquivez avant la fenêtre de dégâts",
+          "result": "Mirage prêt à l'ouverture du boss."
+        },
+        {
+          "label": "Soutien",
+          "action": "Ré-esquivez à chaque temps de recharge pendant le combat",
+          "result": "Maintenez un Mirage pour une production à distance soutenue."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Où il est utilisé",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les builds à distance Deadeye et Witchhunter utilisent l'Archer Mirage pour doubler leur production arc / arbalète. Les variantes Gemling Legionnaire l'utilisent quand elles peuvent se permettre les 60 Esprit et veulent les dégâts imités.",
+        "Dans tous les cas, le build valorise l'attaque à distance doublée plus que l'aura d'Esprit perdue."
+      ],
+      "bullets": [
+        "Deadeye : dégagement arc doublé.",
+        "Witchhunter : production arbalète doublée.",
+        "Gemling Legionnaire : imitation quand l'Esprit le permet."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Dépannage",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Le Mirage n'apparaît jamais",
+          "action": "Temps de recharge non prêt ou aucune attaque insérée valide",
+          "result": "Esquivez après le temps de recharge avec une attaque à distance insérée."
+        },
+        {
+          "label": "Le Mirage n'attaque pas",
+          "action": "La compétence insérée est de mêlée / non prise en charge",
+          "result": "Insérez une attaque Arc / Lance / Arbalète valide."
+        },
+        {
+          "label": "Le Mirage ne recharge pas",
+          "action": "La compétence nécessite des Utilisations initiales qu'elle n'a pas",
+          "result": "Utilisez une attaque sans rechargement ou donnez-lui les Utilisations d'abord."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "Témoignages communautaires",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les retours de la communauté se concentrent sur le bug du Paratonnerre (paratonnerres du Mirage interagissant avec la Flèche du joueur) et sur la sélection des compétences (pourquoi Volée de givre « ne fait rien »). Les tests sur client confirment que le Mirage utilise une priorité sur les attaques à distance insérées et que les compétences à Utilisations / rechargement se comportent de façon spéciale.",
+        "La méprise sur le support « vous-même » est fréquente : les supports indiquant les compétences que vous utilisez vous-même ne s'appliquent pas aux attaques du Mirage."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "Vidéo explicative et horodatages",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "KaidGames2",
+          "label": "Flèche éclair 0.5 — Configuration du Mirage",
+          "description": "Démonstration de la Flèche éclair illustrant les attaques à distance insérées via un Archer Mirage.",
+          "takeaway": "Observez quelles attaques le Mirage imite et le timing de l'esquive.",
+          "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg",
+          "timestamps": [
+            {
+              "label": "Configuration du Mirage",
+              "time": "0:00"
+            },
+            {
+              "label": "Démo multi-compétences",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Dr Dark Walker",
+          "label": "Gemme méta à distance 0.5",
+          "description": "Aperçu de la gemme méta incluant le déclencheur par esquive de l'Archer Mirage et les attaques insérées.",
+          "takeaway": "Bonne référence pour la boucle esquive-Mirage et les limites.",
+          "url": "https://www.youtube.com/watch?v=Imh1eVd43TU",
+          "timestamps": [
+            {
+              "label": "Aperçu du déclencheur",
+              "time": "0:00"
+            },
+            {
+              "label": "Limites",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources et vérification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Officiel",
+          "description": "Les Notes de patch du forum officiel GGG confirment le déclencheur par esquive de l'Archer Mirage, le comportement des attaques insérées et les changements 0.5 sur le client 0.5.4 actuel.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Base de données",
+          "description": "PoE2DB et la Wiki communautaire fournissent l'id de compétence, les tags, le coût en Esprit et le comportement caché du Mirage.",
+          "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+        },
+        {
+          "label": "Builds et vidéos",
+          "description": "Les builds Deadeye / Witchhunter de Mobalytics et les vidéos de démonstration KaidGames2 / Dr Dark Walker, utilisés pour vérifier la boucle d'esquive et les attaques insérées.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Communauté",
+          "description": "Reddit et les forums officiels mettent en évidence de vrais problèmes comme le bug du Paratonnerre et le décalage de Volée de givre, reproduits sur client et traités directement.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+        },
+        {
+          "label": "Forums officiels",
+          "description": "Forums officiels GGG où le personnel confirme les mécaniques de gemme méta et du Mirage ainsi que les changements de patch.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Communauté Reddit",
+          "description": "Discussions et fils d'aide Reddit r/PathOfExile2 sur l'Archer Mirage, utiles pour les retours de version et les builds courants.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Déclencheur par Esquive et création du Mirage confirmés sur le client 0.5.4.",
+          "Imitation des attaques à distance insérées avec pénalité de dégâts confirmée.",
+          "Interaction Paratonnerre + Flèche éclair signalée comme problème connu à tester."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historique des patchs",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-01-20",
+          "changes": [
+            "0.3 : Archer Mirage introduit comme gemme méta avec déclencheur par esquive."
+          ]
+        },
+        {
+          "date": "2026-04-10",
+          "changes": [
+            "0.4 : ajustements de la priorité des attaques insérées et des limites d'objets."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients : canalisation du Snipe prise en charge ; chiffres du client actuel utilisés dans ce guide."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Version initiale : déclencheur par esquive, attaques insérées et priorité, limites d'objets, mécaniques, interactions entre compétences, compatibilité des supports, budget d'Esprit, rotations de mapping et de boss, dépannage et témoignages communautaires."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye",
+    "explosive-witchhunter",
+    "corrupting-wings-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "explosive-shot",
+    "lightning-arrow",
+    "snipe",
+    "lightning-rod"
+  ],
+  "relatedPatchIds": [
+    "patch-0-3-0-third-edict",
+    "patch-0-4-0-last-of-the-druids",
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Mirage Archer",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+    },
+    {
+      "label": "Mobalytics — Ranged builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Mirage Archer discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+    },
+    {
+      "label": "KaidGames2 — Lightning Arrow 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg"
+    },
+    {
+      "label": "Dr Dark Walker — Ranged meta 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Imh1eVd43TU"
+    }
+  ],
+  "seo": {
+    "title": "Guide de l'Archer Mirage — Déclencheur par Esquive, Attaques insérées, Temps de recharge et limites",
+    "description": "Guide de la gemme méta Archer Mirage : déclencheur par esquive et création du Mirage, coût de 60 Esprit, durée et temps de recharge, priorité des attaques insérées, limites d'objets, interaction Paratonnerre / Flèche éclair, supports indiquant « vous-même », budget d'Esprit, rotations de mapping et de boss, dépannage et témoignages communautaires.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "mirage-archer",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -13,7 +13,7 @@ export function isKnownPatchCollection(collection: PatchCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Patch，供页面和 Sitemap 共用同一规则。 */
 export function matchesPatchCollection(
-  article: PatchArticle,
+  article: Pick<PatchArticle, "patchCategory">,
   collection: PatchCollection,
 ): boolean {
   return article.patchCategory === collection.value;

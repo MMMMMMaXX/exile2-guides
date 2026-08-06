@@ -1,0 +1,858 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "es",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Widowhail: escalado del bono de carcaj, mejores tiradas y Runeforging en Path of Exile 2 0.5",
+  "shortTitle": "Widowhail",
+  "summary": "Widowhail es un Arco Rudo único en Path of Exile 2 cuyo único modificador, (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado, multiplica los bonos numéricos de tu carcaj. El daño propio del arco es irrelevante; el carcaj es el motor. Esta guía cubre la fórmula exacta de escalado, qué modificadores del carcaj escalan, cómo se comparan las tiradas bajas frente a las altas, qué carcaj justifica una tirada de 250%, la versión Runeforged y qué builds no deben copiar el carcaj de otro.",
+  "description": "Cómo funciona Widowhail en PoE2 0.5: el multiplicador (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado, la fórmula Base x (1 + W%), qué mods del carcaj escalan (globales, implícitos, de corrupción, de proyectil, daño añadido) frente a cuáles no (mods locales del carcaj), valor de tirada baja frente a alta, selección de carcaj, Runeforging y precauciones específicas de cada build.",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Widowhail, Arco Rudo único de Path of Exile 2, un arco de escalado de carcaj que multiplica los bonos numéricos del carcaj equipado",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "El único modificador de Widowhail, (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado, multiplica cada bono numérico escalable de tu carcaj por (1 + W/100). A 150% es x2.5, a 200% x3.0, a 250% x3.5. El DPS físico propio del arco es bajo a propósito: el carcaj es el arma. Un buen carcaj es lo que hace que una tirada alta valga la pena; un carcaj débil hace que incluso un Widowhail de 250% no sirva de nada.",
+      "calloutDetail": [
+        "El multiplicador se aplica a los bonos globales, implícitos y de corrupción concedidos por el carcaj, incluidos los mods de flecha adicional, daño añadido, velocidad de ataque incrementada, resistencias, vida, precisión y más.",
+        "NO añade estadísticas nuevas. Solo amplifica lo que el carcaj ya concede. Un carcaj sin nada que valga la pena escalar no te da nada.",
+        "Widowhail se puede someter a Runeforging (Runeforging de Único, desbloqueado en el Acto 3) una vez es un único de nivel bajo; se conserva el mod único de bono de carcaj y la base gana mayor daño físico además de una base Runeforged."
+      ],
+      "answers": [
+        {
+          "label": "Úsalo si",
+          "text": [
+            "Ya posees (o puedes permitirte) un carcaj potente cuyos bonos numéricos quieres multiplicar varias veces - daño añadido, velocidad de ataque o de proyectil, niveles de habilidad, vida, resistencias."
+          ]
+        },
+        {
+          "label": "Evítalo si",
+          "text": [
+            "Eres un build que depende de estadísticas locales del arma (físico plano alto, velocidad de ataque alta en el propio arco) o no puedes conseguir un carcaj que merezca la pena amplificar. Un arco raro puede servirte mejor."
+          ]
+        },
+        {
+          "label": "Tirada a buscar",
+          "text": [
+            "250% es el techo de la tirada natural. 240-248% es casi tan fuerte por mucho menos moneda. Una corrupción con Orbe Vaal puede superar 250% (informes de la comunidad ~290%+)."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Cómo funciona el multiplicador"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip actual y rangos de tirada"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds que lo usan"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Datos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Base type",
+          "value": "Crude Bow",
+          "note": [
+            "Un arco inicial. El daño físico base (5-13) y la velocidad de ataque (1.40) son bajos porque el poder del objeto proviene totalmente del carcaj, no del arma."
+          ]
+        },
+        {
+          "label": "Unique modifier",
+          "value": "(150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado",
+          "note": [
+            "El único modificador explícito. La tirada viene en pasos de 50% (150 / 200 / 250), así que no hay tirada de 187% - salta a un nivel."
+          ]
+        },
+        {
+          "label": "Required level",
+          "value": "1 (14 Dexterity)",
+          "note": [
+            "Equipable desde el mismo inicio de la campaña, por lo que sirve tanto de arco de progresión como de multiplicador de carcaj en endgame."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Drops anywhere; can be chanced; tradeable",
+          "note": [
+            "Drop relativamente común de monstruos de nivel 25+ (desde el Acto 2 en adelante). También se puede crear usando un Orb of Chance en un Crude Bow blanco. El valor de venta al NPC es de 6x Alchemy Shard."
+          ]
+        },
+        {
+          "label": "Corruption ceiling",
+          "value": "Above 250% possible",
+          "note": [
+            "Una corrupción con Orbe Vaal puede superar el tope natural de 250% (informes de la comunidad de hasta ~290%+). Verifica el tope exacto en el juego."
+          ]
+        },
+        {
+          "label": "Runeforging",
+          "value": "Eligible (low-level unique)",
+          "note": [
+            "Como único de nivel 1, califica para Runeforging de Único una vez desbloqueado en el Acto 3; se conserva el mod de bono de carcaj y mejora el daño base."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip actual y rangos de tirada (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Physical Damage",
+          "value": "5-13",
+          "notes": [
+            "Bajo a propósito. Widowhail no es un portador de daño; es un amplificador de carcaj."
+          ]
+        },
+        {
+          "label": "Critical Strike Chance",
+          "value": "5.00%",
+          "notes": [
+            "Heredado de la base Crude Bow."
+          ]
+        },
+        {
+          "label": "Attacks per Second",
+          "value": "1.40",
+          "notes": [
+            "Heredado de la base Crude Bow."
+          ]
+        },
+        {
+          "label": "Unique modifier (variable)",
+          "value": "(150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado",
+          "notes": [
+            "El único explícito. Sale en niveles de 50%: 150%, 200%, 250%. Este es el número que decide el valor del arco."
+          ]
+        },
+        {
+          "label": "Requirements",
+          "value": "Level 1, 14 Dexterity",
+          "notes": [
+            "Sin requisito de Fuerza ni de Inteligencia, lo que lo hace accesible a cualquier clase basada en Dex desde el nivel 1."
+          ]
+        },
+        {
+          "label": "Implicit",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "Línea implícita de ambientación mostrada en el objeto; no es una estadística escalable separada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Cómo funciona el multiplicador de bono de carcaj",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "El modificador de Widowhail dice (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado. La palabra clave es 'incrementadas': toma el valor numérico de un bono del carcaj y lo incrementa según la tirada de Widowhail. Un bono del carcaj de +40 a Vida Máxima con un Widowhail de 250% pasa a ser +40 x (1 + 2.50) = +140 a Vida Máxima. La fórmula general es: Bono de Carcaj Escalado = Bono de Carcaj Base x (1 + W/100), donde W es la tirada de Widowhail (150, 200 o 250).",
+        "Como el multiplicador es (1 + W/100), los factores efectivos son x2.5 a 150%, x3.0 a 200% y x3.5 a 250%. Esto se confirma con el ejemplo documentado de flechas: un carcaj cuyo implícito otorga 'Los Ataques de Arco disparan una Flecha Adicional' (+1) combinado con un explícito '+1 al Recuento de Proyectiles' suma 2 antes de Widowhail; a un efecto de 250% esas 2 se convierten en 2 x 3.5 = 7 flechas adicionales. Las estadísticas se suman primero y luego se multiplican.",
+        "Lo que 'bonificaciones obtenidas del Carcaj Equipado' significa en la práctica es cada bono numérico escalable que el carcaj concede a tu personaje - tanto su línea implícita como sus afijos explícitos, y también los implícitos de corrupción. Esto incluye daño añadido (plano), porcentajes incrementados (velocidad de ataque, crítico, daño), atributos, resistencias, vida, precisión, velocidad de proyectil, recuentos de perforación y mods de flecha adicional. El multiplicador no inventa estadísticas nuevas; solo escala las ya presentes.",
+        "Un detalle sutil que muchos jugadores pasan por alto: el bono se multiplica, no se añade como una segunda copia. Un carcaj con +20% de Velocidad de Ataque Incrementada y un Widowhail de 200% produce +20% x 3.0 = +60% de Velocidad de Ataque Incrementada en esa línea - no se convierte en +20% + 200%. La tirada de Widowhail es en sí la magnitud 'incrementada' aplicada al valor de bono subyacente del carcaj.",
+        "Por qué el DPS propio del arco es bajo pero el build funciona: Widowhail sustituye 'buenas estadísticas de arma' por 'buenas estadísticas de carcaj, amplificadas'. Un carcaj Raro puede llevar fácilmente gran daño plano añadido, velocidad de ataque incrementada de dos dígitos, niveles de habilidad, vida y resistencias. Multiplicar todo eso por 3.5 produce más valor ofensivo y defensivo total que el daño físico plano que aportaría un arco normal, al coste de necesitar un carcaj potente y bien tirado que justifique la ranura del arco."
+      ],
+      "bullets": [
+        "Fórmula: Escalado = Base x (1 + W/100). Factores: 150% -> x2.5, 200% -> x3.0, 250% -> x3.5.",
+        "Cuentan los bonos implícitos, explícitos y de corrupción del carcaj.",
+        "El arco ignora su propio daño físico bajo; el carcaj es el arma.",
+        "Las estadísticas del carcaj se suman y luego se multiplican - así +1 implícito y +1 explícito de flecha se convierten en 7 a 250%.",
+        "No añade afijos nuevos, solo amplifica los existentes."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Puntos de escalado y matriz de modificadores de carcaj",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "Carcaj de flecha adicional (implícito +1, explícito +1) = 2 flechas base",
+          "audience": "Builds de Spark / proyectil",
+          "benefit": "2 -> 5 / 6 / 7 flechas extra a 150 / 200 / 250%",
+          "risk": "Más flechas solo ayudan si tu habilidad se beneficia del recuento de proyectiles",
+          "level": "high",
+          "recommendation": "Escalado fuerte; 250% convierte un carcaj de 2 flechas en 7 proyectiles.",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "+40 a Vida Máxima en el carcaj",
+          "audience": "Cualquier build",
+          "benefit": "40 -> 100 / 120 / 140 de Vida a 150 / 200 / 250%",
+          "risk": "Bajo si tu build no valora la vida",
+          "level": "medium",
+          "recommendation": "La vida escala de forma limpia; una tirada alta triplica casi el bono de vida del carcaj.",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "+20% de Velocidad de Ataque Incrementada en el carcaj",
+          "audience": "Builds de ataque",
+          "benefit": "20% -> 50 / 60 / 70% de Velocidad de Ataque Incrementada a 150 / 200 / 250%",
+          "risk": "Bajo; la velocidad de ataque es casi siempre útil",
+          "level": "medium",
+          "recommendation": "Uno de los mods de carcaj más seguros de amplificar.",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "Daño plano añadido (p. ej. +5 a 30 de Frío a los Ataques) en el carcaj",
+          "audience": "Builds de elementales / conversión",
+          "benefit": "5-30 -> 12.5-75 / 15-90 / 17.5-105 a 150 / 200 / 250%",
+          "risk": "Depende de la conversión y las etiquetas de la habilidad",
+          "level": "medium",
+          "recommendation": "Excelente en builds de Spark convertido o de arco elementales; confirma que el tipo de daño es compatible.",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds que usan Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Widowhail es un sistema de entrega de carcaj. Brilla en cualquier build que canaliza valor a través de la ranura de carcaj y puede aportar un carcaj potente. Las siguientes son las ubicaciones realistas para el arco; cada una tiene un prerrequisito estricto (el carcaj) que debes cumplir antes de que el arco dé fruto."
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "Un hogar natural: Deadeye premia el recuento de proyectiles, y un carcaj cargado con daño frío/físico añadido, velocidad de ataque y +niveles de habilidad de proyectil se multiplica varias veces. Apunta a un Widowhail de 230%+ y a un carcaj con +2 niveles de habilidad de proyectil además de mucho daño añadido.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Lanzadores de Spark / Spark convertido (Blood Mage, Stormweaver)",
+          "description": "Widowhail se usa para amplificar un carcaj que otorga +niveles de habilidad de proyectil y velocidad de proyectil; el escalado de proyectil multiplicado alimenta Aceleración de Proyectil y el daño multi-golpe de Spark. Las versiones de presupuesto limpian mapas iniciales por el coste de unas pocas decenas de Exalted Orbs.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Lightning Arrow / Lightning Rod Ranger leveling",
+          "description": "Desde el Acto 2, un Widowhail más un carcaj raro actualizado con frecuencia es uno de los arcos de progresión más fuertes porque multiplicas el daño añadido y la velocidad de ataque del carcaj a medida que superas su nivel.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "Un Widowhail de tirada alta junto con un carcaj con +2 Niveles de todas las Habilidades de Proyectil, precisión y velocidad de ataque dispara el DPS de veneno a través de Master Fletching y el multiplicador de carcaj.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativas: arcos raros y otros únicos",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Widowhail no es un arco de 'más DPS pase lo que pase'. Su valor es condicional al carcaj. Si no puedes conseguir un carcaj que merezca la pena amplificar, un arco Raro bien tirado lo superará porque los arcos raros aportan su propio daño físico plano, velocidad de ataque, modificadores críticos y ranuras.",
+        "Comparado con otros arcos únicos, Widowhail ocupa un nicho único: no tiene mecánica de daño propia, solo el multiplicador de carcaj. Los arcos que añaden daño plano, penetración o conversión de ailment son más simples de usar y no requieren un carcaj cuidadosamente elaborado. Úsalos cuando quieras un arma autónoma en lugar de un motor de carcaj.",
+        "Dentro de la fantasía de escalado de carcaj, no hay competidor directo - Widowhail es el único arco que escala el carcaj equipado. Así que la decisión alternativa real es 'invertir en un carcaj + Widowhail' frente a 'invertir la misma moneda en un arco Raro o único autónomo más fuerte'. Al principio y a mitad de campaña la ruta del carcaj suele ser más barata por punto de poder; en el extremo más alto un arco Raro de nivel espejo puede superarlo pero cuesta mucho más."
+      ],
+      "bullets": [
+        "Arco Raro: mejor cuando te falta un carcaj potente; aporta su propio daño y ranuras.",
+        "Otros arcos únicos: mecánicas más simples y autónomas; sin dependencia de carcaj.",
+        "Ningún otro arco escala el carcaj - Widowhail es la única opción para esta fantasía.",
+        "Decisión: carcaj+Widowhail suele ser más barato al principio; el arco Raro de nivel espejo puede superarlo al final pero cuesta mucho más."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Cómo conseguir Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Widowhail es un único relativamente común, lo que mantiene asequibles incluso las tiradas altas comparado con objetos de nivel espejo. Hay tres rutas realistas para obtenerlo."
+      ],
+      "routes": [
+        {
+          "label": "Random drop (monstruos nivel 25+, desde el Acto 2)",
+          "body": [
+            "Widowhail cae en cualquier sitio de monstruos de nivel 25 en adelante. No puedes apuntarlo específicamente, pero aumentar la tasa general de drop de únicos vía 'Increased Rarity of Items Found' y Waystones potenciados aumenta la frecuencia con la que aparecen únicos."
+          ]
+        },
+        {
+          "label": "Orb of Chance en un Crude Bow blanco",
+          "body": [
+            "Usar un Orb of Chance en un Crude Bow normal puede producir Widowhail, pero la tasa de éxito es baja y la moneda se aprovecha mejor apostando por únicos más raros. La mayoría de los jugadores evita esta ruta porque el arco ya es común en el comercio."
+          ]
+        },
+        {
+          "label": "Player trade",
+          "body": [
+            "El sitio de comercio es la forma más fiable de conseguir una tirada concreta. Como la tasa de drop es alta, las tiradas de 240-248% suelen estar disponibles por una fracción del precio de un 250% perfecto, y un arco de 250% aún puede ser mucho más barato que un arco Raro de nivel espejo. Los precios fluctúan según la liga y la región - consulta el sitio de comercio en vivo para la instantánea actual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Usar, vender o guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "El precio de Widowhail está impulsado casi totalmente por la tirada de bono de carcaj. Las tiradas bajas (150-180%) suelen ser casi gratis; 240%+ y especialmente 250% llevan una prima. Como cae con frecuencia, incluso las tiradas perfectas no cuestan como las de nivel espejo. Cualquier precio debe leerse con una fecha, liga y región."
+      ],
+      "use": {
+        "condition": "Posees un carcaj potente cuyos bonos numéricos valen la pena multiplicar, y tu build canaliza valor a través del carcaj (proyectiles, daño añadido, velocidad de ataque, vida).",
+        "first": "Equipa el Widowhail de mejor tirada que puedas permitirte (240%+ es el punto dulce de valor) y sigue mejorando el carcaj a medida que subes de nivel.",
+        "risk": "Un carcaj débil convierte el arco en peso muerto; la tirada por sí sola no crea poder.",
+        "text": [
+          "Mejor cuando el carcaj ya lleva gran daño plano añadido, velocidad de ataque incrementada de dos dígitos, +niveles de habilidad de proyectil, vida y resistencias.",
+          "Conserva el arco para toda la campaña si sigues mejorando el carcaj cada 5-10 niveles."
+        ]
+      },
+      "sell": {
+        "condition": "Tienes una tirada baja (150-180%) y ningún plan de carcaj, o juegas un build que necesita daño local del arma.",
+        "first": "Vende las tiradas bajas baratas; son comunes y la mayoría de compradores quiere 230%+.",
+        "risk": "Guardar una tirada baja esperando un pico de precio es poco probable - la oferta es constante.",
+        "text": [
+          "Un Widowhail de 150% sin inversión en carcaj vale poco más que un Crude Bow blanco para la mayoría de compradores.",
+          "Publica las tiradas con honestidad; el sitio de comercio muestra el porcentaje exacto y los compradores filtran por él."
+        ]
+      },
+      "hold": {
+        "condition": "Tienes una tirada de 240%+ o una tirada corrupta con Vaal de 250%+ y podrías cambiar a un build basado en carcaj más adelante.",
+        "first": "Guarda las tiradas altas; conservan valor porque los builds de carcaj en endgame siempre quieren el multiplicador.",
+        "risk": "Cambios de parche a los mods de carcaj o al Runeforging podrían desplazar la demanda, pero la fantasía central es estable.",
+        "text": [
+          "Las tiradas altas son líquidas y poco probables de depreciarse bruscamente mientras existan builds de carcaj.",
+          "Un 250%+ corrupto es una tirada de trofeo que exige una prima sobre el 250% natural."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Riesgo y coste de fallo",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Compraste un Widowhail de 250% pero tu carcaj es débil",
+          "gain": "El multiplicador máximo posible está disponible",
+          "loss": "Ningún poder realizado; moneda gastada en el arco en lugar del carcaj",
+          "level": "high",
+          "recommendation": "Gasta más en el carcaj que en el arco. El carcaj es el motor; el arco es el amplificador."
+        },
+        {
+          "scenario": "Copiaste el carcaj exacto de un build popular en una ascendencia/habilidad distinta",
+          "gain": "Coincides con una configuración probada sobre el papel",
+          "loss": "Tus etiquetas de habilidad, conversiones o gemas de soporte pueden no usar los mismos bonos de carcaj, desperdiciando el multiplicador",
+          "level": "high",
+          "recommendation": "Adapta el carcaj a las etiquetas de daño y conversión de TU habilidad. No copies un carcaj a ciegas."
+        },
+        {
+          "scenario": "Confiaste en mods locales del carcaj (p. ej. Evasión incrementada local en el objeto carcaj)",
+          "gain": "Ninguno - estos no son 'bonificaciones obtenidas' por tu personaje",
+          "loss": "ES/defensa esperada del carcaj que nunca aparece",
+          "level": "medium",
+          "recommendation": "Solo cuentan los bonos globales, implícitos y de corrupción del carcaj. Los mods locales del objeto no escalan."
+        },
+        {
+          "scenario": "Corrompido por encima de 250% y se bloqueó",
+          "gain": "Multiplicador potencial ~290%+ si tiene éxito",
+          "loss": "Un Orbe Vaal puede añadir un implícito malo o no mejorar la tirada",
+          "level": "medium",
+          "recommendation": "Solo corrompe una base de 250% que puedas reemplazar; la ganancia es real pero el coste es un único consumido."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Evidencia de la comunidad y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "Hilo de build del foro oficial",
+          "question": "Veo gente usando Widowhail con Spark - ¿cómo funciona un arco en un lanzador de hechizos, y qué estadísticas de carcaj importan?",
+          "summary": [
+            "Un jugador estaba confundido porque un arco (Widowhail) aparece en un build de lanzador de Spark y preguntó qué afijos de carcaj priorizar."
+          ],
+          "editorialAnalysis": [
+            "Widowhail se usa puramente por su multiplicador de carcaj. El build toma un carcaj que otorga +2 a niveles de habilidad de proyectil y velocidad de proyectil muy alta; el escalado de proyectil multiplicado alimenta Aceleración de Proyectil y el daño por golpe de Spark. El arco en sí nunca ataca."
+          ],
+          "officialAnswer": [
+            "Prioriza un carcaj con +2 Niveles a todas las Habilidades de Proyectil y 150%+ de velocidad de proyectil; la tirada de Widowhail amplifica esos números. Un Widowhail de 230%+ es el suelo práctico para el build."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds que usan Widowhail"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "Hilo del foro de la comunidad",
+          "question": "Para un build de Poisonous Concoction, ¿qué afijos de carcaj debo maximizar en Widowhail?",
+          "summary": [
+            "Un jugador preguntó qué mods de carcaj apilar para que Widowhail multiplique el mayor daño."
+          ],
+          "editorialAnalysis": [
+            "El build escala a partir de +2 Niveles de todas las Habilidades de Proyectil, +X% Velocidad de Ataque (al menos 14%) y Valoración de Precisión. Todos son bonos numéricos del carcaj que el multiplicador de Widowhail amplifica, sumándose al pasivo Master Fletching."
+          ],
+          "officialAnswer": [
+            "Apila +2 Niveles de Habilidad de Proyectil (lo más importante), luego velocidad de ataque y precisión en el carcaj. La tirada de Widowhail multiplica los tres, y Master Fletching añade más multiplicadores."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Cómo funciona el multiplicador"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "Guía / análisis de progresión",
+          "question": "¿Widowhail es realmente bueno para subir de nivel, o solo es un arco de endgame?",
+          "summary": [
+            "Un lector cuestionó si Widowhail merece la pena durante la campaña o solo en endgame."
+          ],
+          "editorialAnalysis": [
+            "El análisis de progresión muestra que un Widowhail más un carcaj Raro actualizado con frecuencia supera a arcos Raros de progresión comparables a precios similares, porque multiplicas el daño plano añadido del carcaj, la velocidad de ataque, la vida al matar e incluso los niveles de gema a medida que superas el nivel de cada carcaj."
+          ],
+          "officialAnswer": [
+            "Sí - desde aproximadamente el nivel 35 un Widowhail bien pertrechado de carcaj supera a arcos Raros de progresión de igual coste, y escalar otros bonos (vida ganada al golpear, velocidad de habilidad, niveles de gema) lo convierte en un arco de campaña fuerte."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Cómo conseguir Widowhail"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "Guía",
+          "question": "¿Qué tirada de Widowhail debo comprar, y puedo conseguir más de 250%?",
+          "summary": [
+            "Un comprador quería saber el punto de corte de valor y si la corrupción supera el tope natural."
+          ],
+          "editorialAnalysis": [
+            "La tirada natural llega como máximo a 250%. La guía de la comunidad indica que 240-248% es casi tan fuerte como 250% por mucha menos moneda, y una corrupción con Orbe Vaal puede superar 250% (informes de hasta ~290%+), con el riesgo de un implícito malo."
+          ],
+          "officialAnswer": [
+            "Compra 240%+ por el mejor valor; solo paga la prima por un 250% natural si el presupuesto lo permite. La corrupción puede superar 250% pero puede añadir un implícito no deseado - corrompe una copia reemplazable."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Usar, vender o guardar"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problemas y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Mi DPS no subió tras equipar Widowhail",
+          "directAnswer": [
+            "Widowhail solo amplifica los bonos del carcaj. Si tu carcaj tiene poco que valga la pena escalar (o usas un carcaj único cuyos mods no son bonos numéricos), el arco añade casi nada. Revisa los bonos globales, implícitos y de corrupción de tu carcaj."
+          ],
+          "checks": [
+            "Abre el carcaj y enumera sus bonos globales (daño añadido, velocidad de ataque, vida, resistencias, niveles de habilidad).",
+            "Confirma que esos bonos son numéricos y globales, no locales al objeto carcaj.",
+            "Verifica que la tirada de Widowhail es alta (230%+ ideal)."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Cómo funciona el multiplicador"
+            }
+          ]
+        },
+        {
+          "symptom": "Copié el carcaj de un streamer pero mi build se siente débil",
+          "directAnswer": [
+            "El valor del carcaj es específico del build. Un carcaj hecho para el escalado de proyectil de Spark puede ser inútil en un build de Lightning Arrow si las etiquetas de daño o las conversiones difieren. Adapta el carcaj a tu habilidad."
+          ],
+          "checks": [
+            "Comprueba qué tipos y etiquetas de daño usa realmente tu habilidad principal.",
+            "Elige bonos de carcaj que coincidan con esas etiquetas (frío añadido frente a físico, velocidad de proyectil frente a velocidad de ataque)."
+          ]
+        },
+        {
+          "symptom": "Los mods locales del carcaj que esperaba no escalaron",
+          "directAnswer": [
+            "Solo escalan los bonos que tu personaje obtiene del carcaj. Los mods locales que solo afectan al propio objeto carcaj no se 'obtienen' y no se multiplican."
+          ],
+          "checks": [
+            "Compara los bonos globales del carcaj con sus modificadores locales.",
+            "Apóyate en los bonos implícitos, explícitos y de corrupción, no en estadísticas locales del objeto."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vídeo explicativo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage: cómo funciona la variante de presupuesto de Widowhail (goldfarmingGUIDE)",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE (vía guía de build de Mobalytics)",
+          "takeaway": "Recorrido de la variante de presupuesto Widowhail Spark Blood Mage, incluyendo selección de carcaj y cómo el multiplicador de carcaj impulsa el daño. Las etiquetas de sección son aproximadas.",
+          "timestamps": [
+            {
+              "label": "Por qué la variante de presupuesto Widowhail",
+              "time": "00:00"
+            },
+            {
+              "label": "Selección y tiradas de carcaj",
+              "time": "03:30"
+            },
+            {
+              "label": "Recorrido del escalado de daño",
+              "time": "08:00"
+            },
+            {
+              "label": "Demostración de mapeo",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galería de medios",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip actual de Widowhail (Crude Bow, (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado)",
+          "note": "Muestra el modificador único y los niveles de tirada de 50%. El daño físico base es intencionalmente bajo.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Carcaj antes/después del multiplicador de Widowhail",
+          "note": "Ilustra una sola línea de carcaj (p. ej. +40 Vida) convirtiéndose en +100 / +120 / +140 a 150 / 200 / 250%.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Comparación de tirada baja frente a alta",
+          "note": "Lado a lado de un Widowhail de 150% y uno de 250% para mostrar la brecha del multiplicador en el mismo carcaj.",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "Base Runeforged de Widowhail",
+          "note": "Describe la base Runeforged ganando mayor daño físico y una base Runic Ward; se conserva el mod único de bono de carcaj.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenido conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "Un hogar principal de Widowhail: el recuento de proyectiles y el daño añadido escalan fuerte con el multiplicador de carcaj.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "La habilidad distintiva de Deadeye que se beneficia de los bonos multiplicados de proyectil y daño del carcaj.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "Insertar la runa adecuada en tu carcaj puede añadir un bono que Widowhail luego amplifica.",
+          "href": "/en/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "El material usado en el Verisium Anvil para Runeforging, incluido el Widowhail Runeforged.",
+          "href": "/en/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runes of Aldur Remnant Recipes",
+          "description": "Cómo funcionan Runeforging y la creación Runemastered, relevantes para el Widowhail Runeforged.",
+          "href": "/en/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runes of Aldur",
+          "description": "El parche actual que introdujo Runeforging, el sistema que mejora únicos de nivel bajo como Widowhail.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historial de parches y actual frente a heredado",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Current (0.5.4, natural drop)",
+          "changes": [
+            "Widowhail es un Arco Rudo único con (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado. La tirada va en niveles de 50% (150 / 200 / 250). Esta es la única versión actual; no hay un valor heredado de bono de carcaj separado que confundir con ella."
+          ]
+        },
+        {
+          "version": "Runeforging (0.5.0 league - Runes of Aldur)",
+          "changes": [
+            "Se introdujo Runeforging de Único, permitiendo mejorar únicos de nivel bajo (requisito de nivel inferior a 55). Widowhail (nivel 1) califica: se conserva el mod único de bono de carcaj y la base gana mayor daño físico además de una base Runeforged. No hay cambio con Orbe Divino a la tirada de bono de carcaj - es un rango fijo, no un rerol variable."
+          ]
+        },
+        {
+          "version": "How Trade identifies the version",
+          "changes": [
+            "El sitio de comercio muestra el porcentaje exacto de 'bonificaciones incrementadas obtenidas del Carcaj Equipado'. Los compradores filtran por él directamente. Un Widowhail Runeforged es un tipo de base distinto con Runic Ward y se lista por separado del único normal."
+          ]
+        },
+        {
+          "version": "Note on Divine Orb and corruption",
+          "changes": [
+            "La tirada de bono de carcaj es un rango fijo, así que un Orbe Divino no la cambia. Una corrupción con Orbe Vaal puede superar 250% (informes de la comunidad de hasta ~290%+) pero puede añadir un implícito no deseado. Verifica el tope exacto de corrupción en el juego."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notas del parche 0.5.4 de Path of Exile 2 (foro oficial)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Widowhail (estadísticas base, mecánica, ejemplo de flechas)",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant - Cómo conseguir Widowhail (drop, valor de tirada, corrupción)",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "MaxRoll - Mejores únicos de progresión (análisis de escalado de carcaj de Widowhail)",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Hilo de build del foro oficial - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Hilo del foro de la comunidad - Configuración Widowhail Poisonous Concoction",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "VIDEO",
+          "description": "goldfarmingGUIDE - Variante Widowhail Spark Blood Mage",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de cambios",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial que cubre la fórmula del multiplicador de bono de carcaj de Widowhail, qué mods de carcaj escalan, valor de tirada baja frente a alta, selección de carcaj, Runeforging y precauciones específicas de cada build."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Notas del parche 0.5.4 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - Cómo conseguir Widowhail",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Mejores únicos de progresión",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "Foro oficial - Build Widowhail Spark Infernalist",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "Foro de la comunidad - Configuración Widowhail Poisonous Concoction",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Variante Widowhail Spark Blood Mage",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Widowhail: escalado del bono de carcaj, mejores tiradas y Runeforging (PoE2 0.5)",
+    "description": "Cómo funciona Widowhail en Path of Exile 2: el multiplicador (150-250)% de bonificaciones incrementadas obtenidas del Carcaj Equipado, la fórmula Base x (1 + W%), qué mods de carcaj escalan, valor de tirada, selección de carcaj y Runeforging.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "widowhail",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

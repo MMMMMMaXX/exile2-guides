@@ -1,0 +1,856 @@
+{
+  "id": "spark-coc-comet-stormweaver",
+  "slug": "spark-coc-comet-stormweaver",
+  "locale": "de",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Spark-CoC-Comet-Stormweaver-Build-Guide: Mana, Trigger-Setup und Progression",
+  "shortTitle": "Spark CoC Comet",
+  "summary": "Trigger-Werkzeugkasten 0.5.4: Spark für das Clearen, CoC-Comet für Einzelziel. Deckt Skill-Wechsel von Stufe 1 bis in die Maps, die Trigger-Schwelle, Mana als Ressourcen-/Verteidigungs-/Schadens-Dreieck und die Grenzen der MoM/EB/Archmage-Varianten ab.",
+  "description": "Path of Exile 2 Spark-CoC-Comet-Stormweaver-Guide für 0.5.4: Level-Leiter, Trigger-Schwelle, Mana-Dreieck, Boss-Überleben und echte Video-Zeitstempel.",
+  "classId": "sorceress",
+  "ascendancyId": "stormweaver",
+  "mainSkillIds": [
+    "spark"
+  ],
+  "secondarySkillIds": [
+    "cast-on-critical",
+    "comet",
+    "arc",
+    "lightning-warp"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "caster",
+    "lightning",
+    "trigger",
+    "mana-stacking",
+    "crit"
+  ],
+  "damageTypes": [
+    "lightning"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "cardImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "imageAlt": "Sorceress-Stormweaver räumt mit Spark auf und beendet Bosse mit durch Cast-on-Critical ausgelöstem Comet",
+  "tags": [
+    "bossing",
+    "caster",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "sorceress",
+    "starter",
+    "stormweaver",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Build-Überblick",
+      "paragraphs": [
+        "Spark-CoC-Comet ist der Trigger-Werkzeugkasten der Zauberin: Spark räumt auf (Mehrfach-Projektil-Abdeckung), durch Cast-on-Critical ausgelöster Comet macht Einzelziel und Bosse. Verschiedene Aufgaben — Spark ist die Clear-Engine, Comet der Burst-Finisher.",
+        "Die 0.5-Hürde ist die „Trigger-Schwelle“: Mana, Krit und Zaubertempo müssen zusammenpassen, bevor CoC zuverlässig Comet auslöst. Mana spielt hier gleichzeitig Ressource, Verteidigung (bei Niedrig-Leben wird in den Manapool absorbiert) und Schaden, weshalb niedriges Mana direkt tödlich ist.",
+        "MoM / EB / Archmage sind unterschiedliche Verteidigungs-/Ressourcen-Varianten und dürfen nicht gemischt werden. Dieser Guide erklärt die Level-Leiter, die Trigger-Schwelle, das Mana-Dreieck und die Variantengrenzen; Zahlenwerte warten auf PC-Verifizierung."
+      ],
+      "bullets": [
+        "Spark räumt auf, CoC-Comet beendet.",
+        "Trigger-Schwelle braucht Mana/Krit/Zaubertempo.",
+        "Mana ist Ressource + Verteidigung + Schaden (Dreieck)."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Vor- und Nachteile",
+      "pros": [
+        "Das Clearen mit Spark fühlt sich bei guter Projektil-Abdeckung flüssig an.",
+        "CoC-Comet hoher Einzelziel-Burst.",
+        "Geringe Betriebskosten, sobald der Trigger stabil ist.",
+        "Schon bei geringem Budget wird aufgeräumt."
+      ],
+      "cons": [
+        "Hohe Trigger-Schwelle; Comet feuert kaum, bevor sie erreicht ist.",
+        "Das Mana-Dreieck ist eng; niedriges Mana ist direkt tödlich.",
+        "MoM/EB/Archmage-Varianten dürfen nicht gemischt werden.",
+        "Boss-Kämpfe müssen vermeiden, dass Mana sofort abgezogen wird."
+      ]
+    },
+    {
+      "id": "spark-behaviour",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Wie sich die Schleife liest: Spark → CoC-Comet",
+      "paragraphs": [
+        "Map-Schleife: Spark wirken; Mehrfach-Projektile decken Gruppen automatisch ab; du positionierst dich nur um und wirkst erneut.",
+        "Boss-Schleife: Spark nutzen, um die Krit-Frequenz zu halten, sodass Cast-on-Critical zuverlässig Comet auf den Boss auslöst; Lightning Warp für Beweglichkeit.",
+        "Ob du „zu CoC wechseln kannst“, hängt von der Mana/Krit/Zaubertempo-Schwelle ab, nicht nur vom Level."
+      ],
+      "bullets": [
+        "Mapping = Spark-Mehrfach-Projektil-Abdeckung.",
+        "Boss = Spark hält Krit → CoC-Comet.",
+        "Trigger hängt von der Schwelle ab, nicht vom Level."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Levelweg",
+      "steps": [
+        {
+          "label": "Stufen 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Kämpfe mit einem basis Blitz-Zauber (Spark oder Arc); noch kein CoC, Mana und Krit sind nicht bereit."
+          ]
+        },
+        {
+          "label": "Stufen 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Nimm Spark als Haupt-Clear, füge Mana/Krit/Leben-Knoten hinzu."
+          ]
+        },
+        {
+          "label": "Stufen 30–42 — Stormweaver-Freischaltungen",
+          "levelRange": "30–42",
+          "body": [
+            "Wähle Stormweaver, verstärke Mana und Trigger; beginne mit durch Cast-on-Critical ausgelöstem Comet."
+          ]
+        },
+        {
+          "label": "Stufen 43–60 — Frühe Maps",
+          "levelRange": "43–60",
+          "body": [
+            "Betreibe die Trigger-Kette bei geringem Budget; stabilisiere Manapool und Krit, decke Resistenzen ab."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Skill-Setup",
+      "groups": [
+        {
+          "label": "Kernfähigkeiten",
+          "skills": [
+            {
+              "displayName": "Spark",
+              "skillId": "spark",
+              "role": "Mapping-Kern, Mehrfach-Projektil-Abdeckung.",
+              "supportSkillIds": [
+                "fork",
+                "added-lightning",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "Es ist die Clear-Engine; mehr Projektile = bessere Abdeckung."
+              ],
+              "whenReplace": [
+                "Wird nie ersetzt; im Bossing hält es die Krit-Frequenz."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: durchgehend gewirkt; Bossing: hält den CoC-Trigger aufrecht."
+              ],
+              "notes": [
+                "Projektile/Fläche skalieren über Supports."
+              ]
+            },
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "Trigger-Träger, der Comet bei Krit freisetzt.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Voraussetzung für stabilen Comet; ohne ihn feuert Comet nicht."
+              ],
+              "whenReplace": [
+                "Behalten; Teil der Trigger-Architektur."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, Boss verlässt sich stärker darauf."
+              ],
+              "notes": [
+                "Braucht genug Krit und Mana."
+              ]
+            },
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "Durch CoC ausgelöster Einzelziel-Burst.",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "Zentraler Burst, der Bosse beendet."
+              ],
+              "whenReplace": [
+                "Nicht ersetzt, braucht Trigger an Ort und Stelle."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: optional; Boss: zwingend."
+              ],
+              "notes": [
+                "Freisetzungs-Timing wird vom Trigger gesteuert."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Supports",
+          "skills": [
+            {
+              "displayName": "Arc",
+              "skillId": "arc",
+              "role": "Alternativer Clear/Ketten-Skill, zusätzliche Abdeckung.",
+              "supportSkillIds": [
+                "chain"
+              ],
+              "whyUse": [
+                "Ergänzt Ketten-Abdeckung, wenn Spark dünn ist."
+              ],
+              "whenReplace": [
+                "Als Support behalten."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Lightning Warp",
+              "skillId": "lightning-warp",
+              "role": "Beweglichkeits-Skill, meidet Boden-Effekte.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Wichtige Mobilität, reduziert Tode durch Stehenbleiben."
+              ],
+              "whenReplace": [
+                "Als Mobilität behalten."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Ascendancy-Reihenfolge",
+      "steps": [
+        {
+          "label": "Stormweaver — Erste Knoten",
+          "body": [
+            "Priorisiere Mana- und Trigger-Knoten; Voraussetzung für das Mana-Dreieck und stabilen CoC."
+          ]
+        },
+        {
+          "label": "Verteidigungsprüfung",
+          "body": [
+            "Wenn das Überleben ab T15+ wackelig ist, füge MoM/ES-Knoten hinzu; handle nicht alles für Schaden weg."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Passivbaum",
+      "steps": [
+        {
+          "label": "Kampagne",
+          "body": [
+            "Nimm Mana, Krit, Blitz und Leben; pfade nicht vorzeitig zu Archmage-Rädern."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Wechsle in die Trigger-Variante; zuerst Manapool, Krit und Zaubertempo."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Nachdem Mana-Dreieck und Verteidigung gelöst sind, in Schadens-Räder investieren; Ausrüstung auf Stufe vergleichen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Ausrüstung",
+      "slots": [
+        {
+          "slot": "Stab / Fokus",
+          "recommendations": [
+            "Wähle eine Basis, die Zauberstufe und Blitz-/Zauberschaden erhöht; genug Sockel für Spark-/Comet-Verbindungen."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Zauberstufe / Blitz-Zauberschaden",
+              "reason": "Skaliert Spark und Comet."
+            },
+            {
+              "tier": "recommended",
+              "label": "Manapool und -regen",
+              "reason": "Boden des Mana-Dreiecks."
+            },
+            {
+              "tier": "optional",
+              "label": "Zaubertempo",
+              "reason": "Schnellerer Trigger-Rhythmus."
+            },
+            {
+              "tier": "luxury",
+              "label": "Krit-Chance / Krit-Schaden",
+              "reason": "Voraussetzung für CoC."
+            }
+          ],
+          "notes": [
+            "Fokus: priorisiere Zauberschaden und Mana."
+          ]
+        },
+        {
+          "slot": "Brust / Stiefel / Helm",
+          "recommendations": [
+            "Leben, Resistenzen und Mana; Bewegungstempo der Stiefel."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Leben und zwei abgedeckte Resistenzen",
+              "reason": "Kein Schaden gleicht das Sterben auf."
+            },
+            {
+              "tier": "recommended",
+              "label": "Manapool (mit MoM/ES)",
+              "reason": "Niedrig-Leben wird in Mana absorbiert."
+            },
+            {
+              "tier": "optional",
+              "label": "Bewegungstempo",
+              "reason": "Besseres Positionieren."
+            },
+            {
+              "tier": "luxury",
+              "label": "Expliziter Zauberschaden",
+              "reason": "Nach der Verteidigung."
+            }
+          ],
+          "notes": [
+            "Das Mana-Dreieck braucht Ausrüstung und Passives zusammen."
+          ]
+        },
+        {
+          "slot": "Ringe / Amulett / Gürtel",
+          "recommendations": [
+            "Attribute, Resistenzen, Leben und Mana; Krit und Mana-Erhaltung wo nötig."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Attribute, um Stab und Gems auszurüsten",
+              "reason": "Nicht ausrüstbar ist nutzlos."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistenzen und Mana",
+              "reason": "Vervollständigt Verteidigung und Mana-Dreieck."
+            },
+            {
+              "tier": "optional",
+              "label": "Krit-Chance",
+              "reason": "Voraussetzung für CoC-Trigger."
+            },
+            {
+              "tier": "luxury",
+              "label": "Zauberstufe",
+              "reason": "Endgame-Schaden."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Stat-Priorität",
+      "priorities": [
+        {
+          "label": "Zauberfähigkeitsstufe",
+          "reason": "Skaliert Spark und Comet; oberste Fortschritts-Kontrolle."
+        },
+        {
+          "label": "Manapool und -regen",
+          "reason": "Boden des Mana-Dreiecks, Niedrig-Leben-Absorption hängt davon ab."
+        },
+        {
+          "label": "Krit-Chance",
+          "reason": "Voraussetzung für CoC."
+        },
+        {
+          "label": "Zaubertempo",
+          "reason": "Schnellerer Trigger-Rhythmus."
+        },
+        {
+          "label": "Blitz-Zauberschaden",
+          "reason": "Direkter Schaden, nach Mana."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Upgrade-Priorität",
+      "steps": [
+        {
+          "label": "Comet triggert nicht",
+          "symptom": "Comet taucht im Bossing kaum auf.",
+          "checks": [
+            "Genug Krit?",
+            "Mana hält vor?",
+            "Zaubertempo an der Schwelle?"
+          ],
+          "upgrade": "Trigger-Schwelle beheben (Krit/Mana/Zaubertempo), nicht den Stab tauschen."
+        },
+        {
+          "label": "Tod bei niedrigem Mana",
+          "symptom": "Mana im Boss abgezogen, sofortiger Tod.",
+          "checks": [
+            "MoM/ES aktiv?",
+            "Manapool groß genug?"
+          ],
+          "upgrade": "Mana-Dreieck beheben, bevor Schaden skaliert wird."
+        },
+        {
+          "label": "Clear wird langsamer",
+          "symptom": "Spark-Clear unzureichend.",
+          "checks": [
+            "Stab-Tier-Basis?",
+            "Projektile/Fläche ausreichend?"
+          ],
+          "upgrade": "Stab und Supports upgraden, nicht Krit stapeln."
+        },
+        {
+          "label": "Archmage/High-End erwägen",
+          "symptom": "Höhere Decke gewünscht.",
+          "checks": [
+            "Mana-Dreieck stabil?",
+            "Kollidieren Varianten, wenn gemischt?"
+          ],
+          "upgrade": "Stück für Stück kaufen und neu testen; MoM/EB/Archmage nicht mischen."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapping",
+      "paragraphs": [
+        "Spark wirken; Mehrfach-Projektile decken automatisch ab; Lightning Warp zum Umpositionieren. Müll braucht keinen Comet; zum Triggern stehenzubleiben bremst dich aus.",
+        "Wenn das Clearen langsamer wird, zuerst Stab und Projektil-Supports upgraden. Mana-Erhaltung aktiv halten, damit das Mapping nie stockt."
+      ],
+      "bullets": [
+        "Spark-Mehrfach-Projektil-Abdeckung.",
+        "Comet-Trigger bei Müll überspringen.",
+        "Bei langsamem Clear zuerst Stab upgraden."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Bossing",
+      "paragraphs": [
+        "Spark nutzen, um die Krit-Frequenz zu halten, sodass Cast-on-Critical zuverlässig Comet auf den Boss auslöst; Lightning Warp meidet Boden-Effekte.",
+        "Kommt Comet nie, liegt es an der Trigger-Schwelle (Krit/Mana/Zaubertempo), nicht am Stab. In Boss-Kämpfen verhindern, dass Mana sofort abgezogen wird — MoM/ES und Mana-Erhaltung halten."
+      ],
+      "bullets": [
+        "Spark hält Krit → CoC-Comet.",
+        "Lightning-Warp-Ausweichen.",
+        "Mana-Abfall = Trigger und Mana-Dreieck beheben."
+      ]
+    },
+    {
+      "id": "trigger-readiness",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Trigger-Bereitschaft: Kann ich zu CoC wechseln?",
+      "paragraphs": [
+        "CoC-Comet ist auf einem Level nicht automatisch stark. Es braucht: genug Krit (häufiges Cast-on-Critical), genug Mana (hält durchgehendes Wirken vor), genug Zaubertempo (schnellerer Trigger). Fehlt eines, wirkt Comet „kaum auslösend“.",
+        "Checkliste: Krit an der Schwelle? Manapool/-regen hält durchgehendes Spark vor? Zaubertempo im Trigger-Rhythmus? Erst zu CoC von selbstgewirktem Spark wechseln, wenn alle drei halten; sonst zuerst Clear stabilisieren."
+      ],
+      "bullets": [
+        "Nur wechseln, wenn Krit + Mana + Zaubertempo alle halten.",
+        "Comet triggert nicht, wenn eines fehlt.",
+        "Clear stabilisieren, bevor zu CoC gewechselt wird."
+      ]
+    },
+    {
+      "id": "mana-defence",
+      "type": "overview",
+      "order": 140,
+      "visible": true,
+      "toc": false,
+      "title": "Mana-Dreieck: Ressource / Verteidigung / Schaden",
+      "paragraphs": [
+        "Hier ist Mana zugleich: Ressource (Wirken), Verteidigung (bei Niedrig-Leben trifft Schaden zuerst den Manapool, verstärkt durch MoM/ES) und Schaden (Archmage-artige Varianten wandeln Mana in Schaden um).",
+        "Darum ist niedriges Mana direkt tödlich — nicht „nicht genug Blau zum Wirken“, sondern „nicht genug Blau zum Absorbieren“. Die drei Zustände (voll/mittel/niedrig) verteidigen unterschiedlich: volles Mana ist nachsichtig, bei niedrigem Mana kann eine einzelne Boss-Fähigkeit töten.",
+        "MoM / EB / Archmage sind eigene Varianten mit unterschiedlicher Mana-Nutzung und dürfen nicht in einem Setup gemischt werden."
+      ],
+      "bullets": [
+        "Mana = Ressource + Verteidigung + Schaden.",
+        "Niedriges Mana ist direkt tödlich.",
+        "MoM/EB/Archmage nicht mischen."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 145,
+      "visible": true,
+      "toc": true,
+      "title": "Community-Belege",
+      "note": "Dieser Guide nutzt Community-Diskussionen als reproduzierbare Checkliste, nicht als Versprechen ihres gezeigten DPS.",
+      "entries": [
+        {
+          "context": "Spieler fragen, ob Spark-CoC auf einem Budget spielbar ist.",
+          "label": "Budget-Spark-CoC-Comet-Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Der Guide zeigt Spark + CoC-Comet auf geringem Budget spielbar, mit Betonung auf Trigger-Schwelle und Mana.",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "context": "Spieler diskutieren MoM/EB/Archmage-Grenzen.",
+          "label": "Cast-on-Crit-Comet-Stormweaver-Endgame",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Der Endgame-Guide klärt Variantengrenzen und Ausrüstung, mit Betonung auf das Mana-Dreieck.",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Fehlerbehebung",
+      "problems": [
+        {
+          "symptom": "Comet triggert nicht",
+          "checks": [
+            "Genug Krit?",
+            "Mana hält vor?",
+            "Zaubertempo an der Schwelle?"
+          ]
+        },
+        {
+          "symptom": "Tod bei niedrigem Mana",
+          "checks": [
+            "MoM/ES aktiv?",
+            "Manapool groß genug?"
+          ]
+        },
+        {
+          "symptom": "Clear wird langsamer",
+          "checks": [
+            "Stab-Tier-Basis?",
+            "Projektile ausreichend?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Wann wechsle ich von selbstgewirktem Spark zu CoC?",
+          "answer": [
+            "Nur wechseln, nachdem Krit, Mana und Zaubertempo alle die Trigger-Schwelle erreichen; sonst zuerst Clear stabilisieren."
+          ],
+          "bullets": [
+            "Mit der Checkliste bestätigen."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Warum tötet mich niedriges Mana direkt?",
+          "answer": [
+            "Mana absorbiert bei Niedrig-Leben Schaden; unzureichendes Mana ist eine Verteidigungslücke, Boss-Fähigkeiten schlagen durch."
+          ],
+          "bullets": [
+            "Das Mana-Dreieck halten."
+          ],
+          "relatedLinks": [
+            {
+              "href": "/de/guides/how-to-stop-getting-one-shot/",
+              "label": "Siehe Anti-One-Shot-Guide"
+            }
+          ]
+        },
+        {
+          "question": "Kann ich MoM und Archmage zusammen nutzen?",
+          "answer": [
+            "Mischen wird nicht empfohlen; es sind unterschiedliche Mana-Nutzungs-Varianten, eine klare Variante konfigurieren."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build-Planer & Import",
+      "note": "Einfügbare Import-Strings und .build-Dateien warten weiterhin auf PC-Verifizierung; nutze inzwischen die Creator-Guides und den offiziellen Planer unten. Knoten immer erneut in deinem eigenen Client bestätigen.",
+      "creatorName": "Community Guide",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Clear und Trigger-Rhythmus ansehen",
+      "entries": [
+        {
+          "creator": "Community",
+          "label": "0.5 Budget Spark CoC Comet",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc",
+          "description": "Spark + CoC-Comet auf geringem Budget spielbar und Trigger-Schwelle.",
+          "takeaway": "Fokus auf Trigger-Schwelle und Mana-Verwaltung.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro"
+            },
+            {
+              "time": "1:30",
+              "label": "Clear und Spark"
+            },
+            {
+              "time": "4:00",
+              "label": "Trigger-Schwelle"
+            },
+            {
+              "time": "7:00",
+              "label": "Mana-Verwaltung"
+            },
+            {
+              "time": "10:00",
+              "label": "Ausrüstung"
+            }
+          ]
+        },
+        {
+          "creator": "Community",
+          "label": "0.5 CoC-Comet-Stormweaver-Endgame",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo",
+          "description": "Endgame: Variantengrenzen, Ausrüstung und Mana-Dreieck.",
+          "takeaway": "Endgültige Ausrüstung und Boss-Gameplay ansehen.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro"
+            },
+            {
+              "time": "2:00",
+              "label": "Variantengrenzen"
+            },
+            {
+              "time": "5:00",
+              "label": "Ausrüstung und Mana"
+            },
+            {
+              "time": "8:00",
+              "label": "Boss-Gameplay"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Quellen & Verifizierung",
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "Budget-Spark-CoC-Comet-Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "label": "Community",
+          "description": "Cast-on-Crit-Comet-Stormweaver-Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        },
+        {
+          "label": "Community",
+          "description": "PoE2-Stormweaver-Spark-Budget-Build (YouTube)",
+          "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Änderungsprotokoll",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Einen quellenbasierten 0.5.4-Spark-CoC-Comet-Stormweaver-Build-Guide erstellt; PC-Verifizierung läuft."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "how-to-fix-low-damage"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Budget-Spark-CoC-Comet-Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "label": "Cast-on-Crit-Comet-Stormweaver-Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+    },
+    {
+      "label": "PoE2-Stormweaver-Spark-Budget-Build (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+    }
+  ],
+  "seo": {
+    "title": "Spark-CoC-Comet-Stormweaver-Build-Guide | Exile2 Guides",
+    "description": "0.5.4 Spark-CoC-Comet-Stormweaver: Spark-Clear, CoC-Comet-Einzelziel, Trigger-Schwelle, Mana-Dreieck und Variantengrenzen.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark-coc-comet-stormweaver",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

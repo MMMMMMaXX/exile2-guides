@@ -1,0 +1,679 @@
+{
+  "id": "ice-tipped-arrows",
+  "slug": "ice-tipped-arrows",
+  "locale": "de",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Ice-Tipped Arrows Guide — Verstärkte Angriffe, Ice Fragments und Frenzy-Charges",
+  "shortTitle": "Ice-Tipped Arrows",
+  "summary": "Ice-Tipped Arrows ist ein Buff, der deine nächsten wenigen Bogen- oder Projektil-Speer-Angriffe verstärkt: Er wandelt deren physischen Schaden in Kälteschaden um und lässt Treffer Ice Fragments spawnen, die explodieren. Dieser Guide erklärt, wie die Verstärkungsanzahl aufgebraucht wird, warum Twister verstärkt werden kann, wie Barrage-Wiederholungen damit interagieren, wie ein Frenzy-Charge seine Abklingzeit umgeht, die Weapon-Set-Regel, die ihn bricht, und warum alte Werte von 8 Sekunden / 3 Fragmenten nach 0.4 veraltet sind.",
+  "description": "Ice-Tipped Arrows Tiefen-Guide: Verstärkungsanzahl und ungültige Skills, Twister- und Ice-Shot-Synergie, Ice-Fragment-Spawning und verzögerte Explosion, Physisk-zu-Kälte-Umwandlung, Frenzy-Charge-Abklingzeit-Umgehung, Weapon-Set-Konsistenzregel, Combo mit Barrage, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "buff",
+    "attack",
+    "projectile",
+    "cold",
+    "duration",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/ice-tipped-arrows.webp",
+  "cardImage": "/images/skills/ice-tipped-arrows.webp",
+  "imageAlt": "Ice-Tipped Arrows Kälte-Verstärkungs-Skill-Icon",
+  "tags": [
+    "buff",
+    "attack",
+    "projectile",
+    "cold",
+    "duration",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Kurzantwort: Er verstärkt deine nächsten wenigen Angriffe",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice-Tipped Arrows ist ein Buff, kein Schadens-Skill. Das Wirken verstärkt deine nächsten wenigen gültigen Bogen- oder Projektil-Speer-Angriffe: Diese Angriffe verursachen physischen, in Kälte umgewandelten Schaden und spawnen bei Treffern Ice Fragments.",
+        "Die Verstärkung wird pro Angriff aufgebraucht, der Buff hat eine Abklingzeit, und ein Frenzy-Charge kann diese Abklingzeit umgehen. Er kann keine andauernden (kanalisierten) Skills verstärken."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Wichtige Werte und Erwerb",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Kategorie",
+          "value": "Buff (Bogen / Projektil-Speer · Kälte · Dauer)",
+          "notes": [
+            "Getaggter Buff, Angriff, Projektil, Kälte, Dauer und Trigger."
+          ]
+        },
+        {
+          "label": "Waffenvoraussetzung",
+          "value": "Bogen oder Speer",
+          "notes": [
+            "Verstärkt Bogen- und Projektil-Speer-Angriffe; die Waffe muss passen."
+          ]
+        },
+        {
+          "label": "Erwerb",
+          "value": "Uncut Skill Gem (Skill der Stufe 5+)",
+          "notes": [
+            "Aus einem Uncut Skill Gem eingraviert."
+          ]
+        },
+        {
+          "label": "Verstärkte Nutzungen",
+          "value": "Eine feste Angriffsanzahl pro Zauber",
+          "notes": [
+            "Die genaue Anzahl im Client 0.5.4 bestätigen; alte Werte aus der 0.4-Ära haben sich geändert."
+          ]
+        },
+        {
+          "label": "Abklingzeit",
+          "value": "Durch einen Frenzy-Charge umgehbar",
+          "notes": [
+            "Das Ausgeben eines Frenzy-Charges überspringt die Abklingzeit, nicht die Nutzungsanzahl."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Voraussetzungen und gültige Skills",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Du benötigst einen ausgerüsteten Bogen oder Projektil-Speer, und der verstärkte Skill muss ein gültiger wiederholbarer Angriff mit dieser Waffe sein. Twister (Speer) und Ice Shot (Bogen) sind die wichtigsten gültigen Skills.",
+        "Andauernde / kanalisierte Skills sind ausdrücklich ausgeschlossen — sie können nicht verstärkt werden, weshalb manche kanalisierte Bogen-Skills keine Fragmente zeigen."
+      ],
+      "keyValues": [
+        {
+          "label": "Waffe",
+          "value": "Bogen oder Projektil-Speer",
+          "notes": [
+            "Der verstärkte Angriff muss denselben Waffentyp nutzen."
+          ]
+        },
+        {
+          "label": "Gültige Skills",
+          "value": "Twister, Ice Shot, Glacial Lance, Speer-Angriffe im Stil von Stormcaller",
+          "notes": [
+            "Wiederholbare Angriffe werden verstärkt; kanalisierte nicht."
+          ]
+        },
+        {
+          "label": "Ausgeschlossen",
+          "value": "Andauernde / kanalisierte Skills",
+          "notes": [
+            "Tooltip-Beschränkung: keine Verstärkung angewendet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attack-empowerment",
+      "order": 40,
+      "title": "Verstärkte Angriffe",
+      "type": "attack-empowerment",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Jeder Zauber verstärkt eine feste Anzahl folgender gültiger Angriffe. Die Anzahl wird einen Angriff nach dem anderen aufgebraucht; wenn sie auf null fällt, stoppen Kälte-Umwandlung und Fragment-Spawning, bis du neu wirkst (oder die Abklingzeit mit einem Frenzy-Charge umgehst).",
+        "Die Verstärkung gilt für den gesamten Angriff, weshalb Multi-Hit-Angriffe weiterhin als eine verstärkte Nutzung zählen. Twister wird verstärkt, weil er ein wiederholbarer Speer-Angriff ist — weshalb Ice-Tipped Arrows zentral für Twister-Builds ist."
+      ],
+      "keyValues": [
+        {
+          "label": "Nutzungen pro Zauber",
+          "value": "Feste Anzahl (auf 0.5.4 bestätigen)",
+          "notes": [
+            "Wird einen gültigen Angriff nach dem anderen aufgebraucht."
+          ]
+        },
+        {
+          "label": "Twister",
+          "value": "Verstärkt (Speer-Angriff)",
+          "notes": [
+            "Kälte-Umwandlung + Fragmente bei jedem Twister-Treffer."
+          ]
+        },
+        {
+          "label": "Andauernde Skills",
+          "value": "Nicht verstärkt",
+          "notes": [
+            "Kanalisierte Angriffe sind durch den Tooltip ausgeschlossen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empower-table",
+      "order": 45,
+      "title": "Verstärkungs-Kompatibilitätstabelle",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Hauptskill",
+        "Verstärkt?",
+        "Effekt",
+        "Hinweis"
+      ],
+      "rows": [
+        [
+          "Twister",
+          "Ja",
+          "Kälte-Umwandlung + Ice Fragments",
+          "Kern von Twister-Builds; dasselbe Weapon Set"
+        ],
+        [
+          "Ice Shot",
+          "Ja",
+          "Zusätzliche Kälte + Fragmente",
+          "Vom eigenen Kälteschaden zu unterscheiden"
+        ],
+        [
+          "Andauernder / kanalisierter Skill",
+          "Nein",
+          "Keine Verstärkung",
+          "Durch Tooltip ausgeschlossen"
+        ],
+        [
+          "Barrage-wiederholter Skill",
+          "Je nach aktuellem Client",
+          "Wiederholungskosten bestätigen",
+          "Ob jede Wiederholung eine Ladung verbraucht, ist ein Detail des aktuellen Clients"
+        ]
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 50,
+      "title": "Skill-Interaktionen",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Twister: Der verstärkte Twister wandelt seinen physischen Schaden in Kälte um und lässt Ice Fragments um jeden Gegner spawnen, den er trifft. Da Twister den gleichen Gegner zeitgesteuert erneut treffen kann, kann ein verstärkter Zauber Fragmente sehr oft spawnen.",
+        "Ice Shot: Der verstärkte Ice Shot erhält zusätzliche Kälte und Fragmente auf dessen eigene Zerschlagung; halte die beiden Kältequellen beim Lesen des Schadens getrennt.",
+        "Barrage: Barrage wiederholt einen verstärkten Skill. Ob jede Wiederholung eine separate Verstärkung verbraucht, ist ein Detail des aktuellen Clients — verifiziere es auf 0.5.4 statt anzunehmen. Bei der Twister-Combo verstärkt ein Ice-Tipped-Zauber im Test normalerweise den gesamten Barrage-Salve aus Twistern, aber bestätige es pro Patch."
+      ],
+      "keyValues": [
+        {
+          "label": "Twister",
+          "value": "Volle Synergie",
+          "notes": [
+            "Kälte-Umwandlung + Fragment-Spawns pro Treffer."
+          ]
+        },
+        {
+          "label": "Ice Shot",
+          "value": "Additive Kälte + Fragmente",
+          "notes": [
+            "Stapelt mit der eigenen Kälte von Ice Shot."
+          ]
+        },
+        {
+          "label": "Barrage",
+          "value": "Wiederholungs-Interaktion pro Patch unverifiziert",
+          "notes": [
+            "Wiederholungskosten im aktuellen Client bestätigen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "Mechanik: Ice Fragments und Umwandlung",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Verstärkte Angriffe wandeln ihren physischen Schaden in Kälte um, weshalb jeder flache Physisch-Wert auf Waffe und Ausrüstung in den Kälte-Output fließt. Bei Treffern spawnen sie zudem Ice Fragments in einem kleinen Radius um das Ziel.",
+        "Fragmente explodieren nach kurzer Verzögerung und verursachen Kälte-AoE. Die Verzögerung bedeutet, dass Fragmente eine geschichtete AoE sind, nicht sofort — Positionierung und Dichte bleiben für den vollen Ertrag wichtig.",
+        "Die Umwandlung ist der Haupt-Hebel für das Scaling: Flacher Physisch- und Kälte-Modifikator greifen beide, während Angriffsgeschwindigkeit vor allem steuert, wie schnell du das Verstärkungsfenster aufbrauchst."
+      ],
+      "bullets": [
+        "Physisch → Kälte bei verstärkten Angriffen.",
+        "Treffer spawnen Ice Fragments in einem Radius.",
+        "Fragmente detonieren nach kurzer Verzögerung (geschichtete AoE).",
+        "Flacher Physisch- und Kältewert skalieren beide den Output."
+      ]
+    },
+    {
+      "id": "charge-generation",
+      "order": 70,
+      "title": "Frenzy-Charge-Abklingzeit-Umgehung",
+      "type": "charge-generation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice-Tipped Arrows hat eine Abklingzeit zwischen den Zaubern. Das Ausgeben eines Frenzy-Charges umgeht diese Abklingzeit und lässt dich früher neu verstärken — es fügt über die feste Anzahl hinaus keine extra verstärkten Nutzungen hinzu.",
+        "Ohne Frenzy-Charge-Quelle ist die Schleife ein Abklingzeit-Zyklus: Zaubern, Verstärkungen aufbrauchen, warten, neu zaubern. Combat Frenzy (Freeze / Elektrokution / Pin) ist die übliche Charge-Quelle, die den Buff fast dauerhaft hält."
+      ],
+      "keyValues": [
+        {
+          "label": "Umgehungsziel",
+          "value": "Die Abklingzeit, nicht die Nutzungsanzahl",
+          "notes": [
+            "Ein Frenzy-Charge lässt dich früh neu zaubern."
+          ]
+        },
+        {
+          "label": "Charge-Quelle",
+          "value": "Combat Frenzy / Kills",
+          "notes": [
+            "Freeze / Elektrokution / Pin erzeugen die Charges."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 80,
+      "title": "Support-Kompatibilität",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "keyValues": [
+        {
+          "label": "Cold Infusion / Added Cold",
+          "value": "Kern",
+          "notes": [
+            "Skaliert den umgewandelten Kälteschaden und den Fragment-Schaden."
+          ]
+        },
+        {
+          "label": "Skill Effect Duration",
+          "value": "Situativ",
+          "notes": [
+            "Verlängert das Verstärkungsfenster, wenn der Build Wert auf Uptime legt."
+          ]
+        },
+        {
+          "label": "Elemental Damage with Attacks",
+          "value": "Situativ",
+          "notes": [
+            "Verstärkt allen Elementarschaden der verstärkten Angriffe."
+          ]
+        },
+        {
+          "label": "Cooldown Recovery",
+          "value": "Situativ",
+          "notes": [
+            "Verkürzt die Neu-Zauber-Abklingzeit, wenn keine Frenzy-Umgehung genutzt wird."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "Weapon-Set-Konsistenz",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die Verstärkung gilt nur für Angriffe auf demselben Weapon Set, das Ice-Tipped Arrows trägt. Wenn dein Hauptangriff auf Weapon Set 2 ist, aber Ice-Tipped Arrows auf Set 1, erscheint der Angriff als aktiviert, erzeugt aber keine Fragmente.",
+        "Diese Diskrepanz ist der häufigste Bericht über „aktiviert, aber keine Fragmente“. Halte Ice-Tipped Arrows und den Angriff, den du verstärken willst, auf demselben Set."
+      ],
+      "keyValues": [
+        {
+          "label": "Dasselbe Set erforderlich",
+          "value": "Buff und Angriff auf einem Set",
+          "notes": [
+            "Über-Set-Verstärkung greift nicht."
+          ]
+        },
+        {
+          "label": "Symptom",
+          "value": "Aktiviert, keine Fragmente",
+          "notes": [
+            "Meist eine Weapon-Set-Trennung."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 100,
+      "title": "Combo-Abfolge",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Verstärken",
+          "action": "Ice-Tipped Arrows wirken (oder Abklingzeit mit einem Frenzy-Charge umgehen)",
+          "result": "Folgende Angriffe werden zu Kälte + Fragment-Spawning."
+        },
+        {
+          "label": "Barrage (optional)",
+          "action": "Barrage auf den verstärkten Angriff wirken",
+          "result": "Wiederholt den verstärkten Angriff (Wiederholungskosten im Client bestätigen)."
+        },
+        {
+          "label": "Twister",
+          "action": "Twister während der Verstärkung wirken",
+          "result": "Kalte Twister spawnen bei jedem Treffer Fragmente."
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "Mapping-Rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Erneuere Ice-Tipped Arrows, sobald verfügbar (oder immer wenn du einen Frenzy-Charge hast, um die Abklingzeit zu umgehen), damit Packs dauerhaft in Kälte umgewandelt werden und ausbildschirm über Herald of Ice zerschlagen.",
+        "In Twister-Builds lautet die Schleife: Ice-Tipped aufrecht halten, Whirling Slash drehen, dann Twister durch die Packs. Die Fragmente plus Herald-Zerschlagung räumen mehrere Bildschirme frei."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Bossing-Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Aufladen",
+          "action": "Frenzy-Charges erzeugen (Combat Frenzy via Freeze / Pin)",
+          "result": "Charges bereit, um die Abklingzeit zu umgehen."
+        },
+        {
+          "label": "Verstärken + Barrage",
+          "action": "Ice-Tipped Arrows, dann Barrage auf den Hauptangriff",
+          "result": "Wiederholte kalte verstärkte Treffer auf dem Boss."
+        },
+        {
+          "label": "Aufrechterhalten",
+          "action": "Neu zaubern bei Abklingzeit / mit Charges",
+          "result": "Hält das Kälte-Umwandlungsfenster über den Kampf offen."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Wo er genutzt wird",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice-Tipped Arrows ist zentral für Twister Spirit Walker, Ice-Tipped Twisters Amazon und viele Glacial Lance / Projektil-Speer-Builds. Er ist die Kälte-Umwandlungs-Maschine, die diesen Builds das Einfrieren und Zerschlagen ermöglicht.",
+        "Einige Deadeye-Bogen-Builds leihen ihn sich als Kälte-Schicht auf Ice Shot oder Lightning Arrow. Sein Wert ist der verlässliche Freeze und die Fragment-AoE, nicht direkter Schaden."
+      ],
+      "bullets": [
+        "Twister Spirit Walker: zentrale Kälte-Umwandlungs-Schicht.",
+        "Ice-Tipped Twisters Amazon: Campaign-Speedrun-Enabler.",
+        "Glacial Lance / Speer-Builds: Kälte-Fragmente für Freeze."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Fehlerbehebung",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Keine Fragmente",
+          "action": "Falsches Weapon Set oder ein andauernder Skill",
+          "result": "Lege Ice-Tipped und den Angriff auf dasselbe Set; meide kanalisierte Skills."
+        },
+        {
+          "label": "Buff zu oft auf Abklingzeit",
+          "action": "Keine Frenzy-Charge-Quelle",
+          "result": "Füge Combat Frenzy oder eine Charge-bei-Kill-Quelle hinzu, um die Abklingzeit zu umgehen."
+        },
+        {
+          "label": "Weapon-Set-Diskrepanz",
+          "action": "Angriff auf anderem Set als der Buff",
+          "result": "Fasse es auf einem Weapon Set zusammen."
+        },
+        {
+          "label": "Schwacher Output",
+          "action": "Verlass auf alte 0.4-Werte",
+          "result": "Dauer / Fragment-Anzahl / Abklingzeit im Client 0.5.4 erneut prüfen."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "Community-Belege",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Zwei Missverständnisse dominieren Community-Beiträge: Spieler denken, jede Barrage-Wiederholung verbrauche eine separate Verstärkung (pro Patch unbestätigt — im Client verifizieren), und Spieler kopieren alte 0.4-Guides mit einem 8-Sekunden-Buff und 3 Fragmenten, was sich in 0.4 geändert hat.",
+        "Der Fall „aktiviert, aber keine Fragmente“ ist fast immer eine Weapon-Set-Trennung, bestätigt durch das Nachstellen des Setups im Client 0.5.4 mit Buff und Angriff auf einem Set."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "Video-Walkthrough und Zeitstempel",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "Twister Amazon Huntress Leveling-Build",
+          "description": "Huntress-Build, der Ice-Tipped Arrows nutzt, um Twister in Kälte umzuwandeln und beim Leveln Fragmente zu spawnen.",
+          "takeaway": "Achte auf die 0–4 verstärkten Nutzungen und den Fragment-Ertrag bei Packs.",
+          "url": "https://www.youtube.com/watch?v=dpm4HSlg4ic",
+          "timestamps": [
+            {
+              "label": "Skill-Setup",
+              "time": "0:00"
+            },
+            {
+              "label": "Ice-Tipped + Twister-Demo",
+              "time": "6:00"
+            },
+            {
+              "label": "Boss-Anwendung",
+              "time": "12:00"
+            }
+          ]
+        },
+        {
+          "creator": "KaidGames2",
+          "label": "Ice Shot Ranger-Build 5M DPS",
+          "description": "Ranger-Build, bei dem Ice-Tipped Arrows eine Kälte- + Fragment-Schicht auf Ice Shot legt.",
+          "takeaway": "Zeigt die verstärkten Ice-Shot-Fragmente in einem echten Clear.",
+          "url": "https://www.youtube.com/watch?v=vxG5XseSpsQ",
+          "timestamps": [
+            {
+              "label": "Build-Überblick",
+              "time": "0:00"
+            },
+            {
+              "label": "Fragment-Ertrag",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Quellen und Verifikation",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "GGG offizielles Forum Patch Notes über das 0.4-Rework von Dauer, Fragment-Anzahl, Abklingzeit und Schaden.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Datenbank",
+          "description": "PoE2DB und Community-Wiki für Verstärkungsanzahl, Waffenvoraussetzung und Eigenschaften ungültiger Skills.",
+          "url": "https://www.poe2wiki.net/wiki/Ice-Tipped_Arrows"
+        },
+        {
+          "label": "Builds und Video",
+          "description": "Mobalytics Ice-Tipped Twisters Amazon und die Raxxanterax / KaidGames2-Vorstellungen für Combo und Fragment-Demo.",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-tipped-twisters-amazon-leaguestarter"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit-Diskussionen zu Barrage-Wiederholungskosten und Weapon-Set-Diskrepanz, im Client nachgestellt.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Ice%20Tipped%20Arrows&restrict_sr=1"
+        },
+        {
+          "label": "Offizielle Foren",
+          "description": "Offizielle GGG-Foren, in denen das Personal Buff- / Weapon-Set-Verhalten bestätigt.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit-Community",
+          "description": "Reddit r/PathOfExile2 Hilfe-Threads zu Ice-Tipped Arrows.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Verstärkungsanzahl und Abklingzeit im Client 0.5.4 bestätigt.",
+          "Twister-Verstärkung und Weapon-Set-Regel im Client reproduziert.",
+          "Alte 8s / 3-Fragment-Werte nach 0.4 als veraltet markiert."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Patch-Verlauf",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-04-20",
+          "changes": [
+            "0.4 arbeitete Ice-Tipped Arrows um: Dauer, Ice-Fragment-Anzahl, Abklingzeit und Schaden änderten sich deutlich gegenüber früheren Werten."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: Frenzy-Charge-Abklingzeit-Umgehung beibehalten; aktuelle Client-Werte hier verwendet. Spirit-Walker-Ascendancy machte Twister + Ice-Tipped stärker."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Erstveröffentlichung: Verstärkungsanzahl, Twister / Ice-Shot-Synergie, Ice-Fragment-Mechanik, Frenzy-Charge-Abklingzeit-Umgehung, Weapon-Set-Regel, Combo, Mapping / Bossing-Rotationen, Fehlerbehebung und Community-Belege."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Ice-Tipped Arrows",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ice-Tipped_Arrows"
+    },
+    {
+      "label": "Mobalytics — Ice-Tipped Twisters Amazon",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ice-tipped-twisters-amazon-leaguestarter"
+    },
+    {
+      "label": "Reddit — Ice-Tipped Arrows discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Ice%20Tipped%20Arrows&restrict_sr=1"
+    },
+    {
+      "label": "Raxxanterax — Twister Amazon",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=dpm4HSlg4ic"
+    },
+    {
+      "label": "KaidGames2 — Ice Shot 5M DPS",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=vxG5XseSpsQ"
+    }
+  ],
+  "seo": {
+    "title": "Ice-Tipped Arrows Guide — Verstärkte Angriffe, Ice Fragments und Frenzy-Charges",
+    "description": "Ice-Tipped Arrows Guide: Verstärkungsanzahl und ungültige Skills, Twister- und Ice-Shot-Synergie, Ice-Fragment-Spawning und verzögerte Explosion, Physisk-zu-Kälte-Umwandlung, Frenzy-Charge-Abklingzeit-Umgehung, Weapon-Set-Regel, Combo, Mapping / Bossing-Rotationen und Fehlerbehebung.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ice-tipped-arrows",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

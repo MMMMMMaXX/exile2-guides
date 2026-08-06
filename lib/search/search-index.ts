@@ -15,16 +15,16 @@ export type SearchDocument = {
   updatedAt: string;
 };
 
-export type SearchIndexByLocale = Record<ContentLocale, SearchDocument[]>;
+export type SearchIndexByLocale = Partial<Record<ContentLocale, SearchDocument[]>>;
 
 /** 将已发布静态页压缩为搜索所需字段；正文不会被复制进索引以控制首发体积。 */
 export function buildSearchIndexes(
   pages: Readonly<Record<string, StaticContentPage>>,
 ): SearchIndexByLocale {
-  const indexes: SearchIndexByLocale = { en: [], "zh-cn": [] };
+  const indexes: SearchIndexByLocale = {};
   for (const [path, page] of Object.entries(pages)) {
     const { frontMatter, tableOfContents } = page;
-    indexes[frontMatter.locale].push({
+    (indexes[frontMatter.locale] ??= []).push({
       category: frontMatter.contentType,
       description: frontMatter.summary,
       headings: tableOfContents.map((item) => item.text),

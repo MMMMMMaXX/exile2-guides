@@ -1,0 +1,1068 @@
+{
+  "id": "whirling-assault-martial-artist",
+  "slug": "whirling-assault-martial-artist",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "ワーリングアサルト 武術家 ビルドガイド",
+  "shortTitle": "ワーリングアサルト 武術家",
+  "summary": "ワーリングアサルトの「検証優先」進行ガイド。キャンペーンでの切り替え、チャージ生成、鈴（ベル）の設置、CIへの移行、物理と元素の両編成を網羅する。",
+  "description": "Path of Exile 2 の 0.5.4 ベースラインにおけるワーリングアサルト 武術家ビルドの完全ガイド。",
+  "classId": "monk",
+  "ascendancyId": "martial-artist",
+  "mainSkillIds": [
+    "whirling-assault"
+  ],
+  "secondarySkillIds": [
+    "tempest-bell",
+    "hollow-form",
+    "charged-staff",
+    "killing-palm",
+    "trinity"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "melee",
+    "channeling",
+    "mobile",
+    "charge-based"
+  ],
+  "damageTypes": [
+    "physical",
+    "elemental"
+  ],
+  "bestFor": [
+    "mapping",
+    "mobile-melee",
+    "staged-progression"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/whirling-assault-martial-artist.webp",
+  "cardImage": "/images/builds/covers/whirling-assault-martial-artist.webp",
+  "imageAlt": "嵐の鈴と元素チャージのなかを回転しながら進む、杖を携えた武術家",
+  "tags": [
+    "bossing",
+    "early-endgame",
+    "elemental",
+    "endgame",
+    "leveling",
+    "martial-artist",
+    "melee",
+    "mobile",
+    "monk",
+    "physical",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "ワーリングアサルトはレベル1のスキルではない。本ルートでは、武術家の序盤スキル（冷気・杖寄りの開始構成で、PC検証待ち）でレベリングし、クオータスタッフとチャージ経路・補助スキルが揃ってからワーリングアサルトに切り替える。このつなぎの段階を飛ばすのが、コミュニティのスレッドでよく挙げられるギャップである。",
+        "エンドゲームでは、ワーリングアサルトが機動性のある近接ダメージを供給し、テンペストベルがボスへの焦点を作り、トリニティがバランスの取れた元素の寄与を報い、チャージドスタッフは信頼できるパワーチャージ源に依存する。CI（カオス忌避）は独立した防御上の判断であり、エネルギーシールド構成が実現してから検討するもので、命ベースの「山の道」ノードと衝突する。",
+        "本ガイドは検証優先である。正確なジェムレベル、補助リンク、パワーチャージの手法、ベルの数値は引き続きPC検証待ちとする。実践的な部分はステージの境界と以下の5つの明確化である。"
+      ],
+      "bullets": [
+        "通常の雑魚群：チャージエンジンを確立してから、安全なレーンでワーリングアサルトをチャンネリングする。",
+        "レア敵：チャンネルに入る前にチャージを準備し、テンペストベルを設置する。",
+        "ボス：書かれた順序を確定とみなす前に、現在のクライアントで虚影（ホロウフォーム）、ベル、チャージの順序を確認すること。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "ワーリングアサルトとそのリソースループが稼働すれば、機動力のある削りが可能。",
+        "物理または元素のエンドゲーム編成へ分岐できる。",
+        "ボス用の構成はマッピングで使うチャージとベルの道具を再利用する。"
+      ],
+      "cons": [
+        "キャンペーンではワーリングアサルトへの切り替え前に仮のスキルを使う（コミュニティガイドではレベル41で解放とされるが、PC検証待ち）。",
+        "チャージ生成とベルのタイミングが、手強い戦闘に準備を要する。",
+        "CIは、エネルギーシールド構成が整い、切り替え前チェックリストを通過するまでは試みるべきではない。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "core-rotation",
+      "type": "playstyle",
+      "title": "基本の回し方",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "通常の雑魚群には、チャージエンジンを確立してから安全なレーンでワーリングアサルトをチャンネリングする。レア敵には、チャンネルに入る前にチャージを準備しテンペストベルを設置する。ボスには、書かれた順序を確定とみなす前に、現在のクライアントで虚影、ベル、チャージの順序を確認する。",
+        "パワーチャージ源こそが鍵である。単体のターゲットで働くチャージ手法がなければ、ボスダメージは崩壊する。一般に言及されるループ（手袋の命中時チャージを虚影が継承する）はPC検証待ちであり、確定した事実ではなく確認すべき仮説として扱うこと。"
+      ],
+      "bullets": [
+        "通常の雑魚群：チャージエンジンを確立してから、安全なレーンでワーリングアサルトをチャンネリングする。",
+        "レア敵：チャンネルに入る前にチャージを準備し、テンペストベルを設置する。",
+        "ボス：書かれた順序を確定とみなす前に、現在のクライアントで虚影、ベル、チャージの順序を確認すること。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "bell-charge-loop-visual",
+      "type": "figure",
+      "title": "チャンネルよりも先にチャージとベルを",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/whirling-assault-martial-artist-mechanic.webp",
+        "alt": "チャージを溜め、テンペストベルを置き、ワーリングアサルトを開始する武術家を描いた編集図解",
+        "caption": "チャージエンジンを確立し、耐久するターゲットにテンペストベルを置いてから、ワーリングアサルトのレーンに入る。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "レベル1–40 — 序盤の移行スキル",
+          "levelRange": "1–40",
+          "body": [
+            "ワーリングアサルトはまだ使えない。キャンペーンに適した武術家スキルでレベリングする——コミュニティガイドでは冷気・杖寄りの開始構成（例としてアイスストライク／ストームウェイブを代表的なレベリングスキルとする）を用いる。機能する武器、耐性、移動速度、基本的な生存を優先すること。正確な序盤スキルの選択はPC検証待ちである。"
+          ]
+        },
+        {
+          "label": "ワーリングアサルトへの切り替え（約レベル41）",
+          "levelRange": "41",
+          "body": [
+            "スキル、補助、チャージ経路が存在してからのみ切り替えること。レベル1で無理にワーリングアサルトを使ってはならない。移行中は序盤の移行スキルをフォールバックとして残しておくこと。"
+          ]
+        },
+        {
+          "label": "キャンペーン終盤",
+          "levelRange": "41–64",
+          "body": [
+            "命または複合防御を安定させ、高価なダメージ強化を加える前に、チャージ／ベルのループが単体ターゲットで機能することを確認する。"
+          ]
+        },
+        {
+          "label": "初期アトラス",
+          "levelRange": "65+",
+          "body": [
+            "物理か元素かの強化を選び、その後チャージループが低密度な遭遇でも維持されるか検証する。虚影の後半ソケット（コミュニティガイドではレベル65／90、PC検証待ち）は虚影の数とボスダメージを増やす。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 45,
+      "visible": true,
+      "caption": "各ステージで何を回すか。正確なジェムレベルと補助リンクはPC検証待ちとする。実践的な部分はステージの境界である。",
+      "columns": [
+        "ステージ",
+        "メインスキル",
+        "主要補助",
+        "パッシブの重点",
+        "装備の目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベル1–40（つなぎ）",
+          "cells": [
+            "序盤の武術家スキル（冷気・杖、例：アイスストライク／ストームウェイブ）",
+            "命、耐性、移動速度",
+            "命、回避、元素耐性",
+            "基本武器＋上限耐性",
+            "レベル41到達と実用的なクオータスタッフ＋チャージ経路"
+          ]
+        },
+        {
+          "label": "レベル41–64（初期ワーリング）",
+          "cells": [
+            "ワーリングアサルト",
+            "虚影（ホロウフォーム）、ロクトニアル・カレスによるチャージループ",
+            "クオータスタッフ、チャージ、攻撃速度",
+            "ロクトニアル・カレス、フラットな杖、機動力",
+            "単体ターゲットでチャージ＋ベルループが安定"
+          ]
+        },
+        {
+          "label": "レベル65–90（中盤）",
+          "cells": [
+            "ワーリングアサルト＋虚影の5番目／6番目ソケット",
+            "より多い虚影、トリニティ（元素ルート）",
+            "チャージ制御、クリティカル／ESの wheel",
+            "チャージ装備、回避／ESベース",
+            "T15以上と安定したボス窓の生存"
+          ]
+        },
+        {
+          "label": "エンドゲーム — 物理",
+          "cells": [
+            "ワーリングアサルト（物理）",
+            "フラット物理の杖、物理補助",
+            "物理／近接の wheel",
+            "高物理の杖、クリティカル倍率",
+            "物理での削りとボス両方が良好"
+          ]
+        },
+        {
+          "label": "エンドゲーム — 元素／CI",
+          "cells": [
+            "ワーリングアサルト（元素）＋トリニティ",
+            "ブレス・オブ・アルドゥールによる変換、CIの殻",
+            "ES、カオス耐性、リリカバリー",
+            "回避／ES＋ゴーストダンス、カオス上限",
+            "CI切り替え前チェックリストを通過"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "序盤の移行スキル（ワーリングアサルト以前）",
+          "skills": [
+            {
+              "displayName": "アイスストライク",
+              "role": "ワーリングアサルトがレベル41で解放される前に使う、冷気寄りの代表的なレベリングスキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "キャンペーンのつなぎである。機能する武術家の攻撃であり、レベル1で無理にワーリングアサルトを使わずに済む。"
+              ],
+              "whenReplace": [
+                "レベル41の切り替えでワーリングアサルトに置き換わるが、移行中はフォールバックとしてソケットに差しておく。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングでもボスでも、切り替えまでは同じ序盤スキルを使用する。"
+              ],
+              "notes": [
+                "正確な序盤スキルの選択はPC検証待ち。コミュニティガイドでは冷気・杖寄りの武術家の開始構成を用い（ストームウェイブも別の代表的選択肢である）。"
+              ],
+              "skillId": "ice-strike"
+            }
+          ]
+        },
+        {
+          "label": "中核スキル",
+          "skills": [
+            {
+              "displayName": "ワーリングアサルト",
+              "skillId": "whirling-assault",
+              "role": "主要な機動近接スキル。連結したターゲットを貫いてチャンネリングし、削りとボスのエンジンとなる。",
+              "supportSkillIds": [
+                "heightened-charges",
+                "elemental-armament",
+                "blindside"
+              ],
+              "whyUse": [
+                "名称のスキルそのものであり、チャージとベルのループが支えてからは主要ダメージ源となる。"
+              ],
+              "whenReplace": [
+                "いかなるステージでも置き換えられない。進行に伴い虚影の追加と編成別の補助のみを得る。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：安全なレーンで雑魚群を貫いてチャンネリングする。ボス：チャンネルを設置したベルとターゲットへ通す。"
+              ],
+              "notes": [
+                "正確な補助リンクとジェムレベルはPC検証待ちである。"
+              ]
+            },
+            {
+              "displayName": "虚影（ホロウフォーム）",
+              "skillId": "hollow-form",
+              "role": "装着した近接スキル（ワーリングアサルト）を反復する虚影を生むチャンネル。パワーチャージを消費すると追加の虚影が生まれる。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "虚影を通じてワーリングアサルトのヒットを増幅し、パワーチャージをもたらす命中時チャージループへの経路となる。"
+              ],
+              "whenReplace": [
+                "すべてのワーリングステージで虚影生成器として維持する。置き換えるべきダメージ競合ではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：削り中に虚影を維持する。ボス：ボス窓の前に虚影が稼働していることを確認する。"
+              ],
+              "notes": [
+                "虚影の数は虚影の後半ソケットで増加する（コミュニティガイドではレベル65／90、PC検証待ち）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "セットアップと補助スキル",
+          "skills": [
+            {
+              "displayName": "テンペストベル",
+              "skillId": "tempest-bell",
+              "role": "ボスへの焦点／打撃対象となり、クリティカルまたはショックの恩恵をもたらす。虚影集中（ホロウフォーカス）で生成される。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "戦闘を耐久するターゲットに集中させ、ベルに基づくクリティカル／ショック窓の前提となる。"
+              ],
+              "whenReplace": [
+                "置き換えられない。レア敵とボス用のセットアップスキルであり、マッピングのボタンではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：タフなレア敵には任意。ボス：チャンネルに入る前に安定したダメージ窓に置く。"
+              ],
+              "notes": [
+                "ベルの使用条件：打撃または消費できるレア敵／ボスにのみベルを置く。ゴミ敵には無駄である。正確なベルの数と挙動はPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "チャージドスタッフ",
+              "skillId": "charged-staff",
+              "role": "チャージ経路と初期のリグワルドの凶暴へのアクセスを支えるクオータスタッフのセットアップスキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "武器セットのチャージ構成の一部であり、通常は2番目の武器セットで回す。"
+              ],
+              "whenReplace": [
+                "チャージ／武器セットの道具として維持する。マッピングのダメージスキルではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：通常は不活性。ボス：チャージ準備の一部。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "キリングパーム",
+              "skillId": "killing-palm",
+              "role": "2番目の武器セットでパワーチャージを消費または供給する掌（パーム）スキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "チャージをボス窓へ流し続けるために用いる、実用的なパワーチャージの相互作用の一つである。"
+              ],
+              "whenReplace": [
+                "チャージ道具として維持する。検証されたより強いチャージ相互作用が現れた場合のみ交換。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：未使用。ボス：チャンネル前のチャージ準備で使用。"
+              ],
+              "notes": [
+                "パワーチャージ源（パワーチャージをどう生成するか）こそが鍵である。一般に言及される手法は、手袋の命中時チャージ（例：ロクトニアル・カレス）を虚影が継承するもの。PC検証待ち——単体ターゲットで機能することを確認すること。"
+              ]
+            },
+            {
+              "displayName": "トリニティ",
+              "skillId": "trinity",
+              "role": "火／冷／雷のバランスの取れた寄与を報う元素共鳴のオーラ。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "元素編成を動かす。重なり合う元素ダメージが実際に存在してからでなければ無用。"
+              ],
+              "whenReplace": [
+                "元素編成でのみ使用。物理編成には存在しない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングでもボスでも、元素の重なりが実在すれば両方に恩恵がある。"
+              ],
+              "notes": [
+                "物理編成では無関係。元素の寄与なしに価値を期待して回してはならない。"
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暫定的な順序",
+          "body": [
+            "選択した現在のガイドに従う（コミュニティの順序は「虚影集中の術 → 石拳の道 → 虚影の術 → 山の道／ルーン経絡」を挙げている）。その上で、公開前に0.5.4のクライアントで各ノードを確認すること。なお「山の道」は命ベースであり、後のCI切り替えと衝突する点に注意。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件（近接ダメージ、クリティカル、命、耐性、移動速度）を支えるノードのみを取得する。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルド編成へ移行する。互換性のないプランナーのスナップショットを混ぜてはならない（物理と元素／CIのツリーは分岐する）。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "武器（クオータスタッフ）",
+          "recommendations": [
+            "選択した編成（物理または元素）に見合った高い攻撃ダメージ。",
+            "チャンネル操作を保つ攻撃速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "階層に足りる基本攻撃ダメージ",
+              "reason": "ワーリングアサルトは実用上の出力の大半を武器から受け継ぐ。"
+            },
+            {
+              "tier": "recommended",
+              "label": "攻撃速度／関連するフラットダメージ",
+              "reason": "操作感と削りを、制御を崩さずに改善する。"
+            },
+            {
+              "tier": "optional",
+              "label": "チャージまたはクリティカルを支える修正",
+              "reason": "杖を編成に合わせる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "高いクリティカル倍率／変換された元素ベース",
+              "reason": "チャージループと防御が解決してからのみ。"
+            }
+          ],
+          "notes": [
+            "物理と元素の編成を製作前に比較すること。物理ルート向けに変換ベースを買ってはならない。"
+          ]
+        },
+        {
+          "slot": "手袋（中核のチャージ生成器）",
+          "recommendations": [
+            "近くの味方にチャージを与え、虚影に継承される命中時チャージの手袋（一般に言及：ロクトニアル・カレス）。",
+            "手袋の修正を強化するため「石拳の道」アセンダンシーと組み合わせる。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "近くの味方への命中時チャージ（パワーチャージ源）",
+              "reason": "これがボスダメージの鍵である。なければチャージエンジンは単体ターゲットで死ぬ。"
+            },
+            {
+              "tier": "recommended",
+              "label": "石拳の道の強化経路",
+              "reason": "手袋の修正を強化し、虚影に継承される。"
+            },
+            {
+              "tier": "optional",
+              "label": "マナの維持（手袋がマナ吸収を無効にする場合）",
+              "reason": "一部のチャージ手袋はマナ吸収を無効にする。別の手段で補うこと。"
+            },
+            {
+              "tier": "luxury",
+              "label": "追加のチャージ量／品質",
+              "reason": "中核ループが確認されてからのみ。"
+            }
+          ],
+          "notes": [
+            "チャージ関連の接頭は現在のクライアントでの確認が必要。正確な手袋と修正はPC検証待ち。"
+          ]
+        },
+        {
+          "slot": "ボディアーマー／兜／ブーツ",
+          "recommendations": [
+            "現在のステージに適した命またはエネルギーシールドと、元素耐性。",
+            "ブーツには移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "命／ESと上限未到達の2つの耐性",
+              "reason": "どれほどのDPSがあっても、マップで死ぬことは補えない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "回避（モンクはこれを伸ばす）／カオス耐性",
+              "reason": "防御層。カオス耐性はいかなるCI切り替え前も重要。"
+            },
+            {
+              "tier": "optional",
+              "label": "ブーツの移動速度",
+              "reason": "チャンネルを安全に位置取りし直す助けとなる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なDPS接尾",
+              "reason": "防御が解決してからのみ。"
+            }
+          ],
+          "notes": [
+            "エンドゲームのCIの殻をキャンペーンの進行にコピーしてはならない。"
+          ]
+        },
+        {
+          "slot": "指輪／アミュレット／ベルト",
+          "recommendations": [
+            "選択した編成に適した属性、耐性、フラットダメージ。",
+            "手袋が吸収を無効にする場合のマナ維持。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "杖とジェムを装備するための属性",
+              "reason": "装備できない杖は無価値である。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性と命／ES",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "フラット物理／元素ダメージ",
+              "reason": "アクセサリからのおまけダメージ。"
+            },
+            {
+              "tier": "luxury",
+              "label": "チャージまたはカオス耐性の接尾",
+              "reason": "選択した編成／CI計画に応じて条件付き。"
+            }
+          ],
+          "notes": []
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "機能する防御",
+          "reason": "贅沢なダメージの前に、元素耐性を上限にし、現在の命／ES計画を確立する。"
+        },
+        {
+          "label": "武器ダメージ",
+          "reason": "ワーリングアサルトは実用上の出力の大半を、適切な武器または虚影の構成から受け継ぐ。"
+        },
+        {
+          "label": "パワーチャージの信頼性",
+          "reason": "チャージエンジンが密集した雑魚群でのみ機能するなら、ボスダメージは崩壊する。"
+        },
+        {
+          "label": "攻撃速度",
+          "reason": "操作感は改善するが、チャンネル操作とリソース維持と照らして確認せねばならない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "雑魚群の削りが遅い",
+          "symptom": "通常の雑魚群を片付けるのにワーリングアサルトの回転が多く必要になる。",
+          "checks": [
+            "その杖はまだコンテンツに比して低階層のベースか？",
+            "パワーチャージは実際に生成されているか（命中時チャージループは稼働しているか）？"
+          ],
+          "upgrade": "贅沢なクリティカル装備を加える前に、杖を強化しチャージループを確認する。"
+        },
+        {
+          "label": "ボスでパワーチャージが得られない",
+          "symptom": "チャージエンジンが単体ターゲットで死ぬ。",
+          "checks": [
+            "命中時チャージの手袋は装備され、対応するアセンダンシーは取られているか？",
+            "虚影はチャージ生成を継承しているか？",
+            "キルベースの生成のみに頼っていないか？"
+          ],
+          "upgrade": "パワーチャージ源（手袋＋アセンダンシー＋虚影ループ）を直す。武器のせいにしてはならない。PC検証待ち。"
+        },
+        {
+          "label": "ベルが効かない",
+          "symptom": "テンペストベルが何もしないように見える。",
+          "checks": [
+            "安定した窓でレア敵／ボスにのみベルを置いているか？",
+            "虚影集中は実際にベルを生成しているか？",
+            "ベルはクリティカル／ショックのために打撃または消費されているか？"
+          ],
+          "upgrade": "チャンネルに入る前に耐久するターゲットにベルを置く。虚影集中を確認する。ゴミ敵にベルを無駄にしてはならない。"
+        },
+        {
+          "label": "マップで死ぬ",
+          "symptom": "T15以上やボス戦域で頻繁に死ぬ。",
+          "checks": [
+            "どの耐性またはカオスが上限未到達か？",
+            "命／ESはコンテンツ階層を下回っていないか？",
+            "ESとリリカバリーが整う前にCIを試んでいないか？"
+          ],
+          "upgrade": "耐性を上限にし命／ESを安定させる。防御の問題をダメージ装備で直そうとしてはならない。"
+        },
+        {
+          "label": "CIを検討する場合",
+          "symptom": "カオス忌避のエネルギーシールド防御が欲しい。",
+          "checks": [
+            "CI切り替え前チェックリストは通過するか？",
+            "山の道との衝突は解決しているか？",
+            "カオス耐性は上限に達し、リリカバリーはカバーされているか？"
+          ],
+          "upgrade": "チェックリスト通過後にのみCIへ移行する。再テストし、単一の掲載ES数値と引き替えに生存を犠牲にしてはならない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "チャージエンジンを維持し、虚影を稼働させたままにしてから、連結したターゲットへワーリングアサルトを使う。物理ルートではトリニティは任意。元素ルートでは、オーラが稼働していると仮定せず、元素の重なりが実際に存在するか確認すること。",
+        "見えない地面効果へチャンネルを無暗に支え続けるのは避ける。低密度のマップではチャージループを立て直す。トリニティ追加後に削りが崩れたなら、オーラが自動で稼働していると仮定せず、元素の重なりを検査すること。"
+      ],
+      "bullets": [
+        "通常の雑魚群：チャージエンジンを確立してから、安全なレーンでワーリングアサルトをチャンネリングする。",
+        "レア敵：チャンネルに入る前にチャージを準備し、テンペストベルを設置する。",
+        "ボス：書かれた順序を確定とみなす前に、現在のクライアントで虚影、ベル、チャージの順序を確認すること。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "可能な限りチャージを準備して迎える。テンペストベルを置き、虚影集中／選択したチャージ生成器を用い、虚影を稼働させたままにし、その上でベルとターゲットへワーリングアサルトを通す。チャージ道具（キリングパーム／チャージドスタッフ）用の2番目の武器セットは任意。まず基本のベルとチャージループが機能することを証明すること。",
+        "ベルを安定したダメージ窓に置き、位置取りが安全なときのみチャンネリングする。正確な虚影の順序は暫定のまま。パワーチャージ源は単体ターゲットで機能せねばならない——雑魚群でのみ機能するなら、まずそれを直すこと。"
+      ],
+      "bullets": [
+        "通常の雑魚群：チャージエンジンを確立してから、安全なレーンでワーリングアサルトをチャンネリングする。",
+        "レア敵：チャンネルに入る前にチャージを準備し、テンペストベルを設置する。",
+        "ボス：書かれた順序を確定とみなす前に、現在のクライアントで虚影、ベル、チャージの順序を確認すること。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "ci-transition",
+      "type": "overview",
+      "title": "CI移行 — 切り替え前チェックリスト",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "カオス忌避は独立した防御上の判断であり、自動的なエンドゲームのステップではない。ガイドや掲載されたエネルギーシールドの数値がそう言うからといってCIへ切り替えてはならない。まず以下の具体的な確認を自分のクライアントで通過させること。正確なESの閾値はコンテンツ依存であり、コミュニティのキャラクターからコピーするのではなく検証されねばならない。"
+      ],
+      "bullets": [
+        "ESプールは現在のコンテンツ階層での一撃を生き延びるに足る（クライアントで検証。単一の掲載ES数値に頼ってはならない）。",
+        "CI変換を無駄にする残存する＋最大命装備がない（命ゼロとの衝突が解決済み）。",
+        "カオス耐性は上限に達している——CIは命を奪うが、カオスダメージはカオス耐性でカバーされない限りESを通り抜ける。",
+        "リリカバリー／再生はカバーされている（ES吸収、ゴーストダンス、またはフラスコ）ので、常に半分の状態にはならない。",
+        "パワーチャージループとベルの起動は、命ベースの装備なしでも機能する。",
+        "命ベースのアセンダンシー「山の道」は取っていない（CIと衝突するため）。",
+        "ボス戦前に静かなマップでテストする。ESまたはリリカバリーが不完全なら、以前の防御へ戻す。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "物理と元素の境界",
+      "order": 140,
+      "visible": true,
+      "caption": "いずれか一つのルートを選ぶ。物理と元素の装備スナップショットを混ぜてはならない。正確な数値はPC検証待ち。",
+      "columns": [
+        "物理版",
+        "元素版",
+        "選び方"
+      ],
+      "rows": [
+        {
+          "label": "適用される局面",
+          "cells": [
+            "チャージ／装備が揃う前の序盤〜中盤",
+            "チャージ＋変換装備（ブレス・オブ・アルドゥール）とトリニティが揃った後",
+            "いずれか一つを選ぶ。装備スナップショットを混ぜてはならない"
+          ]
+        },
+        {
+          "label": "中核の強化",
+          "cells": [
+            "フラット物理の杖、物理補助",
+            "トリニティの共鳴、変換された元素（冷／雷）",
+            "その編成独自のプランナーに従う"
+          ]
+        },
+        {
+          "label": "ダメージの確認",
+          "cells": [
+            "物理の削りとボス両方が許容できる",
+            "トリニティが報うには重なる元素が必要",
+            "もう一方のシステムが解決してからのみ切り替える"
+          ]
+        },
+        {
+          "label": "やってはならないこと",
+          "cells": [
+            "元素変換を早過ぎる時期に買う",
+            "チャージが弱いなら物理を早々に捨てる",
+            "一つのビルドに物理と元素の装備を混ぜる"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "ボスでチャージが消える",
+          "checks": [
+            "キルベースの前提なしにループをテストする。",
+            "0.5.4で命中時チャージの手袋＋アセンダンシー＋虚影の継承を確認する。",
+            "クライアントで各補助とアセンダンシーの相互作用を確認する。"
+          ]
+        },
+        {
+          "symptom": "マッピングが不安全に感じる",
+          "checks": [
+            "予兆効果を貫いたチャンネリングを止める。",
+            "ダメージを加えるのではなく、耐性・回避・リリカバリーを見直す。"
+          ]
+        },
+        {
+          "symptom": "CI切り替えが悪化した感じがする",
+          "checks": [
+            "エネルギーシールドまたはリリカバリーが不完全なら、以前の防御へ戻る。",
+            "コミュニティのキャラクターのES数値を普遍の閾値として使ってはならない。",
+            "山の道との衝突が切り替えを阻んでいないことを確認する。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "移行、トリニティ、CIに関する回答",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "ワーリングアサルトがメインスキルになる前は何を使うか？",
+          "answer": [
+            "武術家の序盤スキルでレベリングする——コミュニティガイドでは冷気・杖寄りの開始構成（例：アイスストライク／ストームウェイブ）を用いる。レベル41の解放でワーリングアサルトへ切り替え、フォールバックとして序盤スキルをソケットに差したままにする。"
+          ],
+          "bullets": [
+            "正確な序盤スキルの選択はPC検証待ち。",
+            "レベル1で無理にワーリングアサルトを使ってはならない。",
+            "切り替え中は動くフォールバックスキルを維持する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "どうやってパワーチャージを生成するか？",
+          "answer": [
+            "一般に言及される源は、その効果を虚影が継承する命中時チャージの手袋（例：ロクトニアル・カレス）に加え、2番目の武器セットでのキリングパームのようなチャージ道具である。これは雑魚群のみならず、単体のボスでも機能せねばならない——クライアントで確認すること。"
+          ],
+          "bullets": [
+            "手袋＋石拳の道の強化が挙げられる中核である。",
+            "虚影はチャージ生成を継承する。",
+            "PC検証待ち。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "いつテンペストベルを置くか？",
+          "answer": [
+            "クリティカル／ショック窓のために打撃または消費できるレア敵とボスにベルを置く——通常はチャンネルに入る前の安定したダメージ窓である。ゴミ敵群には無駄である。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "すぐにCIが必要か？",
+          "answer": [
+            "いいえ。CIは、エネルギーシールド構成と切り替え前チェックリストが通過するまで任意である。命または複合の段階は、時期早々の一命変換より安全であり、山の道はCIと衝突する。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/twister-spirit-walker/",
+              "label": "遠隔移動ビルドと比較する"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 165,
+      "visible": true,
+      "note": "貼り付け可能なインポート文字列／.build はPC検証待ち。",
+      "creatorName": "Travic (Mobalytics) ／ コミュニティの概念",
+      "buildPlannerUrl": "https://pobb.in/eHBUQwqAgeO6",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/martial-artist-hollow-palm-whirling-assault-travic",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "公開されたガイドがプレイヤーを置き去りにするところ",
+      "order": 170,
+      "visible": true,
+      "note": "コミュニティの不満は、ガイド執筆者への敵意ではなく、指示不足の証拠として扱われる。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "最高のワーリングアサルトガイドに関する議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1txwbev/best_martial_artist_whirling_assault_guide/",
+          "statement": "あるプレイヤーは、ガイドが序盤の進行から超エンドゲームの状態へ、中間を説明せずに飛躍していると述べている。返信では編成タブや新しい動画を指摘し、一人の回答者は書面のページが動画の更新に遅れていると考えている。",
+          "context": "本記事は、隠された編成を探る指示ではなく、そのつなぎを第一級の表として扱う。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "ワーリングアサルトの助けを求めるスレッド",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1uppcsb/help_with_whirling_assault_martial_artist/",
+          "statement": "T13付近で行き詰まったプレイヤーへの助言は、信頼できるパワーチャージ、ベルの相互作用、ウィンドダンサー、フラット元素装備を優先し、クリティカルは手が出るようになるまで遅らせている。",
+          "context": "これらは実践的な修復の優先度である。正確な防御目標は引き続きPC検証待ち。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "概念の映像を書面のつなぎと併用する",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "コミュニティのビルド作者",
+          "label": "ワーリングアサルトビルド概念のゲームプレイ",
+          "url": "https://youtu.be/CuDrHBZP2R8",
+          "description": "ベルの配置、ワーリングの経路、チャージ消費の視覚的参考。",
+          "takeaway": "映像を現在のステージと比較すること。未完成のキャンペーン構成にエンドゲームのチャージ技術を導入してはならない。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "ワーリングアサルト概念の開始（作者はチャプターを提供していない）"
+            },
+            {
+              "time": "2:00",
+              "label": "初期の移行とベルの使用（概算、検証待ち）"
+            },
+            {
+              "time": "5:00",
+              "label": "チャージ生成とワーリングループ（概算、検証待ち）"
+            },
+            {
+              "time": "8:00",
+              "label": "物理と元素／CIのプレビュー（概算、検証待ち）"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ronarray 0.5 武術家進行ガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/martial-artist-monk-build-league-starter-to-endgame"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Travic 虚影 ワーリングアサルトガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/martial-artist-hollow-palm-whirling-assault-travic"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "コミュニティのビルド概念、プランナー、ゲームプレイ",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tn227g/05_whirling_assault_martial_artist_build_concept/"
+        },
+        {
+          "label": "コミュニティのビルド概念用 PoB2 エクスポート",
+          "description": "外部ツール",
+          "url": "https://pobb.in/eHBUQwqAgeO6"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ワーリングアサルトビルド概念のゲームプレイ",
+          "url": "https://youtu.be/CuDrHBZP2R8"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ワーリングアサルトの移行ステップ不足に関するコミュニティの質問",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1txwbev/best_martial_artist_whirling_assault_guide/"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ワーリングアサルトの助けを求めるスレッド",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1uppcsb/help_with_whirling_assault_martial_artist/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "出典付きの 0.5.4 ビルドガイドを作成。PC検証は待ち。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "新スキーマへ拡張：表示名付きスキルカード、スロット別の装備ステータス優先度、症状ベースの強化優先度、段階的構成表、ビルドプランナー項目を追加。序盤の移行スキル、パワーチャージ源、ベルの使用条件、物理／元素の境界、CI切り替え前チェックリストを明確化。PC検証は待ち。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray 0.5 武術家進行ガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/martial-artist-monk-build-league-starter-to-endgame"
+    },
+    {
+      "label": "Travic 虚影 ワーリングアサルトガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/martial-artist-hollow-palm-whirling-assault-travic"
+    },
+    {
+      "label": "コミュニティのビルド概念、プランナー、ゲームプレイ",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tn227g/05_whirling_assault_martial_artist_build_concept/"
+    },
+    {
+      "label": "コミュニティのビルド概念用 PoB2 エクスポート",
+      "sourceType": "tool",
+      "url": "https://pobb.in/eHBUQwqAgeO6"
+    },
+    {
+      "label": "ワーリングアサルトビルド概念のゲームプレイ",
+      "sourceType": "community",
+      "url": "https://youtu.be/CuDrHBZP2R8"
+    },
+    {
+      "label": "ワーリングアサルトの移行ステップ不足に関するコミュニティの質問",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1txwbev/best_martial_artist_whirling_assault_guide/"
+    },
+    {
+      "label": "ワーリングアサルトの助けを求めるスレッド",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1uppcsb/help_with_whirling_assault_martial_artist/"
+    }
+  ],
+  "seo": {
+    "title": "ワーリングアサルト 武術家 ビルドガイド",
+    "description": "Path of Exile 2 の 0.5.4 ベースラインにおけるワーリングアサルト 武術家ビルドの完全ガイド。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "whirling-assault-martial-artist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

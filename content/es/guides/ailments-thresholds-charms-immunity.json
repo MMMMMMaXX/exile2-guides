@@ -1,0 +1,854 @@
+{
+  "id": "ailments-thresholds-charms-immunity",
+  "slug": "ailments-thresholds-charms-immunity",
+  "locale": "es",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Afecciones, Umbrales, Amuletos e Inmunidad en Path of Exile 2",
+  "shortTitle": "Afecciones y Amuletos",
+  "summary": "Cómo funcionan las afecciones en PoE 2: acumulación, magnitud, duración, umbral y la diferencia entre resistencia, evasión e inmunidad, además de cómo los Amuletos se activan solos para mantenerte a salvo.",
+  "description": "Una guía de mecánicas sobre las afecciones, los umbrales de afección y la inmunidad basada en amuletos en Path of Exile 2: qué hace cada afección, cómo interactúan las defensas y cómo elegir el Amuleto adecuado para cada encuentro.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "Una fila de Amuletos que otorgan mitigación e inmunidad contra afecciones en Path of Exile 2",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Comprensión básica de las resistencias y defensas de PoE 2",
+    "Acceso a un Cinturón con ranuras para Amuletos",
+    "Alguna familiaridad con la barra de iconos de estado del juego"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "ailment",
+    "charm",
+    "immunity",
+    "threshold",
+    "buildup",
+    "resistance"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respuestas directas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "¿Qué es una afección?",
+          "body": [
+            "Una afección es un efecto de estado temporal aplicado por golpes o daño. Las afecciones dañinas infligen daño a lo largo del tiempo (Sangrado, Veneno, Ignición); las afecciones no dañinas cambian tu forma de actuar (Enfriamiento, Congelación, Choque, Electrizar, Aturdimiento)."
+          ]
+        },
+        {
+          "title": "¿Qué es un umbral de afección?",
+          "body": [
+            "El umbral es la cantidad de acumulación que un enemigo (o tú) debe reunir antes de que se aplique una afección. El Umbral de Afección base del jugador es una fracción de la Vida Máxima; los jefes suelen tener umbrales más grandes y, por tanto, resisten ser afligidos."
+          ]
+        },
+        {
+          "title": "¿Cómo funcionan los Amuletos?",
+          "body": [
+            "Un Amuleto se lleva en un Cinturón y se activa automáticamente cuando ocurre su condición vinculada (por ejemplo, quedar Congelado). Consume Cargas, que se recargan en los Pozos o matando monstruos. Los Amuletos de Inmunidad previenen por completo la afección vinculada en lugar de solo reducirla."
+          ]
+        },
+        {
+          "title": "¿Resistencia o inmunidad?",
+          "body": [
+            "La resistencia reduce la magnitud o el daño de una afección, pero no evita que se aplique. La inmunidad (de un Amuleto o de un hito) previene por completo que la afección te afecte. Ambas no son lo mismo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ailment-taxonomy",
+      "order": 2,
+      "title": "Taxonomía de afecciones: dañinas frente a no dañinas",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Las afecciones en Path of Exile 2 se dividen en dos grupos. Las afecciones dañinas infligen daño a lo largo del tiempo y tienen sus propias reglas de daño; las afecciones no dañinas aplican un efecto de control o de debilitación sin un componente de daño a lo largo del tiempo.",
+        "Las afecciones dañinas son Sangrado, Veneno e Ignición. Las afecciones no dañinas son Enfriamiento, Congelación, Choque, Electrizar y efectos relacionados con el Aturdimiento. Cada una aparece como un icono en tu barra de estado cuando está activa; el icono indica qué está ocurriendo y qué urgencia tiene."
+      ],
+      "bullets": [
+        "Sangrado: daño físico a lo largo del tiempo, normalmente de ataques; muestra un icono de sangrado.",
+        "Veneno: daño de caos a lo largo del tiempo que se acumula con cada aplicación; muestra un icono de veneno.",
+        "Ignición: daño de fuego a lo largo del tiempo; muestra un icono de quemadura.",
+        "Enfriamiento: reduce tu velocidad de acción en una cantidad escalada; muestra un icono de escarcha.",
+        "Congelación: detiene las acciones brevemente de forma total; muestra un icono de congelado.",
+        "Choque: aumenta el daño recibido de los golpes; muestra un icono de relámpago.",
+        "Electrizar: un efecto de aturdimiento más fuerte similar al choque; muestra un icono de cargado.",
+        "Aturdimiento: interrumpe la acción cuando la barra de aturdimiento se llena; muestra un icono de tambaleado."
+      ]
+    },
+    {
+      "id": "ailment-matrix",
+      "order": 3,
+      "title": "Matriz de referencia de afecciones",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cada afección, su fuente predeterminada, el efecto que aplica al objetivo, la defensa más común y el Amuleto que la contrarresta.",
+      "columns": [
+        {
+          "key": "ailment",
+          "label": "Afección"
+        },
+        {
+          "key": "type",
+          "label": "Tipo"
+        },
+        {
+          "key": "default-source",
+          "label": "Fuente predeterminada"
+        },
+        {
+          "key": "effect-on-target",
+          "label": "Efecto en el objetivo"
+        },
+        {
+          "key": "common-defence",
+          "label": "Defensa común"
+        },
+        {
+          "key": "related-charm",
+          "label": "Amuleto relacionado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Bleed",
+            "type": "Damaging",
+            "default-source": "Physical attacks",
+            "effect-on-target": "Physical damage over time",
+            "common-defence": "Bleed threshold / Staunching Charm",
+            "related-charm": "Staunching"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Poison",
+            "type": "Damaging",
+            "default-source": "Chaos hits",
+            "effect-on-target": "Stacking chaos damage over time",
+            "common-defence": "Chaos res / Antidote Charm",
+            "related-charm": "Antidote"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Ignite",
+            "type": "Damaging",
+            "default-source": "Fire hits",
+            "effect-on-target": "Fire damage over time",
+            "common-defence": "Fire res / Dousing Charm",
+            "related-charm": "Dousing"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Chill",
+            "type": "Non-damaging",
+            "default-source": "Cold hits",
+            "effect-on-target": "Slows action speed",
+            "common-defence": "Cold res / chill reduction",
+            "related-charm": "Sapphire"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Freeze",
+            "type": "Non-damaging",
+            "default-source": "Heavy cold hits",
+            "effect-on-target": "Stops actions briefly",
+            "common-defence": "Freeze immunity / Thawing Charm",
+            "related-charm": "Thawing"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Shock",
+            "type": "Non-damaging",
+            "default-source": "Lightning hits",
+            "effect-on-target": "Increases damage taken",
+            "common-defence": "Lightning res / Grounding Charm",
+            "related-charm": "Grounding"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Electrocute",
+            "type": "Non-damaging",
+            "default-source": "Heavy lightning hits",
+            "effect-on-target": "Strong stun-like effect",
+            "common-defence": "Stun threshold / Grounding Charm",
+            "related-charm": "Grounding"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Stun",
+            "type": "Non-damaging",
+            "default-source": "Filled stun meter",
+            "effect-on-target": "Interrupts actions",
+            "common-defence": "Stun threshold / Stone Charm",
+            "related-charm": "Stone"
+          }
+        }
+      ],
+      "note": "Los valores de umbral y las magnitudes exactas dependen de la versión y están marcados como pendientes de verificación en PC frente al cliente en vivo 0.5.4."
+    },
+    {
+      "id": "threshold-buildup-magnitude-duration",
+      "order": 4,
+      "title": "Umbral, acumulación, magnitud y duración",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cuatro conceptos rigen cada afección. La acumulación es la barra que se llena a medida que infliges daño de afección; una vez que la acumulación alcanza el Umbral del objetivo, se aplica la afección y la barra se reinicia. La magnitud escala la intensidad del efecto (por ejemplo, cuánto reduce la velocidad el Enfriamiento o cuánto daña la Ignición). La duración es cuánto tiempo permanece activa la afección aplicada.",
+        "El umbral es la puerta: un objetivo con un umbral alto necesita más acumulación para ser afligido. El Umbral de Afección base del jugador es una porción de la Vida Máxima, mientras que los jefes tienden a tener umbrales mucho mayores, así que las mismas habilidades que con fiabilidad afligen a un grupo pueden no llegar a pegarle a un jefe."
+      ],
+      "bullets": [
+        "Acumulación: se llena hacia el Umbral; alcanzarlo aplica la afección.",
+        "Umbral: el valor objetivo que la acumulación debe alcanzar antes de que la afección impacte.",
+        "Magnitud: cuán severo es el efecto una vez aplicado (%, ralentización, DoT, etc.).",
+        "Duración: cuánto tiempo permanece activa la afección antes de expirar."
+      ]
+    },
+    {
+      "id": "applying-ailments",
+      "order": 5,
+      "title": "Cómo aplican los jugadores afecciones a los enemigos",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Aplicas afecciones infligiendo el tipo de daño correspondiente con un golpe o un efecto de daño a lo largo del tiempo. La probabilidad de aplicar está gobernada por la probabilidad de afección y el umbral del enemigo; suficiente acumulación cruza el umbral y la afección impacta.",
+        "Algunas habilidades y gemas de soporte están construidas específicamente para aplicar afecciones (por ejemplo, soportes de sangrado en ataques, o ignición desde hechizos de fuego). Frente a jefes, invertir en magnitud de afección y modificadores que rompen el umbral importa mucho más que contra monstruos normales."
+      ],
+      "bullets": [
+        "Empareja el tipo de daño con la afección que quieres (fuego para Ignición, frío para Enfriamiento/Congelación, etc.).",
+        "La acumulación debe alcanzar el umbral del objetivo; los jefes tienen umbrales más altos.",
+        "Las mejoras de magnitud hacen el efecto más fuerte, no más fácil de aplicar.",
+        "Revisa el tooltip del juego para ver los números exactos de acumulación y umbral de un enemigo dado."
+      ]
+    },
+    {
+      "id": "avoiding-and-mitigating",
+      "order": 6,
+      "title": "Evitar y mitigar afecciones",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Las defensas contra afecciones están en capas, y cada capa se comporta de forma distinta. La resistencia reduce la magnitud o el daño de una afección, pero no evita que se aplique. Efecto Reducido y Duración Reducida reducen el impacto de la afección o cuánto dura. La evasión puede prevenir que la afección se aplique en primer lugar según una tirada.",
+        "La inmunidad es la capa más fuerte: previene por completo que la afección vinculada te afecte, independientemente de la acumulación. La resistencia y la inmunidad no son intercambiables: maximizar la resistencia al fuego no evitará que te inflamen, solo reduce la quemadura."
+      ],
+      "bullets": [
+        "Resistencia: reduce magnitud/daño, la afección aún puede aplicarse.",
+        "Efecto Reducido / Duración Reducida: encoge o acorta la afección.",
+        "Evasión: probabilidad de prevenir la aplicación por completo.",
+        "Inmunidad: previene por completo la afección vinculada (Amuleto o hito)."
+      ]
+    },
+    {
+      "id": "charm-basics",
+      "order": 7,
+      "title": "Conceptos básicos de los Amuletos",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un Amuleto es un objeto que se lleva en un Cinturón y vigila una condición específica, disparándose automáticamente cuando esa condición ocurre. Un Amuleto de Inmunidad se activa y previene por completo la afección vinculada; un Amuleto de Resistencia, en cambio, otorga un aumento temporal de resistencia cuando se dispara su activador.",
+        "Cada Amuleto consume Cargas cuando se activa. Las Cargas solo se almacenan mientras el Amuleto está en un Cinturón, y se recargan en los Pozos o matando monstruos. Un Cinturón proporciona un número limitado de ranuras para Amuletos, así que no puedes equipar todos a la vez: elige según el contenido que vayas a hacer."
+      ],
+      "bullets": [
+        "Activación automática: dispara en el momento en que ocurre su condición vinculada.",
+        "Cargas: se consumen al usarse; se recargan en Pozos o con bajas.",
+        "Ranuras del Cinturón: un número limitado de slots para Amuletos (ver el tooltip del Cinturón en el juego).",
+        "Inmunidad frente a resistencia: la inmunidad previene, la resistencia solo reduce."
+      ]
+    },
+    {
+      "id": "charm-charge-simulator",
+      "order": 8,
+      "title": "¿Qué Amuleto debería usar ahora mismo?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Elige la situación que esperas. La herramienta apunta al Amuleto que encaja y a qué prestar atención.",
+      "controls": [
+        {
+          "id": "situation",
+          "label": "¿Con qué te enfrentas?",
+          "options": [
+            {
+              "label": "Presión constante de frío / congelación",
+              "value": "cold"
+            },
+            {
+              "label": "Sangrado o veneno (daño a lo largo del tiempo)",
+              "value": "dot"
+            },
+            {
+              "label": "Golpes de relámpago frecuentes",
+              "value": "lightning"
+            },
+            {
+              "label": "Enemigos muy a base de fuego",
+              "value": "fire"
+            },
+            {
+              "label": "Te aturden mucho",
+              "value": "stun"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Usa un Amuleto Thawing o Sapphire",
+          "when": {
+            "situation": "cold"
+          },
+          "steps": [
+            "Equipa un Amuleto Thawing para inmunidad total a la Congelación si las congelaciones te están matando.",
+            "Usa un Amuleto Sapphire para un aumento temporal de resistencia al frío si las congelaciones son raras.",
+            "Vigila las Cargas de tu Amuleto: un estado congelado sin cargas no se despejará."
+          ]
+        },
+        {
+          "title": "Usa un Amuleto Staunching o Antidote",
+          "when": {
+            "situation": "dot"
+          },
+          "steps": [
+            "Equipa un Amuleto Staunching para volverte Inmune al Sangrado.",
+            "Equipa un Amuleto Antidote para volverte Inmune al Veneno.",
+            "Prefiere Amuletos de inmunidad frente a los de resistencia aquí, ya que el DoT ignora la escala de magnitud."
+          ]
+        },
+        {
+          "title": "Usa un Amuleto Grounding",
+          "when": {
+            "situation": "lightning"
+          },
+          "steps": [
+            "Equipa un Amuleto Grounding para inmunidad al Choque.",
+            "También considera un Amuleto Topaz si solo necesitas un aumento de resistencia.",
+            "Mantén las cargas llenas matando monstruos entre grupos."
+          ]
+        },
+        {
+          "title": "Usa un Amuleto Dousing",
+          "when": {
+            "situation": "fire"
+          },
+          "steps": [
+            "Equipa un Amuleto Dousing para inmunidad a la Ignición.",
+            "Un Amuleto Ruby funciona si solo quieres resistencia al fuego.",
+            "Revisa el número de ranuras del Cinturón antes de comprometerte con varios Amuletos."
+          ]
+        },
+        {
+          "title": "Usa un Amuleto Stone",
+          "when": {
+            "situation": "stun"
+          },
+          "steps": [
+            "Equipa un Amuleto Stone para No Puede Ser Aturdido mientras está activo.",
+            "Sube tu Umbral de Aturdimiento mediante equipo y nodos pasivos como segunda capa.",
+            "Recarga las cargas en los Pozos antes de los jefes difíciles."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Consejo general sobre Amuletos",
+        "steps": [
+          "Empareja el Amuleto con la afección más letal del contenido que vayas a hacer.",
+          "Prioriza los Amuletos de Inmunidad para afecciones que matan al instante o te bloquean.",
+          "Recarga las cargas en los Pozos o matando monstruos antes de cada encuentro peligroso."
+        ]
+      }
+    },
+    {
+      "id": "charm-selection-by-content",
+      "order": 9,
+      "title": "Selección de Amuleto por contenido",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Tipo de Amuleto sugerido por encuentro común, el riesgo de cargas y una defensa alternativa si no tienes ranura libre.",
+      "columns": [
+        {
+          "key": "encounter",
+          "label": "Encuentro"
+        },
+        {
+          "key": "suggested-charm-type",
+          "label": "Amuleto sugerido"
+        },
+        {
+          "key": "charge-risk",
+          "label": "Riesgo de cargas"
+        },
+        {
+          "key": "alternative-defence",
+          "label": "Defensa alternativa"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Cold mage packs",
+            "suggested-charm-type": "Thawing",
+            "charge-risk": "High (frequent freezes)",
+            "alternative-defence": "Cold resistance + chill reduction"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "Bleed spearmen",
+            "suggested-charm-type": "Staunching",
+            "charge-risk": "Medium",
+            "alternative-defence": "Higher life + bleed threshold"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "Poison bloat enemies",
+            "suggested-charm-type": "Antidote",
+            "charge-risk": "Medium",
+            "alternative-defence": "Chaos resistance"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Ignite-heavy bosses",
+            "suggested-charm-type": "Dousing",
+            "charge-risk": "High (long fight)",
+            "alternative-defence": "Fire resistance + life regen"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Lightning casters",
+            "suggested-charm-type": "Grounding",
+            "charge-risk": "High",
+            "alternative-defence": "Lightning resistance"
+          }
+        },
+        {
+          "tags": [
+            "low"
+          ],
+          "cells": {
+            "encounter": "Stun-lock bosses",
+            "suggested-charm-type": "Stone",
+            "charge-risk": "Low",
+            "alternative-defence": "Stun Threshold + armour"
+          }
+        }
+      ],
+      "note": "Los costes exactos de cargas de los Amuletos y los límites de ranuras dependen de la versión y están marcados como pendientes de verificación en PC."
+    },
+    {
+      "id": "status-icon-gallery",
+      "order": 10,
+      "title": "Galería de iconos de estado",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Referencia rápida de los iconos que verás en tu barra de estado y en los Amuletos de tu Cinturón.",
+      "cards": [
+        {
+          "title": "Icono de Sangrado",
+          "tag": "ailment",
+          "body": [
+            "Gota roja. Significa que el daño físico a lo largo del tiempo está activo; contrarresta con un Amuleto Staunching."
+          ]
+        },
+        {
+          "title": "Icono de Veneno",
+          "tag": "ailment",
+          "body": [
+            "Veneno verde. Acumulaciones de daño de caos a lo largo del tiempo; contrarresta con un Amuleto Antidote."
+          ]
+        },
+        {
+          "title": "Icono de Ignición",
+          "tag": "ailment",
+          "body": [
+            "Llama naranja. Daño de fuego a lo largo del tiempo; contrarresta con un Amuleto Dousing."
+          ]
+        },
+        {
+          "title": "Icono de Enfriamiento / Congelación",
+          "tag": "ailment",
+          "body": [
+            "Escarcha azul. Ralentización o parada total; contrarresta con un Amuleto Sapphire o Thawing."
+          ]
+        },
+        {
+          "title": "Icono de Choque / Electrizar",
+          "tag": "ailment",
+          "body": [
+            "Rayo amarillo. Aumento del daño recibido o aturdimiento; contrarresta con un Amuleto Grounding."
+          ]
+        },
+        {
+          "title": "Amuleto Thawing",
+          "tag": "charm",
+          "body": [
+            "Otorga Inmune a Congelación cuando quedas Congelado. Consume 40 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuleto Staunching",
+          "tag": "charm",
+          "body": [
+            "Otorga Inmune al Sangrado cuando empiezas a Sangrar. Consume 30 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuleto Antidote",
+          "tag": "charm",
+          "body": [
+            "Otorga Inmune al Veneno cuando quedas Envenenado. Consume 20 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuleto Dousing",
+          "tag": "charm",
+          "body": [
+            "Otorga Inmune a la Ignición cuando quedas Inflamado. Consume 30 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuleto Grounding",
+          "tag": "charm",
+          "body": [
+            "Otorga Inmune al Choque cuando quedas Electrizado. Consume 30 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuleto Stone",
+          "tag": "charm",
+          "body": [
+            "No Puede Ser Aturdido mientras está activo. Consume 20 de 40 cargas."
+          ]
+        },
+        {
+          "title": "Amuletos de resistencia elemental",
+          "tag": "charm",
+          "body": [
+            "Ruby, Sapphire, Topaz y Amethyst otorgan un aumento temporal de resistencia cuando les impacta su tipo de daño."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boss-and-player-differences",
+      "order": 11,
+      "title": "Jefes frente a jugadores: dificultad de afección",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los jefes son significativamente más difíciles de afligir que los monstruos normales. Sus umbrales de afección más grandes significan que se requiere más acumulación, y muchas peleas de jefes están ajustadas para que las afecciones que trivializan a los escombros apenas se noten.",
+        "Por esto, evita afirmar que un jefe es totalmente inmune o totalmente controlable a menos que una fuente actual lo confirme. Trata la aplicación de afecciones en jefes como posible-pero-difícil, y verifica casos específicos frente al cliente en vivo en lugar de asumirlo."
+      ],
+      "bullets": [
+        "Los umbrales de los jefes son más grandes, así que la acumulación a menudo no alcanza.",
+        "Algunos jefes resisten o ignoran ciertas afecciones por diseño.",
+        "No afirmes de forma absoluta 'inmune' o 'controlable' sin una fuente actual.",
+        "Verifica el comportamiento de afecciones específico del jefe en el juego antes de fiarte de él."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "Evidencia de la comunidad y confusiones comunes",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Respuestas a las preguntas más repetidas de los jugadores sobre Amuletos e inmunidad, tomadas de la discusión comunitaria.",
+      "cards": [
+        {
+          "title": "Amuleto equipado pero sigues congelado",
+          "tag": "confusion",
+          "body": [
+            "Normalmente significa que no quedan cargas, el Amuleto equivocado para la afección, el Cinturón sin ranura, o el contenido no permite Amuletos. Revisa primero las cargas y la ranura del Cinturón."
+          ]
+        },
+        {
+          "title": "La resistencia no es inmunidad",
+          "tag": "confusion",
+          "body": [
+            "Una resistencia alta al fuego reduce el daño de Ignición pero no evita que se aplique. Solo un Amuleto de Inmunidad o un hito lo previene."
+          ]
+        },
+        {
+          "title": "El Amuleto no se activó a tiempo",
+          "tag": "confusion",
+          "body": [
+            "Las cargas se recargan en los Pozos o con bajas. Entrar a un jefe con un Amuleto vacío no hace nada hasta que se recargue."
+          ]
+        },
+        {
+          "title": "El jefe nunca sangra",
+          "tag": "confusion",
+          "body": [
+            "El umbral del jefe es alto; el mismo sangrado que destroza a un grupo puede que nunca lo cruce. Invierte en magnitud y modificadores que rompen el umbral, o acepta que puede que no pegue."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 13,
+      "title": "Guía en vídeo de afecciones",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Complete Ailment Guide - Path of Exile 2",
+          "creator": "silentstill",
+          "description": "Una explicación completa de cómo funcionan las afecciones, umbrales, acumulación, magnitud, duración e inmunidad por Amuletos en PoE 2, con ejemplos de cada capa de defensa.",
+          "takeaway": "Empareja tu capa de defensa con la afección: usa Amuletos de Resistencia para reducir, Amuletos de Inmunidad para prevenir por completo, y mantén las cargas de los Amuletos llenas antes de las peleas difíciles.",
+          "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+          "timestamps": [
+            {
+              "label": "Introducción",
+              "time": "0:00"
+            },
+            {
+              "label": "Resumen de tipos de afección",
+              "time": "1:20"
+            },
+            {
+              "label": "Umbral y acumulación explicados",
+              "time": "3:45"
+            },
+            {
+              "label": "Resistencia frente a inmunidad",
+              "time": "6:10"
+            },
+            {
+              "label": "Conceptos básicos y cargas de Amuletos",
+              "time": "9:30"
+            },
+            {
+              "label": "Elegir Amuletos por contenido",
+              "time": "12:15"
+            },
+            {
+              "label": "Dificultad de afección en jefes",
+              "time": "15:40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 14,
+      "title": "Solución de problemas: por qué falló tu defensa",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cuando una afección aún te hace daño a pesar de la preparación, la causa casi siempre es uno de unos pocos errores repetibles en lugar de una mecánica oculta."
+      ],
+      "bullets": [
+        "Sin cargas: el Amuleto estaba vacío porque saltaste los Pozos o las bajas antes de la pelea.",
+        "Amuleto equivocado: un Amuleto Sapphire solo ayuda contra daño de frío; no detendrá un Sangrado.",
+        "Cinturón sin ranura: los Amuletos solo retienen cargas y se activan mientras están en una ranura del Cinturón.",
+        "El contenido no permite Amuletos: algunos encuentros desactivan los efectos automáticos de objetos; planea una defensa pasiva en su lugar.",
+        "Confundir resistencia con inmunidad: maximizar una resistencia sigue permitiendo que la afección se aplique."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "Preguntas frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿Funcionan los Amuletos sin un Cinturón?",
+          "answer": [
+            "No. Un Amuleto solo puede retener cargas y activarse automáticamente mientras está colocado en un Cinturón. Sin una ranura de Cinturón no hace nada."
+          ]
+        },
+        {
+          "question": "¿Por qué mi Amuleto Thawing no detuvo la congelación?",
+          "answer": [
+            "Lo más probable es que no tuviera cargas, no estuviera en tu Cinturón, o el contenido desactive los efectos de los Amuletos. Revisa las cargas en un Pozo antes de la pelea."
+          ]
+        },
+        {
+          "question": "¿Es lo mismo 75 % de resistencia al fuego que inmunidad a la Ignición?",
+          "answer": [
+            "No. La resistencia reduce el daño de Ignición, pero la afección sigue aplicándose. Solo un Amuleto de Inmunidad o un hito previene la Ignición por completo."
+          ]
+        },
+        {
+          "question": "¿Puedo aplicar Sangrado a cada jefe?",
+          "answer": [
+            "No de forma fiable. Los jefes tienen umbrales de afección altos, así que el Sangrado puede que nunca cruce el umbral. Invierte en magnitud y modificadores que rompen el umbral, y verifica en el juego."
+          ]
+        },
+        {
+          "question": "¿Cómo se recargan las cargas de los Amuletos?",
+          "answer": [
+            "Las cargas se recargan en los Pozos o matando monstruos. Planea recargar entre grupos y antes de los encuentros con jefes."
+          ]
+        },
+        {
+          "question": "¿Cuántos Amuletos puedo equipar?",
+          "answer": [
+            "Un Cinturón proporciona un número limitado de ranuras para Amuletos; la cantidad exacta depende del Cinturón. Revisa el tooltip del Cinturón en el juego para ver tu total de ranuras."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Fuentes y verificación",
+      "order": 16,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Afecciones",
+          "description": "Página de Afecciones de la wiki de PoE 2 que cubre umbral, acumulación, magnitud y duración."
+        },
+        {
+          "label": "Wiki oficial - Amuletos",
+          "description": "Lista de amuletos de la wiki de PoE 2 con tipos base, costes de carga y efectos."
+        },
+        {
+          "label": "Guía en vídeo",
+          "description": "silentstill - Complete Ailment Guide para Path of Exile 2."
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "Registro de cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Guía inicial publicada que cubre taxonomía de afecciones, umbral/acumulación/magnitud/duración, resistencia frente a inmunidad, conceptos básicos de Amuletos y selección de amuletos por contenido."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE 2 wiki - Ailments",
+      "url": "https://poe2wiki.net/wiki/Ailments",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE 2 wiki - List of charms",
+      "url": "https://poe2wiki.net/wiki/List_of_charms",
+      "sourceType": "official"
+    },
+    {
+      "label": "silentstill - Complete Ailment Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Afecciones, Umbrales, Amuletos e Inmunidad en PoE 2",
+    "description": "Cómo funcionan las afecciones, umbrales, acumulación, magnitud, duración e inmunidad por Amuletos en Path of Exile 2, y cómo elegir el Amuleto adecuado para cada encuentro.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ailments-thresholds-charms-immunity",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

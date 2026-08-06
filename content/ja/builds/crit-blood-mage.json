@@ -1,0 +1,754 @@
+{
+  "id": "crit-blood-mage",
+  "slug": "crit-blood-mage",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "100% クリティカル ブラッドメイジ ビルドガイド",
+  "shortTitle": "100% クリティカル ブラッドメイジ",
+  "summary": "リーグ開始に対応し、その後検証済みの 0.5 クリティカル派生（コメット、ボールライトニング / ボルケーノなど）へ分岐するブラッドメイジのクリティカル入門。クリティカルの恩恵とライフコスト、回復を常に管理する。",
+  "description": "100% クリティカルが前提条件であってダメージの保証ではないこと、ライフコストと残滓（リムナンツ）がいかに自身を維持するか、進行段階に合う派生の選び方、そしてクリティカルを真似するだけでダメージが低いままになる理由を学ぶ。実際の動画、レベリング、装備、検証済みの出典付き。",
+  "classId": "witch",
+  "ascendancyId": "blood-mage",
+  "mainSkillIds": [
+    "comet",
+    "ball-lightning"
+  ],
+  "secondarySkillIds": [
+    "grim-feast",
+    "volcano",
+    "life-remnants"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "spell",
+    "crit",
+    "life-cost",
+    "bossing",
+    "mapping"
+  ],
+  "damageTypes": [
+    "cold",
+    "fire"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping",
+    "league-start",
+    "endgame"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Source Review Pipeline",
+  "createdAt": "2026-07-31",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-07-31",
+  "heroImage": "/images/builds/covers/crit-blood-mage.webp",
+  "cardImage": "/images/builds/covers/crit-blood-mage.webp",
+  "imageAlt": "100% クリティカル状態でライフコストを管理するブラッドメイジ",
+  "tags": [
+    "witch",
+    "blood-mage",
+    "crit",
+    "spell",
+    "life-cost",
+    "league-start"
+  ],
+  "relatedBuildIds": [
+    "ball-lightning-volcano-blood-mage"
+  ],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility",
+    "mana-spirit-resource-sustain"
+  ],
+  "sources": [
+    {
+      "id": "src-official",
+      "label": "Path of Exile 2 公式フォーラム (0.5 パッチノート)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "src-wiki",
+      "label": "PoE2 Wiki - Blood Mage",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Blood_Mage"
+    },
+    {
+      "id": "src-creator",
+      "label": "ImJustAnthony Vampire Queen Guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+    },
+    {
+      "id": "src-video",
+      "label": "ゲームプレイ動画",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ"
+    }
+  ],
+  "seo": {
+    "title": "100% クリティカル ブラッドメイジ ビルドガイド (PoE2 0.5)",
+    "description": "検証済みの派生を持つブラッドメイジのクリティカル入門。実際のクリエイター動画、レベリング、装備、出典付き。",
+    "noindex": false
+  },
+  "changelog": {
+    "entries": [
+      {
+        "date": "2026-07-31",
+        "changes": [
+          "第4弾の出典レビュー済み公開。公式 0.5 パッチノート、現在のクリエイターガイド、独立したビルドガイド、プランナー、最新のゲームプレイ動画、およびコミュニティの質問から相互検証。"
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "overview",
+      "id": "overview",
+      "title": "概要",
+      "order": 10,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "これはブラッドメイジのクリティカル入門である。リーグ開始に対応し、100% クリティカルの壁について説明し、その後検証済みの 0.5 派生（コメット、ボールライトニング / ボルケーノなど）へ案内するので、一つの構成を無思考にコピーするのではなく、段階に応じて選べる。",
+        "これは検証優先のガイドである。100% クリティカルの壁、ライフコスト管理、派生の選択は現在のクリエイターガイドに基づいて記述されている。「クリティカルはダメージではない」という順序付けが実践的な核心である。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "pros-cons",
+      "id": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "toc": true,
+      "visible": true,
+      "pros": [
+        "複数のエンドゲーム派生へ育つ強力なリーグスターター。",
+        "回復手段を持つブラッドメイジのライフコストファンタジー。",
+        "クリティカルの壁が明確で再現性のある火力の跳ね上がりをもたらす。",
+        "複数のスペル派生をまとめるハブページ。"
+      ],
+      "cons": [
+        "100% クリティカルは壁であり、ダメージの保証ではない。",
+        "ライフコストを管理しないと自傷する。",
+        "派生ごとに異なるツリーが必要。",
+        "スキルレベルなしにクリティカルをコピーしても弱いまま。"
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "build-readiness",
+      "title": "このビルドはあなたに合っていますか？",
+      "order": 30,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "リーグ開始に対応し、その後分岐するスペルのクリティカルハブが欲しいなら、クリティカル ブラッドメイジを選べ。これは単一の固定構成ではなく、あなたを正しい派生へ導く入り口である。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "leveling",
+      "id": "leveling",
+      "title": "レベリング経路",
+      "order": 40,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "レベル 1-30 - キャンペーンスペル",
+          "body": [
+            "基本のスペル（例：初期の火炎/冷気スキル）でレベリングする。ライフと耐性に集中すること。クリティカルの壁はまだ優先事項ではない。"
+          ],
+          "levelRange": "1-30"
+        },
+        {
+          "label": "レベル 31-55 - クリティカル基盤",
+          "body": [
+            "基本的なクリティカルノードとライフコスト回復（グリムフィースト、残滓）を追加する。クリティカル率が実用範囲になったら最初の派生を選ぶ。"
+          ],
+          "levelRange": "31-55"
+        },
+        {
+          "label": "レベル 56+ - 派生への決断",
+          "body": [
+            "派生（コメット、ボールライトニング/ボルケーノ、その他）に決定し、そのためのツリーとサポートを特化させる。"
+          ],
+          "levelRange": "56+"
+        },
+        {
+          "label": "ウェイストーン - エンドゲーム",
+          "body": [
+            "クリティカルの壁を閉じ、その後クリティカルダメージとスキルレベルを上げる。完全なクリティカル派生を目指す前に T15 でベンチマークすること。"
+          ],
+          "levelRange": "Waystones"
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "crit-threshold",
+      "title": "クリティカルは壁であり、ダメージ数値ではない",
+      "order": 50,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "100% クリティカルとは、ヒットがクリティカルになることを意味する。それが強く当たることを意味するのではない。順序はこうだ：まずクリティカルの安定、次にスペルのスキルレベル、次に増加/〜として得るダメージ、次にクリティカルダメージ、次に詠唱速度、そして最後に贅沢。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "skills",
+      "id": "skills",
+      "title": "スキルとサポート",
+      "order": 80,
+      "toc": true,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コア（派生依存）",
+          "skills": [
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "ボス爆破派生スキル",
+              "supportSkillIds": [
+                "spell-echo"
+              ],
+              "notes": [],
+              "whyUse": [
+                "コメットのクリティカル派生で使われる。"
+              ]
+            },
+            {
+              "displayName": "Ball Lightning",
+              "skillId": "ball-lightning",
+              "role": "殲滅派生スキル",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "notes": [],
+              "mappingBossingDiff": [
+                "殲滅と単体は派生によって分かれる。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "回復 / 防御",
+          "skills": [
+            {
+              "displayName": "Grim Feast",
+              "skillId": "grim-feast",
+              "role": "ライフコスト回復",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "displayName": "Life Remnants",
+              "skillId": "life-remnants",
+              "role": "維持バッファー",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "id": "variant-selector",
+      "title": "派生セレクター",
+      "order": 120,
+      "toc": true,
+      "visible": true,
+      "caption": "現在の段階と目標に応じて分岐を選ぶ。ボールライトニング / ボルケーノには専用のページがある。",
+      "columns": [
+        "プレイヤーの状態",
+        "推奨する分岐",
+        "理由",
+        "関連ページ"
+      ],
+      "rows": [
+        {
+          "label": "キャンペーン",
+          "cells": [
+            "キャンペーン",
+            "検証済みリーグ開始ルート",
+            "ハードルが低い",
+            "このページ"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "cells": [
+            "初期マップ",
+            "クリティカル基盤派生",
+            "生存を解決する",
+            "このページ"
+          ]
+        },
+        {
+          "label": "ボールライトニング寄り",
+          "cells": [
+            "ボールライトニング寄り",
+            "Ballcano",
+            "殲滅/単体の分離",
+            "Ballcano ページ"
+          ]
+        },
+        {
+          "label": "高投資",
+          "cells": [
+            "高投資",
+            "フルクリティカル派生",
+            "上限",
+            "このページ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mapping",
+      "id": "mapping",
+      "title": "マッピングローテーション",
+      "order": 130,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "通常の群れに対しては：殲滅派生（ボールライトニングまたは選んだ殲滅スキル）を使い、動き続け、ライフの残滓にコストを回復させる。ボススキルはレア敵とボスに取っておく。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "rare-rotation",
+      "title": "レアローテーション",
+      "order": 140,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "レア敵に対しては：ボス爆破スキルに切り替え、クリティカルが安定していることを確認してから爆破する。レア敵が危険なら防御スキルを使うこと。致死級のモディファイアへ過剰に踏み込んではいけない。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "bossing",
+      "id": "bossing",
+      "title": "ボスローテーション",
+      "order": 150,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ボスに対しては：書かれた順序を最終とみなす前に、現在のクライアントで派生のコンボを確認すること。戦闘中はライフコストを管理し、爆破の合間に回復して自損ドレインを防ぐこと。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "ascendancy",
+      "title": "Blood Mage Ascendancy",
+      "order": 160,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ブラッドメイジは力をライフコストとライフサイクルに結びつける。そのアセンダンシーはライフを通じた詠唱とその回復を報いる。それが、ライフの残滓と回復がビルドの一部であり、オプションのおまけではない理由である。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "passive-tree",
+      "title": "Passive Tree Approach",
+      "order": 170,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "派生ごとに異なるツリーが必要。ツリーを選んだ派生と現在のクリティカル率に照らして読むこと。一つの共通ツリーを貼り付けてはいけない。まずライフ、耐性、いくつかのクリティカルノードから始め、その後特化させること。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "gear",
+      "id": "gear",
+      "title": "Gear and Uniques",
+      "order": 90,
+      "toc": true,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Weapon",
+          "recommendations": [
+            "クリティカルのワンド/セプター。初期はスキルレベルもクリティカルと同程度に重要。オフハンドはフォーカスでもよい。"
+          ],
+          "notes": [
+            "クリティカル率 / スキルレベル"
+          ],
+          "statPriorities": [
+            {
+              "label": "Critical Chance",
+              "reason": "クリティカルの壁",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Body Armour",
+          "recommendations": [
+            "まずライフと耐性。ES またはハイブリッドベースがライフコストファンタジーに合う。"
+          ],
+          "notes": [
+            "ライフ + 耐性"
+          ],
+          "statPriorities": [
+            {
+              "label": "耐性",
+              "reason": "生存の壁",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Rings / Amulet",
+          "recommendations": [
+            "ライフ、属性、クリティカル倍率、そして少しの詠唱速度。クリティカルの壁を満たす前に過度な投資は避けること。"
+          ],
+          "notes": [
+            "ライフ / クリティカル倍率"
+          ],
+          "statPriorities": [
+            {
+              "label": "ライフ",
+              "reason": "ライフコストのプール",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Jewels",
+          "recommendations": [
+            "スペルのスキルレベル、クリティカル、ライフ。贅沢はコアが解決した後でのみ。"
+          ],
+          "notes": [
+            "スキルレベル / ライフ"
+          ],
+          "statPriorities": [
+            {
+              "label": "Spell Skill Level",
+              "reason": "直接的なダメージ",
+              "tier": "optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "stat-priority",
+      "id": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 100,
+      "toc": true,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "Resistances (cap)",
+          "reason": "譲れない生存の壁"
+        },
+        {
+          "label": "Critical Chance",
+          "reason": "まずクリティカルの壁を越える必要がある"
+        },
+        {
+          "label": "ライフ",
+          "reason": "ライフコスト詠唱のプール"
+        },
+        {
+          "label": "Spell Skill Level",
+          "reason": "倍率よりも先の直接的なダメージ"
+        },
+        {
+          "label": "Critical Damage / Cast Speed",
+          "reason": "コアが安定してからの贅沢"
+        }
+      ]
+    },
+    {
+      "type": "upgrade-priority",
+      "id": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 110,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Starter -> Functional",
+          "body": [
+            "耐性を上限まで、ライフを確保し、実用のクリティカル率に到達する。最初からライフコストを管理すること。"
+          ]
+        },
+        {
+          "label": "Functional -> Endgame",
+          "body": [
+            "クリティカルの壁を閉じ、派生用のクリティカル倍率とスキルレベルを追加する。"
+          ]
+        },
+        {
+          "label": "Endgame -> Luxury",
+          "body": [
+            "T15 が快適になってからのみ、完璧なクリティカル装備とジェムレベルを目指す。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "budget-variants",
+      "title": "予算別バリエーション",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "スターターはレアのクリティカルワンドと基本的なライフ/耐性装備を使う。機能的なエンドゲームはクリティカルの壁を閉じ、派生を特化する。贅沢は完璧なクリティカル装備とジェムレベルである。クリエイターの最上位クリティカルを自分のデフォルト目標とみなしてはいけない。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "life-and-recovery",
+      "title": "Life Cost and Recovery",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ブラッドメイジは詠唱にライフを消費する。グリムフィースト、ライフの残滓、リークがプールをプラスに保つ。回復が遅れると、ボス爆破中に自損ドレインする。回復をダメージを可能にするものとみなし、脇注ではなく扱うこと。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "defensive-layers",
+      "title": "防御層",
+      "order": 200,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ライフと回復可能なプール（エネルギーシールドまたはリーク）の組み合わせがベースラインである。ライフを消費して詠唱するため、防御と回復は同じシステムである。薄いプールはダメージも生存も両方を殺す。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "community-voices",
+      "id": "community-voices",
+      "title": "コミュニティの声",
+      "order": 820,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "context": "クリティカル上限の混乱",
+          "label": "Reddit - クリ上限",
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "statement": "プレイヤーは 100% クリティカルがすべての場所で必須かを尋ねる。合意：それはボスの壁であり、マッピングは支払えるようになるまでより低く回してよい。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "context": "クリティカル後の低ダメージ",
+          "label": "Forum - ダメージ",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "一般的な報告：スキルレベルとクリティカル倍率が飛ばされたため、100% クリティカルでも弱く感じる。壁は必要条件であり、十分条件ではない。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "context": "ライフ維持",
+          "label": "Guide comments - ライフ",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "プレイヤーは、残滓/リークを無視するとボス爆破中に自損ドレインにつながることに言及する。回復は組み込まなければならない。",
+          "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+        }
+      ],
+      "note": "明確さのために編集された、よくあるコミュニティの質問や懸念の簡潔な言い換え。そのままの引用ではない。"
+    },
+    {
+      "type": "question-answer",
+      "id": "question-answer",
+      "title": "質問と回答",
+      "order": 840,
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "100% クリティカルは始まりか終わりか？",
+          "answer": [
+            "それはボス派生の壁である。初期キャラは非クリティカルのマッピングコンボを回し、ボス戦の前にのみ閉じる。"
+          ],
+          "bullets": []
+        },
+        {
+          "question": "なぜ 100% クリティカルをコピーしてもダメージが低いままか？",
+          "answer": [
+            "クリティカルは一つの乗算器に過ぎない。スキルレベル、増加ダメージ、クリティカル倍率が続かなければならない。壁だけでは不十分である。"
+          ],
+          "bullets": []
+        },
+        {
+          "question": "どの派生を選ぶべきか？",
+          "answer": [
+            "キャンペーンは検証済みリーグ開始ルートを使う。初期マップはクリティカル基盤を使う。ボールライトニング好きは Ballcano（別ページ）を使う。高投資はフルクリティカル派生を使う。"
+          ],
+          "bullets": []
+        },
+        {
+          "question": "自損ドレインを防ぐには？",
+          "answer": [
+            "ボス爆破中もライフプールがプラスを保つように、グリムフィースト、ライフの残滓、リークを組み込む。回復の遅れこそが自損ドレインの原因である。"
+          ],
+          "bullets": []
+        }
+      ]
+    },
+    {
+      "type": "troubleshooting",
+      "id": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 860,
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "100% クリティカルでもダメージが低い",
+          "checks": [
+            "次にスペルのスキルレベルとクリティカル倍率を追加すること。クリティカルの壁は必要条件だが、それ単独では不十分である。"
+          ]
+        },
+        {
+          "symptom": "ライフが自損ドレインする",
+          "checks": [
+            "ライフの残滓 / リーク / グリムフィーストを追加または修正し、回復がライフコスト詠唱に追いつくようにすること。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "build-planner",
+      "id": "build-planner",
+      "title": "ビルドプランナー",
+      "order": 880,
+      "toc": true,
+      "visible": true,
+      "note": "現在の 0.5 派生用のインポート可能なプランナー。ゲーム内の公式ビルドプランナーツールでインポートし、予算に合わせてスキルレベルとユニークを調整してください。",
+      "creatorName": "ImJustAnthony",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "title": "動画ガイド",
+      "order": 900,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "ImJustAnthony gameplay showcase",
+          "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ",
+          "timestamps": [
+            {
+              "label": "ビルド概要",
+              "time": "0:00"
+            },
+            {
+              "label": "レベリングルート",
+              "time": "6:30"
+            },
+            {
+              "label": "装備とユニーク",
+              "time": "14:00"
+            },
+            {
+              "label": "マッピングローテーション",
+              "time": "22:00"
+            },
+            {
+              "label": "ボス紹介",
+              "time": "30:00"
+            }
+          ],
+          "creator": "ImJustAnthony",
+          "description": "レベリング、マッピング、ボスローテーションを実演する現在の 0.5 ゲームプレイ映像。",
+          "takeaway": "ソケットやユニークの選択をコピーする前に、ローテーションと装備を確認すること。"
+        }
+      ]
+    },
+    {
+      "type": "sources",
+      "id": "sources",
+      "title": "出典と検証",
+      "order": 950,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式 / パッチ",
+          "description": "アセンダンシーとコアスキルに関する Path of Exile 2 公式フォーラムと 0.5 パッチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Creator Guide",
+          "description": "主要な独立クロスチェックとして使われる、ImJustAnthony による現在の 0.5 ガイド。",
+          "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+        },
+        {
+          "label": "データベース",
+          "description": "アセンダンシーとスキルデータに関する PoE2 Wiki の項目。",
+          "url": "https://www.poe2wiki.net/wiki/Blood_Mage"
+        },
+        {
+          "label": "動画",
+          "description": "ローテーションと装備を確認する現在のゲームプレイ映像。",
+          "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "コミュニティの声と FAQ セクションに使われた Reddit とガイドコメントの質問。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "notes": [
+          "公式パッチノート、現在のクリエイターガイド、データベース、プランナー、現在のゲームプレイ動画から相互検証。クライアントでの直接テストでは検証されていない。"
+        ]
+      }
+    }
+  ],
+  "locale": "ja",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "crit-blood-mage",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

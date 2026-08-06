@@ -1,0 +1,690 @@
+{
+  "id": "accuracy-distance-penalty-hit-chance",
+  "slug": "accuracy-distance-penalty-hit-chance",
+  "locale": "pt-br",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Acurácia, Penalidade de Distância e Chance de Acerto no Path of Exile 2",
+  "shortTitle": "Acurácia e Chance de Acerto",
+  "summary": "Como Acurácia, Evasão e a penalidade de distância de ataques à distância determinam se seus ataques acertam no Path of Exile 2, e como corrigir uma baixa chance de acerto sem adivinhar.",
+  "description": "Um guia de mecânicas sobre a chance de acerto no Path of Exile 2: como a Acurácia se compara à Evasão, como ataques à distância perdem acurácia efetiva em longas distâncias e maneiras práticas de aumentar sua chance de acerto evitando erros comuns de leitura.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/snipe.webp",
+  "cardImage": "/images/skills/snipe.webp",
+  "imageAlt": "Um ícone de habilidade de atirador de elite do Path of Exile 2 representando a classificação de acurácia e a chance de acerto à distância",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "Compreensão básica do painel de personagem e da dica de item",
+    "Familiaridade com as estatísticas de Acurácia e Evasão exibidas nos equipamentos"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "accuracy",
+    "evasion",
+    "hit-chance",
+    "distance",
+    "attack",
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respostas diretas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Ataques precisam de Acurácia para acertar?",
+          "body": [
+            "Sim. Os ataques comparam sua Classificação de Acurácia com a Classificação de Evasão do alvo para definir a chance de acerto. Um ataque corpo a corpo ou à distância que não superar a verificação de evasão vai errar."
+          ]
+        },
+        {
+          "title": "Magias verificam Acurácia?",
+          "body": [
+            "Geralmente não. A maioria das magias no Path of Exile 2 ignora totalmente a verificação de Acurácia contra Evasão. Algumas habilidades são explicitamente marcadas como 'Acerta Sempre' ou 'Não Podem Ser Esquivadas', mas o padrão para magias é que elas não dependem da sua Classificação de Acurácia."
+          ]
+        },
+        {
+          "title": "Por que uma chance de 100% exibida ainda erra à distância?",
+          "body": [
+            "A chance do painel é calculada em uma distância de referência. Ataques à distância perdem acurácia efetiva conforme o alvo fica mais longe, então a chance real em longa distância pode ficar bem abaixo do número exibido — e até mesmo uma leitura quase de 100% pode errar em distância extrema."
+          ]
+        },
+        {
+          "title": "O que remove a evasão como fator?",
+          "body": [
+            "Efeitos como 'Acertos Não Podem Ser Esquivados' ou o keystone Técnica Resoluta impedem que a Evasão do alvo reduza sua chance de acerto, mas eles trazem compensações (por exemplo, abrir mão da escala de acerto crítico) que você deve ponderar para cada build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "Termos-chave",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Quatro ideias estão no centro de saber se o seu dano conecta. A Classificação de Acurácia é o seu teste ofensivo para ataques; a Classificação de Evasão é o teste defensivo que os inimigos usam para evitar ser atingidos por ataques. A Chance de Acerto é a porcentagem resultante que decide se um ataque individual acerta. A Distância é o quão longe seu personagem está do alvo, e ela importa especificamente para ataques à distância.",
+        "Magias são uma categoria separada: no Path of Exile 2 a maioria das magias não realiza nenhuma verificação de Acurácia, então a conexão delas é governada por outras regras em vez do embate Acurácia contra Evasão."
+      ],
+      "bullets": [
+        "Classificação de Acurácia: a estatística que seus ataques usam para tentar superar a Evasão de um alvo.",
+        "Classificação de Evasão: a estatística defensiva que permite a um alvo evitar ataques recebidos.",
+        "Chance de Acerto: a porcentagem exibida de que um ataque vai conectar.",
+        "Distância: o quão longe você está do alvo; aplica uma penalidade à acurácia à distância."
+      ]
+    },
+    {
+      "id": "chance-to-hit-structure",
+      "order": 30,
+      "title": "Como a Chance de Acerto é construída",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Sua Chance de Acerto exibida para um ataque é produzida comparando sua Classificação de Acurácia com a Classificação de Evasão do alvo. A relação tem um formato de retorno decrescente: aumentar a Acurácia quando você já está muito acima da Evasão do alvo gera ganhos menores, enquanto aumentar a Acurácia quando você está muito abaixo gera grandes ganhos.",
+        "A curva numérica exata usa coeficientes que são sensíveis à versão no Early Access do Path of Exile 2 e deve ser confirmada dentro do cliente atual em vez de confiar em uma fórmula fixa. Trate a estrutura como 'Acurácia contra Evasão decide uma porcentagem que sobe em direção a um teto alto conforme sua Acurácia supera a Evasão deles' e confirme os números exatos no jogo.",
+        "Separadamente dessa curva, ataques à distância aplicam um fator de distância que reduz a acurácia efetiva conforme o alvo se afasta. Esse fator de distância é o que torna a leitura do painel otimista em longas distâncias."
+      ],
+      "bullets": [
+        "Acurácia maior em relação à Evasão significa maior chance de acerto.",
+        "O ganho por ponto de Acurácia diminui conforme você já supera a Evasão do alvo.",
+        "Um fator de distância reduz a acurácia efetiva especificamente para ataques à distância.",
+        "Coeficientes exatos são sensíveis à versão; confirme-os no cliente atual."
+      ]
+    },
+    {
+      "id": "formula-variables",
+      "order": 40,
+      "title": "Variáveis no cálculo da chance de acerto",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "As entradas que alimentam o resultado da chance de acerto. Coeficientes exatos são sensíveis à versão e devem ser confirmados no cliente atual.",
+      "columns": [
+        {
+          "key": "variable",
+          "label": "Variável"
+        },
+        {
+          "key": "meaning",
+          "label": "O que é"
+        },
+        {
+          "key": "effect",
+          "label": "Como muda a chance de acerto"
+        },
+        {
+          "key": "confidence",
+          "label": "Confiança"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "accuracy"
+          ],
+          "cells": {
+            "variable": "Classificação de Acurácia",
+            "meaning": "Sua estatística ofensiva para ataques",
+            "effect": "Acurácia maior eleva a chance de acerto contra uma Evasão dada",
+            "confidence": "Estrutura estável; coeficientes exatos da curva sensíveis à versão"
+          }
+        },
+        {
+          "tags": [
+            "evasion"
+          ],
+          "cells": {
+            "variable": "Classificação de Evasão (alvo)",
+            "meaning": "A estatística defensiva do alvo contra ataques",
+            "effect": "Evasão maior reduz sua chance de acerto contra aquele alvo",
+            "confidence": "Estrutura estável; coeficientes exatos da curva sensíveis à versão"
+          }
+        },
+        {
+          "tags": [
+            "distance"
+          ],
+          "cells": {
+            "variable": "Fator de distância",
+            "meaning": "Penalidade aplicada a ataques à distância conforme o alcance cresce",
+            "effect": "Reduz a acurácia efetiva em longa distância; corpo a corpo não é afetado",
+            "confidence": "Mecânica real; distância inicial exata e queda sensíveis à versão"
+          }
+        },
+        {
+          "tags": [
+            "result"
+          ],
+          "cells": {
+            "variable": "Chance de acerto final",
+            "meaning": "Porcentagem exibida para o ataque",
+            "effect": "Sobe com Acurácia e cai com Evasão e alcance",
+            "confidence": "Exibida na dica; valor real à distância pode ser menor"
+          }
+        }
+      ],
+      "note": "Não confie em uma fórmula numérica fixa copiada de referências antigas; confirme os coeficientes no cliente atual."
+    },
+    {
+      "id": "distance-penalty",
+      "order": 50,
+      "title": "A penalidade de distância para ataques à distância",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ataques à distância no Path of Exile 2 sofrem uma penalidade de distância: quanto mais longe o alvo, menor se torna sua acurácia efetiva. É por isso que um personagem de atirador ou arco pode mostrar uma alta chance de acerto no painel de perto, mas começar a errar quando os inimigos estão longe do outro lado da tela.",
+        "A penalidade é uma mecânica de ataque à distância. Ataques corpo a corpo, que conectam a queima-roupa, não estão sujeitos à mesma perda de acurácia baseada em alcance. O ponto exato em que a penalidade começa e quão acentuadamente ela cai são sensíveis à versão, então confirme-os no jogo em vez de decorar um número fixo.",
+        "Uma consequência prática: até mesmo uma leitura de painel perto de 100% não é uma garantia em distância extrema. O fator de distância pode puxar a chance real para abaixo do valor exibido, então o posicionamento importa para builds à distância."
+      ],
+      "bullets": [
+        "Ataques à distância perdem acurácia efetiva conforme a distância cresce.",
+        "Ataques corpo a corpo não estão sujeitos à mesma penalidade de alcance.",
+        "Uma chance de painel perto de 100% ainda pode errar em longa distância.",
+        "Distância inicial exata e taxa de queda são sensíveis à versão."
+      ]
+    },
+    {
+      "id": "skill-matrix",
+      "order": 60,
+      "title": "Quais tipos de habilidade verificam Acurácia?",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Como a verificação de Acurácia se aplica entre as categorias de habilidade no Path of Exile 2. Magias geralmente a ignoram; ataques geralmente a usam.",
+      "columns": [
+        {
+          "key": "skill-type",
+          "label": "Tipo de habilidade"
+        },
+        {
+          "key": "checks-accuracy",
+          "label": "Verifica Acurácia?"
+        },
+        {
+          "key": "notes",
+          "label": "Observações"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-type": "Ataque",
+            "checks-accuracy": "Sim",
+            "notes": "A maioria dos ataques rola Acurácia contra Evasão. Ataques à distância também sofrem a penalidade de distância."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-type": "Magia",
+            "checks-accuracy": "Geralmente não",
+            "notes": "A maioria das magias ignora a verificação de Acurácia contra Evasão. Algumas habilidades são explicitamente Acerta Sempre ou Não Podem Ser Esquivadas."
+          }
+        },
+        {
+          "tags": [
+            "minion"
+          ],
+          "cells": {
+            "skill-type": "Invocado",
+            "checks-accuracy": "Depende do invocado",
+            "notes": "Invocados usam suas próprias regras de acurácia, que não são as mesmas do jogador. Não assuma que a acurácia do jogador se aplica aos invocados."
+          }
+        },
+        {
+          "tags": [
+            "totem"
+          ],
+          "cells": {
+            "skill-type": "Totem",
+            "checks-accuracy": "Sim (herda a habilidade)",
+            "notes": "Um totem usando uma habilidade de ataque realiza a verificação de acurácia daquela habilidade como se o dono a tivesse conjurado."
+          }
+        },
+        {
+          "tags": [
+            "triggered"
+          ],
+          "cells": {
+            "skill-type": "Disparada",
+            "checks-accuracy": "Depende do gatilho",
+            "notes": "Um ataque disparado verifica Acurácia; uma magia disparada geralmente não. Siga o tipo da habilidade subjacente."
+          }
+        }
+      ],
+      "note": "O comportamento de acurácia de invocados é sensível à versão; confirme as regras atuais no jogo em vez de copiar referências antigas."
+    },
+    {
+      "id": "worked-examples",
+      "order": 70,
+      "title": "Exemplos práticos",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Casos ilustrativos mostrando como a distância e o tipo de habilidade mudam se um acerto conecta. Números são qualitativos, não coeficientes exatos.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "distance",
+          "label": "Distância"
+        },
+        {
+          "key": "result",
+          "label": "Resultado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "melee"
+          ],
+          "cells": {
+            "case": "Ataque de curta distância contra inimigo normal",
+            "distance": "Queima-roupa / corpo a corpo",
+            "result": "A chance de acerto do painel é representativa; o ataque quase sempre conecta."
+          }
+        },
+        {
+          "tags": [
+            "ranged"
+          ],
+          "cells": {
+            "case": "Ataque de longa distância contra inimigo normal",
+            "distance": "Longe do outro lado da tela",
+            "result": "A penalidade de distância reduz a acurácia efetiva; alta chance no painel ainda pode errar."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "case": "Magia em qualquer distância",
+            "distance": "Não aplicável",
+            "result": "Magias ignoram a verificação de Acurácia, então a penalidade de distância não se aplica à rolagem de acerto."
+          }
+        },
+        {
+          "tags": [
+            "range-penalty"
+          ],
+          "cells": {
+            "case": "Chance de ~100% exibida em distância extrema",
+            "distance": "Alcance máximo",
+            "result": "O fator de distância ainda pode causar um erro; o número exibido não é uma garantia à distância."
+          }
+        }
+      ],
+      "note": "Use estes apenas como modelos mentais; confirme os limites reais dentro do cliente atual."
+    },
+    {
+      "id": "fix-low-hit-chance",
+      "order": 80,
+      "title": "Corrigir baixa chance de acerto",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Escolha a causa provável dos seus ataques errados. A ferramenta aponta o próximo passo.",
+      "controls": [
+        {
+          "id": "cause",
+          "label": "De onde vem o erro?",
+          "options": [
+            {
+              "label": "Baixa Acurácia no equipamento",
+              "value": "gear"
+            },
+            {
+              "label": "Nenhuma acurácia de passivas ou árvore",
+              "value": "passives"
+            },
+            {
+              "label": "Muito longe do alvo",
+              "value": "positioning"
+            },
+            {
+              "label": "Chefe ou inimigo evasivo",
+              "value": "keystone"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Aumentar Acurácia no equipamento",
+          "when": {
+            "cause": "gear"
+          },
+          "steps": [
+            "Procure Classificação de Acurácia em armas, anéis e amuletos.",
+            "Prefira Acurácia fixa mais quaisquer aumentos percentuais no equipamento.",
+            "Reconfira a chance de acerto na dica após cada troca."
+          ]
+        },
+        {
+          "title": "Pegar acurácia na árvore passiva",
+          "when": {
+            "cause": "passives"
+          },
+          "steps": [
+            "Alocar nós passivos e clusters notáveis que concedem Acurácia.",
+            "Verifique nós de classe e ascendência por bônus de acurácia.",
+            "Confirme que a chance de acerto na dica sobe após o respec."
+          ]
+        },
+        {
+          "title": "Melhorar o posicionamento",
+          "when": {
+            "cause": "positioning"
+          },
+          "steps": [
+            "Aproxime-se para que a penalidade de distância seja menor para ataques à distância.",
+            "Use habilidades de movimento para fechar distâncias contra inimigos evasivos.",
+            "Re-teste o mesmo alvo em curta distância para ver a penalidade removida."
+          ]
+        },
+        {
+          "title": "Lidar com inimigos evasivos ou chefes",
+          "when": {
+            "cause": "keystone"
+          },
+          "steps": [
+            "Considere Acertos Não Podem Ser Esquivados ou Técnica Resoluta para ignorar Evasão.",
+            "Pondere a compensação: Técnica Resoluta abre mão da escala de acerto crítico.",
+            "Combine com Acurácia apenas se você ainda depender de crítico ou de outras verificações."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Caminho de correção geral",
+        "steps": [
+          "Confirme que o erro é um problema de acurácia e não de resistência ou dano.",
+          "Aumente a Acurácia via equipamento e passivas primeiro.",
+          "Depois corrija o posicionamento, e só por último considere uma compensação de keystone."
+        ]
+      }
+    },
+    {
+      "id": "crit-interaction",
+      "order": 90,
+      "title": "Como Acurácia e Evasão interagem com acertos críticos",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Um acerto crítico só pode acontecer em um acerto que conecta. Se o ataque erra a verificação de acurácia contra evasão, ele não pode causar um acerto crítico — o crítico nunca rola. Isso significa que sua taxa efetiva de acerto crítico é limitada pela sua chance de acerto, não apenas pela sua Chance de Acerto Crítico listada.",
+        "Para uma build focada em crítico, aumentar a Acurácia tem portanto valor duplo: tanto faz aterrissar mais acertos quanto destrava mais dos críticos que esses acertos poderiam ter carregado. Por outro lado, uma Chance de Acerto Crítico muito alta com Acurácia fraca desperdiça a maior parte desse potencial em erros."
+      ],
+      "bullets": [
+        "Um erro não pode critar — o acerto deve conectar primeiro.",
+        "Taxa de crítico efetiva equals chance de acerto multiplicada pela chance de crítico listada.",
+        "Investimento em Acurácia vale o dobro em builds de crítico.",
+        "Baixa chance de acerto desperdiça silenciosamente a Chance de Acerto Crítico."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 100,
+      "title": "Erros de leitura comuns",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A maioria dos problemas de chance de acerto vem de ler o painel como se fosse toda a história. Estas são as armadilhas em que os jogadores mais caem."
+      ],
+      "bullets": [
+        "Ver ~100% no painel mas ainda errar de longe, porque a penalidade de distância não é refletida na leitura de curta distância.",
+        "Assumir que todo projétil precisa de Acurácia — muitas magias ignoram a verificação totalmente.",
+        "Esquecer que chefes e inimigos evasivos têm alta Evasão, então sua chance de acerto normal de mapa cai contra eles.",
+        "Tratar a chance exibida como um acerto garantido em qualquer distância — não é.",
+        "Assumir que a acurácia de invocados é igual à sua própria acurácia — invocados seguem suas próprias regras.",
+        "Pensar que Técnica Resoluta ou Acertos Não Podem Ser Esquivados resolvem tudo, ignorando a compensação de acerto crítico."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 110,
+      "title": "Dúvidas comuns dos jogadores",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusões parafraseadas que os jogadores frequentemente levantam sobre acurácia e chance de acerto.",
+      "cards": [
+        {
+          "title": "Por que erro com 100% exibido?",
+          "tag": "distance",
+          "body": [
+            "A chance do painel é medida em uma distância de referência. Ataques à distância perdem acurácia efetiva em longa distância, então a chance real pode ser menor que a leitura."
+          ]
+        },
+        {
+          "title": "Minhas magias precisam de acurácia?",
+          "tag": "spell",
+          "body": [
+            "A maioria das magias não realiza a verificação de Acurácia contra Evasão. Jogadores frequentemente superinvestem em Acurácia em builds de magia sem nenhum benefício."
+          ]
+        },
+        {
+          "title": "Meus invocados usam minha acurácia?",
+          "tag": "minion",
+          "body": [
+            "Invocados seguem suas próprias regras de acurácia, que não são as mesmas do jogador. Não assuma acurácia compartilhada."
+          ]
+        },
+        {
+          "title": "Chefes desviam de tudo",
+          "tag": "boss",
+          "body": [
+            "Chefes com alta Evasão reduzem sua chance de acerto bem abaixo do seu número de limpeza de mapa. Planeje acurácia ou uma opção de ignorar evasão para chefes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 120,
+      "title": "Guia em vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Como ver sua Chance de Acerto no Path of Exile 2 (Classificação de Acurácia)",
+          "creator": "Bue",
+          "description": "Uma explicação clara de onde encontrar e ler sua chance de acerto, como a Acurácia se compara à Evasão e como a penalidade de distância à distância funciona no Path of Exile 2.",
+          "takeaway": "Abra o painel de personagem para ler sua chance de acerto real, depois aumente a Acurácia ou reduza a distância para parar de errar à distância.",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+          "timestamps": [
+            {
+              "label": "Introdução",
+              "time": "0:00"
+            },
+            {
+              "label": "Onde ver a chance de acerto",
+              "time": "1:05"
+            },
+            {
+              "label": "Acurácia contra Evasão",
+              "time": "3:40"
+            },
+            {
+              "label": "A penalidade de distância",
+              "time": "6:20"
+            },
+            {
+              "label": "Correções para baixa chance de acerto",
+              "time": "9:10"
+            },
+            {
+              "label": "Resumo",
+              "time": "11:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 130,
+      "title": "Perguntas frequentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "A chance de acerto é o mesmo que o número na minha dica?",
+          "answer": [
+            "Em curta distância ela é representativa, mas para ataques à distância a penalidade de distância significa que a chance real em longa distância pode ser menor que o que a dica mostra. Leia a dica como um valor de distância de referência."
+          ]
+        },
+        {
+          "question": "Magias usam Acurácia no Path of Exile 2?",
+          "answer": [
+            "A maioria das magias não verifica Acurácia contra Evasão. Investir em Acurácia para uma build pura de magia geralmente não faz nada pela taxa de acerto. Algumas habilidades são explicitamente Acerta Sempre ou Não Podem Ser Esquivadas independentemente disso."
+          ]
+        },
+        {
+          "question": "Por que erro chefes mas não monstros comuns?",
+          "answer": [
+            "Chefes e inimigos evasivos carregam uma Classificação de Evasão muito maior, o que reduz sua chance de acerto contra eles. Sua acurácia de limpeza de mapa pode ser baixa demais para conteúdo de chefe."
+          ]
+        },
+        {
+          "question": "Técnica Resoluta faz eu sempre acertar?",
+          "answer": [
+            "Ela remove a Evasão como fator para seus acertos, mas também tipicamente abre mão da escala de acerto crítico, então é uma compensação em vez de uma melhoria gratuita. Pondere-a contra a dependência de crítico da sua build."
+          ]
+        },
+        {
+          "question": "Invocados compartilham minha Acurácia?",
+          "answer": [
+            "Não. Invocados usam suas próprias regras de acurácia, que diferem das do jogador. Não assuma que aumentar sua Acurácia melhora a chance de acerto dos seus invocados."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 140,
+      "title": "Fontes e verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Acurácia",
+          "description": "Referência da wiki PoE2 para Acurácia, Evasão e a relação de chance de acerto",
+          "url": "https://poe2wiki.net/wiki/Accuracy"
+        },
+        {
+          "label": "Hub Maxroll PoE2",
+          "description": "Hub de mecânicas da comunidade cobrindo acurácia e evasão no Path of Exile 2",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Hub Mobalytics PoE2",
+          "description": "Hub de mecânicas da comunidade com orientação de builds e acurácia",
+          "url": "https://mobalytics.gg/path-of-exile-2/"
+        },
+        {
+          "label": "Guia em vídeo (Bue)",
+          "description": "Passo a passo no YouTube de como ler a chance de acerto e a penalidade de distância no Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "Registro de alterações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicação inicial do guia de acurácia, penalidade de distância e chance de acerto para o Path of Exile 2 Early Access 0.5.4.",
+            "Adicionadas respostas diretas, termos-chave, estrutura de chance de acerto, tabela de variáveis, penalidade de distância, matriz de habilidades, exemplos práticos, diagnóstico, interação de crítico, resolução de problemas, casos da comunidade, vídeo, FAQ e fontes."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Acurácia",
+      "url": "https://poe2wiki.net/wiki/Accuracy",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - hub do Path of Exile 2",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Mobalytics - hub do Path of Exile 2",
+      "url": "https://mobalytics.gg/path-of-exile-2/",
+      "sourceType": "community"
+    },
+    {
+      "label": "Bue - Como ver sua Chance de Acerto no PoE2 (YouTube)",
+      "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guia de Acurácia, Penalidade de Distância e Chance de Acerto do PoE 2",
+    "description": "Como a Acurácia se compara à Evasão, como ataques à distância perdem chance de acerto com a distância e como corrigir baixa chance de acerto no Path of Exile 2.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "accuracy-distance-penalty-hit-chance",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

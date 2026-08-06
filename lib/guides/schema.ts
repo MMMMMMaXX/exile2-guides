@@ -6,6 +6,7 @@ import {
   supportedLocales,
   verificationStatuses,
 } from "../content/schema";
+import { translationMetaSchema } from "../content/translation";
 import {
   baseSectionShape,
   changelogEntriesSchema,
@@ -612,6 +613,9 @@ const guideArticleBaseSchema = z.strictObject({
     description: requiredText,
     noindex: z.boolean().optional(),
   }),
+
+  // 目标语言译文元数据（可选）。由翻译流水线写入，不影响既有英语/中文内容。
+  translation: translationMetaSchema.optional(),
 });
 
 /**
@@ -663,9 +667,13 @@ export const guideArticleSchema = guideArticleBaseSchema.superRefine(
 
     if (article.status !== "published") return;
 
+    // 译文元数据块（translation.translationStatus 可能为 "machine-draft"）属于正常翻译状态，
+    // 不应触发针对正文占位的 draft 检测，因此扫描时排除该块。
+    const articleContent = { ...article };
+    delete articleContent.translation;
     if (
-      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
-        JSON.stringify(article),
+      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/.test(
+        JSON.stringify(articleContent),
       )
     ) {
       context.addIssue({

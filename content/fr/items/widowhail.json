@@ -1,0 +1,858 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Widowhail : bonus du carquois, meilleurs rouleaux et Runeforged dans Path of Exile 2 0.5",
+  "shortTitle": "Widowhail",
+  "summary": "Widowhail est un Arc grossier unique de Path of Exile 2 dont le seul modificateur, (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé, multiplie les bonus numériques de votre carquois. Les dégâts propres de l'arc sont sans importance ; le carquois est le moteur. Ce guide détaille la formule d'échelle exacte, quels modificateurs de carquois sont multipliés, la comparaison rouleaux faibles contre élevés, quel carquois justifie un rouleau de 250%, la version Runeforged, et quels builds ne doivent pas copier le carquois de quelqu'un d'autre.",
+  "description": "Fonctionnement de Widowhail dans PoE2 0.5 : le multiplicateur (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé, la formule Base x (1 + W%), les modificateurs de carquois concernés (globaux, implicites, corruption, projectiles, dégâts ajoutés) face à ceux qui ne le sont pas (modificateurs locaux du carquois), valeur rouleau faible contre élevé, choix du carquois, Runeforging et mises en garde propres à chaque build.",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Widowhail, Arc grossier unique de Path of Exile 2, un arc qui mise sur le carquois et multiplie les bonus numériques du carquois équipé",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Le seul modificateur de Widowhail, (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé, multiplie chaque bonus numérique multipliable de votre carquois par (1 + W/100). À 150% c'est x2,5, à 200% x3,0, à 250% x3,5. Les DPS physiques propres de l'arc sont volontairement faibles : le carquois est l'arme. Un bon carquois est ce qui rend un rouleau élevé rentable ; un carquois faible rend un Widowhail à 250% lui-même inutile.",
+      "calloutDetail": [
+        "Le multiplicateur s'applique aux bonus globaux, implicites et de corruption accordés par le carquois, y compris les modificateurs de flèches supplémentaires, les dégâts ajoutés, l'augmentation de vitesse d'attaque, les résistances, la vie, la précision et bien plus.",
+        "Il n'ajoute PAS de nouvelles statistiques. Il amplifie uniquement ce que le carquois accorde déjà. Un carquois ne présentant rien à multiplier ne vous donne rien.",
+        "Widowhail peut être Runeforgé (Runeforging d'unique, débloqué à l'Acte 3) une fois qu'il est un unique de bas niveau ; le modificateur unique de bonus de carquois est conservé et la base gagne des dégâts physiques supérieurs ainsi qu'une base Runeforged."
+      ],
+      "answers": [
+        {
+          "label": "À utiliser si",
+          "text": [
+            "Vous possédez déjà (ou pouvez vous offrir) un carquois solide dont vous voulez multiplier plusieurs fois les bonus numériques — dégâts ajoutés, vitesse d'attaque ou de projectile, niveaux de compétence, vie, résistances."
+          ]
+        },
+        {
+          "label": "À éviter si",
+          "text": [
+            "Votre build repose sur des statistiques locales à l'arme (gros dégâts physiques plats, vitesse d'attaque élevée de l'arc lui-même) ou vous ne pouvez pas trouver un carquois digne d'être amplifié. Un arc rare peut vous servir davantage."
+          ]
+        },
+        {
+          "label": "Rouleau à viser",
+          "text": [
+            "250% est le plafond du rouleau naturel. 240-248% est quasi aussi puissant pour beaucoup moins de monnaie. Une corruption par Orbe de Vaal peut dépasser 250% (témoignages communautaires ~290%+)."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Fonctionnement du multiplicateur"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip actuel et plages de rouleau"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds qui l'utilisent"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Faits rapides",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Type de base",
+          "value": "Arc grossier",
+          "note": [
+            "Un arc de départ. Les dégâts physiques de base (5-13) et la vitesse d'attaque (1,40) sont faibles car la puissance de l'objet vient entièrement du carquois, pas de l'arme."
+          ]
+        },
+        {
+          "label": "Modificateur unique",
+          "value": "(150-250)% d'augmentation des bonus obtenus avec le Carquois équipé",
+          "note": [
+            "Le seul modificateur explicite. Le rouleau se fait par paliers de 50% (150 / 200 / 250), il n'y a donc pas de rouleau à 187% — il s'aligne sur un palier."
+          ]
+        },
+        {
+          "label": "Niveau requis",
+          "value": "1 (14 Dextérité)",
+          "note": [
+            "Équipable dès le début de la campagne, ce qui fait de lui à la fois un arc de leveling et un multiplicateur de fin de partie pour le carquois."
+          ]
+        },
+        {
+          "label": "Obtention",
+          "value": "Tombe n'importe où ; peut être chance ; échangeable",
+          "note": [
+            "Drop relativement courant des monstres de niveau 25+ (Acte 2 et après). Peut aussi être créé en utilisant un Orbe de Chance sur un Arc grossier blanc. Valeur au vendeur : 6x Éclat d'alchimie."
+          ]
+        },
+        {
+          "label": "Plafond de corruption",
+          "value": "Au-delà de 250% possible",
+          "note": [
+            "Une corruption par Orbe de Vaal peut dépasser le cap naturel de 250% (témoignages communautaires jusqu'à ~290%+). Vérifiez le plafond exact en jeu."
+          ]
+        },
+        {
+          "label": "Runeforging",
+          "value": "Éligible (unique de bas niveau)",
+          "note": [
+            "En tant qu'unique de niveau 1, il remplit les conditions du Runeforging d'unique une fois débloqué à l'Acte 3 ; le modificateur de bonus de carquois est conservé et les dégâts de base sont améliorés."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip actuel et plages de rouleau (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Dégâts physiques de base",
+          "value": "5-13",
+          "notes": [
+            "Faibles volontairement. Widowhail n'est pas un porteur de dégâts ; c'est un amplificateur de carquois."
+          ]
+        },
+        {
+          "label": "Chance de coup critique",
+          "value": "5,00%",
+          "notes": [
+            "Héritée de la base Arc grossier."
+          ]
+        },
+        {
+          "label": "Attaques par seconde",
+          "value": "1,40",
+          "notes": [
+            "Héritée de la base Arc grossier."
+          ]
+        },
+        {
+          "label": "Modificateur unique (variable)",
+          "value": "(150-250)% d'augmentation des bonus obtenus avec le Carquois équipé",
+          "notes": [
+            "Le seul explicite. Rouleaux par paliers de 50% : 150%, 200%, 250%. C'est ce chiffre qui décide la valeur de l'arc."
+          ]
+        },
+        {
+          "label": "Prérequis",
+          "value": "Niveau 1, 14 Dextérité",
+          "notes": [
+            "Aucun prérequis en Force ou Intelligence, ce qui le rend accessible à toute classe basée sur la Dex dès le niveau 1."
+          ]
+        },
+        {
+          "label": "Implicite",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "Ligne implicite de flavour affichée sur l'objet ; ce n'est pas une statistique multipliable distincte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Fonctionnement du multiplicateur de bonus du carquois",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Le modificateur de Widowhail se lit (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé. Le mot clé est « augmentation » : il prend la valeur numérique d'un bonus de carquois et l'augmente selon le rouleau de Widowhail. Un bonus de carquois de +40 en Vie maximale avec un Widowhail à 250% devient +40 x (1 + 2,50) = +140 en Vie maximale. La formule générale est : Bonus de carquois multiplié = Bonus de carquois de base x (1 + W/100), où W est le rouleau de Widowhail (150, 200 ou 250).",
+        "Comme le multiplicateur est (1 + W/100), les facteurs effectifs sont x2,5 à 150%, x3,0 à 200% et x3,5 à 250%. Cela est confirmé par l'exemple documenté des flèches : un carquois dont l'implicite accorde « Les attaques à l'arc tirent une Flèche supplémentaire » (+1) combiné à un explicite « +1 au nombre de projectiles » totalise 2 avant Widowhail ; à un effet de 250% ce 2 devient 2 x 3,5 = 7 flèches supplémentaires. Les statistiques sont additionnées d'abord, puis multipliées.",
+        "Ce que signifie concrètement « bonus obtenus avec le Carquois équipé » : chaque bonus numérique multipliable que le carquois accorde à votre personnage — aussi bien sa ligne implicite que ses affixes explicites, ainsi que les implicites de corruption. Cela inclut les dégâts ajoutés (plats), les pourcentages d'augmentation (vitesse d'attaque, critique, dégâts), les attributs, les résistances, la vie, la précision, la vitesse de projectile, les compteurs de perforation et les modificateurs de flèches supplémentaires. Le multiplicateur n'invente pas de nouvelles statistiques ; il n'amplifie que celles déjà présentes.",
+        "Un point subtil que beaucoup de joueurs manquent : le bonus est multiplié, pas ajouté comme une seconde copie. Un carquois avec +20% d'augmentation de vitesse d'attaque et un Widowhail à 200% donne +20% x 3,0 = +60% d'augmentation de vitesse d'attaque pour cette ligne — cela ne devient pas +20% + 200%. Le rouleau de Widowhail est lui-même la magnitude « d'augmentation » appliquée à la valeur de bonus sous-jacente du carquois.",
+        "Pourquoi les DPS propres de l'arc sont faibles alors que le build fonctionne : Widowhail remplace « de bonnes statistiques d'arme » par « de bonnes statistiques de carquois, amplifiées ». Un carquois rare peut facilement porter de gros dégâts ajoutés plats, une vitesse d'attaque à deux chiffres, des niveaux de compétence, de la vie et des résistances. Multiplier tout cela par 3,5 produit plus de valeur offensive et défensive totale que les dégâts physiques plats qu'un arc normal fournirait, au prix de nécessiter un carquois solide et bien roulé pour justifier l'emplacement de l'arc."
+      ],
+      "bullets": [
+        "Formule : Multiplié = Base x (1 + W/100). Facteurs : 150% -> x2,5, 200% -> x3,0, 250% -> x3,5.",
+        "Les bonus implicites, explicites et de corruption du carquois comptent tous.",
+        "L'arc ignore ses propres dégâts physiques faibles ; le carquois est l'arme.",
+        "Les statistiques du carquois sont additionnées, puis multipliées — donc +1 implicite et +1 explicite de flèche deviennent 7 à 250%.",
+        "Il n'ajoute pas de nouveaux affixes, il amplifie uniquement ceux existants."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Seuils d'échelle et matrice des modificateurs de carquois",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "Carquois à flèches supplémentaires (implicite +1, explicite +1) = 2 flèches de base",
+          "audience": "Builds Spark / projectiles",
+          "benefit": "2 -> 5 / 6 / 7 flèches supplémentaires à 150 / 200 / 250%",
+          "risk": "Plus de flèches n'aident que si votre compétence bénéficie du nombre de projectiles",
+          "level": "high",
+          "recommendation": "Échelle forte ; 250% transforme un carquois à 2 flèches en 7 projectiles.",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "+40 en Vie maximale sur le carquois",
+          "audience": "Tout build",
+          "benefit": "40 -> 100 / 120 / 140 en Vie à 150 / 200 / 250%",
+          "risk": "Faible si votre build ne valorise pas la vie",
+          "level": "medium",
+          "recommendation": "La vie s'échelonne proprement ; un rouleau élevé triple environ le bonus de vie du carquois.",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "+20% d'augmentation de vitesse d'attaque sur le carquois",
+          "audience": "Builds d'attaque",
+          "benefit": "20% -> 50 / 60 / 70% d'augmentation de vitesse d'attaque à 150 / 200 / 250%",
+          "risk": "Faible ; la vitesse d'attaque est quasiment toujours utile",
+          "level": "medium",
+          "recommendation": "L'un des modificateurs de carquois les plus sûrs à amplifier.",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "Dégâts ajoutés plats (ex. +5 à 30 Froid aux attaques) sur le carquois",
+          "audience": "Builds élémentaires / de conversion",
+          "benefit": "5-30 -> 12,5-75 / 15-90 / 17,5-105 à 150 / 200 / 250%",
+          "risk": "Dépend de la conversion et des tags de compétence",
+          "level": "medium",
+          "recommendation": "Excellent sur les builds Spark converti ou arc élémentaire ; confirmez que le type de dégât est pris en charge.",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds qui utilisent Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Widowhail est un système de distribution par carquois. Il brille dans tout build qui canalise de la valeur via l'emplacement carquois et peut fournir un carquois solide. Voici les foyers réalistes pour l'arc ; chacun a un prérequis strict (le carquois) que vous devez remplir avant que l'arc ne paie."
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "Une foyer naturel : Deadeye récompense le nombre de projectiles, et un carquois empilé en dégâts froid/physique ajoutés, vitesse d'attaque et +niveaux de compétence de projectile se trouve multiplié plusieurs fois. Visez un Widowhail à 230%+ et un carquois avec +2 niveaux de compétence de projectile plus de gros dégâts ajoutés.",
+          "href": "/fr/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Lanceurs Spark / Spark converti (Blood Mage, Stormweaver)",
+          "description": "Widowhail sert à amplifier un carquois qui accorde des niveaux de compétence de projectile et de la vitesse de projectile ; l'échelle de projectile multipliée alimente Accélération de projectile et les dégâts multi-toucher de Spark. Les versions budget nettoient les premières cartes pour le coût de quelques dizaines d'Orbes exaltés.",
+          "href": "/fr/skills/ice-shot/"
+        },
+        {
+          "title": "Leveling Lightning Arrow / Lightning Rod Ranger",
+          "description": "Dès l'Acte 2, un Widowhail plus un carquois rare fréquemment amélioré est l'un des arcs de leveling les plus puissants car vous multipliez les dégâts ajoutés et la vitesse d'attaque du carquois à mesure que vous dépassez chaque carquois en niveau.",
+          "href": "/fr/skills/ice-shot/"
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "Un Widowhail à rouleau élevé associé à un carquois portant +2 niveaux de toutes les compétences de projectile, de la précision et de la vitesse d'attaque fait grimper le DPS de poison via Maître flechisseur et le multiplicateur de carquois.",
+          "href": "/fr/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternatives : arcs rares et autres uniques",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Widowhail n'est pas un arc « plus de DPS quoi qu'il arrive ». Sa valeur est conditionnelle au carquois. Si vous ne pouvez pas trouver un carquois digne d'être amplifié, un arc rare bien roulé le surpassera car les arcs rares apportent leurs propres dégâts physiques plats, vitesse d'attaque, modificateurs critiques et sockets.",
+        "Comparé aux autres arcs uniques, Widowhail occupe une niche unique : il n'a aucune mécanique de dégâts propre, seulement le multiplicateur de carquois. Les arcs qui ajoutent des dégâts plats, de la pénétration ou une conversion d'affliction sont plus simples à utiliser et ne requièrent pas un carquois soigneusement façonné. Utilisez-les quand vous voulez une arme autonome plutôt qu'un moteur à carquois.",
+        "Dans la fantasy de l'échelle par carquois, il n'y a pas de concurrent direct — Widowhail est le seul arc qui met à l'échelle le carquois équipé. La véritable décision alternative est donc « investir dans un carquois + Widowhail » contre « investir la même monnaie dans un arc rare ou unique autonome plus puissant ». En début et milieu de campagne, la voie du carquois est souvent moins chère par point de puissance ; tout au sommet, un arc rare de niveau miroir peut la dépasser mais coûte bien davantage."
+      ],
+      "bullets": [
+        "Arc rare : meilleur quand vous n'avez pas de carquois solide ; il apporte ses propres dégâts et sockets.",
+        "Autres arcs uniques : mécaniques plus simples, autonomes ; aucune dépendance au carquois.",
+        "Aucun autre arc ne met le carquois à l'échelle — Widowhail est la seule option pour cette fantasy.",
+        "Décision : carquois+Widowhail est généralement moins cher tôt ; l'arc rare miroir peut le dépasser tard mais coûte bien davantage."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Comment obtenir Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Widowhail est un unique relativement courant, ce qui garde même les rouleaux élevés abordables comparés aux objets de niveau miroir. Il y a trois voies réalistes pour l'obtenir."
+      ],
+      "routes": [
+        {
+          "label": "Drop aléatoire (monstres niveau 25+, Acte 2 et après)",
+          "body": [
+            "Widowhail tombe n'importe où depuis des monstres de niveau 25 et plus. Vous ne pouvez pas le cibler spécifiquement, mais augmenter le taux de drop global des uniques via « Rareté accrue des objets trouvés » et des Waystones survitaminés augmente la fréquence d'apparition des uniques."
+          ]
+        },
+        {
+          "label": "Orbe de Chance sur un Arc grossier blanc",
+          "body": [
+            "Utiliser un Orbe de Chance sur un Arc grossier normal peut produire Widowhail, mais le taux de réussite est faible et la monnaie est mieux dépensée à gambler pour des uniques plus rares. La plupart des joueurs sautent cette voie car l'arc est déjà courant sur le trade."
+          ]
+        },
+        {
+          "label": "Échange entre joueurs",
+          "body": [
+            "Le site d'échange est le moyen le plus fiable d'obtenir un rouleau précis. Comme le taux de drop est élevé, les rouleaux 240-248% sont souvent disponibles pour une fraction du prix d'un parfait 250%, et un arc à 250% peut encore être bien moins cher qu'un arc rare de niveau miroir. Les prix fluctuent selon la ligue et la région — consultez le site d'échange en direct pour l'instantané actuel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Utiliser, vendre ou conserver",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Le prix de Widowhail est porté quasiment entièrement par le rouleau de bonus de carquois. Les rouleaux faibles (150-180%) sont souvent quasi gratuits ; 240%+ et surtout 250% portent une prime. Comme il tombe couramment, même les rouleaux parfaits ne sont pas au prix du niveau miroir. Tout prix doit être lu avec une date, une ligue et une région."
+      ],
+      "use": {
+        "condition": "Vous possédez un carquois solide dont les bonus numériques valent la peine d'être multipliés, et votre build canalise de la valeur via le carquois (projectiles, dégâts ajoutés, vitesse d'attaque, vie).",
+        "first": "Équipez le meilleur Widowhail que vous pouvez vous offrir (240%+ est le point d'équilibre de valeur) et continuez à améliorer le carquois à mesure que vous montez de niveau.",
+        "risk": "Un carquois faible rend l'arc mort ; le rouleau seul ne crée pas de puissance.",
+        "text": [
+          "Idéal quand le carquois porte déjà de gros dégâts ajoutés plats, une vitesse d'attaque à deux chiffres d'augmentation, +niveaux de compétence de projectile, de la vie et des résistances.",
+          "Gardez l'arc pour toute la campagne si vous continuez à améliorer le carquois tous les 5-10 niveaux."
+        ]
+      },
+      "sell": {
+        "condition": "Vous avez un rouleau faible (150-180%) et aucun plan carquois, ou vous jouez un build nécessitant des dégâts locaux à l'arme.",
+        "first": "Vendez les rouleaux faibles bon marché ; ils sont courants et la plupart des acheteurs veulent 230%+.",
+        "risk": "Conserver un rouleau faible en espérant une flambée de prix est improbable — l'offre est stable.",
+        "text": [
+          "Un Widowhail à 150% sans investissement carquois vaut à peine plus qu'un Arc grossier blanc pour la plupart des acheteurs.",
+          "Listez les rouleaux honnêtement ; le site d'échange montre le pourcentage exact et les acheteurs filtrent dessus."
+        ]
+      },
+      "hold": {
+        "condition": "Vous avez un rouleau 240%+ ou un rouleau corrompu par Vaal à 250%+ et pourriez passer à un build basé carquois plus tard.",
+        "first": "Conservez les rouleaux élevés ; ils gardent leur valeur car les builds carquois de fin de partie veulent toujours le multiplicateur.",
+        "risk": "Des changements de patch sur les modificateurs de carquois ou le Runeforging pourraient déplacer la demande, mais la fantasy de base est stable.",
+        "text": [
+          "Les rouleaux élevés sont liquides et peu susceptibles de se déprécier fortement tant qu'il existe des builds carquois.",
+          "Un 250%+ corrompu est un rouleau trophée qui commande une prime sur le 250% naturel."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risque et coût d'échec",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Acheté un Widowhail à 250% mais votre carquois est faible",
+          "gain": "Le multiplicateur maximal possible est disponible",
+          "loss": "Aucune puissance réalisée ; monnaie dépensée sur l'arc au lieu du carquois",
+          "level": "high",
+          "recommendation": "Dépensez plus sur le carquois que sur l'arc. Le carquois est le moteur ; l'arc est l'amplificateur."
+        },
+        {
+          "scenario": "Copié le carquois exact d'un build populaire sur une ascendance/compétence différente",
+          "gain": "Vous correspondez à un setup prouvé sur le papier",
+          "loss": "Les tags de votre compétence, conversions ou gemmes de support peuvent ne pas utiliser les mêmes bonus de carquois, gaspillant le multiplicateur",
+          "level": "high",
+          "recommendation": "Adaptez le carquois aux tags de dégâts et à la conversion DE VOTRE compétence. Ne copiez pas un carquois les yeux fermés."
+        },
+        {
+          "scenario": "Compté sur des modificateurs locaux de carquois (ex. augmentation locale d'Évasion sur l'objet carquois)",
+          "gain": "Aucun — ce ne sont pas des « bonus obtenus » par votre personnage",
+          "loss": "ES/défense attendue du carquois qui n'apparaît jamais",
+          "level": "medium",
+          "recommendation": "Ne comptez que les bonus globaux, implicites et de corruption du carquois. Les modificateurs locaux d'objet ne s'échelonnent pas."
+        },
+        {
+          "scenario": "Corrompu au-delà de 250% et brique",
+          "gain": "Multiplicateur potentiel ~290%+ en cas de succès",
+          "loss": "Un Orbe de Vaal peut ajouter un mauvais implicite ou échouer à améliorer le rouleau",
+          "level": "medium",
+          "recommendation": "Ne corrompez qu'une base 250% que vous pouvez remplacer ; l'upside est réel mais le coût est un unique consommé."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Preuves communautaires et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "Fil de build du forum officiel",
+          "question": "Je vois des gens jouer Widowhail avec Spark — comment un arc fonctionne sur un lanceur de sorts, et quels stats de carquois comptent ?",
+          "summary": [
+            "Un joueur était confus qu'un arc (Widowhail) apparaisse dans un build de lanceur Spark et a demandé quels affixes de carquois prioriser."
+          ],
+          "editorialAnalysis": [
+            "Widowhail est utilisé purement pour son multiplicateur de carquois. Le build prend un carquois accordant +2 niveaux de compétence de projectile et une vitesse de projectile très élevée ; l'échelle de projectile multipliée alimente Accélération de projectile et les dégâts par toucher de Spark. L'arc lui-même n'attaque jamais."
+          ],
+          "officialAnswer": [
+            "Priorisez un carquois avec +2 niveaux de toutes les compétences de projectile et 150%+ de vitesse de projectile ; le rouleau de Widowhail amplifie ces chiffres. Un Widowhail à 230%+ est le plancher pratique pour le build."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds qui utilisent Widowhail"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "Fil du forum communautaire",
+          "question": "Pour un build Poisonous Concoction, quels affixes de carquois dois-je maximiser sur Widowhail ?",
+          "summary": [
+            "Un joueur a demandé quels modificateurs de carquois empiler pour que Widowhail multiplie le plus de dégâts."
+          ],
+          "editorialAnalysis": [
+            "Le build scale à partir de +2 niveaux de toutes les compétences de projectile, +X% de vitesse d'attaque (au moins 14%) et de Précision. Ce sont tous des bonus numériques de carquois que le multiplicateur de Widowhail amplifie, s'empilant avec le passif Maître flechisseur."
+          ],
+          "officialAnswer": [
+            "Empilez +2 niveaux de compétence de projectile (le plus important), puis vitesse d'attaque et précision sur le carquois. Le rouleau de Widowhail multiplie les trois, et Maître flechisseur ajoute d'autres multiplicateurs."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Fonctionnement du multiplicateur"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "Guide / analyse de leveling",
+          "question": "Widowhail est-il vraiment bon pour le leveling, ou n'est-ce qu'un arc de fin de partie ?",
+          "summary": [
+            "Un lecteur a questionné si Widowhail vaut le coup pendant la campagne ou seulement en fin de partie."
+          ],
+          "editorialAnalysis": [
+            "L'analyse de leveling montre qu'un Widowhail plus un carquois rare fréquemment amélioré surpasse les arcs rares de leveling comparables à prix similaires, car vous multipliez les dégâts plats ajoutés du carquois, la vitesse d'attaque, la vie au kill et même les niveaux de gemme à mesure que vous dépassez chaque carquois en niveau."
+          ],
+          "officialAnswer": [
+            "Oui — à partir d'environ le niveau 35 un Widowhail bien carquoisé bat les arcs rares de leveling de coût égal, et mettre à l'échelle d'autres bonus (vie gagnée à l'impact, vitesse de compétence, niveaux de gemme) en fait un arc de campagne solide."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Comment obtenir Widowhail"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "Guide",
+          "question": "Quel rouleau de Widowhail dois-je acheter, et puis-je dépasser 250% ?",
+          "summary": [
+            "Un acheteur voulait connaître le seuil de valeur et si la corruption dépasse le cap naturel."
+          ],
+          "editorialAnalysis": [
+            "Le rouleau naturel plafonne à 250%. Le guide communautaire est que 240-248% est quasi aussi fort que 250% pour beaucoup moins de monnaie, et une corruption par Orbe de Vaal peut dépasser 250% (témoignages jusqu'à ~290%+), au risque d'un mauvais implicite."
+          ],
+          "officialAnswer": [
+            "Achetez 240%+ pour la meilleure valeur ; ne payez la prime pour un 250% naturel que si le budget le permet. La corruption peut dépasser 250% mais peut ajouter un implicite non désiré — corrompez une copie remplaçable."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Utiliser, vendre ou conserver"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Mes DPS n'ont pas augmenté après avoir équipé Widowhail",
+          "directAnswer": [
+            "Widowhail n'amplifie que les bonus de carquois. Si votre carquois a peu de chose à mettre à l'échelle (ou vous utilisez un carquois unique dont les modificateurs ne sont pas des bonus numériques), l'arc n'ajoute quasiment rien. Vérifiez les bonus globaux, implicites et de corruption de votre carquois."
+          ],
+          "checks": [
+            "Ouvrez le carquois et listez ses bonus globaux (dégâts ajoutés, vitesse d'attaque, vie, résistances, niveaux de compétence).",
+            "Confirmez que ces bonus sont numériques et globaux, pas locaux à l'objet carquois.",
+            "Vérifiez que le rouleau de Widowhail est élevé (230%+ idéal)."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Fonctionnement du multiplicateur"
+            }
+          ]
+        },
+        {
+          "symptom": "J'ai copié le carquois d'un streamer mais mon build est faible",
+          "directAnswer": [
+            "La valeur du carquois est propre au build. Un carquois construit pour l'échelle de projectile de Spark peut être inutile sur un build Lightning Arrow si les tags de dégâts ou conversions diffèrent. Adaptez le carquois à votre compétence."
+          ],
+          "checks": [
+            "Vérifiez quels types et tags de dégâts votre compétence principale utilise réellement.",
+            "Choisissez des bonus de carquois correspondant à ces tags (froid ajouté vs physique, vitesse de projectile vs vitesse d'attaque)."
+          ]
+        },
+        {
+          "symptom": "Les modificateurs locaux de carquois attendus ne se sont pas mis à l'échelle",
+          "directAnswer": [
+            "Seuls les bonus que votre personnage obtient du carquois s'échelonnent. Les modificateurs locaux qui n'affectent que l'objet carquois lui-même ne sont pas « obtenus » et ne sont pas multipliés."
+          ],
+          "checks": [
+            "Comparez les bonus globaux du carquois avec ses modificateurs locaux.",
+            "Comptez sur les bonus implicites, explicites et de corruption, pas sur les stats locales de l'objet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vidéo explicative",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage : fonctionnement de la variante budget Widowhail (goldfarmingGUIDE)",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE (via guide de build Mobalytics)",
+          "takeaway": "Explication de la variante budget Spark Blood Mage Widowhail, incluant le choix du carquois et comment le multiplicateur de carquois pilote les dégâts. Les libellés de section sont approximatifs.",
+          "timestamps": [
+            {
+              "label": "Pourquoi la variante budget Widowhail",
+              "time": "00:00"
+            },
+            {
+              "label": "Choix du carquois et rouleaux",
+              "time": "03:30"
+            },
+            {
+              "label": "Explication de l'échelle des dégâts",
+              "time": "08:00"
+            },
+            {
+              "label": "Démonstration de mapping",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galerie de médias",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip actuel de Widowhail (Arc grossier, (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé)",
+          "note": "Montrez le modificateur unique et les paliers de rouleau de 50%. Les dégâts physiques de base sont volontairement faibles.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Carquois avant/après le multiplicateur Widowhail",
+          "note": "Illustrez une ligne de carquois unique (ex. +40 Vie) devenant +100 / +120 / +140 à 150 / 200 / 250%.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Comparaison rouleau faible vs élevé",
+          "note": "Côte à côte d'un Widowhail à 150% et à 250% pour montrer l'écart de multiplicateur sur un même carquois.",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "Base Runeforged de Widowhail",
+          "note": "Décrivez la base Runeforged gagnant des dégâts physiques supérieurs et une base Runic Ward ; le modificateur unique de bonus de carquois est conservé.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenu lié",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "Un foyer Widowhail de premier plan : le nombre de projectiles et les dégâts ajoutés s'échelonnent fortement avec le multiplicateur de carquois.",
+          "href": "/fr/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "La compétence signature Deadeye qui bénéficie des bonus de projectile et de dégâts de carquois multipliés.",
+          "href": "/fr/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "Insérer la bonne rune dans votre carquois peut ajouter un bonus que Widowhail amplifie ensuite.",
+          "href": "/fr/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "Le matériau utilisé à l'Enclume de Verisium pour le Runeforging, incluant le Widowhail Runeforged.",
+          "href": "/fr/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runes of Aldur Remnant Recipes",
+          "description": "Fonctionnement du Runeforging et de l'artisanat Runemastered, pertinent pour le Widowhail Runeforged.",
+          "href": "/fr/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runes of Aldur",
+          "description": "Le patch actuel ayant introduit le Runeforging, le système qui améliore les uniques de bas niveau comme Widowhail.",
+          "href": "/fr/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historique des patches et actuel vs hérité",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Actuel (0.5.4, drop naturel)",
+          "changes": [
+            "Widowhail est un Arc grossier unique avec (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé. Le rouleau se fait par paliers de 50% (150 / 200 / 250). C'est la seule version actuelle ; il n'y a pas de valeur de bonus de carquois héritée séparée à confondre."
+          ]
+        },
+        {
+          "version": "Runeforging (ligue 0.5.0 - Runes of Aldur)",
+          "changes": [
+            "Le Runeforging d'unique a été introduit, permettant d'améliorer les uniques de bas niveau (prérequis de niveau inférieur à 55). Widowhail (niveau 1) remplit les conditions : le modificateur unique de bonus de carquois est conservé et la base gagne des dégâts physiques supérieurs ainsi qu'une base Runeforged. Il n'y a pas de changement par Orbe divin du rouleau de bonus de carquois — c'est une plage fixe, pas un re-roll variable."
+          ]
+        },
+        {
+          "version": "Comment le Trade identifie la version",
+          "changes": [
+            "Le site d'échange montre le pourcentage exact « d'augmentation des bonus obtenus avec le Carquois équipé ». Les acheteurs filtrent directement dessus. Un Widowhail Runeforged est un type de base distinct avec Runic Ward et est listé séparément de l'unique normal."
+          ]
+        },
+        {
+          "version": "Note sur l'Orbe divin et la corruption",
+          "changes": [
+            "Le rouleau de bonus de carquois est une plage fixe, un Orbe divin ne le change donc pas. Une corruption par Orbe de Vaal peut dépasser 250% (témoignages communautaires jusqu'à ~290%+) mais peut ajouter un implicite non désiré. Vérifiez le plafond exact de corruption en jeu."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notes du patch Path of Exile 2 0.5.4 (forum officiel)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Widowhail (stats de base, mécanique, exemple de flèches)",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant - Comment obtenir Widowhail (drop, valeur de rouleau, corruption)",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "MaxRoll - Meilleurs uniques de leveling (analyse de l'échelle carquois de Widowhail)",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Fil de build du forum officiel - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Fil du forum communautaire - Setup Widowhail Poisonous Concoction",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "VIDEO",
+          "description": "goldfarmingGUIDE - Variante budget Spark Blood Mage Widowhail",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale couvrant la formule du multiplicateur de bonus de carquois de Widowhail, quels modificateurs de carquois s'échelonnent, valeur rouleau faible contre élevé, choix du carquois, Runeforging et mises en garde propres au build."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - How to Get Widowhail",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Best Leveling Uniques",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "Official forum - Widowhail Spark Infernalist build",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "Community forum - Widowhail Poisonous Concoction setup",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Spark Blood Mage Widowhail variant",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "Guide Widowhail : bonus du carquois, meilleurs rouleaux et Runeforging (PoE2 0.5)",
+    "description": "Fonctionnement de Widowhail dans Path of Exile 2 : le multiplicateur (150-250)% d'augmentation des bonus obtenus avec le Carquois équipé, la formule Base x (1 + W%), quels modificateurs de carquois s'échelonnent, valeur de rouleau, choix du carquois et Runeforging.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "widowhail",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

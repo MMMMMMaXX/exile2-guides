@@ -1,0 +1,363 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.5.4e — シェーダー・Vulkan・初回ロードのパフォーマンス",
+  "shortTitle": "0.5.4e シェーダーパフォーマンス",
+  "summary": "0.5.4e は技術的パッチです。パッチ適用後の初回ロードが遅くなる理由、シェーダーの再コンパイルの意味、Vulkan/Steam での変更点、そして正常な症状と調査が必要な症状の違いを解説します。",
+  "description": "ゲームプレイのパッチではなく、トラブルシューティング向けのページです。DX12・Vulkan・NVIDIA/AMD・PC/コンソールの報告を一つの結論にまとめてはいけません。",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "0.5.4e のシェーダーおよびパフォーマンス更新を象徴する、嵐に暗く沈んだ廃墟の街",
+  "tags": [
+    "bug-fixes"
+  ],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "30秒でわかる影響",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e はシェーダーのロードを改善し、シェーダーサイズを削減します。また Steam の Vulkan Fossilize レイヤーを無効化し、デフォルトの VSync を Capped（制限付き）に変更します。",
+        "パッチ適用後の初回ロードが遅くなるのは予想される動作です。シェーダーが再コンパイルされるためであり、最初のエリア突入だけで最終的なパフォーマンスを判断してはいけません。",
+        "本ページは、カクつきが完全に解決されたとは一度も主張しません。レンダラー・プラットフォーム・初回と再突入の区別を必ず分ける必要があります。"
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "0.5.4e がパッチ系統のどこに位置するか",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "Major Patch",
+          "summary": "0.5.4e が技術的に継承するコンテンツのベースライン。",
+          "tags": [
+            "atlas",
+            "items",
+            "bosses"
+          ]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "ホットフィックス",
+          "summary": "Oath Rune の修正。0.5.4e の技術的変更とは別のもの。",
+          "tags": [
+            "expedition",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "Technical Patch",
+          "summary": "本ページの対象となる、シェーダーロード・Vulkan キャッシュ・VSync デフォルトの変更。",
+          "tags": [
+            "shaders",
+            "vulkan",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "影響ダッシュボード",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "First load",
+          "verdict": "初回突入は遅くなると想定",
+          "detail": "パッチ後にシェーダーが再コンパイルされます。これは正常な動作であり、真のパフォーマンス低下とは明確に異なります。"
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "Fossilize レイヤーを無効化",
+          "detail": "シェーダーキャッシュが異常に膨張する事象を狙ったものです。DX12 や Standalone には同じようには適用されません。"
+        },
+        {
+          "area": "VSync",
+          "verdict": "デフォルトが Capped に",
+          "detail": "フレームペーシングの問題のため、Adaptive は推奨されなくなりました。"
+        },
+        {
+          "area": "Community",
+          "verdict": "結果は一律ではない",
+          "detail": "よりスムーズになったという報告もあれば、依然としてクラッシュやシーンのカクつきを報告するユーザーもいます。一律に当てはまる主張はありません。"
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "公式の変更点（プレイヤーの課題別に整理）",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "シェーダーのロード改善とサイズ削減",
+          "detail": "初回突入ではシェーダーが再コンパイルされる可能性があり、以降の突入の方が高速です。初回ではなく、繰り返し突入時の実行で判断してください。",
+          "scope": "official-fact: affects all platforms after update"
+        },
+        {
+          "category": "technical",
+          "title": "Steam Vulkan Fossilize レイヤーの無効化",
+          "detail": "シェーダーキャッシュの異常な増大を狙ったものです。Steam + Vulkan に固有の変更であり、DX12 のせいにしてはいけません。",
+          "scope": "official-fact: Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "デフォルト VSync を Capped に変更",
+          "detail": "フレームペーシングの問題のため、Adaptive は廃止されました。",
+          "scope": "official-fact: client default"
+        },
+        {
+          "category": "fix",
+          "title": "残存するクラッシュ／カクつき事例",
+          "detail": "一部の報告は残っており、完全に解決済みとはまだ確認されておらず、Known Issues（既知の問題）に留められています。",
+          "scope": "community-report: not upgraded to verified"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "初回突入と再突入の比較",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "誤った判断方法",
+      "oldText": "パッチ適用直後の最初のエリア突入だけで FPS を測定し、パッチがパフォーマンスを悪化させたと結論づける。",
+      "newLabel": "正しい判断方法",
+      "newText": "最初にコンパイルされた突入と再突入を分け、パッチ適用前後で再突入時の FPS を比較する。"
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "技術環境マトリックス",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "まずシェーダーの再コンパイル、Steam シェーダーキャッシュのサイズ、Vulkan の安定性を確認してください。DX12 やコンソールの結論を持ち込んではいけません。"
+        },
+        {
+          "key": "steam-dx12",
+          "note": "初回コンパイルと以降のロードを分けてください。Fossilize の変更は Steam + Vulkan が対象であり、DX12 そのものではありません。"
+        },
+        {
+          "key": "standalone",
+          "note": "Standalone は Steam の Fossilize レイヤーを使用しません。レンダラー、ドライバー、キャッシュディレクトリ、および繰り返し突入後の挙動を確認してください。"
+        },
+        {
+          "key": "console",
+          "note": "公式の 0.5.4e ノートにはシェーダーおよび Vulkan/Steam の挙動が記載されています。コンソールの報告は PC と混在させず、別に記録する必要があります。"
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "影響を受けるコンテンツのキュー",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Performance Troubleshooting Guide",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "初回突入と再突入のセクションを追加",
+          "status": "reviewing"
+        },
+        {
+          "name": "Shader Cache FAQ",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Fossilize の無効化を文書化",
+          "status": "queued"
+        },
+        {
+          "name": "Vulkan Setup Guide",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "VSync デフォルト変更を注記",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.5.4e Shader thread",
+          "context": "パフォーマンスに関するフィードバックのまとめ",
+          "quote": "Shader count dropped noticeably, but results still vary by hardware.",
+          "analysis": "本文はレンダラー・プラットフォーム・初回と再突入の別に分ける必要があり、「0.5.4e でカクつきが完全に解決された」とは言えません。"
+        },
+        {
+          "source": "Official Forum - 0.5.4e",
+          "context": "残存する問題の報告",
+          "quote": "Some still crash or stutter in specific scenes after the patch.",
+          "analysis": "コミュニティの報告として扱い、検証済みの仕様上の主張へ格上げしてはいけません。"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "動画とタイムスタンプ",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Official Path of Exile 2",
+          "label": "0.5.4e のシェーダーとパフォーマンスの解説",
+          "description": "シェーダーの再コンパイル、Vulkan キャッシュ、VSync デフォルトについての公式説明。",
+          "takeaway": "結論を出す前に、初回突入と再突入のセグメントを視聴してください。",
+          "url": "https://www.youtube.com/watch?v=XDEJLOHcdWw"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.5.4e 適用後に初回ロードが遅くなるのはなぜですか？",
+          "answer": [
+            "公式にはシェーダーが再コンパイルされるため、最初のエリア突入は遅くなる可能性があります。",
+            "初回突入と再突入を分けて、その影響を判断してください。"
+          ]
+        },
+        {
+          "question": "0.5.4e でカクつきはすべて解決されましたか？",
+          "answer": [
+            "一律に当てはまる主張は支持されていません。よりスムーズになったという報告もあれば、依然としてクラッシュやシーンのカクつきを報告するユーザーもいます。",
+            "いかなる結論を出す前にも、レンダラー・プラットフォーム・突入回数の区別を分ける必要があります。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "Known issues",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.5.4e 適用後に残存するクラッシュやシーン固有のカクつきが報告されており、完全に解決済みとはまだ確認されていません。",
+          "status": "open"
+        },
+        {
+          "text": "コンソール固有のシェーダー報告は、PC の結論とは別に追跡されています。",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.5.4e Patch Notes",
+          "description": "シェーダー・Vulkan・VSync の変更に関する公式ソース。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "0.5.4e のシェーダーおよびパフォーマンスに関するリッチ記事を公開"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.5.4e Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 0.5.4e シェーダーパフォーマンス",
+    "description": "0.5.4e は技術的パッチです。パッチ適用後の初回ロードが遅くなる理由、シェーダーの再コンパイルの意味、Vulkan/Steam での変更点、そして正常な症状と調査が必要な症状の違いを解説します。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-5-4e-shader-performance",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

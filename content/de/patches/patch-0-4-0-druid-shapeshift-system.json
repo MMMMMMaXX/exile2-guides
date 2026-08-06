@@ -1,0 +1,427 @@
+{
+  "id": "patch-0-4-0-druid-shapeshift-system",
+  "slug": "patch-0-4-0-druid-shapeshift-system",
+  "locale": "de",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 Druid- & Shapeshift-System: Talisman, Primal Skills und warum alte Builds kaputtgehen",
+  "shortTitle": "0.4.0 Druid / Shapeshift",
+  "summary": "Wie Druid, Oracle und Shaman in 0.4.0 ins Spiel kamen, warum der Talisman eine Transform-Waffe ist und warum Pre-0.4.0-Druid-Builds bei Skill-ID-, Waffen- und Passiv-Prüfungen durchfallen.",
+  "description": "Eine systematische Geschichte des 0.4.0-Druid- und Shapeshift-Frameworks: Tier-Formen, Primal Skills, Lineage Supports, Talisman-Waffenregeln, der 0.4.0i-Crit-Condition-Fix sowie eine Migrations-Anleitung für alte Druid-Layouts.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "Path of Exile 2 Druid in Feuerbären-Shapeshift-Form",
+  "tags": [
+    "builds",
+    "major-updates",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Kurze Zusammenfassung",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Das Druid-Framework ist das mechanische Herzstück von 0.4.0 — es ist keine einzelne Skill-Linie, sondern ein System: Tier-Formen shapeshiften Primal Skills, die nur innerhalb oder im Umfeld dieser Formen funktionieren, Lineage Supports sind auf Primal Skills beschränkt, und Talisman-Waffen bilden die Grundlage für das Ganze.",
+        "Da das System Skill-IDs, Waffenanforderungen und den Passivbaum gleichzeitig betrifft, brechen alte externe Druid-Builds an drei voneinander unabhängigen Stellen. Diese Seite isoliert jeden dieser Fehler und nennt die aktuelle Regel."
+      ],
+      "bullets": [
+        "Druid erscheint zusammen mit den Ascendancies Oracle und Shaman",
+        "Shapeshift verwendet Talisman-Waffen, keine gewöhnlichen Stäbe",
+        "Primal Skills und Lineage Supports sind form-abhängig",
+        "0.4.0i hat die Crit-Bedingung für kürzlich shapeshiftete Formen behoben",
+        "Pre-0.4.0-Druid-Builds bezogen sich auf eine Klasse, die es nicht gab"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "Ursprung des Systems",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.4.0",
+      "sourceId": "official-0-4-0",
+      "paragraphs": [
+        "Shapeshift wurde von Beginn an als Transformation und nicht als Buff konzipiert: Das Betreten einer Form tauscht dein Waffenset gegen die Form-Affixe des Talismans und aktiviert Primal Skills, die sonst wirkungslos bleiben.",
+        "Lineage Supports wurden eigens eingeführt, um Primal Skills eine Support-Stufe zu geben, die nicht auf generische Skills kopiert werden konnte, wodurch die Identität des Druid von anderen Castern getrennt blieb."
+      ],
+      "bullets": [
+        "Tier-Form ist ein Zustand, kein umschaltbarer Buff",
+        "Primal Skills benötigen eine aktive oder kürzliche Form, um ihre beabsichtigte Wirkung zu entfalten",
+        "Lineage Supports passen nur in Primal Skills"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 3,
+      "title": "Historischer Kontext",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — 0.4.0 Druid-Framework",
+      "baselineNote": "Die aktuellen Regeln unten beziehen sich auf Client 0.5.4e.",
+      "paragraphs": [
+        "Vor 0.4.0 gab es keinen Druid, weshalb jedes Druid-Build-Video aus früheren Ären entweder spekulativ ist oder sich auf die Klasse eines anderen Spiels bezieht.",
+        "Das Framework wurde funktional vollständig ausgeliefert, enthielt aber einen Crit-Condition-Bug, den 0.4.0i innerhalb eines Monats behob."
+      ],
+      "bullets": [
+        "0.4.0: vollständiger Launch des Druid-Frameworks",
+        "0.4.0i: Fixes für Shapeshift-Crit-Bedingung und Talisman-Anforderung"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 4,
+      "title": "Klassen- & Ascendancy-Übersicht",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Druid (Basisklasse)",
+          "verdict": "Weiterhin aktuell",
+          "detail": "In 0.5.4e wählbare Klasse; die Shapeshift-Identität ist intakt."
+        },
+        {
+          "area": "Oracle (Ascendancy)",
+          "verdict": "Weiterhin aktuell",
+          "detail": "Auf Ward/Prophezeiung ausgerichtete Druid-Ascendancy; der Knoten-Cluster in ihrer Identität ist unverändert."
+        },
+        {
+          "area": "Shaman (Ascendancy)",
+          "verdict": "Weiterhin aktuell",
+          "detail": "Auf Elementar/Beschwörung ausgerichtete Druid-Ascendancy."
+        },
+        {
+          "area": "Passivbaum-Knoten",
+          "verdict": "250+ hinzugefügt, weiterhin aktuell",
+          "detail": "Es existieren Druid-spezifische Cluster; alte Guides à la „keine Druid-Knoten“ sind falsch."
+        }
+      ]
+    },
+    {
+      "id": "weapon-rel",
+      "order": 5,
+      "title": "Waffen- & Skill-Beziehung",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Pre-0.4.0-Annahme",
+      "oldText": "Ein „Druid“ würde wie jeder andere Caster einfach einen Stab oder Sceptre nutzen und generische Supports einbauen.",
+      "newLabel": "0.4.0-Regel (weiterhin in 0.5.4e)",
+      "newText": "Shapeshift erfordert eine Talisman-Waffe; Primal Skills sind ohne aktive oder kürzliche Form wirkungslos; Lineage Supports passen nur zu Primal Skills."
+    },
+    {
+      "id": "passive-impact",
+      "order": 6,
+      "title": "Auswirkung auf den Passivbaum",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "250+ Druid-Passivskills",
+          "detail": "Neue Cluster für Shapeshift-Dauer, Primal-Skill-Effekt und Form-Crit. Passivplaner aus der Pre-0.4.0-Zeit kannten solche Knoten nicht.",
+          "scope": "Offizielle 0.4.0-Notizen"
+        },
+        {
+          "category": "new",
+          "title": "Form-Abhängigkeit bei Passiven",
+          "detail": "Einige Druid-Passive gewähren Boni nur während der Transformation — ein Zustand, den der alte Baum nicht abbilden konnte.",
+          "scope": "Offizielle 0.4.0-Notizen"
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "order": 7,
+      "title": "Relevante Fixes in 0.4.x",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "0.4.0i Crit für „kürzlich Shapeshiftet“",
+          "detail": "Die Crit-Bedingung wird nun verlässlich ausgelöst, nachdem man eine Form verlässt, was Bear-/Spriggan-Crit-Builds repariert.",
+          "scope": "Offizielle 0.4.0i-Notizen"
+        },
+        {
+          "category": "fix",
+          "title": "0.4.0i Talisman-Anforderungsprüfungen",
+          "detail": "Der Client validiert Talisman-Waffenanforderungen nun korrekt, bevor Transform-Affixe aktiviert werden.",
+          "scope": "Offizielle 0.4.0i-Notizen"
+        },
+        {
+          "category": "fix",
+          "title": "Konsolen-Crash-Fixes",
+          "detail": "0.4.0i behob mehrere Client-Abstürze auf Xbox/PS5 beim Wechseln der Form.",
+          "scope": "Offizielle 0.4.0i-Notizen"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 8,
+      "title": "Build-Migrations-Anleitung",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "Altes „Druid“-Layout mit Stab + generischen Supports",
+          "to": "Talisman-Waffe + Primal Skills + Lineage Supports",
+          "note": "Tausche zuerst die Waffenbasis; Primal Skills sind ohne Talisman wirkungslos."
+        },
+        {
+          "from": "Von anderen Castern kopierte Supports",
+          "to": "Lineage Supports ausschließlich für Primal Skills",
+          "note": "Lineage Supports passen nicht in Non-Primal-Skills; behalte generische Supports für Non-Primal-Verbindungen."
+        },
+        {
+          "from": "Passivbaum ohne Druid-Cluster",
+          "to": "0.4.0-Druid-Cluster ergänzen (Form-Dauer, Primal-Effekt)",
+          "note": "Planer aus der Pre-0.4.0-Zeit besaßen diese Knoten überhaupt nicht."
+        },
+        {
+          "from": "Crit-Stapelung ohne Berücksichtigung des Form-Zustands",
+          "to": "Die Bedingung „kürzlich Shapeshiftet“ einrechnen (in 0.4.0i behoben)",
+          "note": "Nach 0.4.0i wird die Bedingung nach der Form verlässlich ausgelöst."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "Aktuelle Anwendbarkeit (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Talisman-Waffenanforderung",
+          "status": "still-current",
+          "currentSummary": "Shapeshift erfordert weiterhin einen Talisman; der Fix für die Anforderungsprüfung aus 0.4.0i ist wirksam.",
+          "supersededBy": "—",
+          "affectedContent": "Talisman-Item-Seite"
+        },
+        {
+          "topic": "Primal-Skill-Form-Abhängigkeit",
+          "status": "still-current",
+          "currentSummary": "Primal Skills bleiben in 0.5.4e form-abhängig.",
+          "supersededBy": "—",
+          "affectedContent": "Primal-Skills-Seite"
+        },
+        {
+          "topic": "Lineage-Support-Beschränkung",
+          "status": "still-current",
+          "currentSummary": "Lineage Supports passen weiterhin nur in Primal Skills.",
+          "supersededBy": "—",
+          "affectedContent": "Support-Gem-Seite"
+        },
+        {
+          "topic": "Shapeshift-Crit-Bedingung",
+          "status": "changed-later",
+          "currentSummary": "Durch 0.4.0i behoben; späteres Balancing hat die Crit-Werte möglicherweise angepasst, doch die Bedingung funktioniert.",
+          "supersededBy": "0.4.0i, 0.5.x-Balance",
+          "affectedContent": "Bear-Shaman-Druid-Build"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 10,
+      "title": "Community-Belege",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.4.0–0.4.0i)",
+          "context": "Bear-Builds berichteten, dass Crits nach dem Verlassen der Form nicht auslösten.",
+          "quote": "Meine Crit-Bedingung triggert nach dem Ent-Bären nie.",
+          "analysis": "In 0.4.0i behoben. Auf 0.5.4e funktioniert die Bedingung, weshalb alte Beschwerden nicht mehr zutreffen."
+        },
+        {
+          "source": "Reddit (Pre-0.4.0-„Druid“-Videos)",
+          "context": "Videos mit Titel „Druid-Build“ von vor 0.4.0 beschreiben eine Klasse, die es nicht gab.",
+          "quote": "Dieser ganze Guide ist für eine Klasse, die noch gar nicht im Spiel ist.",
+          "analysis": "Damals korrekt, inzwischen veraltet. Nutze ausschließlich Druid-Inhalte ab 0.4.0."
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "Betroffene Builds & Skills",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Bear-Shaman-Druid-Build",
+          "type": "build",
+          "trigger": "Druid + Talisman + Shapeshift",
+          "action": "Talisman-Regeln und 0.4.0i-Crit-Fix prüfen.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Fire Bear Smith of Kitava",
+          "type": "build",
+          "trigger": "Druid-Shapeshift",
+          "action": "Primal-Skill-Verbindungen bestätigen.",
+          "status": "ready"
+        },
+        {
+          "name": "Primal-Skills-Seite",
+          "type": "skill",
+          "trigger": "Form-Abhängigkeit",
+          "action": "Form-Anforderung ausdrücklich dokumentieren.",
+          "status": "queued"
+        },
+        {
+          "name": "Talisman-Item-Seite",
+          "type": "item",
+          "trigger": "Waffenanforderung",
+          "action": "Shapeshift-Voraussetzung darlegen.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Historisches Video",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 Druid-Shapeshift-Tiefenanalyse",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "Druid-Showcase in der Launch-Woche; die gezeigten Talisman-/Primal-Regeln sind grob weiterhin korrekt, doch das Crit-Verhalten entspricht dem Stand vor 0.4.0i.",
+          "creator": "Offizielles Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Warum meldet mein alter Druid-Build, dass Skills ungültig sind?",
+          "answer": [
+            "Weil es vor 0.4.0 keinen Druid gab und das System eine Talisman-Waffe plus form-abhängige Primal Skills erfordert, baue auf dem aktuellen Druid-Framework neu auf."
+          ]
+        },
+        {
+          "question": "Funktionieren Lineage Supports bei Non-Primal-Skills?",
+          "answer": [
+            "Nein, Lineage Supports passen designbedingt nur in Primal Skills; verwende für andere Verbindungen generische Supports."
+          ]
+        },
+        {
+          "question": "Ist der Shapeshift-Crit-Fix im Spiel geblieben?",
+          "answer": [
+            "Ja, der Fix für die Crit-Bedingung bei kürzlich Shapeshiftetem aus 0.4.0i ist in 0.5.4e weiterhin wirksam; nur spätere Balance-Werte können abweichen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Quellen und Verifikation",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Offizielle Path of Exile 2 Patch-Notizen 0.4.0",
+          "description": "Druid, Talisman, Primal Skills, Lineage Supports sowie Passiv-Ergänzungen.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Offizielle Path of Exile 2 Patch-Notizen 0.4.0i",
+          "description": "Fixes für Shapeshift-Crit-Bedingung und Talisman-Anforderung.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        },
+        {
+          "label": "PoE2 Wiki — Druid",
+          "description": "Druid-Klasse und Shapeshift-Daten im aktuellen Zustand.",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid",
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Offizielle Path of Exile 2 Patch-Notizen 0.4.0",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Offizielle Path of Exile 2 Patch-Notizen 0.4.0i",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 Druid & Shapeshift — Talisman, Primal Skills & Migration alter Builds",
+    "description": "Warum Pre-0.4.0-Druid-Builds kaputtgehen und wie das Talisman-/Primal-Skill-/Lineage-Support-System in 0.5.4e funktioniert.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-druid-shapeshift-system",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

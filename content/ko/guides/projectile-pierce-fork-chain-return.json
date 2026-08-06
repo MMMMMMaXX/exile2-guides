@@ -1,0 +1,759 @@
+{
+  "id": "projectile-pierce-fork-chain-return",
+  "slug": "projectile-pierce-fork-chain-return",
+  "locale": "ko",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2의 투사체 관통(Pierce), 분기(Fork), 연쇄(Chain), 귀환(Return)",
+  "shortTitle": "투사체 동작 방식",
+  "summary": "Path of Exile 2에서 단일 투사체 충돌 시 관통, 분기, 연쇄, 귀환이 어떻게 적용되는지: 우선순위, 적 대상 연쇄와 지형 연쇄의 차이, 그리고 특정 스킬이 특정 동작을 금지하는 경우를 포함합니다.",
+  "description": "Path of Exile 2 투사체 동작 방식에 관한 메커니즘 가이드: 충돌 우선순위(Split, Pierce, Fork, Chain, Return), 적 연쇄와 지형 연쇄의 차이, Pierce/Fork/Chain/Return을 사용할 수 없는 스킬, 그리고 청소와 보스전에 맞는 서포트 선택법.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/chain-support.webp",
+  "cardImage": "/images/skills/chain-support.webp",
+  "imageAlt": "Path of Exile 2의 투사체 연쇄 동작을 나타내는 서포트 젬 아이콘",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "투사체 스킬과 서포트 젬에 대한 기본 이해",
+    "게임 내 툴팁과 능력치 패널에 대한 familiarity"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "projectile",
+    "pierce",
+    "fork",
+    "chain",
+    "return",
+    "support"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "바로 알기",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "투사체 동작 방식의 충돌 우선순위는 무엇인가요?",
+          "body": [
+            "투사체가 충돌할 때마다 남은 동작을 이 우선순위로 확인합니다: Split, 그다음 Pierce, 그다음 Fork, 그다음 Chain, 그다음 Return. 단일 충돌에서는 하나의 동작만 발생하므로, 사용 가능한 동작 중 가장 먼저 오는 것이 적용됩니다."
+          ]
+        },
+        {
+          "title": "투사체가 한 번의 타격으로 관통과 분기, 또는 관통과 연쇄를 동시에 할 수 있나요?",
+          "body": [
+            "아니요. 충돌당 하나의 동작만 적용됩니다. 관통하는 투사체는 그 적으로부터 분기하거나 연쇄하지 않습니다. 적으로부터의 분기/연쇄는 관통과 분기가 모두 소진된 후에야 가능해집니다."
+          ]
+        },
+        {
+          "title": "모든 투사체 스킬이 네 가지 동작을 모두 지원하나요?",
+          "body": [
+            "아니요. 일부 스킬이나 아이템은 명시적으로 특정 동작을 금지합니다. 예를 들어 Lightning Arrow는 연쇄할 수 없으며(지형에서도 포함), Freezing Pulse는 모든 대상을 관통하므로 분기할 수 없습니다. 항상 스킬 툴팁을 읽어보세요."
+          ]
+        },
+        {
+          "title": "Return은 같은 적을 다시 타격하게 하나요?",
+          "body": [
+            "다른 동작들과 달리 Return은 이미 타격한 대상에 대해 동시 집합당 한 번의 추가 충돌을 허용합니다. 투사체는 보통 한 번만 Return합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 2,
+      "title": "정의",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "투사체 동작 방식은 투사체가 지닐 수 있는 특수 속성입니다. 이 속성은 투사체가 적이나 장애물에 맞았을 때 그대로 멈추는 대신 무슨 일이 일어나는지 결정합니다. 이 가이드의 핵심은 관통(Pierce), 분기(Fork), 연쇄(Chain), 귀환(Return) 네 가지입니다. 다섯 번째인 Split은 동일한 우선순위 시스템을 공유하므로 완전성을 위해 함께 설명합니다.",
+        "이 동작 방식은 보통 서포트 젬(Pierce Support, Fork Support, Chain Support, Returning Projectiles Support)으로 추가되지만, 스킬 자체의 텍스트, 유니크 아이템, 또는 패시브에서 올 수도 있습니다. 이들은 단일 타격에서 모두 호환되지는 않습니다. 충돌당 하나만 적용됩니다."
+      ],
+      "bullets": [
+        "Projectile(투사체): 적, 장애물과 충돌하거나 이동 한계(약 15미터)에 도달할 때까지 독립적으로 날아가는 개체.",
+        "Pierce(관통): 투사체가 맞은 적을 뚫고 지나가며 원래 궤도를 계속 진행합니다. 이는 여전히 타격으로 간주됩니다.",
+        "Fork(분기): 투사체가 원래 경로에서 +60도와 -60도 방향으로 서로 반대편으로 날아가는 두 개의 동일한 투사체로 갈라집니다.",
+        "Chain(연쇄): 투사체가 충돌 후 근처의 다른 적에게 재지향되며, 여러 번 가능합니다.",
+        "Return(귀환): 투사체가 이동 끝에 도달한 후 출발지 쪽으로 되돌아갑니다.",
+        "Split(분리): 투사체가 자동 조준하는 여러 투사체로 갈라집니다(가장 높은 우선순위, 한 번만)."
+      ]
+    },
+    {
+      "id": "collision-order",
+      "order": 3,
+      "title": "단일 충돌에서 일어나는 일",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "게임이 각 충돌에서 사용하는 우선순위입니다. 위에서 아래로 동작을 확인하고 투사체가 아직 사용 가능한 첫 번째 동작을 적용합니다. 충돌당 한 줄만 사용됩니다.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "단계"
+        },
+        {
+          "key": "on-collision",
+          "label": "충돌 시"
+        },
+        {
+          "key": "what-happens",
+          "label": "발생하는 일"
+        },
+        {
+          "key": "note",
+          "label": "참고"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "split",
+            "priority"
+          ],
+          "cells": {
+            "step": "1. Split",
+            "on-collision": "투사체가 아직 Split할 수 있는지 확인",
+            "what-happens": "자동 조준 투사체로 갈라지며 충돌이 소비됨",
+            "note": "가장 높은 우선순위, 투사체는 Split을 한 번만 할 수 있음"
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "priority"
+          ],
+          "cells": {
+            "step": "2. Pierce",
+            "on-collision": "Split이 소진되었다면 Pierce 확인",
+            "what-happens": "대상을 뚫고 지나가며 원래 궤도 유지",
+            "note": "타격으로 계산됨, 방향이나 속도 변화 없음, Pierce 횟수 1회 소모"
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "priority"
+          ],
+          "cells": {
+            "step": "3. Fork",
+            "on-collision": "Split도 Pierce도 여기서 적용되지 않으면 Fork 확인",
+            "what-happens": "경로에서 +60도와 -60도 방향으로 두 개의 투사체로 갈라짐",
+            "note": "Awakened Fork Support가 아닌 이상 한 번만 분기, 관통한 타격은 분기되지 않음"
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "priority"
+          ],
+          "cells": {
+            "step": "4. Chain",
+            "on-collision": "여전히 아무것도 적용되지 않았다면 Chain 확인",
+            "what-happens": "약 6미터 이내의 다른 적에게 재지향",
+            "note": "적 조준 동작 중 가장 마지막에 적용됨, 하나의 Chain 내에서 같은 적을 두 번 타격하지 않음"
+          }
+        },
+        {
+          "tags": [
+            "return",
+            "priority"
+          ],
+          "cells": {
+            "step": "5. Return",
+            "on-collision": "다른 것이 적용되지 않거나 이동 끝에 도달하면",
+            "what-happens": "투사체가 출발지 쪽으로 되돌아감",
+            "note": "가장 낮은 우선순위, 보통 한 번, 이미 타격한 대상에 한 번의 추가 타격 허용"
+          }
+        }
+      ],
+      "note": "이 우선순위는 Path of Exile 2의 전역 규칙입니다. 특정 스킬이나 유니크 아이템은 이 중 일부를 재정의할 수 있으므로(예: Pierce보다 Fork를 먼저 강제), 어떤 한 스킬의 특수 사례가 보편적 순서라고 가정하지 마세요."
+    },
+    {
+      "id": "interaction-matrix",
+      "order": 4,
+      "title": "동작 조합 매트릭스",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "어떤 동작들이 조합될 수 있는지와 그 방식. '충돌당'은 단일 타격을 의미하며, 여러 동작은 투사체의 전체 경로에 걸쳐 여전히 나타날 수 있습니다.",
+      "columns": [
+        {
+          "key": "pairing",
+          "label": "조합"
+        },
+        {
+          "key": "possible",
+          "label": "가능?"
+        },
+        {
+          "key": "result",
+          "label": "결과"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pierce",
+            "fork"
+          ],
+          "cells": {
+            "pairing": "Pierce + Fork",
+            "possible": "같은 타격에 불가",
+            "result": "충돌당 상호 배타적. 관통하는 투사체는 그 타격에서 분기하지 않음. Fork는 Pierce가 소진된 후에만 발생(또는 모든 대상을 관통하면 아예 발생하지 않음)."
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "chain"
+          ],
+          "cells": {
+            "pairing": "Pierce + Chain (적으로부터)",
+            "possible": "같은 타격에 불가",
+            "result": "관통할 수 있는 투사체는 적으로부터 연쇄하지 않습니다. 관통 후 지형에서 연쇄할 수는 있습니다."
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "chain"
+          ],
+          "cells": {
+            "pairing": "Fork + Chain (적으로부터)",
+            "possible": "같은 타격에 불가",
+            "result": "Fork가 충돌을 소비합니다. 분기된 투사체가 날아간 후 지형에서 연쇄할 수 있음. 적 연쇄는 그 이동이 끝난 후에만 따름."
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Fork + Return",
+            "possible": "가능",
+            "result": "분기된 투사체는 이동 끝에 출발지 쪽으로 Return할 수 있습니다."
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Pierce + Return",
+            "possible": "가능",
+            "result": "관통 후 투사체는 Return할 수 있습니다. 일부 유니크는 Return이 발동하기 전 관통 조건을 요구합니다."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Chain + Return",
+            "possible": "가능",
+            "result": "연쇄가 끝나면 Return이 발동하여 투사체를 되돌려 보낼 수 있습니다."
+          }
+        },
+        {
+          "tags": [
+            "split"
+          ],
+          "cells": {
+            "pairing": "Split + Pierce + Fork + Chain + Return",
+            "possible": "가능 (우선순위 순)",
+            "result": "Split이 최상위 우선순위이며, 그 뒤를 투사체의 전체 경로에 걸쳐 나머지가 순서대로 따를 수 있습니다."
+          }
+        }
+      ],
+      "note": "샷건(shotgun) 방지도 여전히 적용됩니다. 여러 투사체가 한꺼번에 생성될 때 같은 대상을 타격할 수 있는 것은 하나뿐이므로, 나머지 복사본은 충돌 없이 통과할 수 있습니다."
+    },
+    {
+      "id": "terrain-vs-enemy",
+      "order": 5,
+      "title": "적 연쇄 vs 지형 연쇄",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "적 대상 연쇄와 지형/오브젝트 연쇄는 규칙이 다른 별개의 시스템입니다. 혼동하지 마세요.",
+      "columns": [
+        {
+          "key": "trigger-source",
+          "label": "발동 원인"
+        },
+        {
+          "key": "chains-from",
+          "label": "연쇄 대상"
+        },
+        {
+          "key": "notes",
+          "label": "참고"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "적 충돌, 투사체가 Pierce 또는 Fork 가능",
+            "chains-from": "적으로부터 연쇄하지 않음",
+            "notes": "충돌당 하나의 동작만. 관통하거나 분기하면 적 연쇄는 건너뜀."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "적 충돌, 남은 Pierce/Fork 없음",
+            "chains-from": "적으로부터 연쇄",
+            "notes": "약 6미터 이내의 다른 적에게 재지향, 하나의 Chain 내에서 같은 적을 두 번 타격하지 않음."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "terrain"
+          ],
+          "cells": {
+            "trigger-source": "지형, 벽 또는 장애물",
+            "chains-from": "지형으로부터 연쇄",
+            "notes": "기본적으로 별도로 명시되지 않는 한 한 번만. 지형에서 연쇄할 확률은 가산적으로 중첩. 적을 관통하거나 분기한 후 발생 가능."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "연쇄할 수 없는 스킬 (예: Lightning Arrow)",
+            "chains-from": "지형에서도 연쇄하지 않음",
+            "notes": "일부 스킬은 지형에서조차 포함해 연쇄가 전면 금지됩니다. 이는 패치 0.2.0에서 Lightning Arrow의 버그로 수정되었습니다."
+          }
+        }
+      ],
+      "note": "투사체의 기본 연쇄 거리는 약 6미터, 다른(비투사체) 효과는 약 4미터에서 연쇄합니다."
+    },
+    {
+      "id": "worked-examples",
+      "order": 6,
+      "title": "적용 예시",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "우선순위 순서와 대상 가용성이 결과를 어떻게 바꾸는지 보여주는 정성적 사례. 서포트 수치는 버전에 민감하므로 정확한 수치는 명시하지 않습니다.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "사례"
+        },
+        {
+          "key": "setup",
+          "label": "설정"
+        },
+        {
+          "key": "result",
+          "label": "결과"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pierce",
+            "chain"
+          ],
+          "cells": {
+            "case": "일렬로 선 몹",
+            "setup": "다섯 적이 일렬로 서 있음, 투사체에 Pierce와 Chain 있음",
+            "result": "투사체는 먼저 일렬을 관통합니다(Pierce가 Chain보다 우선). 관통이 소진되고 길목에 더 이상 적이 없으면 지형에서 연쇄하거나 그냥 끝납니다. 아직 관통할 수 있는 동안에는 적으로부터의 Chain이 발동하지 않습니다."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "terrain"
+          ],
+          "cells": {
+            "case": "벽 튕김",
+            "setup": "벽 근처에 적 하나, 투사체에 지형 연쇄 확률 있음",
+            "result": "관통/Fork가 남은 상태로 적을 맞추면 투사체는 벽을 통해 두 번째 적에게 연쇄할 수 있습니다. 지형 연쇄는 기본적으로 최대 한 번이며 그 확률은 가산적입니다."
+          }
+        },
+        {
+          "tags": [
+            "return",
+            "boss"
+          ],
+          "cells": {
+            "case": "보스, 단일 대상",
+            "setup": "보스 하나, 투사체에 Fork, Chain, Return 있음",
+            "result": "근처에 다른 대상이 없으면 Fork와 Chain은 재지향할 대상을 찾지 못하고 날아갑니다. Return은 보스(유일하게 이미 타격한 대상)에 한 번의 추가 충돌을 더할 수 있으므로, 여기서 네 가지 중 가장 유용합니다."
+          }
+        }
+      ],
+      "note": "이것은 우선순위 시스템을 설명하는 교재 예시입니다. 정확한 Pierce/Chain 횟수와 피해는 현재 게임 내 툴팁을 참고하세요."
+    },
+    {
+      "id": "clear-vs-single-target",
+      "order": 7,
+      "title": "청소 속도 vs 보스전",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "지금 빌드하려는 전투 유형을 고르세요. 도구가 실제로 도움이 되는 서포트를 가리킵니다.",
+      "controls": [
+        {
+          "id": "encounter",
+          "label": "주로 무엇을 상대하나요?",
+          "options": [
+            {
+              "label": "맵핑 및 청소 속도 (다수의 적)",
+              "value": "clear"
+            },
+            {
+              "label": "보스전 (소수 또는 단일 적)",
+              "value": "boss"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "청소 속도를 위한 광역 피해",
+          "when": {
+            "encounter": "clear"
+          },
+          "steps": [
+            "단일 투사체가 놓치는 추가 적들에게 닿기 위해 Chain 및/또는 Fork를 사용하세요.",
+            "적이 일렬로 서 있다면 하나의 발사로 여러 적을 지나가도록 Pierce를 추가하세요.",
+            "충돌당 하나의 동작만 적용됨을 기억하세요. 주어진 타격에서는 Fork 또는 Chain 중 하나지, 둘 다가 아닙니다."
+          ]
+        },
+        {
+          "title": "단일 대상에 집중",
+          "when": {
+            "encounter": "boss"
+          },
+          "steps": [
+            "Return이 같은 보스에 한 번의 추가 타격을 더할 수 있으므로 Pierce + Return을 선호하세요.",
+            "Fork와 Chain은 재지향할 다른 대상이 필요하므로 홀로 있는 적에게는 거의 도움이 되지 않습니다.",
+            "보스가 유일한 대상이라면 Fork/Chain 구성의 대부분은 허공에 날아가는 이동일 뿐입니다."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "일반적인 서포트 선택",
+        "steps": [
+          "가장 자주 상대하는 대상 밀도에 서포트를 맞추세요.",
+          "팩에는 Fork/Chain을, 단일 대상에는 Pierce/Return을 사용하세요.",
+          "현재 횟수와 피해 수정치는 게임 내 툴팁을 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "skill-exceptions",
+      "order": 8,
+      "title": "동작을 금지하는 스킬과 아이템",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "모든 투사체 스킬이 네 가지 동작을 모두 사용할 수 있는 것은 아닙니다. 일부 스킬이나 아이템은 명시적으로 하나를 금지하며, 그 규칙은 스킬이나 아이템의 텍스트에 적혀 있습니다. 서포트가 작동한다고 가정하기 전에 항상 툴팁을 읽어보세요.",
+        "일반적으로, 텍스트에 투사체가 'cannot Pierce / Fork / Chain / Return'(관통/분기/연쇄/귀환할 수 없음)이라고 적혀 있거나, 스킬에 이미 다른 동작을 막는 내장 동작이 있을 때(예: 모든 대상을 관통하는 스킬은 지나가는 타격에서 분기할 수 없음) 금지됩니다."
+      ],
+      "bullets": [
+        "Lightning Arrow: 연쇄할 수 없음, 지형에서도 포함(패치 0.2.0에서 버그로 수정됨).",
+        "Freezing Pulse: 투사체가 모든 대상을 관통하므로 분기할 수 없음.",
+        "Spectral Throw: 투사체가 Return하며 관통하는 것처럼 동작하므로, 그 타격에는 Fork가 적용되지 않음.",
+        "일부 유니크 아이템(예: Snakepit 반지)은 소켓에 따라 주문 투사체가 관통하거나 연쇄하는 것을 막습니다.",
+        "승급(Ascendancy)이나 패시브 효과도 동작을 부여하거나 제거할 수 있으므로, 툴팁이 진실의 근원입니다."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 9,
+      "title": "흔한 실수",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "대부분의 투사체 문제는 나쁜 롤이 아니라 우선순위 순서와 충돌당 단일 동작 규칙을 오해해서 생깁니다. 게임을 탓하기 전에 이것들을 확인하세요."
+      ],
+      "bullets": [
+        "Chain이 '발동하지 않음': 투사체가 관통이나 분기도 가능하므로 적 연쇄가 건너뛰어짐, 또는 연쇄 거리 내에 유효한 적이 없음, 또는 스킬 자체가 연쇄할 수 없음.",
+        "투사체가 '사라짐': 동작을 모두 소진하고 날아간 것. Fork와 Chain은 유효한 두 번째 대상이 필요하며, 그렇지 않으면 투사체는 이동 한계에서 그냥 소멸합니다.",
+        "Return이 '피해를 주지 않음': 샷건 방지 때문에 되돌아오는 투사체는 이미 타격한 대상에 대해 집합당 한 번의 추가 충돌만 얻음, 다른 반환은 충돌 없이 통과합니다.",
+        "모든 투사체 스킬이 네 가지 동작을 지원한다고 가정하기 — 'cannot Pierce/Fork/Chain/Return'이 있는지 툴팁 확인.",
+        "적 연쇄와 지형 연쇄를 혼동하기 — 둘은 규칙과 한계가 다릅니다.",
+        "Fork(+60/-60도 두 개)를 Split(자동 조준 복사본)이나 Projectile Count(별도 투사체 더 많이 발사)와 혼동하기."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 10,
+      "title": "흔한 혼동 포인트",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "플레이어들이 투사체 동작 방식에 대해 자주 제기하는 혼동을 바꿔 쓴 것.",
+      "cards": [
+        {
+          "title": "보스전에서 Chain이 약해 보임",
+          "tag": "chain",
+          "body": [
+            "플레이어는 Chain이 홀로 있는 보스에게 피해를 더할 것으로 기대하지만, Chain은 재지향할 다른 적이 필요합니다. 단일 대상에서는 거의 아무作用도 하지 않는데, 이것이 해당 영상 가이드의 핵심 포인트입니다."
+          ],
+          "link": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+          "linkLabel": "왜 Chain이 생각보다 더 나쁠 수 있는가"
+        },
+        {
+          "title": "Pierce와 Fork를 함께",
+          "tag": "pierce",
+          "body": [
+            "많은 이가 한 젬이 같은 타격에 관통과 분기를 모두 할 수 있다고 가정합니다. 충돌당 하나의 동작만 적용되므로, 관통하는 타격은 분기하지 않습니다."
+          ]
+        },
+        {
+          "title": "Lightning Arrow가 여전히 연쇄함",
+          "tag": "chain",
+          "body": [
+            "일부 플레이어는 Lightning Arrow가 지형에서 연쇄할 수 있다고 믿었습니다. 패치 0.2.0에서 스킬이 지형에서조차 포함해 연쇄할 수 없도록 수정되었습니다."
+          ]
+        },
+        {
+          "title": "Return이 같은 적 타격",
+          "tag": "return",
+          "body": [
+            "플레이어들은 되돌아오는 투사체가 이미 타격한 적을 다시 때리는 것에 놀랍니다. Return은 유일하게 이미 맞은 대상에 대해 집합당 한 번의 추가 충돌을 허용합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 11,
+      "title": "영상 가이드",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 - 왜 Chain이 생각보다 더 나쁠 수 있는가 [Patch 0.2]",
+          "creator": "Last Protagonist",
+          "description": "Path of Exile 2에서 Chain이 언제 청소 속도에 도움이 되고 언제 단일 대상에서 가치를 낭비하는지, 그리고 투사체 서포트들이 어떻게 비교되는지에 대한 커뮤니티 분석.",
+          "takeaway": "Chain은 팩 상대할 때 빛나지만 홀로 있는 보스에게는 거의 도움이 되지 않음. 충돌 우선순위 순서에 따라 청소에는 Fork/Chain을, 단일 대상에는 Pierce/Return을 선택하세요.",
+          "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+          "timestamps": [
+            {
+              "label": "소개",
+              "time": "0:00"
+            },
+            {
+              "label": "Chain이 실제로 하는 일",
+              "time": "1:30"
+            },
+            {
+              "label": "Chain이 도움이 되는 때 (청소 속도)",
+              "time": "4:00"
+            },
+            {
+              "label": "Chain이 해가 되는 때 (단일 대상)",
+              "time": "7:00"
+            },
+            {
+              "label": "투사체 서포트 젬 비교",
+              "time": "10:00"
+            },
+            {
+              "label": "요약 및 빌드 조언",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 12,
+      "title": "자주 묻는 질문",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "모든 투사체 스킬이 Pierce, Fork, Chain, Return을 사용할 수 있나요?",
+          "answer": [
+            "아니요. 일부 스킬이나 아이템은 명시적으로 동작을 금지합니다. Lightning Arrow는 연쇄할 수 없으며(지형에서도 포함), Freezing Pulse는 모든 대상을 관통하므로 분기할 수 없습니다. 'cannot Pierce/Fork/Chain/Return'이 있는지 스킬 툴팁을 읽어보세요."
+          ]
+        },
+        {
+          "question": "투사체가 충돌할 때 우선순위 순서는 무엇인가요?",
+          "answer": [
+            "게임은 Split, 그다음 Pierce, 그다음 Fork, 그다음 Chain, 그다음 Return을 확인합니다. 이 동작 중 하나만 단일 충돌에서 발생하므로, 투사체가 아직 사용 가능한 첫 번째 것이 승리합니다."
+          ]
+        },
+        {
+          "question": "적으로부터의 Chain이 지형으로부터의 Chain과 같은가요?",
+          "answer": [
+            "아니요. 투사체가 관통하거나 분기할 수 있다면 적으로부터는 연쇄하지 않지만, 그 후 지형에서 연쇄할 수 있습니다(기본적으로 한 번만). 일부 스킬은 지형에서도 연쇄할 수 없습니다."
+          ]
+        },
+        {
+          "question": "Return은 같은 적을 다시 타격하나요?",
+          "answer": [
+            "네. 다른 동작들과 달리 Return은 이미 타격한 대상에 대해 동시 집합당 한 번의 추가 충돌을 허용합니다. 투사체는 보통 한 번만 Return합니다."
+          ]
+        },
+        {
+          "question": "기본 연쇄 거리는 얼마인가요?",
+          "answer": [
+            "투사체는 약 6미터 거리에서 연쇄, 다른(비투사체) 효과는 약 4미터에서 연쇄합니다. 하나의 Chain 내에서 같은 적은 두 번 타격되지 않습니다."
+          ]
+        },
+        {
+          "question": "Fork는 Split이나 Projectile Count와 같은가요?",
+          "answer": [
+            "아니요. Fork는 +60도와 -60도 방향으로 두 개의 투사체를 만듭니다. Split은 여러 자동 조준 복사본을 만듭니다. Projectile Count는 단순히 별도 투사체를 더 많이 발사합니다. 샷건 방지는 여러 동시 투사체가 모두 한 대상을 타격하는 것을 여전히 막습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 13,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2 Wiki - Projectile",
+          "description": "충돌 우선순위, 동작 정의, 샷건 방지, 15미터 이동 한계",
+          "url": "https://poe2wiki.net/wiki/Projectile"
+        },
+        {
+          "label": "PoE2 Wiki - Pierce",
+          "description": "Pierce 동작, Pierce 횟수, Fork/Chain/Return과의 상호작용",
+          "url": "https://poe2wiki.net/wiki/Pierce"
+        },
+        {
+          "label": "PoE2 Wiki - Fork",
+          "description": "Fork 동작, +60/-60도 분기, 분기 한계",
+          "url": "https://poe2wiki.net/wiki/Fork"
+        },
+        {
+          "label": "PoE2 Wiki - Chain",
+          "description": "Chain 동작, 적 대상 vs 지형 연쇄, 기본 연쇄 거리",
+          "url": "https://poe2wiki.net/wiki/Chain"
+        },
+        {
+          "label": "PoE2 Wiki - Return",
+          "description": "Return 동작 및 이미 타격한 대상에 대한 추가 충돌",
+          "url": "https://poe2wiki.net/wiki/Return"
+        },
+        {
+          "label": "Last Protagonist - 왜 Chain이 생각보다 더 나쁠 수 있는가",
+          "description": "Path of Exile 2에서 Chain이 언제 도움이 되고 해가 되는지에 대한 커뮤니티 영상",
+          "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 14,
+      "title": "변경 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Path of Exile 2 Early Access 0.5.4용 투사체 Pierce, Fork, Chain, Return 가이드 초판 발행.",
+            "바로 알기, 정의, 충돌 우선순위, 동작 조합 매트릭스, 적 vs 지형 연쇄, 적용 예시, 청소 vs 보스전 진단, 스킬 예외, 문제 해결, 커뮤니티 혼동, 영상, FAQ, 출처를 추가."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Wiki - Projectile",
+      "url": "https://poe2wiki.net/wiki/Projectile",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Pierce",
+      "url": "https://poe2wiki.net/wiki/Pierce",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Fork",
+      "url": "https://poe2wiki.net/wiki/Fork",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Chain",
+      "url": "https://poe2wiki.net/wiki/Chain",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Return",
+      "url": "https://poe2wiki.net/wiki/Return",
+      "sourceType": "official"
+    },
+    {
+      "label": "Last Protagonist - Why Chain Might Be Worse Than You Think (YouTube)",
+      "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 투사체 Pierce, Fork, Chain & Return 가이드",
+    "description": "Path of Exile 2에서 단일 투사체 충돌 시 Pierce, Fork, Chain, Return이 어떻게 적용되는지, 우선순위 순서, 적 vs 지형 연쇄, 그리고 어떤 스킬이 동작을 금지하는지 알아보세요.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "projectile-pierce-fork-chain-return",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "id": "how-to-stop-getting-one-shot",
+  "slug": "how-to-stop-getting-one-shot",
+  "locale": "ja",
+  "type": "guide",
+  "status": "published",
+  "featured": true,
+  "title": "Path of Exile 2でワンパンされなくなる方法",
+  "shortTitle": "ワンパンを防ぐ",
+  "summary": "Path of Exile 2で一撃で死ぬ理由と、その対策（耐性上限、アーマー、回避、エネルギーシールド、ブロック、異常状態回避、チャームなど、単一の魔法のステータスに頼らない多層防御）を解説します。",
+  "description": "Path of Exile 2で即死してしまう場合のトラブルシューティングガイド：実際に生き残るための防御レイヤーとその組み方。",
+  "guideCategory": "troubleshooting",
+  "heroImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "cardImage": "/images/bosses/arbiter-of-ash-hero.webp",
+  "imageAlt": "アッシュの裁定者。重い一撃で準備不足のプレイヤーを一撃で倒し得るボス（Path of Exile 2）",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "アクト攻略中、またはエンドゲーム序盤のキャラクター",
+    "ライフと耐性の値の基本を理解していること"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4d",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-07-28",
+  "publishedAt": "2026-07-28",
+  "updatedAt": "2026-07-28",
+  "tags": [
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接的な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "根本原因となる勘違い",
+          "body": [
+            "単一の防御に頼ること。ワンパン死は、どの一つのレイヤーも十分ではないために起きます。耐性、実質的なライフあるいはエネルギーシールドのプール、ある程度の回避（回避力、ブロック、スペル抑制）、そして回復（チャーム、フラスコ）を組み合わせて機能させる必要があります。"
+          ]
+        },
+        {
+          "title": "最初に行うべき修正（常に）",
+          "body": [
+            "元素耐性を75%（炎、冷気、雷）に上限まで上げる。耐性が上限に達していないことは、特にモンスターの与ダメージが跳ね上がるアクト3やマップにおいて、突然死する最も一般的な原因です。"
+          ]
+        },
+        {
+          "title": "カオス耐性は別物",
+          "body": [
+            "カオス耐性は別系統で上限を満たしにくいプールであり、カオスダメージはエネルギーシールドに対して倍加します。ESビルドの場合、カオスが最大のワンパンリスクとなります。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stat-overview",
+      "order": 2,
+      "title": "防御の数値一覧",
+      "type": "stat-grid",
+      "visible": true,
+      "toc": true,
+      "stats": [
+        {
+          "label": "元素耐性の上限",
+          "value": "75%",
+          "note": "炎、冷気、雷それぞれ"
+        },
+        {
+          "label": "積むべき防御レイヤー",
+          "value": "4+",
+          "note": "耐性、プール、回避、回復"
+        },
+        {
+          "label": "カオス vs エネルギーシールド",
+          "value": "x2",
+          "note": "カオスダメージはESに対して2倍"
+        }
+      ]
+    },
+    {
+      "id": "defense-layers",
+      "order": 3,
+      "title": "防御レイヤー",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "単独のレイヤーでは救えない。複数を同時に組むこと。",
+      "columns": [
+        {
+          "key": "layer",
+          "label": "レイヤー"
+        },
+        {
+          "key": "how",
+          "label": "どのように役立つか"
+        },
+        {
+          "key": "when",
+          "label": "最適な場面"
+        }
+      ],
+      "filters": [
+        {
+          "id": "mitigate",
+          "label": "軽減"
+        },
+        {
+          "id": "avoid",
+          "label": "回避"
+        },
+        {
+          "id": "recover",
+          "label": "回復"
+        }
+      ],
+      "rows": [
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "耐性（上限75%）",
+            "how": "受ける元素ヒットダメージを減少",
+            "when": "すべてのビルド、常に"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "アーマー",
+            "how": "物理ヒットダメージを軽減。ライフが高いほど効果的",
+            "when": "近接、高HPビルド"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "エネルギーシールド",
+            "how": "独立したプール。カオスはESに対して倍加",
+            "when": "ES／casterビルド"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "回避力＋スペル抑制",
+            "how": "ヒットと抑制されたスペルを回避",
+            "when": "回避ビルド"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "ブロック／スペルブロック",
+            "how": "ヒットを完全に無効化する確率",
+            "when": "シールドおよびブロックビルド"
+          }
+        },
+        {
+          "tags": [
+            "avoid"
+          ],
+          "cells": {
+            "layer": "異常状態回避",
+            "how": "凍結、ショック、イグナイトの効果を回避",
+            "when": "地面効果のあるマップ"
+          }
+        },
+        {
+          "tags": [
+            "recover"
+          ],
+          "cells": {
+            "layer": "チャーム＆フラスコ",
+            "how": "即時回復と異常状態除去",
+            "when": "すべてのビルド、ボス戦"
+          }
+        },
+        {
+          "tags": [
+            "mitigate"
+          ],
+          "cells": {
+            "layer": "ダメージ変換（炎のマント）",
+            "how": "物理を炎に変換し、炎耐性で軽減",
+            "when": "物理偏重の戦闘"
+          }
+        }
+      ],
+      "note": "炎のマントのような変換により、軽減できないダメージタイプ（物理）を、上限を満たしているタイプ（炎）に変えられ、これは強力な多層防御となります。"
+    },
+    {
+      "id": "defense-tabs",
+      "order": 4,
+      "title": "進行度別の防御",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "優先すべきことは進行度に応じて変わる。自分の段階を選んでください。",
+      "tabs": [
+        {
+          "id": "acts",
+          "label": "アクト 1-3",
+          "paragraphs": [
+            "序盤は基本に遅れないことが重要。"
+          ],
+          "bullets": [
+            "装備の各スロットでライフを確保する。",
+            "クエスト報酬から耐性ロール（冷気、雷、炎）を拾う。",
+            "フラスコを積極的に使うこと。使われないフラスコは死んだキャラクターと同じ。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "endgame",
+          "label": "エンドゲームマップ",
+          "paragraphs": [
+            "マップは防御が不十分なことを厳しく罰する。"
+          ],
+          "bullets": [
+            "ティアを上げる前に、3つの元素耐性すべてを上限にする。",
+            "第2のレイヤー（アーマー、回避、ブロックのいずれか）をビルドに追加する。",
+            "カオス耐性を埋められる場所に装着。ESビルドは特に。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "boss",
+          "label": "ボス戦",
+          "paragraphs": [
+            "ボスの与ダメージは雑魚とは桁違い。"
+          ],
+          "bullets": [
+            "ライフかESを積み、回復（チャーム、フラスコ）の準備をする。",
+            "予兆付きの地面効果には異常状態回避を使う。",
+            "最大の一撃にはブロックやスペル抑制を重ねる。"
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "death-diagnostic",
+      "order": 5,
+      "title": "なぜ私は死に続けるのか？",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "死に方を選択してください。ツールが不足しているレイヤーを示します。",
+      "controls": [
+        {
+          "id": "death",
+          "label": "どうやって死ぬ？",
+          "options": [
+            {
+              "label": "ボスからの一撃",
+              "value": "boss-hit"
+            },
+            {
+              "label": "カオス／DoTで死ぬ",
+              "value": "chaos"
+            },
+            {
+              "label": "地面効果に居続ける",
+              "value": "ground"
+            },
+            {
+              "label": "全体的に脆い",
+              "value": "squishy"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "実質的なプールと回復を作る",
+          "when": {
+            "death": "boss-hit"
+          },
+          "steps": [
+            "ライフまたはエネルギーシールドを増やす。薄いプールはどんな大ダメージでも死ぬ。",
+            "ブロック、スペル抑制、または回避力を第2のレイヤーとして追加する。",
+            "戦闘中の即時回復のためにチャームとフラスコを準備しておく。"
+          ]
+        },
+        {
+          "title": "カオスとESの弱点に対処する",
+          "when": {
+            "death": "chaos"
+          },
+          "steps": [
+            "カオスはエネルギーシールドに対して倍加するため、ESを使うならカオス耐性を装着する。",
+            "DoT死の場合は、カオス耐性と異常状態回避を追加する。",
+            "物理偏重のカオス戦には炎のマントの変換を検討する。"
+          ]
+        },
+        {
+          "title": "異常状態回避を追加する",
+          "when": {
+            "death": "ground"
+          },
+          "steps": [
+            "地面効果はイグナイト、ショック、ポイズンを与えるため、異常状態回避を追加する。",
+            "予兆されたゾーンは耐えるのではなく、移動で退避する。",
+            "異常状態を除去するフラスコの接尾辞は非常に役立つ。"
+          ]
+        },
+        {
+          "title": "基礎からレイヤーを重ねる",
+          "when": {
+            "death": "squishy"
+          },
+          "steps": [
+            "まず元素耐性を75%にする。これが最も効果の高い修正。",
+            "ライフ／ESを追加し、次に1つの回避レイヤー（回避力、ブロック、抑制）を足す。",
+            "最後に回復（チャーム、フラスコ）と変換の工夫で仕上げる。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "全般的な生存計画",
+        "steps": [
+          "元素耐性を上限にし、ライフ／ESのプールを大きくし、1つの回避レイヤーを追加し、回復の準備をしておく。",
+          "カオスは別扱いとし、ESビルドをそれから守る。",
+          "参照先の防御ガイドで、レイヤーの全体像を動画で確認する。"
+        ]
+      }
+    },
+    {
+      "id": "video-guide",
+      "order": 6,
+      "title": "防御の動画ガイド",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2で防御を高める7つの秘訣",
+          "creator": "Spud the King",
+          "description": "Path of Exile 2の防御レイヤー（耐性、アーマー、回避力、エネルギーシールド、ブロック、異常状態回避、回復）を実践的に解説した動画。",
+          "takeaway": "防御レイヤーを複数重ねること。単一のステータスではボスもマップも生き残れない。",
+          "url": "https://www.youtube.com/watch?v=dthtaESho5A",
+          "timestamps": [
+            {
+              "label": "はじめに",
+              "time": "0:00"
+            },
+            {
+              "label": "耐性と上限",
+              "time": "1:30"
+            },
+            {
+              "label": "アーマーと回避力の重ね方",
+              "time": "3:00"
+            },
+            {
+              "label": "エネルギーシールド",
+              "time": "4:30"
+            },
+            {
+              "label": "ブロックとスペル抑制",
+              "time": "6:00"
+            },
+            {
+              "label": "異常状態回避",
+              "time": "7:30"
+            },
+            {
+              "label": "チャームとフラスコ",
+              "time": "9:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 7,
+      "title": "よくある質問",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "耐性75%だけで十分ですか？",
+          "answer": [
+            "最も重要なレイヤーですが、それだけでは不十分です。75%軽減されたヒットでも、薄いライフプールなら一撃で死ねます。実質的なプールと、通常は第2のレイヤーも必要です。"
+          ]
+        },
+        {
+          "question": "なぜカオスはエネルギーシールドビルドにこれほど響くのですか？",
+          "answer": [
+            "カオスダメージはエネルギーシールドに対して倍加し、カオス耐性は上限を満たしにくいからです。ESビルドは能動的にカオス耐性を装着するか、受けるダメージタイプを変換すべきです。"
+          ]
+        },
+        {
+          "question": "アーマーと回避力、どちらが優れていますか？",
+          "answer": [
+            "一概にどちらが優れているわけではありません。アーマーは物理ヒットを軽減し高いライフと相性が良く、回避力はヒットを避けスペル抑制と組み合わせます。ビルドに応じて選び、もう一方を副次レイヤーとして追加してください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 8,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "動画ガイド",
+          "description": "Spud the King - 7 Ways to Increase Defence (PoE 2)",
+          "url": "https://www.youtube.com/watch?v=dthtaESho5A"
+        },
+        {
+          "label": "公式ソース",
+          "description": "Path of Exile 2 official 0.5.4 Patch Notes (defense and resistance changes)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ Wiki",
+          "description": "PoE 2 wiki - Defenses and resistances",
+          "url": "https://www.poe2wiki.net/wiki/Resistance"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Spud the King - 7 Ways to Increase Defence (YouTube)",
+      "url": "https://www.youtube.com/watch?v=dthtaESho5A",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 公式 0.5.4 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE 2 wiki - Resistances",
+      "url": "https://www.poe2wiki.net/wiki/Resistance",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 ワンパン対策：耐性、アーマー、回避、ES、ブロック、チャーム",
+    "description": "Path of Exile 2で一撃で死ぬ理由と、多層防御（耐性上限、アーマー、回避力、エネルギーシールド、ブロック、異常状態回避、チャーム）による解決策。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "how-to-stop-getting-one-shot",
+    "sourceRevision": "2026-07-28",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

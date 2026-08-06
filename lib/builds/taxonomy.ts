@@ -41,7 +41,10 @@ export function isKnownBuildCollection(collection: BuildCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Build，供页面和 Sitemap 共用同一规则。 */
 export function matchesBuildCollection(
-  article: BuildArticle,
+  article: Pick<
+    BuildArticle,
+    "classId" | "ascendancyId" | "budgets" | "stages"
+  >,
   collection: BuildCollection,
 ): boolean {
   if (collection.kind === "class") return article.classId === collection.value;

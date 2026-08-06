@@ -1,0 +1,652 @@
+{
+  "id": "patch-0-1-0-launch-hotfix-build-breaks",
+  "slug": "patch-0-1-0-launch-hotfix-build-breaks",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.1.0b ローンチ緊急ホットフィックス：ガスグレネード弱体化、クラッシュ修正、およびローンチ初週の安定性向上",
+  "shortTitle": "0.1.0b ローンチホットフィックス",
+  "summary": "0.1.0b ホットフィックスはガスグレネードおよびガスアローの爆発ダメージを引き下げ、ロード、アトラスコントローラーの返還、コンソールゲートウェイ、およびクラッシュを修正しました。本ページでは、0.1.0b が何を変更したか、およびローンチ初日のビルド映像が現在のクライアントと一致しなくなった理由を正確に記録します。",
+  "description": "Path of Exile 2 0.1.0b ローンチ緊急ホットフィックスの完全な履歴。ガスグレネードおよびガスアローの爆発ダメージ低下、ロードとクラッシュの修正、アトラスコントローラーの返還とコンソールゲートウェイの修正、そしてこれらのローンチ初週の変更がクライアント 0.5.4e に対するローンチ週のバランス調整の基調をどう作ったかを網羅します。",
+  "patchCategory": "hotfixes",
+  "patchVersion": "0.1.0b",
+  "patch": "0.1.0b",
+  "league": "アーリーアクセス ローンチ",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "cardImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "imageAlt": "早期のビルド崩壊スキルとクラッシュを安定化させた Path of Exile 2 0.1.0b ローンチホットフィックス",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "hotfix",
+    "0-1-0b",
+    "balance",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Gas Grenade / Gas Arrow damage",
+      "status": "changed-later",
+      "currentSummary": [
+        "ローンチ時の爆発ダメージは 0.1.0b で引き下げられ、その後再び後続のバランスパッチで変動しました。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0b",
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "gas-grenade-pathfinder"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Loading and crash stability",
+      "status": "still-current",
+      "currentSummary": [
+        "0.1.0b のロードとクラッシュの修正は、数多くある安定性改善の最初のものであり、現在のクライアントははるかに安定しています。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [
+        "lightning-spear-amazon"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Atlas Controller Refund / Console Gateway",
+      "status": "changed-later",
+      "currentSummary": [
+        "これらのシステムは 0.1.0b で修正され、後にアトラスが再構築される際に作り直されました。"
+      ],
+      "supersededByPatchIds": [
+        "0.1.0b",
+        "0.2.0",
+        "0.3.1"
+      ],
+      "affectedContentIds": [
+        "early-atlas-progression-waystone-sustain"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "クイックサマリー",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "ローンチから3日以内に、最初のホットフィックスとして 0.1.0b が登場しました。これはローンチ初期の映像を席巻していたガスグレネードとガスアローの爆発ダメージを引き下げ、進行を妨げていた一連のロード、返還、およびクラッシュ問題を修正しました。",
+        "本ページは 0.1.0b の完全な履歴です。何が変更されたか、その変更がローンチ初日のビルドにとってなぜ重要だったか、そして後続のパッチで再び変動したものと対照的に、どの修正が現在のクライアントを今も説明しているかを示します。現在のクライアントに対して確認できなかった事項は、推測するのではなく「不明」として明記しています。"
+      ],
+      "bullets": [
+        "0.1.0b は 2024-12-09、ローンチから3日後にリリース",
+        "ガスグレネードおよびガスアローの爆発ダメージを引き下げ",
+        "ロード、アトラスコントローラー返還、コンソールゲートウェイ、およびクラッシュを修正"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "歴史的注意喚起",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 アーリーアクセス — 0.1.0b ホットフィックスの時代",
+      "baselineNote": "本ページの現在のステータスに関する記述は、クライアント 0.5.4e に対して検証されています。",
+      "paragraphs": [
+        "0.1.0b は歴史的なホットフィックスであり、現在のプレイガイドではありません。これは数多くある迅速なローンチ週調整の最初のものであり、そこで触れられた数値は 0.2 から 0.5 にかけて再び変更されました。",
+        "現在、ローンチ初日のビルド動画を読むことは誤解を招きます。そこに映るガスグレネードとガスアローのループは、すでに 0.1.0b で弱体化され、その後さらに後続のバランス調整で変動しました。0.1.0b の映像は、ローンチ時の状態の記録として扱い、現在のチュートリアルとして扱わないでください。"
+      ],
+      "bullets": [
+        "0.1.0b = 最初の迅速な調整であり、最終設計ではない",
+        "ローンチ初日のビルド動画は歴史的記録であり、現在のガイドではない",
+        "以下の現在のルールに関する記述はすべて 0.5.4e に対して確認済み"
+      ]
+    },
+    {
+      "id": "hotfix-scope",
+      "order": 3,
+      "title": "0.1.0b が実際に変更した内容",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "耳目を集めたバランス変更は爆発ダメージです。ガスグレネードとガスアローの爆発は意図した数値をはるかに超えて与えており、0.1.0b はそれらを妥当な基準値まで引き下げました。これは強力だったローンチ初日の毒およびイグナイトループに直接影響しました。",
+        "バランスに並行して、0.1.0b は進行を妨げていたバグを修正しました。エリアのロード失敗、アトラスコントローラーがポイントを正しく返還しない問題、コンソールゲートウェイが機能しない問題、そしてセッションを終了させかねない複数のクラッシュ経路です。これらは進行を妨げるものだったため、迅速に配信されました。"
+      ],
+      "bullets": [
+        "ガスグレネードおよびガスアローの爆発ダメージを引き下げ",
+        "ロード失敗およびクラッシュ経路を修正",
+        "アトラスコントローラー返還およびコンソールゲートウェイを修正"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "パッチ系統のタイムライン",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "アーリーアクセス ローンチ",
+          "summary": "6クラス、12の昇進、3幕のキャンペーン、独立したアトラスエンドゲーム。",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0b",
+          "date": "2024-12-09",
+          "kind": "ホットフィックス",
+          "summary": "ガスグレネードおよびガスアローの爆発ダメージを引き下げ。ロード、アトラスコントローラー返還、コンソールゲートウェイ、およびクラッシュを修正。",
+          "tags": [
+            "hotfixes",
+            "balance"
+          ]
+        },
+        {
+          "code": "0.1.0c",
+          "date": "2024-12-13",
+          "kind": "エコノミーパッチ",
+          "summary": "初の戦利品および通貨の再バランスとウェイストーンプレフィックス強化。",
+          "tags": [
+            "balance",
+            "economy"
+          ]
+        },
+        {
+          "code": "0.2.0+",
+          "date": "2025-04-04",
+          "kind": "後続系統",
+          "summary": "数値を再び変動させた現在のメジャー系統（基準 0.5.4e）。",
+          "tags": [
+            "current-baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "change-impact",
+      "order": 5,
+      "title": "0.1.0b の変更とその行方",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Gas Grenade / Gas Arrow",
+          "verdict": "後に再調整",
+          "detail": "爆発ダメージは 0.1.0b で引き下げられ、スキルは後続のパッチで再調整されました。"
+        },
+        {
+          "area": "Loading failures",
+          "verdict": "修正および改善",
+          "detail": "0.1.0b はローンチ時のロードを修正し、後続のパッチでロードの安定性がさらに向上しました。"
+        },
+        {
+          "area": "Atlas Controller Refund",
+          "verdict": "後に作り直し",
+          "detail": "返還は 0.1.0b で修正され、その後に周囲のアトラスが再構築されました。"
+        },
+        {
+          "area": "Console Gateway",
+          "verdict": "修正済み",
+          "detail": "コンソールゲートウェイは 0.1.0b で機能する状態に復帰しました。"
+        },
+        {
+          "area": "Crash paths",
+          "verdict": "修正および改善",
+          "detail": "0.1.0b はクラッシュ経路を塞ぎ、安定性向上は 0.5 まで継続しました。"
+        }
+      ]
+    },
+    {
+      "id": "change-table",
+      "order": 6,
+      "title": "0.1.0b の変更と現在のクライアントの対照",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0b が変更した内容と、それがクライアント 0.5.4e と今も一致するかどうか。",
+      "columns": [
+        {
+          "key": "change",
+          "label": "変更"
+        },
+        {
+          "key": "launch",
+          "label": "0.1.0b 時の状態"
+        },
+        {
+          "key": "status",
+          "label": "現在のステータス (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "サイト内の現在の記事"
+        }
+      ],
+      "rows": [
+        {
+          "change": "ガスの爆発ダメージ",
+          "launch": "0.1.0b で引き下げ。",
+          "status": "後に再調整",
+          "entry": "gas-grenade-pathfinder ビルド"
+        },
+        {
+          "change": "Loading failures",
+          "launch": "0.1.0b で修正。",
+          "status": "さらに改善",
+          "entry": "クラスおよびビルドガイド"
+        },
+        {
+          "change": "Atlas Controller Refund",
+          "launch": "0.1.0b で修正。",
+          "status": "アトラス再構築",
+          "entry": "early-atlas-progression-waystone-sustain ガイド"
+        },
+        {
+          "change": "Console Gateway",
+          "launch": "0.1.0b で復帰。",
+          "status": "機能中",
+          "entry": "システムページ"
+        },
+        {
+          "change": "Crash paths",
+          "launch": "0.1.0b で塞がれた。",
+          "status": "継続的安定化",
+          "entry": "クラスおよびビルドガイド"
+        }
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "ローンチ初日と 0.1.0b 後の対照",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "ローンチ当日の 0.1.0（0.1.0b 以前）",
+      "oldText": "ガスグレネードとガスアローの爆発は意図をはるかに超えて与えられ、ローンチ初期の映像を席巻していました。ロード失敗やクラッシュが進行を妨げることがありました。",
+      "newLabel": "0.1.0b の後",
+      "newText": "爆発ダメージは妥当な基準値まで引き下げられ、進行を妨げていたロード、返還、ゲートウェイ、およびクラッシュのバグが修正されました。後続のパッチで数値は再び変動しました。"
+    },
+    {
+      "id": "build-impact",
+      "order": 8,
+      "title": "ビルドおよびスキルへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Gas Grenade builds",
+          "verdict": "ローンチ時に弱体化",
+          "detail": "0.1.0b の爆発引き下げは、ガスグレネードに依存していた毒およびイグナイトループに打撃を与えました。"
+        },
+        {
+          "area": "Gas Arrow builds",
+          "verdict": "ローンチ時に弱体化",
+          "detail": "ガスアローの爆発ダメージはガスグレネードと並行して引き下げられました。"
+        },
+        {
+          "area": "General progression",
+          "verdict": "解除",
+          "detail": "ロードとクラッシュの修正により、プレイヤーは以前行き詰まっていた状態を超えて進行できるようになりました。"
+        },
+        {
+          "area": "Other skills",
+          "verdict": "現在も有効",
+          "detail": "0.1.0b で触れられなかったスキルは、後続のパッチまでローンチ時の挙動を維持しました。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Gas Grenade / Gas Arrow damage",
+          "status": "changed-later",
+          "currentSummary": "0.1.0b は爆発ダメージを引き下げ、後続のパッチでスキルが再調整されました。",
+          "supersededBy": "0.1.0b, 0.2.0, 0.3.0",
+          "affectedContent": "gas-grenade-pathfinder ビルド"
+        },
+        {
+          "topic": "Loading and crash stability",
+          "status": "still-current",
+          "currentSummary": "0.1.0b の修正は最初の安定性パスであり、クライアントは現在はるかに安定しています。",
+          "supersededBy": "—",
+          "affectedContent": "クラスおよびビルドガイド"
+        },
+        {
+          "topic": "Atlas Controller Refund",
+          "status": "changed-later",
+          "currentSummary": "0.1.0b で修正され、その後に周囲のアトラスが再構築されました。",
+          "supersededBy": "0.1.0b, 0.2.0",
+          "affectedContent": "early-atlas-progression-waystone-sustain ガイド"
+        },
+        {
+          "topic": "Console Gateway",
+          "status": "still-current",
+          "currentSummary": "0.1.0b で復帰し、機能したままです。",
+          "supersededBy": "—",
+          "affectedContent": "システムページ"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "当時と現在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "ガスの爆発ダメージ",
+          "thenText": "ローンチ時の爆発は 0.1.0b 以前に過剰調整されていました。",
+          "nowText": "0.1.0b で引き下げられ、後続のパッチでスキルが再調整されました。"
+        },
+        {
+          "aspect": "Loading",
+          "thenText": "ローンチ時には一部のエリアロードが失敗していました。",
+          "nowText": "0.1.0b でロードを修正し、それ以降さらに安定性が向上しました。"
+        },
+        {
+          "aspect": "Crash paths",
+          "thenText": "ローンチ時には複数のクラッシュ経路がセッションを終了させていました。",
+          "nowText": "0.1.0b で塞がれ、安定性向上は 0.5 まで継続しました。"
+        },
+        {
+          "aspect": "Console Gateway",
+          "thenText": "コンソールゲートウェイはローンチ時には機能していませんでした。",
+          "nowText": "0.1.0b で復帰し、機能したままです。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "復帰プレイヤーチェックリスト",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "ローンチ初日のガスビルドを信じない",
+          "detail": "0.1.0b はすでにガスグレネード/アローの爆発ダメージを削っています。現在のビルドページを参照してください。"
+        },
+        {
+          "priority": "high",
+          "label": "安定したクライアントを想定",
+          "detail": "0.1.0b のロードとクラッシュの修正は最初のパスにすぎず、クライアントは現在はるかにしっかりしています。"
+        },
+        {
+          "priority": "medium",
+          "label": "アトラス返還を再学習",
+          "detail": "アトラスコントローラー返還は修正され、アトラスが再構築されました。古いアドバイスは時代遅れです。"
+        },
+        {
+          "priority": "medium",
+          "label": "コンソールゲートウェイは機能する",
+          "detail": "ローンチ時に離脱した場合、ゲートウェイは現在機能しています。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "フォーラム (ローンチ週 0.1.0)",
+          "context": "プレイヤーはローンチ初日にガスグレネードが過剰調整に感じられたと指摘しました。",
+          "quote": "Gas Grenade is deleting screens, this cannot be the final balance.",
+          "analysis": "0.1.0b の爆発ダメージ引き下げと一致します。"
+        },
+        {
+          "source": "Reddit (0.1.0b)",
+          "context": "視聴者はローンチ初日のガスビルドが安全かどうかを尋ねました。",
+          "quote": "Are these gas build guides still good or did they get nerfed?",
+          "analysis": "それらは 0.1.0b で削られ、後に再び変動しました。ローンチ時のガイドは歴史的なものとして扱ってください。"
+        },
+        {
+          "source": "YouTube コメント (0.1.0 映像)",
+          "context": "プレイヤーはローンチ時のクラッシュ状態を現在と混同しました。",
+          "quote": "Why did my game crash so much at 0.1.0 but not now?",
+          "analysis": "想定通りです。0.1.0b でクラッシュ経路が塞がれ、それ以降安定性が向上しました。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "影響を受けるコンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Gas Grenade Pathfinder ビルド",
+          "type": "build",
+          "trigger": "0.1.0b の爆発引き下げ",
+          "action": "0.5.4e のスキル数値に対して検証する。",
+          "status": "reviewing"
+        },
+        {
+          "name": "Lightning Spear Amazon ビルド",
+          "type": "build",
+          "trigger": "ローンチ時のクラスシステム",
+          "action": "現在のスキル挙動を確認する。",
+          "status": "queued"
+        },
+        {
+          "name": "Tempest Bell スキルページ",
+          "type": "skill",
+          "trigger": "ローンチ時のスキルセット",
+          "action": "ローンチ時に対する現在のスキル挙動を記録する。",
+          "status": "queued"
+        },
+        {
+          "name": "Weapon Set & Passive Points ガイド",
+          "type": "guide",
+          "trigger": "ローンチ時のシステム",
+          "action": "現在のルールに合わせて更新する。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "歴史的動画",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — 公式アーリーアクセス発表",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "0.1.0 のクラスおよびエンドゲームの方向性の公式発表。最初の1週間で何が変わったかは、ローンチホットフィックスノートと併せて読んでください。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "クラス公開",
+              "time": "00:30"
+            },
+            {
+              "label": "エンドゲームとアトラス",
+              "time": "04:10"
+            },
+            {
+              "label": "ローンチ時の状態",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.1.0b は何を変更しましたか？",
+          "answer": [
+            "ガスグレネードとガスアローの爆発ダメージを引き下げ、ロード、アトラスコントローラー返還、コンソールゲートウェイ、およびクラッシュを修正しました。"
+          ]
+        },
+        {
+          "question": "なぜローンチ初日のガスビルドが今は違って感じるのですか？",
+          "answer": [
+            "0.1.0b はすでに爆発ダメージを引き下げており、後続のパッチで数値が再び変動しました。現在のビルドページを信頼してください。"
+          ]
+        },
+        {
+          "question": "0.1.0b のクラッシュ修正は今も関連がありますか？",
+          "answer": [
+            "それらは最初の安定性パスであり、継続的な修正のおかげでクライアントは現在はるかに安定しています。"
+          ]
+        },
+        {
+          "question": "0.1.0b の変更のうち、今も有効なものはどれですか？",
+          "answer": [
+            "コンソールゲートウェイと広範な安定性の方向性は残っています。具体的なガスダメージの数値は後に再調整されました。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式 0.1.0 アーリーアクセス発表",
+          "description": "0.1.0 のクラス、キャンペーン、およびエンドゲームの範囲を確認できる公式ローンチ告知。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.1.0 FAQ とシステム",
+          "description": "ローンチ時のシステム、進行モデル、およびエンドゲームに関する公式詳細。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.1.0 ローンチノート",
+          "description": "クラス、キャンペーン、およびエンドゲームの範囲を網羅した公式ローンチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+          "description": "上記で参照したすべての公式 EA パッチおよびホットフィックススレッドの索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist",
+    "gas-grenade-pathfinder"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedSkillIds": [
+    "tempest-bell",
+    "twister"
+  ],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Path of Exile 2 公式 0.1.0 アーリーアクセス発表",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "Path of Exile 2 公式 0.1.0 FAQ とシステム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Path of Exile 2 公式 0.1.0 ローンチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.0b ローンチホットフィックス — ガスグレネード弱体化とクラッシュ修正",
+    "description": "0.1.0b ホットフィックスが変更した内容：ガスグレネード/アローの爆発ダメージ、ロードとクラッシュの修正、およびローンチ初週の安定性向上。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-1-0-launch-hotfix-build-breaks",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -14,7 +14,7 @@ import { ChangelogList } from "../content/sections/changelog-list";
 import { SourcesSection } from "../content/sections/sources-section";
 
 const rendererLabels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     notes: string;
     priority: string;
@@ -45,7 +45,7 @@ const rendererLabels: Record<
   },
 };
 
-const priorityLabels: Record<ContentLocale, Record<string, string>> = {
+const priorityLabels: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     core: "Core",
     situational: "Situational",
@@ -142,7 +142,7 @@ function renderSectionContent(
   section: SkillSection,
   locale: ContentLocale,
 ): ReactNode {
-  const labels = rendererLabels[locale];
+  const labels = rendererLabels[locale === "zh-cn" ? "zh-cn" : "en"];
 
   switch (section.type) {
     case "overview":
@@ -163,7 +163,9 @@ function renderSectionContent(
             <div className="skill-support-row" key={support.label}>
               <dt>{support.label}</dt>
               <dd className="skill-support-priority">
-                {priorityLabels[locale][support.priority] ?? support.priority}
+                {priorityLabels[locale === "zh-cn" ? "zh-cn" : "en"][
+                  support.priority
+                ] ?? support.priority}
               </dd>
               {support.notes.map((note) => (
                 <dd className="skill-support-note" key={note}>

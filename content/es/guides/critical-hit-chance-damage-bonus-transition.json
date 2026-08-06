@@ -1,0 +1,692 @@
+{
+  "id": "critical-hit-chance-damage-bonus-transition",
+  "slug": "critical-hit-chance-damage-bonus-transition",
+  "locale": "es",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Probabilidad de Crítico, Bonificación de Daño Crítico y la Transición de Crítico en Path of Exile 2",
+  "shortTitle": "Prob. de Crítico y Daño Crítico",
+  "summary": "Cómo funcionan la Probabilidad de Crítico y la Bonificación de Daño Crítico en Path of Exile 2, cómo se acumulan y cómo decidir si tu construcción debe apostar por un enfoque centrado en crítico o mantenerse en un camino sin crítico.",
+  "description": "Una guía de mecánicas sobre la Probabilidad de Crítico, la Bonificación de Daño Crítico, las tiradas de crítico por impacto y la transición de una construcción sin crítico a una con crítico en Path of Exile 2. Cubre el crítico base, la Probabilidad de Crítico aumentada, la interacción con la Precisión y una lista de comprobación para decidir.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/cast-on-critical-strike.webp",
+  "cardImage": "/images/skills/cast-on-critical-strike.webp",
+  "imageAlt": "Un icono de habilidad de soporte de Path of Exile 2 que representa los golpes críticos y el daño crítico",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Una comprensión básica de Impacto y daño en Path of Exile 2",
+    "Familiaridad con los modificadores Aumentados vs Más y cómo se apilan",
+    "Un personaje que haya pasado la campaña inicial con algo de equipo y elecciones pasivas"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "critical-hit",
+    "crit-chance",
+    "crit-damage",
+    "transition",
+    "scaling"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respuestas directas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "¿Qué es la Probabilidad de Crítico?",
+          "body": [
+            "La Probabilidad de Crítico es la probabilidad de que un Impacto determinado se convierta en un golpe crítico. Parte de un valor base (fijado por el arma para los ataques, o por la habilidad para los hechizos), puede recibir adiciones planas y luego se eleva por todos tus modificadores de Probabilidad de Crítico Aumentada sumados."
+          ]
+        },
+        {
+          "title": "¿Qué es la Bonificación de Daño Crítico?",
+          "body": [
+            "La Bonificación de Daño Crítico es el daño extra que inflige un golpe crítico por encima del impacto normal. En Path of Exile 2 la estadística se llama Bonificación de Daño Crítico (es la sucesora de la antigua terminología de 'Multiplicador de Golpe Crítico' de títulos anteriores). El valor base es una bonificación plana sobre el impacto; los coeficientes exactos dependen de la versión y se anotan como pendientes de verificación en PC."
+          ]
+        },
+        {
+          "title": "¿Cuándo debo cambiar a una construcción con crítico?",
+          "body": [
+            "No existe un umbral mágico único. Vale la pena considerar la transición cuando tu Probabilidad de Crítico final es lo bastante alta para que los críticos ocurran con frecuencia, tu Bonificación de Daño Crítico es significativa, tus impactos aterrizan de forma fiable y no estás renunciando a demasiada defensa o presupuesto para lograrlo. Usa la sección de lista de comprobación de transición para juzgar tu propio caso."
+          ]
+        },
+        {
+          "title": "¿Importa un crítico si el impacto falla?",
+          "body": [
+            "No. Un Impacto debe aterrizar primero (superar la comprobación de Precisión frente a Evasión para los ataques) antes de que la tirada de crítico importe. Si el impacto se esquiva, no hay daño ni crítico."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 2,
+      "title": "Definiciones clave",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los golpes críticos son uno de los sistemas peor interpretados de Path of Exile 2 porque varios números distintos comparten nombres similares. Acertar con el vocabulario es el primer paso para construir en torno al crítico correctamente.",
+        "La Probabilidad de Crítico Base es la probabilidad inicial de la fuente del impacto. Para los ataques proviene del índice de golpe crítico base del arma; para los hechizos proviene de la base propia de la habilidad. Es una propiedad de la fuente, no algo que apiles directamente.",
+        "La Probabilidad de Crítico Plana es cualquier bonificación aditiva a tu probabilidad de crítico que no es un porcentaje. Estos valores planos se suman a la base antes de aplicar los modificadores Aumentados.",
+        "La Probabilidad de Crítico Aumentada es la suma de todos tus modificadores de '+% a la Probabilidad de Crítico'. Como otros modificadores Aumentados, se suman en un único multiplicador. Esto es distinto de la probabilidad de crítico plana y no debe confundirse con ella.",
+        "La Bonificación de Daño Crítico es el daño extra que se aplica cuando un impacto hace crítico. Se expresa como una bonificación (por ejemplo un +X% plano sobre el impacto normal) en lugar de como un único número de 'multiplicador'. Todas las fuentes de Bonificación de Daño Crítico se suman."
+      ],
+      "bullets": [
+        "Probabilidad de Crítico Base: donde comienza la tirada de crítico (arma para ataques, habilidad para hechizos).",
+        "Probabilidad de Crítico Plana: puntos aditivos sumados a la base, aplicados antes de la Aumentada.",
+        "Probabilidad de Crítico Aumentada: todos los modificadores de +% probabilidad de crítico sumados en un multiplicador.",
+        "Bonificación de Daño Crítico: daño extra en un crítico, todas las fuentes se suman.",
+        "No confundas la probabilidad de crítico plana con la Aumentada: ocupan pasos distintos del cálculo."
+      ]
+    },
+    {
+      "id": "attack-vs-spell",
+      "order": 3,
+      "title": "Ataques vs hechizos: de dónde viene el crítico base",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "La Probabilidad de Crítico Base de un impacto proviene de fuentes distintas según si la habilidad es un ataque o un hechizo. Esto cambia la forma de subir la probabilidad de crítico.",
+      "columns": [
+        {
+          "key": "source",
+          "label": "Fuente"
+        },
+        {
+          "key": "base-crit-from",
+          "label": "Crítico base de"
+        },
+        {
+          "key": "notes",
+          "label": "Notas"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["attack"],
+          "cells": {
+            "source": "Ataque con arma",
+            "base-crit-from": "El índice de golpe crítico base del arma",
+            "notes": "Cada tipo de arma tiene su propio crítico base. Un arma base más alta hace que cada modificador Aumentado de probabilidad de crítico sea más efectivo."
+          }
+        },
+        {
+          "tags": ["spell"],
+          "cells": {
+            "source": "Hechizo",
+            "base-crit-from": "El índice de golpe crítico base propio de la habilidad",
+            "notes": "Los hechizos no usan el crítico base de un arma. Su suelo de crítico depende del hechizo concreto, que puede ser muy bajo para algunas habilidades."
+          }
+        },
+        {
+          "tags": ["flat"],
+          "cells": {
+            "source": "Adiciones planas",
+            "base-crit-from": "Modificadores y gemas de soporte que añaden probabilidad de crítico plana",
+            "notes": "El crítico plano se suma sobre la base y es especialmente valioso para habilidades de base baja que de otro modo nunca harían crítico."
+          }
+        },
+        {
+          "tags": ["increased"],
+          "cells": {
+            "source": "Probabilidad de crítico aumentada",
+            "base-crit-from": "Todos los modificadores de +% Probabilidad de Crítico sumados",
+            "notes": "Escala el total (base + plana). Más efectivo cuando la parte base o plana ya es más alta."
+          }
+        }
+      ],
+      "note": "Los valores de crítico base del arma difieren según el tipo base y dependen de la versión; confirma los números exactos en el juego. La estructura anterior es estable entre versiones."
+    },
+    {
+      "id": "crit-check",
+      "order": 4,
+      "title": "Cómo ocurre la tirada de crítico",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un golpe crítico se decide por una única tirada aleatoria contra tu Probabilidad de Crítico por cada 'comprobación de crítico'. El número de comprobaciones de crítico depende de cómo la habilidad inflige daño, y aquí es donde muchos jugadores simplifican de más.",
+        "Para un Impacto único normal, se tira una comprobación de crítico. Para una habilidad que golpea varias veces (multi-impacto), cada impacto separado realiza su propia comprobación de crítico, así que algunos impactos pueden hacer crítico y otros no. Para las habilidades canalizadas, cada tic de daño suele ser su propia comprobación. Para el daño con el tiempo, la interacción de crítico sigue las reglas actuales de Path of Exile 2 para afecciones y DoT, que difieren de un impacto normal y deben obtenerse según la versión actual.",
+        "De forma crítica, el impacto debe aterrizar primero. Para los ataques, la tirada de Precisión frente a Evasión ocurre antes de la tirada de crítico: si el ataque se esquiva, nunca se convierte en crítico. Una tirada de crítico puede, por tanto, 'desperdiciarse' en un impacto que falla. Los modificadores Afortunado y Desafortunado, donde apliquen, afectan a cómo se realiza la tirada de crítico; describe su comportamiento según el tooltip actual del juego."
+      ],
+      "bullets": [
+        "Una comprobación de crítico por Impacto, tirada contra tu Probabilidad de Crítico.",
+        "Las habilidades de multi-impacto tiran crítico por separado para cada impacto.",
+        "Las habilidades canalizadas suelen tirar por cada tic de daño.",
+        "El DoT y las afecciones siguen sus propias reglas de crítico actuales: obtén sus datos.",
+        "Un ataque esquivado no puede hacer crítico; la precisión condiciona la relevancia del crítico."
+      ]
+    },
+    {
+      "id": "formula",
+      "order": 5,
+      "title": "Cómo se acumulan la Probabilidad de Crítico y la Bonificación de Daño Crítico",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La estructura de acumulación es la misma entre versiones, incluso cuando cambian los coeficientes exactos. La Probabilidad de Crítico Final se construye a partir de la base más cualquier probabilidad de crítico plana, y luego todos los modificadores de Probabilidad de Crítico Aumentada multiplican esa suma.",
+        "En términos de fórmula: Probabilidad de Crítico Final = (Probabilidad de Crítico Base + Probabilidad de Crítico Plana) x (1 + suma de Probabilidad de Crítico Aumentada%). La Bonificación de Daño Crítico se maneja por separado: cuando un impacto hace crítico, inflige el daño del impacto normal más la Bonificación de Daño Crítico sumada. Ambos sistemas suman sus bonificaciones de la misma categoría; luego las categorías distintas y cualquier multiplicador Más multiplican.",
+        "Los números siguientes son ejemplos didácticos con valores supuestos y están pendientes de verificación en PC. Ilustran la estructura, no los coeficientes exactos en vivo."
+      ],
+      "bullets": [
+        "Parte de la Probabilidad de Crítico Base (arma para ataques, habilidad para hechizos).",
+        "Suma la Probabilidad de Crítico Plana sobre la base.",
+        "Multiplica esa suma por (1 + total de Probabilidad de Crítico Aumentada%).",
+        "En un crítico, suma la Bonificación de Daño Crítico acumulada al daño del impacto.",
+        "Las bonificaciones Aumentadas de la misma categoría se suman; las categorías distintas y los multiplicadores Más multiplican."
+      ]
+    },
+    {
+      "id": "formula-variables",
+      "order": 6,
+      "title": "Variables de la fórmula y un ejemplo resuelto",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cada variable del cálculo de crítico, qué la alimenta y un ejemplo didáctico supuesto. Los coeficientes exactos están pendientes de verificación en PC.",
+      "columns": [
+        {
+          "key": "variable",
+          "label": "Variable"
+        },
+        {
+          "key": "meaning",
+          "label": "Qué significa"
+        },
+        {
+          "key": "example",
+          "label": "Ejemplo supuesto"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["base"],
+          "cells": {
+            "variable": "Probabilidad de Crítico Base",
+            "meaning": "Crítico inicial del arma (ataque) o habilidad (hechizo)",
+            "example": "10% de una base de daga"
+          }
+        },
+        {
+          "tags": ["flat"],
+          "cells": {
+            "variable": "Probabilidad de Crítico Plana",
+            "meaning": "Puntos aditivos sumados antes de la Aumentada",
+            "example": "+30% crítico plano de equipo y soportes"
+          }
+        },
+        {
+          "tags": ["increased"],
+          "cells": {
+            "variable": "Suma de Probabilidad de Crítico Aumentada",
+            "meaning": "Todos los modificadores de +% probabilidad de crítico sumados",
+            "example": "+100% Aumentada (multiplicador total 2.0)"
+          }
+        },
+        {
+          "tags": ["final"],
+          "cells": {
+            "variable": "Probabilidad de Crítico Final",
+            "meaning": "(Base + Plana) x (1 + Aumentada)",
+            "example": "(10% + 30%) x 2.0 = 80%"
+          }
+        },
+        {
+          "tags": ["bonus"],
+          "cells": {
+            "variable": "Bonificación de Daño Crítico",
+            "meaning": "Daño extra en un crítico, todas las fuentes sumadas",
+            "example": "+75% de bonificación (el crítico inflige 175% del impacto), pendiente de verificación en PC"
+          }
+        }
+      ],
+      "note": "El ejemplo usa números didácticos supuestos. Confirma en el juego los valores base en vivo y la Bonificación de Daño Crítico base."
+    },
+    {
+      "id": "accuracy-interaction",
+      "order": 7,
+      "title": "La precisión sigue condicionando la relevancia del crítico",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La probabilidad de crítico no sirve de nada en un impacto que nunca aterriza. Para las habilidades de ataque, la Precisión se enfrenta a la Evasión del enemigo antes de la tirada de crítico. Si fallas, la tirada de crítico nunca se realiza, así que el ataque no inflige daño alguno.",
+        "Esto significa que apilar Probabilidad de Crítico sin suficiente Precisión es una trampa. Una Probabilidad de Crítico alta junto con una Probabilidad de Impacto baja produce pocos críticos reales, porque la mayoría de los ataques se esquivan antes de poder hacer crítico. Las habilidades de hechizo que no pueden fallar por evasión aún deben conectar con el objetivo, así que el posicionamiento y el comportamiento de los proyectiles siguen importando.",
+        "Al evaluar una transición a crítico, empareja siempre tu Probabilidad de Crítico con tu Probabilidad de Impacto real. Una Probabilidad de Crítico más baja que realmente aterriza supera a una Probabilidad de Crítico más alta que se esquiva constantemente."
+      ],
+      "bullets": [
+        "Los ataques tiran Precisión frente a Evasión antes de la tirada de crítico.",
+        "Un impacto esquivado no inflige daño y no puede hacer crítico.",
+        "Probabilidad de Crítico alta con Probabilidad de Impacto baja desperdicia la mayoría de las tiradas.",
+        "Empareja la Probabilidad de Crítico con la Probabilidad de Impacto real al planear la transición."
+      ]
+    },
+    {
+      "id": "transition-checklist",
+      "order": 8,
+      "title": "Lista de comprobación de transición: ¿deberías ir a crítico?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Responde a las preguntas sobre tu construcción actual. La herramienta señala el siguiente paso más útil para decidir si apostar por un enfoque centrado en crítico.",
+      "controls": [
+        {
+          "id": "base-crit",
+          "label": "La Probabilidad de Crítico Base de tu habilidad",
+          "options": [
+            {
+              "label": "Baja (menos del 5%)",
+              "value": "low"
+            },
+            {
+              "label": "Moderada (5% a 10%)",
+              "value": "moderate"
+            },
+            {
+              "label": "Alta (10% o más)",
+              "value": "high"
+            }
+          ]
+        },
+        {
+          "id": "final-crit",
+          "label": "Tu Probabilidad de Crítico Final tras las bonificaciones Aumentadas",
+          "options": [
+            {
+              "label": "Por debajo del 30%",
+              "value": "low"
+            },
+            {
+              "label": "30% a 60%",
+              "value": "mid"
+            },
+            {
+              "label": "Por encima del 60%",
+              "value": "high"
+            }
+          ]
+        },
+        {
+          "id": "hit-chance",
+          "label": "Tu Probabilidad de Impacto fiable sobre el objetivo",
+          "options": [
+            {
+              "label": "Fiable (por encima del 90%)",
+              "value": "reliable"
+            },
+            {
+              "label": "Poco fiable",
+              "value": "unreliable"
+            }
+          ]
+        },
+        {
+          "id": "content",
+          "label": "Contenido principal para el que construyes",
+          "options": [
+            {
+              "label": "Mapeo / velocidad de limpieza",
+              "value": "mapping"
+            },
+            {
+              "label": "Jefes / objetivo único",
+              "value": "bossing"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Arregla la precisión antes que nada",
+          "when": {
+            "hit-chance": "unreliable"
+          },
+          "steps": [
+            "Sube la Precisión o cambia a una habilidad que no pueda ser esquivada.",
+            "Revisita el crítico solo cuando tu Probabilidad de Impacto sea fiablemente superior al 90%.",
+            "Recuerda: un ataque esquivado nunca hace crítico, así que la inversión en crítico se desperdicia hasta que los impactos aterrizan."
+          ]
+        },
+        {
+          "title": "El crítico aún no vale la pena forzarlo",
+          "when": {
+            "final-crit": "low"
+          },
+          "steps": [
+            "Tu Probabilidad de Crítico Final es demasiado baja para que los críticos impulsen el daño.",
+            "Prefiere una ruta de escalado con multiplicador Más o daño plano.",
+            "Revisita el crítico solo después de poder subir la probabilidad de crítico base o plana de forma significativa."
+          ]
+        },
+        {
+          "title": "Apóyate en el crítico como tu daño principal",
+          "when": {
+            "final-crit": "high",
+            "hit-chance": "reliable"
+          },
+          "steps": [
+            "Tu Probabilidad de Crítico es alta y los impactos aterrizan, así que los críticos son frecuentes.",
+            "Invierte en Bonificación de Daño Crítico y Cargas de Poder donde estén disponibles.",
+            "Sigue comprobando que no se sacrifican defensas ni presupuesto para mantenerlo."
+          ]
+        },
+        {
+          "title": "Equilibra el crítico con el tiempo sobre objetivo único",
+          "when": {
+            "content": "bossing",
+            "final-crit": "mid"
+          },
+          "steps": [
+            "Una Probabilidad de Crítico Media es aceptable para jefes si los impactos son fiables y frecuentes.",
+            "Añade probabilidad de crítico plana o tiempo de Carga de Poder para suavizar la varianza con jefes.",
+            "Compáralo con una configuración sin crítico de multiplicador Más antes de sobre-invertir."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Guía general de transición",
+        "steps": [
+          "Confirma que los impactos aterrizan de forma fiable antes de valorar el crítico en absoluto.",
+          "Sube la probabilidad de crítico base o plana para que los modificadores Aumentados tengan algo que escalar.",
+          "Añade la Bonificación de Daño Crítico solo después de que los críticos ocurran con la frecuencia suficiente para importar.",
+          "Vigila las defensas y el presupuesto que renuncias para alcanzar la configuración de crítico."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 9,
+      "title": "Ejemplos resueltos",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Dos casos ilustrativos que muestran cómo el crítico base y el crítico plano cambian el valor de la misma inversión en Probabilidad de Crítico Aumentada. Los números son valores didácticos supuestos, pendientes de verificación en PC.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "setup",
+          "label": "Configuración"
+        },
+        {
+          "key": "result",
+          "label": "Resultado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["low-base"],
+          "cells": {
+            "case": "Hechizo de base baja (base supuesta 5%)",
+            "setup": "5% base + 0 plano + 100% Aumentada = (5% + 0) x 2.0",
+            "result": "10% de Probabilidad de Crítico Final. El crítico es raro; forzarlo requiere primero adiciones de crítico plano."
+          }
+        },
+        {
+          "tags": ["high-base"],
+          "cells": {
+            "case": "Ataque de daga de base alta (base supuesta 15%)",
+            "setup": "15% base + 30% plano + 100% Aumentada = (15% + 30%) x 2.0",
+            "result": "90% de Probabilidad de Crítico Final. La misma inversión Aumentada rinde mucho más gracias a la base y el plano más altos."
+          }
+        }
+      ],
+      "note": "El contraste muestra por qué el crítico plano y base importan tanto como el porcentaje Aumentado. Los valores base en vivo exactos están pendientes de verificación en PC."
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "Errores comunes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La mayoría de los problemas de crítico vienen de malinterpretar el cálculo en lugar de mala suerte. Evitar estos ahorra mucho más daño que cualquier tirada aislada."
+      ],
+      "bullets": [
+        "Apilar Probabilidad de Crítico Aumentada sobre una base casi nula, así que el número final se queda bajo.",
+        "Confundir la probabilidad de crítico plana con la Aumentada y contar una dos veces como la otra.",
+        "Invertir en Probabilidad de Crítico mientras la Precisión es demasiado baja, así que la mayoría de los ataques se esquivan antes de poder hacer crítico.",
+        "Asumir que todas las habilidades hacen crítico igual; multi-impacto, canalización y DoT realizan comprobaciones distintas o diferentes.",
+        "Creer que una regla única de 'alcanza X%' se aplica a cada construcción: el umbral correcto depende de la base, el plano, la bonificación y el tiempo de actividad.",
+        "Renunciar a demasiada defensa o presupuesto para alcanzar una configuración de crítico que apenas supera a un camino sin crítico."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 11,
+      "title": "Puntos de confusión frecuentes",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusiones parafraseadas que los jugadores plantean con frecuencia sobre la probabilidad de crítico y el daño crítico en Path of Exile 2.",
+      "cards": [
+        {
+          "title": "Multiplicador de Crítico vs Bonificación de Daño Crítico",
+          "tag": "terminology",
+          "body": [
+            "Los jugadores todavía lo llaman 'multiplicador de crítico'. En Path of Exile 2 el nombre actual es Bonificación de Daño Crítico, y se expresa como una bonificación sumada en un crítico en lugar de un valor de multiplicador único."
+          ]
+        },
+        {
+          "title": "El crítico plano no hace nada",
+          "tag": "misconception",
+          "body": [
+            "Algunos creen que la probabilidad de crítico plana es inútil. En habilidades de base baja es la forma más eficiente de hacer que los críticos ocurran, porque la Aumentada solo escala lo que ya proporcionan la base más la plana."
+          ]
+        },
+        {
+          "title": "Por qué mis críticos se sienten aleatorios en jefes",
+          "tag": "variance",
+          "body": [
+            "Con Probabilidad de Crítico Media y pocos impactos por segundo, los críticos llegan en ráfagas. Un daño más suave contra jefes necesita mayor Probabilidad de Crítico, más ataques o tiempo de Carga de Poder, no solo más Aumentada."
+          ]
+        },
+        {
+          "title": "Los impactos esquivados 'deberían haber hecho crítico'",
+          "tag": "accuracy",
+          "body": [
+            "Los jugadores culpan al RNG cuando el problema real es la Precisión. Un ataque esquivado se elimina antes de la tirada de crítico, así que no puede ocurrir crítico alguno independientemente de la Probabilidad de Crítico."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 12,
+      "title": "Guía en vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Guía completa de Crítico - Path of Exile 2",
+          "creator": "silentstill",
+          "description": "Una explicación completa de los golpes críticos en Path of Exile 2: crítico base, Probabilidad de Crítico Aumentada, Bonificación de Daño Crítico, comprobaciones de crítico por impacto y cómo planear una construcción con crítico.",
+          "takeaway": "Construye el crítico desde la base hacia arriba: sube primero la probabilidad de crítico base o plana, luego escala con la Aumentada, y solo añade la Bonificación de Daño Crítico cuando los críticos ocurren con frecuencia.",
+          "url": "https://www.youtube.com/watch?v=QRGpfmRYqt8",
+          "timestamps": [
+            {
+              "label": "Introducción",
+              "time": "0:00"
+            },
+            {
+              "label": "Probabilidad de golpe crítico base",
+              "time": "1:20"
+            },
+            {
+              "label": "Probabilidad de Crítico Aumentada",
+              "time": "3:45"
+            },
+            {
+              "label": "Bonificación de Daño Crítico",
+              "time": "6:10"
+            },
+            {
+              "label": "Multi-impacto y comprobaciones de crítico por impacto",
+              "time": "9:30"
+            },
+            {
+              "label": "Lista de comprobación de transición",
+              "time": "12:15"
+            },
+            {
+              "label": "Resumen",
+              "time": "15:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Preguntas frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿Es la Bonificación de Daño Crítico lo mismo que el antiguo Multiplicador de Crítico?",
+          "answer": [
+            "En Path of Exile 2 el nombre actual es Bonificación de Daño Crítico. Representa el daño extra infligido en un golpe crítico, y todas las fuentes se suman. Los coeficientes base exactos dependen de la versión y se anotan como pendientes de verificación en PC."
+          ]
+        },
+        {
+          "question": "¿Por qué apilar Probabilidad de Crítico Aumentada no sube mis críticos casi nada?",
+          "answer": [
+            "La Probabilidad de Crítico Aumentada multiplica tu probabilidad de crítico (base + plana). Si tus valores base y planos están cerca de cero, incluso un total Aumentado grande produce un número final pequeño. Sube primero la probabilidad de crítico base o plana."
+          ]
+        },
+        {
+          "question": "¿Hacen crítico el daño con el tiempo y las afecciones en Path of Exile 2?",
+          "answer": [
+            "La interacción de crítico de DoT y afecciones sigue las reglas actuales de Path of Exile 2, que difieren de un impacto normal y pueden cambiar entre versiones. Obtén el comportamiento actual del tooltip del juego antes de basarte en él."
+          ]
+        },
+        {
+          "question": "Si mi Probabilidad de Crítico es alta pero rara vez hago crítico, ¿qué falla?",
+          "answer": [
+            "Comprueba primero tu Probabilidad de Impacto. Para los ataques, un impacto esquivado se elimina antes de la tirada de crítico, así que una Precisión baja desperdicia tu Probabilidad de Crítico. Para los hechizos, confirma que los impactos conectan realmente con el objetivo."
+          ]
+        },
+        {
+          "question": "¿Existe un porcentaje único de Probabilidad de Crítico donde siempre deba pasar a crítico?",
+          "answer": [
+            "No. El punto correcto depende de tu crítico base, crítico plano, Bonificación de Daño Crítico, fiabilidad de impacto y frecuencia de golpe. Usa la lista de comprobación de transición para juzgar tu propia construcción en lugar de un umbral universal."
+          ]
+        },
+        {
+          "question": "¿Tiran todas las habilidades el crítico de la misma forma?",
+          "answer": [
+            "No. Un Impacto único tira una vez, las habilidades de multi-impacto tiran por impacto y las canalizadas suelen tirar por tic. Cada una se comporta distinto, así que la inversión en crítico escala distinto según el tipo de habilidad."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Fuentes y verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2 Wiki (oficial)",
+          "description": "Referencia oficial de la wiki de Path of Exile 2 para golpes críticos y mecánicas de combate relacionadas",
+          "url": "https://poe2wiki.net/"
+        },
+        {
+          "label": "silentstill - Guía completa de Crítico (YouTube)",
+          "description": "Vídeo comunitario explicativo de las mecánicas de crítico en Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=QRGpfmRYqt8"
+        },
+        {
+          "label": "Centro de guías de Maxroll PoE2",
+          "description": "Centro comunitario de mecánicas y construcciones de Path of Exile 2",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Registro de cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial de la guía de Probabilidad de Crítico, Bonificación de Daño Crítico y transición para Path of Exile 2 Early Access 0.5.4.",
+            "Se añadieron respuestas rápidas, definiciones, crítico base de ataque vs hechizo, comportamiento de la comprobación de crítico, fórmula de acumulación, interacción con la precisión, diagnóstico de transición, ejemplos resueltos, errores comunes, confusiones de la comunidad, vídeo, preguntas frecuentes y fuentes."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Wiki (oficial)",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "official"
+    },
+    {
+      "label": "silentstill - Guía completa de Crítico (YouTube)",
+      "url": "https://www.youtube.com/watch?v=QRGpfmRYqt8",
+      "sourceType": "community"
+    },
+    {
+      "label": "Centro de guías de Maxroll PoE2",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Probabilidad de Crítico, Bonificación de Daño Crítico y Transición de Crítico en PoE 2",
+    "description": "Cómo funcionan la Probabilidad de Crítico y la Bonificación de Daño Crítico en Path of Exile 2, cómo se acumulan y cómo decidir si conviene transicionar tu construcción a un enfoque centrado en crítico.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "critical-hit-chance-damage-bonus-transition",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

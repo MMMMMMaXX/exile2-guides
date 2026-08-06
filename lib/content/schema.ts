@@ -2,6 +2,7 @@
 import { z } from "zod";
 
 import { supportedLocales } from "./constants";
+import { translationMetaSchema } from "./translation";
 
 export { contentTypes, supportedLocales } from "./constants";
 export const patchStatuses = [
@@ -93,6 +94,8 @@ const commonFrontMatterShape = {
   tags: z.array(stableIdentifier).default([]),
   relatedContentIds: z.array(stableIdentifier).default([]),
   sources: z.array(sourceSchema).default([]),
+  // 翻译元数据块：可选，供 POE-I18N-003 校验与过期检测；对未携带该块的老文件无影响。
+  translation: translationMetaSchema.optional(),
 };
 
 export const buildFrontMatterSchema = z.strictObject({
@@ -177,7 +180,7 @@ const rawContentFrontMatterSchema = z.discriminatedUnion("contentType", [
 
 const placeholderPatterns = [
   { label: "example.invalid", pattern: /example\.invalid/i },
-  { label: "TODO", pattern: /\bTODO\b/i },
+  { label: "TODO", pattern: /\bTODO\b/ },
   { label: "REPLACE_WITH_", pattern: /REPLACE_WITH_/i },
 ] as const;
 

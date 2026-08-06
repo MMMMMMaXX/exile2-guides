@@ -1,0 +1,824 @@
+{
+  "id": "corrupting-wings-gemling-legionnaire",
+  "slug": "corrupting-wings-gemling-legionnaire",
+  "locale": "ru",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Руководство по билду Corrupting Wings Gemling: Corrupting Cry, накопление качества и прогрессия",
+  "shortTitle": "Corrupting Wings Gemling",
+  "summary": "Набор инструментов warcry для патча 0.5.4: в версии 0.5 Corrupting Cry стало срабатывающим умением, масштабируемым уровнем warcry/качеством/поддержками. Охватывает управление здоровьем, пороги перезарядки, Cast on Dodge и высокозатратный уровень Block.",
+  "description": "Руководство по билду Path of Exile 2 Corrupting Wings Gemling Legionnaire для патча 0.5.4: триггер Corrupting Cry, накопление качества, таймлайн warcry, управление здоровьем и реальные временные метки видео.",
+  "classId": "mercenary",
+  "ascendancyId": "gemling-legionnaire",
+  "mainSkillIds": [
+    "fortifying-cry",
+    "corrupting-cry"
+  ],
+  "secondarySkillIds": [
+    "decree-of-flight",
+    "cast-on-dodge"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking",
+    "cooldown",
+    "mobility"
+  ],
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "screenwide"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-05",
+  "heroImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "cardImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "imageAlt": "Наёмник Gemling Legionnaire, испускающий Warcry, который вызывает Corrupted Blood по всему полю боя",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "gemling-legionnaire",
+    "leveling",
+    "mercenary",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Обзор билда",
+      "paragraphs": [
+        "Corrupting Wings Gemling — это набор инструментов warcry Наёмника: крик Warcry запускает Corrupting Cry, накладывая стеки Corrupted Blood (хаос/физический DoT) на врагов в радиусе. Восхождение Gemling Legionnaire превращает качество (Quality) напрямую в атрибуты и урон, поэтому «накопление качества» — главный рычаг масштабирования.",
+        "В версии 0.5 Corrupting Cry стало срабатывающим умением — это больше не основное умение, нажимаемое вручную, а триггерится через Warcry. Урон поэтому идёт от уровня warcry, камней поддержки, качества и конверсии атрибутов Gemling, а не от одиночных применений.",
+        "Это руководство объясняет таймлайн warcry, управление здоровьем, пороги перезарядки и высокозатратный уровень Block, причём все клиентские числа помечены как требующие проверки на ПК. Баги релиза 0.5 и последующие исправления разнесены отдельно."
+      ],
+      "bullets": [
+        "Warcry запускает Corrupting Cry → стеки Corrupted Blood.",
+        "Накопление качества Gemling конвертирует атрибуты и урон.",
+        "После 0.5 Corrupting Cry срабатывает автоматически, а не является ручным основным умением."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Плюсы и минусы",
+      "pros": [
+        "Зачистка через триггер warcry почти однокнопочная, отличное ощущение масштабного экрана.",
+        "Накопление качества на Gemling даёт огромную отдачу.",
+        "Высокозатратный Block (например, Svalinn) даёт большой запас прочности.",
+        "Мобильность (Cast on Dodge / Decree of Flight) гибкая."
+      ],
+      "cons": [
+        "Раннее управление здоровьем и маной впритык.",
+        "Ритм перезарядки и перекатов требует тренировки.",
+        "Высокозатратный уровень требует конкретных уникальных предметов, высокий порог входа.",
+        "Баги релиза 0.5 влияли на ощущения; подтвердите, что исправлено."
+      ]
+    },
+    {
+      "id": "warcry-cycle",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Как читается цикл: Warcry → Триггер",
+      "paragraphs": [
+        "Кричите Fortifying Cry ради баффов самозащиты/эхо и чтобы запускать стеки Corrupting Cry; Corrupted Blood перескакивает между врагами.",
+        "Decree of Flight и Cast on Dodge дают мобильность: первый активно поднимает в воздух, второй срабатывает при уклонении, уменьшая время стояния на месте.",
+        "Высокозатратный вариант использует Wings / двойной Cast on Dodge для более длинных рывков; обычная версия перекатывается. Структура цикла та же, разница — в запасе прочности и перемещении."
+      ],
+      "bullets": [
+        "Fortifying Cry → запускает стеки Corrupting Cry.",
+        "Decree of Flight / Cast on Dodge дают мобильность.",
+        "Высокозатратный вариант = более длинный рывок и больше запаса."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Путь прокачки",
+      "steps": [
+        {
+          "label": "Уровни 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Зачищайте базовыми выстрелами/гранатами; Warcry — резервная защита после разблокировки."
+          ]
+        },
+        {
+          "label": "Уровни 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Возьмите Fortifying Cry, начните запускать дополнительный урон через Warcry; добавьте узлы здоровья/сопротивлений."
+          ]
+        },
+        {
+          "label": "Уровни 30–42 — Разблокировка Gemling",
+          "levelRange": "30–42",
+          "body": [
+            "Выберите Gemling Legionnaire; качество начинает конвертироваться в атрибуты; формируется цепочка триггера Corrupting Cry."
+          ]
+        },
+        {
+          "label": "Уровни 43–60 — Ранние карты",
+          "levelRange": "43–60",
+          "body": [
+            "Запускайте цикл warcry на низком бюджете; решите здоровье/сопротивления, управляйте маной и перезарядкой."
+          ]
+        },
+        {
+          "label": "Уровень 60+ — Подготовка к эндгейму",
+          "levelRange": "60+",
+          "body": [
+            "Прокачивайте уровень/качество warcry, перезарядку и Block; гонитесь за топовыми уникальными предметами после прохождения чек-листа."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Настройка умений",
+      "groups": [
+        {
+          "label": "Основные умения",
+          "skills": [
+            {
+              "displayName": "Fortifying Cry",
+              "skillId": "fortifying-cry",
+              "role": "Основной Warcry: самозащита/эхо и запускает Corrupting Cry.",
+              "supportSkillIds": [
+                "echoing-cry",
+                "lifetap"
+              ],
+              "whyUse": [
+                "Это начало цикла; без него нет ни триггера, ни оборонительного баффа."
+              ],
+              "whenReplace": [
+                "Никогда не заменяется; ядро набора."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих случаях, босс больше опирается на самозащиту."
+              ],
+              "notes": [
+                "Используется каждые несколько секунд; ритм задаётся перезарядкой."
+              ]
+            },
+            {
+              "displayName": "Corrupting Cry",
+              "skillId": "corrupting-cry",
+              "role": "Умение накопления, запускаемое warcry, основной источник урона.",
+              "supportSkillIds": [
+                "corrupted-blood",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "После 0.5 — срабатывающее умение; урон от уровня/качества/поддержек."
+              ],
+              "whenReplace": [
+                "Не заменяется, но требует наличия триггера Warcry."
+              ],
+              "mappingBossingDiff": [
+                "Масштабная зачистка; сфокусированные стеки на боссе."
+              ],
+              "notes": [
+                "После 0.5 срабатывает автоматически, не ручное основное умение."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Мобильность и поддержка",
+          "skills": [
+            {
+              "displayName": "Decree of Flight",
+              "skillId": "decree-of-flight",
+              "role": "Активный взлёт-мобильность, избегает наземных эффектов.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Ключевая мобильность, снижает смерти от стояния на месте."
+              ],
+              "whenReplace": [
+                "Сохранять как мобильность."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих случаях."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Dodge",
+              "skillId": "cast-on-dodge",
+              "role": "Запускает эффекты при уклонении, добавляет мобильность/урон.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Высокозатратный вариант использует двойной Cast on Dodge для рывка; в обычном — опционально."
+              ],
+              "whenReplace": [
+                "Обязателен в высокозатратном, опционален в обычном."
+              ],
+              "mappingBossingDiff": [
+                "Высокозатратный вариант опирается сильнее."
+              ],
+              "notes": [
+                "Играбельно и без него, просто мобильности меньше."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Порядок восхождения",
+      "steps": [
+        {
+          "label": "Gemling Legionnaire — Первые узлы",
+          "body": [
+            "В приоритете узлы качество→атрибут; предпосылка для накопления качества."
+          ]
+        },
+        {
+          "label": "Проверка защиты",
+          "body": [
+            "Если выживание на T15+ шатко, добавьте узлы Block/здоровье; не меняйте всё ради урона."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Пассивное дерево",
+      "steps": [
+        {
+          "label": "Кампания",
+          "body": [
+            "Берите узлы здоровья, сопротивлений, баффа warcry и качества; не прокладывайте заранее путь к колёсам Block."
+          ]
+        },
+        {
+          "label": "Ранние карты",
+          "body": [
+            "Переходите на вариант с триггером; сначала здоровье, перезарядка и качество."
+          ]
+        },
+        {
+          "label": "Эндгейм",
+          "body": [
+            "После решения защиты и перезарядки вкладывайтесь в колёса качества/урона; сравнивайте снаряжение по уровню."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Экипировка",
+      "slots": [
+        {
+          "slot": "Основная рука / Набор оружия",
+          "recommendations": [
+            "Выберите базу, поддерживающую цепочку warcry / триггера; смена набора оружия меняет конфигурацию между зачисткой и боссом."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Уровень Warcry / качество камня",
+              "reason": "Напрямую масштабирует триггер и накопление качества."
+            },
+            {
+              "tier": "recommended",
+              "label": "Здоровье и сопротивления",
+              "reason": "Базовый порог раннего выживания."
+            },
+            {
+              "tier": "optional",
+              "label": "Снижение перезарядки",
+              "reason": "Более быстрый ритм warcry."
+            },
+            {
+              "tier": "luxury",
+              "label": "Моды, связанные с Block",
+              "reason": "Порог высокозатратного варианта."
+            }
+          ],
+          "notes": [
+            "Пассивные очки набора оружия переключают две конфигурации (см. руководство по набору оружия)."
+          ]
+        },
+        {
+          "slot": "Броня / Сапоги / Шлем",
+          "recommendations": [
+            "Здоровье, сопротивления и блок; скорость передвижения на сапогах."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Здоровье и два капленных сопротивления",
+              "reason": "Никакой урон не окупает смерть."
+            },
+            {
+              "tier": "recommended",
+              "label": "Шанс блока",
+              "reason": "Оборонительная граница высокозатратного варианта."
+            },
+            {
+              "tier": "optional",
+              "label": "Скорость передвижения",
+              "reason": "Лучшее позиционирование и перекаты."
+            },
+            {
+              "tier": "luxury",
+              "label": "Явное качество/урон",
+              "reason": "После защиты."
+            }
+          ],
+          "notes": [
+            "Svalinn — ядро Block высокозатратного варианта, а не порог входа."
+          ]
+        },
+        {
+          "slot": "Кольца / Амулет / Пояс",
+          "recommendations": [
+            "Атрибуты, сопротивления, здоровье и блок; поддержка маны там, где нужно."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Атрибуты для экипировки оружия и камней",
+              "reason": "Невозможность надеть — бесполезно."
+            },
+            {
+              "tier": "recommended",
+              "label": "Сопротивления и здоровье",
+              "reason": "Завершает оборонительную оболочку."
+            },
+            {
+              "tier": "optional",
+              "label": "Block / Мана",
+              "reason": "Бесплатная защита от украшений."
+            },
+            {
+              "tier": "luxury",
+              "label": "Качество камней",
+              "reason": "Урон поздней игры."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет характеристик",
+      "priorities": [
+        {
+          "label": "Уровень Warcry и качество камня",
+          "reason": "Ядро накопления качества; главная проверка прогресса."
+        },
+        {
+          "label": "Здоровье и сопротивления",
+          "reason": "Базовый порог раннего выживания."
+        },
+        {
+          "label": "Снижение перезарядки",
+          "reason": "Более быстрый ритм триггера warcry."
+        },
+        {
+          "label": "Шанс блока",
+          "reason": "Оборонительная граница высокозатратного варианта."
+        },
+        {
+          "label": "Поддержка маны",
+          "reason": "Базис для устойчивого триггера и мобильности."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет улучшений",
+      "steps": [
+        {
+          "label": "Зачистка замедляется",
+          "symptom": "Пачкам нужно много раундов warcry.",
+          "checks": [
+            "Уровень/качество warcry на месте?",
+            "Здоровье/сопротивления решены в первую очередь?"
+          ],
+          "upgrade": "Повышайте уровень и качество warcry, а не чистый урон."
+        },
+        {
+          "label": "Часто умираете",
+          "symptom": "Смерти на картах или у босса.",
+          "checks": [
+            "Пробел в Block/здоровье?",
+            "Моды с высоким перекатом (rollover)?"
+          ],
+          "upgrade": "Сначала почините защиту, перестаньте накапливать урон."
+        },
+        {
+          "label": "Просадка маны/перезарядки",
+          "symptom": "Warcry не может скастоваться или ритм ломается.",
+          "checks": [
+            "Мана поддерживает непрерывный каст?",
+            "Снижения перезарядки достаточно?"
+          ],
+          "upgrade": "Добавьте поддержку маны и снижение перезарядки."
+        },
+        {
+          "label": "Рассмотрите Svalinn / двойной Cast on Dodge",
+          "symptom": "Хотите больше запаса и рывка.",
+          "checks": [
+            "Обычный уровень проходит?",
+            "Не сломают ли высокозатратные уникальные предметы сопротивления?"
+          ],
+          "upgrade": "Покупайте по одной вещи и перепроверяйте после чек-листа."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Карты",
+      "paragraphs": [
+        "Кричите Fortifying Cry по пачкам, чтобы запустить Corrupting Cry; Corrupted Blood перескакивает между врагами для зачистки; перепозиционируйтесь через Decree of Flight / перекат.",
+        "Мусор не требует аккуратных стаков; только редкие/боссы требуют сфокусированных триггеров. Когда зачистка замедляется, сначала повышайте уровень и качество warcry."
+      ],
+      "bullets": [
+        "Fortifying Cry запускает масштабную зачистку.",
+        "Пропускайте аккуратные стаки на мусоре.",
+        "Повышайте уровень/качество warcry, когда зачистка замедляется."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Боссы",
+      "paragraphs": [
+        "Заранее изучите движения босса, кричите Fortifying Cry, чтобы запустить Corrupting Cry, накладывайте стеки Corrupted Blood на босса; используйте Decree of Flight, чтобы избегать наземных эффектов.",
+        "Если урон останавливается, проблема в уровне/качестве/поддержках warcry, а не в основной руке; высокозатратный вариант использует Svalinn / двойной Cast on Dodge для запаса и рывка."
+      ],
+      "bullets": [
+        "Fortifying Cry → сфокусированные стаки Corrupting Cry.",
+        "Избегание через Decree of Flight.",
+        "Остановка = чините warcry, а не меняйте оружие."
+      ]
+    },
+    {
+      "id": "life-management",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Управление здоровьем",
+      "paragraphs": [
+        "Тугое раннее здоровье — реальное узкое место: сам Warcry не лечит, а устойчивый триггер плюс мобильность стоят маны. Обеспечьте пул здоровья и сопротивления до урона.",
+        "Высокозатратный уровень Block уменьшает попадания через блок, снижая давление на здоровье; но блок требует снаряжения, недоступного в начале. Точные числа ожидают проверки на ПК."
+      ],
+      "bullets": [
+        "Здоровье и сопротивления до урона.",
+        "Block уменьшает попадания, но требует снаряжения.",
+        "Поддержка маны питает триггер."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Свидетельства сообщества",
+      "note": "Это руководство использует обсуждения сообщества как воспроизводимый чек-лист, а не как обещание их показанного DPS.",
+      "entries": [
+        {
+          "context": "Игроки спрашивают, как Gemling масштабируется в 0.5.",
+          "label": "Руководство pathofky по Gemling Legionnaire 0.5",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Руководство разделяет механику, камни, смену набора оружия и пассивное дерево, подчёркивая качество и конверсию атрибутов.",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "context": "Игроки обсуждают, повлияли ли баги релиза 0.5 на ощущения.",
+          "label": "P4wnyhof: Gemling Legionnaire от кампании до эндгейма",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Стрим показывает непрерывный переход от Акта 1 к эндгейму, подчёркивая всплеск силы узла восхождения.",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Устранение неполадок",
+      "problems": [
+        {
+          "symptom": "Урон по боссу останавливается",
+          "checks": [
+            "Уровень/качество warcry на месте?",
+            "Поддержки совпадают?"
+          ]
+        },
+        {
+          "symptom": "Часто умираете",
+          "checks": [
+            "Пробел в Block/здоровье?",
+            "Моды с высоким перекатом (rollover)?"
+          ]
+        },
+        {
+          "symptom": "Warcry не кастуется",
+          "checks": [
+            "Мана поддерживает?",
+            "Перезарядка слишком долгая?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "Часто задаваемые вопросы",
+      "items": [
+        {
+          "question": "Corrupting Cry всё ещё основное умение ручного применения?",
+          "answer": [
+            "После 0.5 оно запускается через Warcry; урон идёт от уровня/качества/поддержек, а не от одиночных применений."
+          ],
+          "bullets": [
+            "Запускается через Fortifying Cry."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Можно ли играть без Svalinn?",
+          "answer": [
+            "Да; Svalinn — ядро Block высокозатратного варианта, обычная версия использует здоровье/сопротивления и перекаты для зачистки карт и большинства контента боссов."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ru/guides/how-to-stop-getting-one-shot/",
+              "label": "См. руководство по защите от ваншотов"
+            }
+          ]
+        },
+        {
+          "question": "Я сменил оружие на лучшее, но всё ещё слаб?",
+          "answer": [
+            "Урон идёт от уровня/качества/поддержек warcry, а не от основной руки; сначала почините warcry и накопление качества."
+          ],
+          "bullets": [
+            "Запишите бой с боссом, проверьте иконки триггера."
+          ],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Планировщик билда и импорт",
+      "note": "Вставляемые строки импорта и .build-файлы всё ещё ожидают проверки на ПК; пока используйте руководства создателя и официальный планировщик ниже. Всегда перепроверяйте узлы в своём клиенте.",
+      "creatorName": "pathofky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Смотрите таймлайн Warcry и эндгейм",
+      "entries": [
+        {
+          "creator": "pathofky",
+          "label": "Руководство по Gemling Legionnaire 0.5",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE",
+          "description": "Механика, камни, наборы оружия, восхождение и пассивное дерево.",
+          "takeaway": "Фокус на триггере warcry и накоплении качества.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Введение и механика"
+            },
+            {
+              "time": "2:30",
+              "label": "Обзор экипировки"
+            },
+            {
+              "time": "5:00",
+              "label": "Камни и наборы оружия"
+            },
+            {
+              "time": "8:30",
+              "label": "Восхождение и дерево"
+            },
+            {
+              "time": "11:00",
+              "label": "Демо геймплея"
+            }
+          ]
+        },
+        {
+          "creator": "pathofky",
+          "label": "Обновление эндгейма Gemling Legionnaire 0.5",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k",
+          "description": "Обновление эндгейма, усиливающее соло-контент и производительность на картах.",
+          "takeaway": "Смотрите финальную экипировку и геймплей на картах.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Введение"
+            },
+            {
+              "time": "2:00",
+              "label": "Разбор экипировки"
+            },
+            {
+              "time": "5:00",
+              "label": "Геймплей на картах"
+            },
+            {
+              "time": "8:00",
+              "label": "Итоги"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Источники и верификация",
+      "categories": [
+        {
+          "label": "Официальный источник",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Сообщество",
+          "description": "pathofky — Руководство по Gemling Legionnaire 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "label": "Сообщество",
+          "description": "pathofky — Обновление эндгейма Gemling Legionnaire 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+        },
+        {
+          "label": "Сообщество",
+          "description": "P4wnyhof — Gemling Legionnaire от Акта 1 до эндгейма (YouTube)",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "История изменений",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Создано руководство по билду Corrupting Wings Gemling на основе источников для версии 0.5.4; проверка на ПК в процессе."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "how-to-stop-getting-one-shot"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "pathofky — Arc Totem Gemling Legionnaire 0.5 Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "label": "pathofky — Gemling Legionnaire Endgame Update 0.5 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+    },
+    {
+      "label": "P4wnyhof — Gemling Legionnaire Act 1 to Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+    }
+  ],
+  "seo": {
+    "title": "Руководство по билду Corrupting Wings Gemling | Exile2 Guides",
+    "description": "0.5.4 Corrupting Wings Gemling: триггер Corrupting Cry, накопление качества, таймлайн warcry, управление здоровьем и уровень Block.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "corrupting-wings-gemling-legionnaire",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

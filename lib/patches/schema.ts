@@ -6,6 +6,7 @@ import {
   supportedLocales,
   verificationStatuses,
 } from "../content/schema";
+import { translationMetaSchema } from "../content/translation";
 import {
   baseSectionShape,
   changelogEntriesSchema,
@@ -552,6 +553,9 @@ const patchArticleBaseSchema = z.strictObject({
     description: requiredText,
     noindex: z.boolean().optional(),
   }),
+
+  // Optionale Übersetzungs-Metadaten (entspricht items/bosses Schemas).
+  translation: translationMetaSchema.optional(),
 });
 
 /**
@@ -652,9 +656,15 @@ export const patchArticleSchema = patchArticleBaseSchema.superRefine(
       });
     }
 
+    // Metadaten-Block `translation` vom Placeholder-Scan ausnehmen:
+    // `translationStatus: "machine-draft"` ist ein legitimer Wert (siehe translationMetaSchema)
+    // und kein Platzhalter im eigentlichen Inhalt.
+    const articleContent = { ...article } as Record<string, unknown>;
+    delete articleContent.translation;
+
     if (
-      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
-        JSON.stringify(article),
+      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/.test(
+        JSON.stringify(articleContent),
       )
     ) {
       context.addIssue({

@@ -1,0 +1,862 @@
+{
+  "id": "sniper-minion-infernalist",
+  "slug": "sniper-minion-infernalist",
+  "locale": "fr",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Guide de build Sniper Minion Infernalist : Sentinelles tireuses, forme démoniaque et endgame",
+  "shortTitle": "Sniper Minion Infernalist",
+  "summary": "Boîte à outils d'invoque de la Sorcière en 0.5.4 : la Sentinelle élémentaire agit comme une tireuse à distance, assurant des dégâts de cible unique réguliers ; les Esprits furieux gèrent le corps à corps, et la forme démoniaque de l'Infernalist ouvre une fenêtre de burst. Couvre le placement des sentinelles, le timing de la transformation démoniaque et les limites défensives.",
+  "description": "Guide Path of Exile 2 Sniper Minion Infernalist pour 0.5.4 : placement des sentinelles, forme démoniaque, synergie des Esprits furieux, limites défensives et horodatages vidéo réels.",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "elemental-sentry",
+    "summon-raging-spirit"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "pain-offering",
+    "contingency",
+    "cast-on-minion-death"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "minion",
+    "sentry",
+    "ranged",
+    "demon",
+    "low-input"
+  ],
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "minion"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Équipe éditoriale des guides Exile2",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "cardImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "imageAlt": "La Sorcière Infernalist invoquant une escouade de Sentinelles élémentaires tireuses tout en commandant des Esprits furieux au combat",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "infernalist",
+    "leveling",
+    "melee",
+    "minion",
+    "physical",
+    "ranged",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Aperçu du build",
+      "paragraphs": [
+        "Le Sniper Minion Infernalist est la boîte à outils d'invoque à distance de la Sorcière : la Sentinelle élémentaire sert de tireuse posable offrant des dégâts de cible unique réguliers, les Esprits furieux gèrent le corps à corps, et la forme démoniaque de l'Infernalist ouvre une fenêtre de burst lorsque vous vous transformez.",
+        "Le plaisir central est « placer des sentinelles puis kiter » : la plupart des dégâts sont automatiques, venant des sentinelles et des esprits ; votre action consiste à vous positionner, à réapprovisionner les esprits et à déclencher la forme démoniaque. Cela ne consomme pas de mana comme un lanceur pur, mais mise fortement sur la survie et le cap des sbires.",
+        "Ce guide est basé sur les étapes : d'abord quand passer d'esprits purs à une approche menée par les sentinelles, puis l'équipement, les passives, le timing de la forme démoniaque et les paliers de budget. Tous les chiffres et mécaniques du client sont signalés pour vérification PC ; un DPS non vérifié n'est pas présenté comme un fait."
+      ],
+      "bullets": [
+        "Le mapping combine esprits en corps à corps + suivi à distance des sentinelles, quasi semi-auto.",
+        "Le bossing se termine par le tir des sentinelles plus le burst de la forme démoniaque.",
+        "La survie et le cap des sbires sont de vraux goulots d'étranglement à gérer."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Pour et contre",
+      "pros": [
+        "Les sentinelles tirent automatiquement ; le mapping est quasi semi-auto et détendu.",
+        "La forme démoniaque offre une fenêtre de burst nette et une finition propre des boss.",
+        "Aucun coût en mana ; la pression de sustain est bien moindre qu'un lanceur pur.",
+        "Fonctionne à petit budget tôt et se transitionne en douceur."
+      ],
+      "cons": [
+        "Le cap et l'uptime des sentinelles sont des contraintes dures ; le rendement précoce peut caler.",
+        "Les ennemis au corps à corps contournent la portée des sentinelles ; les esprits doivent combler les trous.",
+        "Les boss très mobiles réduisent le taux de touche des sentinelles.",
+        "Les mods de carte affectant les sbires (ex. moins de dégâts de sbires) sont un piège caché."
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Déroulement de la boucle : placement sentinelle → nettoyage esprit → burst démoniaque",
+      "paragraphs": [
+        "Boucle de mapping : placez la Sentinelle élémentaire sur le flanc du pack ; les esprits se jettent automatiquement sur l'ennemi le plus proche pendant que vous kitez et réapprovisionnez les esprits. C'est pourquoi la communauté parle de mapping semi-auto.",
+        "Boucle de boss : pré-placez une ou deux sentinelles le long du chemin du boss, utilisez les esprits pour tanker/aggroer, puis transformez-vous en forme démoniaque une fois sa ressource pleine pour la fenêtre de burst pendant que les sentinelles continuent de tirer le cœur.",
+        "Des expressions comme « les sentinelles visent toutes seules » désignent généralement l'auto-ciblage des sentinelles, pas un système séparé ; vérifiez par rapport à la description de la compétence et au client, ne traitez pas cela comme une mécanique cachée supplémentaire."
+      ],
+      "bullets": [
+        "Mapping = placer sentinelle + kiter ; les esprits gèrent le reste.",
+        "Boss = pré-placer sentinelle → aggro esprits → burst démoniaque.",
+        "Les esprits sont la finition en corps à corps, pas les dégâts principaux."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Progression de leveling",
+      "steps": [
+        {
+          "label": "Niveaux 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Démarrez avec l'Esprit furieux ; il est disponible très tôt et constitue votre véritable sbire de mapping. Ne forcez pas le nombre de sentinelles pour l'instant — le cap et l'équipement ne sont pas prêts."
+          ]
+        },
+        {
+          "label": "Niveaux 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Ajoutez la Sentinelle élémentaire comme suivi à distance et commencez à prendre des nœuds vie/dégâts d'esprits/résistances. Gardez les esprits comme cœur."
+          ]
+        },
+        {
+          "label": "Niveaux 30–42 — Déblocages Infernalist",
+          "levelRange": "30–42",
+          "body": [
+            "Choisissez Infernalist et prenez les nœuds de forme démoniaque. La fenêtre de transformation offre désormais le burst sur boss."
+          ]
+        },
+        {
+          "label": "Niveaux 43–60 — Premières cartes",
+          "levelRange": "43–60",
+          "body": [
+            "Lancez sentinelle + esprits sans critique, à petit budget. Plafonnez les résistances, corrigez la vie, maintenez les sentinelles actives sur les rares."
+          ]
+        },
+        {
+          "label": "Niveau 60+ — Préparation endgame",
+          "levelRange": "60+",
+          "body": [
+            "Passez aux améliorations de budget : cap de sentinelles, dégâts de sbires, niveau d'esprit et Résistance Chaos. Ne poursuivez le matériel haut de gamme qu'après le passage de la checklist de priorité d'amélioration."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Configuration des compétences",
+      "groups": [
+        {
+          "label": "Compétences de base",
+          "skills": [
+            {
+              "displayName": "Sentinelle élémentaire",
+              "skillId": "elemental-sentry",
+              "role": "Tireuse à distance posable offrant des dégâts de cible unique réguliers ; dégâts principaux sur boss.",
+              "supportSkillIds": [
+                "minion-damage",
+                "minion-speed",
+                "added-chaos"
+              ],
+              "whyUse": [
+                "C'est le cœur ancré de toute la boucle ; sans sentinelles, le bossing retombe sur un rythme instable d'esprits purs."
+              ],
+              "whenReplace": [
+                "Jamais remplacée ; en cartes vous pouvez temporairement en placer moins pour accélérer."
+              ],
+              "mappingBossingDiff": [
+                "Mapping : une sur le flanc suffit. Boss : une ou deux sur le chemin pour verrouiller le cœur."
+              ],
+              "notes": [
+                "Liens de support exacts et cap de sentinelles en attente de vérification PC."
+              ]
+            },
+            {
+              "displayName": "Esprit furieux",
+              "skillId": "summon-raging-spirit",
+              "role": "Esprit au corps à corps gérant les ennemis hors de portée des sentinelles et aggroant les boss.",
+              "supportSkillIds": [
+                "minion-damage",
+                "meat-shield",
+                "feeding-frenzy"
+              ],
+              "whyUse": [
+                "Il couvre l'angle mort de la portée des sentinelles ; stable pour le mapping et l'aggro des boss."
+              ],
+              "whenReplace": [
+                "Gardez définitivement ; remplacez seulement si un invoque de corps à corps plus fort apparaît."
+              ],
+              "mappingBossingDiff": [
+                "Mapping : se jette automatiquement sur les mobs. Boss : aggro et nettoyage en corps à corps."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Buffs et déclencheurs",
+          "skills": [
+            {
+              "displayName": "Offrande de douleur",
+              "skillId": "pain-offering",
+              "role": "Sacrifie des sbires pour des dégâts à toute l'équipe ; pic brièvement le rendement sentinelle/esprit.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "C'est le cœur de dégâts de la fenêtre de burst ; idéal avec la forme démoniaque et les phases de boss."
+              ],
+              "whenReplace": [
+                "Gardez ; fait partie de l'architecture de dégâts."
+              ],
+              "mappingBossingDiff": [
+                "Utilisé dans les deux, mais le bossing dépend plus de son pic."
+              ],
+              "notes": [
+                "Consomme des sbires ; timing à soigner."
+              ]
+            },
+            {
+              "displayName": "Mur de flammes",
+              "skillId": "flame-wall",
+              "role": "Mur de feu au sol ; les projectiles qui le traversent gagnent du feu ajouté, renforçant sentinelles/esprits.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Ajoute du feu et des dégâts de zone, renforçant la résolution."
+              ],
+              "whenReplace": [
+                "Gardez comme buff."
+              ],
+              "mappingBossingDiff": [
+                "Mapping optionnel ; bossing placé pour renforcer la fenêtre."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Lancer à la mort d'un sbire",
+              "skillId": "cast-on-minion-death",
+              "role": "Lance un sort quand un sbire meurt, ajoutant couverture et autodéfense.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Ajoute automatiquement une couche de dégâts/contrôle quand les esprits tombent, adoucissant les temps morts."
+              ],
+              "whenReplace": [
+                "Gardez ; fait partie de l'architecture défensive."
+              ],
+              "mappingBossingDiff": [
+                "Utilisé dans les deux, plus critique en bossing."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Ordre d'ascendance",
+      "steps": [
+        {
+          "label": "Infernalist — Premiers nœuds",
+          "body": [
+            "Choisissez Infernalist. Priorisez les nœuds de forme démoniaque pour que la fenêtre de transformation fournisse de façon fiable le burst ; c'est la condition préalable du build."
+          ]
+        },
+        {
+          "label": "Vérification de survie des sbires",
+          "body": [
+            "Si en T15+ les sbires meurent souvent, n'échangez pas les nœuds démon/dégâts contre des dégâts purs ; sécurisez d'abord le cap de sentinelles et la survie des esprits."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Arbre passif",
+      "steps": [
+        {
+          "label": "Campagne",
+          "body": [
+            "Ne prenez que des nœuds soutenant esprits/dégâts de sbires et vie ; ne pré-acheminez pas vers les roues de cap de sentinelles."
+          ]
+        },
+        {
+          "label": "Premières cartes",
+          "body": [
+            "Basculez vers la variante sentinelle ; priorisez vie, Résistance Chaos, dégâts de sbires et cap de sentinelles."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Après avoir résolu défense et cap de sentinelles, investissez dans les roues critique/dégâts de sbires ; comparez les états d'équipement au même palier."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Équipement",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "Choisissez une base qui booste le niveau de sbire et les dégâts sort/ sbire ; assez de chasses pour les liens esprit et sentinelle."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Niveau de compétence de sbire / Dégâts de sbire",
+              "reason": "Scale directement la résolution sentinelle et esprit."
+            },
+            {
+              "tier": "recommended",
+              "label": "Vie et résistances",
+              "reason": "Vous devez survivre pour commander."
+            },
+            {
+              "tier": "optional",
+              "label": "Vitesse d'incantation",
+              "reason": "Rafraîchissement plus rapide des esprits et placement des sentinelles."
+            },
+            {
+              "tier": "luxury",
+              "label": "Chance de critique sbire / Dégâts critiques",
+              "reason": "Uniquement après stabilisation survie et cap."
+            }
+          ],
+          "notes": [
+            "Le Focus est l'arme principale ; priorisez les affixes de sbire."
+          ]
+        },
+        {
+          "slot": "Corps / Bottes / Casque",
+          "recommendations": [
+            "Vie, Résistance Chaos et résistances ; vitesse de déplacement des bottes pour kiter."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Vie et deux résistances plafonnées",
+              "reason": "Les sbires meurent ; vous ne devez pas."
+            },
+            {
+              "tier": "recommended",
+              "label": "Résistance Chaos",
+              "reason": "Besoin dur en fin de partie, non native."
+            },
+            {
+              "tier": "optional",
+              "label": "Vitesse de déplacement",
+              "reason": "Améliore le positionnement et le kiting de pack."
+            },
+            {
+              "tier": "luxury",
+              "label": "Affixes explicites de sbire",
+              "reason": "Ne compte qu'après la défense."
+            }
+          ],
+          "notes": [
+            "La Résistance Chaos doit être empilée spécifiquement."
+          ]
+        },
+        {
+          "slot": "Anneaux / Amulette / Ceinture",
+          "recommendations": [
+            "Attributs, résistances, vie ; cap de sentinelles ou survie de sbire selon besoin."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Attributs pour équiper staff et gemmes",
+              "reason": "Inequipable est inutile."
+            },
+            {
+              "tier": "recommended",
+              "label": "Résistances et vie",
+              "reason": "Complète la coque défensive."
+            },
+            {
+              "tier": "optional",
+              "label": "Cap sentinelle / survie sbire",
+              "reason": "Bonus gratuits de la joaillerie."
+            },
+            {
+              "tier": "luxury",
+              "label": "Niveau de compétence de sbire",
+              "reason": "Dégâts en fin de partie."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Priorité des statistiques",
+      "priorities": [
+        {
+          "label": "Niveau de compétence de sbire",
+          "reason": "Scale les sentinelles et esprits ; première vérification de progression."
+        },
+        {
+          "label": "Cap de sentinelles",
+          "reason": "Décide si une couverture multi-sentinelles est tenable."
+        },
+        {
+          "label": "Résistance Chaos",
+          "reason": "Besoin dur en fin de partie, non native."
+        },
+        {
+          "label": "Vie et résistances",
+          "reason": "Vous devez survivre pour commander les sbires."
+        },
+        {
+          "label": "Critique de sbire",
+          "reason": "Uniquement après stabilisation survie et cap."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Priorité d'amélioration",
+      "steps": [
+        {
+          "label": "Le clear ralentit",
+          "symptom": "Les packs mettent beaucoup de salves d'esprits à mourir.",
+          "checks": [
+            "Le staff est-il encore une base adaptée au palier ?",
+            "Résistances et vie sont-elles résolues (i.e. le staff est le vrai goulot) ?"
+          ],
+          "upgrade": "Échangez le staff sous-palier avant de toucher à la joaillerie."
+        },
+        {
+          "label": "Les sentinelles continuent de mourir",
+          "symptom": "Les sentinelles se font supprimer en combat de boss.",
+          "checks": [
+            "Vous empilez seulement des dégâts, ignorant la survie des sentinelles ?",
+            "Kitez-vous pour protéger les sentinelles en bossing ?"
+          ],
+          "upgrade": "Corrigez survie et cap des sentinelles avant de monter les dégâts."
+        },
+        {
+          "label": "La forme démoniaque n'arrive jamais",
+          "symptom": "La ressource de transformation ne se remplit jamais.",
+          "checks": [
+            "Forcez-vous les boss avant d'avoir pris les nœuds démon ?",
+            "Le rythme de kill est-il trop lent pour gagner de la ressource ?"
+          ],
+          "upgrade": "Corrigez l'ascendance et le rythme de kill, pas le staff."
+        },
+        {
+          "label": "Stagnation après T15",
+          "symptom": "Les dégâts cessent de progresser.",
+          "checks": [
+            "Niveau de sbire plafonné ?",
+            "Dégâts de sbire du Focus en place ?",
+            "Résistance Chaos maxée ?"
+          ],
+          "upgrade": "Améliorez dans l'ordre : niveau de sbire → Focus → Résistance Chaos."
+        },
+        {
+          "label": "Envisager le haut de gamme",
+          "symptom": "Vous voulez plus de dégâts de boss et visez le matériel de luxe.",
+          "checks": [
+            "Les sentinelles et la survie sont-ils stables ?",
+            "Le haut de gamme cassera-t-il les caps de résist ou fera-t-il chuter la vie ?"
+          ],
+          "upgrade": "Achetez pièce par pièce et re-testez après le passage de la checklist ; n'échangez pas la survie contre des chiffres."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapping",
+      "paragraphs": [
+        "Placez la Sentinelle élémentaire sur le flanc du pack ; les esprits se jettent automatiquement sur l'ennemi le plus proche pendant que vous kitez et réapprovisionnez. La trash ne nécessite pas toutes les sentinelles ; une suffit.",
+        "Une fois le clear ralenti, améliorez d'abord le staff. Gardez une certaine survie (résist/vie/kite) active pour que le mapping ne stagne jamais."
+      ],
+      "bullets": [
+        "Placer sentinelle + kiter est tout le rythme du mapping.",
+        "Une sentinelle suffit pour la trash.",
+        "Améliorez le staff de façon réactive quand le clear ralentit."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Bossing",
+      "paragraphs": [
+        "Le bossing est une séquence : pré-placez une ou deux sentinelles le long du chemin du boss, utilisez les esprits pour aggroer en corps à corps, puis transformez-vous une fois la ressource démoniaque pleine pour la fenêtre de burst pendant que les sentinelles continuent de tirer le cœur.",
+        "Si les sentinelles continuent de mourir, le problème est la survie et le placement (kitez pour les protéger), pas le staff. Quand le boss bouge beaucoup, placez les sentinelles sur le chemin étroit qu'il doit traverser, pas à ses pieds."
+      ],
+      "bullets": [
+        "Pré-placer sentinelle → aggro esprit → burst démoniaque.",
+        "Nettoyage en corps à corps par les esprits.",
+        "Mort de sentinelle = corrigez survie et placement, pas changez d'arme."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Paliers de budget : vraies différences pas cher vs luxe",
+      "paragraphs": [
+        "Pas cher : un staff à petit budget plus résistances/vie/cap de sentinelles résolus, clearant et bossant la plupart du contenu sur sentinelles + esprits. Cela change si vous pouvez jouer, pas le chiffre de dégâts.",
+        "Luxe : Focus de haut niveau de sbire, Uniques spécifiques, Résistance Chaos plafonnée et critique de sbire, élevant à la fois la résolution sentinelle et la survie. Cela change le plafond et la marge d'erreur, sans transformer le pas cher en un build différent.",
+        "Palier miroir uniquement après avoir vérifié le passage pas cher/luxe et confirmation des chiffres du client ; ne sacrifiez pas Résistance Chaos et vie pour le DPS."
+      ],
+      "bullets": [
+        "Pas cher d'abord : vie, résistances, cap de sentinelles, un bon staff.",
+        "Luxe ensuite : niveau de sbire, Résistance Chaos, critique.",
+        "Le palier miroir ne brise jamais le plancher défensif."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Preuves communautaires",
+      "note": "Ce guide utilise la discussion communautaire comme une checklist reproductible, non comme une promesse de leur DPS affiché.",
+      "entries": [
+        {
+          "context": "Les joueurs signalent des dégâts de sentinelles bloqués après T15, sans savoir quoi améliorer.",
+          "label": "LugoHQ — Guide Endgame Sniper Minion Infernalist",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Le guide sépare les paliers pas cher/luxe, clarifiant que chacun change les limites d'équipement, pas la mécanique.",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "context": "Les joueurs débattent si la forme démoniaque en vaut la peine.",
+          "label": "LugoHQ — Citadelle Sniper Minion Infernalist",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Les images de la Citadelle montrent la valeur de finition de la fenêtre de burst démoniaque sur les boss à haute pression, en insistant d'abord sur la survie des sentinelles.",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Dépannage",
+      "problems": [
+        {
+          "symptom": "Sentinelles de boss ne déclenchent pas / meurent",
+          "checks": [
+            "Les sentinelles sont-elles sur les passages étroits ?",
+            "Vous empilez seulement des dégâts, ignorant la survie des sentinelles ?",
+            "Le kiting les protège-t-il ?"
+          ]
+        },
+        {
+          "symptom": "La ressource démoniaque ne se remplit jamais",
+          "checks": [
+            "Nœuds démon pris ?",
+            "Le rythme de kill est-il trop lent ?"
+          ]
+        },
+        {
+          "symptom": "Le mapping ralentit",
+          "checks": [
+            "Le staff est-il encore une base de palier ?",
+            "Résistances et vie sont-elles résolues en premier ?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "À quel niveau commencer à utiliser l'Esprit furieux ?",
+          "answer": [
+            "Utilisable très tôt ; c'est le véritable sbire de mapping. La boîte à outils sentinelle attend l'équipement et le cap."
+          ],
+          "bullets": [
+            "Mapping Esprit furieux dès le niveau 1."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "J'ai changé pour un meilleur staff mais les sentinelles sont encore faibles ?",
+          "answer": [
+            "Les sentinelles dépendent du cap et de la survie, pas du staff seul ; corrigez d'abord cap et survie."
+          ],
+          "bullets": [
+            "Enregistrez un combat de boss et vérifiez l'uptime des sentinelles."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Puis-je jouer en SSF ?",
+          "answer": [
+            "Oui ; sentinelles à petit budget + esprits clearnt et bossent la plupart du contenu en SSF. Les Uniques de luxe sont un plafond, pas une porte."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/fr/guides/campaign-early-maps-gearing-crafting/",
+              "label": "Voir le guide d'équipement campagne et premières cartes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Planificateur de build et import",
+      "note": "PoE2 intègre désormais un Build Planner natif. Les chaînes d'import collables et les fichiers .build sont encore en attente de vérification PC ; en attendant, utilisez les guides des créateurs et le planificateur officiel ci-dessous. Re-confirmez toujours les nœuds dans votre propre client.",
+      "creatorName": "LugoHQ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Regarder les images Endgame et Citadelle",
+      "entries": [
+        {
+          "creator": "LugoHQ",
+          "label": "Guide Endgame Sniper Minion Infernalist",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "description": "Une longue référence montrant le chemin complet, du mapping esprit au mené-sentinelle et à la forme démoniaque.",
+          "takeaway": "Échantillonnez un boss de campagne par acte ; notez l'ordre de placement des sentinelles, pas la vitesse de clear.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro et concept"
+            },
+            {
+              "time": "2:30",
+              "label": "Mapping Acte 1"
+            },
+            {
+              "time": "6:00",
+              "label": "Infernalist et forme démoniaque"
+            },
+            {
+              "time": "10:30",
+              "label": "Placement sentinelle et synergie esprit"
+            },
+            {
+              "time": "15:00",
+              "label": "Premières cartes et équipement"
+            }
+          ]
+        },
+        {
+          "creator": "LugoHQ",
+          "label": "Citadelle Sniper Minion Infernalist",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs",
+          "description": "Citadelle à haute pression : survie sentinelle, finition forme démoniaque et limites d'équipement.",
+          "takeaway": "Concentrez-vous sur le placement et la survie des sentinelles sur les boss à haute pression, pas sur une poursuite aveugle du DPS.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "1:50",
+              "label": "Entrée Citadelle et pull de pack"
+            },
+            {
+              "time": "5:20",
+              "label": "Placement et protection des sentinelles"
+            },
+            {
+              "time": "9:10",
+              "label": "Fenêtre de burst forme démoniaque"
+            },
+            {
+              "time": "13:00",
+              "label": "Limites d'équipement et résumé"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Sources et vérification",
+      "categories": [
+        {
+          "label": "Officiel",
+          "description": "Grinding Gear Games — Notes de mise à jour Path of Exile 2 0.5.4",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Communauté",
+          "description": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "label": "Communauté",
+          "description": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        },
+        {
+          "label": "Base de données",
+          "description": "Path of Exile 2 Wiki — Infernalist",
+          "url": "https://poe2wiki.net/wiki/Infernalist"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Journal des modifications",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Création d'un guide build Sniper Minion Infernalist 0.5.4 sourcé ; vérification PC en cours."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Notes de mise à jour Path of Exile 2 0.5.4",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Infernalist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Infernalist"
+    }
+  ],
+  "seo": {
+    "title": "Guide de build Sniper Minion Infernalist | Exile2 Guides",
+    "description": "Sniper Minion Infernalist 0.5.4 : tireuses Sentinelle élémentaire, forme démoniaque Infernalist, synergie Esprit furieux et limites défensives.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "sniper-minion-infernalist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

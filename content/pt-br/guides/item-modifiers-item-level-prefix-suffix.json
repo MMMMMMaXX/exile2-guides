@@ -1,0 +1,785 @@
+{
+  "id": "item-modifiers-item-level-prefix-suffix",
+  "slug": "item-modifiers-item-level-prefix-suffix",
+  "locale": "pt-br",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Modificadores de Item, Nível do Item e Prefixo vs Sufixo no Path of Exile 2",
+  "shortTitle": "Modificadores & Afixos",
+  "summary": "Entenda como funcionam os modificadores (afixos), o nível do item e a divisão entre prefixo e sufixo na criação de itens do Path of Exile 2: slots de raridade, escalonamento de tier, mods locais vs globais e a visão avançada de modificadores.",
+  "description": "Um guia de criação para iniciantes sobre os modificadores de item do Path of Exile 2: o que são prefixos e sufixos, como o nível do item limita os tiers de modificador e como ler o tooltip de modificador avançado.",
+  "guideCategory": "crafting-trading",
+  "heroImage": "/images/items/uncut-gems-hero.webp",
+  "cardImage": "/images/items/uncut-gems-hero.webp",
+  "imageAlt": "Uma gema não lapidada representando os tiers de modificador de item e os slots de afixo na criação de itens do Path of Exile 2",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Acesso na campanha a orbes de moeda básicos (Transmutação, Aumento, Régio)",
+    "Compreensão básica das cores de raridade de item (branco, azul, dourado, laranja)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "item",
+    "modifier",
+    "crafting",
+    "prefix",
+    "suffix",
+    "item-level",
+    "affix"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respostas diretas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Qual é a diferença entre prefixo e sufixo?",
+          "body": [
+            "Prefixos e sufixos são os dois grupos de afixos que um item pode ter. Por convenção, prefixos tendem a cobrir atributos ofensivos, como dano e atributos, enquanto sufixos tendem a cobrir atributos defensivos e utilitários, como resistências, vida e efeitos de frasco. Trata-se de uma convenção, não de uma regra rígida — existem exceções."
+          ]
+        },
+        {
+          "title": "O que o Nível do Item (iLvl) realmente controla?",
+          "body": [
+            "O Nível do Item limita quais modificadores podem surgir em um item e o tier máximo que esses modificadores podem alcançar. O Nível Requerido é uma barreira separada que controla quando seu personagem pode equipar o item. O nível de monstros e de área decide o iLvl dos itens dropados."
+          ]
+        },
+        {
+          "title": "Quantos afixos um item pode ter?",
+          "body": [
+            "Itens Normais não carregam afixos rolados (apenas um implícito). Itens Mágicos podem ter até 1 prefixo e 1 sufixo. Itens Raros podem ter até 3 prefixos e 3 sufixos. Itens Únicos têm mods fixos e normalmente não são criáveis por meio desses orbes."
+          ]
+        },
+        {
+          "title": "Como vejo os tiers de modificador?",
+          "body": [
+            "No PC, segure Alt para revelar os tiers e detalhes dos afixos. No controle, use a alternância de modificador avançado. Tiers mais altos (T1) são mais fortes; o tier é mostrado por modificador na visão avançada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "item-tooltip-anatomy",
+      "order": 2,
+      "title": "Anatomia de um tooltip de item",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Todo item no Path of Exile 2 mostra seus atributos em um tooltip, mas a visualização padrão esconde muitos detalhes úteis. Pressionar a tecla de modificador avançado (Alt no PC, ou a alternância do controle) expande o tooltip para mostrar o tier de cada modificador, se ele é local ou global, e o nível do item da base.",
+        "Aprender a ler esse tooltip expandido é a habilidade de criação mais útil de todas. Ele diz não apenas o que um item tem, mas quão forte é cada rolagem e se uma moeda poderia algum dia empurrá-lo para cima dado o nível do item."
+      ],
+      "bullets": [
+        "Modificadores implícitos são inerentes ao tipo de base e aparecem em toda versão desse item.",
+        "Modificadores explícitos são rolados ou criados em raridades não normais.",
+        "Encantamentos vêm de uma fonte separada, como Runas encaixadas no item.",
+        "A visão avançada revela tiers por modificador, que são ocultos por padrão."
+      ]
+    },
+    {
+      "id": "tooltip-field-table",
+      "order": 3,
+      "title": "Referência de campos do tooltip",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "O que cada parte do tooltip de modificador avançado significa e como afeta suas decisões de criação.",
+      "columns": [
+        {
+          "key": "field",
+          "label": "Campo"
+        },
+        {
+          "key": "means",
+          "label": "O que significa"
+        },
+        {
+          "key": "affects-craft",
+          "label": "Afeta a criação?"
+        },
+        {
+          "key": "common-misunderstanding",
+          "label": "Equívoco comum"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "field": "Item Level (iLvl)",
+            "means": "Atributo oculto que limita quais mods e tiers podem surgir",
+            "affects-craft": "Sim — limita o pool de mods disponível e o tier máximo",
+            "common-misunderstanding": "Jogadores confundem com Nível Requerido"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Required Level",
+            "means": "Nível de personagem necessário para equipar o item",
+            "affects-craft": "Não — limita apenas o equipar, não as rolagens",
+            "common-misunderstanding": "Achado que eleva a força do modificador"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Modifier tier (T1, T2...)",
+            "means": "Faixa de força relativa de um único modificador",
+            "affects-craft": "Sim — o tier decide a faixa de rolagem",
+            "common-misunderstanding": "Número de tier mais alto significa mais forte (é o oposto)"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Local / Global tag",
+            "means": "Se o mod afeta o item ou seu personagem",
+            "affects-craft": "Sim — importa para empilhamento e conversão",
+            "common-misunderstanding": "Assumir que todo % increased é global"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Implicit",
+            "means": "Modificador inato do tipo de base",
+            "affects-craft": "Não — não pode ser adicionado por orbes",
+            "common-misunderstanding": "Acreditado poder ser rerolado como mods explícitos"
+          }
+        }
+      ],
+      "note": "Os rótulos de campo seguem a visão de modificador avançado do jogo; a redação exata pode variar ligeiramente conforme a versão do cliente."
+    },
+    {
+      "id": "rarity-and-affix-slots",
+      "order": 4,
+      "title": "Raridade e slots de afixo",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A raridade do item define quantos slots de afixo um item pode ter. Itens Normais (brancos) não têm afixos rolados e possuem apenas um modificador implícito. Itens Mágicos (azuis) podem ter até 1 prefixo e 1 sufixo. Itens Raros (dourados) podem ter até 3 prefixos e 3 sufixos.",
+        "Itens Únicos (laranja) têm modificadores fixos, definidos por design, e normalmente não são produzidos pelo caminho padrão de criação com orbe de moeda. Tipos de base especiais podem se comportar de forma diferente, então trate o limite Raro de 3+3 como o caso comum, em vez de uma regra absoluta para toda base."
+      ],
+      "bullets": [
+        "Normal: 0 afixos rolados, 1 implícito.",
+        "Mágico: até 1 prefixo e 1 sufixo.",
+        "Raro: até 3 prefixos e 3 sufixos.",
+        "Único: mods fixos, não criável por via normal."
+      ]
+    },
+    {
+      "id": "prefix-suffix-dashboard",
+      "order": 5,
+      "title": "Prefixo e sufixo num relance",
+      "type": "stat-grid",
+      "visible": true,
+      "toc": true,
+      "stats": [
+        {
+          "label": "Slots de afixo Mágico",
+          "value": "1 + 1",
+          "note": "Um prefixo e um sufixo no máximo em um item Mágico"
+        },
+        {
+          "label": "Slots de afixo Raro",
+          "value": "3 + 3",
+          "note": "Até três prefixos e três sufixos em um item Raro"
+        },
+        {
+          "label": "Função do prefixo",
+          "value": "Ofensiva",
+          "note": "Geralmente dano e atributos, mas não exclusivamente"
+        },
+        {
+          "label": "Função do sufixo",
+          "value": "Defensiva / utilitária",
+          "note": "Geralmente resistências, vida e efeitos de frasco"
+        }
+      ]
+    },
+    {
+      "id": "item-level-vs-required-level",
+      "order": 6,
+      "title": "Nível do Item vs Nível Requerido",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Nível do Item e Nível Requerido são fáceis de confundir, mas controlam coisas completamente diferentes. O Nível do Item limita quais modificadores podem surgir no item e o tier máximo que esses modificadores podem alcançar. O Nível Requerido limita quando seu personagem tem permissão para equipar o item.",
+        "Por causa disso, dois itens podem ter o mesmo Nível Requerido, mas Níveis do Item muito diferentes, e portanto potencial de modificador muito diferente. O nível da área ou do monstro que dropou o item determina seu Nível do Item, não o nível do seu personagem."
+      ],
+      "bullets": [
+        "Nível do Item: controla o pool de modificadores disponível e o tier máximo.",
+        "Nível Requerido: controla quando você pode equipar o item.",
+        "Nível de área e de monstro definem o Nível do Item do drop.",
+        "Eles são independentes — elevar um nunca eleva o outro."
+      ]
+    },
+    {
+      "id": "base-type-and-mod-pool",
+      "order": 7,
+      "title": "Tipo de base e o pool de modificadores",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O tipo de base de um item decide quais modificadores jamais podem surgir nele. Um arco não pode rolar modificadores de armadura, e uma peça de armadura não pode rolar modificadores de dano específicos de arma. Escolher a base certa é o primeiro passo de qualquer criação séria.",
+        "O tipo de base também define o modificador implícito e os atributos base do item, ambos alimentando como os modificadores locais são calculados. Sempre comece uma criação confirmando que a base suporta os mods desejados antes de gastar moeda."
+      ],
+      "bullets": [
+        "O tipo de base define todo o pool de modificadores disponível.",
+        "Uma base de arma e uma base de armadura praticamente não compartilham mods.",
+        "O implícito é fixo pela base, não por rolagem.",
+        "Combine a base com sua build antes de criar."
+      ]
+    },
+    {
+      "id": "modifier-tier-matrix",
+      "order": 8,
+      "title": "Matriz de tier de modificador",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Como as famílias de modificador se relacionam com os tiers, o que os limita e o que observar. Pontos exatos são sensíveis à versão — formule como 'conforme o guia referenciado, pendente de verificação em PC' onde números precisos não puderem ser obtidos.",
+      "columns": [
+        {
+          "key": "modifier-family",
+          "label": "Família de modificador"
+        },
+        {
+          "key": "tier-meaning",
+          "label": "O que o tier significa"
+        },
+        {
+          "key": "gated-by",
+          "label": "Limitado por"
+        },
+        {
+          "key": "note",
+          "label": "Nota"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Ofensivo (dano, atributos)",
+            "tier-meaning": "Tiers mais altos dão bônus planos ou percentuais maiores",
+            "gated-by": "Item Level",
+            "note": "Na maior parte prefixos, mas não é regra absoluta"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Defensivo (resistências, vida)",
+            "tier-meaning": "Tiers mais altos dão valores defensivos maiores",
+            "gated-by": "Item Level",
+            "note": "Na maior parte sufixos"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods híbridos",
+            "tier-meaning": "Combinam dois atributos em uma faixa de tier",
+            "gated-by": "Item Level",
+            "note": "Ocupam apenas um slot de afixo apesar de dois atributos"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods locais de arma/armadura",
+            "tier-meaning": "Escalam os próprios atributos base do item",
+            "gated-by": "Base type + Item Level",
+            "note": "Mostrado em azul no tooltip"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods globais",
+            "tier-meaning": "Aplicam-se ao personagem inteiro",
+            "gated-by": "Item Level",
+            "note": "Mods condicionais são sempre globais"
+          }
+        }
+      ],
+      "note": "T1 é o tier mais forte de um dado modificador; pesos determinam a chance de rolagem, não um resultado garantido. Não invente pontos exatos de tier."
+    },
+    {
+      "id": "local-global-implicit-explicit",
+      "order": 9,
+      "title": "Local vs global, implícito vs explícito",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Os modificadores vêm em vários sabores. Modificadores locais afetam o próprio item — por exemplo, dano físico percentual local em uma arma escala o dano físico base dessa arma. Modificadores globais aplicam-se ao seu personagem como um todo. Modificadores locais aparecem em texto azul no tooltip.",
+        "Modificadores implícitos são inerentes ao tipo de base. Modificadores explícitos são rolados ou criados em raridades não normais. Encantamentos vêm de uma fonte separada, como Runas ou Emoções Destiladas, e Runas encaixáveis adicionam seus próprios modificadores por cima."
+      ],
+      "bullets": [
+        "Local: escala os próprios atributos do item (texto azul).",
+        "Global: aplica-se ao personagem inteiro.",
+        "Implícito: fixo pelo tipo de base.",
+        "Explícito: rolado ou criado.",
+        "Encantamento: de Runas, Emoções Destiladas ou similares."
+      ]
+    },
+    {
+      "id": "advanced-mod-view",
+      "order": 10,
+      "title": "Lendo a visão de modificador avançado",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A visão de modificador avançado é onde os tiers se tornam visíveis. No PC, segure Alt ao passar o mouse sobre um item. No controle, alterne a exibição de modificador avançado. Isso revela o tier de cada modificador, se ele é local ou global, e o grupo de afixo a que pertence.",
+        "Usar essa visão permite comparar dois itens da mesma base num relance e decidir qual vale a moeda. Ela também explica por que uma moeda às vezes mostra 'nenhum modificador disponível' — o nível do item ou o pool da base simplesmente não tem mais nada válido para aquela moeda adicionar."
+      ],
+      "bullets": [
+        "PC: segure Alt para revelar tiers e detalhes.",
+        "Controle: use a alternância de modificador avançado.",
+        "Tiers, marcadores local/global e grupos de afixo ficam visíveis.",
+        "'Nenhum modificador disponível' significa que o pool não tem nada válido para adicionar."
+      ]
+    },
+    {
+      "id": "craft-readiness-diagnostic",
+      "order": 11,
+      "title": "Diagnóstico de prontidão de criação",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Escolha o estado do item em que você está trabalhando. A ferramenta aponta o próximo passo sensato.",
+      "controls": [
+        {
+          "id": "current-state",
+          "label": "Qual é o estado atual do item?",
+          "options": [
+            {
+              "label": "Base Normal, sem mods",
+              "value": "normal"
+            },
+            {
+              "label": "Mágico, quer um segundo afixo",
+              "value": "magic"
+            },
+            {
+              "label": "Raro, preso em rolagens fracas",
+              "value": "rare-stuck"
+            },
+            {
+              "label": "Moeda mostra nenhum modificador disponível",
+              "value": "no-mod"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Construir a partir da base Normal",
+          "when": {
+            "current-state": "normal"
+          },
+          "steps": [
+            "Confirme que o tipo de base suporta os mods desejados.",
+            "Use um Orb of Transmutation para chegar a Mágico com um modificador.",
+            "Use um Orb of Augmentation para adicionar o segundo afixo, se necessário."
+          ]
+        },
+        {
+          "title": "Adicionar o afixo faltante",
+          "when": {
+            "current-state": "magic"
+          },
+          "steps": [
+            "Se o item tem apenas um afixo, use um Orb of Augmentation para o segundo.",
+            "Decida se falta um prefixo ou sufixo antes de gastar.",
+            "Use um Regal Orb para subir a Raro quando quiser mais slots."
+          ]
+        },
+        {
+          "title": "Melhorar rolagens Raras fracas",
+          "when": {
+            "current-state": "rare-stuck"
+          },
+          "steps": [
+            "Verifique o nível do item — iLvl baixo pode limitar o tier máximo alcançável.",
+            "Use um Divine Orb para rerolar valores dentro de cada tier (ele não muda tiers).",
+            "Considere moedas Maiores ou Perfeitas e Essências para resultados mais determinísticos."
+          ]
+        },
+        {
+          "title": "Por que nada pode ser adicionado",
+          "when": {
+            "current-state": "no-mod"
+          },
+          "steps": [
+            "O nível do item ou o pool da base não tem mais modificador válido para aquela moeda adicionar.",
+            "Troque a moeda (por exemplo, um orb estilo Exalted adiciona um novo mod aleatório).",
+            "Se o item já está cheio, libera um slot com um Orb of Annulment antes de adicionar."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Prontidão de criação geral",
+        "steps": [
+          "Comece de uma base cujo tipo e nível do item suportem seus mods alvo.",
+          "Use Transmutation, Augmentation e então Regal para escalar a raridade.",
+          "Use a visão de modificador avançado para confirmar tiers antes de gastar mais moeda."
+        ]
+      }
+    },
+    {
+      "id": "keep-craft-sell-discard-decision",
+      "order": 12,
+      "title": "Guardar, criar, vender ou descartar?",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "Um auxílio rápido de decisão para o que fazer com um item de que você não tem certeza.",
+      "rows": [
+        {
+          "choice": "Seguir criando",
+          "riskLevel": "yellow",
+          "risk": "Gastar mais moeda pode não melhorar o item",
+          "reward": "Um item bem rolado pode ser um grande upgrade ou valer muito",
+          "when": "A base e o nível do item suportam seus mods alvo e você tem moeda de sobra"
+        },
+        {
+          "choice": "Usar como está",
+          "riskLevel": "green",
+          "risk": "Baixo — o item já é aproveitável",
+          "reward": "Poder imediato de personagem sem mais investimento",
+          "when": "As rolagens são boas o suficiente para seu conteúdo atual"
+        },
+        {
+          "choice": "Vender ou trocar",
+          "riskLevel": "green",
+          "risk": "Baixo — você realiza valor agora",
+          "reward": "Moeda para financiar uma criação melhor depois",
+          "when": "O item tem mods de tier alto desejáveis que outros querem"
+        },
+        {
+          "choice": "Descartar ou vender a NPC",
+          "riskLevel": "red",
+          "risk": "Você pode jogar fora uma base ou mod úteis",
+          "reward": "Libera inventário e pode devolver fragmentos",
+          "when": "A base está errada, o iLvl é baixo demais ou os mods não são desejados"
+        }
+      ]
+    },
+    {
+      "id": "worked-examples",
+      "order": 13,
+      "title": "Exemplos trabalhados",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Três casos ilustrativos mostrando como o tipo de base, o nível do item e a raridade moldam a decisão certa. Nenhum preço é declarado — o valor é qualitativo.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "item",
+          "label": "Item"
+        },
+        {
+          "key": "ilvl-context",
+          "label": "Contexto de nível do item"
+        },
+        {
+          "key": "reasoning",
+          "label": "Raciocínio"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "case": "Arma Mágica de campanha",
+            "item": "Uma arma de uma mão azul com um prefixo",
+            "ilvl-context": "iLvl baixo dos primeiros atos",
+            "reasoning": "Adicione um segundo afixo com Augmentation para um ganho de dano imediato; não superinvista moeda em nível baixo."
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "case": "Armadura Rara de mapa inicial",
+            "item": "Um peitoral dourado com 2 prefixos e 1 sufixo",
+            "ilvl-context": "iLvl médio dos primeiros mapas",
+            "reasoning": "Verifique se resistências faltantes importam; preencha slots com orbes estilo Exalted apenas se o iLvl da base suportar tiers úteis."
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "case": "Base de endgame de alto iLvl",
+            "item": "Uma base de nível alto sem bons mods ainda",
+            "ilvl-context": "iLvl alto de conteúdo tardio",
+            "reasoning": "Vale uma criação adequada porque o iLvl destrava mods de tier máximo; use moedas determinísticas e Essências em vez de puro azar."
+          }
+        }
+      ],
+      "note": "Estes são exemplos didáticos; criações exatamente viáveis dependem da economia de sua liga, que não é declarada aqui."
+    },
+    {
+      "id": "community-evidence",
+      "order": 14,
+      "title": "Pontos comuns de confusão",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusões parafraseadas que jogadores frequentemente levantam sobre o sistema de modificadores.",
+      "cards": [
+        {
+          "title": "Alt não mostra tiers",
+          "tag": "Tooltip",
+          "body": [
+            "Muitos jogadores deixam passar que a visão de modificador avançado (segure Alt no PC) é necessária para ver tiers. Sem ela, itens parecem iguais em força."
+          ]
+        },
+        {
+          "title": "Nível do Item vs Nível Requerido",
+          "tag": "iLvl",
+          "body": [
+            "Uma confusão comum: jogadores elevam o nível do personagem esperando rolagens mais fortes, mas apenas o Nível do Item do próprio item limita os tiers de modificador."
+          ]
+        },
+        {
+          "title": "Por que nenhum modificador está disponível",
+          "tag": "Currency",
+          "body": [
+            "Quando uma moeda reporta nenhum modificador disponível, o nível do item ou o pool da base não tem mais nada válido para aquela moeda adicionar."
+          ]
+        },
+        {
+          "title": "Mesmo nome, valor diferente",
+          "tag": "Rolls",
+          "body": [
+            "O mesmo modificador nomeado pode rolar valores diferentes em bases diferentes porque a faixa depende do tipo de base e do Nível do Item."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 15,
+      "title": "Guia em vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2 | Tiers de Item e Modificador Explicados - Guia para Iniciantes",
+          "creator": "Alphagamer",
+          "description": "Um passo a passo para iniciantes sobre raridade de item, prefixo vs sufixo, nível do item versus nível requerido, tiers de modificador e modificadores locais versus globais no Path of Exile 2.",
+          "takeaway": "Leia a visão de modificador avançado (segure Alt) antes de criar, e escolha uma base cujo nível do item suporte os tiers desejados.",
+          "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ",
+          "timestamps": [
+            {
+              "label": "Introdução",
+              "time": "0:00"
+            },
+            {
+              "label": "Tiers de raridade",
+              "time": "1:30"
+            },
+            {
+              "label": "Prefixo vs sufixo",
+              "time": "4:10"
+            },
+            {
+              "label": "Nível do item vs nível requerido",
+              "time": "7:25"
+            },
+            {
+              "label": "Tiers de modificador",
+              "time": "10:40"
+            },
+            {
+              "label": "Modificadores locais vs globais",
+              "time": "13:15"
+            },
+            {
+              "label": "Resumo",
+              "time": "16:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 16,
+      "title": "Erros comuns",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "As maiores armadilhas de criação vêm de mal-entender o sistema de modificadores, em vez de má sorte. Observar estes economiza muito mais moeda do que qualquer orb isolado."
+      ],
+      "bullets": [
+        "Criar em uma base cujo Nível do Item é baixo demais para alcançar os tiers desejados.",
+        "Confundir Nível do Item com Nível Requerido e esperar que nível de personagem mais alto melhore rolagens.",
+        "Assumir que todo prefixo é ofensivo e todo sufixo é defensivo — existem exceções.",
+        "Ignorar o tipo de base e tentar rolar mods que o pool do item não pode conter.",
+        "Esquecer de abrir a visão de modificador avançado antes de julgar a força de um item.",
+        "Gastar moeda rara em um item cheio que primeiro precisava de um annul para liberar um slot."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 17,
+      "title": "Perguntas frequentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Um item Mágico pode ter mais de um prefixo?",
+          "answer": [
+            "Não. Um item Mágico é limitado a até 1 prefixo e 1 sufixo. Para ter mais afixos, você deve subi-lo a Raro, que pode chegar a 3 prefixos e 3 sufixos."
+          ]
+        },
+        {
+          "question": "Um Nível Requerido mais alto significa modificadores mais fortes?",
+          "answer": [
+            "Não. O Nível Requerido controla apenas quando você pode equipar o item. O Nível do Item controla quais modificadores e tiers podem surgir. Um item pode ter Nível Requerido baixo, mas Nível do Item alto, ou vice-versa."
+          ]
+        },
+        {
+          "question": "O que significa 'nenhum modificador disponível' quando uso uma moeda?",
+          "answer": [
+            "Significa que o nível atual do item e o pool de modificadores da base não têm mais nada válido para aquela moeda específica adicionar. Tente uma moeda diferente, ou libera um slot com um Orb of Annulment primeiro."
+          ]
+        },
+        {
+          "question": "Por que o mesmo nome de modificador mostra valores diferentes em dois itens?",
+          "answer": [
+            "A faixa de rolagem de um modificador depende do tipo de base e do Nível do Item. O mesmo modificador nomeado pode, portanto, rolar valores diferentes em bases diferentes."
+          ]
+        },
+        {
+          "question": "Um Divine Orb melhora o tier de um modificador?",
+          "answer": [
+            "Não. Um Divine Orb rerola o valor numérico dentro do tier existente de um modificador. Ele nunca sobe um modificador T2 para T1; isso requer uma base ou moeda diferente."
+          ]
+        },
+        {
+          "question": "Todos os prefixos são ofensivos e todos os sufixos são defensivos?",
+          "answer": [
+            "Como convenção, prefixos pendem para o ofensivo (dano, atributos) e sufixos pendem para o defensivo ou utilitário (resistências, vida, frascos). É uma regra prática útil, não uma lei absoluta — ocorrem exceções, então sempre leia o mod real."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 18,
+      "title": "Fontes e verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Modificadores",
+          "description": "Referência da wiki de PoE2 para modificadores, afixos, prefixo/sufixo e local vs global",
+          "url": "https://poe2wiki.net/wiki/Mod"
+        },
+        {
+          "label": "Guia de básicos de criação (Maxroll)",
+          "description": "Guia de criação para iniciantes de ZIGGYD cobrindo prefixos, sufixos, nível do item e tipos de base",
+          "url": "https://maxroll.gg/poe2/resources/how-to-craft-in-path-of-exile-2"
+        },
+        {
+          "label": "Guia em vídeo (Alphagamer)",
+          "description": "Vídeo para iniciantes explicando tiers de item e modificador no Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 19,
+      "title": "Registro de alterações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Publicação inicial do guia de modificadores de item, nível do item e prefixo vs sufixo para Path of Exile 2 Early Access 0.5.4.",
+            "Adicionados respostas rápidas, anatomia do tooltip, slots de raridade, painel de prefixo/sufixo, iLvl vs nível requerido, tipo de base, matriz de tier, local/global, visão avançada, diagnóstico, matriz de decisão, exemplos trabalhados, confusão da comunidade, vídeo, solução de problemas e FAQ."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Modifiers (Mod)",
+      "url": "https://poe2wiki.net/wiki/Mod",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - How to Craft in Path of Exile 2 (ZIGGYD)",
+      "url": "https://maxroll.gg/poe2/resources/how-to-craft-in-path-of-exile-2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Alphagamer - Item & Modifier Tiers Explained (YouTube)",
+      "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guia de Modificadores de Item, Nível do Item e Prefixo vs Sufixo do PoE 2",
+    "description": "Entenda os modificadores de item do Path of Exile 2: prefixo vs sufixo, nível do item vs nível requerido, tiers de modificador, mods locais vs globais e como ler o tooltip avançado.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "item-modifiers-item-level-prefix-suffix",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

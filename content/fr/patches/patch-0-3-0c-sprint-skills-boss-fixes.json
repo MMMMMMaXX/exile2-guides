@@ -1,0 +1,489 @@
+{
+  "id": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "slug": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "locale": "fr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.3.0c : Sprint, Arbalète, Interactions de compétences et correctifs des boss",
+  "shortTitle": "Pack de correctifs de gameplay 0.3.0c",
+  "summary": "0.3.0c était un vaste pack de correctifs de gameplay : il a ajouté une période de grâce d'Étourdissement Lourd au démarrage du Sprint, corrigé les blocages de rechargement/tir de l'Arbalète et les jets de munitions par carreau, rectifié la mise à l'échelle des compétences et les interactions totem/jeu d'armes, et réparé plusieurs boss ainsi que l'interface contrôleur.",
+  "description": "0.3.0c expliqué : période de grâce du Sprint, munitions de l'Arbalète, Gemmes Méta du Gemling, correctifs de mise à l'échelle des compétences, totem/jeu d'armes, correctifs des boss et contrôleur/interface — et ce qui reste applicable en 0.5.4e.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.3.0c",
+  "patch": "0.3.0c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Éditorial StratLore",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/barrage.webp",
+  "cardImage": "/images/skills/barrage.webp",
+  "imageAlt": "Une compétence tirée durant un déplacement en Sprint.",
+  "tags": [
+    "patch",
+    "0-3-0c",
+    "sprint",
+    "crossbow",
+    "bug-fix",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "sprint-grace",
+      "status": "still-current",
+      "currentSummary": [
+        "La période de grâce d'Étourdissement Lourd du Sprint issue de 0.3.0c fait toujours partie de la sensation de déplacement en 0.5.4e."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "crossbow-ammo",
+      "status": "changed-later",
+      "currentSummary": [
+        "Les règles de rechargement/tir et de munitions par carreau de l'Arbalète ont été corrigées en 0.3.0c mais re-équilibrées par des correctifs ultérieurs."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Résumé rapide",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.3.0c est un vaste pack de correctifs de gameplay plutôt qu'une refonte d'équilibrage. Il regroupait les correctifs par thèmes : Sprint et déplacement, munitions de l'Arbalète, Gemmes Méta du Gemling, mise à l'échelle des compétences, totems et jeux d'armes, boss, contrôleur/interface et performances.",
+        "Points clés : une période de grâce d'Étourdissement Lourd au démarrage du Sprint, les blocages de rechargement/tir de l'Arbalète corrigés et les munitions tirées à chaque carreau, la mise à l'échelle des compétences (qui ignorait auparavant les Dégâts de Zone/Support/Qualité) rectifiée, ainsi que plusieurs correctifs de boss et de contrôleur."
+      ],
+      "bullets": [
+        "Période de grâce d'Étourdissement Lourd du Sprint",
+        "Correctifs de rechargement/munitions de l'Arbalète",
+        "Rectifications de mise à l'échelle des compétences",
+        "Correctifs des boss et du contrôleur"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Avertissement historique",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — l'ère 0.3.0",
+      "baselineNote": "Les affirmations sur l'état actuel sont mesurées par rapport au client 0.5.4e.",
+      "paragraphs": [
+        "0.3.0c a corrigé des bugs de la fenêtre de lancement de The Third Edict. Ces correctifs sont des rectifications, non des buffs ; des correctifs ultérieurs ont pu à nouveau modifier les mêmes compétences."
+      ],
+      "bullets": [
+        "0.3.0c a corrigé les bugs de la fenêtre de lancement de The Third Edict",
+        "Ce sont des rectifications et non des buffs, des modifications ultérieures sont possibles"
+      ]
+    },
+    {
+      "id": "change-explorer",
+      "order": 3,
+      "title": "Catégories de correctifs",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Période de grâce d'Étourdissement Lourd du Sprint",
+          "detail": "Une période de grâce a été ajoutée au démarrage du Sprint afin de ne pas être instantanément Étourdi Lourd d'entrée de jeu.",
+          "scope": "Notes de correctif officielles 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Blocages de rechargement / tir",
+          "detail": "Les commandes pouvant bloquer le rechargement ou le tir de l'Arbalète ont été corrigées ; les munitions sont tirées par carreau.",
+          "scope": "Notes de correctif officielles 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Mise à l'échelle des compétences",
+          "detail": "Les compétences qui ne montaient pas correctement en puissance avec les Dégâts de Zone, le Support ou la Qualité ont été corrigées.",
+          "scope": "Notes de correctif officielles 0.3.0c"
+        },
+        {
+          "category": "boss",
+          "title": "Correctifs des boss",
+          "detail": "Vessel, le boss final de l'Acte 4, Torvian, Diamora et d'autres ont reçu des correctifs.",
+          "scope": "Notes de correctif officielles 0.3.0c"
+        },
+        {
+          "category": "technical",
+          "title": "Interface et performances",
+          "detail": "La navigation du stockage au contrôleur et les problèmes de performances ont été traités.",
+          "scope": "Notes de correctif officielles 0.3.0c"
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "Bug vs correctif",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Correctifs représentatifs de 0.3.0c et leur état actuel.",
+      "columns": [
+        {
+          "key": "bug",
+          "label": "Bug / Changement"
+        },
+        {
+          "key": "target",
+          "label": "Concerné"
+        },
+        {
+          "key": "fix",
+          "label": "Correctif 0.3.0c"
+        },
+        {
+          "key": "now",
+          "label": "Actuel (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "bug": "Étourdissement Sprint instantané",
+          "target": "Déplacement",
+          "fix": "Période de grâce ajoutée",
+          "now": "Toujours présent"
+        },
+        {
+          "bug": "Blocage de l'Arbalète",
+          "target": "Arbalète",
+          "fix": "Rechargement/tir corrigés, jet par carreau",
+          "now": "Re-équilibré depuis"
+        },
+        {
+          "bug": "Mauvaise mise à l'échelle",
+          "target": "Plusieurs compétences",
+          "fix": "Zone/Support/Qualité appliqués",
+          "now": "Les correctifs ultérieurs peuvent différer"
+        },
+        {
+          "bug": "Problèmes de boss",
+          "target": "Vessel/Acte4/Torvian/Diamora",
+          "fix": "Divers correctifs",
+          "now": "Consulter les pages de boss actuelles"
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "Impact sur les builds",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "Les rectifications de mise à l'échelle des compétences peuvent ressembler à des pics de dégâts, mais ce sont des correctifs de bug ; tout guide de build décrivant le comportement défectueux doit être mis à jour plutôt que traité comme un buff.",
+        "L'interaction Integrated Efficiency du Gemling Legionnaire avec les sbires et les Gemmes Méta a été clarifiée, ce qui influe sur la description de cette ascendance."
+      ],
+      "bullets": [
+        "Les correctifs ne sont pas des buffs — mettez à jour les guides",
+        "Interaction du Gemling clarifiée"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "Sprint avant vs après",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Sprint pré-0.3.0c",
+      "oldText": "Démarrer un Sprint pouvait vous Étourdir Lourd instantanément, rendant la mécanique punitive dès l'entrée en course.",
+      "newLabel": "Après 0.3.0c",
+      "newText": "Une période de grâce permet de commencer à Sprinter sans Étourdissement Lourd instantané, tandis que l'étourdissement s'applique toujours une fois en mouvement."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "Autrefois vs maintenant",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Étourdissement du Sprint",
+          "thenText": "Instantané au démarrage avant 0.3.0c.",
+          "nowText": "Période de grâce ajoutée ; toujours présent en 0.5.4e."
+        },
+        {
+          "aspect": "Sensation de l'Arbalète",
+          "thenText": "Blocages et mauvais jets de munitions au lancement de 0.3.0.",
+          "nowText": "Corrigé en 0.3.0c, re-équilibré depuis."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "Applicabilité actuelle (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Période de grâce du Sprint",
+          "status": "still-current",
+          "currentSummary": "Toujours partie intégrante du déplacement en 0.5.4e.",
+          "supersededBy": "—",
+          "affectedContent": "Guides de déplacement"
+        },
+        {
+          "topic": "Règles de munitions de l'Arbalète",
+          "status": "changed-later",
+          "currentSummary": "Corrigé en 0.3.0c, re-équilibré depuis.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Pages de build Arbalète"
+        },
+        {
+          "topic": "Correctifs de mise à l'échelle des compétences",
+          "status": "changed-later",
+          "currentSummary": "Rectifié en 0.3.0c ; les correctifs ultérieurs peuvent différer.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Pages de compétences concernées"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Témoignages de la communauté",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (Sprint)",
+          "context": "Les joueurs ont demandé pourquoi le Sprint étourdit toujours au démarrage.",
+          "quote": "Pourquoi est-ce que je suis étourdi lourd dès que je sprinte ?",
+          "analysis": "La période de grâce aide, mais l'étourdissement s'applique toujours une fois en mouvement ; ce n'est pas une suppression totale."
+        },
+        {
+          "source": "Forum (Arbalète)",
+          "context": "Les joueurs ont signalé un échec occasionnel de chargement des carreaux.",
+          "quote": "Mon arbalète ne se recharge parfois pas.",
+          "analysis": "Correspond au blocage de rechargement/tir corrigé en 0.3.0c ; à vérifier avec le client actuel."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "Changements ultérieurs à surveiller",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "crossbow-build-guide",
+          "kind": "build",
+          "issue": "Décrit le comportement des munitions pré-0.3.0c.",
+          "action": "Mettre à jour avec les règles de munitions actuelles.",
+          "status": "queued"
+        },
+        {
+          "contentId": "skill-page",
+          "kind": "skill",
+          "issue": "La mise à l'échelle corrigée en 0.3.0c a pu changer à nouveau.",
+          "action": "Re-vérifier par rapport à 0.5.4e.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "Contenu concerné",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Pages de build Arbalète",
+          "type": "build",
+          "trigger": "Règles de munitions corrigées",
+          "action": "Re-vérifier le comportement actuel.",
+          "status": "queued"
+        },
+        {
+          "name": "Page Gemling Legionnaire",
+          "type": "build",
+          "trigger": "Integrated Efficiency clarifié",
+          "action": "Mettre à jour la description de l'interaction.",
+          "status": "queued"
+        },
+        {
+          "name": "Pages de compétences concernées",
+          "type": "skill",
+          "trigger": "Mise à l'échelle corrigée",
+          "action": "Re-vérifier les valeurs.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Vidéo historique",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — communication officielle sur le correctif",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Communication officielle pour cette famille de versions. À lire avec les notes de correctif pour comprendre ce qui a changé et comment les correctifs ultérieurs l'ont réécrite.",
+          "creator": "Path of Exile 2 officiel",
+          "timestamps": [
+            {
+              "label": "Aperçu du correctif",
+              "time": "00:30"
+            },
+            {
+              "label": "Changements de butin et de système",
+              "time": "04:10"
+            },
+            {
+              "label": "Impact actuel",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Le correctif du Sprint est-il un buff ?",
+          "answer": [
+            "Non. Il ajoute une période de grâce pour que le Sprint puisse démarrer sans Étourdissement Lourd instantané ; l'étourdissement s'applique toujours une fois en mouvement. À traiter comme une rectification."
+          ]
+        },
+        {
+          "question": "Pourquoi mes dégâts de compétence ont-ils changé après 0.3.0c ?",
+          "answer": [
+            "Certaines compétences ne montaient pas correctement en puissance avec les Dégâts de Zone, le Support ou la Qualité. 0.3.0c a corrigé cela ; c'est un correctif de bug, et des correctifs ultérieurs ont pu à nouveau modifier les mêmes compétences."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Notes de correctif officielles 0.3.0c de Path of Exile 2",
+          "description": "Sujet de correctif officiel portant les changements annoncés de la version, l'ordre de déploiement et les clarifications de suivi.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+        },
+        {
+          "label": "Index du forum Early Access de Path of Exile 2",
+          "description": "Index de tous les sujets de correctifs et de hotfix officiels de la EA référencés sur cette page.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Données actuelles sur les compétences, objets, boss et modificateurs vérifiées croisées avec le client en direct pour les affirmations d'applicabilité actuelle.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Entrées de base de données pour les compétences, objets et modificateurs référencés dans cet article.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Guides communautaires de build et de système utilisés pour les vérifications croisées de l'impact sur les joueurs, non comme source de fait primaire.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication de l'article de correctif historique avec vérifications d'applicabilité actuelle par rapport au client 0.5.4e."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3851306",
+      "label": "Notes de correctif officielles 0.3.0c de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Index du forum Early Access de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.3.0c : Sprint, Arbalète, Interactions de compétences et correctifs des boss",
+    "description": "Correctifs de gameplay 0.3.0c : grâce du Sprint, munitions de l'Arbalète, mise à l'échelle des compétences et réparations des boss.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-3-0c-sprint-skills-boss-fixes",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

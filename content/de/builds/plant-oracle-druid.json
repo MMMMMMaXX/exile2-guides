@@ -1,0 +1,887 @@
+{
+  "id": "plant-oracle-druid",
+  "slug": "plant-oracle-druid",
+  "locale": "de",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Plant-Oracle-Druide-Build-Guide: Leveling, CoC-Gewitter und Endgame",
+  "shortTitle": "Plant-Oracle-Druide",
+  "summary": "0.5.4-Pflanzen-Zauber-Toolkit: Entangle für den Clear, Gewitter nachhaltig durch Forced Outcome und Cast on Critical. Deckt Phasenwechsel, Mananachschub, Boss-Rotation und Budget-Stufen ab.",
+  "description": "Path of Exile 2 Plant-Oracle-Druide-Guide für 0.5.4: Leveling-Leiter, Forced Outcome, CoC-Gewitter, Mana-Verwaltung und echte Video-Zeitstempel.",
+  "classId": "druid",
+  "ascendancyId": "oracle",
+  "mainSkillIds": [
+    "entangle",
+    "thrashing-vines"
+  ],
+  "secondarySkillIds": [
+    "thunderstorm",
+    "cast-on-critical",
+    "mana-remnants",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "plant",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "low-input"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "cardImage": "/images/builds/covers/plant-oracle-druid.webp",
+  "imageAlt": "Druiden-Oracle beschwört mit Entangle Ranken, während er im Kampf ein Gewitter herabruft",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "oracle",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Build-Überblick",
+      "paragraphs": [
+        "Plant Oracle ist das Pflanzen-Zauber-Toolkit des Druiden: Entangle erzeugt Risse, deren Ranken sich an nahe Feinde heften und sie verlangsamen, während das Gewitter Blitze von oben regnen lässt, um Overgrown zu speisen. Die Ascendancy-Eigenschaft Forced Outcome des Oracle gewährt Unausweichliche Kritische Treffer, wodurch Cast on Critical zuverlässig das Gewitter auslöst – das ist der Ursprung des entspannten, flächendeckenden Spielgefühls dieses Builds.",
+        "Dies ist kein Burst-Build ab Stufe 1. Entangle lässt sich sehr früh nutzen, doch das stabile Auslösen des Gewitters hängt von Forced Outcome, Cast on Critical und ausreichend Mana ab; bevor diese zusammenkommen, räumst du mit Entangle + Thrashing Vines auf und machst Schaden gegen Einzelziele, wobei du das Mana mit Ausweichen und Mana Remnants hältst.",
+        "Dieser Guide ist nach Phase gegliedert und nicht einfach nach Stufe abgelegt: zuerst, wann man von Entangle-als-Hauptskill zur Gewitter-Trigger-Schleife wechselt, dann Ausrüstung, Passive und Budget-Stufen. Alle clientseitigen Zahlen und Skill-Mechaniken sind für die PC-Verifizierung markiert; nicht verifizierter DPS wird nicht als Fakt behauptet."
+      ],
+      "bullets": [
+        "Mapping ist Entangle + Thrashing Vines-Feger, fast ein Knopf.",
+        "Bossing endet mit Forced Outcome / CoC-getragenem Gewitter.",
+        "Manaknappheit in langen Bosskämpfen ist ein echter Engpass, der behandelt werden muss."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Vor- und Nachteile",
+      "pros": [
+        "Nahezu ein-Knopf-Mapping; Ranken erledigen den Müll automatisch, sehr entspannt.",
+        "Forced Outcome stabilisiert die Trigger-Schleife mit starker Boss-Abdeckung.",
+        "Pflanzen-Status bietet weiche Kontrolle und senkt das Einschließungsrisiko.",
+        "Funktioniert früh mit geringem Budget und geht nahtlos über."
+      ],
+      "cons": [
+        "Schaden ist niedrig, bevor das Gewitter auslöst; braucht erst Ascendancy und Mana.",
+        "Mana geht in langen Bosskämpfen leer, wenn nicht verwaltet; die Schleife bricht ab.",
+        "Chaos-Res ist ein harter Endgame-Bedarf und ist nicht nativ vorhanden.",
+        "Verteidigung ist passiv; Burst-Fenster hängen vom Status ab, nicht von der Positionierung."
+      ]
+    },
+    {
+      "id": "plant-loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Wie sich die Schleife liest: Entangle → Gewitter",
+      "paragraphs": [
+        "Mapping-Schleife: Entangle auf den Pack werfen; die Ranken peitschen weiter alles im Radius und du wirfst im Wesentlichen nur Entangle erneut und weichst aus. Das ist der Grund, warum die Community es Ein-Knopf-Mapping nennt.",
+        "Boss-Schleife: Verreachle den Boss, um Ranken zu heften und Pflanzen-Status aufzubauen, lass dann Forced Outcome / Cast on Critical das Gewitter von oben halten, um Overgrown zu erhalten. Thrashing Vines ist der Haupt-Einziel-Payoff; Sigil of Power fügt Schaden und Krit-Unterstützung hinzu.",
+        "Wendungen wie „die Pflanzen gießen“ beziehen sich meist auf den Schaden/Fläche, der durch das Stapeln von Pflanzen-Status gewonnen wird, nicht auf ein separates System; verifiziere gegen die Skill-Beschreibung und den Client, behandle es nicht als versteckte Zusatzmechanik."
+      ],
+      "bullets": [
+        "Mapping = Entangle + Ausweichen; der Rest wird von den Ranken erledigt.",
+        "Boss = Entangle (heften + verlangsamen) → Forced Outcome/CoC hält Gewitter (Overgrown).",
+        "Thrashing Vines ist der Haupt-Einziel- / Boss-Schaden, kein Flanken-Füller."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Levelweg",
+      "steps": [
+        {
+          "label": "Stufen 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Beginne mit Entangle. Es lässt sich sehr früh nutzen und ist dein echter Mapping-Skill; erzwinge die Gewitter-Triggerkette noch nicht – Mana und Ascendancy sind nicht bereit."
+          ]
+        },
+        {
+          "label": "Stufen 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Füge Thrashing Vines als Flanken-Finisher hinzu und nimm Lebens-/Mana-/Flächen-Knoten. Behalte Entangle als Kern."
+          ]
+        },
+        {
+          "label": "Stufen 30–42 — Oracle-Freischaltungen",
+          "levelRange": "30–42",
+          "body": [
+            "Wähle Oracle und nimm Forced-Outcome-Knoten. Das durch Cast on Critical ausgelöste Gewitter stabilisiert sich und der Boss-Schaden springt an."
+          ]
+        },
+        {
+          "label": "Stufen 43–60 — Frühe Maps",
+          "levelRange": "43–60",
+          "body": [
+            "Betreibe die Trigger-Schleife auf nicht-kritisch, mit geringem Budget. Decke Resistenzen ab, fixe Leben/Mana, halte das Gewitter auf Seltenen oben."
+          ]
+        },
+        {
+          "label": "Stufe 60+ — Endgame-Vorbereitung",
+          "levelRange": "60+",
+          "body": [
+            "Gehe in Budget-Upgrades: Fokus-Zauberschaden, Zaubertempo, Manapool und Chaos-Res. Verfolge High-End-Ausrüstung erst, nachdem die Upgrade-Prioritäts-Checkliste bestanden ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Skill-Setup",
+      "groups": [
+        {
+          "label": "Kern-Skills",
+          "skills": [
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "Mapping-Kern: erzeugt Risse, deren Ranken sich an nahe Feinde heften und sie verlangsamen; auch der Boss-Pflanzen-Status-Aufbau.",
+              "supportSkillIds": [
+                "branching-fissures",
+                "accelerated-growth",
+                "rapid-casting",
+                "magnified-area"
+              ],
+              "whyUse": [
+                "Es ist der Start der ganzen Schleife: ohne dass Entangle Ranken heftet, können Gewitter-Abdeckung und Pflanzen-Status nicht aufgebaut werden."
+              ],
+              "whenReplace": [
+                "Wird nie ersetzt; im Bossing verschiebt es sich vom Hauptschaden zum Status-Aufbau."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Entangle spammen, um Ranken zu halten. Boss: zuerst Entangle für Status, dann die Triggerkette."
+              ],
+              "notes": [
+                "Exakte Support-Verbindungen und Gem-Stufen ausstehend zur PC-Verifizierung."
+              ]
+            },
+            {
+              "displayName": "Thunderstorm",
+              "skillId": "thunderstorm",
+              "role": "Blitze von oben, getragen durch Forced Outcome / Cast on Critical; seine Aufgabe ist, Overgrown auf Pflanzen zu erhalten, nicht der Hauptschaden zu sein.",
+              "supportSkillIds": [
+                "magnified-area",
+                "prolonged-duration",
+                "rapid-casting",
+                "living-lightning"
+              ],
+              "whyUse": [
+                "Es ist der Overgrown-Katalysator: sobald das Auslösen stabil ist, ist der Blitz fast dauerhaft und hält die Pflanzen „gegossen“."
+              ],
+              "whenReplace": [
+                "Nicht ersetzt, braucht aber Forced Outcome/CoC und Mana, um zu glänzen."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: genutzt, um Pflanzen überwachsen zu lassen. Boss: von oben durch die Triggerkette gehalten, um Overgrown oben zu behalten."
+              ],
+              "notes": [
+                "Freigabe-Timing wird durch Triggerbedingungen gesteuert, nicht durch manuelles Wirken."
+              ]
+            },
+            {
+              "displayName": "Thrashing Vines",
+              "skillId": "thrashing-vines",
+              "role": "Haupt-Einziel- und Boss-Schaden; der primäre Payoff, sobald Pflanzen überwachsen sind.",
+              "supportSkillIds": [
+                "concentrated-area",
+                "accelerated-growth",
+                "physical-mastery",
+                "rapid-casting"
+              ],
+              "whyUse": [
+                "Peitscht automatisch im Entangle-Bereich; der höchste Einziel-Schaden des Builds."
+              ],
+              "whenReplace": [
+                "Als Finisher behalten; nur tauschen, falls ein stärkerer Flächen-Pflanzen-Skill auftaucht."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: ergänzender Clear. Boss: Haupt-Einziel-Schaden bei Phasenwechseln."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Trigger & Buffs",
+          "skills": [
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "Trigger-Träger, der bei Krit das Gewitter freisetzt.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es ist Voraussetzung für stabiles Gewitter-Auslösen; ohne ihn bricht der Rhythmus."
+              ],
+              "whenReplace": [
+                "Behalten; es ist Teil der Trigger-Architektur."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, aber Bossing hängt stärker von seinem stabilen Trigger ab."
+              ],
+              "notes": [
+                "Braucht ausreichend Krit und Mana."
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "Boden-Buff für Schaden/Krit, der die Triggerkette verstärkt.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Fügt Schaden und Krit-Unterstützung hinzu und stärkt die Gewitter-Auflösung."
+              ],
+              "whenReplace": [
+                "Als Buff behalten."
+              ],
+              "mappingBossingDiff": [
+                "Mapping optional; im Bossing platziert, um das Fenster zu stärken."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Mana Remnants",
+              "skillId": "mana-remnants",
+              "role": "Mananachschub, der die Knappheit in langen Bosskämpfen lindert.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Wenn das Mana in langen Bosskämpfen leer geht, ist dies direkter als nur den Pool zu stapeln."
+              ],
+              "whenReplace": [
+                "Behalten; Kern der Mana-Verwaltung."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, im Bossing kritischer."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Ascendancy-Reihenfolge",
+      "steps": [
+        {
+          "label": "Oracle — Erste Knoten",
+          "body": [
+            "Wähle Oracle. Priorisiere Forced-Outcome-Knoten, damit dessen Unausweichliche Kritische Treffer Cast on Critical zuverlässig das Gewitter auslösen; das ist die Vorbedingung für den Build."
+          ]
+        },
+        {
+          "label": "Mana- & Verteidigungs-Check",
+          "body": [
+            "Wenn das Überleben ab T15+ wackelig ist, tausche keine Pflanzen-/Zauberschaden-Knoten gegen reinen Schaden; sichere zuerst Mananachschub und Chaos-Res."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Passivbaum",
+      "steps": [
+        {
+          "label": "Kampagne",
+          "body": [
+            "Nimm nur Knoten, die Entangle / Pflanzenfläche / Mana und Leben unterstützen; pfade nicht vorzeitig zu Krit-Rädern."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Wechsle in die Triggerketten-Variante; priorisiere Leben, Manapool, Chaos-Res und Zaubertempo."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Nachdem Verteidigung und Manaböden gelöst sind, investiere in Krit-/Zauberschaden-Räder; vergleiche Ausrüstungszustände auf derselben Stufe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Ausrüstung",
+      "slots": [
+        {
+          "slot": "Stab / Fokus",
+          "recommendations": [
+            "Wähle eine Basis, die Skillstufe und Blitz-/Zauberschaden erhöht; genug Sockel für die Gewitter-Verbindungen."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Zauber-Skillstufe / Blitz-Zauberschaden",
+              "reason": "Skaliert die Gewitter-Auflösung direkt."
+            },
+            {
+              "tier": "recommended",
+              "label": "Manapool und -regen",
+              "reason": "Schlüssel, um die Schleife in langen Bosskämpfen zu halten."
+            },
+            {
+              "tier": "optional",
+              "label": "Zaubertempo",
+              "reason": "Schnellerer Trigger-Rhythmus, kein Boden."
+            },
+            {
+              "tier": "luxury",
+              "label": "Krit-Chance / Krit-Schaden",
+              "reason": "Nur nach stabilen Trigger und Mana."
+            }
+          ],
+          "notes": [
+            "Fokus ist die Haupthand; priorisiere Zauberschaden und Mana."
+          ]
+        },
+        {
+          "slot": "Brust / Stiefel / Helm",
+          "recommendations": [
+            "Leben, Chaos-Res und Resistenzen; Bewegungstempo der Stiefel."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Leben und zwei abgedeckte Resistenzen",
+              "reason": "Kein Schaden gleicht das Sterben auf."
+            },
+            {
+              "tier": "recommended",
+              "label": "Chaos-Res",
+              "reason": "Harter Endgame-Bedarf, nicht nativ."
+            },
+            {
+              "tier": "optional",
+              "label": "Bewegungstempo",
+              "reason": "Verbessert Positionierung und Ausweich-Rhythmus."
+            },
+            {
+              "tier": "luxury",
+              "label": "Expliziter Zauberschaden",
+              "reason": "Zählt erst nach der Verteidigung."
+            }
+          ],
+          "notes": [
+            "Chaos-Res kommt nicht von der Basis; muss gestapelt werden."
+          ]
+        },
+        {
+          "slot": "Ringe / Amulett / Gürtel",
+          "recommendations": [
+            "Attribute, Resistenzen, Leben und Mana; Mananachschub wo nötig."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Attribute, um Stab und Gems auszurüsten",
+              "reason": "Nicht ausrüstbar ist nutzlos."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistenzen und Leben",
+              "reason": "Vervollständigt die Verteidigungshülle."
+            },
+            {
+              "tier": "optional",
+              "label": "Manapool / -regen",
+              "reason": "Freier Nachschub durch Schmuck."
+            },
+            {
+              "tier": "luxury",
+              "label": "Zauber-Skillstufe",
+              "reason": "Später Endgame-Schaden."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Stat-Priorität",
+      "priorities": [
+        {
+          "label": "Zauber-Skillstufe",
+          "reason": "Skaliert Gewitter und Entangle; oberste Fortschrittsprüfung."
+        },
+        {
+          "label": "Manapool und -regen",
+          "reason": "Boden, um die Schleife in langen Bosskämpfen zu halten."
+        },
+        {
+          "label": "Chaos-Res",
+          "reason": "Harter Endgame-Bedarf, nicht nativ."
+        },
+        {
+          "label": "Zaubertempo",
+          "reason": "Schnellerer Trigger, nach Verteidigung und Mana."
+        },
+        {
+          "label": "Krit",
+          "reason": "Voraussetzung für CoC; erst nach stabilem Mana."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Upgrade-Priorität",
+      "steps": [
+        {
+          "label": "Clear wird langsamer",
+          "symptom": "Packs brauchen viele Entangle-Runden, um zu sterben.",
+          "checks": [
+            "Ist der Stab noch eine angemessene Basis für die Stufe?",
+            "Sind Resistenzen und Leben gelöst (d.h. der Stab ist der echte Engpass)?"
+          ],
+          "upgrade": "Tausche den unterwertigen Stab, bevor du Schmuck anfasst."
+        },
+        {
+          "label": "Boss-Mana-Knappheit",
+          "symptom": "Mana leert im Einzielkampf, Gewitter bricht ab.",
+          "checks": [
+            "Verlässt du dich nur auf Kill-Regen?",
+            "Sind Mana Remnants / Leben-entziehend / Flasks im Bossing aktiv?"
+          ],
+          "upgrade": "Behebe den Mananachschub, bevor du Schaden skalierst."
+        },
+        {
+          "label": "Boss-Sturm fehlt",
+          "symptom": "Das Gewitter-Fenster wird nie stabil.",
+          "checks": [
+            "Ist Forced Outcome genommen?",
+            "Ist der Cast on Critical-Krit ausreichend?",
+            "Trägt das Mana den durchgehenden Trigger?"
+          ],
+          "upgrade": "Behebe die Triggerkette (Forced Outcome → CoC → Mana), nicht den Stab."
+        },
+        {
+          "label": "Nach T15 stagniert",
+          "symptom": "Schaden hört auf, sich zu verbessern.",
+          "checks": [
+            "Skillstufe gedeckelt?",
+            "Fokus-Zauberschaden vorhanden?",
+            "Chaos-Res maximiert?"
+          ],
+          "upgrade": "Upgrade in Reihenfolge: Skillstufe → Fokus → Chaos-Res."
+        },
+        {
+          "label": "High-End erwägen",
+          "symptom": "Möchtest höheren Boss-Schaden und schielst auf Luxus-Ausrüstung.",
+          "checks": [
+            "Sind Triggerkette und Mana stabil?",
+            "Wird High-End Resistenzdeckel brechen oder Leben senken?"
+          ],
+          "upgrade": "Kaufe Stück für Stück und teste erneut, nachdem die Checkliste bestanden ist; tausche Überleben nicht gegen Zahlen ein."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Mapping",
+      "paragraphs": [
+        "Entangle auf Packs werfen; Ranken peitschen automatisch. Du wirfst nur erneut Entangle und weichst aus. Müll braucht kein Gewitter; stehenzubleiben, um zu triggern, verlangsamt dich.",
+        "Sobald der Clear langsamer wird, zuerst den Stab upgraden. Halte etwas Mananachschub (Kill-Regen / Mana Remnants / Flask) aktiv, damit das Mapping nie stockt."
+      ],
+      "bullets": [
+        "Entangle + Ausweichen ist der ganze Mapping-Rhythmus.",
+        "Gewitter-Trigger bei Müll überspringen.",
+        "Reaktiv den Stab upgraden, wenn der Clear langsamer wird."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Bossing",
+      "paragraphs": [
+        "Bossing ist eine Abfolge: Sigil of Power für Schaden, Entangle, um Ranken zu heften und Pflanzen-Status aufzubauen, dann halten Forced Outcome / Cast on Critical das Gewitter von oben, um Overgrown zu erhalten. Thrashing Vines liefert den Haupt-Einziel-Payoff.",
+        "Kommt der Sturm nie, liegt das Problem in der Triggerkette (Forced Outcome / Krit / Mana), nicht im Stab. In langen Kämpfen, wenn das Mana leer geht, nutze Ausweichen und Mana Remnants zum Halten, statt den Pool roh zu erzwingen."
+      ],
+      "bullets": [
+        "Entangle (heften + verlangsamen) → Sigil → Forced Outcome/CoC hält Gewitter (Overgrown).",
+        "Thrashing Vines Haupt-Einziel-Payoff.",
+        "Mana-Abfall = Trigger und Nachschub fixen, nicht Waffe tauschen."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Budget-Stufen: Echte günstige vs. Luxus-Unterschiede",
+      "paragraphs": [
+        "Günstig: ein Stab mit geringem Budget plus gelöste Resistenzen/Leben/Mana, der die meisten Inhalte über die Triggerkette räumt und bossed. Es ändert, ob du spielen kannst, nicht die Schadenszahl.",
+        "Luxus: Fokus mit hoher Skillstufe, bestimmte Uniques, abgedeckte Chaos-Res und Krit, was sowohl Gewitter-Auflösung als auch Überleben hebt. Es ändert Deckel und Fehlertoleranz, verwandelt das Günstige nicht in einen anderen Build.",
+        "Mirror-Stufe erst, nachdem du verifiziert hast, dass günstig/luxus bestehen und Client-Zahlen bestätigen; opfere nicht Chaos-Res und Mana für DPS."
+      ],
+      "bullets": [
+        "Zuerst günstig: Leben, Resistenzen, Mana, ein anständiger Stab.",
+        "Später Luxus: Skillstufe, Chaos-Res, Krit.",
+        "Mirror-Stufe bricht nie den Verteidigungsboden."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Community-Belege",
+      "note": "Dieser Guide nutzt Community-Diskussionen als reproduzierbare Checkliste, nicht als Versprechen ihres gezeigten DPS.",
+      "entries": [
+        {
+          "context": "Spieler berichten von stagnierendem Schaden nach T15, unsicher, was upgraden.",
+          "label": "Raxxanterax 0.5 Plant-Oracle-Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Der Guide trennt günstige/luxus/Spiegel-Stufen und macht klar, dass jede die Ausrüstungsgrenzen ändert, nicht die Mechanik.",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "context": "Spieler debattieren, ob „Pflanzen gießen“ eine versteckte Mechanik ist.",
+          "label": "P4wnyhof Plant-Druide-Levelerfahrung",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Die Levelerfahrung betont das Ein-Knopf-Gefühl von Entangle + Rankenpeitsche; Pflanzen-Status sind gestapelte Schichten, kein separates System.",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Fehlerbehebung",
+      "problems": [
+        {
+          "symptom": "Boss-Sturm löst nicht aus",
+          "checks": [
+            "Ist Forced Outcome genommen?",
+            "Ist der Cast on Critical-Krit ausreichend?",
+            "Trägt das Mana den durchgehenden Trigger?"
+          ]
+        },
+        {
+          "symptom": "Mana geht in langen Bosskämpfen leer",
+          "checks": [
+            "Verlässt du dich nur auf Kill-Regen?",
+            "Sind Mana Remnants / Leben-entziehend / Flasks im Bossing aktiv?"
+          ]
+        },
+        {
+          "symptom": "Mapping wird langsamer",
+          "checks": [
+            "Ist der Stab noch eine Basis für die Stufe?",
+            "Sind Resistenzen und Leben zuerst gelöst?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Ab welcher Stufe nutze ich Entangle?",
+          "answer": [
+            "Sehr früh nutzbar; es ist der echte Mapping-Skill. Die Gewitter-Triggerkette wartet auf Oracle und Mana."
+          ],
+          "bullets": [
+            "Entangle-Mapping ab Stufe 1."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Ich habe einen besseren Stab getauscht, aber der Sturm ist weiter schwach?",
+          "answer": [
+            "Der Sturm wird von der Triggerkette (Forced Outcome / Cast on Critical / Mana) getragen, nicht nur vom Stab; fixe zuerst Trigger und Mana."
+          ],
+          "bullets": [
+            "Zeichne einen Bosskampf auf und prüfe die Trigger-Icons."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Kann ich SSF spielen?",
+          "answer": [
+            "Ja; die Triggerkette mit geringem Budget räumt und bossed die meisten Inhalte in SSF. Luxus-Uniques sind eine Decke, keine Schranke."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/de/guides/campaign-early-maps-gearing-crafting/",
+              "label": "Siehe Kampagnen- und Frühe-Maps-Ausrüstungs-Guide"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build-Planer & Import",
+      "note": "PoE2 liefert jetzt einen nativen Build-Planer. Einfügbare Import-Strings und .build-Dateien stehen weiterhin zur PC-Verifizierung aus; nutze inzwischen die Creator-Guides und den offiziellen Planer unten. Bestätige Knoten immer erneut in deinem eigenen Client.",
+      "creatorName": "Raxxanterax",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Leveling und Sturm-Rhythmus ansehen",
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 Plant-Oracle-Leveling-Guide",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4",
+          "description": "Eine lange Referenz, die den vollen Pfad von Entangle-Mapping zu einer fertigen Gewitter-Triggerkette zeigt.",
+          "takeaway": "Nimm pro Akt einen Kampagnen-Boss; halte die Trigger-Reihenfolge fest, nicht die Clear-Geschwindigkeit.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro und Konzept"
+            },
+            {
+              "time": "2:10",
+              "label": "Akt 1 Mapping"
+            },
+            {
+              "time": "5:30",
+              "label": "Oracle Ascendancy und Forced Outcome"
+            },
+            {
+              "time": "9:00",
+              "label": "Gewitter-Triggerkette"
+            },
+            {
+              "time": "13:20",
+              "label": "Frühe Maps und Ausrüstung"
+            }
+          ]
+        },
+        {
+          "creator": "Raxxanterax",
+          "label": "0.5 Plant-Oracle-Endgame-Guide",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0",
+          "description": "Endgame: Mana-Verwaltung, günstige/luxus/Spiegel-Ausrüstung und Passivbaum.",
+          "takeaway": "Fokus auf Mana-Verwaltung und Ausrüstungsgrenzen, nicht blindes DPS-Jagen.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Intro"
+            },
+            {
+              "time": "1:40",
+              "label": "Mana-Verwaltung"
+            },
+            {
+              "time": "4:30",
+              "label": "Günstige Uniques und Ausrüstung"
+            },
+            {
+              "time": "8:15",
+              "label": "Luxus- / Spiegel-Ausrüstung"
+            },
+            {
+              "time": "12:00",
+              "label": "Passivbaum und Zusammenfassung"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Quellen & Verifizierung",
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Plant-Oracle-Druide-Leveling-Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+        },
+        {
+          "label": "Community",
+          "description": "Raxxanterax — Plant-Oracle-Druide-Endgame-Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+        },
+        {
+          "label": "Community",
+          "description": "P4wnyhof — Plant-Druide-Starter perfekt (YouTube)",
+          "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Änderungsprotokoll",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Quellenbasierter 0.5.4 Plant-Oracle-Druide-Build-Guide erstellt; PC-Verifizierung läuft."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Raxxanterax — Plant-Oracle-Druide-Leveling-Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yEVXk4xWII4"
+    },
+    {
+      "label": "Raxxanterax — Plant-Oracle-Druide-Endgame-Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zguvfSmL2F0"
+    },
+    {
+      "label": "P4wnyhof — Plant-Druide-Starter perfekt (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=n1yA1OOZfFQ"
+    }
+  ],
+  "seo": {
+    "title": "Plant-Oracle-Druide-Build-Guide | Exile2 Guides",
+    "description": "0.5.4 Plant-Oracle-Druide: Entangle-Clear, Forced Outcome und CoC-Gewitter, Mananachschub, Boss-Rotation und Budget-Stufen.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "plant-oracle-druid",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

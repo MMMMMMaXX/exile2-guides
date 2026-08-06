@@ -1,0 +1,785 @@
+{
+  "id": "item-modifiers-item-level-prefix-suffix",
+  "slug": "item-modifiers-item-level-prefix-suffix",
+  "locale": "es",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Modificadores de objeto, Nivel de objeto y Prefijo vs Sufijo en Path of Exile 2",
+  "shortTitle": "Modificadores y afijos",
+  "summary": "Entiende cómo funcionan los modificadores (afijos), el nivel de objeto y la división entre prefijo y sufijo en la creación de objetos de Path of Exile 2: ranuras de rareza, límites por nivel (tier), mods locales vs globales y la vista avanzada de modificadores.",
+  "description": "Una guía de creación para principiantes sobre los modificadores de objetos de Path of Exile 2: qué son los prefijos y los sufijos, cómo el nivel de objeto limita los niveles de los modificadores y cómo leer el tooltip avanzado de modificadores.",
+  "guideCategory": "crafting-trading",
+  "heroImage": "/images/items/uncut-gems-hero.webp",
+  "cardImage": "/images/items/uncut-gems-hero.webp",
+  "imageAlt": "Una gema sin tallar que representa los niveles de modificadores y las ranuras de afijos en la creación de objetos de Path of Exile 2",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Acceso en la campaña a orbes de divisa básicos (Transmutación, Aumento, Regio)",
+    "Una comprensión básica de los colores de rareza de los objetos (blanco, azul, dorado, naranja)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "item",
+    "modifier",
+    "crafting",
+    "prefix",
+    "suffix",
+    "item-level",
+    "affix"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respuestas directas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "¿Cuál es la diferencia entre un prefijo y un sufijo?",
+          "body": [
+            "Los prefijos y los sufijos son los dos grupos de afijos que un objeto puede tener. Por convención, los prefijos suelen cubrir estadísticas ofensivas como el daño y los atributos, mientras que los sufijos suelen cubrir estadísticas defensivas y de utilidad como las resistencias, la vida y los efectos de frascos. Esto es una convención, no una regla estricta: existen excepciones."
+          ]
+        },
+        {
+          "title": "¿Qué controla realmente el Nivel de objeto (iLvl)?",
+          "body": [
+            "El Nivel de objeto limita qué modificadores pueden aparecer en un objeto y el nivel máximo (tier) que esos modificadores pueden alcanzar. El Nivel requerido es un límite aparte que controla cuándo tu personaje puede equipar el objeto. El nivel de los monstruos y de la zona decide el iLvl de los objetos que se sueltan."
+          ]
+        },
+        {
+          "title": "¿Cuántos afijos puede tener un objeto?",
+          "body": [
+            "Los objetos normales no llevan afijos obtenidos (solo un implícito). Los objetos mágicos pueden tener hasta 1 prefijo y 1 sufijo. Los objetos raros pueden tener hasta 3 prefijos y 3 sufijos. Los únicos tienen mods fijos y normalmente no se pueden crear con estas orbes."
+          ]
+        },
+        {
+          "title": "¿Cómo veo los niveles de los modificadores?",
+          "body": [
+            "En PC, mantén pulsado Alt para revelar los niveles y los detalles de los afijos. En mando, usa el interruptor de modificadores avanzados. Los niveles más altos (T1) son más fuertes; el nivel se muestra por modificador en la vista avanzada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "item-tooltip-anatomy",
+      "order": 2,
+      "title": "Anatomía de un tooltip de objeto",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cada objeto de Path of Exile 2 muestra sus estadísticas en un tooltip, pero la vista por defecto oculta muchos detalles útiles. Pulsar la tecla de modificadores avanzados (Alt en PC, o el interruptor del mando) amplía el tooltip para mostrar el nivel de cada modificador, si es local o global, y el nivel del objeto base.",
+        "Aprender a leer este tooltip ampliado es la habilidad de creación más útil de todas. Te dice no solo qué tiene un objeto, sino también qué tan fuerte es cada tirada y si una divisa podría alguna vez subirla dado el nivel del objeto."
+      ],
+      "bullets": [
+        "Los modificadores implícitos son inherentes al tipo base y aparecen en cada versión de ese objeto.",
+        "Los modificadores explícitos se obtienen o se crean en rarezas no normales.",
+        "Los encantamientos provienen de una fuente aparte, como las Runas insertadas en el objeto.",
+        "La vista avanzada revela los niveles por modificador, que están ocultos por defecto."
+      ]
+    },
+    {
+      "id": "tooltip-field-table",
+      "order": 3,
+      "title": "Referencia de campos del tooltip",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Qué significa cada parte del tooltip de modificadores avanzados y cómo afecta a tus decisiones de creación.",
+      "columns": [
+        {
+          "key": "field",
+          "label": "Campo"
+        },
+        {
+          "key": "means",
+          "label": "Qué significa"
+        },
+        {
+          "key": "affects-craft",
+          "label": "¿Afecta a la creación?"
+        },
+        {
+          "key": "common-misunderstanding",
+          "label": "Error común"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "field": "Item Level (iLvl)",
+            "means": "Estadística oculta que limita qué mods y niveles pueden aparecer",
+            "affects-craft": "Sí — limita la reserva de mods disponible y el nivel máximo",
+            "common-misunderstanding": "Los jugadores lo confunden con el Nivel requerido"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Required Level",
+            "means": "Nivel de personaje necesario para equipar el objeto",
+            "affects-craft": "No — solo limita el equipamiento, no las tiradas",
+            "common-misunderstanding": "Se cree que aumenta la fuerza del modificador"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Modifier tier (T1, T2...)",
+            "means": "Banda de fuerza relativa de un solo modificador",
+            "affects-craft": "Sí — el nivel decide el rango de la tirada",
+            "common-misunderstanding": "Un número de nivel mayor significa más fuerte (es al revés)"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Local / Global tag",
+            "means": "Si el mod afecta al objeto o a tu personaje",
+            "affects-craft": "Sí — importa para apilar y convertir",
+            "common-misunderstanding": "Asumir que todos los % increased son globales"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "field": "Implicit",
+            "means": "Modificador innato del tipo base",
+            "affects-craft": "No — no se puede añadir con orbes",
+            "common-misunderstanding": "Se cree que se puede volver a tirar como los mods explícitos"
+          }
+        }
+      ],
+      "note": "Las etiquetas de los campos siguen la vista de modificadores avanzados del juego; la redacción exacta puede variar ligeramente según la versión del cliente."
+    },
+    {
+      "id": "rarity-and-affix-slots",
+      "order": 4,
+      "title": "Rareza y ranuras de afijos",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La rareza del objeto define cuántas ranuras de afijos puede tener. Los objetos normales (blancos) no tienen afijos obtenidos y solo un modificador implícito. Los objetos mágicos (azules) pueden tener hasta 1 prefijo y 1 sufijo. Los objetos raros (dorados) pueden tener hasta 3 prefijos y 3 sufijos.",
+        "Los objetos únicos (naranjas) tienen modificadores fijos definidos por diseño y normalmente no se producen mediante la ruta estándar de creación con orbes de divisa. Los tipos base especiales pueden comportarse de forma distinta, así que trata el límite de 3+3 de los raros como el caso común en lugar de una regla absoluta para cada base."
+      ],
+      "bullets": [
+        "Normal: 0 afijos obtenidos, 1 implícito.",
+        "Mágico: hasta 1 prefijo y 1 sufijo.",
+        "Raro: hasta 3 prefijos y 3 sufijos.",
+        "Único: mods fijos, no creado de forma normal."
+      ]
+    },
+    {
+      "id": "prefix-suffix-dashboard",
+      "order": 5,
+      "title": "Prefijo y sufijo de un vistazo",
+      "type": "stat-grid",
+      "visible": true,
+      "toc": true,
+      "stats": [
+        {
+          "label": "Ranuras de afijo mágico",
+          "value": "1 + 1",
+          "note": "Un prefijo y un sufijo como máximo en un objeto mágico"
+        },
+        {
+          "label": "Ranuras de afijo raro",
+          "value": "3 + 3",
+          "note": "Hasta tres prefijos y tres sufijos en un objeto raro"
+        },
+        {
+          "label": "Rol del prefijo",
+          "value": "Ofensivo",
+          "note": "Normalmente daño y atributos, pero no exclusivamente"
+        },
+        {
+          "label": "Rol del sufijo",
+          "value": "Defensivo / utilidad",
+          "note": "Normalmente resistencias, vida y efectos de frascos"
+        }
+      ]
+    },
+    {
+      "id": "item-level-vs-required-level",
+      "order": 6,
+      "title": "Nivel de objeto vs Nivel requerido",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El Nivel de objeto y el Nivel requerido se confunden fácilmente pero controlan cosas completamente distintas. El Nivel de objeto limita qué modificadores pueden aparecer en el objeto y el nivel máximo que esos modificadores pueden alcanzar. El Nivel requerido limita cuándo tu personaje puede equipar el objeto.",
+        "Por esto, dos objetos pueden tener el mismo Nivel requerido pero Niveles de objeto muy distintos, y por tanto un potencial de modificadores muy distinto. El nivel de la zona o del monstruo que soltó el objeto determina su Nivel de objeto, no el nivel de tu personaje."
+      ],
+      "bullets": [
+        "Nivel de objeto: controla la reserva de modificadores disponible y el nivel máximo.",
+        "Nivel requerido: controla cuándo puedes equipar el objeto.",
+        "El nivel de zona y de monstruo fijan el Nivel de objeto del objeto soltado.",
+        "Son independientes — subir uno nunca sube el otro."
+      ]
+    },
+    {
+      "id": "base-type-and-mod-pool",
+      "order": 7,
+      "title": "Tipo base y la reserva de modificadores",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El tipo base de un objeto decide qué modificadores pueden llegar a aparecer en él. Un arco no puede obtener modificadores de armadura, y una pieza de armadura no puede obtener modificadores de daño propios de armas. Elegir la base correcta es el primer paso de cualquier creación seria.",
+        "El tipo base también fija el modificador implícito y las estadísticas base del objeto, ambas influyen en cómo se calculan los modificadores locales. Siempre empieza una creación confirmando que la base admite los mods que quieres antes de gastar divisa."
+      ],
+      "bullets": [
+        "El tipo base define toda la reserva de modificadores disponible.",
+        "Una base de arma y una base de armadura comparten casi ningún mod.",
+        "El implícito lo fija la base, no la tirada.",
+        "Coincide la base con tu build antes de crear."
+      ]
+    },
+    {
+      "id": "modifier-tier-matrix",
+      "order": 8,
+      "title": "Matriz de niveles de modificadores",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cómo se relacionan las familias de modificadores con los niveles, qué los limita y qué vigilar. Los puntos exactos son sensibles a la versión — redacta como 'según la guía referenciada, pendiente de verificación en PC' donde no se puedan obtener números precisos.",
+      "columns": [
+        {
+          "key": "modifier-family",
+          "label": "Familia de modificador"
+        },
+        {
+          "key": "tier-meaning",
+          "label": "Qué significa el nivel"
+        },
+        {
+          "key": "gated-by",
+          "label": "Limitado por"
+        },
+        {
+          "key": "note",
+          "label": "Nota"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Ofensivo (daño, atributos)",
+            "tier-meaning": "Los niveles más altos dan bonos planos o porcentuales mayores",
+            "gated-by": "Item Level",
+            "note": "Mayormente prefijos, pero no es una regla absoluta"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Defensivo (resistencias, vida)",
+            "tier-meaning": "Los niveles más altos dan valores defensivos mayores",
+            "gated-by": "Item Level",
+            "note": "Mayormente sufijos"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods híbridos",
+            "tier-meaning": "Combinan dos estadísticas en una banda de nivel",
+            "gated-by": "Item Level",
+            "note": "Ocupan solo una ranura de afijo a pesar de tener dos estadísticas"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods locales de arma/armadura",
+            "tier-meaning": "Escalan las estadísticas base del propio objeto",
+            "gated-by": "Base type + Item Level",
+            "note": "Se muestran en azul en el tooltip"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "modifier-family": "Mods globales",
+            "tier-meaning": "Se aplican a todo el personaje",
+            "gated-by": "Item Level",
+            "note": "Los mods condicionales siempre son globales"
+          }
+        }
+      ],
+      "note": "T1 es el nivel más fuerte de un modificador dado; los pesos determinan la probabilidad de la tirada, no un resultado garantizado. No inventes puntos exactos de nivel."
+    },
+    {
+      "id": "local-global-implicit-explicit",
+      "order": 9,
+      "title": "Local vs global, implícito vs explícito",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los modificadores vienen en varios sabores. Los modificadores locales afectan al propio objeto — por ejemplo, el daño físico porcentual local en un arma escala el daño físico base de esa arma. Los modificadores globales se aplican a todo tu personaje. Los modificadores locales se muestran en texto azul en el tooltip.",
+        "Los modificadores implícitos son inherentes al tipo base. Los modificadores explícitos se obtienen o se crean en rarezas no normales. Los encantamientos provienen de una fuente aparte como las Runas o las Emociones destiladas, y las Runas insertables añaden sus propios modificadores encima."
+      ],
+      "bullets": [
+        "Local: escala las estadísticas del propio objeto (texto azul).",
+        "Global: se aplica a todo el personaje.",
+        "Implícito: fijado por el tipo base.",
+        "Explícito: obtenido o creado.",
+        "Encantamiento: de Runas, Emociones destiladas o similares."
+      ]
+    },
+    {
+      "id": "advanced-mod-view",
+      "order": 10,
+      "title": "Leer la vista de modificadores avanzados",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La vista de modificadores avanzados es donde los niveles se vuelven visibles. En PC, mantén pulsado Alt mientras pasas el cursor sobre un objeto. En mando, activa la pantalla de modificadores avanzados. Esto revela el nivel de cada modificador, si es local o global, y el grupo de afijos al que pertenece.",
+        "Usar esta vista te permite comparar dos objetos de la misma base de un vistazo y decidir cuál merece la divisa. También explica por qué a veces una divisa muestra 'ningún modificador disponible' — el nivel del objeto o su reserva base simplemente no tiene nada válido que esa divisa pueda añadir."
+      ],
+      "bullets": [
+        "PC: mantén Alt para revelar niveles y detalles.",
+        "Mando: usa el interruptor de modificadores avanzados.",
+        "Los niveles, las etiquetas local/global y los grupos de afijos se vuelven visibles.",
+        "'Ningún modificador disponible' significa que la reserva no tiene nada válido que añadir."
+      ]
+    },
+    {
+      "id": "craft-readiness-diagnostic",
+      "order": 11,
+      "title": "Diagnóstico de preparación para crear",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Elige el estado del objeto en el que estás trabajando. La herramienta señala el siguiente paso lógico.",
+      "controls": [
+        {
+          "id": "current-state",
+          "label": "¿Cuál es el estado actual del objeto?",
+          "options": [
+            {
+              "label": "Base normal, sin mods",
+              "value": "normal"
+            },
+            {
+              "label": "Mágico, quiere un segundo afijo",
+              "value": "magic"
+            },
+            {
+              "label": "Raro, atascado con tiradas débiles",
+              "value": "rare-stuck"
+            },
+            {
+              "label": "La divisa muestra ningún modificador disponible",
+              "value": "no-mod"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Construye desde la base normal",
+          "when": {
+            "current-state": "normal"
+          },
+          "steps": [
+            "Confirma que el tipo base admite los mods que quieres.",
+            "Usa un Orbe de Transmutación para llegar a Mágico con un modificador.",
+            "Usa un Orbe de Aumento para añadir el segundo afijo si hace falta."
+          ]
+        },
+        {
+          "title": "Añade el afijo que falta",
+          "when": {
+            "current-state": "magic"
+          },
+          "steps": [
+            "Si el objeto tiene solo un afijo, usa un Orbe de Aumento para el segundo.",
+            "Decide si falta un prefijo o un sufijo antes de gastar.",
+            "Usa un Orbe Regio para subir a Raro cuando quieras más ranuras."
+          ]
+        },
+        {
+          "title": "Mejora las tiradas débiles de Raro",
+          "when": {
+            "current-state": "rare-stuck"
+          },
+          "steps": [
+            "Revisa el nivel de objeto — un iLvl bajo puede limitar el nivel máximo alcanzable.",
+            "Usa un Orbe Divino para volver a tirar los valores dentro de cada nivel (no cambiará los niveles).",
+            "Considera divisas Mayores o Perfectas y Esencias para resultados más deterministas."
+          ]
+        },
+        {
+          "title": "Por qué no se puede añadir nada",
+          "when": {
+            "current-state": "no-mod"
+          },
+          "steps": [
+            "El nivel del objeto o su reserva base no tiene ningún modificador válido que esa divisa pueda añadir.",
+            "Cambia de divisa (por ejemplo, un orbe tipo Exaltado añade un mod nuevo aleatorio).",
+            "Si el objeto ya está lleno, libera una ranura con un Orbe de Anulación antes de añadir."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Preparación general para crear",
+        "steps": [
+          "Empieza desde una base cuyo tipo y nivel de objeto admitan tus mods objetivo.",
+          "Usa Transmutación, Aumento y luego Regio para escalar la rareza.",
+          "Usa la vista de modificadores avanzados para confirmar los niveles antes de gastar más divisa."
+        ]
+      }
+    },
+    {
+      "id": "keep-craft-sell-discard-decision",
+      "order": 12,
+      "title": "¿Conservar, crear, vender o descartar?",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "Una ayuda rápida de decisión sobre qué hacer con un objeto del que no estás seguro.",
+      "rows": [
+        {
+          "choice": "Seguir creando",
+          "riskLevel": "yellow",
+          "risk": "Gastar más divisa puede no mejorar el objeto",
+          "reward": "Un objeto bien tirado puede ser una gran mejora o valer mucho",
+          "when": "La base y el nivel de objeto admiten tus mods objetivo y tienes divisa de sobra"
+        },
+        {
+          "choice": "Usar tal cual",
+          "riskLevel": "green",
+          "risk": "Bajo — el objeto ya es servible",
+          "reward": "Poder inmediato del personaje sin más inversión",
+          "when": "Las tiradas son suficientemente buenas para tu contenido actual"
+        },
+        {
+          "choice": "Vender o intercambiar",
+          "riskLevel": "green",
+          "risk": "Bajo — realizas valor ahora",
+          "reward": "Divisa para financiar una mejor creación más adelante",
+          "when": "El objeto tiene mods de nivel alto deseables que otros quieren"
+        },
+        {
+          "choice": "Descartar o vender a NPC",
+          "riskLevel": "red",
+          "risk": "Puedes tirar una base o un mod útil",
+          "reward": "Libera inventario y puede devolver fragmentos",
+          "when": "La base es incorrecta, el iLvl es demasiado bajo, o los mods no se desean"
+        }
+      ]
+    },
+    {
+      "id": "worked-examples",
+      "order": 13,
+      "title": "Ejemplos resueltos",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Tres casos ilustrativos que muestran cómo el tipo base, el nivel de objeto y la rareza moldean la decisión correcta. No se indican precios — el valor es cualitativo.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "item",
+          "label": "Objeto"
+        },
+        {
+          "key": "ilvl-context",
+          "label": "Contexto de nivel de objeto"
+        },
+        {
+          "key": "reasoning",
+          "label": "Razonamiento"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "case": "Arma mágica de campaña",
+            "item": "Un arma de una mano azul con un prefijo",
+            "ilvl-context": "iLvl bajo de los primeros actos",
+            "reasoning": "Añade un segundo afijo con Aumento para un subida de daño inmediata; no inviertas demasiada divisa a nivel bajo."
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "case": "Armadura rara de mapas tempranos",
+            "item": "Un pechero dorado con 2 prefijos y 1 sufijo",
+            "ilvl-context": "iLvl medio de los primeros mapas",
+            "reasoning": "Comprueba si importan las resistencias que faltan; rellena ranuras con orbes tipo Exaltado solo si el iLvl base admite niveles útiles."
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "case": "Base de endgame de alto iLvl",
+            "item": "Una base de nivel alto sin buenos mods todavía",
+            "ilvl-context": "iLvl alto de contenido tardío",
+            "reasoning": "Merece una creación en condiciones porque el iLvl desbloquea mods de nivel superior; usa divisas deterministas y Esencias en lugar de apostar a ciegas."
+          }
+        }
+      ],
+      "note": "Estos son ejemplos didácticos; las creaciones asequibles exactas dependen de la economía de tu liga, que no se indica aquí."
+    },
+    {
+      "id": "community-evidence",
+      "order": 14,
+      "title": "Puntos comunes de confusión",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusiones parafraseadas que los jugadores plantean con frecuencia sobre el sistema de modificadores.",
+      "cards": [
+        {
+          "title": "Alt no muestra los niveles",
+          "tag": "Tooltip",
+          "body": [
+            "Muchos jugadores pasan por alto que se requiere la vista de modificadores avanzados (mantener Alt en PC) para ver los niveles. Sin ella, los objetos parecen igual de fuertes."
+          ]
+        },
+        {
+          "title": "Nivel de objeto vs Nivel requerido",
+          "tag": "iLvl",
+          "body": [
+            "Un error frecuente: los jugadores suben el nivel de su personaje esperando tiradas más fuertes, pero solo el Nivel de objeto del propio objeto limita los niveles de los modificadores."
+          ]
+        },
+        {
+          "title": "Por qué no hay modificador disponible",
+          "tag": "Currency",
+          "body": [
+            "Cuando una divisa reporta que no hay modificador disponible, el nivel del objeto o su reserva base no tiene nada válido que esa divisa pueda añadir."
+          ]
+        },
+        {
+          "title": "Mismo nombre, valor distinto",
+          "tag": "Rolls",
+          "body": [
+            "El mismo modificador con nombre puede dar valores distintos en bases distintas porque el rango depende del tipo base y del Nivel de objeto."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 15,
+      "title": "Guía en vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2 | Niveles de objeto y modificadores explicados - Guía para principiantes",
+          "creator": "Alphagamer",
+          "description": "Un recorrido para principiantes por la rareza de objetos, prefijo vs sufijo, nivel de objeto versus nivel requerido, niveles de modificadores y modificadores locales versus globales en Path of Exile 2.",
+          "takeaway": "Lee la vista de modificadores avanzados (mantén Alt) antes de crear, y elige una base cuyo nivel de objeto admita los niveles que quieres.",
+          "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ",
+          "timestamps": [
+            {
+              "label": "Introducción",
+              "time": "0:00"
+            },
+            {
+              "label": "Niveles de rareza",
+              "time": "1:30"
+            },
+            {
+              "label": "Prefijo vs sufijo",
+              "time": "4:10"
+            },
+            {
+              "label": "Nivel de objeto vs nivel requerido",
+              "time": "7:25"
+            },
+            {
+              "label": "Niveles de modificadores",
+              "time": "10:40"
+            },
+            {
+              "label": "Modificadores locales vs globales",
+              "time": "13:15"
+            },
+            {
+              "label": "Resumen",
+              "time": "16:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 16,
+      "title": "Errores comunes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los mayores errores de creación vienen de malentender el sistema de modificadores en lugar de la mala suerte. Evitar estos ahorra mucha más divisa que cualquier orbe por sí solo."
+      ],
+      "bullets": [
+        "Crear sobre una base cuyo Nivel de objeto es demasiado bajo para alcanzar los niveles que quieres.",
+        "Confundir Nivel de objeto con Nivel requerido y esperar que un nivel de personaje más alto mejore las tiradas.",
+        "Asumir que todo prefijo es ofensivo y todo sufijo es defensivo — existen excepciones.",
+        "Ignorar el tipo base e intentar obtener mods que la reserva del objeto no puede contener.",
+        "Olvidar abrir la vista de modificadores avanzados antes de juzgar la fuerza de un objeto.",
+        "Gastar divisa rara en un objeto lleno que primero necesitaba una anulación para liberar una ranura."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 17,
+      "title": "Preguntas frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿Puede un objeto mágico tener más de un prefijo?",
+          "answer": [
+            "No. Un objeto mágico se limita a hasta 1 prefijo y 1 sufijo. Para tener más afijos debes subirlo a Raro, que puede llegar a 3 prefijos y 3 sufijos."
+          ]
+        },
+        {
+          "question": "¿Un Nivel requerido más alto significa modificadores más fuertes?",
+          "answer": [
+            "No. El Nivel requerido solo controla cuándo puedes equipar el objeto. El Nivel de objeto controla qué modificadores y niveles pueden aparecer. Un objeto puede tener un Nivel requerido bajo pero un Nivel de objeto alto, o viceversa."
+          ]
+        },
+        {
+          "question": "¿Qué significa 'ningún modificador disponible' cuando uso una divisa?",
+          "answer": [
+            "Significa que el nivel actual del objeto y su reserva base de modificadores no tienen nada válido que esa divisa concreta pueda añadir. Prueba otra divisa, o libera una ranura con un Orbe de Anulación antes."
+          ]
+        },
+        {
+          "question": "¿Por qué el mismo nombre de modificador muestra valores distintos en dos objetos?",
+          "answer": [
+            "El rango de la tirada de un modificador depende del tipo base y del Nivel de objeto. El mismo modificador con nombre puede por tanto dar valores distintos en bases distintas."
+          ]
+        },
+        {
+          "question": "¿Sube un Orbe Divino el nivel de un modificador?",
+          "answer": [
+            "No. Un Orbe Divino vuelve a tirar el valor numérico dentro del nivel existente de un modificador. Nunca sube un modificador T2 a T1; eso requiere otra base o divisa."
+          ]
+        },
+        {
+          "question": "¿Son todos los prefijos ofensivos y todos los sufijos defensivos?",
+          "answer": [
+            "Por convención, los prefijos tienden a ser ofensivos (daño, atributos) y los sufijos tienden a ser defensivos o de utilidad (resistencias, vida, frascos). Es una regla útil, no una ley absoluta — ocurren excepciones, así que siempre lee el mod real."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 18,
+      "title": "Fuentes y verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Modificadores",
+          "description": "Referencia de la wiki de PoE2 para modificadores, afijos, prefijo/sufijo y local vs global",
+          "url": "https://poe2wiki.net/wiki/Mod"
+        },
+        {
+          "label": "Guía de conceptos básicos de creación (Maxroll)",
+          "description": "Guía de creación para principiantes de ZIGGYD que cubre prefijos, sufijos, nivel de objeto y tipos base",
+          "url": "https://maxroll.gg/poe2/resources/how-to-craft-in-path-of-exile-2"
+        },
+        {
+          "label": "Guía en vídeo (Alphagamer)",
+          "description": "Vídeo para principiantes que explica los niveles de objeto y modificadores en Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 19,
+      "title": "Registro de cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Publicación inicial de la guía de modificadores de objeto, nivel de objeto y prefijo vs sufijo para Path of Exile 2 Early Access 0.5.4.",
+            "Añadidas respuestas rápidas, anatomía del tooltip, ranuras de rareza, panel de prefijo/sufijo, iLvl vs nivel requerido, tipo base, matriz de niveles, local/global, vista avanzada, diagnóstico, matriz de decisión, ejemplos resueltos, confusión comunitaria, vídeo, solución de problemas y FAQ."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Modificadores (Mod)",
+      "url": "https://poe2wiki.net/wiki/Mod",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Cómo crear en Path of Exile 2 (ZIGGYD)",
+      "url": "https://maxroll.gg/poe2/resources/how-to-craft-in-path-of-exile-2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Alphagamer - Niveles de objeto y modificadores explicados (YouTube)",
+      "url": "https://www.youtube.com/watch?v=1Ptv-EsofeQ",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guía de modificadores de objeto, nivel de objeto y prefijo vs sufijo en PoE 2",
+    "description": "Entiende los modificadores de objeto de Path of Exile 2: prefijo vs sufijo, nivel de objeto vs nivel requerido, niveles de modificadores, mods locales vs globales y cómo leer el tooltip avanzado.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "item-modifiers-item-level-prefix-suffix",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

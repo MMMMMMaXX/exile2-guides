@@ -1,0 +1,427 @@
+{
+  "id": "patch-0-4-0-druid-shapeshift-system",
+  "slug": "patch-0-4-0-druid-shapeshift-system",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 ドルイド＆シェイプシフトシステム：タリスマン、プリミナルスキル、そして旧ビルドが壊れる理由",
+  "shortTitle": "0.4.0 ドルイド / シェイプシフト",
+  "summary": "0.4.0 でドルイド、オラクル、シャーマンがどのように実装されたか、タリスマンが変身武器である理由、そして 0.4.0 以前のドルイドビルドがスキルID・武器・パッシブの判定に失敗する理由。",
+  "description": "0.4.0 のドルイドとシェイプシフトの仕組みをシステムレベルで解説：アニマルフォーム、プリミナルスキル、リネージサポート、タリスマンの武器規則、0.4.0i のクリティカル条件修正、そして旧ドルイド構成の移行ガイド。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "炎の熊にシェイプシフトした Path of Exile 2 のドルイド",
+  "tags": [
+    "builds",
+    "major-updates",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "ドルイドの仕組みは 0.4.0 の仕組みの中核であり、単なる一つのスキル系統ではなく、アニマルフォームによるシェイプシフト、それらのフォームの内部または周辺でのみ機能するプリミナルスキル、プリミナルスキルに限定されたリネージサポート、そしてすべてを支配するタリスマン武器というシステムです。",
+        "この仕組みはスキルID、武器要件、パッシブツリーに一度に触れるため、0.4.0 以前の外部ドルイドビルドは 3 つの独立した箇所で壊れます。このページでは各失敗を切り分け、現在の規則を示します。"
+      ],
+      "bullets": [
+        "ドルイドはオラクルとシャーマンの昇格クラスとともに実装された",
+        "シェイプシフトは通常のスタッフではなくタリスマン武器を使用する",
+        "プリミナルスキルとリネージサポートはフォームに依存する",
+        "0.4.0i で「最近シェイプシフトした」クリティカル条件が修正された",
+        "0.4.0 以前のドルイドビルドは存在しないクラスを参照していた"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "システムの由来",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.4.0",
+      "sourceId": "official-0-4-0",
+      "paragraphs": [
+        "シェイプシフトは当初からバフではなく変身として設計されており、フォームに入ると武器セットがタリスマンのフォーム属性に切り替わり、それ以外では無力なプリミナルスキルが使用可能になります。",
+        "リネージサポートは、プリミナルスキルにのみ組み込めるサポート階層を与え、汎用スキルにはコピーできないようにするために導入され、ドルイドのアイデンティティを他のキャスターと明確に差別化するためのものでした。"
+      ],
+      "bullets": [
+        "アニマルフォームはトグルバフではなく状態である",
+        "プリミナルスキルは意図した効果を発揮するために、アクティブな、または直近のフォームを必要とする",
+        "リネージサポートはプリミナルスキルにのみソケットできる"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 3,
+      "title": "歴史的経緯",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — 0.4.0 Druid framework",
+      "baselineNote": "以下の現在の規則はクライアント 0.5.4e を基準としています。",
+      "paragraphs": [
+        "0.4.0 以前にはドルイドは存在しなかったため、それ以前の時代のドルイドビルド動画はすべて推測によるものか、別のゲームのクラスを指すものです。",
+        "この仕組みは機能的に完成した状態でリリースされましたが、0.4.0i が約 1 か月以内に解決したクリティカル条件のバグを抱えていました。"
+      ],
+      "bullets": [
+        "0.4.0 ドルイド仕様の全面リリース",
+        "0.4.0i シェイプシフトのクリティカル条件とタリスマン要件の修正"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 4,
+      "title": "クラス＆昇格クラス対応表",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Druid (基礎クラス)",
+          "verdict": "現在も有効",
+          "detail": "0.5.4e で選択可能なクラス。シェイプシフトのアイデンティティは維持されている。"
+        },
+        {
+          "area": "Oracle (昇格クラス)",
+          "verdict": "現在も有効",
+          "detail": "ウォード／予言寄りのドルイド昇格クラス。ノード群のアイデンティティは変化なし。"
+        },
+        {
+          "area": "Shaman (昇格クラス)",
+          "verdict": "現在も有効",
+          "detail": "元素／召喚寄りのドルイド昇格クラス。"
+        },
+        {
+          "area": "パッシブツリーのノード",
+          "verdict": "250 以上追加、現在も有効",
+          "detail": "ドルイド専用のノード群が存在する。「ドルイドのノードなし」とする古いガイドは誤り。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-rel",
+      "order": 5,
+      "title": "武器とスキルの関係",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.4.0 以前の想定",
+      "oldText": "「ドルイド」は他のキャスターと同じようにスタッフやセプターを使い、汎用サポートをソケットするだろう。",
+      "newLabel": "0.4.0 の規則（0.5.4e でも継続）",
+      "newText": "シェイプシフトにはタリスマン武器が必要。プリミナルスキルはアクティブまたは直近のフォームがなければ無力。リネージサポートはプリミナルスキルにのみ対応。"
+    },
+    {
+      "id": "passive-impact",
+      "order": 6,
+      "title": "パッシブツリーへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "250 以上のドルイドパッシブスキル",
+          "detail": "シェイプシフト継続時間、プリミナルスキル効果、フォームクリティカルのための新ノード群。0.4.0 以前のパッシブプランナーにはそのようなノードは存在しなかった。",
+          "scope": "Official 0.4.0 notes"
+        },
+        {
+          "category": "new",
+          "title": "パッシブへのフォーム依存",
+          "detail": "一部のドルイドパッシブは変身中のみボーナスを付与する。これは古いツリーでは表現できない状態である。",
+          "scope": "Official 0.4.0 notes"
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "order": 7,
+      "title": "重要な 0.4.x の修正",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "0.4.0i「最近シェイプシフトした」クリティカル",
+          "detail": "クリティカル条件はフォーム離脱後も確実に発動するようになり、ベア／スプリガン系クリティカルビルドが修正された。",
+          "scope": "Official 0.4.0i notes"
+        },
+        {
+          "category": "fix",
+          "title": "0.4.0i タリスマン要件の判定",
+          "detail": "クライアントは変身属性を有効にする前に、タリスマン武器要件を正しく検証するようになった。",
+          "scope": "Official 0.4.0i notes"
+        },
+        {
+          "category": "fix",
+          "title": "コンソールのクラッシュ修正",
+          "detail": "0.4.0i で、フォーム切り替え中の Xbox/PS5 における複数のクライアントクラッシュが解決された。",
+          "scope": "Official 0.4.0i notes"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 8,
+      "title": "ビルド移行ガイド",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "スタッフ＋汎用サポートを使用した旧「ドルイド」構成",
+          "to": "タリスマン武器 ＋ プリミナルスキル ＋ リネージサポート",
+          "note": "まず武器のベースを交換する。タリスマンがないとプリミナルスキルは無力。"
+        },
+        {
+          "from": "他のキャスターからコピーしたサポート",
+          "to": "プリミナルスキル専用のリネージサポート",
+          "note": "リネージサポートは非プリミナルスキルにはソケットできない。非プリミナルのリンクには汎用サポートを使うこと。"
+        },
+        {
+          "from": "ドルイドノード群のないパッシブツリー",
+          "to": "0.4.0 のドルイドノード群（フォーム継続時間、プリミナル効果）を追加",
+          "note": "0.4.0 以前のプランナーにはこれらのノードが完全に欠けていた。"
+        },
+        {
+          "from": "フォーム状態を無視したクリティカル積み",
+          "to": "「最近シェイプシフトした」条件を考慮（0.4.0i で修正）",
+          "note": "0.4.0i 以降、この条件はフォーム離脱後も確実に発動する。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "タリスマン武器要件",
+          "status": "still-current",
+          "currentSummary": "シェイプシフトには引き続きタリスマンが必要。0.4.0i の要件判定修正は適用中。",
+          "supersededBy": "—",
+          "affectedContent": "タリスマンアイテムページ"
+        },
+        {
+          "topic": "プリミナルスキルのフォーム依存",
+          "status": "still-current",
+          "currentSummary": "プリミナルスキルは 0.5.4e でも引き続きフォームに依存する。",
+          "supersededBy": "—",
+          "affectedContent": "プリミナルスキルページ"
+        },
+        {
+          "topic": "リネージサポートの制限",
+          "status": "still-current",
+          "currentSummary": "リネージサポートは引き続きプリミナルスキルにしかソケットできない。",
+          "supersededBy": "—",
+          "affectedContent": "サポートジェムページ"
+        },
+        {
+          "topic": "シェイプシフトのクリティカル条件",
+          "status": "changed-later",
+          "currentSummary": "0.4.0i で修正済み。その後のバランス調整でクリティカル数値が変わった可能性はあるが、条件自体は機能している。",
+          "supersededBy": "0.4.0i, 0.5.x balance",
+          "affectedContent": "ベアシャーマンドルイドビルド"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 10,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.4.0–0.4.0i)",
+          "context": "ベア系ビルドで、フォーム離脱後にクリティカルが発動しないとの報告があった。",
+          "quote": "My crit condition never triggers after I un-bear.",
+          "analysis": "0.4.0i で修正済み。0.5.4e では条件は機能するため、古い不満はもはや当てはまらない。"
+        },
+        {
+          "source": "Reddit (0.4.0 以前の「ドルイド」動画)",
+          "context": "0.4.0 以前の「ドルイドビルド」というタイトルの動画は、存在しないクラスを説明している。",
+          "quote": "This whole guide is for a class that isn't in the game yet.",
+          "analysis": "当時は正しいが、現在は陳腐。0.4.0 以降のドルイドコンテンツのみを使用すること。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "影響を受けるビルド＆スキル",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Bear Shaman Druid build",
+          "type": "build",
+          "trigger": "Druid + Talisman + Shapeshift",
+          "action": "タリスマン規則と 0.4.0i のクリティカル修正を確認する。",
+          "status": "reviewing"
+        },
+        {
+          "name": "Fire Bear Smith of Kitava",
+          "type": "build",
+          "trigger": "Druid Shapeshift",
+          "action": "プリミナルスキルのリンクを確認する。",
+          "status": "ready"
+        },
+        {
+          "name": "Primal Skills page",
+          "type": "skill",
+          "trigger": "Form-gating",
+          "action": "フォーム要件を明示的に記載する。",
+          "status": "queued"
+        },
+        {
+          "name": "Talisman item page",
+          "type": "item",
+          "trigger": "Weapon requirement",
+          "action": "シェイプシフトの前提条件を明記する。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "過去の動画",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 ドルイドシェイプシフト詳細解説",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "ローンチ週のドルイド紹介。示されているタリスマン／プリミナルの規則は概ね正しいが、クリティカル挙動は 0.4.0i 以前のもの。",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "なぜ古いドルイドビルドでスキルが無効と表示されるのか？",
+          "answer": [
+            "0.4.0 以前にはドルイドが存在せず、この仕組みはタリスマン武器とフォーム依存のプリミナルスキルを必要とするため、現在のドルイド仕様で作り直す必要があるからです。"
+          ]
+        },
+        {
+          "question": "リネージサポートは非プリミナルスキルに使えますか？",
+          "answer": [
+            "いいえ。リネージサポートは設計上プリミナルスキルにしかソケットできません。他のリンクには汎用サポートを使ってください。"
+          ]
+        },
+        {
+          "question": "シェイプシフトのクリティカル修正はゲームに残っていますか？",
+          "answer": [
+            "はい。0.4.0i の「最近シェイプシフトした」クリティカル条件の修正は 0.5.4e でも引き続き適用されています。異なる可能性があるのはその後のバランス数値のみです。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.4.0 Patch Notes",
+          "description": "ドルイド、タリスマン、プリミナルスキル、リネージサポート、パッシブ追加。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Path of Exile 2 official 0.4.0i Patch Notes",
+          "description": "シェイプシフトのクリティカル条件とタリスマン要件の修正。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        },
+        {
+          "label": "PoE2 Wiki — Druid",
+          "description": "現在のドルイドクラスとシェイプシフトのデータ。",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid",
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.4.0 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 official 0.4.0i Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 ドルイド＆シェイプシフト — タリスマン、プリミナルスキル、旧ビルドの移行",
+    "description": "0.4.0 以前のドルイドビルドが壊れる理由と、0.5.4e におけるタリスマン／プリミナルスキル／リネージサポートの仕組み。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-druid-shapeshift-system",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

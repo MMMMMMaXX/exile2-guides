@@ -1,0 +1,988 @@
+{
+  "id": "hand-of-wisdom-and-action",
+  "slug": "hand-of-wisdom-and-action",
+  "locale": "pt-br",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Hand of Wisdom and Action (HOWA): Dano de Lightning com Intelligence, Attack Speed com Dexterity, e Escala Atual vs Legado no PoE2 0.5",
+  "shortTitle": "HOWA",
+  "summary": "Hand of Wisdom and Action é uma unique Spiral Wraps (luva) em Path of Exile 2 que adiciona Lightning fixo aos seus ataques escalando com a Intelligence (1 a 10 por 20 de Int) e increased Attack Speed escalando com a Dexterity (1% por 20 de Dex). Ela dropa apenas de Xesht, We That Are One, não pode ser chanced, e é o habilitador central de builds de ataque baseadas em attribute-stacking. Este guia cobre a escala exata, o nerf de 0.2.0 e como ele foi auto-aplicado, e quando o breakpoint justifica trocar de luvas Rare.",
+  "description": "Como a Hand of Wisdom and Action funciona em Path of Exile 2 0.5: Lightning adicionado por 20 de Intelligence (apenas ataques), attack speed por 20 de Dexterity, nível requerido 33, drop de Xesht, restrição de Orb of Chance, escala atual vs legado (Furtive Wraps), sinergia com Astramentis/Pillar e uso em build de attribute-stacker.",
+  "itemType": "gloves",
+  "rarity": "unique",
+  "requiredLevel": "33",
+  "useCases": [
+    "intelligence-stacking",
+    "dexterity-stacking",
+    "attack-builds"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-gloves",
+  "itemClass": "gloves",
+  "baseType": "spiral-wraps",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-05",
+  "publishedAt": "2026-08-05",
+  "updatedAt": "2026-08-05",
+  "lastVerifiedAt": "2026-08-05",
+  "tags": [
+    "unique-gloves",
+    "attribute-stacking",
+    "lightning",
+    "attack-speed",
+    "intelligence",
+    "dexterity",
+    "breach",
+    "xesht"
+  ],
+  "heroImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "cardImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "imageAlt": "Hand of Wisdom and Action unique Spiral Wraps (luvas) em Path of Exile 2, escalando dano de ataque Lightning com Intelligence e attack speed com Dexterity",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Hand of Wisdom and Action (HOWA) é uma unique luva que converte seus atributos em poder de ataque: a cada 20 de Intelligence adiciona 1 a 10 de Lightning Damage aos seus Attacks, e a cada 20 de Dexterity adiciona 1% de increased Attack Speed. É a unique central para builds de ataque baseadas em attribute-stacking, mas afeta apenas Attacks (não spells) e não dá defesas, Accuracy nem recurso por si só.",
+      "calloutDetail": [
+        "O Lightning fixo e o attack speed são adicionados sobre tudo o mais; eles crescem linearmente com seus totais de Int e Dex, então o item fica mais forte quanto mais você stacka.",
+        "Dropa apenas de Xesht, We That Are One (pinnacle de Breach) e não pode ser criada com um Orb of Chance.",
+        "O rebalance de 0.2.0 nerfou as taxas e auto-aplicou a mudança a itens existentes, então não existe uma versão 'legado' negociável com a escala antiga mais forte."
+      ],
+      "answers": [
+        {
+          "label": "Use-a se",
+          "text": [
+            "Você joga uma build de ataque que já stacka 200+ de Intelligence e 200+ de Dexterity e precisa de Lightning fixo somado a attack speed em um único slot de luva."
+          ]
+        },
+        {
+          "label": "Pule se",
+          "text": [
+            "Você é um conjurador de spell (os mods são apenas-para-ataque), ou sua build tem atributos baixos onde a escala produz pouco dano bônus."
+          ]
+        },
+        {
+          "label": "Consiga-a de",
+          "text": [
+            "Xesht, We That Are One, alcançado via um Breachstone no Twisted Domain. Não é chancable, não é farmável de monstros normais."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#attribute-scaling",
+          "label": "Tabela de escala de atributos"
+        },
+        {
+          "href": "#current-vs-legacy",
+          "label": "Atual vs legado"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Fatos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Tipo de item",
+          "value": "Unique gloves (Spiral Wraps)",
+          "note": [
+            "A base atual é Spiral Wraps; itens pré-0.2.0 usavam a base Furtive Wraps (evasão/ES levemente maiores)."
+          ]
+        },
+        {
+          "label": "Nível requerido",
+          "value": "33 (24 Dex, 24 Int)",
+          "note": [
+            "Confirmado na poe2wiki e no exileindex."
+          ]
+        },
+        {
+          "label": "Mod central 1",
+          "value": "Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence",
+          "note": [
+            "Apenas ataques, não spells. Escala com Intelligence."
+          ]
+        },
+        {
+          "label": "Mod central 2",
+          "value": "1% increased Attack Speed per 20 Dexterity",
+          "note": [
+            "Apenas ataques. Escala com Dexterity."
+          ]
+        },
+        {
+          "label": "Mods fixos",
+          "value": "+(15–25) to Dexterity and +(15–25) to Intelligence",
+          "note": [
+            "Faixa de roll; um Divine Orb re-rola estes mas não restaura a escala antiga."
+          ]
+        },
+        {
+          "label": "Fonte de drop",
+          "value": "Xesht, We That Are One (pinnacle de Breach)",
+          "note": [
+            "Drop restrito. Não pode ser obtida com um Orb of Chance."
+          ]
+        },
+        {
+          "label": "Negociável",
+          "value": "Yes (player market)",
+          "note": [
+            "O preço varia por league, região e data; no início da league um par bem rolado pode custar vários Divine Orbs."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip atual e faixas de roll",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Item base",
+          "value": "Spiral Wraps (gloves)",
+          "notes": [
+            "Evasão ~43, Energy Shield ~15 na base atual."
+          ]
+        },
+        {
+          "label": "Requisitos",
+          "value": "Level 33, 24 Dex, 24 Int",
+          "notes": [
+            "Requisito de atributo baixo para uma unique desse poder."
+          ]
+        },
+        {
+          "label": "+(15–25) to Dexterity",
+          "value": "Faixa de roll 15–25",
+          "notes": [
+            "Roll maior = mais atributos alimentando ambos os mods de escala e requisitos de gem."
+          ]
+        },
+        {
+          "label": "+(15–25) to Intelligence",
+          "value": "Faixa de roll 15–25",
+          "notes": [
+            "Igual ao acima; ambos os atributos importam para a escala."
+          ]
+        },
+        {
+          "label": "1% increased Attack Speed per 20 Dexterity",
+          "value": "Atual (pós-0.2.0)",
+          "notes": [
+            "Legado era 3% por 25 de Dexterity (mais forte). O nerf foi auto-aplicado a itens antigos."
+          ]
+        },
+        {
+          "label": "Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence",
+          "value": "Atual (pós-0.2.0)",
+          "notes": [
+            "Legado era 1 a 10 por 10 de Intelligence (o dobro). Lightning fixo apenas-para-ataque."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Como a Hand of Wisdom and Action funciona",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Hand of Wisdom and Action (HOWA) é uma unique luva cujo valor inteiro vem de transformar seus totais de atributos em poder de ataque. Ela tem dois modificadores de escala. O primeiro, 'Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence', concede Lightning fixo em cada acerto de ataque; quanto mais Intelligence você tem, maior o fixo adicionado. O segundo, '1% increased Attack Speed per 20 Dexterity', concede attack speed que também escala com sua Dexterity.",
+        "Ambos os modificadores são explicitamente 'to Attacks'. Spells não se beneficiam, e efeitos que não são ataques (como procs de shatter do Herald que são dirigidos por spell, ou hits de minion/totem usando suas próprias armas) não recebem o Lightning fixo. O Lightning adicionado é dano elemento fixo normal, então é multiplicado por todo 'increased Lightning Damage', 'increased Elemental Damage with Attacks', 'increased Attack Damage' e multiplicador 'more' que você já possui.",
+        "Exemplo prático: com 600 de Intelligence e 400 de Dexterity, stacks de Intelligence = 600 / 20 = 30, então as luvas adicionam 30 × (1 a 10) = 30 a 300 de Lightning Damage por ataque. Stacks de Dexterity = 400 / 20 = 20, gerando 20% de increased Attack Speed. Essa é a contribuição inteira da luva antes de qualquer outro equipamento — e como é fixa e baseada em porcentagem, compõe com o resto dos multiplicadores de um attribute-stacker.",
+        "Crucialmente, a HOWA não dá Accuracy, nem Life nem Energy Shield, nem resistências e nem sustain de recurso. Você ainda precisa acertar hits (Accuracy), sobreviver (defesas) e sustentar mana/spirit. É por isso que você não pode apenas stackar atributos: a luva é um habilitador que se encaixa em uma shell de attribute-stacking que deve resolver accuracy, defesa e recurso em outro lugar. Um complemento comum é o amuleto de todos os atributos (Astramentis) e o quarterstaff de escala de atributos Pillar of the Caged God, que multiplicam os mesmos atributos."
+      ],
+      "bullets": [
+        "Intelligence -> Lightning fixo adicionado a cada ataque (1 a 10 por 20 de Int).",
+        "Dexterity -> increased Attack Speed (1% por 20 de Dex).",
+        "Apenas ataques; spells e hits não-arma não se beneficiam.",
+        "O Lightning fixo é amplificado pelos seus multiplicadores existentes de Lightning/Elemental/Attack Damage.",
+        "Nenhuma defesa, Accuracy ou recurso inerente — a build deve suprir isso."
+      ]
+    },
+    {
+      "id": "attribute-scaling",
+      "order": 45,
+      "title": "Tabela de escala de atributos",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Escala atual (pós-0.2.0) em breakpoints representativos de atributos. A coluna 'Legacy' mostra os valores pré-0.2.0 apenas para ilustrar a lacuna do nerf — essa escala foi auto-aplicada a todos os itens e não existe mais no jogo.",
+      "columns": [
+        {
+          "key": "attrs",
+          "label": "Atributos (Int / Dex)"
+        },
+        {
+          "key": "lightMin",
+          "label": "Lightning adicionado mín"
+        },
+        {
+          "key": "lightMax",
+          "label": "Lightning adicionado máx"
+        },
+        {
+          "key": "asPct",
+          "label": "Increased Attack Speed"
+        },
+        {
+          "key": "legacyNote",
+          "label": "Equivalente Legacy (pré-0.2.0)"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "attrs": "200 Int / 200 Dex",
+            "lightMin": "+10",
+            "lightMax": "+100",
+            "asPct": "10%",
+            "legacyNote": "Legacy: +20–200 Lightning, 24% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "400 Int / 300 Dex",
+            "lightMin": "+20",
+            "lightMax": "+200",
+            "asPct": "15%",
+            "legacyNote": "Legacy: +40–400 Lightning, 36% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "600 Int / 400 Dex",
+            "lightMin": "+30",
+            "lightMax": "+300",
+            "asPct": "20%",
+            "legacyNote": "Legacy: +60–600 Lightning, 48% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "800 Int / 500 Dex",
+            "lightMin": "+40",
+            "lightMax": "+400",
+            "asPct": "25%",
+            "legacyNote": "Legacy: +80–800 Lightning, 60% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "1000 Int / 600 Dex",
+            "lightMin": "+50",
+            "lightMax": "+500",
+            "asPct": "30%",
+            "legacyNote": "Legacy: +100–1000 Lightning, 72% AS"
+          }
+        }
+      ],
+      "note": "Valores Legacy são mostrados apenas para comparação. Como o rebalance de 0.2.0 foi auto-aplicado, toda HOWA no jogo usa os números atuais (à esquerda) independentemente do base type."
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Resultados por investimento de atributos",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "build",
+        "decision"
+      ],
+      "rows": [
+        {
+          "scenario": "Atributos baixos (<200 de Int)",
+          "audience": "Não-stackers, personagens iniciais",
+          "benefit": "Pequeno Lightning fixo e um pouco de attack speed mais os rolls de +Dex/+Int",
+          "risk": "Baixo retorno de dano; a luva não oferece defesas",
+          "level": "low",
+          "recommendation": "Prefira uma luva Rare com Lightning fixo + resistências + Life a menos que você já esteja stackando.",
+          "tags": [
+            "decision"
+          ]
+        },
+        {
+          "scenario": "Atributos médios (200–400 Int, 200–300 Dex)",
+          "audience": "Attribute stackers em transição",
+          "benefit": "+10–200 Lightning e 10–15% AS da luva; dano forte em campanha/mapas",
+          "risk": "Médio (frágil até resistências/defesas resolvidas)",
+          "level": "medium",
+          "recommendation": "Equipe a HOWA como luva central assim que os atributos passarem de ~200 de Int e você capar as resistências.",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "Atributos altos (600+ Int, 400+ Dex)",
+          "audience": "Attribute stackers de endgame",
+          "benefit": "+30–500 Lightning e 20–30% AS; entre as melhores fontes de luva com Lightning fixo",
+          "risk": "Médio (glass-cannon; precisa de CI/res de chaos e sustain de mana)",
+          "level": "high",
+          "recommendation": "Mantenha a HOWA; combine com o Pillar of the Caged God e um amuleto de todos os atributos.",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "Build somente de spell",
+          "audience": "Conjuredores",
+          "benefit": "Nenhum dos mods de escala",
+          "risk": "Alto (slot de unique desperdiçado)",
+          "level": "high",
+          "recommendation": "Não use a HOWA; o Lightning fixo e o AS são apenas-para-ataque.",
+          "tags": [
+            "decision"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "switch-thresholds",
+      "order": 52,
+      "title": "Quando o breakpoint justifica trocar para a HOWA",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Limites de decisão para substituir luvas Rare pela HOWA. 'Ganho líquido' assume que o resto da build já fornece Accuracy, defesas e recurso.",
+      "columns": [
+        {
+          "key": "int",
+          "label": "Total de Intelligence"
+        },
+        {
+          "key": "rareEq",
+          "label": "Luva Rare comparável"
+        },
+        {
+          "key": "howaGain",
+          "label": "Valor adicionado da HOWA"
+        },
+        {
+          "key": "verdict",
+          "label": "Veredito"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "int": "< 150",
+            "rareEq": "Lightning fixo 1–15 + resistências + Life",
+            "howaGain": "< +8–75 Lightning, nenhuma defesa",
+            "verdict": "Luva Rare é melhor"
+          }
+        },
+        {
+          "cells": {
+            "int": "200–400",
+            "rareEq": "Lightning fixo 1–20 + resistências",
+            "howaGain": "+10–200 Lightning + AS, nenhuma defesa",
+            "verdict": "HOWA se os atributos stackam"
+          }
+        },
+        {
+          "cells": {
+            "int": "600+",
+            "rareEq": "Lightning fixo 1–30 + resistências",
+            "howaGain": "+30–500 Lightning + 20%+ AS",
+            "verdict": "HOWA claramente melhor"
+          }
+        }
+      ],
+      "note": "A HOWA nunca fornece defesas, então a comparação assume que você já resolve resistências/Life/ES em outro lugar."
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Uso em build",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "HOWA é um habilitador, não uma build autônoma. Os quatro contextos abaixo mostram onde ela se encaixa, o que você precisa ao lado dela, o que ela não fornece e quais habilidades não consegue suportar."
+      ],
+      "builds": [
+        {
+          "title": "Attribute Stacker Inicial (campanha a mapas iniciais)",
+          "description": "Equipe no Nível 33 assim que atingir 24 de Dex/24 de Int. Combine com qualquer habilidade de ataque que se beneficie de Lightning fixo + attack speed. Entrada: kill de Xesht para o drop. Defesa ausente: a luva tem baixa evasão/ES, então Life/ES/resistências devem vir do resto do equipamento. Sem suporte: conjuredores puros (mods apenas-para-ataque)."
+        },
+        {
+          "title": "Transição de Meiano da HOWA (mapas, pré-amuleto de todos os atributos)",
+          "description": "Cerca de 200 de Int / 200 de Dex com resistências capadas e um esqueleto passivo de attribute-stacking. Mantenha a HOWA como luva central; sufixos livres em anel/amuleto para atributos porque as defesas estão resolvidas em outro lugar. Defesa ausente: ainda sem defesa inata da luva. Sem suporte: spells."
+        },
+        {
+          "title": "Attribute Stacker de Endgame (pós-amuleto de todos os atributos)",
+          "description": "500+ de Int e 400+ Dex típico (800 Int / 600 Dex para os breakpoints de topo). Usa HOWA (luvas) + Pillar of the Caged God (arma) + amuleto de todos os atributos + Ingenuity (aneis) + jewels de atributo. Defesa ausente: glass-cannon; precisa de CI/res de chaos e sustain de mana. Sem suporte: spells / hits de totem com arma própria."
+        },
+        {
+          "title": "Comparação de Item Legado (Furtive Wraps vs Spiral Wraps)",
+          "description": "HOWA pré-0.2.0 mantinha a base Furtive Wraps (maior evasão/ES ~50/19) mas usa a MESMA escala atual porque o rebalance foi auto-aplicado. Um Divine Orb apenas re-rola os rolls +(15–25) de Dex/Int. Compre qualquer roll que for melhor; o base type quase não importa para o offensivo."
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativas",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Contra uma Rare Spiral Wraps / Furtive Wraps bem rolada, a diferença é a escala. Uma luva Rare pode dar um roll fixo pequeno de Lightning, um roll fixo de increased Attack Speed, além de resistências, Life/ES e Accuracy. A HOWA, em vez disso, faz seu Lightning fixo e attack speed crescerem com seus atributos — então quanto mais Int/Dex você stacka, mais cada mod da luva vale. Se sua build já stacka 300+ de Int e 200+ de Dex, a HOWA quase sempre supera uma luva Rare em dano; se você não está fazendo attribute-stack (Int baixo), uma luva Rare com Lightning fixo + resistências + Life é geralmente melhor porque a escala da HOWA é desperdiçada e ela não fornece defesas.",
+        "Nenhuma outra unique luva fornece atualmente escala de Lightning fixo por atributo, então a HOWA é a única 'luva de ataque de escala de atributos' na 0.5. Uniques relacionadas de luva preenchem papéis diferentes: Kitoko's Current concede acúmulo de Electrocution por hit de Lightning (controle de ailment), não um substituto de dano; Ghostwrithe é uma body armour para conversão Life→ES. Contra o Pillar of the Caged God (uma arma), a HOWA é complementar em vez de alternativa — o attribute stacker padrão usa ambos, já que o Pillar adiciona Weapon Damage % (Str) e a HOWA adiciona Lightning fixo (Int) e AS (Dex)."
+      ],
+      "bullets": [
+        "Luvas Rare: fixo + defesas; melhores quando os atributos estão baixos.",
+        "HOWA: Lightning fixo de escala + AS; melhor quando os atributos estão altos.",
+        "Kitoko's Current / Ghostwrithe: papéis diferentes, não substitutos diretos.",
+        "Pillar of the Caged God: arma complementar, não uma alternativa."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Aquisição",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Há exatamente uma fonte de drop não-negociável e nenhum caminho de Orb of Chance. Você mata o boss pinnacle ou compra no mercado de jogadores."
+      ],
+      "routes": [
+        {
+          "label": "Xesht, We That Are One (pinnacle de Breach)",
+          "body": [
+            "HOWA é uma unique drop-restricted que dropa de Xesht, We That Are One. Xesht é alcançado usando um Breachstone no Twisted Domain (Atlas Realmgate). Breachstones são feitos a partir de 300 Breach Splinters farmados em mapas endgame de Breach.",
+            "Pode dropar em qualquer dificuldade de Xesht, então até uma run inicial do Twisted Domain pode entregá-la."
+          ]
+        },
+        {
+          "label": "Trade de Jogador",
+          "body": [
+            "Compre um par no site de trade oficial. O preço varia por league, região e data; no início da league um par bem rolado pode custar vários Divine Orbs, enquanto um par de roll baixo é bem mais barato. Sempre verifique a faixa de roll atual (15–25) e o base type."
+          ]
+        },
+        {
+          "label": "Orb of Chance — não é possível",
+          "body": [
+            "HOWA é excluída do pool do Orb of Chance. Usar um Chance Orb em uma Spiral Wraps / Furtive Wraps branca nunca a produzirá."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Usar, vender ou segurar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "HOWA é uma unique disputada para builds de ataque de attribute-stacking. Seu valor de mercado acompanha a economia da league e a popularidade de attribute stackers; preços declarados sem league/data/região não são confiáveis."
+      ],
+      "use": {
+        "condition": "Você joga uma build de ataque com 200+ de Int e 200+ de Dex (ou planeja stackar atributos).",
+        "first": "Equipe como luva central; ela escala com seus atributos e compõe com multiplicadores de Lightning/Elemental.",
+        "risk": "Nenhuma defesa do slot — resolva resistências/Life/ES e Accuracy em outro lugar ou você morrerá.",
+        "text": [
+          "Melhor quando a build já fornece Accuracy, defesas e sustain de recurso.",
+          "Combina fortemente com o Pillar of the Caged God e um amuleto de todos os atributos."
+        ]
+      },
+      "sell": {
+        "condition": "Você não stacka atributos, ou joga uma build de spell.",
+        "first": "Venda no Trade; até um roll baixo retém valor porque attribute stackers sempre querem um par.",
+        "risk": "Os preços caem conforme a league progride e a oferta cresce; venda mais cedo do que mais tarde em uma league nova.",
+        "text": [
+          "Conjuredores não ganham nada dos mods apenas-para-ataque.",
+          "Builds de ataque com atributos baixos recebem pouco dano e nenhuma defesa, então a luva é peso morto."
+        ]
+      },
+      "hold": {
+        "condition": "Você está construindo em direção a um attribute stacker, mas ainda não chegou lá.",
+        "first": "Guarde um par de reserva; totais de atributos sobem através de equipamento e jewels ao longo da league.",
+        "risk": "Custo de oportunidade de inventário e currency que poderiam ser investidos agora.",
+        "text": [
+          "Se seus atributos estão abaixo de ~150 de Int, uma luva Rare provavelmente serve melhor nesse meio tempo.",
+          "Mantenha o par de roll mais alto para a shell de endgame."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risco e custo de falha",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Equipar a HOWA mas ignorar defesas",
+          "gain": "Forte escala de Lightning fixo + AS",
+          "loss": "Você morre constantemente — a luva não dá Life/ES/resistências",
+          "level": "high",
+          "recommendation": "Equipe apenas quando as resistências estiverem capadas e você tiver uma camada defensiva (Life/ES/CI)."
+        },
+        {
+          "scenario": "Usar a HOWA em uma build de spell",
+          "gain": "Nenhum",
+          "loss": "Slot de unique luva desperdiçado",
+          "level": "medium",
+          "recommendation": "Não faça — os mods são apenas-para-ataque e não se aplicam a spells."
+        },
+        {
+          "scenario": "Comprar um par com preço de legado esperando a escala antiga",
+          "gain": "Nenhum extra",
+          "loss": "Paga caro demais; a escala antiga mais forte não existe mais",
+          "level": "medium",
+          "recommendation": "Verifique o texto do modificador: itens atuais são 1% por 20 de Dex e +1–10 por 20 de Int. A escala Legado foi auto-nerfada."
+        },
+        {
+          "scenario": "Total de atributos baixo (<150 de Int)",
+          "gain": "Pequeno Lightning fixo",
+          "loss": "Nenhuma defesa e dano fraco contra uma luva Rare",
+          "level": "low",
+          "recommendation": "Use uma luva Rare com Lightning fixo + resistências + Life em vez disso."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Evidência da comunidade",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-howa-spells",
+          "kind": "Pergunta de fórum",
+          "question": "O Lightning adicionado da HOWA funciona com spells, ou apenas com ataques?",
+          "summary": [
+            "Um jogador não tinha certeza se o Lightning fixo beneficiava suas habilidades de spell de Lightning."
+          ],
+          "editorialAnalysis": [
+            "O texto do modificador diz 'Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence'. A palavra 'Attacks' o restringe a acertos de ataque. Hits de spell, e efeitos Herald/secundários dirigidos por spell, não recebem o Lightning fixo."
+          ],
+          "officialAnswer": [
+            "Apenas ataques. Builds que convertem o fixo para outro elemento (ex.: Chaos) ainda precisam que o dano seja um ataque primeiro. Conjuredores somente-spell não ganham nada da HOWA."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Como a HOWA funciona"
+        },
+        {
+          "sourceId": "forum-howa-600int",
+          "kind": "Pergunta estilo Reddit",
+          "question": "Quanto de Lightning eu ganho com 600 de Int?",
+          "summary": [
+            "Um jogador queria o Lightning fixo exato em um total de atributo comum de endgame."
+          ],
+          "editorialAnalysis": [
+            "A escala é linear: stacks = floor(Intelligence / 20), e cada stack adiciona 1 a 10 de Lightning. Com 600 de Int são 30 stacks."
+          ],
+          "officialAnswer": [
+            "Com 600 de Intelligence você ganha 30 × (1 a 10) = 30 a 300 de Lightning Damage adicionado por ataque, antes de quaisquer outros multiplicadores."
+          ],
+          "linkHref": "#attribute-scaling",
+          "linkLabel": "Tabela de escala de atributos"
+        },
+        {
+          "sourceId": "forum-howa-chance",
+          "kind": "Pergunta de fórum",
+          "question": "Posso farmar a HOWA com um Orb of Chance?",
+          "summary": [
+            "Um jogador perguntou se chancing uma Spiral Wraps branca poderia produzir a HOWA."
+          ],
+          "editorialAnalysis": [
+            "HOWA é drop-restricted para Xesht e é explicitamente excluída do pool do Orb of Chance, confirmado pela poe2wiki e por múltiplos guias."
+          ],
+          "officialAnswer": [
+            "Não. Você deve matar Xesht, We That Are One (via Breachstone no Twisted Domain) ou comprá-la no Trade. Um Chance Orb nunca a produzirá."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Aquisição"
+        },
+        {
+          "sourceId": "forum-howa-legacy",
+          "kind": "Pergunta de fórum",
+          "question": "A antiga HOWA pré-0.2.0 com 3% por 25 de Dex ainda é obtível?",
+          "summary": [
+            "Um jogador viu guias antigos citando stats mais fortes e se perguntou se esses itens ainda dropam."
+          ],
+          "editorialAnalysis": [
+            "O rebalance de 0.2.0 mudou as taxas e a nota de patch afirma que as mudanças por atributo afetam itens existentes. Assim, a escala antiga foi convertida automaticamente em toda HOWA possuída."
+          ],
+          "officialAnswer": [
+            "Não. Toda HOWA no jogo agora usa 1% por 20 de Dex e +1–10 por 20 de Int. Apenas o nome do base type difere (Furtive Wraps vs Spiral Wraps); as taxas antigas mais fortes se foram. Um Divine Orb apenas re-rola os rolls +(15–25) de Dex/Int."
+          ],
+          "linkHref": "#current-vs-legacy",
+          "linkLabel": "Atual vs legado"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problemas e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Minha build com a HOWA quase não causa dano",
+          "directAnswer": [
+            "Sua Intelligence provavelmente está muito baixa. Abaixo de ~200 de Int o Lightning fixo é pequeno. Stack Intelligence (e Dex para attack speed) — com 600 de Int a própria luva adiciona 30–300 de Lightning por acerto."
+          ],
+          "checks": [
+            "Verifique o total de Intelligence e Dexterity na ficha do personagem.",
+            "Confirme que sua habilidade é um ataque, não um spell.",
+            "Verifique se você tem multiplicadores de Lightning/Elemental Damage para amplificar o fixo."
+          ],
+          "links": [
+            {
+              "href": "#attribute-scaling",
+              "label": "Tabela de escala"
+            }
+          ]
+        },
+        {
+          "symptom": "Continuo morrendo com a HOWA equipada",
+          "directAnswer": [
+            "HOWA não fornece Life, Energy Shield, resistências nem Accuracy. A luva é apenas um habilitador ofensivo; suas defesas devem vir do resto do equipamento e da árvore passiva."
+          ],
+          "checks": [
+            "Cap os resistências elementais (75%).",
+            "Adicione uma camada defensiva (Life/ES/CI) e Accuracy de outros slots.",
+            "Não trate a HOWA como uma unique defensiva."
+          ]
+        },
+        {
+          "symptom": "Meus spells não recebem o Lightning",
+          "directAnswer": [
+            "Correto — o mod é 'to Attacks'. Hits de spell não recebem o Lightning fixo nem o attack speed."
+          ],
+          "checks": [
+            "Troque para uma habilidade de ataque, ou use uma unique diferente para builds de spell."
+          ]
+        },
+        {
+          "symptom": "Orb of Chance não produziu a HOWA",
+          "directAnswer": [
+            "Esperado. HOWA não está no pool do Chance Orb; ela só dropa de Xesht ou é comprada no Trade."
+          ],
+          "checks": [
+            "Farme Breach Splinters -> Breachstone -> Xesht, ou compre no Trade."
+          ],
+          "links": [
+            {
+              "href": "#acquisition",
+              "label": "Aquisição"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vídeo passo a passo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "[PoE 2] HoWA Molten Blast Build | Gemling Legionnaire",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc",
+          "creator": "wishdropper (autor de build no fórum do PoE)",
+          "takeaway": "Um attribute-stacker real usando HOWA, alcançando 901 de Intelligence no nível 92, com setup de gem e conselhos de leveling.",
+          "timestamps": [
+            {
+              "label": "Visão geral da build e por que HOWA",
+              "time": "00:00"
+            },
+            {
+              "label": "Attribute-stacking (901 Int no Nv92)",
+              "time": "02:30"
+            },
+            {
+              "label": "Setup de gem (Molten Blast + Lightning Infusion)",
+              "time": "05:00"
+            },
+            {
+              "label": "Conselhos de leveling (Galvanic Shards primeiro)",
+              "time": "08:00"
+            },
+            {
+              "label": "Escala e breakpoints de endgame",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galeria de mídia",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip atual 0.5 — base Spiral Wraps, 1% AS por 20 de Dex, +1–10 Lightning por 20 de Int.",
+          "note": "Mostre o texto de modificador atual (pós-0.2.0), não os números legados.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "Variante Legado (pré-0.2.0) Furtive Wraps — base de evasão/ES maior, escala antiga mais forte.",
+          "note": "Ilustra Atual vs Legado; a escala antiga foi auto-nerfada no 0.2.0.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "Diagrama de mecânica: Intelligence -> Lightning fixo, Dexterity -> attack speed, em um acerto de ataque.",
+          "note": "Diagrama original; mostre o fixo amplificado por increased Lightning/Elemental Damage with Attacks."
+        },
+        {
+          "caption": "Ficha de personagem de endgame (800 Int / 600 Dex) com HOWA + Pillar + amuleto de todos os atributos.",
+          "note": "Demonstra o breakpoint onde a HOWA supera luvas Rare."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Conteúdo relacionado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "pillar-of-the-caged-god",
+          "contentType": "item",
+          "title": "Pillar of the Caged God",
+          "description": "O quarterstaff de escala de atributos que complementa a HOWA: Str -> Weapon Damage, Dex -> Attack Speed, Int -> AoE.",
+          "href": "/en/items/pillar-of-the-caged-god/"
+        },
+        {
+          "contentId": "catalysts",
+          "contentType": "item",
+          "title": "Catalysts",
+          "description": "Crafting de quality e jewels de atributo que complementa o equipamento de attribute-stacker.",
+          "href": "/en/items/catalysts/"
+        },
+        {
+          "contentId": "spark-gemling-legionnaire",
+          "contentType": "build",
+          "title": "Spark Gemling Legionnaire",
+          "description": "Uma build de Gemling de attribute-stacking que se beneficia do Lightning fixo da HOWA.",
+          "href": "/en/builds/spark-gemling-legionnaire/"
+        },
+        {
+          "contentId": "twister-spirit-walker",
+          "contentType": "build",
+          "title": "Twister Spirit Walker",
+          "description": "Uma build de ataque híbrida Dex/Int que é candidata a usuária da HOWA.",
+          "href": "/en/builds/twister-spirit-walker/"
+        },
+        {
+          "contentId": "mana-spirit-resource-sustain",
+          "contentType": "guide",
+          "title": "Mana, Spirit and Resource Sustain",
+          "description": "Como sustentar mana/spirit para builds de ataque que dependem de auras e alta attack speed.",
+          "href": "/en/guides/mana-spirit-resource-sustain/"
+        },
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, We That Are One",
+          "description": "O boss pinnacle de Breach e única fonte de drop da Hand of Wisdom and Action.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "Histórico de patches e atual vs legado",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Atual (pós-0.2.0, drop natural 0.5.x)",
+          "changes": [
+            "Base type Spiral Wraps (Evasão ~43, ES ~15). Mods: +(15–25) Dex, +(15–25) Int, 1% increased Attack Speed per 20 Dexterity, Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence.",
+            "Dropa de Xesht, We That Are One; não pode ser chanced."
+          ]
+        },
+        {
+          "version": "Atual vs Legado (pré-0.2.0)",
+          "changes": [
+            "A base Legado era Furtive Wraps (Evasão ~50, ES ~19) — defesas levemente maiores que a Spiral Wraps atual.",
+            "A escala Legado era mais forte: 3% increased Attack Speed per 25 Dexterity, e Adds 1 to 10 Lightning Damage to Attacks per 10 Intelligence (cerca do dobro do Lightning atual, ~2.4x o attack speed).",
+            "Comportamento do Divine Orb: a nota de patch 0.2.0 diz que as mudanças por atributo afetam itens existentes automaticamente, enquanto um Divine Orb pode obter as mudanças de valor restantes. Assim, a escala antiga foi auto-aplicada (nerfada) a toda HOWA possuída; um Divine Orb apenas re-rola os rolls +(15–25) de Dex/Int.",
+            "O que auto-aplica vs apenas-novo: as taxas de escala foram auto-aplicadas a itens antigos; apenas a troca de base type (Furtive Wraps -> Spiral Wraps) NÃO afetou itens antigos. Assim, não existe uma HOWA legado negociável com a escala antiga — toda HOWA no jogo usa taxas atuais.",
+            "Como o Trade identifica a versão: pelo nome do base type. 'Hand of Wisdom and Action Furtive Wraps' = era pré-0.2.0 (manteve base antiga, escala atual); 'Hand of Wisdom and Action Spiral Wraps' = drop atual (base atual, escala atual). O texto do modificador é idêntico, então a única diferença real é a evasão/ES da base."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "HOWA rebalanceada: agora Adds 1 to 10 Lightning Damage to Attacks per 20 Intelligence (antes por 10), e 1% increased Attack Speed per 20 Dexterity (antes 3% por 25). As mudanças por atributo afetam itens existentes; um Divine Orb pode obter mudanças de valor restantes. Agora encontrada como Spiral Wraps em vez de Furtive Wraps (mudança de base não afeta itens existentes)."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Hand of Wisdom and Action introduzida no jogo (base Furtive Wraps)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fontes e verificação",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notas de patch do Path of Exile 2 0.2.0 (Dawn of the Hunt) — rebalance e nota de auto-aplicação da HOWA",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki — Hand of Wisdom and Action (tooltip atual, requisitos, drop-restricted, variante legado)",
+          "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Sportskeeda — Como conseguir a Hand of Wisdom and Action (aquisição, restrição de Orb of Chance)",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "exileindex — Hand of Wisdom and Action (stats atuais, drop de Xesht, não chanced)",
+          "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Fórum do PoE — [PoE 2] HoWA Molten Blast Build | Gemling Legionnaire (build real + vídeo)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Fórum do PoE — Tópico de ajuda Monk Invoker (HOWA nomeada como a unique essencial)",
+          "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+        },
+        {
+          "label": "VIDEO",
+          "description": "YouTube — HoWA Molten Blast Build, Gemling Legionnaire (URL real de watch)",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de alterações",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-05",
+          "changes": [
+            "Publicação inicial cobrindo a escala atual da HOWA 0.5 (1% AS por 20 de Dex, +1–10 Lightning por 20 de Int), nível requerido 33, drop de Xesht, restrição de Orb of Chance, atual vs legado (Furtive Wraps) com o comportamento de auto-aplicação 0.2.0, tabela de escala de atributos, uso em build, alternativas e perguntas da comunidade."
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-02-0",
+      "label": "Notas de patch do Path of Exile 2 0.2.0 (Dawn of the Hunt)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "wiki-howa",
+      "label": "PoE2Wiki — Hand of Wisdom and Action",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+    },
+    {
+      "id": "guide-sportskeeda-howa",
+      "label": "Sportskeeda — Como conseguir a Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+    },
+    {
+      "id": "guide-exileindex-howa",
+      "label": "exileindex — Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+    },
+    {
+      "id": "forum-howa-build",
+      "label": "Fórum do PoE — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+    },
+    {
+      "id": "forum-howa-help",
+      "label": "Fórum do PoE — Ajuda Monk Invoker (HOWA essencial)",
+      "sourceType": "community",
+      "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+    },
+    {
+      "id": "video-howa",
+      "label": "YouTube — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+    }
+  ],
+  "seo": {
+    "title": "Guia da Hand of Wisdom and Action (HOWA): Lightning com Intelligence, Attack Speed com Dexterity, Atual vs Legado — PoE2 0.5",
+    "description": "Como a Hand of Wisdom and Action escala dano de ataque Lightning com Intelligence e attack speed com Dexterity em Path of Exile 2 0.5, além de nível requerido, drop de Xesht, limite de Orb of Chance e escala atual vs legado.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "hand-of-wisdom-and-action",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

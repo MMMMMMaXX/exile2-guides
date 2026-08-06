@@ -1,0 +1,668 @@
+{
+  "id": "waystones-guide",
+  "slug": "waystones-guide",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Guide des Pierres de Chemin : niveaux, modificateurs, rentabilité et cartes échouées",
+  "shortTitle": "Pierres de Chemin",
+  "summary": "Les Pierres de Chemin sont les clés à usage unique de l'Atlas de fin de partie de Path of Exile 2. Ce guide aborde la progression des niveaux, l'impact des modificateurs sur la difficulté et le butin, pourquoi une rareté élevée ne suffit pas à assurer la rentabilité, et ce que vous perdez quand une carte échoue.",
+  "description": "Une référence sourcée sur les Pierres de Chemin dans Path of Exile 2 : correspondance niveau-zone, matrice valeur/danger des modificateurs, stratégie de rentabilité, pertes sur carte échouée, et règles des sommets T15/T16.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "endgame",
+    "atlas",
+    "waystone"
+  ],
+  "itemCategory": "waystones",
+  "subcategoryId": "atlas-progression",
+  "itemClass": "map-item",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "waystones-guide"
+  ],
+  "heroImage": "/images/items/waystones-hero.webp",
+  "cardImage": "/images/items/waystones-hero.webp",
+  "imageAlt": "Icône d'objet de carte de fin de partie issue de Path of Exile 2 - une carte T16 représentant le sommet de la progression des Pierres de Chemin, utilisée pour ouvrir les cartes de l'Atlas",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Une Pierre de Chemin est consommée pour ouvrir une carte de l'Atlas, et vous disposez d'une seule tentative par Pierre de Chemin. Les niveaux 1 à 16 augmentent le niveau et la difficulté des monstres ; les modificateurs ajoutent des avantages (préfixes) et des inconvénients (suffixes) qui augmentent aussi le taux de chute des Pierres de Chemin.",
+      "calloutDetail": [
+        "La rentabilité vient des suffixes de taux de chute, des passifs de l'Atlas et du fait de ne pas mourir - pas seulement de la rareté.",
+        "Une carte échouée (non terminée) consomme néanmoins la Pierre de Chemin et les Tablettes qui y sont insérées."
+      ],
+      "answers": [
+        {
+          "label": "Monter les niveaux",
+          "text": [
+            "Lancez des cartes que vous pouvez terminer ; améliorez 3 Pierres de même niveau à l'Établi de refonte."
+          ]
+        },
+        {
+          "label": "Rentabilité",
+          "text": [
+            "Privilégiez les suffixes ajoutant un taux de chute des Pierres de Chemin et investissez des points d'Atlas dans la quantité."
+          ]
+        },
+        {
+          "label": "À éviter",
+          "text": [
+            "Mourir dans une carte (perte de la Pierre de Chemin) et surcharger des modificateurs que votre build ne peut pas survivre."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "Propriétés des Pierres de Chemin →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "Risque de carte échouée →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Faits rapides",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Niveaux",
+          "value": "1 à 16",
+          "note": [
+            "Chaque niveau augmente le niveau des monstres et la difficulté de la carte."
+          ]
+        },
+        {
+          "label": "Utilisation",
+          "value": "Une tentative par Pierre de Chemin",
+          "note": [
+            "Placée dans la Machine à cartes ; consommée que vous terminiez la carte ou non."
+          ]
+        },
+        {
+          "label": "Modificateurs",
+          "value": "Préfixes + Suffixes",
+          "note": [
+            "Les suffixes ajoutent des inconvénients mais augmentent le taux de chute des Pierres de Chemin."
+          ]
+        },
+        {
+          "label": "T16",
+          "value": "Corrompre une T15 avec Vaal",
+          "note": [
+            "Ne peut pas être refondue ; une T15 peut être corrompue pour passer au niveau T16."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Qu'est-ce qu'une Pierre de Chemin",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Les Pierres de Chemin sont les objets consommables qui ouvrent les nœuds de carte de l'Atlas. Elles constituent la colonne vertébrale de la progression de fin de partie : nettoyer des cartes octroie des points de passif de l'Atlas et débloque des niveaux supérieurs."
+      ],
+      "members": [
+        {
+          "id": "waystone-basic",
+          "eyebrow": "Progression",
+          "title": "Pierre de Chemin standard",
+          "sub": "Ouvre un nœud de carte",
+          "tags": [
+            "atlas",
+            "progress"
+          ],
+          "body": [
+            "Les Pierres de Chemin Normales / Magiques / Rares ouvrent une carte de leur niveau. Une rareté plus élevée signifie plus de modificateurs."
+          ]
+        },
+        {
+          "id": "waystone-tower",
+          "eyebrow": "Spécial",
+          "title": "Pierre de Chemin de Tour",
+          "sub": "Révèle la zone + chute de Tablette",
+          "tags": [
+            "tower",
+            "tablet"
+          ],
+          "body": [
+            "Terminer une Tour révèle l'Atlas environnant et garantit une Tablette précurseur."
+          ]
+        },
+        {
+          "id": "waystone-corrupted",
+          "eyebrow": "Sommet",
+          "title": "Pierre de Chemin corrompue / T16",
+          "sub": "Niveau maximal",
+          "tags": [
+            "pinnacle",
+            "t16"
+          ],
+          "body": [
+            "Le niveau T16 s'obtient en corrompant une Pierre de Chemin T15 avec Vaal ; requis pour les Citadelles."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propriétés des Pierres de Chemin",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Niveau",
+          "value": "1 - 16",
+          "notes": [
+            "Détermine le niveau des monstres et la difficulté de la carte. Une Pierre de Chemin de niveau 5 pousse les monstres à environ niveau 70."
+          ]
+        },
+        {
+          "label": "Tentatives",
+          "value": "Une par Pierre de Chemin",
+          "notes": [
+            "Que vous réussissiez ou échouiez, la Pierre de Chemin est consommée."
+          ]
+        },
+        {
+          "label": "Préfixes",
+          "value": "Avantages",
+          "notes": [
+            "Plus de monstres, d'or, de rareté, de taille de pack. Généralement bénéfiques."
+          ]
+        },
+        {
+          "label": "Suffixes",
+          "value": "Inconvénients + taux de chute",
+          "notes": [
+            "Malédictions ou dégâts de monstre supplémentaires, mais chacun ajoute au taux de chute des Pierres de Chemin."
+          ]
+        },
+        {
+          "label": "Taux de chute des Pierres de Chemin",
+          "value": "0 % - 700 %",
+          "notes": [
+            "La statistique qui pilote la rentabilité ; augmentée par les suffixes, la rareté et les passifs de l'Atlas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "Comment obtenir des Pierres de Chemin",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Les Pierres de Chemin entrent dans votre réserve depuis plusieurs endroits, et l'objectif est d'empêcher cette réserve de s'assécher."
+      ],
+      "routes": [
+        {
+          "label": "Boss et rares des cartes",
+          "body": [
+            "La source de rentabilité principale. Les boss laissent presque toujours tomber une Pierre de Chemin ; les rares et la complétion de la carte en ajoutent d'autres."
+          ]
+        },
+        {
+          "label": "Doryani / récompense de campagne",
+          "body": [
+            "Vous recevez une Pierre de Chemin gratuite après la campagne et des livres de compétences en progressant dans les niveaux."
+          ]
+        },
+        {
+          "label": "Établi de refonte",
+          "body": [
+            "Combinez trois Pierres de Chemin du même niveau et de la même rareté pour en faire une d'un niveau supérieur (pas de T15 vers T16)."
+          ]
+        },
+        {
+          "label": "Orbe de Vaal (T15)",
+          "body": [
+            "Corrompez une Pierre de Chemin T15 pour une chance d'obtenir une T16 ; imprévisible mais la seule voie vers le niveau T16."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 60,
+      "title": "Comment utiliser une Pierre de Chemin",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Choisir un nœud de carte",
+          "body": [
+            "Sélectionnez un nœud que vous pouvez terminer avec le niveau que vous prévoyez d'utiliser."
+          ]
+        },
+        {
+          "label": "Insérer la Pierre de Chemin",
+          "body": [
+            "Placez-la dans l'emplacement de la Machine à cartes pour ce nœud."
+          ]
+        },
+        {
+          "label": "Traverser",
+          "body": [
+            "Ouvrez le portail et parcourez la carte ; elle est consommée à l'entrée."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 70,
+      "title": "Modifier les Pierres de Chemin",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "Les Pierres de Chemin acceptent les monnaies standards comme n'importe quel objet. Les Orbes de Transmutation et d'Augmentation ajoutent des modificateurs ; un Orbe Royal ou d'Alchimie améliore la rareté et en ajoute davantage ; les Orbes Exaltés et du Chaos poussent le pool de modificateurs plus loin.",
+        "Les Émotions distillées peuvent aussi être appliquées via la fenêtre d'Imprégnation (jusqu'à trois), chacune ajoutant un modificateur de carte tel que des monstres magiques ou rares supplémentaires. Notez que les anciens guides affirmaient que les Pierres de Chemin ne pouvaient pas recevoir d'Émotions - cette indication est obsolète sur le client actuel."
+      ],
+      "bullets": [
+        "Plus de modificateurs = plus de Tablettes insérables (0-2 mods : 1 emplacement, 3-5 : 2, 6+ : 3).",
+        "Un Nexus corrompu requiert une Pierre de Chemin avec au moins 4 modificateurs.",
+        "Équilibrez l'avantage avec l'inconvénient qu'apporte chaque suffixe."
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Liste de contrôle avant utilisation",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "Vous pouvez la terminer",
+          "checks": [
+            "Votre build survit au niveau et aux suffixes de la Pierre de Chemin."
+          ],
+          "why": "Mourir consomme la Pierre de Chemin sans récompense.",
+          "fix": "Descendez d'un niveau ou retirez les modificateurs dangereux."
+        },
+        {
+          "label": "Les mods correspondent au build",
+          "checks": [
+            "Aucun contre absolu (ex. ennemi à régénération, gros coups élémentaires) pour votre build."
+          ],
+          "why": "De mauvais mods provoquent des morts évitables.",
+          "fix": "Utilisez une Pierre de Chemin plus simple pour ce nœud."
+        },
+        {
+          "label": "Règles T15/T16 notées",
+          "checks": [
+            "Les Citadelles nécessitent T15 ; le Nexus corrompu nécessite >=4 mods."
+          ],
+          "why": "Un mauvais niveau bloque la progression des quêtes.",
+          "fix": "Préparez la bonne Pierre de Chemin avant la tentative."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Résultats selon l'investissement",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "sustain",
+        "pinnacle",
+        "risk"
+      ],
+      "rows": [
+        {
+          "scenario": "Niveau bas, peut être terminé confortablement",
+          "audience": "Début de fin de partie",
+          "benefit": "Points d'Atlas réguliers et rentabilité de base",
+          "risk": "Rendements faibles",
+          "level": "low",
+          "recommendation": "Lancez pour construire l'échelle des niveaux",
+          "tags": [
+            "sustain"
+          ]
+        },
+        {
+          "scenario": "T15 avec >=4 mods pour le Nexus corrompu",
+          "audience": "Réalisateurs de quêtes",
+          "benefit": "Cartes purifiées et Orbes de Fracture",
+          "risk": "Carte plus dure",
+          "level": "medium",
+          "recommendation": "Investissez des suffixes que vous pouvez survivre",
+          "tags": [
+            "pinnacle"
+          ]
+        },
+        {
+          "scenario": "Tentative de Citadelle T16",
+          "audience": "Chasseurs de sommets",
+          "benefit": "Récompenses de fragments uniques",
+          "risk": "Une seule tentative",
+          "level": "high",
+          "recommendation": "Uniquement avec un build solide et éprouvé",
+          "tags": [
+            "pinnacle",
+            "risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Analyse des risques",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Mourir dans la carte",
+          "gain": "Aucun",
+          "loss": "Pierre de Chemin et Tablettes insérées consommées, pas de complétion",
+          "level": "high",
+          "recommendation": "Ne surchargez pas ; terminez ce que vous pouvez survivre."
+        },
+        {
+          "scenario": "Rareté élevée, aucun suffixe de taux de chute",
+          "gain": "Plus de mods",
+          "loss": "Mauvaise rentabilité, la réserve rétrécit",
+          "level": "medium",
+          "recommendation": "Privilégiez les suffixes ajoutant un taux de chute des Pierres de Chemin."
+        },
+        {
+          "scenario": "Sur-investir en T15 avant T16",
+          "gain": "Accès aux Citadelles",
+          "loss": "Gaspillé si vous ne pouvez pas la terminer",
+          "level": "medium",
+          "recommendation": "Confirmez d'abord la vitesse de clear."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Témoignages de la communauté",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-no-sustain",
+          "kind": "Question Reddit",
+          "question": "Pourquoi mes Pierres de Chemin s'épuisent même à niveau élevé ?",
+          "summary": [
+            "Un joueur avait des Pierres de Chemin Rares mais la réserve a tout de même rétréci."
+          ],
+          "editorialAnalysis": [
+            "La rareté seule ne suffit pas à la rentabilité ; seuls les suffixes de taux de chute, les passifs de l'Atlas et éviter de mourir maintiennent la réserve."
+          ],
+          "officialAnswer": [
+            "Ajoutez des suffixes avec taux de chute des Pierres de Chemin et investissez dans les nœuds de quantité de l'Atlas."
+          ]
+        },
+        {
+          "sourceId": "forum-failed-map",
+          "kind": "Question de forum",
+          "question": "Est-ce que je perds la Pierre de Chemin si la carte échoue ?",
+          "summary": [
+            "Les joueurs ignorent ce qu'une carte échouée coûte."
+          ],
+          "editorialAnalysis": [
+            "La Pierre de Chemin est consommée à l'entrée ; une carte non terminée n'octroie aucune récompense de complétion et fait perdre les Tablettes insérées."
+          ],
+          "officialAnswer": [
+            "Traitez chaque Pierre de Chemin comme une tentative unique ; ne lancez que ce que vous pouvez finir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 120,
+      "title": "Vidéo et horodatages",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Comment débloquer entièrement votre Atlas (Guide Atlas 0.5)",
+          "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w",
+          "creator": "Fubgun",
+          "description": "Démo complète de la progression de l'Atlas incluant les niveaux et la rentabilité des Pierres de Chemin.",
+          "takeaway": "Regardez les chapitres sur la progression des niveaux et la rentabilité pour la boucle des Pierres de Chemin.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Bases de l'Atlas"
+            },
+            {
+              "time": "04:15",
+              "label": "Niveaux et modificateurs des Pierres de Chemin"
+            },
+            {
+              "time": "09:30",
+              "label": "Stratégie de rentabilité"
+            },
+            {
+              "time": "15:00",
+              "label": "Sommet T15 / T16"
+            }
+          ]
+        },
+        {
+          "label": "Guide débutant de fin de partie : cartographie et Pierres de Chemin",
+          "url": "https://www.youtube.com/watch?v=9I5Us5fRJUU",
+          "creator": "ImSidVicious",
+          "description": "Explication de niveau initié sur la cartographie, les Pierres de Chemin et l'échec des cartes.",
+          "takeaway": "Idéal si vous débutez l'Atlas et voulez comprendre les règles d'échec.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Ce que sont les Pierres de Chemin"
+            },
+            {
+              "time": "03:40",
+              "label": "Pourquoi les cartes échouent"
+            },
+            {
+              "time": "07:10",
+              "label": "Premiers conseils de rentabilité"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "La réserve de Pierres de Chemin rétrécit",
+          "directAnswer": [
+            "Vous n'obtenez pas assez de suffixes de taux de chute et/ou vous mourez trop souvent."
+          ],
+          "checks": [
+            "Ajoutez des suffixes de taux de chute des Pierres de Chemin et revoyez les passifs de l'Atlas."
+          ],
+          "links": [
+            {
+              "href": "#risk-analysis",
+              "label": "Ouvrir le risque de rentabilité"
+            }
+          ]
+        },
+        {
+          "symptom": "Impossible de refondre vers T16",
+          "directAnswer": [
+            "T16 ne peut pas être refondue ; corrompez une Pierre de Chemin T15 avec Vaal pour une chance d'obtenir T16."
+          ],
+          "checks": [
+            "Utilisez une Orbe de Vaal sur une T15, pas l'Établi de refonte."
+          ]
+        },
+        {
+          "symptom": "Le Nexus corrompu ne s'ouvre pas",
+          "directAnswer": [
+            "La Pierre de Chemin a besoin d'au moins 4 modificateurs pour ouvrir un Nexus corrompu."
+          ],
+          "checks": [
+            "Ajoutez des modificateurs avec de la monnaie jusqu'à atteindre 4+."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 140,
+      "title": "Contenu lié",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "tablets",
+          "contentType": "item",
+          "title": "Tablettes",
+          "description": "Tablettes précurseur insérées avec les Pierres de Chemin pour booster les cartes environnantes.",
+          "href": "/fr/items/tablets/"
+        },
+        {
+          "contentId": "liquid-emotions",
+          "contentType": "item",
+          "title": "Émotions liquides",
+          "description": "Les Émotions distillées peuvent enduire les Pierres de Chemin de modificateurs de carte.",
+          "href": "/fr/items/liquid-emotions/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 150,
+      "title": "Historique des correctifs",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.1",
+          "date": "2026-06-10",
+          "changes": [
+            "Les Tablettes sont passées des Tours à une insertion avec les Pierres de Chemin ; le nombre de modificateurs de la Pierre de Chemin contrôle désormais les emplacements de Tablette."
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "Les niveaux 1-16 des Pierres de Chemin, la rentabilité par taux de chute et le T16 via corruption Vaal d'une T15 restent la progression de fin de partie actuelle."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIEL",
+          "description": "Notes de correctif de Path of Exile 2 couvrant l'Atlas, les Pierres de Chemin et les Tablettes.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "Pages PoE2Wiki / IGN sur les Pierres de Chemin avec le détail des niveaux et modificateurs.",
+          "url": "https://www.poe2wiki.net/wiki/Waystone"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guides de rentabilité Atlas/Pierres de Chemin de PC Gamer et Poe-Vault.",
+          "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "tablets"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — Waystone",
+      "url": "https://www.poe2wiki.net/wiki/Waystone",
+      "sourceType": "tool"
+    },
+    {
+      "label": "PC Gamer — Atlas Waystone Mapping",
+      "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guide des Pierres de Chemin Path of Exile 2 : niveaux, modificateurs, rentabilité et cartes échouées",
+    "description": "Comment fonctionnent les Pierres de Chemin de PoE2 : progression des niveaux, matrice valeur/danger des modificateurs, stratégie de rentabilité, pertes sur carte échouée, et règles des sommets T15/T16.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "waystones-guide",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

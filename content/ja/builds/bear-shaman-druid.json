@@ -1,0 +1,1068 @@
+{
+  "id": "bear-shaman-druid",
+  "slug": "bear-shaman-druid",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "ベア・シャーマン・ドルイド ビルドガイド",
+  "shortTitle": "ベア・シャーマン・ドルイド",
+  "summary": "ベアフォームは変身形態であり、ランページ、モール、フュリアススラムが実際の攻撃スキルです。ランページベア、ウォーキングカラミティ、メテオベアは、それぞれ独自の条件を持つ別々の派生ルートとして提示されており、一つの混ぜ合わせたルートではありません。",
+  "description": "0.5.4 基準の Path of Exile 2 ベア・シャーマン・ドルイド ビルドガイド。ベアフォーム、与ダメージスキル、およびランページ / ウォーキングカラミティ / メテオ の各派生ルートを明確に分けて解説します。",
+  "classId": "druid",
+  "ascendancyId": "shaman",
+  "mainSkillIds": [
+    "rampage",
+    "maul",
+    "furious-slam"
+  ],
+  "secondarySkillIds": [
+    "bear-form",
+    "walking-calamity",
+    "ferocious-roar",
+    "pounce"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "melee",
+    "shapeshift",
+    "bear",
+    "rage"
+  ],
+  "damageTypes": [
+    "physical",
+    "cold",
+    "fire"
+  ],
+  "bestFor": [
+    "mapping",
+    "shapeshift",
+    "armour"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/bear-shaman-druid.webp",
+  "cardImage": "/images/builds/covers/bear-shaman-druid.webp",
+  "imageAlt": "土と冷気の魔法を纏い、嵐の中を突進するベアフォームのシャーマン・ドルイド",
+  "tags": [
+    "bossing",
+    "cold",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "leveling",
+    "melee",
+    "physical",
+    "shaman",
+    "starter",
+    "transformation"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "このビルドには、旧ガイドが混同していた3つの独立した層があります。(1) 変身であるベアフォーム（形態であって与ダメージスキルではない）、(2) 実際にダメージを与える本物の攻撃スキル —— ランページ、モール、フュリアススラム、(3) コアが機能してから選択する、後の派生ルートです。",
+        "繰り返し可能なリソースのループは以下の通りです。ベアフォームに入り、レイジを回復し、パック間をランページで消費し、チェーンが切れたらモールまたはフュリアススラムを使う。このループが安定しなければ、ダメージを上げてもマッピングの感覚は一貫しません。",
+        "ランページベアはデフォルトのマッピングルートです。ウォーキングカラミティ（グローリーを消費するAoEフィニッシャー）とメテオベア（モールに結びつけられた隕石/雷の変容）は、それぞれ独自の条件を持つ別の分岐であり、無条件に一つのルートに混ぜられるものではありません。コアのループが機能してから「いずれか一つ」を選んでください。"
+      ],
+      "bullets": [
+        "ベアフォームは形態であり、与ダメージ源ではありません。",
+        "ランページ + モール + フュリアススラムが本物の攻撃スキルです。",
+        "ランページベア / ウォーキングカラミティ / メテオベアは、それぞれ独自の条件を持つ別々の派生分岐です。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "ビルドのアイデンティティが明確で、段階的に進行できます。",
+        "主要なランページのループは、現在の0.5ガイドでカバーされています。",
+        "ガイドはマッピングとボスの前提を分け、3つの派生ルートも分けています。"
+      ],
+      "cons": [
+        "いくつかの機構は現在のクライアントでの再現がまだ必要です。",
+        "エンドゲームの配信者構成は高価な依存関係を隠している場合があります。",
+        "正確なサポートやパッシブの選択は派生分岐によって異なる可能性があります。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "bear-transformation",
+      "type": "transformation",
+      "title": "ベア変身（形態であって与ダメージスキルではない）",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "ベアフォームはあなたをクマに変えるシェイプシフトです。このビルドの生存性を決定づけるアーマー、ライフ、耐性のボーナスをもたらします。これは以下のすべてのベア攻撃スキルの前提条件であり、ベアフォームの外ではランページ、モール、フュリアススラムを使用できません。"
+      ],
+      "bullets": [
+        "攻撃スキルを使えるようになる前にベアフォームに入ります。",
+        "形態は生存性の源であり、攻撃スキルは与ダメージの源です。",
+        "形態の制限とアンロックレベルはPC検証待ち（クレームC1）として扱ってください。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "rage-loop-visual",
+      "type": "figure",
+      "title": "装備をコピーする前にレイジのループを読む",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/bear-shaman-druid-mechanic.webp",
+        "alt": "突進するクマが、ランページから外れ、レイジを再構築する様子を描いた編集図解",
+        "caption": "ルートはループです。ベアフォームに入り、レイジを溜め、ランページで突進し、次のチェーンの前にリソースを再構築します。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーンの開始（人間形態）",
+          "levelRange": "1–30",
+          "body": [
+            "検証済みの暫定の人間形態の構成を使用し、機能する武器またはスペルフォーカス、ライフ、耐性を優先します。ベアフォームがアンロックする前にクマのスキルを無理に使わないでください。"
+          ]
+        },
+        {
+          "label": "ベアフォームのアンロック",
+          "levelRange": "31+",
+          "body": [
+            "ジェムと形態の要件を満たしたらベアフォームに切り替え、その上にランページ + モールを重ねます。耐性とライフを優先してください。頑丈さこそが目的であり、まだ生ダメージではありません。正確なアンロックレベルはPC待ち（クレームC1）。"
+          ]
+        },
+        {
+          "label": "コアループの安定化",
+          "levelRange": "31–49",
+          "body": [
+            "レイジ回復のループを修正します。パックの前にフュリアスロア、繋がったグループをランページで突破し、チェーンが切れたらモールまたはフュリアススラムで再構築します。PC検証用にレイジ/グローリーの生成を記録してください（クレームC3）。"
+          ]
+        },
+        {
+          "label": "初期マップ —— デフォルトルートを選ぶ",
+          "levelRange": "50+",
+          "body": [
+            "ランページベアのデフォルトルートを採用してください。まだエンドゲームの派生プランナースナップショットを混ぜないでください。ウォーキングカラミティとメテオベアは、それぞれ独自の条件を持つ後の分岐です。"
+          ]
+        },
+        {
+          "label": "派生の分岐",
+          "levelRange": "70+",
+          "body": [
+            "コアのランページループが安定してからのみ、いずれか一つの派生分岐を選びます。ウォーキングカラミティ（グローリー生成が必要）またはメテオベア（隕石/雷の変容装備が必要）。それぞれ独自の条件があります —— 「スキル」と「段階的な構成」のセクションを参照してください。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 45,
+      "visible": true,
+      "caption": "各段階で何を回すか。正確なジェムレベルとサポートの繋がりはPC検証待ちのままです。実用的なのは段階の境界と派生の条件です。",
+      "columns": [
+        "段階",
+        "メインスキル",
+        "主要サポート",
+        "パッシブの焦点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベリング（人間 → クマ）",
+          "cells": [
+            "人間形態のスペル、その後ベアフォーム後にモール",
+            "ベアフォーム + フュリアスロア",
+            "ライフ、アーマー、耐性、近接",
+            "十分なダメージを持つ任意の武器。耐性を上限に",
+            "ベアフォームのアンロック到達（約レベル31、PC待ち）"
+          ]
+        },
+        {
+          "label": "初期マップ —— ランページベア（デフォルト）",
+          "cells": [
+            "ランページ + モール",
+            "フュリアスロア、ウォーキングカラミティ・フィニッシャー",
+            "レイジ回復、攻撃速度",
+            "安定したレイジループ。ライフ/アーマー解決済み",
+            "派生分岐の前にレイジ回復が安定していること"
+          ]
+        },
+        {
+          "label": "派生分岐 —— いずれか一つのルートを選ぶ",
+          "cells": [
+            "ランページベア / ウォーキングカラミティ / メテオベア",
+            "ルート固有のサポート",
+            "ルートのノード割り当て",
+            "派生装備（トーテムのモッド）",
+            "いずれか一つの派生を選ぶ。プランナースナップショットを混ぜない"
+          ]
+        },
+        {
+          "label": "エンドゲームのボス戦",
+          "cells": [
+            "フュリアススラム + 派生のリターン",
+            "モールの蓄積 / メテオ / カラミティ",
+            "防御 + ルートのホイール",
+            "ルートの最適装備（PC待ち）",
+            "高価な投資の前に信頼できる単体火力"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "変身（形態）",
+          "skills": [
+            {
+              "displayName": "ベアフォーム",
+              "skillId": "bear-form",
+              "role": "あなたをクマに変えるシェイプシフト。これは形態であって与ダメージスキルではありません。ビルドを生き残らせるアーマー、ライフ、耐性のボーナスをもたらし、以下のすべてのベア攻撃スキルの前提条件となります。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "形態がなければランページ、モール、フュリアススラムを使えません。これはすべてのベアルートへの入り口です。"
+              ],
+              "whenReplace": [
+                "決して置き換えられません。これはすべてのベアルートへの入り口です。"
+              ],
+              "mappingBossingDiff": [
+                "両方とも同じです。マッピングでもボス戦でもベアフォームのままです。"
+              ],
+              "notes": [
+                "ベアフォームのジェムのアンロックレベルと形態の制限を0.5.4クライアントで確認してください（クレームC1、PC待ち）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "コアの攻撃スキル（本物の与ダメージ担当）",
+          "skills": [
+            {
+              "displayName": "ランページ",
+              "skillId": "rampage",
+              "role": "ダメージを与えつつパックを横断する突進攻撃。ランページベアルートのマッピングエンジンです。",
+              "supportSkillIds": [
+                "martial-tempo",
+                "elemental-damage-with-attacks"
+              ],
+              "whyUse": [
+                "これはメインの殲滅ダメージであり、移動手段でもあります。マッピングのリズムはこれにかかっています。"
+              ],
+              "whenReplace": [
+                "すべてのベアルートのコアです。ウォーキングカラミティ / メテオのルートでも依然として殲滅しますが、リターンのスキルが変わります。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：パックを突破するように連打。ボス戦：動くボスを追って使わないこと（空振り + 被弾）。"
+              ],
+              "notes": [
+                "正確なサポートとジェムレベルはPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "モール",
+              "skillId": "maul",
+              "role": "主要なスラム。蓄積し、スケールします。メテオベアルートでは、これに隕石/雷の変容が結びつけられます。",
+              "supportSkillIds": [
+                "martial-tempo",
+                "heavy-hit"
+              ],
+              "whyUse": [
+                "これはすべてのルートが使用する、蓄積する単体ダメージの基盤です。"
+              ],
+              "whenReplace": [
+                "すべてのルートで維持。変わるのはメテオベアでの変容のみです。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：突進中の素早いヒット。ボス戦：フュリアススラム / 派生リターンの前の蓄積ツール。"
+              ],
+              "notes": [
+                "メテオ変容へのアクセスはPC待ち（クレームC4）。"
+              ]
+            },
+            {
+              "displayName": "フュリアススラム",
+              "skillId": "furious-slam",
+              "role": "チェーンが切れたときやボスの窓が開いた安全な瞬間に使う、ボス / 単体用のスラム。",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "whyUse": [
+                "ランページのチェーンに依存しない、安定した単体リターン。"
+              ],
+              "whenReplace": [
+                "維持。これはすべてのルートを通じた普遍的なボスツールです。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：ほとんど必要なし。ボス戦：安全な窓の中での解放。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "構成とユーティリティ",
+          "skills": [
+            {
+              "displayName": "フュリアスロア",
+              "skillId": "ferocious-roar",
+              "role": "バフ / リソース生成。ループを安定させるため、交戦前に咆哮します。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "リソースを生成しバフするとの報告あり。パックやボスの前に使用してください。"
+              ],
+              "whenReplace": [
+                "すべてのルートで維持。"
+              ],
+              "mappingBossingDiff": [
+                "両方：戦闘前に一度使用。"
+              ],
+              "notes": [
+                "正確なリソース生成はPC待ち（クレームC3）。"
+              ]
+            },
+            {
+              "displayName": "パウンス",
+              "skillId": "pounce",
+              "role": "孤立した敵へのギャップクローズ / 再配置、あるいは取り残しの処理用。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "分かれた敵を捕えたり、ループを崩さずに位置を調整したりします。"
+              ],
+              "whenReplace": [
+                "任意のユーティリティ。与ダメージの競合ではありません。"
+              ],
+              "mappingBossingDiff": [
+                "両方：位置取りツールのみ。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "派生 —— ランページベア（デフォルトルート、条件：安定したレイジ回復）",
+          "skills": [
+            {
+              "displayName": "ランページ（ランページベアルート）",
+              "skillId": "rampage",
+              "role": "デフォルトのマッピングルートの象徴。持続する突進による殲滅。レイジ回復が安定してからこのルートを選んでください。これは入力が最も少なく、最も早く殲滅できる選択肢です。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "3つの分岐の中で最も早い殲滅かつ最少の入力。"
+              ],
+              "whenReplace": [
+                "これはルートの選択であり、戦闘中の差し替えではありません。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：メインスキル。ボス戦：動くボスを追うためのものではない。"
+              ],
+              "notes": [
+                "条件：安定したレイジ回復の確認。それ以外の場合はモール / フュリアススラムで再構築（クレームC3）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "派生 —— ウォーキングカラミティ（条件：グローリー生成 + ジェムティア）",
+          "skills": [
+            {
+              "displayName": "ウォーキングカラミティ",
+              "skillId": "walking-calamity",
+              "role": "グローリーを消費するAoEフィニッシャー。ウォーキングカラミティのジェムティア/レベルとグローリー生成が解決してからこのルートを選んでください。これは独立した分岐であり、すべての段階に混ぜられるものではありません。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "大型のAoE殲滅フィニッシャー。パックに対するルートのリターンとして報告されています。"
+              ],
+              "whenReplace": [
+                "ルートの選択。他のルートでのコアの単体競合ではありません。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：パックに対するフィニッシャー。ボス戦：単体への寄与は限定的。"
+              ],
+              "notes": [
+                "アクセスとバタイアの復讐（Bhatair's Vengeance）との相互作用は0.5以降に変化しました —— クライアントで確認を（クレームC4）。条件：グローリー生成の解決。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "派生 —— メテオベア（条件：隕石/雷の変容装備）",
+          "skills": [
+            {
+              "displayName": "モール（メテオ変容）",
+              "skillId": "maul",
+              "role": "このルートでは、バーストのためにモールに隕石/雷の変容が結びつけられます。変容を可能にする装備/サポートが揃ってから（CaptainLance9）選んでください。独立した分岐であり、無条件にランページベアと混ぜられるものではありません。",
+              "supportSkillIds": [
+                "meteor",
+                "lightning"
+              ],
+              "whyUse": [
+                "持続ルートよりも高い単発バースト。"
+              ],
+              "whenReplace": [
+                "ルートの選択。それ以外の場合はモールはそのまま。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：依然として殲滅可能。ボス戦：より大きなスラムのヒット。"
+              ],
+              "notes": [
+                "変容の入手可能性と正確なサポートはPC待ち（クレームC4）。条件：隕石/雷の変容装備/サポート。"
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "シャーマン —— まずは形態と防御",
+          "body": [
+            "ダメージよりも先に、ベアフォームの生存性とバフのカバーを強化するシャーマーのノードを取ってください。選択した現在のガイドに従い、公開前に0.5.4クライアントで各ノードを確認してください。"
+          ]
+        },
+        {
+          "label": "派生を意識した割り当て",
+          "body": [
+            "コアが機能してから、選択した派生分岐（ランページの持続、グローリー/ウォーキングカラミティ、または隕石/雷の変容）に向けて割り当ててください。まだ負担できない派生に前もって経路を取らないでください。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件を支えるノードのみを取ってください。ライフ、アーマー、耐性、近接ダメージ、および初期のレイジノードです。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルドの派生に移行してください。互換性のないプランナースナップショットを組み合わせないでください（ランページ、ウォーキングカラミティ、メテオのツリーは分岐します）。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "武器（トーテム / 近接）",
+          "recommendations": [
+            "そのティアにふさわしいスキルレベルまたは武器ダメージ。",
+            "派生互換のモッド（ランページベアには物理、メテオベアには隕石/雷）。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "そのティアにふさわしいスキルレベルまたは基本武器ダメージ",
+              "reason": "すべてのベアルートにおける主要な進行度の確認。"
+            },
+            {
+              "tier": "recommended",
+              "label": "派生のモッド（物理、または隕石/雷）",
+              "reason": "選択した分岐の与ダメージ源と一致します。"
+            },
+            {
+              "tier": "optional",
+              "label": "攻撃速度",
+              "reason": "殲滅の感触を改善しますが、ダメージの下限ではありません。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ルート固有のユニーク（例：フュリー・オブ・ザ・キング）",
+              "reason": "コアループと防御が解決した後のみ。前提条件を確認してください。"
+            }
+          ],
+          "notes": [
+            "前提条件なしにエンドゲームのユニークをコピーしないでください。トーテム/武器セットの挙動はPC待ち（クレームC2）。"
+          ]
+        },
+        {
+          "slot": "防御アーマー（胴体 / 兜 / ブーツ）",
+          "recommendations": [
+            "ライフまたは選択した防御プール。",
+            "元素耐性と回復。ブーツには移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと上限未到達の2つの耐性",
+              "reason": "どれほどダメージを出しても、マップで死ぬことの代償にはなりません。"
+            },
+            {
+              "tier": "recommended",
+              "label": "アーマー（ベアフォームがこれを伸ばす）",
+              "reason": "形態と組み合わせるコアの防御層。"
+            },
+            {
+              "tier": "optional",
+              "label": "ブーツの移動速度",
+              "reason": "交戦線の再配置に役立ちます。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なDPSのアフィックス",
+              "reason": "防御が解決した後のみ。"
+            }
+          ],
+          "notes": [
+            "1つのスロットではなく、防御のパッケージ全体を比較してください。"
+          ]
+        },
+        {
+          "slot": "アクセサリーとユーティリティ",
+          "recommendations": [
+            "ステータスとリソースの持続（レイジ / グローリー）。",
+            "検証済みのビルド固有のモッドのみ。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器とジェムを装備するためのステータス",
+              "reason": "装備できない武器は無価値です。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御の殻を完成させます。"
+            },
+            {
+              "tier": "optional",
+              "label": "レイジ / グローリー持続のジュエル",
+              "reason": "コアループを安定させます。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ルート専用のアフィックス",
+              "reason": "選択した派生に条件付き。"
+            }
+          ],
+          "notes": [
+            "価格は現時点では固定されていません。Mobalytics の Verified は、本サイトのクライアント検証と同じではありません。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "防御の基盤",
+          "reason": "まず耐性を上限にし、回復を確立してください。"
+        },
+        {
+          "label": "主要なダメージ倍率",
+          "reason": "プランナーとゲームプレイの証拠の両方で共有される倍率を使用してください。"
+        },
+        {
+          "label": "リソースの持続（レイジ / グローリー）",
+          "reason": "メインのループは単体相手にも機能しなければなりません。"
+        },
+        {
+          "label": "命中率 / ヒットチャンス",
+          "reason": "ボスでの空振りはよくある失敗です。ダメージの前に修正してください。"
+        },
+        {
+          "label": "クオリティ・オブ・ライフ",
+          "reason": "ビルドが機能してからのみ、速度や範囲を追加してください。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "パック間でランページのチェーンが切れる",
+          "symptom": "ランページのチェーンがマップの途中で切れ、流れなくなります。",
+          "checks": [
+            "レイジ回復は安定しているか（フュリアスロアのカバー、ジュエル）。",
+            "繋がっていないパックや空の廊下に無理にランページを使っていないか。"
+          ],
+          "upgrade": "モールまたはフュリアススラムでレイジを再構築してください。空の廊下でバフを消費しないでください。クライアントで回復を検証（クレームC3）。"
+        },
+        {
+          "label": "レアやボスが長生きしすぎる",
+          "symptom": "単体への時間が殲滅よりもはるかに長い。コミュニティの「やや低いダメージ」報告。",
+          "checks": [
+            "命中率 / ヒットチャンスは修正されているか。",
+            "モール / フュリアススラムのジェムレベルとサポートは上がっているか。",
+            "ウォーキングカラミティにボスを単独で任せることを期待していないか（これはAoEフィニッシャーのみ）。"
+          ],
+          "upgrade": "ヒットチャンス + スラム倍率に投資してください。メテオベアの変容ルートの検討も。ウォーキングカラミティに単体を任せることは期待しないでください。"
+        },
+        {
+          "label": "マップで死ぬ",
+          "symptom": "T15以上やボスアリーナでの頻繁な死。",
+          "checks": [
+            "どの耐性が上限未到達か。",
+            "ライフ/アーマーがコンテンツのティアを下回っていないか。",
+            "交戦前にフュリアスロアは上がっているか。"
+          ],
+          "upgrade": "耐性を上限にし、ライフ/アーマーを安定させてください。防御の問題をダメージ装備で解決しようとしないでください。"
+        },
+        {
+          "label": "ボスでリソースループが止まる",
+          "symptom": "単体戦の最中にレイジ / グローリーが空になる。",
+          "checks": [
+            "ボスに対してフュリアスロアのカバーは有効か。",
+            "キル依存の前提は排除されているか。",
+            "シーケンスの前後のリソースを記録してください。"
+          ],
+          "upgrade": "リソース生成を修正してください（ロアのカバー、持続ジュエル）。クライアントで検証（クレームC3）。"
+        },
+        {
+          "label": "派生分岐の検討",
+          "symptom": "ランページベアではなくウォーキングカラミティやメテオベアにしたい。",
+          "checks": [
+            "コアのランページループはすでに安定しているか。",
+            "グローリー生成、または隕石/雷の変容を可能にする装備は揃っているか。"
+          ],
+          "upgrade": "コアが機能してからいずれか一つの派生を採用してください。互換性のないプランナースナップショットを混ぜないでください。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "チェーンを始めるのに十分なレイジを持ってパックに入ります。まずフュリアスロア、次に繋がったモンスターのグループをランページで突破し、その途中でモール、そして（そのルートなら）AoEフィニッシャーとしてウォーキングカラミティ。空の廊下はリソースの問題です。ランページを無理に使うのを止め、モールまたはフュリアススラムで再構築してください。",
+        "モールまたは検証済みの生成手段でレイジを溜めてください。空の廊下で一時的なバフを決して消費しないでください。"
+      ],
+      "bullets": [
+        "フュリアスロア → ランページ → モール → （そのルートではウォーキングカラミティ・フィニッシャー）。",
+        "ランページは移動でもありダメージでもある。パックを横断することが肝要。",
+        "無理に使うのではなく、次のチェーンの前にレイジを再構築してください。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "ボスに対しては、セットアップの時間と与ダメージの時間を分けてください。アリーナが危険になる前にレイジを再構築し、一時的なバフを一度かけ、その後は安全なアニメーションの窓を通してのみ、モールとフュリアススラムで攻撃してください。動くボスを追うためにランページを使わないでください —— 空振りし、被弾します。",
+        "グローリーはウォーキングカラミティ（そのルート）に、あるいはメテオ変容（そのルート）をバーストの窓に使用してください。これらは別々のルートであり、一つの混ぜ合わせたローテーションではありません。"
+      ],
+      "bullets": [
+        "蓄積のためのモール → 窓の中でのフュリアススラム / 派生リターン。",
+        "動くボスの後をランページで追わない。",
+        "ウォーキングカラミティ / メテオはルートのリターンであり、普遍的なボスツールではない。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "装備を買う前にベアルートを選ぶ",
+      "order": 130,
+      "visible": true,
+      "caption": "現在のランページガイド、メテオの代替、プレイヤーの報告から編集的に合成した比較。正確なダメージは依然としてPC検証待ち。各ルートには独自の条件があります。",
+      "columns": [
+        "ルート",
+        "与ダメージ源",
+        "強み",
+        "条件",
+        "参照"
+      ],
+      "rows": [
+        {
+          "label": "ランページベア（デフォルト）",
+          "cells": [
+            "ランページ + モールの連続",
+            "殲滅が早く、入力が少ない",
+            "安定したレイジ回復",
+            "Ronarray ガイド"
+          ]
+        },
+        {
+          "label": "ウォーキングカラミティ",
+          "cells": [
+            "グローリーを消費するAoEフィニッシャー",
+            "大型のパックバースト",
+            "グローリー生成 + ジェムティアの解決",
+            "コミュニティ報告"
+          ]
+        },
+        {
+          "label": "メテオベア",
+          "cells": [
+            "隕石/雷に変容したモール",
+            "より高い単発バースト",
+            "隕石/雷の変容装備",
+            "CaptainLance9 ガイド"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 140,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "コアスキルが使えない",
+          "checks": [
+            "ジェムレベル、形態、武器セット、装備要件を確認してください。",
+            "文書化された移行段階に戻してください。"
+          ]
+        },
+        {
+          "symptom": "単体ループが止まる",
+          "checks": [
+            "キル依存の前提を排除してください。",
+            "シーケンスの前後のすべてのリソースを記録してください。"
+          ]
+        },
+        {
+          "symptom": "コピーしたエンドゲーム装備の方が感覚が悪い",
+          "checks": [
+            "欠けているパッシブ、サポート、閾値を確認してください。",
+            "より下の検証済み段階から再構築してください。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "さらに投資する前にビルドを直す",
+      "order": 150,
+      "visible": true,
+      "items": [
+        {
+          "question": "なぜマップの途中でランページが止まるのか？",
+          "answer": [
+            "ランページはリターンであり、リソース生成ではありません。弱いレイジ回復や繋がっていないパック越しに始めると、チェーンは自然に崩壊します。"
+          ],
+          "bullets": [
+            "モールまたはフュリアススラムでレイジを再構築してください。",
+            "空の廊下で一時的なバフを消費しないでください。",
+            "別のダメージ系ユニークを追加する前に、リソースの再生と吸収（リーク）を確認してください。"
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/fire-bear-smith-of-kitava/",
+              "label": "入力の少ないファイアベアループと比較"
+            }
+          ]
+        },
+        {
+          "question": "何でも生き残るがレアの処理に時間がかかりすぎる。何を調べるべきか？",
+          "answer": [
+            "近接ジェムのレベル、攻撃速度、物理/冷気のフラット加成、命中、およびビルドを定義する効果を持つスロットを確認してください。防御のアミュレットと弱い攻撃スロットの組み合わせは、キャラクターを安全にするが無力にすることがあります。"
+          ],
+          "bullets": [
+            "各変更の前後でレア1体をテストしてください。",
+            "比較に意味を持たせるため、同じマップティアを維持してください。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "メテオベアかウォーキングカラミティに切り替えるべきか？",
+          "answer": [
+            "そのルートのリズムを好み、かつその条件（隕石/雷の変容装備、または解決済みのグローリー生成）を満たす場合にのみ切り替えてください。これは壊れたランページループに対する自動的な強化ではありません。それぞれ異なる分岐であり、異なる失敗の形があります。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 160,
+      "visible": true,
+      "note": "貼り付け可能なインポート文字列 / .build はPC検証待ち。それまでは配信者のガイドと以下のネイティブプランナーを使用してください。常にご自身のクライアントでノードの選択を再確認してください。",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "プレイヤーの実際の報告",
+      "order": 170,
+      "visible": true,
+      "note": "これらは出所を明記した編集的な言い換えであり、DPSや生存性の独立した証明ではありません。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "ランページベアのプレイヤー報告",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/",
+          "statement": "あるシャーマーのプレイヤーは、この構成を非常に頑丈だが当初はダメージ不足と表現し、弱い武器やトーテムのスロットをフュリー・オブ・ザ・キングに変更した後、レアの処理が顕著に改善したと報告しました。",
+          "context": "トラブルシューティングの手がかりとして有用です。防御の殻全体を置き換えるのではなく、まず与ダメージを担うスロットとレイジループを調べてください。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ronarray ランページベアガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
+          "statement": "維持されているこのガイドはランページを殲滅エンジンとして提示し、レイジ管理とアニメーションへのコミットメントを真の弱点として指摘し、ランページが使えない時にモールまたはフュリアススラムで回復することを使用しています。",
+          "context": "これはローテーションのモデルを支持しますが、アイテム固有の数値は依然としてクライアント内での再現が必要です。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "動くループを見る",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Ronarray",
+          "label": "0.5 ベアのレベリングとゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=5MkXZedNjDY",
+          "description": "ベアフォームがいつ始まるか、プレイヤーがパックの隙間をどう越えるか、レイジがいつ再構築されるかを学ぶために映像を使用してください。",
+          "takeaway": "各ランページチェーンの前後に一時停止してください。殲滅速度だけでなく、リソースの状態を比較してください。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "ベアドルイドのレベリング開始（配信者はチャプターを提供していません）"
+            },
+            {
+              "time": "2:00",
+              "label": "ベアフォームへの移行とレイジループ（概算、検証待ち）"
+            },
+            {
+              "time": "5:00",
+              "label": "ランページチェーンとパックの横断（概算、検証待ち）"
+            },
+            {
+              "time": "8:00",
+              "label": "エンドゲームの派生プレビュー（概算、検証待ち）"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ronarray ランページベアガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "CaptainLance9 メテオベアガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "独立したメテオベアガイド",
+          "url": "https://pathofexile.gg/shaman-meteor-bear-build/"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ベアルートの比較議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー エクスポート",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ronarray 0.5 ベアレベリングゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=5MkXZedNjDY"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ランページベアの生存性とレアダメージに関するプレイヤー報告",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "出典付きの0.5.4ビルドガイドを作成。PC検証は保留中。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "スキーマ拡張：表示名付きスキルカードを形態 / コア攻撃 / 構成 / 3つの派生分岐（ランページベア、ウォーキングカラミティ、メテオベア、それぞれ条件付き）に分割して追加。段階的な構成表、ビルドプランナー項目、スロットごとの装備ステータス優先度、症状ベースの強化優先度を追加。曖昧な単一ルートの混ぜ合わせを削除。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray ランページベアガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+    },
+    {
+      "label": "CaptainLance9 メテオベアガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
+    },
+    {
+      "label": "独立したメテオベアガイド",
+      "sourceType": "community",
+      "url": "https://pathofexile.gg/shaman-meteor-bear-build/"
+    },
+    {
+      "label": "ベアルートの比較議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー エクスポート",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+    },
+    {
+      "label": "Ronarray 0.5 ベアレベリングゲームプレイ",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=5MkXZedNjDY"
+    },
+    {
+      "label": "ランページベアの生存性とレアダメージに関するプレイヤー報告",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/"
+    }
+  ],
+  "seo": {
+    "title": "ベア・シャーマン・ドルイド ビルドガイド",
+    "description": "0.5.4 基準の Path of Exile 2 ベア・シャーマン・ドルイド ビルドガイド。ベアフォーム、与ダメージスキル、およびランページ / ウォーキングカラミティ / メテオ の各派生ルートを明確に分けて解説します。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "bear-shaman-druid",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,0 +1,521 @@
+{
+  "id": "overwhelming-presence",
+  "slug": "overwhelming-presence",
+  "locale": "ja",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "オーバーウェルミング・プレゼンス ガイド — 異常状態閾値、スタン閾値、オーラの効果量",
+  "shortTitle": "オーバーウェルミング・プレゼンス",
+  "summary": "オーバーウェルミング・プレゼンスはスピリットジェムであり、範囲内の敵の元素異常状態閾値とスタン閾値を下げるオーラを放ちます。直接ダメージを与えるものではなく、既存の異常状態やスタンをかかりやすくします。本ガイドではオーラの半径、閾値低下が及ぼす影響、オーラの効果量のスケーリング、現在の上限、およびコンバットフレンジ・フリージングマーク・ヘラルド・オブ・サンダーとの相乗効果を解説します。",
+  "description": "オーバーウェルミング・プレゼンスの詳細ガイド：スピリット消費、オーラの半径、低減された元素異常状態閾値、凍結／感電／燃焼／感電（Electrocute）の網羅、低減されたスタン閾値とスタン蓄積量増加（More Stun Buildup）の違い、ボスの特殊閾値、オーラの効果量のスケーリング、現在の上限、デバフアイコンなし、スキル間の相互作用、マップ攻略とボス戦での価値、トラブルシューティングとコミュニティの質問。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 5,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": 60,
+  "skillCategory": "spirit",
+  "skillTags": [
+    "spirit",
+    "aura",
+    "ailment",
+    "stun",
+    "debuff"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/overwhelming-presence.webp",
+  "cardImage": "/images/skills/overwhelming-presence.webp",
+  "imageAlt": "Overwhelming Presence spirit aura skill icon",
+  "tags": [
+    "spirit",
+    "aura",
+    "ailment",
+    "stun",
+    "debuff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーバーウェルミング・プレゼンスは、範囲内の敵の元素異常状態閾値とスタン閾値を下げるオーラです。これにより、凍結・感電・燃焼・スタンをかかりやすくなります。",
+        "直接ダメージを増加させるものではなく、敵が超えるべき閾値を下げることで、既存のヒットが異常状態やスタンをより頻繁に与えられるようにします。",
+        "敵には閾値低下の視覚的なデバフアイコンは表示されません。効果は範囲内にいる間は受動的に働きます。"
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "カテゴリ",
+          "value": "Spirit / Aura / Debuff",
+          "notes": [
+            "spirit、aura、ailment、stun、debuff のタグ付き。"
+          ]
+        },
+        {
+          "label": "スピリット",
+          "value": "60",
+          "notes": [
+            "発動中はスピリットを60予約する。"
+          ]
+        },
+        {
+          "label": "半径",
+          "value": "自分を中心としたオーラ",
+          "notes": [
+            "範囲内の敵は閾値が低下する。"
+          ]
+        },
+        {
+          "label": "効果",
+          "value": "異常状態とスタンをかかりやすく",
+          "notes": [
+            "直接ダメージは加算しない。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "Uncut Spirit Gem（Tier 5）",
+          "notes": [
+            "中盤〜終盤のスピリットジェム。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "必要条件",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーバーウェルミング・プレゼンスはスピリットを60予約するため、他のオーラやヘラルド効果と競合します。このスキルが意味を持つには、異常状態やスタンを与える手段が必要です。"
+      ]
+    },
+    {
+      "id": "persistent-buff",
+      "order": 40,
+      "title": "持続バフ",
+      "type": "persistent-buff",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "予約中は、オーラが常に自分の周囲で展開されます。半径内に入った敵は即座に閾値低下の影響を受け、半径を離れると効果が消えます。"
+      ],
+      "bullets": [
+        "スピリット予約中は常時展開されるオーラ。",
+        "効果は半径内でのみ適用される。",
+        "半径を離れるとデバフが消える。"
+      ]
+    },
+    {
+      "id": "threshold-aura",
+      "order": 50,
+      "title": "閾値オーラ",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "このオーラは、範囲内の敵の元素異常状態閾値とスタン閾値を下げます。閾値が低いほど、凍結・感電・燃焼・スタンに必要な蓄積量が少なくて済みます。",
+        "ボスは特殊な閾値や免疫を持つ場合があります。このオーラは通常の敵や多くのボスに有効ですが、スタン完全免疫を解除するものではありません。"
+      ],
+      "bullets": [
+        "異常状態とスタンの閾値を下げる。",
+        "通常の敵や多くのボスに有効。",
+        "ボスの免疫は引き続き適用される。"
+      ]
+    },
+    {
+      "id": "ailment-analysis",
+      "order": 60,
+      "title": "異常状態の分析",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "凍結は、凍結完了に必要な閾値が低いため恩恵を受けます。感電は、感電閾値に達しやすくなるため恩恵を受けますが、このオーラが高い感電効果量を保証するわけではありません。",
+        "燃焼は、現在のルールに基づき燃焼閾値が下がる場合に恩恵を受けますが、オーラが燃焼のDPSを直接上げるわけではありません。感電（Electrocute）はスタン／異常状態系統を共有しており、かかりやすくなります。",
+        "オーラが影響するのは閾値であって、ヒットのダメージではありません。実際に異常状態を与える必要があります。"
+      ],
+      "bullets": [
+        "凍結：完了閾値が低下。",
+        "感電：到達しやすくなるが効果量は増えない。",
+        "燃焼／感電（Electrocute）：かかりやすくなる。"
+      ]
+    },
+    {
+      "id": "stun-analysis",
+      "order": 70,
+      "title": "スタンの分析",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "スタン閾値の低下により、より少ない蓄積量で敵をスタン可能になります。これは、自身のスタンへの寄与を加算する「スタン蓄積量増加（More Stun Buildup）」とは異なります。",
+        "敵をより確実にスタンさせたい場合にこのオーラを使い、最良の結果を得るためにスタンを蓄積させるヒットと組み合わせます。"
+      ],
+      "bullets": [
+        "敵のスタン閾値を下げる。",
+        "「スタン蓄積量増加」とは別物。",
+        "スタンを蓄積させるヒットと相性が良い。"
+      ]
+    },
+    {
+      "id": "aura-magnitude",
+      "order": 80,
+      "title": "オーラの効果量",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーラの効果量は低下値をスケーリングします。現在のクライアントは低下の上限を設けており、ある地点を超えると効果量を増やしても意味がありません。",
+        "品質（Quality）は低下値または効果量に加算される場合があります。現在の正確な数値は実際のツールチップを確認してください。"
+      ],
+      "bullets": [
+        "効果量は低下値をスケーリングする。",
+        "現在の上限により最大低下が制限される。",
+        "品質は低下値または効果量に加算される場合がある。"
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 90,
+      "title": "スピリット予算",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "スピリット60で、オーバーウェルミング・プレゼンスは大きな予約です。これと競合する他のオーラやヘラルド効果の中から選択する必要があります。",
+        "すでに多くの異常状態やスタンを与え、より安定して命中させたいビルドであれば、価値があります。"
+      ],
+      "bullets": [
+        "スピリット60の予約。",
+        "他のオーラやヘラルドと競合する。",
+        "異常状態／スタン重視のビルドに価値がある。"
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 100,
+      "title": "スキル間の相互作用",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "コンバットフレンジとフリージングマークは、敵がすでに異常状態にあるときにトリガーまたは発動しやすくなり、低下した閾値が初期の異常状態の命中を助けます。",
+        "ヘラルド・オブ・サンダーは雷ヒットからより容易に感電を得られますが、その効果には引き続きキルが必要です。テンペスト・フラリーの感電とスタンの使用は、低下した閾値の恩恵を受けます。",
+        "異なるデバフ系統を適用するウィザリング・プレゼンスとは異なります。"
+      ],
+      "bullets": [
+        "コンバットフレンジ／フリージングマーク：トリガーしやすくなる。",
+        "ヘラルド・オブ・サンダー：感電しやすくなるがキルは必要。",
+        "テンペスト・フラリー：感電とスタンが強化される。"
+      ]
+    },
+    {
+      "id": "mapping-value",
+      "order": 110,
+      "title": "マップ攻略での価値",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "マップでは、オーラが通り抜けるパックを凍結・感電・スタンの状態に保ち、クリア速度と安全性のための強力なクラウドコントロールとなります。",
+        "オーラであるため、近接および接近戦ビルドはその中に留まりますが、遠距離ビルドは自身のオーラの範囲外に出て恩恵を失う可能性があります。"
+      ],
+      "bullets": [
+        "マップでの強力なパックのクラウドコントロール。",
+        "近接および接近戦に最適。",
+        "遠距離はオーラの半径外に出る可能性がある。"
+      ]
+    },
+    {
+      "id": "bossing-value",
+      "order": 120,
+      "title": "ボス戦での価値",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "ボスに対しては、低下したスタン閾値がスタン可能なボスの拘束に役立ち、より容易な感電がヘラルド・オブ・サンダーの発動を支援します。",
+        "スタン免疫を持つボスは得られる価値が小さいため、戦闘ごとに他の選択肢と照らして60のスピリットを検討してください。"
+      ],
+      "bullets": [
+        "スタン可能なボスの拘束に役立つ。",
+        "ヘラルドの発動のための感電が容易に。",
+        "スタン免疫ボスに対しては価値が低い。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "ビルドの使い方",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーバーウェルミング・プレゼンスは、凍結と感電の維持が重要なコールドキャスター・クロノマンサーなどの、異常状態やスタン重視のキャスタービルドに適しています。",
+        "これはスピリットの大きな割り当てとなるため、コアとなるオーラの後に余裕のあるスピリットを持つビルドに向いています。"
+      ],
+      "bullets": [
+        "コールドキャスター・クロノマンサー：凍結／感電の維持。",
+        "スタン重視の近接：拘束。",
+        "余裕のあるスピリットが必要。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "トラブルシューティング",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "敵にデバフアイコンが表示されない場合、それは想定通りです。閾値低下は受動的でありアイコンはありません。それでも異常状態がかからない場合、ヒットが弱すぎるか敵が免疫を持っています。",
+        "オーラが遠距離で無意味に感じる場合、自分がその範囲外に出ているためです。近づくか、遠距離ビルドでは採用を見送ってください。"
+      ],
+      "bullets": [
+        "アイコンなし：想定通り、効果は受動的。",
+        "それでも異常状態が失敗：ヒットが弱いか免疫。",
+        "遠距離で無意味：半径外に出ている。",
+        "ダメージ増加なし：閾値を下げるもので、ダメージではない。",
+        "スピリットの競合：他のオーラとバランスを取る。"
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 150,
+      "title": "既知の問題",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "よくある誤解は、オーラから直接ダメージを期待することです。閾値を下げるだけです。もう一つは、低下に上限がないと仮定することです。現在のクライアントでは上限が設けられています。"
+      ],
+      "bullets": [
+        "オーラは直接ダメージを加算しない。",
+        "低下は現在の最大値で上限がある。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 160,
+      "title": "コミュニティの証拠",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "オーバーウェルミング・プレゼンスは、0.5のスレッドにおいて異常状態およびスタンビルド向けの強力なオーラとして議論されており、主な注意点は60のスピリット消費です。",
+        "プレイヤーは視覚的なデバフアイコンがないことに新規プレイヤーが混乱すると指摘しています。"
+      ],
+      "bullets": [
+        "異常状態／スタンビルドに強力、スピリット60を消費。",
+        "アイコンがないことが混乱を招く。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 170,
+      "title": "動画ガイド",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Charges and Adonia",
+          "label": "チャージの獲得とアドニアの突破（0.5）",
+          "description": "オーラおよびスタンビルドに関連するチャージと閾値の仕組みを扱うガイド。",
+          "takeaway": "閾値とスタンの議論の文脈に注目。",
+          "url": "https://youtu.be/HnQGBKlyZqI",
+          "timestamps": [
+            {
+              "label": "はじめに",
+              "time": "0:00"
+            },
+            {
+              "label": "閾値の解説",
+              "time": "3:00"
+            }
+          ]
+        },
+        {
+          "creator": "State of the Meta",
+          "label": "0.5におけるメタの状況",
+          "description": "オーラとデバフビルドが議論される0.5のメタ概観。",
+          "takeaway": "デバフオーラがメタのどこに位置するかを確認。",
+          "url": "https://youtu.be/25ysZmq56jQ",
+          "timestamps": [
+            {
+              "label": "メタ概観",
+              "time": "0:00"
+            },
+            {
+              "label": "オーラビルド",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 180,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "公式",
+          "description": "GGG公式のパッチノートとフォーラムにより、0.5.4におけるオーバーウェルミング・プレゼンスのオーラ、閾値低下、上限が確認されています。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DBとコミュニティWikiが、オーバーウェルミング・プレゼンスのスキルID、タグ、オーラの数値を提供しています。",
+          "url": "https://poe2db.tw/Overwhelming_Presence"
+        },
+        {
+          "label": "Wiki",
+          "description": "オーバーウェルミング・プレゼンスのオーラの詳細に関するコミュニティWikiページ。",
+          "url": "https://www.poe2wiki.net/wiki/Overwhelming_Presence"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Redditとフォーラムにはオーラと閾値に関する議論があります。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Overwhelming%20Presence&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 190,
+      "title": "パッチ履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0（Return of the Ancients）：オーバーウェルミング・プレゼンスのオーラが元素異常状態とスタンの閾値を下げる。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4（2026-08）：現在のベースライン：スピリット60、オーラの半径、閾値低下、効果量の上限、視覚的なデバフアイコンなし。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "初回リリース：オーラの半径、異常状態とスタンの閾値分析、オーラの効果量の上限、スキル間の相互作用、マップ攻略とボス戦の価値、トラブルシューティングとコミュニティの質問。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "combat-frenzy",
+    "freezing-mark",
+    "tempest-flurry",
+    "tempest-bell",
+    "herald-of-thunder"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 公式パッチノート フォーラム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Overwhelming Presence",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Overwhelming_Presence"
+    },
+    {
+      "label": "PoE2 Community Wiki — Overwhelming Presence",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Overwhelming_Presence"
+    },
+    {
+      "label": "Charges and Adonia 動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/HnQGBKlyZqI"
+    },
+    {
+      "label": "State of the Meta 動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/25ysZmq56jQ"
+    },
+    {
+      "label": "Reddit — Overwhelming Presence の議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Overwhelming%20Presence&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "オーバーウェルミング・プレゼンス ガイド — 異常状態閾値、スタン閾値、オーラの効果量",
+    "description": "オーバーウェルミング・プレゼンスの詳細ガイド：スピリット消費、オーラの半径、低減された元素異常状態閾値、凍結／感電／燃焼／感電（Electrocute）の網羅、低減されたスタン閾値とスタン蓄積量増加（More Stun Buildup）の違い、オーラの効果量の上限、スキル間の相互作用、マップ攻略とボス戦の価値、トラブルシューティングとコミュニティの質問。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "overwhelming-presence",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

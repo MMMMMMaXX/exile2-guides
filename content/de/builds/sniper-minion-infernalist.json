@@ -1,0 +1,862 @@
+{
+  "id": "sniper-minion-infernalist",
+  "slug": "sniper-minion-infernalist",
+  "locale": "de",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Sniper-Minion-Infernalist-Bauguide: Sentry-Schützen, Dämonenform und Endgame",
+  "shortTitle": "Sniper-Minion-Infernalist",
+  "summary": "0.5.4 Hexen-Beschwörungs-Toolkit: Die Elementarsentry als fernkampf-Schütze liefert stetigen Einzielschaden, Wütende Geister übernehmen den Nahkampf, die Dämonenform des Infernalisten eröffnet ein Burst-Fenster. Behandelt Sentry-Platzierung, Timing der Dämonenverwandlung und Verteidigungsgrenzen.",
+  "description": "Path of Exile 2 Sniper-Minion-Infernalist-Guide für 0.5.4: Sentry-Platzierung, Dämonenform, Wütende-Geister-Synergie, Verteidigungsgrenzen und echte Videotimestamps.",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "elemental-sentry",
+    "summon-raging-spirit"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "pain-offering",
+    "contingency",
+    "cast-on-minion-death"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "minion",
+    "sentry",
+    "ranged",
+    "demon",
+    "low-input"
+  ],
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "minion"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "cardImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "imageAlt": "Hexen-Infernalist beschwört einen Trupp aus Elementar-Sentry-Schützen und befehligt Wütende Geister im Kampf",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "infernalist",
+    "leveling",
+    "melee",
+    "minion",
+    "physical",
+    "ranged",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Bauguide-Überblick",
+      "paragraphs": [
+        "Sniper-Minion-Infernalist ist das fernkampf-basierte Beschwörungs-Toolkit der Hexe: Die Elementarsentry fungiert als platzierbarer Schütze mit stetigem Einzielschaden, Wütende Geister übernehmen den Nahkampf, und die Dämonenform des Infernalisten eröffnet beim Verwandeln ein Burst-Fenster.",
+        "Der Kern-Spaß ist „Sentrys platzieren, dann kiten“: Der meiste Schaden kommt automatisch von Sentrys und Geistern; dein Input beschränkt sich auf Positionierung, Geister auffrischen und die Dämonenform auslösen. Es verbraucht kein Mana wie ein reiner Caster, stützt sich aber stark auf das Überleben der Minions und das Minion-Limit.",
+        "Dieser Guide ist stufenbasiert: Zuerst, wann man von reinen Geistern zu Sentry-geführt wechselt, dann Ausrüstung, Passivbaum, Timing der Dämonenform und Budget-Stufen. Alle Client-Zahlen und Mechaniken sind für PC-Verifizierung markiert; nicht verifizierter DPS wird nicht als Fakt behauptet."
+      ],
+      "bullets": [
+        "Beim Kartenlaufen erledigen Geister den Nahkampf + Sentry folgt aus der Ferne, nahezu halbautomatisch.",
+        "Beim Bossen endet es mit Sentry-Schießen plus dem Burst der Dämonenform.",
+        "Minion-Überleben und -Limit sind echte Engpässe, die bewältigt werden müssen."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Vor- und Nachteile",
+      "pros": [
+        "Sentrys schießen automatisch; das Kartenlaufen ist nahezu halbautomatisch und entspannt.",
+        "Die Dämonenform bietet ein klares Burst-Fenster und einen sauberen Boss-Abschluss.",
+        "Keine Manakosten; der Erhaltungsdruck ist viel geringer als bei einem reinen Caster.",
+        "Funktioniert früh mit kleinem Budget und geht reibungslos über."
+      ],
+      "cons": [
+        "Sentry-Limit und -Laufzeit sind harte Grenzen; früher Schaden kann stocken.",
+        "Nahkampfgegner umgehen die Sentry-Reichweite; Geister müssen die Lücken schließen.",
+        "Bosse, die sich viel bewegen, senken die Sentry-Trefferrate.",
+        "Karten-Mods, die Minions betreffen (z. B. weniger Minion-Schaden), sind eine versteckte Falle."
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Wie die Schleife abläuft: Sentry platzieren → Geister aufräumen → Dämonen-Burst",
+      "paragraphs": [
+        "Karten-Schleife: Platziere die Elementarsentry an der Flanke des Packs; Geister stürmen automatisch auf den nächsten Feind los, während du kitest und Geister auffrischst. Das ist der Grund, warum die Community es halbautomatisches Kartenlaufen nennt.",
+        "Boss-Schleife: Platziere vorab eine oder zwei Sentrys entlang des Boss-Pfads, nutze Geister zum Tanken/Aggro ziehen, und verwandle dich dann in die Dämonenform, sobald ihre Ressource voll ist, für das Burst-Fenster, während die Sentrys weiter den Kern beschießen.",
+        "Wendungen wie „Sentrys zielen von selbst“ beziehen sich meist auf die automatische Zielerfassung der Sentry, nicht auf ein eigenes System; prüfe das anhand der Skill-Beschreibung und im Client, behandle es nicht als versteckte Zusatzmechanik."
+      ],
+      "bullets": [
+        "Karten = Sentry platzieren + kiten; der Rest liegt bei den Geistern.",
+        "Boss = Sentry vorab platzieren → Geister ziehen Aggro → Dämonen-Burst.",
+        "Geister sind der Nahkampf-Abschluss, nicht der Hauptschaden."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Levelweg",
+      "steps": [
+        {
+          "label": "Stufen 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Starte mit Wütendem Geist; er ist sehr früh verfügbar und ist dein echter Karten-Minion. Erzwinge noch keine Sentry-Anzahl — Limit und Ausrüstung sind noch nicht bereit."
+          ]
+        },
+        {
+          "label": "Stufen 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Füge die Elementarsentry als Fernkampf-Ergänzung hinzu und nimm Leben/Geister-Schaden/Resistenz-Knoten. Behalte Geister als Kern."
+          ]
+        },
+        {
+          "label": "Stufen 30–42 — Infernalist-Freischaltungen",
+          "levelRange": "30–42",
+          "body": [
+            "Wähle den Infernalisten und nimm die Knoten der Dämonenform. Das Verwandlungs-Fenster liefert nun Boss-Burst."
+          ]
+        },
+        {
+          "label": "Stufen 43–60 — Frühe Maps",
+          "levelRange": "43–60",
+          "body": [
+            "Spiele Sentry + Geister mit Nicht-Krit, kleinem Budget. Decke Resistenzen ab, fixe Leben, halte Sentrys bei Seltenen oben."
+          ]
+        },
+        {
+          "label": "Stufe 60+ — Endgame-Vorbereitung",
+          "levelRange": "60+",
+          "body": [
+            "Gehe in Budget-Upgrades: Sentry-Limit, Minion-Schaden, Geister-Level und Chaos-Res. Verfolge High-End-Ausrüstung erst, nachdem die Upgrade-Prioritäts-Checkliste bestanden ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Skill-Setup",
+      "groups": [
+        {
+          "label": "Kernfähigkeiten",
+          "skills": [
+            {
+              "displayName": "Elementarsentry",
+              "skillId": "elemental-sentry",
+              "role": "Platzierbarer Fernkampf-Schütze mit stetigem Einzielschaden; Haupt-Boss-Schaden.",
+              "supportSkillIds": [
+                "minion-damage",
+                "minion-speed",
+                "added-chaos"
+              ],
+              "whyUse": [
+                "Sie ist der verankerte Kern der ganzen Schleife; ohne Sentrys fällt das Bossen auf unstabiles reines Geister-Tempo zurück."
+              ],
+              "whenReplace": [
+                "Wird nie ersetzt; in Maps kannst du vorübergehend weniger platzieren, um zu beschleunigen."
+              ],
+              "mappingBossingDiff": [
+                "Karten: eine an der Flanke reicht. Boss: eine oder zwei am Pfad, um den Kern zu fixieren."
+              ],
+              "notes": [
+                "Genae Support-Verbindungen und Sentry-Limit ausstehend bei PC-Verifizierung."
+              ]
+            },
+            {
+              "displayName": "Wütender Geist",
+              "skillId": "summon-raging-spirit",
+              "role": "Nahkampf-Geist, der Gegner erledigt, die die Sentry-Reichweite umgehen, und Bosse in Aggro hält.",
+              "supportSkillIds": [
+                "minion-damage",
+                "meat-shield",
+                "feeding-frenzy"
+              ],
+              "whyUse": [
+                "Er deckt den toten Winkel der Sentry-Reichweite ab; beständig für Kartenlauf und Boss-Aggro."
+              ],
+              "whenReplace": [
+                "Dauerhaft behalten; nur tauschen, falls ein stärkerer Nahkampf-Beschwörung auftaucht."
+              ],
+              "mappingBossingDiff": [
+                "Karten: stürmt automatisch auf Mobs los. Boss: Nahkampf-Aggro und Aufräumen."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "Buffs & Auslöser",
+          "skills": [
+            {
+              "displayName": "Schmerzopfer",
+              "skillId": "pain-offering",
+              "role": "Opfert Minions für teamweiten Schaden; lässt Sentry/Geister-Schaden kurz spiken.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es ist der Schadens-Kern des Burst-Fensters; am besten mit Dämonenform und Boss-Phasen genutzt."
+              ],
+              "whenReplace": [
+                "Behalten; Teil der Schadensarchitektur."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, aber Bossen hängt stärker an seinem Spike."
+              ],
+              "notes": [
+                "Verbraucht Minions; zeitlich sorgfältig einsetzen."
+              ]
+            },
+            {
+              "displayName": "Flammenwand",
+              "skillId": "flame-wall",
+              "role": "Boden-Feuerwand; Projektile, die hindurchgehen, erhalten Feuer-Zusatz, bufft Sentrys/Geister.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Fügt Feuer- und Flächenschaden hinzu, stärkt die Abwicklung."
+              ],
+              "whenReplace": [
+                "Als Buff behalten."
+              ],
+              "mappingBossingDiff": [
+                "Karten optional; beim Bossen platziert, um das Fenster zu verstärken."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Zaubern bei Minion-Tod",
+              "skillId": "cast-on-minion-death",
+              "role": "Wirkt einen Zauber, wenn ein Minion stirbt, und fügt Abdeckung und Selbstverteidigung hinzu.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Fügt automatisch eine Schadens-/Kontrollschicht hinzu, wenn Geister fallen, erleichtert Ausfallzeiten."
+              ],
+              "whenReplace": [
+                "Behalten; Teil der Verteidigungsarchitektur."
+              ],
+              "mappingBossingDiff": [
+                "In beiden genutzt, im Bossen kritischer."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Ascendancy-Reihenfolge",
+      "steps": [
+        {
+          "label": "Infernalist — Erste Knoten",
+          "body": [
+            "Wähle den Infernalisten. Priorisiere die Knoten der Dämonenform, damit das Verwandlungs-Fenster verlässlich Burst liefert; das ist die Vorbedingung für den Build."
+          ]
+        },
+        {
+          "label": "Minion-Überlebens-Check",
+          "body": [
+            "Wenn ab T15+ Minions oft sterben, tausche Dämonen-/Schadens-Knoten nicht gegen reinen Schaden; sichere zuerst Sentry-Limit und Geister-Überleben."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Passivbaum",
+      "steps": [
+        {
+          "label": "Kampagne",
+          "body": [
+            "Nimm nur Knoten, die Geister/Minion-Schaden und Leben unterstützen; pfade nicht vorzeitig zu den Sentry-Limit-Rädern."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Wechsle in die Sentry-Variante; priorisiere Leben, Chaos-Res, Minion-Schaden und Sentry-Limit."
+          ]
+        },
+        {
+          "label": "Endgame",
+          "body": [
+            "Sobald Verteidigung und Sentry-Limit gelöst sind, investiere in Minion-Krit/Schadens-Räder; vergleiche Ausrüstungsstände auf derselben Stufe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Ausrüstung",
+      "slots": [
+        {
+          "slot": "Stab / Fokus",
+          "recommendations": [
+            "Wähle eine Basis, die Minion-Level und Zauber-/Minion-Schaden erhöht; genug Sockel für Geister- und Sentry-Verbindungen."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Minion-Skill-Level / Minion-Schaden",
+              "reason": "Skaliert Sentry- und Geister-Abwicklung direkt."
+            },
+            {
+              "tier": "recommended",
+              "label": "Leben und Resistenzen",
+              "reason": "Du musst überleben, um zu befehligen."
+            },
+            {
+              "tier": "optional",
+              "label": "Zaubertempo",
+              "reason": "Schnelleres Geister-Auffrischen und Sentry-Platzierung."
+            },
+            {
+              "tier": "luxury",
+              "label": "Minion-Kritchance / Kritschaden",
+              "reason": "Erst nachdem Überleben und Limit stabil sind."
+            }
+          ],
+          "notes": [
+            "Fokus ist die Haupthand; priorisiere Minion-Affixe."
+          ]
+        },
+        {
+          "slot": "Brust / Stiefel / Helm",
+          "recommendations": [
+            "Leben, Chaos-Res und Resistenzen; Stiefel-Bewegungstempo zum Kiten."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Leben und zwei gedeckte Resistenzen",
+              "reason": "Minions sterben; du darfst es nicht auch."
+            },
+            {
+              "tier": "recommended",
+              "label": "Chaos-Res",
+              "reason": "Harte Endgame-Notwendigkeit, nicht von Natur aus vorhanden."
+            },
+            {
+              "tier": "optional",
+              "label": "Bewegungstempo",
+              "reason": "Verbessert Positionierung und Pack-Kiten."
+            },
+            {
+              "tier": "luxury",
+              "label": "Explizite Minion-Affixe",
+              "reason": "Zählt erst nach der Verteidigung."
+            }
+          ],
+          "notes": [
+            "Chaos-Res muss gezielt gestapelt werden."
+          ]
+        },
+        {
+          "slot": "Ringe / Amulett / Gürtel",
+          "recommendations": [
+            "Attribute, Resistenzen, Leben; wo nötig Sentry-Limit oder Minion-Überleben."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Attribute zum Ausrüsten von Stab und Gems",
+              "reason": "Nicht ausrüstbar ist nutzlos."
+            },
+            {
+              "tier": "recommended",
+              "label": "Resistenzen und Leben",
+              "reason": "Vervollständigt die Verteidigungshülle."
+            },
+            {
+              "tier": "optional",
+              "label": "Sentry-Limit / Minion-Überleben",
+              "reason": "Gratis-Boni von Schmuck."
+            },
+            {
+              "tier": "luxury",
+              "label": "Minion-Skill-Level",
+              "reason": "Später Endgame-Schaden."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Stat-Priorität",
+      "priorities": [
+        {
+          "label": "Minion-Skill-Level",
+          "reason": "Skaliert Sentrys und Geister; oberster Fortschritt-Check."
+        },
+        {
+          "label": "Sentry-Limit",
+          "reason": "Entscheidet, ob Mehrfach-Sentry-Abdeckung nachhaltig ist."
+        },
+        {
+          "label": "Chaos-Res",
+          "reason": "Harte Endgame-Notwendigkeit, nicht von Natur aus vorhanden."
+        },
+        {
+          "label": "Leben und Resistenzen",
+          "reason": "Du musst überleben, um Minions zu befehligen."
+        },
+        {
+          "label": "Minion-Krit",
+          "reason": "Erst nachdem Überleben und Limit stabil sind."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Upgrade-Priorität",
+      "steps": [
+        {
+          "label": "Verlangsamungen auflösen",
+          "symptom": "Packs brauchen viele Geister-Runden zum Sterben.",
+          "checks": [
+            "Ist der Stab noch eine angemessene Basis für die Stufe?",
+            "Sind Resistenzen und Leben gelöst (d. h. der Stab ist der echte Engpass)?"
+          ],
+          "upgrade": "Tausche zuerst den unterwertigen Stab, bevor du Schmuck angehst."
+        },
+        {
+          "label": "Sentrys sterben weiter",
+          "symptom": "Sentrys werden in Bosskämpfen eliminiert.",
+          "checks": [
+            "Nur Schaden gestapelt, Sentry-Überleben ignoriert?",
+            "Kitest du, um Sentrys beim Bossen zu schützen?"
+          ],
+          "upgrade": "Fixe Sentry-Überleben und -Limit, bevor du Schaden skalierst."
+        },
+        {
+          "label": "Dämonenform kommt nie",
+          "symptom": "Verwandlungs-Ressource füllt sich nie.",
+          "checks": [
+            "Bosse erzwungen, bevor Dämonen-Knoten genommen?",
+            "Ist das Tempo der Kills zu langsam für Ressourcengewinn?"
+          ],
+          "upgrade": "Fixe Ascendancy und Kill-Tempo, nicht den Stab."
+        },
+        {
+          "label": "Nach T15 stagniert",
+          "symptom": "Schaden verbessert sich nicht mehr.",
+          "checks": [
+            "Minion-Level am Limit?",
+            "Fokus-Minion-Schaden vorhanden?",
+            "Chaos-Res maximiert?"
+          ],
+          "upgrade": "Upgrade in Reihenfolge: Minion-Level → Fokus → Chaos-Res."
+        },
+        {
+          "label": "High-End erwägen",
+          "symptom": "Möchtest höheren Boss-Schaden und schielst auf Luxus-Ausrüstung.",
+          "checks": [
+            "Sind Sentrys und Überleben stabil?",
+            "Würde High-End Resist-Limits brechen oder Leben senken?"
+          ],
+          "upgrade": "Kaufe Stück für Stück und teste erneut, nachdem die Checkliste bestanden ist; tausche Überleben nicht gegen Zahlen ein."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Kartenlauf",
+      "paragraphs": [
+        "Platziere die Elementarsentry an der Flanke des Packs; Geister stürmen automatisch auf den nächsten Feind los, während du kitest und auffrischst. Müll braucht keine vollen Sentrys; eine reicht.",
+        "Sobald das Aufräumen stockt, upgrade zuerst den Stab. Halte etwas Überleben (Resist/Leben/Kiten) aktiv, damit das Kartenlaufen nie stagniert."
+      ],
+      "bullets": [
+        "Sentry platzieren + kiten ist der ganze Karten-Rhythmus.",
+        "Eine Sentry reicht für Müll.",
+        "Reaktiv den Stab upgraden, wenn das Aufräumen stockt."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Bossen",
+      "paragraphs": [
+        "Bossen ist eine Abfolge: Platziere vorab eine oder zwei Sentrys entlang des Boss-Pfads, nutze Geister für Aggro aus dem Nahkampf, und verwandle dich dann, sobald die Dämonen-Ressource voll ist, für das Burst-Fenster, während die Sentrys weiter den Kern beschießen.",
+        "Wenn Sentrys weiter sterben, liegt das Problem an Überleben und Platzierung (kiten, um sie zu schützen), nicht am Stab. Wenn sich der Boss viel bewegt, platziere Sentrys auf dem engen Pfad, den er kreuzen muss, nicht an seinen Füßen."
+      ],
+      "bullets": [
+        "Sentry vorab platzieren → Geister-Aggro → Dämonen-Burst.",
+        "Geister räumen im Nahkampf auf.",
+        "Sentry-Tod = Überleben und Platzierung fixen, nicht Waffe tauschen."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Budget-Stufen: Echt günstig vs. Luxus-Unterschiede",
+      "paragraphs": [
+        "Günstig: ein Stab mit kleinem Budget plus gelöste Resistenzen/Leben/Sentry-Limit, räumt und bossed die meisten Inhalte mit Sentrys + Geistern. Das ändert, ob du spielen kannst, nicht die Schadenszahl.",
+        "Luxus: Fokus mit hohem Minion-Level, bestimmte Uniques, gedeckte Chaos-Res und Minion-Krit, hebt sowohl Sentry-Abwicklung als auch Überleben. Das ändert Deckel und Fehlertoleranz, verwandelt Günstig nicht in einen anderen Build.",
+        "Mirror-Stufe erst, nachdem du verifiziert hast, dass Günstig/Luxus bestehen und Client-Zahlen bestätigen; opfere nicht Chaos-Res und Leben für DPS."
+      ],
+      "bullets": [
+        "Erst günstig: Leben, Resistenzen, Sentry-Limit, ein ordentlicher Stab.",
+        "Später Luxus: Minion-Level, Chaos-Res, Krit.",
+        "Mirror-Stufe bricht nie den Verteidigungsboden."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "Community-Belege",
+      "note": "Dieser Guide nutzt Community-Diskussionen als reproduzierbare Checkliste, nicht als Versprechen ihres gezeigten DPS.",
+      "entries": [
+        {
+          "context": "Spieler berichten von stagnierendem Sentry-Schaden nach T15, unsicher, was upgraden.",
+          "label": "LugoHQ — Sniper-Minion-Infernalist-Endgame-Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Der Guide trennt Günstig-/Luxus-Stufen und stellt klar, dass jede die Ausrüstungsgrenzen, nicht die Mechanik ändert.",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "context": "Spieler debattieren, ob sich die Dämonenform lohnt.",
+          "label": "LugoHQ — Sniper-Minion-Infernalist-Zitadelle",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "Zitadellen-Footage zeigt den Wert des Burst-Fensters der Dämonenform als Abschluss bei Hochdruck-Bossen und betont zuerst Sentry-Überleben.",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Fehlerbehebung",
+      "problems": [
+        {
+          "symptom": "Boss-Sentrys lösen nicht aus / sterben",
+          "checks": [
+            "Sind die Sentrys an den Pfad-Engstellen?",
+            "Nur Schaden gestapelt, Sentry-Überleben ignoriert?",
+            "Schützt das Kiten sie?"
+          ]
+        },
+        {
+          "symptom": "Dämonen-Ressource füllt sich nie",
+          "checks": [
+            "Dämonen-Knoten genommen?",
+            "Ist das Kill-Tempo zu langsam?"
+          ]
+        },
+        {
+          "symptom": "Kartenlauf verlangsamt",
+          "checks": [
+            "Ist der Stab noch eine Basis für die Stufe?",
+            "Sind Resistenzen und Leben zuerst gelöst?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Ab welcher Stufe nutze ich Wütenden Geist?",
+          "answer": [
+            "Sehr früh nutzbar; er ist der echte Karten-Minion. Das Sentry-Toolkit wartet auf Ausrüstung und Limit."
+          ],
+          "bullets": [
+            "Wütender Geist ab Stufe 1 im Kartenlauf."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Ich habe einen besseren Stab getauscht, aber Sentrys sind immer noch schwach?",
+          "answer": [
+            "Sentrys hängen an Limit und Überleben, nicht nur am Stab; fixe zuerst Limit und Überleben."
+          ],
+          "bullets": [
+            "Nimm einen Bosskampf auf und prüfe die Sentry-Laufzeit."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Kann ich SSF spielen?",
+          "answer": [
+            "Ja; Sentrys + Geister mit kleinem Budget laufen und bossed die meisten Inhalte in SSF. Luxus-Uniques sind ein Deckel, keine Schwelle."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/de/guides/campaign-early-maps-gearing-crafting/",
+              "label": "Siehe Kampagnen- und Frühe-Maps-Ausrüstungs-Guide"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Build-Planer & Import",
+      "note": "PoE2 liefert jetzt einen nativen Build-Planer. Einfügbare Import-Strings und .build-Dateien stehen weiterhin zur PC-Verifizierung aus; nutze inzwischen die Creator-Guides und den offiziellen Planer unten. Bestätige Knoten immer erneut in deinem eigenen Client.",
+      "creatorName": "LugoHQ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Endgame- und Zitadellen-Footage ansehen",
+      "entries": [
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper-Minion-Infernalist-Endgame-Guide",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "description": "Eine lange Referenz, die den vollen Pfad von Geister-Kartenlauf zu Sentry-geführt und Dämonenform zeigt.",
+          "takeaway": "Nimm pro Akt einen Kampagnen-Boss als Beispiel; halte die Sentry-Platzierungsreihenfolge fest, nicht die Aufräumgeschwindigkeit.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Einführung und Konzept"
+            },
+            {
+              "time": "2:30",
+              "label": "Akt 1 Kartenlauf"
+            },
+            {
+              "time": "6:00",
+              "label": "Infernalist und Dämonenform"
+            },
+            {
+              "time": "10:30",
+              "label": "Sentry-Platzierung und Geister-Synergie"
+            },
+            {
+              "time": "15:00",
+              "label": "Frühe Maps und Ausrüstung"
+            }
+          ]
+        },
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper-Minion-Infernalist-Zitadelle",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs",
+          "description": "Hochdruck-Zitadelle: Sentry-Überleben, Dämonenform-Abschluss und Ausrüstungsgrenzen.",
+          "takeaway": "Fokussiere dich bei Hochdruck-Bossen auf Sentry-Platzierung und Überleben, nicht auf blinde DPS-Jagd.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Einführung"
+            },
+            {
+              "time": "1:50",
+              "label": "Zitadellen-Eintritt und Pack-Pull"
+            },
+            {
+              "time": "5:20",
+              "label": "Sentry-Platzierung und Schutz"
+            },
+            {
+              "time": "9:10",
+              "label": "Burst-Fenster der Dämonenform"
+            },
+            {
+              "time": "13:00",
+              "label": "Ausrüstungsgrenzen und Zusammenfassung"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Quellen & Verifizierung",
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "LugoHQ — Sniper-Minion-Infernalist-Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "label": "Community",
+          "description": "LugoHQ — Sniper-Minion-Infernalist-Zitadelle (YouTube)",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        },
+        {
+          "label": "Datenbank",
+          "description": "Path of Exile 2 Wiki — Infernalist",
+          "url": "https://poe2wiki.net/wiki/Infernalist"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Änderungsprotokoll",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Einen quellenbasierten 0.5.4 Sniper-Minion-Infernalist-Bauguide erstellt; PC-Verifizierung läuft."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "LugoHQ — Sniper-Minion-Infernalist-Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "label": "LugoHQ — Sniper-Minion-Infernalist-Zitadelle (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Infernalist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Infernalist"
+    }
+  ],
+  "seo": {
+    "title": "Sniper-Minion-Infernalist-Bauguide | Exile2 Guides",
+    "description": "0.5.4 Sniper-Minion-Infernalist: Elementar-Sentry-Schützen, Dämonenform des Infernalisten, Wütende-Geister-Synergie und Verteidigungsgrenzen.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "sniper-minion-infernalist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

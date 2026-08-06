@@ -1,0 +1,1039 @@
+{
+  "id": "ice-shot-deadeye",
+  "slug": "ice-shot-deadeye",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "얼음 사격 명사수 빌드 가이드",
+  "shortTitle": "얼음 사격 명사수",
+  "summary": "번개 화살 레벨링, 레벨 31 얼음 사격 교체, 저격 타이밍, 빙결 구성, 비치명타→치명타 전환을 다루는 단계형 활 가이드.",
+  "description": "0.5.4 기준 패스 오브 엑자일 2 얼음 사격 및 저격 명사수 빌드 완전 가이드.",
+  "classId": "ranger",
+  "ascendancyId": "deadeye",
+  "mainSkillIds": [
+    "ice-shot",
+    "snipe"
+  ],
+  "secondarySkillIds": [
+    "freezing-mark",
+    "tornado-shot",
+    "barrage",
+    "ice-tipped-arrows"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high",
+    "luxury"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "ranged",
+    "bow",
+    "cold",
+    "freeze",
+    "crit"
+  ],
+  "damageTypes": [
+    "cold",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "freeze-control",
+    "staged-investment"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 가이드 편집팀",
+  "reviewer": "Exile2 가이드 편집팀",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "cardImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "imageAlt": "얼어붙은 전장을 가로질러 얼음 사격을 발사하는 명사수 궁수",
+  "tags": [
+    "bossing",
+    "cold",
+    "deadeye",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "physical",
+    "ranged",
+    "ranger",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "빌드 개요",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "얼음 사격은 맵핑 엔진이고, 저격은 준비된 단일 대상 발사입니다. 보스 루프는 '가능한 한 항상 저격을 유지'하는 것이 아닙니다. 빙결 징표를 세우고, 토네이도 샷과 얼음 화살촉을 사용해 투사체와 냉기 구성을 만들며, 얼음 사격으로 빙결을 쌓은 다음, 그 창을 맹공을 거쳐 저격으로 소비합니다.",
+        "현재 가이드는 여러 실제 변형을 다룹니다. 초반 비치명타, 중반 비치명타 하이브리드, 후반 치명타 버전입니다. 이것은 강화 사다리이지, 생명력, 회피, 저항, 이동, 그리고 제대로 작동하는 활이 해결되기 전에 치명타 조각을 사도 된다는 허가가 아닙니다.",
+        "중요하게도, 얼음 사격은 레벨 1 스킬이 아닙니다. 레벨 31에 해금됩니다. 그 전에는 번개 화살과 번개 막대로 레벨을 올리고, 젬이 사용 가능해지면 그때 냉기 구성을 겹쳐 나갑니다. 아래 레벨링 계획을 각주가 아닌 진짜 시작점으로 취급하십시오."
+      ],
+      "bullets": [
+        "얼음 사격으로 맵핑하고 단단한 대상에 빙결 징표를 유지하십시오.",
+        "저격 발사를 결정하기 전에 빙결 창을 먼저 만드십시오.",
+        "생명력, 회피, 저항, 그리고 제대로 된 활이 해결될 때까지 비치명타를 유지하십시오."
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "장단점",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "레벨 31 얼음 사격 교체 후 빠른 원거리 클리어.",
+        "빙결은 피해 구성뿐만 아니라 통제도 제공합니다.",
+        "비치명타 시작은 비싼 치명타 장비를 억지로 갖추게 하지 않습니다."
+      ],
+      "cons": [
+        "레벨 1부터 최종 얼음 사격 구성을 따를 수 없습니다.",
+        "저격 타이밍과 다중 버튼 보스 구성이 연습을 필요로 합니다.",
+        "활과 화살통 강화가 진척에 크게 영향을 줍니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "루프의 흐름",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "이 빌드는 두 가지 다른 리듬을 가집니다. 맵핑은 흐름 상태입니다. 얼음 사격을 쏘고, 징표를 유지하며, 계속 움직입니다. 보싱은 명확한 단계가 있는 설정-발사 절차입니다. 대부분의 새 명사수가 범하는 실수는 보스 절차를 맵핑에 가져오는 것(쓰레기 몹에 저격을 차지하려 멈춤)이거나 맵핑 흐름을 보스에 가져오는 것(빙결 창을 절대 만들지 않음)입니다.",
+        "아래 섹션은 의도적으로 이 두 리듬을 분리합니다. 화면 클리어는 맵핑을, 준비된 저격 순서는 보싱을 읽으십시오."
+      ],
+      "bullets": [
+        "맵핑 = 얼음 사격 + 징표, 계속 사격.",
+        "보싱 = 징표 → 빙결 설정 → 맹공 → 타이밍 저격.",
+        "두 절차를 섞지 마십시오."
+      ],
+      "toc": false
+    },
+    {
+      "id": "freeze-snipe-visual",
+      "type": "figure",
+      "title": "저격 전에 빙결 창을 만드십시오",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ice-shot-deadeye-mechanic.webp",
+        "alt": "준비된 저격 발사 전 빙결을 구축하는 얼음 사격의 편집 다이어그램",
+        "caption": "얼음 사격으로 클리어하고, 단단한 대상에 징표와 빙결을 준비한 뒤, 맹공과 타이밍 저격으로 그 틈을 소비하십시오.",
+        "credit": "Exile2 가이드의 독창적 편집 일러스트",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "레벨링",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "번개 화살과 번개 막대로 시작하십시오. 이것이 진짜 레벨링 스킬입니다. 얼음 사격은 아직 사용할 수 없으니, 이르게 냉기 활 빌드를 억지로 시도하지 마십시오."
+          ]
+        },
+        {
+          "label": "레벨 15–23",
+          "levelRange": "15–23",
+          "body": [
+            "첫 서포트(추가 번개, 번개 막대 스케일링, 공격 속도)를 추가하고 이동 및 생존 노드를 가져가십시오. 주 스킬은 번개 화살로 유지하십시오."
+          ]
+        },
+        {
+          "label": "레벨 24–30",
+          "levelRange": "24–30",
+          "body": [
+            "젬이 해금됨에 따라 냉기 유틸을 도입하십시오. 빙결 징표와 첫 빙결/이상태 서포트입니다. 여전히 번개 화살로 맵핑하지만, 보스 구성을 위한 조각들이 젬 목록에 나타나기 시작합니다."
+          ]
+        },
+        {
+          "label": "레벨 31–41 — 얼음 사격 해금",
+          "levelRange": "31–41",
+          "body": [
+            "얼음 사격은 레벨 31에 해금됩니다. 활, 서포트, 마나가 이를 감당할 수 있을 때만 주 스킬을 얼음 사격으로 교체하십시오. 이것이 빌드 이름의 유래가 된 진짜 스타터→얼음 사격 전환입니다."
+          ]
+        },
+        {
+          "label": "레벨 42–59 — 초반 맵",
+          "levelRange": "42–59",
+          "body": [
+            "얼음 사격을 비치명타로 돌리십시오. 저항을 상한까지 채우고, 생명력/회피를 해결하며, 레어의 빙결을 안정화하십시오. 아직 치명타 장비를 사지 마십시오. 방어 바닥이 더 큰 수치보다 중요합니다."
+          ]
+        },
+        {
+          "label": "레벨 60+ — 엔드게임 준비",
+          "levelRange": "60+",
+          "body": [
+            "초반 비치명타 엔드게임으로 나아가고, 강화 우선순위 체크리스트를 통과한 후에만 하이브리드/치명타 사다리로 가십시오. 실제로 감당할 수 있는 변형을 중심으로 패시브 트리를 계획하십시오."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "단계별 구성",
+      "order": 45,
+      "visible": true,
+      "caption": "각 단계에서 실행할 것. 정확한 젬 레벨과 서포트 연결은 PC 검증 대기 중입니다. 실행 가능한 부분은 단계 경계입니다.",
+      "columns": [
+        "단계",
+        "주 스킬",
+        "핵심 서포트",
+        "패시브 중점",
+        "장비 목표",
+        "전환 조건"
+      ],
+      "rows": [
+        {
+          "label": "레벨 1–20",
+          "cells": [
+            "번개 화살 + 번개 막대",
+            "번개 막대, 추가 번개",
+            "투사체/공격 속도, 생존",
+            "충분한 DPS의 활, 생명력/저항",
+            "첫 냉기 도구를 위해 레벨 21 도달"
+          ]
+        },
+        {
+          "label": "레벨 21–40",
+          "cells": [
+            "번개 화살 (나중 냉기 주입)",
+            "추가 냉기, 빙결 확률",
+            "냉기/빙결 노드, 저항",
+            "빙결 축적 쌓기 시작",
+            "얼음 사격 레벨 31 해금"
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "cells": [
+            "얼음 사격 (비치명타)",
+            "냉기 관통, 무술 템포, 빠른 투사체",
+            "생명력/회피, 첫 승천",
+            "비치명타 활, 저항 상한",
+            "T15+ 생존 및 안정된 빙결"
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "cells": [
+            "얼음 사격 + 저격 (나중 치명타)",
+            "치명타 서포트, 맹공 구성",
+            "전체 트리, 치명타 휠",
+            "고DPS 활, 치명타 장비",
+            "치명타 이전 보스 빙결 신뢰 가능"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "스킬",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "얼음 사격",
+              "skillId": "ice-shot",
+              "role": "주 맵핑 스킬. 서포트가 자리 잡으면 빙결 엔진으로 전환.",
+              "supportSkillIds": [
+                "cold-penetration",
+                "martial-tempo",
+                "faster-projectiles",
+                "elemental-damage-with-attacks"
+              ],
+              "whyUse": [
+                "클리어 스킬이자 빙결 구축기입니다. 맵핑 리듬 전체가 저격이 아닌 이것에 달려 있습니다."
+              ],
+              "whenReplace": [
+                "절대 완전히 교체되지 않습니다. 보싱에서는 저격이 단일 대상을 맡으면 주 피해에서 빙결 설정으로 옮겨갑니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 얼음 사격을 연사하며 징표를 유지. 보싱: 빙결 창을 쌓기 위해 얼음 사격을 사용한 뒤 단일 대상을 맹공 + 저격에 넘김."
+              ],
+              "notes": [
+                "정확한 서포트 연결과 젬 레벨은 PC 검증 대기 중."
+              ]
+            },
+            {
+              "displayName": "저격",
+              "skillId": "snipe",
+              "role": "준비된 단일 대상 발사. 보스 피해 마무리기.",
+              "supportSkillIds": [
+                "cold-penetration",
+                "martial-tempo",
+                "heightened-curse"
+              ],
+              "whyUse": [
+                "빙결 창을 소비해 큰 단일 타격을 줍니다. 얼음 사격만으로는 보스가 너무 느려 필요합니다."
+              ],
+              "whenReplace": [
+                "교체되지는 않으나, 징표 + 빙결 + 맹공이 이미 활성화된 상태에서만 차지할 가치가 있습니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 거의 사용하지 않음. 보싱: 전체 설정-발사 순서의 결과물."
+              ],
+              "notes": [
+                "발사 타이밍은 기계적입니다. 장비를 탓하기보다 창을 연습하십시오."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "설정 및 보조 스킬",
+          "skills": [
+            {
+              "displayName": "빙결 징표",
+              "skillId": "freezing-mark",
+              "role": "냉기/빙결 보상을 가능케 하고 표적 집중을 개선하는 징표.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "신뢰할 수 있는 빙결의 전제조건입니다. 없으면 저격 창이 일관되지 않습니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 설정 스킬이지 피해 경쟁자가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 레어/보스에 유지. 보싱: 빙결 구축 전에 먼저 적용."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "토네이도 샷",
+              "skillId": "tornado-shot",
+              "role": "보스에서 냉기 기여를 공급하는 투사체 설정.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "빙결 창을 눈에 띄게 강하게 만드는 투사체장을 생성합니다."
+              ],
+              "whenReplace": [
+                "보스 전용 도구. 맵핑 루프의 일부가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 미사용. 보싱: 맹공과 저격 전 설정 중 발사."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "맹공",
+              "skillId": "barrage",
+              "role": "투사체를 징표 대상에 집중시키는 보스 설정 스킬.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "빙결이 활성화된 상태에서 저격 발사가 올바른 대상에 닿도록 설정을 집중시킵니다."
+              ],
+              "whenReplace": [
+                "보스 로테이션에 유지. 맵핑에는 사용하지 않음."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 미사용. 보싱: 타이밍 저격 바로 직전 단계."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "얼음 화살촉",
+              "skillId": "ice-tipped-arrows",
+              "role": "빙결 축적을 지원하는 냉기 유틸.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "보스 창 동안 빙결을 신뢰할 수 있게 만드는 냉기 레이어를 더합니다."
+              ],
+              "whenReplace": [
+                "설정 보조로 유지. 검증된 더 강한 냉기 활성화기가 나타나면 교체."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 선택적. 보싱: 빙결 설정 중 활성화."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "승천",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "명사수 — 초기 노드",
+          "body": [
+            "현재 가이드와 맞는 투사체/회피 노드(이동 속도 스케일링용 꼬리바람, 투사체 비행용 원사)를 가져가십시오. 발행 전 0.5.4 클라이언트에서 각 노드를 확인하십시오."
+          ]
+        },
+        {
+          "label": "방어 점검",
+          "body": [
+            "T15+ 생존이 이미 불안정하다면 회피/생명력 노드를 순수 피해 노드로 바꾸지 마십시오."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "패시브 트리",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "현재 레벨링 스킬(생명력, 회피, 투사체/공격 속도)과 방어 요구사항을 지원하는 노드만 가져가십시오. 아직 치명타 휠로 미리 가지 마십시오."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "선택한 빌드 변형으로 이동하십시오. 호환되지 않는 플래너 스냅샷을 조합하지 마십시오(비치명타와 치명타 트리는 갈립니다)."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "비치명타 바닥, 저항 상한, 생명력/회피가 해결된 후에만 치명타 휠에 투자하십시오. 동일한 콘텐츠 계층에서 두 장비 상태를 비교하십시오."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "장비",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Bow",
+          "recommendations": [
+            "현재 계층에 실용적으로 가장 높은 물리 또는 냉기 DPS.",
+            "얼음 사격 연결에 충분한 소켓과 젬 레벨."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "계층에 충분히 높은 기본 물리/냉기 DPS",
+              "reason": "클리어와 저격 모두의 주된 진척 체크."
+            },
+            {
+              "tier": "recommended",
+              "label": "활 스킬 레벨 또는 추가 피해 모디파이어",
+              "reason": "주 스킬을 직접 지원."
+            },
+            {
+              "tier": "optional",
+              "label": "공격 속도",
+              "reason": "클리어 감은 개선하나 피해 바닥은 아님."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명타 배수 / 추가 투사체",
+              "reason": "치명타 변형이 실제로 가동된 후에만."
+            }
+          ],
+          "notes": [
+            "구형 활을 유지하는 대신 각 캠페인 기본 계층을 재확인하십시오."
+          ]
+        },
+        {
+          "slot": "Quiver",
+          "recommendations": [
+            "평면 공격 피해와 속성.",
+            "빌드가 부족한 곳의 저항과 생명력."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "평면 공격 피해 / 공격 시 원소 피해",
+              "reason": "모든 얼음 사격 적중을 스케일링."
+            },
+            {
+              "tier": "recommended",
+              "label": "속성과 저항",
+              "reason": "나머지 장비가 공격에 집중하게 함."
+            },
+            {
+              "tier": "optional",
+              "label": "투사체 또는 주 스킬 관련 모디파이어",
+              "reason": "화살통을 빌드에 맞춤."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명타 버전 전용 접두/접미",
+              "reason": "치명타 이전에는 무관."
+            }
+          ],
+          "notes": [
+            "피해가 근본적으로 낮을 때는 고급 화살통 모디파이어보다 먼저 활을 강화하십시오."
+          ]
+        },
+        {
+          "slot": "Body Armour / Boots / Helm",
+          "recommendations": [
+            "생명력, 회피, 저항.",
+            "부츠의 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 상한이 안 찬 두 저항",
+              "reason": "맵에서 죽는 것은 어떤 DPS로도 보상되지 않음."
+            },
+            {
+              "tier": "recommended",
+              "label": "회피 (명사수가 스케일링)",
+              "reason": "승천과 짝을 이루는 방어 레이어."
+            },
+            {
+              "tier": "optional",
+              "label": "부츠의 이동 속도",
+              "reason": "사격 라인을 재배치하는 데 도움."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 DPS 접두/접미",
+              "reason": "방어가 해결된 후에만."
+            }
+          ],
+          "notes": [
+            "치명타 장비가 방어 기준선을 지워서는 안 됩니다."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "속성, 저항, 생명력, 평면 공격 피해.",
+            "필요 시 마나 유지."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "활과 젬을 장착하기 위한 속성",
+              "reason": "장착할 수 없는 활은 무가치."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명력",
+              "reason": "방어 쉘을 완성."
+            },
+            {
+              "tier": "optional",
+              "label": "평면 공격/냉기 피해",
+              "reason": "장신구에서 얻는 무료 피해."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명타 변형용 마나 또는 충전",
+              "reason": "선택한 변형에 따라 조건부."
+            }
+          ],
+          "notes": []
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "스탯 우선순위",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "활 DPS",
+          "reason": "클리어와 저격 모두의 주된 진척 체크."
+        },
+        {
+          "label": "평면 공격 피해",
+          "reason": "반지, 장갑, 화살통에서 활을 지원."
+        },
+        {
+          "label": "빙결 축적",
+          "reason": "신뢰할 수 있는 단일 대상 창 생성에 필요."
+        },
+        {
+          "label": "치명타",
+          "reason": "비치명타 바닥과 필요 장비가 준비된 후에만 우선."
+        },
+        {
+          "label": "마나 유지",
+          "reason": "보스에서도 작동해야 하며, 죽임 시 마나로만은 안 됨."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "강화 우선순위",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "일반 무리 클리어가 느림",
+          "symptom": "일반 무리가 얼음 사격 2~3발 이상 소요.",
+          "checks": [
+            "활이 여전히 캠페인 계층 베이스입니까?",
+            "저항과 생명력이 이미 해결되었습니까(즉 활이 진짜 병목입니까)?"
+          ],
+          "upgrade": "계층 미달 활을 화살통이나 장신구 건드리기 전에 교체하십시오."
+        },
+        {
+          "label": "맵 진입 후 사망",
+          "symptom": "T15+ 또는 보스 아레나에서 빈번한 사망.",
+          "checks": [
+            "어떤 저항이 상한이 안 찼습니까?",
+            "생명력/회피가 콘텐츠 계층 미만입니까?",
+            "방어 레이어(회피, 인내)가 활성화되어 있습니까?"
+          ],
+          "upgrade": "저항을 상한까지 채우고 생명력/회피를 안정화하십시오. 방어 문제를 고치려고 피해 장비를 사지 마십시오."
+        },
+        {
+          "label": "보스에서 마나 고갈",
+          "symptom": "단일 대상 전투 중 마나가 비워짐.",
+          "checks": [
+            "죽임 시 마나에만 의존하고 있습니까?",
+            "보스에서 흡혈, 플라스크, 비용 감소가 활성화되어 있습니까?"
+          ],
+          "upgrade": "저격 피해를 키우기 전에 마나 유지(흡혈/플라스크/비용)를 고치십시오."
+        },
+        {
+          "label": "보스 빙결이 오지 않음",
+          "symptom": "저격 창이 보스에서 열리지 않음.",
+          "checks": [
+            "빙결 징표가 먼저 적용되었습니까?",
+            "토네이도 샷, 얼음 화살촉, 얼음 사격이 모두 설정에서 활성화되어 있습니까?",
+            "냉기/빙결 기여가 실제로 존재합니까?"
+          ],
+          "upgrade": "활이 아니라 빙결 설정(징표 → 토네이도 → 얼음 화살촉 → 얼음 사격)을 수리하십시오."
+        },
+        {
+          "label": "치명타 고려 중",
+          "symptom": "더 많은 보스 피해를 원하고 치명타 조각을 엿봄.",
+          "checks": [
+            "비치명타 클리어, 보스 빙결, 방어가 이미 안정적입니까?",
+            "치명타 장비가 저항 상한을 깨거나 생명력/회피를 떨어뜨릴까요?"
+          ],
+          "upgrade": "체크리스트를 통과한 후에만 하이브리드/치명타로 이동하십시오. 조각을 사고 재테스트하십시오. 플래너 전용 수치를 위해 생존을 바꾸지 마십시오."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "맵핑",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "단단한 레어에 빙결 징표를 유지하고 얼음 사격으로 클리어하십시오. 저격은 보통 일반 무리에는 불필요합니다. 차지하려 멈추면 클리어 속도가 떨어지고 노출이 늘어납니다. 직선 복도로 후퇴하는 대신 이동 스킬로 안전한 사격 라인을 만드십시오.",
+        "일반 무리가 1~2사이클을 멈추는 순간 활을 강화하십시오. 클리어가 멈추지 않도록 마나 유지 방법(죽임 시 마나, 흡혈, 플라스크)을 활성화된 상태로 유지하십시오."
+      ],
+      "bullets": [
+        "얼음 사격 + 징표가 맵핑 리듬 전부.",
+        "쓰레기 몹에는 저격 건너뛰기. 보스 도구임.",
+        "클리어 속도가 떨어지면 반응형으로 활 강화."
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "보싱",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "보스 순서는 절차이지 버튼 난타가 아닙니다. 먼저 빙결 징표를 적용하십시오. 토네이도 샷을 사용한 뒤 얼음 화살촉을 활성화하고, 빙결 창이 나타날 때까지 얼음 사격을 발사하십시오. 창이 열리면 맹공으로 투사체를 집중시키고 그 타이밍 창 안에서 저격을 발사하십시오.",
+        "빙결이 오지 않으면 문제는 활이 아닌 설정(징표 지속, 토네이도 샷, 얼음 화살촉, 냉기 기여)입니다. 저격 창을 놓치는 것은 기계적 빗나감이지 자동으로 장비 빗나감이 아닙니다."
+      ],
+      "bullets": [
+        "징표 → 토네이도 샷 → 얼음 화살촉 → 얼음 사격 (빙결 구축).",
+        "그다음 맹공 → 창 안 타이밍 저격.",
+        "빙결 없음 = 무기 아니라 설정 수정."
+      ],
+      "toc": true
+    },
+    {
+      "id": "crit-transition",
+      "type": "overview",
+      "title": "치명타 전환",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "초반과 중반은 비치명타로 유지됩니다. 하이브리드와 치명타 변형은 서로 다른 장비, 트리, 방어 비용을 가진 별개 단계입니다. 단계형 계획(단계별 구성)이 관문입니다. 비치명타 바닥이 해결되기 전에는 치명타 조각을 사지 마십시오."
+      ],
+      "bullets": [
+        "먼저 비치명타: 생명력, 회피, 저항, 제대로 된 활.",
+        "나중 하이브리드/치명타: 체크리스트 통과 후에만.",
+        "치명타 장비가 저항 상한을 깨거나 방어를 떨어뜨리게 하지 마십시오."
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "얼음 사격 변형을 바꿀 시점",
+      "order": 140,
+      "visible": true,
+      "caption": "현재 유지 가이드에 기반한 장비 준비 사다리.",
+      "columns": [
+        "초반 비치명타",
+        "하이브리드 전환",
+        "치명타 엔드게임"
+      ],
+      "rows": [
+        {
+          "label": "방어 우선",
+          "cells": [
+            "생명력 + 회피",
+            "더 강한 활을 갖춘 생명력/회피",
+            "방어 하락 없이 치명타"
+          ]
+        },
+        {
+          "label": "피해 체크",
+          "cells": [
+            "얼음 사격이 무리 클리어",
+            "보스 빙결이 신뢰됨",
+            "이미 작동하는 루프를 치명타가 개선"
+          ]
+        },
+        {
+          "label": "사지 말 것",
+          "cells": [
+            "고급 치명타 조각",
+            "한 번에 전체 치명타 세트",
+            "저항 상한을 깨는 피해"
+          ]
+        },
+        {
+          "label": "보스 도구",
+          "cells": [
+            "설정 후 저격",
+            "맹공 → 저격",
+            "같은 루프, 더 짧은 창"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "문제 해결",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "보스가 빙결되지 않음",
+          "checks": [
+            "냉기 비중, 빙결 축적, 실제 대상 임계값을 확인하십시오.",
+            "모든 임시 버프가 활성화되어 있는지 확인하십시오."
+          ]
+        },
+        {
+          "symptom": "저격이 약해 보임",
+          "checks": [
+            "발사 타이밍을 연습하십시오.",
+            "맹공과 빙결 창이 활성화되어 있었는지 확인하십시오."
+          ]
+        },
+        {
+          "symptom": "보스에서 마나 실패",
+          "checks": [
+            "죽임 시 마나에만 의존하지 마십시오.",
+            "단일 대상에 대해 흡혈, 플라스크, 비용 변화를 테스트하십시오."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "빙결 및 저격 답변",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "더 좋은 활임에도 저격이 약해 보이는 이유?",
+          "answer": [
+            "저격은 준비된 창을 소비합니다. 징표 지속, 토네이도 샷, 얼음 화살촉, 빙결 축적이 빠지면 활과 상관없이 최종 발사가 약해 보입니다."
+          ],
+          "bullets": [
+            "보스 시도 하나를 녹화하십시오.",
+            "발사 전 각 설정 아이콘을 확인하십시오.",
+            "첫 누락 레이어를 수리하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "언제 치명타로 넘어가야 합니까?",
+          "answer": [
+            "비치명타 클리어, 보스 빙결, 방어가 안정된 후. 조각 단위로 강화하고 재테스트하십시오. 플래너 전용 치명 수치를 위해 저항 상한이나 생존을 바꾸지 마십시오."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "준비된 폭발물을 선호한다면?",
+          "answer": [
+            "폭발 위치헌터는 더 기술적인 무기 세트와 수류탄 순환을 가지지만, 강제 이동을 미리 로딩하는 시간으로 바꿀 수 있습니다."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ko/builds/explosive-witchhunter/",
+              "label": "폭발 위치헌터 비교"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "빌드 플래너 및 가져오기",
+      "order": 165,
+      "visible": true,
+      "note": "PoE2에는 이제 기본 빌드 플래너가 있습니다. 붙여넣기 가능한 가져오기 문자열과 다운로드 가능한 .build는 PC 검증 대기 중입니다. 그동안 아래 제작자 가이드와 플래너 도구를 사용하십시오. 항상 자신의 클라이언트에서 노드 선택을 재확인하십시오.",
+      "creatorName": "Fubgun",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "로테이션 증거",
+      "order": 170,
+      "visible": true,
+      "note": "가이드 순서는 재현 가능한 체크리스트로 사용되며, 그 쇼케이스 피해를 약속하는 것은 아닙니다.",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Fubgun 0.5 얼음 사격 명사수 가이드",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye",
+          "statement": "유지 가이드는 얼음 사격을 맵핑 스킬로 유지하고, 맹공과 저격 전에 토네이도 샷, 얼음 화살촉, 빙결 축적의 보스 구성을 설명합니다.",
+          "context": "이로써 피해 창이 관찰 가능하고 디버깅 가능해집니다."
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "얼음 사격과 저격 로테이션 논의",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/",
+          "statement": "플레이어 질문은 얼음 사격과 저격이 어떻게 맞물리는지에 집중하며, 플래너 alone으로는 설정-발사 리듬을 전달하지 않음을 반영합니다.",
+          "context": "따라서 글은 두 스킬을 동등한 버튼으로 나열하는 대신 맵핑과 보스 행동을 분리합니다."
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "강화 및 빙결 리듬 시청",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Player Ay",
+          "label": "전체 0.5 얼음 사격 레벨링 게임플레이",
+          "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ",
+          "description": "빌드가 얼음 사격만 사용하는 때와 보스 설정 스킬이 루프에 들어오는 때를 위한 장편 참고 자료.",
+          "takeaway": "각 막트당 캠페인 보스 하나를 표본으로 하고 클리어 속도를 복사하는 대신 설정 순서를 기록하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "1:19",
+              "label": "액트 1"
+            },
+            {
+              "time": "3:12",
+              "label": "액트 2"
+            },
+            {
+              "time": "5:43",
+              "label": "액트 3"
+            },
+            {
+              "time": "7:09",
+              "label": "액트 4"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "출처 및 검증",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 출처",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티 논의",
+          "description": "Fubgun 0.5 얼음 사격 명사수 가이드 및 플래너",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye"
+        },
+        {
+          "label": "커뮤니티 논의",
+          "description": "Player Ay 0.5 레벨링 가이드 요약 및 소스 영상",
+          "url": "https://exile.codex-wiki.com/builds/the-best-path-of-exile-2-0-5-league-starter-ice-shot/"
+        },
+        {
+          "label": "커뮤니티 논의",
+          "description": "독립 얼음 사격 저격수 가이드",
+          "url": "https://pathofexile.gg/deadeye-ice-shot-sniper-build/"
+        },
+        {
+          "label": "커뮤니티 논의",
+          "description": "얼음 사격과 저격 로테이션 논의",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/"
+        },
+        {
+          "label": "Mobalytics 빌드 플래너",
+          "description": "외부 도구",
+          "url": "https://mobalytics.gg/poe-2/build-planner"
+        },
+        {
+          "label": "커뮤니티 논의",
+          "description": "Player Ay 전체 레벨링 게임플레이",
+          "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "변경 로그",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "출처 기반 0.5.4 빌드 가이드 작성. PC 검증 대기 중."
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "단계별 구성 표, 빌드 플래너 항목, 슬롯별 장비 스탯 우선순위, 증상 기반 강화 우선순위, 표시 이름 스킬 카드 추가. 얼음 사격이 레벨 31 해금임을 명확히 함."
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Fubgun 0.5 얼음 사격 명사수 가이드 및 플래너",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye"
+    },
+    {
+      "label": "Player Ay 0.5 레벨링 가이드 요약 및 소스 영상",
+      "sourceType": "community",
+      "url": "https://exile.codex-wiki.com/builds/the-best-path-of-exile-2-0-5-league-starter-ice-shot/"
+    },
+    {
+      "label": "독립 얼음 사격 저격수 가이드",
+      "sourceType": "community",
+      "url": "https://pathofexile.gg/deadeye-ice-shot-sniper-build/"
+    },
+    {
+      "label": "얼음 사격과 저격 로테이션 논의",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/"
+    },
+    {
+      "label": "Mobalytics 빌드 플래너",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/build-planner"
+    },
+    {
+      "label": "Player Ay 전체 레벨링 게임플레이",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ"
+    }
+  ],
+  "seo": {
+    "title": "얼음 사격 명사수 빌드 가이드",
+    "description": "0.5.4 기준 패스 오브 엑자일 2 얼음 사격 및 저격 명사수 빌드 완전 가이드.",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ice-shot-deadeye",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

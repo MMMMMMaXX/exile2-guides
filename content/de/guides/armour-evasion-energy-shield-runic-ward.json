@@ -1,0 +1,934 @@
+{
+  "id": "armour-evasion-energy-shield-runic-ward",
+  "slug": "armour-evasion-energy-shield-runic-ward",
+  "locale": "de",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Rüstung, Ausweichen, Energie-Schild und Runic Ward erklärt",
+  "shortTitle": "Verteidigungsschichten",
+  "summary": "Wie die vier Verteidigungsschichten in Path of Exile 2 funktionieren und sich kombinieren: Rüstung, Ausweichen, Energie-Schild und der neue Runic Ward – sowie wo Widerstand, Block und Deflect einordnen.",
+  "description": "Ein Mechanik-Guide zu Path of Exile 2-Verteidigungsebenen – Rüstung, Ausweichen, Energie-Schild und Runic Ward – und wie man sie kombiniert, damit du nicht mehr durch einen einzigen Treffer stirbst.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/liquid-verisium-hero.webp",
+  "cardImage": "/images/items/liquid-verisium-hero.webp",
+  "imageAlt": "Ein Fläschchen Liquid Verisium, das Runic Ward repräsentiert, eine von mehreren Verteidigungsebenen in Path of Exile 2",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Ein Charakter in der Kampagne oder im Endgame",
+    "Grundlegendes Verständnis des Charakterblatts und der Widerstände",
+    "Zugriff auf Farrows Verisium-Amboss für Runic Ward (Patch 0.5)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "armour",
+    "evasion",
+    "energy-shield",
+    "runic-ward",
+    "defence",
+    "defense"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Direktantworten",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Was sind die vier Verteidigungsschichten?",
+          "body": [
+            "Rüstung, Ausweichen und Energie-Schild sind die drei klassischen Schichten. Runic Ward ist eine separate, neuere Schicht, die in Patch 0.5 hinzugefügt wurde und bei 1 Leben als letzte Sicherung dient."
+          ]
+        },
+        {
+          "title": "Ist Rüstung eine flache prozentuale Reduzierung?",
+          "body": [
+            "Nein. Rüstung reduziert den physischen Anteil von Treffern, und ihre Wirksamkeit skaliert mit der Treffergröße: stark gegen viele kleine Treffer, schwach gegen einen einzelnen enormen Treffer."
+          ]
+        },
+        {
+          "title": "Reduziert Ausweichen Schaden?",
+          "body": [
+            "Nein. Ausweichen ist eine Chance, den gesamten Treffer zu vermeiden. Treffer, die landen, verursachen den vollen Schaden – weshalb es sich trotzdem unzuverlässig anfühlen kann."
+          ]
+        },
+        {
+          "title": "Wie erhalte ich Runic Ward?",
+          "body": [
+            "Gib Verisium am Verisium-Amboss (freigeschaltet über Farrows Questreihe) aus, um Rüstung Runic Ward hinzuzufügen. Ausrüstung mit hohem Item-Level kann etwas Basis-Verteidigung dafür eintauschen – sieh vor dem Herstellen in die Vorschau."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "damage-order-diagram",
+      "order": 2,
+      "title": "Wie Schaden angewendet wird: vom Treffer bis zum Leben",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Wenn ein Gegner angreift, rechnet das Spiel den Treffer in einer festen Reihenfolge der Verteidigungsschichten ab. Dieses Verständnis der Reihenfolge erklärt, warum keine einzelne Schicht allein ausreicht.",
+        "Zuerst wird Ausweichen geprüft: Wenn du erfolgreich ausweichst, wird der gesamte Treffer vermieden und es passiert nichts weiter. Landet der Treffer, reduziert Rüstung anschließend den physischen Anteil dieses Treffers basierend auf dessen Größe.",
+        "Nach der Rüstung absorbiert der Energie-Schild (falls vorhanden) den verbleibenden Schaden, bevor etwas davon dein Leben erreicht. Schließlich ist Runic Ward eine separate, letzte Schicht, die nur greift, wenn dein Leben sonst auf 0 fallen würde, und den tödlichen Schlag abfängt, sodass du bei 1 Leben überlebst."
+      ],
+      "bullets": [
+        "Ausweichen vermeidet den Treffer vollständig; es reduziert keinen Schaden, der landet.",
+        "Rüstung betrifft nur physischen Schaden und skaliert mit der Treffergröße.",
+        "Energie-Schild schützt das Leben und lädt sich nach einer Verzögerung wieder auf.",
+        "Runic Ward ist die letzte Sicherung, kein Ersatz für die anderen Schichten."
+      ]
+    },
+    {
+      "id": "protection-layer-matrix",
+      "order": 3,
+      "title": "Schutzschicht-Matrix",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Wie sich jede Verteidigungsschicht verhält, was sie abmildert und was nicht, sowie wo sie typischerweise versagt.",
+      "columns": [
+        {
+          "key": "layer",
+          "label": "Schicht"
+        },
+        {
+          "key": "mainly-mitigates",
+          "label": "Mildert hauptsächlich"
+        },
+        {
+          "key": "does-not-mitigate",
+          "label": "Mildert nicht"
+        },
+        {
+          "key": "strength",
+          "label": "Stärke"
+        },
+        {
+          "key": "common-failure",
+          "label": "Häufiges Versagen"
+        },
+        {
+          "key": "gear-need",
+          "label": "Ausrüstungsbedarf"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "layer": "Rüstung",
+            "mainly-mitigates": "Physischer Schaden (skaliert mit Treffergröße)",
+            "does-not-mitigate": "Nicht-physisch, Schaden über Zeit",
+            "strength": "Stark gegen viele kleine Treffer",
+            "common-failure": "Schwach gegen einen einzelnen riesigen Treffer",
+            "gear-need": "Stärke-Ausrüstung"
+          }
+        },
+        {
+          "tags": [
+            "avoidance"
+          ],
+          "cells": {
+            "layer": "Ausweichen",
+            "mainly-mitigates": "Vermeidet Treffer vollständig (einschließlich Statusmalen)",
+            "does-not-mitigate": "Schaden von Treffern, die landen",
+            "strength": "Vermeidet auch Statusmale bei ausgewichenen Treffern",
+            "common-failure": "Kann wiederholt versagen (One-Shot-Risiko)",
+            "gear-need": "Beweglichkeits-Ausrüstung"
+          }
+        },
+        {
+          "tags": [
+            "buffer"
+          ],
+          "cells": {
+            "layer": "Energie-Schild",
+            "mainly-mitigates": "Absorbiert Schaden vor dem Leben",
+            "does-not-mitigate": "Bluten/Gift umgehen ihn; Chaos verdoppelt",
+            "strength": "Wiederaufladbarer Puffer über dem Leben",
+            "common-failure": "Chaos und DoT umgehen ihn",
+            "gear-need": "Intelligenz-Ausrüstung"
+          }
+        },
+        {
+          "tags": [
+            "last-layer"
+          ],
+          "cells": {
+            "layer": "Runic Ward",
+            "mainly-mitigates": "Tödlicher Schlag bei 1 Leben",
+            "does-not-mitigate": "Lebensverlust ohne Schaden",
+            "strength": "Zweites Leben / letztes Netz",
+            "common-failure": "Kann Basis-Verteidigung bei hochleveliger Ausrüstung eintauschen",
+            "gear-need": "Verisium-Verarbeitung"
+          }
+        },
+        {
+          "tags": [
+            "resist"
+          ],
+          "cells": {
+            "layer": "Widerstand",
+            "mainly-mitigates": "Bestimmte Typen (Feuer/Kälte/Blitz/Chaos)",
+            "does-not-mitigate": "Physisch, typenlos",
+            "strength": "Günstig und essenziell",
+            "common-failure": "Nicht abgedeckt = doppelter erlittener Schaden",
+            "gear-need": "Jede Ausrüstung"
+          }
+        },
+        {
+          "tags": [
+            "avoid-reduce"
+          ],
+          "cells": {
+            "layer": "Block / Deflect",
+            "mainly-mitigates": "Chance, Treffer zu vermeiden oder zu verringern",
+            "does-not-mitigate": "Schaden über Zeit",
+            "strength": "Schichtet mit Ausweichen",
+            "common-failure": "Nicht 100 % zuverlässig",
+            "gear-need": "Schild / Ausweich-Ausrüstung"
+          }
+        }
+      ],
+      "note": "Das Verhalten wird qualitativ beschrieben; genaue Werte stehen in den Spiel-Tooltips und im PoE2-Wiki und sind gegenüber dem live 0.5.4-Client als pending-pc markiert."
+    },
+    {
+      "id": "armour",
+      "order": 4,
+      "title": "Rüstung",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Rüstung ist eine der drei klassischen Verteidigungsschichten. Sie reduziert den physischen Schadensanteil von Treffern, die tatsächlich bei dir landen.",
+        "Rüstung ist KEINE feste prozentuale Reduzierung. Ihre Wirksamkeit skaliert mit der Größe des Treffers: Sie mildert einen größeren Anteil vieler kleiner Treffer und einen kleineren Anteil eines einzelnen enormen Treffers. Das ist der Grund, warum ein Build, der sich gegen kleines Volk sicher anfühlt, plötzlich an einem einzigen Boss-Schlag sterben kann."
+      ],
+      "bullets": [
+        "Reduziert nur physischen Schaden; elementar, Chaos und Schaden über Zeit bleiben von Rüstung unberührt.",
+        "Wirksamer gegen häufige kleine Treffer als gegen einen einzelnen riesigen Treffer.",
+        "Profitiert am meisten von stärke-orientierter Ausrüstung und flachen Rüstungs-Modifikatoren.",
+        "Kombiniere sie mit Leben und Widerständen; Rüstung allein verhindert keine One-Shots."
+      ]
+    },
+    {
+      "id": "evasion",
+      "order": 5,
+      "title": "Ausweichen",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ausweichen gibt dir eine Chance, einen Treffer vollständig zu vermeiden. Ein erfolgreicher Wurf bedeutet, dass der Treffer nie stattfindet – und das bedeutet auch, dass du keine Statusmale (Entzünden, Frieren, Schock, Bluten, Gift) von diesem Treffer erleidest.",
+        "Weil Ausweichen probabilistisch ist, kann es mehrmals hintereinander versagen. Ein Treffer, der durchkommt, landet mit vollem Schaden: Ausweichen reduziert den Schaden verbundener Treffer nicht. Das ist die klassische Beschwerde „Ausweichen kriegt trotzdem Treffer“."
+      ],
+      "bullets": [
+        "Chance, Treffer vollständig zu vermeiden, einschließlich ihrer Statusmale.",
+        "Reduziert den Schaden landender Treffer nicht – alles-oder-nichts-Wurf.",
+        "Kann wiederholt versagen; kombiniere es mit einem Puffer (Energie-Schild, Block oder Runic Ward) für Sicherheit.",
+        "Skaliert gut mit Beweglichkeits-Ausrüstung und ist die Basis für Deflect."
+      ]
+    },
+    {
+      "id": "energy-shield",
+      "order": 6,
+      "title": "Energie-Schild",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Energie-Schild (ES) ist ein zusätzlicher Puffer, der über deinem Leben liegt und Schaden absorbiert, bevor dein Leben berührt wird. Er ist mit Intelligenz verbunden und lädt sich mit der Zeit wieder auf, sobald du für eine kurze Verzögerung keinen Schaden nimmst.",
+        "ES interagiert auf bestimmte Weise mit Schadenstypen. Chaosschaden entfernt doppelt so viel Energie-Schild wie andere Schadensarten, und Schaden durch Bluten und Gift umgeht den Energie-Schild vollständig, um das Leben direkt zu schädigen. Die genaue Aufladerate und Verzögerung stehen im Spiel-Tooltip und im PoE2-Wiki und sollten gegenüber dem live 0.5.4-Client bestätigt werden (pending-pc)."
+      ],
+      "bullets": [
+        "Absorbiert Schaden vor dem Leben; lädt sich nach einer Phase ohne erlittenen Schaden wieder auf.",
+        "Chaosschaden wird gegenüber Energie-Schild verdoppelt.",
+        "Bluten und Gift umgehen den Energie-Schild und treffen das Leben direkt.",
+        "Stark bei Intelligenz-Builds, aber achte auf Chaos und Schaden über Zeit."
+      ]
+    },
+    {
+      "id": "runic-ward",
+      "order": 7,
+      "title": "Runic Ward",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Runic Ward ist eine separate Verteidigungsschicht, die in Patch 0.5 eingeführt wurde. Er ist NICHT Rüstung, Ausweichen oder Energie-Schild – er ist eine eigene, eigene Barriere, die aus Verisium über den Verisium-Amboss stammt (freigeschaltet über Farrows Questreihe).",
+        "Runic Ward dient als letzte Sicherung: Wenn ein Treffer dein Leben auf 0 bringen würde, überlebst du stattdessen bei 1 Leben und Runic Ward absorbiert den verbleibenden Schaden. Er regeneriert unabhängig von deinem Leben. Das Hinzufügen von Runic Ward zu Ausrüstung kann einen Teil der vorhandenen Rüstung, Ausweichwert oder Energie-Schild in Ward umwandeln, besonders bei Stücken mit höherem Item-Level – prüfe immer die Spiel-Vorschau vor dem Herstellen (genaue Zahlen pending-pc)."
+      ],
+      "bullets": [
+        "Eine eigene Schicht, getrennt von Rüstung, Ausweichen und Energie-Schild.",
+        "Greift nur bei 1 Leben, um einen tödlichen Schlag abzufangen.",
+        "Stammt aus Verisium über den Verisium-Amboss.",
+        "Kann bei hochleveliger Ausrüstung etwas Basis-Verteidigung gegen Ward eintauschen; vorher Vorschau prüfen."
+      ]
+    },
+    {
+      "id": "resistance-block-deflect-boundary",
+      "order": 8,
+      "title": "Wo Widerstand, Block, Deflect und Sorcery Ward stehen",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Widerstand, Block, Deflect, Sorcery Ward und ähnliche Systeme sind getrennt von den drei Basis-Verteidigungen und interagieren mit ihnen, anstatt sie zu ersetzen.",
+        "Widerstände reduzieren Schaden bestimmter Typen (Feuer, Kälte, Blitz, Chaos) und sind günstige, essenzielle Verteidigungen – ein nicht abgedeckter Widerstand verdoppelt diesen Schadenstyp faktisch. Block und Deflect sind Chancen, Treffer zu vermeiden oder zu verringern, und schichten sich über Ausweichen. Sorcery Ward (und ähnliche Ward-Varianten) ist eine separate Barriere ähnlich wie Runic Ward. Keines davon beseitigt die Notwendigkeit einer Basisschicht."
+      ],
+      "bullets": [
+        "Widerstände senken bestimmte Schadenstypen; decke sie ab, bevor du anspruchsvolle Inhalte angehst.",
+        "Block und Deflect verringern oder vermeiden Treffer und stapeln mit Ausweichen.",
+        "Sorcery Ward / Runic Ward sind separate Barrieren, keine Ersätze.",
+        "Nutze sie, um eine Basis-Verteidigung zu ergänzen, nicht um sie zu ersetzen."
+      ]
+    },
+    {
+      "id": "hybrid-defence-bases",
+      "order": 9,
+      "title": "Hybride Verteidigungsbasen",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Häufige Basis-Kombinationen und wofür jede am besten geeignet ist.",
+      "columns": [
+        {
+          "key": "base-type",
+          "label": "Basis-Typ"
+        },
+        {
+          "key": "attribute-req",
+          "label": "Attribut-Anforderung"
+        },
+        {
+          "key": "two-defences",
+          "label": "Zwei Verteidigungen"
+        },
+        {
+          "key": "best-for",
+          "label": "Am besten für"
+        },
+        {
+          "key": "tradeoff",
+          "label": "Abwägung"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hybrid"
+          ],
+          "cells": {
+            "base-type": "Rüstung + Energie-Schild",
+            "attribute-req": "Stärke + Intelligenz",
+            "two-defences": "Rüstung und Energie-Schild",
+            "best-for": "Tankige Caster / Hybride",
+            "tradeoff": "Benötigt zwei Attribute"
+          }
+        },
+        {
+          "tags": [
+            "hybrid"
+          ],
+          "cells": {
+            "base-type": "Ausweichen + Energie-Schild",
+            "attribute-req": "Beweglichkeit + Intelligenz",
+            "two-defences": "Ausweichen und Energie-Schild",
+            "best-for": "Caster mit Vermeidung + Puffer",
+            "tradeoff": "Weniger rohe Rüstung"
+          }
+        },
+        {
+          "tags": [
+            "hybrid"
+          ],
+          "cells": {
+            "base-type": "Rüstung + Ausweichen",
+            "attribute-req": "Stärke + Beweglichkeit",
+            "two-defences": "Rüstung und Ausweichen",
+            "best-for": "Kampf-Hybride",
+            "tradeoff": "Kein Energie-Schild-Puffer"
+          }
+        },
+        {
+          "tags": [
+            "pure-str"
+          ],
+          "cells": {
+            "base-type": "Reine Rüstung",
+            "attribute-req": "Stärke",
+            "two-defences": "Nur Rüstung",
+            "best-for": "Nahkampf-Brüter",
+            "tradeoff": "Schwach gegen große Treffer ohne Schichten"
+          }
+        },
+        {
+          "tags": [
+            "pure-int"
+          ],
+          "cells": {
+            "base-type": "Reiner Energie-Schild",
+            "attribute-req": "Intelligenz",
+            "two-defences": "Nur Energie-Schild",
+            "best-for": "Reine Caster",
+            "tradeoff": "Chaos-/DoT-Umgehungsrisiko"
+          }
+        }
+      ],
+      "note": "Attribut-Tendenzen sind Tendenzen, keine verpflichtenden Klassenwahlen."
+    },
+    {
+      "id": "defence-selector",
+      "order": 10,
+      "title": "Verteidigungs-Wähler",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Wähle deine Situation. Das Werkzeug schlägt eine primäre und eine sekundäre Verteidigungsschicht vor.",
+      "controls": [
+        {
+          "id": "class",
+          "label": "Deine Klassen-Tendenz",
+          "options": [
+            {
+              "label": "Stärke-basiert",
+              "value": "str"
+            },
+            {
+              "label": "Beweglichkeit-basiert",
+              "value": "dex"
+            },
+            {
+              "label": "Intelligenz-basiert",
+              "value": "int"
+            },
+            {
+              "label": "Hybrid / beliebig",
+              "value": "hybrid"
+            }
+          ]
+        },
+        {
+          "id": "gear",
+          "label": "Welche Ausrüstung hast du?",
+          "options": [
+            {
+              "label": "Stärke-/Rüstungs-Ausrüstung",
+              "value": "armour"
+            },
+            {
+              "label": "Ausweich-Ausrüstung",
+              "value": "evasion"
+            },
+            {
+              "label": "Energie-Schild-Ausrüstung",
+              "value": "es"
+            },
+            {
+              "label": "Gemischt",
+              "value": "mixed"
+            }
+          ]
+        },
+        {
+          "id": "death",
+          "label": "Woran stirbst du normalerweise?",
+          "options": [
+            {
+              "label": "Ein einzelner riesiger Treffer",
+              "value": "big-hit"
+            },
+            {
+              "label": "Viele kleine Treffer",
+              "value": "small-hits"
+            },
+            {
+              "label": "Chaos / Schaden über Zeit",
+              "value": "chaos-dot"
+            },
+            {
+              "label": "Boss-Schläge",
+              "value": "slam"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Rüstung-primärer Build",
+          "when": {
+            "class": "str"
+          },
+          "steps": [
+            "Stapele Rüstung und maximales Leben als deine Basis.",
+            "Füge Energie-Schild als sekundären Puffer hinzu.",
+            "Decke alle elementaren Widerstände ab, bevor du anspruchsvolle Inhalte angehst."
+          ]
+        },
+        {
+          "title": "Ausweichen-primärer Build",
+          "when": {
+            "class": "dex"
+          },
+          "steps": [
+            "Stapele Ausweichen für Vermeidung.",
+            "Füge Energie-Schild oder Block als Rückhalt für landende Treffer hinzu.",
+            "Erwäge Deflect, das aus Ausweichen skaliert."
+          ]
+        },
+        {
+          "title": "Energie-Schild-Build",
+          "when": {
+            "class": "int"
+          },
+          "steps": [
+            "Stapele Energie-Schild als deinen Hauptpuffer.",
+            "Füge Rüstung oder Runic Ward als sekundäre Schicht hinzu.",
+            "Achte auf Chaos und Schaden über Zeit, die bei ES umgehen oder verdoppelt werden."
+          ]
+        },
+        {
+          "title": "Chaos-/DoT-Schutz",
+          "when": {
+            "death": "chaos-dot"
+          },
+          "steps": [
+            "Erhöhe den Chaos-Widerstand; verlass dich bei Gift oder Bluten nicht auf ES.",
+            "Füge Leben und einen flachen Puffer (Rüstung) für diese Schadenstypen hinzu.",
+            "Bestätige das genaue ES-Chaos-Verhalten am live 0.5.4-Client (pending-pc)."
+          ]
+        },
+        {
+          "title": "Überleben großer Treffer",
+          "when": {
+            "death": "big-hit"
+          },
+          "steps": [
+            "Stapele Rüstung und maximales Leben, um riesige Treffer abzuschwächen.",
+            "Füge Runic Ward als letztes Netz bei 1 Leben hinzu.",
+            "Vermeide Glaskanonen-Setups in schweren Inhalten."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Generische geschichtete Verteidigung",
+        "steps": [
+          "Wähle eine primäre Basisschicht (Rüstung, Ausweichen oder Energie-Schild).",
+          "Füge eine zweite Schicht hinzu und decke deine Widerstände ab.",
+          "Behandle Runic Ward als letzte Sicherung, nicht als primäre Verteidigung."
+        ]
+      }
+    },
+    {
+      "id": "build-archetype-examples",
+      "order": 11,
+      "title": "Build-Archetyp-Beispiele",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Nur strukturelle Beispiele – diese zeigen, wie sich Schichten kombinieren, keine vollständigen Build-Empfehlungen.",
+      "cards": [
+        {
+          "title": "Reine Rüstung",
+          "tag": "Struktur",
+          "body": [
+            "Ein Stärke-Build, der Rüstung und Leben stapelt, kombiniert mit Widerständen.",
+            "Strukturelles Beispiel, keine vollständige Build-Empfehlung."
+          ]
+        },
+        {
+          "title": "Reines Ausweichen",
+          "tag": "Struktur",
+          "body": [
+            "Ein Beweglichkeits-Build, der Vermeidung maximiert, abgesichert durch Block oder Energie-Schild.",
+            "Strukturelles Beispiel, keine vollständige Build-Empfehlung."
+          ]
+        },
+        {
+          "title": "Reiner Energie-Schild",
+          "tag": "Struktur",
+          "body": [
+            "Ein Intelligenz-Build, der ES als Hauptpuffer nutzt und auf Chaos und DoT achtet.",
+            "Strukturelles Beispiel, keine vollständige Build-Empfehlung."
+          ]
+        },
+        {
+          "title": "Hybrid (Rüstung + ES)",
+          "tag": "Struktur",
+          "body": [
+            "Kombiniert einen flachen Puffer mit einem wiederaufladbaren für stetigere Milderung.",
+            "Strukturelles Beispiel, keine vollständige Build-Empfehlung."
+          ]
+        },
+        {
+          "title": "Runic-Ward-Netz",
+          "tag": "Struktur",
+          "body": [
+            "Jede Basis-Verteidigung plus Runic Ward als letzte Sicherungsschicht über Verisium.",
+            "Strukturelles Beispiel, keine vollständige Build-Empfehlung."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "failure-diagnostic",
+      "order": 12,
+      "title": "Warum werde ich immer noch One-Shot?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Wirst du immer noch One-Shot? Wähle dein Symptom, um die fehlende Schicht zu finden.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Was passiert?",
+          "options": [
+            {
+              "label": "Sterben durch einen großen Treffer",
+              "value": "big-hit"
+            },
+            {
+              "label": "Sterben durch viele kleine Treffer",
+              "value": "small-hits"
+            },
+            {
+              "label": "Sterben durch Chaos/DoT",
+              "value": "chaos-dot"
+            },
+            {
+              "label": "Sterben durch einen Boss-Schlag",
+              "value": "slam"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Fehlende Rüstung / Leben",
+          "when": {
+            "symptom": "big-hit"
+          },
+          "steps": [
+            "Erhöhe Rüstung und maximales Leben.",
+            "Füge Runic Ward als letztes Netz hinzu.",
+            "Decke alle Widerstände ab."
+          ]
+        },
+        {
+          "title": "Fehlendes Ausweichen / Block",
+          "when": {
+            "symptom": "small-hits"
+          },
+          "steps": [
+            "Erhöhe Ausweichen oder Block/Deflect.",
+            "Füge einen Energie-Schild-Puffer für landende Treffer hinzu.",
+            "Erwäge Blind, um die Gegner-Genauigkeit zu senken."
+          ]
+        },
+        {
+          "title": "Fehlender Chaos-Umgang",
+          "when": {
+            "symptom": "chaos-dot"
+          },
+          "steps": [
+            "Erhöhe den Chaos-Widerstand.",
+            "Verlass dich bei Gift oder Bluten nicht auf ES.",
+            "Füge Leben und einen flachen Puffer für diese Typen hinzu."
+          ]
+        },
+        {
+          "title": "Fehlende geschichtete Verteidigung",
+          "when": {
+            "symptom": "slam"
+          },
+          "steps": [
+            "Kombiniere zwei Basisschichten statt nur einer.",
+            "Füge Runic Ward als letztes Netz hinzu.",
+            "Verbessere die Erholung (Lebenssaugen, Regeneration, Flaschen)."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Allgemeine Lösung",
+        "steps": [
+          "Decke zuerst Widerstände ab.",
+          "Wähle eine primäre Basisschicht und füge eine zweite hinzu.",
+          "Füge Runic Ward als letzte Sicherung hinzu."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "Community-Belege",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Häufige Spielerberichte und wie die Schichten sie erklären.",
+      "cards": [
+        {
+          "title": "Habe einen ES-Build kopiert, bin jetzt aber weich",
+          "tag": "Bericht",
+          "body": [
+            "ES wurde vermutlich mit Chaos/DoT kombiniert oder der Build hat seinen Puffer verloren.",
+            "Chaos verdoppelt gegen ES und Bluten/Gift umgehen ihn – prüfe Widerstände und eine zweite Schicht erneut."
+          ]
+        },
+        {
+          "title": "Mein Ausweichen kriegt trotzdem Treffer",
+          "tag": "Bericht",
+          "body": [
+            "Ausweichen ist eine Chance, keine Garantie; Treffer, die landen, verursachen vollen Schaden.",
+            "Füge Energie-Schild oder Block als Rückhalt für verbundene Treffer hinzu."
+          ]
+        },
+        {
+          "title": "Runic Ward hat mich nicht gerettet",
+          "tag": "Bericht",
+          "body": [
+            "Runic Ward löst nur bei 1 Leben aus und kann erschöpft werden.",
+            "Er ist ein letztes Netz, keine primäre Verteidigung, und lebensschädigender Schaden ohne Schaden umgeht ihn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "Runic-Ward-Video-Guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Runic Ward in Path of Exile 2 Patch 0.5.0 Komplett-Guide: Was es ist, wie man es stapelt und beste Builds",
+          "creator": "ExitLag Tips",
+          "description": "Ein vollständiger Guide zu Runic Ward in Patch 0.5: was es ist, wie es sich aus Verisium stapelt, und Beispiel-Builds, die es als letzte Sicherungsschicht nutzen.",
+          "takeaway": "Runic Ward ist eine separate, letzte Schicht, die aus Verisium stammt; kombiniere ihn mit einer echten Basis-Verteidigung, statt allein auf ihn zu vertrauen.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+          "timestamps": [
+            {
+              "label": "Einleitung",
+              "time": "0:00"
+            },
+            {
+              "label": "Was ist Runic Ward",
+              "time": "1:15"
+            },
+            {
+              "label": "Wie Runic Ward stapelt / Quellen",
+              "time": "3:40"
+            },
+            {
+              "label": "Runic Ward über Verisium hinzufügen",
+              "time": "6:20"
+            },
+            {
+              "label": "Beste Builds für Runic Ward",
+              "time": "9:05"
+            },
+            {
+              "label": "Patch-0.5-Änderungen zusammengefasst",
+              "time": "12:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "Häufige Fehler",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die meisten Probleme mit „Ich sterbe ständig“ rühren daher, dass man missversteht, wie sich die Schichten kombinieren, nicht von einem einzelnen fehlenden Wert."
+      ],
+      "bullets": [
+        "Zu glauben, Rüstung sei eine flache %-Reduzierung, und die Anfälligkeit gegen große Treffer zu ignorieren.",
+        "Sich allein auf Ausweichen zu verlassen und beim Versagen One-Shot zu sterben.",
+        "Zu vergessen, dass Chaos sowie Bluten/Gift den Energie-Schild umgehen.",
+        "Runic Ward hinzuzufügen, ohne den Basis-Verteidigungs-Tausch bei hochleveliger Ausrüstung zu prüfen.",
+        "Widerstände ungedeckt zu lassen, was eingehenden Schaden verdoppelt.",
+        "Runic Ward als primäre Verteidigung statt als letztes Netz zu behandeln."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "Häufig gestellte Fragen",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Ist Rüstung eine feste prozentuale Schadensreduzierung?",
+          "answer": [
+            "Nein. Rüstung reduziert den physischen Anteil von Treffern, und ihre Wirksamkeit skaliert mit der Treffergröße – stark gegen viele kleine Treffer, schwach gegen einen einzelnen riesigen Treffer."
+          ]
+        },
+        {
+          "question": "Reduziert Ausweichen den Schaden landender Treffer?",
+          "answer": [
+            "Nein. Ausweichen ist eine Chance, den gesamten Treffer zu vermeiden. Treffer, die verbunden werden, verursachen vollen Schaden, weshalb es sich unzuverlässig anfühlen kann."
+          ]
+        },
+        {
+          "question": "Umgeht Chaosschaden den Energie-Schild?",
+          "answer": [
+            "Chaosschaden entfernt doppelt so viel Energie-Schild wie andere Typen, und Bluten sowie Gift umgehen den Energie-Schild vollständig, um das Leben zu treffen. Bestätige genaue Werte am live-Client (pending-pc)."
+          ]
+        },
+        {
+          "question": "Ist Runic Ward dasselbe wie Energie-Schild?",
+          "answer": [
+            "Nein. Runic Ward ist eine separate Schicht, die in 0.5 eingeführt wurde und nur bei 1 Leben greift, um einen tödlichen Schlag abzufangen. Er stammt aus Verisium, nicht aus Intelligenz."
+          ]
+        },
+        {
+          "question": "Brauche ich Stärke, um Rüstung zu nutzen?",
+          "answer": [
+            "Stärke-, Beweglichkeits- und Intelligenz-Tendenzen sind genau das – Tendenzen. Jede Klasse kann jede Schicht bauen; Attribute beeinflussen hauptsächlich, welche Ausrüstung du anlegen kannst."
+          ]
+        },
+        {
+          "question": "Wie erhalte ich Runic Ward?",
+          "answer": [
+            "Über den Verisium-Amboss (freigeschaltet über Farrows Questreihe), indem du Verisium an Rüstung ausgibst; hochlevelige Ausrüstung kann etwas Basis-Verteidigung gegen Ward eintauschen – sieh vor dem Herstellen in die Vorschau."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 17,
+      "title": "Quellen und Verifizierung",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offizielles Wiki – Rüstung",
+          "description": "PoE2-Wiki-Seite zur Verteidigungsschicht Rüstung.",
+          "url": "https://www.poe2wiki.net/wiki/Armour"
+        },
+        {
+          "label": "Offizielles Wiki – Ausweichen",
+          "description": "PoE2-Wiki-Seite zur Verteidigungsschicht Ausweichen.",
+          "url": "https://www.poe2wiki.net/wiki/Evasion"
+        },
+        {
+          "label": "Offizielles Wiki – Energie-Schild",
+          "description": "PoE2-Wiki-Seite zu Energie-Schild, Aufladung und Chaos-Interaktionen.",
+          "url": "https://www.poe2wiki.net/wiki/Energy_Shield"
+        },
+        {
+          "label": "Offizielles Wiki – Runic Ward",
+          "description": "PoE2-Wiki-Seite zur Runic-Ward-Schicht.",
+          "url": "https://www.poe2wiki.net/wiki/Runic_Ward"
+        },
+        {
+          "label": "Video-Guide",
+          "description": "ExitLag Tips – Runic Ward in PoE 2 Patch 0.5.0 Komplett-Guide.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM"
+        },
+        {
+          "label": "Community-Verteidigungs-Guide",
+          "description": "ConquestCapped – PoE-2-Ausrüstungs-Guide für Patch 0.5 (Verteidigungs-Prioritäten).",
+          "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Erstveröffentlichung zu Rüstung, Ausweichen, Energie-Schild und Runic Ward mit Stand Patch 0.5.4.",
+            "Schadens-Reihenfolge-Ablauf, Schutzschicht-Matrix, Verteidigungs-Wähler und Fehler-Diagnose hinzugefügt.",
+            "Genaue Zahlen zu Runic Ward gegenüber dem live 0.5.4-Client als pending-pc markiert."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki — Rüstung",
+      "url": "https://www.poe2wiki.net/wiki/Armour",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Ausweichen",
+      "url": "https://www.poe2wiki.net/wiki/Evasion",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Energie-Schild",
+      "url": "https://www.poe2wiki.net/wiki/Energy_Shield",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Runic Ward",
+      "url": "https://www.poe2wiki.net/wiki/Runic_Ward",
+      "sourceType": "official"
+    },
+    {
+      "label": "ExitLag Tips — Runic-Ward-Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+      "sourceType": "community"
+    },
+    {
+      "label": "ConquestCapped — PoE-2-Ausrüstungs-Guide 0.5",
+      "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Verteidigungsschichten: Rüstung, Ausweichen, Energie-Schild & Runic Ward – Leitfaden",
+    "description": "Verstehe, wie Rüstung, Ausweichen, Energie-Schild und Runic Ward in Path of Exile 2 funktionieren und sich kombinieren – sowie Widerstand, Block und Deflect.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "armour-evasion-energy-shield-runic-ward",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

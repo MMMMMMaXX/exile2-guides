@@ -1,0 +1,824 @@
+{
+  "id": "corrupting-wings-gemling-legionnaire",
+  "slug": "corrupting-wings-gemling-legionnaire",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "コラプティング・ウィングス Gemling ビルドガイド：Corrupting Cry、クオリティ蓄積、進化",
+  "shortTitle": "コラプティング・ウィングス Gemling",
+  "summary": "0.5.4 ウォークライ・ツールキット：Corrupting Cry は 0.5 でトリガーされるスキルとなり、ウォークライのレベル／クオリティ／サポートで強化される。ライフ管理、クールダウンの境界値、Cast on Dodge、および高投資の Block 帯を解説。",
+  "description": "Path of Exile 2 のコラプティング・ウィングス Gemling Legionnaire 向け 0.5.4 ガイド：Corrupting Cry のトリガー、クオリティ蓄積、ウォークライの時系列、ライフ管理、および実際の動画タイムスタンプ。",
+  "classId": "mercenary",
+  "ascendancyId": "gemling-legionnaire",
+  "mainSkillIds": [
+    "fortifying-cry",
+    "corrupting-cry"
+  ],
+  "secondarySkillIds": [
+    "decree-of-flight",
+    "cast-on-dodge"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "warcry",
+    "corrupted-blood",
+    "quality-stacking",
+    "cooldown",
+    "mobility"
+  ],
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "screenwide"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "cardImage": "/images/builds/covers/corrupting-wings-gemling-legionnaire.webp",
+  "imageAlt": "Mercenary Gemling Legionnaire が Warcry を叫び、戦場全体に Corrupted Blood を誘発している",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "gemling-legionnaire",
+    "leveling",
+    "mercenary",
+    "physical",
+    "starter",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "ビルド概要",
+      "paragraphs": [
+        "コラプティング・ウィングス Gemling は Mercenary のウォークライ・ツールキットである。Warcry を叫ぶことで Corrupting Cry が誘発され、射程内の敵に Corrupted Blood（カオス／物理の DoT）が蓄積する。Gemling Legionnaire のアセンダンシーはクオリティを直接ステータスとダメージに変換するため、「クオリティ蓄積」が中核となる強化の要である。",
+        "0.5 以降、Corrupting Cry はトリガーされるスキルとなった。手動で押すメインスキルではなく、Warcry によって誘発される。したがってダメージは単発のキャストではなく、ウォークライのレベル、サポートジェム、クオリティ、および Gemling のステータス変換に由来する。",
+        "本ガイドでは、ウォークライの時系列、ライフ管理、クールダウンの境界値、および高投資の Block 帯を解説し、すべてのクライアント上の数値は PC 検証待ちとして注記する。0.5 ローンチ時の不具合とその後の修正は別扱いとする。"
+      ],
+      "bullets": [
+        "Warcry が Corrupting Cry を誘発 → Corrupted Blood が蓄積する。",
+        "Gemling のクオリティ蓄積がステータスとダメージを変換する。",
+        "0.5 以降、Corrupting Cry はトリガーされ、手動のメインスキルではない。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "ウォークライ誘発の殲滅はほぼワンボタンで、画面全体の手応えが非常に良い。",
+        "クオリティ蓄積は Gemling で多大な効果を発揮する。",
+        "高投資の Block（例：Svalinn）は強力な余裕をもたらす。",
+        "機動力（Cast on Dodge／Decree of Flight）は柔軟である。"
+      ],
+      "cons": [
+        "序盤のライフとマナの管理が厳しい。",
+        "クールダウンとロールのリズムには練習が必要。",
+        "高投資の帯には特定のユニークが必要で、ハードルが高い。",
+        "0.5 ローンチ時の不具合が手応えに影響した；修正済みか要確認。"
+      ]
+    },
+    {
+      "id": "warcry-cycle",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの読み方：Warcry → トリガー",
+      "paragraphs": [
+        "Fortifying Cry を叫び、自身のガード／エコー強化を受けつつ Corrupting Cry の蓄積を誘発する。Corrupted Blood は敵同士の間を飛び移る。",
+        "Decree of Flight と Cast on Dodge が機動力をもたらす。前者は能動的に離脱し、後者は回避時に誘発され、その場に留まる時間を減らす。",
+        "高投資版は Wings／ダブル Cast on Dodge を用いてより長いダッシュを行う。通常版はロールする。ループ構造は同じで、違いは余裕と移動距離である。"
+      ],
+      "bullets": [
+        "Fortifying Cry → Corrupting Cry の蓄積を誘発。",
+        "Decree of Flight／Cast on Dodge が機動力をもたらす。",
+        "高投資＝より長いダッシュとより大きな余裕。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "基本的な射撃／グレネードでマップ探索。Warcry は解放後、つなぎの防御として扱う。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Fortifying Cry を取得し、Warcry で追加ダメージの誘発を開始。ライフ／耐性ノードを追加する。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — Gemling 解放",
+          "levelRange": "30–42",
+          "body": [
+            "Gemling Legionnaire を選択。クオリティがステータス変換を開始し、Corrupting Cry のトリガーチェーンが形成される。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "低予算でウォークライのループを回す。ライフ／耐性を整え、マナとクールダウンを管理する。"
+          ]
+        },
+        {
+          "label": "レベル 60+ — エンドゲーム準備",
+          "levelRange": "60+",
+          "body": [
+            "ウォークライのレベル／クオリティ、クールダウン、Block を押し上げる。チェックリストを通過した後にハイエンドのユニークを目指す。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Fortifying Cry",
+              "skillId": "fortifying-cry",
+              "role": "メインの Warcry：ガード／エコーと、Corrupting Cry の誘発。",
+              "supportSkillIds": [
+                "echoing-cry",
+                "lifetap"
+              ],
+              "whyUse": [
+                "ループの起点。これがなければ誘発も防御強化もない。"
+              ],
+              "whenReplace": [
+                "決して置換しない。構成の核心である。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使用するが、ボス戦はガードにより依存する。"
+              ],
+              "notes": [
+                "数秒ごとに使用。リズムはクールダウンで決まる。"
+              ]
+            },
+            {
+              "displayName": "Corrupting Cry",
+              "skillId": "corrupting-cry",
+              "role": "Warcry 誘発の蓄積スキル、メインのダメージ源。",
+              "supportSkillIds": [
+                "corrupted-blood",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "0.5 以降はトリガーされるスキル。ダメージはレベル／クオリティ／サポートに由来する。"
+              ],
+              "whenReplace": [
+                "置換しないが、Warcry のトリガーが必要である。"
+              ],
+              "mappingBossingDiff": [
+                "画面全体の殲滅。ボスには集中して蓄積させる。"
+              ],
+              "notes": [
+                "0.5 以降はトリガーされ、手動のメインスキルではない。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "機動力と補助",
+          "skills": [
+            {
+              "displayName": "Decree of Flight",
+              "skillId": "decree-of-flight",
+              "role": "能動的な離脱機動力、地面効果を回避する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "重要な機動力。その場に留まって死ぬことを減らす。"
+              ],
+              "whenReplace": [
+                "機動力として維持する。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使用する。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Dodge",
+              "skillId": "cast-on-dodge",
+              "role": "回避時に効果を誘発し、機動力／ダメージを追加する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "高投資版はダッシュのためにダブル Cast on Dodge を使用。通常版では任意。"
+              ],
+              "whenReplace": [
+                "高投資版では必須、通常版では任意。"
+              ],
+              "mappingBossingDiff": [
+                "高投資版はより依存する。"
+              ],
+              "notes": [
+                "なくても使用可能。その分機動力が落ちるだけ。"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "Gemling Legionnaire — 最初のノード",
+          "body": [
+            "クオリティからステータスへのノードを優先。クオリティ蓄積の前提となる。"
+          ]
+        },
+        {
+          "label": "防御チェック",
+          "body": [
+            "T15 以上で生存が不安定なら、Block／ライフノードを追加。すべてをダメージに替えてはならない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "ライフ、耐性、ウォークライ強化、クオリティのノードを取得。Block のホイールへは前もって枝分かれしない。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "トリガー型に切り替える。ライフ、クールダウン、クオリティを優先。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "防御とクールダウンを解決した後、クオリティ／ダメージのホイールに投資。帯ごとに装備を比較する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Main hand / Weapon Set",
+          "recommendations": [
+            "ウォークライ／トリガーチェーンを支えるベースを選ぶ。武器セットの切り替えで殲滅とボスの構成を変える。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Warcry レベル／ジェムクオリティ",
+              "reason": "トリガーとクオリティ蓄積に直接影響する。"
+            },
+            {
+              "tier": "recommended",
+              "label": "ライフと耐性",
+              "reason": "序盤の生存の底。"
+            },
+            {
+              "tier": "optional",
+              "label": "クールダウン短縮",
+              "reason": "より速いウォークライのリズム。"
+            },
+            {
+              "tier": "luxury",
+              "label": "Block 関連モッド",
+              "reason": "高投資のハードル。"
+            }
+          ],
+          "notes": [
+            "武器セットのパッシブポイントで 2 つの構成を切り替える（武器セットのガイド参照）。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "ライフ、耐性、Block。ブーツは移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと 2 つの上限耐性",
+              "reason": "死ぬことの埋め合わせになるダメージはない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "Block チャンス",
+              "reason": "高投資の防御境界。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "より良いポジショニングとロール。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なクオリティ／ダメージ",
+              "reason": "防御の後。"
+            }
+          ],
+          "notes": [
+            "Svalinn は高投資の Block の中核であり、ハードルではない。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "ステータス、耐性、ライフ、Block。必要に応じてマナの持続。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器とジェムを装備するためのステータス",
+              "reason": "装備できなければ無意味。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "Block／マナ",
+              "reason": "アクセサリからの無償の防御。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ジェムクオリティ",
+              "reason": "終盤のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "Warcry レベルとジェムクオリティ",
+          "reason": "クオリティ蓄積の核心。最優先の進捗確認。"
+        },
+        {
+          "label": "ライフと耐性",
+          "reason": "序盤の生存の底。"
+        },
+        {
+          "label": "クールダウン短縮",
+          "reason": "より速いウォークライのトリガーリズム。"
+        },
+        {
+          "label": "Block チャンス",
+          "reason": "高投資の防御境界。"
+        },
+        {
+          "label": "マナの持続",
+          "reason": "持続的なトリガーと機動力の底。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "殲滅が遅い",
+          "symptom": "パックに多くのウォークライ往復が必要。",
+          "checks": [
+            "Warcry レベル／クオリティは整っているか？",
+            "ライフ／耐性は先に解決済みか？"
+          ],
+          "upgrade": "生のダメージではなく、Warcry のレベルとクオリティを強化する。"
+        },
+        {
+          "label": "死ぬことが多い",
+          "symptom": "マップやボスでの死。",
+          "checks": [
+            "Block／ライフの欠け？",
+            "ロールオーバーモッドがきつい？"
+          ],
+          "upgrade": "まず防御を直し、ダメージの蓄積を止める。"
+        },
+        {
+          "label": "マナ／クールダウンの落ち込み",
+          "symptom": "Warcry がキャストできない、またはリズムが崩れる。",
+          "checks": [
+            "マナは連続キャストを維持できるか？",
+            "クールダウン短縮は十分か？"
+          ],
+          "upgrade": "マナの持続とクールダウン短縮を追加する。"
+        },
+        {
+          "label": "Svalinn／ダブル Cast on Dodge の検討",
+          "symptom": "より大きな余裕とダッシュが欲しい。",
+          "checks": [
+            "通常帯は通過しているか？",
+            "高投資のユニークで耐性が崩れるか？"
+          ],
+          "upgrade": "少しずつ揃え、チェックリスト後に再テストする。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "パックに向けて Fortifying Cry を叫び Corrupting Cry を誘発。殲滅のため Corrupted Blood が敵同士の間を飛び移る。Decree of Flight／ロールで位置を入れ替える。",
+        "雑魚には丁寧な蓄積は不要。レア／ボスのみ集中したトリガーが必要。殲滅が遅くなったら、まず Warcry のレベルとクオリティを強化する。"
+      ],
+      "bullets": [
+        "Fortifying Cry が画面全体を誘発。",
+        "雑魚には丁寧な蓄積を省略。",
+        "殲滅が遅くなったら Warcry レベル／クオリティを強化。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "あらかじめボスの動きを読み、Fortifying Cry を叫んで Corrupting Cry を誘発し、ボスに Corrupted Blood を蓄積。地面効果を避けるために Decree of Flight を使う。",
+        "ダメージが停滞する場合、問題はメインハンドではなく Warcry レベル／クオリティ／サポートである。高投資版は余裕とダッシュのために Svalinn／ダブル Cast on Dodge を用いる。"
+      ],
+      "bullets": [
+        "Fortifying Cry → Corrupting Cry の集中蓄積。",
+        "Decree of Flight による回避。",
+        "停滞＝武器の交換ではなくウォークライの修正。"
+      ]
+    },
+    {
+      "id": "life-management",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "ライフ管理",
+      "paragraphs": [
+        "序盤の厳しいライフは本当のボトルネックである。Warcry 自体は回復せず、持続的なトリガーと機動力はマナを消費する。ダメージの前にライフプールと耐性を確保する。",
+        "高投資の Block 帯はブロックでヒットを削り、ライフの圧力を和らげる。しかしブロックには装備が必要で、開始時点では得られない。正確な数値は PC 検証待ち。"
+      ],
+      "bullets": [
+        "ダメージの前にライフと耐性。",
+        "Block はヒットを削るが装備が必要。",
+        "マナの持続がトリガーを支える。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "本ガイドはコミュニティの議論を再現可能なチェックリストとして使用しており、彼らの示す DPS を保証するものではない。",
+      "entries": [
+        {
+          "context": "プレイヤーが 0.5 の Gemling の強化方法を問う。",
+          "label": "pathofky Gemling Legionnaire 0.5 ガイド",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このガイドはメカニクス、ジェム、武器セットの切り替え、パッシブツリーを分け、クオリティとステータス変換を強調している。",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "context": "プレイヤーが 0.5 ローンチ時の不具合が手応えを損なったか議論する。",
+          "label": "P4wnyhof Gemling Legionnaire campaign to endgame",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "実況は Act 1 からエンドゲームへの連続した移行を示し、アセンダンシーノードのパワースパイクを強調している。",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "ボスのダメージが停滞",
+          "checks": [
+            "Warcry レベル／クオリティは整っているか？",
+            "サポートは一致しているか？"
+          ]
+        },
+        {
+          "symptom": "死ぬことが多い",
+          "checks": [
+            "Block／ライフの欠け？",
+            "ロールオーバーモッドがきつい？"
+          ]
+        },
+        {
+          "symptom": "Warcry がキャストできない",
+          "checks": [
+            "マナは維持されているか？",
+            "クールダウンが長すぎるか？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "Corrupting Cry はまだ手動のメインスキルか？",
+          "answer": [
+            "0.5 以降は Warcry によって誘発される。ダメージはレベル／クオリティ／サポートに由来し、単発のキャストではない。"
+          ],
+          "bullets": [
+            "Fortifying Cry によって誘発される。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Svalinn なしでプレイできるか？",
+          "answer": [
+            "できる。Svalinn は高投資の Block の中核であり、通常版はライフ／耐性とロールでほとんどのコンテンツをマップしボスを倒せる。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/guides/how-to-stop-getting-one-shot/",
+              "label": "ワンパン回避ガイドを見る"
+            }
+          ]
+        },
+        {
+          "question": "より良い武器に交換したのにまだ弱い？",
+          "answer": [
+            "ダメージはメインハンドではなく Warcry レベル／クオリティ／サポートに由来する。まずウォークライとクオリティ蓄積を直す。"
+          ],
+          "bullets": [
+            "ボス戦を録画し、トリガーアイコンを確認する。"
+          ],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "貼り付け可能なインポート文字列と .build ファイルはまだ PC 検証待ち。それまでは以下のクリエイターガイドと公式プランナーを使用すること。必ず自身のクライアントでノードを再確認すること。",
+      "creatorName": "pathofky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "ウォークライの時系列とエンドゲームを見る",
+      "entries": [
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire ガイド",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE",
+          "description": "メカニクス、ジェム、武器セット、アセンダンシー、パッシブツリー。",
+          "takeaway": "ウォークライのトリガーとクオリティ蓄積に注目。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "導入とメカニクス"
+            },
+            {
+              "time": "2:30",
+              "label": "装備概要"
+            },
+            {
+              "time": "5:00",
+              "label": "ジェムと武器セット"
+            },
+            {
+              "time": "8:30",
+              "label": "アセンダンシーとツリー"
+            },
+            {
+              "time": "11:00",
+              "label": "ゲームプレイ実演"
+            }
+          ]
+        },
+        {
+          "creator": "pathofky",
+          "label": "0.5 Gemling Legionnaire エンドゲームアップデート",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k",
+          "description": "ソロコンテンツとマップ性能を強化するエンドゲームアップデート。",
+          "takeaway": "最終装備とマップのゲームプレイを見る。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "2:00",
+              "label": "装備解説"
+            },
+            {
+              "time": "5:00",
+              "label": "マップのゲームプレイ"
+            },
+            {
+              "time": "8:00",
+              "label": "概要"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "pathofky — Gemling Legionnaire 0.5 ガイド (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "pathofky — Gemling Legionnaire Endgame Update 0.5 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "P4wnyhof — Gemling Legionnaire Act 1 to Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "出典付きの 0.5.4 コラプティング・ウィングス Gemling ビルドガイドを作成。PC 検証進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "how-to-stop-getting-one-shot"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "pathofky — Arc Totem Gemling Legionnaire 0.5 ガイド (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vk-dY3bDqjE"
+    },
+    {
+      "label": "pathofky — Gemling Legionnaire Endgame Update 0.5 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=_0Oos5Hwm-k"
+    },
+    {
+      "label": "P4wnyhof — Gemling Legionnaire Act 1 to Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=JhyRySNBbuE"
+    }
+  ],
+  "seo": {
+    "title": "コラプティング・ウィングス Gemling ビルドガイド | Exile2 Guides",
+    "description": "0.5.4 コラプティング・ウィングス Gemling：Corrupting Cry のトリガー、クオリティ蓄積、ウォークライの時系列、ライフ管理、Block 帯。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "corrupting-wings-gemling-legionnaire",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

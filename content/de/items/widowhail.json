@@ -1,0 +1,855 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "de",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Widowhail: Skalierung des Köcher-Bonus, beste Werte und Runenschmieden in Path of Exile 2 0.5",
+  "shortTitle": "Widowhail",
+  "summary": "Widowhail ist ein einzigartiger Grober Bogen in Path of Exile 2, dessen einzige Modifikation, (150-250)% erhöhte Boni des ausrüsteten Köchers, die numerischen Boni deines Köchers vervielfacht. Der eigene Schaden des Bogens ist irrelevant; der Köcher ist die Triebkraft. Dieser Guide behandelt die exakte Skalierungsformel, welche Köcher-Modifikationen skalieren, wie sich niedrige und hohe Werte vergleichen, welcher Köcher einen 250%-Wert rechtfertigt, die runengeschmiedete Version und welche Builds den Köcher eines anderen nicht kopieren dürfen.",
+  "description": "Wie Widowhail in PoE2 0.5 funktioniert: der (150-250)% erhöhte Boni des ausrüsteten Köchers-Multiplikator, die Basis x (1 + W%) Formel, welche Köcher-Mods skalieren (global, implizit, Verderbnis, Projektil, hinzugefügter Schaden) und welche nicht (lokale Köcher-Mods), Wert von niedrigen gegenüber hohen Rollen, Köcher-Auswahl, Runenschmieden und build-spezifische Warnungen.",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Widowhail, ein einzigartiger Grober Bogen aus Path of Exile 2, ein Köcher-skalierender Bogen, der die numerischen Boni des ausrüsteten Köchers vervielfacht",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Kurze Antwort",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Widowhails einzige Modifikation, (150-250)% erhöhte Boni des ausrüsteten Köchers, multipliziert jeden skalierbaren numerischen Bonus deines Köchers mit (1 + W/100). Bei 150% ist das x2,5, bei 200% x3,0, bei 250% x3,5. Der eigene physische DPS des Bogens ist bewusst niedrig: Der Köcher ist die Waffe. Ein guter Köcher ist es, was einen hohen Wert lohnenswert macht; ein schwacher Köcher macht selbst einen 250%-Widowhail sinnlos.",
+      "calloutDetail": [
+        "Der Multiplikator greift bei globalen, impliziten und Verderbnis-Boni, die der Köcher gewährt, einschließlich Mods für zusätzliche Pfeile, hinzugefügtem Schaden, erhöhter Angriffsgeschwindigkeit, Resistenzen, Leben, Genauigkeit und mehr.",
+        "Er fügt KEINE neuen Werte hinzu. Er verstärkt nur das, was der Köcher bereits gewährt. Ein Köcher, der nichts Wertvolles zu skalieren hat, bringt dir nichts.",
+        "Widowhail kann runengeschmiedet werden (Einzigartiges Runenschmieden, freigeschaltet in Akt 3), sobald er ein Unique auf niedrigem Level ist; der einzigartige Köcher-Bonus-Mod bleibt erhalten und die Basis erhält höheren physischen Schaden plus eine runengeschmiedete Basis."
+      ],
+      "answers": [
+        {
+          "label": "Verwende ihn, wenn",
+          "text": [
+            "Du bereits (oder dir leisten kannst) einen starken Köcher besitzt, dessen numerische Boni du mehrfach vervielfacht haben möchtest - hinzugefügter Schaden, Angriffs- oder Projektilgeschwindigkeit, Fertigkeitsstufen, Leben, Resistenzen."
+          ]
+        },
+        {
+          "label": "Lass ihn weg, wenn",
+          "text": [
+            "Dein Build auf waffenlokale Werte angewiesen ist (hoher Flach-Phys, hohe Angriffsgeschwindigkeit am Bogen selbst) oder du keinen Köcher beschaffen kannst, der sich zu verstärken lohnt. Ein seltener Bogen könnte dir besser dienen."
+          ]
+        },
+        {
+          "label": "Worauf die Rolle abzielen sollte",
+          "text": [
+            "250% ist die Obergrenze der natürlichen Rolle. 240-248% ist für deutlich weniger Währung fast genauso stark. Eine Vaal-Orb-Verderbnis kann über 250% hinausgehen (Community-Berichte ~290%+)."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Wie der Multiplikator funktioniert"
+        },
+        {
+          "href": "#properties",
+          "label": "Aktuelle Tooltip- und Wertbereiche"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds, die ihn nutzen"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Kurze Fakten",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Basistyp",
+          "value": "Crude Bow",
+          "note": [
+            "Ein Starterbogen. Der Basis-Physiskschaden (5-13) und die Angriffsgeschwindigkeit (1,40) sind niedrig, weil die Stärke des Items vollständig vom Köcher und nicht von der Waffe kommt."
+          ]
+        },
+        {
+          "label": "Einzigartige Modifikation",
+          "value": "(150-250)% erhöhte Boni des ausrüsteten Köchers",
+          "note": [
+            "Die einzige explizite Modifikation. Die Rolle erfolgt in 50%-Schritten (150 / 200 / 250), es gibt also keine 187%-Rolle - sie springt auf eine Stufe."
+          ]
+        },
+        {
+          "label": "Benötigtes Level",
+          "value": "1 (14 Geschicklichkeit)",
+          "note": [
+            "Vom allerersten Beginn der Kampagne an ausrüstbar, weshalb er sowohl als Leveling-Bogen als auch als Endgame-Kraftmultiplikator für den Köcher dient."
+          ]
+        },
+        {
+          "label": "Beschaffung",
+          "value": "Überall erhältlich; kann mit Chance erzeugt werden; handelbar",
+          "note": [
+            "Relativ häufiger Drop von Monstern ab Stufe 25 (ab Akt 2). Kann auch durch Verwendung einer Chance-Orb auf einem weißen Groben Bogen erzeugt werden. Händlerwert ist 6x Alchemie-Scherbe."
+          ]
+        },
+        {
+          "label": "Verderbnis-Obergrenze",
+          "value": "Über 250% möglich",
+          "note": [
+            "Eine Vaal-Orb-Verderbnis kann die natürliche 250%-Grenze überschreiten (Community-Berichte bis ~290%+). Prüfe die genaue Obergrenze im Spiel."
+          ]
+        },
+        {
+          "label": "Runenschmieden",
+          "value": "Berechtigt (Unique auf niedrigem Level)",
+          "note": [
+            "Als Level-1-Unique erfüllt er die Voraussetzungen für Einzigartiges Runenschmieden, sobald es in Akt 3 freigeschaltet ist; der Köcher-Bonus-Mod bleibt erhalten und der Basis-Schaden wird verbessert."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Aktueller Tooltip und Wertbereiche (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Basis-Physiskschaden",
+          "value": "5-13",
+          "notes": [
+            "Bewusst niedrig. Widowhail ist kein Schadensüberträger; er ist ein Köcher-Verstärker."
+          ]
+        },
+        {
+          "label": "Kritische Trefferchance",
+          "value": "5,00%",
+          "notes": [
+            "Vom Grober-Bogen-Basis-Typ geerbt."
+          ]
+        },
+        {
+          "label": "Angriffe pro Sekunde",
+          "value": "1,40",
+          "notes": [
+            "Vom Grober-Bogen-Basis-Typ geerbt."
+          ]
+        },
+        {
+          "label": "Einzigartige Modifikation (variabel)",
+          "value": "(150-250)% erhöhte Boni des ausrüsteten Köchers",
+          "notes": [
+            "Der einzige explizite Wert. Rollt in 50%-Stufen: 150%, 200%, 250%. Dies ist die Zahl, die den Wert des Bogens bestimmt."
+          ]
+        },
+        {
+          "label": "Voraussetzungen",
+          "value": "Level 1, 14 Geschicklichkeit",
+          "notes": [
+            "Keine Stärke- oder Intelligenz-Voraussetzung, was ihn für jede geschicklichkeitsbasierte Klasse ab Level 1 zugänglich macht."
+          ]
+        },
+        {
+          "label": "Implizit",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "Geschmackvolle implizite Zeile, die auf dem Item angezeigt wird; es ist kein separater skalierbarer Wert."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Wie der Köcher-Bonus-Multiplikator funktioniert",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Widowhails Modifikation lautet (150-250)% erhöhte Boni des ausrüsteten Köchers. Das Schlüsselwort ist 'erhöht': Er nimmt den numerischen Wert eines Köcher-Bonus und erhöht ihn um die Widowhail-Rolle. Ein Köcher-Bonus von +40 auf Maximales Leben mit einem 250%-Widowhail wird zu +40 x (1 + 2,50) = +140 auf Maximales Leben. Die allgemeine Formel lautet: Skalierter Köcher-Bonus = Basis-Köcher-Bonus x (1 + W/100), wobei W die Widowhail-Rolle ist (150, 200 oder 250).",
+        "Da der Multiplikator (1 + W/100) ist, betragen die effektiven Faktoren x2,5 bei 150%, x3,0 bei 200% und x3,5 bei 250%. Dies wird durch das dokumentierte Pfeil-Beispiel bestätigt: Ein Köcher, dessen Implizit 'Bogenangriffe verschießen einen zusätzlichen Pfeil' gewährt (+1), kombiniert mit einem expliziten '+1 auf Projektilanzahl' ergibt vor Widowhail zusammen 2; bei einem 250%-Effekt wird aus dieser 2 eine 2 x 3,5 = 7 zusätzliche Pfeile. Die Werte werden zuerst addiert, dann multipliziert.",
+        "Was 'Boni des ausrüsteten Köchers' in der Praxis bedeutet, ist jeder skalierbare numerische Bonus, den der Köcher deinem Charakter gewährt - sowohl seine implizite Zeile als auch seine expliziten Affixe, sowie auch Verderbnis-Implizits. Dies umfasst hinzugefügten Schaden (flach), erhöhte Prozente (Angriffsgeschwindigkeit, Krit, Schaden), Attribute, Resistenzen, Leben, Genauigkeit, Projektilgeschwindigkeit, Durchschlagszahlen und Mods für zusätzliche Pfeile. Der Multiplikator erfindet keine neuen Werte; er skaliert nur die bereits vorhandenen.",
+        "Ein subtiler Punkt, den viele Spieler übersehen: Der Bonus wird multipliziert, nicht als zweite Kopie hinzugefügt. Ein Köcher mit +20% erhöhter Angriffsgeschwindigkeit und einem 200%-Widowhail ergibt +20% x 3,0 = +60% erhöhte Angriffsgeschwindigkeit aus dieser Zeile - er wird nicht zu +20% + 200%. Die Widowhail-Rolle ist selbst die 'erhöhte' Größe, die auf den zugrunde liegenden Bonuswert des Köchers angewendet wird.",
+        "Warum der eigene DPS des Bogens niedrig ist, der Build aber funktioniert: Widowhail ersetzt 'gute Waffenwerte' durch 'gute Köcherwerte, verstärkt'. Ein seltener Köcher kann mühelos großen flachen hinzugefügten Schaden, zweistellige erhöhte Angriffsgeschwindigkeit, Fertigkeitsstufen, Leben und Resistenzen tragen. All das mit 3,5 zu multiplizieren erzeugt mehr gesamten offensiven und defensiven Wert als der flache Physiskschaden, den ein normaler Bogen liefern würde, auf Kosten eines starken, gut gerollten Köchers, der den Bogen-Slot rechtfertigt."
+      ],
+      "bullets": [
+        "Formel: Skaliert = Basis x (1 + W/100). Faktoren: 150% -> x2,5, 200% -> x3,0, 250% -> x3,5.",
+        "Implizite, explizite und Verderbnis-Köcher-Boni zählen alle.",
+        "Der Bogen ignoriert seinen eigenen niedrigen Physiskschaden; der Köcher ist die Waffe.",
+        "Werte auf dem Köcher werden addiert, dann multipliziert - also werden +1 impliziter und +1 expliziter Pfeil bei 250% zu 7.",
+        "Er fügt keine neuen Affixe hinzu, sondern verstärkt nur vorhandene."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Skalierungs-Wendepunkte und Köcher-Modifikations-Matrix",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "Zusatz-Pfeil-Köcher (implizit +1, explizit +1) = 2 Basis-Pfeile",
+          "audience": "Spark- / Projektil-Builds",
+          "benefit": "2 -> 5 / 6 / 7 extra Pfeile bei 150 / 200 / 250%",
+          "risk": "Mehr Pfeile helfen nur, wenn deine Fertigkeit von der Projektilanzahl profitiert",
+          "level": "high",
+          "recommendation": "Starke Skalierung; 250% verwandelt einen 2-Pfeil-Köcher in 7 Projektile.",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "+40 auf Maximales Leben am Köcher",
+          "audience": "Jeder Build",
+          "benefit": "40 -> 100 / 120 / 140 Leben bei 150 / 200 / 250%",
+          "risk": "Gering, wenn dein Build Leben nicht schätzt",
+          "level": "medium",
+          "recommendation": "Leben skaliert sauber; eine hohe Rolle verdreifacht etwa den Lebensbonus des Köchers.",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "+20% erhöhte Angriffsgeschwindigkeit am Köcher",
+          "audience": "Angriffs-Builds",
+          "benefit": "20% -> 50 / 60 / 70% erhöhte Angriffsgeschwindigkeit bei 150 / 200 / 250%",
+          "risk": "Gering; Angriffsgeschwindigkeit ist fast immer nützlich",
+          "level": "medium",
+          "recommendation": "Einer der sichersten Köcher-Mods zu verstärken.",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "Flacher hinzugefügter Schaden (z. B. +5 bis 30 Kälte zu Angriffen) am Köcher",
+          "audience": "Elementar- / Konvertierungs-Builds",
+          "benefit": "5-30 -> 12,5-75 / 15-90 / 17,5-105 bei 150 / 200 / 250%",
+          "risk": "Hängt von Konvertierung und Fertigkeits-Tags ab",
+          "level": "medium",
+          "recommendation": "Hervorragend bei konvertierten Spark- oder elementaren Bogen-Builds; bestätige, dass der Schadens Typ unterstützt wird.",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds, die Widowhail nutzen",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Widowhail ist ein Köcher-Auslieferungssystem. Er glänzt in jedem Build, der Wert über den Köcher-Slot leitet und einen starken Köcher bereitstellen kann. Folgende sind die realistischen Heime für den Bogen; jedes hat eine harte Voraussetzung (den Köcher), die du erfüllen musst, bevor der Bogen sich auszahlt."
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "Ein natürliches Zuhause: Deadeye belohnt Projektilanzahl, und ein Köcher, vollgepackt mit hinzugefügtem Kälte-/Physiskschaden, Angriffsgeschwindigkeit und +Projektil-Fertigkeitsstufen, wird mehrfach multipliziert. Ziele auf einen 230%+ Widowhail und einen Köcher mit +2 Projektil-Fertigkeitsstufen plus hohem hinzugefügtem Schaden.",
+          "href": "/de/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Spark- / konvertierte-Spark-Caster (Blood Mage, Stormweaver)",
+          "description": "Widowhail wird genutzt, um einen Köcher zu verstärken, der +Projektil-Fertigkeitsstufen und Projektilgeschwindigkeit gewährt; die multiplizierte Projektil-Skalierung speist Projektil-Beschleunigung und Sparks Mehrfachtreffer-Schaden. Budget-Versionen räumen frühe Maps für den Preis einiger Dutzend Exaltierte Orbs."
+        },
+        {
+          "title": "Lightning Arrow / Lightning Rod Ranger Leveling",
+          "description": "Ab Akt 2 ist ein Widowhail plus ein häufig aufgewerteter seltener Köcher einer der stärksten Leveling-Bögen, weil du den hinzugefügten Schaden und die Angriffsgeschwindigkeit des Köchers multiplizierst, während du jeden Köcher überlevelst."
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "Ein hochgerollter Widowhail gepaart mit einem Köcher, der +2 Stufen aller Projektil-Fertigkeiten, Genauigkeit und Angriffsgeschwindigkeit trägt, lässt den Gift-DPS über Meisterliche Befiederung und den Köcher-Multiplikator in die Höhe schnellen."
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativen: Seltene Bögen und andere Uniques",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Widowhail ist kein 'mehr DPS, egal was'-Bogen. Sein Wert ist an den Köcher gebunden. Wenn du keinen Köcher beschaffen kannst, der sich zu verstärken lohnt, wird ein gut gerollter seltener Bogen ihn übertreffen, weil seltene Bögen ihren eigenen flachen Physiskschaden, Angriffsgeschwindigkeit, kritische Modifikationen und Sockel mitbringen.",
+        "Im Vergleich zu anderen einzigartigen Bögen besetzt Widowhail eine einzigartige Nische: Er hat keine eigene Schadensmechanik, nur den Köcher-Multiplikator. Bögen, die flachen Schaden, Durchdringung oder Ailment-Konvertierung hinzufügen, sind einfacher zu nutzen und erfordern keinen sorgfältig gefertigten Köcher. Nutze diese, wenn du eine in sich geschlossene Waffe statt einer Köcher-Maschine willst.",
+        "Innerhalb der Köcher-Skalierungs-Fantasie gibt es keinen direkten Konkurrenten - Widowhail ist der einzige Bogen, der den ausrüsteten Köcher skaliert. Die wirkliche Alternativen-Entscheidung ist also 'in Köcher + Widowhail investieren' gegen 'dieselbe Währung in einen stärkeren in sich geschlossenen seltenen oder einzigartigen Bogen investieren'. In früher und mittlerer Kampagne ist der Köcher-Weg pro Punkt Stärke oft günstiger; am ganz oberen Ende kann ein Spiegel-Tier seltener Bogen ihn übertreffen, kostet aber viel mehr."
+      ],
+      "bullets": [
+        "Seltener Bogen: besser, wenn dir ein starker Köcher fehlt; bringt eigenen Schaden und Sockel mit.",
+        "Andere einzigartige Bögen: einfacher, in sich geschlossene Mechaniken; keine Köcher-Abhängigkeit.",
+        "Kein anderer Bogen skaliert den Köcher - Widowhail ist die einzige Option für diese Fantasie.",
+        "Entscheidung: Köcher+Widowhail ist früh meist günstiger; Spiegel-seltener Bogen kann ihn spät übertreffen, kostet aber viel mehr."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Wie man Widowhail bekommt",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Widowhail ist ein relativ häufiges Unique, was selbst hohe Rollen im Vergleich zu Spiegel-Tier-Items bezahlbar hält. Es gibt drei realistische Wege zum Besitz."
+      ],
+      "routes": [
+        {
+          "label": "Zufälliger Drop (Monster ab Stufe 25, ab Akt 2)",
+          "body": [
+            "Widowhail droppt überall von Monstern der Stufe 25 und höher. Du kannst ihn nicht gezielt erhalten, aber das Erhöhen der generellen Unique-Drop-Rate über 'Erhöhte Seltenheit gefundener Items' und aufgeladene Wegsteine steigert, wie oft Uniques erscheinen."
+          ]
+        },
+        {
+          "label": "Chance-Orb auf einem weißen Groben Bogen",
+          "body": [
+            "Die Verwendung einer Chance-Orb auf einem normalen Groben Bogen kann Widowhail erzeugen, aber die Erfolgsrate ist niedrig und die Währung ist besser in das Versuchsglück für seltenere Uniques investiert. Die meisten Spieler überspringen diesen Weg, weil der Bogen im Handel bereits häufig ist."
+          ]
+        },
+        {
+          "label": "Spielerhandel",
+          "body": [
+            "Die Handelsseite ist der zuverlässigste Weg, eine bestimmte Rolle zu erhalten. Da die Drop-Rate hoch ist, sind 240-248%-Rollen oft für einen Bruchteil des Preises eines perfekten 250% erhältlich, und ein 250%-Bogen kann immer noch weit günstiger sein als ein Spiegel-Tier seltener Bogen. Preise schwanken je nach Liga und Region - prüfe die Live-Handelsseite für den aktuellen Stand."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Nutzen, verkaufen oder halten",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Widowhails Preis wird fast vollständig von der Köcher-Bonus-Rolle getrieben. Niedrige Rollen (150-180%) sind oft fast umsonst; 240%+ und besonders 250% tragen eine Prämie. Da er häufig droppt, sind selbst perfekte Rollen nicht Spiegel-Tier-teuer. Jeder Preis muss mit Datum, Liga und Region gelesen werden."
+      ],
+      "use": {
+        "condition": "Du besitzt einen starken Köcher, dessen numerische Boni sich zu multiplizieren lohnen, und dein Build leitet Wert über den Köcher (Projektile, hinzugefügter Schaden, Angriffsgeschwindigkeit, Leben).",
+        "first": "Rüste den bestgerollten Widowhail aus, den du dir leisten kannst (240%+ ist der Wert-Süßpunkt) und rüste den Köcher weiter auf, während du levelst.",
+        "risk": "Ein schwacher Köcher macht den Bogen zu toter Last; allein die Rolle erzeugt keine Stärke.",
+        "text": [
+          "Am besten, wenn der Köcher bereits großen flachen hinzugefügten Schaden, zweistellige erhöhte Angriffsgeschwindigkeit, +Projektil-Fertigkeitsstufen, Leben und Resistenzen trägt.",
+          "Behalte den Bogen für die gesamte Kampagne, wenn du den Köcher alle 5-10 Level aufrüstest."
+        ]
+      },
+      "sell": {
+        "condition": "Du hast eine niedrige Rolle (150-180%) und keinen Köcher-Plan, oder du spielst einen Build, der waffenlokalen Schaden benötigt.",
+        "first": "Verkaufe niedrige Rollen günstig; sie sind häufig und die meisten Käufer wollen 230%+.",
+        "risk": "Eine niedrige Rolle in der Hoffnung auf einen Preissprung zu halten, ist unwahrscheinlich - das Angebot ist stabil.",
+        "text": [
+          "Ein 150%-Widowhail ohne Köcher-Investition ist den meisten Käufern kaum mehr wert als ein weißer Grober Bogen.",
+          "Liste Rollen ehrlich auf; die Handelsseite zeigt den exakten Prozentwert und Käufer filtern danach."
+        ]
+      },
+      "hold": {
+        "condition": "Du hast eine 240%+ Rolle oder eine Vaal-verderbte 250%+ Rolle und möchtest später möglicherweise zu einem Köcher-basierten Build wechseln.",
+        "first": "Halte hohe Rollen; sie behalten ihren Wert, weil Endgame-Köcher-Builds immer den Multiplikator wollen.",
+        "risk": "Patch-Änderungen an Köcher-Mods oder Runenschmieden könnten die Nachfrage verschieben, aber die Kern-Fantasie ist stabil.",
+        "text": [
+          "Hohe Rollen sind liquide und dürften nicht stark abwerten, solange Köcher-Builds existieren.",
+          "Ein verderbter 250%+ ist eine Trophäen-Rolle, die eine Prämie gegenüber natürlichem 250% erzielt."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risiko und Fehlerkosten",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Hast einen 250%-Widowhail gekauft, aber dein Köcher ist schwach",
+          "gain": "Maximal möglicher Multiplikator ist verfügbar",
+          "loss": "Keine Stärke realisiert; Währung in den Bogen statt in den Köcher investiert",
+          "level": "high",
+          "recommendation": "Gib mehr für den Köcher als für den Bogen aus. Der Köcher ist die Maschine; der Bogen ist der Verstärker."
+        },
+        {
+          "scenario": "Hast den exakten Köcher eines beliebten Builds auf einer anderen Ascendancy/Fertigkeit kopiert",
+          "gain": "Du gleicht einem bewiesenen Aufbau auf dem Papier",
+          "loss": "Deine Fertigkeits-Tags, Konvertierungen oder Support-Gems nutzen möglicherweise nicht dieselben Köcher-Boni, wodurch der Multiplikator verschwendet wird",
+          "level": "high",
+          "recommendation": "Passe den Köcher an die Schadens-Tags und die Konvertierung DEINER Fertigkeit an. Kopiere keinen Köcher blind."
+        },
+        {
+          "scenario": "Hast dich auf lokale Köcher-Mods verlassen (z. B. lokale erhöhte Ausweichen am Köcher-Item)",
+          "gain": "Keiner - diese sind keine 'Boni', die dein Charakter 'erhält'",
+          "loss": "Erwarteter ES/Verteidigung vom Köcher, der nie erscheint",
+          "level": "medium",
+          "recommendation": "Zähle nur globale, implizite und Verderbnis-Köcher-Boni. Lokale Item-Mods skalieren nicht."
+        },
+        {
+          "scenario": "Über 250% verderbt und er ist kaputtgegangen",
+          "gain": "Potenziell ~290%+ Multiplikator bei Erfolg",
+          "loss": "Eine Vaal-Orb kann ein schlechtes Implizit hinzufügen oder die Rolle nicht verbessern",
+          "level": "medium",
+          "recommendation": "Verderbe nur eine 250%-Basis, die du ersetzen kannst; der Nutzen ist real, aber der Preis ist ein verbrauchtes Unique."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Community-Belege und direkte Antworten",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "Offizieller Forum-Build-Thread",
+          "question": "Ich sehe Leute, die Widowhail mit Spark spielen - wie funktioniert ein Bogen bei einem Zauberwirker, und welche Köcher-Werte sind wichtig?",
+          "summary": [
+            "Ein Spieler war verwirrt, dass ein Bogen (Widowhail) in einem Spark-Caster-Build erscheint und fragte, welche Köcher-Affixe zu priorisieren sind."
+          ],
+          "editorialAnalysis": [
+            "Widowhail wird rein wegen seines Köcher-Multiplikators genutzt. Der Build nimmt einen Köcher, der +2 auf Projektil-Fertigkeitsstufen und sehr hohe Projektilgeschwindigkeit gewährt; die multiplizierte Projektil-Skalierung speist Projektil-Beschleunigung und Sparks Schaden pro Treffer. Der Bogen selbst greift nie an."
+          ],
+          "officialAnswer": [
+            "Priorisiere einen Köcher mit +2 Stufen auf alle Projektil-Fertigkeiten und 150%+ Projektilgeschwindigkeit; die Widowhail-Rolle verstärkt diese Zahlen. Ein 230%+ Widowhail ist die praktische Untergrenze für den Build."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds, die Widowhail nutzen"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "Community-Forum-Thread",
+          "question": "Für einen Poisonous-Concoction-Build, welche Köcher-Affixe sollte ich bei Widowhail maximieren?",
+          "summary": [
+            "Ein Spieler fragte, welche Köcher-Mods er stapeln soll, damit Widowhail den meisten Schaden multipliziert."
+          ],
+          "editorialAnalysis": [
+            "Der Build skaliert von +2 Stufen aller Projektil-Fertigkeiten, +X% Angriffsgeschwindigkeit (mindestens 14%) und Genauigkeitswert. Dies sind alles numerische Köcher-Boni, die der Widowhail-Multiplikator verstärkt und mit dem Meisterliche-Befiederung-Passiv stapelt."
+          ],
+          "officialAnswer": [
+            "Staple +2 Projektil-Fertigkeitsstufen (am wichtigsten), dann Angriffsgeschwindigkeit und Genauigkeit am Köcher. Die Widowhail-Rolle multipliziert alle drei, und Meisterliche Befiederung fügt weitere Multiplikatoren hinzu."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Wie der Multiplikator funktioniert"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "Guide / Leveling-Analyse",
+          "question": "Ist Widowhail wirklich gut fürs Leveling, oder ist er nur ein Endgame-Bogen?",
+          "summary": [
+            "Ein Leser hinterfragte, ob Widowhail während der Kampagne genutzt werden sollte oder nur im Endgame."
+          ],
+          "editorialAnalysis": [
+            "Die Leveling-Analyse zeigt, dass ein Widowhail plus ein häufig aufgewerteter seltener Köcher vergleichbare seltene Leveling-Bögen zu ähnlichen Preispunkten übertrifft, weil du den hinzugefügten Flachschaden, die Angriffsgeschwindigkeit, Leben-bei-Tötung und sogar Gem-Stufen des Köchers multiplizierst, während du jeden Köcher überlevelst."
+          ],
+          "officialAnswer": [
+            "Ja - ab etwa Level 35 schlägt ein gut mit Köcher bestückter Widowhail seltene Leveling-Bögen gleicher Kosten, und das Skalieren anderer Boni (Leben bei Treffer, Fertigkeitsgeschwindigkeit, Gem-Stufen) macht ihn zu einem starken Kampagnen-Bogen."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Wie man Widowhail bekommt"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "Guide",
+          "question": "Welche Rolle von Widowhail sollte ich kaufen, und kann ich mehr als 250% bekommen?",
+          "summary": [
+            "Ein Käufer wollte den Wert-Wendepunkt und wissen, ob Verderbnis die natürliche Grenze überschreitet."
+          ],
+          "editorialAnalysis": [
+            "Die natürliche Rolle endet bei 250%. Community-Ratgeber sagen, dass 240-248% fast so stark wie 250% für viel weniger Währung ist, und eine Vaal-Orb-Verderbnis kann über 250% hinausgehen (Berichte bis ~290%+), auf das Risiko eines schlechten Implizit hin."
+          ],
+          "officialAnswer": [
+            "Kaufe 240%+ für das beste Wert-Verhältnis; zahle die Prämie für ein natürliches 250% nur, wenn das Budget es erlaubt. Verderbnis kann 250% überschreiten, kann aber ein unerwünschtes Implizit hinzufügen - verderbe eine ersetzbare Kopie."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Nutzen, verkaufen oder halten"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Probleme und direkte Antworten",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Mein DPS ist nach dem Ausrüsten von Widowhail nicht gestiegen",
+          "directAnswer": [
+            "Widowhail verstärkt nur Köcher-Boni. Wenn dein Köcher wenig Wertvolles zu skalieren hat (oder du einen einzigartigen Köcher nutzt, dessen Mods keine numerischen Boni sind), fügt der Bogen fast nichts hinzu. Prüfe die globalen, impliziten und Verderbnis-Boni deines Köchers."
+          ],
+          "checks": [
+            "Öffne den Köcher und liste seine globalen Boni auf (hinzugefügter Schaden, Angriffsgeschwindigkeit, Leben, Resistenzen, Fertigkeitsstufen).",
+            "Bestätige, dass diese Boni numerisch und global sind, nicht lokal am Köcher-Item.",
+            "Verifiziere, dass die Widowhail-Rolle hoch ist (230%+ ideal)."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Wie der Multiplikator funktioniert"
+            }
+          ]
+        },
+        {
+          "symptom": "Ich habe den Köcher eines Streamers kopiert, aber mein Build fühlt sich schwach an",
+          "directAnswer": [
+            "Köcher-Wert ist build-spezifisch. Ein für Sparks Projektil-Skalierung gebauter Köcher kann bei einem Lightning-Arrow-Build nutzlos sein, wenn die Schadens-Tags oder Konvertierungen abweichen. Passe den Köcher an deine Fertigkeit an."
+          ],
+          "checks": [
+            "Prüfe, welche Schadensarten und Tags deine Hauptfertigkeit tatsächlich nutzt.",
+            "Wähle Köcher-Boni, die zu diesen Tags passen (hinzugefügte Kälte vs. Physik, Projektilgeschwindigkeit vs. Angriffsgeschwindigkeit)."
+          ]
+        },
+        {
+          "symptom": "Lokale Köcher-Mods, die ich erwartet hatte, sind nicht skaliert",
+          "directAnswer": [
+            "Nur Boni, die dein Charakter vom Köcher erhält, skalieren. Lokale Mods, die nur das Köcher-Item selbst betreffen, werden nicht 'erhalten' und nicht multipliziert."
+          ],
+          "checks": [
+            "Vergleiche die globalen Boni des Köchers mit seinen lokalen Modifikationen.",
+            "Verlass dich auf implizite, explizite und Verderbnis-Boni, nicht auf lokale Item-Werte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Video-Walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage: wie die Widowhail-Budget-Variante funktioniert (goldfarmingGUIDE)",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE (via Mobalytics-Build-Guide)",
+          "takeaway": "Walkthrough der Budget-Widowhail-Spark-Blood-Mage-Variante, inklusive Köcher-Auswahl und wie der Köcher-Multiplikator den Schaden treibt. Abschnittsbezeichnungen sind ungefähr.",
+          "timestamps": [
+            {
+              "label": "Warum Widowhail-Budget-Variante",
+              "time": "00:00"
+            },
+            {
+              "label": "Köcher-Auswahl und Rollen",
+              "time": "03:30"
+            },
+            {
+              "label": "Walkthrough der Schadens-Skalierung",
+              "time": "08:00"
+            },
+            {
+              "label": "Mapping-Demonstration",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Medien-Galerie",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Widowhail aktueller Tooltip (Grober Bogen, (150-250)% erhöhte Boni des ausrüsteten Köchers)",
+          "note": "Zeige die einzigartige Modifikation und die 50%-Roll-Stufen. Der Basis-Physiskschaden ist bewusst niedrig.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Köcher vor/nach Widowhail-Multiplikator",
+          "note": "Veranschauliche eine einzelne Köcher-Zeile (z. B. +40 Leben), die zu +100 / +120 / +140 bei 150 / 200 / 250% wird.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Vergleich niedrige gegen hohe Rolle",
+          "note": "Nebeneinander ein 150% und ein 250% Widowhail, um die Multiplikator-Lücke beim selben Köcher zu zeigen.",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "Runengeschmiedete Widowhail-Basis",
+          "note": "Beschreibe die runengeschmiedete Basis, die höheren Physiskschaden und eine Runen-Wacht-Basis erhält; der einzigartige Köcher-Bonus-Mod bleibt erhalten.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Verbundene Inhalte",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "Ein erstklassiges Widowhail-Zuhause: Projektilanzahl und hinzugefügter Schaden skalieren stark mit dem Köcher-Multiplikator.",
+          "href": "/de/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "Die Signature-Deadeye-Fertigkeit, die von multiplizierten Köcher-Projektil- und Schadensboni profitiert.",
+          "href": "/de/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runen und Seelenkerne",
+          "description": "Das Einsetzen der richtigen Rune in deinen Köcher kann einen Bonus hinzufügen, den Widowhail dann verstärkt.",
+          "href": "/de/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Flüssiges Verisium",
+          "description": "Das Material, das am Verisium-Amboss für Runenschmieden verwendet wird, einschließlich des runengeschmiedeten Widowhail.",
+          "href": "/de/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runen von Aldur - Reste-Rezepte",
+          "description": "Wie Runenschmieden und Runenmeister-Crafting funktionieren, relevant für den runengeschmiedeten Widowhail.",
+          "href": "/de/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runen von Aldur",
+          "description": "Der aktuelle Patch, der Runenschmieden einführte, das System, das Uniques auf niedrigem Level wie Widowhail aufwertet.",
+          "href": "/de/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Patch-Verlauf und aktuell gegen Legacy",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Aktuell (0.5.4, natürlicher Drop)",
+          "changes": [
+            "Widowhail ist ein einzigartiger Grober Bogen mit (150-250)% erhöhte Boni des ausrüsteten Köchers. Die Rolle erfolgt in 50%-Stufen (150 / 200 / 250). Dies ist die einzige aktuelle Version; es gibt keinen separaten Legacy-Köcher-Bonus-Wert, der damit verwechselt werden könnte."
+          ]
+        },
+        {
+          "version": "Runenschmieden (0.5.0 Liga - Runen von Aldur)",
+          "changes": [
+            "Einzigartiges Runenschmieden wurde eingeführt, das das Aufwerten von Uniques auf niedrigem Level (Level-Voraussetzung unter 55) erlaubt. Widowhail (Level 1) erfüllt die Voraussetzungen: Der einzigartige Köcher-Bonus-Mod bleibt erhalten und die Basis erhält höheren Physiskschaden plus eine runengeschmiedete Basis. Es gibt keine Göttliche-Orb-Änderung an der Köcher-Bonus-Rolle - es ist ein festes Wertebereich, kein variables Neu-Rollen."
+          ]
+        },
+        {
+          "version": "Wie der Handel die Version identifiziert",
+          "changes": [
+            "Die Handelsseite zeigt den exakten Prozentwert 'erhöhte Boni des ausrüsteten Köchers'. Käufer filtern direkt danach. Ein runengeschmiedeter Widowhail ist ein eigener Basistyp mit Runen-Wacht und wird separat vom normalen Unique gelistet."
+          ]
+        },
+        {
+          "version": "Hinweis zu Göttliche Orb und Verderbnis",
+          "changes": [
+            "Die Köcher-Bonus-Rolle ist ein festes Wertebereich, also ändert sie eine Göttliche Orb nicht. Eine Vaal-Orb-Verderbnis kann 250% überschreiten (Community-Berichte bis ~290%+), kann aber ein unerwünschtes Implizit hinzufügen. Prüfe die genaue Verderbnis-Obergrenze im Spiel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Quellen und Verifikation",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 Patch Notes (offizielles Forum)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Widowhail (Basiswerte, Mechanik, Pfeil-Beispiel)",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant - Wie man Widowhail bekommt (Drop, Roll-Wert, Verderbnis)",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "MaxRoll - Beste Leveling-Uniques (Widowhail Köcher-Skalierungs-Analyse)",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Offizieller Forum-Build-Thread - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Community-Forum-Thread - Widowhail Poisonous-Concoction-Setup",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "VIDEO",
+          "description": "goldfarmingGUIDE - Spark Blood Mage Widowhail Budget-Variante",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Änderungsprotokoll",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Erstveröffentlichung mit der Widowhail-Köcher-Bonus-Multiplikator-Formel, welche Köcher-Mods skalieren, Wert von niedrigen gegenüber hohen Rollen, Köcher-Auswahl, Runenschmieden und build-spezifischen Warnungen."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - Wie man Widowhail bekommt",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Beste Leveling-Uniques",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "Offizielles Forum - Widowhail Spark Infernalist Build",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "Community-Forum - Widowhail Poisonous-Concoction-Setup",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Spark Blood Mage Widowhail Variante",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "Widowhail-Guide: Skalierung des Köcher-Bonus, beste Rollen und Runenschmieden (PoE2 0.5)",
+    "description": "Wie Widowhail in Path of Exile 2 funktioniert: der (150-250)% erhöhte Boni des ausrüsteten Köchers-Multiplikator, die Basis x (1 + W%) Formel, welche Köcher-Mods skalieren, Roll-Wert, Köcher-Auswahl und Runenschmieden.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "widowhail",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

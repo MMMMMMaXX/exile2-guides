@@ -8,7 +8,7 @@ type ItemValuationSection = Extract<ItemSection, { type: "valuation" }>;
 type ItemOutcomesSection = Extract<ItemSection, { type: "outcomes" }>;
 
 const labels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     decisionCondition: string;
     decisionFirst: string;
@@ -66,7 +66,7 @@ export function ItemValuationTabs({
   section: ItemValuationSection;
 }) {
   const [active, setActive] = useState<"use" | "sell" | "hold">("use");
-  const text = labels[locale];
+  const text = labels[locale === "zh-cn" ? "zh-cn" : "en"];
   const option = section[active];
 
   return (
@@ -125,7 +125,7 @@ export function ItemOutcomesTable({
   locale: ContentLocale;
   section: ItemOutcomesSection;
 }) {
-  const text = labels[locale];
+  const text = labels[locale === "zh-cn" ? "zh-cn" : "en"];
   const anyHigh = section.rows.some((row) => row.level === "high");
   const availableFilters = [
     ...new Set([

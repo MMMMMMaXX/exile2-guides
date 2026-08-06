@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { TableOfContentsItem } from "../../lib/content/table-of-contents";
+import type { ContentLocale } from "../../lib/content/constants";
 import type { BreadcrumbItem } from "../../lib/seo/breadcrumb";
 import { CopyPageLink } from "../content/copy-page-link";
 import { ReadingProgress } from "../content/reading-progress";
@@ -17,7 +18,7 @@ export type ArticleLayoutProps = {
   contentType?: string;
   image?: string;
   imageAlt?: string;
-  locale?: "en" | "zh-cn";
+  locale?: ContentLocale;
   patch: string;
   rail?: ReactNode;
   readingMinutes?: number;

@@ -1,0 +1,668 @@
+{
+  "id": "lightning-rod",
+  "slug": "lightning-rod",
+  "locale": "es",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guía de Lightning Rod — Límites de Vara, Carga, Lightning Arrow y Configuración de Jefe",
+  "shortTitle": "Lightning Rod",
+  "summary": "Lightning Rod es una habilidad de objeto desplegado: colocas un pilar de rayo en una ubicación, este se carga y Lightning Arrow (o cualquier cadena que lo alcance) provoca una ráfaga desde la vara. Esta guía explica el límite de varas, el requisito de carga, por qué los vídeos previos a la 0.4 de 'desencadenar todas las varas al instante' están desactualizados, cómo Lightning Arrow realmente provoca la ráfaga, los límites de la interacción con Mirage Archer y la cantidad de varas en mapping frente a bossing.",
+  "description": "Guía a fondo de Lightning Rod: reglas de objeto desplegado y límite de varas, carga y ráfaga desencadenada, interacción en cadena de Lightning Arrow, cambios de la 0.4 que invalidaron los viejos vídeos de desencadenado instantáneo, elección de soportes (Scattershot / Chain / Concentrated Area), propiedad del conjunto de armas, secuencia de combo, conteo de mapping frente a bossing, límites conocidos de Mirage Archer, solución de problemas y evidencia de la comunidad.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "lightning",
+    "duration",
+    "deployed-object"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/lightning-rod.webp",
+  "cardImage": "/images/skills/lightning-rod.webp",
+  "imageAlt": "Lightning Rod deployed lightning pillar skill icon",
+  "tags": [
+    "attack",
+    "projectile",
+    "lightning",
+    "duration",
+    "deployed-object"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta Rápida: Coloca Vara, Luego Desencadena con Lightning Arrow",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lightning Rod no es un ataque de daño directo, es un objeto desplegado. Colocas una vara en una ubicación; se carga; cuando Lightning Arrow (o una cadena que la alcance) la atraviesa, la vara libera una ráfaga.",
+        "Así que el bucle es: precoloca algunas varas y luego dispara Lightning Arrow a través de las varas y los enemigos. Si la vara no terminó de cargarse, o Lightning Arrow nunca encadena hacia ella, no hay ráfaga."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Estadísticas Clave y Adquisición",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Active (Deployed Object · Lightning · Duration)",
+          "notes": [
+            "Etiquetado como attack, projectile, lightning y duration."
+          ]
+        },
+        {
+          "label": "Weapon requirement",
+          "value": "Bow",
+          "notes": [
+            "Normalmente usado en un conjunto de arco junto con Lightning Arrow."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Skill Gem (tier skill)",
+          "notes": [
+            "Grabada a partir de una Uncut Skill Gem."
+          ]
+        },
+        {
+          "label": "Role",
+          "value": "Stationary lightning burst on trigger",
+          "notes": [
+            "AoE sostenida que necesita que se dispare Lightning Arrow."
+          ]
+        },
+        {
+          "label": "Trigger",
+          "value": "Lightning Arrow / chain reaching the rod",
+          "notes": [
+            "No es una trampa de autodetonación; necesita una cadena externa."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deployed-object",
+      "order": 30,
+      "title": "Reglas del Objeto Vara",
+      "type": "deployed-object",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cada uso suelta una vara de rayo en la ubicación de suelo objetivo. La vara existe durante una duración limitada y solo puede hacer ráfaga tras terminar de cargarse.",
+        "Hay un límite estricto de cuántas varas pueden existir a la vez. Los viejos vídeos que mostraban una pantalla llena de varas disparándose al instante se hicieron antes del tope y los cambios de carga de la 0.4 y ya no reflejan el cliente actual."
+      ],
+      "keyValues": [
+        {
+          "label": "Simultaneous limit",
+          "value": "Capped on current client",
+          "notes": [
+            "Verifica el tope exacto en el cliente 0.5.4; las grabaciones previas a la 0.4 de 'muchas varas a la vez' están desactualizadas."
+          ]
+        },
+        {
+          "label": "Duration",
+          "value": "Limited lifetime",
+          "notes": [
+            "Una vara caduca si no se desencadena dentro de su ventana; vuelve a colocarla según sea necesario."
+          ]
+        },
+        {
+          "label": "Charge-up",
+          "value": "Required before burst",
+          "notes": [
+            "Lightning Arrow ya no omite el tiempo de carga de la vara tras la 0.4."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rod-rules-table",
+      "order": 35,
+      "title": "Tabla de Comportamiento de la Vara",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Property",
+        "Current behaviour",
+        "Practical note"
+      ],
+      "rows": [
+        [
+          "Simultaneous rods",
+          "Hard cap on client 0.5.4",
+          "Do not pre-place more than the cap; extras do not spawn"
+        ],
+        [
+          "Charge-up",
+          "Must complete before burst",
+          "0.4 removed the instant-trigger shortcut"
+        ],
+        [
+          "Trigger",
+          "Lightning Arrow / chain to the rod",
+          "No chain reaching the rod = no burst"
+        ],
+        [
+          "Lifetime",
+          "Expires if unused",
+          "Re-place rods during long boss phases"
+        ]
+      ]
+    },
+    {
+      "id": "object-limits",
+      "order": 40,
+      "title": "Relación entre Jugador, Mirage y el Tope",
+      "type": "object-limits",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El tope de varas cuenta las varas de todas las fuentes, incluidas las creadas por un clon de Mirage Archer. Si tu Mirage también está soltando varas, puedes alcanzar el tope compartido más rápido y dejar sin sitio a tus propias colocaciones.",
+        "Como el tope es compartido, planifica el número de varas en torno a él: en peleas de jefe normalmente quieres tus propias varas primero, y luego dejas que la Mirage añada algunas si queda margen."
+      ],
+      "keyValues": [
+        {
+          "label": "Shared cap",
+          "value": "Player + Mirage rods share the limit",
+          "notes": [
+            "Las varas de la Mirage consumen la misma reserva que las tuyas."
+          ]
+        },
+        {
+          "label": "Bossing count",
+          "value": "Fewer, well-placed rods",
+          "notes": [
+            "Coloca varas en la ruta del jefe, no dispersas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 50,
+      "title": "Lógica de Desencadenado de Lightning Arrow",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lightning Arrow dispara una flecha que encadena rayo a enemigos cercanos. Cuando esa cadena alcanza una vara cargada, la vara hace ráfaga. La ráfaga es el propio daño de rayo de la vara, separado de la flecha y de la cadena.",
+        "El desencadenado requiere que la vara esté cargada y que la cadena realmente la alcance. Los grupos densos ayudan porque la cadena salta entre enemigos y es más probable que toque una vara; una vara solitaria lejos del combate puede que nunca se encadene.",
+        "La Lightning Arrow creada por la Mirage que interactúa con las varas del jugador (y viceversa) tiene límites conocidos en el cliente actual: trata el desencadenado de varas entre dueños distintos como poco fiable y verifícalo por parche."
+      ],
+      "keyValues": [
+        {
+          "label": "Requires charge",
+          "value": "Rod must be charged",
+          "notes": [
+            "Una vara sin cargar no hace nada cuando se encadena."
+          ]
+        },
+        {
+          "label": "Chain reach",
+          "value": "Lightning Arrow chain must touch the rod",
+          "notes": [
+            "Coloca las varas dentro de la ruta de la cadena."
+          ]
+        },
+        {
+          "label": "Mirage cross-trigger",
+          "value": "Limited / buggy",
+          "notes": [
+            "La interacción vara del jugador + Lightning Arrow de la Mirage está actualmente restringida."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "Mecánicas: Carga, Ráfaga y Frecuencia",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El valor de una vara proviene enteramente de su ráfaga, así que la frecuencia de ráfaga equivale a cuán a menudo Lightning Arrow alcanza una vara cargada. Más varas en la ruta de la cadena significan ráfagas más frecuentes, hasta el tope.",
+        "Como la 0.4 obligó a las varas a cargarse, el viejo estilo de 'coloca vara, ráfaga instantánea' desapareció. Ahora precolocas varas ligeramente por delante del combate para que estén cargadas cuando llegue Lightning Arrow.",
+        "El daño y el radio de la ráfaga escalan con el nivel de la habilidad y los soportes; la vara en sí no se mueve, así que la colocación es la principal forma de expresar la habilidad."
+      ],
+      "bullets": [
+        "La vara debe cargar antes de poder hacer ráfaga.",
+        "La cadena de Lightning Arrow es el desencadenante, no la fuente de daño.",
+        "Más varas en la ruta de la cadena = más ráfagas, hasta el tope.",
+        "Precoloca varas por delante del enfrentamiento."
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "Compatibilidad de Soportes",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "keyValues": [
+        {
+          "label": "Concentrated Area",
+          "value": "Core (boss)",
+          "notes": [
+            "Aprieta la ráfaga sobre un único objetivo para daño de jefe."
+          ]
+        },
+        {
+          "label": "Scattershot",
+          "value": "Situational (clear)",
+          "notes": [
+            "Más varas colocadas por uso ayuda a limpiar pantalla pero consume el tope rápido."
+          ]
+        },
+        {
+          "label": "Chain",
+          "value": "Situational",
+          "notes": [
+            "Ayuda a que Lightning Arrow alcance las varas, pero es un sistema distinto de la ráfaga de la vara."
+          ]
+        },
+        {
+          "label": "Lightning Penetration",
+          "value": "Core",
+          "notes": [
+            "Escala el daño de ráfaga de la vara contra enemigos resistentes al rayo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 80,
+      "title": "Cargas de Soportes por Etapa",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Leveling",
+          "action": "Lightning Penetration + 1 area support",
+          "result": "Vara baratas que aún hacen ráfaga a través de las resistencias de la campaña."
+        },
+        {
+          "label": "Mapping",
+          "action": "Scattershot + Chain",
+          "result": "Más varas en la ruta para una limpieza fluida de grupos."
+        },
+        {
+          "label": "Pinnacle",
+          "action": "Concentrated Area + Lightning Penetration",
+          "result": "Ráfagas de vara enfocadas y más potentes sobre el jefe."
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "Conjunto de Armas y Propiedad de la Habilidad",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Las varas pertenecen al conjunto de armas que lleva Lightning Rod. El daño y los soportes de una vara provienen de ese conjunto, no de donde esté insertada Lightning Arrow.",
+        "Mantén Lightning Rod y Lightning Arrow en el mismo conjunto de arco para que los soportes de la vara y la flecha desencadenante permanezcan coherentes. Separarlos en conjuntos distintos es una causa frecuente de los reportes de 'mis varas no hacen daño'."
+      ],
+      "keyValues": [
+        {
+          "label": "Set ownership",
+          "value": "Rods use the Lightning Rod weapon set",
+          "notes": [
+            "El daño de la vara escala a partir de los soportes de ese conjunto."
+          ]
+        },
+        {
+          "label": "Keep with Lightning Arrow",
+          "value": "Same bow set",
+          "notes": [
+            "Evita soportes desajustados y confusión de desencadenado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 100,
+      "title": "Secuencia de Combo",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Pre-place",
+          "action": "Drop rods ahead of the pack / on the boss path",
+          "result": "Las varas comienzan a cargarse."
+        },
+        {
+          "label": "Charge",
+          "action": "Wait for rods to finish charging",
+          "result": "Vara listas para hacer ráfaga."
+        },
+        {
+          "label": "Trigger",
+          "action": "Fire Lightning Arrow through rods and enemies",
+          "result": "La cadena alcanza las varas cargadas y estas hacen ráfaga."
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "Rotación de Mapping",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "En mapping rápido a menudo omites las varas por completo y simplemente limpias con Lightning Arrow, porque colocar y cargar varas ralentiza la limpieza de pantalla. Las varas dan fruto cuando un grupo es denso o un raro es resistente.",
+        "Cuando las usas en mapping, precoloca 2-3 varas en un punto estrecho y luego encadena a través de ellas. No te detengas a colocar el tope completo de varas durante el mapping."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Rotación de Bossing",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Set up",
+          "action": "Pre-place rods on the boss's movement path before engaging",
+          "result": "Vara cargadas para cuando empieza la pelea."
+        },
+        {
+          "label": "Reset",
+          "action": "Re-place rods after they expire or burst",
+          "result": "Mantiene un campo de varas estable durante la larga pelea."
+        },
+        {
+          "label": "Trigger",
+          "action": "Chain Lightning Arrow through rods on cooldown",
+          "result": "Ráfagas regulares de vara sobre el jefe."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Dónde Se Usa",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lightning Rod es el pilar de DPS de objetivo único y estacionario de Lightning Arrow Deadeye y de muchas builds de nivelado de Ice Shot. Convierte Lightning Arrow de una habilidad de limpieza en una herramienta de ráfaga sobre rares y jefes.",
+        "También se inserta en algunas configuraciones de farmer de Lightning Arrow donde las ráfagas sostenidas de vara reemplazan el spam repetitivo de flechas sobre objetivos resistentes."
+      ],
+      "bullets": [
+        "Lightning Arrow Deadeye: ráfagas de vara para rares y jefes.",
+        "Ice Shot leveling: tomada prestada como suplemento de rayo estacionario.",
+        "Lightning Arrow farmers: ráfaga sostenida sobre objetivos resistentes."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Solución de Problemas",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Rod does not burst",
+          "action": "Not charged yet, or Lightning Arrow never chained to it",
+          "result": "Precoloca antes y apunta Lightning Arrow a través de la vara."
+        },
+        {
+          "label": "Few rods appear",
+          "action": "Hit the shared simultaneous cap",
+          "result": "Reduce las colocaciones o evita que la Mirage también suelte varas."
+        },
+        {
+          "label": "Rods vanish",
+          "action": "Expired before trigger",
+          "result": "Vuelve a colocar durante fases largas; no precoloques demasiado pronto."
+        },
+        {
+          "label": "No damage",
+          "action": "Rods on a different weapon set than their supports",
+          "result": "Mantén Lightning Rod y sus soportes en un mismo conjunto."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "Evidencia de la Comunidad",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El mayor desajuste de la comunidad son las viejas grabaciones: los vídeos previos a la 0.4 muestran varas disparándose al instante y en gran número. En el cliente actual el tope y la carga lo hacen imposible, así que los jugadores que siguen esos vídeos ven 'varas que no hacen nada'.",
+        "El segundo grupo es Mirage Archer: los jugadores esperan que la Lightning Arrow de una Mirage desencadene sus varas (o viceversa) y chocan con los límites de interacción actuales. Trata el desencadenado entre dueños distintos como poco fiable hasta que una nota de parche lo confirme."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "Vídeo Explicativo y Marcas de Tiempo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Dr Dark Walker",
+          "label": "Chainstorm Deadeye — Lightning Arrow + Lightning Rod",
+          "description": "Build de Deadeye que usa Lightning Rod como capa de ráfaga de Lightning Arrow, con cámara lenta de la carga y la ráfaga de la vara.",
+          "takeaway": "Observa cómo se precolocan las varas y luego las encadena Lightning Arrow.",
+          "url": "https://www.youtube.com/watch?v=Imh1eVd43TU",
+          "timestamps": [
+            {
+              "label": "Build y configuración de vara",
+              "time": "0:00"
+            },
+            {
+              "label": "Carga y ráfaga de la vara",
+              "time": "5:00"
+            },
+            {
+              "label": "Colocación de vara en jefe",
+              "time": "12:00"
+            }
+          ]
+        },
+        {
+          "creator": "KaidGames2",
+          "label": "Lightning Arrow Ranger Build 0.5",
+          "description": "Build de Ranger 0.5 centrada en Lightning Arrow que también usa Lightning Rod como capa de ráfaga.",
+          "takeaway": "Muestra el par Lightning Arrow + Rod en un contexto real de limpieza y jefe.",
+          "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg",
+          "timestamps": [
+            {
+              "label": "Configuración de la habilidad",
+              "time": "0:00"
+            },
+            {
+              "label": "Demo de ráfaga de vara",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fuentes y Verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Notas del parche del foro oficial de GGG que confirman los cambios de tope y carga de vara de la 0.4.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB y la Wiki de la Comunidad para el límite de varas, duración, carga y datos de desencadenado.",
+          "url": "https://www.poe2wiki.net/wiki/Lightning_Rod"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Farmer de Lightning Arrow de Mobalytics y las muestras de Dr Dark Walker / KaidGames2 para la colocación de varas y el bucle de desencadenado.",
+          "url": "https://mobalytics.gg/poe-2/builds/lightning-arrow-farmer-fubgun"
+        },
+        {
+          "label": "Community",
+          "description": "Hilos de Reddit que documentan los vídeos de varas previos a la 0.4 desactualizados y los límites de interacción de Mirage Archer.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Lightning%20Rod&restrict_sr=1"
+        },
+        {
+          "label": "Official Forums",
+          "description": "Foros oficiales de GGG donde el personal confirma el comportamiento de objeto desplegado y de Lightning Arrow.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit Community",
+          "description": "Debates de Reddit r/PathOfExile2 para feedback de versiones de Lightning Rod.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Tope y carga de vara confirmados como cambiados tras la 0.4 en el cliente 0.5.4.",
+          "Desencadenado en cadena de Lightning Arrow confirmado colocando varas en la ruta de la cadena.",
+          "Desencadenado cruzado entre dueños de la Mirage marcado como limitado."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historial de Parches",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-02-10",
+          "changes": [
+            "La 0.2 introdujo Lightning Rod como habilidad de objeto desplegado con Lightning Arrow desencadenando su ráfaga."
+          ]
+        },
+        {
+          "date": "2026-04-20",
+          "changes": [
+            "La 0.4 ajustó el tope simultáneo de varas y obligó a las varas a cargarse; Lightning Arrow ya no omite el tiempo de carga de la vara. Los viejos vídeos de desencadenado instantáneo quedaron desactualizados."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: Lightning Rod mantiene el tope y la carga de la 0.4; se usan aquí los números del cliente actual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "Registro de Cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Lanzamiento inicial: límite de varas, carga, desencadenado de Lightning Arrow, migración de la 0.4, compatibilidad de soportes, propiedad del conjunto de armas, combo, rotaciones de mapping / bossing, límites de Mirage y evidencia de la comunidad."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Lightning Rod",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Lightning_Rod"
+    },
+    {
+      "label": "Mobalytics — Lightning Arrow Farmer",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/lightning-arrow-farmer-fubgun"
+    },
+    {
+      "label": "Reddit — Lightning Rod discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Lightning%20Rod&restrict_sr=1"
+    },
+    {
+      "label": "Dr Dark Walker — Chainstorm Deadeye",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Imh1eVd43TU"
+    },
+    {
+      "label": "KaidGames2 — Lightning Arrow Ranger 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Lightning Rod — Límites de Vara, Carga, Lightning Arrow y Configuración de Jefe",
+    "description": "Guía de Lightning Rod: límite de vara y carga, desencadenado en cadena de Lightning Arrow, cambios de la 0.4 que desactualizaron los viejos vídeos, elección de soportes, propiedad del conjunto de armas, combo, conteo de mapping frente a bossing, límites de Mirage Archer y solución de problemas.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "lightning-rod",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

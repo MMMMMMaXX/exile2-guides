@@ -1,0 +1,447 @@
+{
+  "id": "herald-of-ice",
+  "slug": "herald-of-ice",
+  "locale": "ko",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "서리의 전령(Herald of Ice) 가이드 — 냉기 오라, 파쇄 폭발 및 정령",
+  "shortTitle": "서리의 전령",
+  "summary": "서리의 전령은 전령(Herald, 오라) 스킬입니다. 추가 냉기 피해를 부여하고, 빙결된 적이 죽을 때(파쇄) 주변 적에게 냉기 피해를 주는 얼음 폭발을 일으킵니다. 이 가이드에서는 정령(Spirit) 점유 경쟁, 파쇄 폭발의 발동 조건, 빙결 화살(Ice Shot) / 빙결의 징표(Freezing Mark)와의 루프, 서리의 전령이 서리의 번개(Herald of Thunder) / 서리의 잿불(Herald of Ash)과 어떻게 다른지, 그리고 왜 그것이 냉기 활 빌드의 청소 핵심인지 설명합니다.",
+  "description": "서리의 전령 심층 가이드: 오라 보너스와 파쇄 폭발 메커니즘, 정령 예약, 다른 전령과의 비교, 권장 지속 시간 / 범위 / 냉기 서포트, 빙결 화살 데드아이(Deadeye) 역할, 파쇄 미발동 및 정령 초과 원인과 직접 답변, 영상 타임스탬프와 실제 커뮤니티 질문.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "spirit",
+  "skillTags": [
+    "herald",
+    "aura",
+    "cold",
+    "shatter",
+    "aoe",
+    "spirit"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "aoe",
+    "auras",
+    "bow",
+    "cold",
+    "spirit",
+    "triggers"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "개요: 오라 버프 + 파쇄 연쇄",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "서리의 전령은 전령(Herald, 오라) 스킬입니다. 한 번 활성화하면 추가 냉기 피해 층을 부여하고(공격과 스펠에 더 많은 냉기가 실림), 핵심적으로 — 빙결된 적이 죽을 때(파쇄) 주변 적에게 냉기 피해를 주는 얼음 폭발을 일으킵니다. 그것은 '버프 + 처치 시 연쇄'라는 이중 도구입니다.",
+        "청소 로직은 우아합니다. 냉기 스킬로 몹을 빙결시키고, 빙결된 몹은 죽을 때 파쇄되며, 그 파쇄가 주변 무리를 빙결 / 피해시키는 얼음 폭발을 일으킵니다. 이는 '빙결 → 사망 → 파쇄 → 폭발 → 재빙결' 눈덩이 효과를 만듭니다. 이것이 바로 그것이 냉기 활 빌드의 청소 핵심인 이유입니다.",
+        "대가는 정령입니다. 전령 스킬은 정령을 예약합니다(지속 버프 / 다른 전령 / 트리거 젬과 예산을 두고 경쟁). 정령이 빠듯한 빌드에서는 서리의 전령을 돌릴지 여부가 종종 '청소 효율'과 '다른 핵심 오라' 사이의 트레이드오프가 됩니다."
+      ],
+      "bullets": [
+        "본질: 오라 보너스(추가 냉기) + 파쇄 폭발(처치 시 연쇄).",
+        "청소 로직: 빙결 → 사망 → 파쇄 → 폭발 → 재빙결, 눈덩이 효과.",
+        "대가: 정령을 예약하며, 다른 전령 / 트리거 젬과 경쟁.",
+        "흔한 파트너: 빙결 화살 / 빙결의 징표 냉기 시스템."
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "주요 능력치 및 획득",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "분류",
+          "value": "Herald (Aura · Cold · Shatter)",
+          "notes": [
+            "herald, aura, cold, shatter, aoe, spirit 태그 보유."
+          ]
+        },
+        {
+          "label": "무기 요구",
+          "value": "없음 (오라)",
+          "notes": [
+            "오라 스킬로서 보통 무기와 무관하며, 어떤 젬 소켓에도 장착됩니다."
+          ]
+        },
+        {
+          "label": "획득",
+          "value": "Uncut Herald Gem",
+          "notes": [
+            "캠페인 또는 드롭으로 얻는 Uncut Herald Gem을 통해 해금."
+          ]
+        },
+        {
+          "label": "정령 예약",
+          "value": "높음 (예약 예산)",
+          "notes": [
+            "다른 지속 버프 / 전령 / 트리거 젬과 정령을 두고 경쟁."
+          ]
+        },
+        {
+          "label": "파쇄 발동",
+          "value": "빙결된 적의 사망 시",
+          "notes": [
+            "'빙결된' 적의 사망만 발동하며, 일반 사망은 발동하지 않습니다."
+          ]
+        },
+        {
+          "label": "품질",
+          "value": "냉기 보너스 / 폭발 범위 향상",
+          "notes": [
+            "높은 품질은 보통 냉기 보너스나 파쇄 폭발의 범위 / 피해를 증폭시킵니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shatter-mechanic",
+      "order": 30,
+      "title": "메커니즘: 파쇄 폭발이 발동하는 방식",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "발동 조건: 파쇄 폭발은 오직 '빙결된 적의 사망' 시에만 일어납니다. 즉, 먼저 대상을 빙결시킨 다음 죽여야 파쇄가 얼음 폭발을 일으킵니다. 빙결 없이 죽이면 일반 사망은 서리의 전령의 폭발을 일으키지 않습니다 — 가장 흔한 초보 실수입니다.",
+        "폭발 효과: 파쇄로 일어난 얼음 폭발은 주변 적에게 냉기 피해를 주며, 폭발 자체도 주변 적을 빙결시키거나 빙결 누적을 진행시킬 수 있으므로, 폭발 후 이웃이 더 쉽게 빙결되고 빙결 후 사망 후 폭발 — 연쇄가 됩니다. 촘촘한 무리에서는 한 번에 화면을 청소할 수 있습니다.",
+        "보너스 부분: 서리의 전령은 또한 공격 / 스펠에 냉기 피해를 더하므로, 파쇄에 의존하지 않더라도 켜둔 상태로 꾸준히 냉기 출력을 높입니다. 그것은 '지속 냉기 피해 + 능동 파쇄 연쇄'의 조합입니다."
+      ],
+      "bullets": [
+        "파쇄 폭발은 오직 '빙결된 적의 사망' 시에만 발생하며, 일반 사망은 발동하지 않음.",
+        "폭발은 주변에 냉기를 주고 빙결시키거나 진행시켜 연쇄함.",
+        "상시 적용은 또한 냉기를 더하며, 지속 냉기 + 능동 파쇄 조합."
+      ]
+    },
+    {
+      "id": "herald-compare",
+      "order": 40,
+      "title": "비교: 서리의 전령 vs 다른 전령",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "전령",
+        "추가 피해",
+        "처치 / 발동 효과",
+        "일반적 역할"
+      ],
+      "rows": [
+        [
+          "서리의 전령",
+          "냉기 피해",
+          "빙결된 적의 사망 → 얼음 폭발",
+          "냉기 청소 핵심, 파쇄 연쇄"
+        ],
+        [
+          "서리의 번개",
+          "번개 피해",
+          "감전된 적의 사망 → 번개 타격",
+          "번개 청소, 감전 연쇄"
+        ],
+        [
+          "서리의 잿불",
+          "화염 피해",
+          "불탄 적의 사망 → 화염 폭발",
+          "화염 시스템, 점화 연쇄"
+        ],
+        [
+          "기타 전령",
+          "해당 원소 피해",
+          "원소별 발동",
+          "해당 원소 시스템 전용"
+        ]
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 50,
+      "title": "권장 서포트 젬",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Cold Infusion / Added Cold",
+          "priority": "core",
+          "notes": [
+            "전령이 제공하는 냉기 보너스와 파쇄 폭발의 냉기 피해를 증폭시킵니다.",
+            "냉기 빌드의 핵심."
+          ]
+        },
+        {
+          "label": "Magnified Area",
+          "priority": "core",
+          "notes": [
+            "파쇄 폭발 반경을 키워 연쇄가 더 많은 적을 덮도록 만듭니다 — 청소 품질의 변화.",
+            "많은 냉기 빌드가 전령에 대해 필수로 취급합니다."
+          ]
+        },
+        {
+          "label": "Increased Duration (오라일 경우)",
+          "priority": "situational",
+          "notes": [
+            "클라이언트가 오라 / 효과 지속 시간 연장을 허용한다면 재시전 빈도를 줄입니다.",
+            "현재 클라이언트가 전령에 매핑되는지 확인하세요."
+          ]
+        },
+        {
+          "label": "Spell Cascade",
+          "priority": "optional",
+          "notes": [
+            "파쇄 폭발이 스펠 효과로 취급된다면 Cascade가 그 도달 범위를 넓힐 수 있습니다.",
+            "정확한 이득은 클라이언트마다 다름."
+          ]
+        },
+        {
+          "label": "Energy Retention / Spirit (가능할 경우)",
+          "priority": "optional",
+          "notes": [
+            "클라이언트가 정령 비용 감소 서포트를 제공한다면 예산 압박을 완화합니다.",
+            "정령이 빠듯한 빌드는 특히 주의."
+          ]
+        },
+        {
+          "label": "Elemental Focus",
+          "priority": "optional",
+          "notes": [
+            "냉기 피해를 증폭하지만 원소 상태 이상을 잃습니다. 비빙결 상태 이상이 중요하지 않은지 확인하세요.",
+            "파쇄 연쇄가 빙결 상태에 의존한다면 Elemental Focus를 신중히 사용하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 60,
+      "title": "빌드에서의 역할",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "빙결 화살 데드아이의 청소 엔진: 냉기 활은 빙결 화살로 서리와 빙결을 퍼뜨립니다. 서리의 전령은 '빙결된 몹 사망 → 폭발'을 기본으로 만들고, 빙결의 징표로 핵심 대상을 더 빨리 빙결시킵니다 — '징표 → 빙결 → 사망 → 파쇄 → 폭발' 청소 루프가 닫힙니다.",
+        "빙결-발동 / 파쇄 빌드와의 관계: 빙결로 발동하거나 파쇄로 청소하는 빌드는 모두 서리의 전령의 꾸준한 파쇄 폭발에서 직접 이득을 봅니다. 그것은 '단일 대상 빙결'을 '범위 얼음 폭발'로 키우는 지렛대입니다.",
+        "정령 예산 트레이드오프: 정령이 빠듯한 빌드에서는 서리의 전령을 돌리는 것이 다른 핵심 오라나 트리거 젬을 밀어낼 수 있습니다. 그러면 '파쇄 청소 효용'이 밀려난 오라 가치를 넘는지 저울질해야 하며, 필요하다면 정령 감소 서포트를 쓰거나 장비를 교체하세요."
+      ],
+      "bullets": [
+        "빙결 화살 데드아이: 전령을 파쇄 청소 엔진으로, 루프 청소.",
+        "빙결-발동 / 파쇄 빌드에 부합하며, 범위 얼음 폭발을 키움.",
+        "정령 빠듯: 파쇄 효용 vs 밀려난 오라를 저울질."
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 70,
+      "title": "흔한 실수: 파쇄 없음 / 정령 초과",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "파쇄가 발동하지 않음: 빙결되지 않은 몹(일반 사망)을 죽였으므로 폭발이 없습니다. 직접 답변: 먼저 빙결시킨 다음 죽이세요. 마무리 타격 전 대상이 빙결되었는지 빙결 화살 / 빙결의 징표로 확인하세요.",
+        "폭발이 범위를 못 덮음: 파쇄 폭발에는 반경이 있어 너무 흩어진 몹은 채우지 않습니다. 직접 답변: Magnified Area로 반경을 키우거나 청소 전 몹을 모으세요.",
+        "정령 초과: 서리의 전령에 다른 전령 / 트리거 젬을 더 돌려 정령이 터져 스킬이 비활성화됩니다. 직접 답변: 정령을 재배분하고 핵심 오라를 먼저 유지하거나 정령 감소 서포트를 사용하세요.",
+        "보스를 빙결시킬 것으로 기대: 보스는 보통 파쇄 메커니즘으로 청소되지 않으며, 파쇄 폭발은 단독 보스에 가치가 제한적입니다. 직접 답변: 서리의 전령은 청소에서 빛나며, 보스 단일 대상에 의존하지 마세요."
+      ],
+      "bullets": [
+        "문제: 파쇄가 발동하지 않음.",
+        "직접 답변: 먼저 빙결 후 죽이세요. 일반 사망은 발동하지 않음.",
+        "문제: 폭발이 범위를 못 덮음.",
+        "직접 답변: 범위를 키우거나 청소 전 몹을 모으세요.",
+        "문제: 정령 초과.",
+        "직접 답변: 정령 재배분, 핵심 오라를 먼저 유지."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 80,
+      "title": "영상 설명 및 타임스탬프",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Isallonda Ice Shot Deadeye author",
+          "label": "실전 속 빙결 화살 + 빙결의 징표 + 서리의 전령",
+          "description": "서리의 전령의 상시 냉기와 파쇄 폭발, 빙결 화살의 서리, 빙결의 징표를 다루는 냉기 데드아이 빌드.",
+          "takeaway": "제작자가 파쇄 폭발로 촘촘한 무리를 연쇄 청소하는 모습을 보세요.",
+          "url": "https://youtu.be/n3VBtaSzWVI",
+          "timestamps": [
+            {
+              "label": "빌드 및 스킬 분할",
+              "time": "0:00"
+            },
+            {
+              "label": "서리의 전령 오라 및 파쇄",
+              "time": "3:00"
+            },
+            {
+              "label": "빙결 화살 서리 및 빙결의 징표",
+              "time": "5:00"
+            },
+            {
+              "label": "촘촘한 무리 연쇄 청소",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 90,
+      "title": "자주 묻는 질문",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "왜 처치해도 얼음 폭발이 안 나올까요?",
+          "answer": [
+            "파쇄 폭발은 오직 '빙결된 적의 사망' 시에만 발동하며, 일반 사망은 발동하지 않습니다.",
+            "직접 답변: 먼저 빙결 후 죽이세요. 빙결을 보장하려면 빙결 화살 / 빙결의 징표를 사용하세요."
+          ]
+        },
+        {
+          "question": "서리의 전령은 정령을 많이 예약하나요?",
+          "answer": [
+            "많이. 다른 전령 / 지속 버프 / 트리거 젬과 정령 예산을 두고 경쟁합니다.",
+            "정령이 빠듯하면 저울질하거나 정령 감소 서포트를 사용하세요."
+          ]
+        },
+        {
+          "question": "보스에게 유용한가요?",
+          "answer": [
+            "제한적. 보스는 보통 파쇄 메커니즘으로 청소되지 않으며, 파쇄 폭발은 단독 보스에 가치가 낮습니다.",
+            "서리의 전령의 진짜 강점은 촘촘한 무리 청소입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 100,
+      "title": "변경 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "최초 배포: 오라 보너스와 파쇄 폭발 메커니즘, 다른 전령과의 비교, 냉기 / 범위 서포트, 빙결 화살 데드아이 역할 및 파쇄 미발동 원인."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 110,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식",
+          "description": "GGG 공식 포럼 패치 노트와 발표로, 전령 시스템과 이번 패치에서 서리의 전령의 파쇄 발동 및 정령 예약이 변경되었는지 확인하는 데 사용.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "PoE2DB와 커뮤니티 위키가 스킬 id, 태그, 냉기 보너스, 파쇄 폭발 및 정령 수치를 제공.",
+          "url": "https://poe2db.tw/us/Herald_of_Ice"
+        },
+        {
+          "label": "빌드 및 영상",
+          "description": "Mobalytics 빙결 화살 데드아이 빌드와 Isallonda의 빙결 화살 + 빙결의 징표 + 서리의 전령 쇼케이스로, 파쇄 연쇄와 청소 리듬을 교차 확인.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Reddit, 공식 포럼 및 댓글에서 파쇄 미발동, 정령 초과, 보스 빙결 기대 같은 실제 문제가 나오며, 클라이언트에서 재현하고 직접 답변.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Herald%20of%20Ice&restrict_sr=1"
+        },
+        {
+          "label": "공식 포럼",
+          "description": "GGG 스태프가 서리의 전령 메커니즘과 패치 변경을 확인하는 공식 GGG 포럼.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 커뮤니티",
+          "description": "서리의 전령에 대한 Reddit r/PathOfExile2 토론과 도움글, 버전 피드백과 주류 빌드 파악에 유용.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Herald%20of%20Ice&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Herald of Ice",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Herald_of_Ice"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Isallonda Ice Shot + Herald of Ice showcase",
+      "sourceType": "community",
+      "url": "https://youtu.be/n3VBtaSzWVI"
+    }
+  ],
+  "seo": {
+    "title": "서리의 전령(Herald of Ice) 가이드 — 냉기 오라, 파쇄 폭발 및 정령",
+    "description": "서리의 전령 오라 스킬 심층 가이드: 오라 보너스와 파쇄 폭발 메커니즘, 정령 예약, 다른 전령과의 비교, 냉기 / 범위 서포트, 빙결 화살 데드아이 역할, 파쇄 미발동 및 정령 초과 원인과 직접 답변.",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/herald-of-ice.webp",
+  "cardImage": "/images/skills/herald-of-ice.webp",
+  "imageAlt": "서리의 전령 냉기 오라 스킬 아이콘",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "herald-of-ice",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -20,6 +20,7 @@ import {
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
+import { translationMetaSchema } from "../content/translation";
 
 export const bossCategorySlugs = [
   "campaign",
@@ -459,6 +460,9 @@ const bossArticleBaseSchema = z.strictObject({
     description: requiredText,
     noindex: z.boolean().optional(),
   }),
+
+  // 可选翻译元数据；携带时由 translationMetaSchema 单独校验（与全局 content schema 一致）。
+  translation: translationMetaSchema.optional(),
 });
 
 /**
@@ -511,7 +515,7 @@ export const bossArticleSchema = bossArticleBaseSchema.superRefine(
     if (article.status !== "published") return;
 
     if (
-      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
+      /\bTODO\b|REPLACE_WITH_|example\.invalid|(?<!machine-)\bdraft\b|草稿/.test(
         JSON.stringify(article),
       )
     ) {

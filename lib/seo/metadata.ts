@@ -1,5 +1,9 @@
 /** 文件职责：统一生成 canonical、hreflang、Open Graph 与 Twitter Metadata，避免各路由重复并产生冲突。 */
-import type { ContentLocale } from "../content/constants";
+import {
+  supportedLocales,
+  type ContentLocale,
+} from "../content/constants";
+import { getHrefLang, getOgLocale } from "../i18n/locale-meta";
 
 type AlternatePaths = Partial<Record<ContentLocale, string>>;
 
@@ -26,9 +30,9 @@ export function toPublicUrl(path: string): string {
   return origin ? new URL(path, `${origin}/`).toString() : path;
 }
 
-/** 将内部 locale 转换为 Open Graph 使用的语言区域格式。 */
+/** 将内部 locale 转换为 Open Graph 使用的语言区域格式（如 pt_BR）。 */
 function toOpenGraphLocale(locale: ContentLocale): string {
-  return locale === "zh-cn" ? "zh_CN" : "en_US";
+  return getOgLocale(locale);
 }
 
 /** 构建页面完整 SEO 描述；x-default 只在真实英文版本存在时输出。 */
@@ -56,7 +60,7 @@ export function createSeoMetadata(options: SeoMetadataOptions) {
     metadata.push({
       tagName: "link",
       rel: "alternate",
-      hrefLang: locale === "zh-cn" ? "zh-CN" : "en",
+      hrefLang: getHrefLang(locale as ContentLocale),
       href: toPublicUrl(path),
     });
   }
@@ -74,12 +78,27 @@ export function createSeoMetadata(options: SeoMetadataOptions) {
   return metadata;
 }
 
-/** 为两种固定存在的语言页面建立 alternate 路径，供首页、分类和信息页共用。 */
+/**
+ * 为给定路径生成全部可用语言的 alternate 路径，供首页、分类、搜索与法律页共用。
+ * 默认输出所有受支持语言；详情页可传入实际已发布语言集合以避免指向 404 页面。
+ */
+export function createAlternatePaths(
+  pathAfterLocale = "",
+  locales: readonly ContentLocale[] = supportedLocales,
+): AlternatePaths {
+  const paths: AlternatePaths = {};
+  for (const locale of locales) {
+    paths[locale] = `/${locale}/${pathAfterLocale}`;
+  }
+  return paths;
+}
+
+/**
+ * 历史别名：语义上不再只是双语，而是输出全部受支持语言。
+ * 保留以兼容尚未迁移的调用点；新代码请直接使用 createAlternatePaths。
+ */
 export function createBilingualAlternatePaths(
   pathAfterLocale = "",
 ): AlternatePaths {
-  return {
-    en: `/en/${pathAfterLocale}`,
-    "zh-cn": `/zh-cn/${pathAfterLocale}`,
-  };
+  return createAlternatePaths(pathAfterLocale, supportedLocales);
 }

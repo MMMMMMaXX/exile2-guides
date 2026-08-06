@@ -1,0 +1,363 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.5.4e — 셰이더, Vulkan 및 최초 로딩 성능",
+  "shortTitle": "0.5.4e 셰이더 성능",
+  "summary": "0.5.4e는 기술 패치입니다. 패치 후 첫 로딩이 느려질 수 있는 이유, 셰이더 재컴파일의 의미, Vulkan/Steam의 변경 사항, 그리고 어떤 증상이 정상인지 vs 여전히 확인이 필요한지를 설명합니다.",
+  "description": "게임플레이 패치가 아닌 문제 해결 페이지입니다. DX12, Vulkan, NVIDIA/AMD, PC/콘솔 보고서는 하나의 결론으로 합쳐서는 안 됩니다.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "0.5.4e 셰이더 및 성능 업데이트를 상징하는 폭풍으로 어두워진 폐허의 도시",
+  "tags": [
+    "bug-fixes"
+  ],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "30초 요약 플레이어 영향",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e는 셰이더 로딩을 개선하고 셰이더 크기를 줄이며, Steam Vulkan Fossilize 레이어를 비활성화하고 기본 VSync를 캡됨(capped)으로 변경합니다.",
+        "패치 후 첫 로딩이 느려지는 것은 셰이더가 재컴파일되기 때문으로 예상되는 현상입니다. 첫 진입만으로 최종 성능을 판단하지 마세요.",
+        "이 페이지는 스터터가 완전히 해결되었다고 주장하지 않습니다. 렌더러, 플랫폼, 그리고 첫 실행과 반복 실행은 구분되어야 합니다."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "0.5.4e가 패치 계보에서 위치한 곳",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "Major Patch",
+          "summary": "0.5.4e가 기술적으로 따르는 콘텐츠 기준 버전입니다.",
+          "tags": [
+            "atlas",
+            "items",
+            "bosses"
+          ]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "Hotfix",
+          "summary": "Oath Rune 수정; 0.5.4e의 기술적 변경 사항과는 별개입니다.",
+          "tags": [
+            "expedition",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "Technical Patch",
+          "summary": "이 페이지의 셰이더 로딩, Vulkan 캐시 및 VSync 기본값 변경 사항입니다.",
+          "tags": [
+            "shaders",
+            "vulkan",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "영향 대시보드",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "최초 로딩",
+          "verdict": "첫 진입이 느려질 것 예상",
+          "detail": "패치 후 셰이더가 재컴파일됩니다. 이는 정상이며 진정한 성능 저하와는 구분됩니다."
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "Fossilize 레이어 비활성화",
+          "detail": "셰이더 캐시가 비정상적으로 커지는 문제를 해결합니다. DX12나 Standalone에는 동일하게 적용되지 않습니다."
+        },
+        {
+          "area": "VSync",
+          "verdict": "기본값이 이제 캡됨",
+          "detail": "프레임 페이싱 문제로 인해 적응형(Adaptive)은 더 이상 권장되지 않습니다."
+        },
+        {
+          "area": "커뮤니티",
+          "verdict": "결과는 일률적이지 않음",
+          "detail": "일부 플레이어는 맵이 부드러워졌다고 보고하고, 다른 이들은 여전히 크래시나 씬 스터터를 보고합니다. 보편적인 단일 주장은 없습니다."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "플레이어 문제별로 재구성한 공식 변경 사항",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "셰이더 로딩 개선 및 크기 감소",
+          "detail": "첫 진입에서는 셰이더가 재컴파일될 수 있으며, 이후 진입은 더 빨라집니다. 첫 실행이 아닌 반복 실행을 기준으로 판단하세요.",
+          "scope": "official-fact: affects all platforms after update"
+        },
+        {
+          "category": "technical",
+          "title": "Steam Vulkan Fossilize 레이어 비활성화",
+          "detail": "셰이더 캐시의 비정상적 팽창을 목표로 합니다. Steam + Vulkan 전용이며 DX12에 귀인해서는 안 됩니다.",
+          "scope": "official-fact: Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "기본 VSync를 캡됨으로 변경",
+          "detail": "프레임 페이싱 문제로 인해 적응형이 폐기되었습니다.",
+          "scope": "official-fact: client default"
+        },
+        {
+          "category": "fix",
+          "title": "잔여 크래시 / 스터터 사례",
+          "detail": "일부 보고는 계속되고 있으며, 완전히 해결되었다고 아직 확인되지 않았고 Known Issues에 남아 있습니다.",
+          "scope": "community-report: not upgraded to verified"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "첫 실행 vs 반복 실행",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "잘못된 판단 방식",
+      "oldText": "패치 후 첫 지역 진입에서만 FPS를 측정하여 패치가 성능을 해쳤다고 결론 내는 방식.",
+      "newLabel": "올바른 판단 방식",
+      "newText": "컴파일된 첫 진입과 반복 진입을 구분하고, 패치 전후의 반복 실행 FPS를 비교하세요."
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "기술 환경 매트릭스",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "먼저 셰이더 재컴파일, Steam 셰이더 캐시 크기, Vulkan 안정성을 확인하세요. DX12나 콘솔의 결론을 가져오지 마세요."
+        },
+        {
+          "key": "steam-dx12",
+          "note": "첫 컴파일과 이후 로딩을 구분하세요. Fossilize 변경은 Steam + Vulkan을 대상으로 하며 DX12를 직접 겨냥한 것이 아닙니다."
+        },
+        {
+          "key": "standalone",
+          "note": "Standalone은 Steam Fossilize 레이어를 사용하지 않습니다. 렌더러, 드라이버, 캐시 디렉토리 및 반복 진입 후 동작을 확인하세요."
+        },
+        {
+          "key": "console",
+          "note": "공식 0.5.4e 노트는 셰이더 및 Vulkan/Steam 동작을 설명합니다. 콘솔 보고서는 PC와 병합하지 않고 별도로 기록되어야 합니다."
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "영향받는 콘텐츠 대기열",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "성능 문제 해결 가이드",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "첫 실행 vs 반복 실행 섹션 추가",
+          "status": "reviewing"
+        },
+        {
+          "name": "셰이더 캐시 FAQ",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Fossilize 비활성화 문서화",
+          "status": "queued"
+        },
+        {
+          "name": "Vulkan 설정 가이드",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "VSync 기본값 변경 언급",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.5.4e 셰이더 스레드",
+          "context": "성능 피드백 요약",
+          "quote": "셰이더 수가 눈에 띄게 줄었지만, 결과는 하드웨어에 따라 여전히 다릅니다.",
+          "analysis": "본문은 렌더러, 플랫폼, 첫 실행 vs 반복 실행별로 나누어야 하며 '0.5.4e가 스터터를 완전히 해결했다'고 말할 수 없습니다."
+        },
+        {
+          "source": "공식 포럼 - 0.5.4e",
+          "context": "잔여 문제 보고",
+          "quote": "일부는 패치 후 특정 씬에서 여전히 크래시하거나 스터터합니다.",
+          "analysis": "커뮤니티 보고로 유지하세요. 검증된 메커니즘 주장으로 승격하지 마세요."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "영상 및 타임스탬프",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "공식 Path of Exile 2",
+          "label": "0.5.4e 셰이더 및 성능 설명",
+          "description": "셰이더 재컴파일, Vulkan 캐시 및 VSync 기본값에 대한 공식 설명.",
+          "takeaway": "결론을 내리기 전에 첫 실행 vs 반복 실행 세그먼트를 시청하세요.",
+          "url": "https://www.youtube.com/watch?v=XDEJLOHcdWw"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "바로 답변",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.5.4e 이후 첫 로딩이 왜 느려지나요?",
+          "answer": [
+            "공식적으로 셰이더가 재컴파일되므로 첫 지역 진입이 느려질 수 있습니다.",
+            "첫 진입과 반복 진입을 구분하여 효과를 판단하세요."
+          ]
+        },
+        {
+          "question": "0.5.4e가 모든 스터터를 해결했나요?",
+          "answer": [
+            "지원되는 보편적 주장은 없습니다. 일부 플레이어는 맵이 부드러워졌다고 보고하고, 다른 이들은 여전히 크래시나 씬 스터터를 보고합니다.",
+            "어떤 결론을 내리기 전에 렌더러, 플랫폼, 실행 유형을 구분해야 합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "알려진 문제",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.5.4e 이후 잔여 크래시나 씬별 스터터가 보고되었으며, 완전히 해결되었다고 아직 확인되지 않았습니다.",
+          "status": "open"
+        },
+        {
+          "text": "콘솔 전용 셰이더 보고는 PC 결론과 별도로 추적됩니다.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.5.4e 패치 노트",
+          "description": "셰이더, Vulkan 및 VSync 변경 사항에 대한 공식 출처.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "변경 로그",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "0.5.4e 셰이더 및 성능 리치 아티클 게시"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.5.4e 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 0.5.4e 셰이더 성능",
+    "description": "0.5.4e는 기술 패치입니다. 패치 후 첫 로딩이 느려질 수 있는 이유, 셰이더 재컴파일의 의미, Vulkan/Steam의 변경 사항, 그리고 어떤 증상이 정상인지 vs 여전히 확인이 필요한지를 설명합니다.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-5-4e-shader-performance",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

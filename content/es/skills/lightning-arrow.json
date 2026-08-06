@@ -1,0 +1,454 @@
+{
+  "id": "lightning-arrow",
+  "slug": "lightning-arrow",
+  "locale": "es",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Guía de Lightning Arrow — Cadena de Rayo del Arco, Explosión de AoE y Encadenamiento",
+  "shortTitle": "Lightning Arrow",
+  "summary": "Lightning Arrow es una gema de ataque de arco: la flecha inflige daño de rayo y, al impactar, tracea cadenas de rayo a enemigos cercanos para una pequeña explosión de AoE de rayo. Esta guía explica cómo la cadena elige objetivos, por qué 'parece golpear solo un punto', cómo interactúa con Greater Multiple Projectiles / Chain / Fork, qué hace realmente la Calidad, y por qué se usa a menudo como alternativa de ráfaga de objetivo único dentro de una build de Ice Shot.",
+  "description": "Guía a fondo de Lightning Arrow: selección y rango de objetivos de la cadena, comparación con Ice Shot / Lightning Rod / Lightning Warp, soportes de cadena y de daño, su papel en builds de Deadeye e Ice Shot, causas de daño bajo / sin cadena con respuestas directas, marcas de tiempo en vídeo y preguntas reales de la comunidad.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "bow",
+    "lightning",
+    "aoe",
+    "chain"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "active",
+    "aoe",
+    "bow",
+    "lightning",
+    "projectile"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "Resumen: Una Flecha, Toda una Telaraña de Rayo",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lightning Arrow es una gema de ataque de arco: disparas una flecha que inflige daño de rayo, y al impactar tracea cadenas de rayo desde el punto de impacto a enemigos cercanos, convirtiendo un disparo en una pequeña explosión de AoE de rayo. No es una flecha pura de objetivo único ni un AoE de proyectil puro: es un híbrido de 'impacto de proyectil + cadena de área'.",
+        "Su aspecto más malinterpretado es visual: la flecha en sí parece golpear a un solo enemigo, pero gran parte del daño proviene de las cadenas que se abren tras el impacto. Si solo miras la flecha aterrizar, parece overkill en grupos densos pero 'no hace nada' contra un jefe único, cuando en realidad su valor está en el punto medio: salida fiable sobre el objetivo elegido más salpicadura gratuita sobre la basura cercana.",
+        "Por eso se encasilla a menudo como ráfaga secundaria dentro de builds de Frío (Ice Shot Deadeye, etc.): Ice Shot se encarga de enfriar y limpiar, mientras Lightning Arrow entra cuando necesitas objetivo único fiable y daño de relleno por cadena. Comparten el sistema de arco y velocidad de ataque, así que cambiar cuesta casi nada."
+      ],
+      "bullets": [
+        "Esencial: proyectil de arco + cadena de rayo de área posterior al impacto, híbrido único/AoE.",
+        "Fuentes de daño: el propio daño de rayo de la flecha + cadenas que se abren desde el impacto.",
+        "Trampa visual: la flecha golpea a uno, pero las cadenas son el cuerpo del AoE.",
+        "Socio común: Ice Shot Deadeye, como secundaria de objetivo único / relleno de cadena."
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "Estadísticas Clave y Adquisición",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Category",
+          "value": "Active Attack (Bow · Projectile · Lightning)",
+          "notes": [
+            "Etiquetado como attack, projectile, bow, lightning, aoe, chain."
+          ]
+        },
+        {
+          "label": "Weapon requirement",
+          "value": "Bow",
+          "notes": [
+            "Requiere un arco equipado; en una build de intercambio vive en el conjunto de arco."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Uncut Skill Gem",
+          "notes": [
+            "Desbloqueada mediante una Uncut Skill Gem de la campaña o por drops."
+          ]
+        },
+        {
+          "label": "Projectiles",
+          "value": "Base 1, expandable via supports",
+          "notes": [
+            "Greater Multiple Projectiles añade flechas; cada flecha dispara sus propias cadenas."
+          ]
+        },
+        {
+          "label": "Chain targets",
+          "value": "Arcs to several nearby enemies on hit (client-side)",
+          "notes": [
+            "La cantidad de objetivos y el rango de la cadena escalan con el nivel de la gema y algunos soportes."
+          ]
+        },
+        {
+          "label": "Quality",
+          "value": "Improves chain damage / target count",
+          "notes": [
+            "Una mayor calidad suele potenciar el daño de rayo encadenado o el tope de cadena."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain-mechanic",
+      "order": 30,
+      "title": "Mecánica: Cómo la Cadena Elige Objetivos",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Desencadenante de la cadena: cuando la flecha golpea un objetivo primario, busca enemigos cercanos alrededor del punto de impacto y tracea cadenas de rayo hacia ellos. La propia cadena también inflige daño, así que un impacto produce en realidad 'rayo de la flecha primaria + rayo de cadena circundante' como dos salidas.",
+        "Selección de objetivos y rango: la cadena solo busca objetivos dentro de un radio del punto de impacto, y normalmente inflige daño de cadena a cada enemigo encadenado solo una vez (sin rebote infinito). Esto significa que cuanto más denso y apretado esté el grupo, más objetivos alcanza la cadena y mayor es la recompensa total; los enemigos dispersos o a distancia no la llenan.",
+        "El 'primer salto' viene del impacto de la flecha, así que la tasa de acierto del proyectil decide directamente si ocurre la cadena. Si usas Greater Multiple Projectiles para disparar varias flechas, cada flecha dispara de forma independiente sus propias cadenas al impactar: esa es la triquiñuela central que convierte Lightning Arrow en una máquina de limpieza mediante multi-proyectil, pero también significa que el daño de objetivo único de cada flecha se reparte."
+      ],
+      "bullets": [
+        "La cadena se abre desde el punto de impacto a enemigos cercanos, infligiendo rayo extra.",
+        "La recompensa de la cadena escala con los enemigos cerca del impacto; los grupos densos son lo mejor.",
+        "El multi-proyectil hace que cada flecha dispare su propia cadena: más limpieza, menos ST.",
+        "La tasa de acierto del proyectil es el requisito previo para que ocurra la cadena."
+      ]
+    },
+    {
+      "id": "skill-compare",
+      "order": 40,
+      "title": "Comparación: Lightning Arrow frente a Habilidades de Arco Similares",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Skill",
+        "Damage form",
+        "AoE method",
+        "Typical role"
+      ],
+      "rows": [
+        [
+          "Lightning Arrow",
+          "Arrow lightning + post-hit chains",
+          "Auto-arcing chains around impact",
+          "Hybrid ST + chain filler, Deadeye secondary"
+        ],
+        [
+          "Ice Shot",
+          "Cold projectile + shatter burst on hit",
+          "Cold AoE on impact",
+          "Main clear / chill source, often primary"
+        ],
+        [
+          "Lightning Rod",
+          "Summons a lightning pillar at a location",
+          "Stationary repeated strikes",
+          "Stationary sustained DPS, needs target to linger"
+        ],
+        [
+          "Lightning Warp",
+          "Blink leaving lightning behind",
+          "Movement + impact lightning",
+          "Mobility / niche blink, not main DPS"
+        ]
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 50,
+      "title": "Gemas de Soporte Recomendadas",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Lightning Infusion / Added Lightning",
+          "priority": "core",
+          "notes": [
+            "Amplifica directamente tanto el rayo de la flecha como el de la cadena; núcleo para Lightning Arrow.",
+            "Casi obligatoria en builds de rayo."
+          ]
+        },
+        {
+          "label": "Lightning Penetration",
+          "priority": "core",
+          "notes": [
+            "Ignora parte de la resistencia de rayo; fuerte contra mobs y jefes con alta resistencia de rayo.",
+            "Mejor combinada con Added Lightning."
+          ]
+        },
+        {
+          "label": "Chain",
+          "priority": "core",
+          "notes": [
+            "Nota: Chain hace que el propio proyectil siga rebotando a otros objetivos, un sistema distinto de la cadena de rayo posterior al impacto integrada en la habilidad.",
+            "Chain permite que la flecha salte de nuevo tras el primario, ampliando aún más la cobertura."
+          ]
+        },
+        {
+          "label": "Greater Multiple Projectiles",
+          "priority": "situational",
+          "notes": [
+            "Cada flecha dispara su propia cadena, potenciando muchísimo la limpieza.",
+            "Coste: el daño de cada flecha se reparte, así que el jefe de objetivo único se debilita."
+          ]
+        },
+        {
+          "label": "Elemental Damage with Attacks",
+          "priority": "situational",
+          "notes": [
+            "Potencia todo el daño elemental de los ataques; encaja en builds de arco elementales.",
+            "Genérica en configuraciones híbridas de frío/rayo."
+          ]
+        },
+        {
+          "label": "Martial Tempo / Attack Speed",
+          "priority": "optional",
+          "notes": [
+            "Sube la velocidad de ataque, acelerando los lanzamientos y la frecuencia de cadena.",
+            "Ayuda a builds que necesitan apilar afecciones más rápido o mayor DPS."
+          ]
+        },
+        {
+          "label": "Fork",
+          "priority": "optional",
+          "notes": [
+            "Hace que los proyectiles se dividan al impactar, añadiendo una cobertura caótica con las cadenas.",
+            "Normalmente se elige Chain o Fork, no ambos, para evitar conflictos de lógica."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 60,
+      "title": "Función en las Builds",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ráfaga secundaria en Ice Shot Deadeye: el Ice Shot principal se encarga de enfriar y limpiar; cuando golpeas algo que no se puede congelar o necesitas objetivo único fiable, cambia a Lightning Arrow: produce de forma sostenida sin depender de afecciones, actuando como 'seguro cuando fallan las afecciones'.",
+        "Build de limpieza pura de Lightning Arrow: usa Greater Multiple Projectiles + Chain para convertir la propia Lightning Arrow en una máquina de limpieza, alimentando cadenas de grupos densos. Coste: objetivo único débil, necesitando una habilidad de jefe separada.",
+        "Sinergia con Herald of Ice / Thunder: las builds de arco elementales suelen usar un Herald para ráfaga elemental extra; el rayo de Lightning Arrow se combina con los relámpagos de Herald of Thunder para una limpieza apilada, pero eso añade carga de Mana y Spirit que debe equilibrarse."
+      ],
+      "bullets": [
+        "Ice Shot Deadeye: Lightning Arrow como seguro de ST cuando fallan las afecciones.",
+        "Build de limpieza: multi-proj + Chain llena las cadenas, pero el ST se debilita.",
+        "Combina con Herald para apilar elementales, vigila el presupuesto de Mana / Spirit."
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 70,
+      "title": "Errores Comunes: Daño Bajo / Sin Cadenas",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Se siente débil: solo miraste la flecha aterrizar e ignoraste las cadenas que se abren a enemigos cercanos tras el impacto. Respuesta directa: pruébalo en grupos densos, la recompensa de la cadena supera con creces la flecha única; contra un jefe solitario simplemente no es su forma más fuerte.",
+        "Las cadenas no aparecen: normalmente no hay un segundo enemigo cerca del impacto (las cadenas necesitan objetivos cercanos para abrirse), o el proyectil falló por completo. Respuesta directa: confirma que la flecha impactó y que hay otros enemigos cerca del objetivo; los objetivos en solitario dejan la cadena naturalmente sin alimento.",
+        "Más débil tras multi-proj: Greater Multiple Projectiles reparte el daño entre las flechas, debilitando el objetivo único de cada flecha. Respuesta directa: quita multi-proj para jefes de objetivo único, reinstálalo para limpiar.",
+        "Confundir el soporte Chain con la cadena integrada: el soporte Chain hace que el proyectil siga rebotando, mientras que el efecto integrado es la cadena de rayo posterior al impacto; apilar ambos hace pensar que 'se dispara dos veces'. Respuesta directa: entiende que son independientes y elige deliberadamente, no apiles a ciegas."
+      ],
+      "bullets": [
+        "Problema: daño bajo / sin sensación de AoE.",
+        "Respuesta directa: las cadenas son el cuerpo del AoE, verifícalo en grupos densos.",
+        "Problema: las cadenas no aparecen.",
+        "Respuesta directa: necesita un segundo enemigo cerca del impacto, y la flecha debe conectar.",
+        "Problema: más débil tras multi-proj.",
+        "Respuesta directa: quita multi-proj para ST, reinstálalo para limpiar."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 80,
+      "title": "Vídeo Explicativo y Marcas de Tiempo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Scorpius Lightning Arrow Deadeye author",
+          "label": "Lightning Arrow Deadeye en la práctica",
+          "description": "Una build de Deadeye centrada en Lightning Arrow, cubriendo la configuración del soporte Chain, y el ritmo de limpieza y de objetivo único de jefe.",
+          "takeaway": "Observa cómo el autor llena cadenas con multi-proj + Chain y cómo ajusta para objetivo único.",
+          "url": "https://youtu.be/ZSgs6_uAL6A",
+          "timestamps": [
+            {
+              "label": "Build y división de soportes",
+              "time": "0:00"
+            },
+            {
+              "label": "Demo de cadena de Lightning Arrow",
+              "time": "2:00"
+            },
+            {
+              "label": "Ritmo de limpieza de mapa",
+              "time": "5:00"
+            },
+            {
+              "label": "Manejo de objetivo único de jefe",
+              "time": "8:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 90,
+      "title": "Preguntas Frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿Cuántas veces rebota la cadena?",
+          "answer": [
+            "Al impactar tracea una cadena única a varios enemigos cercanos; la cantidad exacta de objetivos y el rango dependen del cliente actual.",
+            "La recompensa de la cadena depende de los enemigos cerca del impacto; los grupos densos son los que más se benefician."
+          ]
+        },
+        {
+          "question": "¿Qué relación hay entre el soporte Chain y la cadena integrada?",
+          "answer": [
+            "El soporte Chain hace que el propio proyectil siga rebotando tras el objetivo primario, un sistema distinto de la cadena de rayo posterior al impacto integrada.",
+            "Se disparan de forma independiente; apilar demasiados enmaraña la lógica de cobertura, así que elige deliberadamente."
+          ]
+        },
+        {
+          "question": "¿Por qué se debilita en jefes tras multi-proj?",
+          "answer": [
+            "Greater Multiple Projectiles reparte el daño total entre las flechas, debilitando el objetivo único de cada flecha.",
+            "Quita multi-proj o cambia a flecha única para jefes, reinstálalo para limpiar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 100,
+      "title": "Registro de Cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Lanzamiento inicial: selección de objetivos de la cadena, comparación con Ice Shot / Lightning Rod, soportes de cadena y de daño, papel de Deadeye y causas comunes de daño bajo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 110,
+      "title": "Fuentes y Verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Notas del parche y anuncios oficiales del foro de GGG, usados para confirmar las habilidades de arco y si la cantidad de objetivos / rango de la cadena de Lightning Arrow cambiaron en este parche.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB y la Wiki de la Comunidad aportan id de habilidad, etiquetas, requisito de arma, cantidad de objetivos de cadena y comportamientos ocultos.",
+          "url": "https://poe2db.tw/us/Lightning_Arrow"
+        },
+        {
+          "label": "Builds and video",
+          "description": "Builds de arco Deadeye de Mobalytics y la muestra de Scorpius Lightning Arrow Deadeye, usadas para contrastar configuraciones de soporte y ritmo de limpieza / jefe.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit, foros oficiales y comentarios revelan problemas reales como que las cadenas no aparecen, más débil tras multi-proj y la confusión entre Chain y cadena integrada, reproducidos en el cliente y respondidos directamente."
+        },
+        {
+          "label": "Official Forums",
+          "description": "Foros oficiales de GGG donde el personal de GGG confirma la mecánica de Lightning Arrow y los cambios del parche.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit Community",
+          "description": "Debates y hilos de ayuda de Reddit r/PathOfExile2 sobre Lightning Arrow, útiles para feedback de versiones y builds principales.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Lightning%20Arrow&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Lightning Arrow",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Lightning_Arrow"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Mobalytics — PoE2 Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Scorpius Lightning Arrow Deadeye showcase",
+      "sourceType": "community",
+      "url": "https://youtu.be/ZSgs6_uAL6A"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Lightning Arrow — Cadena de Rayo del Arco, Explosión de AoE y Encadenamiento",
+    "description": "Guía a fondo de la habilidad de arco Lightning Arrow: selección y rango de objetivos de la cadena, comparación con Ice Shot / Lightning Rod, soportes de cadena y de daño, papel de Deadeye, causas de daño bajo y sin cadena con respuestas directas.",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/lightning-arrow.webp",
+  "cardImage": "/images/skills/lightning-arrow.webp",
+  "imageAlt": "Lightning Arrow bow lightning skill icon",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "lightning-arrow",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

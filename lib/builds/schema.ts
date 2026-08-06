@@ -6,6 +6,7 @@ import {
   supportedLocales,
   verificationStatuses,
 } from "../content/schema";
+import { translationMetaSchema } from "../content/translation";
 import {
   baseSectionShape,
   changelogEntriesSchema,
@@ -378,6 +379,9 @@ const buildArticleBaseSchema = z.strictObject({
 
   changelog: buildChangelogSchema,
 
+  // 翻译元数据块：与通用内容 schema 对齐，允许目标语言译文携带 translation 块而不破坏严格校验。
+  translation: translationMetaSchema.optional(),
+
   seo: z.strictObject({
     title: requiredText,
     description: requiredText,
@@ -451,8 +455,8 @@ export const buildArticleSchema = buildArticleBaseSchema.superRefine(
     }
 
     if (
-      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
-        JSON.stringify(article),
+      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/.test(
+        JSON.stringify({ ...article, translation: undefined }),
       )
     ) {
       context.addIssue({

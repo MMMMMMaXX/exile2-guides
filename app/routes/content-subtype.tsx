@@ -14,6 +14,8 @@ import {
   type ContentLocale,
   type ContentType,
 } from "../../lib/content/constants";
+import { getCategoryLabel } from "../../lib/i18n/category-copy";
+import { t } from "../../lib/i18n/ui";
 import { isV4Subtype } from "../../lib/content/v4-taxonomy";
 import {
   createBilingualAlternatePaths,
@@ -58,7 +60,7 @@ export function meta({
 }) {
   const route = getSubtypeRoute(params);
   if (!route)
-    return getNotFoundMeta(params.locale === "zh-cn" ? "zh-cn" : "en");
+    return getNotFoundMeta(params.locale as ContentLocale);
   const prefix =
     route.contentType === "build"
       ? `builds/classes/${route.subtype}/`
@@ -78,19 +80,19 @@ export default function ContentSubtypeRoute() {
   const params = useParams();
   const route = getSubtypeRoute(params);
   if (!route)
-    return <EmptyState title="This aggregation page is not available" />;
-  const zh = route.locale === "zh-cn";
+    return <EmptyState title={t("en", "subtype.notAvailable")} />;
   const title = route.subtype.replace(/-/g, " ");
+  const typeLabel = getCategoryLabel(route.locale, route.contentType);
   const sectionItems = [
-    "Overview",
-    "Available entries",
-    "Connections",
-    "Publication rule",
+    t(route.locale, "subtype.overview"),
+    t(route.locale, "subtype.availableEntries"),
+    t(route.locale, "subtype.connections"),
+    t(route.locale, "subtype.publicationRule"),
   ];
   return (
     <main className="v4-subtype-page" data-prerender-content="true">
       <PageHero
-        eyebrow={zh ? "分类聚合" : "Subtype aggregation"}
+        eyebrow={t(route.locale, "subtype.eyebrow")}
         title={title}
       />
       <div className="page-shell v4-subtype-layout">
@@ -108,18 +110,27 @@ export default function ContentSubtypeRoute() {
                 id={`v4-subtype-${index + 1}`}
                 key={label}
               >
-                <p className="section-kicker">Module {index + 1}</p>
+                <p className="section-kicker">
+                  {t(route.locale, "subtype.module", {
+                    n: String(index + 1),
+                  })}
+                </p>
                 <h2>{label}</h2>
                 {index === 1 ? (
                   <div className="content-card-grid">
                     <CatalogCard
-                      meta="Development index row · no detail page"
-                      title={`${title} skeleton row`}
+                      meta={t(route.locale, "subtype.devIndexRow")}
+                      title={t(route.locale, "subtype.skeletonRow", {
+                        title,
+                      })}
                     />
                   </div>
                 ) : (
                   <EmptyState
-                    title={`${label} is ready for reviewed ${route.contentType} content`}
+                    title={t(route.locale, "subtype.readyForContent", {
+                      label,
+                      type: typeLabel,
+                    })}
                   />
                 )}
               </section>
@@ -128,9 +139,13 @@ export default function ContentSubtypeRoute() {
         </article>
         <FactsRail
           facts={[
-            { label: "Module", value: route.contentType },
-            { label: "Subtype", value: title },
-            { label: "Publishing", value: "No thin details" },
+            { label: t(route.locale, "subtype.moduleLabel"), value: route.contentType },
+            { label: t(route.locale, "subtype.subtypeLabel"), value: title },
+            { label: t(route.locale, "subtype.localeLabel"), value: route.locale },
+            {
+              label: t(route.locale, "subtype.publishingLabel"),
+              value: t(route.locale, "subtype.noThinDetails"),
+            },
           ]}
         />
       </div>

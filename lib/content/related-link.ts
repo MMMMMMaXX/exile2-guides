@@ -7,8 +7,8 @@
  * 章节常把 href 硬编码为自身语言路径，但目标实体可能尚未翻译，导致内部链接指向
  * 未生成的页面。统一的回退策略既能修复现有死链，也能防止新增翻译内容再次引入。
  */
-import { locallyVisibleContentPages } from "./runtime-pages";
-import type { StaticContentPage } from "./content-page";
+import contentRoutesModule from "virtual:content-routes";
+import type { StaticContentRouteMap } from "./content-page";
 import {
   contentTypeSegments,
   contentRoutePath,
@@ -16,6 +16,8 @@ import {
   type ContentLocale,
   type ContentType,
 } from "./constants";
+
+const contentRoutes = contentRoutesModule as StaticContentRouteMap;
 
 /** 关联内容卡片的最小链接描述；与章节渲染器消费的条目字段对齐。 */
 export type RelatedLinkItem = {
@@ -35,8 +37,9 @@ const PAGES_BY_CONTENT_ID: Map<string, ResolvedTarget[]> = new Map();
 /** slug|contentType -> 已发布语言列表；用于解析纯 href 字符串。 */
 const PAGES_BY_SLUG: Map<string, string[]> = new Map();
 
-for (const page of Object.values(locallyVisibleContentPages) as StaticContentPage[]) {
-  const { contentId, contentType, locale, slug } = page.frontMatter;
+for (const { contentId, contentType, locale, slug } of Object.values(
+  contentRoutes,
+)) {
   if (contentId) {
     const arr = PAGES_BY_CONTENT_ID.get(contentId) ?? [];
     arr.push({ locale, contentType, slug });
@@ -90,7 +93,8 @@ export function resolveRelatedContentHref(
       (candidate) =>
         candidate.locale === defaultLocale &&
         candidate.contentType === (item.contentType as ContentType),
-    ) ?? candidates.find((candidate) => candidate.contentType === item.contentType);
+    ) ??
+    candidates.find((candidate) => candidate.contentType === item.contentType);
   if (fallback) {
     return contentRoutePath(
       fallback.locale as ContentLocale,
@@ -130,9 +134,5 @@ export function resolveInternalContentHref(
       ? defaultLocale
       : locales[0];
   if (!fallbackLocale) return href;
-  return contentRoutePath(
-    fallbackLocale as ContentLocale,
-    contentType,
-    slug,
-  );
+  return contentRoutePath(fallbackLocale as ContentLocale, contentType, slug);
 }

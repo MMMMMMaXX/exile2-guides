@@ -11,15 +11,19 @@ import {
 
 import { AppShell } from "../components/layout/app-shell";
 import { getLocaleFromPathname } from "../lib/i18n/locale-routing";
+import { getHtmlLang } from "../lib/i18n/locale-meta";
 import { siteConfig } from "../lib/seo/site-config";
 import "./styles/app.css";
+import "./styles/boss-phase-fix.css";
 import "./styles/guides-prototype.css";
 import "./styles/patch-prototype.css";
 
 /** 渲染所有路由共享的文档结构，并集中挂载全局资源和客户端恢复脚本。 */
 export function Layout({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+  const locale = getLocaleFromPathname(pathname) ?? "en";
   return (
-    <html lang="en">
+    <html lang={getHtmlLang(locale)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +52,7 @@ function DocumentLocaleSynchronizer() {
   const locale = getLocaleFromPathname(pathname) ?? "en";
 
   useEffect(() => {
-    document.documentElement.lang = locale === "zh-cn" ? "zh-CN" : "en";
+    document.documentElement.lang = getHtmlLang(locale);
   }, [locale]);
 
   return null;

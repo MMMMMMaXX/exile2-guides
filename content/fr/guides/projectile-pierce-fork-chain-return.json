@@ -1,0 +1,759 @@
+{
+  "id": "projectile-pierce-fork-chain-return",
+  "slug": "projectile-pierce-fork-chain-return",
+  "locale": "fr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Projectile Pierce, Fork, Chain et Return dans Path of Exile 2",
+  "shortTitle": "Comportements des projectiles",
+  "summary": "Comment Pierce, Fork, Chain et Return se résolvent lors d'une seule collision de projectile dans Path of Exile 2, incluant l'ordre de priorité, l'enchaînement sur ennemi contre sur terrain, et quelles compétences interdisent certains comportements.",
+  "description": "Un guide mécanique sur les comportements de projectile de Path of Exile 2 : l'ordre de priorité des collisions (Split, Pierce, Fork, Chain, Return), comment l'enchaînement sur ennemi diffère de l'enchaînement sur terrain, quelles compétences ne peuvent pas Pierce/Fork/Chain/Return, et comment choisir les supports pour le clear ou les boss.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/chain-support.webp",
+  "cardImage": "/images/skills/chain-support.webp",
+  "imageAlt": "Une icône de gemme de support de Path of Exile 2 représentant le comportement d'enchaînement des projectiles",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Compréhension de base des compétences de projectile et des gemmes de support",
+    "Familiarité avec l'infobulle en jeu et le panneau de statistiques"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "projectile",
+    "pierce",
+    "fork",
+    "chain",
+    "return",
+    "support"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Réponses directes",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Quel est l'ordre de priorité des collisions pour les comportements de projectile ?",
+          "body": [
+            "À chaque collision d'un projectile, il vérifie ses comportements restants selon cet ordre de priorité : Split, puis Pierce, puis Fork, puis Chain, puis Return. Un seul comportement peut survenir lors d'une collision donnée, donc le premier encore disponible l'emporte."
+          ]
+        },
+        {
+          "title": "Un projectile peut-il Pierce et Fork ou Chain lors du même coup ?",
+          "body": [
+            "Non. Un seul comportement s'applique par collision. Un projectile qui Pierce ne Fork ni ne Chain depuis cet ennemi ; le Fork/Chain depuis les ennemis ne devient possible qu'après épuisement du Pierce et du Fork."
+          ]
+        },
+        {
+          "title": "Toutes les compétences de projectile prennent-elles en charge les quatre comportements ?",
+          "body": [
+            "Non. Certaines compétences ou objets interdisent explicitement un comportement. Par exemple, Lightning Arrow ne peut pas Chain (y compris depuis le terrain), et Freezing Pulse traverse tous les cibles, donc ne peut pas Fork. Lisez toujours l'infobulle de la compétence."
+          ]
+        },
+        {
+          "title": "Return permet-il à un projectile de toucher à nouveau le même ennemi ?",
+          "body": [
+            "Contrairement aux autres comportements, Return autorise une collision supplémentaire par ensemble simultané contre les cibles déjà touchées. Un projectile ne fait normalement Return qu'une seule fois."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 2,
+      "title": "Définitions",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les comportements de projectile sont des propriétés spéciales qu'un projectile peut transporter. Ils déterminent ce qui se produit lorsque le projectile touche un ennemi ou un obstacle au lieu de simplement s'arrêter. Quatre d'entre eux sont au cœur de ce guide : Pierce, Fork, Chain et Return. Un cinquième, Split, partage le même système de priorité et est décrit pour être complet.",
+        "Ces comportements sont généralement ajoutés par des gemmes de support (Pierce Support, Fork Support, Chain Support, Returning Projectiles Support) mais peuvent aussi provenir du texte propre d'une compétence, d'objets uniques ou de passifs. Ils ne sont pas tous compatibles sur un même coup — un seul se résout par collision."
+      ],
+      "bullets": [
+        "Projectile : une entité qui voyage de façon indépendante jusqu'à ce qu'elle entre en collision avec un ennemi, un obstacle, ou atteigne sa limite de trajet (environ 15 mètres).",
+        "Pierce : le projectile traverse l'ennemi qu'il touche et poursuit sa trajectoire initiale. Cela compte toujours comme un coup.",
+        "Fork : le projectile se divise en deux projectiles identiques qui s'éloignent l'un de l'autre à 60 et -60 degrés par rapport au chemin d'origine.",
+        "Chain : le projectile est redirigé vers un autre ennemi proche après la collision, jusqu'à un certain nombre de fois.",
+        "Return : le projectile revient vers son origine après avoir atteint la fin de son trajet.",
+        "Split : le projectile se divise en plusieurs projectiles à ciblage automatique (priorité la plus haute ; une seule fois)."
+      ]
+    },
+    {
+      "id": "collision-order",
+      "order": 3,
+      "title": "Ce qui se passe lors d'une seule collision",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Priorité utilisée par le jeu à chaque collision. Il vérifie les comportements de haut en bas et applique le premier dont le projectile dispose encore. Une seule ligne est utilisée par collision.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Étape"
+        },
+        {
+          "key": "on-collision",
+          "label": "À la collision"
+        },
+        {
+          "key": "what-happens",
+          "label": "Ce qui se passe"
+        },
+        {
+          "key": "note",
+          "label": "Note"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "split",
+            "priority"
+          ],
+          "cells": {
+            "step": "1. Split",
+            "on-collision": "Le projectile vérifie s'il peut encore Split",
+            "what-happens": "Il se divise en projectiles à ciblage automatique et la collision est consommée",
+            "note": "Priorité la plus haute ; un projectile ne peut Split qu'une seule fois"
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "priority"
+          ],
+          "cells": {
+            "step": "2. Pierce",
+            "on-collision": "Si Split est épuisé, il vérifie Pierce",
+            "what-happens": "Traverse la cible et conserve sa trajectoire initiale",
+            "note": "Compte comme un coup ; ne change ni direction ni vitesse ; consomme un compte de Pierce"
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "priority"
+          ],
+          "cells": {
+            "step": "3. Fork",
+            "on-collision": "Si ni Split ni Pierce ne s'applique ici, il vérifie Fork",
+            "what-happens": "Se divise en deux projectiles à 60 et -60 degrés par rapport au chemin",
+            "note": "Un seul fork sauf avec Awakened Fork Support ; un coup traversant ne fork pas"
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "priority"
+          ],
+          "cells": {
+            "step": "4. Chain",
+            "on-collision": "Si rien d'autre ne s'applique, il vérifie Chain",
+            "what-happens": "Se redirige vers un autre ennemi dans un rayon d'environ 6 mètres",
+            "note": "Appliqué en dernier parmi les comportements ciblant les ennemis ; un même ennemi n'est pas touché deux fois dans une même Chain"
+          }
+        },
+        {
+          "tags": [
+            "return",
+            "priority"
+          ],
+          "cells": {
+            "step": "5. Return",
+            "on-collision": "Si rien d'autre ne s'applique, ou à la fin du trajet",
+            "what-happens": "Le projectile repart vers son origine",
+            "note": "Priorité la plus basse ; normalement une fois ; autorise un coup supplémentaire sur les cibles déjà touchées"
+          }
+        }
+      ],
+      "note": "Cette priorité est la règle globale dans Path of Exile 2. Certaines compétences ou objets uniques peuvent remplacer une partie de celle-ci (par exemple forcer Fork avant Pierce), donc ne supposez jamais qu'un cas particulier d'une compétence est l'ordre universel."
+    },
+    {
+      "id": "interaction-matrix",
+      "order": 4,
+      "title": "Matrice d'association des comportements",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Quels comportements peuvent se combiner, et comment. « Par collision » signifie lors d'un seul coup ; plusieurs comportements peuvent tout de même apparaître sur l'ensemble du trajet du projectile.",
+      "columns": [
+        {
+          "key": "pairing",
+          "label": "Association"
+        },
+        {
+          "key": "possible",
+          "label": "Possible ?"
+        },
+        {
+          "key": "result",
+          "label": "Résultat"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pierce",
+            "fork"
+          ],
+          "cells": {
+            "pairing": "Pierce + Fork",
+            "possible": "Pas sur le même coup",
+            "result": "Mutuellement exclusifs par collision. Un projectile traversant ne fork pas sur ce coup ; le Fork n'arrive qu'une fois Pierce épuisé (ou jamais, s'il traverse toutes les cibles)."
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "chain"
+          ],
+          "cells": {
+            "pairing": "Pierce + Chain (depuis ennemi)",
+            "possible": "Pas sur le même coup",
+            "result": "Un projectile qui peut Pierce ne chain pas depuis les ennemis. Il peut chain depuis le terrain après avoir traversé."
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "chain"
+          ],
+          "cells": {
+            "pairing": "Fork + Chain (depuis ennemi)",
+            "possible": "Pas sur le même coup",
+            "result": "Fork consomme la collision. Après que les projectiles forkés ont voyagé, ils peuvent chain depuis le terrain ; le chain depuis ennemi ne suit qu'une fois leur trajet terminé."
+          }
+        },
+        {
+          "tags": [
+            "fork",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Fork + Return",
+            "possible": "Oui",
+            "result": "Les projectiles forkés peuvent faire Return vers l'origine à la fin de leur trajet."
+          }
+        },
+        {
+          "tags": [
+            "pierce",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Pierce + Return",
+            "possible": "Oui",
+            "result": "Après avoir traversé, le projectile peut faire Return. Certains uniques exigent une condition de traverse avant que Return ne se déclenche."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "return"
+          ],
+          "cells": {
+            "pairing": "Chain + Return",
+            "possible": "Oui",
+            "result": "Une fois la chaîne terminée, Return peut se déclencher et ramener le projectile."
+          }
+        },
+        {
+          "tags": [
+            "split"
+          ],
+          "cells": {
+            "pairing": "Split + Pierce + Fork + Chain + Return",
+            "possible": "Oui (dans l'ordre de priorité)",
+            "result": "Split a la priorité maximale et peut être suivi du reste en séquence sur tout le chemin du projectile."
+          }
+        }
+      ],
+      "note": "La prévention du shotgun s'applique toujours : lorsque plusieurs projectiles sont créés d'un coup, un seul peut entrer en collision avec la même cible, donc les copies supplémentaires peuvent traverser sans toucher."
+    },
+    {
+      "id": "terrain-vs-enemy",
+      "order": 5,
+      "title": "Chain depuis ennemi vs chain depuis terrain",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Le Chain ciblant les ennemis et le Chain depuis le terrain/les objets sont des systèmes distincts avec des règles différentes. Ne les confondez pas.",
+      "columns": [
+        {
+          "key": "trigger-source",
+          "label": "Source du déclenchement"
+        },
+        {
+          "key": "chains-from",
+          "label": "Chain depuis"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "Collision avec ennemi, projectile peut Pierce ou Fork",
+            "chains-from": "Ne chain PAS depuis l'ennemi",
+            "notes": "Un seul comportement par collision. S'il traverse ou fork, le chain depuis ennemi est ignoré."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "Collision avec ennemi, plus de Pierce/Fork disponible",
+            "chains-from": "Chain depuis l'ennemi",
+            "notes": "Se redirige vers un autre ennemi dans un rayon d'environ 6 mètres ; un même ennemi n'est pas visé deux fois dans une même Chain."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "terrain"
+          ],
+          "cells": {
+            "trigger-source": "Terrain, mur ou obstacle",
+            "chains-from": "Chain depuis le terrain",
+            "notes": "Par défaut une seule fois sauf indication contraire. La chance de chain depuis le terrain s'additionne. Peut survenir après avoir traversé ou forké un ennemi."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "enemy"
+          ],
+          "cells": {
+            "trigger-source": "Compétence qui ne peut pas chain (ex. Lightning Arrow)",
+            "chains-from": "Ne chain PAS non plus depuis le terrain",
+            "notes": "Certaines compétences sont interdites de chain totalement, y compris depuis le terrain. Cela a été corrigé en tant que bug pour Lightning Arrow dans le patch 0.2.0."
+          }
+        }
+      ],
+      "note": "Les projectiles ont une distance de chain de base d'environ 6 mètres ; les autres effets (non projectiles) chain depuis environ 4 mètres."
+    },
+    {
+      "id": "worked-examples",
+      "order": 6,
+      "title": "Exemples détaillés",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cas qualitatifs montrant comment l'ordre de priorité et la disponibilité des cibles modifient le résultat. Aucun chiffre exact n'est donné car les valeurs des supports dépendent de la version.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Cas"
+        },
+        {
+          "key": "setup",
+          "label": "Configuration"
+        },
+        {
+          "key": "result",
+          "label": "Résultat"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pierce",
+            "chain"
+          ],
+          "cells": {
+            "case": "Ligne droite de monstres",
+            "setup": "Cinq ennemis alignés ; le projectile a Pierce et Chain",
+            "result": "Le projectile traverse d'abord la ligne (Pierce bat Chain). Une fois Pierce épuisé sans autre ennemi sur le passage, il peut chain depuis le terrain ou simplement s'arrêter. Le chain depuis ennemis ne se déclenche pas tant qu'il peut encore Pierce."
+          }
+        },
+        {
+          "tags": [
+            "chain",
+            "terrain"
+          ],
+          "cells": {
+            "case": "Rebond sur mur",
+            "setup": "Un ennemi près d'un mur ; projectile a une chance de chain depuis le terrain",
+            "result": "En touchant l'ennemi sans Pierce/Fork restant, le projectile peut chain depuis le mur vers un second ennemi. Le chain depuis terrain arrive au plus une fois par défaut et sa chance est additive."
+          }
+        },
+        {
+          "tags": [
+            "return",
+            "boss"
+          ],
+          "cells": {
+            "case": "Boss, cible unique",
+            "setup": "Un boss ; projectile a Fork, Chain et Return",
+            "result": "Sans autre cible à proximité, Fork et Chain ne trouvent rien vers quoi se rediriger et s'éloignent. Return peut ajouter une collision supplémentaire contre le boss (la seule cible déjà touchée), faisant de Return le plus utile des quatre ici."
+          }
+        }
+      ],
+      "note": "Ce sont des exemples pédagogiques du système de priorité. Les comptes exacts de Pierce/Chain et les dégâts proviennent de l'infobulle en jeu actuelle."
+    },
+    {
+      "id": "clear-vs-single-target",
+      "order": 7,
+      "title": "Vitesse de clear vs boss",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Choisissez le type de rencontre pour lequel vous construisez. L'outil pointe vers les supports qui aident réellement.",
+      "controls": [
+        {
+          "id": "encounter",
+          "label": "Contre quoi combattez-vous principalement ?",
+          "options": [
+            {
+              "label": "Mapping et vitesse de clear (beaucoup d'ennemis)",
+              "value": "clear"
+            },
+            {
+              "label": "Boss (peu ou un seul ennemi)",
+              "value": "boss"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Répartir les dégâts pour la vitesse de clear",
+          "when": {
+            "encounter": "clear"
+          },
+          "steps": [
+            "Utilisez Chain et/ou Fork pour atteindre les ennemis supplémentaires qu'un seul projectile manquerait.",
+            "Ajoutez Pierce si les ennemis sont alignés pour qu'un tir en traverse plusieurs.",
+            "Rappelez-vous un seul comportement par collision : Fork ou Chain, pas les deux, sur un coup donné."
+          ]
+        },
+        {
+          "title": "Concentrez-vous sur la cible unique",
+          "when": {
+            "encounter": "boss"
+          },
+          "steps": [
+            "Préférez Pierce plus Return, car Return peut ajouter un coup supplémentaire sur le même boss.",
+            "Fork et Chain apportent peu sur un ennemi isolé car ils ont besoin d'autres cibles vers quoi se rediriger.",
+            "Si le boss est la seule cible, la plupart d'un setup Fork/Chain est un trajet gaspillé."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Choix général de support",
+        "steps": [
+          "Adaptez le support à la densité de cibles que vous affrontez le plus.",
+          "Utilisez Fork/Chain pour les packs, Pierce/Return pour les cibles uniques.",
+          "Consultez l'infobulle en jeu pour les comptes et modificateurs de dégâts actuels."
+        ]
+      }
+    },
+    {
+      "id": "skill-exceptions",
+      "order": 8,
+      "title": "Compétences et objets qui interdisent des comportements",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Toutes les compétences de projectile ne peuvent pas utiliser les quatre comportements. Certaines compétences ou objets interdisent explicitement l'un d'eux, et la règle est écrite dans le texte de la compétence ou de l'objet. Lisez toujours l'infobulle avant de supposer qu'un support fonctionnera.",
+        "En général, un comportement est interdit lorsque le texte indique que le projectile « ne peut pas Pierce / Fork / Chain / Return », ou lorsque la compétence possède déjà un comportement intégré qui en bloque un autre (par exemple une compétence qui traverse toutes les cibles ne peut pas Fork sur un coup qu'elle traverse)."
+      ],
+      "bullets": [
+        "Lightning Arrow : ne peut pas Chain, y compris depuis le terrain (corrigé en tant que bug dans le patch 0.2.0).",
+        "Freezing Pulse : les projectiles traversent toutes les cibles, donc ne peuvent pas Fork.",
+        "Spectral Throw : les projectiles font Return et se comportent comme traversants, donc Fork ne s'applique pas sur ses coups.",
+        "Certains objets uniques (par exemple l'anneau Snakepit) empêchent les projectiles de sort de traverser ou de chain selon le socket.",
+        "Les effets d'Ascendancy ou de passifs peuvent aussi accorder ou retirer un comportement ; l'infobulle est la source de vérité."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 9,
+      "title": "Erreurs courantes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La plupart des problèmes de projectile viennent d'une mauvaise compréhension de l'ordre de priorité et de la règle un-seul-comportement-par-collision plutôt que de mauvais tirages. Surveillez ces points avant de blâmer le jeu."
+      ],
+      "bullets": [
+        "Chain « ne se déclenche pas » : le projectile peut aussi Pierce ou Fork, donc le chain depuis ennemi est ignoré ; ou il n'y a pas d'ennemi valide dans la distance de chain ; ou la compétence ne peut pas chain du tout.",
+        "Projectile « disparaît » : il a épuisé ses comportements et s'est éloigné. Fork et Chain ont besoin d'une cible secondaire valide, sinon le projectile expire simplement à sa limite de trajet.",
+        "Return « ne fait pas de dégâts » : la prévention du shotgun signifie qu'un projectile qui revient n'obtient qu'une collision supplémentaire par ensemble sur les cibles déjà touchées ; les autres retours traversent sans entrer en collision.",
+        "Supposer que toute compétence de projectile prend en charge les quatre comportements — vérifiez l'infobulle pour « ne peut pas Pierce/Fork/Chain/Return ».",
+        "Confondre le Chain ennemi avec le Chain terrain — ils suivent des règles et des limites différentes.",
+        "Mélanger Fork (deux à plus/moins 60 degrés) avec Split (copies à ciblage automatique) et avec Projectile Count (plus de projectiles séparés)."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 10,
+      "title": "Points de confusion fréquents",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusions paraphrasées que les joueurs soulèvent souvent à propos des comportements de projectile.",
+      "cards": [
+        {
+          "title": "Chain semble faible contre les boss",
+          "tag": "chain",
+          "body": [
+            "Les joueurs s'attendent à ce que Chain ajoute des dégâts à un boss isolé, mais Chain a besoin d'un autre ennemi vers quoi se rediriger. Sur une cible unique, il ne fait presque rien, ce qui est le point central du guide vidéo référencé."
+          ],
+          "link": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+          "linkLabel": "Pourquoi Chain pourrait être pire que vous ne le pensez"
+        },
+        {
+          "title": "Pierce et Fork ensemble",
+          "tag": "pierce",
+          "body": [
+            "Beaucoup supposent qu'une gemme peut à la fois Pierce et Fork sur le même coup. Un seul comportement se résout par collision, donc un coup traversant ne fork pas."
+          ]
+        },
+        {
+          "title": "Lightning Arrow chain encore",
+          "tag": "chain",
+          "body": [
+            "Certains joueurs croyaient que Lightning Arrow pouvait chain depuis le terrain. Le patch 0.2.0 l'a corrigé pour que la compétence ne puisse pas chain du tout, y compris depuis le terrain."
+          ]
+        },
+        {
+          "title": "Return touche le même ennemi",
+          "tag": "return",
+          "body": [
+            "Les joueurs sont surpris qu'un projectile qui revient touche à nouveau un ennemi déjà touché. Return autorise de façon unique une collision supplémentaire par ensemble sur les cibles déjà frappées."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 11,
+      "title": "Guide vidéo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 - Pourquoi Chain pourrait être pire que vous ne le pensez [Patch 0.2]",
+          "creator": "Last Protagonist",
+          "description": "Une analyse communautaire de quand Chain aide la vitesse de clear et quand il gaspille de la valeur sur les cibles uniques, ainsi que la comparaison des supports de projectile dans Path of Exile 2.",
+          "takeaway": "Chain brille contre les packs mais apporte peu à un boss isolé ; choisissez Fork/Chain pour le clear et Pierce/Return pour les cibles uniques selon l'ordre de priorité des collisions.",
+          "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+          "timestamps": [
+            {
+              "label": "Introduction",
+              "time": "0:00"
+            },
+            {
+              "label": "Ce que Chain fait réellement",
+              "time": "1:30"
+            },
+            {
+              "label": "Quand Chain aide (vitesse de clear)",
+              "time": "4:00"
+            },
+            {
+              "label": "Quand Chain nuit (cible unique)",
+              "time": "7:00"
+            },
+            {
+              "label": "Comparaison des gemmes de support de projectile",
+              "time": "10:00"
+            },
+            {
+              "label": "Résumé et conseils de build",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 12,
+      "title": "Foire aux questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Toute compétence de projectile peut-elle utiliser Pierce, Fork, Chain et Return ?",
+          "answer": [
+            "Non. Certaines compétences ou objets interdisent explicitement un comportement. Lightning Arrow ne peut pas Chain (y compris depuis le terrain), et Freezing Pulse traverse toutes les cibles donc ne peut pas Fork. Lisez l'infobulle de la compétence pour « ne peut pas Pierce/Fork/Chain/Return »."
+          ]
+        },
+        {
+          "question": "Quel est l'ordre de priorité quand un projectile entre en collision ?",
+          "answer": [
+            "Le jeu vérifie Split, puis Pierce, puis Fork, puis Chain, puis Return. Un seul de ces comportements survient lors d'une collision donnée, donc le premier dont le projectile dispose encore l'emporte."
+          ]
+        },
+        {
+          "question": "Le Chain depuis ennemis fonctionne-t-il comme le Chain depuis terrain ?",
+          "answer": [
+            "Non. Si le projectile peut Pierce ou Fork, il ne chain pas depuis les ennemis, mais il peut chain depuis le terrain ensuite (et une seule fois par défaut). Certaines compétences ne peuvent pas chain depuis le terrain non plus."
+          ]
+        },
+        {
+          "question": "Return touche-t-il à nouveau le même ennemi ?",
+          "answer": [
+            "Oui. Contrairement aux autres comportements, Return autorise une collision supplémentaire par ensemble simultané contre les cibles déjà touchées. Un projectile ne fait normalement Return qu'une seule fois."
+          ]
+        },
+        {
+          "question": "Quelle est la distance de chain de base ?",
+          "answer": [
+            "Les projectiles chain depuis environ 6 mètres ; les autres effets (non projectiles) chain depuis environ 4 mètres. Un même ennemi n'est pas visé deux fois au sein d'une même Chain."
+          ]
+        },
+        {
+          "question": "Fork est-il identique à Split ou à Projectile Count ?",
+          "answer": [
+            "Non. Fork crée deux projectiles à 60 et -60 degrés. Split crée plusieurs copies à ciblage automatique. Projectile Count tire simplement plus de projectiles séparés. La prévention du shotgun empêche toujours plusieurs projectiles simultanés de toucher tous une même cible."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 13,
+      "title": "Sources et vérification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "PoE2 Wiki - Projectile",
+          "description": "Priorité des collisions, définitions des comportements, prévention du shotgun, et limite de trajet de 15 mètres",
+          "url": "https://poe2wiki.net/wiki/Projectile"
+        },
+        {
+          "label": "PoE2 Wiki - Pierce",
+          "description": "Comportement Pierce, compte de Pierce, et interaction avec Fork/Chain/Return",
+          "url": "https://poe2wiki.net/wiki/Pierce"
+        },
+        {
+          "label": "PoE2 Wiki - Fork",
+          "description": "Comportement Fork, la division à 60/-60 degrés, et limites de fork",
+          "url": "https://poe2wiki.net/wiki/Fork"
+        },
+        {
+          "label": "PoE2 Wiki - Chain",
+          "description": "Comportement Chain, chain ennemi vs terrain, et distance de chain de base",
+          "url": "https://poe2wiki.net/wiki/Chain"
+        },
+        {
+          "label": "PoE2 Wiki - Return",
+          "description": "Comportement Return et la collision supplémentaire contre les cibles déjà touchées",
+          "url": "https://poe2wiki.net/wiki/Return"
+        },
+        {
+          "label": "Last Protagonist - Pourquoi Chain pourrait être pire que vous ne le pensez",
+          "description": "Vidéo communautaire sur quand Chain aide ou nuit dans Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 14,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale du guide projectile Pierce, Fork, Chain et Return pour Path of Exile 2 Early Access 0.5.4.",
+            "Ajout des réponses directes, définitions, ordre de priorité des collisions, matrice d'association des comportements, chain ennemi vs terrain, exemples détaillés, diagnostic clear vs boss, exceptions de compétences, dépannage, confusions communautaires, vidéo, FAQ et sources."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 Wiki - Projectile",
+      "url": "https://poe2wiki.net/wiki/Projectile",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Pierce",
+      "url": "https://poe2wiki.net/wiki/Pierce",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Fork",
+      "url": "https://poe2wiki.net/wiki/Fork",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Chain",
+      "url": "https://poe2wiki.net/wiki/Chain",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki - Return",
+      "url": "https://poe2wiki.net/wiki/Return",
+      "sourceType": "official"
+    },
+    {
+      "label": "Last Protagonist - Pourquoi Chain pourrait être pire que vous ne le pensez (YouTube)",
+      "url": "https://www.youtube.com/watch?v=t-GpBSwf6kE",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guide PoE 2 Projectile Pierce, Fork, Chain et Return",
+    "description": "Découvrez comment Pierce, Fork, Chain et Return se résolvent lors d'une seule collision de projectile dans Path of Exile 2, l'ordre de priorité, le chain ennemi vs terrain, et quelles compétences interdisent des comportements.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "projectile-pierce-fork-chain-return",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

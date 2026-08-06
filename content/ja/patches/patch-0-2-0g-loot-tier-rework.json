@@ -1,0 +1,576 @@
+{
+  "id": "patch-0-2-0g-loot-tier-rework",
+  "slug": "patch-0-2-0g-loot-tier-rework",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0g 戦利品階層の再構築：ボスドロップ、階層付きレア、シミュラクロンとフィルタのリスク",
+  "shortTitle": "0.2.0g 戦利品階層の再構築",
+  "summary": "0.2.0g はアイテムのレア度階層を再構築し、高位モンスターが無価値な白アイテムをより少なく、より良いクラフト用基底を落とすようにし、ボスドロップ保護を変更し、ロールバック前に一時的にジェムを壊す不具合を引き起こしました。",
+  "description": "0.2.0g の戦利品階層再構築がボスドロップ、階層付きレア、シミュラクロン、リーグメカニック、および戦利品フィルタをどう変えたか、そしてクライアント 0.5.4e において何が今も当てはまるか。",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.0g",
+  "patch": "0.2.0g",
+  "league": "アーリーアクセス",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/catalysts-hero.webp",
+  "cardImage": "/images/items/catalysts-hero.webp",
+  "imageAlt": "0.2.0g の戦利品集めの後、地面に散らばるカタリストと通貨。",
+  "tags": [
+    "patch",
+    "0-2-0g",
+    "loot",
+    "item-tier",
+    "filter",
+    "simulacrum"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "item-tier",
+      "status": "changed-later",
+      "currentSummary": [
+        "Item Tier という概念自体は残りましたが、正確な階層の閾値や階層に連動して強化されるモッドは後のパッチで調整されました。"
+      ],
+      "supersededByPatchIds": [
+        "patch-0-2-0h-item-filter-jewellers-qol"
+      ],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "boss-drop-protection",
+      "status": "still-current",
+      "currentSummary": [
+        "0.2.0g のボスドロップ保護は、0.5.4e において頂点ボスやマップボスが報酬を保証する仕組みを今も説明するものとなっています。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "gem-rollback",
+      "status": "removed",
+      "currentSummary": [
+        "0.2.0g のジェム消滅バグは数日以内に修正されており、0.5.4e には存在しません。"
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "簡単なまとめ",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0g はコミュニティが「戦利品パッチ」と呼ぶパッチです。このパッチは Item Tier（アイテム階層）を導入しました。これはレア度の上に重なる一層であり、高位モンスターが無価値な白アイテムをより少なく、そしてプレイヤーが実際にクラフトに使いたい Magic および Rare の基底をより多く落とすようにします。",
+        "また、ボスドロップ保護を変更し、キャンペーンおよびエンドゲームのドロップ源の感触を再調整し、シミュラクロン、試練、遠征、デリリウム、ストロングボックスに手を入れました。配信直後にジェム消滅バグが発生しロールバックされましたが、それが大部分の Day-1 映像で文脈を欠いた形で取り上げられている部分です。",
+        "このページでは、0.2.0g が実際に何を変更したか、配信とロールバック、そしてその戦利品モデルのうちクライアント 0.5.4e を今も説明する部分と、後のパッチが書き換えた部分を解説します。"
+      ],
+      "bullets": [
+        "通常のレア度の上に Item Tier を追加",
+        "ボスドロップ保護を変更",
+        "ジェム消滅バグがリリースされその後ロールバックされた",
+        "後のパッチ（0.2.0h、0.5.x）がモデルを調整"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "過去の注意点",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 アーリーアクセス — 0.2.0 の時代",
+      "baselineNote": "このページの現在ステータスに関する記述は、クライアント 0.5.4e を基準として測定されています。",
+      "paragraphs": [
+        "0.2.0g は Dawn of the Hunt 時代の歴史的な安定性パッチです。その戦利品モデルは出発点であり、後のパッチが階層の閾値、フィルタの挙動、リーグドロップを調整しました。",
+        "今日 Day-1 の 0.2.0g 動画を読むことは誤解を招きます。正確な数値や、そのパッチに含まれていたジェムのバグは数日以内に変更されたためです。"
+      ],
+      "bullets": [
+        "0.2.0g ＝ 戦利品モデルの出発点であって最終設計ではない",
+        "Day-1 の映像にはロールバックされたバグが含まれている"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 3,
+      "title": "パッチ系統のタイムライン",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.2.0",
+          "date": "2025-04-04",
+          "kind": "メジャーアップデート",
+          "summary": "Dawn of the Hunt：ハントレス、新昇格クラス、Act、アトラス、リーグシステム。",
+          "tags": [
+            "major-updates"
+          ]
+        },
+        {
+          "code": "0.2.0c",
+          "date": "2025-04",
+          "kind": "バランス調整",
+          "summary": "ミニオンのスケーリングと槍／ボスの修正。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0e",
+          "date": "2025-05",
+          "kind": "バランス調整",
+          "summary": "Act 3 のレイアウト、属性ルーン、プレイヤーバランス。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0g",
+          "date": "2025-05",
+          "kind": "バランス調整",
+          "summary": "戦利品階層の再構築、ボスドロップ保護、リーグ戦利品の調整。",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0h",
+          "date": "2025-06",
+          "kind": "メジャーアップデート",
+          "summary": "Item Tier のフィルタプロパティ、ジュエラーのオーブ、エンドゲームの QoL。",
+          "tags": [
+            "major-updates"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "戦利品源の変更前後",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "一般的な戦利品源が 0.2.0g の前後でどう振る舞い、何が 0.5.4e と今も一致するか。",
+      "columns": [
+        {
+          "key": "source",
+          "label": "ソース"
+        },
+        {
+          "key": "before",
+          "label": "0.2.0g 以前"
+        },
+        {
+          "key": "after",
+          "label": "0.2.0g"
+        },
+        {
+          "key": "now",
+          "label": "現在 (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "source": "白アイテム",
+          "before": "高位モンスターからよく落ちていた",
+          "after": "高位モンスターから大幅に減少",
+          "now": "低価値の白アイテムは抑止されたまま"
+        },
+        {
+          "source": "Magic / Rare の基底",
+          "before": "品質はまちまち",
+          "after": "高位モンスターはクラフト用基底を優先",
+          "now": "階層付けは後のパッチで洗練"
+        },
+        {
+          "source": "ボスドロップ",
+          "before": "変動あり",
+          "after": "ドロップ保護を調整",
+          "now": "保護は今も有効"
+        },
+        {
+          "source": "シミュラクロン",
+          "before": "旧来の報酬配分",
+          "after": "階層モデルに合わせて調整",
+          "now": "以降も継続して調整"
+        }
+      ]
+    },
+    {
+      "id": "item-impact",
+      "order": 5,
+      "title": "アイテムとクラフトへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "system",
+          "title": "Item Tier",
+          "detail": "レア度の上に重なる新しい層です。高位モンスターは今や白アイテムをより少なく、拾う価値のある Magic/Rare の基底をより多く落とします。レア度のみに一致するフィルタルールは、これらの階層付き基底を隠してしまう可能性があります。",
+          "tags": [
+            "tier",
+            "rarity",
+            "filter"
+          ]
+        },
+        {
+          "kind": "base",
+          "title": "階層付き Magic / Rare 基底",
+          "detail": "より高い階層はより良いモッドロールと相関しており、0.2.0g 以前よりも強力なクラフト対象となります。",
+          "tags": [
+            "crafting",
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 6,
+      "title": "フィルタと稼ぎへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "0.2.0g における最大の実害の罠は戦利品フィルタでした。レア度だけに連動したフィルタは新しい階層付き基底を隠してしまうため、古いフィルタからアップデートしたプレイヤーは突然良いドロップが見えなくなりました。",
+        "階層の意味は 0.2.0h 以降で再び変わったため、0.2.0g 単独で書かれたフィルタは現在のクライアントに対して不完全です。"
+      ],
+      "bullets": [
+        "古いレア度のみのフィルタは階層付き基底を隠す可能性がある",
+        "フィルタを現在のクライアントに対して再検証すること"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "白アイテムと階層付きドロップ",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0g 以前",
+      "oldText": "高位モンスターは大量の白アイテムと低価値のゴールドを落としていたため、画面を殲滅するのは達成感がありましたが、拾ったものの大半は店売りのゴミでした。",
+      "newLabel": "0.2.0g 以降",
+      "newText": "高位モンスターは白アイテムを大幅に少なく、識別してクラフトする価値のある Magic および Rare の基底をより多く落とすようになり、プレイヤーのフィルタリング方法と拾うものが一変しました。"
+    },
+    {
+      "id": "then-vs-now",
+      "order": 8,
+      "title": "以前と現在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Item Tier の概念",
+          "thenText": "0.2.0g で新しいレア度層として導入された。",
+          "nowText": "0.5.4e にも今も存在するが、閾値と階層ベースのモッドは調整済み。"
+        },
+        {
+          "aspect": "ボスドロップ保護",
+          "thenText": "0.2.0g で再調整された。",
+          "nowText": "今も頂点ボスおよびマップボスの報酬保証を支配している。"
+        },
+        {
+          "aspect": "ジェムのバグ",
+          "thenText": "ジェム消滅バグが 0.2.0g に同梱された。",
+          "nowText": "数日以内に修正され、0.5.4e には存在しない。"
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 9,
+      "title": "配信とロールバック",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.2.0g の配信直後、一部のプレイヤーがスキルジェムがスキルジェムから消えるのを報告しました。これはリグレッションであり、数日以内にホットフィックスでロールバックされました。",
+          "status": "fixed"
+        },
+        {
+          "text": "古い戦利品フィルタを使っていたプレイヤーは、フィルタを更新するまで一時的に階層付き基底が見えなくなっていました。",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Item Tier の概念",
+          "status": "changed-later",
+          "currentSummary": "存在するが、後のパッチで調整済み。",
+          "supersededBy": "0.2.0h, 0.5.x",
+          "affectedContent": "戦利品フィルタおよびクラフトのガイド"
+        },
+        {
+          "topic": "ボスドロップ保護",
+          "status": "still-current",
+          "currentSummary": "今もボスの報酬保証を支配している。",
+          "supersededBy": "—",
+          "affectedContent": "ボスおよびエンドゲームのガイド"
+        },
+        {
+          "topic": "0.2.0g のジェムバグ",
+          "status": "removed",
+          "currentSummary": "0.5.4e には存在しない。",
+          "supersededBy": "—",
+          "affectedContent": "—"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 11,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "フォーラム (0.2.0g の週)",
+          "context": "プレイヤーはタフなモンスターから落ちる白アイテムが大幅に減ったことに気づいた。",
+          "quote": "ついに画面の 80% が即座に無視する白アイテムではなくなった。",
+          "analysis": "意図されたゴミではなく有用なクラフト用基底へのシフトと一致する。"
+        },
+        {
+          "source": "Reddit (フィルタ)",
+          "context": "ユーザーはなぜ良いレアがフィルタから消えたのかと尋ねた。",
+          "quote": "このパッチの後、古いフィルタが新しい階層付き基底を隠していた。",
+          "analysis": "上で指摘したフィルタ認識のリスクを裏付けるものであり、ドロップ率のバグではない。"
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 12,
+      "title": "注意すべき後の変更",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "loot-filter-guide",
+          "kind": "guide",
+          "issue": "0.2.0g 単独で書かれたフィルタのチュートリアルは、0.2.0h の Item Tier プロパティを見落としている。",
+          "action": "0.2.0h の UnidentifiedItemTier ルールで更新すること。",
+          "status": "queued"
+        },
+        {
+          "contentId": "crafting-bases-guide",
+          "kind": "guide",
+          "issue": "階層とモッドの対応は 0.2.0g の後に変更された。",
+          "action": "0.5.4e に対して階層のスケーリングを再検証すること。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 13,
+      "title": "影響を受けるコンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Loot Filter Setup ガイド",
+          "type": "guide",
+          "trigger": "0.2.0g はフィルタが表示すべきものを変更した",
+          "action": "Item Tier と階層付き基底のルールを追加すること。",
+          "status": "queued"
+        },
+        {
+          "name": "Crafting Bases ガイド",
+          "type": "guide",
+          "trigger": "階層付き基底がクラフトの価値を変化させた",
+          "action": "階層のスケーリングを再検証すること。",
+          "status": "queued"
+        },
+        {
+          "name": "0.2.0h Item Filter パッチ",
+          "type": "patch",
+          "trigger": "この戦利品再構築の直接的な続編",
+          "action": "フィルタプロパティのフォローアップ記事と相互リンクすること。",
+          "status": "reviewing"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "過去の動画",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — 公式パッチ案内",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "このバージョン系統に関する公式の案内です。何が変わり、後のパッチがそれをどう書き換えたかは、パッチノートと併せて読んでください。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "パッチ概要",
+              "time": "00:30"
+            },
+            {
+              "label": "戦利品とシステムの変更",
+              "time": "04:10"
+            },
+            {
+              "label": "現在の影響",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.2.0g はドロップ率を上げたのか、それとも単に白アイテムを隠しただけか？",
+          "answer": [
+            "主に高位モンスターからの低価値な白アイテムを減らし、有用な Magic/Rare の基底へ重みを移しました。これは一律のドロップ率バフではなく、後のパッチもモデルの調整を続けました。"
+          ]
+        },
+        {
+          "question": "なぜ古いフィルタで良いアイテムが表示されなくなったのか？",
+          "answer": [
+            "レア度だけに連動したフィルタは新しい階層付き基底を隠してしまう可能性があります。フィルタを更新し、Item Tier のルールを現在のクライアントに対して再確認してください。"
+          ]
+        },
+        {
+          "question": "ジェム消滅バグは今もあるのか？",
+          "answer": [
+            "いいえ。それは 0.2.0g の短命なリグレッションであり、ホットフィックスで修正されました。0.5.4e には存在しません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式 0.2.0g パッチノート",
+          "description": "このバージョンの記載された変更、配信順、およびその後の補足説明を含む公式のパッチスレッド。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+        },
+        {
+          "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+          "description": "このページで参照しているすべての公式 EA パッチおよびホットフィックスのスレッドの索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "現在のスキル、アイテム、ボス、モッドのデータを、現在の適用範囲に関する記述について実際のクライアントと照合したもの。",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "この記事で参照しているスキル、アイテム、モッドのデータベース項目。",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "プレイヤーへの影響を相互検証するために使用したコミュニティのビルドおよびシステムガイド。一次的な事実ソースではない。",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "クライアント 0.5.4e に対する現在の適用範囲の検証とともに、歴史的パッチ記事を公開しました。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3774669",
+      "label": "Path of Exile 2 公式 0.2.0g パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0g 戦利品階層の再構築：ボスドロップ、階層付きレア、フィルタのリスク",
+    "description": "0.2.0g の戦利品再構築を解説：アイテム階層、ボスドロップ保護、シミュラクロン、そして古いフィルタが新しい基底を隠してしまった理由。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0g-loot-tier-rework",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

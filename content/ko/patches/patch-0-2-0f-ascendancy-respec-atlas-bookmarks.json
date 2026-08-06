@@ -1,0 +1,445 @@
+{
+  "id": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+  "slug": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0f: 승천(Ascendancy) 리스펙, 아틀라스 북마크 사용법, 그리고 참(Charm) & 룬(Rune) 드롭이 바뀐 이유",
+  "shortTitle": "0.2.0f 승천 리스펙 & 북마크",
+  "summary": "0.2.0f에 대한 역사적 방법 안내: 자격을 갖춘 시험과 승천 장치(Ascension Device)를 통해 승천 리스펙하기, 아틀라스 북마크 사용하기, 그리고 상위 티어에서 참 슬롯과 하급/중급 룬 드롭이 바뀐 이유.",
+  "description": "0.2.0f에서 승천 리스펙과 아틀라스 북마크가 추가되고 참과 룬 드롭 동작이 변경된 방식, 그리고 0.5.4e 기준에서 복귀 플레이어에게 의미하는 바.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.2.0f",
+  "patch": "0.2.0f",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/trialmaster-hero.webp",
+  "cardImage": "/images/bosses/trialmaster-hero.webp",
+  "imageAlt": "0.2.0f의 시험의 지배자(Trialmaster)와 승천 시험들",
+  "tags": [
+    "ascendancy-respec",
+    "atlas-bookmarks",
+    "charms-guide",
+    "runes",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "빠른 답변: 리스펙 방법",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "패치 0.2.0f는 승천 클래스를 리스펙할 수 있는 기능을 추가했으며, 이는 얼리 액세스 시작 이후 많은 플레이어가 요청해 온 변경 사항이었습니다. 요약하자면: NPC와 대화한다고 해서 리스펙되는 것이 아닙니다. 포인트 요구치를 충족하는 승천 시험을 완료한 뒤, 승천 장치(Ascension Device)를 사용해 포인트를 환불받고 새로운 승천을 선택해야 합니다.",
+        "이 아티클은 0.2.0f의 전체 흐름, 이 패치와 함께 추가된 아틀라스 북마크, 그리고 플레이어들을 놀라게 한 참과 룬 드롭 변경 사항을 설명합니다. 0.2.0f는 역사적 패치이므로, 어떤 동작이 0.5.4e에서도 여전히 적용되는지 그리고 나중에 조정된 것은 무엇인지 표시해 둡니다.",
+        "목표가 오직 리스펙뿐이라면 아래 마이그레이션 가이드로 건너뛰세요. 예전 벨트의 참 슬롯이 갱신되지 않았거나, 상위 레벨에서 하급 룬이 더 이상 보이지 않는다면 변경 탐색기와 FAQ 섹션에서 해당 사례를 다룹니다."
+      ],
+      "bullets": [
+        "승천 리스펙, 아틀라스 북마크, 그리고 참 또는 룬 드롭은 모두 0.2.0f에서 변경되었습니다.",
+        "리스펙하려면 자격을 갖춘 승천 시험을 완료해야 합니다.",
+        "예전 벨트는 새로운 참 슬롯 동작을 자동으로 획득하지 않습니다."
+      ]
+    },
+    {
+      "id": "version-facts",
+      "order": 2,
+      "title": "역사적 맥락: 버전 사실",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Early Access, 0.2.0f 핫픽스 윈도우",
+      "baselineNote": "현재 0.5.4e 기준과 비교함.",
+      "paragraphs": [
+        "0.2.0f는 대규모 Dawn of the Hunt 콘텐츠 업데이트에 이은 집중 후속 패치였습니다. 0.2.0이 온전한 시스템을 도입한 반면, 0.2.0f는 리그 초기 몇 주 동안 플레이어들이 지적한 편의성(QoL)과 드롭 확률 수정에 집중했습니다.",
+        "가장 눈에 띄는 기능은 승천 리스펙과 아틀라스 북마크였지만, 패치는 참과 룬이 드롭되는 방식도 조정했습니다. 이러한 드롭 변경은 과거 가이드들이 놓치기 쉬운 조용한 조정 유형이므로, 여기서 역사적 사실로 기록합니다.",
+        "다른 역사적 패치와 마찬가지로 현재 기준은 0.5.4e입니다. 일부 0.2.0f 규칙은 여전히 유효하고, 다른 것들은 이후 패치에서 다듬어졌습니다. 현재 적용 가능 여부 섹션에서 어느 쪽인지 나열합니다."
+      ],
+      "bullets": [
+        "0.2.0f는 0.2.0 Dawn of the Hunt 업데이트 이후에 나왔습니다.",
+        "QoL에 집중: 승천 리스펙과 아틀라스 북마크.",
+        "참과 룬 드롭 동작도 조정했습니다."
+      ]
+    },
+    {
+      "id": "ascendancy-respec-flow",
+      "order": 3,
+      "title": "마이그레이션 가이드: 리스펙 흐름",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "리스펙 옵션 없이 현재 승천에 고정된 상태",
+          "to": "포인트 요구치를 충족하는 승천 시험 완료",
+          "note": "리스펙이 가능해지려면 먼저 시험 포인트(meeting-point 임계치)를 획득해야 합니다."
+        },
+        {
+          "from": "기존 승천 포인트가 배분된 상태",
+          "to": "승천 장치에서 모든 승천 포인트를 0으로 환불",
+          "note": "장치를 사용하면 현재 승천 배분을 백지 상태로 되돌릴 수 있습니다."
+        },
+        {
+          "from": "승천을 선택하지 않은 상태",
+          "to": "승천 장치에서 새로운 승천 선택",
+          "note": "환불한 후에는 장치 인터페이스에서 원하는 승천을 고르세요."
+        },
+        {
+          "from": "새 승천 선택 완료",
+          "to": "원하는 대로 승천 포인트 재배분",
+          "note": "환불받은 포인트를 새 승천의 트리에서 사용하세요."
+        }
+      ]
+    },
+    {
+      "id": "trial-requirement-table",
+      "order": 4,
+      "title": "시험 요구치 표",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.0f에서 리스펙과 관련된 승천 시험 요구 사항(검증되지 않은 항목은 임계치를 '미확인'으로 표시).",
+      "columns": [
+        { "key": "trial", "label": "시험" },
+        { "key": "level", "label": "레벨" },
+        { "key": "points", "label": "필요 포인트" },
+        { "key": "notes", "label": "비고" }
+      ],
+      "rows": [
+        { "trial": "첫 승천 시험", "level": "unknown / 待核实", "points": "meeting-point requirement", "notes": "리스펙 전에 시험을 완료하고 포인트 임계치를 충족하세요." },
+        { "trial": "이후 시험들", "level": "unknown / 待核实", "points": "per trial", "notes": "각 후속 승천 단계마다 고유한 시험과 포인트 관문이 있습니다." },
+        { "trial": "승천 장치", "level": "n/a", "points": "0으로 환불 후 재배분", "notes": "승천 포인트를 초기화하고 재할당하는 데 사용됩니다." }
+      ]
+    },
+    {
+      "id": "atlas-bookmarks",
+      "order": 5,
+      "title": "아틀라스 북마크",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "아틀라스 북마크는 0.2.0f에서 아틀라스상의 관심 지점을 저장하고 이동할 수 있도록 추가되었습니다. 각 북마크는 아틀라스 탐색을 통해 돌아갈 수 있는 위치를 저장하므로, 반복되는 파밍 경로의 비효율을 줄여줍니다.",
+        "북마크는 아틀라스에 배치하는 라벨이 있는 아이콘으로 표시되므로, 좋아하는 맵이나 타워(Tower), 파밍 군집을 이름 붙이고 수동으로 위치를 다시 찾지 않고도 다시 방문할 수 있습니다. 사용 가능한 북마크 정확한 개수와 아이콘 세트는 이후 패치에서 아틀라스 UI가 조정되었으므로 미확인으로 표시합니다.",
+        "실제로 북마크는 매 세션마다 다시 탐색하던 아틀라스를 저장된 웨이포인트 세트로 바꿔놓았습니다. 매일 같은 로테이션을 도는 플레이어에게 조용하지만 의미 있는 편의성 향상이었습니다."
+      ],
+      "bullets": [
+        "북마크는 아틀라스 위치를 저장해 빠르게 복귀할 수 있게 합니다.",
+        "각 북마크에는 아이콘과 라벨이 있습니다.",
+        "북마크 개수와 정확한 아이콘 세트는 0.2.0f 기준 미확인입니다."
+      ]
+    },
+    {
+      "id": "charm-slot-before-after",
+      "order": 6,
+      "title": "참 슬롯: 이전과 이후",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0f 이전 (기존 벨트)",
+      "oldText": "참 슬롯 변경 이전에 제작된 벨트는 이미 자신의 슬롯 구성이 정해져 있었습니다. 이는 예전 참 규칙하에 만들어진 것입니다.",
+      "newLabel": "0.2.0f 이후 (신규 벨트)",
+      "newText": "신규 벨트는 갱신된 참 슬롯 동작을 획득합니다. 변경 이전에 존재하던 벨트는 새로운 슬롯을 자동으로 받지 않으므로, 슬롯을 얻으려면 새 벨트를 획득하거나 제작해야 합니다."
+    },
+    {
+      "id": "rune-drop-progression",
+      "order": 7,
+      "title": "룬 드롭 진행",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "하급 룬 드롭 중단",
+          "detail": "0.2.0f에서 하급 룬(Lesser Runes)은 캐릭터나 지역 티어가 높아지면 더 이상 드롭되지 않게 되어, 룬 경제가 상위 티어 룬으로 이동했습니다.",
+          "scope": "공식 0.2.0f 패치 노트"
+        },
+        {
+          "category": "item",
+          "title": "중급 룬 드롭 중단",
+          "detail": "중급 룬(Medium Runes)도 상위 티어에서 마찬가지로 드롭이 중단되어, 후반 게임 룬 수입은 하위/중위 티어가 아닌 최상위 룬에서 나오게 되었습니다.",
+          "scope": "공식 0.2.0f 패치 노트"
+        }
+      ]
+    },
+    {
+      "id": "pinnacle-respawn-change",
+      "order": 8,
+      "title": "핀나클 무한 부활 변경",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "boss",
+          "title": "난이도 0 무한 부활 (역사적 규칙)",
+          "detail": "0.2.0f에는 난이도 0의 핀나클 보스가 무한 부활을 허용한다는 역사적 규칙이 기록되어 있습니다. 상위 난이도의 정확한 부활 제한과 이후 변경 사항은 미확인으로 표시하는데, 부활 규칙은 후속 패치에서 조정되었기 때문입니다(예: 0.1.1c에서 더 많은 보스로 부활이 확장됨).",
+          "scope": "공식 0.2.0f 패치 노트"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 9,
+      "title": "현재 적용 가능 여부 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "승천 리스펙",
+          "status": "still-current",
+          "currentSummary": "자격을 갖춘 시험과 승천 장치를 통한 리스펙은 0.5.4e에서도 가능합니다.",
+          "supersededBy": "—",
+          "affectedContent": "승천 가이드"
+        },
+        {
+          "topic": "아틀라스 북마크",
+          "status": "still-current",
+          "currentSummary": "아틀라스 북마크는 0.5.4e에서도 아틀라스 탐색 기능으로 유지됩니다.",
+          "supersededBy": "—",
+          "affectedContent": "아틀라스 가이드"
+        },
+        {
+          "topic": "기존 벨트의 참 슬롯",
+          "status": "changed-later",
+          "currentSummary": "기존 벨트는 여전히 자동 갱신되지 않으며, 신규 벨트만 현재 참 슬롯을 가집니다.",
+          "supersededBy": "later patches",
+          "affectedContent": "참 아이템 페이지"
+        },
+        {
+          "topic": "하급 또는 중급 룬 드롭 중단",
+          "status": "changed-later",
+          "currentSummary": "상위 티어 룬 드롭 관문은 유지되지만 이후 룬 추가(0.2.1에서 엔드게임 룬 22종 추가)로 확장되었습니다.",
+          "supersededBy": "0.2.1",
+          "affectedContent": "룬 아이템 페이지"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "그때 vs 지금",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "승천 변경",
+          "thenText": "0.2.0f 이전: 리스펙 옵션 없음.",
+          "nowText": "0.5.4e: 시험 + 승천 장치를 통한 리스펙."
+        },
+        {
+          "aspect": "아틀라스 탐색",
+          "thenText": "0.2.0f 이전: 위치를 수동으로 다시 찾음.",
+          "nowText": "0.5.4e: 저장된 북마크."
+        },
+        {
+          "aspect": "참 슬롯",
+          "thenText": "0.2.0f 이전: 기존 벨트는 예전 슬롯에 고정.",
+          "nowText": "0.5.4e: 신규 벨트는 현재 슬롯 사용."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "알려진 문제 & 문제 해결",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "시험 직후 승천을 전환할 수 없다고 보고하는 플레이어들이 있습니다. 포인트 요구치를 확인하고 승천 장치를 사용하면 해결됩니다.",
+          "status": "tracking"
+        },
+        {
+          "text": "기존 벨트에 새 참 슬롯이 표시되지 않습니다. 이는 의도된 동작이며 버그가 아닙니다 - 새 벨트를 구하세요.",
+          "status": "open"
+        },
+        {
+          "text": "하급 룬은 상위 티어에서 드롭이 중단됩니다. 의도된 드롭 진행이며 누락된 드롭이 아닙니다.",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "커뮤니티 근거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "포럼 (0.2.0f)",
+          "context": "플레이어들이 시험 직후 승천을 변경할 수 없는 이유를 물었습니다.",
+          "quote": "시험은 끝냈는데 리스펙 버튼이 비활성화되어 있어요.",
+          "analysis": "포인트 임계치를 충족하고 승천 장치를 사용해야 한다는 요구 사항과 일치합니다."
+        },
+        {
+          "source": "Reddit (0.2.0f)",
+          "context": "플레이어들이 기존 벨트에 새 참 슬롯이 없는 것을 눈치챘습니다.",
+          "quote": "내 오래된 벨트는 참 슬롯을 못 받았어요.",
+          "analysis": "기존 벨트는 자동 갱신되지 않는다는 역사적 규칙과 일치합니다."
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "시험 후에 승천을 전환할 수 없는 이유는 무엇인가요?",
+          "answer": [
+            "시험의 포인트 요구치를 충족한 뒤 승천 장치를 사용해 포인트를 환불받고 새로운 승천을 선택해야 합니다. 시험만 완료하는 것으로는 부족합니다."
+          ]
+        },
+        {
+          "question": "내 기존 벨트의 참 슬롯이 갱신되지 않은 이유는 무엇인가요?",
+          "answer": [
+            "기존 벨트는 원래 슬롯 구성을 그대로 유지합니다. 새로운 참 슬롯 동작은 변경 이후에 만들거나 획득한 벨트에 적용되므로, 슬롯을 얻으려면 새 벨트가 필요합니다."
+          ]
+        },
+        {
+          "question": "상위 레벨에서 하급 룬이 더 이상 보이지 않는 이유는 무엇인가요?",
+          "answer": [
+            "0.2.0f에서 룬 드롭 진행을 변경하여 하급(및 중급) 룬은 캐릭터나 지역 티어가 높아지면 드롭이 중단됩니다. 이는 버그가 아닌 의도된 동작입니다."
+          ]
+        },
+        {
+          "question": "아틀라스 북마크는 어떻게 작동하나요?",
+          "answer": [
+            "아틀라스에 라벨이 있는 아이콘을 배치해 위치를 저장하고 아틀라스 탐색을 통해 돌아갑니다. 0.2.0f의 정확한 북마크 개수는 미확인입니다."
+          ]
+        },
+        {
+          "question": "두 번 이상 리스펙할 수 있나요?",
+          "answer": [
+            "네, 리스펙마다 동일한 흐름을 따릅니다. 자격을 갖춘 시험을 완료하고, 승천 장치에서 환불한 뒤 재배분하세요. 이후 승천 단계마다 고유한 시험 관문이 있습니다."
+          ]
+        },
+        {
+          "question": "이 0.2.0f 규칙들은 0.5.4e에서도 여전히 유효한가요?",
+          "answer": [
+            "대체로 그렇습니다. 리스펙과 북마크는 유지되며, 참 슬롯과 룬 드롭은 0.2.1 같은 이후 패치에서 다듬어졌습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.2.0f 패치 노트",
+          "description": "승천 리스펙, 아틀라스 북마크, 참 및 룬 드롭 변경 사항.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.2.0 패치 노트",
+          "description": "Dawn of the Hunt 기준 맥락.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "PoE2 공식 포럼 (EA 인덱스)",
+          "description": "얼리 액세스 패치 노트 인덱스.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "변경 이력",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.2.0f 승천 리스펙, 아틀라스 북마크, 참 및 룬 드롭 변경 사항에 대한 역사적 정리.",
+            "리스펙 및 참 슬롯 관련 문제 해결과 FAQ 추가."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "trialmaster",
+    "arbiter-of-ash"
+  ],
+  "relatedItemIds": [
+    "charms-guide",
+    "runes-and-soul-cores",
+    "catalysts"
+  ],
+  "relatedGuideIds": [
+    "ascendancy-points-trials-guide",
+    "early-atlas-progression-waystone-sustain",
+    "campaign-checklist-permanent-rewards"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.2.0f 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3762865",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.2.0 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 공식 포럼 (EA 인덱스)",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0f: 승천 리스펙, 아틀라스 북마크 & 참/룬 드롭",
+    "description": "0.2.0f에서 승천 리스펙이 가능해지고 아틀라스 북마크가 추가되었으며 참 & 룬 드롭이 변경된 방식.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

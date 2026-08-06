@@ -1,0 +1,363 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "de",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.5.4e — Shader, Vulkan und First-Load-Performance",
+  "shortTitle": "0.5.4e Shader-Performance",
+  "summary": "0.5.4e ist ein technischer Patch. Er erklärt, warum der erste Ladevorgang nach einem Patch langsamer sein kann, was Shader-Rekompilierung bedeutet, was sich für Vulkan/Steam geändert hat und welche Symptome normal sind gegenüber solchen, die noch abgeklärt werden müssen.",
+  "description": "Eine Fehlerbehebungs-Seite, kein Gameplay-Patch. DX12-, Vulkan-, NVIDIA/AMD- sowie PC-/Konsolen-Berichte dürfen nicht zu einer gemeinsamen Schlussfolgerung zusammengefasst werden.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "Eine sturmverdunkelte Ruinenstadt, die das 0.5.4e-Shader- und Performance-Update repräsentiert",
+  "tags": [
+    "bug-fixes"
+  ],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "Auswirkung auf Spieler in 30 Sekunden",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e verbessert das Shader-Laden und verringert die Shader-Größe, deaktiviert die Steam-Vulkan-Fossilize-Ebene und ändert den standardmäßigen VSync auf Capped.",
+        "Ein langsamerer erster Ladevorgang nach dem Patch ist zu erwarten, da Shader neu kompiliert werden. Beurteile die endgültige Performance nicht allein anhand des ersten Eintritts.",
+        "Diese Seite behauptet niemals, dass Stutter vollständig behoben sei. Renderer, Plattform sowie erster gegenüber wiederholtem Lauf müssen getrennt betrachtet werden."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "Wo 0.5.4e in der Patch-Familie steht",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "Großer Patch",
+          "summary": "Inhaltliche Basis, auf die 0.5.4e technisch folgt.",
+          "tags": [
+            "atlas",
+            "items",
+            "bosses"
+          ]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "Hotfix",
+          "summary": "Oath-Rune-Fix; getrennt von den technischen Änderungen von 0.5.4e.",
+          "tags": [
+            "expedition",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "Technischer Patch",
+          "summary": "Änderungen an Shader-Laden, Vulkan-Cache und VSync-Standard auf dieser Seite.",
+          "tags": [
+            "shaders",
+            "vulkan",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "Auswirkungs-Dashboard",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Erster Ladevorgang",
+          "verdict": "Rechne mit einem langsameren ersten Eintritt",
+          "detail": "Shader werden nach dem Patch neu kompiliert. Das ist normal und unterscheidet sich von einer echten Performance-Regression."
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "Fossilize-Ebene deaktiviert",
+          "detail": "Zielt darauf ab, dass der Shader-Cache manchmal unnatürlich anwächst. Gilt nicht in derselben Weise für DX12 oder Standalone."
+        },
+        {
+          "area": "VSync",
+          "verdict": "Standard ist nun Capped",
+          "detail": "Adaptive wird wegen Frame-Pacing-Problemen nicht mehr empfohlen."
+        },
+        {
+          "area": "Community",
+          "verdict": "Ergebnisse sind nicht einheitlich",
+          "detail": "Einige Spieler berichten flüssigere Karten, andere berichten weiterhin von Abstürzen oder Szenen-Stutter. Keine universelle pauschale Behauptung."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "Offizielle Änderungen, nach Spielerproblem neu geordnet",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "Shader-Laden verbessert und Größe reduziert",
+          "detail": "Der erste Eintritt kann Shader neu kompilieren; spätere Eintritte sind schneller. Beurteile anhand des wiederholten Laufs, nicht des ersten.",
+          "scope": "official-fact: betrifft alle Plattformen nach dem Update"
+        },
+        {
+          "category": "technical",
+          "title": "Steam-Vulkan-Fossilize-Ebene deaktiviert",
+          "detail": "Zielt auf abnormales Wachstum des Shader-Cache ab. Spezifisch für Steam + Vulkan; nicht DX12 zuschreiben.",
+          "scope": "official-fact: Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "Standard-VSync auf Capped geändert",
+          "detail": "Adaptive wurde wegen Frame-Pacing-Problemen fallengelassen.",
+          "scope": "official-fact: Client-Standard"
+        },
+        {
+          "category": "fix",
+          "title": "Verbleibende Crash-/Stutter-Fälle",
+          "detail": "Einige Berichte bestehen weiterhin; sie sind noch nicht als vollständig gelöst bestätigt und verbleiben unter Bekannte Probleme.",
+          "scope": "community-report: nicht zu verifiziert hochgestuft"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "Erster Lauf gegenüber wiederholtem Lauf",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Falsche Beurteilungsweise",
+      "oldText": "FPS nur beim ersten Areal-Eintritt nach dem Patch zu messen und zu schließen, der Patch habe die Performance verschlechtert.",
+      "newLabel": "Richtige Beurteilungsweise",
+      "newText": "Den ersten kompilierten Eintritt von wiederholten Eintritten trennen; wiederholten Lauf-FPS vor und nach dem Patch vergleichen."
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "Technische Umgebungs-Matrix",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "Prüfe zuerst Shader-Rekompilierung, Steam-Shader-Cache-Größe und Vulkan-Stabilität. Übernimm keine Schlüsse von DX12 oder Konsole."
+        },
+        {
+          "key": "steam-dx12",
+          "note": "Ersten Compile von späteren Ladevorgängen trennen. Die Fossilize-Änderung zielt auf Steam + Vulkan, nicht direkt auf DX12."
+        },
+        {
+          "key": "standalone",
+          "note": "Standalone verwendet nicht die Steam-Fossilize-Ebene. Prüfe Renderer, Treiber, Cache-Verzeichnis und Verhalten nach wiederholtem Eintritt."
+        },
+        {
+          "key": "console",
+          "note": "Die offiziellen 0.5.4e-Notizen beschreiben Shader- und Vulkan/Steam-Verhalten. Konsolen-Berichte müssen separat erfasst werden, nicht mit PC zusammengeführt."
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "Betroffene Inhalts-Warteschlange",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Performance-Fehlerbehebungs-Guide",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Abschnitt Erst-Lauf gegenüber Wiederholungs-Lauf hinzufügen",
+          "status": "reviewing"
+        },
+        {
+          "name": "Shader-Cache-FAQ",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Fossilize-Deaktivierung dokumentieren",
+          "status": "queued"
+        },
+        {
+          "name": "Vulkan-Setup-Guide",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Hinweis auf VSync-Standardänderung",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "Community-Belege",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.5.4e Shader-Thread",
+          "context": "Zusammenfassung des Performance-Feedbacks",
+          "quote": "Die Shader-Anzahl sank merklich, aber die Ergebnisse variieren weiterhin je nach Hardware.",
+          "analysis": "Der Textkörper muss nach Renderer, Plattform und Erst-Lauf gegenüber Wiederholungs-Lauf aufgeteilt werden; kann nicht sagen „0.5.4e hat Stutter vollständig behoben“."
+        },
+        {
+          "source": "Offizielles Forum - 0.5.4e",
+          "context": "Berichte zu verbleibenden Problemen",
+          "quote": "Einige crashen oder stuttern nach dem Patch weiterhin in bestimmten Szenen.",
+          "analysis": "Als Community-Bericht behalten; nicht zu einer verifizierten mechanischen Behauptung hochstufen."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "Video und Zeitstempel",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Offizielles Path of Exile 2",
+          "label": "0.5.4e Shader und Performance erklärt",
+          "description": "Offizielle Erklärung zu Shader-Rekompilierung, Vulkan-Cache und VSync-Standard.",
+          "takeaway": "Sieh dir den Abschnitt Erster-Lauf-gegenüber-Wiederholungs-Lauf an, bevor du Schlussfolgerungen ziehst.",
+          "url": "https://www.youtube.com/watch?v=XDEJLOHcdWw"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "Direkte Antworten",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Warum ist der erste Ladevorgang nach 0.5.4e langsamer?",
+          "answer": [
+            "Offiziell werden Shader neu kompiliert, sodass der erste Areal-Eintritt langsamer sein kann.",
+            "Beurteile die Auswirkung, indem du den ersten Eintritt von wiederholten Eintritten trennst."
+          ]
+        },
+        {
+          "question": "Hat 0.5.4e allen Stutter behoben?",
+          "answer": [
+            "Keine universelle Behauptung wird gestützt; einige Spieler berichten flüssigere Karten, andere berichten weiterhin von Abstürzen oder Szenen-Stutter.",
+            "Renderer, Plattform und Lauftyp müssen getrennt werden, bevor eine Schlussfolgerung gezogen wird."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "Bekannte Probleme",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "Verbleibende Abstürze oder szenenspezifischer Stutter nach 0.5.4e gemeldet; noch nicht vollständig als gelöst bestätigt.",
+          "status": "open"
+        },
+        {
+          "text": "Konsolen-spezifische Shader-Berichte separat von PC-Schlussfolgerungen erfasst.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Quellen und Verifikation",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 offizielle 0.5.4e-Patch-Notizen",
+          "description": "Offizielle Quelle für Shader-, Vulkan- und VSync-Änderungen.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Changelog",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Veröffentlichte den umfangreichen Artikel zu 0.5.4e Shader und Performance"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 offizielle 0.5.4e-Patch-Notizen",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 0.5.4e Shader-Performance",
+    "description": "0.5.4e ist ein technischer Patch. Er erklärt, warum der erste Ladevorgang nach einem Patch langsamer sein kann, was Shader-Rekompilierung bedeutet, was sich für Vulkan/Steam geändert hat und welche Symptome normal sind gegenüber solchen, die noch abgeklärt werden müssen.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-5-4e-shader-performance",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

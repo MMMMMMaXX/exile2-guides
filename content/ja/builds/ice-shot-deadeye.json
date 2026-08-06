@@ -1,0 +1,1039 @@
+{
+  "id": "ice-shot-deadeye",
+  "slug": "ice-shot-deadeye",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "アイスショット・デードアイ ビルドガイド",
+  "shortTitle": "アイスショット・デードアイ",
+  "summary": "ライトニングアローでのレベリング、レベル31でのアイスショット移行、スナイプのタイミング、凍結の構築、そして非クリティカルからクリティカルへの移行を段階的に解説する弓ビルドガイド。",
+  "description": "Path of Exile 2 の 0.5.4 ベースラインにおける、アイスショットとスナイプを組み合わせたデードアイビルドの完全ガイド。",
+  "classId": "ranger",
+  "ascendancyId": "deadeye",
+  "mainSkillIds": [
+    "ice-shot",
+    "snipe"
+  ],
+  "secondarySkillIds": [
+    "freezing-mark",
+    "tornado-shot",
+    "barrage",
+    "ice-tipped-arrows"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high",
+    "luxury"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "ranged",
+    "bow",
+    "cold",
+    "freeze",
+    "crit"
+  ],
+  "damageTypes": [
+    "cold",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "freeze-control",
+    "staged-investment"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "cardImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "imageAlt": "凍てつく戦場でアイスショットを放つデードアイの弓使い",
+  "tags": [
+    "bossing",
+    "cold",
+    "deadeye",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "physical",
+    "ranged",
+    "ranger",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "アイスショットはマップ清掃のエンジンであり、スナイプは構えられた単体向けの解放スキルです。ボス戦のループは「可能な限りスナイプを構える」ことではありません。フリージングマークを展開し、トルネードショットとアイスティップドアローを使って飛び道具と冷気の構成を作り、アイスショットで凍結を蓄積させ、その後でバラージからスナイプへとウィンドウを消費します。",
+        "現在のガイドは複数の実際のバリアントを扱っています。序盤の非クリティカル、中盤の非クリティカル混成、そして後半のクリティカル版です。これは強化のラダー（梯子）であって、ライフ・回避・耐性・機動力・実用的な弓が解決する前にクリティカル装備を買う許可ではありません。",
+        "重要な点として、アイスショットはレベル1で覚えられるスキルではありません。レベル31で解放されます。それまではライトニングアローとライトニングロッドでレベリングし、ジェムが揃い次第冷気構成を重ねていきます。以下のレベリング計画を本当の出発点として扱い、脚注のように扱わないでください。"
+      ],
+      "bullets": [
+        "アイスショットでマップを清掃し、タフな敵にはフリージングマークを維持する。",
+        "スナイプの解放に踏み切る前に、凍結のウィンドウを作る。",
+        "ライフ・回避・耐性・実用的な弓が解決するまでは非クリティカルを維持する。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "レベル31でアイスショットに移行後、遠距離での高速清掃が可能になる。",
+        "凍結はダメージ構築だけでなく、コントロールも提供する。",
+        "非クリティカルでの開始により、高価なクリティカル装備を無理に揃える必要がない。"
+      ],
+      "cons": [
+        "最終的なアイスショット構成をレベル1から組むことはできない。",
+        "スナイプのタイミングと多ボタンによるボス構成には練習が必要。",
+        "弓と矢筒の強化が進行に大きく影響する。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "ループの読み方",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "このビルドには2つの異なるリズムがあります。マップ清掃はフロー状態です。アイスショットを撃ち、マークを維持し、動き続けます。ボス戦は明確な手順を持つ構築と解放の手順です。多くの新しいデードアイが犯す間違いは、ボス用の手順をマップ清掃に持ち込むこと（ゴミ敵にスナイプを構えようと立ち止まる）、あるいはマップ清掃の流れをボス戦に持ち込むこと（凍結ウィンドウを決して作らない）です。",
+        "以下のセクションでは、この2つのリズムを意図的に分けています。画面の清掃については「マッピング」を、構えられたスナイプの連携については「ボス戦」をお読みください。"
+      ],
+      "bullets": [
+        "マッピング＝アイスショット＋マーク、撃ち続ける。",
+        "ボス戦＝マーク→凍結構築→バラージ→タイミングを合わせたスナイプ。",
+        "2つの手順を混ぜてはいけない。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "freeze-snipe-visual",
+      "type": "figure",
+      "title": "スナイプの前に凍結ウィンドウを作る",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ice-shot-deadeye-mechanic.webp",
+        "alt": "構えられたスナイプの解放前にアイスショットで凍結を蓄積させる様子を描いた編集図解",
+        "caption": "アイスショットで清掃し、耐久性の高い敵にマークと凍結を用意し、その後でバラージとタイミングを合わせたスナイプで好機を消費する。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "ライトニングアローとライトニングロッドから始めます。これらが本来のレベリングスキルです。アイスショットはまだ使えないため、この時期に冷気弓ビルドを無理に組もうとしないでください。"
+          ]
+        },
+        {
+          "label": "レベル 15–23",
+          "levelRange": "15–23",
+          "body": [
+            "最初のサポート（追加雷ダメージ、ライトニングロッドの強化、攻撃速度）を追加し、機動性と生存のノードを取っていきます。メインスキルは引き続きライトニングアローを維持します。"
+          ]
+        },
+        {
+          "label": "レベル 24–30",
+          "levelRange": "24–30",
+          "body": [
+            "ジェムが解放されるのに合わせて冷気の補助スキルを導入します。フリージングマークと最初の凍結・異状態サポートです。この時点でもマップ清掃はライトニングアローですが、ボス構成のピースがジェムリストに現れ始めます。"
+          ]
+        },
+        {
+          "label": "レベル 31–41 — アイスショットの解放",
+          "levelRange": "31–41",
+          "body": [
+            "アイスショットはレベル31で解放されます。弓・サポート・マナがそれを維持できるようになってからのみ、メインスキルをアイスショットに切り替えてください。これがビルド名の由来である、本来のスターターからアイスショットへの移行です。"
+          ]
+        },
+        {
+          "label": "レベル 42–59 — 初期マップ",
+          "levelRange": "42–59",
+          "body": [
+            "アイスショットを非クリティカルで運用します。耐性を上限まで満たし、ライフ・回避を解決し、レア敵への凍結を安定させます。まだクリティカル装備は買わないでください。防御の土台の方が、大きな数値よりも重要です。"
+          ]
+        },
+        {
+          "label": "レベル 60+ — エンドゲーム準備",
+          "levelRange": "60+",
+          "body": [
+            "初期の非クリティカル・エンドゲームへ向かい、その後は「強化優先度」のチェックリストを通過してからのみ混成／クリティカルのラダーへ進みます。パッシブツリーは、実際に手が届くバリアントを中心に計画してください。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 45,
+      "visible": true,
+      "caption": "各段階で何を運用するか。ジェムの正確なレベルとサポートの繋がりはPC検証待ちです。実用的なのは段階の境界です。",
+      "columns": [
+        "段階",
+        "メインスキル",
+        "主要サポート",
+        "パッシブの重点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベル 1–20",
+          "cells": [
+            "ライトニングアロー＋ライトニングロッド",
+            "ライトニングロッド、追加雷ダメージ",
+            "飛び道具／攻撃速度、生存",
+            "十分なDPSを持つ任意の弓、ライフ／耐性",
+            "レベル21にして最初の冷気ツールを獲得"
+          ]
+        },
+        {
+          "label": "レベル 21–40",
+          "cells": [
+            "ライトニングアロー（後で冷気注入）",
+            "追加冷ダメージ、凍結発生率",
+            "冷気／凍結ノード、耐性",
+            "凍結蓄積の積み上げを開始",
+            "アイスショットは31で解放"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "cells": [
+            "アイスショット（非クリティカル）",
+            "冷気貫通、martial tempo、高速飛び道具",
+            "ライフ／回避、最初の昇格クラス",
+            "非クリティカルの弓、耐性上限",
+            "T15+を生き残り、安定した凍結"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "cells": [
+            "アイスショット＋スナイプ（後にクリティカル）",
+            "クリティカルサポート、バラージ構成",
+            "完成したツリー、クリティカルホイール",
+            "高DPSの弓、クリティカル装備",
+            "クリティカル前にボスの凍結が確実"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "アイスショット",
+              "skillId": "ice-shot",
+              "role": "マップ清掃の主要スキル。サポートが揃うと凍結エンジンへと変わる。",
+              "supportSkillIds": [
+                "cold-penetration",
+                "martial-tempo",
+                "faster-projectiles",
+                "elemental-damage-with-attacks"
+              ],
+              "whyUse": [
+                "清掃スキルであり凍結の構築者でもある。マップ清掃のリズム全体はスナイプではなくこれに依存している。"
+              ],
+              "whenReplace": [
+                "完全に置き換えられることはない。ボス戦では、スナイプが単体ダメージを引き継いだ後、メインのダメージから凍結構築へと移行する。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：アイスショットを連打しマークを維持する。ボス戦：凍結ウィンドウを作るためにアイスショットを使い、その後で単体ダメージをバラージ＋スナイプに任せる。"
+              ],
+              "notes": [
+                "サポートの正確な繋がりとジェムレベルはPC検証待ちです。"
+              ]
+            },
+            {
+              "displayName": "スナイプ",
+              "skillId": "snipe",
+              "role": "構えられた単体向けの解放スキル。ボスダメージのフィニッシャー。",
+              "supportSkillIds": [
+                "cold-penetration",
+                "martial-tempo",
+                "heightened-curse"
+              ],
+              "whyUse": [
+                "凍結ウィンドウを消費して強力な単発ヒットを放つ。アイスショット単体ではボスに対して遅すぎるため必要不可欠。"
+              ],
+              "whenReplace": [
+                "置き換えはされないが、マーク＋凍結＋バラージがすでに活性化してからでなければ構える価値はない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：ほぼ使わない。ボス戦：構築と解放の連携全体の報酬となる。"
+              ],
+              "notes": [
+                "解放のタイミングは機械的な操作。装備のせいにするのではなく、ウィンドウを練習すること。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "構築と補助スキル",
+          "skills": [
+            {
+              "displayName": "フリージングマーク",
+              "skillId": "freezing-mark",
+              "role": "冷気／凍結の効果を可能にし、対象へのフォーカスを高めるマーク。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "確実な凍結の前提条件。これがないとスナイプのウィンドウが不安定になる。"
+              ],
+              "whenReplace": [
+                "維持する。これは構築スキルであり、ダメージを競うものではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：レア／ボスに維持する。ボス戦：凍結構築の前に、最初に付与する。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "トルネードショット",
+              "skillId": "tornado-shot",
+              "role": "ボスにおいて冷気の寄与をもたらす飛び道具構築スキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "凍結ウィンドウを観察可能なほど強くする飛び道具のフィールドを作る。"
+              ],
+              "whenReplace": [
+                "ボス専用のツール。マップ清掃のループには含まれない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：不使用。ボス戦：バラージとスナイプの前の構築中に撃つ。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "バラージ",
+              "skillId": "barrage",
+              "role": "飛び道具をマークした対象に集中させるボス構築スキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "構築を集中させ、凍結が活性化した状態でスナイプの解放が正しい対象に命中するようにする。"
+              ],
+              "whenReplace": [
+                "ボス戦のローテーションに維持する。マップ清掃には使わない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：不使用。ボス戦：タイミングを合わせたスナイプの直前の工程。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "アイスティップドアロー",
+              "skillId": "ice-tipped-arrows",
+              "role": "凍結蓄積をサポートする冷気の補助スキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "ボスのウィンドウ中に凍結を確実にする冷気の層を追加する。"
+              ],
+              "whenReplace": [
+                "構築の補助として維持する。検証済みでより強い冷気エネブラーが現れた場合のみ交換。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意。ボス戦：凍結構築中に活性化する。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "デードアイ — 初期ノード",
+          "body": [
+            "現在のガイドに合致する飛び道具／回避のノード（移動速度強化のテイルウィンド、飛び道具の飛距離に関するファーショット）を取ってください。公開前に0.5.4クライアント上で各ノードを確認してください。"
+          ]
+        },
+        {
+          "label": "防御の確認",
+          "body": [
+            "T15+での生存率がすでに不安定な場合は、回避／ライフのノードを純粋なダメージノードと交換してはいけない。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキル（ライフ、回避、飛び道具／攻撃速度）と防御要件を支えるノードのみを取ってください。クリティカルホイールへは先回りしてパスを通さないでください。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルドのバリアントに移行する。互換性のないプランナーのスナップショット（非クリティカルとクリティカルのツリーは分岐する）を混ぜてはいけない。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "非クリティカルの土台、耐性上限、ライフ／回避が解決してからのみクリティカルホイールへ投資する。同じコンテンツ階層で両方の装備状態を比較すること。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "弓",
+          "recommendations": [
+            "現在の階層に対して実用的に最も高い物理または冷気DPS。",
+            "アイスショットの繋がりに十分なソケットとジェムレベル。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "階層に十分な基本物理／冷気DPS",
+              "reason": "清掃とスナイプの両方における主要な進行度の目安。"
+            },
+            {
+              "tier": "recommended",
+              "label": "弓スキルレベルまたは追加ダメージ修正",
+              "reason": "メインスキルを直接支える。"
+            },
+            {
+              "tier": "optional",
+              "label": "攻撃速度",
+              "reason": "清掃の感触を良くするが、ダメージの土台ではない。"
+            },
+            {
+              "tier": "luxury",
+              "label": "クリティカル倍率／追加飛び道具",
+              "reason": "クリティカルバリアントが実際に機能してからのみ。"
+            }
+          ],
+          "notes": [
+            "時代遅れの弓をそのままにせず、キャンペーンの各基本階層を再確認すること。"
+          ]
+        },
+        {
+          "slot": "矢筒",
+          "recommendations": [
+            "武器ダメージのフラット値とステータス。",
+            "ビルドが不足している耐性とライフ。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器ダメージのフラット値／攻撃での元素ダメージ",
+              "reason": "すべてのアイスショットのヒットを強化する。"
+            },
+            {
+              "tier": "recommended",
+              "label": "ステータスと耐性",
+              "reason": "残りの装備を攻撃に集中させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "飛び道具またはメインスキルに関連する修正",
+              "reason": "矢筒をビルドに合わせる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "クリティカル版専用のプレフィックス",
+              "reason": "クリティカル前は無関係。"
+            }
+          ],
+          "notes": [
+            "ダメージが根本的に低い場合は、贅沢な矢筒修正より先に弓を強化すること。"
+          ]
+        },
+        {
+          "slot": "ボディアーマー／ブーツ／兜",
+          "recommendations": [
+            "ライフ、回避、耐性。",
+            "ブーツには移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと上限未満の2つの耐性",
+              "reason": "どれほどのDPSがあっても、マップで死ぬことの代償にはならない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "回避（デードアイはこれを強化する）",
+              "reason": "アセンダンシーと組み合わせる防御層。"
+            },
+            {
+              "tier": "optional",
+              "label": "ブーツの移動速度",
+              "reason": "射撃ラインの位置取りを助ける。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なDPS系プレフィックス",
+              "reason": "防御が解決してからのみ。"
+            }
+          ],
+          "notes": [
+            "クリティカル装備が防御の基準を削ってはならない。"
+          ]
+        },
+        {
+          "slot": "指輪／アミュレット／ベルト",
+          "recommendations": [
+            "ステータス、耐性、ライフ、武器ダメージのフラット値。",
+            "必要に応じたマナ維持。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "弓とジェムを装備するためのステータス",
+              "reason": "装備できない弓は無価値。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "武器／冷気ダメージのフラット値",
+              "reason": "アクセサリからの自由なダメージ。"
+            },
+            {
+              "tier": "luxury",
+              "label": "クリティカル版向けのマナまたはチャージ",
+              "reason": "選択したバリアントに依存。"
+            }
+          ],
+          "notes": []
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "弓DPS",
+          "reason": "清掃とスナイプの両方における主要な進行度の目安。"
+        },
+        {
+          "label": "武器ダメージのフラット値",
+          "reason": "指輪・手袋・矢筒で弓を支える。"
+        },
+        {
+          "label": "凍結蓄積",
+          "reason": "確実な単体ウィンドウを作るために必要。"
+        },
+        {
+          "label": "クリティカル",
+          "reason": "非クリティカルの土台と必要装備が整ってからのみ優先。"
+        },
+        {
+          "label": "マナ維持",
+          "reason": "キル時マナのみではなく、ボス戦でも機能しなければならない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "通常パックの清掃が遅い",
+          "symptom": "通常のパックに3回以上のアイスショット斉射が必要。",
+          "checks": [
+            "弓はまだキャンペーン階層の基本のままか。",
+            "耐性とライフはすでに解決済みか（つまり弓が本当のボトルネックか）。"
+          ],
+          "upgrade": "矢筒やアクセサリに触れる前に、階層不足の弓を交換する。"
+        },
+        {
+          "label": "マップ突入後に死ぬ",
+          "symptom": "T15+やボス戦場での頻繁な死亡。",
+          "checks": [
+            "どの耐性が上限未満か。",
+            "ライフ／回避がコンテンツ階層を下回っていないか。",
+            "防御層（回避、耐久）は活性化しているか。"
+          ],
+          "upgrade": "耐性を上限まで満たしライフ／回避を安定させる。防御の問題をダメージ装備で解決しようとしてはいけない。"
+        },
+        {
+          "label": "ボス戦でマナが枯渇する",
+          "symptom": "単体戦闘中にマナが空になる。",
+          "checks": [
+            "キル時マナのみに依存していないか。",
+            "ボス戦で吸血・フラスコ・コスト削減が活性化していないか。"
+          ],
+          "upgrade": "スナイプのダメージを伸ばす前に、マナ維持（吸血／フラスコ／コスト）を解決する。"
+        },
+        {
+          "label": "ボスの凍結が決して来ない",
+          "symptom": "ボスでスナイプのウィンドウが開かない。",
+          "checks": [
+            "フリージングマークは最初に付与されているか。",
+            "トルネードショット・アイスティップドアロー・アイスショットはすべて構築中に活性化しているか。",
+            "冷気／凍結の寄与は実際に存在しているか。"
+          ],
+          "upgrade": "弓ではなく、凍結構築（マーク→トルネード→アイスティップド→アイスショット）を修復する。"
+        },
+        {
+          "label": "クリティカルを検討中",
+          "symptom": "より多くのボスダメージを求め、クリティカル装備に関心がある。",
+          "checks": [
+            "非クリティカルの清掃・ボスの凍結・防御はすでに安定しているか。",
+            "クリティカル装備が耐性上限を破る、あるいはライフ／回避を落とすか。"
+          ],
+          "upgrade": "チェックリストを通過してからのみ混成／クリティカルへ移行する。パーツを買い、再テストし、生存をプランナー上の数値のために犠牲にしてはいけない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "タフなレア敵にはフリージングマークを維持し、アイスショットで清掃します。スナイプは通常のパックには必要ありません。それを構えるために立ち止まると清掃速度が落ち、被弾の機会が増えます。移動スキルを使って、まっすぐな廊下に退くのではなく、安全な射撃ラインを作ってください。",
+        "通常パックが1〜2回のサイクルで倒せなくなった瞬間に弓を強化します。清掃が停滞しないよう、マナ維持手段（キル時マナ・吸血・フラスコ）を常に活性化させておいてください。"
+      ],
+      "bullets": [
+        "アイスショット＋マークがマッピングのリズム全体。",
+        "ゴミ敵にはスナイプを省略。それはボス用のツール。",
+        "清掃速度が落ちたら弓を反応的に強化する。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "ボス戦の手順は一連の操作であり、ボタン連打ではありません。最初にフリージングマークを付与します。トルネードショットを使い、次にアイスティップドアローを活性化し、凍結ウィンドウが現れるまでアイスショットを撃ちます。ウィンドウが開いたら、バラージで飛び道具を集中させ、そのタイミングウィンドウ内でスナイプを解放します。",
+        "凍結が決して来ない場合、問題は構築（マークの維持、トルネードショット、アイスティップドアロー、冷気の寄与）にあり、弓ではありません。スナイプのウィンドウを外すのは操作的なミスであり、必ずしも装備のミスではありません。"
+      ],
+      "bullets": [
+        "マーク→トルネードショット→アイスティップドアロー→アイスショット（凍結を構築）。",
+        "その後バラージ→ウィンドウ内でタイミングを合わせたスナイプ。",
+        "凍結なし＝武器ではなく構築を直す。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "crit-transition",
+      "type": "overview",
+      "title": "クリティカルへの移行",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "序盤と中盤は非クリティカルのままです。混成とクリティカルのバリアントは、装備・ツリー・防御コストが異なる別の段階です。段階的計画（段階的な構成）が門になります。非クリティカルの土台が解決するまではクリティカル装備を買わないでください。"
+      ],
+      "bullets": [
+        "まずは非クリティカル：ライフ、回避、耐性、実用的な弓。",
+        "混成／クリティカルは後：チェックリストを通過してからのみ。",
+        "クリティカル装備が耐性上限を破る、あるいは防御を落とすことを決して許してはならない。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "アイスショットのバリアントを変えるタイミング",
+      "order": 140,
+      "visible": true,
+      "caption": "現在メンテナンスされているガイドに基づく、装備の準備度のラダー。",
+      "columns": [
+        "初期非クリティカル",
+        "混成への移行",
+        "クリティカル・エンドゲーム"
+      ],
+      "rows": [
+        {
+          "label": "まずは防御",
+          "cells": [
+            "ライフ＋回避",
+            "より強い弓を持つライフ／回避",
+            "防御を落とさないクリティカル"
+          ]
+        },
+        {
+          "label": "ダメージの目安",
+          "cells": [
+            "アイスショットでパックを清掃",
+            "ボスの凍結が確実",
+            "すでに動いているループをクリティカルが改善"
+          ]
+        },
+        {
+          "label": "買ってはいけない",
+          "cells": [
+            "贅沢なクリティカル装備",
+            "一度にクリティカル一式",
+            "耐性上限を破るダメージ"
+          ]
+        },
+        {
+          "label": "ボス用ツール",
+          "cells": [
+            "構築後のスナイプ",
+            "バラージ→スナイプ",
+            "同じループ、より短いウィンドウ"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "ボスが凍結しない",
+          "checks": [
+            "冷気の割合、凍結蓄積、対象の実際の閾値を確認する。",
+            "すべての一時バフが活性化していることを確認する。"
+          ]
+        },
+        {
+          "symptom": "スナイプが弱く感じる",
+          "checks": [
+            "解放のタイミングを練習する。",
+            "バラージと凍結ウィンドウが活性化していたことを確認する。"
+          ]
+        },
+        {
+          "symptom": "ボス戦でマナが足りない",
+          "checks": [
+            "キル時マナのみに依存してはいけない。",
+            "単体対象に対して吸血・フラスコ・コストの変更をテストする。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "凍結とスナイプのQ&A",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "より良い弓があってもスナイプが弱く感じるのはなぜですか？",
+          "answer": [
+            "スナイプは構えられたウィンドウを消費します。マークの維持、トルネードショット、アイスティップドアロー、凍結蓄積のいずれかが欠けていると、弓にかかわらず最終的な解放は弱く見えます。"
+          ],
+          "bullets": [
+            "ボス戦の試行を1回録画する。",
+            "射撃前に各構築アイコンを確認する。",
+            "最初に欠けている層を修復する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "いつクリティカルへ移行すべきですか？",
+          "answer": [
+            "非クリティカルの清掃・ボスの凍結・防御が安定してから。パーツごとに強化し再テストすること。プランナー上のクリティカル数値のために、耐性上限や生存を犠牲にしてはいけない。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "構えられた爆弾の方が好みの場合は？",
+          "answer": [
+            "エクスプローシブ・ウィッチハンターはより技巧的な武器セットとグレネードのループを持ちますが、強制移動を事前装填の時間に変えることができます。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/explosive-witchhunter/",
+              "label": "エクスプローシブ・ウィッチハンターと比較"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 165,
+      "visible": true,
+      "note": "PoE2には現在ネイティブなビルドプランナーがあります。貼り付け可能なインポート文字列とダウンロード可能な.buildはPC検証待ちです。それまでは以下の作成者ガイドとプランナーツールをお使いください。ノードの選択は必ず自身のクライアントで再確認してください。",
+      "creatorName": "Fubgun",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "ローテーションの根拠",
+      "order": 170,
+      "visible": true,
+      "note": "ガイドの手順は、その見せびらかしのダメージを約束するものではなく、再現可能なチェックリストとして使用されます。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Fubgun 0.5 アイスショット・デードアイガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye",
+          "statement": "メンテナンスされているガイドは、マップ清掃スキルとしてアイスショットを維持し、バラージとスナイプの前にトルネードショット・アイスティップドアロー・凍結蓄積によるボス構築を説明しています。",
+          "context": "これにより、ダメージのウィンドウが観察可能かつデバッグ可能になる。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "アイスショットとスナイプのローテーションに関する議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/",
+          "statement": "プレイヤーの疑問はアイスショットとスナイプがどう組み合わさるか centered であり、プランナー単体では構築と解放のリズムを伝えないことを反映しています。",
+          "context": "そのため本記事は、両スキルを同等のボタンとして列挙するのではなく、マップ清掃とボス戦の行動を分けています。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "強化と凍結のリズムを見る",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Player Ay",
+          "label": "0.5 アイスショットのフルレベリングプレイ",
+          "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ",
+          "description": "ビルドがアイスショット単体で動くときと、ボス構築スキルがループに入るときの長編参照動画。",
+          "takeaway": "各actのキャンペーンボスを1体ずつ見本にし、清掃速度をコピーするのではなく構築の順序をメモすること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:19",
+              "label": "Act 1"
+            },
+            {
+              "time": "3:12",
+              "label": "Act 2"
+            },
+            {
+              "time": "5:43",
+              "label": "Act 3"
+            },
+            {
+              "time": "7:09",
+              "label": "Act 4"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Fubgun 0.5 アイスショット・デードアイガイドとプランナー",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Player Ay 0.5 レベリングガイド要約とソース動画",
+          "url": "https://exile.codex-wiki.com/builds/the-best-path-of-exile-2-0-5-league-starter-ice-shot/"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "独立したアイスショット・スナイパーガイド",
+          "url": "https://pathofexile.gg/deadeye-ice-shot-sniper-build/"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "アイスショットとスナイプのローテーションに関する議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/build-planner"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Player Ay のフルレベリングプレイ",
+          "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "ソース付きの0.5.4ビルドガイドを作成。PC検証は保留中。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "段階的な構成表、ビルドプランナー項目、スロットごとの装備ステータス優先度、症状ベースの強化優先度、表示名付きスキルカードを追加。アイスショットはレベル31で解放されることを明確化。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Fubgun 0.5 アイスショット・デードアイガイドとプランナー",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ice-shot-deadeye"
+    },
+    {
+      "label": "Player Ay 0.5 レベリングガイド要約とソース動画",
+      "sourceType": "community",
+      "url": "https://exile.codex-wiki.com/builds/the-best-path-of-exile-2-0-5-league-starter-ice-shot/"
+    },
+    {
+      "label": "独立したアイスショット・スナイパーガイド",
+      "sourceType": "community",
+      "url": "https://pathofexile.gg/deadeye-ice-shot-sniper-build/"
+    },
+    {
+      "label": "アイスショットとスナイプのローテーションに関する議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1to7rx3/how_does_ice_shotsnipe_actually_play/"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/build-planner"
+    },
+    {
+      "label": "Player Ay のフルレベリングプレイ",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=VQDmc8fPRMQ"
+    }
+  ],
+  "seo": {
+    "title": "アイスショット・デードアイ ビルドガイド",
+    "description": "Path of Exile 2 の 0.5.4 ベースラインにおける、アイスショットとスナイプを組み合わせたデードアイビルドの完全ガイド。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ice-shot-deadeye",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

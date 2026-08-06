@@ -1,0 +1,743 @@
+{
+  "id": "adonias-trifusion-stormweaver",
+  "slug": "adonias-trifusion-stormweaver",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "아도니아의 트리퓨전 스톰위버 빌드 가이드",
+  "shortTitle": "아도니아의 트리퓨전 스톰위버",
+  "summary": "아도니아의 자아(Adonia's Ego), 절정의 권능(Pinnacle of Power) 그리고 다속성 로테이션을 중심으로 구성한 스톰위버 빌드입니다. 높은 영혼(Spirit) 관문, 피아노식 조작, 그리고 명확히 구분되는 변형 구간이 특징입니다.",
+  "description": "왜 '트리퓨전'이라 불리는지, 아도니아의 자아가 필수인지, 영혼을 어떻게 배분하는지, 그리고 영상 설정이 플래너와 다른 이유를 알아봅니다. 실제 영상, 레벨링, 장비, 검증된 출처를 제공합니다.",
+  "classId": "sorceress",
+  "ascendancyId": "stormweaver",
+  "mainSkillIds": [
+    "elemental-storm",
+    "adonias-ego"
+  ],
+  "secondarySkillIds": [
+    "spark",
+    "arc",
+    "comet",
+    "sigil-of-power"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "medium",
+    "high",
+    "luxury"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "spellcaster",
+    "elemental",
+    "piano",
+    "spirit-gated"
+  ],
+  "damageTypes": [
+    "lightning",
+    "cold",
+    "fire"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Source Review Pipeline",
+  "createdAt": "2026-07-31",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-07-31",
+  "heroImage": "/images/builds/covers/adonias-trifusion-stormweaver.webp",
+  "cardImage": "/images/builds/covers/adonias-trifusion-stormweaver.webp",
+  "imageAlt": "아도니아의 자아와 절정의 권능을 시전하는 스톰위버",
+  "tags": [
+    "sorceress",
+    "stormweaver",
+    "adonias-ego",
+    "elemental-storm",
+    "pinnacle-of-power",
+    "spirit",
+    "piano",
+    "bossing"
+  ],
+  "relatedBuildIds": [
+    "spark-coc-comet-stormweaver"
+  ],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain",
+    "skill-support-gem-compatibility"
+  ],
+  "sources": [
+    {
+      "id": "src-official",
+      "label": "Path of Exile 2 공식 포럼 (0.5 패치 노트)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "src-operatorotter",
+      "label": "OperatorOtter의 아도니아 트리퓨전 가이드",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/profile/operatorotter/builds/adonia-s-trifusion-stormweaver"
+    },
+    {
+      "id": "src-wiki",
+      "label": "PoE2 위키 - 스톰위버",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Stormweaver"
+    },
+    {
+      "id": "src-wiki2",
+      "label": "PoE2 위키 - 아도니아의 자아",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Adonia%27s_Ego"
+    }
+  ],
+  "seo": {
+    "title": "아도니아의 트리퓨전 스톰위버 빌드 가이드 (PoE2 0.5)",
+    "description": "아도니아의 자아와 절정의 권능을 중심으로 한 스톰위버. 실제 영상, 영혼 배분, 레벨링, 장비, 출처를 제공합니다.",
+    "noindex": false
+  },
+  "changelog": {
+    "entries": [
+      {
+        "date": "2026-07-31",
+        "changes": [
+          "4차 검증 출처 심사 게시물. 공식 0.5 패치 노트, 현재 크리에이터 가이드, 독립 빌드 가이드, 플래너, 현재 게임플레이 영상, 커뮤니티 질문을 교차 검증함."
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "overview",
+      "id": "overview",
+      "title": "개요",
+      "order": 10,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "'트리퓨전(Trifusion)'은 스톰위버가 아도니아의 자아, 엘리멘탈 스톰(Elemental Storm), 절정의 권능을 활용해 세 가지 속성(번개, 냉기, 화염)을 모두 다루는 빌드를 뜻합니다. 저렴한 리그 시작용은 아닙니다. 진짜 비용은 로테이션과 영혼 관문입니다.",
+        "이 빌드는 검증 우선 방식으로 구성됩니다. 정확한 서포트 구성과 영혼 계산은 현재 크리에이터 가이드에서 가져왔으며, 변형 구간과 영혼 배분이 실제로 활용할 수 있는 핵심 부분입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "pros-cons",
+      "id": "pros-cons",
+      "title": "장점과 단점",
+      "order": 20,
+      "toc": true,
+      "visible": true,
+      "pros": [
+        "강력한 다속성 커버리지와 높은 상한선.",
+        "절정의 권능을 타이밍에 맞추면 큰 버스트 창을 제공합니다.",
+        "아도니아의 자아가 부여 스킬 플레이스타일을 가능하게 합니다."
+      ],
+      "cons": [
+        "높은 영혼 관문 — 저렴한 리그 시작용이 아닙니다.",
+        "피아노식 조작: 로테이션에 따라 누를 스킬이 여러 개입니다.",
+        "영상 설정과 현재 플래너가 다를 수 있으니 복사하기 전에 반드시 확인하세요.",
+        "고가 유니크는 말 그대로 고가입니다 — 시작 필수 요건이 아닙니다."
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "build-readiness",
+      "title": "이 빌드가 내게 맞나요?",
+      "order": 30,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "상한선이 높은 피아노식 캐스터를 즐기고 영혼 관문을 충족할 수 있다면 아도니아 트리퓨전을 선택하세요. 원버튼 리그 시작용을 원하는 플레이어에게는 적합하지 않습니다.",
+        "시작하기 전에 영혼 총량(기본 + 장비 + 예약 효율)을 확인하세요. 관문을 충족하지 못하면 로테이션이 작동하지 않습니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "leveling",
+      "id": "leveling",
+      "title": "레벨링 경로",
+      "order": 40,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인 - 일반 서클리스",
+          "body": [
+            "스파크나 기본 스펠로 레벨을 올리세요. 트리퓨전 도구는 스톰위버 승천과 아도니아의 자아를 얻은 이후에야 사용 가능해집니다."
+          ],
+          "levelRange": "1-50"
+        },
+        {
+          "label": "초반 맵 - 영혼 관문",
+          "body": [
+            "장비와 트리에서 영혼을 모으세요. 전체 로테이션을 시도하기 전에 최소 총량에 도달해야 합니다."
+          ],
+          "levelRange": "50-70"
+        },
+        {
+          "label": "엔드게임 - 로테이션",
+          "body": [
+            "절정의 권능을 타이밍에 맞춰 전체 속성 로테이션을 돌리세요. 고가 업그레이드를 적용하기 전에 T15에서 벤치마크하세요."
+          ],
+          "levelRange": "70+"
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "trifusion-engine",
+      "title": "트리퓨전 엔진",
+      "order": 50,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "이 빌드는 아도니아의 자아를 통해 스킬을 부여하고, 이를 엘리멘탈 스톰(치명타로 발동)과 절정의 권능(타이밍 버프)에 연결합니다. '세 가지' 속성을 유지하여 엔진의 각 부분이 증폭할 대상을 갖도록 합니다.",
+        "아도니아의 자아 충전 굴림은 부차적인 변동치일 뿐, 승패를 가르는 스탯이 아닙니다. 특정 굴림에 과도하게 지불하지 마세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "comparison-table",
+      "id": "spirit-budget",
+      "title": "영혼 배분",
+      "order": 60,
+      "toc": true,
+      "visible": true,
+      "caption": "로테이션이 작동하기 전의 최소 영혼 계산.",
+      "columns": [
+        "출처",
+        "기여도"
+      ],
+      "rows": [
+        {
+          "label": "기본 영혼",
+          "cells": [
+            "기본 영혼",
+            "레벨/클래스 기준"
+          ]
+        },
+        {
+          "label": "장비 영혼",
+          "cells": [
+            "장비 영혼",
+            "반지/목걸이/몸통"
+          ]
+        },
+        {
+          "label": "예약 효율",
+          "cells": [
+            "예약 효율",
+            "스킬당 비용 감소"
+          ]
+        },
+        {
+          "label": "최소 총량",
+          "cells": [
+            "최소 총량",
+            "로테이션 가동에 필요"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "pinnacle-of-power-timeline",
+      "title": "절정의 권능 타임라인",
+      "order": 70,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "충전 생성 → 절정의 권능 활성화 → 인장/프로스트 폭탄 배치 → 주력 출력 확립 → CoC/CoEA 자동 발동 → 마나 확인 → 버프 종료 전 다음 라운드 준비."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "comparison-table",
+      "id": "variant-boundary",
+      "title": "변형 구간",
+      "order": 80,
+      "toc": true,
+      "visible": true,
+      "caption": "크리에이터의 기가(Giga) 구성을 기본으로 취급하지 않고 현실적인 구간을 제시합니다.",
+      "columns": [
+        "변형",
+        "진입",
+        "클리어 가능",
+        "보장 안 됨"
+      ],
+      "rows": [
+        {
+          "label": "스타터",
+          "cells": [
+            "스타터",
+            "T15 기준",
+            "조밀한 엔드게임"
+          ]
+        },
+        {
+          "label": "미드",
+          "cells": [
+            "미드",
+            "더 높은 영혼",
+            "기가 상한"
+          ]
+        },
+        {
+          "label": "레이트",
+          "cells": [
+            "레이트",
+            "핵심 유니크",
+            "극한 쇼케이스"
+          ]
+        },
+        {
+          "label": "기가",
+          "cells": [
+            "기가",
+            "고가 장비",
+            "저비용 복사본"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "id": "skills",
+      "title": "스킬과 서포트",
+      "order": 90,
+      "toc": true,
+      "visible": true,
+      "groups": [
+        {
+          "label": "핵심 로테이션",
+          "skills": [
+            {
+              "displayName": "아도니아의 부여 스킬",
+              "skillId": "adonias-ego",
+              "role": "유니크에서 부여되는 스킬, 엔진의 핵심",
+              "supportSkillIds": [
+                "elemental-focus",
+                "archmage"
+              ],
+              "notes": [],
+              "whyUse": [
+                "엘리멘탈 스톰과 함께 트리퓨전 엔진을 구동합니다."
+              ]
+            },
+            {
+              "displayName": "엘리멘탈 스톰",
+              "skillId": "elemental-storm",
+              "role": "치명타 발동, 속성 증폭",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "발동기 / 서포트",
+          "skills": [
+            {
+              "displayName": "치명타 시 시전 / 속성 이상 시 시전",
+              "skillId": "cast-on-crit",
+              "role": "연결된 스펠을 자동 발동",
+              "supportSkillIds": [
+                "energy-retention"
+              ],
+              "notes": [
+                "필수 발동 서포트, 현재 플래너와 대조하여 확인하세요."
+              ]
+            },
+            {
+              "displayName": "권능의 인장",
+              "skillId": "sigil-of-power",
+              "role": "추가 스펠 피해 변동치",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "gear",
+      "id": "gear",
+      "title": "장비와 유니크",
+      "order": 100,
+      "toc": true,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "아도니아의 자아",
+          "recommendations": [
+            "스킬을 부여하는 대표 유니크입니다. 기본 캐스터에는 엄격히 필수는 아니지만, 이 빌드 정체성의 중심입니다."
+          ],
+          "notes": [
+            "아도니아의 자아 (핵심 유니크)"
+          ],
+          "statPriorities": [
+            {
+              "label": "부여 스킬 지속시간",
+              "reason": "엔진 핵심",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "영혼 장비",
+          "recommendations": [
+            "영혼을 제공하는 반지, 목걸이, 몸통 갑옷입니다. 이것이 진짜 진입 비용입니다."
+          ],
+          "notes": [
+            "+영혼 반지/목걸이"
+          ],
+          "statPriorities": [
+            {
+              "label": "영혼 총량",
+              "reason": "로테이션 관문",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "고가 유니크",
+          "recommendations": [
+            "상한선을 끌어올리는 최상위 장비입니다. 시작 필수 요건이 아닙니다."
+          ],
+          "notes": [
+            "고가 전용"
+          ],
+          "statPriorities": [
+            {
+              "label": "피해 배수",
+              "reason": "상한선, 진입 아님",
+              "tier": "luxury"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "stat-priority",
+      "id": "stat-priority",
+      "title": "스탯 우선순위",
+      "order": 110,
+      "toc": true,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "영혼 (관문)",
+          "reason": "없으면 로테이션 가동 불가"
+        },
+        {
+          "label": "마나 / 마나 재생",
+          "reason": "코멧 연쇄가 마나를 소모함"
+        },
+        {
+          "label": "치명타 확률",
+          "reason": "엘리멘탈 스톰을 구동"
+        },
+        {
+          "label": "속성 피해 / 스킬 레벨",
+          "reason": "주요 피해"
+        },
+        {
+          "label": "시전 속도",
+          "reason": "로테이션 페이싱"
+        }
+      ]
+    },
+    {
+      "type": "upgrade-priority",
+      "id": "upgrade-priority",
+      "title": "업그레이드 우선순위",
+      "order": 120,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "영혼 관문 도달",
+          "body": [
+            "장비와 트리의 영혼을 먼저 확보하세요. 이게 없으면 그 외는 아무 의미가 없습니다."
+          ]
+        },
+        {
+          "label": "마나 안정화",
+          "body": [
+            "재생/흡혈을 추가하여 코멧 연쇄가 마나를 비우지 않도록 하세요."
+          ]
+        },
+        {
+          "label": "피해 강화",
+          "body": [
+            "관문과 마나가 안정된 후에만 고가 유니크를 추가하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "budget-variants",
+      "title": "저비용 변형",
+      "order": 130,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "스타터는 영혼 최소치를 여전히 충족하는 축소 로테이션을 돌립니다. 미드는 더 많은 지속 스킬을 추가합니다. 레이트는 핵심 유니크를 완성합니다. 기가는 쇼케이스일 뿐 저비용 목표가 아닙니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "defensive-layers",
+      "title": "방어 레이어",
+      "order": 140,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "에너지 보호막과 마나 레이어 회복이 기본입니다. 피아노 로테이션은 실수할 여유가 적으므로 저항을 상한까지 채우고 방어 오라를 유지하세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "mapping",
+      "id": "mapping",
+      "title": "막핑 로테이션",
+      "order": 150,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "막핑에서는 로테이션을 단순하게 유지하세요 — 부여 스킬과 엘리멘탈 스톰을 유지하고 인장은 생략한 뒤 이동하세요. 쓰레기몹에 스킬을 과도하게 누르지 마세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "rare-rotation",
+      "title": "레어 로테이션",
+      "order": 160,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "레어에서는 타이밍 버프와 썬더링(Sundering) 서포트를 추가하세요. 마나를 관리하세요. 빈 마나로 죽는 것보다 죽은 레어가 낫습니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "bossing",
+      "id": "bossing",
+      "title": "보스 로테이션",
+      "order": 170,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "보스에서는 세팅을 미리 시전하고 버스트 창에 절정의 권능을 활성화한 뒤, 버프 종료 전에 빠져나와 루프를 재시작하세요. 순서는 현재 플래너와 대조하여 확인하세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "community-voices",
+      "id": "community-voices",
+      "title": "커뮤니티 목소리",
+      "order": 820,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "context": "영혼 관문",
+          "label": "Reddit - 영혼 요구치",
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "statement": "플레이어들은 필요한 영혼이 얼마인지 반복해서 묻습니다. 답은 빌드마다 다르며 현재 플래너에서 읽어야 하고 추측해서는 안 됩니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "context": "마나 고갈",
+          "label": "포럼 - 코멧 마나",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "여러 사람이 연속된 코멧 발동이 마나를 소모한다고 보고합니다. 해결책은 더 많은 피해가 아니라 재생/흡혈입니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "context": "영상 대 플래너",
+          "label": "가이드 댓글 - 설정 편차",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "시청자들은 영상 설정이 플래너와 다르다고 지적합니다. 크리에이터는 라이브 버전은 현재 플래너를 확인할 것을 권장합니다.",
+          "url": "https://mobalytics.gg/poe-2/profile/operatorotter/builds/adonia-s-trifusion-stormweaver"
+        }
+      ],
+      "note": "명확성을 위해 편집된 일반적인 커뮤니티 질문과 우려의 짧은 요약본입니다. 그대로 인용한 문장이 아닙니다."
+    },
+    {
+      "type": "question-answer",
+      "id": "question-answer",
+      "title": "질문과 답변",
+      "order": 840,
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "왜 트리퓨전이라 부르나요?",
+          "answer": [
+            "로테이션 전반에 걸쳐 증폭할 대상을 스톰위버 엔진이 갖도록 세 가지 속성(번개, 냉기, 화염)을 유지하기 때문입니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "아도니아의 자아가 정말 필수인가요?",
+          "answer": [
+            "플레이스타일을 정의하는 대표 유니크이지만, 기본 캐스터는 없이도 작동할 수 있습니다. 이 특정 트리퓨전 정체성에서 그것은 핵심입니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "왜 영상 설정이 플래너와 다른가요?",
+          "answer": [
+            "크리에이터는 녹화 후 플래너를 업데이트합니다. 라이브 버전은 항상 현재 플래너를 확인하세요. 영상은 데모로 취급하고 최종 구성으로 보지 마세요."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "영혼 관문을 충족하지 못하면 어떻게 하나요?",
+          "answer": [
+            "최소치를 여전히 충족하는 축소 로테이션을 사용하거나 다른 스톰위버 변형을 구성하세요. 관문 없이 전체 피아노 로테이션을 강행하지 마세요."
+          ],
+          "bullets": []
+        }
+      ]
+    },
+    {
+      "type": "troubleshooting",
+      "id": "troubleshooting",
+      "title": "문제 해결",
+      "order": 860,
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "로테이션이 유지되지 않음",
+          "checks": [
+            "영혼 총량과 예약 효율을 확인하세요. 관문 미만이면 로테이션이 붕괴합니다."
+          ]
+        },
+        {
+          "symptom": "코멧 연쇄 중 마나 고갈",
+          "checks": [
+            "마나 재생/흡혈을 추가하고 발동 빈도를 일시적으로 줄이세요. 한계 요인은 피해가 아니라 마나입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "title": "영상 가이드",
+      "order": 900,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "OperatorOtter 게임플레이 쇼케이스",
+          "url": "https://www.youtube.com/watch?v=u7rggQeDwEY",
+          "timestamps": [
+            {
+              "label": "빌드 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "레벨링 경로",
+              "time": "6:30"
+            },
+            {
+              "label": "장비와 유니크",
+              "time": "14:00"
+            },
+            {
+              "label": "막핑 로테이션",
+              "time": "22:00"
+            },
+            {
+              "label": "보스 쇼케이스",
+              "time": "30:00"
+            }
+          ],
+          "creator": "OperatorOtter",
+          "description": "0.5 레벨링, 막핑, 보스 로테이션을 보여주는 현재 게임플레이 영상.",
+          "takeaway": "소켓이나 유니크 선택을 복사하기 전에 로테이션과 장비를 먼저 시청하세요."
+        }
+      ]
+    },
+    {
+      "type": "build-planner",
+      "id": "build-planner",
+      "title": "빌드 플래너",
+      "order": 880,
+      "toc": true,
+      "visible": true,
+      "note": "현재 0.5 변형용 가져오기 가능 플래너. 인게임 공식 빌드 플래너 도구로 가져오기하세요. 스킬 레벨과 유니크는 예산에 맞춰 조정하세요.",
+      "creatorName": "OperatorOtter",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/profile/operatorotter/builds/adonia-s-trifusion-stormweaver",
+      "creatorUrl": "https://mobalytics.gg/poe-2/profile/operatorotter/builds"
+    },
+    {
+      "type": "sources",
+      "id": "sources",
+      "title": "출처와 검증",
+      "order": 950,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 / 패치",
+          "description": "스톰위버와 부여 스킬에 대한 Path of Exile 2 공식 포럼 및 0.5 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "크리에이터 가이드 (OperatorOtter)",
+          "description": "영혼 배분과 변형이 포함된 현재 0.5 풀 아도니아 트리퓨전 가이드.",
+          "url": "https://mobalytics.gg/poe-2/profile/operatorotter/builds/adonia-s-trifusion-stormweaver"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "스톰위버와 아도니아의 자아에 대한 PoE2 위키 항목.",
+          "url": "https://www.poe2wiki.net/wiki/Stormweaver"
+        },
+        {
+          "label": "영상",
+          "description": "트리퓨전 로테이션의 현재 0.5 게임플레이 영상.",
+          "url": "https://www.youtube.com/watch?v=u7rggQeDwEY"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "notes": [
+          "공식 패치 노트, 현재 크리에이터 가이드, 독립 빌드 가이드, 플래너, 현재 게임플레이 영상을 교차 검증함. 직접 클라이언트 테스트로는 검증되지 않음."
+        ]
+      }
+    }
+  ],
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "adonias-trifusion-stormweaver",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  },
+  "locale": "ko"
+}

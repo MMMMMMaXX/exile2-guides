@@ -1,0 +1,848 @@
+{
+  "id": "gas-grenade-pathfinder",
+  "slug": "gas-grenade-pathfinder",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "가스 수류탄 패스파인더 빌드 가이드: 독 구름, 보스 사전 배치 및 장비",
+  "shortTitle": "가스 수류탄 패스파인더",
+  "summary": "0.5.4 독 구름 툴킷: 가스 수류탄이 독 구름을 생성하고 겹쳐 쌓으며, 절망 / 독성 영역 / 시들게 하기를 통해 스택을 중첩합니다. 독 지속시간 분기점, 보스 사전 배치, 유령의 춤, 회피 한계를 다룹니다.",
+  "description": "패스 오브 엑자일 2 가스 수류탄 패스파인더 가이드(0.5.4): 구름 중첩, 지속시간 분기점, 보스 사전 배치 순서, 방어 한계, 실제 영상 타임스탬프.",
+  "classId": "ranger",
+  "ascendancyId": "pathfinder",
+  "mainSkillIds": [
+    "gas-grenade"
+  ],
+  "secondarySkillIds": [
+    "despair",
+    "toxic-domain",
+    "herald-of-plague",
+    "withering-presence",
+    "dark-effigy"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "grenade",
+    "poison",
+    "chaos",
+    "ground-effect",
+    "ranged"
+  ],
+  "damageTypes": [
+    "chaos",
+    "poison"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "dot"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides 편집팀",
+  "reviewer": "Exile2 Guides 편집팀",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "cardImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "imageAlt": "전투 중 지면에 독 구름을 펼치기 위해 가스 수류탄을 투척하는 레인저 패스파인더",
+  "tags": [
+    "bossing",
+    "chaos",
+    "dot",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "pathfinder",
+    "poison",
+    "ranged",
+    "ranger",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "빌드 개요",
+      "paragraphs": [
+        "가스 수류탄 패스파인더는 레인저의 독 구름 툴킷입니다. 가스 수류탄이 충격 지점에 독 구름을 생성하고, 수류탄을 겹쳐 던질수록 구름과 그 스택이 커집니다. 패스파인더 승천은 지속 피해와 플라스크/지면 효과를 강화해, 구름을 주력 딜링 수단으로 만듭니다.",
+        "핵심은 '정확히 명중시키는' 것이 아니라 '미리 까는(사전 배치)' 것입니다. 보스전에서는 보스가 도착하기 전 구름을 깔아두고, 그 위에 절망 / 독성 영역 / 시들게 하기로 스택을 쌓습니다. 맵핑에서는 계속 투척하여 몹 무리를 뒤덮습니다.",
+        "독 지속시간이 너무 짧으면 보스 체력바가 잠깐 내려갔다가 멈춰버리는데, 이것이 '단일 대상 딜링이 약하다'는 가장 흔한 근본 원인입니다. 이 가이드에서는 지속시간 분기점과 사전 배치 순서를 설명하며, 모든 클라이언트 수치는 PC 검증 대상으로 표시합니다."
+      ],
+      "bullets": [
+        "가스 수류탄이 겹치는 독 구름을 생성합니다.",
+        "패스파인더가 지속 피해와 플라스크/지면 효과를 강화합니다.",
+        "보스 딜링이 약한 대부분의 원인은 장비가 아니라 독 지속시간입니다."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "장점과 단점",
+      "pros": [
+        "구름이 자동으로 지속 피해를 입히므로, 맵핑에서는 조준을 거의 할 필요가 없습니다.",
+        "스택을 중첩하면 보스 체력바가 꾸준히 줄어듭니다.",
+        "패스파인더의 플라스크/지면 버프가 실수 여유를 더해줍니다.",
+        "저예산으로도 대부분의 콘텐츠를 맵핑하고 보스전을 치를 수 있습니다."
+      ],
+      "cons": [
+        "독 지속시간이 너무 짧으면 딜링이 정체되고 단일 대상이 약해 보입니다.",
+        "이동하는 대상(예: 비행 보스)은 구름 적중 범위가 줄어듭니다.",
+        "혼돈 저항과 ES(에너지 보호막) 회복은 후반부 까다로운 수요 사항입니다.",
+        "사전 배치 타이밍은 연습이 필요하며, 무작위 투척은 딜링을 낭비합니다."
+      ]
+    },
+    {
+      "id": "poison-cloud-lab",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "루프의 흐름: 구름 사전 배치",
+      "paragraphs": [
+        "맵핑 루프: 무리에게 가스 수류탄을 계속 던져 구름이 겹치게 합니다. 본인은 구름 밖에, 몹은 구름 안에 두기만 하면 됩니다.",
+        "보스 루프: 보스가 해당 위치에 도달하기 전에 구름 1~2개를 미리 깔고, 그다음 저항 감소용 절망, 스택용 독성 영역, 증폭용 시들게 하기를 사용합니다. 어둠의 초상은 지속되는 구름 레이어를 추가할 수 있습니다.",
+        "구름 확산은 투사체가 아닌 광역 효과입니다. 적을 조준하는 것보다 적이 머물 위치에 미리 까는 것이 더 중요합니다."
+      ],
+      "bullets": [
+        "맵핑 = 연속 투척, 겹치는 구름.",
+        "보스 = 사전 배치 → 절망 → 독성 영역 → 시들게 하기.",
+        "구름은 지면 효과이므로, 사전 배치가 조준보다 우선합니다."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "레벨링 경로",
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "기본 활/석궁 스킬로 맵핑합니다. 가스 수류탄은 해금 후 채우기용 스킬이며, 아직 스택이 형성되지 않습니다."
+          ]
+        },
+        {
+          "label": "레벨 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "가스 수류탄을 찍고 구름 중첩을 시작하며, 생명력/회피/혼돈 저항 노드를 추가합니다."
+          ]
+        },
+        {
+          "label": "레벨 30–42 — 패스파인더 해금",
+          "levelRange": "30–42",
+          "body": [
+            "패스파인더를 선택하고 지속 피해와 지면 효과를 강화하면, 보스 사전 배치가 안정화됩니다."
+          ]
+        },
+        {
+          "label": "레벨 43–60 — 초반 맵",
+          "levelRange": "43–60",
+          "body": [
+            "저예산으로 구름 루프를 돌리며, 절망 / 독성 영역 연결을 추가하고 저항을 맞춥니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "스킬 구성",
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "가스 수류탄",
+              "skillId": "gas-grenade",
+              "role": "주력 스킬, 겹치는 독 구름을 생성합니다.",
+              "supportSkillIds": [
+                "poison-army",
+                "increased-area",
+                "acute-poison"
+              ],
+              "whyUse": [
+                "전체 툴킷의 핵심이며, 이것 없이는 구름이 존재하지 않습니다."
+              ],
+              "whenReplace": [
+                "교체하지 않습니다. 모든 시작점입니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 연속 커버리지. 보스: 1~2개 사전 배치 후 버프."
+              ],
+              "notes": [
+                "지속시간과 스택은 서포트와 버프로 스케일링됩니다."
+              ]
+            },
+            {
+              "displayName": "절망",
+              "skillId": "despair",
+              "role": "혼돈 저항을 낮춰 구름 피해를 증폭합니다.",
+              "supportSkillIds": [
+                "hex-bloom"
+              ],
+              "whyUse": [
+                "보스 단일 대상에 필수이며, 저항 감소 없이는 구름 피해 상한이 낮게 고정됩니다."
+              ],
+              "whenReplace": [
+                "저주 구성으로 그대로 유지하십시오."
+              ],
+              "mappingBossingDiff": [
+                "맵핑은 선택, 보스는 필수."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "독성 영역",
+              "skillId": "toxic-domain",
+              "role": "구름 스택과 범위를 키우는 지면 버프.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "구름 스택을 최대치로 채우며, 단일 대상 피해의 핵심입니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 투자가 크지만 반드시 필요합니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하되, 보스에 더 의존적입니다."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "시들어가는 존재",
+              "skillId": "withering-presence",
+              "role": "혼돈 지속 피해를 위한 오라/패시브 피해 강화.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "꾸준한 혼돈 강화로 모든 상황에서 출력을 높입니다."
+              ],
+              "whenReplace": [
+                "유지하십시오."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "보조 스킬",
+          "skills": [
+            {
+              "displayName": "역병의 전령",
+              "skillId": "herald-of-plague",
+              "role": "혼돈/독 지속 피해를 더하는 전령 버프.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "추가 독 레이어와 버프로 전체 지속 피해를 강화합니다."
+              ],
+              "whenReplace": [
+                "버프로 유지하십시오."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "어둠의 초상",
+              "skillId": "dark-effigy",
+              "role": "설치형 지속 구름 소스로, 추가 커버리지를 제공합니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "보스 사전 배치 시 또 다른 구름 레이어를 더해 커버리지를 높입니다."
+              ],
+              "whenReplace": [
+                "커버리지가 더 필요할 때만 설치하십시오."
+              ],
+              "mappingBossingDiff": [
+                "보스전에서 더 유용합니다."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "승천 순서",
+      "steps": [
+        {
+          "label": "패스파인더 — 초기 노드",
+          "body": [
+            "지속 피해와 지면/플라스크 효과를 올리는 노드를 우선합니다. 이것이 구름 툴킷의 기반입니다."
+          ]
+        },
+        {
+          "label": "방어 점검",
+          "body": [
+            "T15 이상에서 죽는다면 회피 / ES / 유령의 춤 노드를 추가하되, 전부를 피해로 바꾸지 마십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "패시브 트리",
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "지속 피해, 혼돈, 광역, 회피/생명력을 찍되 ES 휠로 미리 가지는 마십시오."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "구름 변형으로 전환하며, 독 지속시간, 혼돈 저항, ES를 우선합니다."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "방어와 지속시간이 해결된 후 피해 휠에 투자하며, 동일 등급 장비끼리 비교하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "장비",
+      "slots": [
+        {
+          "slot": "Bow / Crossbow (throwing base)",
+          "recommendations": [
+            "투척/광역 스킬과 혼돈 피해를 올려주는 베이스를 고르고, 가스 수류탄 연결에 충분한 소켓이 있어야 합니다."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "스킬 레벨 / 혼돈 지속 피해",
+              "reason": "구름 효율을 직접 스케일링합니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "투척/광역 스킬 피해",
+              "reason": "전체 투척 출력을 높입니다."
+            },
+            {
+              "tier": "optional",
+              "label": "시전/투척 속도",
+              "reason": "구름을 더 빠르게 깔 수 있습니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "추가 독 스택 / 치명타",
+              "reason": "지속시간이 안정된 후에만."
+            }
+          ],
+          "notes": [
+            "투척 베이스: 스킬 레벨과 혼돈 옵션을 우선하십시오."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "회피, ES, 생명력, 저항, 부츠 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 두 개 상한 저항",
+              "reason": "구름 빌드도 여전히 죽습니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "회피 / ES (유령의 춤 포함)",
+              "reason": "후반 방어 한계선."
+            },
+            {
+              "tier": "optional",
+              "label": "이동 속도",
+              "reason": "사전 배치 위치잡기에 유리합니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 혼돈 피해",
+              "reason": "방어 확보 후."
+            }
+          ],
+          "notes": [
+            "유령의 춤은 ES가 필요하므로, 회피만 쌓지 마십시오."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "속성, 저항, 생명력, 혼돈 저항, 필요 시 ES 회복."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "무기와 젬을 장착하기 위한 속성",
+              "reason": "장착 불가능하면 무용지물입니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "혼돈 저항과 ES 회복",
+              "reason": "후반부 까다로운 수요 사항."
+            },
+            {
+              "tier": "optional",
+              "label": "플라스크 효과/지속시간",
+              "reason": "패스파인더가 플라스크 이득을 증폭합니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "스킬 레벨",
+              "reason": "후반 게임 피해."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "스탯 우선순위",
+      "priorities": [
+        {
+          "label": "구름 스킬 레벨 / 혼돈 지속 피해",
+          "reason": "구름 효율을 스케일링하며, 최우선 진척 체크 항목입니다."
+        },
+        {
+          "label": "독 지속시간",
+          "reason": "보스 체력 정체를 피하는 핵심입니다."
+        },
+        {
+          "label": "혼돈 저항과 ES 회복",
+          "reason": "까다로운 후반 생존 수요 사항입니다."
+        },
+        {
+          "label": "회피 / ES (유령의 춤)",
+          "reason": "방어 한계선이며 ES가 필요합니다."
+        },
+        {
+          "label": "투척/시전 속도",
+          "reason": "방어 확보 후 더 빠른 배치용."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "강화 우선순위",
+      "steps": [
+        {
+          "label": "보스가 구름 안에 있는데 딜링이 정체됨",
+          "symptom": "보스 체력이 떨어졌다가 멈춥니다.",
+          "checks": [
+            "독 지속시간이 충분한가?",
+            "재투척 빈도가 맞는가?"
+          ],
+          "upgrade": "무기 교체가 아니라 지속시간을 늘리거나 투척 리듬을 조정하십시오."
+        },
+        {
+          "label": "클리어는 강한데 단일 대상이 약함",
+          "symptom": "맵핑은 빠른데 보스를 뚫지 못합니다.",
+          "checks": [
+            "절망 / 독성 영역 / 시들게 하기가 빠졌는가?",
+            "보스 루프가 완성되었는가?"
+          ],
+          "upgrade": "단일 대상 준비를 완성하십시오(저항 감소 + 스택 + 버프)."
+        },
+        {
+          "label": "자주 죽음",
+          "symptom": "맵이나 보스에서 잦은 사망.",
+          "checks": [
+            "ES 회복이나 회피 공백인가?",
+            "맵 모드 누적 수치가 높은가?"
+          ],
+          "upgrade": "먼저 방어를 해결하고 피해 중첩을 멈추십시오."
+        },
+        {
+          "label": "이동 보스에 커버리지 부족",
+          "symptom": "비행/대시 보스가 구름을 놓칩니다.",
+          "checks": [
+            "보스 경로 앞에 미리 깔았는가?",
+            "어둠의 초상이 레이어를 더하는가?"
+          ],
+          "upgrade": "피해를 더하는 게 아니라 사전 배치 + 추가 구름 소스로 해결하십시오."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "맵핑",
+      "paragraphs": [
+        "무리에게 가스 수류탄을 계속 던져 구름이 겹치게 하십시오. 본인은 구름 밖, 몹은 안에 두고 구르기로 위치를 바꾸십시오.",
+        "쓰레기 몹에는 절망이 필요 없으며, 레어/보스만 저항 감소와 스택을 받습니다. 클리어가 느려지면 방어를 쌓기 전에 투척 베이스를 먼저 강화하십시오."
+      ],
+      "bullets": [
+        "연속 투척, 겹치는 구름.",
+        "쓰레기 몹에는 절망 생략.",
+        "클리어가 느려지면 먼저 투척 베이스 강화."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "보스전",
+      "paragraphs": [
+        "보스가 해당 위치에 도달하기 전에 구름 1~2개를 미리 깔고, 그다음 저항 감소용 절망, 스택용 독성 영역, 증폭용 시들게 하기, 추가 레이어용 어둠의 초상을 사용하십시오.",
+        "체력바가 정체되면 문제는 장비가 아니라 독 지속시간 / 재투척 빈도입니다. 이동 보스는 쫓아가며 던지는 게 아니라, 경로 앞쪽에 구름을 깔아야 합니다."
+      ],
+      "bullets": [
+        "사전 배치 → 절망 → 독성 영역 → 시들게 하기.",
+        "어둠의 초상이 구름 레이어를 더합니다.",
+        "정체 = 무기 교체가 아니라 지속시간 수정."
+      ]
+    },
+    {
+      "id": "poison-duration-breakpoints",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "독 지속시간 분기점",
+      "paragraphs": [
+        "독 지속시간은 스택이 대상에 얼마나 오래 유지되는지 결정합니다. 너무 짧으면 스택 만료 후 보스 체력바가 미끄러지지 않고 멈춰, 거짓된 '약한 단일 대상' 인상을 줍니다.",
+        "서포트 지속시간 옵션, 독성 영역의 버프, 장비의 지속시간/광역 옵션, 패스파인더의 지면 효과 노드로 높이십시오. 정확한 수치는 PC 검증 대기 중이므로 클라이언트에서 확인하십시오."
+      ],
+      "bullets": [
+        "지속시간이 너무 짧음 = 보스 체력바 정체.",
+        "지속시간/광역 옵션과 독성 영역이 함께 연장됩니다.",
+        "클라이언트에서 확인하십시오."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "커뮤니티 증거",
+      "note": "이 가이드는 커뮤니티 논의를 재현 가능한 체크리스트로 활용하며, 그들이 보여준 DPS를 보장하지는 않습니다.",
+      "entries": [
+        {
+          "context": "플레이어들이 독 구름 피해를 어떻게 키우는지 묻습니다.",
+          "label": "Dreamcore 가스 수류탄 패스파인더 가이드",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "해당 가이드는 메커니즘, 유니크 아이템, 사전 배치, 젬 순서를 구분하며 지속시간과 스택을 강조합니다.",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "context": "플레이어들이 0.5 독 구름 강함을 두고 논의합니다.",
+          "label": "Fubgun 포이즌버스트 패스파인더 가이드",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "해당 가이드는 패스파인더 버프와 잠재적 하향을 구분하며, 젬 구성과 Mobalytics 링크를 제공합니다.",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "문제 해결",
+      "problems": [
+        {
+          "symptom": "보스 체력 정체",
+          "checks": [
+            "독 지속시간이 충분한가?",
+            "재투척 빈도가 이동 보스에 맞는가?"
+          ]
+        },
+        {
+          "symptom": "클리어는 강한데 단일 대상이 약함",
+          "checks": [
+            "절망/독성 영역/시들게 하기가 빠졌는가?",
+            "보스 루프가 완성되었는가?"
+          ]
+        },
+        {
+          "symptom": "자주 죽음",
+          "checks": [
+            "ES 회복이나 회피 공백인가?",
+            "맵 모드 누적 수치가 높은가?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "가스 수류탄은 몇 레벨에 해금됩니까?",
+          "answer": [
+            "정확한 레벨은 PC 검증 대기 중이며, 해금되면 채우기용 스킬이고 스택 툴킷은 패스파인더 이후에 형성됩니다."
+          ],
+          "bullets": [
+            "해금 후 구름 깔기를 시작하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "더 좋은 활로 바꿨는데도 단일 대상이 여전히 약합니까?",
+          "answer": [
+            "단일 대상은 활이 아니라 독 지속시간과 저항 감소/스택에 달려 있습니다. 먼저 지속시간과 보스 사전 배치를 고치십시오."
+          ],
+          "bullets": [
+            "보스전을 녹화하고 구름 커버리지를 확인하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "이동 보스는 어떻게 상대합니까?",
+          "answer": [
+            "경로 앞쪽에 구름을 미리 깔고 어둠의 초상 레이어를 더하십시오. 쫓아가며 던지지 마십시오."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ko/builds/ice-shot-deadeye/",
+              "label": "아이스 샷 데이드아이 비교"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "빌드 플래너 및 가져오기",
+      "note": "붙여넣기 가능한 가져오기 문자열과 .build 파일은 아직 PC 검증 대기 중입니다. 그동안 아래 제작자 가이드와 공식 플래너를 이용하십시오. 항상 본인의 클라이언트에서 노드를 재확인하십시오.",
+      "creatorName": "Dreamcore",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "구름 확산과 보스 사전 배치 시청",
+      "entries": [
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 가스 수류탄 패스파인더 가이드",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M",
+          "description": "풀 가이드: 메커니즘, 유니크 아이템, 사전 배치, 젬, 보스 루프.",
+          "takeaway": "독 지속시간과 보스 사전 배치 순서에 집중하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개 및 메커니즘"
+            },
+            {
+              "time": "3:00",
+              "label": "유니크 아이템"
+            },
+            {
+              "time": "6:30",
+              "label": "젬과 서포트"
+            },
+            {
+              "time": "9:40",
+              "label": "패시브와 승천"
+            },
+            {
+              "time": "12:30",
+              "label": "장비와 사전 배치"
+            }
+          ]
+        },
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 가스 수류탄 패스파인더 최종 업데이트",
+          "url": "https://www.youtube.com/watch?v=obW5fV147kA",
+          "description": "솔로 콘텐츠와 맵 퍼포먼스를 강화하는 엔드게임 업데이트.",
+          "takeaway": "최종 장비와 맵 게임플레이를 시청하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "2:20",
+              "label": "장비 업데이트"
+            },
+            {
+              "time": "5:10",
+              "label": "맵 게임플레이"
+            },
+            {
+              "time": "8:00",
+              "label": "요약"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "출처 및 검증",
+      "categories": [
+        {
+          "label": "공식",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Dreamcore — 가스 수류탄 패스파인더 가이드 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Fubgun — 포이즌버스트 패스파인더 풀 가이드 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Dreamcore — 가스 수류탄 패스파인더 Mobalytics",
+          "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "변경 로그",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "출처 기반 0.5.4 가스 수류탄 패스파인더 빌드 가이드 작성, PC 검증 진행 중."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Dreamcore — 가스 수류탄 패스파인더 가이드 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+    },
+    {
+      "label": "Fubgun — 포이즌버스트 패스파인더 풀 가이드 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+    },
+    {
+      "label": "Dreamcore — 가스 수류탄 패스파인더 Mobalytics",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    }
+  ],
+  "seo": {
+    "title": "가스 수류탄 패스파인더 빌드 가이드 | Exile2 Guides",
+    "description": "0.5.4 가스 수류탄 패스파인더: 구름 중첩, 독 지속시간 분기점, 보스 사전 배치, 유령의 춤, 회피 한계.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "gas-grenade-pathfinder",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01"
+}

@@ -1,0 +1,857 @@
+{
+  "id": "lightning-spear-amazon",
+  "slug": "lightning-spear-amazon",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "라이트닝 스피어 아마존 빌드 가이드: 창 투척, 아마존 버프, 엔드게임",
+  "shortTitle": "라이트닝 스피어 아마존",
+  "summary": "0.5.4 창-번개 툴킷: 라이트닝 스피어는 적을 관통하는 번개 창을 던지고, 아마존 승천은 명중/치명타 버프와 창 교체를 제공합니다. 투척 적중, 창 세트 교체, 치명타, 예산 등급을 다룹니다.",
+  "description": "0.5.4용 패스 오브 엑자일 2 라이트닝 스피어 아마존 가이드: 창 관통, 아마존 버프, 창 세트 교체, 방어 한계, 실제 영상 타임스탬프.",
+  "classId": "huntress",
+  "ascendancyId": "amazon",
+  "mainSkillIds": [
+    "lightning-spear",
+    "spear-field"
+  ],
+  "secondarySkillIds": [
+    "blood-hunt",
+    "disengage",
+    "primal-strike",
+    "storm-lance"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "spear",
+    "lightning",
+    "amazon",
+    "projectile",
+    "ranged"
+  ],
+  "damageTypes": [
+    "lightning",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "lightning"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "cardImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "imageAlt": "전투 중 무리를 관통하기 위해 라이트닝 스피어를 던지는 헌트리스 아마존",
+  "tags": [
+    "amazon",
+    "bossing",
+    "early-endgame",
+    "endgame",
+    "huntress",
+    "leveling",
+    "lightning",
+    "physical",
+    "ranged",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "빌드 개요",
+      "paragraphs": [
+        "라이트닝 스피어 아마존은 헌트리스의 창-번개 툴킷입니다. 라이트닝 스피어는 적 일렬을 관통하는 번개 창을 던지고, 아마존 승천은 명중/치명타 버프를 부여하며 즉시 교체할 수 있는 두 번째 창(냉기/번개 또는 방어파괴/물리)을 소지하게 해줍니다. 스피어 필드는 지면 버프 구역을 깔아줍니다.",
+        "이 구성은 레벨링 초기부터 강력합니다. 라이트닝 스피어는 일찍 사용할 수 있고 아마존의 버프가 명중과 치명타를 안정시켜 줍니다. 순수 시전자처럼 자원을 태우지 않지만, 명중과 창 접두사에 크게 의존합니다.",
+        "이 가이드는 단계별로 구성됩니다. 먼저 창 세트 교체법과 아마존 버프를 언제 먹어야 하는지, 그다음 장비·패시브·세트 교체·예산 등급 순입니다. 모든 클라이언트 수치와 메커니즘은 PC 검증 대상으로 표시하며, 검증되지 않은 DPS는 사실로 서술하지 않습니다."
+      ],
+      "bullets": [
+        "맵핑은 라이트닝 스피어 관통 + 스피어 필드 버프로 거의 원버튼입니다.",
+        "보싱은 아마존 치명타 버프 창과 창 세트 교체로 마무리합니다.",
+        "명중과 창 접두사는 반드시 다뤄야 할 실제 병목입니다."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "장단점",
+      "pros": [
+        "번개 창 관통은 무리를 매우 효율적으로 클리어하며 맵핑이 매우 쾌적합니다.",
+        "아마존 버프는 명확한 치명타 버프 창과 깔끔한 보스 마무리를 제공합니다.",
+        "자원 소모가 없어 유지 압박이 낮습니다.",
+        "초반 저예산으로도 작동하며 매끄럽게 전환됩니다."
+      ],
+      "cons": [
+        "낮은 명중은 관통 빗맞음을 크게 늘립니다.",
+        "창 접두사(번개/창 피해)는 기본 제공이 아니므로 직접 쌓아야 합니다.",
+        "많이 움직이는 보스는 관통 적중률을 떨어뜨립니다.",
+        "세트 교체는 두 번째 창이 필요해 추가 예산 장벽이 됩니다."
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "루프 구성: 스피어 필드 → 라이트닝 스피어 → 세트 교체",
+      "paragraphs": [
+        "맵핑 루프: 먼저 스피어 필드를 깔고, 무리를 따라 라이트닝 스피어를 반복합니다. 대개 선 위치잡기만 하면 됩니다. 이것이 커뮤니티가 원버튼 맵핑이라 부르는 이유입니다.",
+        "보스 루프: 보스 경로에 스피어 필드를 깔고 라이트닝 스피어로 관통한 뒤 아마존 치명타 버프 창을 먹고 필요에 따라 창 세트를 교체합니다(하나는 번개, 하나는 방어파괴/물리).",
+        "아마존 버프는 보통 아마존 승천의 명중/치명타 버프 계층을 뜻하며 무료 메커니즘이 아닙니다. 스킬 설명과 클라이언트로 검증하고, 숨겨진 별도 시스템으로 취급하지 마십시오."
+      ],
+      "bullets": [
+        "맵핑 = 스피어 필드 + 라이트닝 스피어 관통.",
+        "보스 = 버프 구역 → 관통 → 치명타 버프 창 + 세트 교체.",
+        "창 세트 교체는 핵심 피해 보충 수단입니다."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "레벨링 경로",
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "라이트닝 스피어로 시작하십시오. 매우 일찍 사용 가능하며 실제 맵핑 스킬입니다. 아직 세트 교체를 강행하지 마십시오 — 자원과 장비가 아직 준비되지 않았습니다."
+          ]
+        },
+        {
+          "label": "레벨 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "지면 버프로 스피어 필드를 추가하고 명중/번개 피해/생명력 노드를 찍기 시작하십시오. 핵심은 라이트닝 스피어로 유지하십시오."
+          ]
+        },
+        {
+          "label": "레벨 30–42 — 아마존 해금",
+          "levelRange": "30–42",
+          "body": [
+            "아마존을 선택하고 명중/치명타 버프 노드를 찍으십시오. 이제 치명타 버프 창이 보스 버스트를 제공합니다."
+          ]
+        },
+        {
+          "label": "레벨 43–60 — 초반 맵",
+          "levelRange": "43–60",
+          "body": [
+            "저예산으로 관통 + 버프를 운용하십시오. 저항 상한을 채우고 명중과 생명력을 보정하며, 레어에는 버프 구역을 유지하십시오."
+          ]
+        },
+        {
+          "label": "레벨 60+ — 엔드게임 준비",
+          "levelRange": "60+",
+          "body": [
+            "예산 업그레이드로 넘어가십시오: 창 번개 피해, 명중, 치명타, 카오스 저항입니다. 업그레이드 우선순위 체크리스트를 통과한 후에만 고급 장비를 추구하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "스킬 구성",
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "라이트닝 스피어",
+              "skillId": "lightning-spear",
+              "role": "클리어와 단일 대상용으로 투척하는 번개 창 관통 코어. 보스 주 피해 스킬입니다.",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "pierce",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "전체 루프의 관통 코어입니다. 없으면 맵핑과 보싱이 리듬을 잃습니다."
+              ],
+              "whenReplace": [
+                "대체되지 않습니다. 맵에서는 스피어 필드가 이를 가속합니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 관통 연타. 보스: 코어에 반복."
+              ],
+              "notes": [
+                "정확한 서포트 연결과 창 레벨은 PC 검증 대기 중입니다."
+              ]
+            },
+            {
+              "displayName": "스피어 필드",
+              "skillId": "spear-field",
+              "role": "피해와 명중 지원을 주는 지면 창 버프 구역.",
+              "supportSkillIds": [
+                "increased-area",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "명중과 피해의 사각지대를 메워줍니다. 맵핑과 보싱을 위한 꾸준한 버프입니다."
+              ],
+              "whenReplace": [
+                "상시 유지하십시오. 더 강한 지면 버프가 나타나면 교체하십시오."
+              ],
+              "mappingBossingDiff": [
+                "맵핑: 항상 깔립니다. 보스: 경로에 깔립니다."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "버프 및 후속",
+          "skills": [
+            {
+              "displayName": "블러드 헌트",
+              "skillId": "blood-hunt",
+              "role": "출혈/저생명 대상에 마무리로 쓰이며 단일 대상을 강화합니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "보스 페이즈와 청소에 안정적이며 창 마무리와 짝을 이룹니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 피해 구조의 일부입니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하나, 보싱은 그 마무리에 더 의존합니다."
+              ],
+              "notes": [
+                "출혈 또는 저생명 대상에서만 효율적입니다."
+              ]
+            },
+            {
+              "displayName": "스톰 랜스",
+              "skillId": "storm-lance",
+              "role": "지속되는 번개 범위를 주는 지면 폭풍 창.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "버프 구역 안에서 지속되는 번개 커버리지로 해결력을 강화합니다."
+              ],
+              "whenReplace": [
+                "유지하십시오. 범위 구조의 일부입니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑은 선택 사항, 보싱은 버프 창을 강화하도록 배치합니다."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "디스엔게이지",
+              "skillId": "disengage",
+              "role": "원거리에서 관통 선을 재설정하는 뒷걸음 이동.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "창 빌드의 핵심 위치잡기입니다. 이후 다시 관통하십시오."
+              ],
+              "whenReplace": [
+                "유지하십시오. 이동 구조의 일부입니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하나, 보싱에서 더 중요합니다."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "승천 순서",
+      "steps": [
+        {
+          "label": "아마존 — 첫 노드",
+          "body": [
+            "아마존을 선택하십시오. 치명타 버프 창이 안정적으로 버스트를 주도록 명중/치명타 버프 노드를 우선하십시오. 이것이 빌드의 전제조건입니다."
+          ]
+        },
+        {
+          "label": "명중 및 방어 점검",
+          "body": [
+            "T15 이상에서 명중이 부족하거나 생존이 불안하면, 순수 피해를 위해 버프/번개 노드를 거래하지 마십시오. 먼저 명중과 카오스 저항을 확보하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "패시브 트리",
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "창/번개 피해와 명중을 지지하는 노드만 찍고 치명타 휠로 미리 가지 마십시오."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "관통 변형으로 전환하고 생명력, 명중, 번개 피해, 카오스 저항을 우선하십시오."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "방어와 명중이 해결된 후에 치명타/창 피해 휠에 투자하십시오. 같은 등급에서 장비 상태를 비교하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "장비",
+      "slots": [
+        {
+          "slot": "Spear",
+          "recommendations": [
+            "창 레벨과 번개/창 피해를 올리는 베이스를 고르고 라이트닝 스피어 연결용 소켓이 충분해야 합니다. 두 개를 고려하십시오: 하나는 번개, 하나는 방어파괴/물리."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "창 스킬 레벨 / 번개 피해",
+              "reason": "라이트닝 스피어 해결력을 직접 스케일링합니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "명중과 공격 속도",
+              "reason": "관통 적중과 리듬의 핵심입니다."
+            },
+            {
+              "tier": "optional",
+              "label": "치명타 확률 / 치명타 피해",
+              "reason": "명중과 번개가 안정된 후에야."
+            },
+            {
+              "tier": "luxury",
+              "label": "추가 관통",
+              "reason": "세트 교체와 생존이 안정된 후에만."
+            }
+          ],
+          "notes": [
+            "창은 주손입니다. 번개와 명중을 우선하십시오. 세트 교체에는 두 번째 창이 필요합니다."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "생명력, 카오스 저항, 저항. 키팅용 부츠 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 상한 저항 두 개",
+              "reason": "죽는 것을 피해로 보상할 수는 없습니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "카오스 저항",
+              "reason": "후반 필수 요소, 기본 제공되지 않음."
+            },
+            {
+              "tier": "optional",
+              "label": "이동 속도",
+              "reason": "위치잡기와 구르기 리듬을 향상합니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시 번개 접두사",
+              "reason": "방어가 갖춰진 이후에만 의미가 있습니다."
+            }
+          ],
+          "notes": [
+            "카오스 저항은 별도로 쌓아야 합니다."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "속성, 저항, 생명력, 명중. 필요 시 번개 또는 관통."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "창과 보석 장착용 속성",
+              "reason": "장착 불가능하면 무용지물입니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명력",
+              "reason": "방어 셸을 완성합니다."
+            },
+            {
+              "tier": "optional",
+              "label": "명중 / 번개 피해",
+              "reason": "장신구에서 얻는 무료 상승입니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "창 스킬 레벨",
+              "reason": "후반 피해."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "스탯 우선순위",
+      "priorities": [
+        {
+          "label": "창 스킬 레벨",
+          "reason": "라이트닝 스피어를 스케일링합니다. 최상위 진척 점검 항목입니다."
+        },
+        {
+          "label": "명중",
+          "reason": "관통 적중의 바닥값입니다. 부족하면 빗맞음이 많아집니다."
+        },
+        {
+          "label": "번개 / 창 피해",
+          "reason": "해결력을 직접 스케일링합니다."
+        },
+        {
+          "label": "카오스 저항",
+          "reason": "후반 필수 요소, 기본 제공되지 않음."
+        },
+        {
+          "label": "치명타",
+          "reason": "명중과 번개가 안정된 후에만."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "업그레이드 우선순위",
+      "steps": [
+        {
+          "label": "클리어가 느려짐",
+          "symptom": "무리가 죽기 위해 많은 관통 회차가 필요합니다.",
+          "checks": [
+            "창이 여전히 등급에 맞는 베이스인가?",
+            "저항과 생명력이 해결되었는가(즉 창이 진짜 병목인가)?"
+          ],
+          "upgrade": "장신구를 건드리기 전에 등급 미달 창을 교체하십시오."
+        },
+        {
+          "label": "관통 빗맞음이 많음",
+          "symptom": "보싱에서 창이 자주 허공을 칩니다.",
+          "checks": [
+            "명중이 충분한가?",
+            "명중을 무시하고 피해만 쌓고 있는가?"
+          ],
+          "upgrade": "피해를 스케일링하기 전에 명중을 먼저 고치십시오."
+        },
+        {
+          "label": "치명타 버프 창이 오지 않음",
+          "symptom": "피해 창이 결코 안정되지 않습니다.",
+          "checks": [
+            "아마존 버프 노드를 찍었는가?",
+            "처치 속도가 자원 획득에 너무 느린가?"
+          ],
+          "upgrade": "창이 아닌 승천과 처치 속도를 고치십시오."
+        },
+        {
+          "label": "T15 이후 정체",
+          "symptom": "피해가 개선을 멈춥니다.",
+          "checks": [
+            "창 레벨이 상한인가?",
+            "번개 피해가 자리 잡았는가?",
+            "카오스 저항이 극대화되었는가?"
+          ],
+          "upgrade": "순서대로 업그레이드: 창 레벨 → 번개 → 카오스 저항."
+        },
+        {
+          "label": "고급 장비 고려",
+          "symptom": "더 높은 보스 피해를 원하고 고급 장비를 노립니다.",
+          "checks": [
+            "명중과 생존이 안정적인가?",
+            "고급이 저항 상한을 깨거나 생명력을 떨어뜨릴까?"
+          ],
+          "upgrade": "하나씩 구매하고 체크리스트를 통과한 후 재테스트하십시오. 생존을 수치와 거래하지 마십시오."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "맵핑",
+      "paragraphs": [
+        "먼저 스피어 필드를 깔고 무리를 따라 라이트닝 스피어를 반복하십시오. 선 위치잡기만 하면 됩니다. 쓰레기 몹에는 치명타 버프 창이 필요 없고, 멈춰서 발동하면 느려집니다.",
+        "클리어가 느려지면 먼저 창을 업그레이드하십시오. 맵핑이 멈추지 않도록 생존(저항/생명력/키팅)을 어느 정도 유지하십시오."
+      ],
+      "bullets": [
+        "스피어 필드 + 관통이 맵핑 리듬 전체입니다.",
+        "쓰레기 몹에는 치명타 버프 창을 생략하십시오.",
+        "클리어가 느려지면 반응형으로 창을 업그레이드하십시오."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "보싱",
+      "paragraphs": [
+        "보싱은 순서입니다: 보스 경로에 스피어 필드를 깔고 라이트닝 스피어로 관통한 뒤 아마존 치명타 버프 창을 먹고 필요에 따라 창 세트(번개/방어파괴)를 교체합니다. 블러드 헌트가 페이즈 교체 시 청소합니다.",
+        "관통이 자주 허공을 치면 문제는 창이 아닌 명중입니다. 보스가 많이 움직일 때는 발밑이 아닌, 반드시 지나야 할 좁은 경로에 스피어 필드를 두십시오."
+      ],
+      "bullets": [
+        "스피어 필드 → 관통 → 치명타 버프 창 + 세트 교체.",
+        "블러드 헌트 페이즈 청소.",
+        "허공 침 = 무기 교체가 아닌 명중과 배치 수정."
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "예산 등급: 진짜 저렴 vs 고급 차이",
+      "paragraphs": [
+        "저렴: 저예산 창에 명중/저항/생명력이 갖춰진 상태로, 관통 + 버프(단일 세트도 무방)로 대부분 콘텐츠를 맵핑·보싱합니다. 이것은 플레이 가능 여부를 바꿀 뿐, 피해 수치 자체를 바꾸지는 않습니다.",
+        "고급: 높은 창 레벨, 특정 유니크, 상한 카오스 저항과 치명타로 창 해결력과 생존을 모두 올리고, 세트 교체용 두 번째 창을 추가합니다. 이것은 천장과 허용 오차를 바꿀 뿐, 저렴 구성을 다른 빌드로 바꾸지는 않습니다.",
+        "미러 등급은 저렴/고급 통과와 클라이언트 수치가 확인된 후에만 고려하십시오. DPS를 위해 카오스 저항과 명중을 희생하지 마십시오."
+      ],
+      "bullets": [
+        "먼저 저렴: 생명력, 저항, 명중, 적당한 창.",
+        "이후 고급: 창 레벨, 번개 피해, 치명타, 두 번째 세트.",
+        "미러 등급은 방어 바닥을 절대 깨지 않습니다."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "커뮤니티 근거",
+      "note": "이 가이드는 커뮤니티 논의를 재현 가능한 체크리스트로 활용하며, 그들이 보여준 DPS에 대한 약속이 아닙니다.",
+      "entries": [
+        {
+          "context": "플레이어들은 T15 이후 창 피해가 정체하고 무엇을 업그레이드할지 모른다고 보고합니다.",
+          "label": "아마존 게임플레이 — 라이트닝 스피어 엔드게임",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "영상은 저렴/고급 등급을 분리해, 각각이 메커니즘이 아닌 장비 한계를 바꾼다고 명확히 하고 두 번째 창 세트 교체를 강조합니다.",
+          "url": "https://www.youtube.com/watch?v=skd1zLlzgEA"
+        },
+        {
+          "context": "플레이어들은 아마존 버프가 찍을 가치가 있는지 논쟁합니다.",
+          "label": "아마존 게임플레이 — 미치광이 아마존 라이트닝 스피어",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "고압 환경 영상은 보스에서 치명타 버프 창의 마무리 가치를 보여주며 명중과 번개를 먼저 강조합니다.",
+          "url": "https://www.youtube.com/watch?v=o5Vr38eVOM8"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "문제 해결",
+      "problems": [
+        {
+          "symptom": "보스 창이 자주 허공 침",
+          "checks": [
+            "명중이 충분한가?",
+            "명중을 무시하고 피해만 쌓고 있는가?",
+            "스피어 필드가 경로에 있는가?"
+          ]
+        },
+        {
+          "symptom": "치명타 버프 창이 오지 않음",
+          "checks": [
+            "아마존 버프 노드를 찍었는가?",
+            "처치 속도가 너무 느린가?"
+          ]
+        },
+        {
+          "symptom": "맵핑이 느려짐",
+          "checks": [
+            "창이 여전히 등급에 맞는 베이스인가?",
+            "저항과 생명력이 먼저 해결되었는가?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "몇 레벨에 라이트닝 스피어 사용을 시작하나요?",
+          "answer": [
+            "매우 일찍 사용 가능하며 실제 맵핑 스킬입니다. 아마존 버프는 승천과 자원을 기다려야 합니다."
+          ],
+          "bullets": [
+            "레벨 1부터 라이트닝 스피어 맵핑."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "더 좋은 창을 교체했는데도 여전히 허공을 많이 치나요?",
+          "answer": [
+            "창은 관통 적중에 명중에 의존하며 창 단독이 아닙니다. 먼저 명중을 고치십시오."
+          ],
+          "bullets": [
+            "보스 전투를 녹화하고 적중률을 확인하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSF로 플레이할 수 있나요?",
+          "answer": [
+            "가능합니다. 저예산 관통 + 버프로 SSF에서 대부분 콘텐츠를 맵핑·보싱합니다. 고급 유니크와 두 번째 세트는 천장이지 장벽이 아닙니다."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ko/guides/campaign-early-maps-gearing-crafting/",
+              "label": "캠페인 및 초반 맵 장비 가이드 보기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "빌드 플래너 및 가져오기",
+      "note": "PoE2는 이제 기본 빌드 플래너를 제공합니다. 붙여넣기 가져오기 문자열과 .build 파일은 여전히 PC 검증 대기 중입니다. 그동안 아래 제작자 가이드와 공식 플래너를 이용하십시오. 항상 자신의 클라이언트에서 노드를 재확인하십시오.",
+      "creatorName": "Amazon Gameplay",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=skd1zLlzgEA"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "엔드게임 및 극한 영상 시청",
+      "entries": [
+        {
+          "creator": "Amazon Gameplay",
+          "label": "라이트닝 스피어 아마존 엔드게임 가이드",
+          "url": "https://www.youtube.com/watch?v=skd1zLlzgEA",
+          "description": "창 맵핑에서 완성된 세트 교체까지 전체 경로를 보여주는 긴 참고자료.",
+          "takeaway": "악트마다 캠페인 보스 하나를 샘플링하십시오. 클리어 속도가 아닌 관통 순서를 기록하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개 및 개념"
+            },
+            {
+              "time": "2:10",
+              "label": "악트 1 맵핑"
+            },
+            {
+              "time": "5:20",
+              "label": "아마존 승천과 버프"
+            },
+            {
+              "time": "9:00",
+              "label": "창 관통과 스피어 필드"
+            },
+            {
+              "time": "13:10",
+              "label": "초반 맵과 장비"
+            }
+          ]
+        },
+        {
+          "creator": "Amazon Gameplay",
+          "label": "미치광이 아마존 라이트닝 스피어",
+          "url": "https://www.youtube.com/watch?v=o5Vr38eVOM8",
+          "description": "극한 고압: 명중 처리, 치명타 마무리, 장비 한계.",
+          "takeaway": "고압 보스에서는 눈먼 DPS 추격이 아닌 명중과 생존에 집중하십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "1:40",
+              "label": "고압 보스 진입"
+            },
+            {
+              "time": "4:30",
+              "label": "명중과 스피어 필드 배치"
+            },
+            {
+              "time": "8:00",
+              "label": "치명타 버프 창"
+            },
+            {
+              "time": "11:50",
+              "label": "장비 한계 및 요약"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "출처 및 검증",
+      "categories": [
+        {
+          "label": "공식",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "아마존 게임플레이 — 라이트닝 스피어 엔드게임 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=skd1zLlzgEA"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "아마존 게임플레이 — 미치광이 아마존 라이트닝 스피어 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=o5Vr38eVOM8"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "Path of Exile 2 위키 — 아마존",
+          "url": "https://poe2wiki.net/wiki/Amazon"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "변경 로그",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "출처 기반의 0.5.4 라이트닝 스피어 아마존 빌드 가이드를 작성했습니다. PC 검증 진행 중."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "whirling-assault-martial-artist"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "아마존 게임플레이 — 라이트닝 스피어 엔드게임 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=skd1zLlzgEA"
+    },
+    {
+      "label": "아마존 게임플레이 — 미치광이 아마존 라이트닝 스피어 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=o5Vr38eVOM8"
+    },
+    {
+      "label": "Path of Exile 2 위키 — 아마존",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Amazon"
+    }
+  ],
+  "seo": {
+    "title": "라이트닝 스피어 아마존 빌드 가이드 | Exile2 Guides",
+    "description": "0.5.4 라이트닝 스피어 아마존: 창 관통, 아마존 버프, 창 세트 교체, 예산 등급.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "lightning-spear-amazon",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

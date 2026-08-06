@@ -65,6 +65,83 @@ export type BuildContentIndexOptions = {
   includeDrafts?: boolean;
 };
 
+/**
+ * 缓存同一内容目录的基础解析结果，避免内容页、搜索索引和草稿预览
+ * 的虚拟模块并发重复读取并解析数千个 JSON 文件。
+ * 缓存值包含进行中的 Promise，首轮加载期间的并发调用也只会执行一次。
+ */
+const parsedContentCache = new Map<
+  string,
+  Promise<readonly ParsedContent[]>
+>();
+
+function parsedContentCacheKey(
+  contentDirectory: string,
+  projectRoot: string,
+): string {
+  return `${path.resolve(contentDirectory)}\0${path.resolve(projectRoot)}`;
+}
+
+/** 清理开发态内容缓存；生产构建不会调用此入口。 */
+export function clearContentIndexCache(contentDirectory?: string): void {
+  if (!contentDirectory) {
+    parsedContentCache.clear();
+    return;
+  }
+
+  const directory = path.resolve(contentDirectory);
+  for (const key of parsedContentCache.keys()) {
+    if (key.startsWith(`${directory}\0`)) parsedContentCache.delete(key);
+  }
+}
+
+/** 读取并适配全部内容源；仓储层只执行一次，调用方再按发布边界建立索引。 */
+async function loadParsedContentsOnce(
+  contentDirectory: string,
+  projectRoot: string,
+): Promise<readonly ParsedContent[]> {
+  const key = parsedContentCacheKey(contentDirectory, projectRoot);
+  const cached = parsedContentCache.get(key);
+  if (cached) return cached;
+
+  const loading = Promise.all([
+    loadContentFiles(contentDirectory),
+    loadBuildArticles(contentDirectory),
+    loadBossArticles(contentDirectory),
+    loadItemArticles(contentDirectory),
+    loadSkillArticles(contentDirectory),
+    loadGuideArticles(contentDirectory),
+    loadPatchArticles(contentDirectory),
+  ]).then(
+    ([
+      contents,
+      buildArticles,
+      bossArticles,
+      itemArticles,
+      skillArticles,
+      guideArticles,
+      patchArticles,
+    ]) => [
+      ...contents,
+      ...buildArticles.map((article) => buildArticleToParsedContent(article)),
+      ...bossArticles.map((article) => bossArticleToParsedContent(article)),
+      ...itemArticles.map((article) => itemArticleToParsedContent(article)),
+      ...skillArticles.map((article) => skillArticleToParsedContent(article)),
+      ...guideArticles.map((article) => guideArticleToParsedContent(article)),
+      ...patchArticles.map((article) => patchArticleToParsedContent(article)),
+    ],
+  );
+  parsedContentCache.set(key, loading);
+
+  try {
+    return await loading;
+  } catch (error) {
+    // 失败结果不能污染后续热修复或重启后的重试。
+    parsedContentCache.delete(key);
+    throw error;
+  }
+}
+
 /** 为全部支持的语言创建空桶，保证调用方无需处理某个语言键缺失。 */
 function createLocaleBuckets(): Map<ContentLocale, ParsedContent[]> {
   return new Map<ContentLocale, ParsedContent[]>([
@@ -162,7 +239,16 @@ function validateIndexInvariants(
       const target = localizedIds.get(
         `${relatedContentId}:${content.frontMatter.locale}`,
       );
-      if (!target || !isPublishedContent(target.frontMatter)) {
+      // 部分翻译阶段：翻译文章的关联继承自英语事实源(en)。若同 locale 版本
+      // 尚未译出，但源语言(en)已有发布版本，则视为有效关联，避免阻塞开发/
+      // 预渲染。全量翻译完成后同 locale 版本存在，校验自然恢复为更严格视图。
+      const sourceTarget = localizedIds.get(`${relatedContentId}:en`);
+      const sourceOk =
+        sourceTarget && isPublishedContent(sourceTarget.frontMatter);
+      if (
+        (!target || !isPublishedContent(target.frontMatter)) &&
+        !sourceOk
+      ) {
         issues.push({
           code: "missing-related-content",
           contentId: content.frontMatter.contentId,
@@ -272,33 +358,9 @@ export async function loadContentIndex(
   contentDirectory = path.resolve(process.cwd(), "content"),
   options: BuildContentIndexOptions = {},
 ): Promise<ContentIndex> {
-  const [
-    contents,
-    buildArticles,
-    bossArticles,
-    itemArticles,
-    skillArticles,
-    guideArticles,
-    patchArticles,
-  ] = await Promise.all([
-    loadContentFiles(contentDirectory),
-    loadBuildArticles(contentDirectory),
-    loadBossArticles(contentDirectory),
-    loadItemArticles(contentDirectory),
-    loadSkillArticles(contentDirectory),
-    loadGuideArticles(contentDirectory),
-    loadPatchArticles(contentDirectory),
-  ]);
-  return buildContentIndex(
-    [
-      ...contents,
-      ...buildArticles.map((article) => buildArticleToParsedContent(article)),
-      ...bossArticles.map((article) => bossArticleToParsedContent(article)),
-      ...itemArticles.map((article) => itemArticleToParsedContent(article)),
-      ...skillArticles.map((article) => skillArticleToParsedContent(article)),
-      ...guideArticles.map((article) => guideArticleToParsedContent(article)),
-      ...patchArticles.map((article) => patchArticleToParsedContent(article)),
-    ],
-    options,
+  const contents = await loadParsedContentsOnce(
+    contentDirectory,
+    process.cwd(),
   );
+  return buildContentIndex(contents, options);
 }

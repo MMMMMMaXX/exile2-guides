@@ -11,6 +11,7 @@ import {
   isInformationPageSlug,
   type InformationPageSlug,
 } from "../../lib/i18n/information-copy";
+import { t } from "../../lib/i18n/ui";
 import {
   createBilingualAlternatePaths,
   createSeoMetadata,
@@ -63,7 +64,7 @@ export function InformationPage({ slug }: { slug: InformationPageSlug }) {
       <div className="page-shell">
         <Breadcrumbs
           items={[
-            { label: "Home", path: `/${route.locale}/` },
+            { label: t(route.locale, "nav.home"), path: `/${route.locale}/` },
             { label: copy.title, path: `/${route.locale}/${route.slug}/` },
           ]}
         />
@@ -78,7 +79,7 @@ export function InformationPage({ slug }: { slug: InformationPageSlug }) {
       <div className="page-shell v4-information-page__layout">
         <nav
           className="v4-information-page__rail"
-          aria-label={route.locale === "zh-cn" ? "本页目录" : "On this page"}
+          aria-label={t(route.locale, "info.onThisPage")}
         >
           {copy.sections.map((section, index) => (
             <a href={`#information-${index + 1}`} key={section.title}>

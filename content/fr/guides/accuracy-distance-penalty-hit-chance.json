@@ -1,0 +1,690 @@
+{
+  "id": "accuracy-distance-penalty-hit-chance",
+  "slug": "accuracy-distance-penalty-hit-chance",
+  "locale": "fr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Valeur de Précision, pénalité de distance et chance de toucher dans Path of Exile 2",
+  "shortTitle": "Précision et chance de toucher",
+  "summary": "Comment la Précision, l'Évasion et la pénalité de distance des attaques à distance déterminent si vos attaques touchent dans Path of Exile 2, et comment corriger une faible chance de toucher sans tâtonner.",
+  "description": "Un guide mécanique sur la chance de toucher dans Path of Exile 2 : comment la Précision se compare à l'Évasion, comment les attaques à distance perdent en précision effective à longue distance, et des moyens concrets d'augmenter votre chance de toucher tout en évitant les erreurs de lecture courantes.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/snipe.webp",
+  "cardImage": "/images/skills/snipe.webp",
+  "imageAlt": "Une icône de compétence de sniper de Path of Exile 2 représentant la valeur de précision et la chance de toucher à distance",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "Compréhension de base du panneau de personnage et de l'infobulle d'objet",
+    "Connaissance des statistiques Précision et Évasion affichées sur l'équipement"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "accuracy",
+    "evasion",
+    "hit-chance",
+    "distance",
+    "attack",
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponses directes",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Les attaques ont-elles besoin de Précision pour toucher ?",
+          "body": [
+            "Oui. Les attaques comparent votre Valeur de Précision à la Valeur d'Évasion de la cible pour déterminer la chance de toucher. Une attaque de mêlée ou à distance qui échoue au test d'évasion manquera sa cible."
+          ]
+        },
+        {
+          "title": "Les sorts vérifient-ils la Précision ?",
+          "body": [
+            "Généralement non. La plupart des sorts de Path of Exile 2 ignorent totalement le test Précision contre Évasion. Certaines compétences sont explicitement marquées « Toujours toucher » ou « Ne peut être esquivé », mais par défaut les sorts ne dépendent pas de votre Valeur de Précision."
+          ]
+        },
+        {
+          "title": "Pourquoi un affichage de 100 % manque-t-il encore à distance ?",
+          "body": [
+            "La chance affichée dans le panneau est calculée à une distance de référence. Les attaques à distance perdent en précision effective à mesure que la cible s'éloigne, si bien que la vraie chance à longue distance peut être bien inférieure au chiffre affiché — et même une lecture proche de 100 % peut manquer à très longue portée."
+          ]
+        },
+        {
+          "title": "Qu'est-ce qui retire l'Évasion comme facteur ?",
+          "body": [
+            "Des effets comme « Les touches ne peuvent être esquivées » ou le joyau maître Technique Résolue empêchent l'Évasion de la cible de réduire votre chance de toucher, mais ils comportent des compromis (par exemple abandonner le scaling des coups critiques) que vous devez peser pour chaque build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "Termes clés",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Quatre notions sont au cœur de la question de savoir si vos dégâts connectent. La Valeur de Précision est votre jet offensif pour les attaques ; la Valeur d'Évasion est le jet défensif que les ennemis utilisent pour éviter d'être touchés par les attaques. La Chance de toucher est le pourcentage qui en résulte et décide si une attaque individuelle atteint sa cible. La Distance est l'éloignement de votre personnage par rapport à la cible, et elle compte spécifiquement pour les attaques à distance.",
+        "Les sorts forment une catégorie à part : dans Path of Exile 2, la plupart des sorts n'effectuent aucun test de Précision, leur connexion est donc régie par d'autres règles plutôt que par le duel Précision contre Évasion."
+      ],
+      "bullets": [
+        "Valeur de Précision : la statistique que vos attaques utilisent pour tenter de battre l'Évasion d'une cible.",
+        "Valeur d'Évasion : la statistique défensive qui permet à une cible d'éviter les attaques entrantes.",
+        "Chance de toucher : le pourcentage affiché qu'une attaque va connecter.",
+        "Distance : à quelle distance vous êtes de la cible ; elle applique une pénalité à la précision à distance."
+      ]
+    },
+    {
+      "id": "chance-to-hit-structure",
+      "order": 30,
+      "title": "Comment se construit la chance de toucher",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Votre Chance de toucher affichée pour une attaque est produite en comparant votre Valeur de Précision à la Valeur d'Évasion de la cible. La relation a une forme à rendements décroissants : augmenter la Précision alors que vous êtes déjà très au-dessus de l'Évasion de la cible rapporte de plus petits gains, tandis que l'augmenter quand vous êtes très en dessous rapporte de grands gains.",
+        "La courbe numérique exacte utilise des coefficients sensibles à la version dans Path of Exile 2 Early Access et doit être confirmée dans le client actuel plutôt que de faire confiance à une formule fixe. Considérez la structure comme suit : « la Précision contre l'Évasion décide d'un pourcentage qui grimpe vers un plafond élevé à mesure que votre Précision dépasse leur Évasion », et confirmez les chiffres précis en jeu.",
+        "Indépendamment de cette courbe, les attaques à distance appliquent un facteur de distance qui réduit la précision effective à mesure que la cible s'éloigne. C'est ce facteur de distance qui rend la lecture du panneau optimiste à longue portée."
+      ],
+      "bullets": [
+        "Une Précision plus élevée par rapport à l'Évasion signifie une chance de toucher plus élevée.",
+        "Le gain par point de Précision diminue à mesure que vous surpassez déjà l'Évasion de la cible.",
+        "Un facteur de distance réduit la précision effective pour les attaques à distance spécifiquement.",
+        "Les coefficients exacts sont sensibles à la version ; confirmez-les dans le client actuel."
+      ]
+    },
+    {
+      "id": "formula-variables",
+      "order": 40,
+      "title": "Variables du calcul de chance de toucher",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Les entrées qui alimentent le résultat de chance de toucher. Les coefficients exacts sont sensibles à la version et doivent être confirmés dans le client actuel.",
+      "columns": [
+        {
+          "key": "variable",
+          "label": "Variable"
+        },
+        {
+          "key": "meaning",
+          "label": "Ce que c'est"
+        },
+        {
+          "key": "effect",
+          "label": "Comment elle change la chance de toucher"
+        },
+        {
+          "key": "confidence",
+          "label": "Confiance"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "accuracy"
+          ],
+          "cells": {
+            "variable": "Valeur de Précision",
+            "meaning": "Votre statistique offensive pour les attaques",
+            "effect": "Une Précision plus élevée augmente la chance de toucher face à une Évasion donnée",
+            "confidence": "Structure stable ; coefficients exacts de la courbe sensibles à la version"
+          }
+        },
+        {
+          "tags": [
+            "evasion"
+          ],
+          "cells": {
+            "variable": "Valeur d'Évasion (cible)",
+            "meaning": "La statistique défensive de la cible contre les attaques",
+            "effect": "Une Évasion plus élevée réduit votre chance de toucher cette cible",
+            "confidence": "Structure stable ; coefficients exacts de la courbe sensibles à la version"
+          }
+        },
+        {
+          "tags": [
+            "distance"
+          ],
+          "cells": {
+            "variable": "Facteur de distance",
+            "meaning": "Pénalité appliquée aux attaques à distance à mesure que la portée augmente",
+            "effect": "Réduit la précision effective à longue portée ; la mêlée n'est pas affectée",
+            "confidence": "Mécanique réelle ; distance de départ et décroissance exactes sensibles à la version"
+          }
+        },
+        {
+          "tags": [
+            "result"
+          ],
+          "cells": {
+            "variable": "Chance de toucher finale",
+            "meaning": "Pourcentage affiché pour l'attaque",
+            "effect": "Augmente avec la Précision et baisse avec l'Évasion et la portée",
+            "confidence": "Affichée dans l'infobulle ; la vraie valeur à portée peut être plus basse"
+          }
+        }
+      ],
+      "note": "Ne faites pas confiance à une formule numérique fixe copiée d'anciennes références ; confirmez les coefficients dans le client actuel."
+    },
+    {
+      "id": "distance-penalty",
+      "order": 50,
+      "title": "La pénalité de distance pour les attaques à distance",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les attaques à distance dans Path of Exile 2 subissent une pénalité de distance : plus votre cible est loin, plus votre précision effective baisse. C'est pourquoi un personnage sniper ou arc peut afficher une chance de toucher élevée de près mais commencer à manquer dès que les ennemis sont loin à l'autre bout de l'écran.",
+        "La pénalité est une mécanique des attaques à distance. Les attaques de mêlée, qui connectent à bout portant, ne sont pas soumises à la même perte de précision liée à la portée. Le point exact où la pénalité commence et la vitesse à laquelle elle décroît sont sensibles à la version, confirmez-les donc en jeu plutôt que de mémoriser un chiffre fixe.",
+        "Une conséquence pratique : même une lecture de panneau proche de 100 % n'est pas une garantie à très longue portée. Le facteur de distance peut faire chuter la vraie chance sous la valeur affichée, la positionnemen compte donc pour les builds à distance."
+      ],
+      "bullets": [
+        "Les attaques à distance perdent en précision effective à mesure que la distance augmente.",
+        "Les attaques de mêlée ne sont pas soumises à la même pénalité de portée.",
+        "Une chance de panneau proche de 100 % peut encore manquer à longue portée.",
+        "La distance de départ exacte et le taux de décroissance sont sensibles à la version."
+      ]
+    },
+    {
+      "id": "skill-matrix",
+      "order": 60,
+      "title": "Quels types de compétences vérifient la Précision ?",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Comment le test de Précision s'applique selon les catégories de compétences dans Path of Exile 2. Les sorts le contournent généralement ; les attaques l'utilisent généralement.",
+      "columns": [
+        {
+          "key": "skill-type",
+          "label": "Type de compétence"
+        },
+        {
+          "key": "checks-accuracy",
+          "label": "Vérifie la Précision ?"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-type": "Attaque",
+            "checks-accuracy": "Oui",
+            "notes": "La plupart des attaques comparent la Précision à l'Évasion. Les attaques à distance subissent aussi la pénalité de distance."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-type": "Sort",
+            "checks-accuracy": "Généralement non",
+            "notes": "La plupart des sorts contournent le test Précision contre Évasion. Certaines compétences sont explicitement Toujours toucher ou Ne peut être esquivé."
+          }
+        },
+        {
+          "tags": [
+            "minion"
+          ],
+          "cells": {
+            "skill-type": "Serviteur",
+            "checks-accuracy": "Dépend du serviteur",
+            "notes": "Les serviteurs utilisent leurs propres règles de précision, qui ne sont pas les mêmes que celles du joueur. N'assumez pas que la précision du joueur s'applique aux serviteurs."
+          }
+        },
+        {
+          "tags": [
+            "totem"
+          ],
+          "cells": {
+            "skill-type": "Totem",
+            "checks-accuracy": "Oui (hérite de la compétence)",
+            "notes": "Un totem utilisant une compétence d'attaque effectue le test de précision de cette compétence comme si le propriétaire l'avait lancée."
+          }
+        },
+        {
+          "tags": [
+            "triggered"
+          ],
+          "cells": {
+            "skill-type": "Déclenchée",
+            "checks-accuracy": "Dépend du déclencheur",
+            "notes": "Une attaque déclenchée vérifie la Précision ; un sort déclenché généralement non. Suivez le type de la compétence sous-jacente."
+          }
+        }
+      ],
+      "note": "Le comportement de précision des serviteurs est sensible à la version ; confirmez les règles actuelles en jeu plutôt que de copier d'anciennes références."
+    },
+    {
+      "id": "worked-examples",
+      "order": 70,
+      "title": "Exemples concrets",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cas illustratifs montrant comment la distance et le type de compétence changent si une touche arrive. Les chiffres sont qualitatifs, pas des coefficients exacts.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Cas"
+        },
+        {
+          "key": "distance",
+          "label": "Distance"
+        },
+        {
+          "key": "result",
+          "label": "Résultat"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "melee"
+          ],
+          "cells": {
+            "case": "Attaque de près contre un ennemi normal",
+            "distance": "Bout portant / mêlée",
+            "result": "La chance de toucher du panneau est représentative ; l'attaque touche presque toujours."
+          }
+        },
+        {
+          "tags": [
+            "ranged"
+          ],
+          "cells": {
+            "case": "Attaque de loin contre un ennemi normal",
+            "distance": "Loin à l'autre bout de l'écran",
+            "result": "La pénalité de distance réduit la précision effective ; une chance de panneau élevée peut encore manquer."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "case": "Sort à n'importe quelle distance",
+            "distance": "Non applicable",
+            "result": "Les sorts contournent le test de Précision, la pénalité de distance ne s'applique donc pas au jet de touche."
+          }
+        },
+        {
+          "tags": [
+            "range-penalty"
+          ],
+          "cells": {
+            "case": "Chance affichée proche de 100 % à très longue portée",
+            "distance": "Portée maximale",
+            "result": "Le facteur de distance peut encore causer un manqué ; le chiffre affiché n'est pas une garantie à portée."
+          }
+        }
+      ],
+      "note": "Utilisez ces cas uniquement comme modèles mentaux ; confirmez les seuils réels dans le client actuel."
+    },
+    {
+      "id": "fix-low-hit-chance",
+      "order": 80,
+      "title": "Corriger une faible chance de toucher",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Choisissez la cause probable de vos attaques manquées. L'outil pointe vers l'étape suivante.",
+      "controls": [
+        {
+          "id": "cause",
+          "label": "D'où vient le manqué ?",
+          "options": [
+            {
+              "label": "Faible Précision sur l'équipement",
+              "value": "gear"
+            },
+            {
+              "label": "Aucune précision depuis les passifs ou l'arbre",
+              "value": "passives"
+            },
+            {
+              "label": "Positionnement trop loin de la cible",
+              "value": "positioning"
+            },
+            {
+              "label": "Boss ou ennemi évadant",
+              "value": "keystone"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Augmenter la Précision sur l'équipement",
+          "when": {
+            "cause": "gear"
+          },
+          "steps": [
+            "Cherchez la Valeur de Précision sur les armes, les anneaux et les amulettes.",
+            "Privilégiez la Précision plate plus tout pourcentage d'augmentation sur l'équipement.",
+            "Revérifiez la chance de toucher de l'infobulle après chaque changement."
+          ]
+        },
+        {
+          "title": "Prendre de la précision dans l'arbre passif",
+          "when": {
+            "cause": "passives"
+          },
+          "steps": [
+            "Allouez des nœuds passifs et des groupes notables qui accordent de la Précision.",
+            "Vérifiez les nœuds de classe et d'ascendance pour les bonus de précision.",
+            "Confirmez que la chance de toucher de l'infobulle augmente après le respec."
+          ]
+        },
+        {
+          "title": "Améliorer le positionnement",
+          "when": {
+            "cause": "positioning"
+          },
+          "steps": [
+            "Rapprochez-vous pour que la pénalité de distance soit plus faible pour les attaques à distance.",
+            "Utilisez des compétences de déplacement pour combler l'écart contre les ennemis évadants.",
+            "Retestez la même cible à courte portée pour voir la pénalité disparaître."
+          ]
+        },
+        {
+          "title": "Gérer les ennemis évadants ou les boss",
+          "when": {
+            "cause": "keystone"
+          },
+          "steps": [
+            "Envisagez Les touches ne peuvent être esquivées ou la Technique Résolue pour ignorer l'Évasion.",
+            "Pesez le compromis : la Technique Résolue abandonne le scaling des coups critiques.",
+            "Combinez avec la Précision uniquement si vous dépendez encore du critique ou d'autres tests."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Chemin de correction général",
+        "steps": [
+          "Confirmez que le manqué est un problème de précision et non de résistance ou de dégâts.",
+          "Augmentez d'abord la Précision via l'équipement et les passifs.",
+          "Corrigez ensuite le positionnement, et n'envisagez un compromis de joyau maître qu'en dernier recours."
+        ]
+      }
+    },
+    {
+      "id": "crit-interaction",
+      "order": 90,
+      "title": "Comment la Précision et l'Évasion interagissent avec les coups critiques",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un coup critique ne peut se produire que sur une touche qui arrive. Si l'attaque échoue au test Précision contre Évasion, elle ne peut pas infliger de coup critique — le critique ne se lance jamais. Cela signifie que votre taux de coup critique effectif est plafonné par votre chance de toucher, pas seulement par votre Chance de coup critique indiquée.",
+        "Pour un build axé sur le critique, augmenter la Précision a donc une double valeur : cela fait toucher davantage de coups et débloque davantage des critiques que ces coups auraient pu porter. À l'inverse, une Chance de coup critique très élevée avec une mauvaise Précision gaspille la plupart de ce potentiel en manqués."
+      ],
+      "bullets": [
+        "Un manqué ne peut pas critiquer — la touche doit d'abord arriver.",
+        "Le taux de critique effectif égale la chance de toucher multipliée par la chance de critique indiquée.",
+        "L'investissement en Précision rapporte deux fois sur les builds critique.",
+        "Une faible chance de toucher gaspille silencieusement la Chance de coup critique."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 100,
+      "title": "Erreurs de lecture courantes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La plupart des problèmes de chance de toucher viennent de la lecture du panneau comme s'il racontait toute l'histoire. Voici les pièges dans lesquels les joueurs tombent le plus souvent."
+      ],
+      "bullets": [
+        "Voir ~100 % dans le panneau mais manquer encore de loin, car la pénalité de distance n'est pas reflétée dans la lecture de près.",
+        "Supposer que chaque projectile a besoin de Précision — de nombreux sorts contournent totalement le test.",
+        "Oublier que les boss et les ennemis évadants ont une Évasion élevée, si bien que votre chance de toucher en carte normale baisse contre eux.",
+        "Traiter la chance affichée comme une touche garantie à n'importe quelle distance — ce n'est pas le cas.",
+        "Supposer que la précision des serviteurs égale votre propre précision — les serviteurs suivent leurs propres règles.",
+        "Croire que la Technique Résolue ou Les touches ne peuvent être esquivées résolvent tout, en ignorant le compromis sur les coups critiques."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 110,
+      "title": "Questions fréquentes des joueurs",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusions paraphrasées que les joueurs soulèvent fréquemment à propos de la précision et de la chance de toucher.",
+      "cards": [
+        {
+          "title": "Pourquoi manqué-je avec 100 % affichés ?",
+          "tag": "distance",
+          "body": [
+            "La chance du panneau est mesurée à une distance de référence. Les attaques à distance perdent en précision effective à longue portée, la vraie chance peut donc être inférieure à la lecture."
+          ]
+        },
+        {
+          "title": "Mes sorts ont-ils besoin de précision ?",
+          "tag": "spell",
+          "body": [
+            "La plupart des sorts n'effectuent pas le test Précision contre Évasion. Les joueurs surinvestissent souvent en Précision sur les builds de sorts sans aucun bénéfice."
+          ]
+        },
+        {
+          "title": "Mes serviteurs utilisent-ils ma précision ?",
+          "tag": "minion",
+          "body": [
+            "Les serviteurs suivent leurs propres règles de précision, qui ne sont pas les mêmes que celles du joueur. N'assumez pas une précision partagée."
+          ]
+        },
+        {
+          "title": "Les boss esquivent tout",
+          "tag": "boss",
+          "body": [
+            "Les boss à Évasion élevée abaissent votre chance de toucher bien en dessous de votre chiffre de nettoyage de carte. Prévoyez de la précision ou une option d'ignorer l'Évasion pour les boss."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 120,
+      "title": "Guide vidéo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Comment voir votre chance de toucher dans Path of Exile 2 (Valeur de Précision)",
+          "creator": "Bue",
+          "description": "Une explication claire de l'endroit où trouver et lire votre chance de toucher, comment la Précision se compare à l'Évasion, et comment la pénalité de distance à distance fonctionne dans Path of Exile 2.",
+          "takeaway": "Ouvrez le panneau de personnage pour lire votre vraie chance de toucher, puis augmentez la Précision ou réduisez la distance pour cesser de manquer à portée.",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+          "timestamps": [
+            {
+              "label": "Introduction",
+              "time": "0:00"
+            },
+            {
+              "label": "Où voir la chance de toucher",
+              "time": "1:05"
+            },
+            {
+              "label": "Précision contre Évasion",
+              "time": "3:40"
+            },
+            {
+              "label": "La pénalité de distance",
+              "time": "6:20"
+            },
+            {
+              "label": "Corrections pour une faible chance de toucher",
+              "time": "9:10"
+            },
+            {
+              "label": "Résumé",
+              "time": "11:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 130,
+      "title": "Foire aux questions",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "La chance de toucher est-elle identique au chiffre de mon infobulle ?",
+          "answer": [
+            "De près elle est représentative, mais pour les attaques à distance la pénalité de distance signifie que la vraie chance à longue portée peut être inférieure à ce que montre l'infobulle. Lisez l'infobulle comme une valeur à distance de référence."
+          ]
+        },
+        {
+          "question": "Les sorts utilisent-ils la Précision dans Path of Exile 2 ?",
+          "answer": [
+            "La plupart des sorts ne vérifient pas la Précision contre l'Évasion. Investir dans la Précision pour un build de sort pur ne fait généralement rien pour le taux de touche. Certaines compétences sont explicitement Toujours toucher ou Ne peut être esquivé quoi qu'il en soit."
+          ]
+        },
+        {
+          "question": "Pourquoi manqué-je les boss mais pas les trash mobs ?",
+          "answer": [
+            "Les boss et les ennemis évadants ont une Valeur d'Évasion beaucoup plus élevée, ce qui réduit votre chance de toucher contre eux. Votre précision de nettoyage de carte peut être bien trop faible pour le contenu de boss."
+          ]
+        },
+        {
+          "question": "La Technique Résolue me fait-elle toujours toucher ?",
+          "answer": [
+            "Elle retire l'Évasion comme facteur pour vos touches, mais abandonne généralement le scaling des coups critiques, c'est donc un compromis plutôt qu'une amélioration gratuite. Pesez-le par rapport à la dépendance au critique de votre build."
+          ]
+        },
+        {
+          "question": "Les serviteurs partagent-ils ma Précision ?",
+          "answer": [
+            "Non. Les serviteurs utilisent leurs propres règles de précision, qui diffèrent de celles du joueur. N'assumez pas qu'augmenter votre Précision améliore la chance de toucher de vos serviteurs."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 140,
+      "title": "Sources et vérification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki officiel - Précision",
+          "description": "Référence du wiki PoE2 pour la Précision, l'Évasion et la relation de chance de toucher",
+          "url": "https://poe2wiki.net/wiki/Accuracy"
+        },
+        {
+          "label": "Hub Maxroll PoE2",
+          "description": "Hub de mécaniques communautaire couvrant la précision et l'évasion dans Path of Exile 2",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Hub Mobalytics PoE2",
+          "description": "Hub de mécaniques communautaire avec des conseils de build et de précision",
+          "url": "https://mobalytics.gg/path-of-exile-2/"
+        },
+        {
+          "label": "Guide vidéo (Bue)",
+          "description": "Explication YouTube de la lecture de la chance de toucher et de la pénalité de distance dans Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale du guide sur la précision, la pénalité de distance et la chance de toucher pour Path of Exile 2 Early Access 0.5.4.",
+            "Ajout des réponses directes, termes clés, structure de chance de toucher, tableau des variables, pénalité de distance, matrice de compétences, exemples concrets, diagnostic, interaction avec le critique, dépannage, cas communautaires, vidéo, FAQ et sources."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Précision",
+      "url": "https://poe2wiki.net/wiki/Accuracy",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Hub Path of Exile 2",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Mobalytics - Hub Path of Exile 2",
+      "url": "https://mobalytics.gg/path-of-exile-2/",
+      "sourceType": "community"
+    },
+    {
+      "label": "Bue - Comment voir votre chance de toucher dans PoE2 (YouTube)",
+      "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guide PoE 2 Précision, pénalité de distance et chance de toucher",
+    "description": "Comment la Précision se compare à l'Évasion, comment les attaques à distance perdent en chance de toucher à distance, et comment corriger une faible chance de toucher dans Path of Exile 2.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "accuracy-distance-penalty-hit-chance",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

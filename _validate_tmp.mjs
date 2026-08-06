@@ -1,0 +1,10 @@
+import fs from 'fs';
+const p = './content/de/guides/critical-hit-chance-damage-bonus-transition.json';
+const raw = fs.readFileSync(p, 'utf8');
+const f = JSON.parse(raw);
+console.log('JSON parse OK');
+console.log('status=', f.status, '| seo.noindex=', f.seo.noindex);
+console.log('translation=', JSON.stringify(f.translation));
+console.log('forbidden root keys:', Object.keys(f).filter(k => ['contentId','sourceContentId','sourceRevision'].includes(k)));
+const blob = JSON.stringify(f);
+console.log('contains completed/manual-review/none token:', /completed|manual-review|\"none\"/.test(blob));

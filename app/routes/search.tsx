@@ -9,6 +9,7 @@ import {
   supportedLocales,
   type ContentLocale,
 } from "../../lib/content/constants";
+import { t } from "../../lib/i18n/ui";
 import {
   createBilingualAlternatePaths,
   createSeoMetadata,
@@ -16,17 +17,14 @@ import {
 
 /** 为搜索页输出固定 noindex Metadata，避免任意关键词 URL 成为可索引变体。 */
 export function meta({ params }: Route.MetaArgs) {
-  const locale = params.locale as ContentLocale | undefined;
-  const zh = locale === "zh-cn";
+  const locale = (params.locale as ContentLocale | undefined) ?? "en";
   return createSeoMetadata({
     alternatePaths: createBilingualAlternatePaths("search/"),
-    description: zh
-      ? "搜索当前语言的已发布 Path of Exile 2 攻略。"
-      : "Search published Path of Exile 2 guides in the current language.",
-    locale: zh ? "zh-cn" : "en",
-    path: `/${zh ? "zh-cn" : "en"}/search/`,
+    description: t(locale, "search.description"),
+    locale,
+    path: `/${locale}/search/`,
     robots: "noindex, follow",
-    title: zh ? "站内搜索 | Exile2 Guides" : "Search | Exile2 Guides",
+    title: t(locale, "search.title"),
   });
 }
 
@@ -40,7 +38,7 @@ export default function SearchRoute() {
       </main>
     );
   const documents = [
-    ...searchIndexes[locale],
+    ...(searchIndexes[locale] ?? []),
     ...getV4SkeletonSearchDocuments(locale),
   ];
   return <SearchPage documents={documents} locale={locale} />;

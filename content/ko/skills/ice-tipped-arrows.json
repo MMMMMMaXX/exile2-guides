@@ -1,0 +1,679 @@
+{
+  "id": "ice-tipped-arrows",
+  "slug": "ice-tipped-arrows",
+  "locale": "ko",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "아이스 팁드 애로우(Ice-Tipped Arrows) 가이드 — 강화 공격, 아이스 프래그먼트, 프레지 버님 차지",
+  "shortTitle": "아이스 팁드 애로우",
+  "summary": "아이스 팁드 애로우는 다음 몇 번의 활 또는 투사체 창 공격을 강화하는 버프입니다. 해당 공격의 물리 피해를 냉기로 변환하고, 적중 시 폭발하는 아이스 프래그먼트(Ice Fragment)를 생성합니다. 이 가이드에서는 강화 횟수가 어떻게 소모되는지, 트위스터(Twister)가 왜 강화되는지, 폭격(Barrage) 반복이 어떻게 상호작용하는지, 프레지 버님 차지(Frenzy Charge)가 재사용 대기시간을 우회하는 방식, 이를 깨뜨리는 무기 세트 규칙, 그리고 0.4 이후 구버전 8초 / 3 프래그먼트 수치가 왜 더 이상 유효하지 않은지 설명합니다.",
+  "description": "아이스 팁드 애로우 심층 가이드: 강화 횟수와 무효 스킬, 트위스터와 아이스 샷(Ice Shot) 시너지, 아이스 프래그먼트 생성과 지연 폭발, 물리>냉기 변환, 프레지 버님 차지 재사용 대기시간 우회, 무기 세트 일치 규칙, 폭격 콤보, 매핑 및 보싱 로테이션, 문제 해결과 커뮤니티 근거.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "buff",
+    "attack",
+    "projectile",
+    "cold",
+    "duration",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/ice-tipped-arrows.webp",
+  "cardImage": "/images/skills/ice-tipped-arrows.webp",
+  "imageAlt": "아이스 팁드 애로우 냉기 강화 스킬 아이콘",
+  "tags": [
+    "buff",
+    "attack",
+    "projectile",
+    "cold",
+    "duration",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "핵심 요약: 다음 몇 번의 공격을 강화한다",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "아이스 팁드 애로우는 피해 스킬이 아닌 버프입니다. 시전하면 다음 몇 번의 유효한 활 또는 투사체 창 공격을 강화합니다. 해당 공격은 물리 피해가 냉기로 변환되고 적중 시 아이스 프래그먼트를 생성합니다.",
+        "강화 횟수는 공격 1회마다 소모되며, 버프에는 재사용 대기시간이 있고 프레지 버님 차지는 그 대기시간을 우회할 수 있습니다. 지속(채널링) 스킬은 강화할 수 없습니다."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "주요 수치와 획득 방법",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "분류",
+          "value": "Buff (Bow / Projectile Spear · Cold · Duration)",
+          "notes": [
+            "buff, attack, projectile, cold, duration, trigger 태그가 붙음."
+          ]
+        },
+        {
+          "label": "무기 요구사항",
+          "value": "Bow 또는 Spear",
+          "notes": [
+            "활과 투사체 창 공격을 강화; 무기 유형이 일치해야 함."
+          ]
+        },
+        {
+          "label": "획득",
+          "value": "Uncut Skill Gem (tier 5+ skill)",
+          "notes": [
+            "Uncut Skill Gem으로부터 새김(engrave)."
+          ]
+        },
+        {
+          "label": "강화 사용 횟수",
+          "value": "시전당 고정된 공격 횟수",
+          "notes": [
+            "정확한 횟수는 클라이언트 0.5.4에서 확인할 것; 구버전 0.4 수치는 변경됨."
+          ]
+        },
+        {
+          "label": "재사용 대기시간",
+          "value": "프레지 버님 차지로 우회 가능",
+          "notes": [
+            "프레지 버님 차지를 소모하면 대기시간을 건너뛰지, 사용 횟수를 늘리지는 않음."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "요구사항과 유효 스킬",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "활 또는 투사체 창을 착용해야 하며, 강화되는 스킬은 해당 무기에서 사용 가능한 유효한 반복 공격이어야 합니다. 트위스터(창)와 아이스 샷(활)이 대표적인 유효 스킬입니다.",
+        "지속 / 채널링 스킬은 명시적으로 제외됩니다. 즉 강화할 수 없으므로, 일부 채널링 활 스킬에 프래그먼트가 나타나지 않는 이유이기도 합니다."
+      ],
+      "keyValues": [
+        {
+          "label": "무기",
+          "value": "Bow 또는 Projectile Spear",
+          "notes": [
+            "강화되는 공격은 동일 무기 유형을 사용해야 함."
+          ]
+        },
+        {
+          "label": "유효 스킬",
+          "value": "Twister, Ice Shot, Glacial Lance, Stormcaller 스타일 창 공격",
+          "notes": [
+            "반복 공격은 강화됨; 채널링 공격은 강화되지 않음."
+          ]
+        },
+        {
+          "label": "제외",
+          "value": "지속 / 채널링 스킬",
+          "notes": [
+            "툴팁 제한: 강화가 적용되지 않음."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attack-empowerment",
+      "order": 40,
+      "title": "강화 공격",
+      "type": "attack-empowerment",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "시전 1회는 이후 유효 공격을 고정 횟수만큼 강화합니다. 횟수는 공격 1회씩 소모되며, 0이 되면 냉기 변환과 프래그먼트 생성이 멈춥니다. 재시전(또는 프레지 버님 차지로 대기시간 우회)하기 전까지 유지됩니다.",
+        "강화는 공격 전체에 적용되므로 다단 히트 공격도 강화 1회로 취급됩니다. 트위스터는 반복 가능한 창 공격이므로 강화되는 것이며, 이것이 아이스 팁드 애로우가 트위스터 빌드의 핵심인 이유입니다."
+      ],
+      "keyValues": [
+        {
+          "label": "시전당 사용 횟수",
+          "value": "고정 횟수 (0.5.4에서 확인)",
+          "notes": [
+            "유효 공격 1회씩 소모됨."
+          ]
+        },
+        {
+          "label": "Twister",
+          "value": "강화됨 (창 공격)",
+          "notes": [
+            "모든 트위스터 적중에 냉기 변환 + 프래그먼트."
+          ]
+        },
+        {
+          "label": "지속 스킬",
+          "value": "강화되지 않음",
+          "notes": [
+            "채널링 공격은 툴팁에 의해 제외됨."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empower-table",
+      "order": 45,
+      "title": "강화 호환성 표",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "주 스킬",
+        "강화됨?",
+        "효과",
+        "비고"
+      ],
+      "rows": [
+        [
+          "Twister",
+          "예",
+          "냉기 변환 + 아이스 프래그먼트",
+          "트위스터 빌드의 핵심; 동일 무기 세트"
+        ],
+        [
+          "Ice Shot",
+          "예",
+          "추가 냉기 + 프래그먼트",
+          "자체 냉기 피해와는 별개"
+        ],
+        [
+          "지속 / 채널링 스킬",
+          "아니오",
+          "강화 없음",
+          "툴팁에 의해 제외"
+        ],
+        [
+          "Barrage로 반복된 스킬",
+          "현재 클라이언트 기준",
+          "반복 비용 확인할 것",
+          "각 반복이 차지를 소모하는지는 현재 클라이언트 세부 사항"
+        ]
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 50,
+      "title": "스킬 상호작용",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "트위스터: 강화된 트위스터는 물리 피해를 냉기로 변환하고 적중한 모든 적 주변에 아이스 프래그먼트를 떨어뜨립니다. 트위스터는 일정 주기로 같은 적을 다시 타격할 수 있으므로, 강화 시전 1회로 여러 차례 프래그먼트를 떨어뜨릴 수 있습니다.",
+        "아이스 샷: 강화된 아이스 샷은 자체 파쇄 위에 추가 냉기와 프래그먼트를 얻습니다. 피해를 읽을 때 이 두 냉기 원천을 구분하세요.",
+        "폭격: 폭격은 강화된 스킬을 반복합니다. 각 반복이 별도의 강화를 소모하는지는 현재 클라이언트 세부 사항이므로 추측하지 말고 0.5.4에서 검증하세요. 트위스터 콤보에서는 한 번의 아이스 팁드 시전이 보통 폭격으로 날아가는 트위스터 전체를 강화하지만, 패치별로 확인하세요."
+      ],
+      "keyValues": [
+        {
+          "label": "Twister",
+          "value": "완전한 시너지",
+          "notes": [
+            "냉기 변환 + 적중당 프래그먼트 생성."
+          ]
+        },
+        {
+          "label": "Ice Shot",
+          "value": "가산 냉기 + 프래그먼트",
+          "notes": [
+            "아이스 샷 자체 냉기와 중첩됨."
+          ]
+        },
+        {
+          "label": "Barrage",
+          "value": "패치별 반복 상호작용 미검증",
+          "notes": [
+            "현재 클라이언트에서 반복 비용을 확인할 것."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "메커니즘: 아이스 프래그먼트와 변환",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "강화된 공격은 물리 피해를 냉기로 변환하므로, 무기와 장비의 모든 추가 평면 물리 피해가 냉기 출력으로 이어집니다. 적중 시 표적 주변 작은 반경 내에 아이스 프래그먼트도 생성합니다.",
+        "프래그먼트는 짧은 지연 후 폭발하여 냉기 광역 피해를 줍니다. 지연이 있으므로 프래그먼트는 즉시가 아닌 겹겹의 광역 피해이며, 위치와 밀집도가 최종 효율에 여전히 영향을 줍니다.",
+        "변환이 주된 스케일링 레버입니다. 추가 평면 물리와 냉기 수정 모두 적용되는 반면, 공격 속도는 주로 강화 창을 얼마나 빨리 소모하는지를 결정합니다."
+      ],
+      "bullets": [
+        "강화 공격에서 물리 → 냉기.",
+        "적중 시 반경 내에 아이스 프래그먼트 생성.",
+        "프래그먼트는 짧은 지연 후 폭발(겹겹의 광역).",
+        "추가 평면 물리와 냉기 모두 출력을 스케일링."
+      ]
+    },
+    {
+      "id": "charge-generation",
+      "order": 70,
+      "title": "프레지 버님 차지 재사용 대기시간 우회",
+      "type": "charge-generation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "아이스 팁드 애로우는 시전 사이에 재사용 대기시간이 있습니다. 프레지 버님 차지를 소모하면 그 대기시간을 우회하여 더 빨리 다시 강화할 수 있지만, 고정 횟수를 넘는 추가 강화 사용을 만들어내지는 않습니다.",
+        "프레지 버님 차지 공급원이 없으면 루프는 대기시간 순환입니다. 시전하고, 강화를 소모하고, 대기하고, 재시전. 전투 프레지(Combat Frenzy: 빙결 / 감전 / 고정)가 버프를 거의 영구적으로 유지하게 하는 일반적인 차지 공급원입니다."
+      ],
+      "keyValues": [
+        {
+          "label": "우회 대상",
+          "value": "사용 횟수가 아닌 대기시간",
+          "notes": [
+            "프레지 버님 차지는 조기 재시전을 허용."
+          ]
+        },
+        {
+          "label": "차지 공급원",
+          "value": "Combat Frenzy / 처치",
+          "notes": [
+            "빙결 / 감전 / 고정이 차지를 생성."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 80,
+      "title": "서포트 호환성",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "keyValues": [
+        {
+          "label": "Cold Infusion / Added Cold",
+          "value": "핵심",
+          "notes": [
+            "변환된 냉기와 프래그먼트 피해를 스케일링."
+          ]
+        },
+        {
+          "label": "Skill Effect Duration",
+          "value": "상황별",
+          "notes": [
+            "빌드가 지속시간을 중시하면 강화 창을 연장."
+          ]
+        },
+        {
+          "label": "Elemental Damage with Attacks",
+          "value": "상황별",
+          "notes": [
+            "강화 공격의 모든 원소 피해를 증폭."
+          ]
+        },
+        {
+          "label": "Cooldown Recovery",
+          "value": "상황별",
+          "notes": [
+            "프레지 우회를 쓰지 않을 때 재시전 대기시간을 단축."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "무기 세트 일치",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "강화는 아이스 팁드 애로우를携带한 것과 동일한 무기 세트의 공격에만 적용됩니다. 주 공격이 무기 세트 2에 있고 아이스 팁드 애로우가 세트 1에 있다면, 공격은 사용 가능하게 보이지만 프래그먼트가 생성되지 않습니다.",
+        "이 불일치가 가장 흔한 '사용 가능한데 프래그먼트가 없음' 사례입니다. 아이스 팁드 애로우와 강화하려는 공격을 같은 세트에 두세요."
+      ],
+      "keyValues": [
+        {
+          "label": "동일 세트 필요",
+          "value": "버프와 공격을 한 세트에",
+          "notes": [
+            "세트를 건너뛴 강화는 적용되지 않음."
+          ]
+        },
+        {
+          "label": "증상",
+          "value": "사용 가능, 프래그먼트 없음",
+          "notes": [
+            "보통 무기 세트 분리 때문."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 100,
+      "title": "콤보 순서",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "강화",
+          "action": "아이스 팁드 애로우 시전 (또는 프레지 버님 차지로 대기시간 우회)",
+          "result": "다음 공격이 냉기 + 프래그먼트 생성으로 바뀜."
+        },
+        {
+          "label": "Barrage (선택)",
+          "action": "강화된 공격에 폭격 시전",
+          "result": "강화된 공격을 반복 (클라이언트에서 반복 비용 확인)."
+        },
+        {
+          "label": "Twister",
+          "action": "강화된 상태에서 트위스터 시전",
+          "result": "냉기 트위스터가 모든 적중에 프래그먼트를 떨어뜨림."
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "매핑 로테이션",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "가능할 때마다(또는 대기시간을 우회할 프레지 버님 차지가 있을 때마다) 아이스 팁드 애로우를 갱신하여 무리들이 영구적으로 냉기로 변환되고 헤럴드 오브 아이스(Herald of Ice)를 통해 화면 밖에서 파쇄되게 하세요.",
+        "트위스터 빌드에서는 다음 루프입니다. 아이스 팁드를 유지하고 휠링 슬래시(Whirling Slash)를 돌린 뒤 무리를 통과하며 트위스터를 사용. 프래그먼트와 헤럴드 파쇄가 여러 화면을 청소합니다."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "보싱 로테이션",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "차지 충전",
+          "action": "프레지 버님 차지 생성 (Combat Frenzy로 빙결 / 고정)",
+          "result": "대기시간 우회에 쓸 차지 준비됨."
+        },
+        {
+          "label": "강화 + Barrage",
+          "action": "아이스 팁드 애로우 후 주 공격에 폭격",
+          "result": "보스에 반복되는 냉기 강화 적중."
+        },
+        {
+          "label": "유지",
+          "action": "대기시간 / 차지와 함께 재시전",
+          "result": "전투 내내 냉기 변환 창을 열어둠."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "사용되는 곳",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "아이스 팁드 애로우는 트위스터 스피릿 워커(Twister Spirit Walker), 아이스 팁드 트위스터즈 아마존(Ice-Tipped Twisters Amazon), 그리고 수많은 글래셜 랜스(Glacial Lance) / 투사체 창 빌드의 핵심입니다. 이 빌드들이 빙결하고 파쇄할 수 있게 하는 냉기 변환 엔진입니다.",
+        "일부 디아이(Deadeye) 활 빌드는 아이스 샷이나 라이트닝 애로우(Lightning Arrow)에 냉기 레이어로 빌려 쓰기도 합니다. 그 가치는 직접 피해가 아니라 안정적인 빙결과 프래그먼트 광역 피해에 있습니다."
+      ],
+      "bullets": [
+        "트위스터 스피릿 워커: 핵심 냉기 변환 레이어.",
+        "아이스 팁드 트위스터즈 아마존: 캠페인 스피드런 가능케 하는 요소.",
+        "글래셜 랜스 / 창 빌드: 빙결을 위한 냉기 프래그먼트."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제 해결",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "프래그먼트 없음",
+          "action": "잘못된 무기 세트 또는 지속 스킬",
+          "result": "아이스 팁드와 공격을 같은 세트에 둘 것; 채널링 스킬은 피할 것."
+        },
+        {
+          "label": "버프 대기시간이 너무 잦음",
+          "action": "프레지 버님 차지 공급원 없음",
+          "result": "대기시간을 우회할 Combat Frenzy나 처치 시 차지 공급원을 추가할 것."
+        },
+        {
+          "label": "무기 세트 불일치",
+          "action": "공격이 버프와 다른 세트에 있음",
+          "result": "하나의 무기 세트로 통합할 것."
+        },
+        {
+          "label": "출력이 약함",
+          "action": "구버전 0.4 수치를 신뢰",
+          "result": "클라이언트 0.5.4에서 지속시간 / 프래그먼트 수 / 대기시간 재확인."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "커뮤니티 근거",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "커뮤니티 게시물에서 두 가지 오해가 지배적입니다. 플레이어들은 폭격 반복이 각각 별도의 강화를 소모한다고 생각합니다(패치별 미확인 — 클라이언트에서 검증할 것), 그리고 플레이어들은 8초 버프와 3 프래그먼트를 인용하는 구버전 0.4 가이드를 복사하는데, 이는 0.4에서 변경되었습니다.",
+        "'사용 가능한데 프래그먼트가 없음' 사례는 거의 항상 무기 세트 분리이며, 버프와 공격을 한 세트에 둔 클라이언트 0.5.4에서 설정을 재현하여 확인했습니다."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "영상 시연 및 타임스탬프",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Raxxanterax",
+          "label": "Twister Amazon Huntress 레벨링 빌드",
+          "description": "아이스 팁드 애로우를 사용해 트위스터를 냉기로 변환하고 레벨링 중 프래그먼트를 떨어뜨리는 헌트리스 빌드.",
+          "takeaway": "강화 사용 0~4회와 무리 상의 프래그먼트 효율을 관찰할 것.",
+          "url": "https://www.youtube.com/watch?v=dpm4HSlg4ic",
+          "timestamps": [
+            {
+              "label": "스킬 세팅",
+              "time": "0:00"
+            },
+            {
+              "label": "아이스 팁드 + 트위스터 시연",
+              "time": "6:00"
+            },
+            {
+              "label": "보스 적용",
+              "time": "12:00"
+            }
+          ]
+        },
+        {
+          "creator": "KaidGames2",
+          "label": "Ice Shot Ranger 빌드 5M DPS",
+          "description": "아이스 팁드 애로우가 아이스 샷 위에 냉기 + 프래그먼트 레이어를 추가하는 레인저 빌드.",
+          "takeaway": "실제 청소에서 강화된 아이스 샷 프래그먼트를 보여줌.",
+          "url": "https://www.youtube.com/watch?v=vxG5XseSpsQ",
+          "timestamps": [
+            {
+              "label": "빌드 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "프래그먼트 효율",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식",
+          "description": "0.4에서 지속시간, 프래그먼트 수, 대기시간, 피해를 재작업한 GGG 공식 포럼 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "강화 횟수, 무기 요구사항, 무효 스킬 특성에 대한 PoE2DB 및 커뮤니티 위키.",
+          "url": "https://www.poe2wiki.net/wiki/Ice-Tipped_Arrows"
+        },
+        {
+          "label": "빌드 및 영상",
+          "description": "콤보와 프래그먼트 시연을 위한 Mobalytics 아이스 팁드 트위스터즈 아마존 및 Raxxanterax / KaidGames2 쇼케이스.",
+          "url": "https://mobalytics.gg/poe-2/builds/ice-tipped-twisters-amazon-leaguestarter"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "클라이언트에서 재현된 폭격 반복 비용과 무기 세트 불일치에 대한 Reddit 토론.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Ice%20Tipped%20Arrows&restrict_sr=1"
+        },
+        {
+          "label": "공식 포럼",
+          "description": "스태프가 버프 / 무기 세트 동작을 확인하는 공식 GGG 포럼.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 커뮤니티",
+          "description": "아이스 팁드 애로우에 대한 Reddit r/PathOfExile2 도움말 스레드.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "강화 횟수와 대기시간을 클라이언트 0.5.4에서 확인.",
+          "트위스터 강화와 무기 세트 규칙을 클라이언트에서 재현.",
+          "구버전 8초 / 3 프래그먼트 수치는 0.4 이후 폐기로 표시."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "패치 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-04-20",
+          "changes": [
+            "0.4에서 아이스 팁드 애로우 재작업: 지속시간, 아이스 프래그먼트 수, 대기시간, 피해가 모두 이전 수치에서 크게 변경됨."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: 프레지 버님 차지 대기시간 우회 유지; 현재 클라이언트 수치 사용. 스피릿 워커 승천이 트위스터 + 아이스 팁드를 더 강력하게 만듦."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "변경 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "최초 공개: 강화 횟수, 트위스터 / 아이스 샷 시너지, 아이스 프래그먼트 메커니즘, 프레지 버님 차지 대기시간 우회, 무기 세트 규칙, 콤보, 매핑 / 보싱 로테이션, 문제 해결과 커뮤니티 근거."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Ice-Tipped Arrows",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ice-Tipped_Arrows"
+    },
+    {
+      "label": "Mobalytics — Ice-Tipped Twisters Amazon",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ice-tipped-twisters-amazon-leaguestarter"
+    },
+    {
+      "label": "Reddit — Ice-Tipped Arrows discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Ice%20Tipped%20Arrows&restrict_sr=1"
+    },
+    {
+      "label": "Raxxanterax — Twister Amazon",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=dpm4HSlg4ic"
+    },
+    {
+      "label": "KaidGames2 — Ice Shot 5M DPS",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=vxG5XseSpsQ"
+    }
+  ],
+  "seo": {
+    "title": "아이스 팁드 애로우(Ice-Tipped Arrows) 가이드 — 강화 공격, 아이스 프래그먼트, 프레지 버님 차지",
+    "description": "아이스 팁드 애로우 가이드: 강화 횟수와 무효 스킬, 트위스터와 아이스 샷 시너지, 아이스 프래그먼트 생성과 지연 폭발, 물리>냉기 변환, 프레지 버님 차지 대기시간 우회, 무기 세트 규칙, 콤보, 매핑 / 보싱 로테이션과 문제 해결.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ice-tipped-arrows",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

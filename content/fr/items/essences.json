@@ -1,0 +1,928 @@
+{
+  "id": "essences",
+  "slug": "essences",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Guide des Essences : niveaux, modificateurs garantis et risques d'artisanat",
+  "shortTitle": "Essences",
+  "summary": "Les Essences sont une monnaie d'artisanat ciblée qui garantit un modificateur précis sur un équipement. Ce guide couvre l'échelle des niveaux, le modificateur accordé par chaque famille d'essence selon l'emplacement de l'objet, le comportement des essences Parfaites et Corrompues, et comment les combiner avec les Présages pour contrôler la suppression d'un préfixe ou d'un suffixe.",
+  "description": "Une référence sourcée sur les Essences dans Path of Exile 2 : échelle des niveaux, tableaux des modificateurs garantis, risque Parfait vs Corrompu, combos avec le Présage de Cristallisation, cibles valides et ordre d'artisanat.",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "crafting",
+    "targeted-crafting",
+    "essence"
+  ],
+  "itemCategory": "currency",
+  "subcategoryId": "targeted-crafting-currency",
+  "itemClass": "currency",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "corruption",
+    "crafting",
+    "currency"
+  ],
+  "heroImage": "/images/items/essences-hero.webp",
+  "cardImage": "/images/items/essences-hero.webp",
+  "imageAlt": "Icône d'essence (monnaie) de Path of Exile 2 - une sphère cristalline lumineuse qui accorde un modificateur garanti lorsqu'elle est utilisée sur un équipement",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Utilisez une Essence lorsque vous voulez un modificateur garanti plutôt qu'un jet aléatoire. Les essences Inférieure, Normale et Supérieure transforment un objet Magique en Rare et ajoutent un modificateur fixe ; une Essence Parfaite retire un modificateur aléatoire d'un objet Rare et le remplace par un modificateur garanti plus puissant.",
+      "calloutDetail": [
+        "Les essences Parfaites et Corrompues peuvent supprimer un modificateur que vous vouliez conserver - c'est le principal risque.",
+        "Un Présage de Cristallisation Sénestre ou Dextre limite le côté (préfixe ou suffixe) qu'une essence Parfaite/Corrompue a le droit de retirer."
+      ],
+      "answers": [
+        {
+          "label": "À quoi ça sert",
+          "text": [
+            "Artisanat ciblé : un modificateur défensif, élémentaire ou de vie précis que vous ne pouvez pas obtenir de façon fiable avec une monnaie aléatoire."
+          ]
+        },
+        {
+          "label": "À combiner avec",
+          "text": [
+            "Présage de Cristallisation Sénestre/Dextre lors de l'utilisation d'essences Parfaites ou Corrompues sur un objet qui possède déjà de bons modificateurs."
+          ]
+        },
+        {
+          "label": "À éviter si",
+          "text": [
+            "La base est un Rare terminé dont la perte de n'importe quel modificateur actuel ruinerait l'objet."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Familles d'essences →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "Risque d'artisanat →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Points clés",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Niveaux",
+          "value": "Lesser → Normal → Greater → Perfect",
+          "note": [
+            "Une Orb Vaal utilisée sur le monstre d'Essence emprisonné peut transformer une essence Parfaite en essence Corrompue."
+          ]
+        },
+        {
+          "label": "Inférieure/Normale/Supérieure",
+          "value": "Magic → Rare + 1 mod",
+          "note": [
+            "Elles ajoutent un modificateur garanti et font passer l'objet au rang Rare."
+          ]
+        },
+        {
+          "label": "Parfaite",
+          "value": "Rare : retire 1 mod aléatoire, ajoute 1 mod puissant",
+          "note": [
+            "Le modificateur retiré est aléatoire sauf si un Présage de Cristallisation est actif."
+          ]
+        },
+        {
+          "label": "Source",
+          "value": "Monstres d'essence dans les cartes",
+          "note": [
+            "Les prisons cristallines invoquent un monstre emprisonné ; le tuer fait tomber l'essence indiquée."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Familles d'essences et ce qu'elles accordent",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Chaque famille d'essence est liée à une statistique. Le modificateur exact et son niveau dépendent de la famille et de l'emplacement de l'objet sur lequel vous l'utilisez (arme, armure ou bijou). Voici les familles les plus utilisées par les joueurs."
+      ],
+      "members": [
+        {
+          "id": "essence-body",
+          "eyebrow": "Vie",
+          "title": "Essence du Corps",
+          "sub": "Vie maximale",
+          "tags": [
+            "defense",
+            "life"
+          ],
+          "body": [
+            "Accorde un modificateur de Vie plat ou en pourcentage important. Sur une armure corporelle, un jet Parfait donne environ +8-10 % de Vie maximale ; sur un bijou, elle accorde de la Vie plate."
+          ]
+        },
+        {
+          "id": "essence-abrasion",
+          "eyebrow": "Physique",
+          "title": "Essence d'Abrasion",
+          "sub": "Dégâts physiques plats",
+          "tags": [
+            "attack",
+            "physical"
+          ],
+          "body": [
+            "Ajoute des dégâts physiques plats aux armes. Un jet Parfait peut ajouter « Gagnez X % des dégâts en dégâts physiques supplémentaires », un préfixe puissant pour l'artisanat d'attaque."
+          ]
+        },
+        {
+          "id": "essence-elemental",
+          "eyebrow": "Élémentaire",
+          "title": "Essence de Flamme / Glace / Électricité",
+          "sub": "% de dégâts élémentaires",
+          "tags": [
+            "elemental",
+            "attack",
+            "spell"
+          ],
+          "body": [
+            "Chaque essence accorde un % de dégâts élémentaires de son type. Les niveaux inférieurs ajoutent des dégâts élémentaires plats aux armes Magiques ; la version Parfaite ajoute « Gagnez X % des dégâts en dégâts supplémentaires » à une arme Rare."
+          ]
+        },
+        {
+          "id": "essence-resists",
+          "eyebrow": "Résistance",
+          "title": "Essence d'Isolation / Dégel / Mise à la terre / Ruine",
+          "sub": "Résistances",
+          "tags": [
+            "defense",
+            "resistance"
+          ],
+          "body": [
+            "Accordent respectivement la résistance Feu / Froid / Foudre / Chaos. Les jets Parfaits atteignent environ +26-30 % à la résistance concernée, Ruine ajoutant « Dégâts physiques reçus comme Chaos »."
+          ]
+        },
+        {
+          "id": "essence-infinite",
+          "eyebrow": "Attributs",
+          "title": "Essence de l'Infini",
+          "sub": "Attributs",
+          "tags": [
+            "attribute",
+            "requirements"
+          ],
+          "body": [
+            "Accorde de la Force, de la Dextérité ou de l'Intelligence accrues. Utile lorsque vous devez satisfaire une exigence de gemme ou d'équipement sans passer par l'arbre."
+          ]
+        },
+        {
+          "id": "essence-command",
+          "eyebrow": "Aura",
+          "title": "Essence de Commandement",
+          "sub": "Amplitude d'aura",
+          "tags": [
+            "aura",
+            "support"
+          ],
+          "body": [
+            "Augmente l'amplitude d'aura sur les sceptres. Pertinent pour les builds de soutien et d'invocateur qui renforcent les dégâts des alliés."
+          ]
+        },
+        {
+          "id": "essence-battle",
+          "eyebrow": "Niveaux de compétence",
+          "title": "Essence de Bataille",
+          "sub": "Niveaux de compétence d'arme",
+          "tags": [
+            "attack",
+            "skill-levels"
+          ],
+          "body": [
+            "Accorde des niveaux de compétence bonus aux armes. Les valeurs exactes par classe d'arme figurent dans le tableau des niveaux de compétence ci-dessous."
+          ]
+        },
+        {
+          "id": "essence-sorcery",
+          "eyebrow": "Dégâts des sorts",
+          "title": "Essence de Sorcellerie",
+          "sub": "Niveaux de compétence de sort",
+          "tags": [
+            "spell",
+            "skill-levels"
+          ],
+          "body": [
+            "Accorde des niveaux de compétence de sort bonus aux lanceurs de sorts. Les valeurs exactes par classe d'arme figurent dans le tableau des niveaux de compétence ci-dessous."
+          ]
+        },
+        {
+          "id": "essence-haste",
+          "eyebrow": "Vitesse d'attaque",
+          "title": "Essence de Hâte",
+          "sub": "Vitesse d'attaque / Assaut",
+          "tags": [
+            "attack-speed",
+            "clear"
+          ],
+          "body": [
+            "Ajoute de la vitesse d'attaque aux armes ; la version Parfaite peut accorder une chance de déclencher l'Assaut à la mort, puissant pour la vitesse de nettoyage."
+          ]
+        },
+        {
+          "id": "essence-enhancement",
+          "eyebrow": "Défenses",
+          "title": "Essence d'Amélioration",
+          "sub": "Défenses globales",
+          "tags": [
+            "defense",
+            "es"
+          ],
+          "body": [
+            "Accorde des défenses globales sur les amulettes, utile pour les builds empilant le Bouclier d'énergie ou les défenses hybrides."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-level-grants",
+      "order": 35,
+      "title": "Modificateurs de niveau par classe d'objet",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Niveaux de compétence d'arme de l'Essence de Bataille et niveaux de compétence de sort de l'Essence de Sorcellerie, par classe d'arme.",
+      "columns": [
+        {
+          "key": "essence",
+          "label": "Essence"
+        },
+        {
+          "key": "itemClass",
+          "label": "Classe d'objet"
+        },
+        {
+          "key": "modifier",
+          "label": "Modificateur accordé"
+        }
+      ],
+      "filters": [
+        {
+          "id": "battle",
+          "label": "Essence de Bataille"
+        },
+        {
+          "id": "sorcery",
+          "label": "Essence de Sorcellerie"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "One-handed weapon",
+            "modifier": "+4 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Battle",
+            "itemClass": "Two-handed weapon",
+            "modifier": "+6 to Socketed Skill Levels"
+          },
+          "tags": [
+            "battle"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Wand / Focus",
+            "modifier": "+3 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        },
+        {
+          "cells": {
+            "essence": "Essence of Sorcery",
+            "itemClass": "Staff",
+            "modifier": "+5 to all Spell Skills"
+          },
+          "tags": [
+            "sorcery"
+          ]
+        }
+      ],
+      "note": "Ces amplitudes évoluent avec le niveau de l'essence (Inférieure → Normale → Supérieure → Parfaite) ; les chiffres ci-dessus correspondent aux valeurs du niveau Supérieur le plus souvent citées."
+    },
+    {
+      "id": "eligibility",
+      "order": 40,
+      "title": "Sur quels objets une Essence fonctionne",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "L'éligibilité dépend du niveau. Inférieure/Normale/Supérieure font passer un objet Magique au rang Rare. Parfaite et Corrompue n'agissent que sur un objet déjà Rare."
+      ],
+      "columns": [
+        "Normal item",
+        "Magic item",
+        "Rare item"
+      ],
+      "rows": [
+        {
+          "label": "Inférieure / Normale / Supérieure",
+          "note": "Fait passer un objet Magique au rang Rare et ajoute un modificateur garanti",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Non - requiert Magique"
+            },
+            {
+              "kind": "yes",
+              "text": "Oui (Magique)"
+            },
+            {
+              "kind": "no",
+              "text": "Non - déjà Rare"
+            }
+          ]
+        },
+        {
+          "label": "Parfaite / Corrompue",
+          "note": "Retire un modificateur, ajoute un modificateur puissant",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "yes",
+              "text": "Oui"
+            }
+          ]
+        },
+        {
+          "label": "Unique identifié",
+          "note": "Les essences ne ciblent pas les uniques",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "Comment obtenir des Essences",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Les essences proviennent principalement des rencontres en carte, avec quelques routes supplémentaires."
+      ],
+      "routes": [
+        {
+          "label": "Monstres d'essence dans les cartes",
+          "body": [
+            "Les prisons cristallines apparaissent dans tout le atlas. Briser le cristal libère un monstre emprisonné ; le vaincre fait tomber le type d'essence indiqué sur le cristal."
+          ]
+        },
+        {
+          "label": "Orb Vaal sur le monstre emprisonné",
+          "body": [
+            "Utiliser une Orb Vaal sur le cristal avant de le libérer peut : ne rien faire, libérer instantanément le monstre, ajouter des essences supplémentaires, ou augmenter d'un niveau (Normale → Supérieure → Parfaite → Corrompue)."
+          ]
+        },
+        {
+          "label": "Marchand / Établi de refonte",
+          "body": [
+            "Trois essences identiques (type et niveau) peuvent être combinées en une du niveau supérieur. Confirmez la recette exacte sur le client actuel, car le comportement du marchand change entre les patches."
+          ]
+        },
+        {
+          "label": "Échange de monnaies / commerce",
+          "body": [
+            "Achetez des essences précises à d'autres joueurs si vous avez besoin d'un niveau supérieur à celui que vous trouvez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 60,
+      "title": "Artisanat avec les Essences",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "Commencez avec une base Magique qui possède déjà un modificateur souhaitable. Une essence Inférieure/Normale/Supérieure la fait passer au rang Rare et ajoute le modificateur garanti, vous « verrouillant » ainsi un bon affixe pour le coût de l'essence plus la base.",
+        "Pour un objet terminé, une essence Parfaite retire un modificateur aléatoire et en ajoute un puissant garanti. Comme le modificateur retiré est aléatoire, vous ne devriez utiliser une essence Parfaite que sur un Rare où la perte d'un seul modificateur est acceptable - ou l'associer à un Présage de Cristallisation pour choisir le côté."
+      ],
+      "bullets": [
+        "Présage de Cristallisation Sénestre : votre prochaine essence Parfaite/Corrompue ne retire que les modificateurs de préfixe.",
+        "Présage de Cristallisation Dextre : votre prochaine essence Parfaite/Corrompue ne retire que les modificateurs de suffixe.",
+        "Superposez le Présage avec d'autres présages d'artisanat (ex. Exaltation) dans le même inventaire pour combiner les effets."
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Comment utiliser une Essence",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Choisir la base",
+          "body": [
+            "Choisissez un objet Magique pour Inférieure-Supérieure, ou un Rare pour Parfaite/Corrompue."
+          ]
+        },
+        {
+          "label": "Activer un Présage",
+          "body": [
+            "Faites un clic droit sur le Présage de Cristallisation dans votre inventaire pour que sa bordure active rouge apparaisse."
+          ]
+        },
+        {
+          "label": "Appliquer l'Essence",
+          "body": [
+            "Faites un clic droit sur l'essence, puis cliquez sur l'objet cible. Le résultat est immédiat et définitif."
+          ]
+        }
+      ],
+      "compare": {
+        "note": "Les niveaux inférieurs ajoutent un modificateur et font monter de niveau ; la Parfaite remplace un modificateur par un plus puissant.",
+        "before": [
+          "Plastron Rare avec un suffixe +Vie et un préfixe de résistance Froid faible."
+        ],
+        "after": [
+          "L'Essence Parfaite du Corps retire le préfixe faible et ajoute +8-10 % de Vie maximale en tant que nouveau préfixe."
+        ]
+      }
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Liste de contrôle avant utilisation",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "Bon niveau pour la base",
+          "checks": [
+            "Base Magique pour Inférieure-Supérieure ; base Rare pour Parfaite/Corrompue."
+          ],
+          "why": "Un mauvais niveau ne s'appliquera tout simplement pas.",
+          "fix": "Utilisez d'abord une Regal/Transmutation, ou choisissez une autre essence."
+        },
+        {
+          "label": "Un modificateur sûr peut être perdu",
+          "checks": [
+            "Lors d'une utilisation Parfaite/Corrompue, confirmez qu'aucun modificateur actuel n'est irremplaçable."
+          ],
+          "why": "Un modificateur aléatoire est retiré.",
+          "fix": "Activez un Présage de Cristallisation pour verrouiller le côté conservé."
+        },
+        {
+          "label": "Le Présage est actif",
+          "checks": [
+            "Le Présage affiche sa bordure active rouge dans l'inventaire."
+          ],
+          "why": "Un Présage inactif ne fait rien.",
+          "fix": "Faites un clic droit sur le Présage avant d'appliquer l'essence."
+        },
+        {
+          "label": "Coût vs valeur de la base",
+          "checks": [
+            "Comparez le coût de l'essence à la valeur de la base en cas de réussite ou d'échec."
+          ],
+          "why": "Des essences coûteuses sur des bases bon marché gaspillent de la monnaie.",
+          "fix": "Réservez les hauts niveaux aux bases de grande valeur."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Résultats attendus par scénario",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "upgrade",
+        "perfect",
+        "corrupted"
+      ],
+      "rows": [
+        {
+          "scenario": "Arme Magique avec un bon préfixe",
+          "audience": "Joueurs en leveling",
+          "benefit": "Passée au rang Rare avec un second modificateur garanti",
+          "risk": "Faible - la base était extensible",
+          "level": "low",
+          "recommendation": "Utilisation idéale des essences Supérieures",
+          "tags": [
+            "upgrade"
+          ]
+        },
+        {
+          "scenario": "Rare avec un modificateur faible que vous pouvez perdre",
+          "audience": "Artisans de fin de partie",
+          "benefit": "Ajout d'un modificateur garanti puissant",
+          "risk": "Moyen - un modificateur utile pourrait être retiré",
+          "level": "medium",
+          "recommendation": "À utiliser avec un Présage de Cristallisation",
+          "tags": [
+            "perfect"
+          ]
+        },
+        {
+          "scenario": "Rare quasi optimal, tous les modificateurs souhaités",
+          "audience": "Artisans à gros investissement",
+          "benefit": "Modificateur potentiel de plus haut niveau",
+          "risk": "Élevé - perdre n'importe quel modificateur fait mal",
+          "level": "high",
+          "recommendation": "Uniquement avec les deux Présages de Cristallisation et une base de rechange",
+          "tags": [
+            "perfect",
+            "corrupted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Analyse des risques",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Parfaite sur un Rare terminé sans Présage",
+          "gain": "Un modificateur garanti puissant",
+          "loss": "Un modificateur existant aléatoire est supprimé",
+          "level": "high",
+          "recommendation": "Uniquement si chaque modificateur actuel est sacrifiable, ou utilisez un Présage de Cristallisation."
+        },
+        {
+          "scenario": "Essence Corrompue issue d'une amélioration Vaal",
+          "gain": "Modificateurs de niveau supérieur à effet unique (ex. Horreur, Hystérie)",
+          "loss": "L'étape Vaal peut gaspiller le monstre ou ne rien donner",
+          "level": "medium",
+          "recommendation": "Rentable sur des essences Parfaites que vous pouvez vous permettre de perdre."
+        },
+        {
+          "scenario": "Supérieure sur une base Magique en leveling",
+          "gain": "Rare fiable avec un modificateur fixe",
+          "loss": "Faible coût en monnaie",
+          "level": "low",
+          "recommendation": "Sûr et recommandé pendant le leveling."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "Quels builds s'appuient sur les Essences",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Les essences sont l'artisanat ciblé privilégié quand un build a besoin d'un modificateur précis et de grande valeur tôt."
+      ],
+      "builds": [
+        {
+          "title": "Builds de lanceur de sorts",
+          "description": "Essence de Sorcellerie pour +3 aux compétences de sort, ou Essence d'Amélioration pour les défenses globales sur l'amulette."
+        },
+        {
+          "title": "Builds d'attaque / physiques",
+          "description": "Essence d'Abrasion (Physique supplémentaire) ou Essence de Bataille (+niveaux de compétence) sur l'arme."
+        },
+        {
+          "title": "Builds tanky / HC",
+          "description": "Essence du Corps pour la Vie maximale, associée aux essences de résistance pour corriger les plafonds."
+        },
+        {
+          "title": "Builds d'empilement d'attributs",
+          "description": "Essence de l'Infini pour atteindre les exigences de gemme ou d'équipement sans investissement dans l'arbre."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "Témoignages communautaires",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-perfect-deleted",
+          "kind": "Question Reddit",
+          "question": "Pourquoi l'Essence Parfaite a-t-elle supprimé mon meilleur modificateur ?",
+          "summary": [
+            "Un joueur a utilisé une essence Parfaite sur un Rare qu'il appréciait et a perdu un modificateur qu'il voulait conserver."
+          ],
+          "editorialAnalysis": [
+            "La Parfaite retire un modificateur aléatoire sauf si un Présage de Cristallisation limite le côté."
+          ],
+          "officialAnswer": [
+            "Activez un Présage de Cristallisation Sénestre ou Dextre avant l'essence Parfaite pour choisir la suppression de préfixe ou de suffixe."
+          ]
+        },
+        {
+          "sourceId": "forum-direct-or-currency",
+          "kind": "Question de forum",
+          "question": "Dois-je utiliser l'Essence directement ou préparer avec une monnaie normale d'abord ?",
+          "summary": [
+            "Les joueurs débattent de la meilleure approche : commencer par une essence ou construire la base avec des orbes d'abord."
+          ],
+          "editorialAnalysis": [
+            "Utilisez une essence Inférieure/Supérieure pour faire monter de niveau une base qui possède déjà un bon modificateur ; terminez les autres jets avec la monnaie normale avant un échange Parfait."
+          ],
+          "officialAnswer": [
+            "L'essence d'abord pour verrouiller le modificateur garanti, puis remplissez les affixes restants avec une autre monnaie."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vidéos et horodatages",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Forge d'objets Parfaits (flux Essence + Présage)",
+          "url": "https://www.youtube.com/watch?v=9oFGFT-X1OA",
+          "creator": "P4wnyhof",
+          "description": "Explication pas à pas de l'artisanat déterministe à base d'essences et de la manière dont les Présages contrôlent le résultat.",
+          "takeaway": "Regardez les chapitres sur la combinaison des essences avec les Présages de cristallisation pour des crafts Parfaits sûrs.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Aperçu de l'artisanat par essence"
+            },
+            {
+              "time": "02:30",
+              "label": "Faire monter de niveau une base avec les essences Supérieures"
+            },
+            {
+              "time": "06:10",
+              "label": "Combo Essence Parfaite + Présage de Cristallisation"
+            },
+            {
+              "time": "11:45",
+              "label": "Craft de fin de partie réel"
+            }
+          ]
+        },
+        {
+          "label": "Guide ultime des Essences dans Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=BxDQaXc0LIw",
+          "creator": "EODGamerz",
+          "description": "Explication complète des familles d'essences, des niveaux et du moment où chacune mérite d'être utilisée.",
+          "takeaway": "Bonne référence pour savoir quelle famille d'essence convient à votre emplacement et à votre build.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Ce que font les essences"
+            },
+            {
+              "time": "03:20",
+              "label": "Échelle des niveaux et améliorations Vaal"
+            },
+            {
+              "time": "08:00",
+              "label": "Exemples famille par famille"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "L'essence ne s'applique pas",
+          "directAnswer": [
+            "Le niveau ne correspond pas à la base : Inférieure-Supérieure nécessitent un objet Magique, Parfaite/Corrompue nécessitent un Rare."
+          ],
+          "checks": [
+            "Vérifiez la rareté de l'objet et s'il est identifié."
+          ],
+          "links": [
+            {
+              "href": "#eligibility",
+              "label": "Ouvrir les cibles valides"
+            }
+          ]
+        },
+        {
+          "symptom": "Un modificateur voulu a disparu",
+          "directAnswer": [
+            "Une essence Parfaite/Corrompue a retiré un modificateur aléatoire ; utilisez un Présage de Cristallisation la prochaine fois."
+          ],
+          "checks": [
+            "Gardez une base de rechange avant tout échange Parfait."
+          ]
+        },
+        {
+          "symptom": "La même essence donne des résultats différents selon l'équipement",
+          "directAnswer": [
+            "Le modificateur garanti dépend de l'emplacement de l'objet (arme / armure / bijou)."
+          ],
+          "checks": [
+            "Survolez l'essence ou consultez le tableau des familles pour votre emplacement."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenu relié",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "omens",
+          "contentType": "item",
+          "title": "Présages",
+          "description": "Présages de Cristallisation qui contrôlent le côté qu'une essence Parfaite retire.",
+          "href": "/fr/items/omens/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Orb Vaal",
+          "description": "Utilisée sur les monstres d'essence emprisonnés pour augmenter les niveaux vers les essences Corrompues.",
+          "href": "/fr/items/vaal-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historique des patches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.0",
+          "date": "2026-05-29",
+          "changes": [
+            "La nomenclature des niveaux d'essence a été ajustée (Grand renommé en Normal dans plusieurs familles) ; les essences Corrompues restent une amélioration Vaal des essences Parfaites."
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "Les essences restent la monnaie d'artisanat ciblé principale ; les Présages de Cristallisation continuent de contrôler la suppression des préfixes/suffixes sur les essences Parfaites et Corrompues."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notes de patch de Path of Exile 2 couvrant les niveaux d'essence et la monnaie d'artisanat.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Données sur les familles d'essences et les modificateurs de PoE2DB.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Guides d'artisanat communautaires et rapports Reddit sur le comportement Parfait/Corrompu.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Création du guide des Essences (article modèle pour le deuxième lot d'objets)."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "omens",
+    "vaal-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.5.4 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2DB — Essences",
+      "url": "https://poe2db.tw/us",
+      "sourceType": "tool"
+    },
+    {
+      "label": "Mobalytics — Omen Crafting (Crystallisation)",
+      "url": "https://mobalytics.gg/poe-2/guides/omen-crafting",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guide des Essences Path of Exile 2 : niveaux, modificateurs garantis et risques d'artisanat",
+    "description": "Comment fonctionnent les Essences de PoE2 : échelle des niveaux, tableaux des modificateurs garantis par emplacement, risque Parfait vs Corrompu, et combos du Présage de Cristallisation pour un artisanat ciblé sûr.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "essences",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

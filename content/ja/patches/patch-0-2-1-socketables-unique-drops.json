@@ -1,0 +1,557 @@
+{
+  "id": "patch-0-2-1-socketables-unique-drops",
+  "slug": "patch-0-2-1-socketables-unique-drops",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.1：22のルーン、7のお守り、15のソウルコア、そしてユニークドロップの変化",
+  "shortTitle": "0.2.1 ソケット可能アイテムとユニークドロップ",
+  "summary": "0.2.1は戦利品とソケット可能アイテムのシステムを刷新しました。22のエンドゲームルーン、7のお守り、15のソウルコアが追加される一方、ユニークドロップはアイテムクラスを考慮しなくなり、ミシックユニークが増加し、パーティのユニークボーナスが削減されました。",
+  "description": "Path of Exile 2 0.2.1に関するアイテムと戦利品システムの記事です。新しいルーン・お守り・ソウルコア、アイテムフィルターに新しい項目が必要な理由、そして4つのユニークドロップルールの変更（アイテムクラスの比重廃止、ミシックユニークの増加、高階層エリアでのコモンユニーク比率の減少、パーティボーナスの縮小）を解説します。",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.1",
+  "patch": "0.2.1",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "cardImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "imageAlt": "0.2.1で導入されたエンドゲームルーン、お守り、ソウルコア",
+  "tags": [
+    "runes",
+    "talismans",
+    "soul-cores",
+    "unique-drops",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "パッチ0.2.1は「Dawn of the Hunt」時代における戦利品とソケット可能アイテムの刷新でした。ソケット可能アイテムとして全く新しい3つの系統が導入されました。22のエンドゲームルーン、7のお守り、15のソウルコアです。それぞれ装備にソケットして新しい修正値やビルドの選択肢を得るためのものです。",
+        "ソケット可能アイテムと並行して、0.2.1はユニークアイテムのドロップ方法を書き換えました。ユニーク生成パイプラインはアイテムクラスの考慮をやめ、その結果リングとアミュレットがこれまでより頻出するようになりました。ミシックユニークの増加によりより多くの最高階層ドロップが circulation に乗り、高階層エリアではコモンユニークの比率が減少し、パーティプレイのユニークボーナスが削減されました。",
+        "コンソールプレイヤーには静かだが重要なQoLの改善がありました。アイテムフィルターのサポートが到来したのです。これは新しいソケット可能アイテムに項目を追加しない限り古いフィルターには表示されないため、直接影響します。本記事では各変更をプレイヤー向けに説明し、後のパッチで調整された可能性があるものと現在もそのままのものを区別します。",
+        "ここではドロップ率のパーセンテージは記載していません。公式ノートではこれらを公開された数値ではなくルールの変更として説明しているため、以下の数値は方向性と仕組みのみで記述します。"
+      ],
+      "bullets": [
+        "0.2.1で22のエンドゲームルーン、7のお守り、15のソウルコアが追加された。",
+        "ユニークドロップはアイテムクラスを考慮しなくなったため、リングとアミュレットがより一般的になった。",
+        "ミシックユニークのドロップ率が増加。高階層エリアではコモンユニークの比率が減少。",
+        "パーティのユニークボーナスが削減された。",
+        "コンソールのアイテムフィルター対応により、新しいソケット可能アイテムにフィルター項目が必要。"
+      ]
+    },
+    {
+      "id": "new-socketables-dashboard",
+      "order": 2,
+      "title": "新ソケット可能アイテムの概要",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Endgame Runes",
+          "verdict": "22の新ソケット可能アイテム",
+          "detail": "装備にソケットして修正値を得るための、新しいエンドゲーム階層のルーン系統。個別の効果はここでは列挙しません。22という数値は0.2.1ノートで確認された事実です。"
+        },
+        {
+          "area": "Talismans",
+          "verdict": "7の新ソケット可能アイテム",
+          "detail": "0.2.1で追加された新しいお守り（タリスマン）ソケット可能タイプ。確認された数は7です。具体的なボーナスはパーセンテージとしては記載しません。"
+        },
+        {
+          "area": "Soul Cores",
+          "verdict": "15の新ソケット可能アイテム",
+          "detail": "0.2.1で追加された新しいソウルコアソケット可能タイプ。確認された数は15です。正確な修正値は未検証であり、カテゴリでのみ記述します。"
+        },
+        {
+          "area": "Item Filter",
+          "verdict": "新しい項目が必要",
+          "detail": "これらは全く新しいアイテムタイプであるため、0.2.1より前に書かれたフィルターは項目を追加するまでそれらを隠したり誤って処理したりします。特にフィルターが現在サポートされているコンソールでは顕著です。"
+        }
+      ]
+    },
+    {
+      "id": "rune-talisman-soulcore-map",
+      "order": 3,
+      "title": "ルーン・お守り・ソウルコアの対照表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1で導入された3つのソケット可能アイテム系統とその確認済み数。個別の効果は公式ノートが数値ではなくカテゴリで説明しているため記載していません。",
+      "columns": [
+        { "key": "category", "label": "ソケット可能アイテム系統" },
+        { "key": "count", "label": "数" },
+        { "key": "role", "label": "役割" },
+        { "key": "notes", "label": "注記" }
+      ],
+      "rows": [
+        {
+          "category": "Endgame Runes",
+          "count": "22",
+          "role": "装備にソケットする修正値",
+          "notes": "新しいエンドゲームのソケット可能階層。個別の効果は未検証。"
+        },
+        {
+          "category": "Talismans",
+          "count": "7",
+          "role": "装備にソケットする修正値",
+          "notes": "新しいソケット可能タイプ。個別の効果は未検証。"
+        },
+        {
+          "category": "Soul Cores",
+          "count": "15",
+          "role": "装備にソケットする修正値",
+          "notes": "新しいソケット可能タイプ。個別の効果は未検証。"
+        }
+      ]
+    },
+    {
+      "id": "historical-filter-impact",
+      "order": 4,
+      "title": "なぜアイテムフィルターに新しい項目が必要か",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "socketable",
+          "title": "新しいソケット可能タイプは古いフィルターには見えない",
+          "detail": "ルーン・お守り・ソウルコアは0.2.1より前には存在しなかったため、それ以前に作られたフィルターはこれらを認識しません。明示的な項目を追加するまで、これらのアイテムは隠されたり、ジャンクとして表示されたり、誤ってフラグ付けされたりする可能性があります。",
+          "tags": [
+            "item-filter",
+            "socketables"
+          ]
+        },
+        {
+          "kind": "filter-feature",
+          "title": "コンソールのアイテムフィルター対応が0.2.1で到来",
+          "detail": "コンソールプレイヤーはこのパッチでアイテムフィルターのサポートを獲得しました。これによりフィルター項目の欠落はXboxやPlayStationでも現実の問題となります。コンソールプレイヤーは新しいソケット可能アイテムのルールを追加しないと、ロアフィルターでドロップを見逃すことになります。",
+          "tags": [
+            "console",
+            "item-filter"
+          ]
+        },
+        {
+          "kind": "crafting-input",
+          "title": "ソケット可能アイテムは既存の通貨と結びつく",
+          "detail": "ソケット可能アイテムはクラフトおよび通貨システム（例えばアーティフィサー式ソケットや関連試薬）と相互作用するため、フィルター項目はソケット可能アイテムとそれらを管理するために使われる通貨の両方をカバーすべきです。",
+          "tags": [
+            "crafting",
+            "currencies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot-generation-change",
+      "order": 5,
+      "title": "戦利品生成の変更：アイテムクラスによる比重廃止",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "ユニークドロップはアイテムクラスを考慮しなくなった",
+          "detail": "0.2.1以前はユニークドロップ生成は何をドロップするかを決める際にアイテムクラスを考慮していました。このパッチはその考慮を削除し、アイテムプール全体でのユニークドロップの分布を再調整しました。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "item",
+          "title": "リングとアミュレットがより一般的に",
+          "detail": "アイテムクラスによる比重がなくなったことで、リングとアミュレットは旧生成ルールの頃よりも頻繁にドロップするようになりました。これは公開されたパーセンテージではなく、方向性の変更です。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "unique-rarity-pipeline",
+      "order": 6,
+      "title": "ユニーク希少度パイプライン：ミシックとコモンの変化",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "ミシックユニークドロップの増加",
+          "detail": "0.2.1は最高希少度階層であるミシックユニークのドロップ率を引き上げました。最も求められるユニークの多くが circulation に乗りましたが、正確な倍率はノートに公開されていません。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "item",
+          "title": "高階層エリアではコモンユニークの比率が減少",
+          "detail": "より高い階層のエリアではコモンユニークの比率が減少し、トップエンドの農場では低価値なユニークが少なくなり、より興味深いものの相対的な比率が増えます。これは印刷された数値ではなくルールとして説明されます。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "solo-vs-party-impact",
+      "order": 7,
+      "title": "ソロとパーティの影響の対照",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "パーティのユニークボーナスが削減",
+          "detail": "パーティプレイがユニークドロップに与えていたボーナスは0.2.1で削減されました。これにより、組織的なパーティ農場とソロまたは小規模グループプレイの差が縮まりますが、正確な残りのボーナスは公開されていません。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "balance",
+          "title": "ソロプレイがユニーク獲得で相対的に強く",
+          "detail": "パーティボーナスが縮小したため、ソロおよび小規模グループのプレイヤーはユニーク獲得で相対的な立場を得ました。パーティプレイは依然としてクリア速度や生存率の面で役立つ可能性がありますが、ユニークドロップの優位性は0.2.1以前より小さくなっています。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "build-and-item-impact",
+      "order": 8,
+      "title": "ビルドとアイテムへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "リングとアミュレットの増加が装備選択を再構成",
+          "detail": "リングとアミュレットがより頻繁にドロップするようになったため、希少なユニークリングやアミュレットを前提としていたビルドガイドは、それらのスロットがどのくらいの頻度でアップグレードされるかを見直すべきです。この変更は提示された数値ではなく、入手可能性に関するものです。",
+          "scope": "Official 0.2.1 notes"
+        },
+        {
+          "category": "new",
+          "title": "ソケット可能アイテムが新しいクラフトとスケーリングの道を開く",
+          "detail": "22のルーン、7のお守り、15のソケットコアはクラフターに追い求める新しいソケット修正値をもたらし、スキル付与およびスケーリングを行うユニーク、チャーム、触媒がビルド内でどのように評価されるかを変える可能性があります。",
+          "scope": "Official 0.2.1 notes"
+        }
+      ]
+    },
+    {
+      "id": "loot-change-table",
+      "order": 9,
+      "title": "ユニークドロップルール変更の一覧",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1の4つのユニークドロップルール変更を、変更前と変更後、プレイヤーへの影響、現在の状態の注記とともに示します。ドロップ率のパーセンテージは創作せず、ルールの方向性のみを記述します。",
+      "columns": [
+        { "key": "change", "label": "変更" },
+        { "key": "before", "label": "変更前 (0.2.0)" },
+        { "key": "after", "label": "変更後 (0.2.1)" },
+        { "key": "playerImpact", "label": "プレイヤーへの影響" },
+        { "key": "current", "label": "現在 (0.5.4e)" }
+      ],
+      "rows": [
+        {
+          "change": "ユニークドロップのアイテムクラス比重",
+          "before": "アイテムクラスを考慮",
+          "after": "アイテムクラスを考慮しなくなった",
+          "playerImpact": "リングとアミュレットがより頻繁にドロップ。クラスの偏りが解消",
+          "current": "0.2.1で方向性を確認。後のパッチで調整された可能性あり（要検証）"
+        },
+        {
+          "change": "ミシックユニーク階層",
+          "before": "ミシックのドロップ比率が低い",
+          "after": "ミシックユニークのドロップ率が増加",
+          "playerImpact": "トップ階層のユニークが高階層農場でより多く出現",
+          "current": "0.2.1で方向性を確認。正確な率は後に調整された可能性あり（要検証）"
+        },
+        {
+          "change": "高階層のコモンユニーク比率",
+          "before": "高階層でコモンユニークの比率が大きい",
+          "after": "高階層エリアでコモンユニークの比率が減少",
+          "playerImpact": "トップマップでは無価値なユニークが少なく、バリエーションが増える",
+          "current": "0.2.1でルールを確認。後の調整の可能性あり（要検証）"
+        },
+        {
+          "change": "パーティのユニークボーナス",
+          "before": "パーティのユニークボーナスが大きい",
+          "after": "パーティのユニークボーナスが削減",
+          "playerImpact": "ソロおよび小規模グループがパーティ農場に対して相対的に優位に",
+          "current": "0.2.1で方向性を確認。正確なボーナスは後に調整された可能性あり（要検証）"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "ルーン・お守り・ソウルコアのソケット可能アイテムとしての扱い",
+          "status": "unknown",
+          "currentSummary": "22/7/15のソケット可能アイテム系統は0.2.1で導入された。0.5.4eでも変更されずに残っているかは未検証。",
+          "supersededBy": "後のソケット可能アイテムパッチ",
+          "affectedContent": "Runes and Soul Cores アイテムページ"
+        },
+        {
+          "topic": "ユニークドロップがアイテムクラスを無視",
+          "status": "changed-later",
+          "currentSummary": "0.2.1のルールはアイテムクラスの比重を削除。後のパッチでユニークパイプラインが再調整された可能性が高く、現在の正確な挙動は未検証。",
+          "supersededBy": "後の戦利品パッチ",
+          "affectedContent": "トレードサイトとユニークガイド"
+        },
+        {
+          "topic": "ミシックユニークの増加",
+          "status": "changed-later",
+          "currentSummary": "0.2.1でミシックのドロップを引き上げ。0.5.4eでの現在の率は未検証であり、異なる可能性がある。",
+          "supersededBy": "後の戦利品パッチ",
+          "affectedContent": "ユニーク希少度ガイド"
+        },
+        {
+          "topic": "パーティのユニークボーナス削減",
+          "status": "changed-later",
+          "currentSummary": "0.2.1でパーティボーナスを削減。0.5.4eでの正確な残りのボーナスは未検証。",
+          "supersededBy": "後の戦利品パッチ",
+          "affectedContent": "ソロ対パーティ農場ガイド"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 11,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.2.1 loot week",
+          "context": "プレイヤーはリングとアミュレットがより多くドロップすることに気づいた。",
+          "quote": "Since 0.2.1 my unique rings and amulets show up way more than before.",
+          "analysis": "アイテムクラス比重の削除と一致。方向性のものであり、測定されたパーセンテージではない。"
+        },
+        {
+          "source": "Official Forum - socketables thread",
+          "context": "プレイヤーは新しいルーンがフィルターに表示されない理由を尋ねた。",
+          "quote": "My filter was hiding the new Soul Cores until I added entries.",
+          "analysis": "ここで説明したアイテムフィルターの欠落と一致。古いフィルターには新しいソケット可能アイテムの項目が必要。"
+        },
+        {
+          "source": "Discord - party play",
+          "context": "プレイヤーはパーティ農場がまだ価値があるか議論した。",
+          "quote": "The unique bonus for grouping feels much smaller after 0.2.1.",
+          "analysis": "削減されたパーティのユニークボーナスと一致。正確な値は未検証。"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 12,
+      "title": "トラブルシューティング",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "新しいソケット可能アイテムがロアフィルターに表示されない：ルーン・お守り・ソウルコアの明示的な項目を追加し、コンソールではアイテムフィルターのサポートを有効にする。",
+          "status": "tracking"
+        },
+        {
+          "text": "ユニークのリングやアミュレットが古いガイドの予測より多く出現する：0.2.1でアイテムクラス比重が削除された後の想定内の動作。",
+          "status": "fixed"
+        },
+        {
+          "text": "パーティ農場で予想より少ない追加ユニークが得られる：パーティのユニークボーナスが削減された後の想定内の動作。正確なボーナスは未検証。",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "動画とタイムスタンプ",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.2.1 ソケット可能アイテムとユニークドロップの解説",
+          "url": "https://www.youtube.com/watch?v=p0e2r1s0ck1",
+          "takeaway": "22のルーン、7のお守り、15のソウルコア、および4つのユニークドロップルール変更をカバー。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            { "label": "0.2.1 概要", "time": "00:00" },
+            { "label": "22のルーン、7のお守り、15のソウルコア", "time": "01:20" },
+            { "label": "アイテムフィルターに新しい項目が必要（コンソール対応）", "time": "04:45" },
+            { "label": "ユニークドロップはアイテムクラスを考慮しなくなった", "time": "07:10" },
+            { "label": "ミシックの増加とパーティボーナス削減", "time": "09:30" },
+            { "label": "ビルドとアイテムへの影響", "time": "11:50" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "なぜ新しいルーンとソウルコアがアイテムフィルターに表示されないのか？",
+          "answer": [
+            "それらは0.2.1より前には存在しなかった新しいソケット可能タイプであるため、古いフィルターにはそれらの項目がありません。",
+            "ルーン・お守り・ソウルコアの明示的なルールを追加する。コンソールでは、0.2.1で導入されたアイテムフィルターのサポートも有効にしてください。"
+          ]
+        },
+        {
+          "question": "0.2.1以降もパーティプレイはユニークにとって有利か？",
+          "answer": [
+            "パーティのユニークボーナスは削減されたため、パーティとソロプレイの差は以前より小さくなっています。",
+            "パーティプレイは依然としてクリア速度や生存に役立つ可能性がありますが、ユニークドロップの優位性は削減されています。正確な残りのボーナスは未検証。"
+          ]
+        },
+        {
+          "question": "ミシックユニークとは何か？",
+          "answer": [
+            "ミシックユニークはユニークアイテムの最高希少度階層です。",
+            "0.2.1でミシックユニークのドロップ率が増加したため、これらの求められるアイテムの多くが circulation に乗ります。現在の正確な率は未検証。"
+          ]
+        },
+        {
+          "question": "0.2.1以降、リングとアミュレットはより多くドロップしたか？",
+          "answer": [
+            "はい。ユニークドロップがアイテムクラスを考慮しなくなったため、リングとアミュレットはドロッププール内でより一般的になりました。",
+            "これは公開されたパーセンテージではなく、方向性のルール変更です。"
+          ]
+        },
+        {
+          "question": "0.2.1は実際にいくつのソケット可能アイテムを追加したのか？",
+          "answer": [
+            "0.2.1で22のエンドゲームルーン、7のお守り、15のソウルコアが追加されました。",
+            "これらの数は確認された事実です。個別のソケット可能アイテムの効果は数値ではなくカテゴリで記述されます。"
+          ]
+        },
+        {
+          "question": "0.2.1の戦利品変更は全体の改修だったのか？",
+          "answer": [
+            "ユニークドロップパイプラインのルールを変更しました。アイテムクラスの比重廃止、ミシックの増加、高階層でのコモンユニーク比率の減少、パーティボーナスの縮小です。",
+            "後のパッチでこれらが再調整された可能性があります。0.5.4eでの現在の状態は未検証であるため、正確な数値は不確定として扱ってください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 official 0.2.1 Patch Notes",
+          "description": "22のルーン、7のお守り、15のソウルコア、およびユニークドロップルール変更の出典。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787044"
+        },
+        {
+          "label": "Path of Exile 2 official 0.2.1 Hotfix 1",
+          "description": "0.2.1後の最初のホットフィックス。新しい戦利品とソケット可能アイテムシステムの初期問題をカバー。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787155"
+        },
+        {
+          "label": "Path of Exile 2 official 0.2.1 Hotfix 2",
+          "description": "0.2.1後の2番目のホットフィックス。ドロップとソケット可能アイテムの安定化を継続。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3788896"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "22/7/15のソケット可能アイテムと4つのユニークドロップルール変更をカバーする0.2.1ソケット可能アイテムとユニークドロップの記事を公開。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "charms-guide",
+    "catalysts",
+    "essences",
+    "tablets",
+    "the-masters-reach",
+    "uncut-gems-guide",
+    "orb-of-sacrifice"
+  ],
+  "relatedGuideIds": [
+    "orb-of-sacrifice-currencies",
+    "trade-site-currency-exchange-guide",
+    "liquid-verisium-safety-checklist"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 official 0.2.1 Patch Notes",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787044",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 official 0.2.1 Hotfix 1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787155",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 official 0.2.1 Hotfix 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3788896",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.1：22のルーン、7のお守り、15のソウルコア＆ユニークドロップの変更",
+    "description": "0.2.1で22のルーン、7のお守り、15のソウルコアが追加され、ユニークドロップが変更された。アイテムクラスの比重廃止、ミシックの増加、コモン比率の減少、パーティボーナスの縮小。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-1-socketables-unique-drops",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

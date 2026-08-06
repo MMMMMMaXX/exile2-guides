@@ -1,0 +1,1039 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "de",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Juwelen und Juwelen-Sockel: Typen, Radius, Korruption und Nutzung im Passivbaum in 0.5.4",
+  "shortTitle": "Juwelen und Juwelen-Sockel",
+  "summary": "So funktionieren Juwelen in Path of Exile 2 0.5.4: wo Juwelen-Sockel liegen, ob sie zuerst zugewiesen werden müssen, die Unterschiede zwischen Rubin/Smaragd/Saphir/Diamant als Basis, die Modifikatorenzahl bei Normal/Magisch/Selten/Einzigartig, korruptierte gegenüber normalen Juwelen, warum Zeit-Verlorene Juwelen Knoten im Radius beeinflussen, wie Timeless sich von Zeit-Verloren unterscheidet, die Regeln für Finstere Sockel, wie der Radius angezeigt wird, „Limitiert auf“ und der 0.2-/reclaimjewels-Fix. Enthält eine Juwelen-Wert-Formel, um zu entscheiden, ob sich ein Sockel den Passivpunkt lohnt.",
+  "description": "Path of Exile 2 Juwelen- und Juwelen-Sockel-Leitfaden 0.5.4: Zuweisung von Juwelen-Sockeln, Basistypen, Modifikatorenzahl, Korruption, Zeit-Verlorener Radius, Timeless vs. Zeit-Verloren, Finstere Sockel, Radius-Überlappung, „Limitiert auf“, der /reclaimjewels-Befehl und eine Juwelen-Wert-Formel.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Passivbaum von Path of Exile 2 mit einem zugewiesenen Juwelen-Sockel und einem weißen Radius-Kreis, der von einem Zeit-Verlorenen Juwel projiziert wird",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Kurzantwort",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Ein Juwel wird in einen zugewiesenen Juwelen-Sockel im Passivbaum eingesetzt und verleiht dem Charakter Boni – oder bei Zeit-Verlorenen und einzigartigen Radius-Juwelen den Passivknoten innerhalb eines Radius-Kreises. Einfache Juwelen wenden ihre eigenen expliziten Mods an; Zeit-Verlorene Juwel und einzigartige Radius-Juwelen (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac und Voices) überschreiben die Knoten innerhalb ihres Radius. Weise einen Sockel nur dann zu, wenn der Wert des Juwels den Passivpunkt und den Pfadaufwand übersteigt.",
+      "calloutDetail": [
+        "Juwelen-Sockel sind Passivknoten und müssen zugewiesen (mit dem Baum verbunden) sein, bevor ein Juwel eingesetzt werden kann.",
+        "Zeit-Verlorene und einzigartige Radius-Juwelen projizieren einen weißen Kreis; nur Knoten innerhalb dieses Kreises sind betroffen.",
+        "Nutze die Kostenformel im Abschnitt Juwelen-Wert, um zu entscheiden, ob sich ein Sockel die Punkte lohnt."
+      ],
+      "answers": [
+        {
+          "label": "Verwendung für",
+          "text": [
+            "Über den Passivbaum Attribute, Leben, Widerstände, Schaden oder spezialisierte Zuweisungs-Mechaniken zu einem Build hinzufügen."
+          ]
+        },
+        {
+          "label": "Zuerst prüfen",
+          "text": [
+            "Bestätige, dass der Sockel zugewiesen ist, lies den Radius und „Limitiert auf“ des Juwels und bewerte die Passivpunkte, die der Sockel kostet."
+          ]
+        },
+        {
+          "label": "Vermeiden",
+          "text": [
+            "3–4 Pfadpunkte nur aufzuwenden, um einen Sockel von geringem Wert zu erreichen, anzunehmen, Timeless sei dasselbe wie Zeit-Verloren, oder ein einzigartiges Juwel in einen Finsteren Sockel zu stecken."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Juwel-Familien im Vergleich"
+        },
+        {
+          "href": "#valuation",
+          "label": "Juwelen-Wert-Formel"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Kurzfakten",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Item-Klasse",
+          "value": "Juwel",
+          "note": [
+            "Alle Juwelen teilen sich die Item-Klasse Juwel und passen in Juwelen-Sockel des Passivbaums (oder bei einigen in Finstere Sockel an Ausrüstung)."
+          ]
+        },
+        {
+          "label": "Sockel muss zugewiesen sein",
+          "value": "Ja",
+          "note": [
+            "Ein Juwelen-Sockel ist ein Passivknoten; er muss zugewiesen und verbunden sein, bevor du per Rechtsklick ein Juwel einsetzen kannst."
+          ]
+        },
+        {
+          "label": "Basistypen",
+          "value": "Rubin / Smaragd / Saphir / Diamant",
+          "note": [
+            "Farbige Basen begrenzen den Pool der expliziten Affixe; Diamant ist die prismatische (einzigartige) Basis."
+          ]
+        },
+        {
+          "label": "Modifikatorenzahl",
+          "value": "Normal 2 / Magisch 2 / Selten bis 4",
+          "note": [
+            "Ein gewöhnliches Juwel würfelt zwei explizite Modifikatoren; Magisch würfelt zwei; Selten kann vier erreichen; Einzigartige Juwelen tragen feste einzigartige Zeilen."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "Nur Zeit-Verlorene und einzigartige Radius-Juwelen",
+          "note": [
+            "Einfache Juwelen wenden ihre eigenen Mods direkt an; nur Zeit-Verlorene und einzigartige Radius-Juwelen projizieren einen Radius-Kreis."
+          ]
+        },
+        {
+          "label": "Limitiert auf",
+          "value": "Pro einzigartigem Juwel",
+          "note": [
+            "Die meisten einzigartigen Juwelen sind auf 1 limitiert (oder 3 bei Grand Spectrum), sodass von diesem Einzigartigen nur eines ausgerüstet werden kann."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Juwel-Familien im Vergleich",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Sechs Juwelgruppen sind für die Build-Planung in 0.5.4 relevant. Sie unterscheiden sich darin, wohin sie kommen, ob sie einen Radius projizieren und was sie tun. Dies ist die Familien-Vergleichstabelle aus dem Inhaltsplan, dargestellt als Mitglieder-Karten."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Einsetzbar",
+          "title": "Einfaches Juwel",
+          "sub": "Rubin / Smaragd / Saphir / Diamant",
+          "body": [
+            "Passt in jeden zugewiesenen normalen Juwelen-Sockel. Wendet seine eigenen expliziten Mods direkt ohne Radius an.",
+            "Die Basis-Farbe begrenzt den Affix-Pool: Rubin bevorzugt Rüstung/Kampf, Saphir bevorzugt ES/Zauberer, Smaragd bevorzugt Ausweichen/Fernkampf, Diamant ist prismatisch."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Zeit-Verlorenes Juwel",
+          "sub": "Rubin / Smaragd / Saphir",
+          "body": [
+            "Fällt aus Zeit-Verlorenen Cache im Trial of the Sekhemas. Hat einen Radius (Mittel bis Groß).",
+            "Seine Modifikatoren „im Radius gewähren ebenfalls“ Boni auf Knoten innerhalb des Kreises. Häufiger Fehler: den falschen Modifikator für den eigenen Baum kaufen."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Einzigartig",
+          "title": "Diamant-Einzigartiges Juwel",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "Einzigartige Juwelen auf Diamant-Basis mit spezieller Zuweisungs- oder Radius-Mechanik.",
+            "Häufiger Fehler: die Keystone- oder Radius-Wirkung vor dem Kauf nicht zu verstehen."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Timeless-Juwel",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Fällt von Expedition-Spitzenbossen. Hat einen historischen Radius und verwandelt Passives über Seed und Keystone.",
+            "Häufiger Fehler: nur den Namen zu lesen und den Seed zu ignorieren, der das Ergebnis bestimmt."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "Ausrüstungs-Sockel",
+          "title": "Finsteres Juwel",
+          "sub": "Über Voices",
+          "body": [
+            "Erscheint über Voices an Ausrüstung, nicht im Passivbaum. Hat keinen gewöhnlichen Radius.",
+            "Gewährt einen unabhängigen Juwel-Effekt. Häufiger Fehler: zu versuchen, ein Einzigartiges Juwel in einen Finsteren Sockel zu stecken."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "Korruption",
+          "title": "Korrumpiertes Juwel",
+          "sub": "Jede Basis, nach Korruption",
+          "body": [
+            "Erhält einen Korruptions-Implizit und kann nicht mehr mit normaler Herstellungs-Währung verändert werden.",
+            "Häufiger Fehler: anzunehmen, es ließe sich weiterhin normal modifizieren oder wie ein sauberes Juwel mit der Divine-Orb verändern."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Eigenschaften und repräsentative Tooltips",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Item-Klasse",
+          "value": "Juwel",
+          "notes": [
+            "Alle Juwelen teilen sich die Item-Klasse Juwel und passen in Juwelen-Sockel des Passivbaums."
+          ]
+        },
+        {
+          "label": "Sockel-Voraussetzung",
+          "value": "Zugewiesener Juwelen-Sockel",
+          "notes": [
+            "Der Sockel-Knoten muss zugewiesen (mit dem Baum verbunden) sein, bevor ein Juwel eingesetzt werden kann."
+          ]
+        },
+        {
+          "label": "Basistypen",
+          "value": "Rubin / Smaragd / Saphir / Diamant",
+          "notes": [
+            "Farbige Basen begrenzen den Pool der expliziten Affixe: Rubin bevorzugt Rüstung/Kampf, Saphir bevorzugt ES/Zauberer, Smaragd bevorzugt Ausweichen/Fernkampf, Diamant ist prismatisch."
+          ]
+        },
+        {
+          "label": "Explizite Mods (normal)",
+          "value": "Standardmäßig 2",
+          "notes": [
+            "Ein gewöhnliches Juwel würfelt zwei explizite Modifikatoren; Magisch würfelt zwei; Selten kann vier erreichen."
+          ]
+        },
+        {
+          "label": "Radius (nur Zeit-Verloren)",
+          "value": "Mittel bis Groß",
+          "notes": [
+            "Nur Zeit-Verlorene und einzigartige Radius-Juwelen projizieren einen Radius-Kreis; einfache Juwelen wenden ihre eigenen Mods direkt an."
+          ]
+        },
+        {
+          "label": "Korrumpiert",
+          "value": "Fügt einen Korruptions-Modifikator hinzu",
+          "notes": [
+            "Ein korrumpiertes Juwel erhält einen Korruptions-Implizit und kann nicht mehr mit Herstellungs-Währung verändert werden."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Überblick: wie Juwelen und Sockel funktionieren",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Ein Juwelen-Sockel ist ein Passiv-Fertigkeiten-Knoten. Du weist ihn wie jeden anderen Knoten zu, und sobald er mit deinem Baum verbunden ist, kannst du per Rechtsklick ein Juwel einsetzen. Einfache Juwelen gewähren dann ihre eigenen expliziten Modifikatoren deinem Charakter. Zeit-Verlorene Juwel und einzigartige Radius-Juwelen tun etwas anderes: Sie projizieren einen weißen Radius-Kreis auf dem Baum, und ihre Modifikatoren werden auf die Passivknoten angewendet, die innerhalb dieses Kreises liegen.",
+        "Die Basisart ist wichtig. Rubin-, Smaragd- und Saphir-Juwelen sind farbige Basen, deren Pool expliziter Affixe jeweils zugunsten von Rüstung/Kampf, Ausweichen/Fernkampf und Energie-Schild/Zauberer-Mods tendiert. Diamant ist die prismatische Basis der einzigartigen Juwelen (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac) und kann einen beliebigen Modifikator aus allen Affix-Listen würfeln.",
+        "Modifikatorenzahl nach Seltenheit: Ein normales Juwel würfelt zwei explizite Modifikatoren, ein magisches Juwel würfelt zwei, und ein seltenes Juwel kann bis zu vier erreichen. Einzigartige Juwelen ersetzen diese durch feste einzigartige Zeilen. Ein korrumpiertes Juwel erhält einen zusätzlichen Korruptions-Implizit und lässt sich nicht mehr mit normaler Herstellungs-Währung verändern – genau deshalb will The Adorned korrupierte magische Juwelen.",
+        "Zeit-Verloren gegenüber Timeless ist die häufigste Verwechslung überhaupt. Ein Zeit-Verlorenes Juwel (Rubin/Smaragd/Saphir oder das einzigartige Against the Darkness auf Diamant) stammt aus dem Trial of the Sekhemas und modifiziert Knoten innerhalb seines Radius mit Boni im Stil zufälliger Affixe. Ein Timeless-Juwel (Heroic Tragedy, Undying Hate) stammt aus der Expedition und erobert oder ersetzt Passives innerhalb seines historischen Radius anhand eines numerischen Seed und eines Keystones. Es sind unterschiedliche Systeme mit unterschiedlichen Drop-Quellen und unterschiedlichen Regeln.",
+        "Finstere Sockel sind keine Passivbaum-Sockel. Sie erscheinen an Ausrüstung (etwa über das einzigartige Juwel Voices) und nehmen eine bestimmte Juwel-Auswahl mit unabhängiger Wirkung und ohne gewöhnlichen Radius auf. Du kannst kein Einzigartiges Juwel in einen Finsteren Sockel stecken.",
+        "Der Radius wird als weißer Kreis genau in dem Moment angezeigt, in dem ein Radius-Juwel eingesetzt ist; der Passivbaum-Planer zeigt ihn ebenfalls vorab. Mehrere Radien können sich überlappen, und ein Knoten, der innerhalb mehrerer Radien liegt, erhält den Effekt eines jeden. Einzigartige Juwelen sind oft auf 1 limitiert, sodass von diesem Einzigartigen gleichzeitig nur eine Kopie ausgerüstet werden kann.",
+        "Nach dem 0.2-Umbau des Passivbaums wurden einigen älteren Charakteren Juwelen-Sockel entfernt. Betroffene Juwelen ließen sich mit dem Chat-Befehl /reclaimjewels zurückholen; das ist ein historischer Fix, bleibt aber der korrekte Schritt für jeden alten Charakter, bei dem nach einem Baum-Update weiterhin fehlende Juwelen angezeigt werden."
+      ],
+      "bullets": [
+        "Zuerst den Sockel: Ein Juwelen-Sockel muss zugewiesen und verbunden sein, bevor man ein Juwel einsetzt.",
+        "Farbige Basis begrenzt den Affix-Pool; Diamant ist prismatisch (einzigartig).",
+        "Normal/Magisch = 2 Mods, Selten = bis zu 4, Einzigartig = feste Zeilen.",
+        "Zeit-Verloren = Sekhemas-Radius-Boni; Timeless = Expedition-Seed/Keystone-Eroberung.",
+        "Finstere Sockel liegen an Ausrüstung, nicht im Baum, und lehnen Einzigartige Juwelen ab.",
+        "Radien können sich überlappen; „Limitiert auf“ deckelt, wie viele eines Einzigartigen du tragen kannst."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Sockel-Eignungsmatrix",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Welches Juwel in welchen Sockel passt, ob es einen Radius projiziert und seine Spezialregel. Die „text“-Zellen nennen die passenden Details statt eines Ja/Nein."
+      ],
+      "columns": [
+        "Juwel-Typ",
+        "Normaler Sockel",
+        "Finster Sockel",
+        "Radius",
+        "Spezialregel"
+      ],
+      "rows": [
+        {
+          "label": "Einfach (Rubin/Smaragd/Saphir/Diamant)",
+          "values": [
+            { "kind": "yes", "text": "Passt in jeden zugewiesenen normalen Juwelen-Sockel" },
+            { "kind": "no", "text": "Nicht gültig in Finsteren Sockeln" },
+            { "kind": "text", "text": "Keiner (direkte Mods)" },
+            { "kind": "text", "text": "Gewährt nur seine eigenen expliziten Mods" }
+          ]
+        },
+        {
+          "label": "Zeit-Verlorenes Juwel",
+          "values": [
+            { "kind": "yes", "text": "Passt in jeden zugewiesenen normalen Juwelen-Sockel" },
+            { "kind": "no", "text": "Nicht gültig in Finsteren Sockeln" },
+            { "kind": "text", "text": "Mittel bis Groß" },
+            { "kind": "text", "text": "Modifiziert Knoten innerhalb des Radius" }
+          ]
+        },
+        {
+          "label": "Diamant-Einzigartig (Against the Darkness usw.)",
+          "values": [
+            { "kind": "yes", "text": "Passt in jeden zugewiesenen normalen Juwelen-Sockel" },
+            { "kind": "no", "text": "Nicht gültig in Finsteren Sockeln" },
+            { "kind": "text", "text": "Mittel (je nach Juwel)" },
+            { "kind": "text", "text": "Spezielle Zuweisungs- oder Radius-Mechanik" }
+          ]
+        },
+        {
+          "label": "Timeless-Juwel",
+          "values": [
+            { "kind": "yes", "text": "Passt in jeden zugewiesenen normalen Juwelen-Sockel" },
+            { "kind": "no", "text": "Nicht gültig in Finsteren Sockeln" },
+            { "kind": "text", "text": "Historisch (variiert)" },
+            { "kind": "text", "text": "Erobert/ersetzt Passives nach Seed" }
+          ]
+        },
+        {
+          "label": "Finsteres Juwel",
+          "values": [
+            { "kind": "no", "text": "Nicht gültig in normalen Sockeln" },
+            { "kind": "yes", "text": "Passt in einen Finsteren Sockel an Ausrüstung" },
+            { "kind": "text", "text": "Keiner (kein gewöhnlicher Radius)" },
+            { "kind": "text", "text": "Unabhängiger Juwel-Effekt" }
+          ]
+        },
+        {
+          "label": "Korrumpiertes Juwel",
+          "values": [
+            { "kind": "text", "text": "Ja, wenn die Basis in einen normalen Sockel passt" },
+            { "kind": "text", "text": "Korrumpiert Magisch passt in Finsteren" },
+            { "kind": "text", "text": "Hängt von seiner Basis ab" },
+            { "kind": "text", "text": "Zusätzlicher Korruptions-Mod, keine weitere Herstellung" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "So setzt du ein Juwel ein und siehst es vorab",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Den Sockel erreichen und zuweisen",
+          "body": [
+            "Plane einen Pfad zum Juwelen-Sockel und weise ihn zu, sodass er mit deinem Baum verbunden ist. Der Sockel muss zugewiesen sein, bevor ein Juwel hinein kann."
+          ]
+        },
+        {
+          "label": "Das richtige Juwel für den Sockel wählen",
+          "body": [
+            "Gleiche die Basis/Affixe an deinen Build an. Prüfe bei Radius-Juwelen, welche Knoten auf deinem tatsächlichen Baum innerhalb des Radius liegen."
+          ]
+        },
+        {
+          "label": "Juwel einsetzen und Radius vorab ansehen",
+          "body": [
+            "Setze das Juwel per Rechtsklick in den Sockel. Es erscheint ein weißer Kreis; fahre über Knoten, um zu bestätigen, welche kleinen und beachtlichen Passives betroffen sind."
+          ]
+        },
+        {
+          "label": "Innerhalb des Radius zuweisen (falls nötig)",
+          "body": [
+            "Bei Zeit-Verlorenen und einzigartigen Radius-Juwelen gelten die Boni für Knoten, die du innerhalb des Radius zuweist. Manche speziellen Würfe reichen bis zu nicht zugewiesenen Knoten."
+          ]
+        },
+        {
+          "label": "Entfernen oder tauschen",
+          "body": [
+            "Klicke mit der rechten Maustaste auf den Sockel, um das Juwel zu entfernen. Entfernte Juwelen kehren in dein Inventar zurück; zugewiesene Knoten innerhalb des Bereichs eines Radius-Juwels verlieren dessen Bonus."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Ein Juwelen-Sockel ist zugewiesen, aber leer; die umliegenden Knoten liefern nur ihre gedruckten Werte."
+        ],
+        "after": [
+          "Nach dem Einsetzen eines Radius-Juwels erhält jeder zugewiesene kleine und beachtliche Knoten innerhalb des weißen Kreises die „gewährt ebenfalls“-Boni des Juwels."
+        ],
+        "note": "Der hinzugefügte Wert ist die Summe der Boni der betroffenen Knoten abzüglich der Passivpunkte, die für das Erreichen und Nutzen des Sockels aufgewendet wurden."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Ergebnisse nach Situation",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Attribut-Stapel-Build läuft an einem Sockel vorbei",
+          "audience": "Attribut-Stapeler (Astramentis/HOWA)",
+          "benefit": "Ein Sockel am Pfad fügt kostenlos Attribute, Leben oder Widerstände hinzu",
+          "risk": "Niedrig",
+          "level": "low",
+          "recommendation": "Setze ein starkes explizites Juwel ein; der Pfadaufwand ist bereits bezahlt."
+        },
+        {
+          "scenario": "4-Punkte-Umweg zu einem Sockel von geringem Wert",
+          "audience": "Enges Passiv-Budget",
+          "benefit": "Randliche Juwel-Mods",
+          "risk": "Hohe Opportunitätskosten",
+          "level": "high",
+          "recommendation": "Überspringe den Sockel; diese 4 Punkte kaufen woanders vermutlich mehr."
+        },
+        {
+          "scenario": "Kauf eines bestimmten einzigartigen Juwels",
+          "audience": "Händler",
+          "benefit": "Vorhersagbarer Einzigartig-Ertrag",
+          "risk": "Mittel (Preis nach Wurf/Sockel)",
+          "level": "medium",
+          "recommendation": "Bestätige vor der Zahlung den genauen Sockel und Radius; siehe die Einzigartigen-Juwel-Leitfäden."
+        },
+        {
+          "scenario": "Alter Charakter mit fehlenden Juwelen nach 0.2",
+          "audience": "Zurückkehrende Spieler",
+          "benefit": "Holt betroffene Juwel zurück",
+          "risk": "Niedrig",
+          "level": "low",
+          "recommendation": "Nutze den Chat-Befehl /reclaimjewels; kaufe nicht erneut über den Handel."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Build-Nutzung",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Juwelen sind build-prägend, sobald ein Sockel auf deinem Pfad liegt oder ein Radius-Juwel Knoten abdeckt, die du ohnehin willst. Die untenstehenden Personas zeigen die Hauptwege, wie Juwelen genutzt werden."
+      ],
+      "builds": [
+        {
+          "title": "Attribut-Stapeln",
+          "description": "Attribut-Stapel-Builds (Astramentis, Hand of Wisdom and Action) nutzen Sockel am Pfad für flache Attribute und Stärke/Geschicklichkeit/Intelligenz-Skalierung.",
+          "href": "/de/items/astramentis/"
+        },
+        {
+          "title": "Defensive Leben/Widerstands-Juwelen",
+          "description": "Einfache Juwel mit Leben und Widerständen füllen Lücken, die Ausrüstung nicht kann, besonders bei Charakteren mit wenig Elementar-Widerständen."
+        },
+        {
+          "title": "Radius-aktivierende Einzigartige",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned und Megalomaniac verwandeln einen einzelnen Sockel in mehrere zugewiesene oder verstärkte Knoten.",
+          "href": "/de/items/against-the-darkness/"
+        },
+        {
+          "title": "Passivbaum-Planung",
+          "description": "Plane Sockel-Pfade im Build-Planer, bevor du Punkte festlegst; importiere/exportiere Planer-Dateien, um den exakten Baum zu teilen.",
+          "href": "/de/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternativen",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Wenn ein Sockel weit abseits deines Pfads liegt, übersteigen die Opportunitätskosten, ihn zu erreichen, meist jedes Juwel, das du dort platzieren könntest. Gib in diesem Fall die Punkte für gewöhnliche Passivknoten aus oder leite deinen Baum um, sodass er natürlich an einem Sockel vorbeiführt.",
+        "Für Attribut- oder Widerstandsbedarf liefern Ausrüstungs-Suffixe, Katalysator-Qualität und Talismane oft günstiger dieselben Werte als ein Umweg-Sockel. The Adorned und andere einzigartige Verstärker sind nur dann Alternativen, wenn du ohnehin in korruptierte magische Juwel investierst.",
+        "Timeless-Juwelen sind eine Alternative zu Zeit-Verlorenen Juwelen nur dann, wenn dein Build Seed-getriebene Passiv-Eroberung statt einfacher Radius-Boni will; sie sind nicht austauschbar."
+      ],
+      "bullets": [
+        "Gib Umweg-Punkte für normale Knoten statt für einen fernen Sockel aus.",
+        "Ausrüstung, Katalysatoren und Talismane können Juwel-Werte ersetzen.",
+        "Timeless ist kein direkter Ersatz für Zeit-Verloren."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Bewertung: nutzen, verkaufen oder behalten",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Juwel-Wert ist kein einzelner Währungspreis; es ist eine Entscheidung über Passivpunkte. Nutze die untenstehende Juwel-Wert-Formel und die drei durchgerechneten Beispiele, um zu entscheiden."
+      ],
+      "use": {
+        "condition": "Der Sockel liegt auf deinem Pfad oder der Radius deckt Knoten ab, die du willst",
+        "first": "Setze das Juwel ein; der Pfadaufwand ist bereits bezahlt",
+        "risk": "Belegt einen Sockel und alle Punkte, die für das Erreichen aufgewendet wurden",
+        "text": [
+          "Nutzung, wenn der Nettonutzen (Juwel-Werte abzüglich Punkt- und Pfadaufwand abzüglich Opportunitätskosten) positiv ist."
+        ]
+      },
+      "sell": {
+        "condition": "Du hast ein Duplikat oder ein Juwel gefunden, das nicht in deinen Baum passt",
+        "first": "Biete im Handel nach Basis, Korruption und expliziten Mods an",
+        "risk": "Liquid, aber Wert hängt vom genauen Wurf und der Meta-Nachfrage ab",
+        "text": [
+          "Verkauf, wenn ein anderer Build es höher bewertet als dein aktueller Baum."
+        ]
+      },
+      "hold": {
+        "condition": "Du baust später vielleicht um Juwel herum neu auf",
+        "first": "Behalte gut gewürfelte Seltene und Einzigartige; sie behalten wertübergreifend ihren Wert",
+        "risk": "Nur Inventarplatz",
+        "text": [
+          "Behalte hoch gewürfelte Juwel; sie sind langfristige Build-Anlagen."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Risiko und Fehlschlagkosten",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "4-Punkte-Umweg zu einem Sockel von geringem Wert",
+          "gain": "Kleine Juwel-Mods",
+          "loss": "4 Passivpunkte, die einen beachtlichen oder Keystone-Knoten kaufen könnten",
+          "level": "high",
+          "recommendation": "Nimm den Sockel nur, wenn er auf deinem natürlichen Pfad liegt."
+        },
+        {
+          "scenario": "Falscher Zeit-Verlorener Modifikator für deinen Baum",
+          "gain": "Radius-Abdeckung",
+          "loss": "Verschwendete Modifikator-Boni auf Knoten, die du nicht zuweist",
+          "level": "medium",
+          "recommendation": "Sieh dir den Radius vorab an und wähle den Modifikator, der zu zugewiesenen Knoten passt."
+        },
+        {
+          "scenario": "Annehmen, Timeless sei gleich Zeit-Verloren",
+          "gain": "Keiner",
+          "loss": "Falsches Juwel-System für den Build gekauft",
+          "level": "medium",
+          "recommendation": "Bestätige vor dem Kauf Drop-Quelle und Mechanik."
+        },
+        {
+          "scenario": "Einzigartiges Juwel in einen Finsteren Sockel",
+          "gain": "Keiner",
+          "loss": "Vergeblicher Versuch; einzigartige Juwel werden von Finsteren Sockeln abgelehnt",
+          "level": "low",
+          "recommendation": "Nutze Finstere Sockel nur für ihre unterstützte Juwel-Auswahl."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Community-Belege",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Reddit-Frage",
+          "question": "Muss ich den Juwelen-Sockel zuweisen, bevor ich ein Juwel einsetze?",
+          "summary": [
+            "Ein Spieler fragte, ob man ein Juwel in einen nicht zugewiesenen Sockel-Knoten legen kann."
+          ],
+          "editorialAnalysis": [
+            "Juwelen-Sockel sind Passivknoten. Sie müssen zugewiesen und mit deinem Baum verbunden sein, bevor ein Juwel eingesetzt werden kann; ein nicht zugewiesener Sockel zeigt keinen Juwel-Slot."
+          ],
+          "officialAnswer": [
+            "Weise zuerst den Sockel zu; erst dann kannst du per Rechtsklick ein Juwel einsetzen."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "So setzt du ein Juwel ein"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "Leitfaden",
+          "question": "Ist Timeless dasselbe wie Zeit-Verloren?",
+          "summary": [
+            "Ein Leitfaden verwechselte Timeless (Expedition) und Zeit-Verloren (Sekhemas) Juwel."
+          ],
+          "editorialAnalysis": [
+            "Es sind unterschiedliche Systeme. Zeit-Verlorene Juwel stammen aus dem Trial of the Sekhemas und fügen Radius-Boni hinzu; Timeless-Juwel stammen aus der Expedition und erobern/ersetzen Passives nach Seed und Keystone."
+          ],
+          "officialAnswer": [
+            "Behandle sie als getrennte Familien; lies vor dem Kauf die Drop-Quelle und Mechanik."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Juwel-Familien im Vergleich"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "Leitfaden",
+          "question": "Warum sind meine Juwelen nach einem Passivbaum-Update verschwunden?",
+          "summary": [
+            "Zurückkehrende Spieler berichteten nach dem 0.2-Baum-Umbau von fehlenden Juwelen."
+          ],
+          "editorialAnalysis": [
+            "Die 0.2-Änderungen am Passivbaum entfernten einige Sockel bei älteren Charakteren. Betroffene Juwel lassen sich mit dem Befehl /reclaimjewels zurückholen, statt neu zu kaufen."
+          ],
+          "officialAnswer": [
+            "Nutze /reclaimjewels, um Juwel aus entfernten Sockeln zurückzuholen; das ist ein historischer Fix, keine aktuelle Drop-Änderung."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Patch-Verlauf"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Probleme und direkte Antworten",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Rechtsklick am Sockel bewirkt nichts",
+          "directAnswer": [
+            "Der Juwelen-Sockel ist nicht zugewiesen oder nicht mit deinem Baum verbunden. Weise ihn zuerst zu, dann setze das Juwel ein."
+          ],
+          "checks": [
+            "Öffne den Passivbaum, bestätige, dass der Sockel-Knoten leuchtet und verbunden ist, und versuche es erneut."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Einsetz-Schritte"
+            }
+          ]
+        },
+        {
+          "symptom": "Radius-Kreis ist winzig und deckt nichts Nützliches ab",
+          "directAnswer": [
+            "Der Radius des Juwels ist klein oder deine zugewiesenen Knoten liegen außerhalb. Plane den Sockel neu oder wähle ein Juwel mit größerem Radius für diesen Bereich."
+          ],
+          "checks": [
+            "Sieh dir den Radius im Planer vorab an und zähle die zugewiesenen Knoten innerhalb."
+          ]
+        },
+        {
+          "symptom": "Einzigartiges Juwel geht nicht in einen Finsteren Sockel",
+          "directAnswer": [
+            "Finstere Sockel lehnen Einzigartige Juwel ab; sie nehmen nur ihre unterstützte Juwel-Auswahl (z. B. Korrumpiert Magisch) an."
+          ],
+          "checks": [
+            "Nutze für einzigartige Juwel einen normalen Passivbaum-Sockel."
+          ]
+        },
+        {
+          "symptom": "Juwelen fehlen nach einem Baum-Update",
+          "directAnswer": [
+            "Wurde ein Sockel entfernt, hole das Juwel mit /reclaimjewels zurück, statt ein neues zu kaufen."
+          ],
+          "checks": [
+            "Führe /reclaimjewels im Chat aus; prüfe Inventar und Truhe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Video-Walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 Juwelen, Korruption und Passivbaum-Spezialisierung",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "Community-Ersteller",
+          "description": "Behandelt Juwel-Korruption, Passivbaum-Spezialisierung und eine Erwähnung von Against the Darkness in einem live geführten Build-Walkthrough.",
+          "takeaway": "Zeigt, wie Juwel und Korruption in einen echten Passivbaum-Plan passen und wo ein Radius-Juwel wie Against the Darkness zugewiesene Knoten verändert.",
+          "timestamps": [
+            { "label": "Passivbaum-Spezialisierung", "time": "01:54" },
+            { "label": "Korruption und Juwelen", "time": "03:03" },
+            { "label": "Erwähnung von Against the Darkness", "time": "02:49" },
+            { "label": "Build-Zusammenfassung", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Medien-Galerie",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Zugewiesener Juwelen-Sockel im Passiv-Fertigkeiten-Baum",
+          "note": "Zeigt den Sockel-Knoten leuchtend und verbunden vor dem Einsetzen."
+        },
+        {
+          "caption": "Vergleich nicht zugewiesen gegen zugewiesen",
+          "note": "Ein Juwel-Slot erscheint erst, sobald der Sockel zugewiesen ist."
+        },
+        {
+          "caption": "Weißer Radius-Kreis, projiziert von einem Zeit-Verlorenen Juwel",
+          "note": "Knoten innerhalb des Kreises erhalten die Boni des Juwels."
+        },
+        {
+          "caption": "Vergleich Einfach, Zeit-Verloren, Timeless und Diamant-Einzigartig",
+          "note": "Vier Juwel-Gruppen mit unterschiedlichen Sockeln und Radius-Verhalten."
+        },
+        {
+          "caption": "Lage des Finsteren Sockels an Ausrüstung",
+          "note": "Erscheint über Voices, getrennt von Passivbaum-Sockeln."
+        },
+        {
+          "caption": "Das Ergebnis des /reclaimjewels-Befehls",
+          "note": "Holt Juwel aus Sockeln zurück, die durch den 0.2-Baum-Umbau entfernt wurden."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Verbundene Inhalte",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "Einzigartiger Zeit-Verlorener Diamant mit zwei zufälligen Radius-Modifikatoren.",
+          "href": "/de/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Einzigartiger Diamant, der einen Keystone ohne Verbindung zuweist.",
+          "href": "/de/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "Einzigartiger Diamant mit ringförmigem entferntem Zuweisungsbereich.",
+          "href": "/de/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "Verstärkt korruptierte magische Juwel im Radius.",
+          "href": "/de/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "Einzigartiger Diamant, der Zufällige Beachtliche zuweist.",
+          "href": "/de/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices und Finstere Juwel-Sockel",
+          "description": "Fügt Finstere Sockel an Ausrüstung für bestimmte Juwel hinzu.",
+          "href": "/de/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless-Juwelen",
+          "description": "Heroic Tragedy und Undying Hate mit Seed-getriebener Eroberung.",
+          "href": "/de/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, der Zeitliche",
+          "description": "Lässt Against the Darkness im Trial of the Sekhemas fallen.",
+          "href": "/de/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Respec-, Passiv- und Ascendancy-Leitfaden",
+          "description": "Wie Passivpunkte und Respecs in 0.5.4 funktionieren.",
+          "href": "/de/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Build-Planer: Build-Dateien Import/Export",
+          "description": "Plane Sockel-Pfade und teile Bäume.",
+          "href": "/de/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "Der aktuelle Early-Access-Patch-Kontext.",
+          "href": "/de/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Patch-Verlauf",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, aktuell)",
+          "changes": [
+            "Juwelen und Juwelen-Sockel funktionieren wie beschrieben: zugewiesene Sockel, farbige Basis-Affix-Pools und Radius-Verhalten für Zeit-Verlorene und einzigartige Radius-Juwelen."
+          ]
+        },
+        {
+          "version": "0.2.1 (Einsetzbares und Einzigartige Drops)",
+          "changes": [
+            "Zugriff auf Einzigartige-Drops für einsetzbare und einzigartige Juwel-Quellen angepasst."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "Passivbaum-Umbau entfernte einige Juwelen-Sockel bei älteren Charakteren; /reclaimjewels holt betroffene Juwel zurück."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Juwelen und Juwelen-Sockel in Early Access eingeführt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Quellen und Verifikation",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 Patch Notes und offizielle Item-Dokumentation.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2Wiki- und poe2db-Juwel- und Against-the-Darkness-Daten.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Sportskeeda-Zeit-Verlorenes-Juwel-Leitfaden und GameRant-Against-the-Darkness-Leitfaden.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Reddit r/PathOfExile2 Diskussion zu Sockeln, Radius und fehlenden Juwelen.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Community-Video zu Juwel-Korruption und Passivbaum-Spezialisierung.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Änderungsprotokoll",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Erstveröffentlichung zu Juwelen-Sockeln, Basistypen, Modifikatorenzahl, Korruption, Zeit-Verloren gegenüber Timeless, Finsteren Sockeln, Radius-Überlappung, „Limitiert auf“, dem /reclaimjewels-Fix und der Juwel-Wert-Formel für 0.5.4."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - How to get Time-Lost Jewels",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - How to get Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 Jewels and Corruption",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Juwelen- und Juwelen-Sockel-Leitfaden (0.5.4)",
+    "description": "Wie Juwelen und Juwelen-Sockel in PoE2 0.5.4 funktionieren: Sockel-Zuweisung, Rubin/Smaragd/Saphir/Diamant-Basen, Modifikatorenzahl, Korruption, Zeit-Verlorener Radius, Timeless vs. Zeit-Verloren, Finstere Sockel und eine Juwel-Wert-Formel.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

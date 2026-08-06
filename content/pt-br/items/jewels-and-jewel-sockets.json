@@ -1,0 +1,1051 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "pt-br",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Joias e Soquetes de Joia: Tipos, Raio, Corrupção e Uso na Árvore Passiva na 0.5.4",
+  "shortTitle": "Joias e Soquetes de Joia",
+  "summary": "Como as Joias funcionam no Path of Exile 2 0.5.4: onde ficam os Soquetes de Joia, se precisam ser alocados primeiro, as diferenças de base Ruby/Emerald/Sapphire/Diamond, quantidade de modificadores Normal/Magic/Rare/Unique, joias Corrompidas versus normais, por que joias Time-Lost afetam nós no raio, como Timeless difere de Time-Lost, regras de Soquete Sinister, como o Raio é mostrado, Limitado a e a correção /reclaimjewels da 0.2. Inclui uma Fórmula de Valor da Joia para decidir se um soquete vale o ponto passivo.",
+  "description": "Guia de Joias e Soquetes de Joia do Path of Exile 2 0.5.4: alocação de soquete, tipos de base, quantidade de modificadores, corrupção, raio Time-Lost, Timeless vs Time-Lost, Soquetes Sinister, sobreposição de raio, Limitado a, o comando /reclaimjewels e uma fórmula de valor da joia.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Árvore de habilidades passivas do Path of Exile 2 mostrando um Soquete de Joia alocado e um círculo branco de Raio projetado por uma joia Time-Lost",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Uma Joia é inserida em um Soquete de Joia alocado na Árvore de Habilidades Passivas e concede bônus ao seu personagem ou, para joias Time-Lost e joias de raio únicas, aos nós passivos dentro de um círculo de Raio. Joias básicas aplicam seus próprios modificadores explícitos; joias Time-Lost e joias de raio únicas (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac e Voices) reescrevem nós dentro de seu Raio. Aloque um soquete somente quando o valor da joia superar o ponto passivo e o custo do caminho.",
+      "calloutDetail": [
+        "Soquetes de Joia são nós passivos e devem ser alocados (conectados à sua árvore) antes que uma joia possa ser encaixada.",
+        "Joias Time-Lost e joias de raio únicas projetam um círculo branco; apenas nós dentro desse círculo são afetados.",
+        "Use a fórmula de custo na seção Valor da Joia para decidir se um soquete vale os pontos."
+      ],
+      "answers": [
+        {
+          "label": "Use para",
+          "text": [
+            "Adicionar atributos, vida, resistências, dano ou mecânicas de alocação especializadas a uma build por meio da árvore passiva."
+          ]
+        },
+        {
+          "label": "Verifique primeiro",
+          "text": [
+            "Confirme que o soquete está alocado, leia o Raio e o Limitado a da joia, e precifique os pontos passivos que o soquete custa."
+          ]
+        },
+        {
+          "label": "Evite",
+          "text": [
+            "Gastar 3-4 pontos de caminho apenas para alcançar um soquete de baixo valor, presumir que Timeless equivale a Time-Lost, ou colocar uma joia única em um Soquete Sinister."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Comparação de famílias de joias"
+        },
+        {
+          "href": "#valuation",
+          "label": "Fórmula de valor da joia"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Fatos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Classe de item",
+          "value": "Jewel",
+          "note": [
+            "Todas as joias compartilham a classe de item Jewel e entram nos Soquetes de Joia da árvore passiva (ou Soquetes Sinister em equipamentos, para algumas)."
+          ]
+        },
+        {
+          "label": "O soquete deve ser alocado",
+          "value": "Sim",
+          "note": [
+            "Um Soquete de Joia é um nó passivo; ele deve ser alocado e conectado antes que você possa clicar com o botão direito para inserir uma joia."
+          ]
+        },
+        {
+          "label": "Tipos de base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "Bases coloridas restringem o pool de afixos explícitos; Diamond é a base prismática (única)."
+          ]
+        },
+        {
+          "label": "Quantidade de modificadores",
+          "value": "Normal 2 / Magic 2 / Rare up to 4",
+          "note": [
+            "Uma joia comum rola dois modificadores explícitos; Magic rola dois; Rare pode chegar a quatro; joias Unique trazem linhas únicas fixas."
+          ]
+        },
+        {
+          "label": "Raio",
+          "value": "Apenas joias Time-Lost e joias de raio únicas",
+          "note": [
+            "Joias básicas aplicam seus próprios modificadores diretamente; apenas joias Time-Lost e joias de raio únicas projetam um círculo de Raio."
+          ]
+        },
+        {
+          "label": "Limitado a",
+          "value": "Por joia única",
+          "note": [
+            "A maioria das joias únicas é Limitada a 1 (ou 3 para Grand Spectrum), então apenas uma daquela única pode ser equipada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Comparação de famílias de joias",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Seis grupos de joias importam para o planejamento de build na 0.5.4. Eles diferem quanto a onde entram, se projetam um Raio e o que fazem. Esta é a Tabela de Comparação de Famílias do plano de conteúdo, apresentada como cartões de membros."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Encaixáveis",
+          "title": "Joia Básica",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "Cabe em qualquer Soquete de Joia normal alocado. Aplica seus próprios modificadores explícitos diretamente, sem Raio.",
+            "A cor da base restringe o pool de afixos: Ruby favorece armadura/marcial, Sapphire favorece ES/conjurador, Emerald favorece evasão/à distância, Diamond é prismática."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Joia Time-Lost",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "Cai de Time-Lost Caches no Trial of the Sekhemas. Tem um Raio (Médio a Grande).",
+            "Seus modificadores 'no Raio também concedem' bônus aos nós dentro do círculo. Erro comum: comprar o modificador errado para sua árvore."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Joia Única Diamond",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "Joias únicas na base Diamond com mecânicas especiais de alocação ou de Raio.",
+            "Erro comum: não entender o Keystone ou o comportamento do Raio antes de comprar."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Joia Timeless",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Cai dos chefes pinnacle da Expedition. Tem um Raio histórico e transforma passivas por Seed e Keystone.",
+            "Erro comum: ler apenas o nome e ignorar o Seed, que define o resultado."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "Soquete em equipamento",
+          "title": "Joia Sinister",
+          "sub": "Via Voices",
+          "body": [
+            "Aparece em equipamentos através de Voices, não na árvore passiva. Não tem Raio comum.",
+            "Concede um efeito de joia independente. Erro comum: tentar colocar uma Joia Única em um Soquete Sinister."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "Corrupção",
+          "title": "Joia Corrompida",
+          "sub": "Qualquer base, após corrupção",
+          "body": [
+            "Ganha um implícito de corrupção e não pode mais ser alterada por moedas normais de crafting.",
+            "Erro comum: presumir que ainda pode ser modificada normalmente ou purificada (Divined) como uma joia limpa."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propriedades e tooltips representativas",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Classe de item",
+          "value": "Jewel",
+          "notes": [
+            "Todas as joias compartilham a classe de item Jewel e entram nos Soquetes de Joia da árvore passiva."
+          ]
+        },
+        {
+          "label": "Requisito de soquete",
+          "value": "Soquete de Joia alocado",
+          "notes": [
+            "O nó do soquete deve ser alocado (conectado à sua árvore) antes que uma joia possa ser inserida."
+          ]
+        },
+        {
+          "label": "Tipos de base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "Bases coloridas restringem o pool de afixos explícitos: Ruby favorece armadura/marcial, Sapphire favorece ES/conjurador, Emerald favorece evasão/à distância, Diamond é prismática."
+          ]
+        },
+        {
+          "label": "Modificadores explícitos (normal)",
+          "value": "2 por padrão",
+          "notes": [
+            "Uma joia comum rola dois modificadores explícitos; Magic rola dois; Rare pode chegar a quatro."
+          ]
+        },
+        {
+          "label": "Raio (apenas Time-Lost)",
+          "value": "Médio a Grande",
+          "notes": [
+            "Apenas joias Time-Lost e joias de raio únicas projetam um círculo de raio; joias básicas aplicam seus próprios modificadores diretamente."
+          ]
+        },
+        {
+          "label": "Corrompida",
+          "value": "Adiciona um modificador de corrupção",
+          "notes": [
+            "Uma joia corrompida ganha um implícito de corrupção e não pode mais ser alterada por moedas de crafting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Visão geral: como joias e soquetes funcionam",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Um Soquete de Joia é um nó de habilidade passiva. Você o aloca como qualquer outro nó, e uma vez conectado à sua árvore, pode clicar com o botão direito para inserir uma joia. Joias básicas então concedem seus próprios modificadores explícitos ao seu personagem. Joias Time-Lost e joias de raio únicas fazem algo diferente: projetam um círculo branco de Raio na árvore, e seus modificadores são aplicados aos nós passivos que ficam dentro desse círculo.",
+        "O tipo de base importa. Joias Ruby, Emerald e Sapphire são bases coloridas cujo pool de afixos explícitos é enviesado para modificadores de armadura/marcial, evasão/à distância e escudo de energia/conjurador, respectivamente. Diamond é a base prismática usada por joias únicas (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac) e pode rolar qualquer modificador das listas de afixos.",
+        "Quantidade de modificadores por raridade: uma joia normal rola dois modificadores explícitos, uma Magic rola dois, e uma Rare pode rolar até quatro. Joias únicas substituem esses por linhas únicas fixas. Uma joia Corrompida ganha um implícito de corrupção extra e não pode mais ser alterada por moedas normais de crafting, que é exatamente o motivo pelo qual The Adorned quer joias Magic corrompidas.",
+        "Time-Lost versus Timeless é a confusão mais comum. Uma joia Time-Lost (Ruby/Emerald/Sapphire, ou a única Against the Darkness em Diamond) vem do Trial of the Sekhemas e modifica nós dentro de seu Raio com bônus de estilo de afixo aleatório. Uma joia Timeless (Heroic Tragedy, Undying Hate) vem da Expedition e conquista ou substitui passivas dentro de seu Raio histórico com base em um Seed numérico e um Keystone. São sistemas diferentes com fontes de drop e regras diferentes.",
+        "Soquetes Sinister não são soquetes da árvore passiva. Eles aparecem em equipamentos (por exemplo, via a joia única Voices) e aceitam um conjunto específico de joias com efeito independente e sem Raio comum. Você não pode colocar uma Joia Única em um Soquete Sinister.",
+        "O Raio é mostrado como um círculo branco no momento em que uma joia de raio é encaixada; o planejador da árvore passiva também o pré-visualiza. Vários raios podem se sobrepor, e um nó dentro de mais de um raio recebe o efeito de cada um. Joias únicas costumam ser Limitadas a 1, então apenas uma cópia daquela única pode ser equipada por vez.",
+        "Após a reconstrução da árvore passiva na 0.2, alguns soquetes de joia foram removidos de personagens mais antigos. As joias afetadas podiam ser recuperadas com o comando de chat /reclaimjewels; essa é uma correção histórica, mas permanece o passo correto para qualquer personagem antigo que ainda mostre joias faltantes após uma atualização da árvore."
+      ],
+      "bullets": [
+        "Soquete primeiro: um Soquete de Joia deve ser alocado e conectado antes de encaixar.",
+        "A base colorida restringe o pool de afixos; Diamond é prismática (única).",
+        "Normal/Magic = 2 mods, Rare = até 4, Unique = linhas fixas.",
+        "Time-Lost = bônus de raio de Sekhemas; Timeless = conquista por Seed/Keystone da Expedition.",
+        "Soquetes Sinister ficam em equipamentos, não na árvore, e rejeitam Joias Únicas.",
+        "Raios podem se sobrepor; Limitado a limita quantas daquela única você pode usar."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Matriz de elegibilidade de soquetes",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Qual joia cabe em qual soquete, se projeta um Raio e sua regra especial. As células 'text' trazem o detalhe relevante em vez de sim/não."
+      ],
+      "columns": [
+        "Tipo de joia",
+        "Soquete normal",
+        "Soquete Sinister",
+        "Raio",
+        "Regra especial"
+      ],
+      "rows": [
+        {
+          "label": "Básica (Ruby/Emerald/Sapphire/Diamond)",
+          "values": [
+            { "kind": "yes", "text": "Cabe em qualquer Soquete de Joia normal alocado" },
+            { "kind": "no", "text": "Não é válida em Soquetes Sinister" },
+            { "kind": "text", "text": "Nenhum (modificadores diretos)" },
+            { "kind": "text", "text": "Concede apenas seus próprios modificadores explícitos" }
+          ]
+        },
+        {
+          "label": "Joia Time-Lost",
+          "values": [
+            { "kind": "yes", "text": "Cabe em qualquer Soquete de Joia normal alocado" },
+            { "kind": "no", "text": "Não é válida em Soquetes Sinister" },
+            { "kind": "text", "text": "Médio a Grande" },
+            { "kind": "text", "text": "Modifica nós dentro do Raio" }
+          ]
+        },
+        {
+          "label": "Única Diamond (Against the Darkness, etc.)",
+          "values": [
+            { "kind": "yes", "text": "Cabe em qualquer Soquete de Joia normal alocado" },
+            { "kind": "no", "text": "Não é válida em Soquetes Sinister" },
+            { "kind": "text", "text": "Médio (varia por joia)" },
+            { "kind": "text", "text": "Mecânica especial de alocação ou de Raio" }
+          ]
+        },
+        {
+          "label": "Joia Timeless",
+          "values": [
+            { "kind": "yes", "text": "Cabe em qualquer Soquete de Joia normal alocado" },
+            { "kind": "no", "text": "Não é válida em Soquetes Sinister" },
+            { "kind": "text", "text": "Histórico (varia)" },
+            { "kind": "text", "text": "Conquista/substitui passivas por Seed" }
+          ]
+        },
+        {
+          "label": "Joia Sinister",
+          "values": [
+            { "kind": "no", "text": "Não é válida em soquetes normais" },
+            { "kind": "yes", "text": "Cabe em um Soquete Sinister no equipamento" },
+            { "kind": "text", "text": "Nenhum (sem Raio comum)" },
+            { "kind": "text", "text": "Efeito de joia independente" }
+          ]
+        },
+        {
+          "label": "Joia Corrompida",
+          "values": [
+            { "kind": "text", "text": "Sim, se a base cabe em um soquete normal" },
+            { "kind": "text", "text": "Magic corrompida cabe no Sinister" },
+            { "kind": "text", "text": "Depende da base" },
+            { "kind": "text", "text": "Mod extra de corrupção, sem mais crafting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Como encaixar e pré-visualizar uma joia",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Alcance e aloque o soquete",
+          "body": [
+            "Planeje um caminho até o Soquete de Joia e aloque-o para que se conecte à sua árvore. O soquete deve ser alocado antes que uma joia entre."
+          ]
+        },
+        {
+          "label": "Escolha a joia certa para o soquete",
+          "body": [
+            "Combine a base/os afixos com sua build. Para joias de raio, verifique quais nós caem dentro do Raio em sua árvore real."
+          ]
+        },
+        {
+          "label": "Encaixe e pré-visualize o Raio",
+          "body": [
+            "Clique com o botão direito na joia para colocá-la no soquete. Um círculo branco aparece; passe o mouse sobre os nós para confirmar quais passivas Pequenas e Notáveis são afetadas."
+          ]
+        },
+        {
+          "label": "Aloque dentro do Raio (se necessário)",
+          "body": [
+            "Para joias Time-Lost e joias de raio únicas, os bônus se aplicam aos nós que você aloca dentro do Raio. Algumas rolagens especiais se estendem a nós não alocados."
+          ]
+        },
+        {
+          "label": "Remova ou troque",
+          "body": [
+            "Clique com o botão direito no soquete para remover a joia. Joias removidas voltam ao inventário; nós alocados dentro da área de uma joia de raio perdem seu bônus."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Um soquete de joia fica alocado mas vazio; os nós ao redor dão apenas seus valores impressos."
+        ],
+        "after": [
+          "Após encaixar uma joia de raio, todo nó Pequeno e Notável alocado dentro do círculo branco ganha os bônus 'também concede' da joia."
+        ],
+        "note": "O valor adicionado é a soma dos bônus dos nós afetados menos os pontos passivos gastos para alcançar e usar o soquete."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Resultados por situação",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Build de empilhamento de atributos passando por um soquete",
+          "audience": "Attribute stackers (Astramentis/HOWA)",
+          "benefit": "Um soquete no caminho adiciona atributos, vida ou resistências de graça",
+          "risk": "Baixo",
+          "level": "low",
+          "recommendation": "Encaixe uma joia com modificador forte; o custo do caminho já foi pago.",
+          "tags": [
+            "passive-tree"
+          ]
+        },
+        {
+          "scenario": "Desvio de 4 pontos para um soquete de baixo valor",
+          "audience": "Orçamentos passivos apertados",
+          "benefit": "Modificadores de joia marginais",
+          "risk": "Alto custo de oportunidade",
+          "level": "high",
+          "recommendation": "Pule o soquete; esses 4 pontos provavelmente compram mais em outro lugar.",
+          "tags": [
+            "build-planning"
+          ]
+        },
+        {
+          "scenario": "Comprando uma joia única específica",
+          "audience": "Negociantes",
+          "benefit": "Retorno de única previsível",
+          "risk": "Médio (preço por rolagem/soquete)",
+          "level": "medium",
+          "recommendation": "Confirme o Soquete e o Raio exatos antes de pagar; veja os guias de joias únicas.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Personagem antigo com joias faltando após a 0.2",
+          "audience": "Jogadores que retornam",
+          "benefit": "Recupera as joias afetadas",
+          "risk": "Baixo",
+          "level": "low",
+          "recommendation": "Use o comando de chat /reclaimjewels; não recompre no trade.",
+          "tags": [
+            "build-planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Uso em builds",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "As joias definem builds sempre que um soquete fica em seu caminho ou uma joia de raio pode cobrir nós que você já quer. As personas abaixo mostram as principais formas como as joias são usadas."
+      ],
+      "builds": [
+        {
+          "title": "Empilhamento de atributos",
+          "description": "Builds de empilhamento de atributos (Astramentis, Hand of Wisdom and Action) usam soquetes no caminho para atributos fixos e escalagem de força/destreza/inteligência.",
+          "href": "/en/items/astramentis/"
+        },
+        {
+          "title": "Joias defensivas de vida/resistência",
+          "description": "Joias básicas com vida e resistências preenchem lacunas que o equipamento não consegue, especialmente para personagens carentes de resistências elementais."
+        },
+        {
+          "title": "Únicas que ativam raio",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned e Megalomaniac transformam um único soquete em múltiplos nós alocados ou potencializados.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "title": "Planejamento da árvore passiva",
+          "description": "Planeje caminhos de soquete no planejador de builds antes de comprometer pontos; importe/exporte arquivos do planejador para compartilhar a árvore exata.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternativas",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Se um soquete está longe do seu caminho, o custo de oportunidade de alcançá-lo geralmente supera qualquer joia que você pudesse colocar lá. Nesse caso, gaste os pontos em nós passivos comuns ou redirecione sua árvore para passar naturalmente por um soquete.",
+        "Para necessidades de atributo ou resistência, sufixos de equipamento, qualidade de catalisador e amuletos (charms) costumam entregar os mesmos atributos mais barato do que um soquete desvio. The Adorned e outros amplificadores únicos são alternativas apenas quando você já investe em joias Magic corrompidas.",
+        "Joias Timeless são uma alternativa a joias Time-Lost apenas quando sua build quer conquista de passivas dirigida por Seed em vez de simples bônus de raio; elas não são intercambiáveis."
+      ],
+      "bullets": [
+        "Gaste pontos de desvio em nós normais em vez de um soquete distante.",
+        "Equipamento, catalisadores e charms podem substituir atributos de joia.",
+        "Timeless não é um substituto direto para Time-Lost."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Valoração: usar, vender ou guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "O valor da joia não é um preço único em moeda; é uma decisão sobre pontos passivos. Use a Fórmula de Valor da Joia abaixo e os três exemplos resolvidos para decidir."
+      ],
+      "use": {
+        "condition": "O soquete está em seu caminho ou o raio cobre nós que você quer",
+        "first": "Encaixe a joia; o custo do caminho já foi pago",
+        "risk": "Ocupa um soquete e quaisquer pontos gastos para alcançá-lo",
+        "text": [
+          "Use quando o benefício líquido (atributos da joia menos custo de pontos e caminho menos custo de oportunidade) for positivo."
+        ]
+      },
+      "sell": {
+        "condition": "Você encontrou uma duplicata ou uma joia que não cabe em sua árvore",
+        "first": "Liste no trade por base, corrupção e modificadores explícitos",
+        "risk": "Líquido, mas o valor depende da rolagem exata e da demanda do meta",
+        "text": [
+          "Venda quando uma build diferente a valorizaria mais do que sua árvore atual."
+        ]
+      },
+      "hold": {
+        "condition": "Você pode reconstruir a build em torno de joias mais tarde",
+        "first": "Guardem rares e únicas bem roladas; elas retêm valor entre ligas",
+        "risk": "Apenas espaço de inventário",
+        "text": [
+          "Guarde joias com rolagens altas; são ativos de build de longo prazo."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Risco e custo de falha",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Desvio de 4 pontos para um soquete de baixo valor",
+          "gain": "Pequenos modificadores de joia",
+          "loss": "4 pontos passivos que poderiam comprar um nó notável ou keystone",
+          "level": "high",
+          "recommendation": "Pegue o soquete apenas se ele estiver em seu caminho natural."
+        },
+        {
+          "scenario": "Modificador Time-Lost errado para sua árvore",
+          "gain": "Cobertura de Raio",
+          "loss": "Bônus de modificador desperdiçados em nós que você não aloca",
+          "level": "medium",
+          "recommendation": "Pré-visualize o Raio e escolha o modificador que corresponde aos nós alocados."
+        },
+        {
+          "scenario": "Presumir que Timeless equivale a Time-Lost",
+          "gain": "Nenhum",
+          "loss": "Comprou o sistema de joia errado para a build",
+          "level": "medium",
+          "recommendation": "Confirme a fonte de drop e a mecânica antes de comprar."
+        },
+        {
+          "scenario": "Joia única em um Soquete Sinister",
+          "gain": "Nenhum",
+          "loss": "Tentativa desperdiçada; joias únicas são rejeitadas por Soquetes Sinister",
+          "level": "low",
+          "recommendation": "Use Soquetes Sinister apenas para o conjunto de joias suportado."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Evidência da comunidade",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Pergunta no Reddit",
+          "question": "Preciso alocar o Soquete de Joia antes de encaixar uma joia?",
+          "summary": [
+            "Um jogador perguntou se uma joia pode ser colocada em um nó de soquete não alocado."
+          ],
+          "editorialAnalysis": [
+            "Soquetes de Joia são nós passivos. Eles devem ser alocados e conectados à sua árvore antes que uma joia possa ser inserida; um soquete não alocado não mostra slot de joia."
+          ],
+          "officialAnswer": [
+            "Aloque o soquete primeiro; só então você pode clicar com o botão direito para inserir uma joia."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "Como encaixar uma joia"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "Guia",
+          "question": "Timeless é o mesmo que Time-Lost?",
+          "summary": [
+            "Um guia confundiu joias Timeless (Expedition) e Time-Lost (Sekhemas)."
+          ],
+          "editorialAnalysis": [
+            "São sistemas diferentes. Joias Time-Lost vêm do Trial of the Sekhemas e adicionam bônus de raio; joias Timeless vêm da Expedition e conquistam/substituem passivas por Seed e Keystone."
+          ],
+          "officialAnswer": [
+            "Trate-as como famílias separadas; leia a fonte de drop e a mecânica antes de comprar."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Comparação de famílias de joias"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "Guia",
+          "question": "Por que minhas joias sumiram após uma atualização da árvore passiva?",
+          "summary": [
+            "Jogadores que retornam relataram joias faltando após a reconstrução da árvore na 0.2."
+          ],
+          "editorialAnalysis": [
+            "As mudanças da árvore passiva na 0.2 removeram alguns soquetes de personagens mais antigos. As joias afetadas são recuperáveis com o comando /reclaimjewels em vez de recomprar."
+          ],
+          "officialAnswer": [
+            "Use /reclaimjewels para recuperar joias de soquetes removidos; esta é uma correção histórica, não uma mudança de drop atual."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Histórico de patches"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problemas e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Clique com o botão direito não faz nada no soquete",
+          "directAnswer": [
+            "O Soquete de Joia não está alocado ou não está conectado à sua árvore. Aloque-o primeiro e então encaixe a joia."
+          ],
+          "checks": [
+            "Abra a árvore passiva, confirme que o nó do soquete está aceso e conectado, e tente novamente."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Passos de encaixe"
+            }
+          ]
+        },
+        {
+          "symptom": "O círculo de Raio é minúsculo e não cobre nada útil",
+          "directAnswer": [
+            "O Raio da joia é pequeno ou seus nós alocados estão fora dele. Replaneje o soquete ou escolha uma joia com Raio maior para aquela área."
+          ],
+          "checks": [
+            "Pré-visualize o Raio no planejador e conte os nós alocados dentro dele."
+          ]
+        },
+        {
+          "symptom": "A joia única não entra em um Soquete Sinister",
+          "directAnswer": [
+            "Soquetes Sinister rejeitam Joias Únicas; aceitam apenas seu conjunto de joias suportado (ex.: Magic Corrompida)."
+          ],
+          "checks": [
+            "Use um soquete normal da árvore passiva para joias únicas."
+          ]
+        },
+        {
+          "symptom": "Joias faltando após uma atualização da árvore",
+          "directAnswer": [
+            "Se um soquete foi removido, recupere a joia com /reclaimjewels em vez de comprar uma nova."
+          ],
+          "checks": [
+            "Execute /reclaimjewels no chat; verifique inventário e stash."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Passo a passo em vídeo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 Jewels, Corruption and Passive Tree Specialisation",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "Criador da comunidade",
+          "description": "Cobre corrupção de joias, especialização da árvore passiva e uma menção a Against the Darkness em um passeio de build ao vivo.",
+          "takeaway": "Mostra como joias e corrupção se encaixam em um plano real da árvore passiva e onde uma joia de raio como Against the Darkness muda nós alocados.",
+          "timestamps": [
+            { "label": "Especialização da árvore passiva", "time": "01:54" },
+            { "label": "Corrupção e joias", "time": "03:03" },
+            { "label": "Menção a Against the Darkness", "time": "02:49" },
+            { "label": "Resumo da build", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Galeria de mídia",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Soquete de Joia alocado na árvore de habilidades passivas",
+          "note": "Mostra o nó do soquete aceso e conectado antes do encaixe."
+        },
+        {
+          "caption": "Comparação de soquete não alocado versus alocado",
+          "note": "Um slot de joia só aparece quando o soquete é alocado."
+        },
+        {
+          "caption": "Círculo branco de Raio projetado por uma joia Time-Lost",
+          "note": "Nós dentro do círculo recebem os bônus da joia."
+        },
+        {
+          "caption": "Comparação de joias Básica, Time-Lost, Timeless e Diamond única",
+          "note": "Quatro grupos de joias com soquetes e comportamentos de Raio diferentes."
+        },
+        {
+          "caption": "Localização do Soquete Sinister no equipamento",
+          "note": "Aparece via Voices, separado dos soquetes da árvore passiva."
+        },
+        {
+          "caption": "O resultado do comando /reclaimjewels",
+          "note": "Recupera joias de soquetes removidos pela reconstrução da árvore na 0.2."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Conteúdo conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "Diamond Time-Lost única com dois modificadores de raio aleatórios.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Diamond única que aloca um Keystone sem conexão.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "Diamond única com uma área de alocação remota em formato de anel.",
+          "href": "/en/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "Amplifica joias Magic corrompidas no raio.",
+          "href": "/en/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "Diamond única que aloca Notáveis Aleatórios.",
+          "href": "/en/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices and Sinister Jewel Sockets",
+          "description": "Adiciona Soquetes Sinister em equipamentos para joias específicas.",
+          "href": "/en/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless Jewels",
+          "description": "Conquista dirigida por Seed de Heroic Tragedy e Undying Hate.",
+          "href": "/en/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "Dropa Against the Darkness no Trial of the Sekhemas.",
+          "href": "/en/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Respec, Passive and Ascendancy Guide",
+          "description": "Como pontos passivos e respecs funcionam na 0.5.4.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Build Planner: Build Files Import/Export",
+          "description": "Planeje caminhos de soquete e compartilhe árvores.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "O contexto atual do patch de Early Access.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Histórico de patches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, atual)",
+          "changes": [
+            "Joias e Soquetes de Joia funcionam como descrito: soquetes alocados, pools de afixos de base colorida e comportamento de Raio para joias Time-Lost e joias de raio únicas."
+          ]
+        },
+        {
+          "version": "0.2.1 (Encaixáveis e Drops Únicos)",
+          "changes": [
+            "Ajustou o acesso a drops únicos para fontes de encaixáveis e joias únicas."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "A reconstrução da árvore passiva removeu alguns Soquetes de Joia de personagens mais antigos; /reclaimjewels recupera as joias afetadas."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Joias e Soquetes de Joia introduzidos no Early Access."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Fontes e verificação",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notas de patch do Path of Exile 2 0.5.4 e documentação oficial de itens.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Dados de joia e Against the Darkness da PoE2Wiki e poe2db.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guia de joia Time-Lost da Sportskeeda e guia de Against the Darkness da GameRant.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Discussão no Reddit r/PathOfExile2 sobre soquetes, raio e joias faltando.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Vídeo da comunidade cobrindo corrupção de joias e especialização da árvore passiva.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Registro de alterações",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicação inicial cobrindo Soquetes de Joia, tipos de base, quantidade de modificadores, corrupção, Time-Lost versus Timeless, Soquetes Sinister, sobreposição de Raio, Limitado a, a correção /reclaimjewels e a Fórmula de Valor da Joia para a 0.5.4."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - How to get Time-Lost Jewels",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - How to get Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 Jewels and Corruption",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Guia de Joias e Soquetes de Joia do Path of Exile 2 (0.5.4)",
+    "description": "Como Joias e Soquetes de Joia funcionam no PoE2 0.5.4: alocação de soquetes, bases Ruby/Emerald/Sapphire/Diamond, quantidade de modificadores, corrupção, raio Time-Lost, Timeless vs Time-Lost, Soquetes Sinister e uma fórmula de valor da joia.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

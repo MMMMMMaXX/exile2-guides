@@ -20,6 +20,7 @@ import {
   stableIdentifier,
   videoEntriesSchema,
 } from "../content/section-schema";
+import { translationMetaSchema } from "../content/translation";
 
 /** 受控内容分类词表；socketables 与 unique-armour 为 0.5.x 新增家族与独立 Unique 类型。 */
 export const itemCategorySlugs = [
@@ -522,6 +523,9 @@ const itemArticleBaseSchema = z.strictObject({
     description: requiredText,
     noindex: z.boolean().optional(),
   }),
+
+  // 目标语言译文元数据（可选）。由翻译流水线写入，不影响既有英语/中文内容。
+  translation: translationMetaSchema.optional(),
 });
 
 /**
@@ -573,9 +577,13 @@ export const itemArticleSchema = itemArticleBaseSchema.superRefine(
 
     if (article.status !== "published") return;
 
+    // 译文元数据块（translation.translationStatus 可能为 "machine-draft"）属于正常翻译状态，
+    // 不应触发针对正文占位的 draft 检测，因此扫描时排除该块。
+    const articleContent = { ...article };
+    delete articleContent.translation;
     if (
-      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/i.test(
-        JSON.stringify(article),
+      /\bTODO\b|REPLACE_WITH_|example\.invalid|\bdraft\b|草稿/.test(
+        JSON.stringify(articleContent),
       )
     ) {
       context.addIssue({

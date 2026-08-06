@@ -1,0 +1,363 @@
+{
+  "id": "patch-0-5-4e-shader-performance",
+  "slug": "patch-0-5-4e-shader-performance",
+  "locale": "tr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.5.4e — Shader, Vulkan ve İlk Yükleme Performansı",
+  "shortTitle": "0.5.4e Shader Performansı",
+  "summary": "0.5.4e teknik bir yamadır. Bir yamanın ardından ilk yüklemenin neden daha yavaş olabileceğini, shader yeniden derlemesinin ne anlama geldiğini, Vulkan/Steam için nelerin değiştiğini ve hangi belirtilerin normal ile hâlâ araştırılması gerekenler arasında olduğunu açıklar.",
+  "description": "Bu bir oyun içi yama değil, sorun giderme sayfasıdır. DX12, Vulkan, NVIDIA/AMD ve PC/Konsol raporları tek bir sonuca indirgenmemelidir.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.5.4e",
+  "patch": "Path of Exile 2 Early Access 0.5.4e",
+  "league": "Standard",
+  "patchStatus": "supported",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/prototype-v4/patch-runes.webp",
+  "imageAlt": "0.5.4e shader ve performans güncellemesini temsil eden fırtınayla kararmış harabe bir şehir",
+  "tags": [
+    "bug-fixes"
+  ],
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "30 saniyede oyuncuya etkisi",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.5.4e shader yüklemesini iyileştirir, shader boyutunu küçültür, Steam Vulkan Fossilize katmanını devre dışı bırakır ve varsayılan dikey eşitlemeyi (VSync) sınırlı (capped) moda çevirir.",
+        "Yamanın ardından ilk yüklemenin yavaş olması beklenir çünkü shaderlar yeniden derlenir; nihai performansı yalnızca ilk girişe bakarak değerlendirmeyin.",
+        "Bu sayfa takılmanın tamamen giderildiğini asla iddia etmez; render motoru, platform ve ilk çalıştırma ile tekrarlı çalıştırma birbirinden ayrılmalıdır."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "0.5.4e aile içinde nerede duruyor",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.5.4",
+          "date": "2026-06-25",
+          "kind": "Büyük Yama",
+          "summary": "0.5.4e'in teknik olarak takip ettiği içerik temeli.",
+          "tags": [
+            "atlas",
+            "items",
+            "bosses"
+          ]
+        },
+        {
+          "code": "0.5.4d Hotfix",
+          "date": "2026-07-29",
+          "kind": "Düzeltme Yaması",
+          "summary": "Oath Rune düzeltmesi; 0.5.4e teknik değişikliklerinden ayrıdır.",
+          "tags": [
+            "expedition",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.5.4e",
+          "date": "2026-07-31",
+          "kind": "Teknik Yama",
+          "summary": "Bu sayfadaki shader yükleme, Vulkan önbelleği ve VSync varsayılanı değişiklikleri.",
+          "tags": [
+            "shaders",
+            "vulkan",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact-dashboard",
+      "order": 3,
+      "title": "Etki panosu",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "First load",
+          "verdict": "İlk girişte daha yavaşlık bekleyin",
+          "detail": "Yamanın ardından shaderlar yeniden derlenir. Bu normaldir ve gerçek bir performans gerilemesinden farklıdır."
+        },
+        {
+          "area": "Steam + Vulkan",
+          "verdict": "Fossilize katmanı devre dışı",
+          "detail": "Shader Önbelleği'nin bazen aşırı büyümesini hedefler. DX12 veya Standalone için aynı şekilde geçerli değildir."
+        },
+        {
+          "area": "VSync",
+          "verdict": "Varsayılan artık Sınırlı (Capped)",
+          "detail": "Kare hızı dengesi (frame-pacing) sorunları nedeniyle Uyarlamalı (Adaptive) artık önerilmiyor."
+        },
+        {
+          "area": "Community",
+          "verdict": "Sonuçlar tekdüze değil",
+          "detail": "Bazı oyuncular daha akıcı haritalar bildiriyor, diğerleri hâlâ çökme veya sahne takılması bildiriyor. Tek ve evrensel bir iddia yoktur."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "order": 4,
+      "title": "Oyuncu sorununa göre yeniden düzenlenen resmi değişiklikler",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "technical",
+          "title": "Shader yüklemesi iyileştirildi ve boyutu küçültüldü",
+          "detail": "İlk girişte shaderlar yeniden derlenebilir; sonraki girişler daha hızlıdır. İlk çalıştırmaya değil, tekrarlı çalıştırmaya göre değerlendirin.",
+          "scope": "official-fact: affects all platforms after update"
+        },
+        {
+          "category": "technical",
+          "title": "Steam Vulkan Fossilize katmanı devre dışı bırakıldı",
+          "detail": "Shader Önbelleği'nin anormal büyümesini hedefler. Yalnızca Steam + Vulkan'a özgüdür; DX12'ye bağlamayın.",
+          "scope": "official-fact: Steam + Vulkan"
+        },
+        {
+          "category": "technical",
+          "title": "Varsayılan VSync Sınırlı (Capped) olarak değiştirildi",
+          "detail": "Kare hızı dengesi sorunları nedeniyle Uyarlamalı (Adaptive) kaldırıldı.",
+          "scope": "official-fact: client default"
+        },
+        {
+          "category": "fix",
+          "title": "Kalan çökme / takılma vakaları",
+          "detail": "Bazı raporlar sürüyor; henüz tamamen çözüldüğü doğrulanmadı ve Bilinen Sorunlar'da kalıyor.",
+          "scope": "community-report: not upgraded to verified"
+        }
+      ]
+    },
+    {
+      "id": "first-run",
+      "order": 5,
+      "title": "İlk çalıştırma mı, tekrarlı çalıştırma mı",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Yanlış değerlendirme yöntemi",
+      "oldText": "Yalnızca yamadan sonraki ilk bölge girişinde FPS ölçüp yamanın performansı düşürdüğü sonucuna varmak.",
+      "newLabel": "Doğru değerlendirme yöntemi",
+      "newText": "İlk derlenen girişi tekrarlı girişlerden ayırın; yama öncesi ve sonrası tekrarlı çalıştırma FPS'lerini karşılaştırın."
+    },
+    {
+      "id": "environment",
+      "order": 6,
+      "title": "Teknik ortam matrisi",
+      "toc": true,
+      "visible": true,
+      "type": "technical-environment",
+      "environments": [
+        {
+          "key": "steam-vulkan",
+          "note": "Önce shader yeniden derlemesini, Steam Shader Önbelleği boyutunu ve Vulkan kararlılığını kontrol edin. DX12 veya Konsol sonuçlarını ödünç almayın."
+        },
+        {
+          "key": "steam-dx12",
+          "note": "İlk derlemeyi sonraki yüklemelerden ayırın. Fossilize değişikliği Steam + Vulkan'ı hedefler, doğrudan DX12'yi değil."
+        },
+        {
+          "key": "standalone",
+          "note": "Standalone, Steam Fossilize katmanını kullanmaz. Render motorunu, sürücüleri, önbellek dizinini ve tekrarlı girişten sonraki davranışı kontrol edin."
+        },
+        {
+          "key": "console",
+          "note": "Resmi 0.5.4e notları shader ve Vulkan/Steam davranışını açıklar. Konsol raporları PC ile birleştirilmeden ayrı kaydedilmelidir."
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "order": 7,
+      "title": "Etkilenen içerik kuyruğu",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Performans Sorun Giderme Rehberi",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "İlk çalıştırma mı tekrarlı çalıştırma mı bölümü ekle",
+          "status": "reviewing"
+        },
+        {
+          "name": "Shader Önbelleği SSS",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "Fossilize devre dışı bırakma belgelendir",
+          "status": "queued"
+        },
+        {
+          "name": "Vulkan Kurulum Rehberi",
+          "type": "guide",
+          "trigger": "0.5.4e",
+          "action": "VSync varsayılan değişikliğini belirt",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "Topluluk kanıtı",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.5.4e Shader başlığı",
+          "context": "Performans geri bildirimi özeti",
+          "quote": "Shader sayısı belirgin şekilde düştü, ancak sonuçlar donanıma göre hâlâ değişiyor.",
+          "analysis": "Metin render motoruna, platforma ve ilk mi tekrarlı mı çalıştırmaya göre ayrılmalı; '0.5.4e takılmayı tamamen giderdi' denemez."
+        },
+        {
+          "source": "Resmi Forum - 0.5.4e",
+          "context": "Kalan sorun raporları",
+          "quote": "Bazıları yamadan sonra hâlâ belirli sahnelerde çöküyor veya takılıyor.",
+          "analysis": "Topluluk raporu olarak tutun; doğrulanmış mekanik bir iddia seviyesine yükseltmeyin."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "Video ve zaman damgaları",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "creator": "Official Path of Exile 2",
+          "label": "0.5.4e shader ve performansı açıklandı",
+          "description": "Shader yeniden derleme, Vulkan önbelleği ve VSync varsayılanı hakkında resmi açıklama.",
+          "takeaway": "Sonuç çıkarmadan önce ilk çalıştırma mı tekrarlı çalıştırma mı bölümünü izleyin.",
+          "url": "https://www.youtube.com/watch?v=XDEJLOHcdWw"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "Doğrudan yanıtlar",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.5.4e'den sonra ilk yükleme neden daha yavaş?",
+          "answer": [
+            "Resmi olarak shaderlar yeniden derlendiği için ilk bölge girişi daha yavaş olabilir.",
+            "Etkiyi, ilk girişi tekrarlı girişlerden ayırarak değerlendirin."
+          ]
+        },
+        {
+          "question": "0.5.4e tüm takılmaları giderdi mi?",
+          "answer": [
+            "Evrensel bir iddia desteklenmiyor; bazı oyuncular daha akıcı haritalar bildiriyor, diğerleri hâlâ çökme veya sahne takılması bildiriyor.",
+            "Herhangi bir sonuç çıkarılmadan önce render motoru, platform ve çalıştırma türü ayrılmalıdır."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 11,
+      "title": "Bilinen sorunlar",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.5.4e'den sonra kalan çökmeler veya sahneye özgü takılmalar bildirildi; henüz tamamen çözüldüğü doğrulanmadı.",
+          "status": "open"
+        },
+        {
+          "text": "Konsola özgü shader raporları PC sonuçlarından ayrı olarak izleniyor.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Kaynaklar ve doğrulama",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 resmi 0.5.4e Yama Notları",
+          "description": "Shader, Vulkan ve VSync değişiklikleri için resmi kaynak.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3989000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Değişiklik günlüğü",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "0.5.4e shader ve performans zengin makalesi yayınlandı"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 resmi 0.5.4e Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3989000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 0.5.4e Shader Performansı",
+    "description": "0.5.4e teknik bir yamadır. Bir yamanın ardından ilk yüklemenin neden daha yavaş olabileceğini, shader yeniden derlemesinin ne anlama geldiğini, Vulkan/Steam için nelerin değiştiğini ve hangi belirtilerin normal ile hâlâ araştırılması gerekenler arasında olduğunu açıklar.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-5-4e-shader-performance",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

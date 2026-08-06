@@ -1,0 +1,1051 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Joyaux et emplacements de joyau : types, rayon, corruption et utilisation dans l'arbre de passifs en 0.5.4",
+  "shortTitle": "Joyaux et emplacements de joyau",
+  "summary": "Fonctionnement des joyaux dans Path of Exile 2 0.5.4 : où se trouvent les emplacements de joyau, s'ils doivent être préalablement alloués, les différences entre les bases Rubis/Émeraude/Saphir/Diamant, le nombre de modificateurs Normal/Magique/Rare/Unique, les joyaux corrompus par rapport aux joyaux normaux, pourquoi les joyaux Hors-du-Temps affectent les nœuds dans le rayon, en quoi les joyaux Intemporels diffèrent des Hors-du-Temps, les règles des emplacements Sinistres, comment le rayon est affiché, la limite d'équipement (Limited to), et le correctif /reclaimjewels de la 0.2. Inclut une formule de valeur du joyau pour décider si un emplacement en vaut la point de passif.",
+  "description": "Guide des joyaux et emplacements de joyau de Path of Exile 2 0.5.4 : allocation des emplacements, types de base, nombre de modificateurs, corruption, rayon Hors-du-Temps, Intemporel contre Hors-du-Temps, emplacements Sinistres, chevauchement des rayons, limite d'équipement, la commande /reclaimjewels, et une formule de valeur du joyau.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Arbre de compétences passives de Path of Exile 2 montrant un emplacement de joyau alloué et un cercle de rayon blanc projeté par un joyau Hors-du-Temps",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Un joyau est inséré dans un emplacement de joyau alloué sur l'arbre de compétences passives et confère des bonus à votre personnage, ou, pour les joyaux Hors-du-Temps et les joyaux uniques à rayon, aux nœuds passifs situés dans un cercle de rayon. Les joyaux de base appliquent leurs propres modificateurs explicites ; les joyaux Hors-du-Temps et les joyaux uniques à rayon (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac et Voices) réécrivent les nœuds à l'intérieur de leur rayon. N'allouez un emplacement que lorsque la valeur du joyau compense le coût en points de passif et en chemin.",
+      "calloutDetail": [
+        "Les emplacements de joyau sont des nœuds passifs et doivent être alloués (reliés à votre arbre) avant de pouvoir insérer un joyau.",
+        "Les joyaux Hors-du-Temps et les joyaux uniques à rayon projettent un cercle blanc ; seuls les nœuds à l'intérieur de ce cercle sont affectés.",
+        "Utilisez la formule de coût dans la section Valeur du joyau pour décider si un emplacement en vaut les points."
+      ],
+      "answers": [
+        {
+          "label": "À quoi sert-il",
+          "text": [
+            "Ajouter des attributs, de la vie, des résistances, des dégâts ou des mécaniques d'allocation spécialisées à une build via l'arbre de passifs."
+          ]
+        },
+        {
+          "label": "À vérifier d'abord",
+          "text": [
+            "Confirmez que l'emplacement est alloué, lisez le rayon et la limite d'équipement du joyau, et évaluez le coût en points de passif de l'emplacement."
+          ]
+        },
+        {
+          "label": "À éviter",
+          "text": [
+            "Dépenser 3 à 4 points de chemin juste pour atteindre un emplacement de faible valeur, supposer qu'Intemporel équivaut à Hors-du-Temps, ou placer un joyau unique dans un emplacement Sinistre."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Comparaison des familles de joyaux"
+        },
+        {
+          "href": "#valuation",
+          "label": "Formule de valeur du joyau"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Faits rapides",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Classe d'objet",
+          "value": "Jewel",
+          "note": [
+            "Tous les joyaux partagent la classe d'objet Jewel et se placent dans les emplacements de joyau de l'arbre passif (ou les emplacements Sinistres sur l'équipement pour certains)."
+          ]
+        },
+        {
+          "label": "Emplacement à allouer",
+          "value": "Oui",
+          "note": [
+            "Un emplacement de joyau est un nœud passif ; il doit être alloué et relié avant de pouvoir insérer un joyau par clic droit."
+          ]
+        },
+        {
+          "label": "Types de base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "Les bases colorées déterminent le pool d'affixes explicites ; le Diamant est la base prismatique (unique)."
+          ]
+        },
+        {
+          "label": "Nombre de modificateurs",
+          "value": "Normal 2 / Magic 2 / Rare jusqu'à 4",
+          "note": [
+            "Un joyau classique obtient deux modificateurs explicites ; un joyau Magique en obtient deux ; un joyau Rare peut atteindre quatre ; les joyaux uniques possèdent des lignes uniques fixes."
+          ]
+        },
+        {
+          "label": "Rayon",
+          "value": "Joyaux Hors-du-Temps et uniques à rayon uniquement",
+          "note": [
+            "Les joyaux de base appliquent directement leurs propres modificateurs ; seuls les joyaux Hors-du-Temps et les joyaux uniques à rayon projettent un cercle de rayon."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "Par joyau unique",
+          "note": [
+            "La plupart des joyaux uniques sont limités à 1 (ou 3 pour Grand Spectrum), si bien qu'un seul exemplaire de cet unique peut être équipé."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Comparaison des familles de joyaux",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Six groupes de joyaux comptent pour la planification des builds en 0.5.4. Ils diffèrent par leur emplacement, la projection ou non d'un rayon, et leur effet. Voici le tableau de comparaison des familles issu du plan de contenu, présenté sous forme de cartes de membres."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Socketables",
+          "title": "Joyau de base",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "S'adapte à tout emplacement normal de joyau alloué. Applique directement ses propres modificateurs explicites, sans rayon.",
+            "La couleur de la base détermine le pool d'affixes : Rubis privilégie armure/martial, Saphir privilégie énergie/buteur, Émeraude privilégie esquive/à distance, Diamant est prismatique."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Joyau Hors-du-Temps",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "Provient des caches Hors-du-Temps dans l'Épreuve de Sekhemas. Possède un rayon (Moyen à Grand).",
+            "Ses modificateurs « dans le rayon accordent aussi » des bonus aux nœuds à l'intérieur du cercle. Erreur fréquente : acheter le mauvais modificateur pour votre arbre."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Joyau unique Diamant",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "Joyaux uniques sur la base Diamant avec des mécaniques d'allocation ou de rayon spéciales.",
+            "Erreur fréquente : ne pas comprendre le Keystone ou le comportement du rayon avant l'achat."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Joyau Intemporel",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Provient des boss culminants de l'Expedition. Possède un rayon historique et transforme les passifs selon la Graine (Seed) et le Keystone.",
+            "Erreur fréquente : ne lire que le nom et ignorer la Graine, qui définit le résultat."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "Emplacement d'équipement",
+          "title": "Joyau Sinistre",
+          "sub": "Via Voices",
+          "body": [
+            "Apparaît sur l'équipement via Voices, et non sur l'arbre de passifs. Ne possède pas de rayon ordinaire.",
+            "Accorde un effet de joyau indépendant. Erreur fréquente : essayer de placer un joyau Unique dans un emplacement Sinistre."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "Corruption",
+          "title": "Joyau corrompu",
+          "sub": "Toute base, après corruption",
+          "body": [
+            "Gagne un implicite de corruption et ne peut plus être modifié par les monnaies de craft normales.",
+            "Erreur fréquente : supposer qu'il peut encore être modifié normalement ou purifié comme un joyau propre."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propriétés et infobulles représentatives",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Classe d'objet",
+          "value": "Jewel",
+          "notes": [
+            "Tous les joyaux partagent la classe d'objet Jewel et se placent dans les emplacements de joyau de l'arbre passif."
+          ]
+        },
+        {
+          "label": "Condition d'emplacement",
+          "value": "Emplacement de joyau alloué",
+          "notes": [
+            "Le nœud d'emplacement doit être alloué (relié à votre arbre) avant de pouvoir insérer un joyau."
+          ]
+        },
+        {
+          "label": "Types de base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "Les bases colorées déterminent le pool d'affixes explicites : Rubis privilégie armure/martial, Saphir privilégie énergie/buteur, Émeraude privilégie esquive/à distance, Diamant est prismatique."
+          ]
+        },
+        {
+          "label": "Modificateurs explicites (normal)",
+          "value": "2 par défaut",
+          "notes": [
+            "Un joyau classique obtient deux modificateurs explicites ; un joyau Magique en obtient deux ; un joyau Rare peut atteindre quatre."
+          ]
+        },
+        {
+          "label": "Rayon (Hors-du-Temps uniquement)",
+          "value": "Moyen à Grand",
+          "notes": [
+            "Seuls les joyaux Hors-du-Temps et les joyaux uniques à rayon projettent un cercle de rayon ; les joyaux de base appliquent directement leurs propres modificateurs."
+          ]
+        },
+        {
+          "label": "Corrompu",
+          "value": "Ajoute un modificateur de corruption",
+          "notes": [
+            "Un joyau corrompu gagne un implicite de corruption et ne peut plus être modifié par les monnaies de craft."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Aperçu : fonctionnement des joyaux et des emplacements",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Un emplacement de joyau est un nœud de compétence passive. Vous l'allouez comme n'importe quel autre nœud, et une fois relié à votre arbre vous pouvez y insérer un joyau par clic droit. Les joyaux de base accordent alors leurs propres modificateurs explicites à votre personnage. Les joyaux Hors-du-Temps et les joyaux uniques à rayon agissent différemment : ils projettent un cercle de rayon blanc sur l'arbre, et leurs modificateurs s'appliquent aux nœuds passifs situés à l'intérieur de ce cercle.",
+        "La base compte. Les joyaux Rubis, Émeraude et Saphir sont des bases colorées dont le pool d'affixes explicites est orienté respectivement vers armure/martial, esquive/à distance et bouclier d'énergie/buteur. Le Diamant est la base prismatique utilisée par les joyaux uniques (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac) et peut obtenir n'importe quel modificateur parmi les listes d'affixes.",
+        "Nombre de modificateurs selon la rareté : un joyau normal obtient deux modificateurs explicites, un joyau Magique en obtient deux, et un joyau Rare peut en obtenir jusqu'à quatre. Les joyaux uniques remplacent ceux-ci par des lignes uniques fixes. Un joyau corrompu gagne un implicite de corruption supplémentaire et ne peut plus être modifié par les monnaies de craft normales, ce qui explique précisément pourquoi The Adorned recherche des joyaux Magiques corrompus.",
+        "Hors-du-Temps contre Intemporel est la confusion la plus fréquente. Un joyau Hors-du-Temps (Rubis/Émeraude/Saphir, ou l'unique Against the Darkness sur Diamant) provient de l'Épreuve de Sekhemas et modifie les nœuds à l'intérieur de son rayon avec des bonus de type affixe aléatoire. Un joyau Intemporel (Heroic Tragedy, Undying Hate) provient de l'Expedition et conquiert ou remplace les passifs à l'intérieur de son rayon historique selon une Graine (Seed) numérique et un Keystone. Ce sont des systèmes différents, avec des sources d'obtention et des règles distinctes.",
+        "Les emplacements Sinistres ne sont pas des emplacements d'arbre passif. Ils apparaissent sur l'équipement (par exemple via le joyau unique Voices) et acceptent un ensemble précis de joyaux avec un effet indépendant et sans rayon ordinaire. Vous ne pouvez pas placer un joyau Unique dans un emplacement Sinistre.",
+        "Le rayon s'affiche sous forme de cercle blanc dès qu'un joyau à rayon est placé ; le planificateur d'arbre de passifs le prévisualise également. Plusieurs rayons peuvent se chevaucher, et un nœud situé dans plus d'un rayon reçoit l'effet de chacun. Les joyaux uniques sont souvent limités à 1, si bien qu'un seul exemplaire de cet unique peut être équipé à la fois.",
+        "Après la reconstruction de l'arbre de passifs de la 0.2, certains emplacements de joyau ont été retirés des personnages plus anciens. Les joyaux concernés pouvaient être récupérés avec la commande de chat /reclaimjewels ; il s'agit d'un correctif ancien, mais il reste la bonne démarche pour tout personnage ancien qui présente encore des joyaux manquants après une mise à jour de l'arbre."
+      ],
+      "bullets": [
+        "Emplacement d'abord : un emplacement de joyau doit être alloué et relié avant d'y placer un joyau.",
+        "La base colorée détermine le pool d'affixes ; le Diamant est prismatique (unique).",
+        "Normal/Magique = 2 modificateurs, Rare = jusqu'à 4, Unique = lignes fixes.",
+        "Hors-du-Temps = bonus de rayon de Sekhemas ; Intemporel = conquête par Graine/Keystone de l'Expedition.",
+        "Les emplacements Sinistres sont sur l'équipement, non sur l'arbre, et refusent les joyaux Uniques.",
+        "Les rayons peuvent se chevaucher ; la limite d'équipement plafonne le nombre d'uniques portables."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Matrice d'éligibilité des emplacements",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Quel joyau convient à quel emplacement, s'il projette un rayon, et sa règle spéciale. Les cellules « text » donnent le détail pertinent plutôt qu'un oui/non."
+      ],
+      "columns": [
+        "Type de joyau",
+        "Emplacement normal",
+        "Emplacement Sinistre",
+        "Rayon",
+        "Règle spéciale"
+      ],
+      "rows": [
+        {
+          "label": "Base (Ruby/Emerald/Sapphire/Diamond)",
+          "values": [
+            { "kind": "yes", "text": "S'adapte à tout emplacement normal de joyau alloué" },
+            { "kind": "no", "text": "Non valide dans les emplacements Sinistres" },
+            { "kind": "text", "text": "Aucun (modificateurs directs)" },
+            { "kind": "text", "text": "Accorde uniquement ses propres modificateurs explicites" }
+          ]
+        },
+        {
+          "label": "Joyau Hors-du-Temps",
+          "values": [
+            { "kind": "yes", "text": "S'adapte à tout emplacement normal de joyau alloué" },
+            { "kind": "no", "text": "Non valide dans les emplacements Sinistres" },
+            { "kind": "text", "text": "Moyen à Grand" },
+            { "kind": "text", "text": "Modifie les nœuds à l'intérieur du rayon" }
+          ]
+        },
+        {
+          "label": "Unique Diamant (Against the Darkness, etc.)",
+          "values": [
+            { "kind": "yes", "text": "S'adapte à tout emplacement normal de joyau alloué" },
+            { "kind": "no", "text": "Non valide dans les emplacements Sinistres" },
+            { "kind": "text", "text": "Moyen (varie selon le joyau)" },
+            { "kind": "text", "text": "Mécanique d'allocation ou de rayon spéciale" }
+          ]
+        },
+        {
+          "label": "Joyau Intemporel",
+          "values": [
+            { "kind": "yes", "text": "S'adapte à tout emplacement normal de joyau alloué" },
+            { "kind": "no", "text": "Non valide dans les emplacements Sinistres" },
+            { "kind": "text", "text": "Historique (varie)" },
+            { "kind": "text", "text": "Conquiert/remplace les passifs selon la Graine" }
+          ]
+        },
+        {
+          "label": "Joyau Sinistre",
+          "values": [
+            { "kind": "no", "text": "Non valide dans les emplacements normaux" },
+            { "kind": "yes", "text": "S'adapte à un emplacement Sinistre sur l'équipement" },
+            { "kind": "text", "text": "Aucun (pas de rayon ordinaire)" },
+            { "kind": "text", "text": "Effet de joyau indépendant" }
+          ]
+        },
+        {
+          "label": "Joyau corrompu",
+          "values": [
+            { "kind": "text", "text": "Oui si la base convient à un emplacement normal" },
+            { "kind": "text", "text": "Le Magique corrompu convient au Sinistre" },
+            { "kind": "text", "text": "Dépend de sa base" },
+            { "kind": "text", "text": "Modificateur de corruption supplémentaire, aucun craft ultérieur" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Comment placer et prévisualiser un joyau",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Atteindre et allouer l'emplacement",
+          "body": [
+            "Planifiez un chemin vers l'emplacement de joyau et allouez-le pour le relier à votre arbre. L'emplacement doit être alloué avant d'y placer un joyau."
+          ]
+        },
+        {
+          "label": "Choisir le bon joyau pour l'emplacement",
+          "body": [
+            "Associez la base/l'affixe à votre build. Pour les joyaux à rayon, vérifiez quels nœuds se trouvent dans le rayon sur votre arbre réel."
+          ]
+        },
+        {
+          "label": "Placer et prévisualiser le rayon",
+          "body": [
+            "Insérez le joyau dans l'emplacement par clic droit. Un cercle blanc apparaît ; survolez les nœuds pour confirmer quels passifs Mineurs et Notables sont affectés."
+          ]
+        },
+        {
+          "label": "Allouer à l'intérieur du rayon (si besoin)",
+          "body": [
+            "Pour les joyaux Hors-du-Temps et les joyaux uniques à rayon, les bonus s'appliquent aux nœuds que vous allouez à l'intérieur du rayon. Certains résultats spéciaux s'étendent aux nœuds non alloués."
+          ]
+        },
+        {
+          "label": "Retirer ou échanger",
+          "body": [
+            "Cliquez à droite sur l'emplacement pour retirer le joyau. Les joyaux retirés retournent dans votre inventaire ; les nœuds alloués dans la zone d'un joyau à rayon perdent son bonus."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Un emplacement de joyau est alloué mais vide ; les nœuds environnants ne donnent que leurs valeurs imprimées."
+        ],
+        "after": [
+          "Après l'insertion d'un joyau à rayon, chaque nœud Mineur et Notable alloué à l'intérieur du cercle blanc gagne les bonus « accordent aussi » du joyau."
+        ],
+        "note": "La valeur ajoutée est la somme des bonus des nœuds affectés moins les points de passif dépensés pour atteindre et utiliser l'emplacement."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Issues selon la situation",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Build empilant les attributs passant par un emplacement",
+          "audience": "Empileurs d'attributs (Astramentis/HOWA)",
+          "benefit": "Un emplacement sur le chemin ajoute des attributs, de la vie ou des résistances gratuitement",
+          "risk": "Faible",
+          "level": "low",
+          "recommendation": "Placez un joyau avec un fort modificateur explicite ; le coût du chemin est déjà payé.",
+          "tags": [
+            "passive-tree"
+          ]
+        },
+        {
+          "scenario": "Détour de 4 points vers un emplacement de faible valeur",
+          "audience": "Budgets de passifs serrés",
+          "benefit": "Modificateurs de joyau marginaux",
+          "risk": "Coût d'opportunité élevé",
+          "level": "high",
+          "recommendation": "Ignorez l'emplacement ; ces 4 points achèteront probablement plus ailleurs.",
+          "tags": [
+            "build-planning"
+          ]
+        },
+        {
+          "scenario": "Achat d'un joyau unique précis",
+          "audience": "Commerçants",
+          "benefit": "Rendement unique prévisible",
+          "risk": "Moyen (prix selon le jet/emplacement)",
+          "level": "medium",
+          "recommendation": "Confirmez l'emplacement et le rayon exacts avant de payer ; voir les guides des joyaux uniques.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Personnage ancien avec joyaux manquants après la 0.2",
+          "audience": "Joueurs de retour",
+          "benefit": "Récupère les joyaux concernés",
+          "risk": "Faible",
+          "level": "low",
+          "recommendation": "Utilisez la commande de chat /reclaimjewels ; ne rachetez pas via le commerce.",
+          "tags": [
+            "build-planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Utilisation en build",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Les joyaux définissent une build dès qu'un emplacement se trouve sur votre chemin ou qu'un joyau à rayon peut couvrir des nœuds déjà souhaités. Les personas ci-dessous présentent les principales utilisations des joyaux."
+      ],
+      "builds": [
+        {
+          "title": "Empilement d'attributs",
+          "description": "Les builds empilant les attributs (Astramentis, Hand of Wisdom and Action) utilisent les emplacements sur le chemin pour des attributs bruts et la scaling force/dextérité/intelligence.",
+          "href": "/fr/items/astramentis/"
+        },
+        {
+          "title": "Joyaux défensifs vie/résistances",
+          "description": "Les joyaux de base avec vie et résistances comblent les trous que l'équipement ne peut pas, surtout pour les personnages manquant de résistances élémentaires."
+        },
+        {
+          "title": "Uniques activant le rayon",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned et Megalomaniac transforment un seul emplacement en plusieurs nœuds alloués ou boostés.",
+          "href": "/fr/items/against-the-darkness/"
+        },
+        {
+          "title": "Planification de l'arbre de passifs",
+          "description": "Planifiez les chemins d'emplacement dans le planificateur de build avant d'engager des points ; importez/exportez les fichiers du planificateur pour partager l'arbre exact.",
+          "href": "/fr/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternatives",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Si un emplacement est loin de votre chemin, le coût d'opportunité pour l'atteindre l'emporte généralement sur tout joyau que vous pourriez y placer. Dans ce cas, dépensez les points sur des nœuds passifs ordinaires ou déroutez votre arbre pour passer naturellement par un emplacement.",
+        "Pour les besoins en attributs ou résistances, les suffixes d'équipement, la qualité par catalyseur et les charmes apportent souvent les mêmes stats moins cher qu'un emplacement détourné. The Adorned et autres amplificateurs uniques ne sont des alternatives que si vous investissez déjà dans des joyaux Magiques corrompus.",
+        "Les joyaux Intemporels ne sont une alternative aux joyaux Hors-du-Temps que lorsque votre build recherche une conquête de passifs pilotée par la Graine plutôt que de simples bonus de rayon ; ils ne sont pas interchangeables."
+      ],
+      "bullets": [
+        "Dépensez les points de détour sur des nœuds normaux plutôt que sur un emplacement lointain.",
+        "L'équipement, les catalyseurs et les charmes peuvent remplacer les stats des joyaux.",
+        "Intemporel n'est pas un remplaçant direct de Hors-du-Temps."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Évaluation : utiliser, vendre ou conserver",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "La valeur d'un joyau n'est pas un prix unique en monnaie ; c'est une décision sur les points de passif. Utilisez la formule de valeur du joyau ci-dessous et les trois exemples travaillés pour décider."
+      ],
+      "use": {
+        "condition": "L'emplacement est sur votre chemin ou le rayon couvre les nœuds souhaités",
+        "first": "Placez le joyau ; le coût du chemin est déjà payé",
+        "risk": "Occupe un emplacement et tous les points dépensés pour l'atteindre",
+        "text": [
+          "Utilisez quand le bénéfice net (stats du joyau moins coût en points et en chemin moins coût d'opportunité) est positif."
+        ]
+      },
+      "sell": {
+        "condition": "Vous avez trouvé un doublon ou un joyau qui ne convient pas à votre arbre",
+        "first": "Mettez en vente sur le commerce par base, corruption et modificateurs explicites",
+        "risk": "Liquide mais la valeur dépend du jet exact et de la demande méta",
+        "text": [
+          "Vendez quand une autre build le valoriserait plus que votre arbre actuel."
+        ]
+      },
+      "hold": {
+        "condition": "Vous pourriez reconstruire autour des joyaux plus tard",
+        "first": "Conservez les rares et uniques bien rollés ; ils conservent leur valeur d'une ligue à l'autre",
+        "risk": "Espace d'inventaire uniquement",
+        "text": [
+          "Conservez les joyaux à fort jet ; ce sont des actifs de build à long terme."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Risque et coût d'échec",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Détour de 4 points vers un emplacement de faible valeur",
+          "gain": "Petits modificateurs de joyau",
+          "loss": "4 points de passif qui pourraient acheter un nœud notable ou clé",
+          "level": "high",
+          "recommendation": "Ne prenez l'emplacement que s'il est sur votre chemin naturel."
+        },
+        {
+          "scenario": "Mauvais modificateur Hors-du-Temps pour votre arbre",
+          "gain": "Couverture du rayon",
+          "loss": "Bonus de modificateur gaspillés sur des nœuds que vous n'allouez pas",
+          "level": "medium",
+          "recommendation": "Prévisualisez le rayon et choisissez le modificateur correspondant aux nœuds alloués."
+        },
+        {
+          "scenario": "Supposer qu'Intemporel équivaut à Hors-du-Temps",
+          "gain": "Aucun",
+          "loss": "Achat du mauvais système de joyau pour la build",
+          "level": "medium",
+          "recommendation": "Confirmez la source d'obtention et la mécanique avant d'acheter."
+        },
+        {
+          "scenario": "Joyau unique dans un emplacement Sinistre",
+          "gain": "Aucun",
+          "loss": "Tentative perdue ; les joyaux uniques sont refusés par les emplacements Sinistres",
+          "level": "low",
+          "recommendation": "Utilisez les emplacements Sinistres uniquement pour leur ensemble de joyaux pris en charge."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Preuves communautaires",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Question Reddit",
+          "question": "Dois-je allouer l'emplacement de joyau avant d'y placer un joyau ?",
+          "summary": [
+            "Un joueur a demandé si un joyau pouvait être placé dans un nœud d'emplacement non alloué."
+          ],
+          "editorialAnalysis": [
+            "Les emplacements de joyau sont des nœuds passifs. Ils doivent être alloués et reliés à votre arbre avant de pouvoir insérer un joyau ; un emplacement non alloué n'affiche aucun emplacement de joyau."
+          ],
+          "officialAnswer": [
+            "Allouez d'abord l'emplacement ; seulement ensuite pouvez-y insérer un joyau par clic droit."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "Comment placer un joyau"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "Guide",
+          "question": "Intemporel est-il identique à Hors-du-Temps ?",
+          "summary": [
+            "Un guide a confondu les joyaux Intemporels (Expedition) et Hors-du-Temps (Sekhemas)."
+          ],
+          "editorialAnalysis": [
+            "Ce sont des systèmes différents. Les joyaux Hors-du-Temps proviennent de l'Épreuve de Sekhemas et ajoutent des bonus de rayon ; les joyaux Intemporels proviennent de l'Expedition et conquièrent/remplacent les passifs selon la Graine et le Keystone."
+          ],
+          "officialAnswer": [
+            "Traitez-les comme des familles distinctes ; lisez la source d'obtention et la mécanique avant d'acheter."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Comparaison des familles de joyaux"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "Guide",
+          "question": "Pourquoi mes joyaux ont-ils disparu après une mise à jour de l'arbre de passifs ?",
+          "summary": [
+            "Des joueurs de retour ont signalé des joyaux manquants après la reconstruction de l'arbre de la 0.2."
+          ],
+          "editorialAnalysis": [
+            "Les changements de l'arbre de passifs de la 0.2 ont retiré certains emplacements des personnages plus anciens. Les joyaux concernés sont récupérables via la commande /reclaimjewels plutôt que rachetés."
+          ],
+          "officialAnswer": [
+            "Utilisez /reclaimjewels pour récupérer les joyaux des emplacements retirés ; il s'agit d'un correctif ancien, non d'un changement de drop actuel."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Historique des patches"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Le clic droit ne fait rien sur l'emplacement",
+          "directAnswer": [
+            "L'emplacement de joyau n'est pas alloué ou pas relié à votre arbre. Allouez-le d'abord, puis placez le joyau."
+          ],
+          "checks": [
+            "Ouvrez l'arbre de passifs, confirmez que le nœud d'emplacement est allumé et relié, puis réessayez."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Étapes de placement"
+            }
+          ]
+        },
+        {
+          "symptom": "Le cercle de rayon est minuscule et ne couvre rien d'utile",
+          "directAnswer": [
+            "Le rayon du joyau est petit ou vos nœuds alloués sont à l'extérieur. Replanifiez l'emplacement ou choisissez un joyau avec un plus grand rayon pour cette zone."
+          ],
+          "checks": [
+            "Prévisualisez le rayon dans le planificateur et comptez les nœuds alloués à l'intérieur."
+          ]
+        },
+        {
+          "symptom": "Le joyau unique ne va pas dans l'emplacement Sinistre",
+          "directAnswer": [
+            "Les emplacements Sinistres refusent les joyaux Uniques ; ils n'acceptent que leur ensemble de joyaux pris en charge (ex. Magique corrompu)."
+          ],
+          "checks": [
+            "Utilisez un emplacement normal d'arbre passif pour les joyaux uniques."
+          ]
+        },
+        {
+          "symptom": "Joyaux manquants après une mise à jour de l'arbre",
+          "directAnswer": [
+            "Si un emplacement a été retiré, récupérez le joyau avec /reclaimjewels plutôt qu'en achetant un nouveau."
+          ],
+          "checks": [
+            "Lancez /reclaimjewels dans le chat ; vérifiez l'inventaire et le coffre."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Démo vidéo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 Jewels, Corruption and Passive Tree Specialisation",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "Créateur communautaire",
+          "description": "Couvre la corruption des joyaux, la spécialisation de l'arbre de passifs et une mention d'Against the Darkness dans une démo de build en direct.",
+          "takeaway": "Montre comment les joyaux et la corruption s'intègrent dans un vrai plan d'arbre de passifs et où un joyau à rayon comme Against the Darkness modifie les nœuds alloués.",
+          "timestamps": [
+            { "label": "Spécialisation de l'arbre de passifs", "time": "01:54" },
+            { "label": "Corruption et joyaux", "time": "03:03" },
+            { "label": "Mention d'Against the Darkness", "time": "02:49" },
+            { "label": "Résumé de la build", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Galerie média",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Emplacement de joyau alloué sur l'arbre de compétences passives",
+          "note": "Montre le nœud d'emplacement allumé et relié avant le placement."
+        },
+        {
+          "caption": "Comparaison emplacement non alloué contre alloué",
+          "note": "Un emplacement de joyau n'apparaît qu'une fois l'emplacement alloué."
+        },
+        {
+          "caption": "Cercle de rayon blanc projeté par un joyau Hors-du-Temps",
+          "note": "Les nœuds à l'intérieur du cercle reçoivent les bonus du joyau."
+        },
+        {
+          "caption": "Comparaison base, Hors-du-Temps, Intemporel et unique Diamant",
+          "note": "Quatre groupes de joyaux avec des emplacements et comportements de rayon différents."
+        },
+        {
+          "caption": "Emplacement d'un joyau Sinistre sur l'équipement",
+          "note": "Apparaît via Voices, séparé des emplacements d'arbre passif."
+        },
+        {
+          "caption": "Résultat de la commande /reclaimjewels",
+          "note": "Récupère les joyaux des emplacements retirés par la reconstruction de l'arbre de la 0.2."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Contenu connexe",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "Unique Hors-du-Temps Diamant avec deux modificateurs de rayon aléatoires.",
+          "href": "/fr/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Unique Diamant qui alloue un Keystone sans connexion.",
+          "href": "/fr/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "Unique Diamant avec une zone d'allocation distante en forme d'anneau.",
+          "href": "/fr/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "Amplifie les joyaux Magiques corrompus dans le rayon.",
+          "href": "/fr/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "Unique Diamant qui alloue des Notables aléatoires.",
+          "href": "/fr/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices et emplacements de joyau Sinistre",
+          "description": "Ajoute des emplacements Sinistres sur l'équipement pour des joyaux spécifiques.",
+          "href": "/fr/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Joyaux Intemporels",
+          "description": "Conquête pilotée par la Graine de Heroic Tragedy et Undying Hate.",
+          "href": "/fr/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "Lâche Against the Darkness dans l'Épreuve de Sekhemas.",
+          "href": "/fr/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Guide Respec, Passifs et Ascendancy",
+          "description": "Fonctionnement des points de passif et des respec en 0.5.4.",
+          "href": "/fr/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Planificateur de build : import/export de fichiers de build",
+          "description": "Planifiez les chemins d'emplacement et partagez les arbres.",
+          "href": "/fr/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "Le contexte de patch actuel de l'Early Access.",
+          "href": "/fr/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historique des patches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, actuel)",
+          "changes": [
+            "Les joyaux et emplacements de joyau fonctionnent comme décrit : emplacements alloués, pools d'affixes par base colorée, et comportement de rayon pour les joyaux Hors-du-Temps et uniques à rayon."
+          ]
+        },
+        {
+          "version": "0.2.1 (Socketables et drops uniques)",
+          "changes": [
+            "Ajustement de l'accès aux drops uniques pour les sources de joyaux socketables et uniques."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "La reconstruction de l'arbre de passifs a retiré certains emplacements de joyau des personnages plus anciens ; /reclaimjewels récupère les joyaux concernés."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Les joyaux et emplacements de joyau sont introduits dans l'Early Access."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notes de patch de Path of Exile 2 0.5.4 et documentation officielle des objets.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Données PoE2Wiki et poe2db sur les joyaux et Against the Darkness.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guide Sportskeeda sur les joyaux Hors-du-Temps et guide GameRant sur Against the Darkness.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Discussion Reddit r/PathOfExile2 sur les emplacements, le rayon et les joyaux manquants.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Vidéo communautaire couvrant la corruption des joyaux et la spécialisation de l'arbre de passifs.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale couvrant les emplacements de joyau, les types de base, le nombre de modificateurs, la corruption, Hors-du-Temps contre Intemporel, les emplacements Sinistres, le chevauchement des rayons, la limite d'équipement, le correctif /reclaimjewels et la formule de valeur du joyau pour la 0.5.4."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - How to get Time-Lost Jewels",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - How to get Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 Jewels and Corruption",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Guide des joyaux et emplacements de joyau de Path of Exile 2 (0.5.4)",
+    "description": "Fonctionnement des joyaux et emplacements de joyau dans PoE2 0.5.4 : allocation des emplacements, bases Rubis/Émeraude/Saphir/Diamant, nombre de modificateurs, corruption, rayon Hors-du-Temps, Intemporel contre Hors-du-Temps, emplacements Sinistres et formule de valeur du joyau.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

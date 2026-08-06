@@ -1,0 +1,860 @@
+{
+  "id": "glacial-lance-ritualist",
+  "slug": "glacial-lance-ritualist",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "グレイシャル・ランス儀式者ビルドガイド：槍貫通、供物バフ、エンドゲーム",
+  "shortTitle": "グレイシャル・ランス儀式者",
+  "summary": "0.5.4の槍・冷気型ツールキット：グレイシャル・ランスは儀式者の供物によってダメージと貫通を得て、スピア・フィールドが地面のバフを展開する。槍の命中、供物のタイミング、槍セットの切り替え、予算帯を解説。",
+  "description": "Path of Exile 2 グレイシャル・ランス儀式者ガイド（0.5.4向け）：槍貫通、供物バフ、槍セット切り替え、防御の限界、実際の動画タイムスタンプを網羅。",
+  "classId": "huntress",
+  "ascendancyId": "ritualist",
+  "mainSkillIds": [
+    "glacial-lance",
+    "spear-field"
+  ],
+  "secondarySkillIds": [
+    "blood-hunt",
+    "disengage",
+    "primal-strike",
+    "tidal-wave"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "beginner",
+  "playstyleTags": [
+    "spear",
+    "cold",
+    "ritualist",
+    "melee-ranged",
+    "low-input"
+  ],
+  "damageTypes": [
+    "cold",
+    "physical",
+    "bleed"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "cold"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "cardImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "imageAlt": "戦闘中、グレイシャル・ランスで凍った群れを貫いているハントレス儀式者",
+  "tags": [
+    "bleed",
+    "bossing",
+    "cold",
+    "early-endgame",
+    "endgame",
+    "huntress",
+    "leveling",
+    "melee",
+    "physical",
+    "ranged",
+    "ritualist",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "ビルド概要",
+      "paragraphs": [
+        "グレイシャル・ランス儀式者はハントレスの槍・冷気型ツールキットだ。グレイシャル・ランスは槍を突き出して敵の列を貫通し、儀式者の昇格である「供物」はあなたと生け贄にした供物にダメージ・貫通・生存力を与える。スピア・フィールドは地面にバフ領域を展開する。",
+        "この構成はレベリング時点から強力だ。グレイシャル・ランスは序盤から使え、供物が貫通と冷気ダメージを安定させる。純粋なキャスターのようにリソースを消費しないが、命中率（Accuracy）と槍の属性（affix）に依存する。",
+        "このガイドは段階別だ。まず供物をいつ発動し槍セットをどう切り替えるか、次に装備・パッシブ・セット切り替え・予算帯を扱う。クライアント上の数値や仕様はすべてPC検証予定としている。未検証のDPSは事実として記載しない。"
+      ],
+      "bullets": [
+        "マッピングはグレイシャル・ランスの貫通＋スピア・フィールドのバフで、ほぼワンボタン。",
+        "ボス戦は供物のダメージ窓と槍セット切り替えで締める。",
+        "命中率と槍の属性は、きちんと対処すべき真のボトルネック。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "槍の貫通で群れを非常に効率よく掃討でき、マッピングの手触りが良い。",
+        "儀式者の供物は明確なダメージ窓を作り、ボスをきれいに仕留められる。",
+        "リソース消費がなく、持続的なプレッシャーが低い。",
+        "序盤から低予算で動き、その後スムーズに移行できる。初心者に優しい。"
+      ],
+      "cons": [
+        "命中率が低いと貫通のミスが多くなる。",
+        "槍の属性（冷気/槍ダメージ）は固有ではなく積み上げる必要がある。",
+        "動き回るボスは貫通の命中率を下げる。",
+        "生け贄にした供物が死ぬと一時的にバフを失うため、補充が必要。"
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの流れ：スピア・フィールド → グレイシャル・ランス → 供物",
+      "paragraphs": [
+        "マッピングのループ：まずスピア・フィールドを展開し、その後群れへグレイシャル・ランスを繰り返す。基本的に直線上の位置取りだけで済む。そのためコミュニティではワンボタン・マッピングと呼んでいる。",
+        "ボスのループ：ボスの通路上にスピア・フィールドを展開し、グレイシャル・ランスで貫通、その後リソースが満タンになったら供物のダメージ窓を開け、必要に応じて槍セットを切り替える（1本は冷気、1本はアーマーブレイク/物理）。",
+        "供物は通常、バフのために供物を召喚して生け贄にする仕組みであり、タダの機能ではない。スキル説明とクライアントで確認し、隠しの別システムのように扱わないこと。"
+      ],
+      "bullets": [
+        "マッピング＝スピア・フィールド＋グレイシャル・ランスの貫通。",
+        "ボス＝バフ領域 → 貫通 → 供物の窓。",
+        "槍セットの切り替えがダメージ補完の鍵。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "まずグレイシャル・ランスから。これは非常に序盤から使えて、本命のマッピングスキルだ。供物はまだ無理に使わないこと。リソースも装備も整っていない。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "地面バフとしてスピア・フィールドを追加し、命中率/冷気ダメージ/ライフのノードを取り始める。コアは引き続きグレイシャル・ランス。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — 儀式者の解放",
+          "levelRange": "30–42",
+          "body": [
+            "儀式者を選び、供物のノードを取る。これで供物の窓がボスへのバーストをもたらす。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "低予算で貫通＋供物を回す。耐性を上限にし、命中率とライフを整え、レア敵にはバフ領域を維持する。"
+          ]
+        },
+        {
+          "label": "レベル 60+ — エンドゲーム準備",
+          "levelRange": "60+",
+          "body": [
+            "予算アップグレードへ：槍の冷気ダメージ、命中率、クリティカル、カオス耐性。強力な装備への追求は、アップグレード優先度のチェックリストを通ってから。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Glacial Lance",
+              "skillId": "glacial-lance",
+              "role": "掃討と単体両方の槍貫通の中核。ボスの主力ダメージ。",
+              "supportSkillIds": [
+                "cold-penetration",
+                "pierce",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "ループ全体の貫通の中核。これがないとマッピングもボス戦もリズムを失う。"
+              ],
+              "whenReplace": [
+                "置き換えなし。マップではスピア・フィールドがそれを加速させる。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：貫通を連打。ボス：コアに対して反復。"
+              ],
+              "notes": [
+                "正確なサポートリンクと槍レベルはPC検証予定。"
+              ]
+            },
+            {
+              "displayName": "Spear Field",
+              "skillId": "spear-field",
+              "role": "ダメージと命中率を支える地面の槍バフ領域。",
+              "supportSkillIds": [
+                "increased-area",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "命中率とダメージの盲点をカバーする。マッピングとボス戦の安定バフ。"
+              ],
+              "whenReplace": [
+                "常時維持。より強い地面バフが現れた場合のみ切り替え。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：常に展開。ボス：通路上に展開。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "バフと追撃",
+          "skills": [
+            {
+              "displayName": "Blood Hunt",
+              "skillId": "blood-hunt",
+              "role": "流血/低ライフの対象へのフィニッシャー。単体を強化。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "ボスのフェーズと掃討に安定しており、槍のフィニッシュと組み合わせる。"
+              ],
+              "whenReplace": [
+                "維持。ダメージ構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使うが、ボス戦ではそのフィニッシュにより依存する。"
+              ],
+              "notes": [
+                "流血または低ライフの対象でのみ効率的。"
+              ]
+            },
+            {
+              "displayName": "Disengage",
+              "skillId": "disengage",
+              "role": "距離を取って貫通の列をリセットする後退移動。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "槍ビルドの位置取りの核心。その後再び貫通。"
+              ],
+              "whenReplace": [
+                "維持。移動構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使うが、ボス戦ではより重要。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Primal Strike",
+              "skillId": "primal-strike",
+              "role": "蓄積して放つ一撃でバーストとアーマーブレイクを与える。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "供物の窓と槍セット切り替え中の追加バースト。"
+              ],
+              "whenReplace": [
+                "維持。バースト構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングでは任意。ボス戦では窓を強化するために配置。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "儀式者 — 最初のノード",
+          "body": [
+            "儀式者を選ぶ。ダメージ窓が確実にバーストをもたらすよう、供物のノードを優先する。これがビルドの前提条件だ。"
+          ]
+        },
+        {
+          "label": "命中率と防御の確認",
+          "body": [
+            "T15以降で命中率が不足している、あるいは生存が不安定なら、純粋なダメージのために供物/冷気ノードを犠牲にしてはいけない。まず命中率とカオス耐性を確保する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "槍/冷気ダメージと命中率を支援するノードだけを取る。クリティカルの車輪へは事前に道を取らないこと。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "貫通型に切り替える。ライフ、命中率、冷気ダメージ、カオス耐性を優先。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "防御と命中率が解決した後、クリティカル/槍ダメージの車輪に投資する。同ティアで装備状態を比較すること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Spear",
+          "recommendations": [
+            "槍レベルと冷気/槍ダメージを高めるベースを選ぶ。グレイシャル・ランスのリンク用に十分なソケットを確保。2本（冷気用とアーマーブレイク/物理用）を検討してもよい。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "槍スキルレベル / 冷気ダメージ",
+              "reason": "グレイシャル・ランスの解決（resolution）を直接スケールする。"
+            },
+            {
+              "tier": "recommended",
+              "label": "命中率と攻撃速度",
+              "reason": "貫通の命中とリズムの鍵。"
+            },
+            {
+              "tier": "optional",
+              "label": "クリティカル率 / クリティカルダメージ",
+              "reason": "命中率と冷気が安定してから。"
+            },
+            {
+              "tier": "luxury",
+              "label": "追加貫通",
+              "reason": "セット切り替えと生存が安定してからのみ。"
+            }
+          ],
+          "notes": [
+            "槍はメイン武器。冷気と命中率を優先。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "ライフ、カオス耐性、耐性。キティング用にブーツの移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと2つの上限耐性",
+              "reason": "死ぬことの埋め合わせになるダメージはない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "カオス耐性",
+              "reason": "後半必須だが固有ではない。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "位置取りとロールのリズムを改善。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的な冷気属性",
+              "reason": "防御の後でのみ意味を持つ。"
+            }
+          ],
+          "notes": [
+            "カオス耐性は特別に積み上げる必要がある。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "能力値、耐性、ライフ、命中率。必要に応じて冷気または貫通。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "槍とジェムを装備するための能力値",
+              "reason": "装備できなければ無用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "命中率 / 冷気ダメージ",
+              "reason": "アクセサリからの自由な強化。"
+            },
+            {
+              "tier": "luxury",
+              "label": "槍スキルレベル",
+              "reason": "後半のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "槍スキルレベル",
+          "reason": "グレイシャル・ランスをスケール。最優先の進捗確認。"
+        },
+        {
+          "label": "命中率",
+          "reason": "貫通命中の下限。不足するとミスが多発。"
+        },
+        {
+          "label": "冷気 / 槍ダメージ",
+          "reason": "解決（resolution）を直接スケール。"
+        },
+        {
+          "label": "カオス耐性",
+          "reason": "後半必須だが固有ではない。"
+        },
+        {
+          "label": "クリティカル",
+          "reason": "命中率と冷気が安定してからのみ。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "掃討が遅い",
+          "symptom": "群れを倒すのに多くの貫通ラウンドが必要。",
+          "checks": [
+            "槍はまだ適正ティアのベースか？",
+            "耐性とライフは解決済みか（つまり槍が真のボトルネックか）？"
+          ],
+          "upgrade": "アクセサリに触る前に、ティア不足の槍を交換する。"
+        },
+        {
+          "label": "貫通がよく外れる",
+          "symptom": "槍がボス戦で頻繁に空振りする。",
+          "checks": [
+            "命中率は十分か？",
+            "ダメージばかり積み、命中率を無視していないか？"
+          ],
+          "upgrade": "ダメージを伸ばす前に命中率を直す。"
+        },
+        {
+          "label": "供物が来ない",
+          "symptom": "ダメージ窓が一向に安定しない。",
+          "checks": [
+            "供物のノードは取ったか？",
+            "キルペースが遅すぎてリソースが溜まらないか？"
+          ],
+          "upgrade": "槍ではなく、アセンダンシーとキルペースを直す。"
+        },
+        {
+          "label": "T15以降で停滞",
+          "symptom": "ダメージが改善しなくなる。",
+          "checks": [
+            "槍レベルは上限か？",
+            "冷気ダメージは入っているか？",
+            "カオス耐性は最大か？"
+          ],
+          "upgrade": "順序通りに強化：槍レベル → 冷気 → カオス耐性。"
+        },
+        {
+          "label": "高級装備の検討",
+          "symptom": "より高いボスダメージを求め、高級装備を狙っている。",
+          "checks": [
+            "命中率と生存は安定しているか？",
+            "高級装備が耐性上限を崩す、あるいはライフを落とすか？"
+          ],
+          "upgrade": "チェックリストを通ってから少しずつ購入し再テストする。数値のために生存を犠牲にしてはいけない。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "まずスピア・フィールドを展開し、その後群れへグレイシャル・ランスを繰り返す。位置取りは直線上のみ。ゴミ敵に供物は不要。発動のために立ち止まると遅くなる。",
+        "掃討が遅くなったら、まず槍を強化する。生存（耐性/ライフ/キティング）をある程度維持し、マッピングが停滞しないようにする。"
+      ],
+      "bullets": [
+        "スピア・フィールド＋貫通がマッピングの全リズム。",
+        "ゴミ敵には供物をスキップ。",
+        "掃討が遅くなったら都度、槍を強化。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "ボス戦は一連の手順だ。ボスの通路上にスピア・フィールドを展開し、グレイシャル・ランスで貫通、その後リソースが満タンになったら供物のダメージ窓を開け、必要に応じて槍セット（冷気/アーマーブレイク）を切り替える。フェーズ切り替え時はブラッド・ハントで片付ける。",
+        "貫通がよく空振りするなら、問題は槍ではなく命中率だ。ボスがよく動く場合は、足元ではなく通らざるを得ない狭い通路にスピア・フィールドを置く。"
+      ],
+      "bullets": [
+        "スピア・フィールド → 貫通 → 供物の窓。",
+        "フェーズ片付けはブラッド・ハント。",
+        "空振り＝武器の交換ではなく、命中率と配置を直す。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "予算帯：激安と高級の実際の違い",
+      "paragraphs": [
+        "激安：低予算の槍に加え、命中率/耐性/ライフが解決していれば、貫通＋供物でほとんどのコンテンツを掃討もボスもこなせる。変わるのは遊べるかどうかであり、ダメージの数値ではない。",
+        "高級：高い槍レベル、特定のユニーク、カオス耐性上限、クリティカルにより、槍の解決と生存の両方を引き上げる。変わるのは天井と許容誤差であり、激安が別のビルドになるわけではない。",
+        "ミラー帯は、激安/高級の合格を確認しクライアントの数値が一致してからのみ。DPSのためにカオス耐性と命中率を犠牲にしてはいけない。"
+      ],
+      "bullets": [
+        "まず激安：ライフ、耐性、命中率、まともな槍。",
+        "後に高級：槍レベル、冷気ダメージ、クリティカル。",
+        "ミラー帯も決して防御の下限を崩さない。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "このガイドは、コミュニティの議論を再現可能なチェックリストとして用いており、彼らが示したDPSを約束するものではない。",
+      "entries": [
+        {
+          "context": "プレイヤーから、T15以降に槍のダメージが停滞し何を強化すべきか分からないとの報告がある。",
+          "label": "MisoxShiru — Glacial Lance Ritualist Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "同ガイドは激安/高級のティアを分け、それぞれが仕様ではなく装備の境界を変えることを明確にしている。",
+          "url": "https://www.youtube.com/watch?v=Vaja6Sp_QR4"
+        },
+        {
+          "context": "プレイヤーが、供物を取る価値があるかどうか議論している。",
+          "label": "MisoxShiru — Glacial Lance Ritualist Back",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "映像は、高プレッシャーのボスにおける供物窓のフィニッシャーとしての価値を示しており、まず命中率と冷気を重視している。",
+          "url": "https://www.youtube.com/watch?v=O3IahSusS4Y"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "ボスの槍がよく空振りする",
+          "checks": [
+            "命中率は十分か？",
+            "ダメージばかり積み、命中率を無視していないか？",
+            "スピア・フィールドは通路上か？"
+          ]
+        },
+        {
+          "symptom": "供物のリソースが満たない",
+          "checks": [
+            "供物のノードは取ったか？",
+            "キルペースが遅すぎないか？"
+          ]
+        },
+        {
+          "symptom": "マッピングが遅い",
+          "checks": [
+            "槍はまだ適正ティアのベースか？",
+            "まず耐性とライフは解決済みか？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "何レベルからグレイシャル・ランスを使うべき？",
+          "answer": [
+            "非常に序盤から使える。本命のマッピングスキルだ。供物は儀式者とリソースを待つ。"
+          ],
+          "bullets": [
+            "レベル1からグレイシャル・ランスでマッピング。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "より良い槍に交換したのにまだよく外れる？",
+          "answer": [
+            "槍の貫通命中は槍単体ではなく命中率に依存する。まず命中率を直すこと。"
+          ],
+          "bullets": [
+            "ボス戦を録画して命中率を確認する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSFでも遊べる？",
+          "answer": [
+            "はい。低予算の貫通＋供物で、SSFでもほとんどのコンテンツをマッピングもボスもこなせる。高級ユニークは天井であって門ではない。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/guides/campaign-early-maps-gearing-crafting/",
+              "label": "キャンペーンと初期マップの装備ガイドを見る"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "PoE2には現在ネイティブなビルドプランナーが付属する。貼り付け可能なインポート文字列と.buildファイルは引き続きPC検証予定。それまでは下記のクリエイターガイドと公式プランナーを使うこと。自端末のクライアントでノードは必ず再確認すること。",
+      "creatorName": "MisoxShiru",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=Vaja6Sp_QR4"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "レベリングとリプレイを見る",
+      "entries": [
+        {
+          "creator": "MisoxShiru",
+          "label": "Glacial Lance Ritualist Guide",
+          "url": "https://www.youtube.com/watch?v=Vaja6Sp_QR4",
+          "description": "槍マッピングから形成された供物までの全経路を示す長めの参考映像。",
+          "takeaway": "各actからキャンペーンボスを1体ずつ見本に。掃討速度ではなく貫通の順序を記録すること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "導入とコンセプト"
+            },
+            {
+              "time": "2:20",
+              "label": "Act 1 マッピング"
+            },
+            {
+              "time": "5:40",
+              "label": "儀式者と供物"
+            },
+            {
+              "time": "9:30",
+              "label": "槍の貫通とスピア・フィールド"
+            },
+            {
+              "time": "13:40",
+              "label": "初期マップと装備"
+            }
+          ]
+        },
+        {
+          "creator": "MisoxShiru",
+          "label": "Glacial Lance Ritualist Replay",
+          "url": "https://www.youtube.com/watch?v=O3IahSusS4Y",
+          "description": "高プレッシャーのリプレイ：命中率の処理、供物のフィニッシュ、装備の境界。",
+          "takeaway": "高プレッシャーのボスでは、盲目的なDPS追いではなく命中率と生存に集中すること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:30",
+              "label": "高プレッシャーのボス突入"
+            },
+            {
+              "time": "4:50",
+              "label": "命中率とスピア・フィールドの配置"
+            },
+            {
+              "time": "8:20",
+              "label": "供物のダメージ窓"
+            },
+            {
+              "time": "12:10",
+              "label": "装備の境界とまとめ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "MisoxShiru — Glacial Lance Ritualist Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=Vaja6Sp_QR4"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "MisoxShiru — Glacial Lance Ritualist Replay (YouTube)",
+          "url": "https://www.youtube.com/watch?v=O3IahSusS4Y"
+        },
+        {
+          "label": "データベース",
+          "description": "Path of Exile 2 Wiki — Ritualist",
+          "url": "https://poe2wiki.net/wiki/Ritualist"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "出典付きの0.5.4 グレイシャル・ランス儀式者ビルドガイドを作成。PC検証は進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "weapon-set-passive-points-explained"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "MisoxShiru — Glacial Lance Ritualist Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Vaja6Sp_QR4"
+    },
+    {
+      "label": "MisoxShiru — Glacial Lance Ritualist Back (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=O3IahSusS4Y"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Ritualist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Ritualist"
+    }
+  ],
+  "seo": {
+    "title": "グレイシャル・ランス儀式者ビルドガイド | Exile2 Guides",
+    "description": "0.5.4 グレイシャル・ランス儀式者：槍貫通、儀式者の供物バフ、槍セット切り替え、予算帯。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "glacial-lance-ritualist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

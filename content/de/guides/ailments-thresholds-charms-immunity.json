@@ -1,0 +1,854 @@
+{
+  "id": "ailments-thresholds-charms-immunity",
+  "slug": "ailments-thresholds-charms-immunity",
+  "locale": "de",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Ailments, Schwellenwerte, Charms und Immunität in Path of Exile 2",
+  "shortTitle": "Ailments & Charms",
+  "summary": "Wie Ailments in PoE 2 funktionieren: Aufbau, Stärke, Dauer, Schwellenwert sowie der Unterschied zwischen Widerstand, Vermeidung und Immunität – und wie Charms automatisch auslösen, um dich zu schützen.",
+  "description": "Ein Mechanik-Guide zu Path-of-Exile-2-Ailments, Ailment-Schwellen und Charm-basierter Immunität: was jedes Ailment bewirkt, wie Verteidigungen ineinandergreifen und wie man den richtigen Charm pro Begegnung wählt.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "Eine Reihe von Charms, die in Path of Exile 2 Ailment-Minderung und Immunitätseffekte gewähren",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Grundlegendes Verständnis von PoE-2-Widerständen und Verteidigungen",
+    "Zugriff auf einen Gürtel mit Charm-Sockeln",
+    "Etwas Vertrautheit mit der Status-Icon-Leiste im Spiel"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "ailment",
+    "charm",
+    "immunity",
+    "threshold",
+    "buildup",
+    "resistance"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Direkte Antworten",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Was ist ein Ailment?",
+          "body": [
+            "Ein Ailment ist ein temporärer Statuseffekt, der durch Treffer oder Schaden ausgelöst wird. Schadenverursachende Ailments verursachen Schaden über Zeit (Bluten, Gift, Entzünden); nicht schadenverursachende Ailments verändern dein Verhalten (Kälte, Frieren, Schock, Elektrisieren, Betäuben)."
+          ]
+        },
+        {
+          "title": "Was ist ein Ailment-Schwellenwert?",
+          "body": [
+            "Der Schwellenwert ist der Aufbau, den ein Gegner (oder du) ansammeln muss, bevor ein Ailment ausgelöst wird. Der basisseitige Ailment-Schwellenwert des Spielers ist ein Bruchteil des maximalen Lebens; Bosse haben in der Regel höhere Schwellenwerte und wehren sich daher stärker gegen Ailments."
+          ]
+        },
+        {
+          "title": "Wie funktionieren Charms?",
+          "body": [
+            "Ein Charm wird in einem Gürtel getragen und löst automatisch aus, sobald seine verknüpfte Bedingung eintritt (zum Beispiel das Frieren). Er verbraucht Ladungen, die an Brunnen wieder aufgefüllt oder durch das Töten von Monstern erzeugt werden. Immunitäts-Charms verhindern das verknüpfte Ailment vollständig, anstatt es nur zu verringern."
+          ]
+        },
+        {
+          "title": "Widerstand vs. Immunität?",
+          "body": [
+            "Widerstand verringert die Stärke oder den Schaden eines Ailments, verhindert aber nicht dessen Auslösung. Immunität (durch einen Charm oder einen Keystone) verhindert das Ailment vollständig und schützt dich vor dessen Wirkung. Beides ist nicht dasselbe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ailment-taxonomy",
+      "order": 2,
+      "title": "Ailment-Taxonomie: schadend vs. nicht schadend",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ailments in Path of Exile 2 lassen sich in zwei Gruppen unterteilen. Schadenverursachende Ailments verursachen Schaden über Zeit und haben eigene Regeln für ihre Schadensabwicklung; nicht schadenverursachende Ailments wenden einen Kontroll- oder Debuff-Effekt ohne Schaden-over-Time-Komponente an.",
+        "Schadenverursachende Ailments sind Bluten, Gift und Entzünden. Nicht schadenverursachende Ailments sind Kälte, Frieren, Schock, Elektrisieren und betäubungsbezogene Effekte. Jedes erscheint als Icon in deiner Statusleiste, sobald es aktiv ist; das Icon zeigt, was passiert und wie dringlich es ist."
+      ],
+      "bullets": [
+        "Bluten: physischer Schaden über Zeit, meist durch Angriffe; zeigt ein Blut-Icon.",
+        "Gift: Chaos-Schaden über Zeit, der sich mit jeder Anwendung stapelt; zeigt ein Gift-Icon.",
+        "Entzünden: Feuer-Schaden über Zeit; zeigt ein Brennen-Icon.",
+        "Kälte: verlangsamt deine Aktionsgeschwindigkeit um einen skalierten Betrag; zeigt ein Frost-Icon.",
+        "Frieren: stoppt Aktionen kurzzeitig vollständig; zeigt ein Gefrier-Icon.",
+        "Schock: erhöht den durch Treffer erlittenen Schaden; zeigt ein Blitz-Icon.",
+        "Elektrisieren: ein schwererer, schockähnlicher Betäubungseffekt; zeigt ein geladenes Icon.",
+        "Betäubung: unterbricht Aktionen, sobald die Betäubungsanzeige voll ist; zeigt ein taumelndes Icon."
+      ]
+    },
+    {
+      "id": "ailment-matrix",
+      "order": 3,
+      "title": "Ailment-Referenz-Matrix",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Jedes Ailment, seine Standardquelle, der Effekt auf das Ziel, die gängigste Verteidigung und der Charm, der ihm entgegenwirkt.",
+      "columns": [
+        {
+          "key": "ailment",
+          "label": "Ailment"
+        },
+        {
+          "key": "type",
+          "label": "Typ"
+        },
+        {
+          "key": "default-source",
+          "label": "Standardquelle"
+        },
+        {
+          "key": "effect-on-target",
+          "label": "Effekt auf Ziel"
+        },
+        {
+          "key": "common-defence",
+          "label": "Gängige Verteidigung"
+        },
+        {
+          "key": "related-charm",
+          "label": "Zugehöriger Charm"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Bleed",
+            "type": "Damaging",
+            "default-source": "Physische Angriffe",
+            "effect-on-target": "Physischer Schaden über Zeit",
+            "common-defence": "Blut-Schwellenwert / Stillende Charm",
+            "related-charm": "Stillend"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Poison",
+            "type": "Damaging",
+            "default-source": "Chaos-Treffer",
+            "effect-on-target": "Stapelnder Chaos-Schaden über Zeit",
+            "common-defence": "Chaos-Resi / Gegengift-Charm",
+            "related-charm": "Gegengift"
+          }
+        },
+        {
+          "tags": [
+            "damaging"
+          ],
+          "cells": {
+            "ailment": "Ignite",
+            "type": "Damaging",
+            "default-source": "Feuer-Treffer",
+            "effect-on-target": "Feuer-Schaden über Zeit",
+            "common-defence": "Feuer-Resi / Lösch-Charm",
+            "related-charm": "Löschend"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Chill",
+            "type": "Non-damaging",
+            "default-source": "Kälte-Treffer",
+            "effect-on-target": "Verlangsamt Aktionsgeschwindigkeit",
+            "common-defence": "Kälte-Resi / Kältereduktion",
+            "related-charm": "Saphir"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Freeze",
+            "type": "Non-damaging",
+            "default-source": "Schwere Kälte-Treffer",
+            "effect-on-target": "Stoppt Aktionen kurzzeitig",
+            "common-defence": "Frier-Immunität / Tau-Charm",
+            "related-charm": "Tauend"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Shock",
+            "type": "Non-damaging",
+            "default-source": "Blitz-Treffer",
+            "effect-on-target": "Erhöht erlittenen Schaden",
+            "common-defence": "Blitz-Resi / Erdungs-Charm",
+            "related-charm": "Erdung"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Electrocute",
+            "type": "Non-damaging",
+            "default-source": "Schwere Blitz-Treffer",
+            "effect-on-target": "Starker betäubungsähnlicher Effekt",
+            "common-defence": "Betäubungs-Schwellenwert / Erdungs-Charm",
+            "related-charm": "Erdung"
+          }
+        },
+        {
+          "tags": [
+            "non-damaging"
+          ],
+          "cells": {
+            "ailment": "Stun",
+            "type": "Non-damaging",
+            "default-source": "Volle Betäubungsanzeige",
+            "effect-on-target": "Unterbricht Aktionen",
+            "common-defence": "Betäubungs-Schwellenwert / Stein-Charm",
+            "related-charm": "Stein"
+          }
+        }
+      ],
+      "note": "Schwellenwerte und exakte Stärken sind versionsabhängig und gegenüber dem live 0.5.4-Client als PC-Verifizierung ausstehend markiert."
+    },
+    {
+      "id": "threshold-buildup-magnitude-duration",
+      "order": 4,
+      "title": "Schwellenwert, Aufbau, Stärke und Dauer",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Vier Konzepte bestimmen jedes Ailment. Aufbau ist die Anzeige, die sich füllt, während du Ailment-Schaden verursachst; sobald der Aufbau den Schwellenwert des Ziels erreicht, wird das Ailment ausgelöst und die Anzeige zurückgesetzt. Die Stärke skaliert, wie stark der Effekt ist (zum Beispiel wie stark Kälte dich verlangsamt oder wie viel Schaden Entzünden macht). Die Dauer ist, wie lange das ausgelöste Ailment anhält.",
+        "Der Schwellenwert ist das Tor: Ein Ziel mit hohem Schwellenwert benötigt mehr Aufbau, um befallen zu werden. Der basisseitige Ailment-Schwellenwert des Spielers ist ein Anteil des maximalen Lebens, während Bosse tendenziell viel höhere Schwellenwerte haben – sodass dieselben Fähigkeiten, die zuverlässig eine Gruppe belegen, bei einem Boss oft nie haften bleiben."
+      ],
+      "bullets": [
+        "Aufbau: füllt sich Richtung Schwellenwert; erreicht ihn, wird das Ailment ausgelöst.",
+        "Schwellenwert: der Zielwert, den der Aufbau erreichen muss, bevor das Ailment greift.",
+        "Stärke: wie stark der Effekt nach Auslösung ist (Verlangsamung %, DoT usw.).",
+        "Dauer: wie lange das Ailment aktiv bleibt, bevor es abläuft."
+      ]
+    },
+    {
+      "id": "applying-ailments",
+      "order": 5,
+      "title": "Wie Spieler Ailments auf Gegner anwenden",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Du wendest Ailments an, indem du den passenden Schadenstyp mit einem Treffer oder Schaden-over-Time-Effekt verursachst. Die Chance zur Auslösung wird durch Ailment-Chance und den Schwellenwert des Gegners bestimmt; genug Aufbau überschreitet den Schwellenwert und das Ailment greift.",
+        "Manche Fähigkeiten und Support-Gemmen sind gezielt darauf ausgelegt, Ailments anzuwenden (zum Beispiel Blut-Supports auf Angriffen oder Entzünden-aus-Feuer-Zaubern). Gegen Bosse zahlt es sich weit mehr aus, in Ailment-Stärke und schwellenwertbrechende Modifikatoren zu investieren, als gegen normale Monster."
+      ],
+      "bullets": [
+        "Passe den Schadenstyp an das gewünschte Ailment an (Feuer für Entzünden, Kälte für Kälte/Frieren usw.).",
+        "Der Aufbau muss den Schwellenwert des Ziels erreichen; Bosse haben höhere Schwellenwerte.",
+        "Stärke-Verbesserungen machen den Effekt stärker, nicht leichter auslösbar.",
+        "Prüfe den Tooltip im Spiel für die exakten Aufbau- und Schwellenwert-Zahlen eines bestimmten Gegners."
+      ]
+    },
+    {
+      "id": "avoiding-and-mitigating",
+      "order": 6,
+      "title": "Ailments vermeiden und abmildern",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Verteidigungen gegen Ailments sind geschichtet, und jede Schicht verhält sich anders. Widerstand senkt die Stärke oder den Schaden eines Ailments, verhindert aber nicht dessen Auslösung. Reduzierter Effekt und Reduzierte Dauer verkleinern die Wirkung des Ailments oder verkürzen dessen Dauer. Vermeidung kann das Ailment bei einem Würfelwurf von vornherein gar nicht erst auslösen lassen.",
+        "Immunität ist die stärkste Schicht: Sie verhindert das verknüpfte Ailment vollständig, unabhängig vom Aufbau. Widerstand und Immunität sind nicht austauschbar – das Maximieren des Feuer-Widerstands hindert dich nicht daran, entzündet zu werden, es verringert nur den Brand."
+      ],
+      "bullets": [
+        "Widerstand: verringert Stärke/Schaden, Ailment kann dennoch auslösen.",
+        "Reduzierter Effekt / Reduzierte Dauer: verkleinert oder verkürzt das Ailment.",
+        "Vermeidung: Chance, die Auslösung vollständig zu verhindern.",
+        "Immunität: verhindert das verknüpfte Ailment vollständig (Charm oder Keystone)."
+      ]
+    },
+    {
+      "id": "charm-basics",
+      "order": 7,
+      "title": "Charm-Grundlagen",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ein Charm ist ein Schmuckstück, das in einem Gürtel getragen wird und auf eine bestimmte Bedingung wartet und automatisch auslöst, sobald diese eintritt. Ein Immunitäts-Charm löst aus und verhindert das verknüpfte Ailment vollständig; ein Widerstands-Charm gewährt stattdessen einen temporären Widerstands-Boost, sobald sein Auslöser greift.",
+        "Jeder Charm verbraucht Ladungen, wenn er auslöst. Ladungen werden nur gespeichert, solange der Charm in einem Gürtel steckt, und sie füllen sich an Brunnen oder durch das Töten von Monstern auf. Ein Gürtel bietet eine begrenzte Anzahl an Charm-Sockeln, sodass du nicht jeden Charm gleichzeitig ausrüsten kannst – wähle nach dem Inhalt, den du spielst."
+      ],
+      "bullets": [
+        "Auto-Auslösung: greift im Moment, in dem seine Bedingung eintritt.",
+        "Ladungen: beim Einsatz verbraucht; an Brunnen oder durch Kills aufgefüllt.",
+        "Gürtel-Sockel: begrenzte Zahl an Charm-Plätzen (siehe Gürtel-Tooltip im Spiel).",
+        "Immunität vs. Widerstand: Immunität verhindert, Widerstand verringert nur."
+      ]
+    },
+    {
+      "id": "charm-charge-simulator",
+      "order": 8,
+      "title": "Welchen Charm sollte ich jetzt verwenden?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Wähle die Situation, die du erwartest. Das Werkzeug zeigt auf den passenden Charm und worauf du achten musst.",
+      "controls": [
+        {
+          "id": "situation",
+          "label": "Womit hast du es zu tun?",
+          "options": [
+            {
+              "label": "Ständiger Kälte-/Frier-Druck",
+              "value": "cold"
+            },
+            {
+              "label": "Bluten- oder Gift-Schaden über Zeit",
+              "value": "dot"
+            },
+            {
+              "label": "Häufige Blitz-Treffer",
+              "value": "lightning"
+            },
+            {
+              "label": "Feuer-lastige Gegner",
+              "value": "fire"
+            },
+            {
+              "label": "Wirst oft betäubt",
+              "value": "stun"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Verwende einen Tau- oder Saphir-Charm",
+          "when": {
+            "situation": "cold"
+          },
+          "steps": [
+            "Rüste einen Tau-Charm für volle Frier-Immunität aus, wenn dich das Frieren tötet.",
+            "Nutze einen Saphir-Charm für einen temporären Kälte-Widerstands-Boost, wenn Frieren selten ist.",
+            "Achte auf deine Charm-Ladungen – ein Gefrierzustand ohne Ladungen löst sich nicht auf."
+          ]
+        },
+        {
+          "title": "Verwende einen Stillenden oder Gegengift-Charm",
+          "when": {
+            "situation": "dot"
+          },
+          "steps": [
+            "Rüste einen Stillenden Charm aus, um gegen Bluten immun zu werden.",
+            "Rüste einen Gegengift-Charm aus, um gegen Gift immun zu werden.",
+            "Bevorzuge hier Immunitäts-Charms gegenüber Widerstand, da DoT die Stärkenskalierung ignoriert."
+          ]
+        },
+        {
+          "title": "Verwende einen Erdungs-Charm",
+          "when": {
+            "situation": "lightning"
+          },
+          "steps": [
+            "Rüste einen Erdungs-Charm für Schock-Immunität aus.",
+            "Erwäge zudem einen Topas-Charm, wenn du nur einen Widerstands-Boost brauchst.",
+            "Halte die Ladungen aufgefüllt, indem du zwischen Gruppen Monster tötest."
+          ]
+        },
+        {
+          "title": "Verwende einen Lösch-Charm",
+          "when": {
+            "situation": "fire"
+          },
+          "steps": [
+            "Rüste einen Lösch-Charm für Entzünden-Immunität aus.",
+            "Ein Rubin-Charm funktioniert, wenn du nur Feuer-Widerstand willst.",
+            "Prüfe die Anzahl der Gürtel-Sockel, bevor du mehrere Charms festlegst."
+          ]
+        },
+        {
+          "title": "Verwende einen Stein-Charm",
+          "when": {
+            "situation": "stun"
+          },
+          "steps": [
+            "Rüste einen Stein-Charm aus, um nicht betäubbar zu sein, solange er aktiv ist.",
+            "Erhöhe deinen Betäubungs-Schwellenwert über Ausrüstung und Passive als zweite Schicht.",
+            "Fülle die Ladungen an Brunnen vor, bevor du schwere Bosse angehst."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Allgemeine Charm-Empfehlungen",
+        "steps": [
+          "Passe den Charm an das tödlichste Ailment des Inhalts an, den du spielst.",
+          "Priorisiere Immunitäts-Charms bei Ailments, die dich sofort töten oder aussperren.",
+          "Fülle Ladungen an Brunnen oder durch das Töten von Monstern auf, bevor jede gefährliche Begegnung."
+        ]
+      }
+    },
+    {
+      "id": "charm-selection-by-content",
+      "order": 9,
+      "title": "Charm-Auswahl nach Inhalt",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Vorgeschlagener Charm-Typ pro gängiger Begegnung, das Laden-Risiko und eine alternative Verteidigung, wenn kein Sockel frei ist.",
+      "columns": [
+        {
+          "key": "encounter",
+          "label": "Begegnung"
+        },
+        {
+          "key": "suggested-charm-type",
+          "label": "Vorgeschlagener Charm"
+        },
+        {
+          "key": "charge-risk",
+          "label": "Laden-Risiko"
+        },
+        {
+          "key": "alternative-defence",
+          "label": "Alternative Verteidigung"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Kälte-Magier-Gruppen",
+            "suggested-charm-type": "Tauend",
+            "charge-risk": "Hoch (häufiges Frieren)",
+            "alternative-defence": "Kälte-Widerstand + Kältereduktion"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "Blut-Speerkämpfer",
+            "suggested-charm-type": "Stillend",
+            "charge-risk": "Mittel",
+            "alternative-defence": "Höheres Leben + Blut-Schwellenwert"
+          }
+        },
+        {
+          "tags": [
+            "medium"
+          ],
+          "cells": {
+            "encounter": "Gift-aufgeblähte Gegner",
+            "suggested-charm-type": "Gegengift",
+            "charge-risk": "Mittel",
+            "alternative-defence": "Chaos-Widerstand"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Entzünden-lastige Bosse",
+            "suggested-charm-type": "Löschend",
+            "charge-risk": "Hoch (langer Kampf)",
+            "alternative-defence": "Feuer-Widerstand + Lebensregen"
+          }
+        },
+        {
+          "tags": [
+            "high"
+          ],
+          "cells": {
+            "encounter": "Blitz-Zauberer",
+            "suggested-charm-type": "Erdung",
+            "charge-risk": "Hoch",
+            "alternative-defence": "Blitz-Widerstand"
+          }
+        },
+        {
+          "tags": [
+            "low"
+          ],
+          "cells": {
+            "encounter": "Betäubungs-lock-Bosse",
+            "suggested-charm-type": "Stein",
+            "charge-risk": "Niedrig",
+            "alternative-defence": "Betäubungs-Schwellenwert + Rüstung"
+          }
+        }
+      ],
+      "note": "Exakte Charm-Laden-Kosten und Sockelgrenzen sind versionsabhängig und als PC-Verifizierung ausstehend markiert."
+    },
+    {
+      "id": "status-icon-gallery",
+      "order": 10,
+      "title": "Status-Icon-Galerie",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Kurzreferenz für die Icons, die du in deiner Statusleiste und auf Charms in deinem Gürtel siehst.",
+      "cards": [
+        {
+          "title": "Blut-Icon",
+          "tag": "ailment",
+          "body": [
+            "Roter Tropfen. Bedeutet, physischer Schaden über Zeit ist aktiv; mit einem Stillenden Charm kontern."
+          ]
+        },
+        {
+          "title": "Gift-Icon",
+          "tag": "ailment",
+          "body": [
+            "Grünes Gift. Stapel von Chaos-Schaden über Zeit; mit einem Gegengift-Charm kontern."
+          ]
+        },
+        {
+          "title": "Entzünden-Icon",
+          "tag": "ailment",
+          "body": [
+            "Orangeflamme. Feuer-Schaden über Zeit; mit einem Lösch-Charm kontern."
+          ]
+        },
+        {
+          "title": "Kälte-/Frier-Icon",
+          "tag": "ailment",
+          "body": [
+            "Blauer Frost. Verlangsamung oder kompletter Stopp; mit einem Saphir- oder Tau-Charm kontern."
+          ]
+        },
+        {
+          "title": "Schock-/Elektrisieren-Icon",
+          "tag": "ailment",
+          "body": [
+            "Gelber Blitz. Erhöhter erlittener Schaden oder Betäubung; mit einem Erdungs-Charm kontern."
+          ]
+        },
+        {
+          "title": "Tau-Charm",
+          "tag": "charm",
+          "body": [
+            "Gewährt Immunität gegen Frieren, sobald du gefrierst. Verbraucht 40 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Stillender Charm",
+          "tag": "charm",
+          "body": [
+            "Gewährt Immunität gegen Bluten, sobald du zu bluten beginnst. Verbraucht 30 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Gegengift-Charm",
+          "tag": "charm",
+          "body": [
+            "Gewährt Immunität gegen Gift, sobald du vergiftet wirst. Verbraucht 20 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Lösch-Charm",
+          "tag": "charm",
+          "body": [
+            "Gewährt Immunität gegen Entzünden, sobald du entzündet wirst. Verbraucht 30 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Erdungs-Charm",
+          "tag": "charm",
+          "body": [
+            "Gewährt Immunität gegen Schock, sobald du geschockt wirst. Verbraucht 30 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Stein-Charm",
+          "tag": "charm",
+          "body": [
+            "Kann nicht betäubt werden, solange aktiv. Verbraucht 20 von 40 Ladungen."
+          ]
+        },
+        {
+          "title": "Elementar-Widerstands-Charms",
+          "tag": "charm",
+          "body": [
+            "Rubin, Saphir, Topas und Amethyst gewähren einen temporären Widerstands-Boost, sobald ihr Schadenstyp trifft."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boss-and-player-differences",
+      "order": 11,
+      "title": "Bosse vs. Spieler: Ailment-Schwierigkeit",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bosse lassen sich spürbar schwerer belegen als normale Monster. Ihre höheren Ailment-Schwellenwerte erfordern mehr Aufbau, und viele Bosskämpfe sind so abgestimmt, dass Ailments, die Trash-Mobs trivialisieren, dort kaum registrieren.",
+        "Verkünde daher nicht, ein Boss sei vollständig immun oder vollständig kontrollierbar, sofern keine aktuelle Quelle dies bestätigt. Behandle die Anwendung von Ailments auf Bosse als möglich, aber schwierig, und verifiziere Einzelfälle am live Client, statt sie anzunehmen."
+      ],
+      "bullets": [
+        "Boss-Schwellenwerte sind höher, sodass der Aufbau oft zu kurz greift.",
+        "Manche Bosse widerstehen bestimmten Ailments designbedingt oder schütteln sie ab.",
+        "Gib keine absoluten Behauptungen zu 'immun' oder 'kontrollierbar' ohne aktuelle Quelle ab.",
+        "Verifiziere boss-spezifisches Ailment-Verhalten im Spiel, bevor du dich darauf verlässt."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "Community-Belege und häufige Verwirrung",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Antworten auf die am häufigsten wiederholten Spielerfragen zu Charms und Immunität, aus Community-Diskussionen zusammengestellt.",
+      "cards": [
+        {
+          "title": "Charm ausgerüstet, aber weiter gefroren",
+          "tag": "confusion",
+          "body": [
+            "Bedeutet meist: keine Ladungen mehr, der falsche Charm fürs Ailment, der Gürtel nicht gesockelt oder der Inhalt verbietet Charms. Prüfe zuerst Ladungen und Gürtel-Sockel."
+          ]
+        },
+        {
+          "title": "Widerstand ist nicht Immunität",
+          "tag": "confusion",
+          "body": [
+            "Hoher Feuer-Widerstand senkt den Entzünden-Schaden, verhindert aber nicht das Auslösen von Entzünden. Nur ein Immunitäts-Charm oder Keystone verhindert es."
+          ]
+        },
+        {
+          "title": "Charm ist nicht rechtzeitig ausgelöst",
+          "tag": "confusion",
+          "body": [
+            "Ladungen füllen sich an Brunnen oder durch Kills auf. Ein Boss mit leerem Charm bewirkt nichts, bis er wieder aufgefüllt ist."
+          ]
+        },
+        {
+          "title": "Boss wird nie blutend",
+          "tag": "confusion",
+          "body": [
+            "Der Boss-Schwellenwert ist hoch; dasselbe Bluten, das eine Gruppe vernichtet, erreicht ihn vielleicht nie. Investiere in Stärke- und schwellenwertbrechende Mods oder akzeptiere, dass es nicht haften bleibt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 13,
+      "title": "Ailment-Video-Guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Kompletter Ailment-Guide - Path of Exile 2",
+          "creator": "silentstill",
+          "description": "Ein vollständiger Walkthrough dazu, wie PoE-2-Ailments, Schwellenwerte, Aufbau, Stärke, Dauer und Charm-Immunität funktionieren, mit Beispielen für jede Verteidigungsschicht.",
+          "takeaway": "Passe deine Verteidigungsschicht an das Ailment an: nutze Widerstands-Charms zum Verringern, Immunitäts-Charms zum vollständigen Verhindern und halte die Charm-Ladungen vor harten Kämpfen aufgefüllt.",
+          "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+          "timestamps": [
+            {
+              "label": "Einführung",
+              "time": "0:00"
+            },
+            {
+              "label": "Überblick über Ailment-Typen",
+              "time": "1:20"
+            },
+            {
+              "label": "Schwellenwert und Aufbau erklärt",
+              "time": "3:45"
+            },
+            {
+              "label": "Widerstand vs. Immunität",
+              "time": "6:10"
+            },
+            {
+              "label": "Charm-Grundlagen und Ladungen",
+              "time": "9:30"
+            },
+            {
+              "label": "Charms pro Inhalt wählen",
+              "time": "12:15"
+            },
+            {
+              "label": "Ailment-Schwierigkeit bei Bossen",
+              "time": "15:40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 14,
+      "title": "Fehlerbehebung: warum deine Verteidigung versagt hat",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Wenn dich ein Ailment trotz Vorbereitung weiter trifft, liegt die Ursache fast immer an einem von wenigen wiederholbaren Fehlern und nicht an einer versteckten Mechanik."
+      ],
+      "bullets": [
+        "Keine Ladungen: Der Charm war leer, weil du vor dem Kampf Brunnen oder Kills übersprungen hast.",
+        "Falscher Charm: Ein Saphir-Charm hilft nur gegen Kälteschaden; er stoppt kein Bluten.",
+        "Gürtel nicht gesockelt: Charms halten nur Ladungen und lösen nur aus, während sie in einem Gürtel-Sockel stecken.",
+        "Inhalt verbietet Charms: Manche Begegnungen deaktivieren automatische Schmuck-Effekte; plane stattdessen eine passive Verteidigung.",
+        "Widerstand mit Immunität verwechselt: Ein maximaler Widerstand lässt das Ailment dennoch auslösen."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "Häufig gestellte Fragen",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Funktionieren Charms ohne Gürtel?",
+          "answer": [
+            "Nein. Ein Charm kann Ladungen nur halten und automatisch auslösen, solange er in einem Gürtel steckt. Ohne Gürtel-Sockel bewirkt er nichts."
+          ]
+        },
+        {
+          "question": "Warum hat mein Tau-Charm das Frieren nicht gestoppt?",
+          "answer": [
+            "Meist hatte er keine Ladungen, steckte nicht in deinem Gürtel, oder der Inhalt deaktiviert Charm-Effekte. Prüfe die Ladungen an einem Brunnen vor dem Kampf."
+          ]
+        },
+        {
+          "question": "Ist 75 % Feuer-Widerstand dasselbe wie Entzünden-Immunität?",
+          "answer": [
+            "Nein. Widerstand verringert den Entzünden-Schaden, aber das Ailment löst dennoch aus. Nur ein Immunitäts-Charm oder ein Keystone verhindert Entzünden vollständig."
+          ]
+        },
+        {
+          "question": "Kann ich Bluten auf jeden Boss anwenden?",
+          "answer": [
+            "Nicht zuverlässig. Bosse haben hohe Ailment-Schwellenwerte, sodass Bluten den Schwellenwert vielleicht nie erreicht. Investiere in Stärke- und schwellenwertbrechende Modifikatoren und verifiziere es im Spiel."
+          ]
+        },
+        {
+          "question": "Wie füllen sich Charm-Ladungen auf?",
+          "answer": [
+            "Ladungen füllen sich an Brunnen oder durch das Töten von Monstern auf. Plane, sie zwischen Gruppen und vor Boss-Begegnungen aufzufüllen."
+          ]
+        },
+        {
+          "question": "Wie viele Charms kann ich ausrüsten?",
+          "answer": [
+            "Ein Gürtel bietet eine begrenzte Anzahl an Charm-Sockeln; die genaue Zahl hängt vom Gürtel ab. Prüfe den Gürtel-Tooltip im Spiel für deine Sockel-Gesamtzahl."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Quellen und Verifizierung",
+      "order": 16,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Offizielles Wiki - Ailments",
+          "description": "PoE-2-Wiki-Seite zu Ailments mit Schwellenwert, Aufbau, Stärke und Dauer."
+        },
+        {
+          "label": "Offizielles Wiki - Charms",
+          "description": "PoE-2-Wiki-Liste der Charms mit Basis-Typen, Laden-Kosten und Effekten."
+        },
+        {
+          "label": "Video-Guide",
+          "description": "silentstill - Kompletter Ailment-Guide für Path of Exile 2."
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Erster Guide veröffentlicht mit Ailment-Taxonomie, Schwellenwert/Aufbau/Stärke/Dauer, Widerstand vs. Immunität, Charm-Grundlagen und Charm-Auswahl nach Inhalt."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE 2 wiki - Ailments",
+      "url": "https://poe2wiki.net/wiki/Ailments",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE 2 wiki - List of charms",
+      "url": "https://poe2wiki.net/wiki/List_of_charms",
+      "sourceType": "official"
+    },
+    {
+      "label": "silentstill - Complete Ailment Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=PwjzRjqCFKk",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE-2-Ailments, Schwellenwerte, Charms und Immunität – Leitfaden",
+    "description": "Wie Path-of-Exile-2-Ailments, Schwellenwerte, Aufbau, Stärke, Dauer und Charm-Immunität funktionieren und wie du den richtigen Charm pro Begegnung wählst.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ailments-thresholds-charms-immunity",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

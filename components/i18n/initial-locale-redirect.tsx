@@ -11,10 +11,21 @@ function createInitialLocaleRedirectScript(): string {
       const primaryLanguage = (navigator.languages?.[0] || navigator.language || "")
         .trim()
         .toLowerCase();
-      const usesSimplifiedChinese =
-        primaryLanguage === "zh" ||
-        /^zh(?:-(?:cn|sg|hans))(?:-|$)/.test(primaryLanguage);
-      window.location.replace(usesSimplifiedChinese ? "/zh-cn/" : "/en/");
+      const supported = ["en","zh-cn","pt-br","ru","de","es","fr","ja","ko","tr"];
+      const resolve = (lang) => {
+        if (lang.startsWith("zh")) return "zh-cn";
+        if (lang.startsWith("pt")) return "pt-br";
+        if (lang.startsWith("ru")) return "ru";
+        if (lang.startsWith("de")) return "de";
+        if (lang.startsWith("es")) return "es";
+        if (lang.startsWith("fr")) return "fr";
+        if (lang.startsWith("ja")) return "ja";
+        if (lang.startsWith("ko")) return "ko";
+        if (lang.startsWith("tr")) return "tr";
+        return "en";
+      };
+      const locale = resolve(primaryLanguage);
+      window.location.replace("/" + locale + "/");
     })();
   `;
 }

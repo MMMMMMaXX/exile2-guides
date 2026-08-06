@@ -1,0 +1,1201 @@
+{
+  "id": "from-nothing",
+  "slug": "from-nothing",
+  "locale": "ko",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "From Nothing: 0.5 패치의 원격 키스톤 할당, 패시브 포인트 절약 및 거래 검색",
+  "shortTitle": "From Nothing",
+  "summary": "From Nothing은 Path of Exile 2 0.5.4의 고유 Diamond Jewel로, 드롭 시 특정 바운드 키스톤 주위에 고정된 작은 반경을 만들고, 그 반경 안의 패시브를 트리에 연결하지 않고도 할당할 수 있게 해줍니다. 이 가이드는 원격 할당 메커니즘, King in the Mists에서 +4 Crux로 드롭되는 항상 Corrupted 상태, 패시브 포인트 절약 계산, 키스톤 풀, 키스톤 이름으로 거래 검색하는 방법, 그리고 Controlled Metamorphosis와의 차이점을 다룹니다.",
+  "description": "PoE2 0.5.4에서 From Nothing의 작동 방식: 바운드 키스톤 주위의 패시브를 원격 할당하는 고유 Diamond, 패시브 포인트 절약, King in the Mists +4 드롭, 키스톤별 거래 검색 및 빌드 계획.",
+  "itemType": "remote-allocation",
+  "rarity": "unique",
+  "requiredLevel": null,
+  "useCases": [
+    "remote-allocation",
+    "passive-point-saving",
+    "build-enabling"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-jewels",
+  "itemClass": "jewel",
+  "baseType": "diamond",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/audience-with-the-king-hero.webp",
+  "cardImage": "/images/items/audience-with-the-king-hero.webp",
+  "imageAlt": "Path of Exile 2 From Nothing 고유 Diamond Jewel이 패시브 스킬 트리의 바운드 키스톤 주위 패시브를 원격 할당하게 해주는 모습",
+  "tags": [
+    "unique-jewel",
+    "remote-allocation",
+    "passive-point-saving",
+    "keystone",
+    "diamond",
+    "build-enabling",
+    "ritual",
+    "king-in-the-mists"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "빠른 정답",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "From Nothing은 드롭 시 하나의 특정 키스톤에 바인딩되고 그 키스톤 주위에 고정된 작은 반경을 만드는 고유 Diamond Jewel입니다. 반경 안의 모든 Small 또는 Notable 패시브는 트리에 연결되지 않아도 할당할 수 있지만, 각 노드의 패시브 포인트와 키스톤 자체는 부여되지 않습니다(할당되지 않음). 이 보석은 항상 Corrupted 상태이며, Chance Orb나 Divine Orb로 변경할 수 없고, King in the Mists의 +4 Crux of Nothingness에서만 드롭합니다.",
+      "calloutDetail": [
+        "보석과 대상 키스톤은 서로 다른 개념입니다: 소켓 위치는 보석을 둔 곳 어디든 될 수 있지만, 반경은 보석이 바인딩된 키스톤 주위에 형성됩니다.",
+        "절약되는 것은 연결 경로 포인트이지 노드 포인트가 아닙니다 - 할당된 모든 노드는 여전히 패시브 포인트를 소모합니다."
+      ],
+      "answers": [
+        {
+          "label": "용도",
+          "text": [
+            "중간 연결 포인트를 들이지 않고 빌드를 결정짓는 멀리 떨어진 키스톤 옆의 패시브에 도달하기 위해."
+          ]
+        },
+        {
+          "label": "먼저 확인",
+          "text": [
+            "수식어에서 정확한 바운드 키스톤을 읽으세요. 잘못된 키스톤에 바인딩된 사본은 자신의 빌드에 거의 쓸모가 없습니다."
+          ]
+        },
+        {
+          "label": "피할 것",
+          "text": [
+            "보석이 키스톤을 부여한다거나, Chance/Divine Orb로 변경 가능하다고 가정하는 것 - 이 보석은 영구적으로 Corrupted되며 키스톤에 고정되어 있습니다."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#passive-point-savings",
+          "label": "패시브 포인트 절약"
+        },
+        {
+          "href": "#trade-search",
+          "label": "키스톤별 거래 검색"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "주요 사실",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Base Type",
+          "value": "Diamond",
+          "note": [
+            "From Nothing은 Diamond Jewel 베이스의 고유 변형입니다."
+          ]
+        },
+        {
+          "label": "Required Level",
+          "value": "20",
+          "note": [
+            "poe2db와 poe2dictionary 항목에서 확인됨; 엔드게임 보석을 위한 낮은 레벨 제한."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "1",
+          "note": [
+            "패시브 트리에서 한 번에 활성화할 수 있는 From Nothing은 하나뿐입니다."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "Small (바운드 키스톤 주위 고정)",
+          "note": [
+            "고정된 작은 반경은 바운드 키스톤 주위에 형성되며, Jewel Socket 주위가 아닙니다."
+          ]
+        },
+        {
+          "label": "Corrupted",
+          "value": "예, 항상",
+          "note": [
+            "드롭 시 항상 Corrupted: Chance, Divine 또는 다른 화폐로 수정할 수 없습니다."
+          ]
+        },
+        {
+          "label": "Drop source",
+          "value": "King in the Mists (+4 Crux)",
+          "note": [
+            "Difficulty 4의 Crux of Nothingness에서 King in the Mists에게서 드롭합니다. Chance Orb와는 호환되지 않습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "패밀리 개요: Diamond 고유 Jewel",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "From Nothing은 Diamond 고유 Jewel 패밀리에 속합니다 - 패시브 트리의 사용 방식을 다시 정의하는 5개의 빌드 강화 보석입니다. 각 멤버는 서로 다른 트리 문제를 해결합니다."
+      ],
+      "members": [
+        {
+          "id": "against-the-darkness",
+          "eyebrow": "반경 속성",
+          "title": "Against the Darkness",
+          "sub": "Time-Lost Diamond",
+          "body": [
+            "반경 내 Small 패시브를 강화하는 두 개의 무작위 반경 수식어를 굴립니다. 이는 From Nothing의 고정 키스톤 문제와 정반대의 경우입니다."
+          ],
+          "tags": [
+            "radius",
+            "attribute-stacking"
+          ]
+        },
+        {
+          "id": "controlled-metamorphosis",
+          "eyebrow": "Ring 할당",
+          "title": "Controlled Metamorphosis",
+          "sub": "Ring-radius Diamond",
+          "body": [
+            "원격 할당을 위한 링 형태(annulus)의 반경을 만들지만, 원소 저항 페널티를 적용합니다."
+          ],
+          "tags": [
+            "ring-radius",
+            "passive-point-saving"
+          ]
+        },
+        {
+          "id": "the-adorned",
+          "eyebrow": "Magic Jewel 증폭",
+          "title": "The Adorned",
+          "sub": "Corrupted Magic 증폭",
+          "body": [
+            "근처에 소켓된 Corrupted Magic Jewel의 효과를 증폭합니다. 다른 보석 스케일링 틈새입니다."
+          ],
+          "tags": [
+            "magic-jewels",
+            "effect-scaling"
+          ]
+        },
+        {
+          "id": "megalomaniac",
+          "eyebrow": "무작위 Notable",
+          "title": "Megalomaniac",
+          "sub": "Notable 할당자",
+          "body": [
+            "연결 경로 없이 직접 할당 가능한 1~3개의 무작위 Notable을 부여합니다."
+          ],
+          "tags": [
+            "notable-allocation",
+            "passive-point-saving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "속성 및 수식어 라인",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Type",
+          "value": "Diamond",
+          "notes": [
+            "패시브 트리의 Jewel Socket을 차지하는 보석 베이스."
+          ]
+        },
+        {
+          "label": "Rarity",
+          "value": "Unique",
+          "notes": [
+            "빌드를 강화하는 고유 보석."
+          ]
+        },
+        {
+          "label": "Required Level",
+          "value": "20",
+          "notes": [
+            "캐릭터가 레벨 20에 도달하면 장착합니다."
+          ]
+        },
+        {
+          "label": "Limited to",
+          "value": "1",
+          "notes": [
+            "패시브 트리당 하나의 사본만 활성화 가능."
+          ]
+        },
+        {
+          "label": "Radius",
+          "value": "Small, 바운드 키스톤 주위 고정",
+          "notes": [
+            "반경은 수식어에 명시된 키스톤, 즉 트리 상의 해당 키스톤이 있는 위치를 중심으로 합니다."
+          ]
+        },
+        {
+          "label": "명시적 - 원격 할당",
+          "value": "Passives in Radius of [Keystone] can be Allocated without being connected to your tree",
+          "notes": [
+            "모든 사본은 하나의 키스톤을 명시합니다. 키스톤 자체는 이 라인으로 할당되지 않습니다."
+          ]
+        },
+        {
+          "label": "Corrupted",
+          "value": "예, 항상",
+          "notes": [
+            "스폰 시 Corrupted: Chance Orb, Divine Orb 또는 다른 화폐로 변경 불가."
+          ]
+        },
+        {
+          "label": "Drop",
+          "value": "King in the Mists, Crux of Nothingness, Difficulty 4",
+          "notes": [
+            "King과의 Audience 및 +4 Crux of Nothingness Ritual Atlas 진행도 필요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "개요 및 현재 대 레거시",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "From Nothing은 트리와 패시브 클러스터 사이의 연결 경로 비용을 없애기 때문에 Path of Exile 2에서 가장 빌드를 결정짓는 보석 중 하나입니다. 할당된 Jewel Socket에 꽂으면, 하나의 키스톤(예: Mind Over Matter, Chaos Inoculation, Resolute Technique)을 지정하고 그 키스톤 주위에 고정된 작은 반경을 그립니다. 그 반경 안의 모든 Small 및 Notable 패시브는 트리의 나머지와 연결되지 않아도 패시브 포인트를 들여 취할 수 있습니다.",
+        "두 가지 개념이 혼동하기 쉽습니다. 첫째, Jewel Socket과 대상 키스톤은 서로 다른 위치입니다: 보석을 꽂는 위치는 직접 선택하지만, 반경은 바운드 키스톤 주위(트리 상의 그 키스톤이 있는 곳 어디든)에 나타납니다. 둘째, 보석은 키스톤을 부여하지 않습니다 - 다만 그 주위의 패시브에 도달할 뿐입니다. 키스톤 자체가 필요하다면 여전히 평소처럼 연결 경로를 만들어야 합니다.",
+        "할당하는 모든 노드의 패시브 포인트는 항상 지불하며, 절약되는 것은 건너뛴 연결 경로 포인트입니다. 모든 사본은 영구적으로 Corrupted되어 있고 30개 이상의 풀 중 하나의 무작위 키스톤에 묶여 있으므로, 거래 시장은 사본이 휴대하는 키스톤이 무엇인지에 전적으로 맞춰 구성됩니다.",
+        "현재 대 레거시: 핵심 라인은 0.1.0 이후로 안정적이지만, 굴릴 수 있는 키스톤의 풀은 바뀌었습니다. 패치 0.3.0은 Blackflame Covenant, Hollow Palm Technique, Ritual Cadence, Walker of the Wilds를 추가하는 동시에 Acrobatics를 제거했고; 패치 0.4.0은 Primal Hunger, Scarred Faith, Wildsurge Incantation을 추가하는 동시에 Walker of the Wilds를 제거했습니다. 0.3 이전 키스톤 풀을 기준으로 한 옛 커뮤니티 조언은 현재 드롭 풀과 맞지 않을 수 있으니, 구매하는 모든 사본의 정확한 키스톤을 확인하세요."
+      ],
+      "bullets": [
+        "바운드 키스톤 주위의 고정된 작은 반경, 소켓 주위가 아님.",
+        "키스톤 자체는 보석으로 할당되지 않음.",
+        "모든 노드의 포인트는 여전히 지불함; 건너뛰는 것은 연결 경로뿐.",
+        "항상 Corrupted, Limited to 1, Chance/Divine Orb 불가.",
+        "King in the Mists의 +4 Crux of Nothingness에서 드롭.",
+        "키스톤 풀은 패치에 따라 바뀜 - 구매 전 현재 풀 확인."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "적격 대상: 보석이 도달할 수 있는 것",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "반경은 바운드 키스톤을 중심으로 한 고정된 작은 원판입니다. 그 원판 안의 노드만 도달 가능하며, 키스톤은 명시적으로 제외됩니다."
+      ],
+      "columns": [
+        "결과",
+        "상세"
+      ],
+      "rows": [
+        {
+          "label": "바운드 키스톤",
+          "values": [
+            {
+              "kind": "no",
+              "text": "보석으로 할당되지 않음"
+            },
+            {
+              "kind": "text",
+              "text": "그 주위의 패시브만 원격 할당되며, 키스톤은 연결 경로를 만들지 않는 한 잠긴 상태로 유지됩니다."
+            }
+          ]
+        },
+        {
+          "label": "반경 내 Small 패시브",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "원격 할당 가능"
+            },
+            {
+              "kind": "text",
+              "text": "고정 반경 안의 모든 Small 노드는 트리에 연결하지 않고 취할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "label": "반경 내 Notable",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "원격 할당 가능"
+            },
+            {
+              "kind": "text",
+              "text": "반경 내 Notable은 보통 가장 가치가 높은 목표입니다."
+            }
+          ]
+        },
+        {
+          "label": "반경 밖 노드",
+          "values": [
+            {
+              "kind": "no",
+              "text": "할당 불가"
+            },
+            {
+              "kind": "text",
+              "text": "작은 반경 안의 노드만 유효하며, 먼 노드는 여전히 일반적인 연결 경로가 필요합니다."
+            }
+          ]
+        },
+        {
+          "label": "두 번째 From Nothing",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Limited to 1"
+            },
+            {
+              "kind": "text",
+              "text": "한 트리에 활성화할 수 있는 From Nothing은 한 번에 하나뿐입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "사용법: 소켓, 할당, 계획",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "할당된 Jewel Socket에 도달",
+          "body": [
+            "From Nothing을 패시브 트리의 할당된 Jewel Socket에 넣으세요. 반경이 형성되려면 소켓 자체가 미리 할당되어 있어야 합니다."
+          ]
+        },
+        {
+          "label": "바운드 키스톤 파악",
+          "body": [
+            "수식어를 읽어 사본이 어떤 키스톤에 바인딩되어 있는지 확인하세요. 고정된 작은 반경은 그 키스톤 주위(트리 상 어디든 있는 곳)에 형성됩니다."
+          ]
+        },
+        {
+          "label": "반경 내 노드 할당",
+          "body": [
+            "반경 안의 Small 또는 Notable 노드에 패시브 포인트를 들여, 메인 트리 경로에 연결하지 않고 취하세요. 각 노드의 포인트 비용은 여전히 지불합니다."
+          ]
+        },
+        {
+          "label": "키스톤 경로 계획",
+          "body": [
+            "키스톤 자체도 원한다면 여전히 평소처럼 연결 경로를 만들어야 합니다. 보석은 이를 부여하지 않습니다."
+          ]
+        },
+        {
+          "label": "필요 시 제거",
+          "body": [
+            "보석을 우클릭하여 제거하세요. 원격 할당된 모든 노드가 할당 해제되고 그 포인트는 환불됩니다."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "멀리 떨어진 키스톤의 이웃까지 연결 경로를 만드는 데는 트리와 그 클러스터 사이의 모든 중간 노드 비용이 듭니다."
+        ],
+        "after": [
+          "같은 이웃들은 반경에서 직접 할당되어 연결 경로 전체를 건너뜁니다."
+        ],
+        "note": "보석은 하나의 Jewel Socket과 고정된 바운드 키스톤 제한을, 건너뛴 연결 경로 포인트와 맞바꿉니다."
+      }
+    },
+    {
+      "id": "passive-point-savings",
+      "order": 66,
+      "title": "패시브 포인트 절약 표",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "예시 절약. 순 절약 = 목표 노드에 도달하는 일반 연결 경로 포인트 - 보석을 통해 지불한 포인트(목표 노드 + 소켓 경로). 할당된 모든 노드의 비용은 여전히 지불합니다.",
+      "columns": [
+        {
+          "key": "scenario",
+          "label": "시나리오"
+        },
+        {
+          "key": "normal",
+          "label": "일반 연결 경로 포인트"
+        },
+        {
+          "key": "jewel",
+          "label": "보석을 통한 포인트"
+        },
+        {
+          "key": "net",
+          "label": "순 절약"
+        },
+        {
+          "key": "gained",
+          "label": "획득한 Notable / 노드"
+        },
+        {
+          "key": "lost",
+          "label": "잃은 일반 보석 가치"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "scenario": "저가치 예시",
+            "normal": "5",
+            "jewel": "3 (노드 2 + 소켓 1)",
+            "net": "2",
+            "gained": "두 개의 변두리 Small 노드",
+            "lost": "일반 레어 보석의 능력치"
+          },
+          "tags": [
+            "low-value"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "합리적 예시",
+            "normal": "12",
+            "jewel": "6 (Notable + Small 4 + 소켓 1)",
+            "net": "6",
+            "gained": "유용한 Notable 1개 + Small 노드 4개",
+            "lost": "일반 레어 보석의 능력치"
+          },
+          "tags": [
+            "reasonable"
+          ]
+        },
+        {
+          "cells": {
+            "scenario": "무효 예시 (절약 큼, 빌드 불일치)",
+            "normal": "14",
+            "jewel": "5 (키스톤 인근 Notable + Small 3 + 소켓 1)",
+            "net": "9",
+            "gained": "빌드에 맞지 않는 Notable",
+            "lost": "일반 레어 보석의 능력치"
+          },
+          "tags": [
+            "invalid"
+          ]
+        }
+      ],
+      "note": "숫자는 예시입니다. 실제 절약은 바운드 키스톤이 트리 대비 어디에 있는지와 고정 반경 안에 어떤 노드가 들어가는지에 따라 다릅니다. 구매 전 반드시 패시브 트리 플래너에서 계획하세요."
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "상황별 결과",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "remote-allocation",
+        "passive-point-saving",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "빌드가 먼 키스톤 근처의 패시브를 원함",
+          "audience": "오프 클래스 / 하이브리드 빌더",
+          "benefit": "먼 클러스터에 도달하기 위한 많은 연결 경로 포인트를 건너뜀",
+          "risk": "낮음 (키스톤이 맞을 경우)",
+          "level": "low",
+          "recommendation": "바운드 키스톤이 빌드의 필요와 일치할 때 강력한 선택.",
+          "tags": [
+            "build-enabling"
+          ]
+        },
+        {
+          "scenario": "잘못된 바운드 키스톤",
+          "audience": "충동 구매자",
+          "benefit": "빌드에 이득 없음",
+          "risk": "높음 (슬롯 낭비)",
+          "level": "high",
+          "recommendation": "빌드에 필요한 정확한 키스톤만 구매하세요. 거래 필터를 키스톤 이름으로 걸러내세요.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "연결 경로가 이미 짧음",
+          "audience": "중앙 트리 빌드",
+          "benefit": "거의 없음",
+          "risk": "중간 (소켓 낭비)",
+          "level": "medium",
+          "recommendation": "목표 노드를 일반적으로 연결하는 비용이 싸다면 건너뛰세요.",
+          "tags": [
+            "passive-point-saving"
+          ]
+        },
+        {
+          "scenario": "거래로 구매",
+          "audience": "거래자",
+          "benefit": "키스톤별 명확한 가치 곡선",
+          "risk": "중간 (인기 키스톤에 과도 지불)",
+          "level": "medium",
+          "recommendation": "프리미엄을 지불하기 전에 바운드 키스톤을 빌드와 비교하세요.",
+          "tags": [
+            "trade"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "빌드 사용법",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "From Nothing은 빌드가 효율적으로 연결 경로를 만들 수 없는 특정 키스톤 근처의 패시브를 원할 때 효력을 발휘합니다. 아래 네 가지 페르소나는 빛을 발하는 지점을 보여줍니다."
+      ],
+      "builds": [
+        {
+          "title": "오프 클래스 / 하이브리드 강화",
+          "description": "그렇지 않으면 많은 연결 경로 포인트를 낭비할 트리 반대편의 키스톤 인접 클러스터에 도달.",
+          "href": "/en/items/astramentis/"
+        },
+        {
+          "title": "속성 스태킹 구성",
+          "description": "속성 휠을 돌아가지 않고 키스톤 근처의 속성 Small 노드를 가져옴."
+        },
+        {
+          "title": "먼 Notable 돌진",
+          "description": "첫날부터 긴 경로 대신 반경 안의 고가치 Notable을 취함."
+        },
+        {
+          "title": "빌드 강화 키스톤 접근",
+          "description": "전체 분기를 감수하지 않고 빌드를 결정짓는 키스톤의 이웃(예: Chaos Inoculation 구역)에 접근.",
+          "href": "/en/items/ghostwrithe/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "대안",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "일반 또는 레어 Diamond Jewel은 동일한 소켓에 키스톤 의존성이나 연결 경로 트릭 없이 평면 능력치(생명력, 속성, 저항, 피해)를 제공합니다. 목표 노드를 연결하는 비용이 싸다면 레어 보석이 거의 항상 우세합니다.",
+        "Controlled Metamorphosis가 더 가까운 친척입니다: 이것도 원격 할당하지만, 링 밴드를 통해 그리고 원소 저항의 대가를 치릅니다. Megalomaniac은 무작위 Notable을 직접 부여합니다. Against the Darkness는 반경 내 Small 패시브를 강화합니다. 각각은 다른 트리 문제를 해결하므로, 빌드가 실제로 필요로 하는 것을 기준으로 선택하세요.",
+        "From Nothing은 키스톤에 고정되어 있으므로, 진짜 대안은 종종 키스톤에 평소처럼 연결 경로를 만들고 소켓을 레어 보석에 쓰는 것입니다 - 건너뛴 연결 경로가 레어 보석의 능력치를 명백히 능가할 때만 사용하세요."
+      ],
+      "bullets": [
+        "레어 Diamond Jewel: 유연한 능력치, 키스톤 의존성 없음.",
+        "Controlled Metamorphosis: 저항 비용이 있는 링 밴드 원격 할당.",
+        "Megalomaniac: 직접적인 무작위 Notable 할당.",
+        "일반 연결 경로: 잘못된 키스톤 사본보다 Often 더 저렴."
+      ]
+    },
+    {
+      "id": "trade-search",
+      "order": 106,
+      "title": "정확한 키스톤별 거래 검색",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "공식 거래 사이트에서 빌드에 필요한 사본을 찾는 방법. 오래된 거래 링크를 복사하지 마세요 - 실시간으로 필터링하세요.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "단계"
+        },
+        {
+          "key": "action",
+          "label": "동작"
+        },
+        {
+          "key": "detail",
+          "label": "중요한 이유"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "step": "1",
+            "action": "'From Nothing Diamond' 검색",
+            "detail": "공식 거래 사이트를 열고 메인 검색창에 보석 이름을 입력."
+          },
+          "tags": [
+            "search"
+          ]
+        },
+        {
+          "cells": {
+            "step": "2",
+            "action": "Stat 필터 추가: 키스톤 이름",
+            "detail": "'Passives in Radius of [Keystone] can be allocated without being connected' 필터 - 예: Conduit, Resonance, Mind Over Matter."
+          },
+          "tags": [
+            "filter"
+          ]
+        },
+        {
+          "cells": {
+            "step": "3",
+            "action": "Corrupted 확인",
+            "detail": "모든 사본은 항상 Corrupted입니다. Corrupted가 아닌 매물은 실수이거나 다른 아이템입니다."
+          },
+          "tags": [
+            "verify"
+          ]
+        },
+        {
+          "cells": {
+            "step": "4",
+            "action": "Limited to: 1 확인",
+            "detail": "고유(이름이 바뀐 레어가 아님)인지 확인하세요. 활성화할 수 있는 From Nothing은 하나뿐입니다."
+          },
+          "tags": [
+            "verify"
+          ]
+        },
+        {
+          "cells": {
+            "step": "5",
+            "action": "현재 리그 확인",
+            "detail": "현재 Early Access 리그와 온라인 판매자로 필터링하세요. 오래된 거래 링크를 재사용하지 마세요."
+          },
+          "tags": [
+            "league"
+          ]
+        }
+      ],
+      "note": "각 보석은 영구적으로 하나의 무작위 키스톤에 바인딩되어 있으므로, 보는 첫 사본을 사는 것이 아니라 빌드에 필요한 정확한 키스톤으로 필터링하세요."
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "가치 평가: 사용, 판매 또는 보관",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "From Nothing의 가치는 거의 전적으로 어떤 키스톤에 바인딩되어 있는지에 의해 결정됩니다. 인기 있는 빌드 결정형 키스톤(예: Mind Over Matter, Chaos Inoculation, Resolute Technique)에 묶인 사본은 많은 Divine Orb를 호가할 수 있는 반면, 비주류 키스톤은 거의 쓸모가 없을 수 있습니다.",
+        "아래 가격은 2026년 8월 초 기준 Early Access 0.5.4 거래 사이트를 반영하며 수요와 공급에 따라 끊임없이 변동합니다."
+      ],
+      "use": {
+        "condition": "빌드가 이 사본이 바인딩된 정확한 키스톤 근처의 패시브를 원함",
+        "first": "소켓에 넣고 필요한 반경 노드를 할당",
+        "risk": "Jewel Socket을 차지함; 하나의 사본만 작동; 잘못된 키스톤 = 낭비",
+        "text": [
+          "올바른 키스톤이라면 게임 내에서 가장 강력한 빌드 강화 보석 중 하나입니다."
+        ]
+      },
+      "sell": {
+        "condition": "바운드 키스톤이 본인에게 비주류이거나 중복을 발견함",
+        "first": "정확한 키스톤 이름과 거래 필터로 등록; 인기 키스톤은 프리미엄 가격",
+        "risk": "키스톤 의존적 수요가 매우 큼",
+        "text": [
+          "거래 수요는 소수의 인기 키스톤에 집중됩니다."
+        ]
+      },
+      "hold": {
+        "condition": "인기 키스톤 사본을 찾아 나중에 그걸로 빌드할 수 있음",
+        "first": "보관하세요; 인기 키스톤은 리그를 거쳐도 가치를 유지합니다.",
+        "risk": "인벤토리 공간뿐",
+        "text": [
+          "좋은 키스톤 사본은 장기 자산입니다."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "위험 및 실패 비용",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "잘못된 키스톤",
+          "gain": "노드가 맞으면 건너뛴 연결 경로",
+          "loss": "보석이 빌드에 거의 쓸모없음",
+          "level": "high",
+          "recommendation": "빌드에 필요한 정확한 키스톤만 구매하세요. 거래 필터를 키스톤 이름으로 걸러내세요."
+        },
+        {
+          "scenario": "낭비된 Jewel Socket",
+          "gain": "몇 개의 원격 노드",
+          "loss": "레어 또는 고유 보석 슬롯을 포기함",
+          "level": "medium",
+          "recommendation": "건너뛴 연결 경로 포인트를 일반 보석의 능력치와 비교하세요."
+        },
+        {
+          "scenario": "키스톤이 부여된다고 가정",
+          "gain": "없음",
+          "loss": "키스톤이 잠긴 상태로 유지, 빌드가 강화되지 않음",
+          "level": "medium",
+          "recommendation": "여전히 키스톤까지 연결 경로를 만들어야 합니다. 보석은 이웃에만 도달합니다."
+        },
+        {
+          "scenario": "Chance / Divine 낚시",
+          "gain": "없음",
+          "loss": "낭비된 화폐",
+          "level": "low",
+          "recommendation": "From Nothing은 항상 Corrupted되어 Chance/Divine Orb로 변경 불가; 파밍하거나 거래하세요."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-from-nothing",
+          "kind": "Reddit 질문",
+          "question": "From Nothing은 키스톤 자체를 할당하나, 아니면 그 주위의 패시브만 할당하나요?",
+          "summary": [
+            "한 플레이어가 보석을 소켓에 넣으면 명시된 키스톤을 부여하는지 아니면 주변 노드만 부여하는지 물었습니다."
+          ],
+          "editorialAnalysis": [
+            "라인은 'Passives in Radius of [Keystone] can be Allocated without being connected'입니다. 키스톤 노드는 이 의미에서 '반경 내 패시브' 대상이 아닙니다 - 연결 경로를 만들지 않는 한 잠긴 상태로 유지됩니다. 원격 할당 가능한 것은 주변의 Small 및 Notable 노드뿐입니다."
+          ],
+          "officialAnswer": [
+            "바운드 키스톤 주위의 패시브만 원격 할당되며, 키스톤 자체는 여전히 평소처럼 연결 경로를 만들어야 합니다."
+          ],
+          "linkHref": "#eligibility",
+          "linkLabel": "적격 매트릭스"
+        },
+        {
+          "sourceId": "gamerant-from-nothing",
+          "kind": "가이드",
+          "question": "이름이 같은 From Nothing 사본 두 개가 왜 가격이 이렇게 다른가요?",
+          "summary": [
+            "한 가이드에서 각 사본이 서로 다른 무작위 키스톤에 바인딩되어 있으므로 가격은 키스톤 관련성에 따른다고 설명했습니다."
+          ],
+          "editorialAnalysis": [
+            "키스톤은 드롭 시 굴려지고 Corruption으로 고정되므로, 인기 빌드 키스톤에 묶인 사본은 많은 Divine을 호가하는 반면 비주류 사본은 거의 노점 쓰레기입니다. 아이템 이름은 동일하며, 중요한 것은 수식어입니다."
+          ],
+          "officialAnswer": [
+            "가치는 아이템 이름이 아닌 바운드 키스톤에 의해 결정됩니다 - 거래 시 정확한 키스톤으로 필터링하세요."
+          ],
+          "linkHref": "#trade-search",
+          "linkLabel": "키스톤별 거래 검색"
+        },
+        {
+          "sourceId": "gamesrecon-from-nothing",
+          "kind": "가이드",
+          "question": "보석을 통해 할당된 노드의 패시브 포인트도 여전히 지불하나요?",
+          "summary": [
+            "한 가이드에서 원격 할당은 노드 비용이 아니라 연결 경로 요구사항을 제거한다고 명확히 했습니다."
+          ],
+          "editorialAnalysis": [
+            "트리와 반경 사이의 중간 연결 경로 노드를 절약합니다. 실제로 취하는 모든 노드는 여전히 패시브 포인트를 소모합니다. 순 절약은 연결 경로 포인트뿐입니다."
+          ],
+          "officialAnswer": [
+            "할당된 각 노드의 포인트는 여전히 지불합니다. 보석은 연결 경로만 건너뜁니다."
+          ],
+          "linkHref": "#passive-point-savings",
+          "linkLabel": "패시브 포인트 절약"
+        },
+        {
+          "sourceId": "wiki-from-nothing",
+          "kind": "데이터베이스",
+          "question": "패시브 트리 업데이트 후 보석이 사라졌는데, 사라진 건가요?",
+          "summary": [
+            "데이터베이스 기록에 따르면 패치 0.2에서 일부 Jewel Socket을 제거하여 일부 플레이어의 보석이 밀려났습니다."
+          ],
+          "editorialAnalysis": [
+            "트리 업데이트로 소켓이 제거될 때, 해당 보석은 삭제되지 않고 회수할 수 있습니다. /reclaimjewels 명령이 인벤토리로 되돌려 줍니다."
+          ],
+          "officialAnswer": [
+            "마을에서 /reclaimjewels를 사용하여 소켓 제거로 밀려난 보석을 복구하세요. 사라진 것이 아닙니다."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "패치 내역"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제 및 직접적인 답변",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "키스톤 자체가 할당되지 않음",
+          "directAnswer": [
+            "From Nothing은 바운드 키스톤 주위의 패시브만 할당합니다. 키스톤 노드 자체는 여전히 평소처럼 연결 경로를 만들어야 합니다."
+          ],
+          "checks": [
+            "보석에서 키스톤을 기대하지 않는지 확인하세요. 원한다면 연결 경로를 만드세요."
+          ]
+        },
+        {
+          "symptom": "반경 내 노드가 캐릭터 시트 변화를 보이지 않음",
+          "directAnswer": [
+            "노드의 포인트는 여전히 지불합니다. 능력치가 변하지 않는다면 노드가 이미 한도에 도달했거나 보석이 제거되었을 수 있습니다."
+          ],
+          "checks": [
+            "보석이 여전히 소켓에 있고 노드가 반경 안(단지 근처가 아님)에 있는지 확인하세요."
+          ],
+          "links": [
+            {
+              "href": "#properties",
+              "label": "속성"
+            }
+          ]
+        },
+        {
+          "symptom": "두 사본이 동일해 보이는데 하나가 훨씬 쌈",
+          "directAnswer": [
+            "각 사본은 영구적으로 다른 키스톤에 바인딩되어 있으므로, 가격은 아이템 이름이 아닌 키스톤 관련성을 따릅니다."
+          ],
+          "checks": [
+            "구매 전 수식어를 확인하여 정확한 바운드 키스톤을 읽으세요."
+          ],
+          "links": [
+            {
+              "href": "#trade-search",
+              "label": "거래 검색"
+            }
+          ]
+        },
+        {
+          "symptom": "패시브 트리 업데이트 후 보석이 사라짐",
+          "directAnswer": [
+            "패치 0.2에서 일부 Jewel Socket을 제거했습니다. 해당 보석은 잃어버린 것이 아니라 /reclaimjewels 명령으로 회수할 수 있습니다."
+          ],
+          "checks": [
+            "마을에서 /reclaimjewels를 실행하세요. 보석이 인벤토리로 돌아옵니다."
+          ],
+          "links": [
+            {
+              "href": "#patch-history",
+              "label": "패치 내역"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "영상 설명",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "All Unique Jewel Options with Best-case Uses (PoE2) - From Nothing 섹션",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8",
+          "creator": "SnooBae85",
+          "description": "모든 고유 보석을 다루는 커뮤니티 영상; From Nothing 심층 분석은 13:01부터, 거래 검색 설명은 24:18부터입니다.",
+          "takeaway": "실제 보석 배치, 키스톤 바인딩 개념, 그리고 거래에서 이러한 보석을 검색하는 방법을 보여줍니다.",
+          "timestamps": [
+            {
+              "label": "소개 및 보석 개요",
+              "time": "00:00"
+            },
+            {
+              "label": "Against the Darkness 맥락",
+              "time": "06:48"
+            },
+            {
+              "label": "Controlled Metamorphosis 맥락",
+              "time": "09:13"
+            },
+            {
+              "label": "From Nothing 심층 분석",
+              "time": "13:01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "미디어 갤러리",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "바운드 키스톤과 원격 할당 라인을 보여주는 From Nothing 툴팁",
+          "note": "아티클 카드 및 헤더용 주요 히어로 캡처."
+        },
+        {
+          "caption": "패시브 트리: 바운드 키스톤 주위의 고정된 작은 반경",
+          "note": "어떤 노드가 원격 할당 가능해지는지 보여줌."
+        },
+        {
+          "caption": "특정 키스톤에 대한 거래 사이트 Stat 필터",
+          "note": "'Passives in Radius of [Keystone] can be allocated without being connected'를 검색하는 방법."
+        },
+        {
+          "caption": "패치별 키스톤 풀 비교",
+          "note": "현재 0.5.4 풀 대 구형 패치."
+        },
+        {
+          "caption": "Crux of Nothingness의 King in the Mists 보스 아레나",
+          "note": "+4 Crux 드롭 출처."
+        },
+        {
+          "caption": "From Nothing 대 Controlled Metamorphosis 반경 형태",
+          "note": "고정 원판 대 링 밴드."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "연결된 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "king-in-the-mists-pinnacle",
+          "contentType": "boss",
+          "title": "King in the Mists",
+          "description": "+4 Crux에서 From Nothing을 드롭하는 Crux of Nothingness의 정점 Ritual 보스.",
+          "href": "/en/bosses/king-in-the-mists-pinnacle/"
+        },
+        {
+          "contentId": "audience-with-the-king",
+          "contentType": "item",
+          "title": "Audience with the King",
+          "description": "King in the Mists 전투에 접근하는 데 필요한 초대 아이템.",
+          "href": "/en/items/audience-with-the-king/"
+        },
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "정반대의 트리 문제를 해결하는 반경 속성 Diamond 고유 보석.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "저항 비용이 있는 링 밴드 원격 할당 Diamond.",
+          "href": "/en/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Respec, Passive 및 Ascendancy 가이드",
+          "description": "패시브 포인트, 리스펙, 승천이 보석 계획과 어떻게 상호작용하는지.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "이 아이템에 대한 현재 Early Access 패치 맥락.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "패치 내역",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, 현재)",
+          "changes": [
+            "From Nothing은 바운드 키스톤 주위에 고정된 작은 반경을 가진 고유 Diamond로 유지됩니다. 반경 내 패시브는 연결되지 않아도 할당 가능, 항상 Corrupted, King in the Mists의 +4 Crux of Nothingness에서 드롭."
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "changes": [
+            "키스톤 풀 업데이트: Primal Hunger, Scarred Faith, Wildsurge Incantation 굴림 가능; Walker of the Wilds는 더 이상 굴림 불가."
+          ]
+        },
+        {
+          "version": "0.3.0",
+          "changes": [
+            "Blackflame Covenant, Hollow Palm Technique, Ritual Cadence, Walker of the Wilds 굴림 가능; Acrobatics는 더 이상 굴림 불가."
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "changes": [
+            "난이도 게이트 보스는 어떤 난이도에서든 자신의 특정 고유 보석을 드롭할 수 있으나, 희귀 고유 보석은 낮은 난이도에서 더 희귀합니다."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "From Nothing이 게임에 도입됨."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 패치 노트 및 공식 아이템 문서.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "From Nothing에 대한 PoE2Wiki 및 poe2db 아이템 데이터.",
+          "url": "https://poe2wiki.net/wiki/From_Nothing"
+        },
+        {
+          "label": "GUIDE",
+          "description": "From Nothing 획득 및 사용에 대한 GameRant 및 GamesRecon 설명서.",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-from-nothing-diamond-jewel-poe2"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "키스톤 바인딩 및 드롭에 대한 Reddit r/PathOfExile2 토론.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "From Nothing을 포함한 고유 보석을 다루는 커뮤니티 영상.",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "변경 내역",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "0.5.4의 From Nothing을 다루는 초판 발행: 바운드 키스톤 주위 원격 할당, 패시브 포인트 절약 계산, 키스톤 풀 및 거래 검색, King in the Mists +4 드롭, Controlled Metamorphosis와의 차이점."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "jewels-and-jewel-sockets",
+    "against-the-darkness",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "audience-with-the-king",
+    "the-masters-reach",
+    "astramentis"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-from-nothing",
+      "label": "PoE2Wiki - From Nothing",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/From_Nothing"
+    },
+    {
+      "id": "poe2db-from-nothing",
+      "label": "poe2db - From Nothing",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/From_Nothing"
+    },
+    {
+      "id": "reddit-from-nothing",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "gamerant-from-nothing",
+      "label": "GameRant - How to Get From Nothing Diamond",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-from-nothing-diamond-jewel-poe2"
+    },
+    {
+      "id": "gamesrecon-from-nothing",
+      "label": "GamesRecon - From Nothing Diamond",
+      "sourceType": "other",
+      "url": "https://gamesrecon.com/how-to-get-and-use-from-nothing-diamond-in-path-of-exile-2-poe2"
+    },
+    {
+      "id": "youtube-from-nothing",
+      "label": "YouTube - Unique Jewel Options (From Nothing @13:01)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 From Nothing: 원격 키스톤 할당 및 패시브 포인트 절약 (0.5.4)",
+    "description": "PoE2 0.5.4에서 From Nothing의 작동 방식: 바운드 키스톤 주위의 패시브를 원격 할당하는 고유 Diamond, 패시브 포인트 절약, King in the Mists +4 드롭, 키스톤별 거래 검색 및 빌드 계획.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "from-nothing",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

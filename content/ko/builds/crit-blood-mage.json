@@ -1,0 +1,754 @@
+{
+  "id": "crit-blood-mage",
+  "slug": "crit-blood-mage",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "100% 크리티컬 블러드 메이지 빌드 가이드",
+  "shortTitle": "100% 크리티컬 블러드 메이지",
+  "summary": "리그 시작이 가능한 블러드 메이지 크리티컬 입문 빌드로, 이후 검증된 0.5 크리티컬 변형(코멧, 볼 라이트닝/볼케이노 등)으로 분기하며 생명력 소모와 회복을 끝까지 관리합니다.",
+  "description": "100% 크리티컬이 피해를 보장하는 관문이 아니라 그저 관문일 뿐이라는 점, 생명력 소모와 잔재가 어떻게 당신을 유지시켜 주는지, 어떤 변형이 자신의 진행 단계에 맞는지, 그리고 크리티컬만 베껴도 왜 피해가 여전히 낮은지를 알아봅니다. 실제 영상, 육성, 장비, 검증된 출처 포함.",
+  "classId": "witch",
+  "ascendancyId": "blood-mage",
+  "mainSkillIds": [
+    "comet",
+    "ball-lightning"
+  ],
+  "secondarySkillIds": [
+    "grim-feast",
+    "volcano",
+    "life-remnants"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "spell",
+    "crit",
+    "life-cost",
+    "bossing",
+    "mapping"
+  ],
+  "damageTypes": [
+    "cold",
+    "fire"
+  ],
+  "bestFor": [
+    "bossing",
+    "mapping",
+    "league-start",
+    "endgame"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "StratLore 편집부",
+  "reviewer": "StratLore 출처 검토 파이프라인",
+  "createdAt": "2026-07-31",
+  "publishedAt": "2026-07-31",
+  "updatedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-07-31",
+  "heroImage": "/images/builds/covers/crit-blood-mage.webp",
+  "cardImage": "/images/builds/covers/crit-blood-mage.webp",
+  "imageAlt": "100% 크리티컬 상태에서 생명력 소모를 관리하는 블러드 메이지",
+  "tags": [
+    "witch",
+    "blood-mage",
+    "crit",
+    "spell",
+    "life-cost",
+    "league-start"
+  ],
+  "relatedBuildIds": [
+    "ball-lightning-volcano-blood-mage"
+  ],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility",
+    "mana-spirit-resource-sustain"
+  ],
+  "sources": [
+    {
+      "id": "src-official",
+      "label": "패스 오브 엑자일 2 공식 포럼 (0.5 패치 노트)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "src-wiki",
+      "label": "PoE2 위키 - 블러드 메이지",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Blood_Mage"
+    },
+    {
+      "id": "src-creator",
+      "label": "ImJustAnthony 뱀파이어 퀸 가이드",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+    },
+    {
+      "id": "src-video",
+      "label": "게임플레이 영상",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ"
+    }
+  ],
+  "seo": {
+    "title": "100% 크리티컬 블러드 메이지 빌드 가이드 (PoE2 0.5)",
+    "description": "검증된 변형을 갖춘 블러드 메이지 크리티컬 입문 빌드. 실제 크리에이터 영상, 육성, 장비, 출처.",
+    "noindex": false
+  },
+  "changelog": {
+    "entries": [
+      {
+        "date": "2026-07-31",
+        "changes": [
+          "4차 배치 출처 검토 발행물. 공식 0.5 패치 노트, 현재 크리에이터 가이드, 독립 빌드 가이드, 빌드 플래너, 현재 게임플레이 영상, 커뮤니티 질문을 교차 검증."
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "overview",
+      "id": "overview",
+      "title": "개요",
+      "order": 10,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "이 문서는 블러드 메이지 크리티컬의 입문 빌드입니다. 리그 시작이 가능하고, 100% 크리티컬 관문을 설명한 뒤, 검증된 0.5 변형(코멧, 볼 라이트닝/볼케이노 등)으로 안내하므로, 한 가지 설정을 무작정 베끼지 말고 자신의 진행 단계에 맞춰 고르게 합니다.",
+        "이 문서는 검증 우선 가이드입니다. 100% 크리티컬 관문, 생명력 소모 관리, 변형 선택은 현재 크리에이터 가이드를 바탕으로 설명하며, '크리티컬이 곧 피해가 아니다'라는 우선순위가 실천의 핵심입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "pros-cons",
+      "id": "pros-cons",
+      "title": "장단점",
+      "order": 20,
+      "toc": true,
+      "visible": true,
+      "pros": [
+        "여러 엔드게임 변형으로 확장되는 강력한 리그 스타터.",
+        "회복 도구를 갖춘 블러드 메이지 특유의 생명력 소모 플레이.",
+        "크리티컬 관문이 명확하고 반복 가능한 위력 상승을 제공.",
+        "여러 마법 변형을 한 허브 페이지에서 다룸."
+      ],
+      "cons": [
+        "100% 크리티컬은 관문일 뿐, 피해를 보장하는 것은 아님.",
+        "생명력 소모를 관리하지 않으면 자가 피해를 입게 됨.",
+        "변형마다 서로 다른 트리가 필요.",
+        "스킬 레벨 없이 크리티컬만 베끼면 여전히 약하게 느껴짐."
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "build-readiness",
+      "title": "이 빌드가 내게 맞나요?",
+      "order": 30,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "리그 시작 후 여러 갈래로 뻗어나가는 마법 크리티컬 허브를 원한다면 크리티컬 블러드 메이지를 선택하세요. 이는 고정된 단일 구성물이 아니라, 당신을 알맞은 변형으로 안내하는 입문 빌드입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "leveling",
+      "id": "leveling",
+      "title": "육성 경로",
+      "order": 40,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "레벨 1-30 - 캠페인 마법",
+          "body": [
+            "기본 마법(예: 초반 화염/냉기 스킬)으로 육성하세요. 생명력과 저항에 집중하십시오. 크리티컬 관문은 아직 우선순위가 아닙니다."
+          ],
+          "levelRange": "1-30"
+        },
+        {
+          "label": "레벨 31-55 - 크리티컬 기반",
+          "body": [
+            "기본 크리티컬 노드와 생명력 소모 회복(그림 피스트, 잔재)을 추가하세요. 크리티컬 확률이 충분해지면 첫 변형을 선택하십시오."
+          ],
+          "levelRange": "31-55"
+        },
+        {
+          "label": "레벨 56+ - 변형 확정",
+          "body": [
+            "변형(코멧, 볼 라이트닝/볼케이노 등) 중 하나를 확정하고, 그에 맞춰 트리와 지원 보석을 특화하십시오."
+          ],
+          "levelRange": "56+"
+        },
+        {
+          "label": "웨이스톤 - 엔드게임",
+          "body": [
+            "크리티컬 관문을 닫은 뒤 크리티컬 피해와 스킬 레벨을 높이십시오. 완전한 크리티컬 변형을 추구하기 전에 T15에서 벤치마크하십시오."
+          ],
+          "levelRange": "Waystones"
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "crit-threshold",
+      "title": "크리티컬은 관문이지 피해 수치가 아닙니다",
+      "order": 50,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "100% 크리티컬은 당신의 적중이 치명타라는 뜻이지, 강하게 적중한다는 뜻이 아닙니다. 우선순위는 다음과 같습니다. 먼저 크리티컬 안정성, 그 다음 마법 스킬 레벨, 그 다음 증가/전환 피해, 그 다음 크리티컬 피해, 그 다음 시전 속도, 마지막이 사치품."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "skills",
+      "id": "skills",
+      "title": "스킬 및 지원",
+      "order": 80,
+      "toc": true,
+      "visible": true,
+      "groups": [
+        {
+          "label": "핵심 (변형 의존)",
+          "skills": [
+            {
+              "displayName": "코멧",
+              "skillId": "comet",
+              "role": "보스 폭발 변형 스킬",
+              "supportSkillIds": [
+                "spell-echo"
+              ],
+              "notes": [],
+              "whyUse": [
+                "코멧 크리티컬 변형에서 사용합니다."
+              ]
+            },
+            {
+              "displayName": "볼 라이트닝",
+              "skillId": "ball-lightning",
+              "role": "클리어 변형 스킬",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "notes": [],
+              "mappingBossingDiff": [
+                "변형에 따라 클리어와 단일 대상이 분리됩니다."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "회복 / 방어",
+          "skills": [
+            {
+              "displayName": "그림 피스트",
+              "skillId": "grim-feast",
+              "role": "생명력 소모 회복",
+              "supportSkillIds": [],
+              "notes": []
+            },
+            {
+              "displayName": "생명력 잔재",
+              "skillId": "life-remnants",
+              "role": "유지 버퍼",
+              "supportSkillIds": [],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "id": "variant-selector",
+      "title": "변형 선택기",
+      "order": 120,
+      "toc": true,
+      "visible": true,
+      "caption": "현재 자신의 단계와 목표에 따라 갈래를 고르십시오. 볼 라이트닝/볼케이노는 별도 페이지가 있습니다.",
+      "columns": [
+        "플레이어 상태",
+        "추천 갈래",
+        "이유",
+        "관련 페이지"
+      ],
+      "rows": [
+        {
+          "label": "캠페인",
+          "cells": [
+            "캠페인",
+            "검증된 리그 시작 경로",
+            "진입 장벽이 낮음",
+            "이 페이지"
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "cells": [
+            "초반 맵",
+            "크리티컬 기반 변형",
+            "생존 문제 해결",
+            "이 페이지"
+          ]
+        },
+        {
+          "label": "볼 라이트닝 선호",
+          "cells": [
+            "볼 라이트닝 선호",
+            "볼케노",
+            "클리어/단일 분리",
+            "볼케노 페이지"
+          ]
+        },
+        {
+          "label": "고투자",
+          "cells": [
+            "고투자",
+            "완전 크리티컬 변형",
+            "상한선",
+            "이 페이지"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mapping",
+      "id": "mapping",
+      "title": "맵핑 로테이션",
+      "order": 130,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "일반 몹 그룹: 클리어 변형(볼 라이트닝 또는 선택한 클리어 스킬)을 사용하고, 계속 이동하며, 생명력 잔재로 소모량을 회복하십시오. 보스 스킬은 레어와 보스를 위해 아껴두세요."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "rare-rotation",
+      "title": "레어 로테이션",
+      "order": 140,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "레어: 보스 폭발 스킬로 전환하고, 크리티컬이 안정적인지 확인한 뒤 폭발시키십시오. 레어가 위험하다면 방어 스킬을 사용하세요. 치명적인 modifier에 과도하게 노출되지 마십시오."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "bossing",
+      "id": "bossing",
+      "title": "보스 로테이션",
+      "order": 150,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "보스: 적힌 순서를 최종본으로 믿기 전에, 현재 클라이언트에서 해당 변형의 콤보를 먼저 검증하십시오. 전투 중 생명력 소모를 관리하세요. 폭발 사이사이 회복하여 스스로 고갈되지 않도록 하십시오."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "ascendancy",
+      "title": "블러드 메이지 승천",
+      "order": 160,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "블러드 메이지는 위력을 생명력 소모와 생명 주기에 묶습니다. 승천은 생명력을 통해 시전하고 그것을 회복하는 플레이를 보상하므로, 생명력 잔재와 회복은 선택적 부가물이 아니라 이 빌드의 일부입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "passive-tree",
+      "title": "패시브 트리 접근법",
+      "order": 170,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "변형마다 서로 다른 트리가 필요합니다. 선택한 변형과 현재 크리티컬 확률에 맞춰 트리를 읽으십시오. 범용 트리를 그대로 붙여넣지 마세요. 생명력, 저항, 몇 개의 크리티컬 노드로 시작한 뒤 특화하십시오."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "gear",
+      "id": "gear",
+      "title": "장비 및 유니크",
+      "order": 90,
+      "toc": true,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Weapon",
+          "recommendations": [
+            "크리티컬 완드/셉터. 초반에는 마법 스킬 레벨이 크리티컬만큼 중요합니다. 보조 손은 포커스가 될 수 있습니다."
+          ],
+          "notes": [
+            "크리티컬 확률 / 스킬 레벨"
+          ],
+          "statPriorities": [
+            {
+              "label": "크리티컬 확률",
+              "reason": "크리티컬 관문",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Body Armour",
+          "recommendations": [
+            "먼저 생명력과 저항. ES 또는 혼합 베이스가 생명력 소모 플레이와 잘 어울립니다."
+          ],
+          "notes": [
+            "생명력 + 저항"
+          ],
+          "statPriorities": [
+            {
+              "label": "저항",
+              "reason": "생존 관문",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Rings / Amulet",
+          "recommendations": [
+            "생명력, 능력치, 크리티컬 배수, 약간의 시전 속도. 크리티컬 관문을 충족하기 전에는 과투자하지 마십시오."
+          ],
+          "notes": [
+            "생명력 / 크리티컬 배수"
+          ],
+          "statPriorities": [
+            {
+              "label": "생명력",
+              "reason": "생명력 소모용 풀",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Jewels",
+          "recommendations": [
+            "마법 스킬 레벨, 크리티컬, 생명력. 핵심이 해결된 뒤에야 사치품을 고려하십시오."
+          ],
+          "notes": [
+            "스킬 레벨 / 생명력"
+          ],
+          "statPriorities": [
+            {
+              "label": "마법 스킬 레벨",
+              "reason": "직접 피해",
+              "tier": "optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "stat-priority",
+      "id": "stat-priority",
+      "title": "능력치 우선순위",
+      "order": 100,
+      "toc": true,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "저항 (상한)",
+          "reason": "타협 불가 생존 관문"
+        },
+        {
+          "label": "크리티컬 확률",
+          "reason": "반드시 먼저 크리티컬 관문에 도달"
+        },
+        {
+          "label": "생명력",
+          "reason": "생명력 소모 시전용 풀"
+        },
+        {
+          "label": "마법 스킬 레벨",
+          "reason": "배수보다 우선하는 직접 피해"
+        },
+        {
+          "label": "크리티컬 피해 / 시전 속도",
+          "reason": "핵심이 안정된 뒤의 사치품"
+        }
+      ]
+    },
+    {
+      "type": "upgrade-priority",
+      "id": "upgrade-priority",
+      "title": "강화 우선순위",
+      "order": 110,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "스타터 -> 기능적",
+          "body": [
+            "저항 상한을 채우고, 생명력을 확보하며, 작동 가능한 크리티컬 확률에 도달하십시오. 처음부터 생명력 소모를 관리하세요."
+          ]
+        },
+        {
+          "label": "기능적 -> 엔드게임",
+          "body": [
+            "크리티컬 관문을 닫고, 변형에 맞는 크리티컬 배수와 스킬 레벨을 추가하십시오."
+          ]
+        },
+        {
+          "label": "엔드게임 -> 사치품",
+          "body": [
+            "T15가 편안해진 이후에만 완벽한 크리티컬 장비와 젬 레벨을 추구하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "budget-variants",
+      "title": "예산 변형",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "스타터는 레어 크리티컬 완드와 기본 생명력/저항 장비를 사용합니다. 기능적 엔드게임은 크리티컬 관문을 닫고 변형을 특화합니다. 사치품은 완벽한 크리티컬 장비와 젬 레벨입니다. 크리에이터의 최상위 크리티컬 구성물을 당신의 기본 목표로 삼지 마십시오."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "life-and-recovery",
+      "title": "생명력 소모와 회복",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "블러드 메이지는 시전에 생명력을 씁니다. 그림 피스트, 생명력 잔재, 흡혈이 풀을 양수로 유지합니다. 회복이 뒤처지면 보스 폭발 중 스스로 고갈됩니다. 회복을 부수적 메모가 아닌 피해의 가능 요소로 취급하십시오."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "defensive-layers",
+      "title": "방어 계층",
+      "order": 200,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "생명력과 회복 가능한 풀(에너지 보호막 또는 흡혈)이 기본입니다. 당신이 생명력을 써서 시전하므로, 방어와 회복은 같은 체계입니다. 얇은 풀은 피해와 생존 모두를 죽입니다."
+      ],
+      "bullets": []
+    },
+    {
+      "type": "community-voices",
+      "id": "community-voices",
+      "title": "커뮤니티 목소리",
+      "order": 820,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "context": "크리티컬 상한 혼동",
+          "label": "Reddit - 크리티컬 상한",
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "statement": "플레이어들은 100% 크리티컬이 모든 곳에 필요한지 묻습니다. 합의: 그것은 보스 관문이며, 감당할 수 있을 때까지는 맵핑에서 더 낮게 운용해도 됩니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "context": "크리티컬 후 낮은 피해",
+          "label": "포럼 - 피해",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "흔한 제보: 스킬 레벨과 크리티컬 배수를 건너뛰어 100% 크리티컬도 여전히 약하게 느껴진다는 것입니다. 관문은 필요하지만 충분하지 않습니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "context": "생명력 유지",
+          "label": "가이드 댓글 - 생명력",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "플레이어들은 잔재/흡혈을 무시하면 보스 폭발 중 자가 고갈이 발생한다고 지적합니다. 회복은 반드시 구성에 포함되어야 합니다.",
+          "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+        }
+      ],
+      "note": "명확성을 위해 편집한 흔한 커뮤니티 질문과 우려의 짧은 요약입니다. 그대로 인용한 말은 아닙니다."
+    },
+    {
+      "type": "question-answer",
+      "id": "question-answer",
+      "title": "질문과 답변",
+      "order": 840,
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "100% 크리티컬은 시작인가 끝인가?",
+          "answer": [
+            "보스 변형의 관문입니다. 초반 캐릭터는 비크리티컬 맵핑 콤보를 돌리다가 보스전 직전에야 그것을 닫습니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "100% 크리티컬을 베껴도 왜 피해가 낮은가?",
+          "answer": [
+            "크리티컬은 하나의 배수일 뿐입니다. 스킬 레벨, 증가 피해, 크리티컬 배수가 뒤따라야 합니다. 관문만으로는 부족합니다."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "어떤 변형을 골라야 하나요?",
+          "answer": [
+            "캠페인은 검증된 리그 시작 경로를, 초반 맵은 크리티컬 기반을, 볼 라이트닝 선호자는 볼케노(별도 페이지)를, 고투자자는 완전 크리티컬 변형을 사용하십시오."
+          ],
+          "bullets": []
+        },
+        {
+          "question": "어떻게 자가 고갈을 막나요?",
+          "answer": [
+            "그림 피스트, 생명력 잔재, 흡혈을 구성해 보스 폭발 중에도 생명력 풀이 양수로 유지되게 하십시오. 회복 지연이 자가 고갈의 원인입니다."
+          ],
+          "bullets": []
+        }
+      ]
+    },
+    {
+      "type": "troubleshooting",
+      "id": "troubleshooting",
+      "title": "문제 해결",
+      "order": 860,
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "100% 크리티컬인데도 피해가 여전히 낮음",
+          "checks": [
+            "다음으로 마법 스킬 레벨과 크리티컬 배수를 추가하십시오. 크리티컬 관문은 필요하지만 그 자체로는 충분하지 않습니다."
+          ]
+        },
+        {
+          "symptom": "생명력 자가 고갈",
+          "checks": [
+            "생명력 잔재/흡혈/그림 피스트를 추가하거나 수정하여 회복이 생명력 소모 시전을 따라가게 하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "build-planner",
+      "id": "build-planner",
+      "title": "빌드 플래너",
+      "order": 880,
+      "toc": true,
+      "visible": true,
+      "note": "현재 0.5 변형용 가져오기 가능 플래너입니다. 인게임 공식 빌드 플래너 도구로 가져오기하세요. 스킬 레벨과 유니크는 자신의 예산에 맞춰 조정하십시오.",
+      "creatorName": "ImJustAnthony",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "title": "영상 가이드",
+      "order": 900,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "ImJustAnthony 게임플레이 쇼케이스",
+          "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ",
+          "timestamps": [
+            {
+              "label": "빌드 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "육성 경로",
+              "time": "6:30"
+            },
+            {
+              "label": "장비 및 유니크",
+              "time": "14:00"
+            },
+            {
+              "label": "맵핑 로테이션",
+              "time": "22:00"
+            },
+            {
+              "label": "보스 쇼케이스",
+              "time": "30:00"
+            }
+          ],
+          "creator": "ImJustAnthony",
+          "description": "현재 0.5 게임플레이 영상으로, 육성, 맵핑, 보스 로테이션을 시연합니다.",
+          "takeaway": "소켓이나 유니크 선택을 베끼기 전에 먼저 로테이션과 장비를 시청하십시오."
+        }
+      ]
+    },
+    {
+      "type": "sources",
+      "id": "sources",
+      "title": "출처 및 검증",
+      "order": 950,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 / 패치",
+          "description": "승천과 핵심 스킬에 대한 패스 오브 엑자일 2 공식 포럼과 0.5 패치 노트.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "크리에이터 가이드",
+          "description": "현재 0.5 가이드인 ImJustAnthony의 것을 주된 독립 교차 검증으로 사용.",
+          "url": "https://mobalytics.gg/poe-2/builds/anthonys-vampire-queen"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "승천과 스킬 데이터에 대한 PoE2 위키 항목.",
+          "url": "https://www.poe2wiki.net/wiki/Blood_Mage"
+        },
+        {
+          "label": "영상",
+          "description": "로테이션과 장비를 확인하는 현재 게임플레이 영상.",
+          "url": "https://www.youtube.com/watch?v=80b3qLC7xFQ"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "커뮤니티 목소리와 FAQ 섹션에 사용된 Reddit 및 가이드 댓글 질문.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "notes": [
+          "공식 패치 노트, 현재 크리에이터 가이드, 데이터베이스, 빌드 플래너, 현재 게임플레이 영상을 교차 검증. 직접 클라이언트 테스트로는 검증되지 않음."
+        ]
+      }
+    }
+  ],
+  "locale": "ko",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "crit-blood-mage",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

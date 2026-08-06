@@ -52,7 +52,7 @@ export function BossPhaseTabs({
           </button>
         ))}
       </div>
-      <div className="boss-phase-view">
+      <div className="boss-phase-view boss-phase-view-fix">
         <div className="boss-phase-copy">
           <p className="boss-phase-label">
             {locale === "zh-cn" ? "阶段" : "Phase"} {activeIndex + 1} ·{" "}
@@ -428,7 +428,7 @@ export function BossLightboxTrigger({
           >
             ×
           </button>
-          <img alt={alt} src={src} />
+          <img alt={alt} src={resolveImageAsset(src)} />
           {caption ? <p>{caption}</p> : null}
         </div>
       ) : null}

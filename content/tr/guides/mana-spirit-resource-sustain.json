@@ -1,0 +1,560 @@
+{
+  "id": "mana-spirit-resource-sustain",
+  "slug": "mana-spirit-resource-sustain",
+  "locale": "tr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "PoE 2 Mana ve Ruh Sorunları: Kaynak Sürdürülebilirliğini Düzeltin",
+  "shortTitle": "Mana ve Ruh",
+  "summary": "Yetenek döngünüz neden durur, mana şişeniz neden yetişmez veya bir aura neden açılmaz: mana maliyeti ile iyileşme karşılaştırması, rezerv havuzu olarak Ruh, maliyeti şişiren destekler ve harita ile boss savaşlarının farkı.",
+  "description": "Önce teşhis odaklı bir PoE 2 kaynak sürdürülebilirliği rehberi: mana maliyeti, yenilenme, emme, öldürmede kazanım, şişeler ve tetikleme hızı arasındaki ilişki; Ruh'un neden ayrı bir rezerv havuzu olduğu; desteklerin maliyeti veya Ruh rezervini nasıl artırdığı; boss ve harita kaynak sorunlarının neden farklı olduğu; Life ve Energy Shield gibi alternatif havuzlar; ve kırılma noktasını bulmak için 10 saniyelik döngü yöntemi.",
+  "guideCategory": "troubleshooting",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "Ana yeteneğinizi kullanabiliyorsunuz ama döngü duruyor veya bir aura açılmıyorsa",
+    "Mana'nın her kullanımda harcandığını, Ruh'un ise kalıcı etkiler tarafından rezerve edildiğini anlıyorsunuz"
+  ],
+  "patch": "Path of Exile 2 Erken Erişim 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "map",
+    "troubleshooting"
+  ],
+  "heroImage": "/images/skills/herald-of-ice.webp",
+  "cardImage": "/images/skills/herald-of-ice.webp",
+  "imageAlt": "PoE 2 Herald of Ice, harcanan mana ile rezerve edilmiş Ruh arasındaki farkı gösteren Ruh rezerve eden bir yetenek takviyesi",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Hızlı yanıt",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Döngüm neden duruyor?",
+          "body": [
+            "Her kullanımda harcadığınız mana, kullanımlar arasında yenilenme, emme, öldürmede kazanım ve şişelerden sağladığınız iyileşmeyi aşıyor.",
+            "Yardımcı düşmanı olmayan boss savaşlarında öldürmede kazanım ve emme kaynakları kurur, böylece haritaları temizleyen aynı kurulum mana tükenir."
+          ]
+        },
+        {
+          "title": "Aura'm neden açılmıyor?",
+          "body": [
+            "Ruh, harcanan mana değil rezerve edilmiş bir havuzdur. Rezerve ettiğiniz Ruh, maksimumunuzu aşarsa kalıcı takviye etkinleşemez.",
+            "Önce Ruh'u diğer rezervlerden serbest bırakın, ardından aura'yı veya desteği yeniden etkinleştirin."
+          ]
+        },
+        {
+          "title": "En hızlı çözüm?",
+          "body": [
+            "10 saniyelik bir kullanım döngüsü kaydedin: kullanım sayısını sayın, harcanan ve iyileşen manayı not edin ve iyileşmenin nerede yetersiz kaldığını bulun.",
+            "Genellikle en ucuz çözüm, daha fazla iyileşme ekleyip yığmak değil, maliyeti şişiren bir desteği kaldırmaktır."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resource-overview",
+      "order": 2,
+      "title": "Mana mı Ruh mu: iki farklı havuz",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Mana ve Ruh farklı sorunları çözer ve birbirine karıştırmak kolaydır. Mana, bir yetenek kullandığınız her seferinde harcanır. Ruh ise kalıcı takviyeler, aura'lar ve bazı destekler tarafından rezerve edilir ve rezerve edildiği sürece kullanılamaz."
+      ],
+      "bullets": [
+        "Mana: her kullanımda tüketilir; yenilenme, mana emme, öldürmede mana kazanımı ve şişeler veya tılsımlar yoluyla geri kazanılır.",
+        "Ruh: kalıcı etkiler tarafından rezerve edilen bir havuzdur; rezerve edilen miktar maksimumu aşarsa etki açılmaz.",
+        "Bir destek hem bir yeteneğin mana maliyetini artırabilir hem de kalıcı bir takviye için Ruh rezerve edebilir, böylece size iki kez vurur.",
+        "Onları ayrı tutun: mana'yı düzeltmek asla bir Ruh taşmasını çözmez, tersi de geçerlidir."
+      ]
+    },
+    {
+      "id": "symptom-selector",
+      "order": 3,
+      "title": "Belirtinizi seçin",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Buradan başlayın. Size uyan belirtiyi seçin, ardından kırılma noktasını bulmak için aşağıdaki ayrıntılı teşhisi kullanın.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Belirtiniz",
+          "options": [
+            {
+              "label": "Haritalar sorun değil, boss savaşları kurutuyor",
+              "value": "mapping-fine-boss-dry"
+            },
+            {
+              "label": "Aura veya kalıcı takviye açılmıyor",
+              "value": "aura-wont-enable"
+            },
+            {
+              "label": "Tetiklenen yetenekler devre dışı kalıyor",
+              "value": "trigger-dropout"
+            },
+            {
+              "label": "Her yerde sürekli mana sıkıntısı",
+              "value": "always-dry"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Harita iyi, boss kurudu",
+          "when": {
+            "symptom": "mapping-fine-boss-dry"
+          },
+          "steps": [
+            "İyileşmeniz, düzenli öldürmelere ihtiyaç duyan öldürmede kazanım ve emmeye yaslanır.",
+            "Uzun evreleri olan ve yardımcı düşmanı bulunmayan boss'lar bu kaynakları keser.",
+            "Yalnızca öldürmede kazanıma veya emmeye değil, sürekli iyileşme (yenilenme, bir mana şişesi/tılsımı) ekleyin."
+          ]
+        },
+        {
+          "title": "Aura açılmayacak",
+          "when": {
+            "symptom": "aura-wont-enable"
+          },
+          "steps": [
+            "Rezerve edilen Ruh, maksimum Ruh'unuzdan büyüktür.",
+            "Ruh'u serbest bırakmak için diğer kalıcı takviyeleri ve destekleri yuvasından çıkarın veya azaltın.",
+            "Toplam rezerv havuzunuza sığdığında aura'yı yeniden etkinleştirin."
+          ]
+        },
+        {
+          "title": "Tetiklenen yetenekler devre dışı kalıyor",
+          "when": {
+            "symptom": "trigger-dropout"
+          },
+          "steps": [
+            "Tetiklenen yetenekler, tetikleyen yeteneğin üzerine, ateşlediklerinde yine de mana maliyetlidir.",
+            "Tetikleme hızı yüksekse, iyileşmeler arasında harcanan toplam mana fırlar.",
+            "Yalnızca ana kullanımı değil, tetikleme hızına göre boyutlandırılmış iyileşme ekleyin veya tetikleme sıklığını düşürün."
+          ]
+        },
+        {
+          "title": "Sürekli mana sıkıntısı",
+          "when": {
+            "symptom": "always-dry"
+          },
+          "steps": [
+            "Temel mana maliyeti, her durumda temel iyileşmeyi aşıyor.",
+            "Tam açığı ölçmek için 10 saniyelik bir döngü kaydedin.",
+            "Önce en büyük tek kaynağı giderin: genellikle maliyeti şişiren bir destek veya eksik yenilenme."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Genel ilk adım",
+        "steps": [
+          "10 saniyelik bir kullanım döngüsü kaydedin: kullanımlar, harcanan mana, iyileşen mana.",
+          "İyileşmenin her yerde mi yoksa yalnızca öldürme olmadan mı yetersiz kaldığını belirleyin.",
+          "Ardından her düzeltmenin boyutunu belirlemek için ayrıntılı teşhisi açın."
+        ]
+      }
+    },
+    {
+      "id": "resource-diagnostic",
+      "order": 4,
+      "title": "Ayrıntılı teşhis",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "İncelemek istediğiniz kaynağı seçin. Maliyetini neyin artırdığını, neyin iyileştirdiğini ve kontrol sırasını gösteriyoruz.",
+      "controls": [
+        {
+          "id": "resource",
+          "label": "İncelenecek kaynak",
+          "options": [
+            {
+              "label": "Mana maliyeti ve yenilenme",
+              "value": "mana-cost"
+            },
+            {
+              "label": "Emme ve öldürmede kazanım",
+              "value": "leech-onkill"
+            },
+            {
+              "label": "Şişe ve tılsım",
+              "value": "flask-charm"
+            },
+            {
+              "label": "Ruh rezervasyonu",
+              "value": "spirit"
+            },
+            {
+              "label": "Life, ES, Runic Ward",
+              "value": "alt-pool"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Mana maliyeti ve yenilenme",
+          "when": {
+            "resource": "mana-cost"
+          },
+          "steps": [
+            "Yeteneğin mana maliyetini saniyedeki mana yenilenmenizle karşılaştırın.",
+            "Mana maliyeti ekleyen bir destek, temel maliyet uygun olsa bile maliyeti yenilenmenin üzerine çıkarabilir.",
+            "Düzeltme sırası: önce maliyet şişiren destekleri kaldırın, ardından düz yenilenme veya -mana maliyeti modifikasyonları ekleyin."
+          ]
+        },
+        {
+          "title": "Emme ve öldürmede kazanım",
+          "when": {
+            "resource": "leech-onkill"
+          },
+          "steps": [
+            "Emme ve öldürmede mana kazanımı yalnızca hasar verirken ve öldürme sağlarken geri döner.",
+            "Haritalarda mükemmeldir, yardımcı düşmanı olmayan uzun boss evrelerinde zayıftır.",
+            "Boss odaklı içerikte bunlara tek iyileşme kaynağınız olarak bel bağlamayın."
+          ]
+        },
+        {
+          "title": "Şişe ve tılsım",
+          "when": {
+            "resource": "flask-charm"
+          },
+          "steps": [
+            "Bir mana şişesi veya tılsımı, kullanıldığında anlık bir miktar geri kazandırır ve şarjlardan dolar.",
+            "Şarj kazanımını kontrol edin: şarj veren eylemleri nadiren yapıyorsanız iyileşme durur.",
+            "Şişeler beklemede olsa bile güvenilir bir sürekli kaynağı koruyun."
+          ]
+        },
+        {
+          "title": "Ruh rezervasyonu",
+          "when": {
+            "resource": "spirit"
+          },
+          "steps": [
+            "Her kalıcı takviye ve destek rezervini maksimum Ruh'unuza karşı toplayın.",
+            "Toplam maksimumu aşarsa son etki etkinleşmez.",
+            "Yeni aura'lar veya kalıcı destekler eklemeden önce rezervleri kırpın."
+          ]
+        },
+        {
+          "title": "Alternatif havuzlar",
+          "when": {
+            "resource": "alt-pool"
+          },
+          "steps": [
+            "Bazı yetenekler mana yerine Life maliyetlidir; Energy Shield ve Runic Ward ayrı havuzlardır.",
+            "Baskı altındaki havuzu doğrudan doğrulayın: Life maliyetli bir yetenek mana yenilenmesiyle düzelmez.",
+            "İyileşmeyi, yeteneğinizin gerçekte harcadığı havluza göre boyutlandırın."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Genel kontrol",
+        "steps": [
+          "Baskı altındaki tam havuzu adlandırın (mana, Ruh, Life, ES, Ward).",
+          "10 saniyelik bir döngü boyunca harcanan ile iyileşen miktarı ölçün.",
+          "Önce en büyük açığı giderin, ardından hem harita hem de boss bağlamında yeniden test edin."
+        ]
+      }
+    },
+    {
+      "id": "cost-breakdown",
+      "order": 5,
+      "title": "Her düzeltmenin maliyeti",
+      "type": "cost-breakdown",
+      "visible": true,
+      "toc": true,
+      "intro": "Her düzeltme aynı maliyette değildir. Karar vermeden önce seçenekleri en ucuzdan en yıkıcı olana sıralayın.",
+      "rows": [
+        {
+          "item": "Maliyet şişiren bir desteği yuvasından çıkarın",
+          "cost": "Ücretsiz",
+          "detail": "İade gerekmez; yalnızca yuvasını kaldırın. Bir destek ihtiyacınız olmayan mana maliyetini veya Ruh rezervini artırdıysa en ucuz ilk adımdır.",
+          "currency": "-"
+        },
+        {
+          "item": "Bir mana şişesi veya tılsımı ekleyin",
+          "cost": "Düşük",
+          "detail": "Kullanıldığında anlık bir kaynak. Ucuzdur ama şarj kazanımına bağlıdır ve bekleme süresi vardır.",
+          "currency": "-"
+        },
+        {
+          "item": "Ekipmanı -mana maliyeti veya +mana yenilenmesi için değiştirin",
+          "cost": "Değişir",
+          "detail": "Yüzüklerde, kolye veya gövde zırhında azaltılmış mana maliyeti veya artırılmış mana yenilenmesi arayın. Maliyet, craft mı yaptığınıza yoksa takas mı ettiğinize bağlıdır.",
+          "currency": "currency"
+        },
+        {
+          "item": "Mana veya Ruh düğümlerine yeniden dağıtım",
+          "cost": "Altın + iade puanı",
+          "detail": "Kaynak pasiflerine gitmek zorundaysanız iade NPC'sini kullanın; bu altına mal olur ve başka yerde gerekebilecek puanları yeniden dağıtır.",
+          "currency": "gold"
+        },
+        {
+          "item": "Life maliyetli veya farklı bir yeteneğe geçin",
+          "cost": "Build değişikliği",
+          "detail": "Maliyeti manadan Life'a taşımak, hangi havuzun baskı altında olduğunu değiştirir ve nadiren en ucuz seçenektir.",
+          "currency": "-"
+        }
+      ],
+      "note": "Ücretsiz veya düşük maliyetli seçeneklerle başlayın. Bir desteği kaldırmak veya bir şişe eklemek, çoğu zaman yeniden dağıtıma gerek kalmadan açığı giderir."
+    },
+    {
+      "id": "mapping-vs-bossing",
+      "order": 6,
+      "title": "Harita ile boss savaşının farkı neden var",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Aynı yetenek kurulumu haritalarda mükemmel, bir boss arenasında imkansız hissedebilir. Fark neredeyse her zaman yeteneğiniz değil, iyileşme kaynaklarınızdır."
+      ],
+      "bullets": [
+        "Haritalar: düzenli öldürmeler öldürmede mana ve emme besler, böylece iyileşme sınırsız görünür.",
+        "Boss'lar: uzun evreler ve yardımcı düşman yokluğu öldürmede kazanımı ve emmeyi aç bırakır, zayıf bir temel yenilenmeyi ortaya çıkarır.",
+        "İyileşmeyi yalnızca grup temizlerken değil, sürekli bir boss benzeri senaryoda test edin.",
+        "Bir düzeltme yalnızca öldürürken çalışıyorsa, o boss'a dayanıklı bir düzeltme değildir."
+      ]
+    },
+    {
+      "id": "solutions",
+      "order": 7,
+      "title": "Gerçekten işe yarayan çözümler",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "10 saniyelik döngünüzde ölçülen en büyük açığı hedefleyin. Genellikle tek bir değişiklik bunun çoğunu kapatır."
+      ],
+      "bullets": [
+        "Mana maliyetini şişiren veya ihtiyaç duyulmayan Ruh'u rezerve eden bir desteği kaldırın veya değiştirin.",
+        "Öldürmelere bağlı olmayan sürekli bir iyileşme kaynağı (mana yenilenmesi veya bir şişe/tılsım) ekleyin.",
+        "Yeni bir aura eklemeden önce diğer kalıcı takviyeleri kırparak Ruh'u serbest bırakın.",
+        "Tetikleme ağırlıklı kurulumlar için iyileşmeyi yalnızca ana kullanıma değil, tetikleme hızına göre boyutlandırın.",
+        "Yeteneğiniz Life, Energy Shield veya Runic Ward harcıyorsa baskı altındaki havuzu doğrudan doğrulayın."
+      ]
+    },
+    {
+      "id": "failed-methods",
+      "order": 8,
+      "title": "Sorunu çözmeyen yöntemler",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Oyuncular sıklıkla yanlış şeyi yığar. Bunları atlayın ve önce açığı ölçün."
+      ],
+      "bullets": [
+        "Savaşta öldürme yokken daha fazla emme yığmak: emme için verilen hasar ve önemli olan öldürmeler gerekir.",
+        "Açılmayan bir aura'yı düzeltmek için mana yenilenmesi eklemek: bu bir Ruh sorunudur, mana değil.",
+        "Tek bir evrensel mana eşiğinin her build'e uyduğunu varsaymak: iyileşme ihtiyacı kendi maliyetiniz ve kullanım hızınızla ölçeklenir.",
+        "Tetikleme maliyetini göz ardı etmek: tetiklenen yetenekler ateşlendiğinde yine mana harcar."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Topluluk soruları",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Reddit ve video yorumlarından gelen yaygın kaynak sürdürülebilirliği soruları, bizim yorumumuz ve doğrudan bir öneriyle birlikte.",
+      "cards": [
+        {
+          "title": "Haritalarda iyi, boss'ta kurumuş",
+          "tag": "Boss",
+          "body": [
+            "Sorun: döngü yalnızca uzun boss evrelerinde başarısız oluyor.",
+            "Kanıt: iyileşme, düzenli öldürmelere ihtiyaç duyan öldürmede kazanım ve emmeye yaslanıyor.",
+            "Öneri: sürekli yenilenme veya bir şişe ekleyin; öldürmeye dayalı iyileşmeye bel bağlamayın."
+          ]
+        },
+        {
+          "title": "Aura gri olmuş",
+          "tag": "Ruh",
+          "body": [
+            "Sorun: kalıcı bir takviye açılmıyor.",
+            "Kanıt: rezerve edilen Ruh, maksimum Ruh'u aşıyor.",
+            "Öneri: Ruh'u diğer rezervlerden serbest bırakın, ardından yeniden etkinleştirin."
+          ]
+        },
+        {
+          "title": "Şişe asla yetmez",
+          "tag": "Şişe",
+          "body": [
+            "Sorun: bir mana şişesi yetişemiyor.",
+            "Kanıt: şarj kazanımı çok yavaş veya maliyet bir destekten fırlıyor.",
+            "Öneri: şişeleri yığmadan önce şarjları kontrol edin ve maliyet şişiren destekleri kaldırın."
+          ]
+        },
+        {
+          "title": "Tetikleme mana yer",
+          "tag": "Tetikleme",
+          "body": [
+            "Sorun: tetiklenen yetenekler mana'yı hızla tüketiyor.",
+            "Kanıt: tetiklenen yetenekler, tetikleyen yeteneğin üzerine mana maliyetlidir.",
+            "Öneri: iyileşmeyi yalnızca ana kullanıma değil, tetikleme hızına göre boyutlandırın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Kaynak sürdürülebilirliği video anlatımı",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 Mana ve Ruh Sürdürülebilirliği: Tükenmeyi Durdurun",
+          "creator": "Topluluk içerik üreticisi",
+          "description": "Mana ve Ruh sorunlarının teşhisini, harcanan manayı rezerve edilmiş Ruh'tan ayırmayı ve tam bir yeniden dağıtım olmadan sürdürülebilirliği düzeltmeyi anlatan bir anlatım.",
+          "takeaway": "10 saniyelik bir döngü ölçün, aura eklemeden önce Ruh'u serbest bırakın ve iyileşmeyi yığmadan önce maliyet şişiren destekleri kaldırın.",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM",
+          "timestamps": [
+            {
+              "label": "Giriş",
+              "time": "0:00"
+            },
+            {
+              "label": "Mana ve Ruh",
+              "time": "1:30"
+            },
+            {
+              "label": "Harita ve boss",
+              "time": "4:00"
+            },
+            {
+              "label": "Maliyeti şişiren destekler",
+              "time": "7:00"
+            },
+            {
+              "label": "10 saniyelik döngü yöntemi",
+              "time": "10:00"
+            },
+            {
+              "label": "Düzeltme sırası",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "Sorun giderme",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Önce havuzları ayırın. Bir mana düzeltmesi asla bir Ruh sorununu çözmez ve çoğu 'mana sıkıntısı' vakası aslında eksik bir sürekli iyileşmedir."
+      ],
+      "bullets": [
+        "Sürekli kuruluk: 10 saniyelik bir döngü kaydedin ve önce en büyük maliyet kaynağını kaldırın.",
+        "Yalnızca boss: sürekli yenilenme veya bir şişe ekleyin; öldürmede kazanıma veya emmeye güvenmeyi bırakın.",
+        "Aura açılmıyor: Ruh rezervlerini toplayın ve sığana kadar kırpın.",
+        "Tetikleme kesintisi: iyileşmeyi yalnızca ana kullanıma değil, tetikleme hızına göre boyutlandırın.",
+        "Yanlış havuz: düzeltmeden önce yeteneğin mana, Life, ES veya Ward harcayıp harcamadığını doğrulayın."
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Kaynaklar ve doğrulama",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Resmi kaynak",
+          "description": "Path of Exile 2 resmi sitesi ve oyun içi karakter paneli (mana, Ruh, yenilenme)",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Topluluk rehberi",
+          "description": "PoE 2 Wiki - Mana, Ruh ve kaynak mekanikleri",
+          "url": "https://www.poe2wiki.net/"
+        },
+        {
+          "label": "Video rehberi",
+          "description": "Topluluk anlatımı - Mana ve Ruh Sürdürülebilirliği",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Değişiklik günlüğü",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "PoE 2 0.5.4 için yayımlandı. Mana ve Ruh karşılaştırmasını, iki adımlı kaynak teşhisini, her düzeltmenin maliyetini, harita ile boss farkını, alternatif havuzları ve 10 saniyelik döngü yöntemini kapsar. Belirtilen sınırlar için istemci doğrulaması beklemededir."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [
+    "herald-of-ice"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 Official",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "PoE 2 Wiki - Resources",
+      "sourceType": "community",
+      "url": "https://www.poe2wiki.net/"
+    },
+    {
+      "label": "Community - Mana and Spirit Sustain",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Mana ve Ruh Sorunları: Kaynak Sürdürülebilirliğini Düzeltin",
+    "description": "Yetenek döngünüz neden durur, mana şişeniz neden yetişmez veya bir aura neden açılmaz: mana maliyeti ile iyileşme karşılaştırması, rezerv havuzu olarak Ruh, maliyeti şişiren destekler ve harita ile boss savaşlarının farkı.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-02",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "mana-spirit-resource-sustain",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,6 +1,6 @@
 /** 文件职责：为原型 V2 详情页右栏集中展示可核验元数据与安全导航，不重复正文结论。 */
 
-import type { ContentType } from "../../lib/content/constants";
+import type { ContentLocale, ContentType } from "../../lib/content/constants";
 
 /** Boss tag slug 到显示名的映射；侧栏标签读取此表。 */
 const bossTagLabels: Record<string, { en: string; zh: string }> = {
@@ -38,7 +38,7 @@ export type ArticleSidebarProps = {
   categoryHref: string;
   categoryLabel: string;
   contentType: ContentType;
-  locale: "en" | "zh-cn";
+  locale: ContentLocale;
   patch: string;
   tags: readonly string[];
   updatedAt: string;

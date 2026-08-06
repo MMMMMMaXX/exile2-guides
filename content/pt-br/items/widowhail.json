@@ -1,0 +1,858 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "pt-br",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Widowhail: Escalonamento do Bônus do Aljava, Melhores Rolagens e Runeforging no Path of Exile 2 0.5",
+  "shortTitle": "Widowhail",
+  "summary": "A Widowhail é um Arco Grosseiro único no Path of Exile 2 cujo único modificador, (150-250)% de aumento nos bônus obtidos da Aljava Equipada, multiplica os bônus numéricos da sua aljava. O dano próprio do arco é irrelevante; a aljava é o motor. Este guia cobre a fórmula exata de escalonamento, quais modificadores da aljava escalam, como rolagens baixas e altas se comparam, qual aljava justifica uma rolagem de 250%, a versão Runeforged e quais builds não devem copiar a aljava de outra pessoa.",
+  "description": "Como a Widowhail funciona no PoE2 0.5: o multiplicador (150-250)% de aumento nos bônus obtidos da Aljava Equipada, a fórmula Base x (1 + W%), quais mods da aljava escalam (globais, implícitos, corrupção, projéteis, dano adicionado) e quais não escalam (mods locais da aljava), valor de rolagem baixa vs alta, seleção de aljava, Runeforging e cautelas específicas de build.",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Widowhail, Arco Grosseiro único do Path of Exile 2, um arco de escalonamento de aljava que multiplica os bônus numéricos da aljava equipada",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "O único modificador da Widowhail, (150-250)% de aumento nos bônus obtidos da Aljava Equipada, multiplica cada bônus numérico escalável da sua aljava por (1 + W/100). A 150% é x2,5, a 200% x3,0, a 250% x3,5. O DPS físico próprio do arco é baixo de propósito: a aljava é a arma. Uma boa aljava é o que torna uma rolagem alta valiosa; uma aljava fraca torna até uma Widowhail de 250% inútil.",
+      "calloutDetail": [
+        "O multiplicador se aplica a bônus globais, implícitos e de corrupção concedidos pela aljava, incluindo mods de flecha adicional, dano adicionado, velocidade de ataque aumentada, resistências, vida e precisão, entre outros.",
+        "Ele NÃO adiciona novos atributos. Apenas amplifica o que a aljava já concede. Uma aljava sem nada que valha a pena escalar não lhe dá nada.",
+        "A Widowhail pode ser Runeforged (Runeforging de Único, desbloqueado no Ato 3) uma vez que seja um único de baixo nível; o mod de bônus de aljava único é mantido e a base ganha maior dano físico além de uma base Runeforged."
+      ],
+      "answers": [
+        {
+          "label": "Use se",
+          "text": [
+            "Você já possui (ou pode pagar) uma aljava forte cujos bônus numéricos você quer multiplicar várias vezes — dano adicionado, velocidade de ataque ou de projétil, níveis de habilidade, vida, resistências."
+          ]
+        },
+        {
+          "label": "Evite se",
+          "text": [
+            "Você joga uma build que depende de atributos locais da arma (físico plano alto, velocidade de ataque alta no próprio arco) ou não consegue obter uma aljava que valha a pena amplificar. Um arco raro pode servir melhor."
+          ]
+        },
+        {
+          "label": "Rolagem a buscar",
+          "text": [
+            "250% é o teto da rolagem natural. 240-248% é quase tão forte por muito menos moeda. Uma corrupção com Vaal Orb pode ultrapassar 250% (relatos da comunidade ~290%+)."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Como o multiplicador funciona"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip atual e faixas de rolagem"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds que a utilizam"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Fatos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Tipo base",
+          "value": "Crude Bow",
+          "note": [
+            "Um arco inicial. O dano físico base (5-13) e a velocidade de ataque (1,40) são baixos porque o poder do item vem inteiramente da aljava, não da arma."
+          ]
+        },
+        {
+          "label": "Modificador único",
+          "value": "(150-250)% de aumento nos bônus obtidos da Aljava Equipada",
+          "note": [
+            "O único modificador explícito. A rolagem vem em passos de 50% (150 / 200 / 250), então não existe rolagem de 187% — ela se ajusta a um patamar."
+          ]
+        },
+        {
+          "label": "Nível requerido",
+          "value": "1 (14 de Destreza)",
+          "note": [
+            "Equipável desde o início da campanha, motivo pelo qual serve tanto como arco de leveling quanto como multiplicador de aljava de endgame."
+          ]
+        },
+        {
+          "label": "Aquisição",
+          "value": "Dropa em qualquer lugar; pode ser transformado; negociável",
+          "note": [
+            "Drop relativamente comum de monstros de nível 25+ (Ato 2 em diante). Também pode ser criado usando um Orb of Chance em um Crude Bow branco. Valor de venda é 6x Alchemy Shard."
+          ]
+        },
+        {
+          "label": "Teto de corrupção",
+          "value": "Acima de 250% possível",
+          "note": [
+            "Uma corrupção com Vaal Orb pode exceder o teto natural de 250% (relatos da comunidade de até ~290%+). Verifique o teto exato no jogo."
+          ]
+        },
+        {
+          "label": "Runeforging",
+          "value": "Elegível (único de baixo nível)",
+          "note": [
+            "Como único de nível 1, qualifica-se para Runeforging de Único assim que desbloqueado no Ato 3; o mod de bônus de aljava é mantido e o dano base é melhorado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip atual e faixas de rolagem (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Dano Físico Base",
+          "value": "5-13",
+          "notes": [
+            "Baixo de propósito. A Widowhail não é portadora de dano; é um amplificador de aljava."
+          ]
+        },
+        {
+          "label": "Chance de Acerto Crítico",
+          "value": "5,00%",
+          "notes": [
+            "Herdado da base Crude Bow."
+          ]
+        },
+        {
+          "label": "Ataques por Segundo",
+          "value": "1,40",
+          "notes": [
+            "Herdado da base Crude Bow."
+          ]
+        },
+        {
+          "label": "Modificador único (variável)",
+          "value": "(150-250)% de aumento nos bônus obtidos da Aljava Equipada",
+          "notes": [
+            "O único explícito. Rolagens em patamares de 50%: 150%, 200%, 250%. Este é o número que decide o valor do arco."
+          ]
+        },
+        {
+          "label": "Requisitos",
+          "value": "Nível 1, 14 de Destreza",
+          "notes": [
+            "Sem requisito de Força ou Inteligência, tornando-o acessível a qualquer classe baseada em Destreza desde o nível 1."
+          ]
+        },
+        {
+          "label": "Implícito",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "Linha de sabor implícita mostrada no item; não é um atributo escalável separado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Como funciona o multiplicador de bônus da aljava",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "O modificador da Widowhail diz (150-250)% de aumento nos bônus obtidos da Aljava Equipada. A palavra-chave é 'aumento': ele pega o valor numérico de um bônus da aljava e o aumenta pela rolagem da Widowhail. Um bônus da aljava de +40 de Vida Máxima com uma Widowhail de 250% torna-se +40 x (1 + 2,50) = +140 de Vida Máxima. A fórmula geral é: Bônus de Aljava Escalonado = Bônus de Aljava Base x (1 + W/100), onde W é a rolagem da Widowhail (150, 200 ou 250).",
+        "Como o multiplicador é (1 + W/100), os fatores efetivos são x2,5 a 150%, x3,0 a 200% e x3,5 a 250%. Isso é confirmado pelo exemplo documentado de flechas: uma aljava cujo implícito concede 'Ataques de Arco disparan uma Flecha Adicional' (+1) combinado com um explícito '+1 de Contagem de Projéteis' soma 2 antes da Widowhail; com um efeito de 250% esse 2 torna-se 2 x 3,5 = 7 flechas adicionais. Os atributos são somados primeiro e depois multiplicados.",
+        "O que 'bônus obtidos da Aljava Equipada' significa na prática é cada bônus numérico escalável que a aljava concede ao seu personagem — tanto sua linha implícita quanto seus afixos explícitos, e também implícitos de corrupção. Isso inclui dano adicionado (plano), porcentagens de aumento (velocidade de ataque, crítico, dano), atributos, resistências, vida, precisão, velocidade de projétil, contagens de perfuração e mods de flecha adicional. O multiplicador não inventa novos atributos; apenas escala os já presentes.",
+        "Um ponto sutil que muitos jogadores perdem: o bônus é multiplicado, não adicionado como uma segunda cópia. Uma aljava com +20% de aumento na Velocidade de Ataque e uma Widowhail de 200% resulta em +20% x 3,0 = +60% de aumento na Velocidade de Ataque vinda dessa linha — não se torna +20% + 200%. A rolagem da Widowhail é ela mesma a magnitude de 'aumento' aplicada ao valor de bônus subjacente da aljava.",
+        "Por que o DPS próprio do arco é baixo mas a build funciona: a Widowhail substitui 'bons atributos de arma' por 'bons atributos de aljava, amplificados'. Uma aljava Rara pode facilmente carregar grande dano adicionado plano, velocidade de ataque de dois dígitos, níveis de habilidade, vida e resistências. Multiplicar tudo isso por 3,5 produz mais valor ofensivo e defensivo total do que o dano físico plano que um arco normal forneceria, ao custo de precisar de uma aljava forte e bem rolada para justificar o slot do arco."
+      ],
+      "bullets": [
+        "Fórmula: Escalonado = Base x (1 + W/100). Fatores: 150% -> x2,5, 200% -> x3,0, 250% -> x3,5.",
+        "Bônus implícitos, explícitos e de corrupção da aljava contam todos.",
+        "O arco ignora seu próprio dano físico baixo; a aljava é a arma.",
+        "Atributos na aljava são somados e depois multiplicados — então +1 implícito e +1 explícito de flecha tornam-se 7 a 250%.",
+        "Não adiciona novos afixos, apenas amplifica os existentes."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Pontos de escalonamento e matriz de modificadores da aljava",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "Aljava de flecha adicional (implícito +1, explícito +1) = 2 flechas base",
+          "audience": "Builds de Spark / projéteis",
+          "benefit": "2 -> 5 / 6 / 7 flechas extras a 150 / 200 / 250%",
+          "risk": "Mais flechas só ajudam se sua habilidade se beneficia de contagem de projéteis",
+          "level": "high",
+          "recommendation": "Escalonamento forte; 250% transforma uma aljava de 2 flechas em 7 projéteis.",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "+40 de Vida Máxima na aljava",
+          "audience": "Qualquer build",
+          "benefit": "40 -> 100 / 120 / 140 de Vida a 150 / 200 / 250%",
+          "risk": "Baixo se sua build não valoriza vida",
+          "level": "medium",
+          "recommendation": "Vida escala de forma limpa; uma rolagem alta praticamente triplica o bônus de vida da aljava.",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "+20% de aumento na Velocidade de Ataque na aljava",
+          "audience": "Builds de ataque",
+          "benefit": "20% -> 50 / 60 / 70% de aumento na Velocidade de Ataque a 150 / 200 / 250%",
+          "risk": "Baixo; velocidade de ataque é quase sempre útil",
+          "level": "medium",
+          "recommendation": "Um dos mods de aljava mais seguros de amplificar.",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "Dano adicionado plano (ex.: +5 a 30 de Frio em Ataques) na aljava",
+          "audience": "Builds elementais / de conversão",
+          "benefit": "5-30 -> 12,5-75 / 15-90 / 17,5-105 a 150 / 200 / 250%",
+          "risk": "Depende de conversão e tags de habilidade",
+          "level": "medium",
+          "recommendation": "Excelente em builds de Spark convertido ou arcos elementais; confirme que o tipo de dano é suportado.",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds que usam a Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "A Widowhail é um sistema de entrega de aljava. Brilha em qualquer build que canaliza valor através do slot de aljava e consegue fornecer uma aljava forte. As a seguir estão as casas realistas para o arco; cada uma tem um pré-requisito rígido (a aljava) que você deve atender antes do arco compensar."
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "Um lar natural: a Deadeye recompensa contagem de projéteis, e uma aljava carregada com dano frio/físico adicionado, velocidade de ataque e +níveis de habilidade de projétil é multiplicada várias vezes. Mire em uma Widowhail de 230%+ e uma aljava com +2 níveis de habilidade de projétil além de alto dano adicionado.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Lançadores de Spark / Spark convertido (Blood Mage, Stormweaver)",
+          "description": "A Widowhail é usada para amplificar uma aljava que concede +níveis de habilidade de projétil e velocidade de projétil; o escalonamento de projétil multiplicado alimenta Projectile Acceleration e o dano multi-acerto do Spark. Versões de orçamento limpam mapas iniciais pelo custo de algumas dezenas de Exalted Orbs.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Leveling de Lightning Arrow / Lightning Rod Ranger",
+          "description": "Do Ato 2, uma Widowhail mais uma aljava rara frequentemente atualizada é um dos arcos de leveling mais fortes, pois você multiplica o dano adicionado e a velocidade de ataque da aljava conforme supera o nível de cada aljava.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "Uma Widowhail de rolagem alta pareada com uma aljava carregando +2 Níveis de todas as Habilidades de Projétil, precisão e velocidade de ataque dispara o DPS de veneno através de Master Fletching e do multiplicador da aljava.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativas: arcos raros e outros únicos",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "A Widowhail não é um arco de 'mais DPS não importa o quê'. Seu valor é condicional à aljava. Se você não consegue obter uma aljava que valha a pena amplificar, um arco Raro bem rolado a superará, pois arcos raros trazem seu próprio dano físico plano, velocidade de ataque, modificadores críticos e sockets.",
+        "Comparada com outros arcos únicos, a Widowhail ocupa um nicho único: não tem mecânica de dano própria, apenas o multiplicador de aljava. Arcos que adicionam dano plano, penetração ou conversão de ailment são mais simples de usar e não exigem uma aljava cuidadosamente elaborada. Use esses quando quiser uma arma autossuficiente em vez de um motor de aljava.",
+        "Dentro da fantasia de escalonamento de aljava, não há concorrente direto — a Widowhail é o único arco que escala a aljava equipada. Então a decisão alternativa real é 'investir em uma aljava + Widowhail' versus 'investir a mesma moeda em um arco Raro ou único autossuficiente mais forte'. No início e meio da campanha a rota da aljava é frequentemente mais barata por ponto de poder; no topo extremo um arco Raro de nível espelho pode excedê-la, mas custa muito mais."
+      ],
+      "bullets": [
+        "Arco raro: melhor quando você não tem uma aljava forte; traz seu próprio dano e sockets.",
+        "Outros arcos únicos: mecânicas mais simples e autossuficientes; sem dependência de aljava.",
+        "Nenhum outro arco escala a aljava — a Widowhail é a única opção para essa fantasia.",
+        "Decisão: aljava+Widowhail é geralmente mais barato no início; arco raro espelho pode excedê-la no final, mas custa muito mais."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Como obter a Widowhail",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "A Widowhail é um único relativamente comum, o que mantém até rolagens altas acessíveis em comparação com itens de nível espelho. Há três caminhos realistas para a posse."
+      ],
+      "routes": [
+        {
+          "label": "Drop aleatório (monstros de nível 25+, Ato 2 em diante)",
+          "body": [
+            "A Widowhail dropa em qualquer lugar de monstros de nível 25 e acima. Você não pode mirar nela especificamente, mas aumentar a taxa geral de drop de únicos via 'Increased Rarity of Items Found' e Waystones turbinados eleva a frequência com que únicos aparecem."
+          ]
+        },
+        {
+          "label": "Orb of Chance em um Crude Bow branco",
+          "body": [
+            "Usar um Orb of Chance em um Crude Bow normal pode produzir a Widowhail, mas a taxa de sucesso é baixa e a moeda é melhor gasta apostando em únicos mais raros. A maioria dos jogadores pula essa rota porque o arco já é comum no trade."
+          ]
+        },
+        {
+          "label": "Trade com jogadores",
+          "body": [
+            "O site de trade é o caminho mais confiável para obter uma rolagem específica. Como a taxa de drop é alta, rolagens de 240-248% costumam estar disponíveis por uma fração do preço de um 250% perfeito, e um arco de 250% ainda pode ser muito mais barato que um arco Raro de nível espelho. Os preços flutuam por liga e região — consulte o site de trade ao vivo para o instantâneo atual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Usar, vender ou guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "O preço da Widowhail é impulsionado quase inteiramente pela rolagem de bônus de aljava. Rolagens baixas (150-180%) costumam ser quase de graça; 240%+ e especialmente 250% carregam prêmio. Como dropa comumente, até rolagens perfeitas não são caras como nível espelho. Qualquer preço deve ser lido com data, liga e região."
+      ],
+      "use": {
+        "condition": "Você possui uma aljava forte cujos bônus numéricos valem a pena multiplicar, e sua build canaliza valor através da aljava (projéteis, dano adicionado, velocidade de ataque, vida).",
+        "first": "Equipe a Widowhail de melhor rolagem que puder pagar (240%+ é o ponto doce de valor) e continue melhorando a aljava conforme sobe de nível.",
+        "risk": "Uma aljava fraca torna o arco peso morto; a rolagem sozinha não cria poder.",
+        "text": [
+          "Melhor quando a aljava já carrega grande dano adicionado plano, velocidade de ataque aumentada de dois dígitos, +níveis de habilidade de projétil, vida e resistências.",
+          "Mantenha o arco por toda a campanha se você atualizar a aljava a cada 5-10 níveis."
+        ]
+      },
+      "sell": {
+        "condition": "Você tem uma rolagem baixa (150-180%) e nenhum plano de aljava, ou joga uma build que precisa de dano local da arma.",
+        "first": "Venda rolagens baixas barato; são comuns e a maioria dos compradores quer 230%+.",
+        "risk": "Guardar uma rolagem baixa esperando uma alta de preço é improvável — o suprimento é estável.",
+        "text": [
+          "Uma Widowhail de 150% sem investimento de aljava vale pouco mais que um Crude Bow branco para a maioria dos compradores.",
+          "Anuncie as rolagens com honestidade; o site de trade mostra a porcentagem exata e os compradores filtram por ela."
+        ]
+      },
+      "hold": {
+        "condition": "Você tem uma rolagem de 240%+ ou uma rolagem corrompida com Vaal de 250%+ e pode trocar para uma build baseada em aljava mais tarde.",
+        "first": "Guarde rolagens altas; elas retêm valor porque builds de aljava de endgame sempre querem o multiplicador.",
+        "risk": "Mudanças de patch em mods de aljava ou Runeforging poderiam mudar a demanda, mas a fantasia central é estável.",
+        "text": [
+          "Rolagens altas são líquidas e pouco prováveis de se depreciar bruscamente enquanto existirem builds de aljava.",
+          "Um 250%+ corrompido é uma rolagem de troféu que cobra prêmio sobre o 250% natural."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risco e custo de falha",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Comprou uma Widowhail de 250% mas sua aljava é fraca",
+          "gain": "O multiplicador máximo possível está disponível",
+          "loss": "Nenhum poder realizado; moeda gasta no arco em vez da aljava",
+          "level": "high",
+          "recommendation": "Gaste mais na aljava do que no arco. A aljava é o motor; o arco é o amplificador."
+        },
+        {
+          "scenario": "Copiou a aljava exata de uma build popular em uma ascendência/habilidade diferente",
+          "gain": "Você iguala uma configuração comprovada no papel",
+          "loss": "As tags de sua habilidade, conversões ou gemas de suporte podem não usar os mesmos bônus de aljava, desperdiçando o multiplicador",
+          "level": "high",
+          "recommendation": "Adapte a aljava às tags de dano e conversão DA SUA habilidade. Não copie uma aljava às cegas."
+        },
+        {
+          "scenario": "Dependeu de mods locais da aljava (ex.: aumento local de Evasão no item de aljava)",
+          "gain": "Nenhum — estes não são 'bônus obtidos' pelo seu personagem",
+          "loss": "ES/defesa esperada da aljava que nunca aparece",
+          "level": "medium",
+          "recommendation": "Conte apenas com bônus globais, implícitos e de corrupção da aljava. Mods locais do item não escalam."
+        },
+        {
+          "scenario": "Corrompido além de 250% e travou",
+          "gain": "Multiplicador potencial de ~290%+ se bem-sucedido",
+          "loss": "Um Vaal Orb pode adicionar um implícito ruim ou falhar em melhorar a rolagem",
+          "level": "medium",
+          "recommendation": "Corrompa apenas uma base de 250% que você possa substituir; o upside é real mas o custo é um único consumido."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Evidência da comunidade e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "Tópico de build do fórum oficial",
+          "question": "Vejo pessoas usando Widowhail com Spark — como um arco funciona em um lançador de magia, e quais atributos de aljava importam?",
+          "summary": [
+            "Um jogador estava confuso que um arco (Widowhail) aparece em uma build de lançador de Spark e perguntou quais afixos de aljava priorizar."
+          ],
+          "editorialAnalysis": [
+            "A Widowhail é usada puramente por seu multiplicador de aljava. A build pega uma aljava que concede +2 de níveis de habilidade de projétil e velocidade de projétil muito alta; o escalonamento de projétil multiplicado alimenta Projectile Acceleration e o dano por acerto do Spark. O arco em si nunca ataca."
+          ],
+          "officialAnswer": [
+            "Priorize uma aljava com +2 Níveis de todas as Habilidades de Projétil e 150%+ de velocidade de projétil; a rolagem da Widowhail amplifica esses números. Uma Widowhail de 230%+ é o piso prático para a build."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds que usam a Widowhail"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "Tópico de fórum da comunidade",
+          "question": "Para uma build de Poisonous Concoction, quais afixos de aljava devo maximizar na Widowhail?",
+          "summary": [
+            "Um jogador perguntou quais mods de aljava empilhar para que a Widowhail multiplique o máximo de dano."
+          ],
+          "editorialAnalysis": [
+            "A build escala a partir de +2 Níveis de todas as Habilidades de Projétil, +X% Velocidade de Ataque (pelo menos 14%) e Taxa de Precisão. Todos são bônus numéricos de aljava que o multiplicador da Widowhail amplifica, somando-se ao passivo Master Fletching."
+          ],
+          "officialAnswer": [
+            "Empilhe +2 Níveis de Habilidade de Projétil (mais importante), depois velocidade de ataque e precisão na aljava. A rolagem da Widowhail multiplica todos os três, e Master Fletching adiciona mais multiplicadores."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Como o multiplicador funciona"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "Guia / análise de leveling",
+          "question": "A Widowhail é realmente boa para leveling, ou é apenas um arco de endgame?",
+          "summary": [
+            "Um leitor questionou se a Widowhail vale a pena durante a campanha ou apenas no endgame."
+          ],
+          "editorialAnalysis": [
+            "A análise de leveling mostra que uma Widowhail mais uma aljava Rara frequentemente atualizada supera arcos raros de leveling comparáveis em faixas de preço similares, pois você multiplica o dano plano adicionado da aljava, velocidade de ataque, vida-ao-matar e até níveis de gema conforme supera o nível de cada aljava."
+          ],
+          "officialAnswer": [
+            "Sim — a partir de cerca de nível 35 uma Widowhail bem aljavada supera arcos raros de leveling de custo igual, e escalar outros bônus (ganho de vida ao acertar, velocidade de habilidade, níveis de gema) a torna um arco de campanha forte."
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "Como obter a Widowhail"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "Guia",
+          "question": "Qual rolagem da Widowhail devo comprar, e posso obter mais de 250%?",
+          "summary": [
+            "Um comprador queria saber o ponto de valor e se a corrupção excede o teto natural."
+          ],
+          "editorialAnalysis": [
+            "A rolagem natural chega a no máximo 250%. A orientação da comunidade é que 240-248% é quase tão forte quanto 250% por muito menos moeda, e uma corrupção com Vaal Orb pode ultrapassar 250% (relatos de até ~290%+), com o risco de um implícito ruim."
+          ],
+          "officialAnswer": [
+            "Compre 240%+ pelo melhor valor; pague o prêmio por um 250% natural apenas se o orçamento permitir. A corrupção pode exceder 250%, mas pode adicionar um implícito indesejado — corrompa uma cópia substituível."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Usar, vender ou guardar"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problemas e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Meu DPS não subiu após equipar a Widowhail",
+          "directAnswer": [
+            "A Widowhail apenas amplifica bônus de aljava. Se sua aljava tem pouco que valha escalar (ou você usa uma aljava única cujos mods não são bônus numéricos), o arco praticamente não adiciona nada. Verifique os bônus globais, implícitos e de corrupção da sua aljava."
+          ],
+          "checks": [
+            "Abra a aljava e liste seus bônus globais (dano adicionado, velocidade de ataque, vida, resistências, níveis de habilidade).",
+            "Confirme que esses bônus são numéricos e globais, não locais do item de aljava.",
+            "Verifique se a rolagem da Widowhail é alta (230%+ ideal)."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Como o multiplicador funciona"
+            }
+          ]
+        },
+        {
+          "symptom": "Copiei a aljava de um streamer mas minha build está fraca",
+          "directAnswer": [
+            "O valor da aljava é específico da build. Uma aljava feita para o escalonamento de projétil do Spark pode ser inútil em uma build de Lightning Arrow se as tags de dano ou conversões diferirem. Adapte a aljava à sua habilidade."
+          ],
+          "checks": [
+            "Verifique quais tipos de dano e tags sua habilidade principal realmente usa.",
+            "Escolha bônus de aljava que correspondam a essas tags (frio adicionado vs físico, velocidade de projétil vs velocidade de ataque)."
+          ]
+        },
+        {
+          "symptom": "Mods locais da aljava que eu esperava não escalaram",
+          "directAnswer": [
+            "Apenas bônus que seu personagem obtém da aljava escalam. Mods locais que afetam apenas o item de aljava em si não são 'obtidos' e não são multiplicados."
+          ],
+          "checks": [
+            "Compare os bônus globais da aljava com seus modificadores locais.",
+            "Dependa de bônus implícitos, explícitos e de corrupção, não de atributos locais do item."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Passo a passo em vídeo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage: como funciona a variante de orçamento da Widowhail (goldfarmingGUIDE)",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE (via guia de build da Mobalytics)",
+          "takeaway": "Passo a passo da variante de orçamento Spark Blood Mage da Widowhail, incluindo seleção de aljava e como o multiplicador de aljava impulsiona o dano. Rótulos de seção são aproximados.",
+          "timestamps": [
+            {
+              "label": "Por que a variante de orçamento da Widowhail",
+              "time": "00:00"
+            },
+            {
+              "label": "Seleção e rolagens de aljava",
+              "time": "03:30"
+            },
+            {
+              "label": "Passo a passo do escalonamento de dano",
+              "time": "08:00"
+            },
+            {
+              "label": "Demonstração de mapeamento",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galeria de mídia",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip atual da Widowhail (Crude Bow, (150-250)% de aumento nos bônus obtidos da Aljava Equipada)",
+          "note": "Mostre o modificador único e os patamares de rolagem de 50%. O dano físico base é intencionalmente baixo.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Aljava antes/depois do multiplicador da Widowhail",
+          "note": "Ilustre uma única linha de aljava (ex.: +40 Vida) tornando-se +100 / +120 / +140 a 150 / 200 / 250%.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "Comparação de rolagem baixa vs alta",
+          "note": "Lado a lado de uma Widowhail de 150% e uma de 250% para mostrar a lacuna do multiplicador na mesma aljava.",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "Base Runeforged da Widowhail",
+          "note": "Descreva a base Runeforged ganhando maior dano físico e uma base Runic Ward; o mod único de bônus de aljava é mantido.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Conteúdo conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "Um lar primordial da Widowhail: contagem de projéteis e dano adicionado escalam fortemente com o multiplicador de aljava.",
+          "href": "/en/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "A habilidade emblema da Deadeye que se beneficia de bônus multiplicados de projétil e dano da aljava.",
+          "href": "/en/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "Encantar a runa certa em sua aljava pode adicionar um bônus que a Widowhail então amplifica.",
+          "href": "/en/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "O material usado na Verisium Anvil para Runeforging, incluindo a Widowhail Runeforged.",
+          "href": "/en/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runes of Aldur Remnant Recipes",
+          "description": "Como funcionam Runeforging e o artesanato Runemastered, relevantes para a Widowhail Runeforged.",
+          "href": "/en/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runes of Aldur",
+          "description": "O patch atual que introduziu o Runeforging, o sistema que melhora únicos de baixo nível como a Widowhail.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Histórico de patches e atual vs legado",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Atual (0.5.4, drop natural)",
+          "changes": [
+            "A Widowhail é um Arco Grosseiro único com (150-250)% de aumento nos bônus obtidos da Aljava Equipada. A rolagem é em patamares de 50% (150 / 200 / 250). Esta é a única versão atual; não há um valor de bônus de aljava legado separado para confundir com ela."
+          ]
+        },
+        {
+          "version": "Runeforging (liga 0.5.0 - Runes of Aldur)",
+          "changes": [
+            "Runeforging de Único foi introduzido, permitindo que únicos de baixo nível (requisito de nível abaixo de 55) sejam melhorados. A Widowhail (nível 1) qualifica-se: o mod único de bônus de aljava é mantido e a base ganha maior dano físico além de uma base Runeforged. Não há mudança com Divine Orb na rolagem de bônus de aljava — é uma faixa fixa, não uma re-rolagem variável."
+          ]
+        },
+        {
+          "version": "Como o Trade identifica a versão",
+          "changes": [
+            "O site de trade mostra a porcentagem exata de 'aumento nos bônus obtidos da Aljava Equipada'. Os compradores filtram diretamente por ela. Uma Widowhail Runeforged é um tipo base distinto com Runic Ward e é listada separadamente do único normal."
+          ]
+        },
+        {
+          "version": "Nota sobre Divine Orb e corrupção",
+          "changes": [
+            "A rolagem de bônus de aljava é uma faixa fixa, então um Divine Orb não a altera. Uma corrupção com Vaal Orb pode exceder 250% (relatos da comunidade de até ~290%+) mas pode adicionar um implícito indesejado. Verifique o teto exato de corrupção no jogo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fontes e verificação",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 Patch Notes (fórum oficial)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Widowhail (stats base, mecânica, exemplo de flechas)",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "GUIDE",
+          "description": "GameRant - How to Get Widowhail (drop, valor de rolagem, corrupção)",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "GUIDE",
+          "description": "MaxRoll - Best Leveling Uniques (análise de escalonamento de aljava da Widowhail)",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Tópico de build do fórum oficial - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Tópico de fórum da comunidade - configuração Widowhail Poisonous Concoction",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "VIDEO",
+          "description": "goldfarmingGUIDE - variante Spark Blood Mage Widowhail",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de alterações",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicação inicial cobrindo a fórmula do multiplicador de bônus de aljava da Widowhail, quais mods de aljava escalam, valor de rolagem baixa vs alta, seleção de aljava, Runeforging e cautelas específicas de build."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - How to Get Widowhail",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Best Leveling Uniques",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "Fórum oficial - build Widowhail Spark Infernalist",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "Fórum da comunidade - configuração Widowhail Poisonous Concoction",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - variante Spark Blood Mage Widowhail",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "Guia da Widowhail: Escalonamento do Bônus da Aljava, Melhores Rolagens e Runeforging (PoE2 0.5)",
+    "description": "Como a Widowhail funciona no Path of Exile 2: o multiplicador (150-250)% de aumento nos bônus obtidos da Aljava Equipada, a fórmula Base x (1 + W%), quais mods de aljava escalam, valor de rolagem, seleção de aljava e Runeforging.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "widowhail",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

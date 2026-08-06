@@ -1,0 +1,862 @@
+{
+  "id": "sniper-minion-infernalist",
+  "slug": "sniper-minion-infernalist",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "スナイパーミニオン・インファーナリスト構成ガイド：セントリースナイパー、デーモン形態、エンドゲーム",
+  "shortTitle": "スナイパーミニオン・インファーナリスト",
+  "summary": "0.5.4のウィッチ召喚ツールキット：エレメンタル・セントリーを遠隔スナイパーとして運用し、安定した単体火力を確保。レイジング・スピリットが近接を処理し、インファーナリストのデーモン形態がバーストの窓を開く。セントリー配置、デーモン変身のタイミング、防御の境界について解説。",
+  "description": "Path of Exile 2のスナイパーミニオン・インファーナリスト向け0.5.4ガイド：セントリー配置、デーモン形態、レイジング・スピリットの相乗効果、防御の境界、実際の動画タイムスタンプ。",
+  "classId": "witch",
+  "ascendancyId": "infernalist",
+  "mainSkillIds": [
+    "elemental-sentry",
+    "summon-raging-spirit"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "pain-offering",
+    "contingency",
+    "cast-on-minion-death"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "minion",
+    "sentry",
+    "ranged",
+    "demon",
+    "low-input"
+  ],
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "physical"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "minion"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "cardImage": "/images/builds/covers/sniper-minion-infernalist.webp",
+  "imageAlt": "ウィッチのインファーナリストがエレメンタル・セントリーのスナイパー部隊を召喚し、戦闘中にレイジング・スピリットを指揮している様子",
+  "tags": [
+    "bossing",
+    "chaos",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "infernalist",
+    "leveling",
+    "melee",
+    "minion",
+    "physical",
+    "ranged",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "構成概要",
+      "paragraphs": [
+        "スナイパーミニオン・インファーナリストは、ウィッチの遠隔召喚ツールキットである。エレメンタル・セントリーが配置型スナイパーとして安定した単体火力を提供し、レイジング・スピリットが近接を処理、インファーナリストのデーモン形態が変身時にバーストの窓を開く。",
+        "中核となる面白さは「セントリーを置いてキテ（引き撃ち）する」ことだ。大半のダメージはセントリーとスピリットから自動的に発生し、プレイヤーの操作はポジショニング、スピリットの補充、デーモン形態の発動となる。純粋なキャスターのようにマナを消費しないが、ミニオンの生存とミニオン上限に大きく依存する。",
+        "本ガイドはステージ式である。まず純スピリットからセントリー主軸へ移行するタイミング、次に装備、パッシブ、デーモン形態のタイミング、予算帯を扱う。クライアント上の数値と仕様はすべてPC検証待ちとして示しており、未検証のDPSを事実として記載することはない。"
+      ],
+      "bullets": [
+        "マッピングはスピリットの近接処理＋セントリーの遠隔追撃で、ほぼセミオートに近い。",
+        "ボス戦はセントリーの狙撃にデーモン形態のバーストで締める。",
+        "ミニオンの生存と上限は、本当に処理が必要なボトルネックである。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "セントリーが自動狙撃するため、マッピングはほぼセミオートで楽。",
+        "デーモン形態が明確なバーストの窓と、きれいなボスフィニッシュをもたらす。",
+        "マナ消費がなく、純キャスターよりも攻め続ける負担がはるかに軽い。",
+        "序盤は低予算で動き、その後スムーズに移行できる。"
+      ],
+      "cons": [
+        "セントリーの上限と稼働時間は厳しい制約であり、序盤の火力が停滞しうる。",
+        "近接敵はセントリーの射程を通り抜けるため、スピリットで隙を埋める必要がある。",
+        "動き回るボスはセントリーの命中率を下げる。",
+        "ミニオンに影響するマップ修正（ミニオンダメージ低下など）は見えない罠となる。"
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの流れ：セントリー配置 → スピリット始末 → デーモンバースト",
+      "paragraphs": [
+        "マッピングのループ：パックの側面にエレメンタル・セントリーを置き、プレイヤーがキテしながらスピリットを補充する間、スピリットが最寄りの敵に自動で飛びかかる。これがコミュニティで「セミオート・マッピング」と呼ばれる理由だ。",
+        "ボスのループ：ボスの経路沿いにセントリーを1～2体あらかじめ配置し、スピリットでタンク／アグロをとり、リソースが満タンになったらデーモン形態に変身してバーストの窓を作りながら、セントリーでコアを狙撃し続ける。",
+        "「セントリーが勝手に狙う」といった表現は、通常はセントリーの自動ターゲット指定を指しており別システムのことではない。スキル説明とクライアントで確認し、隠れた追加機構として扱ってはならない。"
+      ],
+      "bullets": [
+        "マッピング＝セントリー配置＋キテ。あとの処理はスピリットが担う。",
+        "ボス＝セントリー先行配置 → スピリットのアグロ → デーモンバースト。",
+        "スピリットは近接フィニッシャーであり、メイン火力ではない。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "レイジング・スピリットから開始する。これは非常に早い段階で使え、本構成の真のマッピング用ミニオンである。まだセントリーの数を無理に増やしてはならない——上限と装備が整っていない。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "遠隔追撃としてエレメンタル・セントリーを追加し、ライフ／スピリットダメージ／耐性のノードを取り始める。スピリットを主軸に保つ。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — インファーナリスト解放",
+          "levelRange": "30–42",
+          "body": [
+            "インファーナリストを選び、デーモン形態のノードを取る。これで変身の窓がボスへのバーストをもたらすようになる。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "クリティカル非依存の低予算でセントリー＋スピリットを運用する。耐性を上限まで固め、ライフを確保し、レア敵にセントリーを維持する。"
+          ]
+        },
+        {
+          "label": "レベル 60+ — エンドゲーム準備",
+          "levelRange": "60+",
+          "body": [
+            "予算アップグレードへ移行：セントリー上限、ミニオンダメージ、スピリットレベル、カオス耐性。強力な装備への追及は、強化優先度チェックリストを通過してからのみ行う。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Elemental Sentry",
+              "skillId": "elemental-sentry",
+              "role": "配置型の遠隔スナイパーとして安定した単体火力を提供し、ボスの主要ダメージ源となる。",
+              "supportSkillIds": [
+                "minion-damage",
+                "minion-speed",
+                "added-chaos"
+              ],
+              "whyUse": [
+                "ループ全体の起点となる中核であり、セントリーがなければボス戦は不安定な純スピリットのペースに逆戻りする。"
+              ],
+              "whenReplace": [
+                "置き換えはしない。マップでは一時的に数を減らして進行を速めることはできる。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：側面に1体置けば十分。ボス：コアを固定するため経路に1～2体。"
+              ],
+              "notes": [
+                "正確なサポートリンクとセントリー上限はPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Raging Spirit",
+              "skillId": "summon-raging-spirit",
+              "role": "セントリーの射程を通り抜ける敵の処理と、ボスへのアグロ付与を行う近接スピリット。",
+              "supportSkillIds": [
+                "minion-damage",
+                "meat-shield",
+                "feeding-frenzy"
+              ],
+              "whyUse": [
+                "セントリーの射程死角をカバーし、マッピングとボスアグロの両方で安定する。"
+              ],
+              "whenReplace": [
+                "常時維持。より強い近接召喚が出た場合のみ入れ替える。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：モブに自動で飛びかかる。ボス：近接アグロと始末。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "バフとトリガー",
+          "skills": [
+            {
+              "displayName": "Pain Offering",
+              "skillId": "pain-offering",
+              "role": "ミニオンを犠牲にしてチーム全体のダメージを獲得し、セントリー／スピリットの出力を一時的に跳ね上げる。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "バーストの窓におけるダメージの中核であり、デーモン形態やボスフェーズと併用するのが最良。"
+              ],
+              "whenReplace": [
+                "維持する。ダメージ構成の一部である。"
+              ],
+              "mappingBossingDiff": [
+                "どちらでも使用するが、ボス戦はその跳ね上がりにより依存する。"
+              ],
+              "notes": [
+                "ミニオンを消費するため、タイミングを慎重に。"
+              ]
+            },
+            {
+              "displayName": "Flame Wall",
+              "skillId": "flame-wall",
+              "role": "地面の炎の壁。通過する射弾が火炎追加を得て、セントリー／スピリットを強化する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "火炎と範囲ダメージを加え、殲滅力を高める。"
+              ],
+              "whenReplace": [
+                "バフとして維持する。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングでは任意。ボス戦では窓を強化するために配置する。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Cast on Minion Death",
+              "skillId": "cast-on-minion-death",
+              "role": "ミニオンが死亡したときにスペルを詠唱し、カバーと自己防衛を追加する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "スピリットが倒された際に自動でダメージ／制御の層を加え、空き時間を和らげる。"
+              ],
+              "whenReplace": [
+                "維持する。防御構成の一部である。"
+              ],
+              "mappingBossingDiff": [
+                "どちらでも使用するが、ボス戦ではより重要。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "インファーナリスト — 最初のノード",
+          "body": [
+            "インファーナリストを選ぶ。変身の窓が確実にバーストをもたらすよう、デーモン形態のノードを優先する。これが構成の前提条件である。"
+          ]
+        },
+        {
+          "label": "ミニオン生存の確認",
+          "body": [
+            "T15以降でミニオンが頻繁に死ぬ場合、デーモン／ダメージのノードを純ダメージに差し替えてはならない。まずセントリー上限とスピリットの生存を確保する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "スピリット／ミニオンダメージとライフを支援するノードのみを取る。セントリー上限のホイールへは前もって歩まないこと。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "セントリー型へ切り替え、ライフ、カオス耐性、ミニオンダメージ、セントリー上限を優先する。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "防御とセントリー上限が解決した後、ミニオンのクリティカル／ダメージのホイールへ投資する。同じティアで装備状態を比較すること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "ミニオンレベルとスペル／ミニオンダメージを高めるベースを選ぶ。スピリットとセントリーのリンクに十分なソケットを確保する。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ミニオンスキルレベル／ミニオンダメージ",
+              "reason": "セントリーとスピリットの殲滅力に直接効く。"
+            },
+            {
+              "tier": "recommended",
+              "label": "ライフと耐性",
+              "reason": "指揮するには自身が生き残る必要がある。"
+            },
+            {
+              "tier": "optional",
+              "label": "キャスト速度",
+              "reason": "スピリットの補充とセントリー配置が速くなる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ミニオンクリティカル率／クリティカルダメージ",
+              "reason": "生存と上限が安定してからのみ。"
+            }
+          ],
+          "notes": [
+            "メイン武器はフォーカス。ミニオンのプレフィックスを優先する。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "ライフ、カオス耐性、耐性。キテ用にブーツの移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと2つの上限耐性",
+              "reason": "ミニオンは死ぬが、自身も死んではならない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "カオス耐性",
+              "reason": "後半必須だが、元からは備わらない。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "ポジショニングとパック引き撃ちの改善。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なミニオンプレフィックス",
+              "reason": "防御確保後でのみ意味を持つ。"
+            }
+          ],
+          "notes": [
+            "カオス耐性は意図的に積む必要がある。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "ステータス、耐性、ライフ。必要に応じてセントリー上限かミニオン生存。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "スタッフとジェムを装備するためのステータス",
+              "reason": "装備できなければ無用。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "セントリー上限／ミニオン生存",
+              "reason": "アクセサリからの自由な強化。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ミニオンスキルレベル",
+              "reason": "後半のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "ミニオンスキルレベル",
+          "reason": "セントリーとスピリットに効き、進捗確認の最上位。"
+        },
+        {
+          "label": "セントリー上限",
+          "reason": "複数セントリーによるカバーが持続可能かを決める。"
+        },
+        {
+          "label": "カオス耐性",
+          "reason": "後半必須だが、元からは備わらない。"
+        },
+        {
+          "label": "ライフと耐性",
+          "reason": "ミニオンを指揮するには自身が生き残る必要がある。"
+        },
+        {
+          "label": "ミニオンクリティカル",
+          "reason": "生存と上限が安定してからのみ。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "処理の遅れを解消",
+          "symptom": "パックを倒すのにスピリットの往復が何度も必要。",
+          "checks": [
+            "スタッフはまだ適切なティアのベースか？",
+            "耐性とライフは解決済みか（つまりスタッフが本当のボトルネックか）？"
+          ],
+          "upgrade": "アクセサリに触る前に、ティア未満のスタッフを交換する。"
+        },
+        {
+          "label": "セントリーが死に続ける",
+          "symptom": "ボス戦でセントリーが消される。",
+          "checks": [
+            "ダメージを積むだけで、セントリーの生存を無視していないか？",
+            "ボス戦でセントリーを守るためにキテしているか？"
+          ],
+          "upgrade": "ダメージを伸ばす前に、セントリーの生存と上限を直す。"
+        },
+        {
+          "label": "デーモン形態が来ない",
+          "symptom": "変身リソースが満たない。",
+          "checks": [
+            "デーモンのノードを取る前にボスを無理に押していないか？",
+            "キルペースが遅くてリソース獲得が進まないか？"
+          ],
+          "upgrade": "スタッフではなく、アセンダンシーとキルペースを直す。"
+        },
+        {
+          "label": "T15以降で停滞",
+          "symptom": "ダメージの伸びが止まる。",
+          "checks": [
+            "ミニオンレベルは上限か？",
+            "フォーカスのミニオンダメージは確保済みか？",
+            "カオス耐性は最大か？"
+          ],
+          "upgrade": "順に強化：ミニオンレベル → フォーカス → カオス耐性。"
+        },
+        {
+          "label": "高級装備の検討",
+          "symptom": "より高いボスダメージを求め、高級装備に関心。",
+          "checks": [
+            "セントリーと生存は安定しているか？",
+            "高級装備が耐性上限を崩す、あるいはライフを落とすか？"
+          ],
+          "upgrade": "チェックリスト通過後に少しずつ購入し再検証する。数値のために生存を犠牲にしてはならない。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "パックの側面にエレメンタル・セントリーを置く。プレイヤーがキテしながらスピリットを補充する間、スピリットが最寄りの敵に自動で飛びかかる。雑魚にはフルセントリーは不要、1体で十分。",
+        "処理の遅れが出たら、まずスタッフを強化する。マッピングが停滞しないよう、ある程度の生存（耐性／ライフ／キテ）を維持すること。"
+      ],
+      "bullets": [
+        "セントリー配置＋キテがマッピングの全リズム。",
+        "雑魚にはセントリー1体で十分。",
+        "処理が遅れたら反応的にスタッフを強化する。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "ボス戦は一連の手順である。ボスの経路沿いにセントリーを1～2体あらかじめ配置し、スピリットで近接からアグロをとり、リソースが満タンになったら変身してバーストの窓を作りながら、セントリーでコアを狙撃し続ける。",
+        "セントリーが死に続けるなら、問題は生存と配置（守るためにキテすること）であり、スタッフではない。ボスが激しく動く場合は、足元ではなく、通り道となる狭い経路にセントリーを置くこと。"
+      ],
+      "bullets": [
+        "先行配置 → スピリットのアグロ → デーモンバースト。",
+        "始末はスピリットの近接。",
+        "セントリーの死＝武器交換ではなく、生存と配置を見直す。"
+      ]
+    },
+    {
+      "id": "budget-variants",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "予算帯：本当の安価構成と高級構成の違い",
+      "paragraphs": [
+        "安価：低予算のスタッフに加え、耐性／ライフ／セントリー上限を解決し、セントリー＋スピリットで大半のコンテンツをマップ・ボス両方こなす。これが変えるのは「遊べるかどうか」であって、ダメージの数値ではない。",
+        "高級：ミニオンレベルの高いフォーカス、特定のユニーク、上限到達のカオス耐性、ミニオンクリティカルにより、セントリーの殲滅力と生存の両方を引き上げる。これが変えるのは天井とミスの許容幅であり、安価構成を別の構成に変えるものではない。",
+        "ミラー帯は、安価／高級の通過とクライアント数値の確認をともに済ませてからのみ。DPSのためにカオス耐性とライフを犠牲にしてはならない。"
+      ],
+      "bullets": [
+        "まず安価：ライフ、耐性、セントリー上限、まともなスタッフ。",
+        "後に高級：ミニオンレベル、カオス耐性、クリティカル。",
+        "ミラー帯は決して防御の下限を崩さない。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "本ガイドは、彼らが示すDPSを約束するものではなく、再現可能なチェックリストとしてコミュニティの議論を活用している。",
+      "entries": [
+        {
+          "context": "プレイヤーから、T15以降でセントリーのダメージが停滞し何を強化すべきか分からないという報告がある。",
+          "label": "LugoHQ — Sniper Minion Infernalist Endgame Guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このガイドは安価／高級のティアを分け、それぞれが機構ではなく装備の境界を変えることを明確にしている。",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "context": "プレイヤーが、デーモン形態を取る価値があるか議論している。",
+          "label": "LugoHQ — Sniper Minion Infernalist Citadel",
+          "representation": "paraphrase",
+          "sourceType": "video",
+          "statement": "シタデルの映像は、高圧なボスにおけるデーモン形態バーストの窓のフィニッシャーとしての価値を示し、まずセントリーの生存を重視している。",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "ボスのセントリーが発動しない／死ぬ",
+          "checks": [
+            "セントリーは経路の狭まりに置いているか？",
+            "ダメージを積むだけで、セントリーの生存を無視していないか？",
+            "キテで彼らを守っているか？"
+          ]
+        },
+        {
+          "symptom": "デーモンリソースが満たない",
+          "checks": [
+            "デーモンのノードは取ったか？",
+            "キルペースが遅すぎないか？"
+          ]
+        },
+        {
+          "symptom": "マッピングが遅くなる",
+          "checks": [
+            "スタッフはまだティアのベースか？",
+            "耐性とライフはまず解決済みか？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "何レベルからレイジング・スピリットを使うべき？",
+          "answer": [
+            "非常に早い段階で使用可能。本構成の真のマッピング用ミニオンである。セントリーのツールキットは装備と上限を待つ。"
+          ],
+          "bullets": [
+            "レイジング・スピリットはレベル1からマッピング可能。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "より良いスタッフに替えたのにセントリーがまだ弱い？",
+          "answer": [
+            "セントリーはスタッフ単体ではなく、上限と生存に依存する。まず上限と生存を直すこと。"
+          ],
+          "bullets": [
+            "ボス戦を録画し、セントリーの稼働時間を確認する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "SSFでも遊べる？",
+          "answer": [
+            "はい。低予算のセントリー＋スピリットで、SSFでも大半のコンテンツをマップ・ボス両方こなせる。高級ユニークは天井であって、 gate（関門）ではない。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/guides/campaign-early-maps-gearing-crafting/",
+              "label": "キャンペーンと初期マップの装備ガイドを見る"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "PoE2には現在ネイティブなビルドプランナーが標準搭載されている。貼り付け可能なインポート文字列と.buildファイルはいまだPC検証待ち。それまでは以下のクリエイターガイドと公式プランナーを利用すること。自らのクライアントでノードを必ず再確認すること。",
+      "creatorName": "LugoHQ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "エンドゲームとシタデルの映像を見る",
+      "entries": [
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper Minion Infernalist Endgame Guide",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8",
+          "description": "スピリットのマッピングからセントリー主軸、デーモン形態へ至る全経路を示す長めの参考映像。",
+          "takeaway": "各アクトにつきボスを1体ずつ見本にする。殲滅速度ではなく、セントリーの配置順を記録すること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "導入とコンセプト"
+            },
+            {
+              "time": "2:30",
+              "label": "アクト1のマッピング"
+            },
+            {
+              "time": "6:00",
+              "label": "インファーナリストとデーモン形態"
+            },
+            {
+              "time": "10:30",
+              "label": "セントリー配置とスピリットの相乗効果"
+            },
+            {
+              "time": "15:00",
+              "label": "初期マップと装備"
+            }
+          ]
+        },
+        {
+          "creator": "LugoHQ",
+          "label": "Sniper Minion Infernalist Citadel",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs",
+          "description": "高圧なシタデル：セントリーの生存、デーモン形態のフィニッシュ、装備の境界。",
+          "takeaway": "高圧なボスでは盲目のDPS追いではなく、セントリーの配置と生存に集中すること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:50",
+              "label": "シタデル突入とパック引き"
+            },
+            {
+              "time": "5:20",
+              "label": "セントリーの配置と保護"
+            },
+            {
+              "time": "9:10",
+              "label": "デーモン形態のバースト窓"
+            },
+            {
+              "time": "13:00",
+              "label": "装備の境界とまとめ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+          "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+        },
+        {
+          "label": "データベース",
+          "description": "Path of Exile 2 Wiki — Infernalist",
+          "url": "https://poe2wiki.net/wiki/Infernalist"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "0.5.4のスナイパーミニオン・インファーナリスト構成ガイドを出典付きで作成。PC検証は進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=8Dy_9zd9yr8"
+    },
+    {
+      "label": "LugoHQ — Sniper Minion Infernalist Citadel (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=BRecELhaeZs"
+    },
+    {
+      "label": "Path of Exile 2 Wiki — Infernalist",
+      "sourceType": "community",
+      "url": "https://poe2wiki.net/wiki/Infernalist"
+    }
+  ],
+  "seo": {
+    "title": "スナイパーミニオン・インファーナリスト構成ガイド | Exile2 Guides",
+    "description": "0.5.4のスナイパーミニオン・インファーナリスト：エレメンタル・セントリーのスナイパー、インファーナリストのデーモン形態、レイジング・スピリットの相乗効果、防御の境界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "sniper-minion-infernalist",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

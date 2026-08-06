@@ -1,0 +1,557 @@
+{
+  "id": "patch-0-2-1-socketables-unique-drops",
+  "slug": "patch-0-2-1-socketables-unique-drops",
+  "locale": "fr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.1 : 22 runes, 7 talismans, 15 âmes de cœur, et comment les drops d'uniques ont changé",
+  "shortTitle": "0.2.1 Objets insérables et drops d'uniques",
+  "summary": "0.2.1 a remanié les systèmes de butin et d'objets insérables : 22 runes de fin de jeu, 7 talismans et 15 âmes de cœur sont arrivés, tandis que les drops d'uniques ont cessé de prendre en compte la classe d'objet, les uniques mythiques ont augmenté, et le bonus d'unique en groupe a été réduit.",
+  "description": "Un article sur les objets et le système de butin pour Path of Exile 2 0.2.1. Il couvre les nouvelles runes, talismans et âmes de cœur, pourquoi votre filtre d'objets a besoin de nouvelles entrées, et les quatre changements de règle sur les drops d'uniques : plus de pondération par classe d'objet, une hausse des uniques mythiques, une part réduite d'uniques courants dans les zones de haut niveau, et un bonus de groupe plus faible.",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.1",
+  "patch": "0.2.1",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "Éditorial StratLore",
+  "reviewer": "Éditorial StratLore",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "cardImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "imageAlt": "Runes de fin de jeu, talismans et âmes de cœur introduits dans 0.2.1",
+  "tags": [
+    "runes",
+    "talismans",
+    "soul-cores",
+    "unique-drops",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "Résumé rapide",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Le patch 0.2.1 a été le grand remaniement du butin et des objets insérables de l'ère Dawn of the Hunt. Il a introduit trois familles entièrement nouvelles d'objets insérables : 22 runes de fin de jeu, 7 talismans et 15 âmes de cœur, chacun destiné à être inséré dans l'équipement pour de nouveaux modificateurs et options de build.",
+        "Parallèlement aux objets insérables, 0.2.1 a réécrit la façon dont les objets uniques tombent. Le pipeline de génération des uniques a cessé de prendre en compte la classe d'objet, ce qui a rendu les anneaux et amulettes plus fréquents. Une hausse des uniques mythiques a injecté davantage de drops de haut niveau dans la circulation, les zones de haut niveau ont commencé à réduire la part des uniques courants, et le bonus d'unique en jeu de groupe a été réduit.",
+        "Les joueurs console ont obtenu une amélioration silencieuse mais importante de la qualité de vie : le support du filtre d'objets est arrivé, ce qui compte directement car les nouveaux objets insérables n'apparaîtront pas dans un ancien filtre tant que vous n'ajoutez pas d'entrées pour eux. Cet article explique chaque changement en termes de joueur et signale ce qui reste vrai par rapport à ce que les patches ultérieurs peuvent avoir ajusté.",
+        "Aucun pourcentage de taux de drop n'est indiqué ici. Les notes officielles décrivent cela comme des changements de règle, pas comme des chiffres publiés, donc chaque valeur ci-dessous est décrite uniquement par sa direction et son mécanisme."
+      ],
+      "bullets": [
+        "0.2.1 a ajouté 22 runes de fin de jeu, 7 talismans et 15 âmes de cœur.",
+        "Les drops d'uniques ne prennent plus en compte la classe d'objet, donc les anneaux et amulettes sont plus courants.",
+        "Le taux de drop des uniques mythiques a augmenté ; les zones de haut niveau réduisent la part des uniques courants.",
+        "Le bonus d'unique en groupe a été réduit.",
+        "Le support du filtre d'objets sur console signifie que les nouveaux objets insérables nécessitent des entrées de filtre."
+      ]
+    },
+    {
+      "id": "new-socketables-dashboard",
+      "order": 2,
+      "title": "Tableau de bord des nouveaux objets insérables",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Runes de fin de jeu",
+          "verdict": "22 nouveaux objets insérables",
+          "detail": "Une nouvelle famille de runes de niveau fin de jeu pour des modificateurs insérés dans l'équipement. Les effets individuels ne sont pas énumérés ici ; le nombre de 22 est le fait confirmé des notes 0.2.1."
+        },
+        {
+          "area": "Talismans",
+          "verdict": "7 nouveaux objets insérables",
+          "detail": "Un nouveau type d'objet insérable talisman ajouté dans 0.2.1. Le nombre confirmé est de 7 ; les bonus spécifiques ne sont pas reformulés en pourcentages."
+        },
+        {
+          "area": "Âmes de cœur",
+          "verdict": "15 nouveaux objets insérables",
+          "detail": "Un nouveau type d'objet insérable âme de cœur ajouté dans 0.2.1. Le nombre confirmé est de 15 ; les modificateurs exacts ne sont pas vérifiés et décrits uniquement par catégorie."
+        },
+        {
+          "area": "Filtre d'objets",
+          "verdict": "Nécessite de nouvelles entrées",
+          "detail": "Comme il s'agit de types d'objets entièrement nouveaux, tout filtre écrit avant 0.2.1 les masquera ou les gérera mal tant que vous n'ajoutez pas d'entrées, particulièrement sur console où les filtres sont désormais pris en charge."
+        }
+      ]
+    },
+    {
+      "id": "rune-talisman-soulcore-map",
+      "order": 3,
+      "title": "Carte des runes, talismans et âmes de cœur",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Les trois familles d'objets insérables introduites dans 0.2.1 et leurs nombres confirmés. Les effets individuels ne sont pas listés car les notes officielles les décrivent par catégorie, pas par chiffres publiés.",
+      "columns": [
+        { "key": "category", "label": "Famille d'objet insérable" },
+        { "key": "count", "label": "Nombre" },
+        { "key": "role", "label": "Rôle" },
+        { "key": "notes", "label": "Notes" }
+      ],
+      "rows": [
+        {
+          "category": "Runes de fin de jeu",
+          "count": "22",
+          "role": "Modificateur insérable placé dans l'équipement",
+          "notes": "Nouveau niveau d'objet insérable de fin de jeu ; effets individuels non vérifiés."
+        },
+        {
+          "category": "Talismans",
+          "count": "7",
+          "role": "Modificateur insérable placé dans l'équipement",
+          "notes": "Nouveau type d'objet insérable ; effets individuels non vérifiés."
+        },
+        {
+          "category": "Âmes de cœur",
+          "count": "15",
+          "role": "Modificateur insérable placé dans l'équipement",
+          "notes": "Nouveau type d'objet insérable ; effets individuels non vérifiés."
+        }
+      ]
+    },
+    {
+      "id": "historical-filter-impact",
+      "order": 4,
+      "title": "Pourquoi le filtre d'objets a besoin de nouvelles entrées",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "socketable",
+          "title": "Les nouveaux types d'objets insérables sont invisibles aux anciens filtres",
+          "detail": "Les runes, talismans et âmes de cœur n'existaient pas avant 0.2.1, donc tout filtre créé plus tôt ne les reconnaîtra pas. Tant que vous n'ajoutez pas d'entrées explicites, ces objets peuvent être masqués, affichés comme de la ferraille, ou signalés incorrectement.",
+          "tags": [
+            "item-filter",
+            "socketables"
+          ]
+        },
+        {
+          "kind": "filter-feature",
+          "title": "Le support du filtre d'objets sur console est arrivé dans 0.2.1",
+          "detail": "Les joueurs console ont obtenu le support du filtre d'objets dans ce patch. Cela fait du manque d'entrées de filtre un vrai problème aussi sur Xbox et PlayStation : les joueurs console doivent ajouter les nouvelles règles d'objets insérables sinon ils manqueront des drops dans leur filtre de butin.",
+          "tags": [
+            "console",
+            "item-filter"
+          ]
+        },
+        {
+          "kind": "crafting-input",
+          "title": "Les objets insérables s'articulent avec les monnaies existantes",
+          "detail": "Comme les objets insérables interagissent avec les systèmes d'artisanat et de monnaies (par exemple les emplacements de type Artificier et les réactifs associés), les entrées de filtre doivent couvrir à la fois les objets insérables et les monnaies utilisées pour les gérer.",
+          "tags": [
+            "crafting",
+            "currencies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot-generation-change",
+      "order": 5,
+      "title": "Changement de génération du butin : la classe d'objet n'est plus pondérée",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "Le drop d'uniques ne prend plus en compte la classe d'objet",
+          "detail": "Avant 0.2.1, la génération des drops d'uniques prenait la classe d'objet en compte pour décider ce qui allait tomber. Le patch a supprimé cette considération, ce qui a rééquilibré la répartition des uniques dropés dans le pool d'objets.",
+          "scope": "Notes officielles 0.2.1"
+        },
+        {
+          "category": "item",
+          "title": "Anneaux et amulettes plus courants",
+          "detail": "Avec la classe d'objet ne plus étant pondérée, les anneaux et amulettes ont commencé à tomber plus souvent qu'avec les anciennes règles de génération. Il s'agit d'un changement de direction, pas d'un pourcentage publié.",
+          "scope": "Notes officielles 0.2.1"
+        }
+      ]
+    },
+    {
+      "id": "unique-rarity-pipeline",
+      "order": 6,
+      "title": "Pipeline de rareté des uniques : évolutions mythiques et courantes",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "Hausse du drop des uniques mythiques",
+          "detail": "0.2.1 a augmenté le taux de drop des uniques mythiques, le niveau de rareté le plus élevé. Davantage des uniques les plus convoités sont entrés dans la circulation, bien que le multiplicateur exact ne soit pas publié dans les notes.",
+          "scope": "Notes officielles 0.2.1"
+        },
+        {
+          "category": "item",
+          "title": "Les zones de haut niveau réduisent la part des uniques courants",
+          "detail": "Dans les zones de niveau supérieur, la part des uniques courants a été réduite, ce qui signifie que le farming de haut niveau donne moins d'uniques de faible valeur et relativement plus d'uniques intéressants. Cela est décrit comme une règle, pas comme un chiffre imprimé.",
+          "scope": "Notes officielles 0.2.1"
+        }
+      ]
+    },
+    {
+      "id": "solo-vs-party-impact",
+      "order": 7,
+      "title": "Impact en solo versus en groupe",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "Bonus d'unique en groupe réduit",
+          "detail": "Le bonus que le jeu en groupe accordait aux drops d'uniques a été réduit dans 0.2.1. Cela réduit l'écart entre le farming organisé en groupe et le jeu solo ou en petit groupe, bien que le bonus restant précis ne soit pas publié.",
+          "scope": "Notes officielles 0.2.1"
+        },
+        {
+          "category": "balance",
+          "title": "Le jeu solo relativement plus fort pour les uniques",
+          "detail": "Comme le bonus de groupe a diminué, les joueurs solo et en petit groupe ont gagné du terrain relatif sur l'acquisition d'uniques. Le jeu en groupe aide peut-être encore pour la vitesse de clear et la survie, mais son avantage sur le drop d'uniques est plus faible qu'avant 0.2.1.",
+          "scope": "Notes officielles 0.2.1"
+        }
+      ]
+    },
+    {
+      "id": "build-and-item-impact",
+      "order": 8,
+      "title": "Impact sur les builds et les objets",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "Plus d'anneaux et d'amulettes remodèlent les choix d'équipement",
+          "detail": "Avec les anneaux et amulettes tombant plus souvent, les guides de build qui supposaient un anneau ou amulette unique rare devraient revoir à quelle fréquence ces emplacements s'améliorent. Le changement porte sur la disponibilité, pas sur des chiffres énoncés.",
+          "scope": "Notes officielles 0.2.1"
+        },
+        {
+          "category": "new",
+          "title": "Les objets insérables ouvrent de nouvelles voies d'artisanat et de scaling",
+          "detail": "Les 22 runes, 7 talismans et 15 âmes de cœur offrent aux artisans de nouveaux modificateurs insérables à poursuivre, ce qui peut changer la valeur dans un build des uniques octroyant des compétences, des charmes et des catalyseurs.",
+          "scope": "Notes officielles 0.2.1"
+        }
+      ]
+    },
+    {
+      "id": "loot-change-table",
+      "order": 9,
+      "title": "Les changements de règle sur les drops d'uniques en un coup d'œil",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Les quatre changements de règle sur les drops d'uniques de 0.2.1, présentés avant versus après, avec impact joueur et note d'état actuel. Aucun pourcentage de taux de drop n'est inventé ; seule la direction de la règle est décrite.",
+      "columns": [
+        { "key": "change", "label": "Changement" },
+        { "key": "before", "label": "Avant (0.2.0)" },
+        { "key": "after", "label": "Après (0.2.1)" },
+        { "key": "playerImpact", "label": "Impact joueur" },
+        { "key": "current", "label": "Actuel (0.5.4e)" }
+      ],
+      "rows": [
+        {
+          "change": "Pondération par classe d'objet du drop d'uniques",
+          "before": "Prenait en compte la classe d'objet",
+          "after": "Ne prend plus en compte la classe d'objet",
+          "playerImpact": "Les anneaux et amulettes tombent plus souvent ; biais de classe supprimé",
+          "current": "Direction confirmée pour 0.2.1 ; patches ultérieurs peuvent avoir ajusté (à vérifier)"
+        },
+        {
+          "change": "Niveau d'unique mythique",
+          "before": "Part de drop mythique plus faible",
+          "after": "Taux de drop des uniques mythiques augmenté",
+          "playerImpact": "Les uniques de haut niveau apparaissent plus en farming de fin",
+          "current": "Direction confirmée pour 0.2.1 ; taux exact ajusté plus tard (à vérifier)"
+        },
+        {
+          "change": "Part d'uniques courants en haut niveau",
+          "before": "Plus grande part d'uniques courants en haut niveau",
+          "after": "Les zones de haut niveau réduisent la part d'uniques courants",
+          "playerImpact": "Les cartes de haut niveau donnent moins d'uniques inutiles, plus de variété",
+          "current": "Règle confirmée pour 0.2.1 ; réglage ultérieur possible (à vérifier)"
+        },
+        {
+          "change": "Bonus d'unique en groupe",
+          "before": "Plus grand bonus d'unique en groupe",
+          "after": "Bonus d'unique en groupe réduit",
+          "playerImpact": "Le solo et les petits groupes gagnent relativement au farming de groupe",
+          "current": "Direction confirmée pour 0.2.1 ; bonus exact ajusté plus tard (à vérifier)"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "Applicabilité actuelle (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Runes, talismans, âmes de cœur comme objets insérables",
+          "status": "unknown",
+          "currentSummary": "Les familles d'objets insérables 22/7/15 ont été introduites dans 0.2.1 ; savoir si elles restent inchangées en 0.5.4e n'est pas vérifié.",
+          "supersededBy": "patches d'objets insérables ultérieurs",
+          "affectedContent": "Page d'objet Runes et âmes de cœur"
+        },
+        {
+          "topic": "Le drop d'uniques ignore la classe d'objet",
+          "status": "changed-later",
+          "currentSummary": "La règle 0.2.1 a supprimé la pondération par classe d'objet ; des patches ultérieurs ont probablement rééquilibré le pipeline des uniques, comportement actuel exact non vérifié.",
+          "supersededBy": "patches de butin ultérieurs",
+          "affectedContent": "Site de commerce et guides d'uniques"
+        },
+        {
+          "topic": "Hausse des uniques mythiques",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 a augmenté les drops mythiques ; le taux actuel en 0.5.4e n'est pas vérifié et peut différer.",
+          "supersededBy": "patches de butin ultérieurs",
+          "affectedContent": "Guide de rareté des uniques"
+        },
+        {
+          "topic": "Réduction du bonus d'unique en groupe",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 a réduit le bonus de groupe ; le bonus restant exact en 0.5.4e n'est pas vérifié.",
+          "supersededBy": "patches de butin ultérieurs",
+          "affectedContent": "Guide farming solo vs groupe"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 11,
+      "title": "Témoignages de la communauté",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - semaine du butin 0.2.1",
+          "context": "Les joueurs ont remarqué plus d'anneaux et d'amulettes qui tombent.",
+          "quote": "Since 0.2.1 my unique rings and amulets show up way more than before.",
+          "analysis": "Cohérent avec la suppression de la pondération par classe d'objet ; directionnel, pas un pourcentage mesuré."
+        },
+        {
+          "source": "Forum officiel - fil objets insérables",
+          "context": "Les joueurs ont demandé pourquoi les nouvelles runes étaient masquées dans leur filtre.",
+          "quote": "My filter was hiding the new Soul Cores until I added entries.",
+          "analysis": "Correspond au manque d'entrées de filtre décrit ici ; les anciens filtres ont besoin de nouvelles entrées d'objets insérables."
+        },
+        {
+          "source": "Discord - jeu en groupe",
+          "context": "Les joueurs ont débattu si le farming en groupe en valait encore la peine.",
+          "quote": "The unique bonus for grouping feels much smaller after 0.2.1.",
+          "analysis": "Cohérent avec la réduction du bonus d'unique en groupe ; valeur exacte non vérifiée."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 12,
+      "title": "Dépannage",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "Les nouveaux objets insérables n'apparaissent pas dans votre filtre de butin : ajoutez des entrées explicites pour les runes, talismans et âmes de cœur, et activez le support du filtre d'objets sur console.",
+          "status": "tracking"
+        },
+        {
+          "text": "Uniques anneaux ou amulettes apparaissant plus que ne le prédisaient les anciens guides : attendu après la suppression de la pondération par classe d'objet dans 0.2.1.",
+          "status": "fixed"
+        },
+        {
+          "text": "Le farming en groupe donnant moins d'uniques supplémentaires que prévu : attendu après la réduction du bonus d'unique en groupe ; bonus exact non vérifié.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "Vidéo et horodatages",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Explication des objets insérables et drops d'uniques 0.2.1",
+          "url": "https://www.youtube.com/watch?v=p0e2r1s0ck1",
+          "takeaway": "Couvre les 22 runes, 7 talismans, 15 âmes de cœur, et les quatre changements de règle sur les drops d'uniques.",
+          "creator": "Path of Exile 2 officiel",
+          "timestamps": [
+            { "label": "Aperçu 0.2.1", "time": "00:00" },
+            { "label": "22 runes, 7 talismans, 15 âmes de cœur", "time": "01:20" },
+            { "label": "Le filtre d'objets a besoin de nouvelles entrées (support console)", "time": "04:45" },
+            { "label": "Le drop d'uniques ne prend plus en compte la classe d'objet", "time": "07:10" },
+            { "label": "Hausse mythique et réduction du bonus de groupe", "time": "09:30" },
+            { "label": "Impact sur les builds et les objets", "time": "11:50" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Pourquoi les nouvelles runes et âmes de cœur n'apparaissent pas dans mon filtre d'objets ?",
+          "answer": [
+            "Ce sont de nouveaux types d'objets insérables qui n'existaient pas avant 0.2.1, donc un filtre plus ancien n'a pas d'entrées pour eux.",
+            "Ajoutez des règles explicites pour runes, talismans et âmes de cœur ; sur console, activez aussi le support du filtre d'objets, introduit dans 0.2.1."
+          ]
+        },
+        {
+          "question": "Le jeu en groupe est-il toujours meilleur pour les uniques après 0.2.1 ?",
+          "answer": [
+            "Le bonus d'unique en groupe a été réduit, donc l'écart entre le jeu en groupe et le jeu solo est plus petit qu'avant.",
+            "Le jeu en groupe aide peut-être encore pour la vitesse de clear et la survie, mais son avantage sur le drop d'uniques est réduit ; le bonus restant exact n'est pas vérifié."
+          ]
+        },
+        {
+          "question": "Qu'est-ce qu'un unique mythique ?",
+          "answer": [
+            "Un unique mythique est le niveau de rareté le plus élevé des objets uniques.",
+            "0.2.1 a augmenté le taux de drop des uniques mythiques, donc davantage de ces objets convoités entrent dans la circulation ; le taux actuel exact n'est pas vérifié."
+          ]
+        },
+        {
+          "question": "Les anneaux et amulettes sont-ils tombés plus souvent après 0.2.1 ?",
+          "answer": [
+            "Oui. Comme les drops d'uniques ne prennent plus en compte la classe d'objet, les anneaux et amulettes sont devenus plus courants dans le pool de drops.",
+            "Il s'agit d'un changement de règle directionnel plutôt que d'un pourcentage publié."
+          ]
+        },
+        {
+          "question": "Combien d'objets insérables 0.2.1 a-t-il réellement ajoutés ?",
+          "answer": [
+            "0.2.1 a ajouté 22 runes de fin de jeu, 7 talismans et 15 âmes de cœur.",
+            "Ces nombres sont les faits confirmés ; les effets individuels des objets insérables sont décrits par catégorie, pas par chiffres publiés."
+          ]
+        },
+        {
+          "question": "Les changements de butin 0.2.1 étaient-ils un remaniement global ?",
+          "answer": [
+            "Ils ont changé les règles du pipeline de drop des uniques : plus de pondération par classe d'objet, une hausse mythique, une part d'uniques courants réduite en haut niveau, et un bonus de groupe plus faible.",
+            "Des patches ultérieurs peuvent avoir rééquilibré cela ; l'état actuel en 0.5.4e n'est pas vérifié, donc traitez les chiffres exacts comme ouverts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Notes de patch officielles Path of Exile 2 0.2.1",
+          "description": "La source pour les 22 runes, 7 talismans, 15 âmes de cœur, et les changements de règle sur les drops d'uniques.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787044"
+        },
+        {
+          "label": "Hotfix 1 officiel Path of Exile 2 0.2.1",
+          "description": "Premier hotfix après 0.2.1, couvrant les premiers problèmes des nouveaux systèmes de butin et d'objets insérables.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787155"
+        },
+        {
+          "label": "Hotfix 2 officiel Path of Exile 2 0.2.1",
+          "description": "Deuxième hotfix après 0.2.1, poursuivant la stabilisation des drops et des objets insérables.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3788896"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Publication de l'article sur les objets insérables et drops d'uniques 0.2.1 couvrant les objets insérables 22/7/15 et les quatre changements de règle sur les drops d'uniques."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "charms-guide",
+    "catalysts",
+    "essences",
+    "tablets",
+    "the-masters-reach",
+    "uncut-gems-guide",
+    "orb-of-sacrifice"
+  ],
+  "relatedGuideIds": [
+    "orb-of-sacrifice-currencies",
+    "trade-site-currency-exchange-guide",
+    "liquid-verisium-safety-checklist"
+  ],
+  "sources": [
+    {
+      "label": "Notes de patch officielles Path of Exile 2 0.2.1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787044",
+      "sourceType": "official"
+    },
+    {
+      "label": "Hotfix 1 officiel Path of Exile 2 0.2.1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787155",
+      "sourceType": "official"
+    },
+    {
+      "label": "Hotfix 2 officiel Path of Exile 2 0.2.1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3788896",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.1 : 22 runes, 7 talismans, 15 âmes de cœur et changements de drops d'uniques",
+    "description": "0.2.1 a ajouté 22 runes, 7 talismans et 15 âmes de cœur, et a changé les drops d'uniques : plus de pondération par classe d'objet, hausse mythique, part courante réduite, bonus de groupe plus faible.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-1-socketables-unique-drops",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

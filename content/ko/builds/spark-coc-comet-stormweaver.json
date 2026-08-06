@@ -1,0 +1,856 @@
+{
+  "id": "spark-coc-comet-stormweaver",
+  "slug": "spark-coc-comet-stormweaver",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Spark CoC Comet Stormweaver 빌드 가이드: 마나, 트리거 구성 및 성장",
+  "shortTitle": "Spark CoC Comet",
+  "summary": "0.5.4 트리거 툴킷: 클리어는 Spark, 단일 대상은 CoC Comet. 레벨 1부터 지도까지 스킬 교체, 트리거 임계값, 자원/방어/피해 삼각형으로서의 마나, MoM/EB/Archmage 변형 경계를 다룹니다.",
+  "description": "패스 오브 엑자일 2 Spark CoC Comet Stormweaver 0.5.4 가이드: 레벨링 단계, 트리거 임계값, 마나 삼각형, 보스 생존 및 실제 영상 타임스탬프.",
+  "classId": "sorceress",
+  "ascendancyId": "stormweaver",
+  "mainSkillIds": [
+    "spark"
+  ],
+  "secondarySkillIds": [
+    "cast-on-critical",
+    "comet",
+    "arc",
+    "lightning-warp"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "caster",
+    "lightning",
+    "trigger",
+    "mana-stacking",
+    "crit"
+  ],
+  "damageTypes": [
+    "lightning"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides 편집팀",
+  "reviewer": "Exile2 Guides 편집팀",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "cardImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "imageAlt": "Spark로 클리어하고 Cast on Critical로 촉발된 Comet으로 보스를 마무리하는 Sorceress Stormweaver",
+  "tags": [
+    "bossing",
+    "caster",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "sorceress",
+    "starter",
+    "stormweaver",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "빌드 개요",
+      "paragraphs": [
+        "Spark CoC Comet는 Sorceress의 트리거 툴킷입니다. Spark가 클리어(다중 투사체 커버리지)를 담당하고, Cast on Critical로 촉발된 Comet이 단일 대상과 보스를 처리합니다. 서로 다른 역할 — Spark는 클리어 엔진, Comet은 버스트 마무리기입니다.",
+        "0.5의 관문은 '트리거 임계값'입니다. CoC가 안정적으로 Comet을 촉발하려면 마나, 치명타, 시전 속도가 맞물려야 합니다. 여기서 마나는 자원, 방어(저생명 시 마나 풀로 흡수됨), 피해를 동시에 수행하므로 낮은 마나는 곧바로 치명적입니다.",
+        "MoM / EB / Archmage는 서로 다른 방어/자원 변형이며 섞어 쓰면 안 됩니다. 이 가이드는 레벨링 단계, 트리거 임계값, 마나 삼각형, 변형 경계를 설명합니다. 수치는 PC 검증 진행 중입니다."
+      ],
+      "bullets": [
+        "Spark가 클리어, CoC Comet이 마무리.",
+        "트리거 임계값에는 마나/치명타/시전 속도가 필요.",
+        "마나는 자원 + 방어 + 피해 삼각형."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "장점과 단점",
+      "pros": [
+        "Spark 클리어는 투사체 커버리지가 좋아 매끄럽게 느껴집니다.",
+        "CoC Comet은 높은 단일 대상 버스트.",
+        "트리거가 안정화되면 운용 비용이 낮음.",
+        "낮은 예산으로도 이미 클리어 가능."
+      ],
+      "cons": [
+        "높은 트리거 임계값. 충족하기 전에는 Comet이 거의 발동하지 않음.",
+        "마나 삼각형이 촘촘함. 낮은 마나는 곧바로 치명적.",
+        "MoM/EB/Archmage 변형은 섞어 쓰면 안 됨.",
+        "보스전에서는 마나가 순식간에 고갈되는 것을 막아야 함."
+      ]
+    },
+    {
+      "id": "spark-behaviour",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "루프의 흐름: Spark → CoC Comet",
+      "paragraphs": [
+        "맵핑 루프: Spark를 시전하고, 다중 투사체가 패킹을 자동으로 커버하며, 당신은 위치만 바꾸고 다시 시전하면 됩니다.",
+        "보스 루프: Spark로 치명타 빈도를 유지해 Cast on Critical이 보스에게 안정적으로 Comet을 촉발하게 하고, 기동성은 Lightning Warp로 확보합니다.",
+        "'CoC로 전환할 수 있는가'는 단순히 레벨이 아니라 마나/치명타/시전 속도 임계값에 달려 있습니다."
+      ],
+      "bullets": [
+        "맵핑 = Spark 다중 투사체 커버.",
+        "보스 = Spark가 치명타 유지 → CoC Comet.",
+        "트리거는 레벨이 아닌 임계값에 의존."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "레벨링 경로",
+      "steps": [
+        {
+          "label": "레벨 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "기본 번개 마법(Spark 또는 Arc)으로 맵핑합니다. 아직 CoC 없음, 마나와 치명타가 준비되지 않음."
+          ]
+        },
+        {
+          "label": "레벨 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "주 클리어로 Spark를 채택하고 마나/치명타/생명력 노드를 추가합니다."
+          ]
+        },
+        {
+          "label": "레벨 30–42 — Stormweaver 해금",
+          "levelRange": "30–42",
+          "body": [
+            "Stormweaver를 선택해 마나와 트리거를 강화하고, Cast on Critical 촉발 Comet을 시작합니다."
+          ]
+        },
+        {
+          "label": "레벨 43–60 — 초기 지도",
+          "levelRange": "43–60",
+          "body": [
+            "낮은 예산으로 트리거 체인을 가동하고, 마나 풀과 치명타를 잡으며 저항을 상한까지 채웁니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "스킬 구성",
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "Spark",
+              "skillId": "spark",
+              "role": "맵핑 핵심, 다중 투사체 커버리지.",
+              "supportSkillIds": [
+                "fork",
+                "added-lightning",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "클리어 엔진입니다. 투사체가 많을수록 커버리지가 좋아집니다."
+              ],
+              "whenReplace": [
+                "절대 교체되지 않습니다. 보스전에서도 치명타 빈도를 유지합니다."
+              ],
+              "mappingBossingDiff": [
+                "맵핑에서는 난사하고, 보스전에서는 CoC 트리거를 유지합니다."
+              ],
+              "notes": [
+                "투사체/범위는 보조 젬으로 증폭."
+              ]
+            },
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "치명타 시 Comet을 방출하는 트리거 매개.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "안정적인 Comet의 전제 조건. 없으면 Comet이 발동하지 않습니다."
+              ],
+              "whenReplace": [
+                "유지. 트리거 구조의 일부."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용하되 보스전 의존도가 높음."
+              ],
+              "notes": [
+                "충분한 치명타와 마나 필요."
+              ]
+            },
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "CoC로 촉발되는 단일 대상 버스트.",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "보스를 마무리하는 핵심 버스트."
+              ],
+              "whenReplace": [
+                "교체되지 않음, 트리거가 갖춰져야 함."
+              ],
+              "mappingBossingDiff": [
+                "맵핑은 선택, 보스전은 필수."
+              ],
+              "notes": [
+                "방출 타이밍은 트리거에 의해 결정."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "보조",
+          "skills": [
+            {
+              "displayName": "Arc",
+              "skillId": "arc",
+              "role": "대체 클리어/연쇄 스킬, 추가 커버리지.",
+              "supportSkillIds": [
+                "chain"
+              ],
+              "whyUse": [
+                "Spark가 부족할 때 연쇄 커버리지를 보완."
+              ],
+              "whenReplace": [
+                "보조로 유지."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Lightning Warp",
+              "skillId": "lightning-warp",
+              "role": "기동 스킬, 지면 효과 회피.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "핵심 기동성, 제자리 멈춤으로 인한 죽음 감소."
+              ],
+              "whenReplace": [
+                "기동용으로 유지."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 사용."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "승천 순서",
+      "steps": [
+        {
+          "label": "Stormweaver — 초기 노드",
+          "body": [
+            "마나와 트리거 노드를 우선시하십시오. 마나 삼각형과 안정적인 CoC의 전제 조건입니다."
+          ]
+        },
+        {
+          "label": "방어 점검",
+          "body": [
+            "T15 이상에서 생존이 불안하면 MoM/ES 노드를 추가하십시오. 모두 피해로 바꾸지 마십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "패시브 트리",
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "마나, 치명타, 번개, 생명력을 가져가되 Archmage 휠로 미리 가지 마십시오."
+          ]
+        },
+        {
+          "label": "초기 지도",
+          "body": [
+            "트리거 변형으로 전환하십시오. 마나 풀, 치명타, 시전 속도를 먼저."
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "body": [
+            "마나 삼각형과 방어가 해결된 후 피해 휠에 투자하고, 티어별 장비를 비교하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "장비",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "스펠 레벨과 번개/스펠 피해를 올려주는 베이스를 고르고, Spark / Comet 연결용 소켓을 충분히 확보하십시오."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "스펠 레벨 / 번개 스펠 피해",
+              "reason": "Spark와 Comet을 증폭."
+            },
+            {
+              "tier": "recommended",
+              "label": "마나 풀과 재생",
+              "reason": "마나 삼각형의 바닥."
+            },
+            {
+              "tier": "optional",
+              "label": "시전 속도",
+              "reason": "더 빠른 트리거 리듬."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명타 확률 / 치명타 피해",
+              "reason": "CoC의 전제 조건."
+            }
+          ],
+          "notes": [
+            "핵심: 스펠 피해와 마나를 우선시."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "생명력, 저항, 마나. 부츠 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명력과 상한에 도달한 저항 2개",
+              "reason": "죽음을 피해로 보상할 수 없음."
+            },
+            {
+              "tier": "recommended",
+              "label": "마나 풀 (MoM/ES 포함)",
+              "reason": "저생명 시 마나로 흡수."
+            },
+            {
+              "tier": "optional",
+              "label": "이동 속도",
+              "reason": "더 나은 위치 선정."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 스펠 피해",
+              "reason": "방어 이후."
+            }
+          ],
+          "notes": [
+            "마나 삼각형은 장비와 패시브가 함께해야 합니다."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "속성, 저항, 생명력, 마나. 필요한 곳에 치명타와 마나 유지력."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "스태프와 젬 장착을 위한 속성",
+              "reason": "장착할 수 없으면 무용지물."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 마나",
+              "reason": "방어와 마나 삼각형 완성."
+            },
+            {
+              "tier": "optional",
+              "label": "치명타 확률",
+              "reason": "CoC 트리거 전제 조건."
+            },
+            {
+              "tier": "luxury",
+              "label": "스펠 레벨",
+              "reason": "후반 게임 피해."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "능력치 우선순위",
+      "priorities": [
+        {
+          "label": "스펠 스킬 레벨",
+          "reason": "Spark와 Comet 증폭. 최상위 진척 체크."
+        },
+        {
+          "label": "마나 풀과 재생",
+          "reason": "마나 삼각형의 바닥, 저생명 흡수가 이것에 의존."
+        },
+        {
+          "label": "치명타 확률",
+          "reason": "CoC의 전제 조건."
+        },
+        {
+          "label": "시전 속도",
+          "reason": "더 빠른 트리거 리듬."
+        },
+        {
+          "label": "번개 스펠 피해",
+          "reason": "직접 피해, 마나 이후."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "업그레이드 우선순위",
+      "steps": [
+        {
+          "label": "Comet 미발동",
+          "symptom": "보스전에서 Comet이 거의 나타나지 않음.",
+          "checks": [
+            "치명타 충분?",
+            "마나 유지력 충분?",
+            "시전 속도 임계값 도달?"
+          ],
+          "upgrade": "스태프를 바꾸는 게 아니라 트리거 임계값(치명타/마나/시전 속도)을 잡으십시오."
+        },
+        {
+          "label": "낮은 마나 사망",
+          "symptom": "보스전에서 마나 고갈, 즉사.",
+          "checks": [
+            "MoM/ES 활성화?",
+            "마나 풀 충분?"
+          ],
+          "upgrade": "피해를 키우기 전에 마나 삼각형을 먼저 잡으십시오."
+        },
+        {
+          "label": "클리어 둔화",
+          "symptom": "Spark 클리어 부족.",
+          "checks": [
+            "스태프 티어 베이스?",
+            "투사체/범위 충분?"
+          ],
+          "upgrade": "치명타를 쌓는 게 아니라 스태프와 보조를 업그레이드하십시오."
+        },
+        {
+          "label": "Archmage/고급 장비 고려",
+          "symptom": "더 높은 상한을 원함.",
+          "checks": [
+            "마나 삼각형 안정?",
+            "섞으면 변형이 충돌합니까?"
+          ],
+          "upgrade": "조각씩 사서 재검증하십시오. MoM/EB/Archmage를 섞지 마십시오."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "맵핑",
+      "paragraphs": [
+        "Spark를 시전하고, 다중 투사체가 자동 커버하며, Lightning Warp로 위치를 바꿉니다. 쓰레기 몹엔 Comet이 필요 없고, 촉발하려고 멈추면 느려집니다.",
+        "클리어가 느려지면 먼저 스태프와 투사체 보조를 업그레이드하십시오. 맵핑이 멈추지 않도록 마나 유지력을 계속 가동하십시오."
+      ],
+      "bullets": [
+        "Spark 다중 투사체 커버.",
+        "쓰레기 몹에서는 Comet 트리거 생략.",
+        "클리어 둔화 시 먼저 스태프 업그레이드."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "보스전",
+      "paragraphs": [
+        "Spark로 치명타 빈도를 유지해 Cast on Critical이 보스에게 안정적으로 Comet을 촉발하게 하고, Lightning Warp로 지면 효과를 회피하십시오.",
+        "Comet이 전혀 오지 않는다면 문제는 스태프가 아니라 트리거 임계값(치명타/마나/시전 속도)입니다. 보스전에서는 마나가 순식간에 고갈되는 것을 막으십시오 — MoM/ES와 마나 유지력을 유지하십시오."
+      ],
+      "bullets": [
+        "Spark가 치명타 유지 → CoC Comet.",
+        "Lightning Warp 회피.",
+        "마나 하락 = 트리거와 마나 삼각형 수정."
+      ]
+    },
+    {
+      "id": "trigger-readiness",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "트리거 준비도: CoC로 전환할 수 있나?",
+      "paragraphs": [
+        "CoC Comet은 특정 레벨에서 자동으로 강해지지 않습니다. 필요한 것은: 충분한 치명타(빈번한 Cast on Critical), 충분한 마나(연속 시전 유지), 충분한 시전 속도(더 빠른 트리거)입니다. 하나라도 부족하면 Comet이 '겨우 발동하는' 모습을 보입니다.",
+        "체크리스트: 치명타가 임계값? 마나 풀/재생이 연속 Spark 유지? 시전 속도가 트리거 리듬? 세 가지가 모두 충족될 때만 자가시전 Spark에서 CoC로 전환하십시오. 그렇지 않으면 먼저 클리어를 안정화하십시오."
+      ],
+      "bullets": [
+        "치명타 + 마나 + 시전 속도가 모두 충족될 때만 전환.",
+        "하나라도 부족하면 Comet 미발동.",
+        "CoC로 전환하기 전에 클리어 안정화."
+      ]
+    },
+    {
+      "id": "mana-defence",
+      "type": "overview",
+      "order": 140,
+      "visible": true,
+      "toc": false,
+      "title": "마나 삼각형: 자원 / 방어 / 피해",
+      "paragraphs": [
+        "여기서 마나는 동시에: 자원(시전), 방어(저생명 시 피해가 먼저 마나 풀에 적중, MoM/ES로 증폭), 피해(Archmage형 변형이 마나를 피해로 변환)입니다.",
+        "따라서 낮은 마나는 곧바로 치명적입니다 — '시전할 파랑이 부족'이 아니라 '흡수할 파랑이 부족'입니다. 세 상태(가득/중간/낮음)는 방어 방식이 다릅니다. 마나가 가득 차 있으면 관대하고, 낮으면 보스 스킬 한 방에 죽을 수 있습니다.",
+        "MoM / EB / Archmage는 마나 사용이 다른 별개 변형이며 한 세트에 섞어 쓰면 안 됩니다."
+      ],
+      "bullets": [
+        "마나 = 자원 + 방어 + 피해.",
+        "낮은 마나는 곧바로 치명적.",
+        "MoM/EB/Archmage 혼용 금지."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 145,
+      "visible": true,
+      "toc": true,
+      "title": "커뮤니티 근거",
+      "note": "이 가이드는 커뮤니티 논의를 재현 가능한 체크리스트로 활용할 뿐, 그들이 보여준 DPS를 약속하지는 않습니다.",
+      "entries": [
+        {
+          "context": "플레이어들은 Spark CoC가 낮은 예산으로 가능한지 묻습니다.",
+          "label": "저예산 Spark CoC Comet 가이드",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "이 가이드는 낮은 예산으로 Spark + CoC Comet이 가능함을 보여주며, 트리거 임계값과 마나를 강조합니다.",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "context": "플레이어들은 MoM/EB/Archmage 경계를 논의합니다.",
+          "label": "Cast on Crit Comet Stormweaver 엔드게임",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "엔드게임 가이드는 변형 경계와 장비를 명확히 하며, 마나 삼각형을 강조합니다.",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "문제 해결",
+      "problems": [
+        {
+          "symptom": "Comet 미발동",
+          "checks": [
+            "치명타 충분?",
+            "마나 유지력 충분?",
+            "시전 속도 임계값 도달?"
+          ]
+        },
+        {
+          "symptom": "낮은 마나 사망",
+          "checks": [
+            "MoM/ES 활성화?",
+            "마나 풀 충분?"
+          ]
+        },
+        {
+          "symptom": "클리어 둔화",
+          "checks": [
+            "스태프 티어 베이스?",
+            "투사체 충분?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "언제 자가시전 Spark에서 CoC로 전환하나요?",
+          "answer": [
+            "치명타, 마나, 시전 속도가 모두 트리거 임계값에 도달한 후에만 전환하십시오. 그렇지 않으면 먼저 클리어를 안정화하십시오."
+          ],
+          "bullets": [
+            "체크리스트로 확인하십시오."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "왜 낮은 마나가 나를 직접 죽이나요?",
+          "answer": [
+            "저생명 시 마나가 피해를 흡수합니다. 마나가 부족하면 방어 공백이 생겨 보스 스킬이 뚫고 들어옵니다."
+          ],
+          "bullets": [
+            "마나 삼각형을 유지하십시오."
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ko/guides/how-to-stop-getting-one-shot/",
+              "label": "원샷 방지 가이드 참고"
+            }
+          ]
+        },
+        {
+          "question": "MoM과 Archmage를 함께 사용할 수 있나요?",
+          "answer": [
+            "섞지 않는 것이 좋습니다. 서로 다른 마나 사용 변형이므로 명확한 하나의 변형을 구성하십시오."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "빌드 플래너 및 가져오기",
+      "note": "붙여넣기 가능한 가져오기 문자열과 .build 파일은 아직 PC 검증 진행 중입니다. 그동안 아래 제작자 가이드와 공식 플래너를 이용하십시오. 항상 자신의 클라이언트에서 노드를 재확인하십시오.",
+      "creatorName": "Community Guide",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "클리어와 트리거 리듬 보기",
+      "entries": [
+        {
+          "creator": "Community",
+          "label": "0.5 저예산 Spark CoC Comet",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc",
+          "description": "저예산 Spark + CoC Comet 플레이 가능성과 트리거 임계값.",
+          "takeaway": "트리거 임계값과 마나 관리에 집중.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "1:30",
+              "label": "클리어와 Spark"
+            },
+            {
+              "time": "4:00",
+              "label": "트리거 임계값"
+            },
+            {
+              "time": "7:00",
+              "label": "마나 관리"
+            },
+            {
+              "time": "10:00",
+              "label": "장비"
+            }
+          ]
+        },
+        {
+          "creator": "Community",
+          "label": "0.5 CoC Comet Stormweaver 엔드게임",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo",
+          "description": "엔드게임: 변형 경계, 장비, 마나 삼각형.",
+          "takeaway": "최종 장비와 보스 게임플레이를 보십시오.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "소개"
+            },
+            {
+              "time": "2:00",
+              "label": "변형 경계"
+            },
+            {
+              "time": "5:00",
+              "label": "장비와 마나"
+            },
+            {
+              "time": "8:00",
+              "label": "보스 게임플레이"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "출처 및 검증",
+      "categories": [
+        {
+          "label": "공식",
+          "description": "Grinding Gear Games — 패스 오브 엑자일 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "저예산 Spark CoC Comet 가이드 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Cast on Crit Comet Stormweaver 엔드게임 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "PoE2 Stormweaver Spark 저예산 빌드 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "변경 로그",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "출처가 있는 0.5.4 Spark CoC Comet Stormweaver 빌드 가이드를 작성함. PC 검증 진행 중."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "how-to-fix-low-damage"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — 패스 오브 엑자일 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "저예산 Spark CoC Comet 가이드 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "label": "Cast on Crit Comet Stormweaver 엔드게임 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+    },
+    {
+      "label": "PoE2 Stormweaver Spark 저예산 빌드 (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+    }
+  ],
+  "seo": {
+    "title": "Spark CoC Comet Stormweaver 빌드 가이드 | Exile2 Guides",
+    "description": "0.5.4 Spark CoC Comet Stormweaver: Spark 클리어, CoC Comet 단일 대상, 트리거 임계값, 마나 삼각형 및 변형 경계.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark-coc-comet-stormweaver",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

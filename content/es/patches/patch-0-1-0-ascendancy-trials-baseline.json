@@ -1,0 +1,610 @@
+{
+  "id": "patch-0-1-0-ascendancy-trials-baseline",
+  "slug": "patch-0-1-0-ascendancy-trials-baseline",
+  "locale": "es",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.1.0 Línea Base de Pruebas de Ascendencia: Prueba de Sekhemas y Prueba del Caos al Lanzamiento",
+  "shortTitle": "Línea base de Pruebas de Ascendencia 0.1.0",
+  "summary": "En la versión 0.1.0, las ascendancias se obtenían sobreviviendo a la Prueba de Sekhemas (una prueba basada en Honor) y a la Prueba del Caos. Esta página registra exactamente cómo funcionaba el sistema de pruebas original y cómo lo cambiaron los parches posteriores.",
+  "description": "Una historia completa de la línea base de pruebas de ascendencia de Path of Exile 2 0.1.0. Cubre la mecánica de Honor del lanzamiento de la Prueba de Sekhemas y la Prueba del Caos, cómo funcionaban las llaves y las salas, y qué reglas de las pruebas fueron reescritas por parches posteriores frente a lo que sigue vigente en el cliente 0.5.4e.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.0",
+  "patch": "0.1.0",
+  "league": "Lanzamiento de Acceso Anticipado",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/bosses/trialmaster-hero.webp",
+  "cardImage": "/images/bosses/trialmaster-hero.webp",
+  "imageAlt": "El sistema de pruebas de ascendencia original de Path of Exile 2 0.1.0: Prueba de Sekhemas y Prueba del Caos",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "ascendancy",
+    "trials",
+    "historical",
+    "sekhemas",
+    "chaos"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Trial of Sekhemas",
+      "status": "changed-later",
+      "currentSummary": [
+        "La prueba basada en Honor de 0.1.0 fue rehecha; los parches posteriores cambiaron las reglas de salas y recompensas."
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "respec-passive-ascendancy-guide"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Trial of Chaos",
+      "status": "still-current",
+      "currentSummary": [
+        "La Prueba del Caos siguió siendo la vía alternativa hacia una ascendencia, aunque el ajuste de recompensas cambió."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [
+        "weapon-set-passive-points-explained"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Respec of ascendancy",
+      "status": "changed-later",
+      "currentSummary": [
+        "El coste y el acceso del reespecializado cambiaron en 0.1.0e y de nuevo más tarde, aliviando la presión de las pruebas."
+      ],
+      "supersededByPatchIds": [
+        "0.1.0e",
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "respec-passive-ascendancy-guide"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Resumen rápido",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "En 0.1.0, alcanzar una ascendencia significaba sobrevivir a uno de dos tipos de prueba. La Prueba de Sekhemas era una prueba de varias salas rastreada por un recurso de Honor que se agotaba a medida que recibías daño; la Prueba del Caos era un desafío basado en oleadas con modificadores de sala aleatorios.",
+        "Ambas pruebas caían de contenido específico y otorgaban puntos de ascendencia al completarse. Esta página es la historia de entrada completa de ese sistema de pruebas original: lo que trajo 0.1.0, cómo lo ajustaron las primeras semanas, y qué reglas de pruebas siguen pareciéndose al cliente actual frente a lo que los parches posteriores reconstruyeron."
+      ],
+      "bullets": [
+        "Dos vías de prueba: Prueba de Sekhemas (Honor) y Prueba del Caos (oleadas)",
+        "Las pruebas otorgaban puntos de ascendencia al completarse",
+        "Los primeros ajustes llegaron en 0.1.0d (claridad de la llave de prueba) y 0.1.0e (coste de reespecializado)"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Advertencia histórica",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — la era de pruebas 0.1.0",
+      "baselineNote": "Las afirmaciones de estado actual en esta página se miden contra el cliente 0.5.4e.",
+      "paragraphs": [
+        "0.1.0 es una línea base histórica, no una guía de pruebas actual. La mecánica de Honor y las reglas de sala del Caos se ajustaron dentro de las primeras semanas y luego de nuevo por 0.2, 0.3, 0.4 y 0.5.",
+        "Ver una ejecución de prueba del Día 1 hoy es engañoso: el agotamiento de Honor, los modificadores de sala y los pasos de recompensa que muestra fueron cambiados por hotfixes de la semana de lanzamiento y parches posteriores. Trata las imágenes de 0.1.0 como un registro del estado de lanzamiento."
+      ],
+      "bullets": [
+        "0.1.0 = punto de partida del sistema de pruebas, no el diseño final",
+        "Las ejecuciones de pruebas del Día 1 son registros históricos, no guías actuales",
+        "Todas las afirmaciones de reglas actuales abajo se comprueban contra 0.5.4e"
+      ]
+    },
+    {
+      "id": "trials-at-launch",
+      "order": 3,
+      "title": "Qué contenía el sistema de pruebas 0.1.0",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "La Prueba de Sekhemas se abría como una secuencia de salas donde una barra de Honor representaba tu vida restante para toda la ejecución; perder todo el Honor fallaba la prueba independientemente de la salud del personaje. La Prueba del Caos presentaba oleadas con modificadores de sala aleatorios que escalaban la dificultad.",
+        "Cada tipo de prueba otorgaba un sabor distinto de progresión de ascendencia, y ambas eran requeridas a lo largo de la carrera de un personaje para alcanzar la ascendencia completa. Las salidas exactas de llaves y los conjuntos de salas estaban en su primera forma y cambiaron poco después."
+      ],
+      "bullets": [
+        "Sekhemas: la barra de Honor rastrea toda la ejecución",
+        "Caos: basada en oleadas con modificadores de sala aleatorios",
+        "Ambas pruebas alimentaban la progresión de ascendencia"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "Línea de tiempo de la familia de parches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "Lanzamiento de Acceso Anticipado",
+          "summary": "La Prueba de Sekhemas (Honor) y la Prueba del Caos se lanzaron como las dos vías de ascendencia.",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0d",
+          "date": "2024-12-17",
+          "kind": "Parche de Mecánicas",
+          "summary": "La claridad de la Llave de Prueba mejoró cómo los jugadores encontraban y entendían el acceso a las pruebas.",
+          "tags": [
+            "balance",
+            "mechanics"
+          ]
+        },
+        {
+          "code": "0.1.0e",
+          "date": "2024-12-20",
+          "kind": "Estabilización",
+          "summary": "El recorte del coste de reespecializado alivió la presión de comprometerse con una ascendencia.",
+          "tags": [
+            "balance",
+            "progression"
+          ]
+        },
+        {
+          "code": "0.2.0+",
+          "date": "2025-04-04",
+          "kind": "Línea posterior",
+          "summary": "La línea mayor actual (línea base 0.5.4e) que rehízo las salas y recompensas de las pruebas.",
+          "tags": [
+            "current-baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trials-impact",
+      "order": 5,
+      "title": "Sistemas de pruebas originales y su destino",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Trial of Sekhemas",
+          "verdict": "Rehecho desde el lanzamiento",
+          "detail": "Las salas y recompensas de la prueba de Honor fueron cambiadas por parches posteriores."
+        },
+        {
+          "area": "Trial of Chaos",
+          "verdict": "Sigue vigente",
+          "detail": "Caos siguió siendo la vía alternativa de ascendencia, con ajuste de recompensas."
+        },
+        {
+          "area": "Honour mechanic",
+          "verdict": "Ajustado en el lanzamiento",
+          "detail": "Los agotamientos de Honor a corta distancia se corrigieron en 0.1.0e; reestructuraciones más amplias siguieron."
+        },
+        {
+          "area": "Trial keys",
+          "verdict": "Aclarado en 0.1.0d",
+          "detail": "0.1.0d mejoró cómo los jugadores encontraban y entendían el acceso a las pruebas."
+        }
+      ]
+    },
+    {
+      "id": "trials-table",
+      "order": 6,
+      "title": "Pruebas de lanzamiento vs cliente actual",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Con qué se lanzó 0.1.0, y si sigue coincidiendo con el cliente 0.5.4e.",
+      "columns": [
+        {
+          "key": "system",
+          "label": "Sistema"
+        },
+        {
+          "key": "launch",
+          "label": "Estado 0.1.0"
+        },
+        {
+          "key": "status",
+          "label": "Estado actual (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "Entrada actual en el sitio"
+        }
+      ],
+      "rows": [
+        {
+          "system": "Trial of Sekhemas",
+          "launch": "Prueba de Honor, salas en primera forma.",
+          "status": "Salas rehechas",
+          "entry": "respec-passive-ascendancy-guide"
+        },
+        {
+          "system": "Trial of Chaos",
+          "launch": "Basada en oleadas con modificadores aleatorios.",
+          "status": "Sigue siendo vía central",
+          "entry": "weapon-set-passive-points-explained"
+        },
+        {
+          "system": "Honour drain",
+          "launch": "Los agotamientos a corta distancia se sentían severos.",
+          "status": "Corregido en 0.1.0e",
+          "entry": "respec-passive-ascendancy-guide"
+        },
+        {
+          "system": "Trial keys",
+          "launch": "El acceso era poco claro en el lanzamiento.",
+          "status": "Aclarado en 0.1.0d",
+          "entry": "weapon-set-passive-points-explained"
+        }
+      ]
+    },
+    {
+      "id": "trials-before-after",
+      "order": 7,
+      "title": "Pruebas de lanzamiento vs actual",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Pruebas del Día 1 de 0.1.0 (diciembre de 2024)",
+      "oldText": "La prueba de Honor y las oleadas de Caos funcionaban en su primera forma. Los agotamientos de Honor a corta distancia se sentían severos y el acceso con llave de prueba era poco claro.",
+      "newLabel": "Pruebas actuales (cliente 0.5.4e)",
+      "newText": "Las salas y recompensas de las pruebas fueron rehechas de 0.2 a 0.5, los agotamientos de Honor se corrigieron, y el acceso con llave es más claro. Las imágenes antiguas ya no describen las pruebas actuales."
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "Aplicabilidad actual (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Trial of Sekhemas",
+          "status": "changed-later",
+          "currentSummary": "Las salas y recompensas de la prueba de Honor fueron rehechas por parches posteriores.",
+          "supersededBy": "0.2.0, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        },
+        {
+          "topic": "Trial of Chaos",
+          "status": "still-current",
+          "currentSummary": "Caos sigue siendo la vía alternativa de ascendencia, con ajuste de recompensas.",
+          "supersededBy": "—",
+          "affectedContent": "weapon-set-passive-points-explained"
+        },
+        {
+          "topic": "Honour drain",
+          "status": "changed-later",
+          "currentSummary": "Los agotamientos de Honor a corta distancia se corrigieron en 0.1.0e y se rehicieron más tarde.",
+          "supersededBy": "0.1.0e, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        },
+        {
+          "topic": "Respec of ascendancy",
+          "status": "changed-later",
+          "currentSummary": "El coste y el acceso del reespecializado cambiaron, aliviando la presión de las pruebas.",
+          "supersededBy": "0.1.0e, 0.3.0",
+          "affectedContent": "respec-passive-ascendancy-guide"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "Entonces vs ahora",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Sekhemas rooms",
+          "thenText": "Prueba de Honor de lanzamiento en salas en primera forma.",
+          "nowText": "Salas y recompensas rehechas de 0.2 a 0.5."
+        },
+        {
+          "aspect": "Chaos waves",
+          "thenText": "Basada en oleadas con modificadores aleatorios en el lanzamiento.",
+          "nowText": "Sigue siendo la vía alternativa, con recompensas ajustadas."
+        },
+        {
+          "aspect": "Honour drain",
+          "thenText": "Los agotamientos a corta distancia se sentían severos en el lanzamiento.",
+          "nowText": "Corregido en 0.1.0e y rehecho más tarde."
+        },
+        {
+          "aspect": "Respec cost",
+          "thenText": "El reespecializado temprano era costoso, presionando la elección de prueba.",
+          "nowText": "Coste recortado en 0.1.0e y de nuevo más tarde, aliviando la presión."
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "Lista de verificación para jugadores que regresan",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "Reaprende las salas de las pruebas",
+          "detail": "Las salas de Sekhemas fueron rehechas; sigue la guía actual de respec-passive-ascendancy."
+        },
+        {
+          "priority": "high",
+          "label": "Ignora las ejecuciones de pruebas del Día 1",
+          "detail": "Las imágenes de 0.1.0 no describen las pruebas actuales; usa las páginas actuales."
+        },
+        {
+          "priority": "medium",
+          "label": "Caos sigue presente",
+          "detail": "La Prueba del Caos sigue siendo la vía alternativa de ascendencia."
+        },
+        {
+          "priority": "medium",
+          "label": "El reespecializado es más barato ahora",
+          "detail": "Los parches posteriores recortaron el coste de reespecializado, así que la elección de prueba es menos punitiva."
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "Evidencia de la comunidad",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Foro (semana de lanzamiento 0.1.0)",
+          "context": "Los jugadores encontraron los agotamientos de Honor a corta distancia castigadores.",
+          "quote": "El Honor de Sekhemas simplemente desaparece en melé, esto se siente mal.",
+          "analysis": "Coincide con la corrección de 0.1.0e para los agotamientos de Honor a corta distancia."
+        },
+        {
+          "source": "Reddit (pruebas 0.1.0)",
+          "context": "Los espectadores preguntaron si las guías de pruebas de lanzamiento eran seguras.",
+          "quote": "¿Siguen siendo buenas estas guías de pruebas o rehicieron las salas?",
+          "analysis": "Las salas fueron rehechas de 0.2 a 0.5; trata las guías de lanzamiento como históricas."
+        },
+        {
+          "source": "Comentario de YouTube (imágenes de 0.1.0)",
+          "context": "Los jugadores confundieron el estado de pruebas de lanzamiento con el actual.",
+          "quote": "¿Por qué las pruebas no se parecen en nada al vídeo de 0.1.0?",
+          "analysis": "Esperado: las pruebas fueron rehechas tras el lanzamiento."
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "Contenido afectado",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Guía de Reespecializado y Pasivas / Ascendencia",
+          "type": "guide",
+          "trigger": "Salas de pruebas rehechas hasta 0.5",
+          "action": "Actualizar para las reglas actuales de pruebas y reespecializado.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Guía de Juego de Armas y Puntos Pasivos",
+          "type": "guide",
+          "trigger": "La Prueba del Caos sigue vigente",
+          "action": "Documentar el comportamiento actual de la vía Caos.",
+          "status": "queued"
+        },
+        {
+          "name": "Página de habilidad Tempest Bell",
+          "type": "skill",
+          "trigger": "Conjunto de habilidades de lanzamiento, posterior Support Overhaul",
+          "action": "Documentar el comportamiento actual de la habilidad frente al lanzamiento.",
+          "status": "queued"
+        },
+        {
+          "name": "Página de habilidad Twister",
+          "type": "skill",
+          "trigger": "Conjunto de habilidades de lanzamiento, posterior Support Overhaul",
+          "action": "Documentar el comportamiento actual de la habilidad frente al lanzamiento.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "Vídeo histórico",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — Anuncio Oficial de Acceso Anticipado",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Revelación oficial de la clase 0.1.0 y la dirección del endgame. Léela junto con las notas de hotfix de lanzamiento para ver qué cambió en la primera semana.",
+          "creator": "Path of Exile 2 oficial",
+          "timestamps": [
+            {
+              "label": "Revelación de clase",
+              "time": "00:30"
+            },
+            {
+              "label": "Endgame y Atlas",
+              "time": "04:10"
+            },
+            {
+              "label": "Estado de lanzamiento",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "Preguntas frecuentes",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "¿Cómo otorgaba 0.1.0 las ascendancias?",
+          "answer": [
+            "Sobreviviendo a la Prueba de Sekhemas (una prueba de Honor) y a la Prueba del Caos, cada una otorgando puntos de ascendencia al completarse."
+          ]
+        },
+        {
+          "question": "¿Por qué mis ejecuciones de pruebas se ven distintas de los vídeos de 0.1.0?",
+          "answer": [
+            "Las salas y recompensas de las pruebas fueron rehechas de 0.2 a 0.5, y los agotamientos de Honor se corrigieron. Las imágenes de lanzamiento describen el estado original."
+          ]
+        },
+        {
+          "question": "¿Sigue estando la Prueba del Caos en el juego?",
+          "answer": [
+            "Sí. La Prueba del Caos siguió siendo la vía alternativa hacia una ascendencia, aunque el ajuste de recompensas cambió."
+          ]
+        },
+        {
+          "question": "¿Qué reglas de pruebas de 0.1.0 siguen vigentes?",
+          "answer": [
+            "Sobrevivió la estructura de dos pruebas, pero las salas de Sekhemas y los agotamientos de Honor fueron rehechos y ya no coinciden con las imágenes de lanzamiento."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Anuncio oficial de Acceso Anticipado 0.1.0 de Path of Exile 2",
+          "description": "Comunicación oficial de lanzamiento que confirma el alcance de clase, campaña y endgame de 0.1.0.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "FAQ y sistemas oficiales 0.1.0 de Path of Exile 2",
+          "description": "Detalle oficial sobre los sistemas de lanzamiento, el modelo de progresión y el endgame.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Notas de lanzamiento oficiales 0.1.0 de Path of Exile 2",
+          "description": "Notas de lanzamiento oficiales que cubren el alcance de clase, campaña y endgame.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Índice del foro de Acceso Anticipado de Path of Exile 2",
+          "description": "Índice de todos los hilos oficiales de parches y hotfix de EA referenciados arriba.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedSkillIds": [
+    "tempest-bell",
+    "twister"
+  ],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Anuncio oficial de Acceso Anticipado 0.1.0 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "FAQ y sistemas oficiales 0.1.0 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Notas de lanzamiento oficiales 0.1.0 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Índice del foro de Acceso Anticipado de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.0 Línea Base de Pruebas de Ascendencia — Sekhemas y Caos vs 0.5.4e",
+    "description": "Cómo funcionaban la prueba de Honor de Sekhemas y la Prueba del Caos de 0.1.0, y qué reglas de pruebas cambió 0.5.4e.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-1-0-ascendancy-trials-baseline",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

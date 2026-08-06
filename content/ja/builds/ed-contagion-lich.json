@@ -1,0 +1,1052 @@
+{
+  "id": "ed-contagion-lich",
+  "slug": "ed-contagion-lich",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "エッセンスドレイン・コンテージョン リッチ ビルドガイド",
+  "shortTitle": "ED コンテージョン リッチ",
+  "summary": "ソースに基づいたカオスDoTガイド。パックへのまき散らし、ボス戦での維持、そしてフルライフ／ローライフの終盤方針を切り分けて解説する。",
+  "description": "Path of Exile 2の0.5.4ベースラインにおける、エッセンスドレインとコンテージョンを使ったリッチビルドの完全ガイド。",
+  "classId": "witch",
+  "ascendancyId": "lich",
+  "mainSkillIds": [
+    "essence-drain",
+    "contagion"
+  ],
+  "secondarySkillIds": [
+    "dark-effigy",
+    "despair",
+    "sigil-of-power",
+    "entangle",
+    "bonestorm"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium"
+  ],
+  "difficulty": "beginner",
+  "playstyleTags": [
+    "caster",
+    "chaos-dot",
+    "damage-over-time",
+    "mobile"
+  ],
+  "damageTypes": [
+    "chaos",
+    "damage-over-time"
+  ],
+  "bestFor": [
+    "league-start",
+    "mapping",
+    "mobile-bossing"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "cardImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "imageAlt": "暗い敵の群れに向かって紫色のエッセンスドレインとコンテージョンをまき散らすリッチ",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "dot",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lich",
+    "mobile",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "ED＋コンテージョンが強力な理由は、ターゲット選択を伝播へと変える点にある。コンテージョンがパックに印をつけ、エッセンスドレインがダメージ付与のデバフを供給し、そして1体が死ぬことでそのパッケージが先へと運ばれる。この2つのキャストが無関係のターゲットに当たってしまうとビルドの感触は悪くなるため、照準とパックの順序はツールチップのダメージを1行増やすよりも重要になる。",
+        "ボスに対しては伝播が消える。ビルドは維持のセットアップになる。エッセンスドレインを継続させ、ターゲットに値する場合のみデスペアを加え、ダークエフィジーのトーテムを維持し、持続ダメージが続く間に動き続ける。その機動性こそが、より遅く段階的なダメージの立ち上がりを受け入れる対価である。",
+        "本ガイドはマッピングの殲滅ループ、ボス開幕のシークエンス、そして持続ボスループという3つの実際のリズムを切り分け、エッセンスドレイン、コンテージョン、デスペア、ダークエフィジーのキャスト順が曖昧にならないようにする。"
+      ],
+      "bullets": [
+        "2スキルのまき散らしセットアップをパックに当て、その後ダメージが処理される間に移動する。",
+        "エッセンスドレインと選択した呪いは、効果が切れる前に更新する。",
+        "ボスに対しては、選択したバリアントで検証された補助スキルのみを加え、すべてのガイドのボタンを混ぜないこと。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "キャンペーン進行における装備要件が低い。",
+        "プレイヤーが位置を入れ替えてもダメージが続く。",
+        "コンテージョンは1回の成功した適用をパック殲滅へと変えられる。"
+      ],
+      "cons": [
+        "ダメージは即時ではなく遅れて発生する。",
+        "ボス戦には複数のデバフか補助スキルが必要。",
+        "終盤のガイドによって補助スキルと防御方針が一致しない。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "戦闘ローテーション",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "このビルドには3つの異なるリズムがある。マッピングはまき散らしのループ、ボス開幕は決まったセットアップの順番、そして持続ボス戦は繰り返される維持のループだ。これらを混同すること——孤立したボスにコンテージョンを撃つ、あるいはその場に留まってエッセンスドレインを連射する——がもっとも一般的なミスである。",
+        "マッピング・ローテーション（殲滅ループ）：最初にコンテージョンを撃ち、パックに伝染の印をつける。その後、その範囲内の任意のターゲットにエッセンスドレインを当てる。ターゲットが伝染状態なので、EDの広がりがDoTを近くのコンテージョン影響下の敵すべてにコピーする。すぐに移動し、ダメージは位置を入れ替えている間に解決される。ダークエフィジーを設置すれば、その群れに対してED／デスペアを自動維持できる。",
+        "ボス開幕ローテーション（戦闘の始まり方）：デスペア——カオス耐性を下げ、その後に続くすべてを増幅する呪い——から開始する。次にダークエフィジー、すなわちED＋デスペアを自動でキャストして手間なしの維持時間をもたらすトーテム／サポートを設置する。最後にエッセンスドレインを当て、メインのDoTを敷く。コンテージョンは通常、単体のボスには広げる相手がいないため省略される。",
+        "持続ボス・ローテーション（開幕後の繰り返しループ）：持続時間が切れる前にエッセンスドレインを再適用し、ダークエフィジーのトーテムを生存させて位置を調整する（動くボスを外すことがあるため、自分でEDを再キャストしなければならない）、デスペアが切れたら更新し、メカニクスの合間に動き続ける。リズムは「更新→位置調整→更新」であり、その場に留まってのキャストではない。"
+      ],
+      "bullets": [
+        "マッピング：コンテージョン → エッセンスドレイン → 移動（任意でダークエフィジー）。",
+        "ボス開幕：デスペア → ダークエフィジー → エッセンスドレイン。",
+        "持続：エッセンスドレイン更新 → ダークエフィジー維持 → デスペア更新 → 移動。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "spread-loop-visual",
+      "type": "figure",
+      "title": "まき散らしは1つの共有ターゲットに照準を合わせる",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ed-contagion-lich-mechanic.webp",
+        "alt": "コンテージョンとエッセンスドレインが広がる前に1つのターゲットで出会う様子の編集図解",
+        "caption": "コンテージョンとエッセンスドレインは同じパックのターゲット上で出会わなければならない。最初の死がダメージのパッケージを外へと運ぶ。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン開始（コア前）",
+          "body": [
+            "ED＋コンテージョンが解放される前は、カオスかつなぎのDoTスペルを使い、ライフ、耐性、移動速度を安定させる。DoTの連鎖を早い段階で無理に組んではいけない。"
+          ]
+        },
+        {
+          "label": "第二〜第四章（コア稼働）",
+          "body": [
+            "ED＋コンテージョンが使えるようになったら運用する。基本的なまき散らしループを犠牲にせず、信頼できる単体サポート（ダークエフィジー、デスペア）を追加する。"
+          ]
+        },
+        {
+          "label": "キャンペーン終盤",
+          "body": [
+            "ジェムレベルを維持しつつ、エナジーシールドと回復を構築する。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "デフォルトのフルライフ構成をたどるか、後のローライフ移行をたどるかを決定する。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 45,
+      "visible": true,
+      "caption": "各段階で運用すべきもの。正確なジェムレベルとサポートの繋がりはPC検証待ちだが、段階の境界とキャスト順が実践的な部分である。",
+      "columns": [
+        "段階",
+        "メインスキル",
+        "主要サポート",
+        "パッシブの要点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベル1〜31（コア前）",
+          "cells": [
+            "カオス／スペルへの移行であり、まだEDではない",
+            "生存 ＋ つなぎのDoT",
+            "ライフ、耐性、カオスノード",
+            "任意のスペル武器、耐性を上限に",
+            "ED＋コンテージョンが解放されるレベルに到達する"
+          ]
+        },
+        {
+          "label": "レベリング31以上",
+          "cells": [
+            "エッセンスドレイン＋コンテージョン（コンテージョン先）",
+            "PC検証待ちのサポート",
+            "カオスDoT、キャスト速度",
+            "スペル／カオス武器、ライフ／ES",
+            "安定したまき散らしでマップへ突入"
+          ]
+        },
+        {
+          "label": "初期マップ（フルライフ）",
+          "cells": [
+            "ED維持 ＋ デスペア ＋ ダークエフィジー",
+            "デスペア（呪い）、ダークエフィジー（トーテム）",
+            "フルライフ防御、カオス強化",
+            "ライフ／ES、耐性上限、DoT武器",
+            "バリアント分割前の安定したボス維持時間"
+          ]
+        },
+        {
+          "label": "終盤（ローライフ）",
+          "cells": [
+            "同じ構成、ローライフの枠",
+            "同上 ＋ ローライフ対応手段",
+            "ローライフ防御ノード",
+            "ローライフ固有／仕組み",
+            "フルライフのチェックリスト通過後"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Essence Drain",
+              "skillId": "essence-drain",
+              "role": "主要なカオスDoT。コンテージョンを通じて広がるダメージ付与のデバフ。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "持続するカオスダメージの源である。コンテージョン影響下のターゲットに当てるとパック全体に広がり、ボスに対しては維持されるDoTとなる。"
+              ],
+              "whenReplace": [
+                "決して置き換えない。レベリングから終盤までの中核ダメージスキルである。変わるのはサポートとジェムレベルのみ。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：最初にコンテージョンを撃ち、次にその中のターゲットにエッセンスドレインを当てて広がりを誘発し、その後移動する。ボス戦：繰り返されるDoTとしてエッセンスドレインの維持時間を保つ。トーテムは役立つが、動くボスに対しては自分で再適用しなければならない。"
+              ],
+              "notes": [
+                "正確なサポートの繋がりとジェムレベルはPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Contagion",
+              "skillId": "contagion",
+              "role": "広がりを可能にするもの。敵を伝染状態にしてエッセンスドレインが伝播するようにする。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "パック殲滅の前提条件である。ターゲットにコンテージョンがなければ、エッセンスドレインは広がらない。エッセンスドレインの前に撃つこと。"
+              ],
+              "whenReplace": [
+                "マッピングの道具には残す。単体の孤立したボスには広げる相手がいないため役に立たず、一部のバリアントはボス用に落とす。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：広がりを可能にするため、パックの中心へ最初に撃つ。ボス戦：通常、加勢が存在しない限り孤立したボスでは省略。"
+              ],
+              "notes": [
+                "広がりの条件と範囲はPC検証待ち。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "補助・サポートスキル",
+          "skills": [
+            {
+              "displayName": "Dark Effigy",
+              "skillId": "dark-effigy",
+              "role": "エッセンスドレイン（とデスペア）を自動キャストし、手間なしでDoTを維持するトーテム／サポート。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "位置を入れ替えている間もED／デスペアの維持時間を保ち、手動での更新負担を減らす。"
+              ],
+              "whenReplace": [
+                "ボス戦と密集したマッピングには残す。動きの速いボスに対しては、トーテムが外す可能性があるため自分で手動でEDを再適用しなければならない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意、群れに設置。ボス戦：開幕に設置し、生存させて位置を調整する。"
+              ],
+              "notes": [
+                "動くボスに対する維持時間が既知の弱点。正確な寄与度はPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Despair",
+              "skillId": "despair",
+              "role": "ターゲットのカオス耐性を下げ、DoTを増幅する呪い。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "呪われたターゲット上でEDのダメージを直接上げる呪いである。DoTを決める前に当てること。"
+              ],
+              "whenReplace": [
+                "残す。これは単体の増幅役であり、ダメージの競合ではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：生き残るレアに対して任意。ボス戦：開幕に最初に当て、その後維持時間を保つ。"
+              ],
+              "notes": [
+                "呪いの効果／ジェムレベルはPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "バリアント次第のバフ領域。ダメージか防御を加える。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "一部のバリアントはこれをダメージ／防御の増幅役として使う。選択したガイドが検証するまでは任意として扱うこと。"
+              ],
+              "whenReplace": [
+                "バリアントの選択。選んだプランナーに含まれる場合のみ残す。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意。ボス戦：維持ループの前の任意バフ。"
+              ],
+              "notes": [
+                "正確な役割はPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "バリアント次第の拘束／制御。照準合わせを簡単にできる。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "コミュニティの議論では、EDを正確に照準する必要をなくす生活の質向上の代替として扱われている。ダメージの競合ではない。"
+              ],
+              "whenReplace": [
+                "バリアントの選択。厳密な2段階の照準合わせよりこれを好むプレイヤーもいる。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意の制御。ボス戦：一般的にボスループには含まれない。"
+              ],
+              "notes": [
+                "代替としての役割はPC検証待ち。"
+              ]
+            },
+            {
+              "displayName": "Bonestorm",
+              "skillId": "bonestorm",
+              "role": "バリアント次第のAoE。密集したパック用、あるいは一部のガイドではボス用ツールとして使用。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "一部のガイドはこれを密集したパックへの追加圧力、あるいは単体オプションとして使う。選んだバリアントに対して検証すること。"
+              ],
+              "whenReplace": [
+                "バリアントの選択。ED＋コンテージョンのループの中核ではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：密集したパックに対して任意。ボス戦：一部の単体バリアントで任意。"
+              ],
+              "notes": [
+                "正確な役割はPC検証待ち。"
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暫定的な順序",
+          "body": [
+            "選択した最新のガイドに従い、公開前に0.5.4クライアント上で各ノードを必ず確認すること。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件を支えるノードのみを取得する。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルドのバリアントへ移行し、互換性のないプランナーのスナップショットを混ぜてはいけない。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Weapon",
+          "recommendations": [
+            "関連するカオスまたはスペルスキルへのレベル",
+            "カオスまたはダメージオーバータイムの強化"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ベース上のカオス／ダメージオーバータイム強化",
+              "reason": "持続するEDパッケージを直接強化する。"
+            },
+            {
+              "tier": "recommended",
+              "label": "関連するカオススキルへのスキル／ジェムレベル",
+              "reason": "DoTの基礎値を上げる。"
+            },
+            {
+              "tier": "optional",
+              "label": "キャスト速度",
+              "reason": "更新のペースを改善するが、ダメージの下限ではない。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ローライフを可能にする接尾",
+              "reason": "ローライフのバリアントでのみ関連する。"
+            }
+          ],
+          "notes": [
+            "ワンド、セプター、フォーカスのいずれが選んだルートで使われるかを検証すること。"
+          ]
+        },
+        {
+          "slot": "Focus or shield",
+          "recommendations": [
+            "エナジーシールド",
+            "防御の接尾"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "エナジーシールド",
+              "reason": "キトゥン中の主要な防御層。"
+            },
+            {
+              "tier": "recommended",
+              "label": "防御の接尾（耐性、ライフ再生）",
+              "reason": "防御の枠組みを完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "マナ予約／コスト修正",
+              "reason": "オーラや呪いの運用に役立つ。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ローライフ特有のフォーカスMOD",
+              "reason": "バリアント限定。"
+            }
+          ],
+          "notes": [
+            "ローライフのフォーカスをフルライフの段階にコピーしてはいけない。"
+          ]
+        },
+        {
+          "slot": "Armour and jewellery",
+          "recommendations": [
+            "エナジーシールド、耐性、ステータス",
+            "必要に応じたコスト／マナサポート"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "耐性とライフ／ES",
+              "reason": "マップで死ぬことの代償になるDPSはない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "ジェムを装備するためのステータス",
+              "reason": "ソケットできないジェムは無価値である。"
+            },
+            {
+              "tier": "optional",
+              "label": "ブーツの移動速度",
+              "reason": "DoTの実行中に位置を入れ替える助けになる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なカオスDoTの接尾",
+              "reason": "防御が解決された後でのみ。"
+            }
+          ],
+          "notes": [
+            "市場価格は意図的に省略している。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "スキルレベル",
+          "reason": "メインのダメージオーバータイムパッケージを直接支える。"
+        },
+        {
+          "label": "カオスとDoTの強化",
+          "reason": "無関係の命中ではなく、持続するダメージを強化する。"
+        },
+        {
+          "label": "キャスト速度",
+          "reason": "使用感を改善するが、ダメージの持続時間には代わらない。"
+        },
+        {
+          "label": "エナジーシールドと回復",
+          "reason": "キトゥン中もビルドには完全な防御状態が依然として必要。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "パックが広がらない／殲滅が遅い",
+          "symptom": "通常のパックに何度も再キャストが必要で、広がりが目に見えて始まらない。",
+          "checks": [
+            "エッセンスドレインの前に実際にコンテージョンが当てられているか？",
+            "メインのジェムレベルとサポートは階層に見合っているか？"
+          ],
+          "upgrade": "キャスト順（コンテージョン → ED）を修正し、攻撃力を買う前にメインジェムを階層へ合わせる。"
+        },
+        {
+          "label": "マップやボスエリアで死ぬ",
+          "symptom": "T15以上やボス戦での頻繁な死。",
+          "checks": [
+            "どの耐性が上限に達していないか？",
+            "ライフ／ESがコンテンツの階層を下回っていないか？",
+            "防御層は作動しているか？"
+          ],
+          "upgrade": "攻撃力の装備の前に、耐性を上限にし、ES／ライフを安定させる。"
+        },
+        {
+          "label": "ボスのダメージが低い",
+          "symptom": "キャストしているにもかかわらずボスの体力がほとんど動かない。",
+          "checks": [
+            "ボスにデスペアは作動しているか？",
+            "ダークエフィジーは生存し、射程内か？",
+            "エッセンスドレインの維持時間は実際に高いか？"
+          ],
+          "upgrade": "武器ではなく、ボスの維持時間（デスペア → エフィジー → ED）を修復する。"
+        },
+        {
+          "label": "マナが尽きる",
+          "symptom": "単体の戦いでマナが空になる。",
+          "checks": [
+            "フラスクのみに頼っていないか？",
+            "何らかのコスト削減／吸収／再生は作動しているか？"
+          ],
+          "upgrade": "より多くのボタンを追加する前に、マナの維持（コスト削減、再生、フラスク）を修復する。"
+        },
+        {
+          "label": "ローライフを検討する",
+          "symptom": "より高いボスダメージを求め、ローライフの装備に関心がある。",
+          "checks": [
+            "フルライフの殲滅、ボス維持時間、防御は安定しているか？",
+            "ローライフの装備は耐性上限を崩すか、ライフ／ESを落とすか？"
+          ],
+          "upgrade": "チェックリストを通過した後のみローライフへ移行する。生存をプランナーだけの数値と交換してはいけない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "繋がったパックの中心にコンテージョンを撃ち、その中のターゲットにエッセンスドレインを当てる——EDのデバフは近くのコンテージョン影響下の敵すべてに広がる。すぐに移動し、別のキャストを費やす前にデバフが伝播するかを見守る。ダークエフィジーを設置すれば、その群れに対してED／デスペアを自動維持できる。",
+        "密集したパックにタグを付け、広がりが始まることを確認し、その後先へ進む。伝播に失敗した場合は、スキル順（コンテージョンが先でなければならない）、範囲、持続時間、そして最初のターゲットが両方の効果とともに死んだかを確認する。"
+      ],
+      "bullets": [
+        "コンテージョン → エッセンスドレイン → 移動。任意でダークエフィジー。",
+        "装備のせいにする前にキャスト順を直す。",
+        "殲滅速度が落ちたら武器の強化に対応する。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "ボス戦をこの順番で開幕する。最初にデスペア（呪い、-カオス耐性）、次にダークエフィジー（ED＋デスペアを自動適用するトーテムを設置）、その後エッセンスドレインを当ててメインのDoTを敷く。コンテージョンは通常、単体のボスには広げる相手がいないため省略される。",
+        "ループで維持する。持続時間が切れる前にエッセンスドレインを再適用し、ダークエフィジーのトーテムを生存させて位置を調整する（動くボスを外すことがあるため、自分でEDを再キャストしなければならない）、デスペアが切れたら更新し、メカニクスの合間に動き続ける。リズムは「更新 → 位置調整 → 更新」であり、その場に留まってのキャストではない。"
+      ],
+      "bullets": [
+        "開幕：デスペア → ダークエフィジー → エッセンスドレイン。",
+        "維持：ED更新 → エフィジー維持 → デスペア更新 → 移動。",
+        "単体ボスにはコンテージョンは不要。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "defensive-layers",
+      "type": "overview",
+      "title": "防御層",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "フルライフとローライフは異なる防御と予約の前提を使う。本ガイドはフルライフをより安全な編集上の既定とし、ローライフは検証中のままとする。"
+      ],
+      "bullets": [
+        "2スキルのまき散らしセットアップをパックに当て、その後ダメージが処理される間に移動する。",
+        "エッセンスドレインと選択した呪いは、効果が切れる前に更新する。",
+        "ボスに対しては、選択したバリアントで検証された補助スキルのみを加え、すべてのガイドのボタンを混ぜないこと。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "ターゲットに応じた正しい行動を選ぶ",
+      "order": 140,
+      "visible": true,
+      "caption": "2つの文章ガイドとプレイヤーの議論から合成した実践的なローテーション表。",
+      "columns": [
+        "通常のパック",
+        "パック内のレア",
+        "孤立したボス"
+      ],
+      "rows": [
+        {
+          "label": "最初に使う",
+          "cells": [
+            "コンテージョン",
+            "コンテージョン → エッセンスドレイン",
+            "エッセンスドレイン"
+          ]
+        },
+        {
+          "label": "追加",
+          "cells": [
+            "EDを1発",
+            "レアが生き残ればデスペア",
+            "デスペア ＋ ダークエフィジー"
+          ]
+        },
+        {
+          "label": "移動",
+          "cells": [
+            "広がりが始まるときに移動",
+            "DoTの実行中に周回",
+            "メカニクスの合間に更新"
+          ]
+        },
+        {
+          "label": "よくある無駄",
+          "cells": [
+            "広がりの前に再キャスト",
+            "コンテージョン外にEDを照準",
+            "その場に留まってEDを連射"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "コンテージョンが広がらない",
+          "checks": [
+            "両方の効果が死ぬターゲットに乗っていることを確認する。",
+            "ゲーム内で現在の広がりの条件と範囲を確認する。"
+          ]
+        },
+        {
+          "symptom": "ボスのダメージが低い",
+          "checks": [
+            "ツールチップ単体ではなく維持時間を測る。",
+            "呪い、エフィジー、補助スキルが実際に作動しているか確認する。"
+          ]
+        },
+        {
+          "symptom": "マナが尽きる",
+          "checks": [
+            "不要な繰り返しキャストを減らす。",
+            "より多くのボタンを追加する前に、フラスク、コスト、再生を確認する。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "照準とダメージオーバータイムについての回答",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "どうして1つのパックは消え、次のパックはほとんど動かないのか？",
+          "answer": [
+            "成功したパックはおそらく、同じ繋がったグループにコンテージョンとエッセンスドレインが当てられたのだろう。失敗したパックでは、EDがコンテージョンの集合外に当たったか、モンスターが伝播できるほど近くになかった可能性がある。"
+          ],
+          "bullets": [
+            "コンテージョンはパックの中心に照準を合わせる。",
+            "最初の広がりを観察するのに十分長く待つ。",
+            "再キャストする前に地形を使ってモンスターを集める。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "代わりにエンタングルを使うべきか？",
+          "answer": [
+            "より単純な照準を重視するなら使うこと。コミュニティの議論では、これは生活の質向上の代替として扱われており、ED＋コンテージョンが無効である証拠ではない。代償は異なる殲滅パターンとサポート構成である。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "より即時的なキャスターが良い場合は？",
+          "answer": [
+            "冷気のクロノマンサー・ルートはより直接的な命中と凍結のリズムを持つが、段階的なジェム交換とより近い立ち位置が必要になる。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/cold-caster-chronomancer/",
+              "label": "コールドキャスターチロノマンサーと比較"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 165,
+      "visible": true,
+      "note": "貼り付け可能なインポート文字列／.buildはPC検証待ち。それまでは以下の作成者ガイドとプランナーツールを使うこと。常に自分のクライアントでノードの選択を再確認すること。",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "コミュニティで意見が分かれていること",
+      "order": 170,
+      "visible": true,
+      "note": "逸話は実現可能なアプローチを示すものであり、保証された進行の上限ではない。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "0.5 ED＋コンテージョン 体験スレッド",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/",
+          "statement": "プレイヤーは、この組み合わせが複数のアセンダンシーで進行でき、序盤は楽に感じると報告している。一方で、EDの照準合わせやアンスィーズの広がり管理の必要をなくすため、エンタングルを好む回答者もいる。",
+          "context": "これは、ビルドが強力であり得るにもかかわらず、2段階の照準合わせを嫌うプレイヤーには依然としてぎこちなく感じられる理由を説明している。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ronarray ED＋コンテージョン リッチガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+          "statement": "維持されているガイドは、パックにはコンテージョンの後にエッセンスドレインを使い、必要なときのみデスペアを加え、プレイヤーが動いている間もボス用にダークエフィジーのトーテムを作動させ続けている。",
+          "context": "その順番はここではローテーションのモデルとして使われており、列挙されたすべての項目が必須であるという主張としてコピーされているわけではない。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "広がりとボスの維持を見る",
+      "order": 175,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "コミュニティガイド",
+          "label": "0.5 ステップバイステップ ED＋コンテージョン ゲームプレイ",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "description": "照準の順番と、セットアップがサポート層を得るタイミングに関するキャンペーン向けの参考。",
+          "takeaway": "コンテージョンが最初のエッセンスドレインのターゲットに対してどこに着弾するかを見る。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Path of Exile 2 0.5 カオスウィッチ リッチ スタータービルド"
+            },
+            {
+              "time": "0:43",
+              "label": "エッセンスドレイン＋コンテージョン コンボ"
+            },
+            {
+              "time": "1:46",
+              "label": "最初のレベルのビルド構成"
+            },
+            {
+              "time": "3:47",
+              "label": "最初のスピリットジェム"
+            },
+            {
+              "time": "4:22",
+              "label": "レベル14での追加"
+            },
+            {
+              "time": "5:08",
+              "label": "サポートジェムの優先度"
+            },
+            {
+              "time": "6:32",
+              "label": "装備の強化優先度"
+            },
+            {
+              "time": "7:50",
+              "label": "ツリーの進行"
+            },
+            {
+              "time": "8:28",
+              "label": "アセンダンシー：リッチかインファナリストか"
+            },
+            {
+              "time": "9:53",
+              "label": "オブオブストームスの追加"
+            },
+            {
+              "time": "10:56",
+              "label": "ボーンスタームについて"
+            },
+            {
+              "time": "11:41",
+              "label": "リーグ開始を楽しもう"
+            }
+          ]
+        },
+        {
+          "creator": "コミュニティガイド",
+          "label": "終盤のメカニクスとボスゲームプレイ",
+          "url": "https://youtu.be/r6ouLO-Y0sk",
+          "description": "より速いマッピングのループとボスの更新のペースを比較するために使う。",
+          "takeaway": "維持のキャストを数え、その後安全に動いている時間がどれほどかをメモする。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "終盤ビルド概要（作成者はチャプターを提供せず）"
+            },
+            {
+              "time": "2:00",
+              "label": "ボスセットアップ・ローテーション（概算、検証待ち）"
+            },
+            {
+              "time": "5:00",
+              "label": "マッピングとボス戦のペース（概算、検証待ち）"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ronarray ED＋コンテージョン リッチガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "PoE2Path ED コンテージョン リッチガイド",
+          "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "0.5 ED/C キャンペーンガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "0.5 ステップバイステップ ゲームプレイ動画",
+          "url": "https://youtu.be/qbrEeLZzuqI"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "終盤のゲームプレイとメカニクス動画",
+          "url": "https://youtu.be/r6ouLO-Y0sk"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー エクスポート",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "コミュニティの議論：0.5でのED＋コンテージョンの感触",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 190,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "ソースに基づく0.5.4ビルドガイドを作成。PC検証は未完了。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "拡張スキーマへ書き直し：3つの明確なブロック（マッピング／ボス開幕／持続ボス）を持つ戦闘ローテーション、段階的構成表、ビルドプランナー項目、スロットごとの装備statPriorities、症状ベースの強化優先度を追加。エッセンスドレイン、コンテージョン、デスペア、ダークエフィジーのキャスト順を分離した。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray ED＋コンテージョン リッチガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "PoE2Path ED コンテージョン リッチガイド",
+      "sourceType": "community",
+      "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+    },
+    {
+      "label": "0.5 ED/C キャンペーンガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+    },
+    {
+      "label": "0.5 ステップバイステップ ゲームプレイ動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/qbrEeLZzuqI"
+    },
+    {
+      "label": "終盤のゲームプレイとメカニクス動画",
+      "sourceType": "community",
+      "url": "https://youtu.be/r6ouLO-Y0sk"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー エクスポート",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "コミュニティの議論：0.5でのED＋コンテージョンの感触",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+    }
+  ],
+  "seo": {
+    "title": "エッセンスドレイン・コンテージョン リッチ ビルドガイド",
+    "description": "Path of Exile 2の0.5.4ベースラインにおける、エッセンスドレインとコンテージョンを使ったリッチビルドの完全ガイド。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ed-contagion-lich",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,0 +1,739 @@
+{
+  "id": "damage-scaling-order-conversion-gain-as-extra",
+  "slug": "damage-scaling-order-conversion-gain-as-extra",
+  "locale": "pt-br",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Ordem de Escalonamento de Dano, Conversão e Ganho como Extra em Path of Exile 2",
+  "shortTitle": "Escalonamento & Conversão de Dano",
+  "summary": "Aprenda o pipeline de dano de Path of Exile 2: base, adicionado, increased (aditivo), more (multiplicativo), conversão, ganho como extra, crítico e resistência do inimigo, com exemplos resolvidos.",
+  "description": "Um guia de mecâicas sobre a ordem dos cálculos de dano em Path of Exile 2, como os bônus increased se somam enquanto os multiplicadores more multiplicam, e como a conversão difere do ganho como extra damage.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/explosive-shot.webp",
+  "cardImage": "/images/skills/explosive-shot.webp",
+  "imageAlt": "Um ícone de habilidade de Path of Exile 2 representando escalonamento de dano, conversão e ganho como extra damage",
+  "estimatedReadingMinutes": 15,
+  "prerequisites": [
+    "Entendimento básico de que uma habilidade causa dano de um tipo (físico, fogo, frio, relâmpago, caos)",
+    "Familiaridade com modificadores 'increased' e 'more' de itens e passivas",
+    "Consciência de que crítico e resistências do inimigo afetam o dano final causado"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "damage",
+    "scaling",
+    "increased",
+    "more",
+    "conversion",
+    "gain-as-extra"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respostas diretas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Em que ordem o dano é calculado em Path of Exile 2?",
+          "body": [
+            "O pipeline segue: dano base da habilidade, depois dano adicionado fixo, depois todos os bônus Increased da mesma categoria somados, depois cada multiplicador More/Less multiplicado, depois conversão, depois Ganho como Extra, depois um multiplicador de acerto crítico e, finalmente, as resistências do inimigo e os modificadores de Damage Taken."
+          ]
+        },
+        {
+          "title": "Diferentes bônus 'increased' se multiplicam entre si?",
+          "body": [
+            "Não. Todos os modificadores '% increased' da mesma categoria de dano são aditivos entre si e são aplicados uma única vez como um multiplicador único. Apenas modificadores More/Less são multiplicativos."
+          ]
+        },
+        {
+          "title": "Qual é a diferença entre Conversão e Ganho como Extra?",
+          "body": [
+            "Conversão muda o dano de um tipo para outro. 'Gain X% of Y as Extra Z' em vez disso adiciona dano do tipo Z mantendo o Y original, então o dano original não é removido. São etapas separadas no pipeline atual do PoE2."
+          ]
+        },
+        {
+          "title": "Meu modificador 'Damage Taken' aumenta meu próprio dano?",
+          "body": [
+            "Não. Modificadores de Damage Taken afetam o dano recebido no alvo, não seu escalonamento de saída. O dano pessoal vem das etapas de base, adicionado, increased, more, conversão, ganho como extra e crítico."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terms",
+      "order": 2,
+      "title": "Termos principais",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Antes de seguir o pipeline, fixe o significado de cada palavra de modificador. A dica de ferramenta (tooltip) do PoE2 usa uma linguagem consistente, mas os jogadores costumam confundir 'increased' com 'more' e 'conversion' com 'gain as extra'.",
+        "Todos os exemplos abaixo usam números didáticos claramente assumidos; seus valores reais de habilidade vêm da tooltip in-game e do cliente ativo, que prevalecem sobre qualquer coisa escrita aqui."
+      ],
+      "bullets": [
+        "Base Damage: o dano inerente da habilidade de seu tipo nativo antes de quaisquer modificadores.",
+        "Added Damage: números fixos como 'Adds X to Y damage' que são somados e adicionados à base.",
+        "Increased: bônus percentuais que são aditivos dentro da mesma categoria de dano e aplicados uma única vez.",
+        "More / Less: multiplicadores percentuais que sempre multiplicam o total acumulado (More para cima, Less para baixo).",
+        "Conversion: muda o dano de um tipo para outro tipo em uma porcentagem definida.",
+        "Gain as Extra: 'Gain X% of Y as Extra Z' adiciona dano do tipo Z mantendo o Y original."
+      ]
+    },
+    {
+      "id": "order",
+      "order": 3,
+      "title": "Ordem das operações",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "O pipeline de dano atual do PoE2, na ordem em que o jogo o resolve. Descrevendo o comportamento qualitativamente; as posições exatas dos coeficientes são sensíveis à versão e devem ser confirmadas no cliente ativo.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Etapa"
+        },
+        {
+          "key": "stage",
+          "label": "Estágio"
+        },
+        {
+          "key": "what-happens",
+          "label": "O que acontece"
+        },
+        {
+          "key": "note",
+          "label": "Nota"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "base"
+          ],
+          "cells": {
+            "step": "0",
+            "stage": "Base damage",
+            "what-happens": "O dano base da habilidade de seu tipo inerente é estabelecido.",
+            "note": "Ponto de partida antes de quaisquer modificadores."
+          }
+        },
+        {
+          "tags": [
+            "added"
+          ],
+          "cells": {
+            "step": "1",
+            "stage": "Added (flat) damage",
+            "what-happens": "Modificadores fixos 'Added X damage' são somados e adicionados à base.",
+            "note": "Números fixos, não porcentagens."
+          }
+        },
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "step": "2",
+            "stage": "Increased (aditivo)",
+            "what-happens": "Todos os '% increased' da mesma categoria se somam e depois são aplicados uma vez ao total acumulado.",
+            "note": "Bônus Increased da mesma categoria são aditivos, não multiplicativos."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "step": "3",
+            "stage": "More / Less (multiplicativo)",
+            "what-happens": "Cada multiplicador More/Less multiplica o total acumulado em sequência.",
+            "note": "More e Less sempre multiplicam e se empilham multiplicativamente entre si."
+          }
+        },
+        {
+          "tags": [
+            "conversion"
+          ],
+          "cells": {
+            "step": "4",
+            "stage": "Conversion",
+            "what-happens": "Dano de um tipo é convertido em outro tipo em uma porcentagem definida.",
+            "note": "No PoE2 esta é uma etapa distinta; a conversão muda o tipo de dano causado."
+          }
+        },
+        {
+          "tags": [
+            "gain-as-extra"
+          ],
+          "cells": {
+            "step": "5",
+            "stage": "Gain as Extra",
+            "what-happens": "'Gain X% of Y as Extra Z' adiciona dano do tipo Z mantendo o Y original.",
+            "note": "Separado da conversão; o dano original não é removido."
+          }
+        },
+        {
+          "tags": [
+            "crit"
+          ],
+          "cells": {
+            "step": "6",
+            "stage": "Critical hit",
+            "what-happens": "Se o acerto é crítico, um multiplicador de dano crítico é aplicado ao valor final escalonado.",
+            "note": "O crítico é aplicado após o escalonamento acima, não antes dele."
+          }
+        },
+        {
+          "tags": [
+            "resistance"
+          ],
+          "cells": {
+            "step": "7",
+            "stage": "Enemy resistance / Damage Taken",
+            "what-happens": "As resistências do inimigo e quaisquer modificadores de Damage Taken são aplicados por último.",
+            "note": "Damage Taken afeta o dano recebido no inimigo, não seu escalonamento de saída."
+          }
+        }
+      ],
+      "note": "Os números de etapa são uma ordenação didática; a intenção do design é base para adicionado para increased para more para conversão para ganho como extra para crítico para mitigação do inimigo."
+    },
+    {
+      "id": "additive-vs-multiplicative",
+      "order": 4,
+      "title": "Aditivo vs multiplicativo",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Como cada tipo de modificador se combina. O erro de escalonamento mais comum é tratar dois bônus Increased como se multiplicassem.",
+      "columns": [
+        {
+          "key": "modifier",
+          "label": "Modificador"
+        },
+        {
+          "key": "how-combined",
+          "label": "Como se combina"
+        },
+        {
+          "key": "example",
+          "label": "Exemplo"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "modifier": "Dois '% increased' da mesma categoria",
+            "how-combined": "Somam dentro da categoria e depois são aplicados uma vez",
+            "example": "50% + 30% = 80% increased, total x1.8 (não x1.5 e depois x1.3)."
+          }
+        },
+        {
+          "tags": [
+            "increased"
+          ],
+          "cells": {
+            "modifier": "Increased genérico e específico",
+            "how-combined": "Soma na categoria apropriada onde as regras permitem",
+            "example": "O 'increased Damage' genérico e o 'increased Physical Damage' podem compartilhar uma categoria."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "modifier": "Um '% more Damage'",
+            "how-combined": "Multiplica o total acumulado",
+            "example": "x1.2 multiplica qualquer total que veio antes dele."
+          }
+        },
+        {
+          "tags": [
+            "more"
+          ],
+          "cells": {
+            "modifier": "Dois bônus More separados",
+            "how-combined": "Cada More multiplica e eles se multiplicam entre si",
+            "example": "x1.2 e x1.5 combinam para x1.8 no total."
+          }
+        },
+        {
+          "tags": [
+            "less"
+          ],
+          "cells": {
+            "modifier": "Modificadores '% less'",
+            "how-combined": "Multiplicam como More, mas reduzem o total",
+            "example": "Um 20% Less é x0.8 aplicado ao total acumulado."
+          }
+        }
+      ],
+      "note": "Como os multiplicadores More multiplicam, alguns deles costumam superar o empilhamento de muitos bônus Increased da mesma categoria."
+    },
+    {
+      "id": "conversion",
+      "order": 5,
+      "title": "Conversão vs Ganho como Extra",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Conversão e Ganho como Extra são mecânicas distintas e ocupam pontos diferentes do pipeline. A conversão pega uma porcentagem do dano de um tipo e o transforma em outro tipo. Se você converte 90% do físico em fogo, 90% desse dano vira fogo e apenas os 10% restantes permanecem físicos.",
+        "Ganho como Extra é diferente. 'Gain X% of Y as Extra Z' adiciona um pedaço de dano do tipo Z sobre o original, sem remover o Y original. Por exemplo, 'Gain 20% of Physical as Extra Fire' mantém todo o seu dano físico e adiciona 20% a mais de dano de fogo calculado a partir do seu total físico.",
+        "A ordenação exata e quaisquer regras de ordem de tipos para conversão no PoE2 são sensíveis à versão; confirme o comportamento atual no cliente ativo em vez de copiar suposições antigas de cadeia do PoE1, que não se aplicam aqui."
+      ],
+      "bullets": [
+        "Conversion: muda um tipo de dano para outro, removendo a porção original convertida.",
+        "Gain as Extra: adiciona um novo tipo de dano mantendo o dano original.",
+        "Ambos acontecem após Increased e More, antes da etapa de resistência do inimigo.",
+        "As regras de conversão do PoE2 diferem da cadeia estrita mais antiga do PoE1; não assuma a mesma ordem."
+      ]
+    },
+    {
+      "id": "worked-example-one",
+      "order": 6,
+      "title": "Exemplo resolvido um: dano adicionado e conversão",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Um único ataque físico. Cada número é um valor didático assumido; substitua-os pelo base, adicionado, increased e conversão reais de sua habilidade na tooltip.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "setup",
+          "label": "Configuração"
+        },
+        {
+          "key": "calculation",
+          "label": "Cálculo"
+        },
+        {
+          "key": "result",
+          "label": "Resultado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Acerto físico puro",
+            "setup": "Base 100 físico, sem adicionado, sem increased",
+            "calculation": "100 x 1.00 = 100",
+            "result": "100 físico"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Físico + Added + 90% conversão para fogo",
+            "setup": "Base 100 físico, +50 adicionado físico, 100% increased físico",
+            "calculation": "(100 + 50) x 2.00 = 300 físico; converte 90% para fogo = 270 fogo + 30 físico",
+            "result": "270 fogo, 30 físico"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Mesmo acerto, 0% de conversão",
+            "setup": "Base 100 físico, +50 adicionado, 100% increased, sem conversão",
+            "calculation": "(100 + 50) x 2.00 = 300 físico",
+            "result": "300 físico"
+          }
+        }
+      ],
+      "note": "A etapa de conversão muda o tipo depois que Increased e More já foram aplicados ao total físico."
+    },
+    {
+      "id": "worked-example-two",
+      "order": 7,
+      "title": "Exemplo resolvido dois: o pipeline completo",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Uma cadeia completa com dois Increased, dois More, um crítico e resistência do inimigo. Todos os números são valores didáticos assumidos.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "setup",
+          "label": "Configuração"
+        },
+        {
+          "key": "calculation",
+          "label": "Cálculo"
+        },
+        {
+          "key": "result",
+          "label": "Resultado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "crit"
+          ],
+          "cells": {
+            "case": "Pipeline completo com crítico",
+            "setup": "Base 100; increased 50% + 30% (80%); More 20%; More 50%; crit 150%; inimigo 75% resist",
+            "calculation": "100 x 1.8 = 180; x1.2 = 216; x1.5 = 324; x1.5 crítico = 486; x(1 - 0.75) = 121.5",
+            "result": "121.5 de dano causado"
+          }
+        },
+        {
+          "tags": [
+            "physical"
+          ],
+          "cells": {
+            "case": "Mesmo sem o crítico",
+            "setup": "Igual ao acima, mas sem multiplicador de crítico",
+            "calculation": "100 x 1.8 = 180; x1.2 = 216; x1.5 = 324; x(1 - 0.75) = 81",
+            "result": "81 de dano causado"
+          }
+        }
+      ],
+      "note": "A resistência é aplicada por último, do lado do inimigo, após o crítico e todo o seu escalonamento."
+    },
+    {
+      "id": "scaling-matrix",
+      "order": 8,
+      "title": "Onde cada tipo de modificador se aplica",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Um mapa das categorias de modificadores comuns e onde elas ficam no pipeline. Relacione a categoria à forma como sua habilidade realmente causa dano.",
+      "columns": [
+        {
+          "key": "modifier-type",
+          "label": "Tipo de modificador"
+        },
+        {
+          "key": "where-applies",
+          "label": "Onde se aplica"
+        },
+        {
+          "key": "notes",
+          "label": "Notas"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "modifier-type": "Attack / Spell damage",
+            "where-applies": "Escalona a categoria base do acerto",
+            "notes": "'Increased Attack Damage' é uma categoria; escolha-a com base em como a habilidade causa dano."
+          }
+        },
+        {
+          "tags": [
+            "projectile"
+          ],
+          "cells": {
+            "modifier-type": "Projectile damage",
+            "where-applies": "Aplica quando o acerto é um projétil",
+            "notes": "Tem suas próprias categorias Increased e More quando a habilidade é um projétil."
+          }
+        },
+        {
+          "tags": [
+            "elemental"
+          ],
+          "cells": {
+            "modifier-type": "Elemental damage",
+            "where-applies": "Aplica a todo fogo, frio e relâmpago causado",
+            "notes": "Especialmente forte depois que a conversão transforma físico em um elemento."
+          }
+        },
+        {
+          "tags": [
+            "gem-level"
+          ],
+          "cells": {
+            "modifier-type": "Skill / gem level",
+            "where-applies": "Aumenta o dano base da habilidade diretamente",
+            "notes": "Subir o nível da gema é frequentemente a maior alavanca de escalonamento individual."
+          }
+        },
+        {
+          "tags": [
+            "dot"
+          ],
+          "cells": {
+            "modifier-type": "Ailment / damage over time",
+            "where-applies": "Escalonamento separado para dano ao longo do tempo",
+            "notes": "DoT não usa o pipeline de crítico do acerto da mesma forma que um acerto direto."
+          }
+        }
+      ],
+      "note": "Contexto entre guias: veja os guias de Attack/Spell/Hit/DoT, Resistance & Penetration e Critical Hit para mais detalhes de cada categoria."
+    },
+    {
+      "id": "planner-vs-tooltip",
+      "order": 9,
+      "title": "Por que o planner e a tooltip podem divergir",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Tanto os build planners quanto a tooltip in-game são estimativas. Nenhum é a verdade absoluta até você testar contra a habilidade real no cliente ativo. Eles podem discordar por causa de arredondamento, modificadores não suportados ou suposições sobre buffs e inimigos."
+      ],
+      "bullets": [
+        "Tratar o número do Build Planner como dano final garantido sem verificar a habilidade real.",
+        "Tratar a tooltip in-game como exata quando ela pode excluir buffs, ailments ou condições específicas do inimigo.",
+        "Esquecer que conversão e ganho como extra mudam o tipo de dano, o que a tooltip pode mostrar dividido entre tipos.",
+        "Comparar uma chance de crítico assumida pelo planner com sua taxa de acerto real sem contar penalidades de precisão e distância.",
+        "Assumir que as resistências mostradas em um planner correspondem ao inimigo que você realmente está enfrentando."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 10,
+      "title": "Pontos comuns de confusão",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusões parafraseadas que os jogadores frequentemente levantam sobre escalonamento de dano em Path of Exile 2.",
+      "cards": [
+        {
+          "title": "Dois increased não se multiplicam",
+          "tag": "increased",
+          "body": [
+            "Jogadores esperam que 50% e 30% increased se multipliquem em um aumento maior; eles na verdade somam 80% e se aplicam uma vez."
+          ]
+        },
+        {
+          "title": "Conversão remove o original",
+          "tag": "conversion",
+          "body": [
+            "Alguns jogadores acham que converter para fogo mantém também o físico; a conversão pura substitui a porção convertida pelo novo tipo."
+          ]
+        },
+        {
+          "title": "Ganho como Extra mantém a base",
+          "tag": "gain-as-extra",
+          "body": [
+            "A confusão oposta: jogadores perdem que 'Gain X% as Extra Z' adiciona novo dano por cima sem remover o original."
+          ]
+        },
+        {
+          "title": "Damage Taken não é seu dano",
+          "tag": "resistance",
+          "body": [
+            "Jogadores às vezes leem modificadores de 'Damage Taken' do inimigo como se aumentassem seu próprio escalonamento de saída; ele só afeta o dano recebido no alvo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 11,
+      "title": "Guia em vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Complete Damage Guide - Path of Exile 2",
+          "creator": "silentstill",
+          "description": "Uma explicação completa de como o dano é calculado em Path of Exile 2, cobrindo base, adicionado, increased, more, conversão, ganho como extra, crítico e mitigação do inimigo.",
+          "takeaway": "Lembre-se da ordem: base para adicionado para increased (aditivo) para more (multiplicativo) para conversão para ganho como extra para crítico para resistência do inimigo.",
+          "url": "https://www.youtube.com/watch?v=MvwmmjVIes0",
+          "timestamps": [
+            {
+              "label": "Introdução",
+              "time": "0:00"
+            },
+            {
+              "label": "Dano base e adicionado",
+              "time": "2:10"
+            },
+            {
+              "label": "Modificadores Increased",
+              "time": "6:30"
+            },
+            {
+              "label": "Multiplicadores More e Less",
+              "time": "10:45"
+            },
+            {
+              "label": "Conversão e ganho como extra",
+              "time": "15:20"
+            },
+            {
+              "label": "Exemplo resolvido",
+              "time": "20:05"
+            },
+            {
+              "label": "Resumo",
+              "time": "25:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 12,
+      "title": "Perguntas frequentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "A conversão acontece antes ou depois de increased e more?",
+          "answer": [
+            "No pipeline atual do PoE2, a conversão acontece após as etapas de escalonamento Increased (aditivo) e More (multiplicativo), e antes da etapa de resistência do inimigo. O valor convertido é baseado no dano já escalonado."
+          ]
+        },
+        {
+          "question": "Se eu tenho 200% increased damage, causei o triplo de dano?",
+          "answer": [
+            "Sim, assumindo que tudo caia na mesma categoria. 200% increased significa um multiplicador x3.00 nessa categoria. Categorias diferentes escalonam cada uma sua própria porção."
+          ]
+        },
+        {
+          "question": "Um 20% More é melhor que um 20% Increased?",
+          "answer": [
+            "Depende, mas multiplicadores More multiplicam enquanto Increased soma. Um 20% More multiplica todo o total acumulado por 1.2, enquanto um 20% Increased apenas soma aos outros de sua categoria. More costuma ser mais forte quando você já tem um total grande."
+          ]
+        },
+        {
+          "question": "Posso converter e também ganhar como extra do mesmo dano?",
+          "answer": [
+            "Sim. São etapas separadas. Você pode converter parte de um tipo de dano para outro e, separadamente, ganhar uma porção extra de um tipo sem remover o original, produzindo múltiplos tipos de dano em um único acerto."
+          ]
+        },
+        {
+          "question": "O crítico multiplica minha conversão e meu ganho como extra?",
+          "answer": [
+            "O crítico é aplicado após conversão e ganho como extra no pipeline, então o multiplicador de crítico escalona o total já convertido e aumentado por extra, e não apenas a base."
+          ]
+        },
+        {
+          "question": "Por que minha tooltip não bate com meu planner?",
+          "answer": [
+            "Eles usam suposições diferentes sobre buffs, resistências do inimigo, precisão e distância. Trate ambos como estimativas e confirme contra a habilidade real no cliente ativo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 13,
+      "title": "Fontes e verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official wiki - Damage",
+          "description": "Referência da wiki do PoE2 para dano, conversão e tipos de modificador",
+          "url": "https://poe2wiki.net/wiki/Damage"
+        },
+        {
+          "label": "Community hub - Maxroll PoE2",
+          "description": "Hub de mecânicas e builds do PoE2 com discussão de escalonamento de dano",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Video guide (silentstill)",
+          "description": "Complete Damage Guide para Path of Exile 2 cobrindo o pipeline completo",
+          "url": "https://www.youtube.com/watch?v=MvwmmjVIes0"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 14,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicação inicial do guia de ordem de escalonamento de dano, conversão e ganho como extra para Path of Exile 2 Early Access 0.5.4.",
+            "Adicionados respostas rápidas, termos principais, ordem das operações, aditivo vs multiplicativo, conversão vs ganho como extra, dois exemplos resolvidos, matriz de escalonamento, planner vs tooltip, casos da comunidade, vídeo, FAQ e fontes."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Damage",
+      "url": "https://poe2wiki.net/wiki/Damage",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Path of Exile 2 hub",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "silentstill - Complete Damage Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=MvwmmjVIes0",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guia de Ordem de Escalonamento de Dano, Conversão e Ganho como Extra do PoE 2",
+    "description": "Aprenda o pipeline de dano de Path of Exile 2: base, adicionado, increased, more, conversão, ganho como extra, crítico e resistência do inimigo, com exemplos resolvidos.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "damage-scaling-order-conversion-gain-as-extra",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

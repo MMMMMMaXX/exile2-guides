@@ -1,0 +1,391 @@
+{
+  "id": "patch-0-4-hotfix-timeline",
+  "slug": "patch-0-4-hotfix-timeline",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.x 핫픽스 타임라인: 0.4.0c–i에서 수정된 내용과 더 이상 유효하지 않은 구버전 영상",
+  "shortTitle": "0.4.x 핫픽스 타임라인",
+  "summary": "0.4.0c부터 0.4.0i까지의 핫픽스를 한곳에 정리했습니다. 사원 연결, Atziri/Architect 재시도, Druid 및 Shapeshift 수정, 고유 아이템/스킬 버그, 콘솔 크래시 등을 문제별로 분류하고 영향을 받은 플레이어를 안내합니다.",
+  "description": "0.4.x 핫픽스 체인(0.4.0c, 0.4.0d, 0.4.0e, 0.4.0i)에 대한 역사적 정리입니다. 각 항목은 문제를 수정 내용, 영향을 받은 플레이어, 그리고 론칭 주간 영상이 여전히 현재 동작을 나타내는지 여부와 연결합니다.",
+  "patchCategory": "hotfixes",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/items/architects-orb-hero.webp",
+  "imageAlt": "사원 방 구축과 관련된 Architect's Orb",
+  "tags": [
+    "bug-fixes",
+    "hotfixes",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "빠른 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.4.x 핫픽스 체인인 0.4.0c부터 0.4.0i까지는 0.4.0 론칭의 거친 부분을 빠르게 수정한 일련의 대응이었습니다. 사원 연결성, Atziri/Architect 재시도, Druid Shapeshift 조건, 고유 아이템 및 스킬 버그, 그리고 여러 콘솔 크래시가 포함됩니다.",
+        "이 페이지는 어떤 론칭 주간 영상이 여전히 적용되는지, 그리고 어떤 영상이 핫픽스로 인해 이후 변경되거나 제거된 동작을 설명하는지 구분할 수 있도록 만들어졌습니다."
+      ],
+      "bullets": [
+        "0.4.0d 사원 연결, 재시도, 맵 피드백",
+        "0.4.0e 자동 불안정화 제거, Architect 조정",
+        "0.4.0i Shapeshift 치명타 조건, Talisman 확인, 콘솔 크래시",
+        "규모가 더 작은 0.4.0c 항목은 초기 고유 아이템/스킬 버그를 다룹니다",
+        "각 수정은 영향을 받은 플레이어와 연결됩니다"
+      ]
+    },
+    {
+      "id": "timeline",
+      "order": 2,
+      "title": "핫픽스 타임라인",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.4.0c",
+          "date": "2025-11-14",
+          "kind": "Hotfix",
+          "summary": "초기 고유 아이템 및 스킬 버그, 1차 클라이언트 안정성 수정.",
+          "tags": [
+            "unique",
+            "skill",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.4.0d",
+          "date": "2025-11-19",
+          "kind": "Hotfix",
+          "summary": "사원 방 연결 로직, 사망 후 재시도 흐름, 맵 상태 피드백.",
+          "tags": [
+            "temple",
+            "fix"
+          ]
+        },
+        {
+          "code": "0.4.0e",
+          "date": "2025-11-26",
+          "kind": "Hotfix",
+          "summary": "자동 불안정화(Destabilisation) 제거, Architect 페이싱 조정, 사원 UI 경고.",
+          "tags": [
+            "temple",
+            "balance"
+          ]
+        },
+        {
+          "code": "0.4.0i",
+          "date": "2025-12-08",
+          "kind": "Hotfix",
+          "summary": "Shapeshift 치명타 조건, Talisman 요구 사항 확인, 콘솔 크래시 수정.",
+          "tags": [
+            "druid",
+            "shapeshift",
+            "crash"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problem-fix",
+      "order": 3,
+      "title": "문제 → 수정",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "사원 방에 도달 불가 / 연결 끊김",
+          "detail": "0.4.0d에서 방 연결 로직을 다시 작성하여 배치된 방이 안정적으로 연결되도록 했습니다.",
+          "scope": "공식 0.4.0d 노트"
+        },
+        {
+          "category": "fix",
+          "title": "조용한 자동 불안정화(Destabilisation)",
+          "detail": "0.4.0e에서 자동 불안정화를 완전히 제거했으며, 방은 이제 먼저 경고합니다.",
+          "scope": "공식 0.4.0e 노트"
+        },
+        {
+          "category": "fix",
+          "title": "'Recently Shapeshifted' 치명타 미발동",
+          "detail": "0.4.0i에서 치명타 조건을 수정하여 폼을 빠져나간 후에도 안정적으로 발동하도록 했습니다.",
+          "scope": "공식 0.4.0i 노트"
+        },
+        {
+          "category": "fix",
+          "title": "Talisman 무기 요구 사항 잘못된 확인",
+          "detail": "0.4.0i에서 변신 접두어 적용 전 Talisman 요구 사항에 대한 클라이언트 검증을 수정했습니다.",
+          "scope": "공식 0.4.0i 노트"
+        },
+        {
+          "category": "fix",
+          "title": "폼 교체 시 콘솔 크래시",
+          "detail": "0.4.0i에서 Shapeshift 교체 중 발생하던 여러 Xbox/PS5 크래시를 해결했습니다.",
+          "scope": "공식 0.4.0i 노트"
+        },
+        {
+          "category": "fix",
+          "title": "초기 고유 아이템 / 스킬 버그",
+          "detail": "0.4.0c에서 론칭 후 보고된 1차 고유 아이템 및 스킬 결함을 다뤘습니다.",
+          "scope": "공식 0.4.0c 노트"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 4,
+      "title": "영향을 받은 대상",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "사원 진행 플레이어",
+          "type": "guide",
+          "trigger": "0.4.0d/e 사원 변경",
+          "action": "연결 및 불안정화 안내를 업데이트하세요.",
+          "status": "queued"
+        },
+        {
+          "name": "Bear / Spriggan Druid 빌드",
+          "type": "build",
+          "trigger": "0.4.0i 치명타 + Talisman 수정",
+          "action": "치명타 조건 및 무기 확인을 확정하세요.",
+          "status": "reviewing"
+        },
+        {
+          "name": "콘솔 플레이어",
+          "type": "other",
+          "trigger": "0.4.0i 크래시 수정",
+          "action": "Xbox/PS5에서 폼 교체가 안정적인지 확인하세요.",
+          "status": "ready"
+        },
+        {
+          "name": "고유 아이템/스킬 가이드",
+          "type": "guide",
+          "trigger": "0.4.0c 버그 수정",
+          "action": "수정 후 아이템/스킬 동작을 재검증하세요.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "legacy-video",
+      "order": 5,
+      "title": "구버전 영상 감사",
+      "toc": true,
+      "visible": true,
+      "type": "superseded-changes",
+      "items": [
+        {
+          "change": "자동 불안정화를 보여주는 론칭 주간 사원 영상",
+          "byPatch": "0.4.0e",
+          "replacement": "0.4.0e 이후 사원 가이드를 사용하세요. 방은 불안정화되기 전에 경고합니다."
+        },
+        {
+          "change": "치명타가 깨진 론칭 주간 Druid 영상",
+          "byPatch": "0.4.0i",
+          "replacement": "치명타 조건은 0.4.0i 이후 작동합니다. DPS를 다시 벤치마크하세요."
+        },
+        {
+          "change": "0.4.0i 이전 콘솔 크래시 영상",
+          "byPatch": "0.4.0i",
+          "replacement": "폼 교체는 0.4.0i 이후 콘솔에서 안정적입니다."
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 6,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (0.4.0 론칭 주간)",
+          "context": "플레이어들이 사원 및 Druid 버그로 게시물을 도배했습니다.",
+          "quote": "사원이 끊겼고 내 Bear 치명타는 절대 안 터져서 게임이 안 되네요.",
+          "analysis": "두 가지 모두 해결되었습니다. 0.4.0d(연결)와 0.4.0i(치명타). 현재 클라이언트에서는 재현되지 않아야 합니다."
+        },
+        {
+          "source": "포럼 (0.4.0i 이후)",
+          "context": "플레이어들이 안정성이 회복되었음을 확인했습니다.",
+          "quote": "i 패치 이후로 Druid가 괜찮아졌고 콘솔도 크래시가 멈췄어요.",
+          "analysis": "핫픽스 체인이 보고된 문제를 해결했음을 확인합니다."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 7,
+      "title": "현재 적용 범위 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "사원 연결 규칙",
+          "status": "changed-later",
+          "currentSummary": "0.4.0d에서 수정되었습니다. 이후 0.5.x 맵 업데이트로 추가 조정되었을 수 있습니다.",
+          "supersededBy": "0.4.0d, 0.5.x 맵 업데이트",
+          "affectedContent": "Atziri 사원 가이드"
+        },
+        {
+          "topic": "Shapeshift 치명타 조건",
+          "status": "changed-later",
+          "currentSummary": "0.4.0i에서 수정되었습니다. 이후 밸런스로 수치가 조정되었을 수 있습니다.",
+          "supersededBy": "0.4.0i, 0.5.x 밸런스",
+          "affectedContent": "Bear Shaman Druid 빌드"
+        },
+        {
+          "topic": "콘솔 폼 교체 크래시",
+          "status": "removed",
+          "currentSummary": "0.4.0i에서 크래시를 수정했으며, 0.5.4e에서는 발생하지 않습니다.",
+          "supersededBy": "0.4.0i",
+          "affectedContent": "성능 가이드"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 8,
+      "title": "역사적 영상",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.x 핫픽스 요약",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "0.4.x 핫픽스 체인 요약이며, 론칭 주간 영상은 수정 전으로 취급하세요.",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 9,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "구버전 콘텐츠와 가장 관련 있는 0.4.x 핫픽스는 무엇인가요?",
+          "answer": [
+            "0.4.0d 사원 연결, 0.4.0e 자동 불안정화 제거, 0.4.0i Druid 치명타 및 콘솔 크래시는 구 가이드의 내용을 바꾸는 세 가지 핫픽스입니다."
+          ]
+        },
+        {
+          "question": "론칭 주간 사원/Druid 영상은 여전히 유효한가요?",
+          "answer": [
+            "부분적으로만 유효합니다. 해당 영상은 수정 전 동작인 자동 불안정화와 깨진 치명타를 보여주며, 이것은 0.4.0e와 0.4.0i에서 제거되거나 수정되었습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 10,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.4.0c 패치 노트",
+          "description": "1차 고유 아이템/스킬 및 안정성 수정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981500"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0d 패치 노트",
+          "description": "사원 연결 및 재시도 수정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3983000"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0e 패치 노트",
+          "description": "자동 불안정화(Destabilisation) 제거.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3985000"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0i 패치 노트",
+          "description": "Shapeshift 치명타 및 콘솔 크래시 수정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid"
+  ],
+  "relatedBossIds": [
+    "atziri-red-queen"
+  ],
+  "relatedItemIds": [
+    "architects-orb"
+  ],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.4.0c 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981500",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0d 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3983000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0e 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3985000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0i 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.x 핫픽스 타임라인 — 0.4.0c–i 수정 사항 및 더 이상 유효하지 않은 론칭 주간 영상",
+    "description": "0.4.x 핫픽스 체인이 수정한 내용(사원, Druid, 콘솔)과 0.5.4e에서 더 이상 적용되지 않는 구버전 0.4.0 영상은 무엇인지 안내합니다.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-hotfix-timeline",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

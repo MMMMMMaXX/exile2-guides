@@ -1,0 +1,534 @@
+{
+  "id": "biting-frost-support",
+  "slug": "biting-frost-support",
+  "locale": "ko",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "비팅 프로스트 서포트 가이드 — 티어, 프로즌 소모 및 유효 스킬",
+  "shortTitle": "비팅 프로스트",
+  "summary": "비팅 프로스트는 Cold 스킬용 서포트 젬 계열(I / II / III)입니다. Cold Hit에 꽂으면, 해당 Hit가 적의 Freeze를 소모하여 추가 Cold Damage를 줍니다. 대상은 이미 Frozen 상태여야 하며, Freeze는 적중으로 소모됩니다. 몹 무리와 Frozen된 레어에게 강하고, Freeze를 저항하는 보스에게는 약합니다.",
+  "description": "비팅 프로스트 서포트 심층 가이드: 비팅 프로스트 I / II / III 각각의 정체, 각 티어를 얻는 시점, Hit 전용 및 Frozen 필수 규칙, Freeze 소모와 피해 보너스, 일반 / 레어 / 유니크의 동작 차이, Herald of Ice와 Glacial Cascade의 충돌, 유효 스킬 매트릭스, 그리고 Socket Compatible이 추천과 같은 뜻이 아닌 이유.",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 1,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "support",
+  "skillTags": [
+    "support",
+    "cold",
+    "freeze",
+    "ailment",
+    "damage"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-05",
+  "publishedAt": "2026-08-05",
+  "updatedAt": "2026-08-05",
+  "lastVerifiedAt": "2026-08-05",
+  "heroImage": "/images/skills/biting-frost-support.webp",
+  "cardImage": "/images/skills/biting-frost-support.webp",
+  "imageAlt": "Biting Frost cold support gem icon",
+  "tags": [
+    "support",
+    "cold",
+    "freeze",
+    "ailment"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "빠른 답변",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "비팅 프로스트는 세 티어로 이루어진 서포트 젬 계열입니다: 비팅 프로스트 I, II, III는 서로 다른 젬커팅 레벨에서 얻습니다. 세 가지 모두 기계적으로 같은 일을 합니다 — 지원하는 Cold Hit가 적의 Freeze를 소모하여 추가 Cold Damage를 줍니다.",
+        "지원하는 스킬은 Hit여야 하며, 적은 이미 Frozen 상태여야 합니다. Hit가 Freeze를 소모해 피해 보너스를 주며, 적이 Frozen 상태가 아니면 비팅 프로스트는 아무 추가 효과도 내지 않습니다.",
+        "Frozen된 무리와 레어에게 훌륭하고, Freeze를 저항하는 보스에게는 약합니다. 'Socket Compatible'은 젬이 꽂힌다는 것뿐이며, 그 스킬에 이 서포트를 쓸 가치가 있다는 뜻이 아닙니다."
+      ]
+    },
+    {
+      "id": "support-family",
+      "order": 20,
+      "title": "비팅 프로스트 서포트 계열",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "비팅 프로스트 I",
+          "priority": "core",
+          "notes": [
+            "기본 티어로, Uncut Support Gem에서 초반에 얻습니다.",
+            "지원하는 Cold Hit가 Freeze를 소모하여 약간의 추가 Cold Damage 보너스를 줍니다."
+          ]
+        },
+        {
+          "label": "비팅 프로스트 II",
+          "priority": "core",
+          "notes": [
+            "더 높은 젬커팅 티어로, 더 큰 Freeze 소모 Cold Damage 보너스를 줍니다.",
+            "규칙은 동일합니다: Hit는 Cold여야 하고 대상은 Frozen 상태여야 합니다."
+          ]
+        },
+        {
+          "label": "비팅 프로스트 III",
+          "priority": "core",
+          "notes": [
+            "최상위 티어로, 가장 강력한 Freeze 소모 Cold Damage 보너스를 줍니다.",
+            "가능할 때 이 티어를 사용하세요. 하위 티어는 같은 효과의 직접 상위 버전입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "요구 사항",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "지원하는 스킬은 Cold Damage를 주어야 하며 Hit여야 합니다. 지속 피해나 비-Cold 스킬은 비팅 프로스트로부터 아무 이득도 얻지 못합니다.",
+        "Hit가 적중할 때 적은 Frozen 상태여야 합니다. 비팅 프로스트는 Freeze를 걸지 않으며, 먼저 다른 무언가가 적을 Freeze시켜야 합니다."
+      ],
+      "keyValues": [
+        {
+          "label": "Cold Hit",
+          "value": "필수",
+          "notes": [
+            "Cold 피해를 주는 적중만 이 서포트를 통해 Freeze를 소모할 수 있습니다."
+          ]
+        },
+        {
+          "label": "대상 Frozen",
+          "value": "적중 시점 필수",
+          "notes": [
+            "비팅 프로스트는 기존 Freeze를 소모할 뿐, 새로 만들지 않습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "freeze-consumption",
+      "order": 40,
+      "title": "Freeze 소모",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "지원하는 Cold Hit가 Frozen된 적에 적중하면, 비팅 프로스트는 Freeze를 소모하고 그 Hit에 추가 Cold Damage를 부여합니다. Freeze는 소모로 제거되므로, 적중 후 적은 더 이상 Frozen 상태가 아닙니다.",
+        "보너스는 Hit마다 적용됩니다. 스킬에 여러 적중 파트(예: 메인 투사체와 파편)가 있다면, 해당 파트가 적중할 때 적이 여전히 Frozen 상태인 한 각 Frozen 적중 파트가 따로 Freeze를 소모할 수 있습니다.",
+        "Freeze가 소모되므로, 같은 적에게 계속 보너스를 얻으려면 다시 Freeze를 걸 방법(또는 잦은 Freeze 공급원)이 필요합니다."
+      ],
+      "bullets": [
+        "Frozen된 적 적중 → Freeze 소모 → 추가 Cold Damage.",
+        "Freeze는 소모로 제거됨.",
+        "각 Cold 적중 파트는 적이 여전히 Frozen 상태라면 소모 가능."
+      ]
+    },
+    {
+      "id": "valid-skill-matrix",
+      "order": 50,
+      "title": "유효 스킬 매트릭스",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "스킬 / 적중 파트",
+        "소켓 가능",
+        "발동 조건",
+        "추천",
+        "비고"
+      ],
+      "rows": [
+        [
+          "Ice Shot 메인 화살",
+          "예",
+          "Frozen 대상",
+          "빌드 의존",
+          "메인 적중; 보너스 피해를 위해 Freeze 소모"
+        ],
+        [
+          "Ice Shot 파편",
+          "예",
+          "Frozen 대상",
+          "빌드 의존",
+          "별개 적중 파트; 여전히 Frozen 상태라면 각각 소모 가능"
+        ],
+        [
+          "Herald of Ice 폭발",
+          "아니오",
+          "지원받는 적중 아님",
+          "낮음 / 상황적",
+          "Herald는 비팅 프로스트가 지원하는 적중이 아님; 소모 없음"
+        ],
+        [
+          "Frost Darts 페이오프",
+          "예",
+          "현재 Frozen 상태",
+          "높음 / 상황적",
+          "페이오프 구간이 Freeze 소모로 이득"
+        ],
+        [
+          "Glacial Cascade",
+          "예",
+          "Freeze 소모",
+          "충돌 확인",
+          "여러 Freeze 소모자가 같은 Freeze를 두고 경쟁할 수 있음"
+        ]
+      ]
+    },
+    {
+      "id": "unique-enemy-rules",
+      "order": 60,
+      "title": "일반, 레어 및 유니크 규칙",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "일반 적은 쉽게 Freeze되므로, 비팅 프로스트는 무리에서 꾸준히 보답합니다. 레어는 ailment 임계값이 더 높지만 그래도 충분히 자주 Freeze되어 가치가 있습니다.",
+        "유니크와 보스는 Freeze를 저항합니다(높은 ailment 임계값), 그래서 비팅 프로스트가 소모할 만큼 오래 Frozen되는 경우가 드뭅니다. 보스에게는 Freeze 적용에 크게 투자하거나 보스가 취약하지 않다면 이 서포트가 거의 기여하지 않습니다.",
+        "피해 보너스 자체는 적 종류에 따라 바뀌지 않습니다. 차이는 단지 적이 얼마나 자주 Frozen되는가, 그에 따라 보너스가 얼마나 자주 적용될 수 있는가뿐입니다."
+      ],
+      "bullets": [
+        "무리: 잦은 Freeze, 잦은 보너스.",
+        "레어: 보통 Freeze, 보통 가치 있음.",
+        "보스 / 유니크: 드문 Freeze, 거의 가치 없음."
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "서포트 호환성",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "비팅 프로스트는 다른 Cold Damage 서포트(Cold Penetration, Elemental Damage, Cold Mastery 계열 서포트)와 중첩됩니다. Freeze가 소모될 때만 Hit의 Cold Damage에 더하기 때문입니다.",
+        "같은 스킬의 다른 Freeze 소모자와 경쟁합니다. 스킬이 이미 자체 효과를 위해 Freeze를 소모한다면(예: Glacial Cascade), 비팅 프로스트를 추가하면 같은 Freeze를 두고 싸우게 됩니다."
+      ],
+      "keyValues": [
+        {
+          "label": "Cold Damage / Penetration",
+          "value": "추천",
+          "notes": [
+            "비팅 프로스트가 소모 시 더하는 Cold Damage를 증폭하세요."
+          ]
+        },
+        {
+          "label": "Freeze 적용 서포트",
+          "value": "추천",
+          "notes": [
+            "Freeze 지속 시간이 길어질수록 소모할 기회가 많아집니다."
+          ]
+        },
+        {
+          "label": "기타 Freeze 소모자",
+          "value": "충돌 확인",
+          "notes": [
+            "Glacial Cascade 등이 같은 Freeze를 두고 경쟁합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 80,
+      "title": "스킬 상호작용",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Herald of Ice: 그 폭발은 비팅 프로스트가 지원하는 적중이 아니므로, 비팅 프로스트는 Herald of Ice의 파편 폭발에 더해지지 않습니다. 둘은 공존할 수 있지만, 비팅 프로스트가 Herald를 강화하지는 않습니다.",
+        "Freezing Mark: 강력한 인에이블러 — Freeze를 거는 데 도움을 주어 비팅 프로스트 적중이 소모할 대상을 만듭니다.",
+        "Glacial Cascade: 이것도 Freeze를 소모합니다. 둘을 같은 스킬에 꽂으면 깔끔하게 중첩되기보다 같은 Freeze를 두고 경쟁하게 됩니다."
+      ],
+      "bullets": [
+        "Herald of Ice: 비팅 프로스트로 강화되지 않음.",
+        "Freezing Mark: 소모할 Freeze를 더 많이 만듦.",
+        "Glacial Cascade: 경쟁하는 Freeze 소모자."
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 90,
+      "title": "맵핑 사용법",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "맵에서는 무리가 쉽게 Freeze되고 빠르게 죽으므로, 비팅 프로스트는 거의 모든 Cold Hit에서 보답합니다. 이것이 가장 좋은 환경입니다."
+      ],
+      "steps": [
+        {
+          "label": "무리 Freeze 걸기",
+          "action": "Cold 스킬이나 Freezing Mark로 Freeze를 거세요.",
+          "result": "적이 소모 가능한 상태가 됩니다."
+        },
+        {
+          "label": "적중 시 소모",
+          "action": "비팅 프로스트가 지원하는 Cold Hit를 적중시키세요.",
+          "result": "Frozen 적중마다 추가 Cold Damage; 빠른 청소."
+        }
+      ]
+    },
+    {
+      "id": "bossing-usage",
+      "order": 100,
+      "title": "보싱 사용법",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Freeze를 저항하는 보스에게는 비팅 프로스트가 소모할 Freeze가 거의 없으므로 가치가 급격히 떨어집니다. 빌드가 보스에게 Freeze를 확실히 적용하거나, 아니면 일반 Cold Damage 서포트로 교체하는 경우에만 유지하세요."
+      ],
+      "steps": [
+        {
+          "label": "보스를 Freeze시킬 수 있나요?",
+          "action": "Freeze 적용 투자를 확인하세요.",
+          "result": "가능하다면 비팅 프로스트가 여전히 도움이 됨; 아니라면 교체하세요."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "빌드 사용법",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Ice Shot Deadeye: 화살과 파편이 Frozen된 적에 적중할 때마다 비팅 프로스트가 피해를 더하는 Cold 활 빌드입니다.",
+        "Cold Caster Chronomancer: Freeze 중심 스킬을 사용하는 Cold 스펠 셸로, 비팅 프로스트를 자연스러운 피해 서포트로 만듭니다.",
+        "모든 Freeze 중심 Cold 빌드: 자주 Freeze한다면, 비팅 프로스트가 그 Freeze를 직접 피해로 전환합니다."
+      ],
+      "bullets": [
+        "Ice Shot Deadeye Cold 활.",
+        "Cold Caster Chronomancer 스펠.",
+        "확실히 Freeze하는 모든 빌드."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "문제 해결",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "보너스 피해 없음: Hit가 적중할 때 적이 Frozen 상태가 아니었습니다. 바로 답변: 먼저 Freeze를 건 다음 적중시키세요. 비팅 프로스트는 Freeze를 걸지 않습니다.",
+        "한 번 적중 후 보너스 중단: Freeze가 소모되었습니다. 바로 답변: 같은 적에서 더 많은 보너스를 얻으려면 다시 Freeze를 걸으세요.",
+        "보스가 거의 이득 없음: 보스는 Freeze를 저항합니다. 바로 답변: 보스에게는 비팅 프로스트를 flat Cold Damage 서포트로 교체하세요.",
+        "젬은 꽂히는데 약해 보임: Socket Compatible은 추천이 아닙니다. 바로 답변: 소켓 호환성으로 판단하지 말고, 실제로 얼마나 자주 Freeze하는지로 판단하세요."
+      ],
+      "steps": [
+        {
+          "label": "보너스 없음",
+          "action": "적중 전에 Freeze를 걸으세요.",
+          "result": "비팅 프로스트가 Freeze를 소모할 수 있습니다."
+        },
+        {
+          "label": "보스에서 약함",
+          "action": "Cold Damage 서포트로 교체하세요.",
+          "result": "Freeze가 필요 없이 꾸준한 피해."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "커뮤니티 증거",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "플레이어들은 옛 단일 '비팅 프로스트' 명칭이 I / II / III 계열로 이동했으며, 상위 티어가 같은 효과의 직접 상위 버전임을 언급합니다.",
+        "가장 흔한 실수는 비팅 프로스트가 Freeze를 건다고 가정하는 것입니다. 소모만 합니다. Freeze를 걸 forget하는 빌드는 보너스를 전혀 보지 못합니다.",
+        "Glacial Cascade 중복은 알려진 혼동 지점입니다: 한 스킬에 Freeze 소모자가 둘이면 중첩되기보다 경쟁합니다."
+      ],
+      "bullets": [
+        "반복되는 언급: 옛 명칭이 현재 I / II / III 티어.",
+        "반복되는 실수: 비팅 프로스트는 Freeze를 걸지 않음.",
+        "알려진 충돌: Glacial Cascade도 Freeze를 소모함."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 140,
+      "title": "영상 설명 및 타임스탬프",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Mr. Llama SC",
+          "label": "비팅 프로스트 서포트 시연",
+          "description": "Frozen된 무리에서 비팅 프로스트가 Freeze를 소모해 추가 Cold Damage를 주고, 보싱 한계도 보여주는 Cold 빌드 영상.",
+          "takeaway": "Freeze 지속 시간이 보너스를 어떻게 견인하는지, 그리고 보스가 왜 저항하는지 보세요.",
+          "url": "https://youtu.be/-V6jfuV7I8",
+          "timestamps": [
+            {
+              "label": "서포트 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "Freeze 소모 시연",
+              "time": "2:30"
+            },
+            {
+              "label": "보스 한계",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 150,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식",
+          "description": "GGG 공식 패치 노트 및 0.5.4 서포트 젬 동작 — 비팅 프로스트 I / II / III 계열과 Freeze 소모 포함.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "PoE2DB와 커뮤니티 위키가 서포트 id, 티어, Freeze 소모 규칙 및 유효 스킬을 제공합니다.",
+          "url": "https://poe2db.tw/en/Biting_Frost"
+        },
+        {
+          "label": "빌드 및 영상",
+          "description": "Freeze 소모와 보싱 한계를 교차 확인하는 데 사용한 YouTube Cold 빌드.",
+          "url": "https://youtu.be/-V6jfuV7I8"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Reddit과 포럼에서 Freeze 적용 혼동과 Glacial Cascade 중복이 나옵니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Biting%20Frost&restrict_sr=1"
+        },
+        {
+          "label": "공식 포럼",
+          "description": "GGG 스태프가 서포트 젬과 Freeze 메커니즘을 확인하는 공식 GGG 포럼.",
+          "url": "https://www.pathofexile.com/forum"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "패치 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-09-01",
+          "changes": [
+            "0.4.0 (2025-09): 비팅 프로스트가 서포트 계열(I / II / III)로 리워크됨; 지원하는 Cold Hit가 추가 Cold Damage를 위해 Freeze를 소모함."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): 현재 기준: Frozen 대상 요구, Freeze 소모, 적중당 보너스 변경 없음."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 170,
+      "title": "변경 이력",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-05",
+          "changes": [
+            "최초 배포: 비팅 프로스트 I / II / III 티어, Hit 전용 및 Frozen 필수 규칙, Freeze 소모, 유효 스킬 매트릭스, 일반 / 레어 / 유니크 동작, Herald of Ice와 Glacial Cascade 충돌, 그리고 Socket-Compatible 대 추천."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye",
+    "cold-caster-chronomancer"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "ice-shot",
+    "frost-darts",
+    "herald-of-ice",
+    "freezing-mark"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB — Biting Frost",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/en/Biting_Frost"
+    },
+    {
+      "label": "PoE2 Community Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Biting_Frost"
+    },
+    {
+      "label": "Mr. Llama SC Biting Frost video",
+      "sourceType": "community",
+      "url": "https://youtu.be/-V6jfuV7I8"
+    },
+    {
+      "label": "Reddit — Biting Frost discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Biting%20Frost&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "비팅 프로스트 서포트 가이드 — 티어, 프로즌 소모 및 유효 스킬",
+    "description": "비팅 프로스트 서포트 심층 가이드: 비팅 프로스트 I / II / III 티어, Hit 전용 및 Frozen 필수 규칙, Freeze 소모와 피해 보너스, 일반 대 레어 대 유니크 동작, Herald of Ice와 Glacial Cascade 충돌, 유효 스킬 매트릭스와 Socket-Compatible 대 추천.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "biting-frost-support",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

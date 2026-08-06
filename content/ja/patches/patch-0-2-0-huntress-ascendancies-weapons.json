@@ -1,0 +1,514 @@
+{
+  "id": "patch-0-2-0-huntress-ascendancies-weapons",
+  "slug": "patch-0-2-0-huntress-ascendancies-weapons",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0 ハントレス＆新昇格クラス：アマゾン、リチュアリスト、リッチ、タクティシャン、キタヴァの鍛冶神 — 起源と現状",
+  "shortTitle": "0.2.0 ハントレス＆昇格クラス",
+  "summary": "0.2.0 『Dawn of the Hunt』ではハントレスクラス、5つの新昇格クラス（アマゾン、リチュアリスト、キタヴァの鍛冶神、タクティシャン、リッチ）、および槍（スピア）とバックラー（小盾）のアイテムクラスが実装されました。本システム起源解説記事では、それらがどこから来たか、そして 0.5.4e 時点でもなお正しい事実について説明します。",
+  "description": "0.2.0 ハントレスと武器フレームワークのシステム起源解説：ハントレスと同時に実装された5つの昇格クラスがゲームに登場した経緯、槍とバックラーがハントレス専用ではなく全クラス共通のアイテムクラスである理由、槍スキルファミリー、そして現在のツリーとノード番号が一致しなくなった古い動画への注意喚起。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.2.0",
+  "patch": "0.2.0",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "cardImage": "/images/builds/covers/glacial-lance-ritualist.webp",
+  "imageAlt": "ハントレスの昇格クラスとして 0.2.0 で追加されたリチュアリスト",
+  "tags": [
+    "huntress",
+    "ascendancy",
+    "spears",
+    "bucklers",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "簡潔なまとめ",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "本記事はビルドガイドではなく、システム起源解説です。ハントレスクラス、0.2.0 の5つの昇格クラス、槍とバックラーのアイテムクラスがどこから来たか、そしてそれらの事実のうちクライアント 0.5.4e 時点でもなお正しいものについて説明します。実用的な構成をお探しの場合は、本ページを「ライトニングスピア・アマゾン」や「グレイシャルランス・リチュアリスト」などのリンク先ビルドと併せてご覧ください。",
+        "0.2.0 『Dawn of the Hunt』では、早期アクセス（EA）初の新ベースクラスとしてハントレスが実装され、同時に既存の4クラスに対する5つの昇格クラスが追加されました。すなわち、ハントレス用のアマゾンとリチュアリスト、ウォリアー用のキタヴァの鍛冶神、マーセナリー用のタクティシャン、ウィッチ用のリッチです。また、いずれのクラスでも装備可能な全く新しいアイテムクラスとして槍とバックラーも導入されました。",
+        "復帰プレイヤーをつまずかせるのは主に2点です。1つ目は、槍ビルドがハントレスである必要はないという点です。槍は全クラス共通の武器クラスです。2つ目は、バックラーは盾（シールド）とは別の固有のオフハンドアイテムクラスであり、槍と同様にいずれのクラスでも使用可能な点です。どちらも武器セットのパッシブ割り当てを行う際に重要となるため、本記事では weapon-set-passive-points ガイドをリンクしています。"
+      ],
+      "bullets": [
+        "ハントレス＋5つの新昇格クラスはすべて 0.2.0 に起源を持つ",
+        "槍とバックラーはハントレス専用ではなく全クラス共通のアイテムクラス",
+        "古いビルド動画は、現在のツリーと一致しないノード番号を表示している可能性がある",
+        "実用的な構成には、リンク先のビルドと武器セットパッシブガイドを併用すること"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "システム起源：ハントレス＆新昇格クラス",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.2.0",
+      "sourceId": "official-0-2-0",
+      "paragraphs": [
+        "ハントレスと同時に実装された5つの昇格クラスは、0.2.0 『Dawn of the Hunt』コンテンツアップデートで一斉に導入されました。このクラスは槍を用いた武術戦闘とバックラーのオフハンドを中心に設計されたため、槍とバックラーのアイテムクラスも同じパッチで実装されました。5つの昇格クラスは後続のパッチに散らばって実装されたのではなく、0.2.0 で一括して登場しています。そのうち3つは全く新しいクラスアイデンティティのため、2つは既存クラスの拡張のためです。",
+        "アマゾンとリチュアリストは、ハントレス専用の2つの昇格クラスであり、物理/クリティカル特化の槍アイデンティティと、出血/儀式（リチュアル）アイデンティティの両方をクラスに与えます。残る3つはすでに存在するクラスを拡張するものです。ウォリアー用のキタヴァの鍛冶神、マーセナリー用のタクティシャン、ウィッチ用のリッチです。この区分は重要です。なぜなら 0.2.0 は1クラスだけでなく、4つのベースクラスの昇格アイデンティティを一度に変化させたことを意味するからです。",
+        "この階層全体が1つのパッチで実装されたため、0.2.0 以前に作られたガイドや動画はこれらの昇格クラスを一切参照できません。0.2.0 以降、彼らはクラス一覧の恒久的な構成要素となり、後続のパッチ（0.3、0.5）で調整は加えられましたが削除はされていません。ただし現在のノード配置は、古い映像ではなくライブのツリーで確認すべきです。"
+      ],
+      "bullets": [
+        "ハントレス、アマゾン、リチュアリスト、キタヴァの鍛冶神、タクティシャン、リッチはすべて 0.2.0 で登場",
+        "2つの昇格クラスはハントレス専用、3つは既存クラスの拡張",
+        "5つとも 0.5.4e の一覧に残っているが、ノード番号は移動している可能性がある"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 3,
+      "title": "クラス実装マップ",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Huntress",
+          "verdict": "0.2.0 の新ベースクラス",
+          "detail": "リリース後初のベースクラス。槍とバックラーを用いる武術アイデンティティを持ち、アマゾンとリチュアリストのビルドを支える。"
+        },
+        {
+          "area": "Warrior -> Smith of Kitava",
+          "verdict": "0.2.0 の新昇格クラス",
+          "detail": "炎と武器スキルを志向するウォリアー系統。ファイアベアー・キタヴァの鍛冶神ビルドを支える。"
+        },
+        {
+          "area": "Mercenary -> Tactician",
+          "verdict": "0.2.0 の新昇格クラス",
+          "detail": "0.2.0 で追加されたマーセナリー系統。現在のソースセット内に実証済みのタクティシャンビルドは存在しないため、現在のビルドリンクは不明。"
+        },
+        {
+          "area": "Witch -> Lich",
+          "verdict": "0.2.0 の新昇格クラス",
+          "detail": "DoT（継続ダメージ）とミニオンを志向するウィッチ系統。ED コンタジオン・リッチビルドを支える。"
+        }
+      ]
+    },
+    {
+      "id": "ascendancy-table",
+      "order": 4,
+      "title": "昇格クラス実装マップ",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "ベースクラスと 0.2.0 の昇格クラスの対応。各クラスの元の役割、現在関連するビルド、検証ステータスを記載。",
+      "columns": [
+        {
+          "key": "baseClass",
+          "label": "ベースクラス"
+        },
+        {
+          "key": "ascendancy",
+          "label": "0.2.0 の昇格クラス"
+        },
+        {
+          "key": "thenRole",
+          "label": "当時の役割"
+        },
+        {
+          "key": "currentBuild",
+          "label": "現在関連するビルド"
+        },
+        {
+          "key": "verification",
+          "label": "検証ステータス"
+        }
+      ],
+      "rows": [
+        {
+          "baseClass": "Huntress",
+          "ascendancy": "Amazon",
+          "thenRole": "槍／物理クリティカル特化の武術アイデンティティ",
+          "currentBuild": "lightning-spear-amazon",
+          "verification": "pending-pc（現在も有効）"
+        },
+        {
+          "baseClass": "Huntress",
+          "ascendancy": "Ritualist",
+          "thenRole": "出血／儀式（リチュアル）アイデンティティ",
+          "currentBuild": "glacial-lance-ritualist",
+          "verification": "pending-pc（現在も有効）"
+        },
+        {
+          "baseClass": "Warrior",
+          "ascendancy": "Smith of Kitava",
+          "thenRole": "炎／武器スキルアイデンティティ",
+          "currentBuild": "fire-bear-smith-of-kitava",
+          "verification": "pending-pc（現在も有効）"
+        },
+        {
+          "baseClass": "Mercenary",
+          "ascendancy": "Tactician",
+          "thenRole": "マーセナリーの指揮／バフアイデンティティ",
+          "currentBuild": "unknown（ソースセット内に実証済みのタクティシャンビルドなし）",
+          "verification": "pending-pc（昇格クラスは有効、ビルドリンクは不明）"
+        },
+        {
+          "baseClass": "Witch",
+          "ascendancy": "Lich",
+          "thenRole": "DoT／ミニオンアイデンティティ",
+          "currentBuild": "ed-contagion-lich",
+          "verification": "pending-pc（現在も有効）"
+        }
+      ]
+    },
+    {
+      "id": "spear-buckler-origin",
+      "order": 5,
+      "title": "槍＆バックラーの起源",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "Weapon class",
+          "title": "槍（スピア）",
+          "detail": "槍はハントレスと同時に 0.2.0 で導入されたアイテムクラスです。ハントレスだけでなくいずれのクラスでも使用可能なため、ハントレス以外のキャラクターでも武器セットに槍を装備できます。",
+          "tags": [
+            "spears",
+            "weapon-class"
+          ]
+        },
+        {
+          "kind": "Off-hand class",
+          "title": "バックラー（小盾）",
+          "detail": "バックラーは 0.2.0 で追加された独立したオフハンドアイテムクラスです。盾（シールド）ではなく、盾と同様にオフハンドを占めますが別のクラスであり、いずれのクラスでも装備可能です。",
+          "tags": [
+            "bucklers",
+            "off-hand"
+          ]
+        },
+        {
+          "kind": "Mechanic",
+          "title": "武器セットとパッシブ",
+          "detail": "槍とバックラーは全クラス共通であるため、武器セットのパッシブポイント割り当てはすべてのクラスにおいてそれらと関連します。装備要件がどのようにパッシブノードを制限するかについては、weapon-set-passive-points-explained ガイドを参照してください。",
+          "tags": [
+            "weapon-sets",
+            "passives"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-family",
+      "order": 6,
+      "title": "スキルファミリーマップ：槍＆新サポート",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "槍スキルファミリー",
+          "detail": "0.2.0 では全体で25以上の新スキルが追加され、Twister（ツイスター）や Tempest Bell（テンペストベル）を含む専用の槍ファミリーに加え、武術オプションとして Whirling Assault（ホイーリングアサルト）が加わりました。これらはハントレス専用ではなく、どの槍使いでも使用可能です。",
+          "scope": "公式 0.2.0 パッチノート"
+        },
+        {
+          "category": "new",
+          "title": "遠隔槍オプション（Ice Shot、Lightning Arrow）",
+          "detail": "Ice Shot（アイスショット）や Lightning Arrow（ライトニングアロー）などの弓スキルはリンク先のスキルセットに含まれ、現在のコンテンツにおいて槍に隣接する遠隔構成と自然に組み合わせられます。",
+          "scope": "現在のスキルインデックス"
+        },
+        {
+          "category": "new",
+          "title": "100以上のサポートジェム",
+          "detail": "0.2.0 のサポートジェム追加ラッシュにより、新スキルのリンククラフトの幅が広がり、槍ビルドは試せるサポートの段階が増えました。",
+          "scope": "公式 0.2.0 パッチノート"
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "order": 7,
+      "title": "パッシブツリーへの影響",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0 のクラスとアイテム拡張により、ハントレス、新昇格クラス、槍/バックラーのプレイを支える新しいパッシブクラスタが追加されました。ハントレス専用のクラスタは槍の攻撃速度、出血、クリティカルをカバーし、その他の新昇格クラスは既存のクラスツリー上に専用ノードを獲得しました。",
+        "武器セットのパッシブポイントは、復帰プレイヤーを最も混乱させやすい部分です。槍とバックラーは全クラス共通のアイテムクラスであるため、キャラクターは槍の武器セットを持ち、そのセットを装備している間のみ発動するパッシブノードを得られます。正確なノード番号とクラスタ位置は 0.3 と 0.5 のバランス調整を通じて移動しているため、0.2.0 時代の古いパッシブツリーのスクリーンショットは信頼できません。",
+        "実用的な構成を得るには、0.2.0 時代のプランナーではなく、現在のビルドページ（ライトニングスピア・アマゾンやグレイシャルランス・リチュアリストなど）と weapon-set-passive-points-explained ガイドから始めてください。個別のノード計算が移動していても、昇格クラスのアイデンティティは変わっていません。"
+      ],
+      "bullets": [
+        "ハントレス、5つの昇格クラス、槍/バックラープレイ向けの新クラスタ",
+        "武器セットのパッシブポイントは装備中の槍/バックラーセットに依存",
+        "ノード番号は 0.3/0.5 で移動、現在のプランナーを信頼すべき"
+      ]
+    },
+    {
+      "id": "build-migration",
+      "order": 8,
+      "title": "ビルド移行：古いノード番号が異なる理由",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "0.2.0 以降のパッシブツリー改修",
+          "detail": "後続の 0.3 と 0.5 のバランス調整によりクラスタが移動しノードの数値が調整されたため、0.2.0 のアマゾンやリチュアリストのツリーは現在の構成とノード単位で一致しません。",
+          "scope": "公式 0.3 / 0.5 バランス"
+        },
+        {
+          "category": "balance",
+          "title": "スキル数値の調整（Tempest Bell、Twister）",
+          "detail": "Tempest Bell の連撃要件はリリース直後のホットフィックスで10から4に下がり、スキル数値もその後再び移動しました。Twister の複数弾（マルチプロジェクタイル）バグはリリース時に修正されました。古い動画は現在の感触を正しく表していません。",
+          "scope": "公式 0.2.0 リリースホットフィックス"
+        },
+        {
+          "category": "fix",
+          "title": "0.2.0f で追加された昇格クラスのリスペック",
+          "detail": "0.2.0f により昇格クラスのリスペックが可能になったため、誤って割り当てた古いツリーは完全な作り直しなしに回復できます。これは過去の構成にどう取り組むべきかを変化させます。",
+          "scope": "公式 0.2.0f パッチノート"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Huntress class",
+          "status": "still-current",
+          "currentSummary": "0.5.4e において槍とバックラーのアイデンティティを維持したまま選択可能なベースクラス。",
+          "supersededBy": "—",
+          "affectedContent": "ハントレスのビルドページ"
+        },
+        {
+          "topic": "Five 0.2.0 ascendancies",
+          "status": "still-current",
+          "currentSummary": "アマゾン、リチュアリスト、キタヴァの鍛冶神、タクティシャン、リッチの5つはすべて 0.5.4e に残っており、ノード計算は移動したもののアイデンティティは変わっていない。",
+          "supersededBy": "0.3.x / 0.5.x balance",
+          "affectedContent": "昇格クラスガイド"
+        },
+        {
+          "topic": "Spears & Bucklers as item classes",
+          "status": "still-current",
+          "currentSummary": "0.5.4e においていずれのクラスでも使用可能な全クラス共通のアイテムクラスとして引き続き存在。",
+          "supersededBy": "—",
+          "affectedContent": "weapon-set-passive-points-explained ガイド"
+        },
+        {
+          "topic": "Tactician current build",
+          "status": "unknown",
+          "currentSummary": "タクティシャン昇格クラス自体は現在も有効だが、現在のソースセット内に実証済みのタクティシャンビルドが存在しないため、推奨ビルドのリンクは不明。",
+          "supersededBy": "unknown",
+          "affectedContent": "マーセナリーのビルドページ"
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 10,
+      "title": "過去のビルドに関する注意",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.2.0 時代の古いビルド動画は、0.3/0.5 の改修後に現在のパッシブツリーと一致しなくなったノード番号とクラスタ位置を表示している。",
+          "status": "open"
+        },
+        {
+          "text": "ホットフィックス前の映像では、Tempest Bell が10回ヒットの連撃を必要とし、Twister が壊れた複数弾となっており、いずれも現在の挙動と一致しない。",
+          "status": "tracking"
+        },
+        {
+          "text": "0.2.0 のサードパーティ製プランナーには、その後のタクティシャン／キタヴァの鍛冶神のノード調整が未反映のものがあり、現在の構成に対して信頼すべきではない。",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 11,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.2.0 launch)",
+          "context": "プレイヤーが槍ビルドにハントレスである必要があるかどうかを質問。",
+          "quote": "Do I have to roll Huntress to use Spears, or can my Warrior hold one?",
+          "analysis": "0.2.0 のアイテムクラス設計によって確認済み：槍は全クラス共通であるため、いずれのクラスでも装備可能。"
+        },
+        {
+          "source": "Reddit (Bucklers)",
+          "context": "バックラーが盾（シールド）かどうかについての混乱。",
+          "quote": "Are Bucklers just small Shields or a different thing?",
+          "analysis": "バックラーは 0.2.0 で導入された、盾とは別のオフハンドアイテムクラス。"
+        },
+        {
+          "source": "Streamer clip (old tree)",
+          "context": "0.2.0 のアマゾンツリーがライブのプランナーと一致しなくなっている。",
+          "quote": "Half these nodes moved or got renumbered since I recorded this.",
+          "analysis": "0.3/0.5 のパッシブ改修後に予想されること。古い動画ではなく、現在のビルドページを使用すべき。"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 12,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "槍ビルドにはハントレスを選ぶ必要がありますか？",
+          "answer": [
+            "いいえ。槍は 0.2.0 で導入された全クラス共通の武器クラスであるため、いずれのクラスでも武器セットに槍を装備できます。ハントレスは単に槍を中心に構築されたクラスに過ぎません。",
+            "ハントレスのアイデンティティとそのアマゾンやリチュアリストの昇格クラスが望みなら、確かにハントレスを選んでください。ただし武器自体はクラス限定ではありません。"
+          ]
+        },
+        {
+          "question": "バックラーは武器ですか、それとも盾ですか？",
+          "answer": [
+            "バックラーはメイン武器でも盾（シールド）でもありません。0.2.0 で追加された独立したオフハンドアイテムクラスであり、盾のようにオフハンドを占めますが独自のアイテムクラス規則に従います。",
+            "槍と同様にバックラーはいずれのクラスでも使用可能であり、これは武器セットのパッシブ割り当てに影響します。"
+          ]
+        },
+        {
+          "question": "実際に 0.2.0 から来たのはどの昇格クラスですか？",
+          "answer": [
+            "5つすべて：アマゾンとリチュアリスト（ハントレス）、キタヴァの鍛冶神（ウォリアー）、タクティシャン（マーセナリー）、リッチ（ウィッチ）が 0.2.0 『Dawn of the Hunt』で一斉に実装されました。",
+            "彼らは 0.5.4e の一覧に依然として残っていますが、個別のノード番号は後続のバランス調整で移動しました。"
+          ]
+        },
+        {
+          "question": "なぜ古いアマゾン／リチュアリスト／リッチの動画が現在のツリーと一致しないのですか？",
+          "answer": [
+            "0.2.0 以降、0.3 と 0.5 の系列でパッシブツリーのクラスタとノード数値が改修されたため、古い構成はノード単位で一致しません。スキル数値も移動し、Tempest Bell の連撃もリリース時に変更されました。",
+            "0.2.0 以前や 0.2.0 初期の録画ではなく、現在のビルドページと武器セットパッシブガイドを使用してください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 13,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式 0.2.0 パッチノート",
+          "description": "ハントレスクラス、5つの昇格クラス、槍とバックラー、25以上のスキル、100以上のサポート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.2.0f パッチノート",
+          "description": "過去の構成の回復方法に影響する、昇格クラスのリスペックとアトラスのブックマーク。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.2.0h パッチノート",
+          "description": "Dawn of the Hunt コンテンツセット向けの 0.2.0 系列のフォローアップ調整。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3781189"
+        },
+        {
+          "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+          "description": "上記で参照したすべての公式 EA パッチおよびホットフィックススレッドの索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist",
+    "ed-contagion-lich",
+    "fire-bear-smith-of-kitava",
+    "gas-grenade-pathfinder"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "ascendancy-points-trials-guide",
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedSkillIds": [
+    "twister",
+    "tempest-bell",
+    "whirling-assault",
+    "ice-shot",
+    "lightning-arrow"
+  ],
+  "sources": [
+    {
+      "id": "official-0-2-0",
+      "label": "Path of Exile 2 公式 0.2.0 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "official-0-2-0f",
+      "label": "Path of Exile 2 公式 0.2.0f パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+    },
+    {
+      "id": "official-0-2-0h",
+      "label": "Path of Exile 2 公式 0.2.0h パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3781189"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0 ハントレス＆新昇格クラス — 起源と現状",
+    "description": "ハントレス、アマゾン、リチュアリスト、リッチ、タクティシャン、キタヴァの鍛冶神が 0.2.0 でどこから来たか、槍とバックラーが全クラス共通である理由、そして過去のビルドに関する注意。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0-huntress-ascendancies-weapons",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

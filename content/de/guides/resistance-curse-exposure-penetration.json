@@ -1,0 +1,733 @@
+{
+  "id": "resistance-curse-exposure-penetration",
+  "slug": "resistance-curse-exposure-penetration",
+  "locale": "de",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Widerstand, Flüche, Exposure und Penetration in Path of Exile 2",
+  "shortTitle": "Widerstand, Flüche & Penetration",
+  "summary": "Wie Gegner-Widerstände, widerstandsreduzierende Flüche, Exposure, Ignore Resistance und Penetration in der Schadens-Pipeline von Path of Exile 2 zusammenspielen und wie du den richtigen Debuff für deinen Build wählst.",
+  "description": "Ein Mechanik-Guide zur Resistenz-Interaktion in Path of Exile 2: der Unterschied zwischen Flüchen, Exposure, Penetration und Ignore Resistance, die Reihenfolge ihrer Anwendung in der Schadens-Pipeline, wie sie Schaden over Time beeinflussen, Uptime- und Coverage-Bedingungen und eine Entscheidungshilfe zur Priorisierung von Debuffs.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/freezing-mark.webp",
+  "cardImage": "/images/skills/freezing-mark.webp",
+  "imageAlt": "Ein Path of Exile 2-Mark-Fähigkeitssymbol, das Flüche, Exposure und Penetrations-Debuffs repräsentiert",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Ein grundlegendes Verständnis davon, wie Gegner-Widerstände eingehenden Schaden der jeweiligen Art reduzieren",
+    "Vertrautheit damit, in Kämpfen Flüche, Marks oder Exposure auf Gegner anzuwenden"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "resistance",
+    "curse",
+    "exposure",
+    "penetration",
+    "damage",
+    "debuff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Direktantworten",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Was ist der Unterschied zwischen einem Fluch, Exposure und Penetration?",
+          "body": [
+            "Alle drei helfen deinem Schaden, Gegner-Widerstände zu überwinden, wirken aber an unterschiedlichen Stellen. Ein Fluch und Exposure sind Debuffs, die auf den Gegner angewendet werden, und senken so dessen tatsächlichen Widerstand, solange sie aktiv sind. Penetration ist eine Eigenschaft deines Treffers, die den Widerstandswert senkt, gegen den dein Treffer berechnet wird – sie verändert niemals den anhaltenden Widerstand des Gegners."
+          ]
+        },
+        {
+          "title": "Senkt Penetration den echten Widerstand des Gegners?",
+          "body": [
+            "Nein. In Path of Exile 2 ist Penetration lokal auf deinen Treffer bezogen und wird als Letztes in der Widerstands-Pipeline angewendet. Sie reduziert den Widerstandswert, der für diesen Treffer verwendet wird, verändert aber weder den gespeicherten noch den anhaltenden Widerstand des Gegners und kann diesen Wert in der Regel nicht unter 0 % drücken."
+          ]
+        },
+        {
+          "title": "Senken Exposure und Flüche den tatsächlichen Widerstand des Gegners?",
+          "body": [
+            "Ja, für ihre Dauer. Exposure und widerstandssenkende Flüche (wie Elemental Weakness) sind Debuffs auf dem Gegner, sodass dessen tatsächlicher Widerstand niedriger ist, solange sie aktiv sind. Sie bringen außerdem Coverage- und Uptime-Bedingungen mit sich, die du im Auge behalten musst, etwa das Curse Limit und die Fluch-Effekt-Reduktion von Bossen."
+          ]
+        },
+        {
+          "title": "Beeinflussen diese Mechaniken Schaden over Time?",
+          "body": [
+            "Da Exposure und Flüche den tatsächlichen Widerstand des Gegners senken, profitiert Schaden over Time davon. Penetration wird pro Treffer angewendet, sodass ein eigenständiger Schaden-over-Time-Effekt, der selbst kein Treffer ist, in der Regel keine Penetration erhält. Die genaue Schaden-over-Time-Interaktion ist versionsabhängig – siehe die durchgerechneten Beispiele und behandle exakte Werte als ausstehende PC-Verifizierung."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "Definitionen",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Diese vier Begriffe beschreiben vier verschiedene Arten, wie Schaden in Path of Exile 2 mit dem Gegner-Widerstand interagiert. Sie auseinanderzuhalten ist die häufigste Lösung für Widerstands-Verwirrung, denn zwei davon (Fluch und Exposure) verändern den Gegner, während einer (Penetration) nur deinen Treffer verändert.",
+        "Widerstand ist die defensive Werte des Gegners. Ein Fluch und Exposure sind Debuffs, die auf den Gegner angewendet werden und dessen Widerstand für eine Dauer senken. Penetration und Ignore Resistance sind Eigenschaften, die an deinen Schaden gekoppelt sind und verändern, wie die Widerstandsprüfung für den Treffer aufgelöst wird."
+      ],
+      "bullets": [
+        "Widerstand: die prozentuale Reduktion des Gegners gegen eine Schadensart (Feuer, Kälte, Blitz, Chaos). Die standardmäßige Widerstandsgrenze auf Seiten des Spielers liegt bei 75 %.",
+        "Resistance Reduction (Widerstandsreduktion): jeder Effekt, der den Widerstandswert des Gegners senkt – am häufigsten über Exposure und Flüche ausgelöst.",
+        "Exposure: ein Debuff auf dem Gegner, der dessen Widerstand gegen das/die entsprechende(n) Element(e) für eine Dauer um einen Prozentwert senkt. Es ist ein Debuff auf dem Gegner, keine Eigenschaft deines Treffers.",
+        "Penetration: eine Eigenschaft deines Treffers, die den Widerstandswert senkt, gegen den der Treffer berechnet wird. Sie ist lokal auf dich bezogen, wird als Letztes angewendet und kann den Wert in der Regel nicht unter 0 % drücken. Sie verändert den anhaltenden Widerstand des Gegners nicht.",
+        "Ignore Resistance: ein seltener Effekt, der den entsprechenden Widerstand für diese Schadensinstances als 0 % behandelt und weitere Widerstandsmodifikationen dafür umgeht. Er senkt den gespeicherten Widerstand des Gegners nicht."
+      ]
+    },
+    {
+      "id": "interaction-matrix",
+      "order": 30,
+      "title": "Wie jede Mechanik interagiert",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Der Kernvergleich. Die entscheidende Trennung liegt darin, ob die Mechanik den tatsächlichen anhaltenden Widerstand des Gegners verändert (Fluch, Exposure) oder nur den Wert, der für deinen Treffer verwendet wird (Penetration, Ignore Resistance).",
+      "columns": [
+        {
+          "key": "mechanic",
+          "label": "Mechanik"
+        },
+        {
+          "key": "changes-actual",
+          "label": "Ändert tatsächlichen Widerstand?"
+        },
+        {
+          "key": "affects-hit",
+          "label": "Betrifft Treffer?"
+        },
+        {
+          "key": "affects-dot",
+          "label": "Betrifft DoT?"
+        },
+        {
+          "key": "stacks",
+          "label": "Stapelt mit anderen?"
+        },
+        {
+          "key": "upkeep",
+          "label": "Benötigt aktive Aufrechterhaltung?"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "curse"
+          ],
+          "cells": {
+            "mechanic": "Fluch (z. B. Elemental Weakness)",
+            "changes-actual": "Ja, während aktiv (Debuff auf Feind)",
+            "affects-hit": "Ja",
+            "affects-dot": "Ja (Feindeswiderstand ist niedriger)",
+            "stacks": "Ja, mit Exposure und Penetration",
+            "upkeep": "Ja (Dauer, begrenzt durch Curse Limit)"
+          }
+        },
+        {
+          "tags": [
+            "exposure"
+          ],
+          "cells": {
+            "mechanic": "Exposure",
+            "changes-actual": "Ja, während aktiv (Debuff auf Feind)",
+            "affects-hit": "Ja",
+            "affects-dot": "Ja (Feindeswiderstand ist niedriger)",
+            "stacks": "Ja, mit Fluch und Penetration",
+            "upkeep": "Ja (Dauer, muss aufgefrischt werden)"
+          }
+        },
+        {
+          "tags": [
+            "penetration"
+          ],
+          "cells": {
+            "mechanic": "Penetration",
+            "changes-actual": "Nein (nur auf den Treffer angewendet)",
+            "affects-hit": "Ja",
+            "affects-dot": "In der Regel nein (pro Treffer angewendet)",
+            "stacks": "Ja, mit Fluch und Exposure",
+            "upkeep": "Nein (passive Eigenschaft deines Treffers)"
+          }
+        },
+        {
+          "tags": [
+            "ignore-resistance"
+          ],
+          "cells": {
+            "mechanic": "Ignore Resistance",
+            "changes-actual": "Nein (für die Instance umgangen)",
+            "affects-hit": "Ja (behandelt Widerstand als 0 %)",
+            "affects-dot": "Implementierungsabhängig; als ausstehende PC-Verifizierung behandeln",
+            "stacks": "Selten; in der Regel getrennt von anderer Reduktion für diese Instance",
+            "upkeep": "Nein"
+          }
+        }
+      ],
+      "note": "Der genaue Exposure-Prozentwert und das Curse Limit sind versionsabhängig – formuliere konkrete Zahlen als ausstehende PC-Verifizierung. Das strukturelle Verhalten oben entspricht der aktuellen PoE2-Pipeline."
+    },
+    {
+      "id": "order",
+      "order": 40,
+      "title": "Reihenfolge der Operationen in der Schadens-Pipeline",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Die Widerstandsmodifikation des Gegners folgt einer strikten Abfolge. Penetration wird immer als Letztes angewendet und ist lokal auf den Angreifer bezogen, weshalb sie den anhaltenden Widerstand des Gegners nie verändert.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Schritt"
+        },
+        {
+          "key": "what-applies",
+          "label": "Was greift"
+        },
+        {
+          "key": "note",
+          "label": "Hinweis"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "step": "1. Baseline",
+            "what-applies": "Gesamtwiderstand des Gegners (einschließlich Karten- und Waystone-Modifikatoren)",
+            "note": "Der Startwert, den alle späteren Schritte modifizieren"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "2. Widerstandsreduktion",
+            "what-applies": "Exposure und Flüche",
+            "note": "Debuffs auf dem Gegner; können Widerstand unter null drücken"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "3. Inversion (optional)",
+            "what-applies": "Effekte wie Rakiata's Flow",
+            "note": "Kehrt den aktuellen Widerstandswert um, positiv oder negativ; auf Herkunft begrenzt"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "step": "4. Penetration",
+            "what-applies": "Deine Penetration des Treffers",
+            "note": "Als Letztes angewendet, lokal auf dich bezogen, in der Regel nicht unter 0 % reduzierbar"
+          }
+        }
+      ],
+      "note": "Da Penetration der letzte Schritt ist und lokal auf den Angreifer bezogen, verändert sie den anhaltenden Widerstand des Gegners nicht und stört die Inversion nicht auf die Weise, wie es Exposure und Flüche tun."
+    },
+    {
+      "id": "boss-scenario",
+      "order": 50,
+      "title": "Durchgerechnete Beispiele: normales Monster vs. Boss",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Veranschaulichende Berechnungen mit einem Gegner mit 75 % Blitz-Widerstand und einem Blitz-Treffer über 1000 Schaden. Die Zahlen dienen der Veranschaulichung; exakte Exposure-Werte und Boss-Fluch-Reduktions-Prozente sind ausstehende PC-Verifizierung.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Fall"
+        },
+        {
+          "key": "setup",
+          "label": "Aufbau"
+        },
+        {
+          "key": "calculation",
+          "label": "Berechnung"
+        },
+        {
+          "key": "result",
+          "label": "Ergebnis"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "no-debuff"
+          ],
+          "cells": {
+            "case": "Normales Monster, keine Debuffs",
+            "setup": "Gegner 75 % Blitz-Res, 1000 Treffer, keine Penetration oder Exposure",
+            "calculation": "1000 x (1 - 0,75)",
+            "result": "250 Schaden"
+          }
+        },
+        {
+          "tags": [
+            "exposure",
+            "penetration"
+          ],
+          "cells": {
+            "case": "Normales Monster mit Exposure und Penetration",
+            "setup": "Gegner 75 % Res, Exposure -25 %, 20 % Penetration, 1000 Treffer",
+            "calculation": "Exposure senkt Gegner auf 50 %; Penetration senkt den verwendeten Wert auf 30 %; 1000 x (1 - 0,30)",
+            "result": "700 Schaden"
+          }
+        },
+        {
+          "tags": [
+            "boss",
+            "curse"
+          ],
+          "cells": {
+            "case": "Boss mit reduziertem Fluch-Effekt",
+            "setup": "Gegner 75 % Res, Exposure -25 %, aber Boss erleidet 50 % reduzierten Fluch-Effekt, 20 % Penetration, 1000 Treffer",
+            "calculation": "Effektive Exposure nur -12,5 %, Gegner bei 62,5 %; Penetration auf 42,5 %; 1000 x (1 - 0,425)",
+            "result": "575 Schaden (Coverage unterscheidet sich von einem normalen Monster)"
+          }
+        }
+      ],
+      "note": "Das Boss-Beispiel zeigt, warum Uptime und Coverage wichtig sind: dieselbe Exposure wird durch die Boss-Fluch-Effekt-Reduktion geschwächt, sodass der echte Schadensgewinn kleiner ausfällt als bei einem normalen Monster."
+    },
+    {
+      "id": "hit-vs-dot",
+      "order": 60,
+      "title": "Treffer-Builds vs. Schaden-over-Time-Builds",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Ob dein Build in Penetration versus Exposure oder Flüche investieren sollte, hängt davon ab, ob dein Schaden ein Treffer oder Schaden over Time ist.",
+      "columns": [
+        {
+          "key": "build-type",
+          "label": "Build-Typ"
+        },
+        {
+          "key": "benefits-penetration",
+          "label": "Profitiert von Penetration?"
+        },
+        {
+          "key": "benefits-exposure",
+          "label": "Profitiert von Exposure?"
+        },
+        {
+          "key": "notes",
+          "label": "Hinweise"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "hit"
+          ],
+          "cells": {
+            "build-type": "Treffer-Build (direkte Treffer)",
+            "benefits-penetration": "Ja, direkt",
+            "benefits-exposure": "Ja (Feindeswiderstand ist niedriger)",
+            "notes": "Beide Ebenen greifen; Penetration wird nach Exposure und Flüchen als Letztes geprüft."
+          }
+        },
+        {
+          "tags": [
+            "dot"
+          ],
+          "cells": {
+            "build-type": "Schaden-over-Time-Build",
+            "benefits-penetration": "In der Regel nein (DoT ist kein Treffer)",
+            "benefits-exposure": "Ja (Feindeswiderstand ist niedriger, während debufft)",
+            "notes": "Priorisiere Exposure und Flüche; Penetration bewirkt bei eigenständigem DoT normalerweise nichts."
+          }
+        },
+        {
+          "tags": [
+            "hybrid"
+          ],
+          "cells": {
+            "build-type": "Hybrid (Treffer, der auch DoT verursacht)",
+            "benefits-penetration": "Nur der Treffer-Anteil",
+            "benefits-exposure": "Ja, für beide Anteile",
+            "notes": "Der anfängliche Treffer erhält Penetration; der folgende DoT profitiert vom gesenkten Widerstand des Gegners."
+          }
+        }
+      ],
+      "note": "Die genaue Penetration-gegen-DoT-Regel ist versionsabhängig; behandle das exakte Verhalten als ausstehende PC-Verifizierung."
+    },
+    {
+      "id": "debuff-uptime",
+      "order": 70,
+      "title": "Debuff-Uptime und Coverage",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Exposure und Flüche sind nur so stark wie ihre Uptime. Ein Fluch muss auf das Ziel angewendet werden und bleibt nur für seine Debuff-Dauer, und die Anzahl der Flüche, die ein Gegner gleichzeitig erleiden kann, ist durch das Curse Limit begrenzt. In Path of Exile 2 ist das standardmäßige Curse Limit niedrig (oft eins), und bestimmte Items oder Support-Gems können es erhöhen – bestätige die exakte Zahl für 0.5.4 als ausstehende PC-Verifizierung.",
+        "Bosse und andere mächtige Gegner haben häufig reduzierten Fluch-Effekt, was die Widerstandsreduktion verringert, die ein Fluch gegen sie bietet. Auch Exposure muss aufgefrischt werden; sie hält nicht ewig, und manche Fähigkeiten wenden sie als Aura oder bei Treffer an, während andere eine eigene Fähigkeit erfordern. Plane deine Rotation so, dass der Debuff tatsächlich auf dem Gegner liegt, wenn dein Schaden ankommt."
+      ],
+      "bullets": [
+        "Curse Limit: begrenzt, wie viele Flüche gleichzeitig auf einem einzelnen Gegner aktiv sein können (standardmäßig niedrig; über bestimmte Items oder Supports erhöhbar – ausstehende PC-Verifizierung für den Wert in 0.5.4).",
+        "Curse Effect: erhöht oder verringert, wie stark ein Fluch ist; Bosse haben häufig reduzierten Fluch-Effekt.",
+        "Exposure-Dauer: muss aufgefrischt werden; die Coverage hängt davon ab, wie du sie anwendest (bei Treffer, als Aura oder über eine eigene Fähigkeit).",
+        "Penetration hat kein Uptime-Problem – sie ist eine Eigenschaft jedes Treffers und greift automatisch."
+      ]
+    },
+    {
+      "id": "choose-your-scaling",
+      "order": 80,
+      "title": "Welchen Debuff sollte dein Build priorisieren?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Beantworte die folgenden Fragen, um herauszufinden, wo du dein Debuff-Budget investieren solltest.",
+      "controls": [
+        {
+          "id": "damage-shape",
+          "label": "Was ist dein Hauptschaden?",
+          "options": [
+            {
+              "label": "Direkte Treffer",
+              "value": "hits"
+            },
+            {
+              "label": "Schaden over Time",
+              "value": "dot"
+            },
+            {
+              "label": "Gemischt / Sekundärfähigkeiten wichtig",
+              "value": "mixed"
+            }
+          ]
+        },
+        {
+          "id": "uses-inversion",
+          "label": "Nutzt deine Hauptfähigkeit Widerstands-Inversion (z. B. Rakiata's Flow)?",
+          "options": [
+            {
+              "label": "Ja",
+              "value": "yes"
+            },
+            {
+              "label": "Nein",
+              "value": "no"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Reduktion stapeln, dann Penetration",
+          "when": {
+            "damage-shape": "hits",
+            "uses-inversion": "no"
+          },
+          "steps": [
+            "Wende Exposure und/oder einen widerstandssenkenden Fluch an, um den tatsächlichen Widerstand des Gegners zu senken.",
+            "Füge deiner Hauptfähigkeit Penetration hinzu, um den Wert zu senken, der im finalen Schritt verwendet wird.",
+            "Halte den Debuff aktiv und früsche ihn während des Kampfes auf."
+          ]
+        },
+        {
+          "title": "Reduktion beim invertierten Skill vermeiden",
+          "when": {
+            "damage-shape": "hits",
+            "uses-inversion": "yes"
+          },
+          "steps": [
+            "Wende keine Exposure oder widerstandssenkenden Flüche an, die konsequent deinen invertierten Hauptskill treffen – die Reduktion wird vor der Inversion angewendet und verringert den Ertrag.",
+            "Investiere Penetration in sekundäre Schadensquellen (Heralds, Trigger), die keine Inversion haben.",
+            "Behalte die Inversion auf dem Hauptskill und die Reduktion von dessen Zielen fern."
+          ]
+        },
+        {
+          "title": "Exposure und Flüche priorisieren",
+          "when": {
+            "damage-shape": "dot"
+          },
+          "steps": [
+            "Konzentriere dich auf Exposure und widerstandssenkende Flüche, da sie den tatsächlichen Widerstand des Gegners senken und DoT davon profitiert.",
+            "Investiere nicht in Penetration für den DoT-Anteil – sie greift bei eigenständigem DoT in der Regel nicht.",
+            "Halte die Uptime aufrecht, da der Debuff aktiv sein muss, wenn der DoT Schaden verursacht."
+          ]
+        },
+        {
+          "title": "Budget aufteilen",
+          "when": {
+            "damage-shape": "mixed"
+          },
+          "steps": [
+            "Gib dem Treffer, der auch DoT sät, Exposure/Flüche, sodass beide Anteile profitieren.",
+            "Füge Penetration für den Direkt-Treffer-Anteil und für sekundäre nicht invertierte Quellen hinzu.",
+            "Behandle die exakte Aufteilung als ausstehende PC-Verifizierung und miss sie im Spiel."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Allgemeine Hinweise",
+        "steps": [
+          "Senke den tatsächlichen Widerstand des Gegners mit Exposure oder einem Fluch, wenn du keine Inversion nutzt.",
+          "Nutze Penetration für direkte Treffer und für sekundären nicht invertierten Schaden.",
+          "Halte die Debuff-Uptime hoch und respektiere das Curse Limit und die Boss-Fluch-Effekt-Reduktion."
+        ]
+      }
+    },
+    {
+      "id": "troubleshooting",
+      "order": 90,
+      "title": "Häufige Fehler",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die meisten Widerstandsprobleme entstehen dadurch, dass man verwechselt, welche Mechanik den Gegner verändert und welche nur deinen Treffer. Die folgenden Fallen sind die, die Spieler am häufigsten melden."
+      ],
+      "bullets": [
+        "Viel Penetration hinzufügen, aber keine Schadensänderung sehen: der Widerstand des Gegners liegt nach Exposure/Flüchen bereits nahe 0 % oder dein Hauptskill nutzt Inversion, wo Penetration irrelevant wird.",
+        "Penetration mit Widerstandsreduktion verwechseln: Penetration verändert den anhaltenden Widerstand des Gegners nicht, hilft also anderen Schadensquellen oder Schaden over Time nicht.",
+        "Das Curse Limit vergessen: nur eine begrenzte Anzahl von Flüchen kann gleichzeitig aktiv sein, sodass zusätzliche Flüche nichts bewirken, sobald das Limit erreicht ist.",
+        "Die Boss-Fluch-Effekt-Reduktion ignorieren: ein Fluch, der bei Packen stark wirkt, kann bei einem Boss stark geschwächt sein.",
+        "Annehmen, Exposure hält ewig: sie hat eine Dauer und muss aufgefrischt werden, sonst fällt dein Schaden zurück auf den vollen Widerstand des Gegners.",
+        "Exposure oder Flüche auf einen invertierten Hauptskill anwenden: die Reduktion wird vor der Inversion angewendet und verringert den Inversions-Ertrag, manchmal drastisch."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 100,
+      "title": "Community-Debatten",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Häufig diskutierte Verwirrungen rund um die Widerstands-Interaktion in Path of Exile 2.",
+      "cards": [
+        {
+          "title": "Negativer vs. null Widerstand",
+          "tag": "resistance",
+          "body": [
+            "Spieler debattieren, ob Exposure oder Flüche einen Gegner unter 0 % Widerstand drücken können. Sie können den tatsächlichen Wert unter null senken, aber Penetration ist in der Regel darauf begrenzt, den verwendeten Wert auf 0 % zu senken, sodass negativer Widerstand meist aus Reduktion kommt, nicht aus Penetration."
+          ]
+        },
+        {
+          "title": "Warum Bosse Flüche abperlen lassen",
+          "tag": "curse",
+          "body": [
+            "Ein Fluch, der bei Packen stark wirkt, kann bei einem Boss schwach wirken, weil Bosse häufig reduzierten Fluch-Effekt haben. Der Debuff wird weiterhin angewendet, nur schwächer."
+          ]
+        },
+        {
+          "title": "Penetration-Handschuh-Implizits",
+          "tag": "penetration",
+          "body": [
+            "Manche Spieler meiden Penetration-Implizits aus Angst, sie schadeten invertierungsbasierten Hauptskills. Penetration ist lokal und wird als Letztes geprüft, verringert also den invertierten Wert nicht; sie ist am besten in sekundären Schaden investiert."
+          ]
+        },
+        {
+          "title": "Wirkt Penetration auf DoT?",
+          "tag": "dot",
+          "body": [
+            "Eine häufige Frage mit subtiler Antwort: Penetration ist pro Treffer, sodass eigenständiger Schaden over Time sie in der Regel nicht erhält, während Exposure und Flüche DoT helfen. Das exakte Verhalten ist ausstehende PC-Verifizierung."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 110,
+      "title": "Video-Leitfaden",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "How to Scale Elemental Damage in Path of Exile 2 | Curses vs Exposure vs Penetration",
+          "creator": "MisoxShiru",
+          "description": "Ein fokussierter Walkthrough, der Flüche, Exposure und Penetration in Path of Exile 2 vergleicht, wie sie sich in der Schadens-Pipeline stapeln und wann man welche nutzt.",
+          "takeaway": "Flüche und Exposure senken den tatsächlichen Widerstand des Gegners; Penetration ist eine pro-Treffer-Eigenschaft, die zuletzt angewendet wird. Wähle den Debuff, der zu deiner Schadensart passt, und achte auf die Inversions-Anti-Synergie.",
+          "url": "https://www.youtube.com/watch?v=isve7nLuW48",
+          "timestamps": [
+            {
+              "label": "Einleitung",
+              "time": "0:00"
+            },
+            {
+              "label": "Flüche und Widerstandsreduktion",
+              "time": "1:30"
+            },
+            {
+              "label": "Exposure erklärt",
+              "time": "4:00"
+            },
+            {
+              "label": "Penetration erklärt",
+              "time": "7:20"
+            },
+            {
+              "label": "Wie sie sich in der Schadens-Pipeline stapeln",
+              "time": "10:10"
+            },
+            {
+              "label": "Zusammenfassung und Build-Ratschläge",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 120,
+      "title": "Häufig gestellte Fragen",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Stapelt Penetration mit Exposure und Flüchen?",
+          "answer": [
+            "Ja. Sie arbeiten in unterschiedlichen Phasen der Pipeline. Exposure und Flüche senken den tatsächlichen Widerstand des Gegners, dann wird Penetration als Letztes auf den Wert angewendet, den dein Treffer nutzt. Alle drei können gleichzeitig aktiv sein."
+          ]
+        },
+        {
+          "question": "Warum hat mehr Penetration meinen Schaden nicht erhöht?",
+          "answer": [
+            "Häufige Gründe: der Widerstand des Gegners lag nach Exposure und Flüchen bereits nahe 0 %, oder dein Hauptskill nutzt Widerstands-Inversion (wie Rakiata's Flow), wo Penetration irrelevant wird, oder du triffst einen Gegner, dessen Widerstand durch Inversion bereits negativ ist."
+          ]
+        },
+        {
+          "question": "Wirkt Penetration gegen Schaden over Time?",
+          "answer": [
+            "Für eigenständigen Schaden over Time in der Regel nein, da Penetration pro Treffer angewendet wird und DoT kein Treffer ist. Exposure und Flüche helfen bei DoT, da sie den tatsächlichen Widerstand des Gegners senken. Die exakte Regel ist versionsabhängig und ausstehende PC-Verifizierung."
+          ]
+        },
+        {
+          "question": "Kann Exposure gleichzeitig auf mehrere Elemente wirken?",
+          "answer": [
+            "Elementare Exposure reduziert in der Regel das/der entsprechende(n) Element(e), und manche Quellen senken alle elementaren Widerstände. Die exakte Coverage hängt von der Fähigkeit oder dem Support ab, der sie gewährt; bestätige Details als ausstehende PC-Verifizierung."
+          ]
+        },
+        {
+          "question": "Was ist das Curse Limit und warum hat mein Boss weniger Fluch-Effekt?",
+          "answer": [
+            "Das Curse Limit begrenzt, wie viele Flüche gleichzeitig auf einem einzelnen Gegner aktiv sein können (der Standard ist niedrig; bestimmte Items oder Supports können es erhöhen – ausstehende PC-Verifizierung für den Wert in 0.5.4). Bosse haben häufig reduzierten Fluch-Effekt, was die Widerstandsreduktion schwächt, die ein Fluch gegen sie bietet."
+          ]
+        },
+        {
+          "question": "Sollte ich Exposure oder Flüche mit Rakiata's Flow nutzen?",
+          "answer": [
+            "Für den invertierten Hauptskill in der Regel nein. Die Widerstandsreduktion wird vor der Inversion angewendet und verringert den Inversions-Ertrag und kann einige niedrige Widerstandsgegner nach der Inversion sogar in höheren Widerstand umkehren. Halte die Reduktion von den Zielen fern, die dein invertierter Hauptskill trifft, und investiere Penetration stattdessen in sekundären Schaden."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 130,
+      "title": "Quellen und Verifizierung",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offizielles Wiki – Resistance",
+          "description": "PoE2-Wiki-Referenz für Widerstand, Widerstandsreduktion, Exposure, Flüche und Penetrations-Verhalten",
+          "url": "https://poe2wiki.net/wiki/Resistance"
+        },
+        {
+          "label": "Mobalytics – Widerstände erklärt",
+          "description": "Community-Guide zu Widerstandsgrenzen, negativem Widerstand und wie Widerstände Schaden in Path of Exile 2 mindern",
+          "url": "https://mobalytics.gg/poe-2/guides/resistances"
+        },
+        {
+          "label": "Elyxir – PoE 2 Elementare Widerstands-Mechanik",
+          "description": "Community-Guide, der die Reihenfolge von Reduktion, Inversion und Penetration detailiert und dass Penetration lokal ist und zuletzt geprüft wird",
+          "url": "https://www.elyxir.gg/guide/path-of-exile-2/poe-2-elemental-resistance-mechanics-using-rakiatas-flow-penetration-and-curses-the-right-way"
+        },
+        {
+          "label": "Video-Guide (MisoxShiru)",
+          "description": "Video, das Flüche, Exposure und Penetration in Path of Exile 2 vergleicht",
+          "url": "https://www.youtube.com/watch?v=isve7nLuW48"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 140,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Erstveröffentlichung des Guides zu Widerstand, Fluch, Exposure und Penetration für Path of Exile 2 Early Access 0.5.4.",
+            "Direktantworten, Definitionen, eine Interaktionsmatrix, die Reihenfolge der Operationen in der Schadens-Pipeline, durchgerechnete Beispiele für normale Monster vs. Bosse, ein Treffer-vs.-DoT-Vergleich, Debuff-Uptime und Coverage, eine Skalierungs-Diagnose, häufige Fehler, Community-Debatten, ein Video-Guide, FAQ und Quellen hinzugefügt.",
+            "Penetration wird als pro-Treffer-Mechanik dokumentiert, die lokal angewendet und als letzter Schritt ausgeführt wird und den anhaltenden Widerstand des Gegners nicht verändert; exakte Exposure-Werte, Curse Limit und die Penetration-gegen-DoT-Regel sind für PC-Verifizierung markiert."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Resistance",
+      "url": "https://poe2wiki.net/wiki/Resistance",
+      "sourceType": "official"
+    },
+    {
+      "label": "Mobalytics – Widerstände erklärt",
+      "url": "https://mobalytics.gg/poe-2/guides/resistances",
+      "sourceType": "community"
+    },
+    {
+      "label": "Elyxir - PoE 2 Elemental Resistance Mechanics",
+      "url": "https://www.elyxir.gg/guide/path-of-exile-2/poe-2-elemental-resistance-mechanics-using-rakiatas-flow-penetration-and-curses-the-right-way",
+      "sourceType": "community"
+    },
+    {
+      "label": "MisoxShiru - Curses vs Exposure vs Penetration (YouTube)",
+      "url": "https://www.youtube.com/watch?v=isve7nLuW48",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Widerstand, Flüche, Exposure & Penetration – Leitfaden",
+    "description": "Wie Gegner-Widerstände, Flüche, Exposure und Penetration in der Schadens-Pipeline von Path of Exile 2 zusammenspielen und wie du den richtigen Debuff für deinen Build wählst.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "resistance-curse-exposure-penetration",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,8 +1,9 @@
 /** 文件职责：提供详情页复制当前链接的渐进增强按钮，不持久化或上传用户数据。 */
 import { useState } from "react";
+import type { ContentLocale } from "../../lib/content/constants";
 
 /** 复制浏览器当前地址，并以短状态文案反馈成功或失败。 */
-export function CopyPageLink({ locale }: { locale: "en" | "zh-cn" }) {
+export function CopyPageLink({ locale }: { locale: ContentLocale }) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const zh = locale === "zh-cn";
 

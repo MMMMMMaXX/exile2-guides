@@ -1,0 +1,496 @@
+{
+  "id": "charge-profusion-support",
+  "slug": "charge-profusion-support",
+  "locale": "zh-cn",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Charge Profusion 辅助宝石指南 —— 阶层、额外充能与可用生成器",
+  "shortTitle": "Charge Profusion",
+  "summary": "Charge Profusion 是一个辅助宝石系列（I 阶和 II 阶），可为生成充能的技能提供额外充能。它只对会生成充能的技能生效，II 阶还能有一定几率掷出随机额外充能。本指南涵盖各阶层的效果、为何仅限充能生成技能、概率计算、可用生成器矩阵，以及它与元技能辅助消耗的交互。",
+  "description": "Charge Profusion 辅助宝石指南：I 阶对比 II 阶、各自效果、为何仅限充能生成技能、同类型与随机额外充能、可用生成器矩阵（Combat Frenzy、Profane Ritual、Sniper's Mark、Siphoning Strike）、30% 与 15% 概率、界面中不显示随机充能、旧名 Profusion、与 Overabundance / Boundless Energy / Perpetual Charge 的对比、充能上限处理、故障排查与社区问答。",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 5,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "support",
+  "skillTags": [
+    "support",
+    "charge",
+    "generator",
+    "meta"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/charge-profusion-support.webp",
+  "cardImage": "/images/skills/charge-profusion-support.webp",
+  "imageAlt": "Charge Profusion 辅助宝石图标",
+  "tags": [
+    "support",
+    "charge",
+    "generator",
+    "meta"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "快速解答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion I 会在所辅助的技能生成充能时额外提供一枚同类型充能；Charge Profusion II 效果相同，并额外有几率掷出一枚随机额外充能。",
+        "它只对真正会生成充能的技能生效 —— 不会生成充能的普通攻击毫无收益。",
+        "额外充能与原本类型相同；II 阶的随机充能可以是你角色能使用的任意充能类型，若你无法使用掷出的充能类型，则会被浪费。"
+      ]
+    },
+    {
+      "id": "support-family",
+      "order": 20,
+      "title": "辅助宝石系列",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Charge Profusion I",
+          "notes": [
+            "生成时额外提供一枚同类型充能。",
+            "更早可用（阶层更低）。",
+            "无随机充能掷骰。"
+          ],
+          "priority": "core"
+        },
+        {
+          "label": "Charge Profusion II",
+          "notes": [
+            "与 I 阶相同的同类型额外充能。",
+            "额外增加生成随机充能的几率。",
+            "更晚可用（阶层更高）。"
+          ],
+          "priority": "situational"
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "需求",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion 必须镶嵌在会生成充能的技能上。只造成伤害而不生成充能的技能无法使用它。"
+      ]
+    },
+    {
+      "id": "charge-profusion-family",
+      "order": 40,
+      "title": "Charge Profusion 系列",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "当所辅助的技能生成充能时，Charge Profusion I 会再额外添加一枚同类型充能。它会与该技能自身的生成叠加，因此一次触发可产出两枚同类型充能。",
+        "Charge Profusion II 效果相同，并额外有一定百分比几率同时生成随机充能。该随机掷骰独立进行，可能产生你配装使用的充能类型，也可能产生用不到的类型。",
+        "若你的角色无法使用随机掷出的充能类型，该充能实际上就被浪费了 —— 应围绕你真正会消耗的充能来构建配装。"
+      ],
+      "bullets": [
+        "I 阶：生成时 +1 同类型充能。",
+        "II 阶：+1 同类型，并有几率获得随机充能。",
+        "无法使用的随机充能会被浪费。"
+      ]
+    },
+    {
+      "id": "probability-analysis",
+      "order": 50,
+      "title": "概率分析",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "辅助宝石",
+        "同类型额外",
+        "随机额外",
+        "消耗倍率",
+        "阶段"
+      ],
+      "rows": [
+        [
+          "Charge Profusion I",
+          "是（每次生成）",
+          "否",
+          "当前客户端数值",
+          "前期"
+        ],
+        [
+          "Charge Profusion II",
+          "是（每次生成）",
+          "是（几率，独立掷骰）",
+          "当前客户端数值",
+          "后期"
+        ]
+      ]
+    },
+    {
+      "id": "valid-generator-matrix",
+      "order": 60,
+      "title": "可用生成器矩阵",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "生成器",
+        "充能类型",
+        "可否镶嵌",
+        "I 阶可用",
+        "II 阶随机可用"
+      ],
+      "rows": [
+        [
+          "Combat Frenzy",
+          "Frenzy",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ],
+        [
+          "Profane Ritual",
+          "Power",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ],
+        [
+          "Sniper's Mark",
+          "Power / marked",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ],
+        [
+          "Siphoning Strike",
+          "Power",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ],
+        [
+          "Lingering Illusion",
+          "Power",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ],
+        [
+          "Reaper's Invocation",
+          "Power",
+          "是",
+          "是",
+          "若角色使用随机类型"
+        ]
+      ]
+    },
+    {
+      "id": "support-interactions",
+      "order": 70,
+      "title": "辅助交互",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion 可镶嵌于 Combat Frenzy、Profane Ritual 及类似生成器。它是元技能辅助，因此元技能的辅助消耗倍率会在宝石消耗之外叠加生效。",
+        "当一次生成多枚充能时，额外的与随机掷骰会对每次生成事件分别判定。",
+        "它不会取代生成器自身的充能，而是在其基础上叠加。"
+      ],
+      "bullets": [
+        "对 Frenzy / Power 生成器生效。",
+        "适用元技能辅助消耗倍率。",
+        "每次生成分别掷骰。"
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 80,
+      "title": "地图用法",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "在地图中，Charge Profusion 能在清图时维持较高的充能覆盖率，从而支撑消耗充能的光环与增益。",
+        "前期使用 I 阶；若你的配装使用多种充能类型，在可用后切换到 II 阶。"
+      ],
+      "bullets": [
+        "在地图中维持依赖充能的增益。",
+        "前期 I 阶，后期 II 阶。"
+      ]
+    },
+    {
+      "id": "bossing-usage",
+      "order": 90,
+      "title": "首领战用法",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "面对首领时，由 profusion 强化的生成器稳定产出充能，可在整场战斗中保持你的伤害增益生效。",
+        "若首领阶段很少让你生成充能，该辅助贡献较低 —— 应将其与你能稳定触发的生成器搭配。"
+      ],
+      "bullets": [
+        "在首领战中保持增益生效。",
+        "需要可稳定触发的生成器。"
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 100,
+      "title": "配装用法",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion 适合充能叠加型配装，例如 Explosive Witchhunter（Combat Frenzy）以及任意狂暴充能生成器构筑。",
+        "当你的配装持续生成并消耗同一类型充能时，它最为强力。"
+      ],
+      "bullets": [
+        "Explosive Witchhunter：Combat Frenzy 配 profusion。",
+        "狂暴充能配装：Profane Ritual 配 profusion。",
+        "持续生成与消耗时效果最佳。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 110,
+      "title": "故障排查",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "若没有出现额外充能，说明所辅助的技能不是充能生成器 —— 将其镶嵌到 Combat Frenzy 或其他生成器上。若看似缺失随机充能，它并不会在界面中单独显示；而是静默掷骰。",
+        "若找不到 'Profusion'，该宝石已更名为 Charge Profusion；请以此搜索。若你的充能上限已满，额外充能会被浪费。"
+      ],
+      "bullets": [
+        "无额外充能：并非生成器技能。",
+        "随机充能不显示在界面：静默掷骰。",
+        "旧名 'Profusion' 已更名。",
+        "上限已满：额外充能被浪费。",
+        "随机类型不符：无法使用时被浪费。"
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 120,
+      "title": "常见问题",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "一个常见错误是将 Charge Profusion 镶嵌到非生成器技能上，期望免费获得充能 —— 它只会在已有生成基础上叠加。另一个错误是假设随机充能总是有益；若你的配装无法使用掷出的类型，它就被浪费了。"
+      ],
+      "bullets": [
+        "只在真实生成基础上叠加。",
+        "随机充能可能无法使用。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "社区佐证",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "在 0.5 版本的相关讨论中，Charge Profusion 被视为充能叠加配装的强力推动者，而从 'Profusion' 更名导致了搜索上的混淆。",
+        "玩家指出随机充能的静默掷骰不会显示在界面中，从而引发“我的充能去哪了”的疑问。"
+      ],
+      "bullets": [
+        "对充能叠加配装十分强力。",
+        "从 Profusion 更名造成搜索混淆。",
+        "随机充能为静默掷骰。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 140,
+      "title": "视频指南",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Passive Charges Anoint",
+          "label": "此膏油让你被动获得充能（0.5）",
+          "description": "一份关于充能生成与被动充能来源的指南，与 profusion 构筑相关。",
+          "takeaway": "关注充能生成的背景。",
+          "url": "https://youtu.be/_Fi6R_df2Pc",
+          "timestamps": [
+            {
+              "label": "简介",
+              "time": "0:00"
+            },
+            {
+              "label": "充能讲解",
+              "time": "3:00"
+            }
+          ]
+        },
+        {
+          "creator": "Meta Gems Explained",
+          "label": "如何使用 POE 2 元宝石（0.5）",
+          "description": "一份涵盖元技能辅助消耗与机制的指南，与作为元辅助的 Charge Profusion 相关。",
+          "takeaway": "关注元技能辅助消耗倍率。",
+          "url": "https://youtu.be/FN4oNxr50MQ",
+          "timestamps": [
+            {
+              "label": "元宝石",
+              "time": "0:00"
+            },
+            {
+              "label": "辅助消耗",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 150,
+      "title": "来源与核验",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "官方",
+          "description": "GGG 官方补丁说明与论坛，确认了 Charge Profusion I/II 的行为、充能生成限制及在 0.5.4 中的更名。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "数据库",
+          "description": "PoE2DB 与社区维基提供了 Charge Profusion 辅助宝石数据与生成器标签。",
+          "url": "https://poe2db.tw/Charge_Profusion"
+        },
+        {
+          "label": "维基",
+          "description": "Charge Profusion 的社区维基页面，含各阶层详情。",
+          "url": "https://www.poe2wiki.net/wiki/Charge_Profusion"
+        },
+        {
+          "label": "社区",
+          "description": "Reddit 与论坛中有关充能生成与 profusion 的讨论。",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Charge%20Profusion&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "补丁历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0（Return of the Ancients）：Charge Profusion（原 Profusion）辅助宝石系列为充能生成器提供额外充能；II 阶增加随机充能几率。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4（2026-08）：当前基准：I 阶提供同类型额外充能，II 阶增加随机充能几率，仅限充能生成器，适用元技能辅助消耗。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 170,
+      "title": "更新日志",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "首次发布：阶层对比、charge-profusion 系列、概率分析、可用生成器矩阵、辅助交互、地图与首领战用法、故障排查与社区问答。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "combat-frenzy",
+    "barrage",
+    "ice-tipped-arrows"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Charge Profusion",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Charge_Profusion"
+    },
+    {
+      "label": "PoE2 Community Wiki — Charge Profusion",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Charge_Profusion"
+    },
+    {
+      "label": "Passive Charges Anoint video",
+      "sourceType": "community",
+      "url": "https://youtu.be/_Fi6R_df2Pc"
+    },
+    {
+      "label": "Meta Gems Explained video",
+      "sourceType": "community",
+      "url": "https://youtu.be/FN4oNxr50MQ"
+    },
+    {
+      "label": "Reddit — Charge Profusion discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Charge%20Profusion&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Charge Profusion 辅助宝石指南 —— 阶层、额外充能与可用生成器",
+    "description": "Charge Profusion 辅助宝石指南：I 阶对比 II 阶、同类型与随机额外充能、为何仅限充能生成技能、可用生成器矩阵（Combat Frenzy、Profane Ritual、Sniper's Mark、Siphoning Strike）、概率、元技能辅助消耗、故障排查与社区问答。",
+    "noindex": false
+  }
+}

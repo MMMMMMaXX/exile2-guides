@@ -1,0 +1,427 @@
+{
+  "id": "patch-0-4-0-druid-shapeshift-system",
+  "slug": "patch-0-4-0-druid-shapeshift-system",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 드루이드 및 변신 시스템: 탈리스만, 원시 스킬 그리고 구빌드가 깨지는 이유",
+  "shortTitle": "0.4.0 드루이드 / 변신",
+  "summary": "0.4.0에서 드루이드, 오라클, 샤먼이 게임에 추가된 방식, 탈리스만이 변신 무기인 이유, 그리고 0.4.0 이전 드루이드 빌드가 스킬 ID, 무기, 패시브 검증에서 실패하는 이유를 다룹니다.",
+  "description": "0.4.0 드루이드 및 변신 프레임워크에 대한 시스템 단위 역사입니다: 동물 폼, 원시 스킬, 계통 지원(Lineage Supports), 탈리스만 무기 규칙, 0.4.0i 치명타 조건 수정, 그리고 구 드루이드 구성에 대한 마이그레이션 가이드를 포함합니다.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "불곰 변신 폼의 Path of Exile 2 드루이드",
+  "tags": [
+    "builds",
+    "major-updates",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "빠른 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "드루이드 프레임워크는 0.4.0의 기계적 핵심입니다. 단일 스킬 라인이 아니라 시스템입니다. 동물 폼이 변신하고, 원시 스킬은 해당 폼 내부 또는 그 주변에서만 작동하며, 계통 지원은 원시 스킬로만 한정되고, 탈리스만 무기가 전체를 관장합니다.",
+        "이 시스템은 스킬 ID, 무기 요구 사항, 패시브 트리를 동시에 건드리기 때문에 구 외부 드루이드 빌드는 세 곳에서 독립적으로 깨집니다. 이 페이지는 각 실패를 분리해 설명하고 현재 규칙을 제시합니다."
+      ],
+      "bullets": [
+        "드루이드는 오라클 및 샤먼 승천(ascendancy)과 함께 등장",
+        "변신은 일반 지팡이가 아닌 탈리스만 무기를 사용",
+        "원시 스킬과 계통 지원은 폼에 종속(형태 제한)",
+        "0.4.0i가 방금 변신한 상태의 치명타 조건을 수정",
+        "0.4.0 이전 드루이드는 존재하지 않던 클래스를 참조"
+      ]
+    },
+    {
+      "id": "system-origin",
+      "order": 2,
+      "title": "시스템 기원",
+      "toc": true,
+      "visible": true,
+      "type": "system-origin",
+      "introducedIn": "0.4.0",
+      "sourceId": "official-0-4-0",
+      "paragraphs": [
+        "변신은 처음부터 강화 버프가 아니라 변신(transform)으로 설계되었습니다. 폼에 진입하면 무기 세트가 탈리스만의 폼 접두어로 교체되고, 그렇지 않으면 무력한 원시 스킬이 활성화됩니다.",
+        "계통 지원은 원시 스킬에만 부여할 수 있는 지원 티어를 제공하기 위해 도입되어, 일반 스킬로 복제될 수 없게 함으로써 드루이드의 정체성을 다른 캐스터와 구분했습니다."
+      ],
+      "bullets": [
+        "동물 폼은 토글 버프가 아닌 상태",
+        "원시 스킬은 의도한 효과를 내기 위해 활성 또는 최근 폼을 필요로 함",
+        "계통 지원은 원시 스킬에만 장착 가능"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 3,
+      "title": "역사적 맥락",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 얼리 액세스 — 0.4.0 드루이드 프레임워크",
+      "baselineNote": "아래 현재 규칙은 클라이언트 0.5.4e 기준으로 측정되었습니다.",
+      "paragraphs": [
+        "0.4.0 이전에는 드루이드가 없었으므로, 그 이전 시대의 모든 드루이드 빌드 영상은 추측이거나 다른 게임의 클래스를 언급하는 것입니다.",
+        "프레임워크는 기능적으로 완전한 상태로 출시되었지만, 한 달 이내에 0.4.0i가 해결한 치명타 조건 버그가 있었습니다."
+      ],
+      "bullets": [
+        "0.4.0 전체 드루이드 프레임워크 출시",
+        "0.4.0i 변신 치명타 조건 및 탈리스만 요구 사항 수정"
+      ]
+    },
+    {
+      "id": "class-map",
+      "order": 4,
+      "title": "클래스 및 승천 맵",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "드루이드 (기본 클래스)",
+          "verdict": "여전히 현재 유효",
+          "detail": "0.5.4e에서 선택 가능한 클래스이며, 변신 정체성이 유지됩니다."
+        },
+        {
+          "area": "오라클 (승천)",
+          "verdict": "여전히 현재 유효",
+          "detail": "워드/예언 성향의 드루이드 승천이며, 노드 클러스터의 정체성은 변하지 않았습니다."
+        },
+        {
+          "area": "샤먼 (승천)",
+          "verdict": "여전히 현재 유효",
+          "detail": "원소/소환 성향의 드루이드 승천입니다."
+        },
+        {
+          "area": "패시브 트리 노드",
+          "verdict": "250개 이상 추가, 여전히 현재 유효",
+          "detail": "드루이드 전용 클러스터가 존재하며, 과거의 '드루이드 노드 없음' 가이드는 틀렸습니다."
+        }
+      ]
+    },
+    {
+      "id": "weapon-rel",
+      "order": 5,
+      "title": "무기 및 스킬 관계",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.4.0 이전 가정",
+      "oldText": "'드루이드'는 다른 캐스터처럼 지팡이나 홀을 사용하고 일반 지원을 장착하면 그만이라고 여겼습니다.",
+      "newLabel": "0.4.0 규칙 (0.5.4e에도 동일)",
+      "newText": "변신은 탈리스만 무기를 필요로 하며, 원시 스킬은 활성 또는 최근 폼이 없으면 무력합니다. 계통 지원은 원시 스킬에만 맞습니다."
+    },
+    {
+      "id": "passive-impact",
+      "order": 6,
+      "title": "패시브 트리 영향",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "250개 이상의 드루이드 패시브 스킬",
+          "detail": "변신 지속시간, 원시 스킬 효과, 폼 치명타를 위한 새로운 클러스터입니다. 0.4.0 이전 패시브 플래너에는 이러한 노드가 없었습니다.",
+          "scope": "공식 0.4.0 노트"
+        },
+        {
+          "category": "new",
+          "title": "패시브의 폼 종속성",
+          "detail": "일부 드루이드 패시브는 변신 중에만 보너스를 부여하며, 이는 구 트리가 표현할 수 없던 상태입니다.",
+          "scope": "공식 0.4.0 노트"
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "order": 7,
+      "title": "중요한 0.4.x 수정",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "0.4.0i '방금 변신함' 치명타",
+          "detail": "폼을 빠져나간 후에도 치명타 조건이 이제 안정적으로 발동하여 베어/스프리건 치명타 빌드를 수정했습니다.",
+          "scope": "공식 0.4.0i 노트"
+        },
+        {
+          "category": "fix",
+          "title": "0.4.0i 탈리스만 요구 사항 검증",
+          "detail": "클라이언트가 이제 변신 접두어를 활성화하기 전 탈리스만 무기 요구 사항을 올바르게 검증합니다.",
+          "scope": "공식 0.4.0i 노트"
+        },
+        {
+          "category": "fix",
+          "title": "콘솔 크래시 수정",
+          "detail": "0.4.0i가 폼 교체 중 발생하던 여러 Xbox/PS5 클라이언트 크래시를 해결했습니다.",
+          "scope": "공식 0.4.0i 노트"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 8,
+      "title": "빌드 마이그레이션 가이드",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "지팡이 + 일반 지원을 사용하는 구 '드루이드' 구성",
+          "to": "탈리스만 무기 + 원시 스킬 + 계통 지원",
+          "note": "먼저 무기 베이스를 교체하세요. 원시 스킬은 탈리스만 없이는 무력합니다."
+        },
+        {
+          "from": "다른 캐스터에서 복사한 지원",
+          "to": "원시 스킬 전용 계통 지원",
+          "note": "계통 지원은 비원시 스킬에 장착되지 않습니다. 비원시 연결에는 일반 지원을 유지하세요."
+        },
+        {
+          "from": "드루이드 클러스터가 없는 패시브 트리",
+          "to": "0.4.0 드루이드 클러스터 추가 (폼 지속시간, 원시 효과)",
+          "note": "0.4.0 이전 플래너에는 이러한 노드가 전혀 없었습니다."
+        },
+        {
+          "from": "폼 상태를 무시한 치명타 스택",
+          "to": "'방금 변신함' 조건 고려 (0.4.0i 수정)",
+          "note": "0.4.0i 이후 이 조건은 폼 이후에 안정적으로 발동합니다."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "현재 적용 범위 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "탈리스만 무기 요구 사항",
+          "status": "still-current",
+          "currentSummary": "변신은 여전히 탈리스만을 필요로 하며, 0.4.0i의 요구 사항 검증 수정이 적용 중입니다.",
+          "supersededBy": "—",
+          "affectedContent": "탈리스만 아이템 페이지"
+        },
+        {
+          "topic": "원시 스킬의 폼 종속성",
+          "status": "still-current",
+          "currentSummary": "원시 스킬은 0.5.4e에서도 여전히 폼에 종속됩니다.",
+          "supersededBy": "—",
+          "affectedContent": "원시 스킬 페이지"
+        },
+        {
+          "topic": "계통 지원 제한",
+          "status": "still-current",
+          "currentSummary": "계통 지원은 여전히 원시 스킬에만 장착됩니다.",
+          "supersededBy": "—",
+          "affectedContent": "지원 젬 페이지"
+        },
+        {
+          "topic": "변신 치명타 조건",
+          "status": "changed-later",
+          "currentSummary": "0.4.0i가 수정했습니다. 이후 밸런스에서 치명타 수치가 조정되었을 수 있으나 조건은 작동합니다.",
+          "supersededBy": "0.4.0i, 0.5.x 밸런스",
+          "affectedContent": "베어 샤먼 드루이드 빌드"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 10,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "포럼 (0.4.0–0.4.0i)",
+          "context": "베어 빌드에서 폼을 빠져나간 후 치명타가 발동하지 않는다고 보고했습니다.",
+          "quote": "내 치명타 조건은 곰을 풀고 나면 절대 발동하지 않아요.",
+          "analysis": "0.4.0i에서 수정되었습니다. 0.5.4e에서는 조건이 작동하므로 구 불만은 더 이상 해당하지 않습니다."
+        },
+        {
+          "source": "Reddit (0.4.0 이전 '드루이드' 영상)",
+          "context": "0.4.0 이전에 '드루이드 빌드'라는 제목의 영상들은 존재하지 않던 클래스를 설명합니다.",
+          "quote": "이 가이드 전체가 아직 게임에 없는 클래스용이네요.",
+          "analysis": "당시에는 맞았으나 지금은 폐기되었습니다. 0.4.0 이후 드루이드 콘텐츠만 사용하세요."
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "영향을 받은 빌드 및 스킬",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "베어 샤먼 드루이드 빌드",
+          "type": "build",
+          "trigger": "드루이드 + 탈리스만 + 변신",
+          "action": "탈리스만 규칙과 0.4.0i 치명타 수정을 확인하세요.",
+          "status": "reviewing"
+        },
+        {
+          "name": "카타바의 불곰 대장장이",
+          "type": "build",
+          "trigger": "드루이드 변신",
+          "action": "원시 스킬 연결을 확인하세요.",
+          "status": "ready"
+        },
+        {
+          "name": "원시 스킬 페이지",
+          "type": "skill",
+          "trigger": "폼 종속성",
+          "action": "폼 요구 사항을 명시적으로 문서화하세요.",
+          "status": "queued"
+        },
+        {
+          "name": "탈리스만 아이템 페이지",
+          "type": "item",
+          "trigger": "무기 요구 사항",
+          "action": "변신 전제 조건을 명시하세요.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "역사적 영상",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 드루이드 변신 심층 분석",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "론칭 주간 드루이드 소개이며, 보여주는 탈리스만/원시 규칙은 여전히 대체로 맞지만 치명타 동작은 0.4.0i 이전을 반영합니다.",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "내 구 드루이드 빌드가 스킬이 유효하지 않다고 하는 이유는 무엇인가요?",
+          "answer": [
+            "드루이드는 0.4.0 이전에는 존재하지 않았고, 이 시스템은 탈리스만 무기와 폼 종속 원시 스킬을 필요로 하므로 현재 드루이드 프레임워크 위에서 다시 구성해야 합니다."
+          ]
+        },
+        {
+          "question": "계통 지원은 비원시 스킬에서 작동하나요?",
+          "answer": [
+            "아니요, 계통 지원은 설계상 원시 스킬에만 장착됩니다. 다른 연결에는 일반 지원을 사용하세요."
+          ]
+        },
+        {
+          "question": "변신 치명타 수정이 게임에 남아 있나요?",
+          "answer": [
+            "예, 0.4.0i의 방금 변신한 치명타 조건 수정은 0.5.4e에도 여전히 적용 중이며, 이후 밸런스 수치만 다를 수 있습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.4.0 패치 노트",
+          "description": "드루이드, 탈리스만, 원시 스킬, 계통 지원 및 패시브 추가.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0i 패치 노트",
+          "description": "변신 치명타 조건 및 탈리스만 요구 사항 수정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3987000"
+        },
+        {
+          "label": "PoE2 Wiki — 드루이드",
+          "description": "현재 상태의 드루이드 클래스 및 변신 데이터.",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid",
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.4.0 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0i 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3987000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 드루이드 및 변신 — 탈리스만, 원시 스킬 및 구빌드 마이그레이션",
+    "description": "0.4.0 이전 드루이드 빌드가 깨지는 이유와 0.5.4e에서 탈리스만 / 원시 스킬 / 계통 지원 시스템이 작동하는 방식.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-druid-shapeshift-system",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

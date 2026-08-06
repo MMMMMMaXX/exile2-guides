@@ -1,0 +1,1052 @@
+{
+  "id": "ed-contagion-lich",
+  "slug": "ed-contagion-lich",
+  "locale": "de",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Essence Drain Contagion Lich Build-Guide",
+  "shortTitle": "ED Contagion Lich",
+  "summary": "Ein quellenbasierter Chaos-DoT-Guide, der Gruppenausbreitung, Boss-Erhaltung und die Endgame-Entscheidung Full-Life oder Low-Life trennt.",
+  "description": "Komplette Anleitung für einen Path of Exile 2 Essence-Drain- und Contagion-Lich-Build auf der 0.5.4-Basislinie.",
+  "classId": "witch",
+  "ascendancyId": "lich",
+  "mainSkillIds": [
+    "essence-drain",
+    "contagion"
+  ],
+  "secondarySkillIds": [
+    "dark-effigy",
+    "despair",
+    "sigil-of-power",
+    "entangle",
+    "bonestorm"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium"
+  ],
+  "difficulty": "beginner",
+  "playstyleTags": [
+    "caster",
+    "chaos-dot",
+    "damage-over-time",
+    "mobile"
+  ],
+  "damageTypes": [
+    "chaos",
+    "damage-over-time"
+  ],
+  "bestFor": [
+    "league-start",
+    "mapping",
+    "mobile-bossing"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "cardImage": "/images/builds/covers/ed-contagion-lich.webp",
+  "imageAlt": "Ein Lich, der violettes Essence Drain und Contagion durch ein dunkles Gegnerpack ausbreitet",
+  "tags": [
+    "bossing",
+    "caster",
+    "chaos",
+    "dot",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lich",
+    "mobile",
+    "starter",
+    "witch"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "Build-Überblick",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "ED + Contagion ist effektiv, weil es die Zielauswahl in Ausbreitung verwandelt: Contagion markiert das Pack, Essence Drain liefert den schädigenden Debuff, und ein Tod trägt das Paket weiter. Der Build fühlt sich schlecht an, wenn diese beiden Zauber auf unzusammenhängende Ziele treffen – daher zählen Zielen und Pack-Reihenfolge mehr als eine weitere Zeile Schaden in der Tooltip-Anzeige.",
+        "Bei Bossen verschwindet die Ausbreitung. Der Build wird zu einem Erhaltungs-Aufbau: Halte Essence Drain aktiv, füge Despair nur hinzu, wenn das Ziel den Zauber rechtfertigt, halte Dark-Effigy-Totems aufrecht und bewege dich, während der Schaden über Zeit weiterläuft. Diese Beweglichkeit ist der Lohn für das Akzeptieren eines langsameren, gestaffelten Schadensanstiegs.",
+        "Dieser Guide trennt die drei echten Rhythmen – die Mapping-Aufräumschleife, die Boss-Eröffnungssequenz und die Anhaltende-Boss-Schleife –, damit die Zauberreihenfolge von Essence Drain, Contagion, Despair und Dark Effigy niemals mehrdeutig ist."
+      ],
+      "bullets": [
+        "Wende das Zwei-Fähigkeiten-Ausbreitungs-Setup auf ein Pack an, dann bewege dich, während der Schaden abläuft.",
+        "Erneuere Essence Drain und den gewählten Fluch, bevor ihre Abdeckung abläuft.",
+        "Gegen Bosse füge nur die Hilfsfähigkeiten hinzu, die für die gewählte Variante verifiziert sind; mische nicht jeden Button aus anderen Guides zusammen."
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "Vor- und Nachteile",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "Niedrige Ausrüstungshürde für den Kampagnenfortschritt.",
+        "Schaden läuft weiter, während sich der Spieler neu positioniert.",
+        "Contagion kann eine einzige erfolgreiche Anwendung in ein komplettes Pack-Aufräumen verwandeln."
+      ],
+      "cons": [
+        "Schaden ist verzögert statt sofort.",
+        "Bossing benötigt mehrere Debuffs oder Hilfsfähigkeiten.",
+        "Verschiedene Endgame-Guides sind sich bei Hilfsfähigkeiten und Verteidigung uneinig."
+      ],
+      "toc": false
+    },
+    {
+      "id": "combat-rotation",
+      "type": "playstyle",
+      "title": "Kampf-Rotationen",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "Der Build hat drei verschiedene Rhythmen. Mapping ist eine Ausbreitungsschleife, die Boss-Eröffnung ist eine feste Setup-Sequenz, und anhaltendes Bossing ist eine sich wiederholende Erhaltungsschleife. Diese zu vermischen – Contagion auf einen einsamen Boss zu wirken oder stillzustehen, um Essence Drain zu spammen – ist der häufigste Fehler.",
+        "Mapping-Rotation (Aufräumschleife): Wirke zuerst Contagion, sodass das Pack als ansteckend markiert ist, dann bringe Essence Drain auf ein beliebiges Ziel innerhalb dieses Bereichs. Da das Ziel ansteckend ist, kopiert die ED-Ausbreitung den DoT auf jeden nahen, von Contagion betroffenen Gegner. Bewege dich sofort; der Schaden läuft ab, während du dich neu positionierst. Dark Effigy kann gepflanzt werden, um ED/Despair am Cluster automatisch aufrechtzuerhalten.",
+        "Boss-Eröffnungs-Rotation (wie der Kampf beginnt): Eröffne mit Despair – dem Fluch, der den Chaos-Widerstand senkt und alles danach verstärkt. Dann pflanze Dark Effigy, den Totem/Support, der ED + Despair automatisch wirkt für eine Uptime ohne eigene Eingabe. Schließlich wende Essence Drain an, um den Haupt-DoT zu legen. Contagion wird bei einem einzelnen Boss normalerweise übersprungen, weil es nichts gibt, worauf es sich ausbreiten ließe.",
+        "Anhaltende Boss-Rotation (die sich wiederholende Schleife nach der Eröffnung): Wende Essence Drain erneut an, bevor seine Dauer abläuft, halte das Dark-Effigy-Totem am Leben und neu positioniert (es kann einen bewegten Boss verfehlen, also musst du ED selbst erneut wirken), erneuere Despair, wenn es abfällt, und bleibe zwischen den Mechaniken in Bewegung. Der Rhythmus ist Erneuern → Neu positionieren → Erneuern, niemals stationäres Zaubern."
+      ],
+      "bullets": [
+        "Mapping: Contagion → Essence Drain → bewegen (optional Dark Effigy).",
+        "Boss-Eröffnung: Despair → Dark Effigy → Essence Drain.",
+        "Anhaltend: Essence Drain erneuern → Dark Effigy halten → Despair erneuern → bewegen."
+      ],
+      "toc": false
+    },
+    {
+      "id": "spread-loop-visual",
+      "type": "figure",
+      "title": "Ziele die Ausbreitung auf ein gemeinsames Ziel",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/ed-contagion-lich-mechanic.webp",
+        "alt": "Redaktionelles Diagramm von Contagion und Essence Drain, die sich auf einem Ziel treffen, bevor sie sich ausbreiten",
+        "caption": "Contagion und Essence Drain müssen sich auf demselben Pack-Ziel treffen; der erste Tod trägt dann das Schadenspaket nach außen.",
+        "credit": "Originale redaktionelle Illustration von Exile2 Guides",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "Leveln",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Kampagnenstart (vor dem Kern)",
+          "body": [
+            "Bevor ED + Contagion freigeschaltet sind, nutze einen Chaos- oder Platzhalter-DoT-Zauber und stabilisiere Leben, Widerstände und Bewegungstempo. Erzwinge die DoT-Kette nicht früh."
+          ]
+        },
+        {
+          "label": "Akte 2–4 (Kern online)",
+          "body": [
+            "Nutze Essence Drain + Contagion, sobald verfügbar. Füge verlässlichen Single-Target-Support (Dark Effigy, Despair) hinzu, ohne die grundlegende Ausbreitungsschleife zu opfern."
+          ]
+        },
+        {
+          "label": "Kampagnenende",
+          "body": [
+            "Baue Energie-Schild und Regeneration auf, während du die Gem-Stufen hältst."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Entscheide, ob die standardmäßige Full-Life-Hülle oder später ein Low-Life-Übergang verfolgt wird."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "Gestaffelte Konfiguration",
+      "order": 45,
+      "visible": true,
+      "caption": "Was in jeder Stufe gespielt wird. Exakte Gem-Stufen und Support-Verbindungen bleiben PC-Verifizierung ausstehend; die Stufengrenzen und die Zauberreihenfolge sind der handlungsrelevante Teil.",
+      "columns": [
+        "Stufe",
+        "Hauptfähigkeit",
+        "Wichtiger Support",
+        "Passiv-Fokus",
+        "Ausrüstungsziel",
+        "Übergangsbedingung"
+      ],
+      "rows": [
+        {
+          "label": "Level 1–31 (Vor dem Kern)",
+          "cells": [
+            "Chaos-/Zauber-Übergang, noch nicht ED",
+            "Überleben + ein Platzhalter-DoT",
+            "Leben, Widerstände, Chaos-Knoten",
+            "Beliebige Zauberwaffe, Widerstände abdecken",
+            "Erreiche das Level, in dem ED + Contagion freigeschaltet werden"
+          ]
+        },
+        {
+          "label": "Leveling 31+",
+          "cells": [
+            "Essence Drain + Contagion (zuerst Contagion)",
+            "Supports PC-ausstehend",
+            "Chaos-DoT, Zaubertempo",
+            "Zauber-/Chaos-Waffe, Leben/ES",
+            "Mit stabiler Ausbreitung in Maps eintreten"
+          ]
+        },
+        {
+          "label": "Frühe Maps (Full-Life)",
+          "cells": [
+            "ED erhalten + Despair + Dark Effigy",
+            "Despair (Fluch), Dark Effigy (Totem)",
+            "Full-Life-Verteidigung, Chaos-Skalierung",
+            "Leben/ES, Widerstandsdeckel, DoT-Waffe",
+            "Stabile Boss-Uptime vor der Variantentrennung"
+          ]
+        },
+        {
+          "label": "Endgame (Low-Life)",
+          "cells": [
+            "Dasselbe Set, Low-Life-Hülle",
+            "Dasselbe + Low-Life-Aktivatoren",
+            "Low-Life-Verteidigungsknoten",
+            "Low-Life-Unique / Mechanismus",
+            "Nachdem die Full-Life-Checkliste bestanden ist"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "Fähigkeiten",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "Kernfähigkeiten",
+          "skills": [
+            {
+              "displayName": "Essence Drain",
+              "skillId": "essence-drain",
+              "role": "Primärer Chaos-DoT; der schädigende Debuff, der sich über Contagion ausbreitet.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es ist die Quelle des anhaltenden Chaos-Schadens – sobald es auf ein von Contagion betroffenes Ziel angewendet wird, breitet es sich auf das ganze Pack aus, und bei Bossen ist es der erhaltene DoT."
+              ],
+              "whenReplace": [
+                "Wird niemals ersetzt; es ist die Kern-Schadensfähigkeit vom Leveln bis zum Endgame. Nur Supports und Gem-Stufen ändern sich."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Wirke zuerst Contagion, dann Essence Drain auf ein Ziel darin, um die Ausbreitung auszulösen, dann bewege dich. Bossing: Halte die Essence-Drain-Uptime als sich wiederholenden DoT; das Totem kann helfen, aber bei einem bewegten Boss musst du es selbst erneut wirken."
+              ],
+              "notes": [
+                "Exakte Support-Verbindungen und Gem-Stufen sind PC-Verifizierung ausstehend."
+              ]
+            },
+            {
+              "displayName": "Contagion",
+              "skillId": "contagion",
+              "role": "Ausbreitungs-Aktivator; markiert Gegner als ansteckend, sodass sich Essence Drain ausbreitet.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es ist die Voraussetzung fürs Pack-Aufräumen: Ohne Contagion auf den Zielen breitet sich Essence Drain nicht aus. Wirke es vor Essence Drain."
+              ],
+              "whenReplace": [
+                "Behalte es im Mapping-Werkzeugkasten. Bei einem einzelnen isolierten Boss hat es kaum Nutzen (nichts, worauf es sich ausbreiten ließe); einige Varianten lassen es bei Bossen weg."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Zuerst in die Pack-Mitte wirken, um die Ausbreitung zu ermöglichen. Bossing: Bei einem einsamen Boss normalerweise übersprungen, es sei denn, es gibt Adds."
+              ],
+              "notes": [
+                "Ausbreitungsbedingung und Reichweite sind PC-Verifizierung ausstehend."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hilfs- und Supportfähigkeiten",
+          "skills": [
+            {
+              "displayName": "Dark Effigy",
+              "skillId": "dark-effigy",
+              "role": "Totem/Support, der Essence Drain (und Despair) automatisch wirkt, um den DoT ohne eigene Eingabe aufrechtzuerhalten.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es hält die ED/Despair-Uptime aufrecht, während du dich neu positionierst, und reduziert die manuelle Erneuerungslast."
+              ],
+              "whenReplace": [
+                "Behalte es für Bossing und dichtes Mapping; bei einem schnell bewegten Boss musst du ED dennoch manuell erneut anwenden, da das Totem fehlen kann."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Optional, auf einen Cluster pflanzen. Bossing: Bei Kampfbeginn pflanzen, am Leben und neu positioniert halten."
+              ],
+              "notes": [
+                "Uptime bei bewegten Bossen ist der bekannte Schwachpunkt; genauer Beitrag PC-Verifizierung ausstehend."
+              ]
+            },
+            {
+              "displayName": "Despair",
+              "skillId": "despair",
+              "role": "Fluch, der den Chaos-Widerstand des Ziels senkt und den DoT verstärkt.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Es ist der Fluch, der den ED-Schaden am verfluchten Ziel direkt erhöht; wende ihn an, bevor du dich auf den DoT festlegst."
+              ],
+              "whenReplace": [
+                "Behalte ihn; er ist der Single-Target-Verstärker, kein Schadenkonkurrent."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Optional auf Seltene, die überleben. Bossing: Zuerst bei Kampfbeginn anwenden, dann Uptime halten."
+              ],
+              "notes": [
+                "Fluch-Effekt / Gem-Stufe PC-Verifizierung ausstehend."
+              ]
+            },
+            {
+              "displayName": "Sigil of Power",
+              "skillId": "sigil-of-power",
+              "role": "Variantenabhängiger Buff-Bereich, der Schaden oder Verteidigung hinzufügt.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Einige Varianten nutzen es als Schaden-/Verteidigungsverstärker; behandle es als optional, bis der gewählte Guide es verifiziert."
+              ],
+              "whenReplace": [
+                "Variantenwahl; behalte es nur, wenn dein gewählter Planer es enthält."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Optional. Bossing: Optionaler Buff vor der Erhaltungsschleife."
+              ],
+              "notes": [
+                "Genauer Role PC-Verifizierung ausstehend."
+              ]
+            },
+            {
+              "displayName": "Entangle",
+              "skillId": "entangle",
+              "role": "Variantenabhängige Wurzel/Kontrolle, die das Zielen vereinfachen kann.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Community-Diskussionen behandeln es als Quality-of-Life-Alternative, die das präzise Zielen von ED überflüssig macht. Kein Schadenkonkurrent."
+              ],
+              "whenReplace": [
+                "Variantenwahl; einige Spieler bevorzugen es gegenüber striktem Zwei-Schritt-Zielen."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Optionale Kontrolle. Bossing: Im Allgemeinen nicht Teil der Boss-Schleife."
+              ],
+              "notes": [
+                "Rolle als Alternative PC-Verifizierung ausstehend."
+              ]
+            },
+            {
+              "displayName": "Bonestorm",
+              "skillId": "bonestorm",
+              "role": "Variantenabhängiges Flächen-Zauber, genutzt für dichte Packs oder als Boss-Werkzeug in einigen Guides.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Einige Guides nutzen es für zusätzlichen Druck auf dichte Packs oder als Single-Target-Option. Gleiche es mit deiner gewählten Variante ab."
+              ],
+              "whenReplace": [
+                "Variantenwahl; nicht Kern der ED + Contagion-Schleife."
+              ],
+              "mappingBossingDiff": [
+                "Mapping: Optional bei dichten Packs. Bossing: Optional in einigen Single-Target-Varianten."
+              ],
+              "notes": [
+                "Genauer Role PC-Verifizierung ausstehend."
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "Ascendancy",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Vorläufige Reihenfolge",
+          "body": [
+            "Folge dem gewählten aktuellen Guide, bestätige dann jeden Knoten im 0.5.4-Client vor der Veröffentlichung."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "Passivbaum",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Kampagne",
+          "body": [
+            "Nimm nur Knoten, die die aktuelle Leveling-Fähigkeit und defensive Anforderungen unterstützen."
+          ]
+        },
+        {
+          "label": "Frühe Maps",
+          "body": [
+            "Wechsle zur gewählten Build-Variante; kombiniere keine inkompatiblen Planer-Snapshots."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "Ausrüstung",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Waffe",
+          "recommendations": [
+            "Stufen zu relevanten Chaos- oder Zauberfähigkeiten",
+            "Chaos- oder Schaden-over-time-Skalierung"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Chaos-/Schaden-over-time-Skalierung auf der Basis",
+              "reason": "Skaliert das anhaltende ED-Paket direkt."
+            },
+            {
+              "tier": "recommended",
+              "label": "Fähigkeits-/Gem-Stufe zu relevanten Chaos-Fähigkeiten",
+              "reason": "Erhöht den Basis-DoT."
+            },
+            {
+              "tier": "optional",
+              "label": "Zaubertempo",
+              "reason": "Verbessert das Erneuerungstempo, nicht den Schadensboden."
+            },
+            {
+              "tier": "luxury",
+              "label": "Low-Life-aktivierende Affixe",
+              "reason": "Nur relevant bei der Low-Life-Variante."
+            }
+          ],
+          "notes": [
+            "Prüfe, ob Zauberstab, Zepter oder Fokus von der gewählten Route genutzt wird."
+          ]
+        },
+        {
+          "slot": "Fokus oder Schild",
+          "recommendations": [
+            "Energie-Schild",
+            "Defensive Suffixe"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Energie-Schild",
+              "reason": "Primäre Verteidigungsschicht beim Kiting."
+            },
+            {
+              "tier": "recommended",
+              "label": "Defensive Suffixe (Widerstände, Lebensregen)",
+              "reason": "Vervollständigt die Verteidigungshülle."
+            },
+            {
+              "tier": "optional",
+              "label": "Mana-Reservierung / Kostenmodifikatoren",
+              "reason": "Hilft, Auren oder Flüche auszuführen."
+            },
+            {
+              "tier": "luxury",
+              "label": "Low-Life-spezifische Fokus-Mods",
+              "reason": "Variantenbedingt."
+            }
+          ],
+          "notes": [
+            "Kopiere keinen Low-Life-Fokus in die Full-Life-Stufe."
+          ]
+        },
+        {
+          "slot": "Rüstung und Schmuck",
+          "recommendations": [
+            "Energie-Schild, Widerstände und Attribute",
+            "Kosten- oder Mana-Unterstützung bei Bedarf"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Widerstände und Leben/ES",
+              "reason": "Kein DPS gleicht das Sterben in Maps aus."
+            },
+            {
+              "tier": "recommended",
+              "label": "Attribute zum Ausrüsten von Gems",
+              "reason": "Ein Gem, das du nicht einfügen kannst, ist wertlos."
+            },
+            {
+              "tier": "optional",
+              "label": "Bewegungstempo an Stiefeln",
+              "reason": "Hilft, sich neu zu positionieren, während der DoT läuft."
+            },
+            {
+              "tier": "luxury",
+              "label": "Explizite Chaos-DoT-Affixe",
+              "reason": "Erst nach Lösung der Verteidigung."
+            }
+          ],
+          "notes": [
+            "Marktpreise sind bewusst weggelassen."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "Stat-Priorität",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "Fähigkeitsstufen",
+          "reason": "Unterstützen direkt das Haupt-Schaden-over-time-Paket."
+        },
+        {
+          "label": "Chaos- und DoT-Skalierung",
+          "reason": "Skalieren den anhaltenden Schaden statt eines unzusammenhängenden Treffers."
+        },
+        {
+          "label": "Zaubertempo",
+          "reason": "Verbessert das Anwendungsgefühl, ersetzt aber nicht die Schaddauer."
+        },
+        {
+          "label": "Energie-Schild und Regeneration",
+          "reason": "Der Build benötigt weiterhin einen vollständigen Verteidigungszustand beim Kiting."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "Upgrade-Priorität",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "Packs breiten sich nicht aus / Aufräumen ist langsam",
+          "symptom": "Normale Packs benötigen viele Neuzauber und die Ausbreitung startet nie sichtbar.",
+          "checks": [
+            "Ist Contagion tatsächlich vor Essence Drain angewendet?",
+            "Sind Haupt-Gem-Stufen und Supports aktuell für das Tier?"
+          ],
+          "upgrade": "Korrigiere die Zauberreihenfolge (Contagion → ED) und bringe die Haupt-Gems auf das Tier, bevor du Offensive kaufst."
+        },
+        {
+          "label": "Sterben in Maps oder Boss-Arenen",
+          "symptom": "Häufige Tode in T15+ oder Boss-Kämpfen.",
+          "checks": [
+            "Welche Widerstände sind ungedeckt?",
+            "Ist Leben/ES unter dem Content-Tier?",
+            "Sind Verteidigungsschichten aktiv?"
+          ],
+          "upgrade": "Decke Widerstände ab und stabilisiere ES/Leben vor jeder Schadensausrüstung."
+        },
+        {
+          "label": "Boss-Schaden ist niedrig",
+          "symptom": "Boss-Leben bewegt sich kaum trotz Zaubern.",
+          "checks": [
+            "Ist Despair am Boss aktiv?",
+            "Ist Dark Effigy am Leben und in Reichweite?",
+            "Ist die Essence-Drain-Uptime tatsächlich hoch?"
+          ],
+          "upgrade": "Repariere die Boss-Uptime (Despair → Effigy → ED), nicht die Waffe."
+        },
+        {
+          "label": "Mana geht aus",
+          "symptom": "Mana leert sich während eines Single-Target-Kampfes.",
+          "checks": [
+            "Nur auf Flasche vertraut?",
+            "Ist Kostenreduktion / Ableben / Regen aktiv?"
+          ],
+          "upgrade": "Behebe die Mana-Nachhaltigkeit (Kostenreduktion, Regen, Flasche), bevor du mehr Buttons hinzufügst."
+        },
+        {
+          "label": "Low-Life in Erwägung ziehen",
+          "symptom": "Mehr Boss-Schaden wollen und auf Low-Life-Teile schielen.",
+          "checks": [
+            "Sind Full-Life-Aufräumen, Boss-Uptime und Verteidigung stabil?",
+            "Wird Low-Life-Ausrüstung Widerstandsdeckel brechen oder Leben/ES senken?"
+          ],
+          "upgrade": "Wechsle zu Low-Life erst, nachdem die Checkliste bestanden ist; handle nicht Überleben gegen eine nur im Planer existierende Zahl."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "Mapping",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "Wirke Contagion in die Mitte eines verbundenen Packs, dann bringe Essence Drain auf ein Ziel darin – der ED-Debuff breitet sich auf jeden nahen, von Contagion betroffenen Gegner aus. Bewege dich sofort und beobachte, ob sich der Debuff ausbreitet, bevor du einen weiteren Zauber ausgibst. Dark Effigy kann gepflanzt werden, um ED/Despair am Cluster automatisch aufrechtzuerhalten.",
+        "Markiere ein dichtes Pack, bestätige, dass die Ausbreitung startet, dann gehe weiter. Schlägt die Ausbreitung fehl, prüfe die Fähigkeitsreihenfolge (Contagion muss zuerst), Reichweite, Dauer und ob das erste Ziel mit beiden Effekten starb."
+      ],
+      "bullets": [
+        "Contagion → Essence Drain → bewegen; optional Dark Effigy.",
+        "Korrigiere die Zauberreihenfolge, bevor du die Ausrüstung beschuldigst.",
+        "Reaktives Waffen-Upgrade, wenn die Aufräumgeschwindigkeit sinkt."
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "Bossing",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "Eröffne den Boss-Kampf in dieser Reihenfolge: Zuerst Despair (der Fluch, -Chaos-Widerstand), dann Dark Effigy (pflanze das Totem, sodass es ED + Despair automatisch anwendet), dann Essence Drain, um den Haupt-DoT zu legen. Contagion wird bei einem einsamen Boss normalerweise übersprungen, weil es nichts gibt, worauf es sich ausbreiten ließe.",
+        "Halte mit einer Schleife aus: Wende Essence Drain erneut an, bevor es abläuft, halte das Dark-Effigy-Totem am Leben und neu positioniert (es kann einen bewegten Boss verfehlen, also musst du ED selbst erneut wirken), erneuere Despair, wenn es abfällt, und bleibe zwischen den Mechaniken in Bewegung. Der Rhythmus ist Erneuern → Neu positionieren → Erneuern, kein stationäres Zaubern."
+      ],
+      "bullets": [
+        "Eröffnung: Despair → Dark Effigy → Essence Drain.",
+        "Erhaltung: ED erneuern → Effigy halten → Despair erneuern → bewegen.",
+        "Bei einem einzelnen Boss kein Contagion nötig."
+      ],
+      "toc": true
+    },
+    {
+      "id": "defensive-layers",
+      "type": "overview",
+      "title": "Verteidigungsschichten",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "Full-Life und Low-Life nutzen unterschiedliche Verteidigungs- und Reservierungsannahmen. Dieser Guide behandelt Full-Life als den sichereren redaktionellen Standard und lässt Low-Life in Überprüfung."
+      ],
+      "bullets": [
+        "Wende das Zwei-Fähigkeiten-Ausbreitungs-Setup auf ein Pack an, dann bewege dich, während der Schaden abläuft.",
+        "Erneuere Essence Drain und den gewählten Fluch, bevor ihre Abdeckung abläuft.",
+        "Gegen Bosse füge nur die Hilfsfähigkeiten hinzu, die für die gewählte Variante verifiziert sind; mische nicht jeden Button aus anderen Guides zusammen."
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "Wähle die richtige Aktion für das Ziel",
+      "order": 140,
+      "visible": true,
+      "caption": "Eine praktische Rotations-Tabelle, synthetisiert aus zwei schriftlichen Guides und Spielerdiskussion.",
+      "columns": [
+        "Normales Pack",
+        "Seltenes in einem Pack",
+        "Isolierter Boss"
+      ],
+      "rows": [
+        {
+          "label": "Eröffnen mit",
+          "cells": [
+            "Contagion",
+            "Contagion → Essence Drain",
+            "Essence Drain"
+          ]
+        },
+        {
+          "label": "Hinzufügen",
+          "cells": [
+            "Ein ED-Treffer",
+            "Despair, falls das Seltene überlebt",
+            "Despair + Dark Effigy"
+          ]
+        },
+        {
+          "label": "Bewegung",
+          "cells": [
+            "Bewegen, sobald Ausbreitung beginnt",
+            "Kreisen, während der DoT läuft",
+            "Erneuern zwischen Mechaniken"
+          ]
+        },
+        {
+          "label": "Häufige Verschwendung",
+          "cells": [
+            "Neuzaubern vor der Ausbreitung",
+            "ED außerhalb von Contagion zielen",
+            "Stillstehen, um ED zu spammen"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "Fehlerbehebung",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "Contagion breitet sich nicht aus",
+          "checks": [
+            "Bestätige, dass beide Effekte auf dem sterbenden Ziel liegen.",
+            "Prüfe die aktuelle Ausbreitungsbedingung und Reichweite im Spiel."
+          ]
+        },
+        {
+          "symptom": "Boss-Schaden ist niedrig",
+          "checks": [
+            "Miss die Uptime statt nur den Tooltip.",
+            "Bestätige, dass Fluch, Effigy und Hilfsfähigkeiten tatsächlich aktiv sind."
+          ]
+        },
+        {
+          "symptom": "Mana geht aus",
+          "checks": [
+            "Reduziere unnötige wiederholte Zauber.",
+            "Prüfe Flasche, Kosten und Regeneration, bevor du mehr Buttons hinzufügst."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "Antworten zu Zielen und Schaden über Zeit",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "Warum verschwindet ein Pack und das nächste bewegt sich kaum?",
+          "answer": [
+            "Das erfolgreiche Pack erhielt wahrscheinlich Contagion und Essence Drain auf derselben verbundenen Gruppe. Beim fehlgeschlagenen Pack traf ED möglicherweise außerhalb des Contagion-Sets oder die Monster waren zu weit getrennt, um sich auszubreiten."
+          ],
+          "bullets": [
+            "Ziele Contagion auf die Pack-Mitte.",
+            "Warte lange genug, um die erste Ausbreitung zu beobachten.",
+            "Nutze Gelände, um Monster vor dem Neuzaubern zu gruppieren."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Sollte ich stattdessen Entangle nutzen?",
+          "answer": [
+            "Nutze es, wenn du dir einfacheres Zielen wertschätzt. Community-Diskussionen behandeln es als Quality-of-Life-Alternative, nicht als Beweis, dass ED + Contagion ungültig ist. Der Tausch ist ein anderes Aufräummuster und Support-Paket."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "Was, wenn ich einen direkteren Caster will?",
+          "answer": [
+            "Der kalte Chronomancer-Weg hat einen direkteren Treffer-und-Einfrieren-Rhythmus, benötigt aber einen gestaffelten Gem-Tausch und engere Positionierung."
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/de/builds/cold-caster-chronomancer/",
+              "label": "Vergleiche Cold Caster Chronomancer"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "Build-Planer & Import",
+      "order": 165,
+      "visible": true,
+      "note": "Einfügbarer Import-String / .build PC-Verifizierung ausstehend. Nutze in der Zwischenzeit den Ersteller-Guide und das Planer-Werkzeug unten. Bestätige Knotenwahlen immer erneut in deinem eigenen Client.",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "Worüber sich die Community uneinig ist",
+      "order": 170,
+      "visible": true,
+      "note": "Anekdoten zeigen machbare Ansätze, kein garantiertes Fortschrittslimit.",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "0.5 ED + Contagion Erfahrungs-Thread",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/",
+          "statement": "Spieler berichten, dass das Paar auf mehreren Ascendancies vorankommt und sich früh einfach anfühlt, während ein Antwortender Entangle bevorzugt, weil es das präzise Zielen von ED und das Verwalten der Unearth-Ausbreitung überflüssig macht.",
+          "context": "Dies erklärt, warum der Build stark sein kann und sich dennoch für einen Spieler unangenehm anfühlt, der Zwei-Schritt-Zielen nicht mag."
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ronarray ED + Contagion Lich guide",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich",
+          "statement": "Der gepflegte Guide nutzt Contagion dann Essence Drain für Packs, fügt Despair nur bei Bedarf hinzu und hält Dark-Effigy-Totems für Bosse aktiv, während sich der Spieler bewegt.",
+          "context": "Diese Sequenz wird hier als Rotationsmodell genutzt, nicht als Behauptung kopiert, dass jedes gelistete Element obligatorisch ist."
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "Beobachte die Ausbreitung und Boss-Erhaltung",
+      "order": 175,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Community-Guide",
+          "label": "0.5 Schritt-für-Schritt ED + Contagion Gameplay",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "description": "Eine kampagnenorientierte Referenz für die Zielreihenfolge und wann das Setup seine Support-Schichten gewinnt.",
+          "takeaway": "Beobachte, wo Contagion relativ zum ersten Essence-Drain-Ziel landet.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Path of Exile 2 0.5 Chaos Witch Lich Starter-Build"
+            },
+            {
+              "time": "0:43",
+              "label": "Essence Drain + Contagion Kombination"
+            },
+            {
+              "time": "1:46",
+              "label": "Build-Setup der ersten Level"
+            },
+            {
+              "time": "3:47",
+              "label": "Erstes Spirit-Gem"
+            },
+            {
+              "time": "4:22",
+              "label": "Ergänzung ab Level 14"
+            },
+            {
+              "time": "5:08",
+              "label": "Priorität der Support-Gems"
+            },
+            {
+              "time": "6:32",
+              "label": "Prioritäten beim Ausrüstungs-Upgrade"
+            },
+            {
+              "time": "7:50",
+              "label": "Baum-Fortschritt"
+            },
+            {
+              "time": "8:28",
+              "label": "Ascendancy: Lich oder Infernalist"
+            },
+            {
+              "time": "9:53",
+              "label": "Hinzufügen von Orb of Storms"
+            },
+            {
+              "time": "10:56",
+              "label": "Über Bonestorm"
+            },
+            {
+              "time": "11:41",
+              "label": "Viel Spaß zum League-Start"
+            }
+          ]
+        },
+        {
+          "creator": "Community-Guide",
+          "label": "Endgame-Mechaniken und Boss-Gameplay",
+          "url": "https://youtu.be/r6ouLO-Y0sk",
+          "description": "Nutze dies, um die Boss-Erneuerungskadenz mit der schnelleren Mapping-Schleife zu vergleichen.",
+          "takeaway": "Zähle Erhaltungs-Zauber, dann notiere, wie viel Zeit sicher in Bewegung verbracht wird.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Endgame-Build-Überblick (Ersteller lieferte keine Kapitel)"
+            },
+            {
+              "time": "2:00",
+              "label": "Boss-Setup-Rotation (ungefähr, Verifizierung ausstehend)"
+            },
+            {
+              "time": "5:00",
+              "label": "Mapping- vs. Bossing-Kadenz (ungefähr, Verifizierung ausstehend)"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Quellen und Verifizierung",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Offizielle Quelle",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "Ronarray ED + Contagion Lich guide",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "PoE2Path ED Contagion Lich Guide",
+          "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "0.5 ED/C Kampagnen-Guide",
+          "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "0.5 Schritt-für-Schritt-Gameplay-Video",
+          "url": "https://youtu.be/qbrEeLZzuqI"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "Endgame-Gameplay- und Mechanik-Video",
+          "url": "https://youtu.be/r6ouLO-Y0sk"
+        },
+        {
+          "label": "Mobalytics Build-Planer-Export",
+          "description": "Externes Werkzeug",
+          "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+        },
+        {
+          "label": "Community-Diskussion",
+          "description": "Community-Diskussion: wie sich ED + Contagion in 0.5 anfühlt",
+          "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "Änderungsprotokoll",
+      "order": 190,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "Erstellte den quellenbasierten 0.5.4-Build-Guide; PC-Verifizierung steht aus."
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "Umgeschrieben auf erweitertes Schema: Kampf-Rotation mit drei expliziten Blöcken hinzugefügt (Mapping / Boss-Eröffnung / Anhaltendes Bossing), Tabelle Gestaffelte Konfiguration, Build-Planer-Eintrag, statPriorities pro Slot und symptombasierte Upgrade-Priorität. Zauberreihenfolge von Essence Drain, Contagion, Despair und Dark Effigy getrennt."
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patchnotizen",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray ED + Contagion Lich guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "PoE2Path ED Contagion Lich Guide",
+      "sourceType": "community",
+      "url": "https://poe2path.com/guides/ed-contagion-lich-build/"
+    },
+    {
+      "label": "0.5 ED/C Kampagnen-Guide",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/4-5-hour-ed-c-campaign-guide"
+    },
+    {
+      "label": "0.5 Schritt-für-Schritt-Gameplay-Video",
+      "sourceType": "community",
+      "url": "https://youtu.be/qbrEeLZzuqI"
+    },
+    {
+      "label": "Endgame-Gameplay- und Mechanik-Video",
+      "sourceType": "community",
+      "url": "https://youtu.be/r6ouLO-Y0sk"
+    },
+    {
+      "label": "Mobalytics Build-Planer-Export",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/ronarray-minion-lich"
+    },
+    {
+      "label": "Community-Diskussion: wie sich ED + Contagion in 0.5 anfühlt",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/comments/1tvdbbv/how_goodor_bad_is_essence_drain_contagion/"
+    }
+  ],
+  "seo": {
+    "title": "Essence Drain Contagion Lich Build-Guide",
+    "description": "Komplette Anleitung für einen Path of Exile 2 Essence-Drain- und Contagion-Lich-Build auf der 0.5.4-Basislinie.",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ed-contagion-lich",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,0 +1,1251 @@
+{
+  "id": "controlled-metamorphosis",
+  "slug": "controlled-metamorphosis",
+  "locale": "es",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Controlled Metamorphosis: tamaño del anillo, coste de resistencia y puntos de pasiva ahorrados en 0.5",
+  "shortTitle": "Controlled Metamorphosis",
+  "summary": "Controlled Metamorphosis es una Joya Diamante Única de Path of Exile 2 0.5.4 que crea un radio en forma de anillo (anillo anular) para la asignación remota de pasivas y aplica -(20-5)% a todas las Resistencias Elementales. Esta guía cubre los ocho tamaños de anillo, por qué no es un radio circular normal, cómo se calcula la penalización de Resistencia Elemental, la eliminación de la antigua penalización de Resistencia de Caos en 0.4.0, las vueltas con Orbe Divino, la tabla de Coste-Beneficio, y cómo difiere de From Nothing.",
+  "description": "Cómo funciona Controlled Metamorphosis en PoE2 0.5.4: un Diamante Único con un radio de anillo variable para asignación remota, el coste de Resistencia Elemental, el drop de Xesht +4, y la planificación de builds.",
+  "itemType": "ring-radius",
+  "rarity": "unique",
+  "requiredLevel": null,
+  "useCases": [
+    "remote-allocation",
+    "ring-radius",
+    "passive-point-saving"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-jewels",
+  "itemClass": "jewel",
+  "baseType": "diamond",
+  "patch": "Path of Exile 2 Acceso Anticipado 0.5.4",
+  "league": "Acceso Anticipado",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/the-masters-reach-hero.webp",
+  "cardImage": "/images/items/the-masters-reach-hero.webp",
+  "imageAlt": "Controlled Metamorphosis, Joya Diamante Única de Path of Exile 2 que crea un radio en forma de anillo para la asignación remota de pasivas con una penalización de Resistencia Elemental",
+  "tags": [
+    "unique-jewel",
+    "ring-radius",
+    "remote-allocation",
+    "passive-point-saving",
+    "elemental-resistance",
+    "diamond",
+    "breach",
+    "xesht"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Controlled Metamorphosis es una Joya Diamante Única que forma dos anillos (un anillo anular) alrededor de su engarce. Las pasivas que caen dentro de la banda del anillo se pueden asignar sin estar conectadas, pero los nodos del círculo interior no hacen nada. Aplica -(20-5)% a todas las Resistencias Elementales (la antigua penalización de Resistencia de Caos se eliminó en 0.4.0). Siempre está Corrupto, no se puede convertir con Orbe de Azar, y solo se obtiene de Xesht, We That Are One a +4 Breach.",
+      "calloutDetail": [
+        "El tamaño del anillo tira 1-8 (Muy Pequeño a Masivo) y es independiente de la penalización de resistencia: un anillo Masivo con -5% Elemental es la mejor copia.",
+        "Sigues pagando el punto de pasiva por cada nodo que asignas; la joya solo elimina el requisito de trazado."
+      ],
+      "answers": [
+        {
+          "label": "Úsalo para",
+          "text": [
+            "Árboles extendidos donde los nodos útiles se sitúan en un perímetro alrededor de un engarce central al que puedes llegar."
+          ]
+        },
+        {
+          "label": "Comprueba primero",
+          "text": [
+            "Lee el tamaño del anillo (1-8) y el valor de Resistencia Elemental antes de comprar; más grande no es automáticamente mejor."
+          ]
+        },
+        {
+          "label": "Evita",
+          "text": [
+            "Suponer que el círculo interior asigna, o que la joya sigue teniendo una penalización de Resistencia de Caos en 0.5.4."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#ring-size-comparison",
+          "label": "Comparativa de tamaños de anillo"
+        },
+        {
+          "href": "#cost-benefit",
+          "label": "Tabla de Coste-Beneficio"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Datos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Tipo base",
+          "value": "Diamond",
+          "note": [
+            "Controlled Metamorphosis es una variante Única de la base Joya Diamante."
+          ]
+        },
+        {
+          "label": "Nivel requerido",
+          "value": "20",
+          "note": [
+            "Confirmado por la entrada de poe2dictionary; un umbral bajo para una joya de endgame."
+          ]
+        },
+        {
+          "label": "Limitado a",
+          "value": "1",
+          "note": [
+            "Solo una Controlled Metamorphosis puede estar activa por árbol de pasivas."
+          ]
+        },
+        {
+          "label": "Radio",
+          "value": "Anillo variable (1-8)",
+          "note": [
+            "Un anillo anular, no un disco; solo la banda del anillo asigna nodos."
+          ]
+        },
+        {
+          "label": "Resistencia",
+          "value": "-(20-5)% todas las Elementales",
+          "note": [
+            "La 0.5.4 actual no tiene penalización de Resistencia de Caos; se eliminó en 0.4.0."
+          ]
+        },
+        {
+          "label": "Fuente de drop",
+          "value": "Xesht, We That Are One (+4 Breach)",
+          "note": [
+            "Se obtiene del jefe pinnacle de Breach a Dificultad 4; no es compatible con Orbe de Azar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Resumen de la familia: Joyas Diamante Únicas",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Controlled Metamorphosis pertenece a la familia de Joyas Diamante Únicas: cinco joyas que habilitan builds y reescriben cómo se usa el árbol de pasivas. Cada miembro resuelve un problema distinto del árbol."
+      ],
+      "members": [
+        {
+          "id": "against-the-darkness",
+          "eyebrow": "Atributo de radio",
+          "title": "Against the Darkness",
+          "sub": "Time-Lost Diamond",
+          "body": [
+            "Genera dos modificadores de radio aleatorios que potencian las pasivas pequeñas dentro de su radio."
+          ],
+          "tags": [
+            "radius",
+            "attribute-stacking"
+          ]
+        },
+        {
+          "id": "from-nothing",
+          "eyebrow": "Keystone remota",
+          "title": "From Nothing",
+          "sub": "Radio de disco fijo",
+          "body": [
+            "Asigna pasivas remotamente alrededor de un Keystone vinculado sin coste de resistencia."
+          ],
+          "tags": [
+            "remote-allocation",
+            "passive-point-saving"
+          ]
+        },
+        {
+          "id": "the-adorned",
+          "eyebrow": "Amplificador de joyas mágicas",
+          "title": "The Adorned",
+          "sub": "Amplificador mágico corrupto",
+          "body": [
+            "Amplifica el efecto de las Joyas Mágicas corruptas engarzadas cerca."
+          ],
+          "tags": [
+            "magic-jewels",
+            "effect-scaling"
+          ]
+        },
+        {
+          "id": "megalomaniac",
+          "eyebrow": "Notables aleatorias",
+          "title": "Megalomaniac",
+          "sub": "Asignador de Notables",
+          "body": [
+            "Otorga de una a tres Notables aleatorias directamente asignables sin trazado."
+          ],
+          "tags": [
+            "notable-allocation",
+            "passive-point-saving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propiedades y líneas de modificador",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Tipo base",
+          "value": "Diamond",
+          "notes": [
+            "La base de joya que ocupa un Engarce de Joya en el árbol de pasivas."
+          ]
+        },
+        {
+          "label": "Rareza",
+          "value": "Unique",
+          "notes": [
+            "Una joya Única que habilita builds."
+          ]
+        },
+        {
+          "label": "Nivel requerido",
+          "value": "20",
+          "notes": [
+            "Equipa una vez tu personaje alcance el nivel 20."
+          ]
+        },
+        {
+          "label": "Limitado a",
+          "value": "1",
+          "notes": [
+            "Solo una copia puede estar activa por árbol de pasivas."
+          ]
+        },
+        {
+          "label": "Radio",
+          "value": "Anillo variable, tira 1-8",
+          "notes": [
+            "Un anillo anular (dos anillos). Valores: 1 Muy Pequeño, 2 Pequeño, 3 Mediano-Pequeño, 4 Mediano, 5 Mediano-Grande, 6 Grande, 7 Grande-Muy Grande, 8 Masivo."
+          ]
+        },
+        {
+          "label": "Explícito - asignación remota",
+          "value": "Las pasivas en el Radio se pueden Asignar sin estar conectadas a tu árbol",
+          "notes": [
+            "Solo la banda del anillo asigna; el círculo interior no."
+          ]
+        },
+        {
+          "label": "Explícito - límite del anillo",
+          "value": "Solo afecta a las Pasivas en el Anillo (Muy Pequeño-Masivo)",
+          "notes": [
+            "Confirma la forma de anillo anular en lugar de un disco completo."
+          ]
+        },
+        {
+          "label": "Explícito - resistencia",
+          "value": "-(20-5)% a todas las Resistencias Elementales",
+          "notes": [
+            "La 0.5.4 actual no tiene línea de Resistencia de Caos; se eliminó en 0.4.0."
+          ]
+        },
+        {
+          "label": "Corrupto",
+          "value": "Sí, siempre",
+          "notes": [
+            "Corrupto desde su aparición: no se puede convertir con Orbe de Azar; un Orbe Divino puede volver a tirar sus valores variables."
+          ]
+        },
+        {
+          "label": "Drop",
+          "value": "Xesht, We That Are One, Dificultad 4",
+          "notes": [
+            "Requiere una Piedra de Breach en la Puerta del Reino y progreso de +4 Breach en el Atlas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Resumen, visualización del tamaño del anillo y actual frente a legado",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Controlled Metamorphosis es la única Joya Única cuya zona de asignación es un anillo (un anillo anular) en lugar de un círculo relleno. Cuando se engarza en un Engarce de Joya asignado, dibuja dos anillos concéntricos: un anillo interior y un anillo exterior. Cualquier nodo de pasiva que caiga sobre la banda entre esos dos anillos —el anillo anular— se puede asignar sin estar conectado a tu árbol. Crucialmente, el espacio dentro del anillo interior está muerto: los nodos allí no se pueden tomar a través de la joya, que es la mayor sorpresa para los nuevos usuarios que esperan un radio circular normal.",
+        "Imagina el árbol de pasivas como una cuadrícula de nodos. Coloca el Engarce de Joya en el centro. Traza un círculo pequeño de radio r1 (el anillo interior) y un círculo mayor de radio r2 (el anillo exterior) a su alrededor. El anillo anular es la banda en forma de dona entre r1 y r2. Los nodos situados en esa dona son alcanzables; los nodos estrictamente dentro de r1 y los nodos fuera de r2 no lo son. Como la banda es fina, el valor del tamaño del anillo (1-8) decide cuántos nodos útiles caen sobre ella, por lo que un anillo más grande no es automáticamente mejor: depende de si tus nodos objetivo realmente se sitúan en la banda a ese tamaño.",
+        "La joya también aplica -(20-5)% a todas las Resistencias Elementales. Esta penalización es independiente del tamaño del anillo: cada copia, desde Muy Pequeña hasta Masiva, puede tirar cualquier valor dentro de ese rango, y un anillo Masivo con un valor de -5% es la combinación más valiosa. Sigues pagando el punto de pasiva por cada nodo que asignas; la joya solo elimina el requisito de trazado, por lo que el ahorro son los puntos de trazado que omites.",
+        "Actual frente a legado: antes del parche 0.4.0, Controlled Metamorphosis también aplicaba -(23-3)% a la Resistencia de Caos. Esa línea de Caos se eliminó en 0.4.0 y no vuelve en los drops nuevos de 0.5.4; solo permanece la penalización Elemental. Las copias legadas obtenidas antes de 0.4.0 conservan su penalización de Caos. También existe un caso límite documentado donde un valor corrupto de 9 o superior (fuera del rango 1-8) hace que el modificador de tamaño del anillo desaparezca y la joya no forme anillo; trata cualquier copia así como un valor atípico afectado por un error y comercia solo por tiradas válidas de 1-8."
+      ],
+      "bullets": [
+        "La zona de asignación es un anillo anular (dos anillos), no un disco relleno.",
+        "El círculo interior es espacio muerto; solo la banda del anillo asigna.",
+        "El tamaño del anillo tira 1-8 (Muy Pequeño a Masivo), independiente de la resistencia.",
+        "Penalización de resistencia: -(20-5)% todas las Elementales; sin línea de Caos en 0.5.4.",
+        "Sigues pagando el punto por cada nodo; solo se omite el trazado.",
+        "Las copias legadas anteriores a 0.4.0 conservaban una penalización de Resistencia de Caos; los drops nuevos no."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Elegibilidad: qué puede alcanzar el anillo",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Solo el anillo anular —la banda entre el anillo interior y el exterior— asigna nodos. El círculo interior y todo lo que esté más allá del anillo exterior quedan excluidos."
+      ],
+      "columns": [
+        "Resultado",
+        "Detalle"
+      ],
+      "rows": [
+        {
+          "label": "Nodos en la banda del anillo (anillo anular)",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Asignables de forma remota"
+            },
+            {
+              "kind": "text",
+              "text": "Ambos anillos del anillo anular asignan nodos; esta es la única zona que funciona."
+            }
+          ]
+        },
+        {
+          "label": "Nodos en el círculo interior",
+          "values": [
+            {
+              "kind": "no",
+              "text": "No asignables"
+            },
+            {
+              "kind": "text",
+              "text": "A diferencia de un radio circular normal, el espacio entre los dos anillos no hace nada."
+            }
+          ]
+        },
+        {
+          "label": "Nodos fuera del anillo exterior",
+          "values": [
+            {
+              "kind": "no",
+              "text": "No asignables"
+            },
+            {
+              "kind": "text",
+              "text": "Más allá del anillo exterior debes trazar normalmente."
+            }
+          ]
+        },
+        {
+          "label": "El propio Engarce de Joya",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Debe estar asignado"
+            },
+            {
+              "kind": "text",
+              "text": "El engarce debe estar ya asignado en el árbol antes de que se forme el anillo."
+            }
+          ]
+        },
+        {
+          "label": "Resistencias Elementales",
+          "values": [
+            {
+              "kind": "text",
+              "text": "Penalizadas -(20-5)%"
+            },
+            {
+              "kind": "text",
+              "text": "Cada copia reduce todas las Resistencias Elementales; el equipo debe compensar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Uso: engarzar, leer la tirada, asignar",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Alcanza un Engarce de Joya asignado",
+          "body": [
+            "Engarza la joya en cualquier Engarce de Joya asignado; el engarce debe estar ya asignado antes de que se forme el anillo."
+          ]
+        },
+        {
+          "label": "Lee el tamaño del anillo obtenido",
+          "body": [
+            "La joya tira un tamaño de anillo 1-8 (Muy Pequeño a Masivo) y una penalización de Resistencia Elemental -(20-5)%. Ambos se fijan con el drop/corrupción."
+          ]
+        },
+        {
+          "label": "Asigna la banda del anillo",
+          "body": [
+            "Los nodos que caen dentro de los dos anillos (el anillo anular) se pueden asignar sin conexión. El círculo interior es espacio muerto."
+          ]
+        },
+        {
+          "label": "Compensa las resistencias",
+          "body": [
+            "Recupera las Resistencias Elementales perdidas en los sufijos del equipo; los builds con Inoculación de Caos ignoran la penalización por completo."
+          ]
+        },
+        {
+          "label": "Diviniza para mejorar (opcional)",
+          "body": [
+            "Un Orbe Divino vuelve a tirar la penalización de Resistencia Elemental hacia -5% y puede volver a tirar el tamaño del anillo dentro de 1-8."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Trazar hasta un grupo perimetral alrededor de un engarce central cuesta cada nodo intermedio entre tu árbol y esa banda."
+        ],
+        "after": [
+          "Esos mismos nodos perimetrales se asignan directamente desde la banda del anillo, omitiendo el camino de conexión."
+        ],
+        "note": "La joya intercambia un Engarce de Joya más sufijos de Resistencia Elemental por los puntos de trazado que omites en la banda del anillo."
+      }
+    },
+    {
+      "id": "ring-size-comparison",
+      "order": 66,
+      "title": "Comparativa de tamaños de anillo",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "La tirada del tamaño del anillo (1-8) decide el alcance del anillo anular. Más grande no es automáticamente mejor: depende de dónde se sitúan tus nodos objetivo. La penalización de Resistencia Elemental es independiente del tamaño del anillo.",
+      "columns": [
+        {
+          "key": "size",
+          "label": "Tamaño del anillo (tirada)"
+        },
+        {
+          "key": "name",
+          "label": "Nombre"
+        },
+        {
+          "key": "reach",
+          "label": "Alcance aprox. del anillo"
+        },
+        {
+          "key": "use",
+          "label": "Mejor cuando"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "size": "1",
+            "name": "Very Small",
+            "reach": "Anillo anular más ajustado",
+            "use": "Los nodos objetivo están justo fuera del engarce"
+          },
+          "tags": [
+            "very-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "2",
+            "name": "Small",
+            "reach": "Anillo anular pequeño",
+            "use": "Nodos perimetrales cercanos"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "3",
+            "name": "Medium-Small",
+            "reach": "Anillo anular mediano-pequeño",
+            "use": "Grupos cercanos mezclados"
+          },
+          "tags": [
+            "medium-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "4",
+            "name": "Medium",
+            "reach": "Anillo anular mediano",
+            "use": "Colocación equilibrada común"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "size": "5",
+            "name": "Medium-Large",
+            "reach": "Anillo anular mediano-grande",
+            "use": "Nodos perimetrales dispersos"
+          },
+          "tags": [
+            "medium-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "6",
+            "name": "Large",
+            "reach": "Anillo anular grande",
+            "use": "Gran alcance desde un engarce central"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "7",
+            "name": "Large-Very Large",
+            "reach": "Anillo anular grande-muy grande",
+            "use": "Nodos perimetrales muy dispersos"
+          },
+          "tags": [
+            "large-very-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "8",
+            "name": "Massive",
+            "reach": "Anillo anular más amplio",
+            "use": "Cobertura máxima; más valioso en el comercio"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "Solo la banda entre los dos anillos asigna. Un anillo Masivo es más valioso cuando tus nodos objetivo realmente se sitúan en su banda y tu equipo de resistencia puede absorber la penalización."
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Resultados por situación",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "ring-radius",
+        "passive-point-saving",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Árbol extendido, nodos perimetrales en la banda",
+          "audience": "Builds de árbol de pasivas amplio",
+          "benefit": "Omite muchos puntos de trazado hacia un grupo perimetral",
+          "risk": "Bajo (si el tamaño del anillo encaja)",
+          "level": "low",
+          "recommendation": "Excelente opción cuando los nodos objetivo caen en la banda obtenida.",
+          "tags": [
+            "ring-radius"
+          ]
+        },
+        {
+          "scenario": "Build de Inoculación de Caos",
+          "audience": "Builds CI",
+          "benefit": "La penalización Elemental es el único coste; el alcance del anillo es gratis",
+          "risk": "Bajo",
+          "level": "low",
+          "recommendation": "CI hace que la penalización de resistencia sea mucho más fácil de aceptar.",
+          "tags": [
+            "build-enabling"
+          ]
+        },
+        {
+          "scenario": "Tamaño de anillo incorrecto para el build",
+          "audience": "Compradores por impulso",
+          "benefit": "Algunos nodos remotos",
+          "risk": "Alto (nodos útiles en el círculo interior muerto)",
+          "level": "high",
+          "recommendation": "Elige el tamaño de anillo que cubre tus nodos objetivo; mayor no siempre es mejor.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Resistencias no compensadas",
+          "audience": "Builds frágiles",
+          "benefit": "Alcance del anillo",
+          "risk": "Alto (muerte por daño elemental)",
+          "level": "high",
+          "recommendation": "Recupera las Resistencias Elementales en los sufijos antes de comprometerte."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Uso en builds",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Controlled Metamorphosis compensa cuando los nodos útiles de un build forman un perímetro alrededor de un engarce al que ya puede llegar. Las cuatro personas siguientes muestran dónde brilla."
+      ],
+      "builds": [
+        {
+          "title": "Builds de árbol de pasivas amplio",
+          "description": "Árboles extendidos donde los nodos útiles se sitúan en un perímetro alrededor de un engarce central.",
+          "href": "/en/items/jewels-and-jewel-sockets/"
+        },
+        {
+          "title": "Builds de Inoculación de Caos",
+          "description": "CI hace que la penalización Elemental (y antes la de Caos) sea irrelevante, por lo que conservas el alcance del anillo gratis.",
+          "href": "/en/items/ghostwrithe/"
+        },
+        {
+          "title": "Builds con resistencias apiladas",
+          "description": "Los builds que ya superan el tope de Resistencias Elementales pueden absorber la penalización y seguir ganando alcance del anillo."
+        },
+        {
+          "title": "Builds del pinnacle de Breach",
+          "description": "Encaja naturalmente con las rutas de farmeo de Xesht y la planificación endgame de Breach.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternativas",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Una Joya Diamante normal o Rara otorga estadísticas planas por el mismo engarce sin coste de resistencia ni apuesta por el tamaño del anillo. Si tus nodos objetivo son baratos de trazar, una joya Rara suele ser el valor más seguro.",
+        "From Nothing es la prima hermana más cercana: también asigna remotamente, pero mediante un disco fijo alrededor de un Keystone vinculado y sin penalización de resistencia, a costa de estar bloqueada por Keystone. Megalomaniac otorga Notables aleatorias directamente. Against the Darkness potencia las pasivas pequeñas en un radio. Elige según lo que tu árbol realmente necesite.",
+        "Como Controlled Metamorphosis cuesta sufijos de Resistencia Elemental, la alternativa real a menudo es simplemente trazar normalmente y usar el engarce para una joya Rara o una única amigable con la resistencia; solo compro méte cuando el trazado omitido supere claramente la pérdida de sufijos."
+      ],
+      "bullets": [
+        "Joya Diamante Rara: estadísticas flexibles, sin coste de resistencia.",
+        "From Nothing: asignación remota de disco fijo, sin coste de resistencia, bloqueada por Keystone.",
+        "Megalomaniac: asignación directa de Notables aleatorias.",
+        "Trazado normal: a menudo más barato que una copia de anillo incorrecto."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Valoración: usar, vender o conservar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "El valor de Controlled Metamorphosis escala con el tamaño del anillo y la tirada de Resistencia Elemental. Los anillos Masivos con -5% Elemental son los más caros; los anillos pequeños con -20% son los más baratos.",
+        "Los precios siguientes reflejan el sitio de comercio del Acceso Anticipado 0.5.4 a principios de agosto de 2026 y cambian constantemente con la oferta y la demanda."
+      ],
+      "use": {
+        "condition": "Los nodos perimetrales útiles caen dentro de tu anillo obtenido y puedes absorber la pérdida de resistencia",
+        "first": "Engárzala, asigna la banda del anillo, recupera resistencias en el equipo",
+        "risk": "La penalización de resistencia consume ranuras de sufijo; un tamaño de anillo incorrecto desperdicia el engarce",
+        "text": [
+          "Para el tamaño de anillo correcto ofrece asignación remota que ninguna otra joya ofrece."
+        ]
+      },
+      "sell": {
+        "condition": "El tamaño del anillo o la tirada de resistencia no encajan en tu build",
+        "first": "Publica por tamaño de anillo (1-8) y tirada de resistencia; Masivo + baja penalización exige precio premium",
+        "risk": "Líquido pero sensible al tamaño",
+        "text": [
+          "Los precios de comercio siguen primero el tamaño del anillo y luego la resistencia."
+        ]
+      },
+      "hold": {
+        "condition": "Encontraste una copia Masiva / de baja penalización",
+        "first": "Consérvala; las copias grandes de baja penalización mantienen el valor",
+        "risk": "Solo inventario",
+        "text": [
+          "Una copia bien tirada es un activo a largo plazo para builds de alcance de anillo."
+        ]
+      }
+    },
+    {
+      "id": "cost-benefit",
+      "order": 116,
+      "title": "Tabla de Coste-Beneficio",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Los puntos netos ahorrados son ilustrativos; el coste real son los sufijos de equipo que gastas recuperando la penalización de Resistencia Elemental.",
+      "columns": [
+        {
+          "key": "variant",
+          "label": "Variante de anillo"
+        },
+        {
+          "key": "reach",
+          "label": "Nodos alcanzables"
+        },
+        {
+          "key": "saved",
+          "label": "Puntos netos ahorrados"
+        },
+        {
+          "key": "resist",
+          "label": "Coste de resistencia"
+        },
+        {
+          "key": "gear",
+          "label": "Coste de sufijo de equipo"
+        },
+        {
+          "key": "build",
+          "label": "Encaje del build"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "variant": "Small",
+            "reach": "Pocos nodos perimetrales",
+            "saved": "Bajo (1-3)",
+            "resist": "-(20-5)% Elemental",
+            "gear": "1-2 sufijos para recuperar",
+            "build": "Nodos ya cerca del engarce"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Medium",
+            "reach": "Perímetro moderado",
+            "saved": "Moderado (3-6)",
+            "resist": "-(20-5)% Elemental",
+            "gear": "1-3 sufijos",
+            "build": "Uso general equilibrado"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Large",
+            "reach": "Muchos nodos perimetrales",
+            "saved": "Alto (5-9)",
+            "resist": "-(20-5)% Elemental",
+            "gear": "2-3 sufijos",
+            "build": "Builds de gran alcance"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Massive",
+            "reach": "Perímetro máximo",
+            "saved": "Máximo (8+)",
+            "resist": "-(20-5)% Elemental",
+            "gear": "2-4 sufijos",
+            "build": "Árbol disperso / máxima flexibilidad"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "La penalización de Resistencia Elemental es el mismo rango (-(20-5)%) en cada tamaño de anillo; solo varían la tirada de esa penalización y el tamaño del anillo. Recuperar la resistencia consume ranuras de sufijo que de otro modo podrían contener vida, atributos o daño; el coste real es el coste de oportunidad de esos sufijos."
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Riesgo y coste de fallo",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Tamaño de anillo incorrecto",
+          "gain": "Algunos nodos remotos",
+          "loss": "Los nodos útiles caen en el círculo interior muerto o fuera",
+          "level": "high",
+          "recommendation": "Elige el tamaño de anillo que cubre tus nodos objetivo; mayor no siempre es mejor."
+        },
+        {
+          "scenario": "Resistencia no compensada",
+          "gain": "Alcance del anillo",
+          "loss": "Muerte por daño elemental en mapas",
+          "level": "high",
+          "recommendation": "Recupera las Resistencias Elementales en los sufijos o usa Inoculación de Caos."
+        },
+        {
+          "scenario": "Suponer que la penalización de Caos sigue existiendo",
+          "gain": "Ninguno",
+          "loss": "Planificación de equipo errónea",
+          "level": "low",
+          "recommendation": "La 0.5.4 actual no tiene penalización de Resistencia de Caos; solo Elemental."
+        },
+        {
+          "scenario": "Uso incorrecto de Orbe de Azar / Divino",
+          "gain": "El Divino puede mejorar las tiradas",
+          "loss": "Un Divino malo puede empeorar la penalización",
+          "level": "medium",
+          "recommendation": "El Divino solo vuelve a tirar dentro del rango; la joya no se puede convertir con Orbe de Azar."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Evidencia de la comunidad",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-controlled",
+          "kind": "Pregunta de Reddit",
+          "question": "¿Por qué no puedo asignar un nodo que parece estar dentro del radio?",
+          "summary": [
+            "Un jugador esperaba un radio circular relleno y no pudo tomar un nodo en el centro."
+          ],
+          "editorialAnalysis": [
+            "Controlled Metamorphosis forma un anillo anular, no un disco. Solo la banda entre el anillo interior y el exterior asigna nodos; el círculo interior es espacio muerto. Un nodo que parece 'dentro' puede estar en ese centro muerto."
+          ],
+          "officialAnswer": [
+            "Solo la banda del anillo (entre los dos anillos) asigna nodos; el círculo interior no."
+          ],
+          "linkHref": "#ring-size-comparison",
+          "linkLabel": "Comparativa de tamaños de anillo"
+        },
+        {
+          "sourceId": "gamerant-controlled",
+          "kind": "Guía",
+          "question": "¿Sigue teniendo una penalización de Resistencia de Caos?",
+          "summary": [
+            "Una guía señaló la antigua -(23-3)% de Resistencia de Caos y preguntó si permanece."
+          ],
+          "editorialAnalysis": [
+            "El parche 0.4.0 eliminó la línea de Resistencia de Caos. Los drops de la 0.5.4 actual solo tienen -(20-5)% a todas las Resistencias Elementales. Las copias legadas anteriores a 0.4.0 conservan su penalización de Caos; los drops nuevos no."
+          ],
+          "officialAnswer": [
+            "La 0.5.4 actual no tiene penalización de Resistencia de Caos; solo permanece la penalización Elemental."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Historial de parches"
+        },
+        {
+          "sourceId": "wiki-controlled",
+          "kind": "Base de datos",
+          "question": "¿Qué hace una tirada corrupta superior a 8 al anillo?",
+          "summary": [
+            "Las notas de la base de datos registran que un valor de anillo de 9 o superior hace que el modificador de tamaño del anillo desaparezca."
+          ],
+          "editorialAnalysis": [
+            "El tamaño del anillo tira 1-8. Un valor corrupto de 9+ está fuera del rango válido y la joya no forma anillo (documentado como probablemente un error). Comercia solo por tiradas válidas de 1-8; tales valores atípicos deben tratarse como afectados por un error."
+          ],
+          "officialAnswer": [
+            "Los tamaños de anillo válidos son 1-8; los valores fuera de ese rango eliminan el modificador de anillo y la joya no asigna nada."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "Propiedades"
+        },
+        {
+          "sourceId": "youtube-controlled",
+          "kind": "Vídeo",
+          "question": "¿Es un anillo más grande siempre mejor?",
+          "summary": [
+            "Un vídeo explicó que el valor del tamaño del anillo depende de dónde se sitúan tus nodos útiles."
+          ],
+          "editorialAnalysis": [
+            "Como solo la banda asigna, un anillo Masivo solo ayuda si tus nodos objetivo caen en su banda. Un anillo más pequeño puede ser mejor cuando los nodos que quieres están más cerca del engarce. El valor de comercio sigue favoreciendo los anillos más grandes."
+          ],
+          "officialAnswer": [
+            "Mayor no es automáticamente mejor; haz coincidir el tamaño del anillo con tus nodos objetivo, aunque los precios de comercio suben con el tamaño."
+          ],
+          "linkHref": "#cost-benefit",
+          "linkLabel": "Tabla de Coste-Beneficio"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problemas y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "El nodo está visualmente cerca del engarce pero no se puede asignar",
+          "directAnswer": [
+            "Regla normal actual: solo los dos anillos (el anillo anular) asignan nodos; el círculo interior entre ellos no hace nada. Error histórico: versiones muy antiguas a veces asignaban el círculo interior de forma inconsistente. Reproducible actual: no —el círculo interior está muerto por diseño; coloca el engarce para que los nodos objetivo caigan en la banda del anillo."
+          ],
+          "checks": [
+            "Comprueba si el nodo está dentro del círculo interior; si es así, mueve el engarce o elige un tamaño de anillo diferente."
+          ]
+        },
+        {
+          "symptom": "Asigné un nodo pero la hoja de personaje no cambió",
+          "directAnswer": [
+            "Regla normal actual: sigues pagando un punto de pasiva por cada nodo asignado; la joya solo elimina el trazado, no el coste del nodo. Error histórico: un retraso de visualización pasado mostraba valores obsoletos de la hoja. Reproducible actual: no para la regla; si la hoja está obsoleta, vuelve a abrir el árbol. Confirma que el nodo está realmente dentro de la banda del anillo."
+          ],
+          "checks": [
+            "Verifica que el nodo está dentro de la banda del anillo y que la joya está engarzada; vuelve a abrir la hoja de personaje."
+          ]
+        },
+        {
+          "symptom": "La joya no se quita / los nodos siguen asignados tras quitarla",
+          "directAnswer": [
+            "Regla normal actual: quitar la joya desasigna todos los nodos del anillo y reembolsa sus puntos. Error histórico: un cliente antiguo a veces dejaba nodos visualmente asignados hasta volver a iniciar sesión. Reproducible actual: no —la eliminación reembolsa correctamente; si los nodos persisten, vuelve a iniciar sesión y vuelve a comprobar."
+          ],
+          "checks": [
+            "Clic derecho para quitar; si los nodos permanecen, vuelve a iniciar sesión y confirma el reembolso."
+          ]
+        },
+        {
+          "symptom": "La joya cayó sin penalización de Resistencia de Caos",
+          "directAnswer": [
+            "Regla normal actual: Controlled Metamorphosis de 0.5.4 solo tiene -(20-5)% a todas las Resistencias Elementales; la antigua -(23-3)% de Resistencia de Caos se eliminó en 0.4.0 y no vuelve en los drops nuevos. Histórico: las copias anteriores a 0.4.0 sí tenían penalización de Caos. Reproducible actual: un drop nuevo nunca tiene penalización de Caos."
+          ],
+          "checks": [
+            "Lee el tooltip; si ves una penalización de Caos es una copia legada de 0.4.0 o anterior."
+          ],
+          "links": [
+            {
+              "href": "#patch-history",
+              "label": "Historial de parches"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Vídeo explicativo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Todas las Opciones de Joyas Únicas con los Mejores Usos (PoE2) — sección de Controlled Metamorphosis",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8",
+          "creator": "SnooBae85",
+          "description": "Vídeo de la comunidad que cubre cada joya única; la sección de Controlled Metamorphosis empieza en 09:13 y el recorrido de búsqueda en el comercio en 24:18.",
+          "takeaway": "Muestra la forma del anillo, el intercambio de resistencia y cómo buscar estas joyas en el comercio.",
+          "timestamps": [
+            {
+              "label": "Intro y resumen de la joya",
+              "time": "00:00"
+            },
+            {
+              "label": "Joyas Rare Time-Lost",
+              "time": "01:20"
+            },
+            {
+              "label": "Contexto de Against the Darkness",
+              "time": "06:48"
+            },
+            {
+              "label": "Análisis profundo de Controlled Metamorphosis",
+              "time": "09:13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Galería de medios",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip de Controlled Metamorphosis mostrando la línea del anillo y -(20-5)% Elemental",
+          "note": "Captura principal del héroe para la tarjeta y la cabecera del artículo."
+        },
+        {
+          "caption": "Árbol de pasivas: anillo anular (dos anillos) alrededor del engarce",
+          "note": "Muestra el círculo interior muerto frente a la banda asignadora."
+        },
+        {
+          "caption": "Tres tamaños de anillo comparados (Small, Medium, Massive)",
+          "note": "Visualiza cómo cambia el alcance de la banda con la tirada 1-8."
+        },
+        {
+          "caption": "Compensación de resistencia en un sufijo de equipo",
+          "note": "Cómo se recupera la penalización Elemental."
+        },
+        {
+          "caption": "Arena del jefe Xesht, We That Are One",
+          "note": "La fuente de drop de +4 Breach."
+        },
+        {
+          "caption": "Controlled Metamorphosis frente a From Nothing en formas de radio",
+          "note": "Anillo anular frente a disco fijo."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Contenido conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, We That Are One",
+          "description": "El jefe pinnacle de Breach a Dificultad 4 que dropa Controlled Metamorphosis.",
+          "href": "/en/bosses/xesht-we-that-are-one/"
+        },
+        {
+          "contentId": "breachstones",
+          "contentType": "item",
+          "title": "Breachstones",
+          "description": "El objeto de invitación (300 Fragmentos de Breach) necesario para acceder a Xesht.",
+          "href": "/en/items/breachstones/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "El Diamante de asignación remota de disco fijo sin coste de resistencia.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "the-masters-reach",
+          "contentType": "item",
+          "title": "The Master's Reach",
+          "description": "Una Única relacionada a la que hace referencia la imagen del héroe y el contenido de Breach.",
+          "href": "/en/items/the-masters-reach/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Guía de Respec, Pasivas y Ascendencia",
+          "description": "Cómo interactúan los puntos de pasiva, los respecs y las ascendancias con la planificación de joyas.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Parche 0.5.4 (Runas de Aldur)",
+          "description": "El contexto del parche actual de Acceso Anticipado para este objeto.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historial de parches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runas de Aldur, actual)",
+          "changes": [
+            "Controlled Metamorphosis sigue siendo un Diamante Único con tamaño de anillo variable 1-8, asignación remota en la banda del anillo, y -(20-5)% a todas las Resistencias Elementales; siempre Corrupto; drop de Xesht a +4 Breach."
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "changes": [
+            "Eliminada la modificadora -(23-3)% de Resistencia de Caos; las copias legadas existentes la conservan. Rango de tamaño 1-8 confirmado; valores 9+ eliminan el anillo (error documentado)."
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "changes": [
+            "Todos los jefes con bloqueo de dificultad pueden dropear sus únicas específicas a cualquier dificultad, aunque las únicas raras son más raras a dificultades bajas."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Controlled Metamorphosis introducido en el juego."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notas del parche 0.5.4 de Path of Exile 2 y documentación oficial de objetos.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Datos de objeto de PoE2Wiki y poe2db para Controlled Metamorphosis.",
+          "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guía de GameRant sobre cómo obtener y usar Controlled Metamorphosis.",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Discusión de Reddit r/PathOfExile2 sobre la forma del anillo y la resistencia.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Vídeo de la comunidad que cubre joyas únicas incluyendo Controlled Metamorphosis.",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Registro de cambios",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial que cubre Controlled Metamorphosis en 0.5.4: la asignación del anillo (anillo anular), los ocho tamaños de anillo, el coste de Resistencia Elemental, la eliminación de la penalización de Caos en 0.4.0, las vueltas con Orbe Divino, la tabla de Coste-Beneficio, y cómo difiere de From Nothing."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "xesht-we-that-are-one"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export",
+    "breach-genesis-tree-xesht-progression"
+  ],
+  "relatedItemIds": [
+    "jewels-and-jewel-sockets",
+    "against-the-darkness",
+    "from-nothing",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "breachstones",
+    "the-masters-reach",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-controlled",
+      "label": "PoE2Wiki - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+    },
+    {
+      "id": "poe2db-controlled",
+      "label": "poe2db - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Controlled_Metamorphosis"
+    },
+    {
+      "id": "reddit-controlled",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "gamerant-controlled",
+      "label": "GameRant - How to Get Controlled Metamorphosis Diamond",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+    },
+    {
+      "id": "fextralife-controlled",
+      "label": "PoE2 Wiki (Fextralife) - Controlled Metamorphosis",
+      "sourceType": "tool",
+      "url": "https://pathofexile2.wiki.fextralife.com/Controlled+Metamorphosis+Diamond"
+    },
+    {
+      "id": "youtube-controlled",
+      "label": "YouTube - Unique Jewel Options (Controlled Metamorphosis @09:13)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Controlled Metamorphosis: tamaño del anillo, coste de resistencia y puntos ahorrados (0.5.4)",
+    "description": "Cómo funciona Controlled Metamorphosis en PoE2 0.5.4: un Diamante Único con radio de anillo variable para asignación remota, el coste de Resistencia Elemental, el drop de Xesht +4, y planificación de builds.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "controlled-metamorphosis",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

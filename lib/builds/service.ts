@@ -20,11 +20,23 @@ export type BuildFilters = {
 
 export type BuildSort = "title" | "updated";
 
+type BuildFilterable = Pick<
+  BuildArticle,
+  | "classId"
+  | "ascendancyId"
+  | "stages"
+  | "budgets"
+  | "difficulty"
+  | "mainSkillIds"
+  | "secondarySkillIds"
+  | "playstyleTags"
+>;
+
 /** 对已发布 Build 执行交集筛选；空字段不参与判断。 */
-export function filterBuilds(
-  articles: readonly BuildArticle[],
+export function filterBuilds<T extends BuildFilterable>(
+  articles: readonly T[],
   filters: BuildFilters,
-): BuildArticle[] {
+): T[] {
   return articles.filter(
     (article) =>
       (!filters.class || article.classId === filters.class) &&
@@ -87,10 +99,10 @@ export function parseBuildQuery(searchParams: URLSearchParams): {
 }
 
 /** 返回新数组并应用稳定排序，避免调用方意外改变共享构建数据。 */
-export function sortBuilds(
-  articles: readonly BuildArticle[],
+export function sortBuilds<T extends Pick<BuildArticle, "title" | "updatedAt">>(
+  articles: readonly T[],
   sort: BuildSort = "updated",
-): BuildArticle[] {
+): T[] {
   return [...articles].sort((left, right) =>
     sort === "title"
       ? left.title.localeCompare(right.title)

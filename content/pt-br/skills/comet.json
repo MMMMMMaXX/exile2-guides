@@ -1,0 +1,572 @@
+{
+  "id": "comet",
+  "slug": "comet",
+  "locale": "pt-br",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guia do Comet — Tempo de Conjuração, Infusão de Fogo, Configurações de Gatilho e Suportes",
+  "shortTitle": "Comet",
+  "summary": "O Comet é uma magia de impacto atrasado que cai em uma localização alvo após um tempo de conjuração. É uma magia padrão de alvo único para builds de conjuração-por-crítico e conjuração-por-praga. Este guia aborda tempo de conjuração base versus tempo de conjuração total, por que conjurações próximas recuam para trás, raio de impacto, Infusão de Fogo, qualidade Repetir e as trocas entre autoconjuração e gatilho.",
+  "description": "Guia aprofundado do Comet: tempo de conjuração base vs tempo de conjuração total, recuo de curta distância, raio de impacto, Infusão de Fogo e Comet Infundido, comportamento de qualidade Repetir, autoconjuração versus gatilho versus totem de magia, gatilho de conjuração-por-crítico, rotações de mapeamento e chefe, solução de problemas e perguntas da comunidade.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 8,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "aoe",
+    "cold",
+    "delayed-impact",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/comet.webp",
+  "cardImage": "/images/skills/comet.webp",
+  "imageAlt": "Comet cold spell skill icon",
+  "tags": [
+    "spell",
+    "cold",
+    "delayed-impact",
+    "cast-on-crit",
+    "single-target"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta Rápida",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet tem um tempo de conjuração base, e o modificador '+1 segundo ao Tempo de Conjuração Total' da gema soma ao total, não à base — a velocidade de conjuração reduz apenas a parte base.",
+        "Conjurar muito perto de si mesmo faz o Comet cair atrás de você (um recuo), então mantenha distância ou acione-o à distância.",
+        "A Infusão de Fogo faz o Comet causar Fogo adicionado e cria um Comet Infundido que é Frio mais Fogo, não uma conversão; a qualidade Repetir dispara Comets extras sem gastar mana extra ou infusão."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Fatos Rápidos",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Categoria",
+          "value": "Spell / AoE / Cold",
+          "notes": [
+            "Marcado com spell, aoe, cold, delayed-impact, trigger."
+          ]
+        },
+        {
+          "label": "Impacto",
+          "value": "Aterragem atrasada no alvo",
+          "notes": [
+            "O Comet cai após um tempo de conjuração na localização alvo."
+          ]
+        },
+        {
+          "label": "Infusão de Fogo",
+          "value": "Adiciona Fogo, cria Comet Infundido",
+          "notes": [
+            "O Comet Infundido é Frio + Fogo, não uma conversão pura."
+          ]
+        },
+        {
+          "label": "Aquisição",
+          "value": "Uncut Skill Gem (Tier 8)",
+          "notes": [
+            "Gema de alto nível; um retorno de alvo único de fim de jogo."
+          ]
+        },
+        {
+          "label": "Melhor função",
+          "value": "Magia de gatilho de alvo único",
+          "notes": [
+            "Carga principal para conjuração-por-crítico e conjuração-por-praga."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requisitos",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Nenhuma barreira de atributo especial. O Comet é uma gema de magia conjurada com mana, e é mais usado como carga disparada por gatilho do que autoconjurado."
+      ]
+    },
+    {
+      "id": "delayed-impact",
+      "order": 40,
+      "title": "Impacto Atrasado e Tempo de Conjuração",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet tem um tempo de conjuração base. O modificador da gema '+1 segundo ao Tempo de Conjuração Total' estende o tempo de conjuração total; a velocidade de conjuração reduz apenas a parte do tempo de conjuração base, então o segundo adicionado não é acelerado pela velocidade de conjuração.",
+        "Como a aterragem é atrasada, o Comet é fraco para perseguição autoconjurada — você se compromete com uma localização e o meteoro cai ali após a conjuração ser concluída.",
+        "Esse atraso é exatamente o motivo pelo qual gatilhos adoram o Comet: o gatilho o dispara no alvo sem você mirar e esperar manualmente."
+      ],
+      "bullets": [
+        "O tempo de conjuração base é reduzido pela velocidade de conjuração.",
+        "+1s de Tempo de Conjuração Total é adicionado após os cálculos de velocidade de conjuração.",
+        "O atraso recompensa o uso de gatilho e totem."
+      ]
+    },
+    {
+      "id": "infusion-mode",
+      "order": 50,
+      "title": "Modo de Infusão",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A Infusão de Fogo adiciona dano de Fogo ao Comet e, quando consumida, cria um Comet Infundido. O Comet Infundido causa Frio mais Fogo — é um elemento adicionado, não uma conversão do dano frio base.",
+        "A Infusão de Raio, em vez disso, mantém a marcação de Raio e é consumida no acerto; a escolha muda quais pragas e suportes você constrói em torno.",
+        "A infusão é um recurso separado da mana, então um Comet infundido ainda custa sua mana normal ao conjurar."
+      ],
+      "bullets": [
+        "Infusão de Fogo: o Comet Infundido é Frio + Fogo adicionado.",
+        "Infusão de Raio: consumida no acerto, mantém a marcação de raio.",
+        "A infusão não substitui o custo de mana."
+      ]
+    },
+    {
+      "id": "self-cast-vs-trigger",
+      "order": 60,
+      "title": "Autoconjuração vs Gatilho vs Totem",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A autoconjuração dá controle total de onde o Comet cai, mas o longo tempo de conjuração a torna fácil de interromper e lenta contra chefes em movimento.",
+        "O gatilho (conjuração-por-crítico ou conjuração-por-praga) solta o Comet automaticamente no alvo após as condições serem atendidas, pulando seu próprio tempo de conjuração e risco de interrupção.",
+        "O Totem de Magia conjura o Comet à distância em um ritmo, útil para builds de Oracle ou totem que querem alvo único sustentado sem ficar no perigo."
+      ],
+      "bullets": [
+        "Autoconjuração: controle, mas longa e interrompível.",
+        "Gatilho: rápido, automático, sem tempo de autoconjuração.",
+        "Totem de Magia: conjuração sustentada à distância."
+      ]
+    },
+    {
+      "id": "hit-behaviour",
+      "order": 70,
+      "title": "Comportamento de Acerto e Raio de Impacto",
+      "type": "hit-behaviour",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet causa seu dano em uma área no ponto de impacto. O raio de impacto é fixo pela gema; inimigos fora do raio não recebem acerto.",
+        "Se o alvo se mover após você se comprometer, o Comet cai na localização original e pode errar — esta é a principal fraqueza da autoconjuração contra chefes móveis.",
+        "Comets disparados por gatilho caem na posição atual do alvo do gatilho, o que evita a maioria dos erros."
+      ],
+      "bullets": [
+        "O raio de impacto é fixo pela gema.",
+        "Alvos em movimento podem desviar de um Comet autoconjurado.",
+        "Comets disparados por gatilho rastreiam melhor o alvo."
+      ]
+    },
+    {
+      "id": "level-scaling",
+      "order": 80,
+      "title": "Escalonamento por Nível",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Níveis maiores de gema aumentam o dano base e a área do Comet, e melhoram o retorno do Comet Infundido. Subir o nível da gema é a principal melhoria de alvo único.",
+        "Como o Comet é frequentemente uma carga disparada por gatilho, o nível da gema também eleva o dano disparado diretamente sem mudar sua configuração de gatilho."
+      ],
+      "bullets": [
+        "Mais níveis: mais dano base e área.",
+        "O Comet Infundido escala com o nível da gema.",
+        "O dano de gatilho escala com o nível da gema de carga."
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 90,
+      "title": "Qualidade",
+      "type": "quality",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A Qualidade do Comet que concede Repetir dispara um Comet adicional sem gastar mana extra nem consumir infusão novamente.",
+        "Comets Repetir caem como impactos extras, elevando a explosão de alvo único; eles não estendem o tempo de conjuração.",
+        "Bugs antigos de Qualidade que dobravam custos foram corrigidos no cliente; o Repetir atual é uma conjuração extra limpa."
+      ],
+      "bullets": [
+        "Repetir: Comet extra, sem mana extra.",
+        "Repetir: sem infusão extra consumida.",
+        "Sem tempo de conjuração extra do Repetir."
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 100,
+      "title": "Compatibilidade de Suportes",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet é uma magia, então suportes de dano de magia, área, frio, crítico e velocidade de conjuração se aplicam. Concentrated Effect e Cold Penetration são fortes para alvo único."
+      ],
+      "bullets": [
+        "Cold Penetration e Concentrated Effect para dano de chefe.",
+        "Critical Damage e Cast Speed para configurações de gatilho.",
+        "Evite suportes apenas para ataques."
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 110,
+      "title": "Configurações de Suporte",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Um Comet para chefe usa suportes de frio e área. Um Comet de conjuração-por-crítico foca em crítico e velocidade de conjuração para o gatilho disparar com frequência."
+      ],
+      "bullets": [
+        "Chefe: Cold Penetration, Concentrated Effect, Area, Control.",
+        "CoC: Critical Damage, Cast Speed, Cold Damage, Energy Retention.",
+        "Infusão de Fogo: suportes de fogo e praga."
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 120,
+      "title": "Interações de Habilidade",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet é a carga clássica para Cast on Critical Strike e Cast on Elemental Ailment. Cada crítico ou praga rola um Comet disparado no alvo.",
+        "O Mana Tempest potencializa Comets disparados conjurados dentro da tempestade, e o Spark frequentemente compartilha a mesma economia de gatilho para a limpeza de tela.",
+        "O Totem de Magia permite que uma build de Oracle ou totem sustente o Comet sem autoconjurar."
+      ],
+      "bullets": [
+        "Cast on Critical Strike: principal parceiro de gatilho.",
+        "Cast on Elemental Ailment: variante de gatilho por praga.",
+        "Mana Tempest: potencializa Comets disparados."
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 130,
+      "title": "Uso em Mapeamento",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Em mapas, o Comet é uma ferramenta de alvo único. Use-o em raros e chefes; deixe uma magia de limpeza como o Spark cuidar da sujeira.",
+        "Comets disparados miram automaticamente o inimigo elegível mais próximo, então você continua se movendo enquanto eles atiram em alvos prioritários."
+      ],
+      "bullets": [
+        "Reserve o Comet para raros e inimigos tipo chefe.",
+        "Continue se movendo; o gatilho faz a mira.",
+        "Combine com uma magia de limpeza para pacotes."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 140,
+      "title": "Rotação de Chefe",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Contra um chefe, dispare Comets a cada crítico e temporize rajadas de Infusão de Fogo com as estaggers. Preveja transições de fase para que suas conjurações caiam durante janelas vulneráveis.",
+        "Comets autoconjurados devem ser pré-mirados onde o chefe estará, não onde ele está, para evitar erros."
+      ],
+      "bullets": [
+        "Dispare Comets em críticos para dano de chefe estável.",
+        "Pré-mire a autoconjuração no caminho do chefe.",
+        "Exploda a Infusão de Fogo durante as staggers."
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 150,
+      "title": "Uso em Builds",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet é a carga assinatura para builds de Comet Infernalist de conjuração-por-crítico e Chronomancer, e para variantes de totem Oracle.",
+        "É uma gema de alto nível, então aparece em configurações de alvo único de fim de jogo em vez de builds iniciais de liga."
+      ],
+      "bullets": [
+        "CoC Comet Infernalist: build de gatilho de alto orçamento.",
+        "Crit Comet Disciple of Varashta: variante focada em crítico.",
+        "Oracle Totem: Comet sustentado à distância."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 160,
+      "title": "Solução de Problemas",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Se os Comets caem atrás de você, você está conjurando muito perto — recue ou dispare à distância. Se errarem um chefe em movimento, você está autoconjurando; mude para um gatilho.",
+        "Se o Repetir parece custar mais, você está em um cliente antigo; o Repetir atual é livre de mana e infusão extras."
+      ],
+      "bullets": [
+        "Recuo: conjure de mais longe.",
+        "Erro em movimento: use um gatilho em vez de autoconjuração.",
+        "Autoconjuração lenta: o longo tempo de conjuração é esperado.",
+        "CoC não dispara: verifique chance de crítico e configuração de gatilho.",
+        "Impacto baixo: suba o nível da gema e adicione suportes de frio."
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 170,
+      "title": "Problemas Conhecidos",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Um erro comum é tratar a Infusão de Fogo como uma conversão; ela adiciona Fogo e cria um Comet Infundido que é Frio mais Fogo, então a escala de frio ainda se aplica.",
+        "Outro é assumir que a velocidade de conjuração remove o '+1s de Tempo de Conjuração Total'; apenas a parte base é reduzida."
+      ],
+      "bullets": [
+        "A Infusão de Fogo é adicionada, não uma conversão.",
+        "A velocidade de conjuração não reduz o segundo adicionado de tempo de conjuração total."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 180,
+      "title": "Evidência da Comunidade",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "O Comet é repetidamente chamado de uma das magias de alvo único mais fortes em tópicos de gatilho da 0.5, com debate em torno de Infernalist versus Chronomancer como hospedeiro.",
+        "Jogadores notam o recuo da autoconjuração como o principal motivo pelo qual preferem disparar o Comet por gatilho."
+      ],
+      "bullets": [
+        "CoC Comet é uma das melhores escolhas de alvo único na 0.5.",
+        "O recuo da autoconjuração empurra jogadores para gatilhos."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 190,
+      "title": "Guias em Vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "CoC Comet Endgame",
+          "label": "Guia de Build CoC Comet de Fim de Jogo Definitivo (0.5)",
+          "description": "Uma build de Comet de conjuração-por-crítico de alto orçamento cobrindo configuração de gatilho e dano de chefe.",
+          "takeaway": "Assista a configuração de gatilho e suporte para saída estável de Comet.",
+          "url": "https://youtu.be/1quplyhgfVE",
+          "timestamps": [
+            {
+              "label": "Visão geral da build",
+              "time": "0:00"
+            },
+            {
+              "label": "Configuração de gatilho",
+              "time": "3:30"
+            },
+            {
+              "label": "Dano de chefe",
+              "time": "7:00"
+            }
+          ]
+        },
+        {
+          "creator": "CoC Comet Oracle",
+          "label": "Uma das Builds Mais Fortes — CoC Comet Oracle (0.5)",
+          "description": "Uma build de Comet Oracle mostrando alvo único sustentado via gatilhos.",
+          "takeaway": "Assista como o Oracle sustenta o tempo de atividade do Comet.",
+          "url": "https://youtu.be/5jErI3gzQAw",
+          "timestamps": [
+            {
+              "label": "Metas de equipamento",
+              "time": "0:00"
+            },
+            {
+              "label": "Rotação",
+              "time": "4:00"
+            },
+            {
+              "label": "Demonstração",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 200,
+      "title": "Fontes e Verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Oficial",
+          "description": "Notas de Atualização e fóruns oficiais da GGG confirmando tempo de conjuração, Infusão de Fogo e comportamento Repetir do Comet na 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB e Wiki da Comunidade fornecem id da habilidade Comet, tags, raio de impacto e dados de infusão.",
+          "url": "https://poe2db.tw/Comet"
+        },
+        {
+          "label": "Wiki",
+          "description": "Página da wiki da comunidade para o Comet com detalhes de tempo de conjuração e infusão.",
+          "url": "https://www.poe2wiki.net/wiki/Comet"
+        },
+        {
+          "label": "Builds e vídeo",
+          "description": "Builds CoC Comet no YouTube usadas para verificar cruzado uso de gatilho e chefe.",
+          "url": "https://youtu.be/1quplyhgfVE"
+        },
+        {
+          "label": "Comunidade",
+          "description": "Reddit e fóruns trazem discussões de alvo único e infusão do Comet.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Comet&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 210,
+      "title": "Histórico de Atualizações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients): o Comet permanece a magia central de gatilho de alvo único; comportamento de Infusão de Fogo e Comet Infundido confirmado."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): linha de base atual: base vs tempo de conjuração total, recuo de curta distância, Infusão de Fogo adicionada (não conversão), Qualidade Repetir sem custo extra."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 220,
+      "title": "Registro de Alterações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Lançamento inicial: matemática de tempo de conjuração, recuo, raio de impacto, Infusão de Fogo, qualidade Repetir, autoconjuração vs gatilho vs totem, uso de conjuração-por-crítico, rotações de mapeamento e chefe, solução de problemas e perguntas da comunidade."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "coc-frostbolt-comet-infernalist",
+    "crit-comet-disciple-of-varashta"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "spark",
+    "mana-tempest",
+    "cast-on-critical-strike",
+    "cast-on-elemental-ailment"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Comet",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Comet"
+    },
+    {
+      "label": "PoE2 Community Wiki — Comet",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Comet"
+    },
+    {
+      "label": "CoC Comet Endgame video",
+      "sourceType": "community",
+      "url": "https://youtu.be/1quplyhgfVE"
+    },
+    {
+      "label": "CoC Comet Oracle video",
+      "sourceType": "community",
+      "url": "https://youtu.be/5jErI3gzQAw"
+    },
+    {
+      "label": "Reddit — Comet discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Comet&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Guia do Comet — Tempo de Conjuração, Infusão de Fogo, Configurações de Gatilho e Suportes",
+    "description": "Guia aprofundado do Comet: base vs tempo de conjuração total, recuo de curta distância, raio de impacto, Infusão de Fogo e Comet Infundido, Qualidade Repetir, autoconjuração vs gatilho vs totem, conjuração-por-crítico, rotações de mapeamento e chefe, solução de problemas e perguntas da comunidade.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "comet",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,690 @@
+{
+  "id": "accuracy-distance-penalty-hit-chance",
+  "slug": "accuracy-distance-penalty-hit-chance",
+  "locale": "es",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Valor de Precisión, Penalización por Distancia y Probabilidad de Golpe en Path of Exile 2",
+  "shortTitle": "Precisión y Prob. de Golpe",
+  "summary": "Cómo la Precisión, la Evasión y la penalización por distancia a distancia determinan si tus ataques dan en el blanco en Path of Exile 2, y cómo corregir una baja probabilidad de golpe sin adivinar.",
+  "description": "Una guía de mecánicas sobre la probabilidad de golpe en Path of Exile 2: cómo la Precisión se compara con la Evasión, cómo los ataques a distancia pierden precisión efectiva a gran distancia, y formas prácticas de aumentar tu probabilidad de golpe evitando lecturas erróneas comunes.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/snipe.webp",
+  "cardImage": "/images/skills/snipe.webp",
+  "imageAlt": "Un icono de habilidad de francotirador de Path of Exile 2 que representa el valor de precisión y la probabilidad de golpe a distancia",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "Comprensión básica del panel de personaje y del tooltip del objeto",
+    "Familiaridad con las estadísticas de Precisión y Evasión que aparecen en el equipo"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "accuracy",
+    "evasion",
+    "hit-chance",
+    "distance",
+    "attack",
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuestas directas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "¿Los ataques necesitan Precisión para dar?",
+          "body": [
+            "Sí. Los ataques comparan tu Valor de Precisión contra el Valor de Evasión del objetivo para decidir la probabilidad de golpe. Un ataque cuerpo a cuerpo o a distancia que no supere la comprobación de evasión fallará."
+          ]
+        },
+        {
+          "title": "¿Los hechizos comprueban la Precisión?",
+          "body": [
+            "Generalmente no. La mayoría de los hechizos de Path of Exile 2 evitan por completo la comprobación de Precisión frente a Evasión. Algunas habilidades están marcadas explícitamente como 'Siempre Acierta' o 'No Puede Ser Evadido', pero lo predeterminado para los hechizos es que no dependen de tu Valor de Precisión."
+          ]
+        },
+        {
+          "title": "¿Por qué un 100 % mostrado sigue fallando a distancia?",
+          "body": [
+            "La probabilidad del panel se calcula a una distancia de referencia. Los ataques a distancia pierden precisión efectiva a medida que el objetivo se aleja, por lo que la probabilidad real a gran distancia puede estar muy por debajo del número mostrado; incluso una lectura cercana al 100 % puede fallar a distancia extrema."
+          ]
+        },
+        {
+          "title": "¿Qué elimina la evasión como factor?",
+          "body": [
+            "Efectos como 'Los Golpes No Pueden Ser Evadidos' o la piedra angular Técnica Resuelta impiden que la Evasión del objetivo reduzca tu probabilidad de golpe, pero conllevan contrapartidas (por ejemplo, renunciar a la escala de golpe crítico) que debes sopesar según tu build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definitions",
+      "order": 20,
+      "title": "Términos clave",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cuatro ideas están en el centro de si tu daño conecta. El Valor de Precisión es tu tirada ofensiva para los ataques; el Valor de Evasión es la tirada defensiva que usan los enemigos para evitar ser alcanzados por ataques. La Probabilidad de Golpe es el porcentaje resultante que decide si un ataque individual conecta. La Distancia es lo lejos que está tu personaje del objetivo, y es relevante específicamente para los ataques a distancia.",
+        "Los hechizos son una categoría aparte: en Path of Exile 2 la mayoría de los hechizos no realizan ninguna comprobación de Precisión, por lo que su conexión se rige por otras reglas y no por la contienda de Precisión frente a Evasión."
+      ],
+      "bullets": [
+        "Valor de Precisión: la estadística que usan tus ataques para intentar superar la Evasión de un objetivo.",
+        "Valor de Evasión: la estadística defensiva que permite a un objetivo esquivar ataques entrantes.",
+        "Probabilidad de Golpe: el porcentaje mostrado de que un ataque conecte.",
+        "Distancia: a qué distancia estás del objetivo; aplica una penalización a la precisión a distancia."
+      ]
+    },
+    {
+      "id": "chance-to-hit-structure",
+      "order": 30,
+      "title": "Cómo se construye la Probabilidad de Golpe",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Tu Probabilidad de Golpe mostrada para un ataque se produce al comparar tu Valor de Precisión con el Valor de Evasión del objetivo. La relación tiene una forma de rendimientos decrecientes: aumentar la Precisión cuando ya estás muy por encima de la Evasión del objetivo produce ganancias menores, mientras que aumentarla cuando estás muy por debajo produce ganancias grandes.",
+        "La curva numérica exacta usa coeficientes que son sensibles a la versión en el Early Access de Path of Exile 2 y deben confirmarse dentro del cliente actual en lugar de fiarse de una fórmula fija. Considera la estructura como 'la Precisión frente a la Evasión decide un porcentaje que sube hacia un tope alto a medida que tu Precisión supera su Evasión' y confirma los números precisos en el juego.",
+        "Por separado de esa curva, los ataques a distancia aplican un factor de distancia que reduce la precisión efectiva a medida que el objetivo se aleja. Ese factor de distancia es lo que hace que la lectura del panel sea optimista a gran distancia."
+      ],
+      "bullets": [
+        "Una Precisión mayor en relación con la Evasión significa mayor probabilidad de golpe.",
+        "La ganancia por punto de Precisión se reduce a medida que ya superas la Evasión del objetivo.",
+        "Un factor de distancia reduce la precisión efectiva específicamente para ataques a distancia.",
+        "Los coeficientes exactos son sensibles a la versión; confírmalos en el cliente actual."
+      ]
+    },
+    {
+      "id": "formula-variables",
+      "order": 40,
+      "title": "Variables en el cálculo de probabilidad de golpe",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Las entradas que alimentan el resultado de probabilidad de golpe. Los coeficientes exactos son sensibles a la versión y deben confirmarse en el cliente actual.",
+      "columns": [
+        {
+          "key": "variable",
+          "label": "Variable"
+        },
+        {
+          "key": "meaning",
+          "label": "Qué es"
+        },
+        {
+          "key": "effect",
+          "label": "Cómo cambia la prob. de golpe"
+        },
+        {
+          "key": "confidence",
+          "label": "Confianza"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "accuracy"
+          ],
+          "cells": {
+            "variable": "Valor de Precisión",
+            "meaning": "Tu estadística ofensiva para ataques",
+            "effect": "Una Precisión mayor aumenta la probabilidad de golpe contra una Evasión dada",
+            "confidence": "Estructura estable; los coeficientes exactos de la curva son sensibles a la versión"
+          }
+        },
+        {
+          "tags": [
+            "evasion"
+          ],
+          "cells": {
+            "variable": "Valor de Evasión (objetivo)",
+            "meaning": "La estadística defensiva del objetivo contra ataques",
+            "effect": "Una Evasión mayor reduce tu probabilidad de golpe contra ese objetivo",
+            "confidence": "Estructura estable; los coeficientes exactos de la curva son sensibles a la versión"
+          }
+        },
+        {
+          "tags": [
+            "distance"
+          ],
+          "cells": {
+            "variable": "Factor de distancia",
+            "meaning": "Penalización aplicada a ataques a distancia a medida que crece el rango",
+            "effect": "Reduce la precisión efectiva a gran distancia; el cuerpo a cuerpo no se ve afectado",
+            "confidence": "Mecánica real; la distancia inicial exacta y la caída son sensibles a la versión"
+          }
+        },
+        {
+          "tags": [
+            "result"
+          ],
+          "cells": {
+            "variable": "Probabilidad de golpe final",
+            "meaning": "Porcentaje mostrado para el ataque",
+            "effect": "Sube con la Precisión y baja con la Evasión y el rango",
+            "confidence": "Mostrado en el tooltip; el valor real a distancia puede ser menor"
+          }
+        }
+      ],
+      "note": "No confíes en una fórmula numérica fija copiada de referencias antiguas; confirma los coeficientes en el cliente actual."
+    },
+    {
+      "id": "distance-penalty",
+      "order": 50,
+      "title": "La penalización por distancia para ataques a distancia",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los ataques a distancia en Path of Exile 2 sufren una penalización por distancia: cuanto más lejos esté tu objetivo, menor se vuelve tu precisión efectiva. Por eso un personaje francotirador o de arco puede mostrar una alta probabilidad de golpe en el panel de cerca, pero empezar a fallar cuando los enemigos están lejos al otro lado de la pantalla.",
+        "La penalización es una mecánica de ataques a distancia. Los ataques cuerpo a cuerpo, que conectan a quemarropa, no están sujetos a la misma pérdida de precisión por rango. El punto exacto en que comienza la penalización y qué tan pronunciada es la caída son sensibles a la versión, así que confírmalos en el juego en lugar de memorizar un número fijo.",
+        "Una consecuencia práctica: incluso una lectura del panel cercana al 100 % no es una garantía a distancia extrema. El factor de distancia puede bajar la probabilidad real por debajo del valor mostrado, por lo que el posicionamiento importa para las builds a distancia."
+      ],
+      "bullets": [
+        "Los ataques a distancia pierden precisión efectiva a medida que crece la distancia.",
+        "Los ataques cuerpo a cuerpo no están sujetos a la misma penalización por rango.",
+        "Una probabilidad de panel cercana al 100 % aún puede fallar a gran distancia.",
+        "La distancia inicial exacta y la tasa de caída son sensibles a la versión."
+      ]
+    },
+    {
+      "id": "skill-matrix",
+      "order": 60,
+      "title": "¿Qué tipos de habilidad comprueban la Precisión?",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cómo se aplica la comprobación de Precisión entre las categorías de habilidades en Path of Exile 2. Los hechizos generalmente la omiten; los ataques generalmente la usan.",
+      "columns": [
+        {
+          "key": "skill-type",
+          "label": "Tipo de habilidad"
+        },
+        {
+          "key": "checks-accuracy",
+          "label": "¿Comprueba Precisión?"
+        },
+        {
+          "key": "notes",
+          "label": "Notas"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "attack"
+          ],
+          "cells": {
+            "skill-type": "Ataque",
+            "checks-accuracy": "Sí",
+            "notes": "La mayoría de los ataques tiran Precisión contra Evasión. Los ataques a distancia también sufren la penalización por distancia."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "skill-type": "Hechizo",
+            "checks-accuracy": "Generalmente no",
+            "notes": "La mayoría de los hechizos omiten la comprobación de Precisión frente a Evasión. Algunas habilidades son explícitamente Siempre Acierta o No Pueden Ser Evadidas."
+          }
+        },
+        {
+          "tags": [
+            "minion"
+          ],
+          "cells": {
+            "skill-type": "Invocado",
+            "checks-accuracy": "Depende del invocado",
+            "notes": "Los invocados usan sus propias reglas de precisión, que no son iguales a las del jugador. No asumas que la precisión del jugador se aplica a los invocados."
+          }
+        },
+        {
+          "tags": [
+            "totem"
+          ],
+          "cells": {
+            "skill-type": "Totem",
+            "checks-accuracy": "Sí (hereda la habilidad)",
+            "notes": "Un totem que usa una habilidad de ataque realiza la comprobación de precisión de esa habilidad como si el dueño la lanzara."
+          }
+        },
+        {
+          "tags": [
+            "triggered"
+          ],
+          "cells": {
+            "skill-type": "Activado",
+            "checks-accuracy": "Depende del disparador",
+            "notes": "Un ataque activado comprueba Precisión; un hechizo activado generalmente no. Sigue el tipo de la habilidad subyacente."
+          }
+        }
+      ],
+      "note": "El comportamiento de precisión de los invocados es sensible a la versión; confirma las reglas actuales en el juego en lugar de copiar referencias antiguas."
+    },
+    {
+      "id": "worked-examples",
+      "order": 70,
+      "title": "Ejemplos resueltos",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Casos ilustrativos que muestran cómo la distancia y el tipo de habilidad cambian si un golpe conecta. Los números son cualitativos, no coeficientes exactos.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "distance",
+          "label": "Distancia"
+        },
+        {
+          "key": "result",
+          "label": "Resultado"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "melee"
+          ],
+          "cells": {
+            "case": "Ataque a corta distancia contra enemigo normal",
+            "distance": "Quemarropa / cuerpo a cuerpo",
+            "result": "La probabilidad de golpe del panel es representativa; el ataque casi siempre conecta."
+          }
+        },
+        {
+          "tags": [
+            "ranged"
+          ],
+          "cells": {
+            "case": "Ataque a larga distancia contra enemigo normal",
+            "distance": "Lejos al otro lado de la pantalla",
+            "result": "La penalización por distancia reduce la precisión efectiva; una alta probabilidad en el panel aún puede fallar."
+          }
+        },
+        {
+          "tags": [
+            "spell"
+          ],
+          "cells": {
+            "case": "Hechizo a cualquier distancia",
+            "distance": "No aplica",
+            "result": "Los hechizos omiten la comprobación de Precisión, por lo que la penalización por distancia no se aplica a la tirada de golpe."
+          }
+        },
+        {
+          "tags": [
+            "range-penalty"
+          ],
+          "cells": {
+            "case": "Probabilidad mostrada cercana al 100 % a distancia extrema",
+            "distance": "Rango máximo",
+            "result": "El factor de distancia aún puede causar un fallo; el número mostrado no es una garantía a distancia."
+          }
+        }
+      ],
+      "note": "Usa estos solo como modelos mentales; confirma los umbrales reales dentro del cliente actual."
+    },
+    {
+      "id": "fix-low-hit-chance",
+      "order": 80,
+      "title": "Corregir baja probabilidad de golpe",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Elige la causa probable de tus ataques fallados. La herramienta apunta al siguiente paso.",
+      "controls": [
+        {
+          "id": "cause",
+          "label": "¿De dónde viene el fallo?",
+          "options": [
+            {
+              "label": "Poca Precisión en el equipo",
+              "value": "gear"
+            },
+            {
+              "label": "Sin precisión de pasivas o árbol",
+              "value": "passives"
+            },
+            {
+              "label": "Demasiado lejos del objetivo",
+              "value": "positioning"
+            },
+            {
+              "label": "Jefe o enemigo evasivo",
+              "value": "keystone"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Sube la Precisión en el equipo",
+          "when": {
+            "cause": "gear"
+          },
+          "steps": [
+            "Busca Valor de Precisión en armas, anillos y amuletos.",
+            "Prefiere Precisión plana más cualquier aumento porcentual en el equipo.",
+            "Vuelve a comprobar la probabilidad de golpe del tooltip tras cada cambio."
+          ]
+        },
+        {
+          "title": "Toma precisión en el árbol de pasivas",
+          "when": {
+            "cause": "passives"
+          },
+          "steps": [
+            "Asigna nodos pasivos y grupos notables que otorgan Precisión.",
+            "Revisa los nodos de clase y ascendencia por bonificaciones de precisión.",
+            "Confirma que la probabilidad de golpe del tooltip sube tras reasignar."
+          ]
+        },
+        {
+          "title": "Mejora el posicionamiento",
+          "when": {
+            "cause": "positioning"
+          },
+          "steps": [
+            "Acércate para que la penalización por distancia sea menor en ataques a distancia.",
+            "Usa habilidades de movimiento para cerrar distancias contra enemigos evasivos.",
+            "Vuelve a probar el mismo objetivo a corta distancia para ver la penalización eliminada."
+          ]
+        },
+        {
+          "title": "Maneja enemigos evasivos o jefes",
+          "when": {
+            "cause": "keystone"
+          },
+          "steps": [
+            "Considera Los Golpes No Pueden Ser Evadidos o Técnica Resuelta para ignorar la Evasión.",
+            "Sopesa la contrapartida: Técnica Resuelta renuncia a la escala de golpe crítico.",
+            "Combínalo con Precisión solo si aún dependes de crítico u otras comprobaciones."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Ruta de corrección general",
+        "steps": [
+          "Confirma que el fallo es un problema de precisión y no de resistencia o de daño.",
+          "Sube la Precisión mediante equipo y pasivas primero.",
+          "Luego corrige el posicionamiento, y solo considera una contrapartida de piedra angular al final."
+        ]
+      }
+    },
+    {
+      "id": "crit-interaction",
+      "order": 90,
+      "title": "Cómo la Precisión y la Evasión interactúan con los golpes críticos",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un golpe crítico solo puede ocurrir en un golpe que conecta. Si el ataque falla la comprobación de precisión frente a evasión, no puede propinar un golpe crítico: el crítico nunca se tira. Esto significa que tu tasa efectiva de golpe crítico está limitada por tu probabilidad de golpe, no solo por tu Probabilidad de Golpe Crítico listada.",
+        "Para una build enfocada en crítico, subir la Precisión por tanto vale doble: tanto conecta más golpes como desbloquea más de los críticos que esos golpes podrían haber llevado. A la inversa, una Probabilidad de Golpe Crítico muy alta con poca Precisión desperdicia la mayor parte de ese potencial en fallos."
+      ],
+      "bullets": [
+        "Un fallo no puede ser crítico: el golpe debe conectar primero.",
+        "La tasa de crítico efectiva equivale a probabilidad de golpe multiplicada por la probabilidad de crítico listada.",
+        "La inversión en Precisión rinde el doble en builds de crítico.",
+        "Una baja probabilidad de golpe desperdicia en silencio la Probabilidad de Golpe Crítico."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 100,
+      "title": "Lecturas erróneas comunes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La mayoría de los problemas de probabilidad de golpe vienen de leer el panel como si fuera toda la historia. Estas son las trampas en las que los jugadores caen con más frecuencia."
+      ],
+      "bullets": [
+        "Ver ~100 % en el panel pero seguir fallando lejos, porque la penalización por distancia no se refleja en la lectura a corta distancia.",
+        "Asumir que todo proyectil necesita Precisión: muchos hechizos omiten la comprobación por completo.",
+        "Olvidar que los jefes y enemigos evasivos tienen alta Evasión, por lo que tu probabilidad de golpe de mapa normal baja contra ellos.",
+        "Tratar la probabilidad mostrada como un golpe garantizado a cualquier distancia: no lo es.",
+        "Asumir que la precisión de los invocados equivale a tu propia precisión: los invocados siguen sus propias reglas.",
+        "Pensar que Técnica Resuelta o Los Golpes No Pueden Ser Evadidos lo solucionan todo, ignorando la contrapartida de golpe crítico."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 110,
+      "title": "Preguntas comunes de jugadores",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusiones parafraseadas que los jugadores plantean con frecuencia sobre la precisión y la probabilidad de golpe.",
+      "cards": [
+        {
+          "title": "¿Por qué fallo con un 100 % mostrado?",
+          "tag": "distance",
+          "body": [
+            "La probabilidad del panel se mide a una distancia de referencia. Los ataques a distancia pierden precisión efectiva a gran distancia, por lo que la probabilidad real puede ser menor que la lectura."
+          ]
+        },
+        {
+          "title": "¿Mis hechizos necesitan precisión?",
+          "tag": "spell",
+          "body": [
+            "La mayoría de los hechizos no realizan la comprobación de Precisión frente a Evasión. Los jugadores a menudo invierten demasiado en Precisión en builds de hechizos sin beneficio alguno."
+          ]
+        },
+        {
+          "title": "¿Mis invocados usan mi precisión?",
+          "tag": "minion",
+          "body": [
+            "Los invocados siguen sus propias reglas de precisión, que no son iguales a las del jugador. No asumas una precisión compartida."
+          ]
+        },
+        {
+          "title": "Los jefes esquivan todo",
+          "tag": "boss",
+          "body": [
+            "Los jefes de alta Evasión bajan tu probabilidad de golpe muy por debajo de tu número de limpieza de mapas. Planea precisión o una opción de ignorar evasión para jefes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 120,
+      "title": "Guía en vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Cómo ver tu Probabilidad de Golpe en Path of Exile 2 (Valor de Precisión)",
+          "creator": "Bue",
+          "description": "Una explicación clara de dónde encontrar y leer tu probabilidad de golpe, cómo la Precisión se compara con la Evasión, y cómo funciona la penalización por distancia a distancia en Path of Exile 2.",
+          "takeaway": "Abre el panel de personaje para leer tu probabilidad de golpe real, luego sube la Precisión o acorta la distancia para dejar de fallar a rango.",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+          "timestamps": [
+            {
+              "label": "Introducción",
+              "time": "0:00"
+            },
+            {
+              "label": "Dónde ver la probabilidad de golpe",
+              "time": "1:05"
+            },
+            {
+              "label": "Precisión frente a Evasión",
+              "time": "3:40"
+            },
+            {
+              "label": "La penalización por distancia",
+              "time": "6:20"
+            },
+            {
+              "label": "Correcciones para baja probabilidad de golpe",
+              "time": "9:10"
+            },
+            {
+              "label": "Resumen",
+              "time": "11:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 130,
+      "title": "Preguntas frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿La probabilidad de golpe es igual al número de mi tooltip?",
+          "answer": [
+            "A corta distancia es representativa, pero para ataques a distancia la penalización por distancia significa que la probabilidad real a gran distancia puede ser menor que la del tooltip. Lee el tooltip como un valor a distancia de referencia."
+          ]
+        },
+        {
+          "question": "¿Los hechizos usan Precisión en Path of Exile 2?",
+          "answer": [
+            "La mayoría de los hechizos no comprueban Precisión contra Evasión. Invertir en Precisión para una build de hechizos pura normalmente no hace nada por la tasa de golpe. Algunas habilidades son explícitamente Siempre Acierta o No Pueden Ser Evadidas independientemente."
+          ]
+        },
+        {
+          "question": "¿Por qué fallo contra jefes pero no contra mobs?",
+          "answer": [
+            "Los jefes y enemigos evasivos tienen un Valor de Evasión mucho mayor, lo que baja tu probabilidad de golpe contra ellos. Tu precisión de limpieza de mapas puede ser demasiado baja para contenido de jefes."
+          ]
+        },
+        {
+          "question": "¿Técnica Resuelta me hace acertar siempre?",
+          "answer": [
+            "Elimina la Evasión como factor para tus golpes, pero también normalmente renuncia a la escala de golpe crítico, por lo que es una contrapartida en lugar de una mejora gratuita. Sopésala frente a la dependencia de crítico de tu build."
+          ]
+        },
+        {
+          "question": "¿Los invocados comparten mi Precisión?",
+          "answer": [
+            "No. Los invocados usan sus propias reglas de precisión, que difieren de las del jugador. No asumas que subir tu Precisión mejora la probabilidad de golpe de tus invocados."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 140,
+      "title": "Fuentes y verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Precisión",
+          "description": "Referencia de la wiki de PoE2 para Precisión, Evasión y la relación de probabilidad de golpe",
+          "url": "https://poe2wiki.net/wiki/Accuracy"
+        },
+        {
+          "label": "Hub de Maxroll de PoE2",
+          "description": "Hub comunitario de mecánicas que cubre precisión y evasión en Path of Exile 2",
+          "url": "https://maxroll.gg/poe2"
+        },
+        {
+          "label": "Hub de Mobalytics de PoE2",
+          "description": "Hub comunitario de mecánicas con guías de build y precisión",
+          "url": "https://mobalytics.gg/path-of-exile-2/"
+        },
+        {
+          "label": "Guía en vídeo (Bue)",
+          "description": "Explicación de YouTube sobre cómo leer la probabilidad de golpe y la penalización por distancia en Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "Registro de cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial de la guía de precisión, penalización por distancia y probabilidad de golpe para Path of Exile 2 Early Access 0.5.4.",
+            "Se añadieron respuestas directas, términos clave, estructura de probabilidad de golpe, tabla de variables, penalización por distancia, matriz de habilidades, ejemplos resueltos, diagnóstico, interacción de crítico, solución de problemas, casos comunitarios, vídeo, preguntas frecuentes y fuentes."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Precisión",
+      "url": "https://poe2wiki.net/wiki/Accuracy",
+      "sourceType": "official"
+    },
+    {
+      "label": "Maxroll - Hub de Path of Exile 2",
+      "url": "https://maxroll.gg/poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "Mobalytics - Hub de Path of Exile 2",
+      "url": "https://mobalytics.gg/path-of-exile-2/",
+      "sourceType": "community"
+    },
+    {
+      "label": "Bue - Cómo ver tu Probabilidad de Golpe en PoE2 (YouTube)",
+      "url": "https://www.youtube.com/watch?v=UiHcZFe2xCo",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Precisión, Penalización por Distancia y Prob. de Golpe en PoE 2",
+    "description": "Cómo la Precisión se compara con la Evasión, cómo los ataques a distancia pierden probabilidad de golpe a distancia, y cómo corregir baja probabilidad de golpe en Path of Exile 2.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "accuracy-distance-penalty-hit-chance",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

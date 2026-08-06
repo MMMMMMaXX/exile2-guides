@@ -1,0 +1,996 @@
+{
+  "id": "cold-caster-chronomancer",
+  "slug": "cold-caster-chronomancer",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "コールドキャスター・クロノマンサー ビルドガイド",
+  "shortTitle": "コールドキャスター・クロノマンサー",
+  "summary": "アクト2の移行後はアイスノヴァがマッピングを担当し、フロストウォール、フロストボム、フロストダーツが別の単体火力パッケージを形成します。ビター・デッドは条件付きのエンドゲーム選択肢であり、デフォルトのコア構成ではありません。",
+  "description": "Path of Exile 2（パス・オブ・エグザイル2）のコールドキャスター・クロノマンサーに関する、0.5.4 ベースラインの完全なビルドガイドです。",
+  "classId": "sorceress",
+  "ascendancyId": "chronomancer",
+  "mainSkillIds": [
+    "ice-nova",
+    "frost-darts",
+    "frost-bomb",
+    "frost-wall"
+  ],
+  "secondarySkillIds": [
+    "elemental-weakness",
+    "freezing-mark",
+    "bitter-dead"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "cold",
+    "freeze",
+    "spell",
+    "control"
+  ],
+  "damageTypes": [
+    "cold"
+  ],
+  "bestFor": [
+    "mapping",
+    "freeze-control",
+    "spell-progression"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/cold-caster-chronomancer.webp",
+  "cardImage": "/images/builds/covers/cold-caster-chronomancer.webp",
+  "imageAlt": "荒廃した戦場の周囲でアイスノヴァと凍結した時を操るクロノマンサー",
+  "tags": [
+    "bossing",
+    "caster",
+    "chronomancer",
+    "cold",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "sorceress",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "重要なのは進行順序であり、見た目ではありません。キャンペーンはエッセンスドレイン、コンタジオン、ボーンスターームで始め、アイスノヴァ、フロストボム、フロストダーツのサポートジェムが十分に揃ってから初めてコールドパッケージへ移行します。最終的なプランナーが魅力的に見えるからといって、サポートや詠唱のリズムが揃う前に切り替えることは、弱いアクト2キャラクターを作る典型的な原因です。",
+        "マップ内では、アイスノヴァが近距離の殲滅手段となり、フロストウォールとフロストボムがバーストの好機を生み、フロストダーツが単体火力の隙間を埋めます。クロノマンサーの補助機能によっても、ウォールを正しく配置する必要性や、ボス戦のフィールドでウォールが想定通りに機能するか確認する必要性がなくなるわけではありません。",
+        "アクト2の移行後はアイスノヴァがマッピングを担当し、フロストウォール、フロストボム、フロストダーツが別の単体火力パッケージを形成します。ビター・デッドはすべての段階で必須のコアではありません。これは条件付きのエンドゲーム補助であり、初期マップ/エンドゲームに入り、かつルートから安定して死体が供給されるようになって初めて意味を持ちます。レベリングおよび初期マップでは、これなしで進めてください。"
+      ],
+      "bullets": [
+        "（維持版ガイドに従い）コールドインフュージョンを生成または維持し、その後マッピングにアイスノヴァを使用します。",
+        "ボス戦では、フロストボムとフロストウォールのセットアップの前に、選択した呪いまたはマークを付与します。",
+        "単体火力にはフロストダーツを使用します。ビター・デッドは、死体とマナに余裕がある場合にのみ、条件付きのエンドゲーム選択肢として採用します。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "明確なビルドの個性と、段階的な進行。",
+        "主要ループは現在の0.5ガイドでカバーされています。",
+        "ガイドはマッピングとボスの前提を分けて扱っています。"
+      ],
+      "cons": [
+        "いくつかのメカニクスは現在のクライアントでの再現確認がまだ必要です。",
+        "エンドゲームの配信者構成には高価な前提条件が隠されている場合があります。",
+        "正確なサポートやパッシブの選択はバリエーションによって異なる場合があります。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping-rotation",
+      "type": "playstyle",
+      "title": "マッピングローテーション",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "（維持版ガイドに従い）コールドインフュージョンを生成または維持し、その後マッピングにアイスノヴァを使用します。フロストボムはインフュージョンを生成し冷気露出を付与します。フロストウォールは、その形状が自分の移動の妨げではなく助けになる場所に限定して使用します。"
+      ],
+      "bullets": [
+        "コールドインフュージョンを生成または維持し、その後マッピングにアイスノヴァを使用します。",
+        "ボス戦では、フロストボムとフロストウォールのセットアップの前に選択した呪いまたはマークを付与します。",
+        "ビター・デッドは、ルートが特に死体を利用する場合を除き、マッピングでは省略します。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "boss-freeze-rotation",
+      "type": "playstyle",
+      "title": "ボス用フリーズローテーション",
+      "order": 40,
+      "visible": true,
+      "paragraphs": [
+        "呪いまたはマークのパッケージを付与し、フィールドが許す場所にのみフロストウォールを配置し、フロストボムを加え、その後次のフリーズまたはクールダウン待ちの間はフロストダーツを使用します。特定のボスでフロストウォールの挙動がおかしい場合は、破綻したローテーションを繰り返すのではなく、その依存関係を外します。"
+      ],
+      "bullets": [
+        "呪いまたはマークを付与し、その後フロストボムとフロストウォールをセットアップします。",
+        "単体火力の隙間を埋めるためにフロストダーツを使用します。",
+        "ビター・デッドは、死体が安定して入手できる場合にのみ選択できる条件付きのエンドゲーム補助です。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "freeze-window-visual",
+      "type": "figure",
+      "title": "殲滅、セットアップ、バーストを分ける",
+      "order": 45,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/cold-caster-chronomancer-mechanic.webp",
+        "alt": "アイスノヴァによる殲滅、フロストウォールのセットアップ、凍結バースト窓を示す編集図解",
+        "caption": "アイスノヴァが近くの群れを殲滅し、フロストボムとフロストウォールが、場当たり的に撃つのではなく別の単体火力窓を準備します。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 50,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン開始（アクト1、レベル1〜20）",
+          "levelRange": "1–20",
+          "body": [
+            "検証済みの仮構成（エッセンスドレイン、コンタジオン、ボーンスターーム）から始め、機能するスペルフォーカス、移動速度、耐性、基本的な生存を優先します。コールドパッケージへの挑戦はまだ行わないでください。"
+          ]
+        },
+        {
+          "label": "コアスキルへの移行（アクト2、レベル21〜40）",
+          "levelRange": "21–40",
+          "body": [
+            "アイスノヴァ、フロストボム、フロストダーツとそれらのサポートジェムが実際に揃ってからのみ、コールドパッケージへ切り替えます。正確な解放レベルはPC検証待ちです。固定レベルではなく「アクト2」を真の目安としてください。"
+          ]
+        },
+        {
+          "label": "キャンペーン終盤（アクト3、レベル約41〜50）",
+          "levelRange": "41–50",
+          "body": [
+            "単体バースト用にフロストウォールを追加します。ビター・デッドは維持版ガイドではこの段階付近で紹介されますが、あくまで任意であり、レベリング中は必須として扱わないでください。"
+          ]
+        },
+        {
+          "label": "初期マップ（レベル50以上）",
+          "body": [
+            "エンドゲームのスナップショットを混ぜるのではなく、文書化された1つのバリエーションを採用します。贅沢な選択をする前に、マナ、耐性、ライフを安定させます。この時点でもビター・デッドは任意です。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 55,
+      "visible": true,
+      "caption": "各段階で何を回すか。正確なサポートリンク、ジェムレベル、キャラクターレベルの境界はPC検証待ちです。実践的なのは段階の境界（アクト／マップ突入）です。",
+      "columns": [
+        "段階",
+        "メインスキル",
+        "主要サポート",
+        "パッシブの焦点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベル1〜20",
+          "cells": [
+            "カオスブリッジ：エッセンスドレイン＋コンタジオン、ボス用にボーンスターーム",
+            "コンタジオンの拡散、ボーンスターームのセットアップ（サポートはPC検証待ち）",
+            "ライフ、耐性、移動速度、生存",
+            "十分なスペルフォーカスを持つ任意のスタッフ／ワンド。耐性を上限まで",
+            "アクト2に到達し、コールドジェムが解放される"
+          ]
+        },
+        {
+          "label": "レベル21〜40",
+          "cells": [
+            "アイスノヴァの殲滅＋フロストボム＋フロストダーツ",
+            "冷気／面積サポート（正確なリンクはPC検証待ち）",
+            "冷気ダメージ、詠唱速度、初期マナ",
+            "冷気特化のスタッフ、冷気の積み上げを開始",
+            "フロストウォールが利用可能（アクト3）"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "cells": [
+            "アイスノヴァの殲滅＋フロストウォールのバースト",
+            "マナ／インフュージョンサポート（PC検証待ち）",
+            "マナプール、防御、耐性上限",
+            "マナ＋耐性＋ライフの装備。贅沢品はまだなし",
+            "安定したマナと、レア敵への確実なフリーズ"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "cells": [
+            "完全なコールドループ＋フロストダーツのボスバースト（＋条件付きビター・デッド）",
+            "バリエーション固有のサポート（PC検証待ち）",
+            "完全なツリー、バリエーションのホイール（クリティカル／ウォード／マナ）",
+            "バリエーション固有のユニーク、贅沢なプレフィックス／サフィックス",
+            "贅沢なバリエーション導入前に、ボスへの確実なフリーズ"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 60,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Ice Nova",
+              "skillId": "ice-nova",
+              "role": "マッピングの主要殲滅スキル。パッケージが機能し始めたら中心となる冷気スペルです。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "殲滅のエンジンであり、コールドループ全体がこのスペルを中心に構築されています。"
+              ],
+              "whenReplace": [
+                "コールドビルドでは完全に置き換えられることはありません。フロストダーツ／フロストウォールが単体火力を担う間も、マッピングスキルとして残ります。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：主要な殲滅手段。ボス戦：単体火力パッケージの前にフリーズ／冷気窓を作るために使用。"
+              ],
+              "notes": [
+                "正確なサポートリンクとジェムレベルはPC検証待ちです。"
+              ]
+            },
+            {
+              "displayName": "Frost Darts",
+              "skillId": "frost-darts",
+              "role": "ボスの隙間時間にコールドのセットアップを消費する単体ダメージの埋め草。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "より大きな冷気効果（フロストボム／フロストウォールのバースト）の間の単体火力時間を担います。"
+              ],
+              "whenReplace": [
+                "単体の埋め草として維持します。検証済みのより強力なボススキルが現れた場合のみ交換してください。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：通常は不使用。ボス戦：信頼できる単体火力手段。"
+              ],
+              "notes": [
+                "正確なサポートリンクとジェムレベルはPC検証待ちです。"
+              ]
+            },
+            {
+              "displayName": "Frost Bomb",
+              "skillId": "frost-bomb",
+              "role": "コールドインフュージョンを生成し冷気露出を付与します。維持版ガイドによるとセットアップの要です。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "これがないとアイスノヴァのバースト窓が形成されないため、ループ全体の鍵となります。"
+              ],
+              "whenReplace": [
+                "維持します。これはセットアップスキルであり、ダメージを競うものではありません。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：アイスノヴァの前にインフュージョンを生成するために使用。ボス戦：フロストウォールとフロストダーツの前のセットアップで付与。"
+              ],
+              "notes": [
+                "コールドインフュージョンの生成と露出値はPC検証待ちです（調査クレームC2）。"
+              ]
+            },
+            {
+              "displayName": "Frost Wall",
+              "skillId": "frost-wall",
+              "role": "単体バースト／セットアップ手段。その価値はフィールドの形状に依存します。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "フィールドが想定通りの挙動を許す場合、ボス用のバーストセットアップを作ります。"
+              ],
+              "whenReplace": [
+                "形状や衝突によって相互作用が壊れるボス／フィールドでは外します。ボム＋マーク／呪い＋フロストダーツで続けます。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：形状が助けになる場所では条件付きで有用。ボス戦：バーストのセットアップ手順、フィールド依存。"
+              ],
+              "notes": [
+                "フロストウォールの相互作用はPC検証待ちです（調査クレームC3）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "セットアップおよび補助スキル",
+          "skills": [
+            {
+              "displayName": "Elemental Weakness",
+              "skillId": "elemental-weakness",
+              "role": "冷気耐性を下げる呪い。ボス用セットアップパッケージの一部。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "敵の冷気耐性を下げることで冷気バーストを強化します。"
+              ],
+              "whenReplace": [
+                "セットアップ呪いとして維持します。選択したバリエーションが別のマーク／呪いを使う場合のみ交換してください。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意。ボス戦：フロストボムとフロストウォールの前のセットアップで付与。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Freezing Mark",
+              "skillId": "freezing-mark",
+              "role": "冷気／フリーズの成果を得られるようにし、ターゲットへの集中を高めるマーク。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "タフなターゲットやボスに対する確実なフリーズを支えます。"
+              ],
+              "whenReplace": [
+                "セットアップスキルとして維持します。ダメージを競うものではありません。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：レア／ボスに維持。ボス戦：セットアップの早い段階で付与。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "条件付き任意 — ビター・デッド",
+          "skills": [
+            {
+              "displayName": "Bitter Dead",
+              "skillId": "bitter-dead",
+              "role": "死体を消費して追尾する冷気弾を放つルーン系スペル。条件付きのエンドゲーム補助であり、レベリングや初期マップのコアではありません。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "初期マップ／エンドゲームに入り、かつルートから死体が安定して供給され（キルまたはフロストウォールから）、かつ余裕のあるマナとジェムソケットがある場合にのみ採用します。それまでは完全に省略します。"
+              ],
+              "whenReplace": [
+                "アクト1〜2のレベリングと初期マップでは省略します。死体の供給やマナが不安定な場合、あるいはコアのコールドリンクと競合する場合は再び外します。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：ルートが特に死体を利用する場合を除き省略。ボス戦：エンドゲームでのみ選択できる、死体を消費する殲滅補助。"
+              ],
+              "notes": [
+                "入手方法、死体要件、現在の価値はPC検証待ちです（調査クレームC5）。デフォルトの選択として扱わないでください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暫定的な順序",
+          "body": [
+            "選択した現在のガイドに従い、公開前に0.5.4クライアントで各ノードを確認してください。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 80,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件を支えるノードのみを取得してください。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルドバリエーションに移行してください。互換性のないプランナーのスナップショットを混ぜないでください。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 90,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "主要ダメージスロット",
+          "recommendations": [
+            "適切なスキルレベルまたは武器ダメージ",
+            "バリエーション互換の修正値"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ティアに足りる高さの冷気またはスペルダメージ。正しいベースタイプ",
+              "reason": "殲滅とボスバーストの両方における主要な進行チェックです。"
+            },
+            {
+              "tier": "recommended",
+              "label": "スキルレベルまたは追加冷気ダメージの修正値",
+              "reason": "メインスキルを直接支えます。"
+            },
+            {
+              "tier": "optional",
+              "label": "詠唱速度",
+              "reason": "殲滅の感触を良くしますが、ダメージの下限ではありません。"
+            },
+            {
+              "tier": "luxury",
+              "label": "クリティカル倍率／追加弾（バリエーション限定）",
+              "reason": "選択したバリエーションが実際に機能してからのみ。"
+            }
+          ],
+          "notes": [
+            "前提条件なしにエンドゲームのアイテムをコピーしないでください。"
+          ]
+        },
+        {
+          "slot": "防御防具",
+          "recommendations": [
+            "ライフまたは選択した防御プール",
+            "元素耐性と回復"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと上限のない2つの耐性",
+              "reason": "どれほどのDPSがあっても、マップで死ぬことは補えません。"
+            },
+            {
+              "tier": "recommended",
+              "label": "バリエーションが使う防御プール（ES／回避／ウォード）",
+              "reason": "アセンダンシーと組み合わせる防御層。"
+            },
+            {
+              "tier": "optional",
+              "label": "ブーツの移動速度",
+              "reason": "フロストウォールやボスの周りでの再配置に役立ちます。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なDPSのプレフィックス／サフィックス",
+              "reason": "防御が解決してからのみ。"
+            }
+          ],
+          "notes": [
+            "1つのスロットではなく、防御パッケージ全体を比較してください。"
+          ]
+        },
+        {
+          "slot": "アクセサリとユーティリティ",
+          "recommendations": [
+            "ステータスとリソースの維持",
+            "検証済みのビルド固有の修正値のみ"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器とジェムを装備するためのステータス",
+              "reason": "装備できない武器は無価値です。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ／マナ",
+              "reason": "防御とリソースの殻を完成させます。"
+            },
+            {
+              "tier": "optional",
+              "label": "マナ維持／リソースの修正値",
+              "reason": "ループは単体ターゲットに対しても機能しなければなりません。"
+            },
+            {
+              "tier": "luxury",
+              "label": "バリエーション専用のプレフィックス／サフィックス（例：クリティカル）",
+              "reason": "選択したバリエーションに条件付き。"
+            }
+          ],
+          "notes": [
+            "価格は現時点では固定されていません。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 100,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "防御の基礎",
+          "reason": "まず耐性を上限まで上げ、回復を確立してください。"
+        },
+        {
+          "label": "主要ダメージ係数",
+          "reason": "プランナーと実践の両方の証拠で共有される係数を使用してください。"
+        },
+        {
+          "label": "リソース維持",
+          "reason": "主要ループは単体ターゲットに対しても機能しなければなりません。"
+        },
+        {
+          "label": "快適性",
+          "reason": "ビルドが機能してからのみ、速度や範囲を追加してください。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 110,
+      "visible": true,
+      "steps": [
+        {
+          "label": "コールドへの切り替えが以前より弱く感じる",
+          "symptom": "アイスノヴァに切り替えた後、殲滅とボスのダメージがそれ以前のカオスブリッジより低下する。",
+          "checks": [
+            "アイスノヴァ、フロストボム、フロストダーツ、サポート、マナ、詠唱速度がすべて揃っているか？",
+            "耐性とライフはすでに解決しているか（つまり切り替えが真のボトルネックか）？"
+          ],
+          "upgrade": "カオスブリッジに戻るか、不足しているサポートを集めてください。完全なパッケージなしにコールドジェムを維持しないでください。"
+        },
+        {
+          "label": "マップで頻繁にマナが空になる",
+          "symptom": "通常のマッピングや単体戦闘中にマナが空になる。",
+          "checks": [
+            "マナプール、リジェネ、吸収／リカバーは機能しているか？",
+            "コスト削減やキル時マナがボスにも及んでいるか？"
+          ],
+          "upgrade": "ダメージ装備の前にマナ維持を解決してください。リソースの問題をダメージで解決しようとしてはいけません。"
+        },
+        {
+          "label": "ボスが凍らない／バースト窓が来ない",
+          "symptom": "単体バーストがボスに決して到達しない。",
+          "checks": [
+            "呪いまたはマークが最初に付与されているか？",
+            "フロストボムとフロストウォールがセットアップ内で実際に有効か？",
+            "冷気露出／インフュージョンは存在するか？"
+          ],
+          "upgrade": "武器ではなく、単体のセットアップ（マーク／呪い→ボム→ウォール→ダーツ）を修正してください。"
+        },
+        {
+          "label": "フロストウォールが戦闘を悪化させる",
+          "symptom": "フロストウォールを配置するとボスのダメージが下がるか、衝突の問題が生じる。",
+          "checks": [
+            "ボスのフィールドの形状はウォールを支えているか？",
+            "ボスのサイズ／衝突が相互作用を壊しているか？"
+          ],
+          "upgrade": "フロストウォールへの依存を外してください。ボム、マーク／呪い、フロストダーツで続けます。"
+        },
+        {
+          "label": "クリティカルまたは贅沢な装備を検討する",
+          "symptom": "より多くのダメージを求め、クリティカル／贅沢な部位を狙っている。",
+          "checks": [
+            "非クリティカルでの殲滅、ボスのフリーズ、防御はすでに安定しているか？",
+            "クリティカル装備が耐性上限を崩す、あるいはライフ／防御を落とす恐れはあるか？"
+          ],
+          "upgrade": "チェックリストを通過してからのみバリエーションを採用してください。部位を買い、再テストし、プランナー上の数値のために生存性を犠牲にしてはいけません。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "通常の群れには冷気を帯びたアイスノヴァを使用してください。ただし、すべてのターゲットを完全なコンボにしようとして立ち止まらないでください。フロストボムは耐性のある、あるいはタフなターゲットを処理します。フロストウォールは、その形状が自分の移動の妨げではなく助けになる場所に限定して使用します。",
+        "コールドインフュージョンを生成または維持し、その後マッピングにアイスノヴァを使用します。ビター・デッドは、ルートが特に死体を利用する場合を除き、マッピングでは省略します。"
+      ],
+      "bullets": [
+        "コールドインフュージョンを生成または維持し、その後マッピングにアイスノヴァを使用します。",
+        "ボス戦では、フロストボムとフロストウォールのセットアップの前に選択した呪いまたはマークを付与します。",
+        "ビター・デッドは条件付きのエンドゲーム選択肢であり、マッピングのデフォルトではありません。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "呪いまたはマークのパッケージを付与し、フィールドが許す場所にのみフロストウォールを配置し、フロストボムを加え、その後次のフリーズまたはクールダウン待ちの間はフロストダーツを使用します。特定のボスでフロストウォールの挙動がおかしい場合は、破綻したローテーションを繰り返すのではなく、その依存関係を外します。",
+        "ビター・デッドは、死体が安定して入手できる場合にのみ選択できる条件付きのエンドゲーム補助です。レベリング中や初期マップでは、標準的なボスループの一部ではありません。"
+      ],
+      "bullets": [
+        "呪いまたはマークを付与し、その後フロストボムとフロストウォールをセットアップします。",
+        "単体火力の隙間を埋めるためにフロストダーツを使用します。",
+        "エンドゲームにおいて、死体とマナに余裕がある場合のみビター・デッド。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "進行のチェックポイント",
+      "order": 140,
+      "visible": true,
+      "caption": "このルートは固定されたキャラクターレベルではなく、利用可能なメカニクスによって構成されています。",
+      "columns": [
+        "キャンペーンブリッジ",
+        "コールドコア起動",
+        "マップの精緻化"
+      ],
+      "rows": [
+        {
+          "label": "主な行動",
+          "cells": [
+            "ED＋コンタジオン、ボス用にボーンスターーム",
+            "アイスノヴァの殲滅、フロストダーツの単体",
+            "ノヴァの殲滅＋ウォール／ボムのバースト"
+          ]
+        },
+        {
+          "label": "切り替えのタイミング",
+          "cells": [
+            "デフォルトの開始",
+            "サポートとコールドジェムが準備できたとき",
+            "詠唱速度、防御、マナが安定した感触のとき"
+          ]
+        },
+        {
+          "label": "前提としてはならないこと",
+          "cells": [
+            "最終的なコールドツリーがすでに機能している",
+            "フロストウォールがすべてのフィールドで機能する",
+            "より高いクリティカルが配置のまずさを補う"
+          ]
+        },
+        {
+          "label": "最初の修正",
+          "cells": [
+            "カオスブリッジをより長く維持する",
+            "ノヴァ＋ダーツに単純化する",
+            "マナとウォールの配置を調整する"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "コアスキルが利用できない",
+          "checks": [
+            "ジェムレベル、フォーム、武器セット、装備要件を確認してください。",
+            "文書化された移行段階に戻してください。"
+          ]
+        },
+        {
+          "symptom": "単体ループが止まる",
+          "checks": [
+            "キルに依存する前提を外してください。",
+            "一連の行動の前後で各リソースを記録してください。"
+          ]
+        },
+        {
+          "symptom": "コピーしたエンドゲーム装備の方が弱い",
+          "checks": [
+            "不足しているパッシブ、サポート、しきい値を確認してください。",
+            "より低い検証済み段階から再構築してください。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "コールドキャスターのトラブルシューティング",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "なぜコールドへの切り替え直後にビルドが弱くなったのか？",
+          "answer": [
+            "切り替えは1つのジェムではなくパッケージです。アイスノヴァ、フロストボム、フロストダーツ、サポート、マナ、詠唱速度が同時に揃わない場合、古いED／コンタジオンブリッジの方が依然として強い可能性があります。"
+          ],
+          "bullets": [
+            "ブリッジ構成に戻してください。",
+            "不足しているサポートを集めてください。",
+            "同じキャンペーンゾーンで再テストしてください。"
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/ed-contagion-lich/",
+              "label": "ED＋コンタジオンブリッジを完全なビルドとして使用する"
+            }
+          ]
+        },
+        {
+          "question": "なぜフロストウォールがボス戦を悪化させるのか？",
+          "answer": [
+            "ボスのサイズ、フィールドの形状、ウォールの衝突が結果を変える可能性があります。ウォールは条件付きのバースト手段として使用してください。フィールドが相互作用を壊す場合は、ボム、マークまたは呪い、フロストダーツで続けます。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "いつビター・デッドを採用すべきか？",
+          "answer": [
+            "条件付きのエンドゲーム選択肢としてのみ：初期マップ／エンドゲームに入り、ルートから死体が安定して供給され（キルまたはフロストウォールから）、かつ余裕のあるマナとジェムソケットがある場合です。レベリングと初期マップでは省略されます。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "今クリティカルストライクの装備に投資すべきか？",
+          "answer": [
+            "非クリティカルループが殲滅しマナを維持した後でのみ。配信者のスレッドには特定のクリティカル相互作用について未解決の疑問が残っているため、高価なクリティカル装備は最初の修正ではありません。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 165,
+      "visible": true,
+      "note": "PoE2には現在ネイティブなビルドプランナーがあります。貼り付け可能なインポート文字列とダウンロード可能な.buildはPC検証待ちです。それまでは下記の配信者ガイドとプランナーツールを使用してください。常に自分のクライアントでノードの選択を再確認してください。",
+      "creatorName": "Ky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "配信者の注記と未解決の疑問",
+      "order": 170,
+      "visible": true,
+      "note": "配信者の議論は、成功したプレイだけでなく未解決の挙動も記録しているため価値があります。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "Ice Nova Chronomancer 配信者スレッド",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/",
+          "statement": "この議論では、ビター・デッドの表示されている基本クリティカル挙動がおそらく誤りであると指摘し、アーケインサージが想定通りに適用されているか問うているため、これらの相互作用は確定した事実としてコピーするのではなく検証されるべきです。",
+          "context": "したがって本記事はこれらを検証項目として扱い、ビルドに非クリティカルな機能的基準を与えています。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ky コールドキャスター進行ガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+          "statement": "維持版のルートは明示的にカオスパッケージから始まり、必要なサポートが揃った後にコールドへ変更し、より大きな冷気効果の間の単体時間を埋めるためにフロストダーツを使用します。",
+          "context": "これが、レベルのみの推奨ではなく段階的な切り替えの根拠です。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "ダメージだけでなく位置取りを見る",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Ky",
+          "label": "Ice Nova Chronomancer ゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=DvplkRk0KYs",
+          "description": "ノヴァの射程、フロストウォールの配置、フロストダーツが埋める隙間時間の視覚的な参考。",
+          "takeaway": "ダメージ窓の前に、デバフと地形ツールの順序を追ってください。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Ice Nova Chronomancer ゲームプレイ開始（配信者はチャプターを提供していません）"
+            },
+            {
+              "time": "2:00",
+              "label": "ノヴァの射程とフロストウォールの配置（概算、検証待ち）"
+            },
+            {
+              "time": "4:00",
+              "label": "デバフの順序とダメージ窓（概算、検証待ち）"
+            },
+            {
+              "time": "6:00",
+              "label": "終盤／ビター・デッドバリエーションの注記（概算、検証待ち）"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ky 0.5 コールドキャスターガイドとプランナー",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ice Nova Chronomancer のソース動画要約",
+          "url": "https://exile.codex-wiki.com/builds/ice-nova-coa-chronomancer-build-guide-0-5-path-of-exile-2"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "独立した書き起こしの概要",
+          "url": "https://www.mmoexp.com/News/path-of-exile-2-cold-caster-chronomancer-build-guide-for-league-start-and-endgame.html"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "配信者の議論とコミュニティの質問",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー エクスポート",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Ky Ice Nova Chronomancer ゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=DvplkRk0KYs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "出典付きの0.5.4ビルドガイドを作成。PC検証は未完了。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "拡張スキーマへ拡充：段階的構成表、ビルドプランナー項目、スロットごとの装備ステータス優先度、症状ベースの強化優先度、表示名付きスキルカードを追加。ビター・デッドをデフォルトのコアではなく条件付きのエンドゲーム選択肢とし、レベリング／初期をエンドゲームから分離し、その導入条件を明記。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ky 0.5 コールドキャスターガイドとプランナー",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+    },
+    {
+      "label": "Ice Nova Chronomancer のソース動画要約",
+      "sourceType": "community",
+      "url": "https://exile.codex-wiki.com/builds/ice-nova-coa-chronomancer-build-guide-0-5-path-of-exile-2"
+    },
+    {
+      "label": "独立した書き起こしの概要",
+      "sourceType": "community",
+      "url": "https://www.mmoexp.com/News/path-of-exile-2-cold-caster-chronomancer-build-guide-for-league-start-and-endgame.html"
+    },
+    {
+      "label": "配信者の議論とコミュニティの質問",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー エクスポート",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+    },
+    {
+      "label": "Ky Ice Nova Chronomancer ゲームプレイ",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=DvplkRk0KYs"
+    }
+  ],
+  "seo": {
+    "title": "コールドキャスター・クロノマンサー ビルドガイド",
+    "description": "Path of Exile 2 のコールドキャスター・クロノマンサーに関する、0.5.4 ベースラインの完全なビルドガイドです。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "cold-caster-chronomancer",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

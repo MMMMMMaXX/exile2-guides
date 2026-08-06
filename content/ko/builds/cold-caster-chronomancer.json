@@ -1,0 +1,996 @@
+{
+  "id": "cold-caster-chronomancer",
+  "slug": "cold-caster-chronomancer",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "콜드 캐스터 크로노매서 빌드 가이드",
+  "shortTitle": "콜드 캐스터 크로노매서",
+  "summary": "2막 전환 이후 사냥(매핑)은 아이스 노바가 담당하며, 서리 장벽·서리 폭탄·서리 투사체가 별도의 단일 대상 패키지를 이룹니다. 비터 데드는 조건부 엔드게임 옵션이지 기본 핵심 픽이 아닙니다.",
+  "description": "0.5.4 기준선의 완전한 패스 오브 엑자일 2 콜드 캐스터 크로노매서 빌드 가이드.",
+  "classId": "sorceress",
+  "ascendancyId": "chronomancer",
+  "mainSkillIds": [
+    "ice-nova",
+    "frost-darts",
+    "frost-bomb",
+    "frost-wall"
+  ],
+  "secondarySkillIds": [
+    "elemental-weakness",
+    "freezing-mark",
+    "bitter-dead"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "caster",
+    "cold",
+    "freeze",
+    "spell",
+    "control"
+  ],
+  "damageTypes": [
+    "cold"
+  ],
+  "bestFor": [
+    "mapping",
+    "freeze-control",
+    "spell-progression"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/cold-caster-chronomancer.webp",
+  "cardImage": "/images/builds/covers/cold-caster-chronomancer.webp",
+  "imageAlt": "폐허가 된 전장 주위로 아이스 노바와 얼어붙은 시간을 형상화하는 크로노매서",
+  "tags": [
+    "bossing",
+    "caster",
+    "chronomancer",
+    "cold",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "sorceress",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "빌드 개요",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "중요한 진행은 외양이 아니라 기계적인 것입니다. 캠페인은 에센스 드레인, 컨테이지언, 본스톰으로 시작할 수 있고, 아이스 노바·서리 폭탄·서리 투사체에 충분한 서포트 젬이 갖춰질 때만 콜드 패키지로 넘어가야 합니다. 최종 플래너가 매력적으로 보여서, 하지만 서포트와 시전 리듬이 갖춰지기 전에 바꾸는 것은 약한 2막 캐릭터를 만드는 흔한 방식입니다.",
+        "맵에서는 아이스 노바가 근거리 클리어 도구이고, 서리 장벽과 서리 폭탄이 버스트 기회를 만들며, 서리 투사체가 단일 대상 공백 시간을 채웁니다. 크로노매서 유틸리티가 벽을 올바르게 배치해야 할 필요나, 보스 전장이 벽이 예상대로 작동하는지 확인해야 할 필요를 없애주지는 않습니다.",
+        "2막 전환 이후 사냥은 아이스 노바가 담당하며, 서리 장벽·서리 폭탄·서리 투사체가 별도의 단일 대상 패키지를 이룹니다. 비터 데드는 모든 단계의 필수 핵심이 아닙니다. 그것은 조건부 엔드게임 보충재로, 초반 맵/엔드게임에 진입했고 경로가 안정적으로 시체를 제공할 때만 의미가 있습니다. 비터 데드 없이 레벨링과 초반 맵을 진행하세요."
+      ],
+      "bullets": [
+        "유지 관리되는 가이드대로 콜드 주입(Cold Infusion)을 생성하거나 유지한 다음, 사냥에는 아이스 노바를 사용하세요.",
+        "보스의 경우 서리 폭탄과 서리 장벽 세팅 전에 선택한 저주나 마크를 적용하세요.",
+        "단일 대상에는 서리 투사체를 사용하세요. 시체와 마나가 허용할 때에만 비터 데드를 조건부 엔드게임 옵션으로 채택하세요."
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "장점과 단점",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "명확한 빌드 정체성과 단계적 진행.",
+        "핵심 루프는 현재 0.5 가이드 범위에 있습니다.",
+        "가이드는 사냥과 보스 가정을 분리합니다."
+      ],
+      "cons": [
+        "몇 가지 메커니즘은 여전히 현재 클라이언트 재현이 필요합니다.",
+        "엔드게임 크리에이터 세팅은 비싼 의존성을 숨길 수 있습니다.",
+        "정확한 서포트와 패시브 선택은 변형에 따라 바뀔 수 있습니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping-rotation",
+      "type": "playstyle",
+      "title": "사냥 로테이션",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "유지 관리되는 가이드대로 콜드 주입을 생성하거나 유지한 다음, 사냥에는 아이스 노바를 사용하세요. 서리 폭탄은 주입을 생성하고 콜드 노출을 적용합니다. 서리 장벽은 자신의 이동을 막기보다 돕는 기하학적 위치에만 남겨두세요."
+      ],
+      "bullets": [
+        "유지 관리되는 가이드대로 콜드 주입을 생성하거나 유지한 다음, 사냥에는 아이스 노바를 사용하세요.",
+        "보스의 경우 서리 폭탄과 서리 장벽 세팅 전에 선택한 저주나 마크를 적용하세요.",
+        "경로가 구체적으로 시체를 사용하지 않는 한 사냥에서 비터 데드는 건너뜁니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "boss-freeze-rotation",
+      "type": "playstyle",
+      "title": "보스 빙결 로테이션",
+      "order": 40,
+      "visible": true,
+      "paragraphs": [
+        "저주나 마크 패키지를 적용하고, 전장이 지원하는 곳에만 서리 장벽을 놓고, 서리 폭탄을 더한 다음, 다음 빙결이나 쿨다운 창을 기다리며 서리 투사체를 사용하세요. 특정 보스에서 서리 장벽이 이상하게 작동한다면, 깨진 회전을 반복하는 대신 그 의존성을 제거하세요."
+      ],
+      "bullets": [
+        "저주나 마크를 적용한 다음 서리 폭탄과 서리 장벽 세팅을 하세요.",
+        "서리 투사체로 단일 대상 공백 시간을 메우세요.",
+        "비터 데드는 시체가 안정적으로 확보될 때만 가능한 선택적 조건부 엔드게임 보충재입니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "freeze-window-visual",
+      "type": "figure",
+      "title": "클리어·세팅·버스트의 분리",
+      "order": 45,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/cold-caster-chronomancer-mechanic.webp",
+        "alt": "아이스 노바 클리어, 서리 장벽 세팅, 얼어붙은 버스트 창을 보여주는 편집 다이어그램",
+        "caption": "아이스 노바는 근처 무리를 클리어하고, 서리 폭탄과 서리 장벽은 무작위로 시전하는 것이 아니라 별도의 단일 대상 창을 준비합니다.",
+        "credit": "Exile2 가이드의 독창적 편집 일러스트",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "레벨링",
+      "order": 50,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인 시작 (1막, 레벨 1–20)",
+          "levelRange": "1–20",
+          "body": [
+            "검증된 임시 세팅(에센스 드레인, 컨테이지언, 본스톰)으로 시작하고, 기능하는 스펠 집중·이동 속도·저항·기본 생존을 우선하세요. 아직 콜드 패키지는 시도하지 마세요."
+          ]
+        },
+        {
+          "label": "핵심 스킬 전환 (2막, 레벨 21–40)",
+          "levelRange": "21–40",
+          "body": [
+            "아이스 노바·서리 폭탄·서리 투사체와 그 서포트 젬이 실제로 사용 가능해질 때만 콜드 패키지로 전환하세요. 정확한 해금 레벨은 PC 검증 대기 중입니다. 고정 레벨이 아니라 '2막'을 진짜 마일스톤으로 취급하세요."
+          ]
+        },
+        {
+          "label": "캠페인 종료 (3막, 약 레벨 41–50)",
+          "levelRange": "41–50",
+          "body": [
+            "단일 대상 버스트를 위해 서리 장벽을 추가하세요. 비터 데드는 유지 관리 가이드에서 이 무렵 등장하지만 여전히 선택적입니다. 레벨링 중에는 필수로 취급하지 마세요."
+          ]
+        },
+        {
+          "label": "초반 맵 (레벨 50+)",
+          "body": [
+            "엔드게임 스냅샷을 섞는 대신 문서화된 하나의 변형을 채택하세요. 어떤 사치 픽이든 전에 마나·저항·생명을 안정화하세요. 이 시점에서도 비터 데드는 여전히 선택적입니다."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "단계별 구성",
+      "order": 55,
+      "visible": true,
+      "caption": "각 단계에서 돌릴 것. 정확한 서포트 연결·젬 레벨·캐릭터 레벨 경계는 PC 검증 대기 중입니다. 단계 경계(막/맵 진입)가 실질적으로 행동할 부분입니다.",
+      "columns": [
+        "단계",
+        "주력 스킬",
+        "핵심 서포트",
+        "패시브 집중",
+        "장비 목표",
+        "전환 조건"
+      ],
+      "rows": [
+        {
+          "label": "레벨 1–20",
+          "cells": [
+            "카오스 브릿지: 에센스 드레인 + 컨테이지언, 보스용 본스톰",
+            "컨테이지언 전파, 본스톰 세팅 (서포트 PC 대기)",
+            "생명, 저항, 이동 속도, 생존",
+            "충분한 스펠 집중을 갖춘 스태프/완드; 저항 상한 채우기",
+            "2막 도달 및 콜드 젬 해금"
+          ]
+        },
+        {
+          "label": "레벨 21–40",
+          "cells": [
+            "아이스 노바 클리어 + 서리 폭탄 + 서리 투사체",
+            "콜드/범위 서포트 (정확한 연결 PC 대기)",
+            "콜드 피해, 시전 속도, 초반 마나",
+            "콜드 중심 스태프, 콜드 스택 시작",
+            "서리 장벽 사용 가능 (3막)"
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "cells": [
+            "아이스 노바 클리어 + 서리 장벽 버스트",
+            "마나/주입 서포트 (PC 대기)",
+            "마나 풀, 방어, 저항 상한",
+            "마나 + 저항 + 생명 장비; 아직 사치 없음",
+            "안정된 마나와 레어에 대한 신뢰할 수 있는 빙결"
+          ]
+        },
+        {
+          "label": "엔드게임",
+          "cells": [
+            "풀 콜드 루프 + 서리 투사체 보스 버스트 (+ 조건부 비터 데드)",
+            "변형별 서포트 (PC 대기)",
+            "풀 트리, 변형 휠 (치명/워드/마나)",
+            "변형 유니크, 사치 접두/접미",
+            "어떤 사치 변형이든 전에 보스 빙결이 신뢰할 수 있어야 함"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "스킬",
+      "order": 60,
+      "visible": true,
+      "groups": [
+        {
+          "label": "핵심 스킬",
+          "skills": [
+            {
+              "displayName": "Ice Nova",
+              "skillId": "ice-nova",
+              "role": "주력 사냥 클리어 스킬; 패키지가 가동되면 중심이 되는 콜드 스펠.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "클리어 엔진이자 전체 콜드 루프가 구축된 스펠입니다."
+              ],
+              "whenReplace": [
+                "콜드 빌드에서 절대 완전히 대체되지 않습니다. 서리 투사체/서리 장벽이 단일 대상을 처리하는 동안 사냥 스킬로 유지됩니다."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 주력 클리어 도구. 보싱: 단일 대상 패키지 전 빙결/콜드 창을 구축하는 데 사용."
+              ],
+              "notes": [
+                "정확한 서포트 연결과 젬 레벨은 PC 검증 대기 중입니다."
+              ]
+            },
+            {
+              "displayName": "Frost Darts",
+              "skillId": "frost-darts",
+              "role": "보스 공백 시간 동안 콜드 세팅을 소모하는 단일 대상 피해 메우기.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "더 큰 콜드 효과(서리 폭탄/서리 장벽 버스트) 사이의 단일 대상 시간을 채웁니다."
+              ],
+              "whenReplace": [
+                "단일 대상 메우기로 유지하세요. 검증된 더 강한 보스 스킬이 나타날 때만 교체."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 보통 미사용. 보싱: 신뢰할 수 있는 단일 대상 도구."
+              ],
+              "notes": [
+                "정확한 서포트 연결과 젬 레벨은 PC 검증 대기 중입니다."
+              ]
+            },
+            {
+              "displayName": "Frost Bomb",
+              "skillId": "frost-bomb",
+              "role": "콜드 주입을 생성하고 콜드 노출을 적용합니다. 유지 관리 가이드상 세팅의 핵심 고리.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "없으면 아이스 노바 버스트 창이 형성되지 않으므로 전체 루프를 제한합니다."
+              ],
+              "whenReplace": [
+                "유지하세요. 세팅 스킬이지 피해 경쟁자가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 아이스 노바 전 주입 생성용. 보싱: 서리 장벽과 서리 투사체 전 세팅에 적용."
+              ],
+              "notes": [
+                "콜드 주입 생성과 노출 수치는 PC 검증 대기 중입니다 (연구 청구 C2)."
+              ]
+            },
+            {
+              "displayName": "Frost Wall",
+              "skillId": "frost-wall",
+              "role": "단일 대상 버스트/세팅 도구; 그 가치는 전장 기하학에 따라 달라집니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "전장이 예상대로 작동하게 해줄 때 보스를 위한 버스트 세팅을 만듭니다."
+              ],
+              "whenReplace": [
+                "기하학이나 충돌이 상호작용을 깨는 보스/전장에서는 버리세요. 폭탄 + 마크/저주 + 서리 투사체로 계속하세요."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 기하학이 도움이 되는 곳에서 조건부로 유용. 보싱: 버스트 세팅 단계, 전장 의존적."
+              ],
+              "notes": [
+                "서리 장벽 상호작용은 PC 검증 대기 중입니다 (연구 청구 C3)."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "세팅 및 보조 스킬",
+          "skills": [
+            {
+              "displayName": "Elemental Weakness",
+              "skillId": "elemental-weakness",
+              "role": "콜드 저항을 낮추는 저주; 보스 세팅 패키지의 일부.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "적의 콜드 저항을 낮춰 콜드 버스트를 개선합니다."
+              ],
+              "whenReplace": [
+                "세팅 저주로 유지하세요. 선택한 변형이 다른 마크/저주를 쓰면 그때만 교체."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 선택적. 보싱: 서리 폭탄과 서리 장벽 전 세팅에 적용."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Freezing Mark",
+              "skillId": "freezing-mark",
+              "role": "콜드/빙결 보상을 가능케 하고 타깃 집중을 개선하는 마크.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "탱키한 타깃과 보스에 대한 신뢰할 수 있는 빙결을 지원합니다."
+              ],
+              "whenReplace": [
+                "세팅 스킬로 유지하세요. 피해 경쟁자가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 레어/보스에 유지. 보싱: 세팅 초기에 적용."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "조건부 선택 — 비터 데드",
+          "skills": [
+            {
+              "displayName": "Bitter Dead",
+              "skillId": "bitter-dead",
+              "role": "시체를 소모해 유도형 콜드 투사체를 내보내는 루닉 스펠. 조건부 엔드게임 보충재이지 레벨링이나 초반 맵의 핵심이 아닙니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "초반 맵/엔드게임에 진입했고 경로가 시체(처치 또는 서리 장벽에서)를 안정적으로 제공하며, 여유 마나와 젬 소켓이 있을 때에만 채택하세요. 그 전에는 완전히 건너뜁니다."
+              ],
+              "whenReplace": [
+                "1–2막 레벨링과 초반 맵에서는 건너뛰세요. 시체 공급이나 마나가 불안정하거나 핵심 콜드 연결과 경쟁하면 다시 뗍니다."
+              ],
+              "mappingBossingDiff": [
+                "사냥: 경로가 구체적으로 시체를 사용하지 않는 한 건너뜀. 보싱: 엔드게임에서만 선택적인 시체 급 클리어 보충재."
+              ],
+              "notes": [
+                "획득·시체 요구치·현재 가치는 PC 검증 대기 중입니다 (연구 청구 C5). 기본 픽으로 취급하지 마세요."
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "승천",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "잠정 순서",
+          "body": [
+            "선택한 현재 가이드를 따른 다음, 게시 전 0.5.4 클라이언트에서 모든 노드를 확인하세요."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "패시브 트리",
+      "order": 80,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "현재 레벨링 스킬과 방어 요구치를 지지하는 노드만 가져가세요."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "선택한 빌드 변형으로 이동하세요. 호환되지 않는 플래너 스냅샷을 조합하지 마세요."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "장비",
+      "order": 90,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Primary damage slot",
+          "recommendations": [
+            "적절한 스킬 레벨 또는 무기 피해",
+            "변형 호환 모디파이어"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "티어에 충분한 콜드 또는 스펠 피해; 올바른 기본 유형",
+              "reason": "클리어와 보스 버스트 모두에 대한 주요 진행 점검."
+            },
+            {
+              "tier": "recommended",
+              "label": "스킬 레벨 또는 추가 콜드 피해 모디파이어",
+              "reason": "주력 스킬을 직접 지원합니다."
+            },
+            {
+              "tier": "optional",
+              "label": "시전 속도",
+              "reason": "클리어 감을 개선하지만 피해 바닥은 아닙니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "치명 배수 / 추가 투사체 (변형 전용)",
+              "reason": "선택한 변형이 실제로 가동된 후에만."
+            }
+          ],
+          "notes": [
+            "전제조건 없이 엔드게임 아이템을 복사하지 마세요."
+          ]
+        },
+        {
+          "slot": "Defensive armour",
+          "recommendations": [
+            "생명 또는 선택한 방어 풀",
+            "원소 저항과 회복"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명과 상한이 채워지지 않은 두 저항",
+              "reason": "어떤 DPS도 맵에서 죽는 것을 보상하지 않습니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "변형이 쓰는 방어 풀 (ES/회피/워드)",
+              "reason": "승천과 짝을 이루는 방어 레이어."
+            },
+            {
+              "tier": "optional",
+              "label": "신발의 이동 속도",
+              "reason": "서리 장벽과 보스 주변 재배치에 도움."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 DPS 접두/접미",
+              "reason": "방어가 해결된 후에만."
+            }
+          ],
+          "notes": [
+            "한 슬롯이 아니라 방어 패키지 전체를 비교하세요."
+          ]
+        },
+        {
+          "slot": "Jewellery and utility",
+          "recommendations": [
+            "능력치와 자원 유지",
+            "검증된 빌드 전용 모디파이어만"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "무기와 젬을 장착할 능력치",
+              "reason": "장착할 수 없는 무기는 무가치합니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명/마나",
+              "reason": "방어와 자원 껍데기를 완성합니다."
+            },
+            {
+              "tier": "optional",
+              "label": "마나 유지 / 자원 모디파이어",
+              "reason": "메인 루프는 단일 대상에도 작동해야 합니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "변형 전용 접두/접미 (예: 치명)",
+              "reason": "선택한 변형에 조건부."
+            }
+          ],
+          "notes": [
+            "가격은 현재 고정되어 있지 않습니다."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "스탯 우선순위",
+      "order": 100,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "방어 기준선",
+          "reason": "저항을 상한까지 채우고 회복을 먼저 확립하세요."
+        },
+        {
+          "label": "주요 피해 스칼라",
+          "reason": "플래너와 게임플레이 증거가 모두 공유하는 스칼라를 사용하세요."
+        },
+        {
+          "label": "자원 유지",
+          "reason": "메인 루프는 단일 대상에도 작동해야 합니다."
+        },
+        {
+          "label": "편의성",
+          "reason": "빌드가 기능한 후에만 속도나 범위를 추가하세요."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "업그레이드 우선순위",
+      "order": 110,
+      "visible": true,
+      "steps": [
+        {
+          "label": "콜드 전환이 이전보다 약해 보임",
+          "symptom": "아이스 노바로 바꾼 후 클리어와 보스 피해가 이전 카오스 브릿지 대비 하락함.",
+          "checks": [
+            "아이스 노바, 서리 폭탄, 서리 투사체, 서포트, 마나, 시전 속도가 모두 함께 있었나요?",
+            "저항과 생명이 이미 해결되었나요 (즉 전환이 진짜 병목인가요)?"
+          ],
+          "upgrade": "카오스 브릿지로 돌아가거나 누락된 서포트를 모으세요. 전체 패키지 없이 콜드 젬을 그대로 두지 마세요."
+        },
+        {
+          "label": "맵에서 빈번한 마나 고갈",
+          "symptom": "일반 사냥이나 단일 대상 전투 중에 마나가 비워짐.",
+          "checks": [
+            "마나 풀, 재생, 흡혈/리쿱이 활성화되어 있나요?",
+            "보스에도 적용되는 비용 감소나 처치 시 마나가 있나요?"
+          ],
+          "upgrade": "피해 장비보다 먼저 마나 유지를 해결하세요. 자원 문제를 피해로 고치지 마세요."
+        },
+        {
+          "label": "보스가 절대 얼지 않음 / 버스트 창 없음",
+          "symptom": "단일 대상 버스트가 보스에게 도달하지 않음.",
+          "checks": [
+            "저주나 마크가 먼저 적용되었나요?",
+            "서리 폭탄과 서리 장벽이 실제로 세팅에서 활성화되어 있나요?",
+            "콜드 노출 / 주입이 있나요?"
+          ],
+          "upgrade": "무기가 아니라 단일 대상 세팅(마크/저주 → 폭탄 → 장벽 → 투사체)을 수리하세요."
+        },
+        {
+          "label": "서리 장벽이 전투를 악화시킴",
+          "symptom": "서리 장벽을 배치하면 보스 피해가 떨어지거나 충돌 문제가 생김.",
+          "checks": [
+            "보스 전장 기하학이 벽을 지원하나요?",
+            "보스 크기/충돌이 상호작용을 깨나요?"
+          ],
+          "upgrade": "서리 장벽 의존성을 버리세요. 폭탄, 마크/저주, 서리 투사체로 계속하세요."
+        },
+        {
+          "label": "치명 또는 사치 장비 고려 중",
+          "symptom": "더 많은 피해를 원하고 치명/사치 조각을 눈여겨봄.",
+          "checks": [
+            "비치명 클리어, 보스 빙결, 방어가 이미 안정적인가요?",
+            "치명 장비가 저항 상한을 깨거나 생명/방어를 떨어뜨리나요?"
+          ],
+          "upgrade": "체크리스트를 통과한 후에만 변형을 채택하세요. 조각을 사고 재테스트하세요. 플래너 전용 수치 때문에 생존을 거래하지 마세요."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "사냥",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "일반 무리에는 콜드 주입된 아이스 노바를 쓰되, 모든 타깃을 풀 콤보로 만들려고 멈춰 서 있지 마세요. 서리 폭탄은 저항이 있거나 튼튼한 타깃을 처리합니다. 서리 장벽은 자신의 이동을 막기보다 돕는 기하학적 위치에만 남겨둡니다.",
+        "콜드 주입을 생성하거나 유지한 다음, 사냥에는 아이스 노바를 사용하세요. 비터 데드는 경로가 구체적으로 시체를 사용하지 않는 한 사냥에서 건너뜁니다."
+      ],
+      "bullets": [
+        "콜드 주입을 생성하거나 유지한 다음, 사냥에는 아이스 노바를 사용하세요.",
+        "보스의 경우 서리 폭탄과 서리 장벽 세팅 전에 선택한 저주나 마크를 적용하세요.",
+        "비터 데드는 조건부 엔드게임 옵션이지 사냥 기본값이 아닙니다."
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "보싱",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "저주나 마크 패키지를 적용하고, 전장이 지원하는 곳에만 서리 장벽을 놓고, 서리 폭탄을 더한 다음, 다음 빙결이나 쿨다운 창을 기다리며 서리 투사체를 사용하세요. 특정 보스에서 서리 장벽이 이상하게 작동한다면, 깨진 회전을 반복하는 대신 그 의존성을 제거하세요.",
+        "비터 데드는 시체가 안정적으로 확보될 때만 가능한 선택적 조건부 엔드게임 보충재입니다. 레벨링이나 초반 맵 중에는 표준 보스 루프의 일부가 아닙니다."
+      ],
+      "bullets": [
+        "저주나 마크를 적용한 다음 서리 폭탄과 서리 장벽 세팅을 하세요.",
+        "서리 투사체로 단일 대상 공백 시간을 메우세요.",
+        "엔드게임에서 시체와 마나가 허용할 때에만 비터 데드."
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "진행 체크포인트",
+      "order": 140,
+      "visible": true,
+      "caption": "경로는 고정된 캐릭터 레벨이 아니라 사용 가능한 메커니즘별로 구성됩니다.",
+      "columns": [
+        "캠페인 브릿지",
+        "콜드 코어 가동",
+        "맵 정련"
+      ],
+      "rows": [
+        {
+          "label": "주요 행동",
+          "cells": [
+            "ED + 컨테이지언, 보스용 본스톰",
+            "아이스 노바 클리어, 서리 투사체 단일 대상",
+            "노바 클리어 + 장벽/폭탄 버스트"
+          ]
+        },
+        {
+          "label": "전환 시점",
+          "cells": [
+            "기본 시작",
+            "서포트와 콜드 젬이 준비됨",
+            "시전 속도, 방어, 마나가 안정감을 느낌"
+          ]
+        },
+        {
+          "label": "가정하지 마세요",
+          "cells": [
+            "최종 콜드 트리가 이미 작동함",
+            "서리 장벽이 모든 전장에서 작동함",
+            "더 많은 치명이 나쁜 배치를 고침"
+          ]
+        },
+        {
+          "label": "첫 수리",
+          "cells": [
+            "카오스 브릿지를 더 오래 유지",
+            "노바 + 투사체로 단순화",
+            "마나와 벽 배치 조정"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "문제 해결",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "핵심 스킬을 사용할 수 없음",
+          "checks": [
+            "젬 레벨, 형태, 무기 세트, 장비 요구치를 확인하세요.",
+            "문서화된 전환 단계로 돌아가세요."
+          ]
+        },
+        {
+          "symptom": "단일 대상 루프가 멈춤",
+          "checks": [
+            "처치 기반 가정을 제거하세요.",
+            "시퀀스 전후의 모든 자원을 기록하세요."
+          ]
+        },
+        {
+          "symptom": "복사한 엔드게임 장비가 더 약함",
+          "checks": [
+            "누락된 패시브, 서포트, 임계치를 확인하세요.",
+            "더 낮은 검증 단계부터 재구성하세요."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "콜드 캐스터 문제 해결",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "콜드 전환 직후 빌드가 왜 약해졌나요?",
+          "answer": [
+            "전환은 하나의 젬이 아니라 패키지입니다. 아이스 노바, 서리 폭탄, 서리 투사체, 서포트, 마나, 시전 속도가 함께 오지 않으면 기존 ED/컨테이지언 브릿지가 여전히 더 강할 수 있습니다."
+          ],
+          "bullets": [
+            "브릿지 세팅으로 돌아가세요.",
+            "누락된 서포트를 모으세요.",
+            "동일한 캠페인 구역에서 재테스트하세요."
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ko/builds/ed-contagion-lich/",
+              "label": "ED + 컨테이지언 브릿지를 완전한 빌드로 사용"
+            }
+          ]
+        },
+        {
+          "question": "서리 장벽이 보스 전투를 왜 악화시키나요?",
+          "answer": [
+            "보스 크기, 전장 기하학, 벽 충돌이 결과를 바꿀 수 있습니다. 벽을 조건부 버스트 도구로 사용하세요. 전장이 상호작용을 깨면 폭탄, 마크/저주, 서리 투사체로 계속하세요."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "비터 데드를 언제 채택하나요?",
+          "answer": [
+            "초반 맵/엔드게임에 진입했고 경로가 시체(처치 또는 서리 장벽에서)를 안정적으로 제공하며 여유 마나와 젬 소켓이 있을 때에만. 레벨링과 초반 맵에서는 건너뜁니다."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "지금 치명타 장비에 투자해야 하나요?",
+          "answer": [
+            "비치명 루프가 클리어하고 마나를 유지한 후에만. 크리에이터 스레드에는 특정 치명 상호작용에 대한 미해결 질문이 여전히 남아 있으므로, 비싼 치명 장비는 첫 수리가 아닙니다."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "빌드 플래너 & 가져오기",
+      "order": 165,
+      "visible": true,
+      "note": "PoE2에는 이제 기본 빌드 플래너가 있습니다. 붙여넣기용 가져오기 문자열과 다운로드 가능한 .build는 PC 검증 대기 중입니다. 그동안 아래 크리에이터 가이드와 플래너 도구를 사용하세요. 항상 자신의 클라이언트에서 노드 선택을 재확인하세요.",
+      "creatorName": "Ky",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "크리에이터 메모와 미해결 질문",
+      "order": 170,
+      "visible": true,
+      "note": "크리에이터 토론은 성공한 게임플레이뿐 아니라 미해결 동작도 기록하므로 가치가 있습니다.",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "Ice Nova Chronomancer 크리에이터 스레드",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/",
+          "statement": "토론은 비터 데드의 표시된 기본 치명 동작이 아마 부정확하다고 지적하며, 아케인 서지(Arcane Surge)가 예상대로 적용되는지 묻습니다. 따라서 해당 상호작용은 확정된 사실로 복사하지 말고 테스트해야 합니다.",
+          "context": "그래서 본문은 이들을 검증 항목으로 취급하고 빌드에 비치명 기능 기준선을 부여합니다."
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ky 콜드 캐스터 진행 가이드",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky",
+          "statement": "유지 관리되는 경로는 명시적으로 카오스 패키지로 시작하고, 필요한 서포트가 사용 가능해지면 콜드로 바꾸며, 더 큰 콜드 효과 사이의 단일 대상 시간을 서리 투사체로 채웁니다.",
+          "context": "이것이 레벨만 권장하는 것이 아니라 단계적 전환의 근거입니다."
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "피해뿐 아니라 배치를 지켜보세요",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Ky",
+          "label": "Ice Nova Chronomancer 게임플레이",
+          "url": "https://www.youtube.com/watch?v=DvplkRk0KYs",
+          "description": "노바 사거리, 서리 장벽 배치, 서리 투사체가 메우는 공백에 대한 시각 참고.",
+          "takeaway": "피해 창 전에 디버프와 지형 도구의 순서를 추적하세요.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Ice Nova Chronomancer 게임플레이 시작 (크리에이터가 챕터를 제공하지 않음)"
+            },
+            {
+              "time": "2:00",
+              "label": "노바 사거리와 서리 장벽 배치 (근사치, 검증 대기)"
+            },
+            {
+              "time": "4:00",
+              "label": "디버프 순서와 피해 창 (근사치, 검증 대기)"
+            },
+            {
+              "time": "6:00",
+              "label": "후반 게임 / 비터 데드 변형 메모 (근사치, 검증 대기)"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "출처와 검증",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 출처",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "Ky 0.5 콜드 캐스터 가이드와 플래너",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "Ice Nova Chronomancer 소스 영상 요약",
+          "url": "https://exile.codex-wiki.com/builds/ice-nova-coa-chronomancer-build-guide-0-5-path-of-exile-2"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "독립 서면 개요",
+          "url": "https://www.mmoexp.com/News/path-of-exile-2-cold-caster-chronomancer-build-guide-for-league-start-and-endgame.html"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "크리에이터 토론과 커뮤니티 질문",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/"
+        },
+        {
+          "label": "Mobalytics 빌드 플래너 내보내기",
+          "description": "외부 도구",
+          "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "Ky Ice Nova Chronomancer 게임플레이",
+          "url": "https://www.youtube.com/watch?v=DvplkRk0KYs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "변경 기록",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "출처 기반 0.5.4 빌드 가이드 생성; PC 검증 대기."
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "확장 스키마로 풍성해짐: 단계별 구성 표, 빌드 플래너 항목, 슬롯별 장비 스탯 우선순위, 증상 기반 업그레이드 우선순위, 디스플레이 이름 스킬 카드를 추가했습니다. 비터 데드를 기본 핵심 대신 조건부 엔드게임 옵션으로 만들고, 레벨링/초반과 엔드게임을 분리하며 진입 조건을 명시했습니다."
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ky 0.5 콜드 캐스터 가이드와 플래너",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+    },
+    {
+      "label": "Ice Nova Chronomancer 소스 영상 요약",
+      "sourceType": "community",
+      "url": "https://exile.codex-wiki.com/builds/ice-nova-coa-chronomancer-build-guide-0-5-path-of-exile-2"
+    },
+    {
+      "label": "독립 서면 개요",
+      "sourceType": "community",
+      "url": "https://www.mmoexp.com/News/path-of-exile-2-cold-caster-chronomancer-build-guide-for-league-start-and-endgame.html"
+    },
+    {
+      "label": "크리에이터 토론과 커뮤니티 질문",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tu7bue/ice_nova_coa_chronomancer_cruising_through/"
+    },
+    {
+      "label": "Mobalytics 빌드 플래너 내보내기",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/cold-caster-chronomancer-ky"
+    },
+    {
+      "label": "Ky Ice Nova Chronomancer 게임플레이",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=DvplkRk0KYs"
+    }
+  ],
+  "seo": {
+    "title": "콜드 캐스터 크로노매서 빌드 가이드",
+    "description": "0.5.4 기준선의 완전한 패스 오브 엑자일 2 콜드 캐스터 크로노매서 빌드 가이드.",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "cold-caster-chronomancer",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

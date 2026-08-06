@@ -13,7 +13,7 @@ export function isKnownItemCollection(collection: ItemCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Item，供页面和 Sitemap 共用同一规则。 */
 export function matchesItemCollection(
-  article: ItemArticle,
+  article: Pick<ItemArticle, "itemCategory">,
   collection: ItemCollection,
 ): boolean {
   return article.itemCategory === collection.value;

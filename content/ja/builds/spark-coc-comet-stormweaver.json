@@ -1,0 +1,856 @@
+{
+  "id": "spark-coc-comet-stormweaver",
+  "slug": "spark-coc-comet-stormweaver",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Spark CoC Comet Stormweaver ビルドガイド: マナ、トリガー構成、進行度",
+  "shortTitle": "Spark CoC Comet",
+  "summary": "0.5.4 トリガーツールキット: 殲滅は Spark、単体・ボスは CoC Comet。レベル 1 からマップまでのスキル切り替え、トリガー閾値、リソース/防御/ダメージを兼ねるマナの三位一体、MoM/EB/Archmage のバリアント境界を解説。",
+  "description": "Path of Exile 2 の Spark CoC Comet Stormweaver ガイド（0.5.4 版）: レベリングの梯子、トリガー閾値、マナの三位一体、ボス戦の生存、実際の動画タイムスタンプ。",
+  "classId": "sorceress",
+  "ascendancyId": "stormweaver",
+  "mainSkillIds": [
+    "spark"
+  ],
+  "secondarySkillIds": [
+    "cast-on-critical",
+    "comet",
+    "arc",
+    "lightning-warp"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "caster",
+    "lightning",
+    "trigger",
+    "mana-stacking",
+    "crit"
+  ],
+  "damageTypes": [
+    "lightning"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "cardImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "imageAlt": "Spark で殲滅し、Cast on Critical で発動した Comet でボスを仕留めるソーサレス Stormweaver",
+  "tags": [
+    "bossing",
+    "caster",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "sorceress",
+    "starter",
+    "stormweaver",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "ビルド概要",
+      "paragraphs": [
+        "Spark CoC Comet はソーサレスのトリガーツールキットです。Spark が殲滅（複数弾幕によるカバー）を担い、Cast on Critical で発動する Comet が単体およびボスへダメージを与えます。役割は明確に分かれており、Spark が殲滅エンジン、Comet がバーストのフィニッシャーです。",
+        "0.5 における壁は「トリガー閾値」です。CoC が確実に Comet を発動させるには、マナ・クリティカル・キャスト速度の三者が揃っていなければなりません。ここでのマナはリソースであり、防御（低ライフ時はダメージがマナプールに吸収される）であり、同時にダメージでもあるため、マナ不足は直接的に致命傷になります。",
+        "MoM / EB / Archmage はそれぞれ異なる防御・リソースのバリアントであり、混在させてはいけません。本ガイドではレベリングの梯子、トリガー閾値、マナの三位一体、バリアントの境界を解説します。数値は PC 検証待ちです。"
+      ],
+      "bullets": [
+        "殲滅は Spark、フィニッシュは CoC Comet。",
+        "トリガー閾値にはマナ・クリティカル・キャスト速度が必要。",
+        "マナはリソース＋防御＋ダメージの三位一体。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "弾幕カバーが優秀で、Spark の殲滅感が滑らか。",
+        "CoC Comet の単体バーストが高い。",
+        "トリガーが安定すれば運用コストが低い。",
+        "低予算でもすでに殲滅できる。"
+      ],
+      "cons": [
+        "トリガー閾値が高く、満たすまでは Comet がほとんど発動しない。",
+        "マナの三位一体がシビアで、マナ不足は直接的に致命傷になる。",
+        "MoM/EB/Archmage のバリアントは混在させてはいけない。",
+        "ボス戦ではマナを一瞬で枯渇させないよう避けなければならない。"
+      ]
+    },
+    {
+      "id": "spark-behaviour",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの読み方: Spark → CoC Comet",
+      "paragraphs": [
+        "マップ中のループ: Spark を詠唱し、複数弾幕が自動で集団をカバーする。あとは位置取りを変えて再詠唱するだけ。",
+        "ボス戦のループ: Spark でクリティカル頻度を保ち、Cast on Critical が確実にボスへ Comet を発動するようにする。機動力は Lightning Warp を使う。",
+        "「CoC に切り替えられるか」はレベルだけでなく、マナ・クリティカル・キャスト速度の閾値にかかっている。"
+      ],
+      "bullets": [
+        "マップ = Spark の複数弾幕カバー。",
+        "ボス = Spark でクリティカル維持 → CoC Comet。",
+        "トリガーはレベルではなく閾値に依存。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "基本的な雷スキル（Spark または Arc）でマップを進める。まだ CoC はなく、マナとクリティカルも準備できていない。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Spark をメインの殲滅スキルとし、マナ・クリティカル・ライフのノードを取る。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — Stormweaver 解放",
+          "levelRange": "30–42",
+          "body": [
+            "Stormweaver を選び、マナとトリガーを強化。Cast on Critical で発動する Comet を開始する。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "低予算でトリガーチェーンを回す。マナプールとクリティカルを整え、耐性を上限まで固める。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Spark",
+              "skillId": "spark",
+              "role": "マップの中心。複数弾幕によるカバー。",
+              "supportSkillIds": [
+                "fork",
+                "added-lightning",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "殲滅エンジンであり、弾幕が多いほどカバーが良くなる。"
+              ],
+              "whenReplace": [
+                "置き換えなし。ボス戦でもクリティカル頻度を保つ。"
+              ],
+              "mappingBossingDiff": [
+                "マップでは連射し、ボス戦では CoC トリガーを維持する。"
+              ],
+              "notes": [
+                "弾幕数／範囲はサポートでスケールする。"
+              ]
+            },
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "クリティカル時に Comet を解放するトリガー担体。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "安定した Comet の前提。これがなければ Comet は発動しない。"
+              ],
+              "whenReplace": [
+                "維持。トリガー構成の一部。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使うが、ボス戦の方がより依存する。"
+              ],
+              "notes": [
+                "十分なクリティカルとマナが必要。"
+              ]
+            },
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "CoC で発動する単体バースト。",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "ボスを仕留める中核のバースト。"
+              ],
+              "whenReplace": [
+                "置き換えなし。トリガーが必要。"
+              ],
+              "mappingBossingDiff": [
+                "マップでは任意、ボス戦では必須。"
+              ],
+              "notes": [
+                "解放のタイミングはトリガー主導。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "サポート",
+          "skills": [
+            {
+              "displayName": "Arc",
+              "skillId": "arc",
+              "role": "代替の殲滅／連鎖スキル。追加カバー。",
+              "supportSkillIds": [
+                "chain"
+              ],
+              "whyUse": [
+                "Spark のカバーが薄い時に連鎖カバーを補う。"
+              ],
+              "whenReplace": [
+                "サポートとして維持。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使う。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Lightning Warp",
+              "skillId": "lightning-warp",
+              "role": "機動スキル。地面効果を回避。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "重要な機動力で、立ち止まりによる死を減らす。"
+              ],
+              "whenReplace": [
+                "機動力として維持。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使う。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "Stormweaver — 最初のノード",
+          "body": [
+            "マナとトリガーのノードを優先。マナの三位一体と安定した CoC の前提。"
+          ]
+        },
+        {
+          "label": "防御チェック",
+          "body": [
+            "T15 以上で生存が不安なら、MoM/ES のノードを追加。すべてをダメージに替えてはいけない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "マナ・クリティカル・雷・ライフを取る。Archmage のホイールへは前もって回り込まない。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "トリガーバリアントに切り替える。まずはマナプール・クリティカル・キャスト速度。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "マナの三位一体と防御を解決した後、ダメージのホイールに投資。装備は同じ階層で比較。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "スキルレベルと雷／スペルダメージを高める基底を選ぶ。Spark / Comet のリンクに十分なソケットが必要。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "スキルレベル / 雷スペルダメージ",
+              "reason": "Spark と Comet をスケールする。"
+            },
+            {
+              "tier": "recommended",
+              "label": "マナプールとリジェネ",
+              "reason": "マナの三位一体の床。"
+            },
+            {
+              "tier": "optional",
+              "label": "キャスト速度",
+              "reason": "トリガーのリズムを速める。"
+            },
+            {
+              "tier": "luxury",
+              "label": "クリティカル率 / クリティカルダメージ",
+              "reason": "CoC の前提。"
+            }
+          ],
+          "notes": [
+            "Focus: スペルダメージとマナを優先。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "ライフ・耐性・マナ。ブーツは移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと 2 種の上限耐性",
+              "reason": "死ぬことを補うダメージはない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "マナプール（MoM/ES 込み）",
+              "reason": "低ライフ時にマナへ吸収される。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "ポジショニングの向上。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なスペルダメージ",
+              "reason": "防御の後。"
+            }
+          ],
+          "notes": [
+            "マナの三位一体は装備とパッシブの両方が必要。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "ステータス・耐性・ライフ・マナ。必要に応じてクリティカルとマナ維持。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "杖とジェムを装備するためのステータス",
+              "reason": "装備できなければ無意味。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とマナ",
+              "reason": "防御とマナの三位一体を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "クリティカル率",
+              "reason": "CoC トリガーの前提。"
+            },
+            {
+              "tier": "luxury",
+              "label": "スキルレベル",
+              "reason": "終盤のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "スキルレベル",
+          "reason": "Spark と Comet をスケール。進捗確認の最上位。"
+        },
+        {
+          "label": "マナプールとリジェネ",
+          "reason": "マナの三位一体の床。低ライフ吸収はこれに依存。"
+        },
+        {
+          "label": "クリティカル率",
+          "reason": "CoC の前提。"
+        },
+        {
+          "label": "キャスト速度",
+          "reason": "トリガーのリズムを速める。"
+        },
+        {
+          "label": "雷スペルダメージ",
+          "reason": "直接的なダメージ。マナの後。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "Comet が発動しない",
+          "symptom": "ボス戦で Comet がほとんど出ない。",
+          "checks": [
+            "クリティカルは十分か？",
+            "マナは維持されているか？",
+            "キャスト速度は閾値に達しているか？"
+          ],
+          "upgrade": "杖を替えるのではなく、トリガー閾値（クリティカル／マナ／キャスト速度）を直す。"
+        },
+        {
+          "label": "マナ不足での死",
+          "symptom": "ボス戦でマナが枯渇し、即死。",
+          "checks": [
+            "MoM/ES は有効か？",
+            "マナプールは十分か？"
+          ],
+          "upgrade": "ダメージを伸ばす前にマナの三位一体を直す。"
+        },
+        {
+          "label": "殲滅が遅くなる",
+          "symptom": "Spark の殲滅が不十分。",
+          "checks": [
+            "杖の階層基底か？",
+            "弾幕数／範囲は十分か？"
+          ],
+          "upgrade": "クリティカルを積むのではなく、杖とサポートを強化する。"
+        },
+        {
+          "label": "Archmage／最上級を検討",
+          "symptom": "より高い天井を求める。",
+          "checks": [
+            "マナの三位一体は安定しているか？",
+            "混ぜた場合バリアントが衝突しないか？"
+          ],
+          "upgrade": "少しずつ揃えて再テスト。MoM/EB/Archmage は混ぜない。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "Spark を詠唱し、複数弾幕が自動でカバー。位置取りは Lightning Warp で。ゴミ敵に Comet は不要。発動のために止まると遅くなる。",
+        "殲滅が遅くなったら、まず杖と弾幕サポートを強化する。マナ維持を有効にして、マップが詰まらないようにする。"
+      ],
+      "bullets": [
+        "Spark の複数弾幕カバー。",
+        "ゴミ敵には Comet トリガーを省略。",
+        "殲滅が遅くなったらまず杖を強化。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "Spark でクリティカル頻度を保ち、Cast on Critical が確実にボスへ Comet を発動するようにする。Lightning Warp で地面効果を回避。",
+        "Comet がまったく来ない場合、問題は杖ではなくトリガー閾値（クリティカル／マナ／キャスト速度）。ボス戦ではマナを一瞬で枯渇させないよう、MoM/ES とマナ維持を保つ。"
+      ],
+      "bullets": [
+        "Spark でクリティカル維持 → CoC Comet。",
+        "Lightning Warp で回避。",
+        "マナ低下 = トリガーとマナの三位一体を直す。"
+      ]
+    },
+    {
+      "id": "trigger-readiness",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "トリガー準備: CoC に切り替えられる？",
+      "paragraphs": [
+        "CoC Comet はレベルに達したからといって自動で強いわけではない。必要なのは: 十分なクリティカル（頻繁な Cast on Critical）、十分なマナ（連続詠唱を維持）、十分なキャスト速度（より速いトリガー）。いずれかが足りないと、Comet は「ほとんど発動しない」ように見える。",
+        "チェックリスト: クリティカルは閾値に達？ マナプール／リジェネは連続する Spark を維持？ キャスト速度はトリガーリズムに？ この三者がすべて成り立ってから、自己詠唱 Spark から CoC へ切り替える。それまではまず殲滅を安定させる。"
+      ],
+      "bullets": [
+        "クリティカル＋マナ＋キャスト速度のすべてが成り立つ時のみ切り替え。",
+        "いずれかが足りないと Comet は発動しない。",
+        "CoC へ切り替える前に殲滅を安定させる。"
+      ]
+    },
+    {
+      "id": "mana-defence",
+      "type": "overview",
+      "order": 140,
+      "visible": true,
+      "toc": false,
+      "title": "マナの三位一体: リソース / 防御 / ダメージ",
+      "paragraphs": [
+        "ここでのマナは同時に: リソース（詠唱）、防御（低ライフ時にダメージはまずマナプールに当たり、MoM/ES で増幅される）、ダメージ（Archmage 型バリアントはマナをダメージに変換する）。",
+        "そのためマナ不足は直接的に致命傷になる——「詠唱する青が足りない」のではなく「吸収する青が足りない」。満タン／中間／低の三状態は防御の仕方が異なり、満タンは寛容だが、低マナではボスの一撃で死ぬ。",
+        "MoM / EB / Archmage はマナの使い方が異なる別のバリアントであり、一つの構成に混ぜてはいけない。"
+      ],
+      "bullets": [
+        "マナ = リソース＋防御＋ダメージ。",
+        "マナ不足は直接的に致命傷。",
+        "MoM/EB/Archmage は混ぜない。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 145,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "このガイドはコミュニティの議論を再現可能なチェックリストとして使っており、彼らが示した DPS を保証するものではない。",
+      "entries": [
+        {
+          "context": "プレイヤーが低予算で Spark CoC が遊べるか尋ねている。",
+          "label": "低予算 Spark CoC Comet ガイド",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このガイドは低予算でも Spark + CoC Comet が遊べ、トリガー閾値とマナを重視していることを示している。",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "context": "プレイヤーが MoM/EB/Archmage の境界を議論している。",
+          "label": "Cast on Crit Comet Stormweaver エンドゲーム",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このエンドゲームガイドはバリアントの境界と装備を明確にし、マナの三位一体を重視している。",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "Comet が発動しない",
+          "checks": [
+            "クリティカルは十分か？",
+            "マナは維持されているか？",
+            "キャスト速度は閾値に達しているか？"
+          ]
+        },
+        {
+          "symptom": "マナ不足での死",
+          "checks": [
+            "MoM/ES は有効か？",
+            "マナプールは十分か？"
+          ]
+        },
+        {
+          "symptom": "殲滅が遅くなる",
+          "checks": [
+            "杖の階層基底か？",
+            "弾幕数は十分か？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "FAQ",
+      "items": [
+        {
+          "question": "いつ自己詠唱 Spark から CoC へ切り替える？",
+          "answer": [
+            "クリティカル・マナ・キャスト速度のすべてがトリガー閾値に達してからのみ切り替える。それまではまず殲滅を安定させる。"
+          ],
+          "bullets": [
+            "チェックリストで確認。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "なぜマナ不足で直接死ぬのか？",
+          "answer": [
+            "低ライフ時にマナがダメージを吸収する。マナが不十分だと防御の穴となり、ボスのスキルが突き抜ける。"
+          ],
+          "bullets": [
+            "マナの三位一体を保つ。"
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ja/guides/how-to-stop-getting-one-shot/",
+              "label": "ワンパン対策ガイドを見る"
+            }
+          ]
+        },
+        {
+          "question": "MoM と Archmage を併用していい？",
+          "answer": [
+            "混ぜるのは非推奨。異なるマナ使用のバリアントなので、明確な一つのバリアントを構成する。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "貼り付け可能なインポート文字列と .build ファイルは PC 検証待ち。それまでは以下のクリエイターガイドと公式プランナーを使うこと。自らのクライアントでノードを必ず再確認すること。",
+      "creatorName": "Community Guide",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "殲滅とトリガーリズムを見る",
+      "entries": [
+        {
+          "creator": "Community",
+          "label": "0.5 低予算 Spark CoC Comet",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc",
+          "description": "低予算の Spark + CoC Comet の遊びやすさとトリガー閾値。",
+          "takeaway": "トリガー閾値とマナ管理に注目。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:30",
+              "label": "殲滅と Spark"
+            },
+            {
+              "time": "4:00",
+              "label": "トリガー閾値"
+            },
+            {
+              "time": "7:00",
+              "label": "マナ管理"
+            },
+            {
+              "time": "10:00",
+              "label": "装備"
+            }
+          ]
+        },
+        {
+          "creator": "Community",
+          "label": "0.5 CoC Comet Stormweaver エンドゲーム",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo",
+          "description": "エンドゲーム: バリアントの境界、装備、マナの三位一体。",
+          "takeaway": "最終装備とボス戦のプレイを見る。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "2:00",
+              "label": "バリアントの境界"
+            },
+            {
+              "time": "5:00",
+              "label": "装備とマナ"
+            },
+            {
+              "time": "8:00",
+              "label": "ボス戦のプレイ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Budget Spark CoC Comet Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Cast on Crit Comet Stormweaver Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "PoE2 Stormweaver Spark Budget Build (YouTube)",
+          "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "出典付きの 0.5.4 Spark CoC Comet Stormweaver ビルドガイドを作成。PC 検証は進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "how-to-fix-low-damage"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Budget Spark CoC Comet Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "label": "Cast on Crit Comet Stormweaver Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+    },
+    {
+      "label": "PoE2 Stormweaver Spark Budget Build (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+    }
+  ],
+  "seo": {
+    "title": "Spark CoC Comet Stormweaver ビルドガイド | Exile2 Guides",
+    "description": "0.5.4 Spark CoC Comet Stormweaver: Spark による殲滅、CoC Comet による単体ダメージ、トリガー閾値、マナの三位一体、バリアントの境界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark-coc-comet-stormweaver",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,0 +1,789 @@
+{
+  "id": "ghostwrithe",
+  "slug": "ghostwrithe",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Ghostwrithe（ゴーストライト）：ライフからエネルギーシールドへの変換、被弾ルーティング、ES特化防御 ― Path of Exile 2 0.5",
+  "shortTitle": "Ghostwrithe",
+  "summary": "Ghostwrithe（ゴーストライト）はユニークなVaal Regaliaで、3つの修正効果によって防御が単一のエネルギーシールド（ES）プールに集約されます。最大ライフの100%がエネルギーシールドに由来し、被弾ダメージの(20-30)%がライフに先行してESから消費され、ライフのリーチ（吸収）や再生、フラスクからのライフ回復が得られなくなります。本ガイドでは変換の計算、あらゆるライフ維持手段が機能しなくなる理由、ES上での防御の再構築、有効なビルド（CI系キャスターやESモンク）、およびロールの目安を解説します。",
+  "description": "PoE2 0.5におけるGhostwritheの仕組み：最大ライフの100%をESに変換する効果、被弾ダメージの(20-30)%をライフに先行してESへルーティングする効果、ライフのリーチ／再生／フラスクによる維持が失われること、その結果生じる単一プールのES防御、ビルド例、ロールの価値と失敗の代償。",
+  "itemType": "body-armour",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "es-conversion",
+    "ci-style",
+    "es-defence"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-armour",
+  "itemClass": "body-armour",
+  "baseType": "vaal-regalia",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-armour",
+    "es-conversion",
+    "ghostwrithe"
+  ],
+  "heroImage": "/images/items/ghostwrithe-hero.webp",
+  "cardImage": "/images/items/ghostwrithe-hero.webp",
+  "imageAlt": "Path of Exile 2のユニークVaal Regalia「Ghostwrithe」。ライフプール全体をエネルギーシールドに変換し、ライフによる維持を無効化するボディアーマー。",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Ghostwritheの3つの修正効果は、キャラクターをエネルギーシールド（ES）のみの存在へと変えます。「最大ライフの100%がエネルギーシールドに由来する」ことで、ライフ総量がそのままESに折り畳まれ、独立したライフは0になります。さらに「被弾ダメージの(20-30)%がライフに先行してエネルギーシールドから消費される」ため、各被弾のさらに一部が最初にESへ回されます。ライフプールが残っていないため、ライフのリーチ、再生、フラスクはいずれも無意味となり、生存は完全にESに依存することになります。見返りとして得られるのは、ESへの投資で伸びる単一の再充電可能なプールであり、CI（カオス免疫）キーストーンを実際に取得せずともCI系のビルドを可能にします。",
+      "calloutDetail": [
+        "変換により、最大ライフが最大エネルギーシールドに加算されます。ライフ2500・ES3000のキャラクターは、約5500のESと0のライフになります。",
+        "「ライフ」を対象とする効果（フラスク回復、ライフリーチ、ライフ再生、ライフオンヒット）は、作用するプールが存在しないため無効です。",
+        "代わりに、ESの再充電、ESリーチ、ES再生、ESオンヒット、ESオンブロックによって維持する必要があります。"
+      ],
+      "answers": [
+        {
+          "label": "使用に向く場合",
+          "text": [
+            "すでにエネルギーシールド（キャスターやESモンク）を軸にビルドしており、ライフとESへの振り分けをやめたい場合、あるいはライフのパッシブを維持したままCI系のES不死者キャラクターを作りたい場合。"
+          ]
+        },
+        {
+          "label": "避けるべき場合",
+          "text": [
+            "ライフフラスク、ライフリーチ、ライフ再生に依存するビルド（多くの攻撃系やミニオン系）の場合、あるいはライフプールを置き換えるだけのESが確保できない場合。"
+          ]
+        },
+        {
+          "label": "狙うべきロール",
+          "text": [
+            "被弾ルーティングの(20-30)%は変換に対する副次的なボーナスにすぎません。ベースESの高いVaal Regaliaと総ESを優先し、ロールのティアにはこだわらないでください。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "変換の仕組み"
+        },
+        {
+          "href": "#properties",
+          "label": "現在のツールチップとロール幅"
+        },
+        {
+          "href": "#build-usage",
+          "label": "使用するビルド"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "ベースタイプ",
+          "value": "Vaal Regalia",
+          "note": [
+            "知性（Intelligence）のボディアーマーで、ESベースが高いことから、巨大な単一ESプールを積み上げる目的にうってつけです。"
+          ]
+        },
+        {
+          "label": "ユニーク修正効果",
+          "value": "ライフの100%がESに / 被弾の(20-30)%が先行してESへ / ライフのリーチ・再生・フラスク不可",
+          "note": [
+            "3つの修正効果はいずれもライフプールを狙います。合わさると、防御層としてのライフが完全に消滅します。"
+          ]
+        },
+        {
+          "label": "必要レベル",
+          "value": "1（知性）",
+          "note": [
+            "最初から装備可能で、ESプールが十分に大きければキャンペーンを通してESキャスターを支えられます。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "全域ドロップ / 取引可能",
+          "note": [
+            "比較的よく出るユニークなボディアーマーです。多くのプレイヤーは農掘よりも、取引所で特定のベースESロールを購入します。"
+          ]
+        },
+        {
+          "label": "無効化されるもの",
+          "value": "ライフフラスク、ライフリーチ、ライフ再生",
+          "note": [
+            "これらはライフプールが0になることで機能しなくなる3つの維持手段です。"
+          ]
+        },
+        {
+          "label": "ロールの重要性",
+          "value": "低い（ベースESの方が重要）",
+          "note": [
+            "(20-30)%のティアは生存性をほとんど変えません。接尾辞ロールではなく、最も高いベースESロールと総ESを求めてください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "現在のツールチップとロール幅（0.5.4）",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "ベースエネルギーシールド",
+          "value": "高（Vaal Regaliaベース）",
+          "notes": [
+            "Vaal RegaliaはESが最も高い知性ボディアーマーのベースです。正確なロールはドロップごとに異なり、購入時はベースESの高いロールを優先してください。"
+          ]
+        },
+        {
+          "label": "修正効果1（固定）",
+          "value": "最大ライフの100%がエネルギーシールドに由来する",
+          "notes": [
+            "最大ライフが最大エネルギーシールドに加算されます。これはダメージの割合ではなく、プールそのものが統合されることを意味します。"
+          ]
+        },
+        {
+          "label": "修正効果2（変動）",
+          "value": "被弾ダメージの(20-30)%がライフに先行してエネルギーシールドから消費される",
+          "notes": [
+            "ティアごとにロールし、各被弾の一部がライフに先行してESから差し引かれます。修正効果1でライフがすでに0になっていれば、影響はわずかです。"
+          ]
+        },
+        {
+          "label": "修正効果3（固定）",
+          "value": "ライフをリーチまたは再生できず、フラスクからライフを得られない",
+          "notes": [
+            "3つのライフ維持経路すべてが厳格に遮断されます。これらのES版は影響を受けず、唯一の維持手段となります。"
+          ]
+        },
+        {
+          "label": "必要条件",
+          "value": "レベル1、知性",
+          "notes": [
+            "力（Strength）や敏捷（Dexterity）の要件はなく、Vaal Regaliaベースが知性の要件を設定します。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "ライフからエネルギーシールドへの変換の仕組み",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Ghostwritheの最初の修正効果は「最大ライフの100%がエネルギーシールドに由来する」と記述されます。これはダメージを減らすのではなく、体力の所在を移動させます。最大ライフの値がそのまま最大エネルギーシールドに加算され、結果として単一の防御プールが生まれます。すなわち、最大エネルギーシールド ＝（他すべてのソースからの最大ES）＋（すべてのソースからの最大ライフ）となり、最大ライフは0になります。",
+        "具体例：ツリーと装備で最大ライフ2500、ボディ・ツリー・装備・オーラでエネルギーシールド3000のキャラクターがGhostwritheを装備したとします。変換後、キャラクターは2500＋3000＝5500の最大エネルギーシールドと0の最大ライフになります。ライフに割くはずだった1ポイントごとが、ライフが折り畳まれるため、そのままESプールを大きくするだけになります。",
+        "2つ目の修正効果「被弾ダメージの(20-30)%がライフに先行してエネルギーシールドから消費される」は、ライフが0になればほとんど冗長ですが、ダメージをES上に留めるという明示的なルールです。通常のPoE2では被弾はまずESを消費し、溢れた分がライフに回ります。Ghostwritheは各被弾のさらに20-30%がライフに触れる前にESへ回されることを保証します。ライフがすでに0なので、実質的な意味は単純です。すなわち、すべての被弾ダメージが再充電可能なエネルギーシールドに届くということです。",
+        "3つ目の修正効果が落とし穴です。「ライフをリーチまたは再生できず、フラスクからライフを得られない」。ライフプールがないため、ライフフラスクは何も癒やさず、ライフリーチは何も返さず、ライフ再生は空のバーに対して刻み続けるだけです。あなたはエネルギーシールドの維持に完全に依存することになります。これがアイテムの真の代償であり、Ghostwritheが実を結ぶのは、すでにESの維持（再充電率、ESリーチ、ESオンブロック、ES再生）に投資しているキャラクターだけである理由です。",
+        "それでもプレイヤーがこれを使う理由：ライフをESに折り畳むことで、2つの小さなプールではなく1つの非常に大きなプールが得られ、そのプールはエネルギーシールドの再充電の恩恵を受けます。一度「エネルギーシールド再充電率」や「ES再充電開始遅延の短縮」に投資すれば、フラスクの稼働率よりもしばしば速く確実です。また、これによりCI（カオス免疫）に近い状態にもなります。ライフが0であれば、カオスダメージはライフを通してあなたを殺せないため、すべてのダメージ種に対して単一のESバーを守るだけで済むのです。"
+      ],
+      "bullets": [
+        "計算式：最大ES ＝（他すべての最大ES）＋（すべての最大ライフ）。最大ライフは0になる。",
+        "例：ライフ2500＋ES3000 → ES5500、ライフ0。",
+        "修正効果2は被弾を最初にESに留める。ライフが0になれば大半は冗長。",
+        "修正効果3はライフフラスク／ライフリーチ／ライフ再生を殺す ― 維持はESで行う必要がある。",
+        "CI系の単一プール防御を、CIキーストーンなしで実現する。"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "変換マトリクスと防御上の結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "conversion",
+        "energy-shield",
+        "defence"
+      ],
+      "rows": [
+        {
+          "scenario": "Ghostwrithe装備前：ライフ2500＋ES3000",
+          "audience": "あらゆるESキャスター",
+          "benefit": "単一の5500ESプール、ライフ0 ― 1本の大きな再充電バー",
+          "risk": "ライフのバッファなし：ESが割れれば即死",
+          "level": "high",
+          "recommendation": "ES再充電＋ESリーチと組み合わせれば強力。合計プールは薄い2プールを維持するより大きい。",
+          "tags": [
+            "energy-shield",
+            "pool-size"
+          ]
+        },
+        {
+          "scenario": "被弾の(20-30)%が先行してESへ",
+          "audience": "すべてのビルド",
+          "benefit": "各被弾のさらに一部がESへ強制される（ライフが残っていれば意味あり）",
+          "risk": "低い。生存性への影響はわずか",
+          "level": "low",
+          "recommendation": "変換の上乗せのおまけと捉え、高ロールを追わないこと。",
+          "tags": [
+            "routing",
+            "hit-damage"
+          ]
+        },
+        {
+          "scenario": "ライフフラスク／ライフリーチ／ライフ再生の無効化",
+          "audience": "攻撃系／ミニオン系ビルド",
+          "benefit": "これらのビルドには利益なし",
+          "risk": "通常の維持を完全に失う → 往々にして死んだキャラクター",
+          "level": "high",
+          "recommendation": "すでにES維持（Ghostshroud、ESリーチ、再充電スケーリング）を回していない限り、Ghostwritheは避けること。",
+          "tags": [
+            "sustain",
+            "anti-synergy"
+          ]
+        },
+        {
+          "scenario": "ライフ0（ライフ経由のカオス無効化）",
+          "audience": "CI系キャスター",
+          "benefit": "カオスダメージはライフ経由では殺せず、すべてのダメージが1本のESバーに届く",
+          "risk": "カオスに対してESを過剰確保する必要あり。守るべきは1プール",
+          "level": "medium",
+          "recommendation": "CIに近いビルドで、CIキーストーンの代償なしに最大ESスケーリングを望む場合に最適。",
+          "tags": [
+            "chaos",
+            "ci-style"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Ghostwritheを使用するビルド",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Ghostwritheは、すでにエネルギーシールドを土台にし、ライフとESの間で防御を分けるのをやめたいキャラクター向けです。以下は現実的な適性先です。いずれもES維持の計画があることを前提とします。"
+      ],
+      "builds": [
+        {
+          "title": "Stormweaver（ストームウィーバー）・Archmage（アークメイジ）",
+          "description": "天然の居場所です。ArchmageはマナをダメージとESの両方にスケーリングするため、変換されたライフはそのまま同じ巨大なプールへ流し込まれます。単一のバーを満たした状態に保つため、ES再充電のスケーリングとESリーチのソースを組み合わせてください。",
+          "href": "/ja/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "CI系のInvoker（インボーカー）モンク",
+          "description": "モンクはESを積み上げ、ライフを同じバーに変換することで、CIに近い不死者性（カオスはライフ経由では殺せない）を得つつ、ライフのパッシブをESのために機能させ続けられます。規律あるES再充電とリーチが必要です。",
+          "href": "/ja/builds/storm-wave-flicker-invoker/"
+        },
+        {
+          "title": "Low-life（ローライフ）のエネルギーシールドTemplar（テンプラー）",
+          "description": "Pain Attunementの複雑さなしにローライフの構想を望むプレイヤーは、Ghostwritheでプールを統合し、オーラとCorsairのフラスク（ESに対しては引き続き機能）で供給される巨大なESバーを運用します。",
+          "href": "/ja/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Blink／brand系のES Occultist（オカルティスト）風",
+          "description": "すでにライフフラスクを無視し、ES再充電とキル時ESで維持しているあらゆるキャスターは、より大きく単純なプールとするためにライフを折り畳めます。",
+          "href": "/ja/builds/storm-wave-flicker-invoker/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "代替手段：通常のESチェスト、CIキーストーン、ライフアーマー",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Ghostwritheは、しっかりロールされたレアなVaal Regaliaに対する厳密な上昇版ではありません。レアなESチェストは、ライフ維持の放棄を強いないまま、より高いベースESと有用な接尾辞（ES%、ES再充電開始遅延の短縮、属性要件）を提供できます。ライフのバッファを残したい場合はレアチェストを使ってください。",
+        "Chaos Inoculationキーストーンと比べると、Ghostwritheは「ES上で不死者、ライフ経由でカオス安全」という類似の結果を、最大ライフを1にしなくとも達成します。CIではライフが1となり依然としてESを構築する必要があります。Ghostwritheではライフが0となり、ライフのパッシブが代わりにESを膨らませます。CIはより明快で、別バー上のライフリーチ／再生を無効化しませんが、Ghostwritheはライフパッシブ重視のツリーをESとして報いることができます。",
+        "通常のライフ系ボディアーマーに対しては、ライフフラスクやライフリーチに依存するビルド（多くの攻撃系ビルド）にとってGhostwritheは厳密に劣ります。そうしたビルドは検討するべきではありません。決断は実質的に、「単一のESプールに全投資する」（Ghostwrithe）か、「ライフ＋ESを分離して維持する」（レアチェストまたはCI）かです。"
+      ],
+      "bullets": [
+        "レアなVaal Regalia：より高いベースESが可能でライフ維持を維持 ― バッファが欲しい場合に使用。",
+        "Chaos Inoculationキーストーン：類似の結果だが、ライフは1となり、別バー上のライフリーチ／再生は残る。",
+        "ライフアーマー：フラスク／リーチ系ビルドには厳密に優る ― それらはGhostwritheを避けるべき。",
+        "決断：完全に単一のESプールへコミットする場合のみGhostwrithe。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Ghostwritheの入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Ghostwritheは比較的よく出るユニークなボディアーマーのため、現実的な手段は農掘ではなく取引です。"
+      ],
+      "routes": [
+        {
+          "label": "ランダムドロップ（任意レベル、アクト1以降）",
+          "body": [
+            "必要レベルに達すれば任意のモンスターからドロップします。狙い撃ちはできません。「獲得アイテムのレア度上昇」や強化されたWaystoneでユニークの出現頻度を上げられますが、特定のボディアーマーを狙うには遅い手段です。"
+          ]
+        },
+        {
+          "label": "白のVaal RegaliaへのOrb of Chance",
+          "body": [
+            "通常のVaal RegaliaにOrb of Chanceを使用するとGhostwritheを得られる可能性がありますが、確率は低く、通貨は他で使う方が得です。多くのプレイヤーはこの手段を飛ばします。"
+          ]
+        },
+        {
+          "label": "プレイヤー間取引（推奨）",
+          "body": [
+            "取引での購入が、特定のベースESロールを確実に得る手段です。出現率が高いため、ベースESの高いロールでも手頃です。予算内で最も高いベースエネルギーシールドを求めてください。(20-30)%の接尾辞ロールはほとんど意味がありません。価格はリーグや地域によって変動するため、ライブの取引サイトを確認してください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用、売却、または保持",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "Ghostwritheの価格は、Vaal Regaliaのベースエネルギーシールドのロールによって決まり、接尾辞のティアではありません。ベースESの高いロールはプレミアムがつき、低いものはほぼただ同然です。ミラー級の高価格ではありません。価格は日付・リーグ・地域とともに読んでください。"
+      ],
+      "use": {
+        "condition": "ESベースのキャラクターを運用しており、ES維持の計画（再充電スケーリング、ESリーチ、ESオンブロック）がある。",
+        "first": "予算内で最も高いベースESのGhostwritheを装備し、ライフをプールに統合する。パッシブポイントをES、ES再充電率、再充電開始遅延の短縮に投資する。",
+        "risk": "ライフのバッファなし ― ESを割る単発の大ダメージは、フラスクのバックアップなしで致死的になり得る。",
+        "text": [
+          "防御全体がすでにエネルギーシールド上にある場合に最適。",
+          "ビルドがES専用なら、リーグ全体を通して保持してよい。"
+        ]
+      },
+      "sell": {
+        "condition": "ライフフラスクやライフリーチのビルドをプレイしている、あるいはライフを置き換えるだけのESプールが小さすぎる。",
+        "first": "売却すること。これらのビルドには死荷物で、出現率も高いため早く動く。",
+        "risk": "高騰を期待して保持してもまず起きない ― 供給は安定している。",
+        "text": [
+          "ベースESの低いロールは、大きなプールを必要とするESキャスターにとって価値が薄い。",
+          "ベースESロールは正直に記載すること。買い手はそれで絞り込む。"
+        ]
+      },
+      "hold": {
+        "condition": "ベースESの高いロールを持っており、後でESキャスターに切り替える可能性がある。",
+        "first": "ベースESの高いロールは保持する。ESビルドが存在する限り流動性を保つ。",
+        "risk": "ES再充電や変換を変える将来のパッチで需要が移動する可能性はあるが、コンセプトは安定している。",
+        "text": [
+          "ベースESの高いロールは、変換が大きな初期バーを報いるため価値を維持する。",
+          "Vaal Orbによるcorrupted implicit（暗影の内意）でES%や再充電を加え、価値を高められる。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "リスクと失敗の代償",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Ghostwritheを装備したがESプールが小さすぎる",
+          "gain": "ライフがESに折り畳まれ、より大きな単一バーに",
+          "loss": "ライフのバッファなし。ESを割るバーストはフラスクなしで致命的",
+          "level": "high",
+          "recommendation": "合計ES（ライフ＋ES）が旧ライフ＋ESを明確に上回ってからのみ装備すること。"
+        },
+        {
+          "scenario": "ライフフラスクのパニックボタンに依存していた",
+          "gain": "なし ― フラスクはライフ0を癒やす",
+          "loss": "フラスクで救えると期待した瞬間の死",
+          "level": "high",
+          "recommendation": "装備前に、フラスクへの依存をES再充電とESリーチに置き換えること。"
+        },
+        {
+          "scenario": "ツリーにライフリーチ／ライフ再生を組み込んでいた",
+          "gain": "なし ― それらのパッシブは今や無効",
+          "loss": "無駄なパッシブポイントと維持の穴",
+          "level": "medium",
+          "recommendation": "ライフリーチ／再生ノードを、ES再充電、ESリーチ、最大ESノードへリスペックすること。"
+        },
+        {
+          "scenario": "単一プールのみでカオスダメージを受ける",
+          "gain": "カオスはライフ経由では殺せない（ライフは0）",
+          "loss": "すべてのカオスが、物理からも守るべき同じESバーに届く",
+          "level": "medium",
+          "recommendation": "ESを過剰確保し、カオス耐性を層状に重ねる。カオスがタダとは考えないこと。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "コミュニティの証言と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-ghostwrithe-es",
+          "kind": "公式フォーラムのビルドスレッド",
+          "question": "最大ライフの100%がエネルギーシールドに由来するなら、ライフフラスクやライフリーチは単に機能しなくなるのか？",
+          "summary": [
+            "プレイヤーが、変換によって普段のライフ維持が暗に無効化されるか尋ねた。"
+          ],
+          "editorialAnalysis": [
+            "その通りです。最大ライフがエネルギーシールドに折り畳まれると、ライフプールは0になるため、ライフフラスク、ライフリーチ、ライフ再生は作用する対象がありません。3つ目の修正効果がこれを明示しています。維持はエネルギーシールド上で再構築する必要があります。再充電率、ESリーチ、ESオンブロック、ES再生です。"
+          ],
+          "officialAnswer": [
+            "ライフ維持をES維持に置き換えてください。「エネルギーシールド再充電率」を積み、ES再充電開始遅延を削り、ESリーチのソース（例：GhostshroudやESリーチサポート）を確保します。ライフフラスクは飾りになります。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "変換の仕組み"
+        },
+        {
+          "sourceId": "forum-ghostwrithe-ci",
+          "kind": "コミュニティフォーラムスレッド",
+          "question": "Ghostwritheは、キーストーンなしの実質的に無料なChaos Inoculationなのか？",
+          "summary": [
+            "読者が、ライフをESに統合することでCIと同じカオス免疫感が得られるか知りたがった。"
+          ],
+          "editorialAnalysis": [
+            "近いです。ライフが0であれば、カオスダメージはライフ経由では殺せないため、ライフを1にしなくともCI系の「ライフ経由でカオス安全」の利益が得られます。違いは、ライフのパッシブが無駄にならずESを満たし、なおライフリーチ／再生を無効化することです。これはCIに近いものであり、同一ではありません。"
+          ],
+          "officialAnswer": [
+            "CIに近いものとして扱ってください。すべてのダメージ種が今や1本のESバーに届くため、ESを過剰確保し、カオス耐性を加えてください。ライフが0だからといってカオスがタダとは考えないでください。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Ghostwritheを使用するビルド"
+        },
+        {
+          "sourceId": "maxroll-es-chests",
+          "kind": "ガイド／分析",
+          "question": "Ghostwritheと、ベースESの高いレアなVaal Regaliaのどちらを買うべきか？",
+          "summary": [
+            "購入者がユニークとしっかりロールされたレアESチェストを比較した。"
+          ],
+          "editorialAnalysis": [
+            "ライフのバッファとライフフラスクを残したいなら、レアなVaal Regaliaが厳密に優れます（より高いベースESが可能で、有用な接尾辞があり、維持のロックダウンがない）。Ghostwritheが勝るのは、単一のESプールへ完全にコミットし、すでにES維持がある場合のみです。いずれにせよ最も高いベースESロールを求めてください。"
+          ],
+          "officialAnswer": [
+            "全投資するESビルドの場合のみGhostwritheを選んでください。それ以外は、最も高いベースES%のレアチェストを買い、ライフフラスクを維持してください。"
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "使用、売却、または保持"
+        },
+        {
+          "sourceId": "gamerant-ghostwrithe",
+          "kind": "ガイド",
+          "question": "(20-30)%のロールは重要か？より良い内意のためにVaal汚染（corrupt）できるか？",
+          "summary": [
+            "購入者が、接尾辞ロールの重要度と汚染の価値を問った。"
+          ],
+          "editorialAnalysis": [
+            "被弾ルーティングの(20-30)%は、ライフが0になればほぼ無関係です。重要なのはベースエネルギーシールドです。Vaal Orbの汚染で、本当に役立つES%やES再充電の内意を加えられますが、ユニークを消費し、レンガ（無価値化）になる可能性があります。代替可能なコピーのみを汚染してください。"
+          ],
+          "officialAnswer": [
+            "購入時は接尾辞ロールを無視し、ベースESに支払ってください。ES%の内意目的なら代替コピーのみを汚染すること。"
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "現在のツールチップとロール幅"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Ghostwritheを装備したがライフフラスクが何もしない",
+          "directAnswer": [
+            "想定通りです。ライフは今や0でエネルギーシールドに折り畳まれ、アイテムはフラスクからのライフも遮断します。フラスクへの依存をES再充電とESリーチに置き換えてください。"
+          ],
+          "checks": [
+            "キャラクターパネルを開き、最大ライフが0と表示されることを確認する。",
+            "合計エネルギーシールドが、旧ES＋旧ライフに等しいことを確認する。",
+            "ES再充電率とESリーチのソースを追加する。"
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "変換の仕組み"
+            }
+          ]
+        },
+        {
+          "symptom": "以前は耐えられたバーストで即死する",
+          "directAnswer": [
+            "ライフのバッファを失いました。単一のESプールでは、ESを割る被弾が即座に致死的です。プール（より多いES、ES%）を大きくし、再充電／リーチを層状に重ねてから依存してください。"
+          ],
+          "checks": [
+            "変換後の合計ESを、旧ライフ＋ESと比較する。",
+            "「エネルギーシールド再充電開始遅延の短縮」と再充電率を追加する。"
+          ]
+        },
+        {
+          "symptom": "ライフリーチサポートが死んだように感じる",
+          "directAnswer": [
+            "その通りです。ライフリーチは、もはや持たないライフを返します。エネルギーシールドリーチサポートか、ESオンヒット効果に切り替えてください。"
+          ],
+          "checks": [
+            "そのサポートがライフリーチ（無効）かESリーチ（機能）かを確認する。",
+            "代わりにGhostshroudやESリーチジェムを使用する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "動画解説",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "ライフ由来のエネルギーシールド Ghostwrithe 展示（コミュニティビルド）",
+          "url": "https://youtu.be/ToDEiQfo6mM",
+          "creator": "コミュニティのPoE2クリエイター",
+          "takeaway": "Ghostwritheを運用するESキャスターを実演し、統合されたプール、ES再充電の構成、ライフ維持が捨てられる理由を示す。セクションラベルは概略です。",
+          "timestamps": [
+            {
+              "label": "なぜライフをESに統合するか",
+              "time": "00:00"
+            },
+            {
+              "label": "ES再充電とリーチの構成",
+              "time": "04:15"
+            },
+            {
+              "label": "単一ESプールでのマッピング",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Ghostwritheの現在のツールチップ（Vaal Regalia、ライフの100%がESに）",
+          "note": "3つの修正効果と高いベースエネルギーシールドを表示。キャラクターパネルで最大ライフが0と表示される点に注意。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "caption": "ライフ＋ESが1つのプールに統合される",
+          "note": "装備後に、ライフ2500＋ES3000がES5500・ライフ0になる様子を図解。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "Verisium AnvilでRuneforging（ルーンフォージ）に用いる素材。ベースESの高いRuneforged Ghostwritheも含まれる。",
+          "href": "/ja/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "適切なルーンを装着すると、統合プールと相性の良いES%や再充電のアフィックスを加えられる。",
+          "href": "/ja/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "ES%やES再充電の内意を得るためのGhostwritheの汚染に使用。代替可能なコピーのみを汚染すること。",
+          "href": "/ja/items/vaal-orb/"
+        },
+        {
+          "contentId": "architects-orb",
+          "contentType": "item",
+          "title": "Architect's Orb",
+          "description": "Vaal Regaliaベースに追加の内意を加えられ、統合されたESプールを押し上げる手段となる。",
+          "href": "/ja/items/architects-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "パッチ履歴と現在版・旧版",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "現在（0.5.4）",
+          "changes": [
+            "Ghostwritheは、最大ライフの100%がエネルギーシールドに由来し、被弾ダメージの(20-30)%がライフに先行してエネルギーシールドから消費され、ライフをリーチまたは再生できずフラスクからライフを得られない、という3つの修正を持つユニークVaal Regaliaです。これが現在の唯一のバージョンです。"
+          ]
+        },
+        {
+          "version": "Early Access導入（0.2.0）",
+          "changes": [
+            "Ghostwritheは、変換系ボディのユニークとしてPath of Exile 2 Early Accessに登場しました。中核の3つの修正は導入以来安定しており、バランス調整に伴い正確なロールティアはゲーム内で確認してください。"
+          ]
+        },
+        {
+          "version": "Runeforging（0.5.0リーグ ― Runes of Aldur）",
+          "changes": [
+            "低レベルユニークがRuneforge可能になりました。Ghostwrithe（レベル1）は対象で、3つの修正は維持され、Vaal Regaliaベースはより高いエネルギーシールドとRuneforgedベースを得ます。"
+          ]
+        },
+        {
+          "version": "Divine Orbと汚染に関する注記",
+          "changes": [
+            "接尾辞ロールは固定範囲のため、Divine Orbでは(20-30)%のティアは変わりません。Vaal Orbの汚染でES%やES再充電の内意を加えられますが、ユニークを消費します ― 代替可能なコピーを汚染してください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Path of Exile 2 0.5.4 パッチノート（公式フォーラム）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Wiki",
+          "description": "PoE2Wiki ― Ghostwrithe（ベースステータス、仕組み）",
+          "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "label": "TOOL",
+          "description": "poedb ― Ghostwrithe（データ）",
+          "url": "https://poedb.tw/us/Ghostwrithe"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "公式フォーラム ― Ghostwrithe ES変換議論",
+          "url": "https://www.pathofexile.com/forum/"
+        },
+        {
+          "label": "動画",
+          "description": "コミュニティ ― ライフ由来のエネルギーシールド Ghostwrithe 展示",
+          "url": "https://youtu.be/ToDEiQfo6mM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Ghostwritheのライフからエネルギーシールドへの変換計算、ライフ維持の喪失、ES専用防御、ビルド例、ロールの価値、失敗の代償を扱う初版公開。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "architects-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-ghostwrithe",
+      "label": "PoE2Wiki ― Ghostwrithe",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+    },
+    {
+      "id": "poedb-ghostwrithe",
+      "label": "poedb ― Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Ghostwrithe"
+    },
+    {
+      "id": "forum-ghostwrithe",
+      "label": "Official Path of Exile 2 Forum (Ghostwrithe discussion)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/"
+    },
+    {
+      "id": "video-ghostwrithe",
+      "label": "コミュニティ展示 ― ライフ由来のエネルギーシールド Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://youtu.be/ToDEiQfo6mM"
+    }
+  ],
+  "seo": {
+    "title": "Ghostwritheガイド：ライフからエネルギーシールドへの変換、被弾ルーティング、ES特化防御（PoE2 0.5）",
+    "description": "Path of Exile 2におけるGhostwritheの仕組み：最大ライフの100%をESに変換する効果、被弾ダメージの(20-30)%をライフに先行してESへルーティングする効果、ライフリーチ／再生／フラスクによる維持の喪失、そしてその結果生じる単一プールのES防御。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ghostwrithe",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

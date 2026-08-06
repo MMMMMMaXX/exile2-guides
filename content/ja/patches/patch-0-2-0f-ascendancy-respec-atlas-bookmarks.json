@@ -1,0 +1,472 @@
+{
+  "id": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+  "slug": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0f: アセンダンシーの再割り当て方法、アトラスブックマークの使い方、チャームとルーンのドロップが変わった理由",
+  "shortTitle": "0.2.0f アセンダンシー再割り当てとブックマーク",
+  "summary": "0.2.0f に関する歴史的ハウツー：条件を満たす試練と昇格装置（アセンションデバイス）を通じたアセンダンシーの再割り当て、アトラスブックマークの使い方、そして高ティアでチャームスロットや下位・中位ルーンのドロップが変わった理由。",
+  "description": "0.2.0f でのアセンダンシー再割り当てとアトラスブックマークの追加、チャームとルーンのドロップ挙動の変更、および 0.5.4e ベースラインをプレイする復帰プレイヤーへの影響について。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.2.0f",
+  "patch": "0.2.0f",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/trialmaster-hero.webp",
+  "cardImage": "/images/bosses/trialmaster-hero.webp",
+  "imageAlt": "0.2.0f の試練の主とアセンダンシーの試練",
+  "tags": [
+    "ascendancy-respec",
+    "atlas-bookmarks",
+    "charms-guide",
+    "runes",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "簡潔な回答：再割り当ての方法",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "パッチ 0.2.0f ではアセンダンシークラスを再割り当てできるようになりました。これはアーリーアクセス開始以来多くのプレイヤーが求めていた変更です。結論から言うと、NPC に話しかけて再割り当てするのではありません。ポイント要件を満たすアセンダンシーの試練を完了し、そのうえで昇格装置を使ってポイントを返還し、新しいアセンダンシーを選ぶ必要があります。",
+        "本記事では 0.2.0f の全体の流れ、このパッチで同時に追加されたアトラスブックマーク、そしてプレイヤーを驚かせたチャームとルーンのドロップ変更について解説します。0.2.0f は歴史的パッチであるため、0.5.4e でも引き続き適用される挙動と、後に調整された挙動を区別して記載します。",
+        "目的が再割り当てだけであれば、以下の移行ガイドへ飛んでください。古いベルトのチャームスロットが更新されなかった場合や、高レベルで下位ルーンが見られなくなった場合は、変更解説セクションと FAQ でそれらの事例を扱っています。"
+      ],
+      "bullets": [
+        "アセンダンシー再割り当て、アトラスブックマーク、チャームやルーンのドロップはすべて 0.2.0f で変更されました。",
+        "再割り当てには、条件を満たすアセンダンシーの試練の完了が必要です。",
+        "古いベルトは新しいチャームスロット挙動を自動的には獲得しません。"
+      ]
+    },
+    {
+      "id": "version-facts",
+      "order": 2,
+      "title": "歴史的経緯：バージョンの事実",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Early Access, 0.2.0f ホットフィックス期間",
+      "baselineNote": "現在の 0.5.4e ベースラインと比較。",
+      "paragraphs": [
+        "0.2.0f は、大規模な「Dawn of the Hunt」コンテンツアップデートに続く焦点を絞った追加パッチでした。0.2.0 がシステム全体を導入したのに対し、0.2.0f はリーグ開始直後の数週間でプレイヤーから指摘されていた利便性（QoL）とドロップ率の修正に集中しました。",
+        "目玉機能はアセンダンシーの再特化とアトラスブックマークでしたが、このパッチはチャームとルーンのドロップ方法も調整しました。こうしたドロップ変更は古いガイドが見落としがちな静かな調整であるため、ここでは歴史的事実として記録します。",
+        "他の歴史的パッチと同様に、現在のベースラインは 0.5.4e です。0.2.0f のルールの一部は今も有効ですが、他は後のパッチで refinement（洗練）されました。どちらに該当するかは「現在の適用範囲」セクションに記載しています。"
+      ],
+      "bullets": [
+        "0.2.0f は 0.2.0「Dawn of the Hunt」アップデートに続くものです。",
+        "QoL に焦点：アセンダンシー再割り当てとアトラスブックマーク。",
+        "チャームとルーンのドロップ挙動も調整しました。"
+      ]
+    },
+    {
+      "id": "ascendancy-respec-flow",
+      "order": 3,
+      "title": "移行ガイド：再割り当ての流れ",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "現在のアセンダンシーに固定され、再割り当て手段がない",
+          "to": "ポイント要件を満たすアセンダンシーの試練を完了する",
+          "note": "再割り当てが可能になる前に、試練のポイント（基準ポイントの閾値）を獲得しておく必要があります。"
+        },
+        {
+          "from": "既存のアセンダンシーポイントが割り当てられている",
+          "to": "昇格装置で全アセンダンシーポイントをゼロに返還する",
+          "note": "この装置を使うと、現在のアセンダンシー割り当てを白紙の状態に戻せます。"
+        },
+        {
+          "from": "アセンダンシーが未選択",
+          "to": "昇格装置で新しいアセンダンシーを選択する",
+          "note": "返還後、装置のインターフェースから希望のアセンダンシーを選びます。"
+        },
+        {
+          "from": "新しいアセンダンシーが選択された",
+          "to": "希望に応じてアセンダンシーポイントを再割り当てする",
+          "note": "返還されたポイントを新しいアセンダンシーのツリーに割り振ります。"
+        }
+      ]
+    },
+    {
+      "id": "trial-requirement-table",
+      "order": 4,
+      "title": "試練要件表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.0f で再割り当てに関連するアセンダンシーの試練要件（未検証の箇所は閾値を不明と表記）。",
+      "columns": [
+        {
+          "key": "trial",
+          "label": "試練"
+        },
+        {
+          "key": "level",
+          "label": "レベル"
+        },
+        {
+          "key": "points",
+          "label": "必要ポイント"
+        },
+        {
+          "key": "notes",
+          "label": "注記"
+        }
+      ],
+      "rows": [
+        {
+          "trial": "最初のアセンダンシー試練",
+          "level": "unknown / 要検証",
+          "points": "基準ポイント要件",
+          "notes": "再割り当て前に試練を完了し、ポイントの閾値を満たしてください。"
+        },
+        {
+          "trial": "その後の試練",
+          "level": "unknown / 要検証",
+          "points": "試練ごと",
+          "notes": "後の各アセンダンシー段階には、それぞれ専用の試練とポイントの関門があります。"
+        },
+        {
+          "trial": "昇格装置",
+          "level": "n/a",
+          "points": "0 に返還してから再割り当て",
+          "notes": "アセンダンシーポイントの剥奪と再割り当てに使用します。"
+        }
+      ]
+    },
+    {
+      "id": "atlas-bookmarks",
+      "order": 5,
+      "title": "アトラスブックマーク",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "アトラスブックマークは 0.2.0f で追加され、アトラス上の複数の注目地点を保存して行き来できるようになりました。各ブックマークはアトラスナビゲーションから戻れる場所を保存するため、繰り返す農場（ファーム）ルートの手間を減らします。",
+        "ブックマークは、アトラスに配置してラベルを付けたアイコンとして表示されます。お気に入りのマップやタワー、農場クラスターに名前を付けて、手動で再発見せずに再度訪問できます。利用可能なブックマーク数やアイコンの種類については、後のパッチでアトラス UI が調整されたため、未検証として表記しています。",
+        "実際には、ブックマークによってアトラスは毎セッション再探索する地図から、保存済みのウェイポイント群へと変わりました。これは静かながら、毎日同じルーティンを回すプレイヤーにとって意味のある利便性の向上でした。"
+      ],
+      "bullets": [
+        "ブックマークはアトラス上の場所を保存し、すばやく戻れます。",
+        "各ブックマークにはアイコンとラベルがあります。",
+        "0.2.0f でのブックマーク数と正確なアイコン種は要検証です。"
+      ]
+    },
+    {
+      "id": "charm-slot-before-after",
+      "order": 6,
+      "title": "チャームスロット：変更前と変更後",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0f 以前（既存のベルト）",
+      "oldText": "チャームスロット変更前に作成されたベルトは、すでに自身のスロット構成を持っていました。それらは古いチャームのルールのもとで作られています。",
+      "newLabel": "0.2.0f 以降（新しいベルト）",
+      "newText": "新しいベルトは更新されたチャームスロット挙動を獲得します。変更前に存在していたベルトは新しいスロットを自動的には受け取らず、取得するには新しいベルトを入手または作成する必要があります。"
+    },
+    {
+      "id": "rune-drop-progression",
+      "order": 7,
+      "title": "ルーンのドロップ推移",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "下位ルーンのドロップ停止",
+          "detail": "0.2.0f では、キャラクターやエリアのティアが高まると下位ルーンがドロップしなくなり、ルーン経済がより高位のルーンへとシフトしました。",
+          "scope": "公式 0.2.0f パッチノート"
+        },
+        {
+          "category": "item",
+          "title": "中位ルーンのドロップ停止",
+          "detail": "中位ルーンも同様に高ティアでドロップしなくなり、後半のルーン収入は低位・中位ではなく最上位のルーンから得られるようになりました。",
+          "scope": "公式 0.2.0f パッチノート"
+        }
+      ]
+    },
+    {
+      "id": "pinnacle-respawn-change",
+      "order": 8,
+      "title": "ピナクルボスのリスポーン変更",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "boss",
+          "title": "難易度 0 の無制限リスポーン（歴史的ルール）",
+          "detail": "0.2.0f には、難易度 0 のピナクルボスで無制限のリスポーンを許可するという歴史的ルールが記されていました。より高い難易度での正確なリスポーン上限やその後の変更は、後のパッチでリスポーンルールが調整されたため要検証として表記しています（例：0.1.1c でより多くのボスにリスポーンが拡張された）。",
+          "scope": "公式 0.2.0f パッチノート"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 9,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "アセンダンシー再割り当て",
+          "status": "still-current",
+          "currentSummary": "条件を満たす試練と昇格装置を経由した再割り当ては、0.5.4e でも引き続き可能です。",
+          "supersededBy": "—",
+          "affectedContent": "アセンダンシーガイド"
+        },
+        {
+          "topic": "アトラスブックマーク",
+          "status": "still-current",
+          "currentSummary": "アトラスブックマークは 0.5.4e でもアトラスナビゲーションの機能として残っています。",
+          "supersededBy": "—",
+          "affectedContent": "アトラスガイド"
+        },
+        {
+          "topic": "古いベルトのチャームスロット",
+          "status": "changed-later",
+          "currentSummary": "古いベルトは依然として自動更新されません。新しいベルトは現在のチャームスロットを持ちます。",
+          "supersededBy": "後のパッチ",
+          "affectedContent": "チャームアイテムページ"
+        },
+        {
+          "topic": "下位または中位ルーンのドロップ停止",
+          "status": "changed-later",
+          "currentSummary": "高ティアのルーンドロップの閾値は残っていますが、後のルーン追加（0.2.1 でエンドゲームルーンが 22 種追加）によって拡張されました。",
+          "supersededBy": "0.2.1",
+          "affectedContent": "ルーンアイテムページ"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "以前と現在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "アセンダンシーの変更",
+          "thenText": "0.2.0f 以前：再割り当て手段なし。",
+          "nowText": "0.5.4e：試練と昇格装置による再割り当て。"
+        },
+        {
+          "aspect": "アトラスナビゲーション",
+          "thenText": "0.2.0f 以前：地点を手動で再発見。",
+          "nowText": "0.5.4e：保存されたブックマーク。"
+        },
+        {
+          "aspect": "チャームスロット",
+          "thenText": "0.2.0f 以前：古いベルトは旧スロットに固定。",
+          "nowText": "0.5.4e：新しいベルトは現在のスロットを使用。"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "既知の問題とトラブルシューティング",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "試練直後にアセンダンシーを切り替えられないという報告があります。ポイント要件を確認し、昇格装置を使用すれば解決します。",
+          "status": "tracking"
+        },
+        {
+          "text": "古いベルトには新しいチャームスロットが表示されません。これはバグではなく仕様上の動作です。新しいベルトを入手してください。",
+          "status": "open"
+        },
+        {
+          "text": "下位ルーンは高ティアでドロップしなくなります。これはドロップの欠落ではなく、意図されたドロップ推移です。",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 12,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.2.0f)",
+          "context": "試練直後にアセンダンシーを変更できない理由をプレイヤーが質問。",
+          "quote": "Finished the trial but the respec button is greyed out.",
+          "analysis": "ポイントの閾値を満たし、昇格装置を使用するという要件と一致します。"
+        },
+        {
+          "source": "Reddit (0.2.0f)",
+          "context": "古いベルトに新しいチャームスロットがないことをプレイヤーが発見。",
+          "quote": "My old belt never got the charm slots.",
+          "analysis": "既存のベルトは自動更新されないという歴史的ルールと一致します。"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "よくある質問",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "試練のあとでアセンダンシーを切り替えられないのはなぜですか？",
+          "answer": [
+            "試練のポイント要件を満たしたうえで、昇格装置を使ってポイントを返還し、新しいアセンダンシーを選ぶ必要があります。試練を終えるだけでは不十分です。"
+          ]
+        },
+        {
+          "question": "古いベルトのチャームスロットが更新されないのはなぜですか？",
+          "answer": [
+            "既存のベルトは元のスロット構成を維持します。新しいチャームスロット挙動は変更後に作成または取得されたベルトに適用されるため、スロットを得るには新しいベルトが必要です。"
+          ]
+        },
+        {
+          "question": "高レベルで下位ルーンが見られなくなるのはなぜですか？",
+          "answer": [
+            "0.2.0f でルーンのドロップ推移が変更され、キャラクターやエリアのティアが高まると下位（および中位）ルーンのドロップが止まります。これはバグではなく意図された仕様です。"
+          ]
+        },
+        {
+          "question": "アトラスブックマークはどう使いますか？",
+          "answer": [
+            "アトラスにラベル付きのアイコンを配置して場所を保存し、アトラスナビゲーションから戻れるようにします。0.2.0f での正確なブックマーク数は要検証です。"
+          ]
+        },
+        {
+          "question": "複数回再割り当てできますか？",
+          "answer": [
+            "はい、再割り当てはいずれも同じ流れです。条件を満たす試練を完了し、昇格装置で返還し、再割り当てます。後のアセンダンシー段階にはそれぞれ専用の試練の関門があります。"
+          ]
+        },
+        {
+          "question": "これらの 0.2.0f のルールは 0.5.4e でも現在も有効ですか？",
+          "answer": [
+            "大部分は有効です。再割り当てとブックマークは残っていますが、チャームスロットとルーンのドロップは 0.2.1 などの後のパッチで refinement されました。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式 0.2.0f パッチノート",
+          "description": "アセンダンシー再割り当て、アトラスブックマーク、チャームとルーンのドロップ変更。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3762865"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.2.0 パッチノート",
+          "description": "Dawn of the Hunt のベースライン文脈。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "PoE2 公式フォーラム (EA インデックス)",
+          "description": "アーリーアクセスのパッチノートインデックス。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.2.0f のアセンダンシー再割り当て、アトラスブックマーク、チャームやルーンのドロップ変更に関する歴史的記述。",
+            "再割り当てとチャームスロットに関する質問へのトラブルシューティングと FAQ を追加。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "trialmaster",
+    "arbiter-of-ash"
+  ],
+  "relatedItemIds": [
+    "charms-guide",
+    "runes-and-soul-cores",
+    "catalysts"
+  ],
+  "relatedGuideIds": [
+    "ascendancy-points-trials-guide",
+    "early-atlas-progression-waystone-sustain",
+    "campaign-checklist-permanent-rewards"
+  ],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 公式 0.2.0f パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3762865",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 公式 0.2.0 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 公式フォーラム (EA インデックス)",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0f: アセンダンシー再割り当て、アトラスブックマーク、チャーム／ルーンのドロップ",
+    "description": "0.2.0f でアセンダンシーの再割り当てやアトラスブックマークの追加、チャームとルーンのドロップ変更が行われた経緯。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0f-ascendancy-respec-atlas-bookmarks",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

@@ -1,0 +1,667 @@
+{
+  "id": "power-frenzy-endurance-charges",
+  "slug": "power-frenzy-endurance-charges",
+  "locale": "ko",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2의 Power, Frenzy, Endurance Charge",
+  "shortTitle": "PoE 2의 Charge",
+  "summary": "Path of Exile 2에서 Power, Frenzy, Endurance charge가 생성 가능하고 소모 가능한 전투 자원으로 어떻게 작동하는지, PoE1의 패시브 보너스와 어떻게 다른지, Combat Frenzy와 Resonance로 생성 및 소모 루프를 어떻게 구성하는지.",
+  "description": "Path of Exile 2 charge에 대한 메커니즘 가이드: 생성, 최대치, 지속시간, 소모, Combat Frenzy 구성, Resonance 변환 키스톤, 그리고 맵핑 대 보싱 가동률. Charge는 패시브 스탯 보너스가 아니라 소비되는 자원입니다.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/combat-frenzy.webp",
+  "cardImage": "/images/skills/combat-frenzy.webp",
+  "imageAlt": "Path of Exile 2 스킬 아이콘으로, frenzy charge와 charge 생성을 나타냄",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "스킬, 서포트 젬, 패시브 스킬 트리에 대한 기본적인 이해",
+    "캐릭터 상태 바와 버프 아이콘에 익숙할 것",
+    "charge를 사용하거나 사용하려는 빌드(예: Amazon, Monk, Warrior)"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "charges",
+    "power-charge",
+    "frenzy-charge",
+    "endurance-charge",
+    "generation",
+    "consumption"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "바로 알기",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Path of Exile 2에서 Power, Frenzy, Endurance charge란 무엇인가?",
+          "body": [
+            "PoE2에서 이 세 가지 charge 유형은 일시적이고 중첩 가능한 자원입니다. 특정 스킬, 서포트, 패시브, 아이템을 통해 생성한 뒤, 다른 어빌리티를 강화하기 위해 소모합니다. 보유만으로 패시브 스탯 보너스를 주지는 않습니다 — 이것이 Path of Exile 1과의 가장 큰 차이점입니다."
+          ]
+        },
+        {
+          "title": "charge가 내 피해, 공격 속도, 저항을 자동으로 높여주나요?",
+          "body": [
+            "아니요. PoE2에서 charge는 이를 명시적으로 사용하는 스킬이나 패시브가 소모할 때만 가치가 있습니다. charge를 단순히 들고 있는 것만으로는 고유한 스탯이 제공되지 않습니다. 가치는 전적으로 소모 효과에서 나옵니다."
+          ]
+        },
+        {
+          "title": "최대 몇 개의 charge를 가질 수 있나요?",
+          "body": [
+            "각 charge 유형에는 기본 최대치(유형별로 보통 3)가 있으며, 특정 패시브, 키스톤, 아이템으로 높일 수 있습니다. 최대치, 지속시간, 그리고 이벤트당 생성 개수는 서로 다른 세 가지 숫자이므로 혼동하지 마세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "three-charge-types",
+      "order": 2,
+      "title": "세 가지 charge 유형 한눈에 보기",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "각 charge 유형은 고유한 생성 및 소모 파트너를 가진 별개의 자원입니다. 수치와 정확한 쿨다운은 버전에 따라 달라질 수 있으므로 게임 내에서 구체적인 사항을 확인하세요.",
+      "columns": [
+        {
+          "key": "charge",
+          "label": "Charge"
+        },
+        {
+          "key": "generation",
+          "label": "일반적인 생성"
+        },
+        {
+          "key": "consumption",
+          "label": "일반적인 소모"
+        },
+        {
+          "key": "fits",
+          "label": "적합한 스킬 유형"
+        },
+        {
+          "key": "boss-risk",
+          "label": "보스 위험"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "power-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Power Charge",
+            "generation": "Killing Palm (처치 시 Power Charge 부여); Resonance 키스톤은 다른 charge 획득을 Power Charge로 변환 가능; 일부 아이템과 패시브가 생성을 추가",
+            "consumption": "Falling Thunder (소모한 Power Charge당 추가 번개 투사체와 더 높은 피해); Charge Infusion (charge 소모 시 크리티컬 확률 버프)",
+            "fits": "Monk Invoker와 같은 지능 및 캐스터 공격 빌드, 그리고 Power Charge를 명시적으로 소모하는 모든 스킬",
+            "boss-risk": "생성이 처치에 의존하는 경우가 많아, 단일 타겟 보스에서는 트리거가 적어 가동률이 떨어질 수 있음"
+          }
+        },
+        {
+          "tags": [
+            "frenzy-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Frenzy Charge",
+            "generation": "Combat Frenzy (Freeze, Electrocute, Pin 적용 시 짧은 쿨다운으로 Frenzy Charge 부여); Cull the Weak; Parry와 Disengage; Sniper's Mark (표시된 적에 크리티컬); Retort; Frenzy-on-Kill 모디파이어",
+            "consumption": "Barrage (소모한 Frenzy Charge당 추가 반복); Amazon Infuse Weapon (Frenzy Charge 소모 시 Lightning Infusion); Tumult; Charge Infusion 버프",
+            "fits": "Frenzy Charge를 소모하는 스킬을 사용하는 민첩 및 공격 빌드(Ranger, Amazon, Huntress)",
+            "boss-risk": "많은 보스가 Freeze, Electrocute, Pin에 저항하거나 약해져 생성이 멈출 수 있음"
+          }
+        },
+        {
+          "tags": [
+            "endurance-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Endurance Charge",
+            "generation": "Magma Barrier (용암 버프 활성 중 방어 성공 시 Endurance Charge 부여); Break Endurance 서포트 (갑옷을 완전히 파괴할 때 확률); Cranial Impact (Rare 또는 Unique를 Heavy Stun할 때 1개 획득); Grit 노터블",
+            "consumption": "Infernal Cry (모든 Endurance Charge를 소모해 공격을 강화하고 적이 죽을 때 연소시키기); Seismic Cry; Shielding Cry; Rally 서포트; Amazon Infuse Weapon (Fire Infusion); Charge Infusion",
+            "fits": "힘, 방어, Warrior wartcry 빌드와 Endurance Charge를 소모하는 스킬",
+            "boss-risk": "방어, Heavy Stun, 갑옷 파괴에 의존하므로 빠르거나 방어 불가능한 보스 상대로 불규칙할 수 있음"
+          }
+        }
+      ],
+      "note": "생성을 동일한 charge 유형의 소모자와 연결하세요. 관련 메커니즘은 Critical Hit, Recovery, Builds, Skills 가이드를 참조하세요."
+    },
+    {
+      "id": "generation",
+      "order": 3,
+      "title": "charge가 생성되는 방식",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "PoE2에서 charge 생성은 크게 세 범주에서 옵니다: 액티브 스킬, 서포트 젬, 패시브 또는 아이템. Killing Palm과 같은 스킬은 처치를 할 때마다 Power Charge를 부여합니다. Combat Frenzy 구성은 Freeze, Electrocute, Pin 효과를 적용할 때마다 Frenzy Charge를 부여하며, 매 프레임 트리거할 수 없도록 짧은 쿨다운으로 제한됩니다. Magma Barrier와 같은 Warrior 도구는 버프 중 방어할 때 Endurance Charge를 부여합니다.",
+        "일부 패시브와 키스톤은 생성을 추가하거나 변환합니다. 예를 들어 Resonance 키스톤은 획득하는 charge 유형을 리다이렉트하여, 한 유형을 생성하려던 빌드가 대신 다른 유형을 얻게 합니다. 내장 또는 제작 모디파이어가 있는 아이템(예: Frenzy Charge on Kill)은 처치하는 적의 수에 비례해 생성을 제공합니다."
+      ],
+      "bullets": [
+        "액티브 스킬: Killing Palm (Power), Magma Barrier (Endurance), Cull the Weak (Frenzy).",
+        "서포트 젬: Combat Frenzy (Freeze, Electrocute, Pin 시 Frenzy), Retort (Parried 디버프 소모 시 Frenzy), Break Endurance (갑옷 완전 파괴 시 Endurance 확률).",
+        "Mark: Sniper's Mark는 표시된 적에 크리티컬 히트 시 Frenzy Charge를 부여합니다.",
+        "패시브와 키스톤: Grit, Cranial Impact, Resonance가 최대치와 변환을 바꿉니다.",
+        "아이템: Frenzy Charge on Kill과 같은 내장 또는 제작 모디파이어."
+      ]
+    },
+    {
+      "id": "duration-maximum",
+      "order": 4,
+      "title": "지속시간, 최대치, 생성량은 별개",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "charge 시스템을 지배하는 숫자는 세 가지이며, 플레이어는 이를 자주 혼동합니다. 최대 Charge는 한 번에 가질 수 있는 상한입니다. Charge 지속시간은 보유한 charge가 만료되기 전까지 유지되는 시간입니다. 생성량은 단일 이벤트가 부여하는 charge 개수입니다. 하나를 높인다고 해서 다른 것이 높아지지 않습니다.",
+        "예를 들어, 한 패시브는 최대 Endurance Charge를 높일 수 있는 반면 별도의 모디파이어는 지속시간을 연장하고, 생성 스킬은 최대치와 상관없이 트리거당 1개의 charge만 부여할 수 있습니다. 빌드를 계획할 때 이들을 독립된 다이얼로 취급하세요."
+      ],
+      "bullets": [
+        "최대 Charge: 유형별 상한; 패시브, 키스톤, 일부 벨트나 반지 인챈트로 높아짐.",
+        "지속시간: charge가 방치되어도 생존하는 시간; 특정 노드와 아이템으로 연장됨.",
+        "생성량: 이벤트당 부여되는 charge; 자격을 갖춘 트리거당 보통 고정 1개.",
+        "최대치가 높다고 해서 생성 속도가 빨라지거나 자동 생성된다고 가정하지 마세요."
+      ]
+    },
+    {
+      "id": "consumption",
+      "order": 5,
+      "title": "charge 소모 시 얻는 것",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "charge의 보상은 소모입니다. PoE2에서 charge는 특정 charge 유형과 상호작용한다고 명시한 스킬, 서포트, 패시브를 통해 소비합니다. 소모된 charge는 패시브 버프가 아니라 해당 효과를 강화합니다.",
+        "예시: Falling Thunder는 Power Charge를 소모해 번개 투사체를 추가하고 피해를 증가시킵니다. Barrage는 Frenzy Charge를 소모해 다음 활 공격에 반복을 추가합니다. Infernal Cry는 모든 Endurance Charge를 소모해 후속 공격을 강화하고 적이 죽을 때 연소시킵니다. Amazon의 Infuse Weapon은 Power, Endurance, Frenzy Charge를 소모할 때 원소 주입을 트리거합니다. 지속형 Charge Infusion 스킬은 활성 charge를 기반으로 버프를 부여하고 타이머에 따라 charge를 소모합니다."
+      ],
+      "bullets": [
+        "Power 소모자: Falling Thunder, Charge Infusion (소모 시 크리티컬 보너스).",
+        "Frenzy 소모자: Barrage, Amazon Infuse Weapon (Lightning Infusion), Tumult.",
+        "Endurance 소모자: Infernal Cry, Seismic Cry, Shielding Cry, Rally, Amazon Infuse Weapon (Fire Infusion).",
+        "빌드 내에 소모할 무언가가 없다면 charge는 무가치합니다."
+      ]
+    },
+    {
+      "id": "replacement",
+      "order": 6,
+      "title": "charge 유형 변환 및 교체",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "PoE2에는 실제 charge 변환 메커니즘인 Resonance 키스톤이 있습니다. 할당하면 생성 원천에서 얻는 charge 유형이 바뀝니다 — Frenzy 대신 Power, Endurance 대신 Frenzy, Power 대신 Endurance를 얻습니다. 이를 통해 빌드는 생성을 소모자가 원하는 단일 charge 유형으로 모을 수 있습니다.",
+        "키스톤 외에는 개별 스킬과 서포트가 부여하거나 소모하는 charge를 정확히 정의하며, charge 유형 간 자동 범용 변환은 없습니다. 스킬이 특정 charge를 부여하거나 소모한다면, 항상 그 유형하고만 상호작용합니다."
+      ],
+      "bullets": [
+        "Resonance 키스톤: 생성된 charge 유형을 리다이렉트 (Power, Frenzy, Endurance 순환).",
+        "스킬과 서포트는 유형별 지정: Frenzy 소모자는 Power나 Endurance를 절대 소비하지 않음.",
+        "전역적인 '아무 charge' 풀은 존재하지 않으며, 세 유형은 별개의 자원으로 남음."
+      ]
+    },
+    {
+      "id": "mapping-vs-bossing",
+      "order": 7,
+      "title": "맵핑 대 보싱",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "charge 가동률은 환경에 따라 크게 다릅니다. 맵핑 가동률을 보스전에 그대로 적용하지 마세요.",
+      "columns": [
+        {
+          "key": "environment",
+          "label": "환경"
+        },
+        {
+          "key": "generation-ease",
+          "label": "생성 난이도"
+        },
+        {
+          "key": "consumption-value",
+          "label": "소모 가치"
+        },
+        {
+          "key": "notes",
+          "label": "참고"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "mapping"
+          ],
+          "cells": {
+            "environment": "맵핑 및 청소",
+            "generation-ease": "높음 — 많은 처치와 빈번한 상태 이상 효과(Freeze, Electrocute, Pin)가 charge를 계속 흐르게 함",
+            "consumption-value": "지속적 — 청소 속도와 광역 보상을 위해 charge를 지속적으로 소모",
+            "notes": "Frenzy on Kill과 같은 처치 원천이 여기서 빛을 발함; 가동률 유지가 쉬움"
+          }
+        },
+        {
+          "tags": [
+            "bossing"
+          ],
+          "cells": {
+            "environment": "보싱 및 소수의 타겟",
+            "generation-ease": "낮음 — 처치가 적고, 보스는 Freeze, Electrocute, Pin에 저항하거나 안정적이게 방어나 스턴으로 전환되지 않는 경우가 많음",
+            "consumption-value": "폭발 — 소모된 각 charge는 단일 타겟 피해나 방어에 높은 가치",
+            "notes": "생성을 보스의 저항에 맞춰 계획하세요; 맵핑 가동률이 그대로 이어진다고 가정하지 마세요"
+          }
+        }
+      ],
+      "note": "보스 가동률은 반드시 보스 자체를 기준으로 측정해야 하며, 맵핑 성능에서 유추하면 안 됩니다."
+    },
+    {
+      "id": "uptime-checklist",
+      "order": 8,
+      "title": "charge 가동률 체크리스트",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "이 항목들을 따라 charge가 실제로 빌드에 도움이 되는지, 그리고 루프가 어디서 끊기는지 확인하세요.",
+      "controls": [
+        {
+          "id": "primary-charge",
+          "label": "빌드가 원하는 charge는 무엇인가요?",
+          "options": [
+            {
+              "label": "Power",
+              "value": "power"
+            },
+            {
+              "label": "Frenzy",
+              "value": "frenzy"
+            },
+            {
+              "label": "Endurance",
+              "value": "endurance"
+            }
+          ]
+        },
+        {
+          "id": "generation",
+          "label": "콘텐츠 내에서 얼마나 안정적으로 생성할 수 있나요?",
+          "options": [
+            {
+              "label": "안정적 (처치나 상태 이상이 자주 발생)",
+              "value": "reliable"
+            },
+            {
+              "label": "불안정적 (타겟이 적거나 트리거에 저항)",
+              "value": "unreliable"
+            }
+          ]
+        },
+        {
+          "id": "consumer",
+          "label": "스킬이나 패시브가 이를 소모하나요?",
+          "options": [
+            {
+              "label": "예, 소모자가 있습니다",
+              "value": "yes"
+            },
+            {
+              "label": "아직 소모자 없음",
+              "value": "no"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "먼저 소모자를 추가하세요",
+          "when": {
+            "consumer": "no"
+          },
+          "steps": [
+            "charge는 절대 소비되지 않으면 아무 효과도 없습니다.",
+            "charge 유형에 맞는 스펜더를 추가하세요: Falling Thunder (Power), Barrage (Frenzy), Infernal Cry 또는 Rally (Endurance), 또는 Charge Infusion.",
+            "소모자를 맞출 수 없다면, 낭비되는 자원을 생성하는 대신 charge 계획을 포기하세요."
+          ]
+        },
+        {
+          "title": "보스를 위한 생성 수정",
+          "when": {
+            "generation": "unreliable"
+          },
+          "steps": [
+            "맵핑 생성은 보스가 저항하는 처치와 상태 이상에 의존합니다.",
+            "Sniper's Mark (Frenzy)나 Magma Barrier, Cranial Impact (Endurance) 같은 방어 기반 원천을 추가하세요.",
+            "소모자가 원하는 charge로 생성을 리다이렉트하기 위해 Resonance 키스톤을 고려하세요.",
+            "보스 가동률은 맵핑 가동률보다 훨씬 낮을 것으로 예상하세요."
+          ]
+        },
+        {
+          "title": "작동하는 루프가 있습니다",
+          "when": {
+            "consumer": "yes",
+            "generation": "reliable"
+          },
+          "steps": [
+            "지속시간으로 만료되지 않도록 쿨다운에 맞춰 소비하세요.",
+            "생성 트리거를 유지하고 조기 상한에 도달하지 않도록 최대치를 주시하세요.",
+            "생성된 charge가 소멸하기 전에 소비되도록 지속시간을 추적하세요."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "일반 가동률 확인",
+        "steps": [
+          "생성 트리거가 실제로 플레이하는 콘텐츠에 맞는지 확인하세요.",
+          "빌드에 동일한 charge 유형의 소모자가 존재하는지 확인하세요.",
+          "지속시간과 최대치가 소비 속도를 커버하는지 확인하세요.",
+          "보스 가동률이 맵핑 가동률보다 낮을 것으로 예상하세요."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 9,
+      "title": "작동 예시",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "세 가지 빌드 원형과 각각이 생성을 소모로 바꾸는 방식. 메커니즘만 다룹니다 — 날조된 수치, 레벨, 가격은 없음.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "사례"
+        },
+        {
+          "key": "class-type",
+          "label": "클래스 또는 스킬 유형"
+        },
+        {
+          "key": "how-used",
+          "label": "charge 사용 방식"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "power-charge",
+            "monk"
+          ],
+          "cells": {
+            "case": "Monk 또는 Invoker 스타일 (Power Charge)",
+            "class-type": "작대기를 사용하는 지능 캐스터 공격",
+            "how-used": "처치 시 Killing Palm로 Power Charge를 생성; 추가 번개 투사체와 피해를 위해 Falling Thunder로, 또는 크리티컬 보너스를 위해 Charge Infusion로 소모."
+          }
+        },
+        {
+          "tags": [
+            "frenzy-charge",
+            "ranger"
+          ],
+          "cells": {
+            "case": "Ranger 또는 Amazon 스타일 (Frenzy Charge)",
+            "class-type": "활이나 창을 사용하는 민첩 공격",
+            "how-used": "Freeze, Electrocute, Pin 시 Combat Frenzy로, 또는 Sniper's Mark 크리티컬로 Frenzy Charge를 생성; 추가 반복을 위해 Barrage로, 또는 Lightning Infusion을 위해 Amazon Infuse Weapon로 소모."
+          }
+        },
+        {
+          "tags": [
+            "endurance-charge",
+            "warrior"
+          ],
+          "cells": {
+            "case": "Warrior 스타일 (Endurance Charge)",
+            "class-type": "힘 wartcry 또는 근접",
+            "how-used": "Magma Barrier 방어나 Cranial Impact Heavy Stun으로 Endurance Charge를 생성; 공격을 강화하고 적을 연소시키기 위해 Infernal Cry로, 또는 생명력을 회복하기 위해 Rally로 소모."
+          }
+        }
+      ],
+      "note": "이것은 생성-소모 루프에 대한 교재 예시이며, 구체적인 장비나 레벨 추천이 아닙니다."
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "흔한 실수",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "대부분의 charge 문제는 PoE1의 사고방식을 PoE2에 그대로 가져오는 것에서 비롯됩니다. 메커니즘을 탓하기 전에 다음 함정을 주의하세요."
+      ],
+      "bullets": [
+        "charge가 보유만으로 크리티컬, 공격 속도, 피해 감소를 자동 부여한다고 가정 — PoE2에서는 그렇지 않습니다.",
+        "소모자 없이 생성만 구성하여 charge가 미사용으로 만료되는 경우.",
+        "최대치, 지속시간, 생성량을 혼동한 뒤 최대치가 높아졌는데 왜 가동률이 오르지 않는지 의문을 갖는 경우.",
+        "맵핑 가동률(많은 처치, 쉬운 상태 이상)에 의존하고 그 트리거에 저항하는 보스에서도 동일할 것이라 기대하는 경우.",
+        "charge가 만료된다는 것을 잊음: 지속시간이 끝나기 전에 소비하지 않으면 생성된 charge는 소멸합니다.",
+        "Resonance 변환을 건너뛰어 한 charge 유형의 소모자에 다른 유형을 공급하는 경우."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 11,
+      "title": "흔한 혼동 점",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "플레이어가 Path of Exile 1에서 자주 가져오는 혼동.",
+      "cards": [
+        {
+          "title": "charge가 나를 패시브로 강화해야 한다",
+          "tag": "poe1-habit",
+          "body": [
+            "많은 플레이어가 PoE1처럼 보유한 charge가 크리티컬이나 공격 속도를 높이리라 기대합니다. PoE2에서는 소비되는 자원 — 값을 주는 것은 소모하는 스킬뿐입니다."
+          ]
+        },
+        {
+          "title": "최대치가 높으면 더 강하다",
+          "tag": "confusion",
+          "body": [
+            "플레이어는 최대 Charge를 높이고 자동적인 힘을 기대합니다. 최대치, 지속시간, 이벤트당 생성은 별개이며, 상한만 높아진다고 해서 달라지는 것은 없습니다."
+          ]
+        },
+        {
+          "title": "보스 가동률은 맵핑 가동률과 같다",
+          "tag": "uptime",
+          "body": [
+            "맵핑이 처치와 상태 이상으로 charge를 쏟아내므로 플레이어는 보스도 그렇다고 가정합니다. 보스는 그 트리거에 저항하므로 별도의 생성을 계획하세요."
+          ]
+        },
+        {
+          "title": "어떤 charge든 어떤 스킬에나 통한다",
+          "tag": "type",
+          "body": [
+            "플레이어는 Power Charge로 Frenzy 소모자를 먹이려 시도합니다. 세 유형은 별개이며, 획득을 바꾸는 것은 Resonance나 유형별 원천뿐입니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 12,
+      "title": "비디오 가이드",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2의 Power, Frenzy, Endurance Charge 설명 + Combat Frenzy",
+          "creator": "DrybearGamers",
+          "description": "Path of Exile 2에서 세 가지 charge 유형이 생성 가능하고 소모 가능한 자원으로 어떻게 작동하는지, Combat Frenzy 생성 구성과 charge가 PoE1과 어떻게 다른지에 초점을 맞춘 설명.",
+          "takeaway": "charge를 생성 후 소비하는 루프로 취급하세요: 콘텐츠에 맞는 생성을 선택하고, 동일한 charge 유형의 소모자와 짝지으며, 보유만으로 패시브 보너스를 기대하지 마세요.",
+          "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s",
+          "timestamps": [
+            {
+              "label": "소개",
+              "time": "0:00"
+            },
+            {
+              "label": "charge란 무엇인가",
+              "time": "1:30"
+            },
+            {
+              "label": "charge 생성",
+              "time": "4:15"
+            },
+            {
+              "label": "Frenzy와 Combat Frenzy",
+              "time": "7:40"
+            },
+            {
+              "label": "charge 소모",
+              "time": "11:20"
+            },
+            {
+              "label": "가동률과 맵핑 대 보싱",
+              "time": "14:05"
+            },
+            {
+              "label": "요약",
+              "time": "17:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "자주 묻는 질문",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "PoE2에서 Power, Frenzy, Endurance charge가 패시브 보너스를 주나요?",
+          "answer": [
+            "아니요. PoE1과 달리 보유한 charge는 고유한 스탯을 주지 않습니다. 가치는 이를 소모하는 스킬, 서포트, 패시브에서만 나옵니다. charge는 자원이지 지속 버프가 아닙니다."
+          ]
+        },
+        {
+          "question": "charge의 기본 최대 개수는 몇 개인가요?",
+          "answer": [
+            "각 유형의 기본 최대치는 보통 3이며, 특정 패시브, Grit 같은 키스톤, 아이템으로 높아집니다. 최대치, 지속시간, 이벤트당 생성은 독립된 숫자이므로 하나를 높인다고 해서 다른 것이 높아지지 않습니다."
+          ]
+        },
+        {
+          "question": "Frenzy Charge는 어떻게 생성하나요?",
+          "answer": [
+            "일반적인 경로는 Combat Frenzy (Freeze, Electrocute, Pin 시, 짧은 쿨다운), Cull the Weak, Parry와 Disengage, Sniper's Mark (표시된 적에 크리티컬), Retort, Frenzy-on-Kill 모디파이어입니다. 정확한 쿨다운과 수치는 버전에 따라 달라지므로 게임 내에서 확인하세요."
+          ]
+        },
+        {
+          "question": "Endurance Charge를 소모하는 것은 무엇인가요?",
+          "answer": [
+            "Infernal Cry와 같은 Warrior wartcry (모두 소모해 공격을 강화하고 적을 연소), Seismic Cry, Shielding Cry, Rally 서포트, 그리고 Amazon Infuse Weapon (Fire Infusion). 지속형 Charge Infusion 스킬도 타이머에 따라 이를 소모합니다."
+          ]
+        },
+        {
+          "question": "Resonance 키스톤이란 무엇인가요?",
+          "answer": [
+            "획득하는 charge 유형을 리다이렉트하는 패시브: Power 대신 Frenzy, Frenzy 대신 Endurance, Endurance 대신 Power. 빌드가 생성을 소모자가 원하는 단일 charge 유형으로 모을 수 있게 합니다."
+          ]
+        },
+        {
+          "question": "내 charge가 계속 사라지는 이유는 무엇인가요?",
+          "answer": [
+            "charge에는 지속시간이 있어 제때 소모되지 않으면 만료됩니다. 생성 속도가 소비 속도보다 빠르거나 소모자가 쿨다운이면 소멸합니다. 동일한 유형의 소모자가 존재하는지 확인하고, charge가 사라지기 전에 소비되도록 지속시간을 주시하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식 위키 - Charges",
+          "description": "charge, 생성, 소모, Resonance 키스톤에 대한 PoE2 위키 참조",
+          "url": "https://poe2wiki.net/"
+        },
+        {
+          "label": "Game Rant - Endurance Charge 설명",
+          "description": "Path of Exile 2의 Endurance Charge 생성 및 소모에 대한 커뮤니티 설명",
+          "url": "https://gamerant.com/path-of-exile-2-how-do-endurance-charges-work-poe2"
+        },
+        {
+          "label": "비디오 가이드 (DrybearGamers)",
+          "description": "Path of Exile 2의 Power, Frenzy, Endurance charge와 Combat Frenzy에 대한 YouTube 설명",
+          "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "변경 내역",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Path of Exile 2 Early Access 0.5.4용 Power, Frenzy, Endurance charge 가이드 초판 발행.",
+            "바로 알기, 세 가지 charge 유형, 생성, 지속시간 및 최대치, 소모, 변환, 맵핑 대 보싱, 가동률 체크리스트, 작동 예시, 흔한 실수, 커뮤니티 혼동, 비디오, FAQ, 출처를 추가."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Charges (공식)",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "official"
+    },
+    {
+      "label": "Game Rant - Endurance Charge 설명 (커뮤니티)",
+      "url": "https://gamerant.com/path-of-exile-2-how-do-endurance-charges-work-poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "DrybearGamers - Charges 설명 (YouTube)",
+      "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Power, Frenzy & Endurance Charge 가이드",
+    "description": "Path of Exile 2에서 charge가 작동하는 방식: 생성, 지속시간, 최대치, 소모, Combat Frenzy, Resonance 변환 — PoE1 패시브 보너스와 구별됨.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "power-frenzy-endurance-charges",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

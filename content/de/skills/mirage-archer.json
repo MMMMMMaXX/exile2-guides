@@ -1,0 +1,711 @@
+{
+  "id": "mirage-archer",
+  "slug": "mirage-archer",
+  "locale": "de",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Mirage Archer Guide — Ausweich-Auslöser, eingelegte Angriffe, Abklingzeit und Grenzen",
+  "shortTitle": "Mirage Archer",
+  "summary": "Mirage Archer ist ein Meta-Edelstein, der beim Ausweich-Roll eine Spiegelung beschwört, die die in ihn eingelegten Angriffe verwendet. Die Spiegelung ahmt deine Fernkampfangriffe (Bogen / Speer / Armbrust) mit Schadensabschlag nach, hat ein eigenes Objekt-Limit getrennt von deinem und kann keine Unterstützungen nutzen, die „Fähigkeiten, die du selbst verwendest“ besagen. Dieser Guide erklärt den Ausweich-Auslöser, die Abklingzeit, mehrere Spiegelungen, die Priorität eingelegter Angriffe, die Lightning Rod- / Lightning Arrow-Interaktion sowie die Mapping- und Bossing-Rotationen von Deadeye-, Witchhunter- und Gemling-Builds.",
+  "description": "Tiefer Mirage Archer Guide: Ausweich-Roll-Auslöser und Spiegelungs-Erschaffung, 60 Spirit-Kosten, Dauer und Abklingzeit, einzelne gegen mehrere eingelegte Angriffe und deren Priorität, objektunabhängige Spieler-Limits, Uses- / Nachlade- / Kanalisierungs-Verhalten, Lightning Rod- und Lightning Arrow-Interaktion, Unterstützungen, die „du selbst“ besagen, Spirit-Budget gegen Herald / Combat Frenzy, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege.",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "skillCategory": "meta",
+  "spiritReservation": 60,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/mirage-archer.webp",
+  "cardImage": "/images/skills/mirage-archer.webp",
+  "imageAlt": "Mirage Archer meta gem icon",
+  "tags": [
+    "buff",
+    "persistent",
+    "trigger",
+    "duration",
+    "meta",
+    "bow",
+    "spear",
+    "crossbow"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Kurzantwort: Ausweich-Roll beschwört eine Spiegelung",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Mirage Archer feuert selbst nichts ab. Wenn du einen Ausweich-Roll ausführst, beschwört er eine Spiegelung, die die Angriffe verwendet, die du in den Edelstein eingelegt hast — allerdings mit Schadensabschlag.",
+        "Die Spiegelung verdoppelt deine Fernkampf-Ausgabe während ihrer Dauer effektiv — solange die eingelegten Fähigkeiten gültige Fernkampfangriffe sind und die Abklingzeit bereit ist."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Wichtige Werte und Beschaffung",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Kategorie",
+          "value": "Meta-Edelstein · Buff · Persistent · Auslöser",
+          "notes": [
+            "Markiert als Buff, persistent, Auslöser, Dauer, Meta."
+          ]
+        },
+        {
+          "label": "Spirit-Kosten",
+          "value": "60 Spirit",
+          "notes": [
+            "Reserviert 60 Spirit während der Aktivierung; aktuellen Client-Wert bestätigen."
+          ]
+        },
+        {
+          "label": "Auslöser",
+          "value": "Ausweich-Roll",
+          "notes": [
+            "Die Spiegelung erscheint nach einem Ausweichen, auf Abklingzeit."
+          ]
+        },
+        {
+          "label": "Waffe",
+          "value": "Bogen / Speer / Armbrust",
+          "notes": [
+            "Es werden nur Fernkampfangriffe gespiegelt, die in den Edelstein eingelegt sind."
+          ]
+        },
+        {
+          "label": "Schadensabschlag",
+          "value": "Spiegelung verursacht reduzierten Schaden",
+          "notes": [
+            "Exakten Abschlag im Client 0.5.4 prüfen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Voraussetzungen und Einrichtung",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Mirage Archer benötigt einen ausgerüsteten Bogen, Speer oder Armbrust sowie mindestens einen gültigen Fernkampfangriff, der in den Edelstein eingelegt ist. Die Spiegelung kann nur Fähigkeiten nutzen, die selbst Fernkampfangriffe sind — Nahkampf- und nicht unterstützte Fähigkeiten werden ignoriert.",
+        "Da es sich um einen Meta-Edelstein handelt, legst du ihn zusammen mit den Angriffen ein, die du gespiegelt haben möchtest; der Edelstein selbst ist der Auslöser, nicht die Schadensquelle."
+      ],
+      "keyValues": [
+        {
+          "label": "Waffe",
+          "value": "Bogen / Speer / Armbrust",
+          "notes": [
+            "Nahkampf-Fähigkeiten werden nicht gespiegelt."
+          ]
+        },
+        {
+          "label": "Eingelegte Fähigkeit",
+          "value": "Muss ein Fernkampfangriff sein",
+          "notes": [
+            "Nur gültige Fernkampfangriffe werden von der Spiegelung genutzt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clone-meta",
+      "order": 40,
+      "title": "Spiegelungs-Erschaffung und Grenzen",
+      "type": "clone-meta",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die Spiegelung wird beim Ausweich-Roll erschaffen und hält eine kurze Dauer an, bevor sie endet. Im aktuellen Client beginnt die Abklingzeit, sobald die Spiegelung erschaffen wird — du kannst also keine neue beschwören, bis die vorherige verbraucht ist oder ihre Dauer endet. Die genaue Abklingzeit im Client 0.5.4 bestätigen.",
+        "Mehrere Spiegelungen können normalerweise nicht gleichzeitig existieren; ein Ausweichen erzeugt eine Spiegelung, und das nächste Ausweichen wird durch die Abklingzeit gesperrt. Die Objektanzahl der Spiegelung wird getrennt von deinen eigenen platzierten Objekten erfasst."
+      ],
+      "keyValues": [
+        {
+          "label": "Auslöser",
+          "value": "Ausweich-Roll",
+          "notes": [
+            "Spiegelung erscheint nach dem Ausweichen."
+          ]
+        },
+        {
+          "label": "Abklingzeit",
+          "value": "Beginnt bei Erschaffung",
+          "notes": [
+            "Aktuelle Client-Abklingzeit prüfen."
+          ]
+        },
+        {
+          "label": "Mehrfach",
+          "value": "Eine zur Zeit (normalerweise)",
+          "notes": [
+            "Durch die Beschwörungs-Abklingzeit begrenzt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socketed-attacks",
+      "order": 50,
+      "title": "Eingelegte Angriffe und Priorität",
+      "type": "socketed-attacks",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Du kannst einen einzelnen Angriff oder mehrere einlegen. Bei mehreren eingelegten Angriffen nutzt die Spiegelung sie gemäß einer Priorität / Rotation und nicht alle auf einmal. Fähigkeiten mit eingebauten Uses, Granaten oder Munition verhalten sich speziell — die Spiegelung muss möglicherweise nachladen oder feuert nicht, wenn ihr die anfänglichen Uses fehlen.",
+        "Ein häufiges Missverhältnis ist Freezing Salvo: Er lässt sich einlegen, aber die Spiegelung feuert möglicherweise nicht, wenn die anfänglichen Uses nicht verfügbar sind, sodass es so wirkt, als sei „nichts passiert“."
+      ],
+      "keyValues": [
+        {
+          "label": "Einzelne Fähigkeit",
+          "value": "Spiegelung ahmt sie nach",
+          "notes": [
+            "Einfachste, vorhersehbarste Einrichtung."
+          ]
+        },
+        {
+          "label": "Mehrere Fähigkeiten",
+          "value": "Priorität / Rotation",
+          "notes": [
+            "Spiegelung wählt gemäß ihrer internen Priorität."
+          ]
+        },
+        {
+          "label": "Uses / Granate / Munition",
+          "value": "Sonderbehandlung",
+          "notes": [
+            "Muss möglicherweise nachladen oder hat keine anfänglichen Uses (z. B. Freezing Salvo)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-compatibility-matrix",
+      "order": 55,
+      "title": "Fähigkeits-Kompatibilitätsmatrix",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Fähigkeit",
+        "Einlegbar?",
+        "Spiegelung funktioniert?",
+        "Uses / Nachladen",
+        "Bekanntes Limit"
+      ],
+      "rows": [
+        [
+          "Explosive Shot",
+          "Ja",
+          "Ja",
+          "Lädt nach",
+          "Magazin-Verhalten bei Spiegelung"
+        ],
+        [
+          "Lightning Arrow",
+          "Ja",
+          "Ja",
+          "Keine",
+          "Rod-Interaktion mit Lightning Rod"
+        ],
+        [
+          "Lightning Rod",
+          "Ja",
+          "Eingeschränkt",
+          "Objekt-Limit",
+          "Bug-Interaktion mit Pfeil des Spielers"
+        ],
+        [
+          "Snipe",
+          "0.5+ unterstützt",
+          "Ja",
+          "Kanalisierung",
+          "Timing beim Freigeben"
+        ],
+        [
+          "Freezing Salvo",
+          "Ja",
+          "Feuert evtl. nicht",
+          "Uses",
+          "Häufiges Missverhältnis ohne anfängliche Uses"
+        ]
+      ]
+    },
+    {
+      "id": "object-limits",
+      "order": 60,
+      "title": "Objekt-Limits unabhängig vom Spieler",
+      "type": "object-limits",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die von der Spiegelung platzierten Objekte (wie die Lightning Rods, die sie setzt) werden auf das eigene Limit der Spiegelung angerechnet, getrennt von deinem Spieler-Limit. Das bedeutet, dass du und die Spiegelung jeweils eigene Sätze an Rods bis zu den jeweiligen Obergrenzen haben können.",
+        "Diese Unabhängigkeit ist auch der Ort, an dem der bekannte Lightning Rod + Lightning Arrow-Bug auftritt: Die Rods der Spiegelung und deine Rods können unerwartet miteinander interagieren. Teste die Kombination im aktuellen Client, bevor du dich darauf verlässt."
+      ],
+      "keyValues": [
+        {
+          "label": "Spiegelungs-Limit",
+          "value": "Getrennt vom Spieler",
+          "notes": [
+            "Jeder erfasst sein eigenes platziertes Objekt-Limit."
+          ]
+        },
+        {
+          "label": "Interaktions-Bug",
+          "value": "Rod + Pfeil",
+          "notes": [
+            "Bekanntes Problem; Verhalten im Client 0.5.4 prüfen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 70,
+      "title": "Mechanik: Uses, Nachladen und Abklingzeit",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die Spiegelung erbt die Mechanik des eingelegten Angriffs, einschließlich Uses und Nachladen. Ein Angriff, der nachlädt, lässt auch die Spiegelung nachladen — weshalb auch Explosive Shots Magazin-Verhalten bei der Spiegelung auftritt.",
+        "Die Lebensdauer der Spiegelung ist kurz, sodass Fähigkeiten, die einen langen Vorlauf oder viele Uses benötigen, möglicherweise nicht abgeschlossen sind, bevor sie endet. Wähle eingelegte Angriffe, die sich schnell auszahlen."
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 80,
+      "title": "Fähigkeits-Interaktionen",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Explosive Shot funktioniert über die Spiegelung, behält aber sein Magazin-/Nachlade-Verhalten. Lightning Arrow ist eine saubere Nachahmung ohne Nachladen. Lightning Rod ist eingeschränkt und hat den bekannten Bug mit dem Pfeil des Spielers, sodass das Paar Lightning Rod + Lightning Arrow an der Spiegelung getestet werden muss.",
+        "Snipe wird ab 0.5 als kanalisierter Angriff unterstützt; die Spiegelung kanalisiert ihn, aber das Timing beim Freigeben ist wichtig."
+      ],
+      "keyValues": [
+        {
+          "label": "Explosive Shot",
+          "value": "Funktioniert (lädt nach)",
+          "notes": [
+            "Magazin-Verhalten an Spiegelung gespiegelt."
+          ]
+        },
+        {
+          "label": "Lightning Arrow",
+          "value": "Saubere Nachahmung",
+          "notes": [
+            "Keine Nachlade-Komplikationen."
+          ]
+        },
+        {
+          "label": "Lightning Rod",
+          "value": "Eingeschränkt + Bug",
+          "notes": [
+            "Pfeil-Interaktion im Client testen."
+          ]
+        },
+        {
+          "label": "Snipe",
+          "value": "0.5+ Kanalisierung",
+          "notes": [
+            "Timing beim Freigeben wichtig."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "Unterstützungs-Kompatibilität",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Dauer-Unterstützungen verlängern das Leben der Spiegelung, was der Haupthebel ist, um mehr Angriffe aus ihr herauszuholen. Abklingzeit-Unterstützungen verkürzen die Lücke zwischen zwei Ausweichen. Vermeide Unterstützungen, die ausdrücklich „Fähigkeiten, die du selbst verwendest“ besagen — die Spiegelung bist nicht du, weshalb diese auf ihre Angriffe nicht anwendbar sind."
+      ],
+      "keyValues": [
+        {
+          "label": "Dauer-Unterstützungen",
+          "value": "Kern",
+          "notes": [
+            "Längere Spiegelung = mehr gespiegelte Angriffe."
+          ]
+        },
+        {
+          "label": "Abklingzeit-Unterstützungen",
+          "value": "Situativ",
+          "notes": [
+            "Verkürzen die Ausweich-Lücke."
+          ]
+        },
+        {
+          "label": "„Fähigkeiten, die du selbst verwendest“",
+          "value": "Nicht anwendbar",
+          "notes": [
+            "Die Spiegelung ist nicht der Spieler."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 100,
+      "title": "Spirit-Budget-Abwägungen",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bei 60 Spirit ist Mirage Archer teuer und konkurriert mit Herald-Buffs und Combat Frenzy um denselben Pool. Bei einem Fernkampf-Build musst du entscheiden, ob der gespiegelte Schaden mehr wert ist als eine Aura oder ein Ladungs-Generator.",
+        "Die meisten Deadeye- und Witchhunter-Fernkampf-Builds behalten ihn, weil die verdoppelte Fernkampf-Ausgabe groß ist, aber Builds mit knappem Spirit lassen ihn möglicherweise fallen."
+      ],
+      "keyValues": [
+        {
+          "label": "Kosten",
+          "value": "60 Spirit",
+          "notes": [
+            "Derselbe Pool wie Herald / Combat Frenzy."
+          ]
+        },
+        {
+          "label": "Abwägung",
+          "value": "Nachahmung vs. Aura / Ladungs-Gen",
+          "notes": [
+            "Nur fallen lassen, wenn Spirit der Engpass ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 110,
+      "title": "Mapping-Rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Position",
+          "action": "Ausweich-Roll nahe einer Gruppe",
+          "result": "Spiegelung erscheint und ahmt deinen eingelegten Angriff nach."
+        },
+        {
+          "label": "Burst",
+          "action": "Du und die Spiegelung feuern beide",
+          "result": "Verdoppelte Fernkampf-Säuberung der Gruppe."
+        },
+        {
+          "label": "Erholen",
+          "action": "Erneut ausweichen nach Abklingzeit",
+          "result": "Spiegelung für die nächste Gruppe auffrischen."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 120,
+      "title": "Bossing-Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Vorplatziert",
+          "action": "Ausweich-Roll vor dem Schadensfenster",
+          "result": "Spiegelung bereit, wenn der Boss beginnt."
+        },
+        {
+          "label": "Aufrechterhalten",
+          "action": "Während des Kampfes erneut ausweichen auf Abklingzeit",
+          "result": "Spiegelung für anhaltende Fernkampf-Ausgabe halten."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 130,
+      "title": "Wo er eingesetzt wird",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Deadeye- und Witchhunter-Fernkampf-Builds nutzen Mirage Archer, um ihre Bogen- / Armbrust-Ausgabe zu verdoppeln. Gemling Legionnaire-Varianten nutzen ihn, wenn sie sich die 60 Spirit leisten können und den gespiegelten Schaden wollen.",
+        "In jedem Fall bewertet der Build den verdoppelten Fernkampfangriff höher als die verlorene Spirit-Aura."
+      ],
+      "bullets": [
+        "Deadeye: verdoppelte Bogen-Säuberung.",
+        "Witchhunter: verdoppelte Armbrust-Ausgabe.",
+        "Gemling Legionnaire: Nachahmung, wenn Spirit es erlaubt."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Fehlerbehebung",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Spiegelung erscheint nie",
+          "action": "Abklingzeit nicht bereit oder kein gültiger eingelegter Angriff",
+          "result": "Nach Abklingzeit mit eingelegtem Fernkampfangriff ausweichen."
+        },
+        {
+          "label": "Spiegelung greift nicht an",
+          "action": "Eingelegte Fähigkeit ist Nahkampf / nicht unterstützt",
+          "result": "Gültigen Bogen-/Speer-/Armbrust-Angriff einlegen."
+        },
+        {
+          "label": "Spiegelung lädt nicht nach",
+          "action": "Fähigkeit benötigt anfängliche Uses, die ihr fehlen",
+          "result": "Angriff ohne Nachladen nutzen oder ihr zuerst die Uses geben."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 150,
+      "title": "Community-Belege",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Community-Berichte häufen sich zum Lightning Rod-Bug (Spiegelungs-Rods interagieren mit dem Pfeil des Spielers) und zur Fähigkeitsauswahl (warum Freezing Salvo „nichts tut“). Client-Tests bestätigen, dass die Spiegelung eine Priorität über eingelegte Fernkampfangriffe nutzt und dass Uses- / Nachlade-Fähigkeiten sich speziell verhalten.",
+        "Das Missverständnis der „du selbst“-Unterstützung ist verbreitet: Unterstützungen, die besagen, Fähigkeiten, die du selbst verwendest, treffen auf die Angriffe der Spiegelung nicht zu."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 160,
+      "title": "Video-Walkthrough und Zeitstempel",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "KaidGames2",
+          "label": "Lightning Arrow 0.5 — Mirage-Einrichtung",
+          "description": "Lightning Arrow-Vorführung, die eingelegte Fernkampfangriffe über einen Mirage Archer demonstriert.",
+          "takeaway": "Achte darauf, welche Angriffe die Spiegelung nachahmt, und auf das Ausweich-Timing.",
+          "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg",
+          "timestamps": [
+            {
+              "label": "Mirage-Einrichtung",
+              "time": "0:00"
+            },
+            {
+              "label": "Multi-Skill-Demo",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Dr Dark Walker",
+          "label": "Fernkampf-Meta-Edelstein 0.5",
+          "description": "Überblick über Meta-Edelsteine inklusive Mirage Archer Ausweich-Auslöser und eingelegter Angriffe.",
+          "takeaway": "Gute Referenz für die Ausweich-zu-Spiegelung-Schleife und Grenzen.",
+          "url": "https://www.youtube.com/watch?v=Imh1eVd43TU",
+          "timestamps": [
+            {
+              "label": "Auslöser-Überblick",
+              "time": "0:00"
+            },
+            {
+              "label": "Grenzen",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Quellen und Verifizierung",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "Die offiziellen GGG-Forum-Patch Notes bestätigen den Ausweich-Auslöser von Mirage Archer, das Verhalten eingelegter Angriffe und die 0.5-Änderungen im aktuellen Client 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Datenbank",
+          "description": "PoE2DB und Community-Wiki liefern Fähigkeits-ID, Tags, Spirit-Kosten und verstecktes Spiegelungs-Verhalten.",
+          "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+        },
+        {
+          "label": "Builds und Video",
+          "description": "Mobalytics Deadeye- / Witchhunter-Builds sowie die Vorführungs-Videos von KaidGames2 / Dr Dark Walker, genutzt um die Ausweich-Schleife und eingelegten Angriffe zu überprüfen.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit und offizielle Foren bringen reale Probleme wie den Lightning Rod-Bug und das Freezing Salvo-Missverhältnis ans Licht, im Client reproduziert und direkt beantwortet.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+        },
+        {
+          "label": "Offizielle Foren",
+          "description": "Offizielle GGG-Foren, in denen Mitarbeiter Meta-Edelstein- und Spiegelungs-Mechanik sowie Patch-Änderungen bestätigen.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit-Community",
+          "description": "Reddit r/PathOfExile2-Diskussionen und Hilfe-Threads zu Mirage Archer, nützlich für Versions-Feedback und gängige Builds.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Ausweich-Roll-Auslöser und Spiegelungs-Erschaffung im Client 0.5.4 bestätigt.",
+          "Gespiegelte Fernkampfangriffe mit Schadensabschlag bestätigt.",
+          "Lightning Rod + Lightning Arrow-Interaktion als bekanntes Problem zum Testen markiert."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Patch-Verlauf",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-01-20",
+          "changes": [
+            "0.3: Mirage Archer als Meta-Edelstein mit Ausweich-Roll-Auslöser eingeführt."
+          ]
+        },
+        {
+          "date": "2026-04-10",
+          "changes": [
+            "0.4: Priorität der eingelegten Angriffe und Objekt-Limit-Anpassungen."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: Snipe-Kanalisierung unterstützt; aktuelle Client-Werte in diesem Guide verwendet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 190,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Erstveröffentlichung: Ausweich-Auslöser, eingelegte Angriffe und Priorität, Objekt-Limits, Mechanik, Fähigkeits-Interaktionen, Unterstützungs-Kompatibilität, Spirit-Budget, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye",
+    "explosive-witchhunter",
+    "corrupting-wings-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "explosive-shot",
+    "lightning-arrow",
+    "snipe",
+    "lightning-rod"
+  ],
+  "relatedPatchIds": [
+    "patch-0-3-0-third-edict",
+    "patch-0-4-0-last-of-the-druids",
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Offizielle Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Mirage Archer",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Mirage_Archer"
+    },
+    {
+      "label": "Mobalytics — Fernkampf-Builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Mirage Archer Diskussionen",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Mirage%20Archer&restrict_sr=1"
+    },
+    {
+      "label": "KaidGames2 — Lightning Arrow 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=hEi82Uh8lvg"
+    },
+    {
+      "label": "Dr Dark Walker — Fernkampf-Meta 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Imh1eVd43TU"
+    }
+  ],
+  "seo": {
+    "title": "Mirage Archer Guide — Ausweich-Auslöser, eingelegte Angriffe, Abklingzeit und Grenzen",
+    "description": "Mirage Archer Meta-Edelstein Guide: Ausweich-Roll-Auslöser und Spiegelungs-Erschaffung, 60 Spirit-Kosten, Dauer und Abklingzeit, Priorität eingelegter Angriffe, Objekt-Limits, Lightning Rod- / Lightning Arrow-Interaktion, Unterstützungen, die „du selbst“ besagen, Spirit-Budget, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "mirage-archer",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

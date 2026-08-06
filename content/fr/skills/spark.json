@@ -1,0 +1,584 @@
+{
+  "id": "spark",
+  "slug": "spark",
+  "locale": "fr",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guide de Spark — Enchaînement de projectiles, infusion et scaling sur coup critique",
+  "shortTitle": "Étincelle",
+  "summary": "Spark tire une salve de projectiles qui rebondissent entre les ennemis proches, parcourent une courte distance et laissent un faisceau bref. C'est un sort de nettoyage central pour les builds coup-crit et empilement de mana, et il bénéficie fortement de l'Infusion de Froid et de la vitesse de projectile. Ce guide couvre les règles de touche, l'infusion, le comportement selon le terrain, les configurations de supports et la rotation de boss.",
+  "description": "Guide approfondi de Spark : fonctionnement des projectiles enchaînés et du faisceau, l'intervalle de touche sur une même cible, les bénéfices de l'Infusion de Froid et de l'Infusion de Foudre, les compromis vitesse de projectile contre durée, le scaling d'énergie sur coup critique, la compatibilité des supports, les rotations de cartographie et de boss, le dépannage et les vraies questions de la communauté.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 3,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "projectile",
+    "lightning",
+    "chaining",
+    "aoe"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/spark.webp",
+  "cardImage": "/images/skills/spark.webp",
+  "imageAlt": "Icône du sort de foudre Spark",
+  "tags": [
+    "spell",
+    "lightning",
+    "chaining",
+    "cast-on-crit",
+    "clear"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark libère un éventail de projectiles qui s'enchaînent automatiquement vers les ennemis proches, puis parcourent une courte distance et laissent un faisceau bref le long de leur trajectoire.",
+        "Sa puissance de nettoyage vient de l'enchaînement combiné au chevauchement des faisceaux ; ainsi la vitesse de projectile, la durée et la densité des ennemis comptent plus que le simple nombre de projectiles.",
+        "Avec l'Infusion de Froid, les projectiles deviennent de type Froid et le faisceau éclate en de nombreux projectiles en cercle — une salve puissante utilisée dans les configurations coup-crit."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Faits rapides",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Catégorie",
+          "value": "Sort / Projectile / Foudre",
+          "notes": [
+            "Tagué sort, projectile, foudre, enchaînement, zone."
+          ]
+        },
+        {
+          "label": "Motif de touche",
+          "value": "Projectiles enchaînés + faisceau",
+          "notes": [
+            "Les projectiles s'enchaînent entre les ennemis puis laissent un faisceau bref."
+          ]
+        },
+        {
+          "label": "Meilleure infusion",
+          "value": "Salve d'Infusion de Froid",
+          "notes": [
+            "Un Spark infiltré de Froid explose en un cercle de projectiles sur le faisceau."
+          ]
+        },
+        {
+          "label": "Acquisition",
+          "value": "Gemme de sort non taillée (Tier 3)",
+          "notes": [
+            "Obtenue via une gemme de sort non taillée ; s'enfiche dans un emplacement de sort."
+          ]
+        },
+        {
+          "label": "Meilleur rôle",
+          "value": "Nettoyage d'écran + déclencheur CoC",
+          "notes": [
+            "S'associe aux builds coup-crit et empilement de mana."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Prérequis",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Aucune barrière d'attribut spéciale. Spark est une gemme de sort placée dans un emplacement de compétence et lancée avec du mana.",
+        "Comme il s'agit d'un sort, il profite des supports liés aux sorts et peut être déclenché par des gemmes coup-crit ou coup-altération à la place d'un lancer direct."
+      ]
+    },
+    {
+      "id": "projectile-field",
+      "order": 40,
+      "title": "Champ de projectiles et faisceau",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Au lancer, Spark émet un ensemble de projectiles en arc vers l'avant. Chaque projectile s'enchaîne vers les ennemis proches un nombre limité de fois, puis continue et laisse un segment de faisceau le long du chemin parcouru.",
+        "Le faisceau est une source de touche secondaire. Les ennemis situés là où plusieurs faisceaux se chevauchent subissent des dégâts de faisceau répétés, ce qui explique pourquoi les paquets denses semblent fondre.",
+        "Le nombre de projectiles, le nombre d'enchaînements et la durée du faisceau sont les trois leviers qui changent la couverture d'une salle."
+      ],
+      "bullets": [
+        "Les enchaînements visent l'ennemi valide le plus proche dans la portée d'enchaînement.",
+        "Le faisceau persiste un court instant après la fin du voyage du projectile.",
+        "L'Infusion de Froid remplace le faisceau par une salve circulaire de projectiles."
+      ]
+    },
+    {
+      "id": "same-target-hit-rule",
+      "order": 50,
+      "title": "Intervalle de touche sur une même cible",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Plusieurs projectiles d'un même lancer touchant le même ennemi sont soumis à un intervalle de touche interne, ce qui empêche un seul Spark de toucher une cible instantanément avec chaque projectile.",
+        "Les lancers différents sont traités séparément, donc une vitesse de lancer plus rapide via un second Spark ajoute bien plus de chances de toucher la même cible dans le temps.",
+        "Pour les configurations coup-crit, la propriété de la source de déclenchement compte : les Sparks déclenchés constituent leurs propres lancers et suivent la même règle d'intervalle par lancer."
+      ],
+      "bullets": [
+        "Même lancer, plusieurs projectiles sur une cible : limité par l'intervalle de touche.",
+        "Lancers séparés : chacun peut contribuer des touches selon son propre intervalle.",
+        "Les projectiles infiltrés de Froid suivent leur propre motif et n'héritent pas simplement de la règle normale du faisceau."
+      ]
+    },
+    {
+      "id": "infusion-mode",
+      "order": 60,
+      "title": "Mode infusion",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark peut être infiltré. L'Infusion de Froid convertit les projectiles en dégâts de Froid et fait éclater le faisceau en un anneau de projectiles, transformant un sort de nettoyage en une salve qui empile aussi les gels et alimente les déclencheurs coup-altération.",
+        "L'Infusion de Foudre conserve le tag Foudre et est consommée quand le projectile ou le faisceau inflige sa touche, donc le bénéfice d'infusion ne s'applique que tant que vous avez des charges.",
+        "Le choix d'infusion change la façon de construire autour de Spark : l'Infusion de Froid veut du scaling d'altération et de gel, tandis que l'Infusion de Foudre veut de la foudre brute et un rendement de choc."
+      ],
+      "bullets": [
+        "Infusion de Froid : salve circulaire de projectiles, puissante avec coup-altération.",
+        "Infusion de Foudre : consommée à la touche, nécessite une source d'infusion fiable.",
+        "Le coût d'infusion est distinct du coût de mana du sort."
+      ]
+    },
+    {
+      "id": "terrain-analysis",
+      "order": 70,
+      "title": "Terrain et positionnement",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark peut se coincer ou gaspiller des faisceaux contre les murs et les coins. Dans les salles étroites, les projectiles s'enchaînent vite mais le faisceau peut recouper la géométrie, réduisant la couverture.",
+        "Dans les cartes ouvertes, les projectiles parcourent leur distance totale et les faisceaux se chevauchent sur une grande zone, donnant la meilleure sensation de nettoyage.",
+        "Contre un boss dans une arène réduite, visez légèrement hors-centre afin que les enchaînements et faisceaux saturent le boss plutôt que de rebondir dans un mur immédiatement."
+      ],
+      "bullets": [
+        "Cartes ouvertes : trajet de projectile complet, large chevauchement de faisceau.",
+        "Salles de boss étroites : visez hors-centre pour éviter le recoupage mural précoce.",
+        "Les coins peuvent piéger les enchaînements, réduisant le mono-cible effectif."
+      ]
+    },
+    {
+      "id": "projectile-speed-duration",
+      "order": 80,
+      "title": "Vitesse de projectile contre durée",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Objectif",
+        "Vitesse de projectile",
+        "Durée",
+        "Résultat",
+        "Risque"
+      ],
+      "rows": [
+        [
+          "Nettoyage ouvert rapide",
+          "Élevée",
+          "Moyenne",
+          "Couverture rapide des ennemis lointains",
+          "Courte présence dans chaque zone"
+        ],
+        [
+          "Boss étroit",
+          "Moyenne",
+          "Élevée",
+          "Plus de rebonds et couverture répétée",
+          "Sensation plus lente"
+        ],
+        [
+          "Génération CoC",
+          "Moyenne-Élevée",
+          "Moyenne-Élevée",
+          "Touches fréquentes",
+          "Dépend du critique"
+        ],
+        [
+          "Salve Infusion de Froid",
+          "Valeur client actuelle",
+          "Valeur client actuelle",
+          "Nombreux projectiles en cercle",
+          "Consomme l'infusion"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "Compatibilité des supports",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark est un sort projectile, donc les supports qui ajoutent nombre de projectiles, enchaînement, zone, dégâts de sort et vitesse de lancer s'appliquent tous. Évitez les supports qui n'aident que les attaques ou les sbires."
+      ],
+      "bullets": [
+        "Dégâts de Foudre ajoutés et Pénétration de Foudre pour les builds de choc.",
+        "Enchaînement et Retour de projectiles étendent la couverture dans les paquets.",
+        "Lancer plus rapide et les enableurs coup-crit accélèrent la génération de déclenchement."
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 100,
+      "title": "Configurations de supports",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Un Spark orienté nettoyage utilise des supports de projectile et de zone. Un Spark coup-crit privilégie les supports de critique et de vitesse de lancer pour garder la barre d'énergie pleine."
+      ],
+      "bullets": [
+        "Nettoyage : Enchaînement, Pénétration de Foudre, Zone, Rétention d'énergie.",
+        "CoC : Dégâts critiques, Vitesse de lancer, Dégâts de Foudre, Contrôle.",
+        "Infusion de Froid : supports de Froid et d'altération plutôt que foudre pure."
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 110,
+      "title": "Interactions de compétences",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark alimente coup-crit et coup-altération car chaque touche d'enchaînement et de faisceau est un événement de touche distinct pouvant déclencher un effet.",
+        "Tempête de Mana peut renforcer les Sparks déclenchés dans la tempête, et Comète déclenchée par le même setup critique partage l'économie d'énergie.",
+        "Héraut de Foudre gagne une chance de Choc via vos touches de foudre, donc un nettoyage Spark peut maintenir les procs du héraut."
+      ],
+      "bullets": [
+        "Coup critique : partenaire de déclenchement principal.",
+        "Coup-altération élémentaire : s'associe à l'Infusion de Froid.",
+        "Tempête de Mana : renforce les sorts lancés dans la tempête."
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 120,
+      "title": "Rotation de cartographie",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "En cartographie, lancez Spark dans le paquet avec un léger angle afin que les enchaînements rassemblent les ennemis et que les faisceaux recouvrent le groupe.",
+        "Restez mobile : Spark nettoie l'écran vite, vous n'avez donc que rarement besoin de vous arrêter. Relancez dès que le temps de recharge ou le déclenchement le permet."
+      ],
+      "bullets": [
+        "Visez hors-centre vers la partie la plus dense du paquet.",
+        "Continuez à lancer en bougeant pour enchaîner à travers plusieurs groupes.",
+        "Utilisez l'Infusion de Froid quand vous voulez une cascade d'altérations."
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 130,
+      "title": "Rotation de boss",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Contre un boss, Spark seul est faible en mono-cible. Utilisez-le comme moteur de déclenchement pour Comète ou comme applicateur de gel pendant que votre sort de dégâts principal fait le travail.",
+        "Positionnez-vous pour que le faisceau traverse le boss à répétition ; dans les arènes réduites, un lancer légèrement anglé couvre le boss mieux qu'un lancer à bout portant."
+      ],
+      "bullets": [
+        "Traitez Spark comme un déclencheur, pas comme dégât principal de boss.",
+        "Anglez les lancers pour que les faisceaux traversent la hitbox du boss.",
+        "Placez les salves d'Infusion de Froid avec les staggers du boss."
+      ]
+    },
+    {
+      "id": "coc-usage",
+      "order": 140,
+      "title": "Utilisation sur coup critique",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Dans une configuration coup-crit, Spark est généralement le sort déclenché : chaque critique de votre setup principal déclenche Spark, et les nombreuses touches de Spark aident à remplir l'énergie de déclenchement.",
+        "La barre d'énergie se remplit via les critiques ; un lancer de Spark plus rapide et plus d'enchaînements signifient plus de touches alimentant la boucle, mais il vous faut toujours une chance de critique et un multiplicateur de critique sur la source de déclenchement.",
+        "Les builds empilement de mana associent Spark à un scaling de mana type Archmage afin que le sort déclenché profite aussi du mana maximum."
+      ],
+      "bullets": [
+        "Spark est la charge déclenchée, pas la source de déclenchement.",
+        "Plus d'enchaînements et de vitesse de lancer alimentent la barre d'énergie.",
+        "L'empilement de mana multiplie les dégâts déclenchés."
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 150,
+      "title": "Utilisation par build",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spark brille dans les configurations Spark coup-crit Stormweaver et Gemling, ainsi que dans les builds Oracle ou Titan empilement de mana utilisant la variante totem de sort ou déclenchement.",
+        "C'est aussi un démarrage de ligue fiable car la gemme est de bas tier et le nettoyage est puissant même avec un petit budget."
+      ],
+      "bullets": [
+        "Spark Coup-crit Stormweaver : nettoyage par déclenchement haute densité.",
+        "Spark Gemling Legionnaire : variante empilement d'attributs.",
+        "Oracle Tempête de Mana : renforce les Sparks déclenchés."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 160,
+      "title": "Dépannage",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Si vous tirez de nombreux projectiles mais que le boss prend peu de dégâts, vous êtes probablement en situation mono-cible où l'enchaînement de Spark n'aide pas — utilisez-le comme déclencheur ou passez à un sort mono-cible.",
+        "Si les projectiles collent au terrain, vous êtes dans une salle étroite ; anglez vos lancers. Si des projectiles plus rapides réduisent le mono-cible, vous avez troqué la durée contre la vitesse."
+      ],
+      "bullets": [
+        "Faible dégât de boss : Spark est un outil de nettoyage, pas mono-cible.",
+        "Projectiles bloqués : lancez en angle, évitez les coins.",
+        "Barre d'énergie lente : augmentez la chance de critique et la vitesse de lancer.",
+        "Infusion de Froid non consommée : vérifiez qu'une source d'infusion est active.",
+        "Échange de set d'arme perd les supports : gardez les mêmes supports enfichés."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 170,
+      "title": "Preuves de la communauté",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les joueurs rapportent régulièrement Spark comme un sort de nettoyage top dans les fils du patch 0.5, le débat principal portant sur la salve d'Infusion de Froid face à la tenue de l'Infusion de Foudre.",
+        "Les builds Spark coup-crit sont une recommandation récurrente de démarrage de ligue car le tier de la gemme est bas et le plafond est élevé avec de l'investissement."
+      ],
+      "bullets": [
+        "La salve d'Infusion de Froid est le choix 0.5 populaire pour le nettoyage.",
+        "Spark CoC est recommandé comme démarrage du budget au haut de gamme."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 180,
+      "title": "Guides vidéo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Spark CoC Ritualist",
+          "label": "Guide de build Spark Coup Critique Ritualist (0.5)",
+          "description": "Un build Spark coup-crit Ritualist montrant la vitesse de nettoyage et le setup de déclenchement dans le patch 0.5.",
+          "takeaway": "Observez comment la boucle de déclenchement Spark garde l'écran dégagé.",
+          "url": "https://youtu.be/3qhZjCutAv0",
+          "timestamps": [
+            {
+              "label": "Aperçu du build",
+              "time": "0:00"
+            },
+            {
+              "label": "Setup de déclenchement",
+              "time": "3:00"
+            },
+            {
+              "label": "Nettoyage en cartographie",
+              "time": "6:00"
+            }
+          ]
+        },
+        {
+          "creator": "Spark Temporalis",
+          "label": "Guide de build Spark Temporalis 2,5M en tooltip (0.5)",
+          "description": "Un build Spark à gros budget démontrant le scaling de fin de partie avec Temporalis.",
+          "takeaway": "Observez le scaling de mana et de vitesse de lancer derrière les dégâts.",
+          "url": "https://youtu.be/RSGtMff_96Y",
+          "timestamps": [
+            {
+              "label": "Cibles d'équipement",
+              "time": "0:00"
+            },
+            {
+              "label": "Détail des dégâts",
+              "time": "4:00"
+            },
+            {
+              "label": "Démonstration de boss",
+              "time": "8:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Sources et vérification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Officiel",
+          "description": "Notes de patch et forums officiels GGG confirmant le comportement de Spark, l'enchaînement et l'infusion dans le client 0.5.4 actuel.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "Base de données",
+          "description": "PoE2DB et le Wiki communautaire fournissent l'id du sort Spark, les tags, le nombre d'enchaînements et le comportement d'infusion.",
+          "url": "https://poe2db.tw/Spark"
+        },
+        {
+          "label": "Wiki",
+          "description": "Page wiki communautaire de Spark avec les détails de projectile et de faisceau.",
+          "url": "https://www.poe2wiki.net/wiki/Spark"
+        },
+        {
+          "label": "Builds et vidéo",
+          "description": "Builds YouTube Spark coup-crit et Temporalis utilisés pour vérifier déclenchement et scaling.",
+          "url": "https://youtu.be/3qhZjCutAv0"
+        },
+        {
+          "label": "Communauté",
+          "description": "Reddit et les forums font ressortir les discussions sur le nettoyage et l'infusion de Spark.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Spark&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 200,
+      "title": "Historique des patchs",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients) : Spark reste un sort d'enchaînement central ; comportement de salve de l'Infusion de Froid confirmé dans le client."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08) : Référence actuelle : projectiles enchaînés plus faisceau, salve circulaire de l'Infusion de Froid, scaling de déclenchement coup-crit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 210,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Version initiale : champ de projectiles et faisceau, intervalle sur une même cible, modes d'infusion, comportement selon le terrain, tableau vitesse contre durée, configurations de supports, utilisation coup-crit, rotations de cartographie et de boss, dépannage et questions de la communauté."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "spark-coc-comet-stormweaver",
+    "spark-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "comet",
+    "mana-tempest",
+    "cast-on-critical-strike"
+  ],
+  "sources": [
+    {
+      "label": "Forum des notes de patch officielles PoE2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Spark",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Spark"
+    },
+    {
+      "label": "PoE2 Community Wiki — Spark",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Spark"
+    },
+    {
+      "label": "Vidéo Spark CoC Ritualist",
+      "sourceType": "community",
+      "url": "https://youtu.be/3qhZjCutAv0"
+    },
+    {
+      "label": "Vidéo Spark Temporalis",
+      "sourceType": "community",
+      "url": "https://youtu.be/RSGtMff_96Y"
+    },
+    {
+      "label": "Reddit — discussion sur Spark",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Spark&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Guide de Spark — Enchaînement de projectiles, infusion et scaling sur coup critique",
+    "description": "Guide approfondi de Spark : projectiles enchaînés et faisceau, intervalle de touche sur une même cible, Infusion de Froid et de Foudre, vitesse de projectile contre durée, scaling d'énergie coup-crit, supports, rotations de cartographie et de boss, dépannage et questions de la communauté.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

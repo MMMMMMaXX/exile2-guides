@@ -1,0 +1,667 @@
+{
+  "id": "power-frenzy-endurance-charges",
+  "slug": "power-frenzy-endurance-charges",
+  "locale": "es",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Cargas de Poder, Frenesí y Resistencia en Path of Exile 2",
+  "shortTitle": "Cargas en PoE 2",
+  "summary": "Cómo funcionan las cargas de Poder, Frenesí y Resistencia como recursos de combate generables y consumibles en Path of Exile 2, en qué difieren de los bonus pasivos de PoE1 y cómo construir bucles de generación y consumo con Combat Frenzy y Resonance.",
+  "description": "Una guía de mecánicas sobre las cargas de Path of Exile 2: generación, máximo, duración, consumo, la configuración de Combat Frenzy, la piedra angular de conversión Resonance y la disponibilidad en mapas frente a jefes. Las cargas son recursos gastados, no bonus pasivos de atributos.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/skills/combat-frenzy.webp",
+  "cardImage": "/images/skills/combat-frenzy.webp",
+  "imageAlt": "Un icono de habilidad de Path of Exile 2 que representa cargas de frenesí y la generación de cargas",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "Comprensión básica de habilidades, gemas de soporte y el árbol de habilidades pasivas",
+    "Familiaridad con la barra de estado del personaje y los iconos de buff",
+    "Una build que usa o quiere usar cargas, como Amazon, Monk o Warrior"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "tags": [
+    "mechanics",
+    "charges",
+    "power-charge",
+    "frenzy-charge",
+    "endurance-charge",
+    "generation",
+    "consumption"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Respuestas directas",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "¿Qué son las cargas de Poder, Frenesí y Resistencia en Path of Exile 2?",
+          "body": [
+            "En PoE2 estos tres tipos de carga son recursos temporales y acumulables. Los generas mediante habilidades, soportes, pasivas e ítems específicos, y luego los gastas para potenciar otras habilidades. NO otorgan bonus pasivos de atributos solo por mantenerlos — este es el gran cambio respecto a Path of Exile 1."
+          ]
+        },
+        {
+          "title": "¿Las cargas aumentan automáticamente mi daño, velocidad de ataque o resistencias?",
+          "body": [
+            "No. En PoE2 una carga solo tiene valor cuando la consume una habilidad o pasiva que interactúa explícitamente con ella. El mero hecho de mantener una carga no proporciona ningún atributo inherente. El valor proviene enteramente del efecto que la consume."
+          ]
+        },
+        {
+          "title": "¿Cuántas cargas puedo mantener?",
+          "body": [
+            "Cada tipo de carga tiene un máximo predeterminado (comúnmente 3 por tipo) que pasivas, piedras angulares e ítems específicos pueden aumentar. Máximo, Duración y cuántas se generan por evento son tres números distintos — no los confundas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "three-charge-types",
+      "order": 2,
+      "title": "Los tres tipos de carga de un vistazo",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Cada tipo de carga es un recurso distinto con sus propios socios de generación y consumo. Los valores y los enfriamientos exactos son sensibles a la versión — confirma los detalles en el juego.",
+      "columns": [
+        {
+          "key": "charge",
+          "label": "Carga"
+        },
+        {
+          "key": "generation",
+          "label": "Generación común"
+        },
+        {
+          "key": "consumption",
+          "label": "Consumo común"
+        },
+        {
+          "key": "fits",
+          "label": "Encaja con tipos de habilidad"
+        },
+        {
+          "key": "boss-risk",
+          "label": "Riesgo en jefes"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "power-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Power Charge",
+            "generation": "Killing Palm (otorga una Power Charge al matar); la piedra angular Resonance puede convertir otras ganancias de carga en Power Charges; algunos ítems y pasivas añaden generación",
+            "consumption": "Falling Thunder (consume Power Charges para obtener proyectiles de relámpago adicionales y más daño por carga gastada); Charge Infusion (buff de probabilidad de crítico al consumir cargas)",
+            "fits": "Builds de Inteligencia y ataque lanzador como Monk Invoker, además de cualquier habilidad que consuma explícitamente Power Charges",
+            "boss-risk": "La generación a menudo depende de muertes; los jefes de objetivo único dan menos detonantes, por lo que la disponibilidad puede caer"
+          }
+        },
+        {
+          "tags": [
+            "frenzy-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Frenzy Charge",
+            "generation": "Combat Frenzy (otorga una Frenzy Charge al aplicar Freeze, Electrocute o Pin, con un enfriamiento corto); Cull the Weak; Parry más Disengage; Sniper's Mark (crítico en un enemigo marcado); Retort; modificadores Frenzy-on-Kill",
+            "consumption": "Barrage (repeticiones adicionales por Frenzy Charge consumida); Amazon Infuse Weapon (Lightning Infusion al consumir una Frenzy Charge); Tumult; buffs de Charge Infusion",
+            "fits": "Builds de Destreza y ataque (Ranger, Amazon, Huntress) que usan habilidades que consumen Frenzy Charges",
+            "boss-risk": "Freeze, Electrocute y Pin son más débiles o están resistidos en muchos jefes, por lo que la generación puede estancarse"
+          }
+        },
+        {
+          "tags": [
+            "endurance-charge",
+            "generation"
+          ],
+          "cells": {
+            "charge": "Endurance Charge",
+            "generation": "Magma Barrier (bloquear mientras el buff de magma está activo otorga una Endurance Charge); Break Endurance support (probabilidad al romper totalmente la armadura); Cranial Impact (gana una al hacer Heavy Stun a un Rare o Unique); nota destacada Grit",
+            "consumption": "Infernal Cry (consume todas las Endurance Charges para potenciar ataques y hacer que los enemigos ardan al morir); Seismic Cry; Shielding Cry; Rally support; Amazon Infuse Weapon (Fire Infusion); Charge Infusion",
+            "fits": "Builds de Fuerza, defensivas y de warcry de Warrior, además de habilidades que consumen Endurance Charges",
+            "boss-risk": "Depende de bloquear, Heavy Stun o romper armadura, lo que puede ser inconsistente contra jefes rápidos o inbloqueables"
+          }
+        }
+      ],
+      "note": "Enlaza la generación con un consumidor del mismo tipo de carga. Para mecánicas relacionadas, consulta las guías de Critical Hit, Recovery, Builds y Skills."
+    },
+    {
+      "id": "generation",
+      "order": 3,
+      "title": "Cómo se generan las cargas",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La generación de cargas en PoE2 proviene de tres grandes grupos: habilidades activas, gemas de soporte y pasivas o ítems. Una habilidad como Killing Palm otorga una Power Charge cada vez que logra una muerte. La configuración de Combat Frenzy otorga una Frenzy Charge cada vez que aplicas un efecto Freeze, Electrocute o Pin, limitada por un enfriamiento corto para que no puedas detonarla en cada fotograma. Herramientas de Warrior como Magma Barrier otorgan una Endurance Charge cuando bloqueas durante el buff.",
+        "Algunas pasivas y piedras angulares añaden o convierten la generación. La piedra angular Resonance, por ejemplo, redirige qué tipo de carga ganas, permitiendo que una build que generaría un tipo gane otro en su lugar. Los ítems con modificadores implícitos o creados, como Frenzy Charge on Kill, proporcionan una generación que escala con la cantidad de enemigos que derrotas."
+      ],
+      "bullets": [
+        "Habilidades activas: Killing Palm (Power), Magma Barrier (Endurance), Cull the Weak (Frenzy).",
+        "Gemas de soporte: Combat Frenzy (Frenzy al aplicar Freeze, Electrocute o Pin), Retort (Frenzy al consumir un debuff Parried), Break Endurance (probabilidad de Endurance al romper totalmente la armadura).",
+        "Marks: Sniper's Mark otorga una Frenzy Charge cuando golpeas críticamente a un enemigo marcado.",
+        "Pasivas y piedras angulares: Grit, Cranial Impact y Resonance alteran el máximo y la conversión.",
+        "Ítems: modificadores implícitos o creados como Frenzy Charge on Kill."
+      ]
+    },
+    {
+      "id": "duration-maximum",
+      "order": 4,
+      "title": "Duración, máximo y cantidad de generación son cosas distintas",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Tres números rigen un sistema de cargas, y los jugadores a menudo los confunden. Maximum Charges es el tope que puedes mantener a la vez. Charge Duration es cuánto tiempo persiste una carga mantenida antes de expirar. Generation amount es cuántas cargas otorga un solo evento. Subir uno no sube los otros.",
+        "Por ejemplo, una pasiva puede aumentar tu Maximum Endurance Charges mientras un modificador separado extiende la Duration, y una habilidad de generación puede otorgar solo una carga por detonante sin importar tu máximo. Trátalos como diales independientes al planificar una build."
+      ],
+      "bullets": [
+        "Maximum Charges: el tope por tipo; aumentado por pasivas, piedras angulares y algunos encantamientos de cinturón o anillo.",
+        "Duration: cuánto tiempo sobrevive una carga sin atender; extendida por nodos e ítems específicos.",
+        "Generation amount: cargas otorgadas por evento; a menudo un fijo de 1 por detonante válido.",
+        "No asumas que un máximo mayor significa generación más rápida o automática."
+      ]
+    },
+    {
+      "id": "consumption",
+      "order": 5,
+      "title": "Qué otorga consumir una carga",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La recompensa de las cargas es el consumo. En PoE2 gastas cargas mediante habilidades, soportes o pasivas que declaran explícitamente que interactúan con un tipo de carga. La carga consumida potencia el efecto en lugar de buffarte pasivamente.",
+        "Ejemplos: Falling Thunder consume Power Charges para añadir proyectiles de relámpago y aumentar el daño; Barrage consume Frenzy Charges para añadir repeticiones al siguiente ataque de arco; Infernal Cry consume todas las Endurance Charges para potenciar los ataques siguientes y hacer que los enemigos ardan al morir. El Infuse Weapon de Amazon detona infusiones elementales cuando consumes Power, Endurance o Frenzy Charges. La habilidad persistente Charge Infusion otorga buffs basados en tus cargas activas y consume cargas con un temporizador."
+      ],
+      "bullets": [
+        "Consumidores de Power: Falling Thunder, Charge Infusion (bonus de crítico al consumir).",
+        "Consumidores de Frenzy: Barrage, Amazon Infuse Weapon (Lightning Infusion), Tumult.",
+        "Consumidores de Endurance: Infernal Cry, Seismic Cry, Shielding Cry, Rally, Amazon Infuse Weapon (Fire Infusion).",
+        "Una carga no vale nada a menos que algo en tu build la consuma."
+      ]
+    },
+    {
+      "id": "replacement",
+      "order": 6,
+      "title": "Conversión y reemplazo de tipos de carga",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "PoE2 tiene una mecánica real de conversión de cargas: la piedra angular Resonance. Cuando está asignada, cambia qué tipo de carga ganas de las fuentes de generación — ganas Power Charges en lugar de Frenzy, Frenzy en lugar de Endurance, y Endurance en lugar de Power. Esto permite que una build dirija la generación hacia el único tipo de carga que sus consumidores quieren.",
+        "Fuera de las piedras angulares, las habilidades y soportes individuales definen exactamente qué carga otorgan o consumen; no hay una conversión universal automática entre tipos de carga. Si una habilidad dice que otorga o consume una carga específica, solo interactúa con ese tipo."
+      ],
+      "bullets": [
+        "Piedra angular Resonance: redirige el tipo de carga generada (ciclo de Power, Frenzy, Endurance).",
+        "Habilidades y soportes son específicos de tipo: un consumidor de Frenzy nunca gasta Power ni Endurance.",
+        "No existe un grupo global de 'cualquier carga'; los tres tipos siguen siendo recursos distintos."
+      ]
+    },
+    {
+      "id": "mapping-vs-bossing",
+      "order": 7,
+      "title": "Mapas frente a jefes",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "La disponibilidad de cargas difiere enormemente según el entorno. No proyectes la disponibilidad de mapas sobre las peleas de jefes.",
+      "columns": [
+        {
+          "key": "environment",
+          "label": "Entorno"
+        },
+        {
+          "key": "generation-ease",
+          "label": "Facilidad de generación"
+        },
+        {
+          "key": "consumption-value",
+          "label": "Valor de consumo"
+        },
+        {
+          "key": "notes",
+          "label": "Notas"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "mapping"
+          ],
+          "cells": {
+            "environment": "Mapas y limpieza",
+            "generation-ease": "Alta — muchas muertes y efectos de estado frecuentes (Freeze, Electrocute, Pin) mantienen las cargas fluyendo",
+            "consumption-value": "Sostenida — gasta cargas continuamente para velocidad de limpieza y beneficio en área",
+            "notes": "Fuentes por muerte como Frenzy on Kill brillan aquí; la disponibilidad es fácil de mantener"
+          }
+        },
+        {
+          "tags": [
+            "bossing"
+          ],
+          "cells": {
+            "environment": "Jefes y pocos objetivos",
+            "generation-ease": "Menor — menos muertes, y los jefes a menudo resisten Freeze, Electrocute y Pin o no pueden ser aturdidos de forma fiable en una guarda o aturdimiento",
+            "consumption-value": "Explosiva — cada carga consumida tiene alto valor para daño o defensa de objetivo único",
+            "notes": "Planifica la generación según las resistencias del jefe; no asumas que la disponibilidad de mapas se mantiene"
+          }
+        }
+      ],
+      "note": "La disponibilidad contra jefes debe medirse contra el jefe mismo, nunca inferirse del rendimiento en mapas."
+    },
+    {
+      "id": "uptime-checklist",
+      "order": 8,
+      "title": "Lista de verificación de disponibilidad de cargas",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Recorre estas comprobaciones para ver si las cargas realmente ayudarán a tu build, y dónde se rompe el bucle.",
+      "controls": [
+        {
+          "id": "primary-charge",
+          "label": "¿Qué carga quiere tu build?",
+          "options": [
+            {
+              "label": "Power",
+              "value": "power"
+            },
+            {
+              "label": "Frenzy",
+              "value": "frenzy"
+            },
+            {
+              "label": "Endurance",
+              "value": "endurance"
+            }
+          ]
+        },
+        {
+          "id": "generation",
+          "label": "¿Con qué fiabilidad puedes generarla en tu contenido?",
+          "options": [
+            {
+              "label": "Fiable (las muertes o los efectos de estado ocurren a menudo)",
+              "value": "reliable"
+            },
+            {
+              "label": "Poco fiable (pocos objetivos o resiste el detonante)",
+              "value": "unreliable"
+            }
+          ]
+        },
+        {
+          "id": "consumer",
+          "label": "¿Una habilidad o pasiva la consume?",
+          "options": [
+            {
+              "label": "Sí, tengo un consumidor",
+              "value": "yes"
+            },
+            {
+              "label": "Aún sin consumidor",
+              "value": "no"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Añade primero un consumidor",
+          "when": {
+            "consumer": "no"
+          },
+          "steps": [
+            "Las cargas no hacen nada si nunca se gastan.",
+            "Añade un gastador que coincida con tu tipo de carga: Falling Thunder (Power), Barrage (Frenzy), Infernal Cry o Rally (Endurance), o Charge Infusion.",
+            "Si no puedes encajar un consumidor, abandona el plan de cargas en lugar de generar recursos desperdiciados."
+          ]
+        },
+        {
+          "title": "Arregla la generación para jefes",
+          "when": {
+            "generation": "unreliable"
+          },
+          "steps": [
+            "La generación en mapas depende de muertes y efectos de estado que los jefes resisten.",
+            "Añade Sniper's Mark (Frenzy) o fuentes basadas en defensa como Magma Barrier y Cranial Impact (Endurance).",
+            "Considera la piedra angular Resonance para redirigir la generación hacia la carga que tus consumidores quieren.",
+            "Espera que la disponibilidad contra jefes esté muy por debajo de la de mapas."
+          ]
+        },
+        {
+          "title": "Tienes un bucle funcional",
+          "when": {
+            "consumer": "yes",
+            "generation": "reliable"
+          },
+          "steps": [
+            "Gasta en enfriamiento para que las cargas no expiren por Duration.",
+            "Mantén el detonante de generación y vigila Maximum para no saturar antes de tiempo.",
+            "Controla la Duration para que una carga generada se gaste antes de decaer."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Comprobación general de disponibilidad",
+        "steps": [
+          "Confirma que tu detonante de generación encaja con el contenido que realmente juegas.",
+          "Confirma que existe un consumidor del mismo tipo de carga en tu build.",
+          "Confirma que Duration y Maximum cubren tu ritmo de gasto.",
+          "Espera que la disponibilidad contra jefes sea menor que la de mapas."
+        ]
+      }
+    },
+    {
+      "id": "worked-examples",
+      "order": 9,
+      "title": "Ejemplos resueltos",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Tres arquetipos de build y cómo cada uno convierte la generación en consumo. Solo mecánicas — sin números, niveles o precios inventados.",
+      "columns": [
+        {
+          "key": "case",
+          "label": "Caso"
+        },
+        {
+          "key": "class-type",
+          "label": "Clase o tipo de habilidad"
+        },
+        {
+          "key": "how-used",
+          "label": "Cómo se usan las cargas"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "power-charge",
+            "monk"
+          ],
+          "cells": {
+            "case": "Estilo Monk o Invoker (Power Charges)",
+            "class-type": "Ataque lanzador de Inteligencia con un quarterstaff",
+            "how-used": "Genera Power Charges con Killing Palm al matar; consúmelas vía Falling Thunder para proyectiles de relámpago y daño adicionales, o vía Charge Infusion para un bonus de crítico."
+          }
+        },
+        {
+          "tags": [
+            "frenzy-charge",
+            "ranger"
+          ],
+          "cells": {
+            "case": "Estilo Ranger o Amazon (Frenzy Charges)",
+            "class-type": "Ataque de Destreza con arco o lanza",
+            "how-used": "Genera Frenzy Charges con Combat Frenzy al aplicar Freeze, Electrocute o Pin, o con críticos de Sniper's Mark; consúmelas vía Barrage para repeticiones adicionales o Amazon Infuse Weapon para Lightning Infusion."
+          }
+        },
+        {
+          "tags": [
+            "endurance-charge",
+            "warrior"
+          ],
+          "cells": {
+            "case": "Estilo Warrior (Endurance Charges)",
+            "class-type": "Warcry o melé de Fuerza",
+            "how-used": "Genera Endurance Charges mediante bloqueos de Magma Barrier o Heavy Stuns de Cranial Impact; consúmelas vía Infernal Cry para potenciar ataques y abrasar enemigos, o Rally para recuperar vida."
+          }
+        }
+      ],
+      "note": "Estos son ejemplos didácticos del bucle de generación a consumo, no recomendaciones específicas de equipo o nivel."
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "Errores comunes",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La mayoría de los problemas de cargas vienen de aplicar el modelo mental de PoE1 a PoE2. Vigila estos errores antes de culpar a la mecánica."
+      ],
+      "bullets": [
+        "Asumir que las cargas otorgan automáticamente crítico, velocidad de ataque o reducción de daño solo por mantenerlas — en PoE2 no lo hacen.",
+        "Construir generación pero sin consumidor, por lo que las cargas expiran sin usar.",
+        "Confundir Maximum, Duration y cantidad de generación, y luego preguntarse por qué más máximo no significó más disponibilidad.",
+        "Depender de la disponibilidad en mapas (muchas muertes, efectos de estado fáciles) y esperar lo mismo en un jefe que resiste esos detonantes.",
+        "Olvidar que las cargas expiran: una carga generada decae si no la gastas antes de que termine la Duration.",
+        "Alimentar a un consumidor de un tipo de carga con un tipo distinto por saltarte la conversión de Resonance."
+      ]
+    },
+    {
+      "id": "community-cases",
+      "order": 11,
+      "title": "Puntos de confusión comunes",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Confusiones que los jugadores suelen arrastrar desde Path of Exile 1.",
+      "cards": [
+        {
+          "title": "Las cargas deberían potenciarme pasivamente",
+          "tag": "poe1-habit",
+          "body": [
+            "Muchos jugadores esperan que las cargas mantenidas suban el crítico o la velocidad de ataque como en PoE1. En PoE2 son recursos gastados — solo una habilidad que las consume aporta valor."
+          ]
+        },
+        {
+          "title": "Más máximo significa más poder",
+          "tag": "confusion",
+          "body": [
+            "Los jugadores suben Maximum Charges y esperan fuerza automática. Máximo, Duration y generación por evento son cosas distintas; una mayor capacidad por sí sola no cambia nada."
+          ]
+        },
+        {
+          "title": "La disponibilidad contra jefes equivale a la de mapas",
+          "tag": "uptime",
+          "body": [
+            "Como los mapas inundan de cargas por muertes y efectos de estado, los jugadores asumen que los jefes también. Los jefes resisten esos detonantes, así que planifica una generación separada."
+          ]
+        },
+        {
+          "title": "Cualquier carga sirve para cualquier habilidad",
+          "tag": "type",
+          "body": [
+            "Los jugadores intentan alimentar a un consumidor de Frenzy con Power Charges. Los tres tipos son distintos; solo Resonance o una fuente específica de tipo cambia lo que ganas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 12,
+      "title": "Guía en vídeo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Power, Frenzy, Endurance Charges EXPLAINED in Path of Exile 2 + Combat Frenzy",
+          "creator": "DrybearGamers",
+          "description": "Un recorrido de cómo funcionan los tres tipos de carga como recursos generables y consumibles en Path of Exile 2, con enfoque en la configuración de generación de Combat Frenzy y en cómo las cargas difieren de PoE1.",
+          "takeaway": "Trata las cargas como un bucle de generar-y-luego-gastar: elige una generación que encaje con tu contenido, párala con un consumidor del mismo tipo de carga, y no esperes bonus pasivos por mantenerlas.",
+          "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s",
+          "timestamps": [
+            {
+              "label": "Introducción",
+              "time": "0:00"
+            },
+            {
+              "label": "Qué son las cargas",
+              "time": "1:30"
+            },
+            {
+              "label": "Generar cargas",
+              "time": "4:15"
+            },
+            {
+              "label": "Frenzy y Combat Frenzy",
+              "time": "7:40"
+            },
+            {
+              "label": "Consumir cargas",
+              "time": "11:20"
+            },
+            {
+              "label": "Disponibilidad y mapas frente a jefes",
+              "time": "14:05"
+            },
+            {
+              "label": "Resumen",
+              "time": "17:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Preguntas frecuentes",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "¿Las cargas de Power, Frenzy y Endurance otorgan bonus pasivos en PoE2?",
+          "answer": [
+            "No. A diferencia de PoE1, las cargas mantenidas no otorgan atributos inherentes. Su valor proviene solo de habilidades, soportes y pasivas que las consumen. Una carga es un recurso, no un buff permanente."
+          ]
+        },
+        {
+          "question": "¿Cuál es el máximo predeterminado de cargas?",
+          "answer": [
+            "Cada tipo tiene comúnmente un máximo predeterminado de 3, aumentado por pasivas específicas, piedras angulares como Grit e ítems. Máximo, Duration y generación por evento son números independientes, así que subir uno no sube los otros."
+          ]
+        },
+        {
+          "question": "¿Cómo genero Frenzy Charges?",
+          "answer": [
+            "Las rutas comunes son Combat Frenzy (al aplicar Freeze, Electrocute o Pin, con un enfriamiento corto), Cull the Weak, Parry más Disengage, Sniper's Mark (crítico en un enemigo marcado), Retort y modificadores Frenzy-on-Kill. Los enfriamientos y valores exactos son sensibles a la versión, así que confírmalos en el juego."
+          ]
+        },
+        {
+          "question": "¿Qué consume Endurance Charges?",
+          "answer": [
+            "Warcrys de Warrior como Infernal Cry (consume todas para potenciar ataques y abrasar enemigos), Seismic Cry y Shielding Cry, el soporte Rally, y Amazon Infuse Weapon (Fire Infusion). La habilidad persistente Charge Infusion también las consume con un temporizador."
+          ]
+        },
+        {
+          "question": "¿Qué es la piedra angular Resonance?",
+          "answer": [
+            "Una pasiva que redirige qué tipo de carga ganas: Power en lugar de Frenzy, Frenzy en lugar de Endurance, Endurance en lugar de Power. Permite que una build dirija la generación hacia el único tipo de carga que sus consumidores quieren."
+          ]
+        },
+        {
+          "question": "¿Por qué mis cargas siguen desapareciendo?",
+          "answer": [
+            "Las cargas tienen una Duration y expiran si no se consumen a tiempo. Si generas más rápido de lo que gastas, o tu consumidor está en enfriamiento, decaen. Asegúrate de que exista un consumidor del mismo tipo y vigila la Duration para gastar las cargas antes de que caduquen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Fuentes y verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Wiki oficial - Cargas",
+          "description": "Referencia de la wiki de PoE2 para cargas, generación, consumo y la piedra angular Resonance",
+          "url": "https://poe2wiki.net/"
+        },
+        {
+          "label": "Game Rant - Endurance Charges Explained",
+          "description": "Recorrido comunitario de la generación y el consumo de Endurance Charge en Path of Exile 2",
+          "url": "https://gamerant.com/path-of-exile-2-how-do-endurance-charges-work-poe2"
+        },
+        {
+          "label": "Guía en vídeo (DrybearGamers)",
+          "description": "Explicación en YouTube de las cargas de Power, Frenzy y Endurance junto con Combat Frenzy en Path of Exile 2",
+          "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Registro de cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicación inicial de la guía de cargas de Power, Frenzy y Endurance para Path of Exile 2 Early Access 0.5.4.",
+            "Añadidas respuestas directas, los tres tipos de carga, generación, duración y máximo, consumo, conversión, mapas frente a jefes, lista de verificación de disponibilidad, ejemplos resueltos, errores comunes, confusión comunitaria, vídeo, FAQ y fuentes."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki - Cargas (oficial)",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "official"
+    },
+    {
+      "label": "Game Rant - Endurance Charges Explained (comunidad)",
+      "url": "https://gamerant.com/path-of-exile-2-how-do-endurance-charges-work-poe2",
+      "sourceType": "community"
+    },
+    {
+      "label": "DrybearGamers - Charges Explained (YouTube)",
+      "url": "https://www.youtube.com/watch?v=5KBHxWgU-0s",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Guía de cargas Power, Frenzy y Endurance de PoE 2",
+    "description": "Cómo funcionan las cargas en Path of Exile 2: generación, duración, máximo, consumo, Combat Frenzy y la conversión Resonance — distintas de los bonus pasivos de PoE1.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "power-frenzy-endurance-charges",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

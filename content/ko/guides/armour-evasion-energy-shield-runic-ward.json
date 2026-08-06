@@ -1,0 +1,795 @@
+{
+  "id": "armour-evasion-energy-shield-runic-ward",
+  "slug": "armour-evasion-energy-shield-runic-ward",
+  "locale": "ko",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "방어구, 회피, 에너지 실드 그리고 룬 보호막(Runic Ward) explained",
+  "shortTitle": "방어 레이어",
+  "summary": "Path of Exile 2의 네 가지 방어 레이어인 방어구, 회피, 에너지 실드, 그리고 새롭게 추가된 룬 보호막(Runic Ward)이 어떻게 작동하고 결합되는지, 그리고 저항, 블록, 방어막 타격 방어(Deflect)가 어디에 자리하는지 설명합니다.",
+  "description": "Path of Exile 2의 방어 레이어 — 방어구, 회피, 에너지 실드, 룬 보호막(Runic Ward) — 와 이들을 어떻게 조합해야 한 방에 죽는 일을 막을 수 있는지 다루는 메커니즘 가이드입니다.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/items/liquid-verisium-hero.webp",
+  "cardImage": "/images/items/liquid-verisium-hero.webp",
+  "imageAlt": "Path of Exile 2의 여러 방어 레이어 중 하나인 룬 보호막(Runic Ward)을 상징하는 액체 베리시움(Liquid Verisium) 바이알",
+  "estimatedReadingMinutes": 16,
+  "prerequisites": [
+    "액트 또는 엔드게임 단계의 캐릭터",
+    "캐릭터 시트와 저항에 대한 기본 이해",
+    "룬 보호막(Runic Ward)을 위한 패치 0.5의 패로우의 베리시움 모루(Farrow's Verisium Anvil) 접근 권한"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "armour",
+    "evasion",
+    "energy-shield",
+    "runic-ward",
+    "defence",
+    "defense"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "바로 알기",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "네 가지 방어 레이어는 무엇인가요?",
+          "body": [
+            "방어구, 회피, 에너지 실드는 세 가지 클래식 레이어입니다. 룬 보호막(Runic Ward)은 패치 0.5에서 추가된 별개의 새로운 레이어로, 생명력이 1일 때 최후의 안전망 역할을 합니다."
+          ]
+        },
+        {
+          "title": "방어구는 고정된 비율의 피해 감소인가요?",
+          "body": [
+            "아닙니다. 방어구는 적중의 물리 부분을 줄이며, 그 효과는 적중 크기에 비례합니다. 작은 적중이 많을 때는 강하고, 거대한 단일 적중에는 약합니다."
+          ]
+        },
+        {
+          "title": "회피는 피해를 줄이나요?",
+          "body": [
+            "아닙니다. 회피는 적중 전체를 회피할 확률입니다. 적중이 들어오면 피해는 온전히 적용되기에, 여전히 불안정하게 느껴질 수 있습니다."
+          ]
+        },
+        {
+          "title": "룬 보호막(Runic Ward)은 어떻게 얻나요?",
+          "body": [
+            "방어구에 룬 보호막(Runic Ward)을 추가하려면 베리시움 모루(Verisium Anvil, 패로우의 퀘스트로 해금)에서 베리시움을 소모하세요. 고 아이템 레벨 장비는 이를 위해 기본 방어 일부를 양보할 수 있으니 제작 전 미리보기를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "damage-order-diagram",
+      "order": 2,
+      "title": "피해가 적용되는 순서: 적중부터 생명력까지",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "적이 공격할 때, 게임은 고정된 방어 레이어 순서에 따라 적중을 처리합니다. 이 순서를 이해하면 왜 어느 단일 레이어만으로는 충분하지 않은지 알 수 있습니다.",
+        "먼저 회피를 확인합니다. 회피에 성공하면 적중 전체가 회피되어 그 이상 아무 일도 일어나지 않습니다. 적중이 들어오면, 방어구가 그 적중의 크기에 따라 물리 부분을 줄입니다.",
+        "방어구 처리 후, 보유한 에너지 실드가 생명력에 닿기 전 남은 피해를 흡수합니다. 마지막으로 룬 보호막(Runic Ward)은 별개의 최후 레이어 장벽으로, 생명력이 0이 되려는 순간에만 작동하여 치명적인 타격을 받아내 생명력 1로 살아남게 해줍니다."
+      ],
+      "bullets": [
+        "회피는 적중을 완전히 회피하며, 들어온 피해를 줄이지 않습니다.",
+        "방어구는 물리 피해에만 영향을 주며 적중 크기에 비례합니다.",
+        "에너지 실드는 생명력을 보호하며 일정 지연 후 재충전됩니다.",
+        "룬 보호막(Runic Ward)은 최후의 안전망이지 다른 레이어를 대체하는 것이 아닙니다."
+      ]
+    },
+    {
+      "id": "protection-layer-matrix",
+      "order": 3,
+      "title": "방어 레이어 매트릭스",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "각 방어 레이어의 작동 방식, 완화하는 것과 완화하지 않는 것, 그리고 취약한 지점.",
+      "columns": [
+        { "key": "layer", "label": "레이어" },
+        { "key": "mainly-mitigates", "label": "주로 완화" },
+        { "key": "does-not-mitigate", "label": "완화하지 않음" },
+        { "key": "strength", "label": "강점" },
+        { "key": "common-failure", "label": "흔한 실패" },
+        { "key": "gear-need", "label": "장비 요구" }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["physical"],
+          "cells": {
+            "layer": "Armour",
+            "mainly-mitigates": "물리 피해(적중 크기에 비례)",
+            "does-not-mitigate": "비물리, 지속 피해",
+            "strength": "작은 적중이 많을 때 강함",
+            "common-failure": "거대한 단일 적중에 약함",
+            "gear-need": "Strength(힘) 장비"
+          }
+        },
+        {
+          "tags": ["avoidance"],
+          "cells": {
+            "layer": "Evasion",
+            "mainly-mitigates": "적중을 완전히 회피(상태 이상 포함)",
+            "does-not-mitigate": "적중이 들어온 피해",
+            "strength": "회피된 적중의 상태 이상도 회피",
+            "common-failure": "연속으로 실패 가능(한 방 데스 위험)",
+            "gear-need": "Dexterity(민첩) 장비"
+          }
+        },
+        {
+          "tags": ["buffer"],
+          "cells": {
+            "layer": "Energy Shield",
+            "mainly-mitigates": "생명력에 닿기 전 피해 흡수",
+            "does-not-mitigate": "출혈/독 우회, 혼돈 피해 2배",
+            "strength": "생명력 위에 쌓는 재충전 가능 버퍼",
+            "common-failure": "혼돈과 지속 피해가 우회함",
+            "gear-need": "Intelligence(지능) 장비"
+          }
+        },
+        {
+          "tags": ["last-layer"],
+          "cells": {
+            "layer": "Runic Ward",
+            "mainly-mitigates": "생명력 1일 때 치명적 타격",
+            "does-not-mitigate": "비피해성 생명력 손실",
+            "strength": "두 번째 생명 / 최후의 그물",
+            "common-failure": "고 아이템 레벨 장비에서 기본 방어를 양보할 수 있음",
+            "gear-need": "베리시움 제작"
+          }
+        },
+        {
+          "tags": ["resist"],
+          "cells": {
+            "layer": "Resistance",
+            "mainly-mitigates": "특정 유형(화염/냉기/전기/혼돈)",
+            "does-not-mitigate": "물리, 무속성",
+            "strength": "저렴하고 필수적",
+            "common-failure": "상한 미달 = 피해 2배",
+            "gear-need": "모든 장비"
+          }
+        },
+        {
+          "tags": ["avoid-reduce"],
+          "cells": {
+            "layer": "Block / Deflect",
+            "mainly-mitigates": "적중 회피 또는 감소 확률",
+            "does-not-mitigate": "지속 피해",
+            "strength": "회피와 함께 겹침",
+            "common-failure": "100% 신뢰할 수 없음",
+            "gear-need": "방패 / 회피 장비"
+          }
+        }
+      ],
+      "note": "작동 방식은 정성적으로 설명됩니다. 정확한 수치는 인게임 툴팁과 PoE2 위키에 나와 있으며, 라이브 0.5.4 클라이언트 기준 pending-pc로 표시됩니다."
+    },
+    {
+      "id": "armour",
+      "order": 4,
+      "title": "방어구(Armour)",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "방어구는 세 가지 클래식 방어 레이어 중 하나입니다. 실제로 자신에게 적중한 피해의 물리 부분을 줄입니다.",
+        "방어구는 고정된 비율의 피해 감소가 아닙니다. 그 효과는 적중 크기에 비례합니다. 작은 적중이 많을 때는 더 큰 비중을 완화하고, 거대한 단일 적중에는 작은 비중을 완화합니다. 이 때문에 잡몹에는 안전해 보이던 빌드가 보스의 단일 강타에 갑자기 죽기도 합니다."
+      ],
+      "bullets": [
+        "물리 피해만 줄이며, 원소/혼돈/지속 피해는 방어구의 영향을 받지 않습니다.",
+        "자주 들어오는 작은 적중에 비해 거대한 단일 적중에는 효과가 떨어집니다.",
+        "Strength 계열 장비와 플랫 방어구 수치에서 가장 큰 이득을 얻습니다.",
+        "생명력과 저항과 함께 사용하세요. 방어구만으로는 한 방 데스를 막지 못합니다."
+      ]
+    },
+    {
+      "id": "evasion",
+      "order": 5,
+      "title": "회피(Evasion)",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "회피는 적중을 완전히 회피할 확률을 제공합니다. 성공적인 굴림은 적중이 일어나지 않음을 의미하며, 이는 해당 적중으로 인한 상태 이상(점화, 빙결, 감전, 출혈, 독)도 입지 않는다는 뜻입니다.",
+        "회피는 확률적이므로 연속으로 여러 번 실패할 수 있습니다. 적중이 통과되면 피해는 온전히 들어옵니다. 회피는 적중한 피해를 줄이지 않습니다. 이것이 바로 '회피를 썼는데도 맞는다'는 전형적인 불만의 원인입니다."
+      ],
+      "bullets": [
+        "상태 이상을 포함해 적중을 완전히 회피할 확률을 제공합니다.",
+        "적중한 피해를 줄이지 않습니다 — 전부 아니면 전무 굴림.",
+        "연속으로 실패할 수 있으니 안전을 위해 버퍼(에너지 실드, 블록, 룬 보호막)와 함께 사용하세요.",
+        "Dexterity 장비와 잘 결합하며, Deflect의 기초가 됩니다."
+      ]
+    },
+    {
+      "id": "energy-shield",
+      "order": 6,
+      "title": "에너지 실드(Energy Shield)",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "에너지 실드(ES)는 생명력 위에 쌓이며 생명력이 닿기 전 피해를 흡수하는 추가 버퍼입니다. 지능(Intelligence)과 연관되어 있으며, 일정 시간 피해를 입지 않으면 지연 후 재충전됩니다.",
+        "에너지 실드는 피해 유형과 특정 방식으로 상호작용합니다. 혼돈 피해는 다른 피해 유형보다 2배의 에너지 실드를 제거하며, 출혈과 독으로 인한 피해는 에너지 실드를 완전히 우회해 생명력을 직접 타격합니다. 정확한 재충전 속도와 지연은 인게임 툴팁과 PoE2 위키에 나와 있으며, 라이브 0.5.4 클라이언트 기준 확인되어야 합니다(pending-pc)."
+      ],
+      "bullets": [
+        "생명력에 닿기 전 피해를 흡수하며, 피해를 입지 않는 지연 후 재충전됩니다.",
+        "혼돈 피해는 에너지 실드에 대해 2배로 적용됩니다.",
+        "출혈과 독은 에너지 실드를 우회해 생명력을 직접 타격합니다.",
+        "Intelligence 빌드와 잘 어울리지만, 혼돈과 지속 피해에 주의하세요."
+      ]
+    },
+    {
+      "id": "runic-ward",
+      "order": 7,
+      "title": "룬 보호막(Runic Ward)",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "룬 보호막(Runic Ward)은 패치 0.5에서 도입된 별개의 방어 레이어입니다. 방어구, 회피, 에너지 실드 그 어느 것도 아닌, 베리시움 모루(Verisium Anvil, 패로우의 퀘스트로 해금)를 통해 베리시움에서 비롯된 고유한 장벽입니다.",
+        "룬 보호막(Runic Ward)은 최후의 안전망으로 작동합니다. 적중이 생명력을 0으로 떨어뜨리려 할 때, 대신 생명력 1로 살아남고 룬 보호막이 남은 피해를 흡수합니다. 이는 생명력과 무관하게 재생됩니다. 장비에 룬 보호막을 추가하면 기존 방어구, 회피, 에너지 실드의 일부를 보호막으로 전환할 수 있는데, 특히 고 아이템 레벨 장비에서 그렇습니다 — 제작 전 반드시 인게임 미리보기를 확인하세요(정확한 수치는 pending-pc)."
+      ],
+      "bullets": [
+        "방어구, 회피, 에너지 실드와 별개인 고유한 레이어.",
+        "생명력 1일 때만 작동해 치명적 타격을 받아냅니다.",
+        "베리시움 모루(Verisium Anvil)를 통해 베리시움에서 비롯됩니다.",
+        "고 아이템 레벨 장비에서 기본 방어 일부를 보호막으로 양보할 수 있으니 먼저 미리보기를 확인하세요."
+      ]
+    },
+    {
+      "id": "resistance-block-deflect-boundary",
+      "order": 8,
+      "title": "저항, 블록, Deflect, 그리고 마법 보호막(Sorcery Ward)의 위치",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "저항, 블록, Deflect, Sorcery Ward와 유사한 시스템은 세 가지 기본 방어와 별개이며, 이를 대체하기보다 상호작용합니다.",
+        "저항은 특정 유형(화염, 냉기, 전기, 혼돈)의 피해를 줄이며 저렴하고 필수적인 방어입니다 — 상한이 안 찬 저항은 해당 피해 유형을 사실상 2배로 만듭니다. 블록과 Deflect는 적중을 회피하거나 줄일 확률이며, 회피 위에 겹칩니다. Sorcery Ward(및 유사한 보호막 변형)는 룬 보호막과 유사한 별개의 장벽입니다. 이들 중 어느 것도 기본 레이어의 필요성을 없애지 않습니다."
+      ],
+      "bullets": [
+        "저항은 특정 피해 유형을 줄이며, 콘텐츠를 밀기 전 상한을 채우세요.",
+        "블록과 Deflect는 적중을 줄이거나 회피하며 회피와 중첩됩니다.",
+        "Sorcery Ward / 룬 보호막(Runic Ward)은 별개의 장벽이지 대체물이 아닙니다.",
+        "이들은 기본 방어를 보완하는 용도로, 대체용으로 쓰지 마세요."
+      ]
+    },
+    {
+      "id": "hybrid-defence-bases",
+      "order": 9,
+      "title": "하이브리드 방어 기초",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "일반적인 기초 조합과 각각이 가장 잘하는 것.",
+      "columns": [
+        { "key": "base-type", "label": "기초 유형" },
+        { "key": "attribute-req", "label": "속성 요구" },
+        { "key": "two-defences", "label": "두 방어" },
+        { "key": "best-for", "label": "적합" },
+        { "key": "tradeoff", "label": "트레이드오프" }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Armour + Energy Shield",
+            "attribute-req": "Strength + Intelligence",
+            "two-defences": "방어구와 에너지 실드",
+            "best-for": "탱키 캐스터 / 하이브리드",
+            "tradeoff": "두 속성 필요"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Evasion + Energy Shield",
+            "attribute-req": "Dexterity + Intelligence",
+            "two-defences": "회피와 에너지 실드",
+            "best-for": "회피 + 버퍼를 원하는 캐스터",
+            "tradeoff": "순수 방어구 부족"
+          }
+        },
+        {
+          "tags": ["hybrid"],
+          "cells": {
+            "base-type": "Armour + Evasion",
+            "attribute-req": "Strength + Dexterity",
+            "two-defences": "방어구와 회피",
+            "best-for": "무술 하이브리드",
+            "tradeoff": "에너지 실드 버퍼 없음"
+          }
+        },
+        {
+          "tags": ["pure-str"],
+          "cells": {
+            "base-type": "Pure Armour",
+            "attribute-req": "Strength",
+            "two-defences": "방어구만",
+            "best-for": "근접 브루저",
+            "tradeoff": "레이어 없이는 큰 적중에 약함"
+          }
+        },
+        {
+          "tags": ["pure-int"],
+          "cells": {
+            "base-type": "Pure Energy Shield",
+            "attribute-req": "Intelligence",
+            "two-defences": "에너지 실드만",
+            "best-for": "순수 캐스터",
+            "tradeoff": "혼돈 / 지속 피해 우회 위험"
+          }
+        }
+      ],
+      "note": "속성 경향은 경향일 뿐, 강제적인 직업 선택은 아닙니다."
+    },
+    {
+      "id": "defence-selector",
+      "order": 10,
+      "title": "방어 선택기",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "상황을 선택하세요. 이 도구는 주 방어 레이어와 부 방어 레이어를 제안합니다.",
+      "controls": [
+        {
+          "id": "class",
+          "label": "직업 경향",
+          "options": [
+            { "label": "Strength 기반", "value": "str" },
+            { "label": "Dexterity 기반", "value": "dex" },
+            { "label": "Intelligence 기반", "value": "int" },
+            { "label": "하이브리드 / any", "value": "hybrid" }
+          ]
+        },
+        {
+          "id": "gear",
+          "label": "어떤 장비를 가지고 있나요?",
+          "options": [
+            { "label": "Strength / 방어구 장비", "value": "armour" },
+            { "label": "회피 장비", "value": "evasion" },
+            { "label": "에너지 실드 장비", "value": "es" },
+            { "label": "혼합", "value": "mixed" }
+          ]
+        },
+        {
+          "id": "death",
+          "label": "보통 어떻게 죽나요?",
+          "options": [
+            { "label": "거대한 단일 적중", "value": "big-hit" },
+            { "label": "작은 적중 다수", "value": "small-hits" },
+            { "label": "혼돈 / 지속 피해", "value": "chaos-dot" },
+            { "label": "보스 강타", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "방어구 중심 빌드",
+          "when": { "class": "str" },
+          "steps": [
+            "기초로 방어구와 최대 생명력을 쌓으세요.",
+            "두 번째 버퍼로 에너지 실드를 추가하세요.",
+            "콘텐츠를 밀기 전 모든 원소 저항 상한을 채우세요."
+          ]
+        },
+        {
+          "title": "회피 중심 빌드",
+          "when": { "class": "dex" },
+          "steps": [
+            "회피를 쌓아 회피를 극대화하세요.",
+            "적중한 타격에 대한 백스톱으로 에너지 실드나 블록을 추가하세요.",
+            "회피에서 비롯되는 Deflect를 고려하세요."
+          ]
+        },
+        {
+          "title": "에너지 실드 빌드",
+          "when": { "class": "int" },
+          "steps": [
+            "주 버퍼로 에너지 실드를 쌓으세요.",
+            "두 번째 레이어로 방어구나 룬 보호막(Runic Ward)을 추가하세요.",
+            "에너지 실드를 우회하거나 2배로 적용하는 혼돈과 지속 피해에 주의하세요."
+          ]
+        },
+        {
+          "title": "혼돈 / 지속 피해 방어",
+          "when": { "death": "chaos-dot" },
+          "steps": [
+            "혼돈 저항을 높이세요. 독이나 출혈 상대로 에너지 실드에 의존하지 마세요.",
+            "해당 유형의 피해를 위해 생명력과 플랫 버퍼(방어구)를 추가하세요.",
+            "정확한 에너지 실드 혼돈 거동을 라이브 0.5.4 클라이언트에서 확인하세요(pending-pc)."
+          ]
+        },
+        {
+          "title": "거대한 적중 생존",
+          "when": { "death": "big-hit" },
+          "steps": [
+            "거대한 적중을 완화하기 위해 방어구와 최대 생명력을 쌓으세요.",
+            "생명력 1에서 최후의 그물로 룬 보호막(Runic Ward)을 추가하세요.",
+            "어려운 콘텐츠에서 유리알 캐논 구성은 피하세요."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "일반적인 겹친 방어",
+        "steps": [
+          "하나의 주 기초 레이어(방어구, 회피, 또는 에너지 실드)를 고르세요.",
+          "두 번째 레이어를 추가하고 저항 상한을 채우세요.",
+          "룬 보호막(Runic Ward)은 주 방어가 아닌 최후 레이어 안전망으로 다루세요."
+        ]
+      }
+    },
+    {
+      "id": "build-archetype-examples",
+      "order": 11,
+      "title": "빌드 형태 예시",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "구조적 예시만 해당 — 레이어가 어떻게 결합되는지 보여주며, 완전한 빌드 추천은 아닙니다.",
+      "cards": [
+        {
+          "title": "Pure Armour",
+          "tag": "구조",
+          "body": [
+            "방어구와 생명력을 쌓는 Strength 빌드로, 저항과 짝을 이룹니다.",
+            "구조적 예시이며, 완전한 빌드 추천은 아닙니다."
+          ]
+        },
+        {
+          "title": "Pure Evasion",
+          "tag": "구조",
+          "body": [
+            "회피를 극대화하는 Dexterity 빌드로, 블록이나 에너지 실드로 받칩니다.",
+            "구조적 예시이며, 완전한 빌드 추천은 아닙니다."
+          ]
+        },
+        {
+          "title": "Pure Energy Shield",
+          "tag": "구조",
+          "body": [
+            "주 버퍼로 에너지 실드를 사용하는 Intelligence 빌드로, 혼돈과 지속 피해를 살핍니다.",
+            "구조적 예시이며, 완전한 빌드 추천은 아닙니다."
+          ]
+        },
+        {
+          "title": "Hybrid (Armour + ES)",
+          "tag": "구조",
+          "body": [
+            "꾸준한 완화를 위해 플랫 버퍼와 재충전 버퍼를 결합합니다.",
+            "구조적 예시이며, 완전한 빌드 추천은 아닙니다."
+          ]
+        },
+        {
+          "title": "Runic Ward net",
+          "tag": "구조",
+          "body": [
+            "베리시움을 통한 최후 안전 레이어로서의 룬 보호막(Runic Ward)을 더한 모든 기초 방어.",
+            "구조적 예시이며, 완전한 빌드 추천은 아닙니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "failure-diagnostic",
+      "order": 12,
+      "title": "왜 아직도 한 방에 죽나요?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "여전히 한 방에 죽나요? 증상을 골라 누락된 레이어를 찾으세요.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "무슨 일이 일어나나요?",
+          "options": [
+            { "label": "거대한 단일 적중에 죽음", "value": "big-hit" },
+            { "label": "작은 적중 다수에 죽음", "value": "small-hits" },
+            { "label": "혼돈 / 지속 피해에 죽음", "value": "chaos-dot" },
+            { "label": "보스 강타에 죽음", "value": "slam" }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "방어구 / 생명력 부족",
+          "when": { "symptom": "big-hit" },
+          "steps": [
+            "방어구와 최대 생명력을 높이세요.",
+            "최후의 그물로 룬 보호막(Runic Ward)을 추가하세요.",
+            "모든 저항 상한을 채우세요."
+          ]
+        },
+        {
+          "title": "회피 / 블록 부족",
+          "when": { "symptom": "small-hits" },
+          "steps": [
+            "회피나 블록 / Deflect를 높이세요.",
+            "적중한 타격에 대비해 에너지 실드 버퍼를 추가하세요.",
+            "적 정확도를 낮추는 실명(Blind)을 고려하세요."
+          ]
+        },
+        {
+          "title": "혼돈 대처 부족",
+          "when": { "symptom": "chaos-dot" },
+          "steps": [
+            "혼돈 저항을 높이세요.",
+            "독이나 출혈 상대로 에너지 실드에 의존하지 마세요.",
+            "해당 유형을 위해 생명력과 플랫 버퍼를 추가하세요."
+          ]
+        },
+        {
+          "title": "겹친 방어 부족",
+          "when": { "symptom": "slam" },
+          "steps": [
+            "하나 대신 두 기초 레이어를 결합하세요.",
+            "최후의 그물로 룬 보호막(Runic Ward)을 추가하세요.",
+            "회복(흡혈, 재생, 플라스크)을 개선하세요."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "일반적인 해결",
+        "steps": [
+          "먼저 저항 상한을 채우세요.",
+          "하나의 주 기초 레이어를 고르고 두 번째를 추가하세요.",
+          "최후 레이어 안전망으로 룬 보호막(Runic Ward)을 추가하세요."
+        ]
+      }
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "커뮤니티 증거",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "일반적인 플레이어 보고와 이를 레이어로 설명하는 방법.",
+      "cards": [
+        {
+          "title": "에너지 실드 빌드를 따라 했는데 이제 터져요",
+          "tag": "보고",
+          "body": [
+            "에너지 실드가 혼돈 / 지속 피해와 짝을 이루었거나, 버퍼를 잃었을 가능성이 큽니다.",
+            "혼돈은 에너지 실드에 2배로 적용되고 출혈 / 독은 이를 우회합니다 — 저항과 두 번째 레이어를 다시 확인하세요."
+          ]
+        },
+        {
+          "title": "회피를 썼는데도 맞아요",
+          "tag": "보고",
+          "body": [
+            "회피는 보장이 아닌 확률이며, 적중한 타격은 온전한 피해입니다.",
+            "통과된 적중에 대한 백스톱으로 에너지 실드나 블록을 추가하세요."
+          ]
+        },
+        {
+          "title": "룬 보호막(Runic Ward)이 나를 구하지 않았어요",
+          "tag": "보고",
+          "body": [
+            "룬 보호막(Runic Ward)은 생명력 1에서만 발동하며 고갈될 수 있습니다.",
+            "이는 최후의 그물이지 주 방어가 아니며, 비피해성 생명력 손실은 이를 우회합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "룬 보호막(Runic Ward) 영상 가이드",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2 패치 0.5.0 룬 보호막(Runic Ward) 완전 가이드 — 무엇인지, 어떻게 쌓는지, 최고 빌드",
+          "creator": "ExitLag Tips",
+          "description": "패치 0.5의 룬 보호막(Runic Ward) 완전 가이드: 무엇인지, 베리시움에서 어떻게 쌓이는지, 그리고 최후 안전 레이어로 사용하는 예시 빌드.",
+          "takeaway": "룬 보호막(Runic Ward)은 베리시움에서 비롯된 별개의 최후 레이어 장벽입니다. 단독 의존이 아닌 실제 기초 방어와 짝을 이루세요.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+          "timestamps": [
+            { "label": "소개", "time": "0:00" },
+            { "label": "룬 보호막(Runic Ward)이란?", "time": "1:15" },
+            { "label": "룬 보호막(Runic Ward)이 쌓이는 법 / 출처", "time": "3:40" },
+            { "label": "베리시움으로 룬 보호막(Runic Ward) 추가", "time": "6:20" },
+            { "label": "룬 보호막(Runic Ward) 최고 빌드", "time": "9:05" },
+            { "label": "패치 0.5 변경 요약", "time": "12:30" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "흔한 실수",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "대부분의 '계속 죽는' 문제는 단일 누락 스탯 때문이 아니라, 레이어가 어떻게 결합하는지 오해하기 때문입니다."
+      ],
+      "bullets": [
+        "방어구를 고정 비율 감소로 가정하고 거대 적중 취약성을 무시함.",
+        "회피만 의존하다가 실패 시 한 방에 죽음.",
+        "혼돈과 출혈 / 독이 에너지 실드를 우회한다는 점을 잊음.",
+        "고 아이템 레벨 장비에서 기본 방어 트레이드오프를 확인하지 않고 룬 보호막(Runic Ward)을 추가함.",
+        "저항 상한을 채우지 않아 들어오는 피해가 2배가 됨.",
+        "룬 보호막(Runic Ward)을 최후 레이어 그물이 아닌 주 방어로 다룸."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "자주 묻는 질문",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "방어구는 고정된 비율의 피해 감소인가요?",
+          "answer": [
+            "아닙니다. 방어구는 적중의 물리 부분을 줄이며 그 효과는 적중 크기에 비례합니다 — 작은 적중이 많을 때 강하고, 거대한 단일 적중에는 약합니다."
+          ]
+        },
+        {
+          "question": "회피는 적중한 피해를 줄이나요?",
+          "answer": [
+            "아닙니다. 회피는 적중 전체를 회피할 확률입니다. 적중이 연결되면 피해는 온전히 적용되기에 불안정하게 느껴질 수 있습니다."
+          ]
+        },
+        {
+          "question": "혼돈 피해는 에너지 실드를 우회하나요?",
+          "answer": [
+            "혼돈 피해는 다른 유형보다 2배의 에너지 실드를 제거하며, 출혈과 독은 에너지 실드를 완전히 우회해 생명력을 타격합니다. 정확한 수치는 라이브 클라이언트에서 확인하세요(pending-pc)."
+          ]
+        },
+        {
+          "question": "룬 보호막(Runic Ward)은 에너지 실드와 같은 것인가요?",
+          "answer": [
+            "아닙니다. 룬 보호막(Runic Ward)은 0.5에서 도입된 별개 레이어로, 생명력 1에서만 작동해 치명적 타격을 받아냅니다. 지능이 아닌 베리시움에서 비롯됩니다."
+          ]
+        },
+        {
+          "question": "방어구를 쓰려면 힘(Strength)이 필요한가요?",
+          "answer": [
+            "Strength, Dexterity, Intelligence 경향은 그저 경향일 뿐입니다. 모든 직업이 어떤 레이어든 구성할 수 있으며, 속성은 주로 장착 가능한 장비에 영향을 줍니다."
+          ]
+        },
+        {
+          "question": "룬 보호막(Runic Ward)은 어떻게 얻나요?",
+          "answer": [
+            "베리시움 모루(Verisium Anvil, 패로우의 퀘스트로 해금)를 통해 방어구에 베리시움을 소모하여 얻습니다. 고 아이템 레벨 장비는 기본 방어 일부를 보호막으로 양보할 수 있으니 제작 전 미리보기를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 17,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식 위키 — Armour",
+          "description": "방어구 방어 레이어에 관한 PoE2 위키 페이지.",
+          "url": "https://www.poe2wiki.net/wiki/Armour"
+        },
+        {
+          "label": "공식 위키 — Evasion",
+          "description": "회피 방어 레이어에 관한 PoE2 위키 페이지.",
+          "url": "https://www.poe2wiki.net/wiki/Evasion"
+        },
+        {
+          "label": "공식 위키 — Energy Shield",
+          "description": "에너지 실드, 재충전, 혼돈 상호작용에 관한 PoE2 위키 페이지.",
+          "url": "https://www.poe2wiki.net/wiki/Energy_Shield"
+        },
+        {
+          "label": "공식 위키 — Runic Ward",
+          "description": "룬 보호막(Runic Ward) 레이어에 관한 PoE2 위키 페이지.",
+          "url": "https://www.poe2wiki.net/wiki/Runic_Ward"
+        },
+        {
+          "label": "영상 가이드",
+          "description": "ExitLag Tips — Path of Exile 2 패치 0.5.0 룬 보호막(Runic Ward) 완전 가이드.",
+          "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM"
+        },
+        {
+          "label": "커뮤니티 방어 가이드",
+          "description": "ConquestCapped — 패치 0.5 PoE 2 장비 가이드(방어 우선순위).",
+          "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "변경 로그",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "패치 0.5.4 기준 방어구, 회피, 에너지 실드, 룬 보호막(Runic Ward)을 다루는 초기 발행.",
+            "피해 순서 흐름, 방어 레이어 매트릭스, 방어 선택기, 실패 진단 추가.",
+            "룬 보호막(Runic Ward) 정확한 수치는 라이브 0.5.4 클라이언트 기준 pending-pc로 표시됨."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE2 wiki — Armour",
+      "url": "https://www.poe2wiki.net/wiki/Armour",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Evasion",
+      "url": "https://www.poe2wiki.net/wiki/Evasion",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Energy Shield",
+      "url": "https://www.poe2wiki.net/wiki/Energy_Shield",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 wiki — Runic Ward",
+      "url": "https://www.poe2wiki.net/wiki/Runic_Ward",
+      "sourceType": "official"
+    },
+    {
+      "label": "ExitLag Tips — Runic Ward guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=Jm4Uutz1UFM",
+      "sourceType": "community"
+    },
+    {
+      "label": "ConquestCapped — PoE 2 gearing guide 0.5",
+      "url": "https://conquestcapped.com/guides/path-of-exile-2/poe-2-gearing-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 방어 레이어: 방어구, 회피, 에너지 실드 & 룬 보호막(Runic Ward) 가이드",
+    "description": "Path of Exile 2에서 방어구, 회피, 에너지 실드, 룬 보호막(Runic Ward)이 어떻게 작동하고 결합하는지, 그리고 저항, 블록, Deflect까지 이해하세요.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "armour-evasion-energy-shield-runic-ward",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

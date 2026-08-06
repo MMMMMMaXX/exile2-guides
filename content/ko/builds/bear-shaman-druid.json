@@ -1,0 +1,1068 @@
+{
+  "id": "bear-shaman-druid",
+  "slug": "bear-shaman-druid",
+  "locale": "ko",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "베어 샤먼 드루이드 빌드 가이드",
+  "shortTitle": "베어 샤먼 드루이드",
+  "summary": "베어 폼은 변신일 뿐이며, 램페이지(Rampage), 몰(Maul), 퓨리어스 슬램(Furious Slam)이 실제 공격 스킬입니다. 램페이지 베어, 워킹 카라미티(Walking Calamity), 메테오 베어는 각각 고유의 진입 조건을 가진 별개의 변형 분기로, 하나로 섞인 경로가 아닙니다.",
+  "description": "0.5.4 기준의 완전한 Path of Exile 2 베어 샤먼 드루이드 빌드 가이드로, 베어 폼, 피해 스킬, 램페이지/워킹 카라미티/메테오 변형 경로를 분리하여 다룹니다.",
+  "classId": "druid",
+  "ascendancyId": "shaman",
+  "mainSkillIds": [
+    "rampage",
+    "maul",
+    "furious-slam"
+  ],
+  "secondarySkillIds": [
+    "bear-form",
+    "walking-calamity",
+    "ferocious-roar",
+    "pounce"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "melee",
+    "shapeshift",
+    "bear",
+    "rage"
+  ],
+  "damageTypes": [
+    "physical",
+    "cold",
+    "fire"
+  ],
+  "bestFor": [
+    "mapping",
+    "shapeshift",
+    "armour"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/bear-shaman-druid.webp",
+  "cardImage": "/images/builds/covers/bear-shaman-druid.webp",
+  "imageAlt": "대지와 냉기 마법으로 폭풍을 뚫고 달리는 베어 폼 샤먼 드루이드",
+  "tags": [
+    "bossing",
+    "cold",
+    "druid",
+    "early-endgame",
+    "endgame",
+    "fire",
+    "leveling",
+    "melee",
+    "physical",
+    "shaman",
+    "starter",
+    "transformation"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "빌드 개요",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "이 빌드에는 기존 가이드가 뒤섞었던 세 가지 별개 레이어가 있습니다. (1) 변신인 베어 폼 — 형태이지 피해 스킬이 아닙니다. (2) 실제로 피해를 주는 공격 스킬 — 램페이지, 몰, 퓨리어스 슬램. (3) 핵심이 작동한 뒤에 선택하는 이후 변형 경로.",
+        "반복 가능한 자원 루프는 다음과 같습니다. 베어 폼에 들어가 분노(Rage)를 회복하고, 램페이지로 패키지 사이를 소모한 뒤, 연쇄가 끊기면 몰이나 퓨리어스 슬램으로 재구성합니다. 그 루프가 안정적이지 않다면 피해를 더 사도 맵핑이 일관되게 느껴지지 않습니다.",
+        "램페이지 베어는 기본 맵핑 경로입니다. 워킹 카라미티(영광을 소모하는 광역 마무리)와 메테오 베어(몰에 묶인 메테오/번개 변신)는 각자 고유 진입 조건이 있는 별개 분기이며, 무조건 하나의 경로로 섞이지 않습니다. 핵심 루프가 작동한 뒤 하나를 고르세요."
+      ],
+      "bullets": [
+        "베어 폼은 형태이지 피해 원천이 아닙니다.",
+        "램페이지 + 몰 + 퓨리어스 슬램이 실제 공격 스킬입니다.",
+        "램페이지 베어 / 워킹 카라미티 / 메테오 베어는 각각 고유 진입 조건이 있는 별개 변형 분기입니다."
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "장점과 단점",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "명확한 빌드 정체성과 단계적 진행.",
+        "핵심 램페이지 루프는 현재 0.5 가이드 범위에 있습니다.",
+        "가이드는 맵핑과 보스 가정, 그리고 세 가지 변형 경로를 분리합니다."
+      ],
+      "cons": [
+        "일부 메커니즘은 여전히 현재 클라이언트 재현이 필요합니다.",
+        "엔드게임 크리에이터 세팅은 비싼 의존성을 숨길 수 있습니다.",
+        "정확한 서포트와 패시브 선택은 변형 분기에 따라 바뀔 수 있습니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "bear-transformation",
+      "type": "transformation",
+      "title": "베어 변신 (형태, 피해 스킬 아님)",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "베어 폼은 당신을 곰으로 바꾸는 변신입니다. 빌드의 생존력을 정의하는 갑옷, 생명, 저항 보너스를 제공합니다. 아래 모든 베어 공격 스킬의 전제조건입니다 — 베어 폼 밖에서는 램페이지, 몰, 퓨리어스 슬램을 쓸 수 없습니다."
+      ],
+      "bullets": [
+        "공격 스킬을 쓰려면 먼저 베어 폼에 들어가야 합니다.",
+        "형태는 생존 원천이고, 공격 스킬은 피해 원천입니다.",
+        "폼 제한과 해금 레벨은 PC 검증 대기로 취급하세요 (청구 C1)."
+      ],
+      "toc": false
+    },
+    {
+      "id": "rage-loop-visual",
+      "type": "figure",
+      "title": "장비를 복사하기 전에 분노 루프를 읽으세요",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/bear-shaman-druid-mechanic.webp",
+        "alt": "돌진 중인 곰이 램페이지에서 빠져나와 분노를 재구축하는 편집 다이어그램",
+        "caption": "경로는 루프입니다. 곰 형태 진입, 분노 쌓기, 램페이지로 돌진, 그 다음 다음 연쇄 전에 자원을 재구축.",
+        "credit": "Exile2 가이드의 독자적 편집 일러스트",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "레벨링",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인 시작 (인간 형태)",
+          "levelRange": "1–30",
+          "body": [
+            "검증된 임시 인간 형태 세팅을 쓰고, 기능하는 무기나 스펠 포커스, 생명, 저항을 우선하세요. 베어 폼이 해금되기 전까지 베어 스킬을 강행하지 마세요."
+          ]
+        },
+        {
+          "label": "베어 폼 해금",
+          "levelRange": "31+",
+          "body": [
+            "젬과 폼 요구치가 충족되면 베어 폼으로 전환하고 램페이지 + 몰을 얹으세요. 저항과 생명을 우선하세요. 탱키함이 핵심이지 아직은 raw 피해가 아닙니다. 정확한 해금 레벨은 PC 대기 (청구 C1)."
+          ]
+        },
+        {
+          "label": "핵심 루프 안정화",
+          "levelRange": "31–49",
+          "body": [
+            "분노 회복 루프를 고치세요. 패키지 전 펄써스 로어(Ferocious Roar), 연결된 무리 사이 램페이지, 연쇄가 끊기면 몰이나 퓨리어스 슬램으로 재구성. 분노/영광 생성을 PC 검증용으로 기록하세요 (청구 C3)."
+          ]
+        },
+        {
+          "label": "초반 맵 — 기본 경로 선택",
+          "levelRange": "50+",
+          "body": [
+            "램페이지 베어 기본 경로를 채택하세요. 아직 엔드게임 변형 플래너 스냅샷을 섞지 마세요. 워킹 카라미티와 메테오 베어는 각자 진입 조건이 있는 이후 분기입니다."
+          ]
+        },
+        {
+          "label": "변형 분기",
+          "levelRange": "70+",
+          "body": [
+            "핵심 램페이지 루프가 안정된 후에만 하나의 변형 분기를 고르세요. 워킹 카라미티(영광 생성 필요) 또는 메테오 베어(메테오/번개 변신 장비 필요). 각자 고유 진입 조건이 있습니다 — 스킬과 단계별 설정 섹션을 참고하세요."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "단계별 설정",
+      "order": 45,
+      "visible": true,
+      "caption": "각 단계에서 돌릴 것. 정확한 젬 레벨과 서포트 연결은 PC 검증 대기입니다. 단계 경계와 변형 진입 조건이 실질적인 부분입니다.",
+      "columns": [
+        "단계",
+        "주력 스킬",
+        "핵심 서포트",
+        "패시브 집중",
+        "장비 목표",
+        "전환 조건"
+      ],
+      "rows": [
+        {
+          "label": "레벨링 (인간 → 곰)",
+          "cells": [
+            "인간 형태 스펠, 이후 베어 폼 후 몰",
+            "베어 폼 + 펄써스 로어",
+            "생명, 갑옷, 저항, 근접",
+            "충분한 피해의 무기; 저항 상한",
+            "베어 폼 해금 도달 (~레벨 31, PC 대기)"
+          ]
+        },
+        {
+          "label": "초반 맵 — 램페이지 베어 (기본)",
+          "cells": [
+            "램페이지 + 몰",
+            "펄써스 로어, 워킹 카라미티 마무리",
+            "분노 회복, 공격 속도",
+            "안정된 분노 루프; 생명/갑옷 해결",
+            "변형 분기 전 분노 회복 안정"
+          ]
+        },
+        {
+          "label": "변형 분기 — 하나의 경로 선택",
+          "cells": [
+            "램페이지 베어 / 워킹 카라미티 / 메테오 베어",
+            "경로별 서포트",
+            "경로 노드 배분",
+            "변형 장비 (부적 모드)",
+            "변형 하나를 고르세요. 플래너 스냅샷을 섞지 마세요."
+          ]
+        },
+        {
+          "label": "엔드게임 보싱",
+          "cells": [
+            "퓨리어스 슬램 + 변형 보상",
+            "몰 스택 / 메테오 / 카라미티",
+            "방어 + 경로 휠",
+            "경로 최적 슬롯 (PC 대기)",
+            "고가 지출 전 신뢰할 단일 대상"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "스킬",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "변신 (폼)",
+          "skills": [
+            {
+              "displayName": "베어 폼",
+              "skillId": "bear-form",
+              "role": "당신을 곰으로 바꾸는 변신입니다. 형태이지 피해 스킬이 아닙니다. 빌드를 생존하게 하는 갑옷, 생명, 저항 보너스를 주며, 아래 모든 베어 공격 스킬의 전제조건입니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "폼 없이는 램페이지, 몰, 퓨리어스 슬램을 쓸 수 없습니다. 모든 베어 경로의 입구입니다."
+              ],
+              "whenReplace": [
+                "절대 대체되지 않습니다. 모든 베어 경로의 입구입니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다 동일: 맵핑과 보싱 모두 베어 폼을 유지합니다."
+              ],
+              "notes": [
+                "0.5.4 클라이언트에서 베어 폼 젬 해금 레벨과 폼 제한을 확인하세요 (청구 C1, PC 대기)."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "핵심 공격 스킬 (실제 피해 딜러)",
+          "skills": [
+            {
+              "displayName": "램페이지",
+              "skillId": "rampage",
+              "role": "패키지를 가로지르며 피해를 주는 돌진 공격. 램페이지 베어 경로의 맵핑 엔진.",
+              "supportSkillIds": [
+                "martial-tempo",
+                "elemental-damage-with-attacks"
+              ],
+              "whyUse": [
+                "주력 클리어 피해이자 이동 도구입니다. 맵핑 리듬은 그것에 달려 있습니다."
+              ],
+              "whenReplace": [
+                "모든 베어 경로의 핵심입니다. 워킹 카라미티/메테오 경로에서도 여전히 클리어하지만 보상 스킬이 바뀝니다."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 패키지를 뚫고 씁니다. 보싱: 움직이는 보스를 쫓는 데 쓰지 마세요 (빗맞음 + 노출)."
+              ],
+              "notes": [
+                "정확한 서포트와 젬 레벨은 PC 검증 대기."
+              ]
+            },
+            {
+              "displayName": "몰",
+              "skillId": "maul",
+              "role": "주력 슬램; 스택하고 스케일링합니다. 메테오 베어 경로에서는 메테오/번개 변신이 그것에 묶입니다.",
+              "supportSkillIds": [
+                "martial-tempo",
+                "heavy-hit"
+              ],
+              "whyUse": [
+                "모든 경로가 사용하는 스택형 단일 대상 피해 기반입니다."
+              ],
+              "whenReplace": [
+                "모든 경로에 유지됩니다. 메테오 베어에서 바뀌는 것은 변신뿐입니다."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 돌진하며 빠른 타격. 보싱: 퓨리어스 슬램/변형 보상 전 스택 도구."
+              ],
+              "notes": [
+                "메테오 변신 접근은 PC 대기 (청구 C4)."
+              ]
+            },
+            {
+              "displayName": "퓨리어스 슬램",
+              "skillId": "furious-slam",
+              "role": "연쇄가 끊기거나 보스 창이 열릴 때 안전한 창에 쓰는 보스/단일 대상 슬램.",
+              "supportSkillIds": [
+                "martial-tempo"
+              ],
+              "whyUse": [
+                "램페이지 연쇄와 무관한 안정적인 단일 대상 보상."
+              ],
+              "whenReplace": [
+                "유지됩니다. 모든 경로의 범용 보스 도구입니다."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 거의 필요 없음. 보싱: 안전한 창 안의 해방."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "세팅 & 유틸",
+          "skills": [
+            {
+              "displayName": "펄써스 로어",
+              "skillId": "ferocious-roar",
+              "role": "버프 / 자원 생성기; 전투 전에 울어서 루프를 안정화하세요.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "자원을 생성하고 버프한다고 보고됨; 패키지와 보스 전에 적용하세요."
+              ],
+              "whenReplace": [
+                "모든 경로에 유지됩니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다: 전투 전 한 번 적용."
+              ],
+              "notes": [
+                "정확한 자원 생성은 PC 대기 (청구 C3)."
+              ]
+            },
+            {
+              "displayName": "파운스",
+              "skillId": "pounce",
+              "role": "고립된 적을 잡거나 뒤처진 적을 따라잡기 위한 갭 클로저 / 재배치.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "분리된 적을 잡거나 루프를 끊지 않고 재배치합니다."
+              ],
+              "whenReplace": [
+                "선택 유틸; 피해 경쟁자가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "둘 다: 위치 도구만."
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "변형 — 램페이지 베어 (기본 경로, 진입: 안정된 분노 회복)",
+          "skills": [
+            {
+              "displayName": "램페이지 (램페이지 베어 경로)",
+              "skillId": "rampage",
+              "role": "기본 맵핑 경로의 시그니처: 지속 돌진 클리어. 분노 회복이 안정되면 이 경로를 고르세요. 가장 낮은 입력, 가장 빠른 클리어 옵션입니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "세 분기 중 가장 빠른 클리어와 가장 낮은 입력."
+              ],
+              "whenReplace": [
+                "이것은 경로 선택이지 전투 중 교체가 아닙니다."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 주력 스킬. 보싱: 움직이는 보스를 쫓는 데 쓰지 마세요."
+              ],
+              "notes": [
+                "진입 조건: 안정된 분노 회복 확인; 아니면 몰/퓨리어스 슬램으로 재구성 (청구 C3)."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "변형 — 워킹 카라미티 (진입: 영광 생성 + 젬 티어)",
+          "skills": [
+            {
+              "displayName": "워킹 카라미티",
+              "skillId": "walking-calamity",
+              "role": "영광을 소모하는 광역 마무리. 워킹 카라미티의 젬 티어/레벨과 영광 생성이 해결되면 이 경로를 고르세요. 별개 분기이며 모든 단계에 섞이지 않습니다.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "큰 광역 클리어 마무리; 경로의 패키지 보상으로 보고됨."
+              ],
+              "whenReplace": [
+                "경로 선택; 다른 경로의 핵심 단일 대상 경쟁자가 아님."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 패키지에 마무리. 보싱: 제한적 단일 대상 기여."
+              ],
+              "notes": [
+                "접근과 Bhatair's Vengeance 상호작용은 0.5 이후 바뀌었습니다 — 클라이언트에서 확인하세요 (청구 C4). 진입 조건: 영광 생성 해결."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "변형 — 메테오 베어 (진입: 메테오/번개 변신 장비)",
+          "skills": [
+            {
+              "displayName": "몰 (메테오 변신)",
+              "skillId": "maul",
+              "role": "이 경로에서는 메테오/번개 변신이 버스트를 위해 몰에 묶입니다. 변신을 가능케 하는 장비/서포트가 있을 때 선택하세요 (CaptainLance9). 별개 분기이며 램페이지 베어와 무조건 섞이지 않습니다.",
+              "supportSkillIds": [
+                "meteor",
+                "lightning"
+              ],
+              "whyUse": [
+                "지속 경로보다 높은 단일 타격 버스트."
+              ],
+              "whenReplace": [
+                "경로 선택; 아니면 몰은 평범하게 유지."
+              ],
+              "mappingBossingDiff": [
+                "막핑: 여전히 클리어. 보싱: 더 큰 슬램 타격."
+              ],
+              "notes": [
+                "변신 가능 여부와 정확한 서포트는 PC 대기 (청구 C4). 진입 조건: 메테오/번개 변신 장비/서포트."
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "승천",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "샤먼 — 형태와 방어 우선",
+          "body": [
+            "피해 전에 베어 폼의 생존력과 버프 범위를 강화하는 샤먼 노드를 가져가세요. 선택한 현재 가이드를 따른 뒤, 게시 전 0.5.4 클라이언트에서 모든 노드를 확인하세요."
+          ]
+        },
+        {
+          "label": "변형 인지 배분",
+          "body": [
+            "핵심이 작동한 후 선택한 변형 분기로 배분하세요 (램페이지 유지, 영광/워킹 카라미티, 또는 메테오/번개 변신). 아직 감당 못 할 변형으로 미리 경로를 정하지 마세요."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "패시브 트리",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "캠페인",
+          "body": [
+            "현재 레벨링 스킬과 방어 요구치(생명, 갑옷, 저항, 근접 피해, 초반 분노 노드)를 지지하는 노드만 가져가세요."
+          ]
+        },
+        {
+          "label": "초반 맵",
+          "body": [
+            "선택한 빌드 변형으로 이동하세요. 호환되지 않는 플래너 스냅샷(램페이지, 워킹 카라미티, 메테오 트리는 갈린다)을 조합하지 마세요."
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "장비",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Weapon (Talisman / melee)",
+          "recommendations": [
+            "해당 티어의 적절한 스킬 레벨 또는 무기 피해.",
+            "변형 호환 모디파이어 (램페이지 베어는 물리; 메테오 베어는 메테오/번개)."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "티어에 맞는 스킬 레벨 또는 기본 무기 피해",
+              "reason": "모든 베어 경로의 주요 진행 점검."
+            },
+            {
+              "tier": "recommended",
+              "label": "변형 모디파이어 (물리, 또는 메테오/번개)",
+              "reason": "선택한 분기의 피해 원천과 일치."
+            },
+            {
+              "tier": "optional",
+              "label": "공격 속도",
+              "reason": "클리어 감은 개선하지만 피해 바닥이 아닙니다."
+            },
+            {
+              "tier": "luxury",
+              "label": "경로 전용 유니크 (예: 퓨리 오브 더 킹)",
+              "reason": "핵심 루프와 방어가 해결된 후에만; 전제조건 확인."
+            }
+          ],
+          "notes": [
+            "전제조건 없이 엔드게임 유니크를 복사하지 마세요. 부적/무기 세트 동작은 PC 대기 (청구 C2)."
+          ]
+        },
+        {
+          "slot": "Defensive armour (Body / Helm / Boots)",
+          "recommendations": [
+            "생명 또는 선택한 방어 풀.",
+            "원소 저항과 회복; 신발의 이동 속도."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "생명과 상한이 안 찬 두 저항",
+              "reason": "어떤 피해도 맵에서 죽는 것을 보상하지 않습니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "갑옷 (베어 폼이 스케일링)",
+              "reason": "폼과 짝을 이루는 핵심 방어 레이어."
+            },
+            {
+              "tier": "optional",
+              "label": "신발의 이동 속도",
+              "reason": "교전 라인 재배치에 도움."
+            },
+            {
+              "tier": "luxury",
+              "label": "명시적 DPS 접두/접미",
+              "reason": "방어가 해결된 후에만."
+            }
+          ],
+          "notes": [
+            "한 슬롯이 아닌 방어 패키지 전체를 비교하세요."
+          ]
+        },
+        {
+          "slot": "Jewellery and utility",
+          "recommendations": [
+            "능력치와 자원 유지 (분노 / 영광).",
+            "검증된 빌드 전용 모디파이어만."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "무기와 젬을 장착할 능력치",
+              "reason": "장착 못 하는 무기는 무가치합니다."
+            },
+            {
+              "tier": "recommended",
+              "label": "저항과 생명",
+              "reason": "방어 셸을 완성합니다."
+            },
+            {
+              "tier": "optional",
+              "label": "분노 / 영광 유지 주얼",
+              "reason": "핵심 루프를 안정화."
+            },
+            {
+              "tier": "luxury",
+              "label": "경로 전용 접두/접미",
+              "reason": "선택한 변형에 조건부."
+            }
+          ],
+          "notes": [
+            "가격은 현재 고정되지 않았습니다. Mobalytics 검증 ≠ 이 사이트의 클라이언트 검증."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "스탯 우선순위",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "방어 기준선",
+          "reason": "저항을 상한까지 채우고 회복을 먼저 확립."
+        },
+        {
+          "label": "주요 피해 스칼라",
+          "reason": "플래너와 게임플레이 증거 모두가 공유하는 스칼라를 사용."
+        },
+        {
+          "label": "자원 유지 (분노 / 영광)",
+          "reason": "핵심 루프는 단일 대상에도 작동해야 합니다."
+        },
+        {
+          "label": "정확도 / 적중 확률",
+          "reason": "보스에서 빗맞음은 흔한 실패입니다. 피해 전에 고치세요."
+        },
+        {
+          "label": "편의성",
+          "reason": "빌드가 기능한 후에만 속도나 범위를 추가."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "업그레이드 우선순위",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "램페이지 연쇄가 패키지 사이에서 끊김",
+          "symptom": "램페이지 연쇄가 맵 중간에서 흐르지 않고 붕괴합니다.",
+          "checks": [
+            "분노 회복이 안정적인가 (펄써스 로어 범위, 주얼)?",
+            "연결되지 않은 패키지나 빈 복도에 램페이지를 강행하고 있나요?"
+          ],
+          "upgrade": "몰이나 퓨리어스 슬램으로 분노를 재구성하세요. 빈 복도에서 버프를 소비하지 마세요. 클라이언트에서 회복을 확인 (청구 C3)."
+        },
+        {
+          "label": "레어와 보스가 너무 오래 살아남",
+          "symptom": "단일 대상이 클리어보다 훨씬 오래 걸림; 커뮤니티 '낮은 피해' 보고.",
+          "checks": [
+            "정확도 / 적중 확률이 고정됐나?",
+            "몰 / 퓨리어스 슬램 젬 레벨과 서포트가 올라갔나?",
+            "워킹 카라미티가 보스를 단독으로 (광역 마무리일 뿐) 하리라 기대하나요?"
+          ],
+          "upgrade": "적중 확률 + 슬램 배수를 투자하세요. 메테오 베어 변신 분기를 고려하세요. 워킹 카라미티가 단일 대상을 짊어지리라 기대하지 마세요."
+        },
+        {
+          "label": "맵에서 죽음",
+          "symptom": "T15+ 또는 보스 전장에서 빈번한 사망.",
+          "checks": [
+            "어떤 저항이 상한 미달인가?",
+            "생명/갑옷이 콘텐츠 티어 미만인가?",
+            "교전 전 펄써스 로어가 켜져 있나?"
+          ],
+          "upgrade": "저항을 상한까지 채우고 생명/갑옷을 안정화하세요. 방어 문제를 피해 장비로 해결하지 마세요."
+        },
+        {
+          "label": "보스에서 자원 루프 정체",
+          "symptom": "단일 대상 전투 중 분노 / 영광이 비워짐.",
+          "checks": [
+            "보스에서 펄써스 로어 범위가 활성인가?",
+            "처치 기반 가정이 제거됐나?",
+            "시퀀스 전후 자원을 기록."
+          ],
+          "upgrade": "자원 생성(로어 범위, 유지 주얼)을 고치세요. 클라이언트에서 확인 (청구 C3)."
+        },
+        {
+          "label": "변형 분기 고려 중",
+          "symptom": "램페이지 베어 대신 워킹 카라미티나 메테오 베어를 원함.",
+          "checks": [
+            "핵심 램페이지 루프가 이미 안정적인가?",
+            "영광 생성이나 메테오/번개 변신을 가능케 하는 장비가 있나?"
+          ],
+          "upgrade": "핵심이 작동한 후 변형 하나를 채택하세요. 호환되지 않는 플래너 스냅샷을 섞지 마세요."
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "맵핑",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "충분한 분노로 패키지에 들어가 체인을 시작하세요. 먼저 펄써스 로어, 연결된 몬스터 무리 사이 램페이지, 길 위 몰, 그리고 (그 분기라면) 광역 마무리 워킹 카라미티. 빈 복도는 자원 문제입니다. 램페이지를 강행하지 말고 몰이나 퓨리어스 슬램으로 재구성하세요.",
+        "몰이나 검증된 생성기로 분노를 쌓으세요. 빈 복도에서 임시 버프를 소비하지 마세요."
+      ],
+      "bullets": [
+        "펄써스 로어 → 램페이지 → 몰 → (해당 분기의 워킹 카라미티 마무리).",
+        "램페이지는 이동이자 피해이며, 패키지 가로지르기가 핵심.",
+        "강행하는 대신 다음 연쇄 전에 분노를 재구성."
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "보싱",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "보스 상대로 설정 시간과 피해 시간을 분리하세요. 아레나가 위험해지기 전에 분노를 재구성하고, 임시 버프를 한 번 적용한 뒤, 안전한 애니메이션 창에서만 몰과 퓨리어스 슬램으로 공격하세요. 움직이는 보스를 쫓는 데 램페이지를 쓰지 마세요 — 빗맞고 노출됩니다.",
+        "버스트 창에 워킹 카라미티에 영광을 소모하거나(해당 분기) 메테오 변신(해당 분기)을 쓰세요. 이것들은 별개 경로이지 하나로 섞인 회전이 아닙니다."
+      ],
+      "bullets": [
+        "몰로 스택 → 창 안에서 퓨리어스 슬램 / 변형 보상.",
+        "움직이는 보스 뒤에 램페이지하지 마세요.",
+        "워킹 카라미티 / 메테오는 분기 보상이지 범용 보스 도구가 아닙니다."
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "장비 구매 전 베어 경로를 선택하세요",
+      "order": 130,
+      "visible": true,
+      "caption": "현재 램페이지 가이드, 메테오 대안, 플레이어 보고에서 종합한 편집 비교; 정확한 피해는 PC 검증 대기. 각 경로는 고유 진입 조건이 있습니다.",
+      "columns": [
+        "경로",
+        "피해 원천",
+        "강점",
+        "진입 조건",
+        "참고"
+      ],
+      "rows": [
+        {
+          "label": "램페이지 베어 (기본)",
+          "cells": [
+            "램페이지 + 몰 지속",
+            "빠른 클리어, 낮은 입력",
+            "안정된 분노 회복",
+            "Ronarray 가이드"
+          ]
+        },
+        {
+          "label": "워킹 카라미티",
+          "cells": [
+            "영광 소모 광역 마무리",
+            "큰 패키지 버스트",
+            "영광 생성 + 젬 티어 해결",
+            "커뮤니티 보고"
+          ]
+        },
+        {
+          "label": "메테오 베어",
+          "cells": [
+            "메테오/번개 변신 몰",
+            "높은 단일 타격 버스트",
+            "메테오/번개 변신 장비",
+            "CaptainLance9 가이드"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "문제 해결",
+      "order": 140,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "핵심 스킬을 사용할 수 없음",
+          "checks": [
+            "젬 레벨, 폼, 무기 세트, 장비 요구치를 확인.",
+            "문서화된 전환 단계로 돌아가세요."
+          ]
+        },
+        {
+          "symptom": "단일 대상 루프 정지",
+          "checks": [
+            "처치 기반 가정을 제거.",
+            "시퀀스 전후 모든 자원을 기록."
+          ]
+        },
+        {
+          "symptom": "복사한 엔드게임 장비가 더 약함",
+          "checks": [
+            "누락된 패시브, 서포트, 임계치를 확인.",
+            "더 낮은 검증 단계부터 재구성."
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "더 쓰기 전에 빌드를 고치세요",
+      "order": 150,
+      "visible": true,
+      "items": [
+        {
+          "question": "맵 중간에서 램페이지가 왜 멈추나요?",
+          "answer": [
+            "램페이지는 보상이지 자원 생성기가 아닙니다. 약한 분노 회복이나 연결되지 않은 패키지로 시작하면 연쇄는 자연스레 붕괴합니다."
+          ],
+          "bullets": [
+            "몰이나 퓨리어스 슬램으로 분노를 재구성.",
+            "빈 복도에서 임시 버프를 소비하지 마세요.",
+            "다른 피해 유니크를 추가하기 전 자원 재생과 흡혈을 확인."
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ko/builds/fire-bear-smith-of-kitava/",
+              "label": "낮은 입력의 파이어 베어 루프 비교"
+            }
+          ]
+        },
+        {
+          "question": "모든 것을 견디는데 레어만 너무 오래 걸립니다. 무엇을 점검해야 하나요?",
+          "answer": [
+            "확인할 것: 근접 젬 레벨, 공격 속도, 평면 물리/냉기 기여, 정확도, 그리고 빌드를 정의하는 효과를 지닌 슬롯. 방어적 목걸이에 약한 공격 슬롯이 더해지면 캐릭터는 안전하지만 무기력해질 수 있습니다."
+          ],
+          "bullets": [
+            "각 변경 전후로 레어 하나를 테스트.",
+            "비교에 의미가 있게 동일한 맵 티어를 유지."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "메테오 베어나 워킹 카라미티로 갈아탈까요?",
+          "answer": [
+            "그 경로의 리듬을 선호하고 그 진입 조건(메테오/번개 변신 장비, 또는 해결된 영광 생성)을 충족할 때만 갈아타세요. 깨진 램페이지 루프의 자동 업그레이드는 아닙니다. 각각 실패 양상이 다른 별개 분기입니다."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "빌드 플래너 & 가져오기",
+      "order": 160,
+      "visible": true,
+      "note": "붙여넣기용 가져오기 문자열 / .build는 PC 검증 대기. 그동안 크리에이터 가이드와 아래 기본 플래너를 사용하세요. 항상 자신의 클라이언트에서 노드 선택을 재확인하세요.",
+      "creatorName": "Ronarray",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "플레이어가 실제로 보고하는 것",
+      "order": 170,
+      "visible": true,
+      "note": "이들은 출처가 명시된 편집 요약이며, DPS나 생존력의 독립 증명이 아닙니다.",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "램페이지 베어 플레이어 보고",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/",
+          "statement": "한 샤먼 플레이어는 이 세팅을 극도로 튼튼하지만 초기엔 피해가 부족하다고 묘사했고, 약한 무기나 부적 슬롯을 퓨리 오브 더 킹으로 바꾼 후 레어 처치가 눈에 띄게 개선되었다고 보고했습니다.",
+          "context": "유용한 힌트: 전체 방어 셸을 교체하는 대신 먼저 피해를 지니는 슬롯과 분노 루프를 점검하세요."
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Ronarray 램페이지 베어 가이드",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame",
+          "statement": "유지되는 가이드는 램페이지를 클리어 엔진으로 제시하고, 분노 관리와 애니메이션 투입을 진짜 약점으로 지적하며, 램페이지가 불가능할 때 몰이나 퓨리어스 슬램으로 회복합니다.",
+          "context": "이것은 회전 모델을 뒷받침하지만, 아이템별 수치는 여전히 클라이언트 내 재현이 필요합니다."
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "동작 중인 루프 보기",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Ronarray",
+          "label": "0.5 베어 레벨링과 게임플레이",
+          "url": "https://www.youtube.com/watch?v=5MkXZedNjDY",
+          "description": "영상으로 베어 폼이 언제 시작되는지, 플레이어가 패키지 틈을 어떻게 가로지르는지, 분노를 언제 재구성하는지 연구하세요.",
+          "takeaway": "각 램페이지 연쇄 전후를 일시정지하세요. 클리어 속도뿐 아니라 자원 상태를 비교하세요.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "베어 드루이드 레벨링 시작 (크리에이터가 챕터 미제공)"
+            },
+            {
+              "time": "2:00",
+              "label": "베어 폼 전환과 분노 루프 (근사, 검증 대기)"
+            },
+            {
+              "time": "5:00",
+              "label": "램페이지 연쇄와 패키지 가로지르기 (근사, 검증 대기)"
+            },
+            {
+              "time": "8:00",
+              "label": "엔드게임 변형 미리보기 (근사, 검증 대기)"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "출처와 검증",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "공식 출처",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "Ronarray 램페이지 베어 가이드",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "CaptainLance9 메테오 베어 가이드",
+          "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "독립 메테오 베어 가이드",
+          "url": "https://pathofexile.gg/shaman-meteor-bear-build/"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "베어 경로 비교 토론",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
+        },
+        {
+          "label": "Mobalytics 빌드 플래너 내보내기",
+          "description": "외부 도구",
+          "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "Ronarray 0.5 베어 레벨링 게임플레이",
+          "url": "https://www.youtube.com/watch?v=5MkXZedNjDY"
+        },
+        {
+          "label": "커뮤니티 토론",
+          "description": "램페이지 베어 생존력과 레어 피해에 대한 플레이어 보고",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "인게임",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "출처 기반 0.5.4 빌드 가이드 생성; PC 검증 대기."
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "확장 스키마: 폼/핵심 공격/세팅/세 가지 변형 분기(램페이지 베어, 워킹 카라미티, 메테오 베어) 각각 진입 조건이 있는 디스플레이 이름 스킬 카드 추가; 단계별 설정 표; 빌드 플래너 항목; 슬롯별 장비 스탯 우선순위; 증상 기반 업그레이드 우선순위. 모호한 단일 경로 혼합 제거."
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "fire-bear-smith-of-kitava"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Ronarray 램페이지 베어 가이드",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+    },
+    {
+      "label": "CaptainLance9 메테오 베어 가이드",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/meteor-bear-druid"
+    },
+    {
+      "label": "독립 메테오 베어 가이드",
+      "sourceType": "community",
+      "url": "https://pathofexile.gg/shaman-meteor-bear-build/"
+    },
+    {
+      "label": "베어 경로 비교 토론",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1tstbhv/best_bear_build/"
+    },
+    {
+      "label": "Mobalytics 빌드 플래너 내보내기",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/bear-druid-build-league-starter-to-endgame"
+    },
+    {
+      "label": "Ronarray 0.5 베어 레벨링 게임플레이",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=5MkXZedNjDY"
+    },
+    {
+      "label": "램페이지 베어 생존력과 레어 피해에 대한 플레이어 보고",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1u0caag/for_a_bear_rampage_build_i_believe_thats_the/"
+    }
+  ],
+  "seo": {
+    "title": "베어 샤먼 드루이드 빌드 가이드",
+    "description": "0.5.4 기준의 완전한 Path of Exile 2 베어 샤먼 드루이드 빌드 가이드로, 베어 폼, 피해 스킬, 램페이지/워킹 카라미티/메테오 변형 경로를 분리하여 다룹니다.",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "bear-shaman-druid",
+    "sourceRevision": "2026-07-31",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

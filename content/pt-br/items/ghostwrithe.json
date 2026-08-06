@@ -1,0 +1,789 @@
+{
+  "id": "ghostwrithe",
+  "slug": "ghostwrithe",
+  "locale": "pt-br",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Ghostwrithe: Conversão de Vida em Energy Shield, Desvio de Acertos e Defesa Somente por ES no Path of Exile 2 0.5",
+  "shortTitle": "Ghostwrithe",
+  "summary": "Ghostwrithe é uma Vaal Regalia única cujos três modificadores colapsam suas defesas em um único pool de Energy Shield: 100% da Vida Máxima vem do Energy Shield, (20-30)% do Dano de Acerto é absorvido pelo Energy Shield antes da Vida, e você não pode dar Leech nem Regenerar Vida nem ganhar Vida de Frascos. Este guia explica a matemática da conversão, por que toda forma de sustentação de vida deixa de funcionar, como reconstruir a defesa no Energy Shield, quais builds ela habilita (magos estilo Chaos Inoculation e monges de ES) e o ponto de corte do roll.",
+  "description": "Como o Ghostwrithe funciona no PoE2 0.5: a conversão de 100% da Vida Máxima em Energy Shield, o desvio de (20-30)% do dano de acerto para ES antes da Vida, a perda de sustentação por life Leech / life Regeneration / frasco de vida, a defesa resultante de pool único por ES, exemplos de build, valor do roll e custo de falha.",
+  "itemType": "body-armour",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "es-conversion",
+    "ci-style",
+    "es-defence"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-armour",
+  "itemClass": "body-armour",
+  "baseType": "vaal-regalia",
+  "patch": "0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-armour",
+    "es-conversion",
+    "ghostwrithe"
+  ],
+  "heroImage": "/images/items/ghostwrithe-hero.webp",
+  "cardImage": "/images/items/ghostwrithe-hero.webp",
+  "imageAlt": "Ghostwrithe, Vaal Regalia única do Path of Exile 2, uma armadura de corpo que converte todo o seu pool de vida em Energy Shield e desativa a sustentação de vida",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Resposta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Os três modificadores do Ghostwrithe transformam seu personagem em uma unidade somente de Energy Shield. '100% da Vida Máxima vem do Energy Shield' dobra todo o seu total de vida no seu Energy Shield - você termina com 0 de vida separada. '(20-30)% do Dano de Acerto é absorvido pelo Energy Shield antes da Vida' então empurra uma fatia extra de cada acerto para o seu ES primeiro. Como não resta nenhum pool de vida, life Leech, life Regeneration e frascos de vida não fazem nada: você deve permanecer vivo inteiramente no Energy Shield. A recompensa é um único pool recarregável que escala com o investimento em ES e habilita builds estilo Chaos Inoculation sem precisar pegar o keystone CI.",
+      "calloutDetail": [
+        "A conversão adiciona sua Vida Máxima ao seu Energy Shield Máximo. Um personagem com 2500 de vida e 3000 de ES passa a ter ~5500 de ES e 0 de vida.",
+        "Qualquer efeito que mira 'Vida' (recuperação de frasco, life leech, regeneração de vida, vida ao acertar) não tem pool para atuar, então está morto.",
+        "Você deve se sustentar através de recarga de ES, ES leech, ES regeneration, ES-on-hit e ES-on-block em vez disso."
+      ],
+      "answers": [
+        {
+          "label": "Use se",
+          "text": [
+            "Você já joga em torno de Energy Shield (magos, monges de ES) e quer parar de dividir pontos entre vida e ES, ou quer um personagem imortal-on-ES estilo Chaos Inoculation enquanto ainda usa seus passivos de vida."
+          ]
+        },
+        {
+          "label": "Evite se",
+          "text": [
+            "Seu build depende de frascos de vida, life leech ou life regeneration (a maioria dos builds de ataque e de tropas), ou você não consegue alcançar ES suficiente para substituir seu pool de vida."
+          ]
+        },
+        {
+          "label": "Roll a buscar",
+          "text": [
+            "O roll de desvio de (20-30)% é um bônus menor sobre a conversão. Priorize uma Vaal Regalia com base de Energy Shield alta e seu ES total, não o tier do roll."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "Como a conversão funciona"
+        },
+        {
+          "href": "#properties",
+          "label": "Tooltip atual e faixas de roll"
+        },
+        {
+          "href": "#build-usage",
+          "label": "Builds que a usam"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Fatos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Base type",
+          "value": "Vaal Regalia",
+          "note": [
+            "Uma armadura de corpo de Inteligência com base alta de Energy Shield, que é exatamente o que você quer quando o ponto é empilhar um gigante pool de ES."
+          ]
+        },
+        {
+          "label": "Modificadores únicos",
+          "value": "100% Life-from-ES; (20-30)% dano de acerto para ES primeiro; sem life leech/regen/frasco",
+          "note": [
+            "Os três modificadores miram seu pool de vida. Juntos eles removem a vida como camada defensiva inteiramente."
+          ]
+        },
+        {
+          "label": "Nível requerido",
+          "value": "1 (Inteligência)",
+          "note": [
+            "Equipável desde o início, então pode carregar um mago de ES pela campanha se o pool de ES for grande o suficiente."
+          ]
+        },
+        {
+          "label": "Aquisição",
+          "value": "Dropa em qualquer lugar; negociável",
+          "note": [
+            "Uma armadura de corpo única relativamente comum. A maioria dos jogadores compra um roll específico de ES base no trade em vez de farmá-la."
+          ]
+        },
+        {
+          "label": "O que desativa",
+          "value": "Frascos de vida, life leech, regeneração de vida",
+          "note": [
+            "Estas são as três ferramentas de sustentação que param de funcionar porque seu pool de vida é 0."
+          ]
+        },
+        {
+          "label": "Relevância do roll",
+          "value": "Baixa - ES base importa mais",
+          "note": [
+            "O tier de (20-30)% mal muda a sobrevivência. Compre o roll de Energy Shield base mais alto e seu ES total, não o roll de sufixo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "Tooltip atual e faixas de roll (0.5.4)",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Energy Shield",
+          "value": "Alto (base Vaal Regalia)",
+          "notes": [
+            "Vaal Regalia é a base de armadura de corpo de Inteligência com maior ES. O roll exato varia por drop; priorize um roll de ES base alto ao comprar."
+          ]
+        },
+        {
+          "label": "Modificador 1 (fixo)",
+          "value": "100% da Vida Máxima vem do Energy Shield",
+          "notes": [
+            "Sua Vida Máxima é somada ao seu Energy Shield Máximo. Não é uma porcentagem de dano - é o próprio pool sendo mesclado."
+          ]
+        },
+        {
+          "label": "Modificador 2 (variável)",
+          "value": "(20-30)% do Dano de Acerto é absorvido pelo Energy Shield antes da Vida",
+          "notes": [
+            "Rola em tiers; uma fatia de cada acerto é subtraída do ES antes de qualquer vida. Menor quando a vida já é 0 pelo Modificador 1."
+          ]
+        },
+        {
+          "label": "Modificador 3 (fixo)",
+          "value": "Não pode dar Leech nem Regenerar Vida, e não pode ganhar Vida de Frascos",
+          "notes": [
+            "Bloqueio rígido dos três caminhos de sustentação de vida. Versões de ES desses efeitos não são afetadas e se tornam sua única sustentação."
+          ]
+        },
+        {
+          "label": "Requisitos",
+          "value": "Nível 1, Inteligência",
+          "notes": [
+            "Sem requisito de Força ou Destreza; a base Vaal Regalia define o requisito de Inteligência."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Como funciona a conversão de vida em Energy Shield",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "O primeiro modificador do Ghostwrithe diz '100% da Vida Máxima vem do Energy Shield'. Isso não reduz o dano; realoca sua saúde. Seu valor de Vida Máxima é somado diretamente ao seu Energy Shield Máximo. O efeito líquido é um único pool defensivo: Energy Shield Máximo = (Energy Shield Máximo de todas as outras fontes) + (Vida Máxima de todas as fontes), e a Vida Máxima passa a ser 0.",
+        "Exemplo prático: um personagem cuja árvore e equipamento dão 2500 de Vida Máxima, cujo corpo, árvore, equipamento e auras dão 3000 de Energy Shield, e que então equipa um Ghostwrithe. Após a conversão o personagem tem 2500 + 3000 = 5500 de Energy Shield Máximo e 0 de Vida Máxima. Cada ponto que você gastaria em vida agora apenas torna o pool de ES maior, porque a vida é dobrada nele.",
+        "O segundo modificador, '(20-30)% do Dano de Acerto é absorvido pelo Energy Shield antes da Vida', é em grande parte redundante quando a vida é 0, mas é a regra explícita que mantém o dano no Energy Shield. No PoE2 normal um acerto esgota o ES primeiro e transborda para a vida; o Ghostwrithe garante que mais 20-30% de cada acerto sejam roteados para o ES antes que a vida seja tocada. Como a vida já é 0, a mensagem prática é simplesmente: todo o dano de acerto recebido cai no seu Energy Shield recarregável.",
+        "O terceiro modificador é a pegadinha: 'Não pode dar Leech nem Regenerar Vida, e não pode ganhar Vida de Frascos'. Sem pool de vida, frascos de vida não curam nada, life leech não devolve nada, e a regeneração de vida ticka em uma barra vazia. Você depende inteiramente da sustentação de Energy Shield. Este é o custo real do item, e é por isso que o Ghostwrithe só compensa em personagens que já investem em sustentação de ES (taxa de recarga, ES leech, ES-on-block, ES regeneration).",
+        "Por que os jogadores usam mesmo assim: dobrar a vida no ES lhe dá um pool muito grande em vez de dois menores, e esse pool se beneficia da recarga de Energy Shield, que costuma ser mais rápida e confiável que o uptime do frasco de vida quando você investe em 'Taxa de Recarga de Energy Shield' e 'atraso reduzido de início de recarga de ES'. Também o deixa adjacente a Chaos Inoculation: com 0 de vida, dano de caos não pode te matar pela vida, então você só precisa proteger uma única barra de ES de todos os tipos de dano."
+      ],
+      "bullets": [
+        "Fórmula: ES Máx = (todo o ES Máx restante) + (toda a Vida Máx); Vida Máx passa a ser 0.",
+        "Exemplo: 2500 de vida + 3000 de ES -> 5500 de ES e 0 de vida.",
+        "Modificador 2 mantém o dano de acerto no ES primeiro; em grande parte redundante quando a vida é 0.",
+        "Modificador 3 mata frasco de vida / life leech / regen de vida - você deve se sustentar em ES.",
+        "Habilita defesa de pool único estilo CI sem o keystone CI."
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "Matriz de conversão e resultados defensivos",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "conversion",
+        "energy-shield",
+        "defence"
+      ],
+      "rows": [
+        {
+          "scenario": "2500 de vida + 3000 de ES antes do Ghostwrithe",
+          "audience": "Qualquer mago de ES",
+          "benefit": "Pool único de 5500 de ES, 0 de vida - uma barra recarregável grande",
+          "risk": "Sem buffer de vida: se o ES quebrar você morre",
+          "level": "high",
+          "recommendation": "Forte quando combinado com recarga de ES + ES leech; o pool total é maior que manter dois pools finos.",
+          "tags": [
+            "energy-shield",
+            "pool-size"
+          ]
+        },
+        {
+          "scenario": "(20-30)% do dano de acerto para ES primeiro",
+          "audience": "Todos os builds",
+          "benefit": "Fatia extra de cada acerto forçada para o ES (importa se restar vida)",
+          "risk": "Baixo; pequena oscilação de sobrevivência",
+          "level": "low",
+          "recommendation": "Trate como tempero sobre a conversão; não corra atrás do roll alto.",
+          "tags": [
+            "routing",
+            "hit-damage"
+          ]
+        },
+        {
+          "scenario": "Frasco de vida / life leech / regen de vida desativados",
+          "audience": "Builds de ataque / tropas",
+          "benefit": "Nenhum para esses builds",
+          "risk": "Perda total da sustentação usual -> frequentemente um personagem morto",
+          "level": "high",
+          "recommendation": "Evite o Ghostwrithe a menos que já use sustentação de ES (Ghostshroud, ES leech, escala de recarga).",
+          "tags": [
+            "sustain",
+            "anti-synergy"
+          ]
+        },
+        {
+          "scenario": "0 de vida (caos-imune-na-vida)",
+          "audience": "Magos estilo CI",
+          "benefit": "Dano de caos não pode matar pela vida; todo dano atinge uma barra de ES",
+          "risk": "Deve sobre-capar ES contra caos; um pool para proteger",
+          "level": "medium",
+          "recommendation": "Ótimo para builds adjacentes a CI que querem escala de ES máx sem o tradeoff do keystone CI.",
+          "tags": [
+            "chaos",
+            "ci-style"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "Builds que usam o Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "O Ghostwrithe é para personagens que já vivem de Energy Shield e querem parar de dividir a defesa entre vida e ES. A seguir estão os lares realistas; cada um pressupõe que você tem um plano de sustentação de ES."
+      ],
+      "builds": [
+        {
+          "title": "Stormweaver Archmage",
+          "description": "Um lar natural: Archmage escala mana tanto em dano quanto em ES, então a vida convertida apenas alimenta o mesmo pool gigante. Combine com escala de recarga de ES e uma fonte de ES leech para manter a barra única cheia.",
+          "href": "/en/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Monge Invoker estilo Chaos Inoculation",
+          "description": "Monges podem empilhar ES e converter vida na mesma barra, ganhando imortalidade adjacente a CI (caos não pode matar pela vida) enquanto mantêm seus passivos de vida funcionando para ES. Requer recarga e leech de ES disciplinados.",
+          "href": "/en/builds/storm-wave-flicker-invoker/"
+        },
+        {
+          "title": "Templário de Energy Shield de low-life",
+          "description": "Jogadores que querem uma fantasia de low-life sem complicações de Pain Attunement usam o Ghostwrithe para mesclar pools e rodar uma gigante barra de ES alimentada por auras e frascos do Corsair (que ainda funcionam em ES).",
+          "href": "/en/builds/spark-coc-comet-stormweaver/"
+        },
+        {
+          "title": "Occultist-style de Energy Shield com Blink/brand",
+          "description": "Qualquer mago que já ignora frascos de vida e se sustenta em recarga de ES e ES-on-kill pode dobrar a vida para um pool maior e mais simples.",
+          "href": "/en/builds/storm-wave-flicker-invoker/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "Alternativas: peitoral ES comum, keystone CI, armadura de vida",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "O Ghostwrithe não é um upgrade estrito sobre uma rara Vaal Regalia bem rolada. Um peitoral ES raro pode dar uma base de Energy Shield maior mais sufixos úteis (ES%, atraso de início de recarga de ES reduzido, requisitos de atributo) sem forçá-lo a abandonar a sustentação de vida. Use um peitoral raro quando ainda quiser um buffer de vida.",
+        "Comparado ao keystone Chaos Inoculation, o Ghostwrithe alcança um resultado similar de 'imortal em ES, seguro-contra-caos-na-vida' mas sem definir a Vida Máxima como 1. Com CI sua vida é 1 e você ainda precisa construir ES; com Ghostwrithe sua vida é 0 e seus passivos de vida em vez disso inflacionam ES. CI é mais limpo e não desativa life leech/regen em uma barra separada, mas o Ghostwrithe deixa árvores pesadas em passivos de vida ainda compensarem como ES.",
+        "Contra uma armadura de corpo baseada em vida normal, o Ghostwrithe é estritamente pior para qualquer build que dependa de frascos de vida ou life leech - o que é a maioria dos builds de ataque. Esses nunca devem considerá-lo. A decisão é realmente 'ir all-in em um pool de ES' (Ghostwrithe) versus 'manter vida + ES separados' (peitoral raro ou CI)."
+      ],
+      "bullets": [
+        "Vaal Regalia rara: base de ES mais alta possível, mantém sustentação de vida - use quando quiser um buffer.",
+        "Keystone Chaos Inoculation: resultado similar, mas a vida vira 1 e life leech/regen em uma barra separada ainda existem.",
+        "Armadura de vida: estritamente melhor para builds de frasco/leech - eles devem evitar o Ghostwrithe.",
+        "Decisão: Ghostwrithe só quando você se compromete totalmente com um único pool de ES."
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "Como conseguir o Ghostwrithe",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Ghostwrithe é uma armadura de corpo única relativamente comum, então o caminho realista é o trade em vez de farmar."
+      ],
+      "routes": [
+        {
+          "label": "Drop aleatório (qualquer nível, Ato 1 em diante)",
+          "body": [
+            "Pode dropar de qualquer monstro uma vez que você alcance o nível requerido. Você não pode mirá-lo; aumentar a taxa de drop de uniques via 'Raridade Aumentada de Itens Encontrados' e Waystones turbinados aumenta a frequência com que uniques aparecem, mas isso é lento para uma armadura de corpo específica."
+          ]
+        },
+        {
+          "label": "Orb of Chance em uma Vaal Regalia branca",
+          "body": [
+            "Usar um Orb of Chance em uma Vaal Regalia normal pode render um Ghostwrithe, mas a chance é baixa e a moeda é melhor gasta em outro lugar. A maioria dos jogadores pula essa rota."
+          ]
+        },
+        {
+          "label": "Trade com jogadores (recomendado)",
+          "body": [
+            "Comprar no trade é o jeito confiável de conseguir um roll específico de ES base. Como é comum, até um roll de ES base alto é acessível. Compre o Energy Shield base mais alto que puder pagar; o roll de sufixo de (20-30)% mal importa. Preços variam por liga e região - verifique o site de trade ao vivo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "Usar, vender ou guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "O preço do Ghostwrithe é impulsionado pelo roll de Energy Shield base da Vaal Regalia, não pelo tier de sufixo. Um roll de ES base alto carrega prêmio; um baixo é quase de graça. Não é caro no nível mirror-tier. Leia qualquer preço com data, liga e região."
+      ],
+      "use": {
+        "condition": "Você joga um personagem baseado em ES e tem um plano de sustentação de ES (escala de recarga, ES leech, ES-on-block).",
+        "first": "Equipe o Ghostwrithe de ES base mais alto que puder pagar e mescle sua vida no pool; invista pontos passivos em ES, taxa de recarga de ES e atraso de início de recarga reduzido.",
+        "risk": "Sem buffer de vida - um único acerto grande que quebra o ES pode ser letal sem backup de frasco.",
+        "text": [
+          "Melhor quando toda a sua defesa já vive no Energy Shield.",
+          "Guarde-o pela liga inteira se seu build for somente ES."
+        ]
+      },
+      "sell": {
+        "condition": "Você joga um build de frasco de vida ou life leech, ou seu pool de ES é pequeno demais para substituir sua vida.",
+        "first": "Venda-o; é peso morto para esses builds e comum o suficiente para se mover rápido.",
+        "risk": "Guardá-lo esperando uma alta é improvável - a oferta é estável.",
+        "text": [
+          "Um roll de ES base baixo tem pouco valor para magos de ES que precisam de um pool grande.",
+          "Liste o roll de ES base honestamente; compradores filtram por ele."
+        ]
+      },
+      "hold": {
+        "condition": "Você tem um roll de ES base alto e pode trocar para um mago de ES mais tarde.",
+        "first": "Guarde rolls de ES base alto; eles permanecem líquidos enquanto builds de ES existirem.",
+        "risk": "Um patch futuro mudando recarga de ES ou conversão poderia mudar a demanda, mas a fantasia é estável.",
+        "text": [
+          "Rolls de ES base alto retêm valor porque a conversão recompensa uma barra inicial maior.",
+          "Um implícito corrupto (via Vaal Orb) pode adicionar ES% ou recarga, aumentando o valor."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "Risco e custo de falha",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Equipou Ghostwrithe mas pool de ES pequeno demais",
+          "gain": "Vida dobrada em ES para uma barra única maior",
+          "loss": "Sem buffer de vida; uma rajada que quebra o ES é fatal sem frasco",
+          "level": "high",
+          "recommendation": "Equipe apenas quando seu ES total (vida+ES) claramente exceder o que sua vida+ES antiga lhe dava."
+        },
+        {
+          "scenario": "Dependeu do frasco de vida como pânico-botão",
+          "gain": "Nenhum - frasco cura 0 de vida",
+          "loss": "Morte em um momento em que você esperava que um frasco te salvasse",
+          "level": "high",
+          "recommendation": "Substitua a dependência de frasco por recarga de ES e ES leech antes de equipar."
+        },
+        {
+          "scenario": "Life leech / regen de vida construídos na árvore",
+          "gain": "Nenhum - esses passivos não fazem nada agora",
+          "loss": "Pontos passivos desperdiçados e um buraco de sustentação",
+          "level": "medium",
+          "recommendation": "Respecie nós de life-leech/regen em recarga de ES, ES leech e nós de ES máx."
+        },
+        {
+          "scenario": "Dano de caos com apenas um pool",
+          "gain": "Caos não pode matar pela vida (vida é 0)",
+          "loss": "Todo o caos atinge a mesma barra de ES que você também deve proteger de físico",
+          "level": "medium",
+          "recommendation": "Sobre-cap de ES e sobreponha resistência a caos; não assuma que caos é de graça."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "Evidência da comunidade e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-ghostwrithe-es",
+          "kind": "Tópico de build do fórum oficial",
+          "question": "Se 100% da minha vida vem do Energy Shield, meus frascos de vida e life leech simplesmente param de funcionar?",
+          "summary": [
+            "Um jogador perguntou se a conversão silenciosamente desativa sua sustentação de vida usual."
+          ],
+          "editorialAnalysis": [
+            "Sim. Uma vez que a Vida Máxima é dobrada no Energy Shield, seu pool de vida é 0, então frascos de vida, life leech e regeneração de vida não têm nada para atuar. O terceiro modificador torna isso explícito. Você deve reconstruir a sustentação no Energy Shield: taxa de recarga, ES leech, ES-on-block, ES regeneration."
+          ],
+          "officialAnswer": [
+            "Substitua a sustentação de vida por sustentação de ES. Empilhe 'Taxa de Recarga de Energy Shield', corte o atraso de início de recarga de ES, e pegue uma fonte de ES leech (ex.: Ghostshroud ou um suporte de ES-leech). Frascos de vida viram decorativos."
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "Como a conversão funciona"
+        },
+        {
+          "sourceId": "forum-ghostwrithe-ci",
+          "kind": "Tópico de fórum da comunidade",
+          "question": "O Ghostwrithe é basicamente uma Chaos Inoculation de graça sem o keystone?",
+          "summary": [
+            "Um leitor queria saber se mesclar vida em ES dá a mesma sensação de imunidade a caos que CI."
+          ],
+          "editorialAnalysis": [
+            "Quase. Com 0 de vida, dano de caos não pode te matar pela vida, então você ganha o benefício estilo CI de 'seguro-contra-caos-na-vida' sem definir a vida como 1. A diferença: seus passivos de vida agora alimentam ES em vez de serem desperdiçados, e você ainda desativa life leech/regen. É adjacente a CI, não idêntico."
+          ],
+          "officialAnswer": [
+            "Trate como adjacente a CI: sobre-cap de ES e adicione resistência a caos, porque agora todos os tipos de dano atingem uma barra de ES. Não assuma que caos é de graça só porque a vida é 0."
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "Builds que usam o Ghostwrithe"
+        },
+        {
+          "sourceId": "maxroll-es-chests",
+          "kind": "Guia / análise",
+          "question": "Devo comprar o Ghostwrithe ou uma Vaal Regalia rara com ES base maior?",
+          "summary": [
+            "Um comprador comparou o único contra um peitoral ES raro bem rolado."
+          ],
+          "editorialAnalysis": [
+            "Se você quer manter um buffer de vida e frascos de vida, uma Vaal Regalia rara é estritamente melhor (ES base maior possível mais sufixos úteis, sem bloqueio de sustentação). O Ghostwrithe só ganha quando você se compromete totalmente com um pool de ES e já tem sustentação de ES. Compre o roll de ES base mais alto de qualquer forma."
+          ],
+          "officialAnswer": [
+            "Escolha o Ghostwrithe só para um build all-in de ES. Caso contrário compre o peitoral raro com maior ES% base e mantenha seu frasco de vida."
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "Usar, vender ou guardar"
+        },
+        {
+          "sourceId": "gamerant-ghostwrithe",
+          "kind": "Guia",
+          "question": "O roll de (20-30)% importa, e posso Vaal-corrompê-lo por um implícito melhor?",
+          "summary": [
+            "Um comprador perguntou quanto o roll de sufixo importa e se a corrupção vale a pena."
+          ],
+          "editorialAnalysis": [
+            "O roll de desvio de (20-30)% é quase irrelevante quando a vida é 0; o que importa é o Energy Shield base. Uma corrupção com Vaal Orb pode adicionar um implícito de ES% ou recarga de ES que realmente ajuda, mas consome um único e pode brickar. Corrompa apenas uma cópia substituível."
+          ],
+          "officialAnswer": [
+            "Ignore o roll de sufixo ao comprar; pague pela ES base. Corrompa apenas uma cópia extra por um implícito de ES%."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "Tooltip atual e faixas de roll"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Problemas e respostas diretas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Equipei o Ghostwrithe e meu frasco de vida não faz nada",
+          "directAnswer": [
+            "Esperado. Sua vida agora é 0, dobrada no Energy Shield, e o item também bloqueia vida de frascos. Substitua a dependência de frasco por recarga de ES e ES leech."
+          ],
+          "checks": [
+            "Abra o painel de Personagem e confirme que Vida Máxima está 0.",
+            "Verifique se seu Energy Shield total equivale a ES antigo + vida antiga.",
+            "Adicione taxa de recarga de ES e uma fonte de ES leech."
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "Como a conversão funciona"
+            }
+          ]
+        },
+        {
+          "symptom": "Moro instantaneamente a rajadas que antes sobrevivia",
+          "directAnswer": [
+            "Você perdeu seu buffer de vida. Com um pool de ES, um acerto que quebra o ES é imediatamente letal. Aumente o pool (mais ES, ES%) e sobreponha recarga/leech antes de confiar nele."
+          ],
+          "checks": [
+            "Compare o ES total após a conversão com sua vida+ES antiga.",
+            "Adicione 'atraso de início de recarga de Energy Shield reduzido' e taxa de recarga."
+          ]
+        },
+        {
+          "symptom": "Meu suporte de life leech parece morto",
+          "directAnswer": [
+            "Está. Life leech devolve vida que você não tem mais. Troque por um suporte de Energy Shield leech ou um efeito de ES-on-hit."
+          ],
+          "checks": [
+            "Confirme se o suporte concede life leech (desativado) vs ES leech (funciona).",
+            "Use Ghostshroud ou uma gema de ES-leech em vez disso."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Passagem em vídeo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Demonstração de Energy Shield-from-Life com Ghostwrithe (build da comunidade)",
+          "url": "https://youtu.be/ToDEiQfo6mM",
+          "creator": "Criador comunitário de PoE2",
+          "takeaway": "Demonstra um mago de ES rodando Ghostwrithe, mostrando o pool mesclado, a configuração de recarga de ES e por que a sustentação de vida é descartada. Rótulos de seção são aproximados.",
+          "timestamps": [
+            {
+              "label": "Por que mesclar vida em ES",
+              "time": "00:00"
+            },
+            {
+              "label": "Configuração de recarga e leech de ES",
+              "time": "04:15"
+            },
+            {
+              "label": "Mapeando com um pool de ES",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "Galeria de mídia",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Tooltip atual do Ghostwrithe (Vaal Regalia, 100% Life-from-ES)",
+          "note": "Mostre os três modificadores e a base alta de Energy Shield. Observe que Vida Máxima está 0 no painel de Personagem.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "caption": "Vida+ES mesclados em um pool",
+          "note": "Ilustre 2500 de vida + 3000 de ES virando 5500 de ES e 0 de vida após equipar.",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Conteúdo conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "O material usado na Verisium Anvil para Runeforging, incluindo um Ghostwrithe Runeforged com ES base maior.",
+          "href": "/en/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "Encantar a runa certa pode adicionar um afixo de ES% ou recarga que sinergiza com o pool mesclado.",
+          "href": "/en/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "vaal-orb",
+          "contentType": "item",
+          "title": "Vaal Orb",
+          "description": "Usado para corromper o Ghostwrithe por um possível implícito de ES% ou recarga de ES; corrompa apenas uma cópia substituível.",
+          "href": "/en/items/vaal-orb/"
+        },
+        {
+          "contentId": "architects-orb",
+          "contentType": "item",
+          "title": "Architect's Orb",
+          "description": "Pode adicionar um implícito adicional à base Vaal Regalia, uma forma de empurrar o pool de ES mesclado para cima.",
+          "href": "/en/items/architects-orb/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Histórico de patch e atual vs legado",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "Atual (0.5.4)",
+          "changes": [
+            "Ghostwrithe é uma Vaal Regalia única com: 100% da Vida Máxima vem do Energy Shield; (20-30)% do Dano de Acerto é absorvido pelo Energy Shield antes da Vida; Não pode dar Leech nem Regenerar Vida, e não pode ganhar Vida de Frascos. Esta é a única versão atual."
+          ]
+        },
+        {
+          "version": "Introdução no Early Access (0.2.0)",
+          "changes": [
+            "Ghostwrithe entrou no Early Access do Path of Exile 2 como uma única de corpo de conversão. Os três modificadores centrais têm sido estáveis desde a introdução; verifique os tiers de roll exatos no jogo conforme passam de balanceamento ocorram."
+          ]
+        },
+        {
+          "version": "Runeforging (liga 0.5.0 - Runes of Aldur)",
+          "changes": [
+            "Uniques de baixo nível tornaram-se Runeforgeable. Ghostwrithe (nível 1) qualifica-se: os três modificadores são retidos e a base Vaal Regalia ganha Energy Shield maior mais uma base Runeforged."
+          ]
+        },
+        {
+          "version": "Nota sobre Divine Orb e corrupção",
+          "changes": [
+            "O roll de sufixo é uma faixa fixa, então um Divine Orb não muda o tier de (20-30)%. Uma corrupção com Vaal Orb pode adicionar um implícito de ES% ou recarga de ES mas consome um único - corrompa uma cópia substituível."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Fontes e verificação",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFICIAL",
+          "description": "Notas de Patch 0.5.4 do Path of Exile 2 (fórum oficial)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "WIKI",
+          "description": "PoE2Wiki - Ghostwrithe (stats base, mecânica)",
+          "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+        },
+        {
+          "label": "TOOL",
+          "description": "poedb - Ghostwrithe (dados)",
+          "url": "https://poedb.tw/us/Ghostwrithe"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Fórum oficial - discussão de conversão ES do Ghostwrithe",
+          "url": "https://www.pathofexile.com/forum/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Comunidade - demonstração de Energy Shield-from-Life com Ghostwrithe",
+          "url": "https://youtu.be/ToDEiQfo6mM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de alterações",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicação inicial cobrindo a matemática de conversão de vida em Energy Shield do Ghostwrithe, perda de sustentação de vida, defesa somente por ES, exemplos de build, valor do roll e custo de falha."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-verisium",
+    "runes-and-soul-cores",
+    "vaal-orb",
+    "architects-orb"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Notas de Patch 0.5.4 do Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-ghostwrithe",
+      "label": "PoE2Wiki - Ghostwrithe",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Ghostwrithe"
+    },
+    {
+      "id": "poedb-ghostwrithe",
+      "label": "poedb - Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Ghostwrithe"
+    },
+    {
+      "id": "forum-ghostwrithe",
+      "label": "Fórum Oficial do Path of Exile 2 (discussão do Ghostwrithe)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/"
+    },
+    {
+      "id": "video-ghostwrithe",
+      "label": "Demonstração da comunidade - Energy Shield-from-Life com Ghostwrithe",
+      "sourceType": "other",
+      "url": "https://youtu.be/ToDEiQfo6mM"
+    }
+  ],
+  "seo": {
+    "title": "Guia do Ghostwrithe: Conversão de Vida em Energy Shield, Desvio de Acertos e Defesa Somente por ES (PoE2 0.5)",
+    "description": "Como o Ghostwrithe funciona no Path of Exile 2: a conversão de 100% da Vida Máxima em Energy Shield, o desvio de (20-30)% do dano de acerto para ES antes da Vida, a perda de sustentação por life leech/regen/frasco, e a defesa resultante de pool único por ES.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ghostwrithe",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "id": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "slug": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+  "locale": "pt-br",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.1.0f: Correções de Névoa de Delirium, Ritual, Xesht e Joia Atemporal",
+  "shortTitle": "0.1.0f Correções de Delirium e Ritual",
+  "summary": "O 0.1.0f foi o primeiro pacote de correções após a semana do 0.1.0e: corrigiu monstros Raros pausando a Névoa de Delirium cedo, a regra de pausa do Baú Forte, uma interação entre Joia Atemporal e The Adorned, recursos acima do limite, Altares de Ritual, as mãos infinitas de Xesht e diversos bloqueadores de missão — alguns exigindo reinício do cliente.",
+  "description": "Explicação do 0.1.0f: bugs de pausa da Névoa de Delirium, linha do tempo da pausa do Baú Forte, correção de Joia Atemporal/Adorned, limite de recursos, Altar de Ritual, Xesht e bloqueadores de missão, além da implantação sem reinício — e o que ainda vale no 0.5.4e.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.1.0f",
+  "patch": "0.1.0f",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/dream-fragments-hero.webp",
+  "cardImage": "/images/items/dream-fragments-hero.webp",
+  "imageAlt": "Fragmentos de Sonho associados ao conteúdo de Delirium.",
+  "tags": [
+    "patch",
+    "0-1-0f",
+    "delirium",
+    "ritual",
+    "xesht",
+    "bug-fix"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "strongbox-pause",
+      "status": "changed-later",
+      "currentSummary": [
+        "A regra de pausa do Baú Forte (10s) do 0.1.0f é histórica; patches posteriores alteraram o comportamento do Baú Forte novamente."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "timeless-jewel-adorned",
+      "status": "changed-later",
+      "currentSummary": [
+        "A interação Joia Atemporal / The Adorned corrigida no 0.1.0f deve ser re-verificada contra o comportamento atual do cliente."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "xesht-attacks",
+      "status": "changed-later",
+      "currentSummary": [
+        "Os padrões de ataque de Xesht foram corrigidos no 0.1.0f e reajustados por atualizações posteriores de chefes."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Resumo rápido",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "O 0.1.0f foi o primeiro pacote de correções após a agitada semana do 0.1.0e. Ele tratou da Névoa de Delirium pausando cedo quando um monstro Raro aparecia antes da abertura do espelho, a regra de pausa ao abrir o Baú Forte, uma interação de modificador de Joia Atemporal com The Adorned, recursos de Vida/ES/Mana acima do limite, Altares de Ritual que às vezes não ativavam, Xesht arremessando mãos infinitas e diversos bloqueadores de missão.",
+        "Algumas correções foram sem reinício; outras exigiram reinício do cliente para se aplicar. Esta página separa o que foi correção de bug do que se tornou comportamento atual de chefe ou liga."
+      ],
+      "bullets": [
+        "Correções de pausa da Névoa de Delirium",
+        "Regra de pausa do Baú Forte",
+        "Correção de Joia Atemporal/Adorned",
+        "Correções de Altar de Ritual, Xesht e missões"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Aviso histórico",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — a era 0.1.0",
+      "baselineNote": "Afirmações de status atual medidas contra o cliente 0.5.4e.",
+      "paragraphs": [
+        "O 0.1.0f é um pacote de correções da semana de lançamento. Seu valor de pausa do Baú Forte e os padrões de Xesht são históricos; patches posteriores reescreveram ambos."
+      ],
+      "bullets": [
+        "O 0.1.0f é um pacote de correções da semana de lançamento",
+        "Seu valor de pausa do Baú Forte e os padrões de Xesht são históricos e foram reescritos depois"
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 3,
+      "title": "Problema vs correção",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Principais correções do 0.1.0f e seu status atual.",
+      "columns": [
+        {
+          "key": "issue",
+          "label": "Problema"
+        },
+        {
+          "key": "symptom",
+          "label": "Sintoma do jogador"
+        },
+        {
+          "key": "fix",
+          "label": "Correção 0.1.0f"
+        },
+        {
+          "key": "restart",
+          "label": "Reinício necessário"
+        },
+        {
+          "key": "now",
+          "label": "Atual (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "issue": "Pausa da Névoa de Delirium",
+          "symptom": "Névoa pausou antes de abrir o espelho",
+          "fix": "Pausa de monstro Raro corrigida",
+          "restart": "Não",
+          "now": "Delirium reformulado desde então"
+        },
+        {
+          "issue": "Pausa do Baú Forte",
+          "symptom": "Névoa persistiu ao abrir",
+          "fix": "Pausa definida para 10s",
+          "restart": "Não",
+          "now": "Baú Forte alterado depois"
+        },
+        {
+          "issue": "Joia Atemporal/Adorned",
+          "symptom": "Escalonamento incorreto de modificador",
+          "fix": "Interação corrigida",
+          "restart": "Não",
+          "now": "Re-verificar ao vivo"
+        },
+        {
+          "issue": "Mãos de Xesht",
+          "symptom": "Arremessos de mãos infinitos",
+          "fix": "Ataque corrigido",
+          "restart": "Não",
+          "now": "Chefe reajustado"
+        }
+      ]
+    },
+    {
+      "id": "boss-impact",
+      "order": 4,
+      "title": "Xesht e correções de chefes",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "Xesht, We That Are One",
+          "detail": "O bug de arremesso de mãos infinitas foi corrigido no 0.1.0f; os padrões de ataque atuais são ajustados por atualizações posteriores de chefes, então use a página de chefe ao vivo.",
+          "action": "Faça uma referência cruzada com a página atual do chefe Xesht."
+        },
+        {
+          "name": "Zalmarath / Rolling Slam / Missão do Mad Wolf",
+          "detail": "Correções específicas trataram disso durante o 0.1.0f.",
+          "action": "Verifique contra as páginas atuais de chefe/missão."
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "Impacto em builds e ligas",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "A correção Joia Atemporal / The Adorned importou para empilhamento de builds baseadas em joias; a correção de recursos acima do limite evitou estados de recurso impossíveis de certos modificadores.",
+        "Os comportamentos de Delirium e Ritual mudaram novamente em patches posteriores, então a orientação específica de liga do 0.1.0f é histórica."
+      ],
+      "bullets": [
+        "Correção de empilhamento de joias",
+        "Correção de recursos acima do limite",
+        "Delirium/Ritual reformulados depois"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "Pausa do Baú Forte antes vs depois",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Pré-0.1.0f",
+      "oldText": "Abrir um Baú Forte podia pausar a Névoa de Delirium por cerca de cinco segundos, fazendo a Névoa persistir em lugares inconvenienttes.",
+      "newLabel": "Após 0.1.0f",
+      "newText": "A pausa ao abrir o Baú Forte foi definida para dez segundos, uma regra histórica deliberada que patches posteriores alteraram novamente."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "Antes vs agora",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Névoa de Delirium",
+          "thenText": "Bugs de pausa no lançamento do 0.1.0f.",
+          "nowText": "Sistema de Delirium reformulado desde então; as regras atuais diferem."
+        },
+        {
+          "aspect": "Xesht",
+          "thenText": "Bug de mãos infinitas corrigido no 0.1.0f.",
+          "nowText": "Chefe reajustado por atualizações posteriores."
+        },
+        {
+          "aspect": "Joia Atemporal/Adorned",
+          "thenText": "Interação corrigida no 0.1.0f.",
+          "nowText": "Re-verificar contra o cliente ao vivo."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "Aplicabilidade atual (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Regra de pausa do Baú Forte",
+          "status": "changed-later",
+          "currentSummary": "A regra de 10s era histórica; o Baú Forte mudou depois.",
+          "supersededBy": "0.2+",
+          "affectedContent": "Guias de Baú Forte"
+        },
+        {
+          "topic": "Joia Atemporal/Adorned",
+          "status": "changed-later",
+          "currentSummary": "Corrigido no 0.1.0f; re-verificar ao vivo.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Páginas de build de joia"
+        },
+        {
+          "topic": "Padrões de Xesht",
+          "status": "changed-later",
+          "currentSummary": "Corrigido no 0.1.0f; chefe reajustado desde então.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Página do chefe Xesht"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Evidência da comunidade",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Fórum (Delirium)",
+          "context": "Jogadores perguntaram por que o espelho não mostrava monstros.",
+          "quote": "Abro o espelho de Delirium e não tem nada.",
+          "analysis": "Corresponde ao bug de pausa antecipada por monstro Raro corrigido no 0.1.0f; o Delirium atual é diferente."
+        },
+        {
+          "source": "Reddit (Adorned)",
+          "context": "Jogadores perguntaram se The Adorned deveria escalar modificadores de Joia Atemporal.",
+          "quote": "O The Adorned deveria multiplicar este mod de Joia Atemporal?",
+          "analysis": "A correção do 0.1.0f tratou a interação incorreta; re-verificar contra o cliente ao vivo."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "Mudanças posteriores a observar",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "delirium-guide",
+          "kind": "guide",
+          "issue": "Delirium reformulado após o 0.1.0f.",
+          "action": "Re-verificar as regras da Névoa contra o 0.5.4e.",
+          "status": "queued"
+        },
+        {
+          "contentId": "xesht-boss-page",
+          "kind": "boss",
+          "issue": "Xesht reajustado desde o 0.1.0f.",
+          "action": "Atualizar com os padrões atuais.",
+          "status": "reviewing"
+        },
+        {
+          "contentId": "jewel-build",
+          "kind": "build",
+          "issue": "Interação do Adorned mudou.",
+          "action": "Re-verificar escalonamento ao vivo.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "Conteúdo afetado",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Guia de Delirium",
+          "type": "guide",
+          "trigger": "Pausa da Névoa corrigida",
+          "action": "Re-verificar as regras atuais da Névoa.",
+          "status": "queued"
+        },
+        {
+          "name": "Página do chefe Xesht",
+          "type": "boss",
+          "trigger": "Correção de mãos infinitas",
+          "action": "Atualizar com os padrões atuais.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Guia de Ritual",
+          "type": "guide",
+          "trigger": "Correção de ativação do Altar",
+          "action": "Confirmar o comportamento atual do altar.",
+          "status": "queued"
+        },
+        {
+          "name": "Build de Joia Atemporal",
+          "type": "build",
+          "trigger": "Correção de interação do Adorned",
+          "action": "Re-verificar escalonamento.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Vídeo histórico",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — comunicação oficial de patch",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Comunicação oficial desta família de versões. Leia junto com as notas do patch para o que mudou e como patches posteriores reescreveram isso.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "Visão geral do patch",
+              "time": "00:30"
+            },
+            {
+              "label": "Mudanças de loot e sistema",
+              "time": "04:10"
+            },
+            {
+              "label": "Impacto atual",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Perguntas frequentes",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Por que não há monstro depois que abro o espelho de Delirium?",
+          "answer": [
+            "Era um bug de pausa por monstro Raro da era 0.1.0f. O Delirium foi reformulado desde então, então o comportamento atual é diferente — consulte o guia de Delirium ao vivo."
+          ]
+        },
+        {
+          "question": "O The Adorned deveria multiplicar meu modificador de Joia Atemporal?",
+          "answer": [
+            "Uma interação incorreta foi corrigida no 0.1.0f. Como o comportamento de joias mudou desde então, re-verifique o escalonamento exato contra o cliente atual em vez de presumir."
+          ]
+        },
+        {
+          "question": "O 0.1.0f exigiu reinício do cliente?",
+          "answer": [
+            "Algumas correções foram sem reinício e algumas exigiram reinício para se aplicar. Se uma correção não apareceu após o patch, o reinício era o passo esperado na época."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Fontes e verificação",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Notas oficiais do patch 0.1.0f do Path of Exile 2",
+          "description": "Tópico oficial de patch com as mudanças declaradas da versão, ordem de implantação e esclarecimentos posteriores.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+        },
+        {
+          "label": "Índice do fórum de Early Access do Path of Exile 2",
+          "description": "Índice de todos os tópicos oficiais de patch e hotfix de EA referenciados nesta página.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Dados atuais de habilidades, itens, chefes e modificadores conferidos contra o cliente ativo para afirmações de aplicabilidade atual.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Entradas de banco de dados para as habilidades, itens e modificadores referenciados neste artigo.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Guias comunitários de build e sistema usados para checagens cruzadas de impacto ao jogador, não como fonte primária de fatos.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Registro de mudanças",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicado o artigo histórico de patch com verificações de aplicabilidade atual contra o cliente 0.5.4e."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3686378",
+      "label": "Notas oficiais do patch 0.1.0f do Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3686378"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Índice do fórum de Early Access do Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.0f: Correções de Névoa de Delirium, Ritual, Xesht e Joia Atemporal",
+    "description": "Correções do 0.1.0f: pausa da Névoa de Delirium, Baú Forte, Joia Atemporal, Altar de Ritual, Xesht e missões.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-1-0f-delirium-ritual-xesht-fixes",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

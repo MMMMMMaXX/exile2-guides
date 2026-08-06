@@ -1,5 +1,6 @@
 /** 文件职责：提供六类内容共用的最小静态详情路由，视觉文章模板将在后续任务扩展。 */
-import { useParams } from "react-router";
+import contentPageLoadersModule from "virtual:content-page-loaders";
+import contentRoutesModule from "virtual:content-routes";
 
 import type { Route } from "./+types/content-detail";
 import { ArticleLayout } from "../../components/layout/article-layout";
@@ -46,11 +47,21 @@ import { StructuredData } from "../../components/seo/structured-data";
 import {
   contentRoutePath,
   contentTypeSegments,
+  type ContentLocale,
   type ContentType,
   supportedLocales,
 } from "../../lib/content/constants";
-import type { StaticContentPage } from "../../lib/content/content-page";
-import { locallyVisibleContentPages as contentPages } from "../../lib/content/runtime-pages";
+import type {
+  StaticContentCatalogPageMap,
+  StaticContentMeta,
+  StaticContentPage,
+  StaticContentRouteMap,
+} from "../../lib/content/content-page";
+import { loadContentCatalog } from "../../lib/content/content-catalog";
+import { loadStaticContentCatalogForLocale } from "../../lib/content/content-catalog.server";
+import { loadStaticContentPages } from "../../lib/content/content-page.server";
+import { getCategoryLabel } from "../../lib/i18n/category-copy";
+import { t } from "../../lib/i18n/ui";
 import type {
   BossFrontMatter,
   BuildFrontMatter,
@@ -69,6 +80,11 @@ import { createArticleJsonLd } from "../../lib/seo/structured-data";
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { isV4Subtype } from "../../lib/content/v4-taxonomy";
 
+const contentRoutes = contentRoutesModule as StaticContentRouteMap;
+const contentPageLoaders = contentPageLoadersModule as Readonly<
+  Record<string, () => Promise<{ default: StaticContentPage }>>
+>;
+
 const contentTypeBySegment = new Map<string, ContentType>(
   Object.entries(contentTypeSegments).map(([contentType, segment]) => [
     segment,
@@ -76,19 +92,10 @@ const contentTypeBySegment = new Map<string, ContentType>(
   ]),
 );
 
-const contentTypeLabels: Record<ContentType, string> = {
-  boss: "Bosses",
-  build: "Builds",
-  guide: "Guides",
-  item: "Items",
-  patch: "Patch Notes",
-  skill: "Skills",
-};
-
-/** 校验动态参数并从构建期虚拟模块读取对应的已发布页面。 */
-function getPage(
+/** 校验动态参数并生成按文章拆分模块共用的静态路由键。 */
+function getContentRoute(
   params: Record<string, string | undefined>,
-): StaticContentPage | undefined {
+): string | undefined {
   const { locale, section, slug } = params;
   const contentType = section ? contentTypeBySegment.get(section) : undefined;
   if (
@@ -100,13 +107,65 @@ function getPage(
     return undefined;
   }
 
-  return contentPages[
-    contentRoutePath(
-      locale as (typeof supportedLocales)[number],
-      contentType,
-      slug,
-    )
-  ];
+  return contentRoutePath(
+    locale as (typeof supportedLocales)[number],
+    contentType,
+    slug,
+  );
+}
+
+/** 从详情正文和目录卡片提取 Metadata，避免客户端导入全量 Metadata 索引。 */
+function getPageMeta(
+  page: StaticContentPage,
+  catalogPage: StaticContentCatalogPageMap[string] | undefined,
+): StaticContentMeta {
+  const { frontMatter } = page;
+  return {
+    contentId: frontMatter.contentId,
+    contentType: frontMatter.contentType,
+    locale: frontMatter.locale,
+    slug: frontMatter.slug,
+    title: frontMatter.title,
+    seoTitle: frontMatter.seoTitle,
+    seoDescription: frontMatter.seoDescription,
+    draft: frontMatter.draft,
+    ...(frontMatter.image ? { image: frontMatter.image } : {}),
+    ...(frontMatter.imageAlt ? { imageAlt: frontMatter.imageAlt } : {}),
+    relatedContentIds: frontMatter.relatedContentIds,
+    ...(catalogPage?.noindex === undefined
+      ? {}
+      : { noindex: catalogPage.noindex }),
+  };
+}
+
+/** 预渲染时在服务端提供正文和关联卡片；浏览器端不把全量正文索引打入共享包。 */
+export async function loader({ params }: Route.LoaderArgs) {
+  const route = getContentRoute(params);
+  const [pages, catalog] = await Promise.all([
+    loadStaticContentPages(),
+    loadStaticContentCatalogForLocale(params.locale),
+  ]);
+  const page = route ? pages[route] : undefined;
+  const catalogPage = route ? catalog[route] : undefined;
+  return {
+    meta: page ? getPageMeta(page, catalogPage) : undefined,
+    page,
+    relatedCards: page ? getRelatedCards(page, catalog) : [],
+  };
+}
+
+/** 读取当前文章的静态拆分模块；不请求 Markdown、API 或运行时服务。 */
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  const route = getContentRoute(params);
+  const loadPage = route ? contentPageLoaders[route] : undefined;
+  const catalog = await loadContentCatalog(params.locale);
+  const page = loadPage ? (await loadPage()).default : undefined;
+  const catalogPage = route ? catalog[route] : undefined;
+  return {
+    meta: page ? getPageMeta(page, catalogPage) : undefined,
+    page,
+    relatedCards: page ? getRelatedCards(page, catalog) : [],
+  };
 }
 
 /** 判断两段 URL 是否对应 V4 的受控子类聚合页；真实详情始终优先于骨架聚合页。 */
@@ -135,15 +194,16 @@ function V4SubtypeSkeleton({
   subtype: string;
 }) {
   const title = subtype.replace(/-/g, " ");
+  const typeLabel = getCategoryLabel(locale, contentType);
   const sections = [
-    "Overview",
-    "Available entries",
-    "Connections",
-    "Publication rule",
+    t(locale, "subtype.overview"),
+    t(locale, "subtype.availableEntries"),
+    t(locale, "subtype.connections"),
+    t(locale, "subtype.publicationRule"),
   ];
   return (
     <main className="v4-subtype-page" data-prerender-content="true">
-      <PageHero eyebrow="Subtype aggregation" title={title} />
+      <PageHero eyebrow={t(locale, "subtype.eyebrow")} title={title} />
       <div className="page-shell v4-subtype-layout">
         <StickyToc
           items={sections.map((label, index) => ({
@@ -158,18 +218,23 @@ function V4SubtypeSkeleton({
               id={`v4-subtype-${index + 1}`}
               key={label}
             >
-              <p className="section-kicker">Module {index + 1}</p>
+              <p className="section-kicker">
+                {t(locale, "subtype.module", { n: String(index + 1) })}
+              </p>
               <h2>{label}</h2>
               {index === 1 ? (
                 <div className="content-card-grid">
                   <CatalogCard
-                    meta="Development index row · no detail page"
-                    title={`${title} skeleton row`}
+                    meta={t(locale, "subtype.devIndexRow")}
+                    title={t(locale, "subtype.skeletonRow", { title })}
                   />
                 </div>
               ) : (
                 <EmptyState
-                  title={`${label} is ready for reviewed ${contentType} content`}
+                  title={t(locale, "subtype.readyForContent", {
+                    label,
+                    type: typeLabel,
+                  })}
                 />
               )}
             </section>
@@ -177,10 +242,13 @@ function V4SubtypeSkeleton({
         </article>
         <FactsRail
           facts={[
-            { label: "Module", value: contentType },
-            { label: "Subtype", value: title },
-            { label: "Locale", value: locale },
-            { label: "Publishing", value: "No thin details" },
+            { label: t(locale, "subtype.moduleLabel"), value: contentType },
+            { label: t(locale, "subtype.subtypeLabel"), value: title },
+            { label: t(locale, "subtype.localeLabel"), value: locale },
+            {
+              label: t(locale, "subtype.publishingLabel"),
+              value: t(locale, "subtype.noThinDetails"),
+            },
           ]}
         />
       </div>
@@ -193,8 +261,8 @@ function getBreadcrumbs(page: StaticContentPage): BreadcrumbItem[] {
   const { contentType, locale, slug, title } = page.frontMatter;
   const sectionPath = `/${locale}/${contentTypeSegments[contentType]}/`;
   return [
-    { label: locale === "zh-cn" ? "首页" : "Home", path: `/${locale}/` },
-    { label: contentTypeLabels[contentType], path: sectionPath },
+    { label: t(locale, "nav.home"), path: `/${locale}/` },
+    { label: getCategoryLabel(locale, contentType), path: sectionPath },
     { label: title, path: `${sectionPath}${slug}/` },
   ];
 }
@@ -220,12 +288,13 @@ function isItemPage(
   return page.frontMatter.contentType === "item";
 }
 
-/** 从已内联的同语言公开页面派生关联卡片，草稿不会存在于该虚拟模块。 */
-function getRelatedCards(page: StaticContentPage) {
+/** 从轻量目录派生关联卡片，草稿不会进入生产目录。 */
+function getRelatedCards(
+  page: StaticContentPage,
+  catalog: StaticContentCatalogPageMap,
+) {
   return page.frontMatter.relatedContentIds.flatMap((contentId) => {
-    const relatedPage = (
-      Object.values(contentPages) as StaticContentPage[]
-    ).find(
+    const relatedPage = Object.values(catalog).find(
       (candidate) =>
         candidate.frontMatter.contentId === contentId &&
         candidate.frontMatter.locale === page.frontMatter.locale,
@@ -244,7 +313,10 @@ function getRelatedCards(page: StaticContentPage) {
         meta: `Patch ${frontMatter.patch} · Updated ${frontMatter.updatedAt}`,
         summary: frontMatter.summary,
         title: frontMatter.title,
-        typeLabel: contentTypeLabels[frontMatter.contentType],
+        typeLabel: getCategoryLabel(
+          frontMatter.locale,
+          frontMatter.contentType,
+        ),
         ...(frontMatter.image
           ? {
               image: frontMatter.image,
@@ -259,8 +331,8 @@ function getRelatedCards(page: StaticContentPage) {
 }
 
 /** 从已校验内容生成静态页面标题和描述。 */
-export function meta({ params }: Route.MetaArgs) {
-  const page = getPage(params);
+export function meta({ loaderData, params }: Route.MetaArgs) {
+  const page = loaderData.meta;
   if (!page) {
     const subtype = getSubtypeRoute(params);
     if (subtype) {
@@ -276,68 +348,55 @@ export function meta({ params }: Route.MetaArgs) {
         title: `${subtype.subtype} | Exile2 Guides`,
       });
     }
-    return getNotFoundMeta(params.locale === "zh-cn" ? "zh-cn" : "en");
+    return getNotFoundMeta(params.locale as ContentLocale);
   }
   const alternatePaths = Object.fromEntries(
-    (Object.values(contentPages) as StaticContentPage[])
-      .filter(
-        (candidate) =>
-          candidate.frontMatter.contentId === page.frontMatter.contentId,
-      )
+    Object.values(contentRoutes)
+      .filter((candidate) => candidate.contentId === page.contentId)
       .map((candidate) => [
-        candidate.frontMatter.locale,
+        candidate.locale,
         contentRoutePath(
-          candidate.frontMatter.locale,
-          candidate.frontMatter.contentType,
-          candidate.frontMatter.slug,
+          candidate.locale,
+          candidate.contentType,
+          candidate.slug,
         ),
       ]),
   );
   // 已发布详情页使用按 slug 生成的专属 OG 图（脚本：scripts/generate-og-images.mjs），
   // 经 Vite 指纹管线后通过 resolveImageAsset 取得带哈希的 URL；
   // 草稿预览页（仅开发期存在）回退到主视觉指纹 URL或站点默认图，避免引用尚未生成的文件。
-  const ogSourcePath = `/images/og/${contentTypeSegments[page.frontMatter.contentType]}/${page.frontMatter.slug}.webp`;
-  const ogImagePath = page.frontMatter.draft
-    ? page.frontMatter.image
-      ? resolveImageAsset(page.frontMatter.image)
+  const ogSourcePath = `/images/og/${contentTypeSegments[page.contentType]}/${page.slug}.webp`;
+  const ogImagePath = page.draft
+    ? page.image
+      ? resolveImageAsset(page.image)
       : undefined
     : resolveImageAsset(ogSourcePath);
   return createSeoMetadata({
     alternatePaths,
-    description: page.frontMatter.seoDescription,
+    description: page.seoDescription,
     ...(ogImagePath ? { imagePath: ogImagePath } : {}),
-    locale: page.frontMatter.locale,
-    path: contentRoutePath(
-      page.frontMatter.locale,
-      page.frontMatter.contentType,
-      page.frontMatter.slug,
-    ),
-    ...(page.frontMatter.draft ||
-    page.buildArticle?.seo.noindex ||
-    page.bossArticle?.seo.noindex ||
-    page.itemArticle?.seo.noindex ||
-    page.skillArticle?.seo.noindex ||
-    page.guideArticle?.seo.noindex ||
-    page.patchArticle?.seo.noindex
-      ? { robots: "noindex, follow" }
-      : {}),
-    title: page.frontMatter.seoTitle,
+    locale: page.locale,
+    path: contentRoutePath(page.locale, page.contentType, page.slug),
+    ...(page.draft || page.noindex ? { robots: "noindex, follow" } : {}),
+    title: page.seoTitle,
     type: "article",
   });
 }
 
 /** 输出构建期已生成的正文；标记用于阻止空壳 HTML 通过发布门禁。 */
-export default function ContentDetailRoute() {
-  const params = useParams();
-  const page = getPage(params);
+export default function ContentDetailRoute({
+  loaderData,
+  params,
+}: Route.ComponentProps) {
+  const page = loaderData.page;
   if (!page) {
     const subtype = getSubtypeRoute(params);
     if (subtype) return <V4SubtypeSkeleton {...subtype} />;
-    return <NotFoundPage locale={params.locale === "zh-cn" ? "zh-cn" : "en"} />;
+    return <NotFoundPage locale={params.locale as ContentLocale} />;
   }
 
   const breadcrumbs = getBreadcrumbs(page);
-  const relatedCards = getRelatedCards(page);
+  const relatedCards = loaderData.relatedCards;
 
   return (
     <>
@@ -348,7 +407,10 @@ export default function ContentDetailRoute() {
       <ArticleLayout
         breadcrumbs={breadcrumbs}
         category={page.frontMatter.contentType}
-        contentType={contentTypeLabels[page.frontMatter.contentType]}
+        contentType={getCategoryLabel(
+          page.frontMatter.locale,
+          page.frontMatter.contentType,
+        )}
         {...(page.frontMatter.image
           ? {
               image: page.frontMatter.image,
@@ -363,7 +425,10 @@ export default function ContentDetailRoute() {
           <ArticleSidebar
             author={page.frontMatter.author}
             categoryHref={`/${page.frontMatter.locale}/${contentTypeSegments[page.frontMatter.contentType]}/`}
-            categoryLabel={contentTypeLabels[page.frontMatter.contentType]}
+            categoryLabel={getCategoryLabel(
+              page.frontMatter.locale,
+              page.frontMatter.contentType,
+            )}
             contentType={page.frontMatter.contentType}
             locale={page.frontMatter.locale}
             patch={page.frontMatter.patch}

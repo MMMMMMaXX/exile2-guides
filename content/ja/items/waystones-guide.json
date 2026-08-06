@@ -1,0 +1,668 @@
+{
+  "id": "waystones-guide",
+  "slug": "waystones-guide",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "ウェイストーンガイド：階層、修正値、維持と失敗マップ",
+  "shortTitle": "ウェイストーン",
+  "summary": "ウェイストーンは、Path of Exile 2 のエンドゲーム「アトラス」に入るための使い捨ての鍵です。このガイドでは、階層の進行、修正値が難易度とドロップに与える影響、高レアリティと維持が同義ではない理由、そしてマップが失敗した際に失うものについて解説します。",
+  "description": "Path of Exile 2 のウェイストーンに関する出典付きリファレンス：階層とエリアの対応、修正値の価値/危険度マトリックス、維持戦略、失敗マップでの損失、そして T15/T16 の頂点ルール。",
+  "itemType": "currency",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "endgame",
+    "atlas",
+    "waystone"
+  ],
+  "itemCategory": "waystones",
+  "subcategoryId": "atlas-progression",
+  "itemClass": "map-item",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "waystones-guide"
+  ],
+  "heroImage": "/images/items/waystones-hero.webp",
+  "cardImage": "/images/items/waystones-hero.webp",
+  "imageAlt": "Endgame map item icon from Path of Exile 2 - a T16 map representing the Waystone progression pinnacle used to open Atlas maps",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "ウェイストーンはアトラスのマップを1つ開くために消費され、ウェイストーン1つにつき1回の挑戦となります。階層 1〜16 はモンスターのレベルと難易度を引き上げます。修正値はプラス効果（接頭辞）とマイナス効果（接尾辞）を追加し、同時に「ウェイストーンドロップ率」も引き上げます。",
+      "calloutDetail": [
+        "維持は、ドロップ率の接尾辞、アトラスのパッシブ、そして死なないことからもたらされます。レアリティだけではありません。",
+        "失敗（未達成）したマップでも、ウェイストーンとそこに装着されたタブレットは消費されます。"
+      ],
+      "answers": [
+        {
+          "label": "階層を上げる",
+          "text": [
+            "クリアできるマップを走り、同じ階層のウェイストーン3つをリフォージ台で強化しましょう。"
+          ]
+        },
+        {
+          "label": "維持",
+          "text": [
+            "ウェイストーンドロップ率を追加する接尾辞を優先し、アトラスのポイントを数量系に振りましょう。"
+          ]
+        },
+        {
+          "label": "避けるべき",
+          "text": [
+            "マップ内での死（ウェイストーンを失う）と、ビルドが耐えられないような修正値の過剰強化。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "ウェイストーンの属性 →"
+        },
+        {
+          "href": "#risk-analysis",
+          "label": "失敗マップのリスク →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "クイックファクト",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "階層",
+          "value": "1 to 16",
+          "note": [
+            "階層が上がるごとにモンスターのレベルとマップの難易度が上がります。"
+          ]
+        },
+        {
+          "label": "用途",
+          "value": "One attempt per Waystone",
+          "note": [
+            "マップデバイスにセットされ、達成したかどうかに関わらず消費されます。"
+          ]
+        },
+        {
+          "label": "修正値",
+          "value": "Prefixes + Suffixes",
+          "note": [
+            "接尾辞はマイナス効果を追加しますが、ウェイストーンドロップ率を引き上げます。"
+          ]
+        },
+        {
+          "label": "T16",
+          "value": "Vaal-corrupt a T15",
+          "note": [
+            "リフォージはできません。T15 を汚染して T16 にすることだけが可能です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "ウェイストーンとは",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "ウェイストーンはアトラスのマップノードを開くための消費アイテムです。エンドゲーム進行の骨格であり、マップをクリアすることでアトラスのパッシブポイントを得られ、上位階層が解放されます。"
+      ],
+      "members": [
+        {
+          "id": "waystone-basic",
+          "eyebrow": "進行",
+          "title": "標準ウェイストーン",
+          "sub": "マップノードを開く",
+          "tags": [
+            "atlas",
+            "progress"
+          ],
+          "body": [
+            "ノーマル／マジック／レアのウェイストーンは、それぞれの階層のマップを開きます。レアリティが高いほど修正値の数が多くなります。"
+          ]
+        },
+        {
+          "id": "waystone-tower",
+          "eyebrow": "特殊",
+          "title": "タワーウェイストーン",
+          "sub": "周辺表示 ＋ タブレットドロップ",
+          "tags": [
+            "tower",
+            "tablet"
+          ],
+          "body": [
+            "タワーをクリアすると周囲のアトラスが表示され、確実にプレカーソル・タブレットを1つ入手できます。"
+          ]
+        },
+        {
+          "id": "waystone-corrupted",
+          "eyebrow": "頂点",
+          "title": "汚染／T16 ウェイストーン",
+          "sub": "最高階層",
+          "tags": [
+            "pinnacle",
+            "t16"
+          ],
+          "body": [
+            "T16 は T15 のウェイストーンをヴァール汚染することで到達でき、シタデルに必要です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "ウェイストーンの属性",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "階層",
+          "value": "1 - 16",
+          "notes": [
+            "モンスターのレベルとマップの難易度を決定します。階層5のウェイストーンではモンスターがおおよそレベル70になります。"
+          ]
+        },
+        {
+          "label": "挑戦回数",
+          "value": "One per Waystone",
+          "notes": [
+            "クリアしても失敗しても、ウェイストーンは消費されます。"
+          ]
+        },
+        {
+          "label": "接頭辞",
+          "value": "Upsides",
+          "notes": [
+            "モンスター増加、ゴールド、レアリティ、パックサイズなど。概ね有利に働きます。"
+          ]
+        },
+        {
+          "label": "接尾辞",
+          "value": "Downsides + drop chance",
+          "notes": [
+            "呪いやモンスターの追加ダメージなどですが、それぞれがウェイストーンドロップ率を加算します。"
+          ]
+        },
+        {
+          "label": "ウェイストーンドロップ率",
+          "value": "0% - 700%",
+          "notes": [
+            "維持を支えるステータスです。接尾辞、レアリティ、アトラスのパッシブによって上昇します。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "ウェイストーンの入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "ウェイストーンは複数の経路からプールに入り、そのプールが枯渇しないように保つことが目標です。"
+      ],
+      "routes": [
+        {
+          "label": "マップのボスとレア",
+          "body": [
+            "維持の主な供給源です。ボスはほぼ確実にウェイストーンをドロップし、レアやマップ達成でも追加されます。"
+          ]
+        },
+        {
+          "label": "ドリアニ／キャンペーン報酬",
+          "body": [
+            "キャンペーン後には無料のウェイストーンが1つ与えられ、階層をクリアするごとにスキルブックも入手できます。"
+          ]
+        },
+        {
+          "label": "リフォージ台",
+          "body": [
+            "同じ階層かつ同じレアリティのウェイストーン3つを合わせて、1階層上のものを作ります（T15からT16への昇格は不可）。"
+          ]
+        },
+        {
+          "label": "ヴァールのオーブ（T15）",
+          "body": [
+            "T15 のウェイストーンを汚染し、T16 になる可能性を狙います。不確実ですが、T16 へ至る唯一の経路です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 60,
+      "title": "ウェイストーンの使い方",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "マップノードを選ぶ",
+          "body": [
+            "使用予定の階層でクリアできるノードを選びます。"
+          ]
+        },
+        {
+          "label": "ウェイストーンをセットする",
+          "body": [
+            "そのノード用のマップデバイス枠に入れます。"
+          ]
+        },
+        {
+          "label": "転移する",
+          "body": [
+            "ポータルを開いてマップを走ります。入場時に消費されます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crafting",
+      "order": 70,
+      "title": "ウェイストーンの修正",
+      "toc": true,
+      "visible": true,
+      "type": "crafting",
+      "paragraphs": [
+        "ウェイストーンは通常の通貨アイテムと同様に扱えます。変異のオーブや拡張のオーブで修正値を追加し、王者のオーブや錬金術のオーブでレアリティを上げてさらに追加し、エクザルテッドやカオスのオーブで修正値プールをさらに広げます。",
+        "精製された感情（Distilled Emotions）も「注入」ウィンドウから最大3つまで付与でき、それぞれが追加のマジックモンスターやレアモンスターなどのマップ修正値を加えます。旧ガイドではウェイストーンに感情を付与できないとされていましたが、現在のクライアントではその説明はすでに古いものです。"
+      ],
+      "bullets": [
+        "修正値が多いほど装着できるタブレットが増えます（0〜2個：1枠、3〜5個：2枠、6個以上：3枠）。",
+        "汚染ネクサスを開くには、少なくとも4つの修正値を持つウェイストーンが必要です。",
+        "各接尾辞に伴うマイナス効果とプラス効果を天秤にかけましょう。"
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "使用前チェックリスト",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "クリアできるか",
+          "checks": [
+            "ビルドがその階層とウェイストーンの接尾辞に耐えられること。"
+          ],
+          "why": "死ぬと報酬なしでウェイストーンを消費してしまいます。",
+          "fix": "下位階層に下げるか、危険な修正値を取り除きましょう。"
+        },
+        {
+          "label": "修正値がビルドに合うか",
+          "checks": [
+            "ビルドに対する決定的なカウンター（例：回復する敵、大ダメージの属性攻撃）がないこと。"
+          ],
+          "why": "不適切な修正値は避けられたはずの死を招きます。",
+          "fix": "そのノードにはよりシンプルなウェイストーンを使いましょう。"
+        },
+        {
+          "label": "T15/T16 ルールを確認",
+          "checks": [
+            "シタデルには T15 が、汚染ネクサスには 4つ以上の修正値が必要。"
+          ],
+          "why": "階層違いはクエスト進行を妨げます。",
+          "fix": "挑戦前に適切なウェイストーンを用意しましょう。"
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "投資に応じた結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "sustain",
+        "pinnacle",
+        "risk"
+      ],
+      "rows": [
+        {
+          "scenario": "低階層で快適にクリアできる",
+          "audience": "前期エンドゲーム",
+          "benefit": "安定的なアトラスポイントと基本的な維持",
+          "risk": "リターンが低い",
+          "level": "low",
+          "recommendation": "階層ラダーを築くために走りましょう",
+          "tags": [
+            "sustain"
+          ]
+        },
+        {
+          "scenario": "汚染ネクサス用の4つ以上の修正値を持つ T15",
+          "audience": "クエスト攻略者",
+          "benefit": "浄化されたマップと砕断のオーブ",
+          "risk": "難易度の高いマップ",
+          "level": "medium",
+          "recommendation": "耐えられる接尾辞に投資しましょう",
+          "tags": [
+            "pinnacle"
+          ]
+        },
+        {
+          "scenario": "T16 シタデルへの挑戦",
+          "audience": "頂点を目指す者",
+          "benefit": "ユニークなフラグメント報酬",
+          "risk": "1回のみの挑戦",
+          "level": "high",
+          "recommendation": "強力で実績のあるビルドでのみ",
+          "tags": [
+            "pinnacle",
+            "risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "リスク分析",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "マップ内での死",
+          "gain": "なし",
+          "loss": "ウェイストーンと装着されたタブレットが消費され、達成なし",
+          "level": "high",
+          "recommendation": "過剰強化は避け、耐えられる範囲をクリアしましょう。"
+        },
+        {
+          "scenario": "高レアリティだがドロップ率の接尾辞なし",
+          "gain": "修正値が増える",
+          "loss": "維持が悪く、プールが縮小する",
+          "level": "medium",
+          "recommendation": "ウェイストーンドロップ率を追加する接尾辞を優先しましょう。"
+        },
+        {
+          "scenario": "T16 前に T15 へ過剰投資",
+          "gain": "シタデルへのアクセス",
+          "loss": "クリアできなければ無駄になる",
+          "level": "medium",
+          "recommendation": "まずクリア速度を確認しましょう。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-no-sustain",
+          "kind": "Reddit の質問",
+          "question": "階層が高くてもなぜウェイストーンがどんどん尽きるのか？",
+          "summary": [
+            "レアのウェイストーンを持っていたのに、プールはそれでも縮小していました。"
+          ],
+          "editorialAnalysis": [
+            "レアリティだけでは維持されません。ドロップ率の接尾辞、アトラスのパッシブ、そして死を避けることでのみプールは保たれます。"
+          ],
+          "officialAnswer": [
+            "ウェイストーンドロップ率の接尾辞を追加し、アトラスの数量系ノードに投資しましょう。"
+          ]
+        },
+        {
+          "sourceId": "forum-failed-map",
+          "kind": "フォーラムの質問",
+          "question": "マップが失敗したらウェイストーンは失われるのか？",
+          "summary": [
+            "失敗したマップの代償が何か、はっきりしないプレイヤーたち。"
+          ],
+          "editorialAnalysis": [
+            "ウェイストーンは入場時に消費されます。未達成のマップでは達成報酬が得られず、装着されたタブレットも失われます。"
+          ],
+          "officialAnswer": [
+            "すべてのウェイストーンを1回の挑戦として扱い、最後までクリアできるものだけを走りましょう。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 120,
+      "title": "動画とタイムスタンプ",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "How to Fully Unlock your Atlas (0.5 Atlas Guide)",
+          "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w",
+          "creator": "Fubgun",
+          "description": "ウェイストーンの階層と維持を含む、アトラス進行の完全ウォークスルー。",
+          "takeaway": "ウェイストーンのループについては、階層進行と維持のチャプターをご覧ください。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Atlas basics"
+            },
+            {
+              "time": "04:15",
+              "label": "Waystone tiers and modifiers"
+            },
+            {
+              "time": "09:30",
+              "label": "Sustain strategy"
+            },
+            {
+              "time": "15:00",
+              "label": "T15 / T16 pinnacle"
+            }
+          ]
+        },
+        {
+          "label": "Beginner's Guide to Endgame: Mapping and Waystones",
+          "url": "https://www.youtube.com/watch?v=9I5Us5fRJUU",
+          "creator": "ImSidVicious",
+          "description": "マッピング、ウェイストーン、マップ失敗についての入門向け解説。",
+          "takeaway": "アトラスが初めてで、失敗のルールを説明してほしい場合に最適です。",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "What Waystones are"
+            },
+            {
+              "time": "03:40",
+              "label": "Why maps fail"
+            },
+            {
+              "time": "07:10",
+              "label": "First sustain tips"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "ウェイストーンのプールが縮小している",
+          "directAnswer": [
+            "ドロップ率の接尾辞が十分に得られていない、および／または死にすぎています。"
+          ],
+          "checks": [
+            "ウェイストーンドロップ率の接尾辞を追加し、アトラスのパッシブを見直しましょう。"
+          ],
+          "links": [
+            {
+              "href": "#risk-analysis",
+              "label": "維持リスクを開く"
+            }
+          ]
+        },
+        {
+          "symptom": "T16 にリフォージできない",
+          "directAnswer": [
+            "T16 はリフォージできません。T15 のウェイストーンをヴァール汚染し、T16 になる可能性を狙います。"
+          ],
+          "checks": [
+            "リフォージ台ではなく、T15 にヴァールのオーブを使用しましょう。"
+          ]
+        },
+        {
+          "symptom": "汚染ネクサスが開かない",
+          "directAnswer": [
+            "汚染ネクサスを開くには、ウェイストーンに少なくとも4つの修正値が必要です。"
+          ],
+          "checks": [
+            "通貨で修正値を追加し、4つ以上になるまで増やしましょう。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 140,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "tablets",
+          "contentType": "item",
+          "title": "Tablets",
+          "description": "周囲のマップを強化するためにウェイストーンと共に装着するプレカーソル・タブレット。",
+          "href": "/ja/items/tablets/"
+        },
+        {
+          "contentId": "liquid-emotions",
+          "contentType": "item",
+          "title": "Liquid Emotions",
+          "description": "精製された感情（Distilled Emotions）でウェイストーンにマップ修正値を付与できます。",
+          "href": "/ja/items/liquid-emotions/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 150,
+      "title": "パッチ履歴",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.3.1",
+          "date": "2026-06-10",
+          "changes": [
+            "タブレットがタワーから分離され、ウェイストーンと共に装着されるようになりました。ウェイストーンの修正値数がタブレットの枠数を決定します。"
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "階層 1〜16、ドロップ率による維持、そして T15 のヴァール汚染による T16 への到達は、現在も変わらずエンドゲームの進行手法です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "アトラス、ウェイストーン、タブレットを扱う Path of Exile 2 のパッチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Wiki",
+          "description": "階層と修正値の詳細を載せた PoE2Wiki／IGN のウェイストーンページ。",
+          "url": "https://www.poe2wiki.net/wiki/Waystone"
+        },
+        {
+          "label": "ガイド",
+          "description": "PC Gamer および Poe-Vault のアトラス／ウェイストーン維持ガイド。",
+          "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "tablets"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 公式 0.5.4 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — Waystone",
+      "url": "https://www.poe2wiki.net/wiki/Waystone",
+      "sourceType": "tool"
+    },
+    {
+      "label": "PC Gamer — Atlas Waystone Mapping",
+      "url": "https://www.pcgamer.com/games/rpg/path-of-exile-2-atlas-waystone-mapping",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 ウェイストーンガイド：階層、修正値、維持と失敗マップ",
+    "description": "PoE2 のウェイストーンの仕組み：階層の進行、修正値の価値／危険度マトリックス、維持戦略、失敗マップでの損失、そして T15/T16 の頂点ルール。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "waystones-guide",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

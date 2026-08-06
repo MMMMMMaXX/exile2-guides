@@ -1,0 +1,568 @@
+{
+  "id": "tempest-flurry",
+  "slug": "tempest-flurry",
+  "locale": "es",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guía de Tempest Flurry — Secuencia de Cuatro Golpes, Final Strike, Choque y Configuración de Bell",
+  "shortTitle": "Tempest Flurry",
+  "summary": "Tempest Flurry es un ataque de Quarterstaff que se desarrolla como una secuencia de cuatro usos: los dos primeros usos golpean una vez cada uno, el tercer uso aterriza tres golpes, y el cuarto uso es el Final Strike que lanza un Shocking Bolt. Esta guía explica qué ocurre en cada uso, cuándo se reinicia la secuencia, cómo la Velocidad de Ataque cambia la sensación, la Calidad, por qué algunas builds lo mantienen a bajo nivel de gema, y cómo encadenar un combo hacia Tempest Bell para jefes.",
+  "description": "Guía profunda de Tempest Flurry: la secuencia de ataque de cuatro usos y el Final Strike Shocking Bolt, comportamiento multi-golpe y de AoE, probabilidad y magnitud de Choque, configuración de combo hacia Tempest Bell, compatibilidad de soportes para velocidad y relámpago, deber de Choque del Conjunto de Armas 2, rotaciones de mapeo y jefes, solución de problemas (reinicio, fallo del bolt, Choque bajo) y preguntas reales de la comunidad respondidas directamente.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "melee",
+    "strike",
+    "lightning",
+    "attack",
+    "aoe",
+    "quarterstaff"
+  ],
+  "patch": "0.5.4",
+  "league": "Retorno de los Antiguos",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/tempest-flurry.webp",
+  "cardImage": "/images/skills/tempest-flurry.webp",
+  "imageAlt": "Icono de la habilidad de ataque Tempest Flurry con quarterstaff",
+  "tags": [
+    "melee",
+    "strike",
+    "lightning",
+    "attack",
+    "aoe",
+    "quarterstaff"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta Rápida: El Cuarto Uso Es el Final Strike",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Tempest Flurry no es un ataque uniforme — es una secuencia de cuatro usos. Los usos uno y dos golpean una vez, el uso tres golpea tres veces, y el uso cuatro es el Final Strike que dispara un Shocking Bolt.",
+        "Si dejas de usar la habilidad, la secuencia se reinicia volviendo al primer uso. Así que la recompensa siempre es la cuarta pulsación; los usos anteriores la preparan."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Estadísticas Clave y Adquisición",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Categoría",
+          "value": "Ataque · Melee · Strike · Lightning · AoE",
+          "notes": [
+            "Etiquetada como melee, strike, lightning, attack y aoe."
+          ]
+        },
+        {
+          "label": "Requisito de arma",
+          "value": "Quarterstaff",
+          "notes": [
+            "Requiere un quarterstaff equipado; la secuencia vive en ese conjunto de armas."
+          ]
+        },
+        {
+          "label": "Conversión de daño",
+          "value": "Físico → Lightning (Final Strike)",
+          "notes": [
+            "El Final Strike Shocking Bolt lleva conversión de relámpago; confirma la conversión exacta en el cliente 0.5.4."
+          ]
+        },
+        {
+          "label": "Velocidad de Ataque",
+          "value": "Afecta solo el ritmo",
+          "notes": [
+            "Ataques más rápidos no omiten usos; cambian qué tan rápido alcanzas el Final Strike."
+          ]
+        },
+        {
+          "label": "Calidad",
+          "value": "Añade efecto de bonificación",
+          "notes": [
+            "La Calidad mejora una bonificación indicada; verifica el valor actual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requisitos y Configuración",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Tempest Flurry necesita un Quarterstaff y los requisitos de atributos de la gema. Se graba a partir de una Uncut Skill Gem, así que el momento más temprano en que puedes usarla es cuando cae una Uncut Skill Gem de nivel suficientemente alto.",
+        "Como es una secuencia, suele ser el centro de un bucle de melee con quarterstaff más que un relleno — quieres seguir atacando para realmente alcanzar el Final Strike."
+      ],
+      "keyValues": [
+        {
+          "label": "Arma",
+          "value": "Quarterstaff (requerido)",
+          "notes": [
+            "Sin quarterstaff la secuencia no puede iniciar."
+          ]
+        },
+        {
+          "label": "Nivel de gema en bruto",
+          "value": "Gema de habilidad de nivel",
+          "notes": [
+            "Confirma el nivel actual del cliente antes de publicar números."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hit-sequence",
+      "order": 40,
+      "title": "Secuencia de Ataque de Cuatro Usos",
+      "type": "hit-sequence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Cada pulsación de Tempest Flurry avanza la secuencia. Los dos primeros usos son golpes únicos, el tercer uso es un flurry de tres golpes, y el cuarto uso es el Final Strike que lanza un Shocking Bolt. Alcanzar el cuarto uso es lo que hace que la habilidad valga la pena usar."
+      ],
+      "columns": [
+        "Uso",
+        "Golpes",
+        "Especial"
+      ],
+      "rows": [
+        [
+          "1.º uso",
+          "1",
+          "Inicio de secuencia"
+        ],
+        [
+          "2.º uso",
+          "1",
+          "—"
+        ],
+        [
+          "3.º uso",
+          "3",
+          "Flurry multi-golpe"
+        ],
+        [
+          "4.º uso",
+          "1",
+          "Final Strike + Shocking Bolt"
+        ]
+      ]
+    },
+    {
+      "id": "hit-behaviour",
+      "order": 50,
+      "title": "Comportamiento de Golpe: Multi-golpe, Bolt y AoE",
+      "type": "hit-behaviour",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los tres golpes del tercer uso pueden aplicar cada uno efectos al impactar, y por eso las builds que escalan por golpe lo aprecian. El Shocking Bolt del cuarto uso es un efecto de relámpago tipo proyectil que puede provocar Choque en el objetivo que golpea.",
+        "Los modificadores de área cambian qué tan amplios se sienten los golpes, pero la estructura de la secuencia (1 / 1 / 3 / Final) se mantiene igual independientemente de la Velocidad de Ataque."
+      ],
+      "bullets": [
+        "1.º + 2.º uso: un golpe cada uno.",
+        "3.º uso: tres golpes separados (aplica escalado por golpe).",
+        "4.º uso: el Final Strike dispara un Shocking Bolt.",
+        "Los modificadores de AoE ensanchan los golpes pero no la secuencia."
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "Probabilidad y Magnitud de Choque",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "El Shocking Bolt del Final Strike puede provocar Choque, y la magnitud de choque de la habilidad escala con sus propios modificadores. El Choque es lo que hace que Tempest Flurry sea valioso para jefes incluso en builds que solo lo pulsan para aplicar Choque.",
+        "La probabilidad de Choque no es automática al 100 % — los soportes y el equipo que suben la probabilidad / magnitud de choque mejoran directamente la recompensa contra jefes. Un Choque bajo es casi siempre una carencia de equipo o de soporte, no un fallo."
+      ]
+    },
+    {
+      "id": "combo-sequence",
+      "order": 70,
+      "title": "Secuencia de Combo Hacia Tempest Bell",
+      "type": "combo-sequence",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Colocar Bell",
+          "action": "Lanza Tempest Bell cerca del objetivo",
+          "result": "Aparece una Bell que almacena y hace eco de los golpes melee."
+        },
+        {
+          "label": "Construir combo",
+          "action": "Usa Tempest Flurry a través de la Bell",
+          "result": "Los golpes son absorbidos y repetidos por la Bell para un daño acumulado."
+        },
+        {
+          "label": "Final Strike",
+          "action": "Alcanza el 4.º uso dentro de la ventana de la Bell",
+          "result": "El Shocking Bolt y el Final Strike son amplificados por la Bell."
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 80,
+      "title": "Compatibilidad con Soportes",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Los soportes de Velocidad de Ataque te ayudan a alcanzar el Final Strike más rápido pero no omiten usos. Los soportes de relámpago y relámpago añadido escalan el Shocking Bolt y la magnitud de choque. Los soportes de Final Strike que potencian el último golpe son los mayores ganadores de objetivo único."
+      ],
+      "keyValues": [
+        {
+          "label": "Velocidad de Ataque",
+          "value": "Central (sensación)",
+          "notes": [
+            "Ritmo más rápido hacia el Final Strike, sin omitir usos."
+          ]
+        },
+        {
+          "label": "Relámpago Añadido / Lightning Infusion",
+          "value": "Central",
+          "notes": [
+            "Escala el Shocking Bolt y la magnitud de choque."
+          ]
+        },
+        {
+          "label": "Soportes de Final Strike",
+          "value": "Central (jefes)",
+          "notes": [
+            "Potencian directamente la recompensa del 4.º uso."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "Deber de Choque del Conjunto de Armas 2",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Algunas builds mantienen Tempest Flurry en el Conjunto de Armas 2 puramente como aplicador de Choque, usando el quarterstaff solo para asentar el Final Strike Shocking Bolt en un jefe antes de volver al conjunto principal.",
+        "Como la secuencia se reinicia al detenerse, una build de Choque en el Conjunto 2 suele comprometerse a alcanzar el cuarto uso rápidamente en vez de entrelazarlo en una rotación más larga."
+      ],
+      "keyValues": [
+        {
+          "label": "Conjunto 2 (Quarterstaff)",
+          "value": "Deber de Choque de Tempest Flurry",
+          "notes": [
+            "Usado para aplicar Choque, y luego volver."
+          ]
+        },
+        {
+          "label": "Conjunto 1",
+          "value": "Conjunto de daño principal",
+          "notes": [
+            "Tempest Flurry solo vive en el Conjunto 2 aquí."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "Rotación de Mapeo",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Enganchar",
+          "action": "Usa Tempest Flurry de forma continua en grupos",
+          "result": "Alcanza el Final Strike repetidamente para limpiar."
+        },
+        {
+          "label": "Bell (opcional)",
+          "action": "Suelta Tempest Bell en grupos densos",
+          "result": "Los golpes repetidos aceleran la limpieza de pantalla."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Rotación de Jefes",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Choque",
+          "action": "Alcanza el 4.º uso para asentar el Shocking Bolt",
+          "result": "El jefe queda con Choque para la ventana de daño."
+        },
+        {
+          "label": "Bell",
+          "action": "Coloca Tempest Bell y usa Flurry a través de ella",
+          "result": "El Final Strike es amplificado por el eco de la Bell."
+        },
+        {
+          "label": "Sostener",
+          "action": "Sigue atacando para mantenerte en secuencia",
+          "result": "Evita reinicios que desperdician el Final Strike."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "Dónde Se Usa",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Las builds de quarterstaff en nivelación usan Tempest Flurry como un ataque primario fluido. Los artistas marciales de Whirling Assault lo combinan con Whirling Assault para movimiento más ráfaga, y algunas rutas enfocadas en uniques (estilo Duality / Finality) mantienen la gema a bajo nivel puramente para aplicar Choque de forma barata.",
+        "En todos los casos la build valora ya sea la ráfaga del Final Strike o la aplicación de Choque, según sea un rol de daño o de soporte."
+      ],
+      "bullets": [
+        "Nivelación: ataque primario fluido de cuatro usos.",
+        "Artista marcial Whirling: se combina con Whirling Assault.",
+        "Rutas de Choque con uniques: bajo nivel de gema para Choque barato."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Solución de Problemas",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "La secuencia se reinicia constantemente",
+          "action": "Dejaste de atacar o cambiaste de conjunto de armas",
+          "result": "Sigue atacando en el mismo conjunto para alcanzar el 4.º uso."
+        },
+        {
+          "label": "El bolt no golpea",
+          "action": "El objetivo se movió fuera de la línea del Final Strike",
+          "result": "Tiempo el 4.º uso cuando el jefe está comprometido y a rango."
+        },
+        {
+          "label": "Choque demasiado bajo",
+          "action": "Falta equipo de probabilidad / magnitud de choque",
+          "result": "Añade soportes de relámpago y modificadores de probabilidad de choque."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "Evidencia de la Comunidad",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La discusión de la comunidad se centra en el bajo nivel de gema (Choque barato), la sensación de velocidad de ataque, y si pulsar los cuatro usos. Las pruebas del cliente confirman que la secuencia está fija en 1 / 1 / 3 / Final y que la Velocidad de Ataque solo cambia el ritmo, no la cantidad de golpes.",
+        "El error de concepto principal es que una Velocidad de Ataque más rápida omite usos — no lo hace; simplemente alcanza el Final Strike antes."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Recorrido en Vídeo y Marcas de Tiempo",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "ronarray",
+          "label": "Combo de quarterstaff de Monje 0.5",
+          "description": "Muestra de Monje con Quarterstaff que incluye la secuencia de cuatro usos de Tempest Flurry y una configuración de Tempest Bell.",
+          "takeaway": "Observa el ritmo hacia el Final Strike y cómo la Bell repite los golpes.",
+          "url": "https://www.youtube.com/watch?v=V2FWrgtQvB0",
+          "timestamps": [
+            {
+              "label": "Demo de secuencia",
+              "time": "0:00"
+            },
+            {
+              "label": "Configuración de Bell",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Fuentes y Verificación",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Oficial",
+          "description": "Las Notas del Parche del foro oficial de GGG confirman la secuencia de cuatro usos de Tempest Flurry y el comportamiento del Final Strike en el cliente 0.5.4 actual.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Base de datos",
+          "description": "PoE2DB y la Wiki de la Comunidad proporcionan id de habilidad, etiquetas, requisito de arma y comportamiento oculto de la secuencia.",
+          "url": "https://www.poe2wiki.net/wiki/Tempest_Flurry"
+        },
+        {
+          "label": "Builds y vídeo",
+          "description": "Builds de Monje con quarterstaff de Mobalytics y el vídeo de muestra de ronarray, usados para verificar cruzadamente la secuencia y el combo de Bell.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Comunidad",
+          "description": "Reddit y los foros oficiales sacan a la luz problemas reales como reinicio de secuencia, fallo de bolt y Choque bajo, reproducidos en el cliente y respondidos directamente.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Tempest%20Flurry&restrict_sr=1"
+        },
+        {
+          "label": "Foros Oficiales",
+          "description": "Foros oficiales de GGG donde el personal confirma la mecánica de quarterstaff y de Bell y los cambios de parche.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Comunidad de Reddit",
+          "description": "Debates de Reddit r/PathOfExile2 e hilos de ayuda para Tempest Flurry, útiles para comentarios de versión y builds principales.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Secuencia de cuatro usos (1 / 1 / 3 / Final Strike) confirmada en el cliente 0.5.4.",
+          "Final Strike Shocking Bolt y comportamiento de Choque confirmados.",
+          "La Velocidad de Ataque cambia el ritmo, no la cantidad de golpes, confirmado."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "Historial de Parches",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "Los reworks de ataques de quarterstaff introdujeron las habilidades de secuencia de cuatro usos; Tempest Flurry funciona como un strike desde este punto."
+          ]
+        },
+        {
+          "date": "2026-03-15",
+          "changes": [
+            "El ajuste 0.4 modificó la magnitud de choque y la sensación de la secuencia; se mantuvo el comportamiento del Final Strike."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Retorno de los Antiguos: Tempest Flurry sigue siendo un strike de quarterstaff; se usan los números del cliente actual en esta guía."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Registro de Cambios",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Lanzamiento inicial: secuencia de cuatro usos, Final Strike Shocking Bolt, comportamiento de golpe, mecánica de Choque, combo de Bell, compatibilidad de soportes, deber de Choque del Conjunto de Armas 2, rotaciones de mapeo y jefes, solución de problemas y evidencia de la comunidad."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "whirling-assault-martial-artist"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "whirling-assault",
+    "tempest-bell",
+    "freezing-mark"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "Foro de Notas del Parche Oficial de PoE2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Tempest Flurry",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Tempest_Flurry"
+    },
+    {
+      "label": "Mobalytics — Builds de Monje con quarterstaff",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Debates de Tempest Flurry",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Tempest%20Flurry&restrict_sr=1"
+    },
+    {
+      "label": "ronarray — Monje con quarterstaff 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=V2FWrgtQvB0"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Tempest Flurry — Secuencia de Cuatro Golpes, Final Strike, Choque y Configuración de Bell",
+    "description": "Guía de quarterstaff de Tempest Flurry: la secuencia de cuatro usos y el Final Strike Shocking Bolt, comportamiento multi-golpe y de AoE, mecánica de Choque, combo de Tempest Bell, compatibilidad de soportes, deber de Choque del Conjunto de Armas 2, rotaciones de mapeo y jefes, solución de problemas y evidencia de la comunidad.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "tempest-flurry",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

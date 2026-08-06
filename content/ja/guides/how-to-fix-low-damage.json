@@ -1,0 +1,577 @@
+{
+  "id": "how-to-fix-low-damage",
+  "slug": "how-to-fix-low-damage",
+  "locale": "ja",
+  "type": "guide",
+  "status": "published",
+  "featured": true,
+  "title": "Path of Exile 2でダメージが低いのを修正する方法",
+  "shortTitle": "低ダメージの修正",
+  "summary": "Path of Exile 2でダメージが低くなる本当の理由 - ジェムレベルの低さ、補助ソケットの未充填、武器DPSの低さ、間違った補助ジェム、クリティカル倍率不足、品質や触媒の欠如、空のジュエルソケット - そしてそれぞれを確実に修正する方法。",
+  "description": "Path of Exile 2の低ダメージ向けトラブルシューティングガイド：実際にDPSに影響する要因とその修正方法のチェックリスト。",
+  "guideCategory": "troubleshooting",
+  "heroImage": "/images/skills/tempest-bell.webp",
+  "cardImage": "/images/skills/tempest-bell.webp",
+  "imageAlt": "テンペストベル - Path of Exile 2で低いダメージ出力を修正するための高ダメージスキル",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "アクトまたは初期エンドゲームのキャラクター",
+    "スキルジェム画面とパッシブツリー画面へのアクセス"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4d",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-07-28",
+  "publishedAt": "2026-07-28",
+  "updatedAt": "2026-07-28",
+  "tags": [
+    "leveling",
+    "troubleshooting"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "直接的な回答",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "最も一般的な原因",
+          "body": [
+            "ジェムレベルの低さと補助ソケットの未充填。レベル1〜5で補助が何もないスキルジェムは、完全に補助された構成のほんの一部のダメージしか出せません。メインスキルジェムはレベルアップできるたびに上げ、その補助ソケットをダメージ補助（基本2、ジュエラーズオーブで最大5）で埋めてください。"
+          ]
+        },
+        {
+          "title": "大半のプレイヤーが見過ごしている最大のDPSの要",
+          "body": [
+            "武器の基礎DPSと、スキルにリンクされた補助ジェム。武器をDPSで上回るフラットなアップグレードは、パッシブポイントの振り直しより効果的なことが多く、適切な補助ジェム（レベル追加、追加ダメージ、貫通）はすべてを乗算します。"
+          ]
+        },
+        {
+          "title": "低コストで得られる効果",
+          "body": [
+            "ジェムの品質（20%で実際のボーナスが得られる）、ジュエルへの触媒、そしてクリティカル倍率の1ロール。いずれもレア装備は不要ですが、積み重なるとすぐに効果が出ます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stat-overview",
+      "order": 2,
+      "title": "ダメージの要因をひと目で",
+      "type": "stat-grid",
+      "visible": true,
+      "toc": true,
+      "stats": [
+        {
+          "label": "スキルジェムごとの補助ソケット数",
+          "value": "2 (最大5)",
+          "note": "補助はスキルジェム本体にソケットされる。ジュエラーズオーブでソケット追加（Lesser 3、Greater 4、Perfect 5）。"
+        },
+        {
+          "label": "ジェム品質の目安",
+          "value": "20%",
+          "note": "多くのジェムは品質20%で累積するボーナスを得る"
+        },
+        {
+          "label": "耐性から得られる余分なパッシブポイント",
+          "value": "多数",
+          "note": "装備で耐性を上限まで満たし、ポイントをダメージに割り当てる"
+        }
+      ]
+    },
+    {
+      "id": "damage-checklist",
+      "order": 3,
+      "title": "低ダメージチェックリスト",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "上から順に確認してください。上の行ほど、低ダメージの不満の約80%を説明します。",
+      "columns": [
+        {
+          "key": "factor",
+          "label": "要因"
+        },
+        {
+          "key": "why",
+          "label": "重要な理由"
+        },
+        {
+          "key": "fix",
+          "label": "修正方法"
+        }
+      ],
+      "filters": [
+        {
+          "id": "skill",
+          "label": "スキル構成"
+        },
+        {
+          "id": "gear",
+          "label": "装備"
+        },
+        {
+          "id": "tree",
+          "label": "パッシブツリー"
+        }
+      ],
+      "rows": [
+        {
+          "tags": [
+            "skill"
+          ],
+          "cells": {
+            "factor": "ジェムレベル",
+            "why": "ダメージはジェムレベルに強く連動して伸びる",
+            "fix": "最も高いレベルのコピーを装備する。レベル1のジェムは使わない"
+          }
+        },
+        {
+          "tags": [
+            "skill"
+          ],
+          "cells": {
+            "factor": "補助ソケットの充填",
+            "why": "スキルジェム内の補助1つがダメージを乗算する",
+            "fix": "メインスキルジェムの補助ソケットをすべて埋める（基本2、ジュエラーズオーブで最大5）"
+          }
+        },
+        {
+          "tags": [
+            "skill"
+          ],
+          "cells": {
+            "factor": "補助ジェムの選択",
+            "why": "間違った補助はリンクを無駄にする",
+            "fix": "スキルのタグに合ったダメージ補助を使う（追加ダメージ、クリティカル、貫通）"
+          }
+        },
+        {
+          "tags": [
+            "gear"
+          ],
+          "cells": {
+            "factor": "武器の基礎DPS",
+            "why": "多くのスキルは武器ダメージを引き継ぐ",
+            "fix": "より高い物理/属性DPSのベースにアップグレードする"
+          }
+        },
+        {
+          "tags": [
+            "gear"
+          ],
+          "cells": {
+            "factor": "ステータス要件",
+            "why": "未振りのステータスポイントが上位ジェムを妨げることがある",
+            "fix": "上位ジェムのStr/Dex/Int要件を満たす"
+          }
+        },
+        {
+          "tags": [
+            "gear"
+          ],
+          "cells": {
+            "factor": "クリティカル率と倍率",
+            "why": "クリティカルはバーストダメージを乗算する",
+            "fix": "装備でクリティカル率を追加。ジュエルでクリティカル倍率を積む"
+          }
+        },
+        {
+          "tags": [
+            "gear"
+          ],
+          "cells": {
+            "factor": "品質と触媒",
+            "why": "20%品質と触媒が無料の修正を加える",
+            "fix": "ジェムを品質化。必要なステータスに合わせてジュエルに触媒"
+          }
+        },
+        {
+          "tags": [
+            "tree"
+          ],
+          "cells": {
+            "factor": "空のジュエルソケット",
+            "why": "ジュエルはクリティカル倍率/追加ダメージを加える",
+            "fix": "クリティカル倍率かステータスのジュエルを装着する"
+          }
+        },
+        {
+          "tags": [
+            "tree"
+          ],
+          "cells": {
+            "factor": "装備の耐性",
+            "why": "装備で耐性を上限まで満たすとパッシブポイントが空く",
+            "fix": "耐性をツリーから装備へ移し、ポイントをダメージに割り当てる"
+          }
+        }
+      ],
+      "note": "まずメインスキルジェムのレベルを上げること - それが単体で最も影響が大きく、コストゼロの変更です。"
+    },
+    {
+      "id": "crit-by-build",
+      "order": 4,
+      "title": "ビルドタイプ別のクリティカル",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "クリティカルはバーストダメージを乗算しますが、すべてのビルドが望むわけではありません。下から自分のビルドタイプを見つけてください。",
+      "columns": [
+        {
+          "key": "build",
+          "label": "ビルドタイプ"
+        },
+        {
+          "key": "matters",
+          "label": "クリティカルは重要？"
+        },
+        {
+          "key": "why",
+          "label": "理由"
+        },
+        {
+          "key": "action",
+          "label": "対応"
+        }
+      ],
+      "rows": [
+        {
+          "tags": [],
+          "cells": {
+            "build": "攻撃（近接 / 遠隔）",
+            "matters": "通常は重要",
+            "why": "クリティカルはすべての命中を乗算する。多くの攻撃スキルはクリティカルで大きく伸びる",
+            "action": "装備でクリティカル率を積む。ジュエルでクリティカル倍率を追加"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "命中スペル",
+            "matters": "多くは重要",
+            "why": "クリティカルはスペルの命中に適用される（DoTには不可）。術者にとって大きなバースト",
+            "action": "装備でクリティカル率、ジュエルでクリティカル倍率。スペルがクリティカル可能か確認"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "継続ダメージ（イグナイト / ポイズン / ブリード）",
+            "matters": "いいえ",
+            "why": "DoTはクリティカルできない",
+            "action": "クリティカルは避け、異常状態の強さと持続時間に投資する"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "ミニオン",
+            "matters": "通常はいいえ",
+            "why": "ミニオンの命中がクリティカルするのはミニオンへのクリティカル投資時のみ。優先度は低い",
+            "action": "プレイヤーのクリティカルは無視。ミニオンのダメージに投資する"
+          }
+        },
+        {
+          "tags": [],
+          "cells": {
+            "build": "トリガー / スキルジェム積み",
+            "matters": "異なる",
+            "why": "トリガーされた命中がクリティカル可能かどうかに依存する",
+            "action": "投資前に該当スキルを確認する"
+          }
+        }
+      ],
+      "note": "ビルドタイプが「いいえ」または「異なる」の場合、そのポイントとプレフィックス/サフィックスは継続ダメージ、貫通、またはフラットダメージに充ててください。"
+    },
+    {
+      "id": "fix-tabs",
+      "order": 5,
+      "title": "確認場所：スキル、装備、ツリー",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "低ダメージの原因はたいてい3か所のいずれかにあります。該当するタブを開いて修正方法を確認してください。",
+      "tabs": [
+        {
+          "id": "skill",
+          "label": "スキル構成",
+          "paragraphs": [
+            "スキルジェムとそのリンクは、すべてのダメージの土台です。"
+          ],
+          "bullets": [
+            "メインスキルのジェムレベルを確認 - キャラクターレベルに近くなければ、それが問題です。",
+            "メインスキルジェムの補助ソケットが埋まっていることを確認する（基本2、ジュエラーズオーブで最大5）。",
+            "補助ジェムがスキルのタグ（物理、属性、スペル、攻撃）に合っていることを確認する。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "gear",
+          "label": "装備",
+          "paragraphs": [
+            "装備は基礎ダメージ、クリティカル、そしてより大きなジェムを装備できるステータスを供給します。"
+          ],
+          "bullets": [
+            "武器の基礎DPSを比較する。フラットなアップグレードはパッシブポイントの振り直しより効果的なことが多い。",
+            "ビルドがクリティカルを使うなら、クリティカル率とクリティカル倍率を追加する。",
+            "ジェムを20%に品質化し、必要なステータスに合わせてジュエルに触媒を使う。"
+          ],
+          "steps": []
+        },
+        {
+          "id": "tree",
+          "label": "パッシブツリー",
+          "paragraphs": [
+            "ツリーは弱い構成を補うのではなく、強化するものであるべきです。"
+          ],
+          "bullets": [
+            "装備で耐性を上限まで満たし、ツリーのポイントをダメージノードに割けるようにする。",
+            "空のジュエルソケットをクリティカル倍率かステータスのジュエルで埋める。",
+            "スキルのタグにつながるダメージのノータブルを通る経路を取る。"
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "damage-diagnostic",
+      "order": 6,
+      "title": "なぜダメージが低いのか？",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "自分の状況に合うものを選択してください。ツールが最も可能性の高い原因を表示します。",
+      "controls": [
+        {
+          "id": "context",
+          "label": "いつダメージが低い？",
+          "options": [
+            {
+              "label": "どこでも（すべてのコンテンツ）",
+              "value": "everywhere"
+            },
+            {
+              "label": "ボスのみ",
+              "value": "boss"
+            },
+            {
+              "label": "雑魚の殲滅のみ",
+              "value": "packs"
+            },
+            {
+              "label": "装備交換後",
+              "value": "swap"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "まずジェムレベルとリンクを確認",
+          "when": {
+            "context": "everywhere"
+          },
+          "steps": [
+            "メインスキルジェムをキャラクターレベルまで上げる。",
+            "メインスキルジェムの補助ソケットがすべて埋まっていることを確認する。",
+            "武器の基礎DPSをアップグレードする - 多くのスキルに直接影響する。"
+          ]
+        },
+        {
+          "title": "単体対象の構成が足りない",
+          "when": {
+            "context": "boss"
+          },
+          "steps": [
+            "ボスは殲滅速度向けの構成に耐性がある。単体対象のスキルか補助を追加する。",
+            "貫通とクリティカル倍率を確認する - ボスは実効HPが高い。",
+            "ボスダメージを特に強化するジュエルか補助を使う。"
+          ]
+        },
+        {
+          "title": "殲滅構成が弱い",
+          "when": {
+            "context": "packs"
+          },
+          "steps": [
+            "雑魚向けに範囲効果か射弾数の補助を追加する。",
+            "スキルが複数の敵に命中するか（貫通、連鎖、またはAoE）確認する。",
+            "追加ダメージの補助が自分のダメージ種に適用されるか確認する。"
+          ]
+        },
+        {
+          "title": "ステータスまたはソケットの不具合",
+          "when": {
+            "context": "swap"
+          },
+          "steps": [
+            "装備交換でステータスがジェムの要件を下回り、無効化された可能性がある。",
+            "装備交換後もスキルジェムが補助ジェムを保持しているか再確認する。",
+            "新しい装備で必要ステータスが変わった場合はジュエルを再触媒する。"
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "体系的なダメージ監査",
+        "steps": [
+          "メインジェムのレベルを上げ、補助ソケットを埋め、武器DPSを上げ、クリティカル倍率を追加し、ジェムを品質化し、ジュエルソケットを埋める。",
+          "装備で耐性を上限まで満たし、パッシブポイントをダメージに空ける。",
+          "それでも低い場合は、自分のクラスの既知のビルドガイドと構成を比較する。"
+        ]
+      }
+    },
+    {
+      "id": "video-guide",
+      "order": 7,
+      "title": "完全なダメージガイド動画",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2: 完全ダメージガイドとダメージを最大化する大きなヒント",
+          "creator": "Medieval Marty",
+          "description": "ダメージの仕組み、スキルレベル、ダメージ種、アップグレードの検索、クリティカル、品質、触媒、ジュエルを網羅したPoE 2の完全なダメージガイド。",
+          "takeaway": "ジェムをレベルアップし、リンクを完成させ、武器DPSを上げ、その上でクリティカル、品質、ジュエルを重ねる。",
+          "url": "https://www.youtube.com/watch?v=-sjsnGMcKCI",
+          "timestamps": [
+            {
+              "label": "ダメージの理解",
+              "time": "0:45"
+            },
+            {
+              "label": "ダメージを増やす",
+              "time": "3:36"
+            },
+            {
+              "label": "スキルレベル",
+              "time": "3:51"
+            },
+            {
+              "label": "ダメージ種",
+              "time": "5:31"
+            },
+            {
+              "label": "アップグレードの検索",
+              "time": "6:47"
+            },
+            {
+              "label": "クリティカルダメージ",
+              "time": "9:03"
+            },
+            {
+              "label": "品質と触媒",
+              "time": "10:26"
+            },
+            {
+              "label": "ジュエル",
+              "time": "12:51"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 8,
+      "title": "よくある質問",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "ジェムレベルは本当にそれほど重要ですか？",
+          "answer": [
+            "はい。ダメージはジェムレベルに急激に連動して伸びるため、レベル1〜5のメインスキルジェムは最大レベルのほんの一部のダメージしか出しません。レベルアップするたびに上げてください。"
+          ]
+        },
+        {
+          "question": "ダメージを出すのに完全に補助されたスキルジェムが必要ですか？",
+          "answer": [
+            "厳密には不要ですが、スキルのソケット内の補助ジェム1つがダメージを乗算します。すべての補助ソケットを埋めること（ジュエラーズオーブで最大5）は、大半のビルドにとって単体で最大のDPS向上です。"
+          ]
+        },
+        {
+          "question": "なぜ耐性をツリーではなく装備で上限まで満たすのか？",
+          "answer": [
+            "パッシブツリーの耐性は、ダメージに使えたはずのポイントを消費します。耐性を装備に移すことで、そのポイントをダメージノードに空けられます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 9,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "動画ガイド",
+          "description": "Medieval Marty - Full Damage Guide (PoE 2 0.5)",
+          "url": "https://www.youtube.com/watch?v=-sjsnGMcKCI"
+        },
+        {
+          "label": "公式ソース",
+          "description": "Path of Exile 2 official 0.5.4 Patch Notes (skill gem and damage changes)",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ Wiki",
+          "description": "PoE 2 wiki - Skill Gems and damage",
+          "url": "https://www.poe2wiki.net/wiki/Skill_Gem"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Medieval Marty - Full Damage Guide (YouTube)",
+      "url": "https://www.youtube.com/watch?v=-sjsnGMcKCI",
+      "sourceType": "community"
+    },
+    {
+      "label": "Path of Exile 2 公式 0.5.4 パッチノート",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE 2 wiki - Skill Gems",
+      "url": "https://www.poe2wiki.net/wiki/Skill_Gem",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 低ダメージ修正：ジェムレベル、リンク、武器DPS、クリティカル、ジュエル",
+    "description": "Path of Exile 2でダメージが低い理由と、それを確実に修正する方法：ジェムレベル、補助ソケット、武器DPS、補助ジェム、クリティカル倍率、品質、触媒、ジュエル。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "how-to-fix-low-damage",
+    "sourceRevision": "2026-07-28",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

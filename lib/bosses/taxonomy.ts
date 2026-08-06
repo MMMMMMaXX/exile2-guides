@@ -15,7 +15,7 @@ export function isKnownBossCollection(collection: BossCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Boss，供页面和 Sitemap 共用同一规则。 */
 export function matchesBossCollection(
-  article: BossArticle,
+  article: Pick<BossArticle, "bossCategory" | "act">,
   collection: BossCollection,
 ): boolean {
   if (collection.kind === "category") {

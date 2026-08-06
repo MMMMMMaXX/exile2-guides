@@ -1,0 +1,774 @@
+{
+  "id": "charms-guide",
+  "slug": "charms-guide",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Charms : emplacements d'amulette, effets déclenchés et recharge",
+  "shortTitle": "Charms",
+  "summary": "Les Charms sont des objets insérables dans l'emplacement de Charm d'une amulette. Chacun accorde un bonus qui se déclenche automatiquement lorsque sa condition est remplie (vie basse, coup critique, altération, et plus encore), puis se recharge. Ce guide couvre les propriétés des charms, comment les obtenir et les insérer, et quel charm convient à quel build.",
+  "description": "Une référence sourcée sur les Charms dans Path of Exile 2 : emplacements de charm d'amulette, effets déclenchés, recharge, et comment choisir un charm selon les besoins du build.",
+  "itemType": "charm",
+  "rarity": "normal",
+  "requiredLevel": null,
+  "useCases": [
+    "defence",
+    "utility",
+    "trigger"
+  ],
+  "itemCategory": "charms",
+  "subcategoryId": "amulet-charm",
+  "itemClass": "charm",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "charms-guide"
+  ],
+  "heroImage": "/images/items/charms-hero.webp",
+  "cardImage": "/images/items/charms-hero.webp",
+  "imageAlt": "Objets Charm de Path of Exile 2 - charms d'amulette insérables déclenchant des effets conditionnels",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Insérez un Charm dans l'emplacement de Charm de votre amulette. Lorsque sa condition de déclenchement se produit (par ex. vous tombez à vie basse, subissez un coup critique ou contractez une altération), le bonus du charm s'active automatiquement, puis le charm se recharge selon un temps de récupération.",
+      "calloutDetail": [
+        "Les Charms sont automatiques - vous n'appuyez sur rien ; l'effet se déclenche lorsque la condition est remplie.",
+        "Après le déclenchement, le charm entre en temps de récupération et se recharge, il s'agit donc d'un filet de sécurité périodique et non d'un buff permanent."
+      ],
+      "answers": [
+        {
+          "label": "À quoi sert-il",
+          "text": [
+            "Une couche défensive ou utilitaire réactive sur n'importe quel build portant une amulette."
+          ]
+        },
+        {
+          "label": "À vérifier d'abord",
+          "text": [
+            "Confirmez que votre amulette dispose d'un emplacement de Charm (certains nécessitent un déverrouillage via une quête ou un établi)."
+          ]
+        },
+        {
+          "label": "À éviter",
+          "text": [
+            "De considérer un charm comme une aura permanente - il se déclenche, puis se recharge."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#properties",
+          "label": "Fonctionnement des charms →"
+        },
+        {
+          "href": "#usage",
+          "label": "Étapes d'insertion →"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Points clés",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Emplacement",
+          "value": "Amulet Charm Socket",
+          "note": [
+            "Un charm par amulette dans le client actuel."
+          ]
+        },
+        {
+          "label": "Déclenchement",
+          "value": "Auto-déclenchement conditionnel",
+          "note": [
+            "S'active lorsque sa condition est remplie, sans appui manuel."
+          ]
+        },
+        {
+          "label": "Recharge",
+          "value": "Basée sur un temps de récupération",
+          "note": [
+            "Se recharge après le déclenchement ; pas permanent."
+          ]
+        },
+        {
+          "label": "Types",
+          "value": "Défensif / Offensif / Utilitaire",
+          "note": [
+            "Nommés d'après l'effet qu'ils accordent."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Familles de charms",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Les Charms sont regroupés selon le type de bonus qu'ils accordent. Chacun est nommé d'après son effet (par exemple un charm qui accorde des charges d'Endurance à vie basse). Le catalogue exact s'enrichit avec les patches - reportez-vous à l'infobulle en jeu comme source de vérité."
+      ],
+      "members": [
+        {
+          "id": "charm-defensive",
+          "eyebrow": "Défense",
+          "title": "Charms défensifs",
+          "sub": "Endurance / Barrière / Vie",
+          "tags": [
+            "defence"
+          ],
+          "body": [
+            "Se déclenchent en situation de danger (vie basse, coup critique, altération) pour accorder des défenses : charges d'Endurance, une Barrière, ou de la vie récupérée."
+          ]
+        },
+        {
+          "id": "charm-offensive",
+          "eyebrow": "Attaque",
+          "title": "Charms offensifs",
+          "sub": "Charges / Dégâts",
+          "tags": [
+            "offence"
+          ],
+          "body": [
+            "Se déclenchent pour accorder des charges de Frenzy ou de Power, ou une salve de dégâts, lorsque vous remplissez la condition (kill, altération appliquée, etc.)."
+          ]
+        },
+        {
+          "id": "charm-utility",
+          "eyebrow": "Utilitaire",
+          "title": "Charms utilitaires",
+          "sub": "Alterations / Mana",
+          "tags": [
+            "utility"
+          ],
+          "body": [
+            "Se déclenchent pour retirer une altération, restaurer du Mana, ou purifier un debuff lorsque la condition se produit."
+          ]
+        },
+        {
+          "id": "charm-elemental",
+          "eyebrow": "Élémentaire",
+          "title": "Charms élémentaires",
+          "sub": "Choc / Givre / Ignition",
+          "tags": [
+            "elemental"
+          ],
+          "body": [
+            "Se déclenchent lors d'événements élémentaires (être choqué, geler un ennemi) pour transformer l'altération en avantage."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propriétés des charms",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Emplacement",
+          "value": "Amulet Charm Socket",
+          "notes": [
+            "Les Charms se placent dans l'emplacement de Charm dédié d'une amulette, et non dans une socket de gemme classique."
+          ]
+        },
+        {
+          "label": "Condition de déclenchement",
+          "value": "Propre à chaque charm",
+          "notes": [
+            "Chaque charm définit l'événement qui le déclenche : vie basse, coup critique subi, altération, kill, et plus encore."
+          ]
+        },
+        {
+          "label": "Effet",
+          "value": "Bonus accordé",
+          "notes": [
+            "Lors du déclenchement, le charm accorde son bonus (charges, Barrière, vie, purification) pendant une courte durée."
+          ]
+        },
+        {
+          "label": "Recharge",
+          "value": "Temps de récupération",
+          "notes": [
+            "Après activation, le charm entre en temps de récupération et se recharge ; il s'agit d'un filet de sécurité périodique, et non d'une aura permanente."
+          ]
+        },
+        {
+          "label": "Un par amulette",
+          "value": "Client actuel",
+          "notes": [
+            "Dans le client actuel, une amulette ne contient qu'un charm. À vérifier selon votre client si cela change."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 50,
+      "title": "Comment obtenir des Charms",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "Les Charms entrent dans le pool en tant que contenu de fin de partie lié au système d'emplacement de charm d'amulette."
+      ],
+      "routes": [
+        {
+          "label": "Drops en fin de partie",
+          "body": [
+            "Les Charms tombent des cartes et des boss une fois le contenu des emplacements de charm disponible."
+          ]
+        },
+        {
+          "label": "Quête / déverrouillage",
+          "body": [
+            "Certaines amulettes nécessitent un emplacement de Charm déverrouillé via une quête ou une étape d'établi avant qu'un charm puisse y être inséré."
+          ]
+        },
+        {
+          "label": "Échange",
+          "body": [
+            "Achetez des charms spécifiques à d'autres joueurs pour l'effet souhaité."
+          ]
+        },
+        {
+          "label": "Farm ciblé",
+          "body": [
+            "Des stratégies communautaires (par exemple forcer des drops de style 'Rite of Passage') peuvent orienter les drops vers des récompenses liées aux charms."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 60,
+      "title": "Comment insérer un Charm",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Déverrouiller l'emplacement",
+          "body": [
+            "Assurez-vous que votre amulette possède un emplacement de Charm (quête ou établi, selon l'objet)."
+          ]
+        },
+        {
+          "label": "Choisir le charm",
+          "body": [
+            "Choisissez un charm dont le déclenchement et le bonus correspondent au danger réellement rencontré par votre build."
+          ]
+        },
+        {
+          "label": "L'insérer",
+          "body": [
+            "Glissez le charm dans l'emplacement de Charm de l'amulette comme une gemme."
+          ]
+        },
+        {
+          "label": "Confirmer la recharge",
+          "body": [
+            "En combat, observez le charm s'activer selon sa condition puis se recharger ensuite."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 70,
+      "title": "Où les charms prennent place",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Les Charms ne vont que dans l'emplacement de Charm d'une amulette. Ils ne conviennent pas aux armes, armures, ou sockets de gemmes classiques."
+      ],
+      "columns": [
+        "Amulette (avec emplacement)",
+        "Anneau",
+        "Socket de gemme classique"
+      ],
+      "rows": [
+        {
+          "label": "Accepte un charm",
+          "note": "Emplacement de Charm uniquement",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Oui"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            }
+          ]
+        },
+        {
+          "label": "Déclenchement automatique",
+          "note": "Selon condition",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Oui"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            }
+          ]
+        },
+        {
+          "label": "Se recharge",
+          "note": "Temps de récupération",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Oui"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            },
+            {
+              "kind": "no",
+              "text": "Non"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre-use-checklist",
+      "order": 80,
+      "title": "Checklist avant utilisation",
+      "toc": true,
+      "visible": true,
+      "type": "pre-use-checklist",
+      "items": [
+        {
+          "label": "L'amulette possède un emplacement de Charm",
+          "checks": [
+            "Vérifiez la présence de l'emplacement avant d'acheter un charm."
+          ],
+          "why": "Un charm est inutile sans l'emplacement.",
+          "fix": "Déverrouillez d'abord l'emplacement via une quête/un établi."
+        },
+        {
+          "label": "Le déclenchement correspond à votre risque",
+          "checks": [
+            "Choisissez un déclenchement que vous rencontrez réellement (vie basse, critique, altération)."
+          ],
+          "why": "Un charm dont la condition ne se déclenche jamais ne fait rien.",
+          "fix": "Associez le charm à vos morts réelles ou points de pression."
+        },
+        {
+          "label": "L'effet vaut l'emplacement",
+          "checks": [
+            "Comparez le bonus accordé à ce que l'amulette pourrait faire d'autre."
+          ],
+          "why": "Un charm par amulette représente un vrai coût d'opportunité.",
+          "fix": "Choisissez le déclenchement le plus rentable pour votre build."
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 90,
+      "title": "Résultats selon les besoins du build",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "defence",
+        "offence",
+        "utility"
+      ],
+      "rows": [
+        {
+          "scenario": "Attaquant fragile",
+          "audience": "Vie basse / glass cannon",
+          "benefit": "Charm défensif à vie basse accordant Endurance / Barrière",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Bouton panique efficace",
+          "tags": [
+            "defence"
+          ]
+        },
+        {
+          "scenario": "Build dépendant des charges",
+          "audience": "Utilisateurs Frenzy / Power",
+          "benefit": "Charm offensif accordant des charges selon la condition",
+          "risk": "Low",
+          "level": "low",
+          "recommendation": "Maintient la disponibilité des charges",
+          "tags": [
+            "offence"
+          ]
+        },
+        {
+          "scenario": "Contenu riche en altérations",
+          "audience": "Delirium / breach",
+          "benefit": "Charm utilitaire purifie selon l'altération",
+          "risk": "Low",
+          "level": "medium",
+          "recommendation": "Bon pour les cartes DoT",
+          "tags": [
+            "utility"
+          ]
+        },
+        {
+          "scenario": "Incantateur affamé en mana",
+          "audience": "Lanceurs de sorts",
+          "benefit": "Charm utilitaire restaure le Mana au déclenchement",
+          "risk": "Low",
+          "level": "medium",
+          "recommendation": "Lisse la soutenance",
+          "tags": [
+            "utility"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Charms face aux autres options",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Les Charms sont souvent comparés aux Flacons. Les Flacons sont actifs : vous appuyez dessus (ou ils s'utilisent automatiquement) et sont consommés sur leur durée. Les Charms sont passifs et automatiques : ils s'activent selon une condition puis se rechargent, couvrant ainsi le moment où vous oubliez d'utiliser un flacon ou ne le pouvez pas.",
+        "Les Charms se distinguent aussi de l'Onction (Émotions distillées). L'Onction accorde un Notable passif permanent sur l'amulette ; un charm accorde un bonus temporaire déclenché depuis l'emplacement de Charm. Ils occupent des systèmes d'amulette différents et peuvent coexister.",
+        "Face aux auras permanentes ou aux auras provenant de compétences, les charms sont plus faibles par seconde mais ne coûtent pas de mana et n'ont besoin d'aucune socket - ils constituent une couche réactive gratuite au-dessus de votre configuration principale."
+      ],
+      "bullets": [
+        "Flacon = actif, consommé, vous appuyez dessus.",
+        "Charm = passif, automatique, se recharge.",
+        "Onction = Notable permanent ; charm = bonus déclenché (socket différente).",
+        "Le charm est une couche réactive gratuite, pas une source de dégâts principale."
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 110,
+      "title": "Quels builds utilisent quel charm",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Choisissez le charm selon le mode de défaillance qui tue réellement votre build, pas selon les chiffres bruts."
+      ],
+      "builds": [
+        {
+          "title": "Attaquant glass cannon",
+          "description": "Charm défensif se déclenchant à vie basse pour une Barrière ou des charges d'Endurance."
+        },
+        {
+          "title": "Build empilant les charges",
+          "description": "Charm offensif accordant des charges de Frenzy ou de Power lorsque la condition est remplie."
+        },
+        {
+          "title": "Build DoT / altération",
+          "description": "Charm utilitaire purifiant l'altération au déclenchement."
+        },
+        {
+          "title": "Incantateur avec problèmes de mana",
+          "description": "Charm utilitaire restaurant le Mana lorsque vous subissez un coup critique ou tombez bas."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 120,
+      "title": "Preuves communautaires",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-no-socket",
+          "kind": "Question Reddit",
+          "question": "J'ai un charm mais mon amulette n'a pas d'emplacement de Charm - que dois-je faire ?",
+          "summary": [
+            "Un joueur possédait un charm mais ne pouvait pas l'insérer."
+          ],
+          "editorialAnalysis": [
+            "Les Charms nécessitent l'emplacement de Charm de l'amulette. Certaines amulettes nécessitent que l'emplacement soit déverrouillé via une quête ou une étape d'établi avant qu'un charm puisse y être inséré."
+          ],
+          "officialAnswer": [
+            "Déverrouillez d'abord l'emplacement de Charm de l'amulette, puis insérez le charm."
+          ]
+        },
+        {
+          "sourceId": "forum-not-firing",
+          "kind": "Question de forum",
+          "question": "Mon charm ne semble jamais se déclencher - est-il cassé ?",
+          "summary": [
+            "Les joueurs avaient l'impression que leur charm ne faisait rien."
+          ],
+          "editorialAnalysis": [
+            "Un charm ne s'active que lorsque sa condition spécifique est remplie, puis se recharge. Si la condition arrive rarement dans votre contenu, le charm se déclenche rarement - associez le déclenchement au danger que vous rencontrez réellement."
+          ],
+          "officialAnswer": [
+            "Choisissez un charm dont le déclenchement correspond à la pression rencontrée par votre build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "Vidéo et horodatages",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "How Charms Work in PoE2",
+          "url": "https://www.youtube.com/watch?v=dn7UxGuMe0I",
+          "creator": "Kripparrian",
+          "description": "Explication claire du système de charm et de l'insertion.",
+          "takeaway": "Meilleur aperçu du déclenchement et de la recharge.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Ce que sont les charms"
+            },
+            {
+              "time": "02:30",
+              "label": "Insertion et déclenchements"
+            },
+            {
+              "time": "05:00",
+              "label": "Quel charm choisir"
+            }
+          ]
+        },
+        {
+          "label": "Forcing Rite of Passage Charm Drops",
+          "url": "https://www.youtube.com/watch?v=KKwPKB9g7OY",
+          "creator": "Tony Emerald",
+          "description": "Stratégie pour orienter les drops vers des récompenses liées aux charms.",
+          "takeaway": "Utile si vous farmez un charm spécifique.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Stratégie de drop"
+            },
+            {
+              "time": "03:15",
+              "label": "Méthode Rite of Passage"
+            }
+          ]
+        },
+        {
+          "label": "+6 to Skills Amulet Tech",
+          "url": "https://www.youtube.com/watch?v=ys6lEWoYtK0",
+          "creator": "divmaxxing",
+          "description": "Technique d'amulette associée au contenu des emplacements de charm.",
+          "takeaway": "Montre le plafond d'optimisation de l'amulette.",
+          "timestamps": [
+            {
+              "time": "00:00",
+              "label": "Intro technique amulette"
+            },
+            {
+              "time": "04:00",
+              "label": "Optimisation de l'emplacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Impossible d'insérer le charm",
+          "directAnswer": [
+            "L'amulette ne possède pas d'emplacement de Charm, ou il n'est pas encore déverrouillé."
+          ],
+          "checks": [
+            "Déverrouillez l'emplacement via une quête/un établi, puis réessayez."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Étapes d'insertion"
+            }
+          ]
+        },
+        {
+          "symptom": "Le charm ne se déclenche jamais",
+          "directAnswer": [
+            "Sa condition de déclenchement n'est pas remplie dans votre contenu."
+          ],
+          "checks": [
+            "Passez à un charm dont le déclenchement correspond au danger rencontré."
+          ]
+        },
+        {
+          "symptom": "Le charm semble faible",
+          "directAnswer": [
+            "Les Charms sont des filets de sécurité périodiques, et non des auras permanentes ; ils se rechargent après usage."
+          ],
+          "checks": [
+            "Attendez-vous à un bonus réactif, pas à des dégâts principaux ; associez-les aux flacons/onction."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "Contenu associé",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "liquid-emotions",
+          "contentType": "item",
+          "title": "Liquid Emotions",
+          "description": "L'Onction accorde un Notable permanent sur la même amulette - système différent, peut coexister.",
+          "href": "/fr/items/liquid-emotions/"
+        },
+        {
+          "contentId": "uncut-gems-guide",
+          "contentType": "item",
+          "title": "Uncut Gems",
+          "description": "Un autre système 0.5.x pour choisir vos gemmes de compétence et de support.",
+          "href": "/fr/items/uncut-gems-guide/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Historique des patches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.2 (Endgame, Runes & Delirium)",
+          "changes": [
+            "Les Charms et l'emplacement de Charm d'amulette introduits comme couche réactive et rechargeable sur les amulettes."
+          ]
+        },
+        {
+          "version": "0.5.4",
+          "date": "2026-07-31",
+          "changes": [
+            "Les Charms restent le système insérable d'amulette ; les familles de charms et le comportement de recharge sont actuels."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Notes de patch de Path of Exile 2 couvrant le système de charm et d'emplacement d'amulette en 0.5.x.",
+          "url": "https://www.pathofexile.com/forum/view-thread/362230"
+        },
+        {
+          "label": "WIKI",
+          "description": "Données de Charm et mécaniques d'emplacement de charm de PoE2Wiki.",
+          "url": "https://www.poe2wiki.net/wiki/Charm"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guides communautaires de charm et articles de stratégie de drop.",
+          "url": "https://www.poe2wiki.net/wiki/Amulet"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "liquid-emotions",
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "Notes de patch officielles 0.5.x de Path of Exile 2 (charms)",
+      "url": "https://www.pathofexile.com/forum/view-thread/362230",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2Wiki — Charm",
+      "url": "https://www.poe2wiki.net/wiki/Charm",
+      "sourceType": "tool"
+    },
+    {
+      "label": "PoE2Wiki — Amulet",
+      "url": "https://www.poe2wiki.net/wiki/Amulet",
+      "sourceType": "tool"
+    }
+  ],
+  "seo": {
+    "title": "Charms Path of Exile 2 : emplacements d'amulette, effets déclenchés et recharge",
+    "description": "Comment fonctionnent les Charms de PoE2 : emplacements de charm d'amulette, effets conditionnels déclenchés, recharge, et comment choisir un charm selon les besoins du build.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "charms-guide",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

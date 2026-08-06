@@ -1,0 +1,642 @@
+{
+  "id": "combat-frenzy",
+  "slug": "combat-frenzy",
+  "locale": "ko",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "전투 광란(Combat Frenzy) 가이드 — 빙결, 감전, 속박 및 광란 충전 유지",
+  "shortTitle": "전투 광란",
+  "summary": "전투 광란은 정령(Spirit) 젬으로, 적에게 빙결, 감전, 속박 중 하나를 일으킬 때마다 광란(Frenzy) 충전을 생성합니다. 냉각(Chill), 충격(Shock), 일반 기절(Stun)은 인정되지 않으며, 완전히 부여된 상태이상(ailment)만이 발동합니다. 이 가이드에서는 세 가지 유효한 발동 이벤트, 내부 쿨다운, 젬 레벨과 품질(Quality)이 발동 빈도를 바꾸는 방식, 충전 풍성(Charge Profusion), 정령 예산과 선구자(Herald) / 환영 궁수(Mirage Archer)와의 비교, 그리고 회오리(Twister)·빙결 화살(Ice Shot)·빙하 창(Glacial Lance) 빌드가 사용하는 사냥 / 보스 로테이션을 설명합니다.",
+  "description": "전투 광란 심층 가이드: 충전을 생성하는 세 가지 이벤트(빙결 / 감전 / 속박), 냉각 / 충격 / 기절이 인정되지 않는 이유, 내부 쿨다운과 동일 이벤트 규칙, 젬 레벨과 품질(추가 충전 확률), 충전 풍성 서포트, 정령 예산, 폭우(Barrage) 및 빙결 화살(Ice-Tipped Arrows)과의 상호작용, 사냥 및 보스 로테이션, 문제 해결과 커뮤니티 증거.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "spirit",
+  "spiritReservation": 30,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "charge-generator",
+    "frenzy",
+    "spirit"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/combat-frenzy.webp",
+  "cardImage": "/images/skills/combat-frenzy.webp",
+  "imageAlt": "전투 광란 정령 젬 아이콘",
+  "tags": [
+    "buff",
+    "persistent",
+    "charge-generator",
+    "frenzy",
+    "spirit"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "핵심 요약: 빙결 / 감전 / 속박이 충전을 발동합니다",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "전투 광란은 공격이 빙결, 감전, 속박을 일으킬 때마다 광란 충전을 부여합니다. 이것이 유효한 이벤트의 전부입니다.",
+        "냉각, 충격, 일반 기절은 충전을 생성하지 않습니다. 완전히 부여된 상태이상만 인정되며 누적량은 무관합니다. 이것이 이 스킬에서 가장 흔히 오해되는 부분입니다."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "주요 수치와 획득 방법",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "분류",
+          "value": "정령 젬 · 버프 · 지속 · 충전 생성기",
+          "notes": [
+            "buff, persistent, charge-generator, frenzy 태그가 붙습니다."
+          ]
+        },
+        {
+          "label": "정령 비용",
+          "value": "30 Spirit",
+          "notes": [
+            "활성화 중 30 정령을 예약합니다. 현재 클라이언트 수치를 확인하세요."
+          ]
+        },
+        {
+          "label": "유효 이벤트",
+          "value": "빙결 / 감전 / 속박",
+          "notes": [
+            "완전히 부여된 상태이상만 충전을 발동합니다."
+          ]
+        },
+        {
+          "label": "내부 쿨다운",
+          "value": "이벤트별, 젬 레벨에 비례",
+          "notes": [
+            "현재 클라이언트의 레벨별 쿨다운을 확인하세요."
+          ]
+        },
+        {
+          "label": "품질",
+          "value": "추가 충전 확률",
+          "notes": [
+            "품질은 추가 충전이 생길 확률을 더합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "persistent-buff",
+      "order": 30,
+      "title": "지속 버프와 정령",
+      "type": "persistent-buff",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "전투 광란은 지속 버프입니다. 한 번 활성화하면 맵 전체에서 30 정령을 예약하며, 백그라운드에서 공격이 유효한 상태이상을 일으키는지 감시합니다.",
+        "처치를 할 때마다 별도로 발동시키는 것이 아닙니다. 조건이 충족되고 내부 쿨다운이 풀리면 수동적으로 충전을 부여합니다."
+      ],
+      "keyValues": [
+        {
+          "label": "예약",
+          "value": "30 Spirit (지속)",
+          "notes": [
+            "전체 정령 풀에서 차감하세요."
+          ]
+        },
+        {
+          "label": "상태",
+          "value": "활성화 중 항상 켜짐",
+          "notes": [
+            "유효한 이벤트 시 수동적으로 충전을 부여합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charge-generation",
+      "order": 40,
+      "title": "광란 충전 생성",
+      "type": "charge-generation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "정확히 세 가지 이벤트만이 충전을 생성합니다. 빙결을 일으킬 때, 감전을 일으킬 때, 그리고 속박을 일으킬 때입니다. 각각 누적 미터가 아니라 완전히 부여된 상태이상이어야 합니다.",
+        "한 공격이 같은 타격에서 적을 빙결시키고 속박시키는 경우에도, 쿨다운이 허용하는 만큼의 충전만 얻습니다. 같은 이벤트 창에 상태이상이 여러 개 적중하더라도 반드시 종류별로 하나씩 주어지는 것은 아닙니다. 현재 클라이언트에서 중첩 동작을 확인하세요."
+      ],
+      "keyValues": [
+        {
+          "label": "빙결",
+          "value": "유효 (완전한 빙결)",
+          "notes": [
+            "냉각 누적은 인정되지 않습니다."
+          ]
+        },
+        {
+          "label": "감전",
+          "value": "유효 (완전한 감전)",
+          "notes": [
+            "충격 누적은 인정되지 않습니다."
+          ]
+        },
+        {
+          "label": "속박",
+          "value": "유효 (완료된 속박)",
+          "notes": [
+            "속박 누적은 인정되지 않습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trigger-table",
+      "order": 45,
+      "title": "발동 비교",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "일으키는 상태이상",
+        "충전 생성?",
+        "완전한 상태이상 필요 또는 누적 필요?",
+        "흔한 실수"
+      ],
+      "rows": [
+        [
+          "빙결",
+          "예",
+          "완전히 빙결해야 함",
+          "냉각은 빙결이 아님"
+        ],
+        [
+          "감전",
+          "예",
+          "완전히 감전해야 함",
+          "충격은 감전이 아님"
+        ],
+        [
+          "속박",
+          "예",
+          "속박을 완료해야 함",
+          "속박 누적은 속박이 아님"
+        ],
+        [
+          "냉각",
+          "아니오",
+          "—",
+          "냉기 공격이 자동 발동하지 않음"
+        ],
+        [
+          "충격",
+          "아니오",
+          "—",
+          "번개 공격이 자동 발동하지 않음"
+        ],
+        [
+          "기절",
+          "아니오",
+          "—",
+          "유효한 조건이 아님"
+        ]
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 50,
+      "title": "내부 쿨다운과 동일 이벤트 규칙",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "전투 광란은 충전 부여 사이에 내부 쿨다운이 있습니다. 젬 레벨이 이 쿨다운을 바꾸며, 레벨이 높을수록 충전이 더 빠르게 회복됩니다. 이것이 지속적인 광란을 확보하는 주된 스케일링 레버입니다.",
+        "쿨다운 때문에 적이 끊임없이 빙결 / 속박되는 사냥에서는 충전이 쏟아지지만, 보스전(보스가 저항하거나 빙결이 느린 경우)에서는 충전이 부족해집니다. 이 격차는 버그가 아니라 의도된 설계입니다."
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 60,
+      "title": "품질",
+      "type": "quality",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "전투 광란의 품질은 유효한 이벤트에서 일반 충전 하나에 더해 추가 광란 충전이 생길 확률을 더합니다. 쿨다운을 줄이는 것이 아니라 보너스 충전 확률을 더하는 것입니다.",
+        "현재 클라이언트의 정확한 품질 수치를 확인하세요. 추가 충전 확률을 스케일링하며 쿨다운은 스케일링하지 않습니다."
+      ],
+      "keyValues": [
+        {
+          "label": "품질 효과",
+          "value": "추가 충전 확률",
+          "notes": [
+            "현재 클라이언트 수치를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "서포트 궁합",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "충전 풍성 I / II는 전투 광란이 공급하는 충전 경제를 직접 개선하므로, 충전을 많이 쓰는 빌드에서는 거의 필수에 가깝습니다. 버프를 유지하는 지속 서포트와 30 예약을 덜어주는 정령 서포트도 도움이 됩니다."
+      ],
+      "keyValues": [
+        {
+          "label": "충전 풍성 I / II",
+          "value": "핵심",
+          "notes": [
+            "젬이 만드는 광란 경제를 개선합니다."
+          ]
+        },
+        {
+          "label": "지속 / 정령 서포트",
+          "value": "상황별",
+          "notes": [
+            "버프를 유지하고 예약을 덜어줍니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 80,
+      "title": "정령 예산 트레이드오프",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "30 정령인 전투 광란은 같은 정령 풀에서 선구자 버프와 환영 궁수와 경쟁합니다. 빙결 / 감전 / 속박을 이미 끊임없이 일으키는 빌드에서는 지속되는 광란이 대개 데미지 오라보다 가치가 큽니다.",
+        "충전 기반 빌드(폭우, 빙결 화살)는 전투 광란을 엔진으로 취급하므로 오라보다 이를 우선시합니다."
+      ],
+      "keyValues": [
+        {
+          "label": "비용",
+          "value": "30 Spirit",
+          "notes": [
+            "선구자 / 환영 궁수와 같은 풀입니다."
+          ]
+        },
+        {
+          "label": "트레이드오프",
+          "value": "유지 vs 오라",
+          "notes": [
+            "정령이 병목일 때만 제외하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-interactions",
+      "order": 90,
+      "title": "스킬 상호작용",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "폭우와 빙결 화살은 모두 광란 충전을 소모하므로, 전투 광란은 이들의 유지 엔진입니다. 빙결 / 속박으로 충전을 모은 다음 강화된 일제 사격에 소모합니다. 속박을 일으키는 창 스킬도 이 순환을 공급합니다.",
+        "순서가 중요합니다. 전투 광란이 충전을 먼저 생성한 뒤 폭우나 빙결 화살이 소모해야 하므로, 상태이상을 먼저 발동시킨 다음 충전 소모 스킬을 쏘세요."
+      ],
+      "keyValues": [
+        {
+          "label": "폭우",
+          "value": "소모기",
+          "notes": [
+            "먼저 전투 광란으로 생성된 충전이 필요합니다."
+          ]
+        },
+        {
+          "label": "빙결 화살",
+          "value": "소모기",
+          "notes": [
+            "같은 충전 경제입니다."
+          ]
+        },
+        {
+          "label": "창 (속박)",
+          "value": "생성기",
+          "notes": [
+            "속박 이벤트가 전투 광란을 공급합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "사냥 로테이션",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "지속적 상태이상",
+          "action": "청소하며 패킹을 빙결 / 속박시킴",
+          "result": "많은 적 수에서 충전이 쏟아집니다."
+        },
+        {
+          "label": "소모",
+          "action": "단단한 패킹에 폭우 / 빙결 화살 사용",
+          "result": "유지된 충전으로 지불되는 일제 사격."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "보스 로테이션",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "사전 축적",
+          "action": "추가 몹이나 오프닝 창을 빙결 / 속박시킴",
+          "result": "첫 큰 소모에 충분한 충전."
+        },
+        {
+          "label": "유지",
+          "action": "전투 중 계속 상태이상 발동",
+          "result": "소모 사이사이를 채우는 충전이 새어 들어옵니다."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "사용되는 곳",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "회오리(정령 보행자) 빌드는 폭우 일제 사격을 위한 광란 유지에 전투 광란을 사용합니다. 빙결 화살과 빙하 창 빌드는 끊임없이 빙결 / 속박을 부여한 뒤 그 충전을 강화 공격에 소모하기 때문에 사용합니다.",
+        "모든 경우 빌드가 이미 세 가지 유효 상태이상 중 하나를 꾸준히 일으키므로, 유지가 가끔이 아니라 실질적으로 이루어집니다."
+      ],
+      "bullets": [
+        "회오리: 폭우를 위한 광란 유지.",
+        "빙결 화살: 빙결 공급 충전.",
+        "빙하 창: 속박 공급 충전."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "문제 해결",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "충전이 나타나지 않음",
+          "action": "냉각 / 충격 / 기절만 적중 중",
+          "result": "대신 완전한 빙결 / 감전 / 속박을 일으키세요."
+        },
+        {
+          "label": "충전이 너무 느림",
+          "action": "내부 쿨다운 또는 낮은 젬 레벨",
+          "result": "젬 레벨을 높이고 충전 풍성을 추가하세요."
+        },
+        {
+          "label": "버프는 켜졌으나 충전 없음",
+          "action": "유효한 상태이상 이벤트가 발생하지 않음",
+          "result": "적에게 세 가지 유효 상태이상 중 하나를 부여하세요."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "커뮤니티 증거",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "'무한 광란' 같은 커뮤니티 표현은 사냥 패킹을 끊임없이 빙결 / 속박시키는 빌드를 묘사하며, 실제로 충전이 쏟아집니다. 보스에서는 같은 빌드라도 보스가 상태이상에 저항하므로 충전이 부족해집니다. 이 격차는 설계에 따른 것입니다.",
+        "가장 흔한 실수는 냉각이나 충격이 발동한다고 가정하는 것입니다. 클라이언트 테스트로 확인된 바, 완전한 빙결, 감전, 속박만이 충전을 부여합니다."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "영상 설명 및 타임스탬프",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "P4wnyhof",
+          "label": "Bleed Huntress 0.5 — 충전 유지",
+          "description": "사냥 패킹의 반복 상태이상으로 광란 충전이 유지되는 것을 보여주는 쇼케이스.",
+          "takeaway": "끊임없는 빙결 / 속박이 충전을 어떻게 흐르게 하는지 보세요.",
+          "url": "https://www.youtube.com/watch?v=fkdD3ULwSDw",
+          "timestamps": [
+            {
+              "label": "충전 유지 데모",
+              "time": "0:00"
+            },
+            {
+              "label": "보스 격차",
+              "time": "6:00"
+            }
+          ]
+        },
+        {
+          "creator": "SnooBAE85",
+          "label": "Twister 빌드 0.5",
+          "description": "보스전에서 전투 광란 → 폭우 충전 순환을 보여주는 회오리 중심 빌드.",
+          "takeaway": "강화 공격 전 충전을 미리 축적하는 좋은 참고자료입니다.",
+          "url": "https://www.youtube.com/watch?v=WU_SXgxeY2A",
+          "timestamps": [
+            {
+              "label": "셋업 개요",
+              "time": "0:00"
+            },
+            {
+              "label": "충전 순환",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "출처 및 검증",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "공식",
+          "description": "GGG 공식 포럼 패치 노트가 현재 0.5.4 클라이언트에서 전투 광란의 충전 발동(빙결 / 감전 / 속박)과 쿨다운 조정을 확인해 줍니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "데이터베이스",
+          "description": "PoE2DB와 커뮤니티 위키가 스킬 id, 태그, 정령 비용, 숨겨진 충전 동작을 제공합니다.",
+          "url": "https://www.poe2wiki.net/wiki/Combat_Frenzy"
+        },
+        {
+          "label": "빌드 및 영상",
+          "description": "Mobalytics 회오리 / 빙결 화살 빌드와 P4wnyhof / SnooBAE85 쇼케이스 영상으로 충전 순환을 교차 검증했습니다.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "커뮤니티",
+          "description": "Reddit과 공식 포럼에서 '충전 없음', 쿨다운, 정령 같은 실제 문제가 클라이언트에서 재현되고 직접 답변됩니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Combat%20Frenzy&restrict_sr=1"
+        },
+        {
+          "label": "공식 포럼",
+          "description": "GGG 공식 포럼에서 스태프가 정령 젬과 충전 메커니즘, 패치 변경을 확인합니다.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit 커뮤니티",
+          "description": "전투 광란에 대한 Reddit r/PathOfExile2 토론과 도움글은 버전 피드백과 주류 빌드에 유용합니다.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "클라이언트 0.5.4에서 빙결 / 감전 / 속박만이 충전을 부여함을 확인.",
+          "냉각 / 충격 / 기절은 비발동으로 확인.",
+          "내부 쿨다운은 젬 레벨에 비례하며, 품질은 추가 충전 확률을 더합니다."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "패치 내역",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-10-15",
+          "changes": [
+            "0.2 / 0.3: 빙결 / 감전 / 속박 충전 발동과 함께 전투 광란 추가."
+          ]
+        },
+        {
+          "date": "2026-04-10",
+          "changes": [
+            "0.4: 젬 레벨별 내부 쿨다운 조정."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: 충전 동작 유지. 이 가이드에는 현재 클라이언트 수치를 사용."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "변경 로그",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "최초 발행: 유효한 충전 이벤트, 발동 표, 내부 쿨다운, 품질, 충전 풍성, 정령 예산, 스킬 상호작용, 사냥 및 보스 로테이션, 문제 해결과 커뮤니티 증거."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "twister-spirit-walker",
+    "ice-shot-deadeye",
+    "glacial-lance-ritualist"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [
+    "barrage",
+    "ice-tipped-arrows",
+    "snipe",
+    "twister"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Combat Frenzy",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Combat_Frenzy"
+    },
+    {
+      "label": "Mobalytics — Charge builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Combat Frenzy discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Combat%20Frenzy&restrict_sr=1"
+    },
+    {
+      "label": "P4wnyhof — Bleed Huntress 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=fkdD3ULwSDw"
+    },
+    {
+      "label": "SnooBAE85 — Twister 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=WU_SXgxeY2A"
+    }
+  ],
+  "seo": {
+    "title": "전투 광란(Combat Frenzy) 가이드 — 빙결, 감전, 속박 및 광란 충전 유지",
+    "description": "전투 광란 정령 젬 가이드: 충전을 생성하는 세 가지 이벤트(빙결 / 감전 / 속박), 냉각 / 충격 / 기절이 인정되지 않는 이유, 내부 쿨다운, 젬 레벨과 품질, 충전 풍성, 정령 예산, 폭우 및 빙결 화살과의 상호작용, 사냥 및 보스 로테이션, 문제 해결과 커뮤니티 증거.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "combat-frenzy",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

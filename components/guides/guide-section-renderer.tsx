@@ -29,7 +29,7 @@ import { VersionConflicts } from "./sections/version-conflicts";
 import { InteractiveSelector } from "./sections/interactive-selector";
 
 const rendererLabels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     source: string;
     takeaway: string;
@@ -49,7 +49,7 @@ const rendererLabels: Record<
 };
 
 /** 各章节类型的眉标（小字大写标签），与原型 section-title 的 eyebrow 对应。 */
-const guideEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
+const guideEyebrowLabels: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     overview: "OVERVIEW",
     preparation: "PREPARATION",
@@ -124,7 +124,7 @@ const guideEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
 
 /** 根据章节类型回退眉标；无映射时英文用类型大写、中文用原类型。 */
 function guideEyebrow(type: string, locale: ContentLocale): string {
-  const label = guideEyebrowLabels[locale][type];
+  const label = guideEyebrowLabels[locale === "zh-cn" ? "zh-cn" : "en"][type];
   if (label) return label;
   return locale === "zh-cn" ? type : type.toUpperCase().replace(/-/g, " ");
 }
@@ -134,7 +134,7 @@ function renderSectionContent(
   section: GuideSection,
   locale: ContentLocale,
 ): ReactNode {
-  const labels = rendererLabels[locale];
+  const labels = rendererLabels[locale === "zh-cn" ? "zh-cn" : "en"];
 
   switch (section.type) {
     case "overview":

@@ -1,0 +1,11 @@
+const fs = require('fs');
+const p = '/Users/manxin/Downloads/exile2-guides-prd/content/tr/guides/abyss-depths-crafting-kulemak.json';
+const d = JSON.parse(fs.readFileSync(p, 'utf8'));
+console.log('JSON parse OK');
+console.log('status:', d.status, '| noindex:', d.seo.noindex);
+console.log('translation:', JSON.stringify(d.translation));
+console.log('root contentId:', Object.prototype.hasOwnProperty.call(d, 'contentId'));
+console.log('root sourceContentId:', Object.prototype.hasOwnProperty.call(d, 'sourceContentId'));
+console.log('root sourceRevision:', Object.prototype.hasOwnProperty.call(d, 'sourceRevision'));
+const bad = ['completed', 'manual-review', 'none'].filter(k => JSON.stringify(d).includes('"' + k + '"') && k !== 'none' || (k === 'none' && d.translation && d.translation.translationStatus === 'none'));
+console.log('forbidden status tokens present:', bad.length ? bad : 'none');

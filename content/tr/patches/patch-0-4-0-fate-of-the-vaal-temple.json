@@ -1,0 +1,458 @@
+{
+  "id": "patch-0-4-0-fate-of-the-vaal-temple",
+  "slug": "patch-0-4-0-fate-of-the-vaal-temple",
+  "locale": "tr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 Kaan'ın Yazgısı ve Atziri Tapınağı: Işıkçaklar, Odalar ve 0.4.0d/e Düzeltmeleri",
+  "shortTitle": "0.4.0 Kaan'ın Yazgısı / Tapınak",
+  "summary": "0.4.0 Kaan'ın Yazgısı ligi çok odalı bir Atziri Tapınağı nasıl inşa etti, açılışta odalar neden bağlantısız kaldı veya kararsızlaştı ve 0.4.0d ile 0.4.0e güncel kuralları nasıl değiştirdi.",
+  "description": "Kaan'ın Yazgısı ve inşa edilebilir Atziri Tapınağı'nın mekanizma tarihi: Işıkçaklar, Enerji, oda yerleşimi ve yükseltmeleri, Mimar/Atziri/Odacıklar/Kasalar ilişkisi, 0.4.0d bağlantı düzeltmeleri ve 0.4.0e'nin otomatik Kararsızlaştırmayı kaldırması.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "imageAlt": "Atziri, Kızıl Kraliçe, yeniden inşa edilen Tapınağın son boss'u",
+  "tags": [
+    "league",
+    "major-updates"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Hızlı özet",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Kaan'ın Yazgısı, imzası yeniden inşa edilebilir bir Atziri Tapınağı olan 0.4.0 ligiydi; ışıkçaklar yerleştirir, bu ışıkçaklar Enerji harcayarak odaları inşa eder, daha derin odalar Odacıklara ve nihayet Kasaya ile Atziri'nin kendisine ulaşır.",
+        "Açılışta sistemin iki ciddi sorunu vardı: kırılgan oda bağlantıları ve uyarı vermeden bir turlğu bozabilecek otomatik kararsızlaşma. Her ikisi de 0.4.0d ve 0.4.0e ile giderildi; bu yüzden günümüzdeki Tapınak davranışı açılış haftası videolarından ciddi şekilde farklı."
+      ],
+      "bullets": [
+        "Işıkçaklar, odaları yerleştirmek ve yükseltmek için Enerji harcar",
+        "Mimar odaları inşa eder ve savunur; Atziri son boss'tur",
+        "0.4.0d oda bağlantı mantığını ve ölüm sonrası yeniden deneme akışını düzeltti",
+        "0.4.0e otomatik kararsızlaşmayı kaldırdı ve uyarılar ekledi",
+        "Açılış haftasından kalma eski Tapınak rehberleri kaldırılmış davranışları anlatır"
+      ]
+    },
+    {
+      "id": "system-flow",
+      "order": 2,
+      "title": "Sistem akışı",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Işıkçaklar",
+          "verdict": "Ana döngü",
+          "detail": "Işıkçaklar Tapınak alanına yerleştirilir ve odaları inşa etmek için Enerji tüketir. Yerleşimleri hangi odaların bağlanacağını belirler."
+        },
+        {
+          "area": "Enerji",
+          "verdict": "Kaynak",
+          "detail": "Temizlenen odalardan ve lig etkinliklerinden kazanılır; kaç oda inşa edip yükseltebileceğinizi sınırlar."
+        },
+        {
+          "area": "Odalar",
+          "verdict": "İnşa edilebilir",
+          "detail": "Her odanın bir işlevi vardır (ödül, tehlike, boss öncü odası). Bağlantı sorunu açılış haftasının en büyük sıkıntısıydı."
+        },
+        {
+          "area": "Odacıklar / Kasa",
+          "verdict": "Derin ilerleme",
+          "detail": "Odacıklar Kasayı açar; Kasa ise Kızıl Kraliçe Atziri'ye ulaşır."
+        }
+      ]
+    },
+    {
+      "id": "boss-access",
+      "order": 3,
+      "title": "Boss erişimi: Mimar, Atziri, Odacıklar",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "Mimar",
+          "detail": "Tapınak odalarını inşa eder ve savunur. 0.4.0e sonrası temposu ayarlanarak artık bir tehdit, turu bitiren bir felaket değil.",
+          "action": "Bir tempoyu tehdit olarak görün; bozulmayı önleme planlarına aşırı yatırım yapmayın."
+        },
+        {
+          "name": "Atziri, Kızıl Kraliçe",
+          "detail": "Kasa üzerinden ulaşılan son boss. Kimliği değişmedi, ancak arena erişimi 0.4.0d sonrası bağlantı kurallarına uyar.",
+          "action": "Erişim rehberlerini güncel bağlantı kurallarına göre güncelleyin."
+        },
+        {
+          "name": "Vaal etkili nadirler",
+          "detail": "Tapınak odaları içindeki bozucu modifikasyonlar; ligin risk/ödül dengesinin bir parçası.",
+          "action": "Ayrı bir lig değil, Endgame/Tapınak altına haritalayın."
+        }
+      ]
+    },
+    {
+      "id": "reward-map",
+      "order": 4,
+      "title": "Ödül haritası",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "Para birimi",
+          "title": "Orb of Sacrifice",
+          "detail": "Tapınak işçiliği ve ligle tanıtılan Vaal-bozunumu iş akışlarının merkezindedir.",
+          "tags": [
+            "vaal",
+            "currency",
+            "crafting"
+          ]
+        },
+        {
+          "kind": "Para birimi",
+          "title": "Vaal Orb",
+          "detail": "Bozucu rolü önceki davranışla tutarlıdır; Vaal hikâye Arcı ile birlikte öne çıkarılmıştır.",
+          "tags": [
+            "vaal",
+            "corruption"
+          ]
+        },
+        {
+          "kind": "Temel eşya",
+          "title": "Talisman",
+          "detail": "Aynı 0.4.0 döneminde tanıtılan şekil değiştiren silah temeli; Vaal içeriğinde sık sık düşer.",
+          "tags": [
+            "druid",
+            "weapon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixes-d",
+      "order": 5,
+      "title": "0.4.0d düzeltmeleri",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Oda bağlantı mantığı",
+          "detail": "0.4.0d, yerleştirilen odaların nasıl bağlandığını yeniden yazdı; ulaşılamaz odaları ve çıkmaz yolları azalttı.",
+          "scope": "Resmi 0.4.0d notları"
+        },
+        {
+          "category": "fix",
+          "title": "Ölüm sonrası yeniden deneme akışı",
+          "detail": "Tapınak içinde ölüm sonrası geri bildirimi ve yeniden denemeyi iyileştirdi; böylece bir wipe oda durumunu sessizce bozmadı.",
+          "scope": "Resmi 0.4.0d notları"
+        },
+        {
+          "category": "fix",
+          "title": "Harita durumu geri bildirimi",
+          "detail": "Hangi odaların bağlı, hangilerinin beklemede olduğunu gösteren daha net göstergeler eklendi.",
+          "scope": "Resmi 0.4.0d notları"
+        }
+      ]
+    },
+    {
+      "id": "fixes-e",
+      "order": 6,
+      "title": "0.4.0e düzeltmeleri",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Otomatik Kararsızlaşma kaldırıldı",
+          "detail": "0.4.0e, bir Tapınağı uyarı vermeden bozabilecek otomatik Kararsızlaşmayı sildi; odalar artık yalnızca açık uyarıların ardından kararsızlaşır.",
+          "scope": "Resmi 0.4.0e notları"
+        },
+        {
+          "category": "balance",
+          "title": "Mimar temposu",
+          "detail": "Kararsızlaşma kaldırıldıktan sonra Mimar baskısı ayarlandı; böylece lig gerilimi korudu ama türü bitiren rastgelelik olmadı.",
+          "scope": "Resmi 0.4.0e notları"
+        },
+        {
+          "category": "qol",
+          "title": "Tapınak arayüzü uyarıları",
+          "detail": "Bir oda kararsızlaşmadan önce açık uyarılar eklendi; sessiz otomatik bozulmanın yerini aldı.",
+          "scope": "Resmi 0.4.0e notları"
+        }
+      ]
+    },
+    {
+      "id": "then-now",
+      "order": 7,
+      "title": "O Zaman ve Şimdi",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Oda bağlantısı",
+          "thenText": "0.4.0 açılışı: odalar sık sık bağlantısız kaldı veya ulaşılamaz hale geldi.",
+          "nowText": "0.4.0d bağlantı mantığı odaların ulaşılabilir kalmasını sağlar; harita geri bildirimi açık."
+        },
+        {
+          "aspect": "Kararsızlaşma",
+          "thenText": "0.4.0 açılışı: Tapınak hiçbir uyarı olmadan otomatik kararsızlaşabiliyordu.",
+          "nowText": "0.4.0e otomatik Kararsızlaşmayı kaldırdı; odalar önce uyarır."
+        },
+        {
+          "aspect": "Tapınak içinde ölüm",
+          "thenText": "0.4.0 açılışı: bir ölüm oda durumunu sessizce bozabiliyordu.",
+          "nowText": "0.4.0d yeniden deneme akışı durumu korur ve net geri bildirim verir."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 8,
+      "title": "Güncel geçerlilik (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Işıkçak / Enerji ile oda inşası",
+          "status": "still-current",
+          "currentSummary": "Temel Tapınak döngüsünün kimliği değişmedi; ışıkçaklar Enerji harcayarak odaları inşa eder.",
+          "supersededBy": "—",
+          "affectedContent": "Atziri Tapınağı rehberi"
+        },
+        {
+          "topic": "Oda bağlantı kuralları",
+          "status": "changed-later",
+          "currentSummary": "0.4.0d bağlantıyı baştan yazdı; sonraki harita güncellemeleri daha da değiştirmiş olabilir.",
+          "supersededBy": "0.4.0d, 0.5.x harita güncellemeleri",
+          "affectedContent": "Atziri Tapınağı rehberi"
+        },
+        {
+          "topic": "Otomatik Kararsızlaşma",
+          "status": "removed",
+          "currentSummary": "0.4.0e'de kaldırıldı; odalar artık otomatik olarak bozulmuyor.",
+          "supersededBy": "0.4.0e",
+          "affectedContent": "Kaan'ın Yazgısı rehberi"
+        },
+        {
+          "topic": "Atziri'nin son boss olması",
+          "status": "still-current",
+          "currentSummary": "Atziri, 0.5.4e'de de Tapınak'ın son boss'u olmaya devam ediyor.",
+          "supersededBy": "—",
+          "affectedContent": "Atziri boss sayfası"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 9,
+      "title": "Topluluk kanıtı",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (0.4.0 açılış haftası)",
+          "context": "Oyuncular ulaşılamaz odalar ve sessiz kararsızlaşma bildirdi.",
+          "quote": "Tapınağımın yarısı ulaşılamazdı ve sonra hiçbir uyarı olmadan kararsızlaştı.",
+          "analysis": "Açılış davranışıyla uyuyor; 0.4.0d bağlantıyı düzeltti ve 0.4.0e otomatik Kararsızlaşmayı kaldırdı. Günümüz turlarında bunun görülmemesi gerekir."
+        },
+        {
+          "source": "Forum (0.4.0e sonrası)",
+          "context": "Oyuncular kararsızlaşmadan önce uyarı aldıklarını doğruladı.",
+          "quote": "Artık bir oda giderken gerçekten uyarı alıyorum.",
+          "analysis": "0.4.0e davranışının aktif olduğunu doğrular; 0.4.0e sonrası rehberleri kullanın."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "Sorun giderme",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "Bir oda 'beklemede' gösteriyor ve bağlanmıyor — Işıkçak yerleşimini ve Enerjiyi doğrulayın; bu, bağlantı öncesi beklenen bir durumdur, hata değildir.",
+          "status": "tracking"
+        },
+        {
+          "text": "Atziri'ye ulaşılamıyor — Odacık yönlendirmesinin 0.4.0d sonrası bağlantı kurallarını izlediğini, açılış haftası yollarını değil, doğrulayın.",
+          "status": "open"
+        },
+        {
+          "text": "Eski videolar otomatik Kararsızlaşma gösteriyor — bunlar 0.4.0e öncesine aittir ve güncel kuralları yansıtmaz.",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "Etkilenen içerik",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Atziri Tapınağı rehberi",
+          "type": "guide",
+          "trigger": "0.4.0d/e bağlantı + Kararsızlaşma değişiklikleri",
+          "action": "Bağlantı ve yeniden deneme bölümlerini yeniden yazın; otomatik Kararsızlaşmayı kaldırın.",
+          "status": "queued"
+        },
+        {
+          "name": "Atziri boss sayfası",
+          "type": "boss",
+          "trigger": "Arena erişim kuralları",
+          "action": "Erişimi 0.4.0d sonrası kurallara güncelleyin.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Orb of Sacrifice eşya sayfası",
+          "type": "item",
+          "trigger": "Tapınak işçiliği",
+          "action": "Vaal-bozunumu iş akışını belgeleyin.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Tarihsel video",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 Kaan'ın Yazgısı — Tapınak inşası",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "Açılış haftası Tapınak tanıtımı; gösterilen otomatik Kararsızlaşmanın 0.4.0e'de kaldırıldığını unutmayın.",
+          "creator": "Resmi Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "SSS",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Eski Tapınak videoları neden odaların kendi kendine kararsızlaştığını gösteriyor?",
+          "answer": [
+            "Bu, 0.4.0 açılış davranışıydı; 0.4.0e otomatik kararsızlaşmayı kaldırdı, odalar artık kararsızlaşmadan önce uyarı veriyor."
+          ]
+        },
+        {
+          "question": "Tapınak hâlâ Işıkçaklar ve Enerji üzerinden mi çalışıyor?",
+          "answer": [
+            "Evet, ışıkçak enerji oda inşası döngüsü 0.5.4e'de hâlâ Tapınak'ın temel mekaniğidir; yalnızca bağlantı ve kararsızlaşma kuralları değişti."
+          ]
+        },
+        {
+          "question": "Atziri hâlâ son boss mu?",
+          "answer": [
+            "Evet, Kızıl Kraliçe Atziri Tapınak'ın son boss'u olmaya devam ediyor; yalnızca arena erişim yolu 0.4.0d sonrası değişti."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Kaynaklar ve doğrulama",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 resmi 0.4.0 Yama Notları",
+          "description": "Kaan'ın Yazgısı ligi ve Atziri Tapınağı tanıtımı.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Path of Exile 2 resmi 0.4.0d Yama Notları",
+          "description": "Oda bağlantısı ve ölüm sonrası yeniden deneme düzeltmeleri.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3983000"
+        },
+        {
+          "label": "Path of Exile 2 resmi 0.4.0e Yama Notları",
+          "description": "Otomatik Kararsızlaşmanın kaldırılması ve Mimar ayarı.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3985000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "atziri-red-queen"
+  ],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 resmi 0.4.0 Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 resmi 0.4.0d Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3983000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 resmi 0.4.0e Yama Notları",
+      "url": "https://www.pathofexile.com/forum/view-thread/3985000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 Kaan'ın Yazgısı ve Atziri Tapınağı — Işıkçaklar, odalar ve 0.4.0d/e düzeltmeleri",
+    "description": "0.4.0 Atziri Tapınağı nasıl çalıştı, açılışta odalar neden bozuldu ve 0.4.0d/e 0.5.4e için neleri değiştirdi.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-fate-of-the-vaal-temple",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

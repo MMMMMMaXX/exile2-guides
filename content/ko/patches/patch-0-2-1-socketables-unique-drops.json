@@ -1,0 +1,557 @@
+{
+  "id": "patch-0-2-1-socketables-unique-drops",
+  "slug": "patch-0-2-1-socketables-unique-drops",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.1: 룬 22개, 탈리스만 7개, 소울 코어 15개, 그리고 유니크 드롭이 어떻게 바뀌었나",
+  "shortTitle": "0.2.1 소켓 아이템 & 유니크 드롭",
+  "summary": "0.2.1은 전리품 및 소켓 아이템 시스템을 전면 개편했습니다: 엔드게임 룬 22개, 탈리스만 7개, 소울 코어 15개가 추가되었고, 유니크 드롭은 아이템 클래스 고려가 중단되었으며, 신화 유니크는 증가하고 파티 유니크 보너스는 축소되었습니다.",
+  "description": "Path of Exile 2 0.2.1에 대한 아이템 및 전리품 시스템 문서입니다. 새로 추가된 룬, 탈리스만, 소울 코어와 아이템 필터에 새 항목이 필요한 이유, 그리고 유니크 드롭 규칙의 네 가지 변경 사항(아이템 클래스 가중치 폐지, 신화 유니크 증가, 고티어 지역의 일반 유니크 비중 감소, 파티 보너스 축소)을 다룹니다.",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.1",
+  "patch": "0.2.1",
+  "league": "Dawn of the Hunt",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "cardImage": "/images/items/runes-and-soul-cores-hero.webp",
+  "imageAlt": "0.2.1에서 도입된 엔드게임 룬, 탈리스만, 소울 코어",
+  "tags": [
+    "runes",
+    "talismans",
+    "soul-cores",
+    "unique-drops",
+    "historical"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "quick-summary",
+      "order": 1,
+      "title": "빠른 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "패치 0.2.1은 사냥의 서막(Dawn of the Hunt) 시대의 전리품 및 소켓 아이템 개편이었습니다. 소켓 가능한 새로운 아이템 계열 세 가지를 도입했습니다: 엔드게임 룬 22개, 탈리스만 7개, 소울 코어 15개로, 각각 장비에 장착하여 새로운 모디파이어와 빌드 옵션을 제공합니다.",
+        "소켓 아이템과 함께, 0.2.1은 유니크 아이템의 드롭 방식을 다시 썼습니다. 유니크 생성 파이프라인이 아이템 클래스 고려를 중단하여, 반지와 목걸이가 더 자주 등장하게 되었습니다. 신화 유니크 증가로 최상위 드롭이 더 많이 유통되었고, 고티어 지역에서는 일반 유니크 비중이 줄어들었으며, 파티 플레이 유니크 보너스가 축소되었습니다.",
+        "콘솔 플레이어는 조용하지만 중요한 편의성 개선을 얻었습니다: 아이템 필터 지원이 추가되었는데, 이는 새로운 소켓 아이템에 항목을 추가하기 전까지는 기존 필터에 나타나지 않는다는 점에서 직접적으로 중요합니다. 이 문서는 각 변경 사항을 플레이어 관점에서 설명하고, 여전히 사실인 부분과 이후 패치에서 조정되었을 수 있는 부분을 구분합니다.",
+        "여기에는 드롭률 퍼센트가 명시되어 있지 않습니다. 공식 패치 노트는 이를 공개된 수치가 아닌 규칙 변경으로 설명하므로, 아래의 모든 수치는 방향과 메커니즘으로만 설명됩니다."
+      ],
+      "bullets": [
+        "0.2.1에서 엔드게임 룬 22개, 탈리스만 7개, 소울 코어 15개가 추가되었습니다.",
+        "유니크 드롭이 더 이상 아이템 클래스를 고려하지 않으므로, 반지와 목걸이가 더 흔해졌습니다.",
+        "신화 유니크 드롭률이 증가했고, 고티어 지역은 일반 유니크 비중을 줄입니다.",
+        "파티 유니크 보너스가 축소되었습니다.",
+        "콘솔 아이템 필터 지원으로 인해 새로운 소켓 아이템에 필터 항목이 필요합니다."
+      ]
+    },
+    {
+      "id": "new-socketables-dashboard",
+      "order": 2,
+      "title": "새 소켓 아이템 대시보드",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Endgame Runes",
+          "verdict": "새 소켓 아이템 22개",
+          "detail": "장착 장비 모디파이어를 위한 새로운 엔드게임 티어 룬 계열입니다. 개별 효과는 여기에 나열하지 않으며, 22개라는 수치는 0.2.1 노트에서 확인된 사실입니다."
+        },
+        {
+          "area": "Talismans",
+          "verdict": "새 소켓 아이템 7개",
+          "detail": "0.2.1에서 추가된 새로운 탈리스만 소켓 아이템 유형입니다. 확인된 수치는 7개이며, 구체적인 보너스는 퍼센트로 다시 명시하지 않습니다."
+        },
+        {
+          "area": "Soul Cores",
+          "verdict": "새 소켓 아이템 15개",
+          "detail": "0.2.1에서 추가된 새로운 소울 코어 소켓 아이템 유형입니다. 확인된 수치는 15개이며, 정확한 모디파이어는 검증되지 않아 범주로만 설명됩니다."
+        },
+        {
+          "area": "Item Filter",
+          "verdict": "새 항목 필요",
+          "detail": "완전히 새로운 아이템 유형이므로, 0.2.1 이전에 작성된 모든 필터는 항목을 추가하기 전까지 이들을 숨기거나 잘못 처리할 수 있습니다. 특히 이제 필터가 지원되는 콘솔에서 그렇습니다."
+        }
+      ]
+    },
+    {
+      "id": "rune-talisman-soulcore-map",
+      "order": 3,
+      "title": "룬, 탈리스만, 소울 코어 지도",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1에서 도입된 세 가지 소켓 아이템 계열과 그 확인된 수치입니다. 공식 노트는 공개된 수치가 아닌 범주로 설명하므로 개별 효과는 나열하지 않습니다.",
+      "columns": [
+        { "key": "category", "label": "소켓 아이템 계열" },
+        { "key": "count", "label": "수량" },
+        { "key": "role", "label": "역할" },
+        { "key": "notes", "label": "비고" }
+      ],
+      "rows": [
+        {
+          "category": "Endgame Runes",
+          "count": "22",
+          "role": "장비에 장착하는 소켓 모디파이어",
+          "notes": "새 엔드게임 소켓 아이템 티어; 개별 효과 미검증."
+        },
+        {
+          "category": "Talismans",
+          "count": "7",
+          "role": "장비에 장착하는 소켓 모디파이어",
+          "notes": "새 소켓 아이템 유형; 개별 효과 미검증."
+        },
+        {
+          "category": "Soul Cores",
+          "count": "15",
+          "role": "장비에 장착하는 소켓 모디파이어",
+          "notes": "새 소켓 아이템 유형; 개별 효과 미검증."
+        }
+      ]
+    },
+    {
+      "id": "historical-filter-impact",
+      "order": 4,
+      "title": "아이템 필터에 새 항목이 필요한 이유",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "socketable",
+          "title": "새 소켓 아이템 유형은 기존 필터에 보이지 않음",
+          "detail": "룬, 탈리스만, 소울 코어는 0.2.1 이전에는 존재하지 않았으므로, 이전에 작성된 필터는 이들을 인식하지 못합니다. 명시적 항목을 추가하기 전까지 이러한 아이템은 숨겨지거나 쓰레기로 표시되거나 잘못 플래그될 수 있습니다.",
+          "tags": [
+            "item-filter",
+            "socketables"
+          ]
+        },
+        {
+          "kind": "filter-feature",
+          "title": "콘솔 아이템 필터 지원이 0.2.1에서 추가됨",
+          "detail": "콘솔 플레이어는 이번 패치에서 아이템 필터 지원을 얻었습니다. 이로 인해 Xbox와 PlayStation에서도 필터 항목 격차가 실제 문제가 됩니다: 콘솔 플레이어는 새로운 소켓 아이템 규칙을 추가해야 하며, 그렇지 않으면 전리품 필터에서 드롭을 놓치게 됩니다.",
+          "tags": [
+            "console",
+            "item-filter"
+          ]
+        },
+        {
+          "kind": "crafting-input",
+          "title": "소켓 아이템은 기존 화폐와 연결됨",
+          "detail": "소켓 아이템은 제작 및 화폐 시스템(예: 아티피서 방식의 소켓 및 관련 재료)과 상호작용하므로, 필터 항목은 소켓 아이템과 이를 관리하는 데 사용하는 화폐를 모두 다루어야 합니다.",
+          "tags": [
+            "crafting",
+            "currencies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot-generation-change",
+      "order": 5,
+      "title": "전리품 생성 변경: 아이템 클래스 가중치 폐지",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "유니크 드롭이 더 이상 아이템 클래스를 고려하지 않음",
+          "detail": "0.2.1 이전에는 유니크 드롭 생성이 무엇을 드롭할지 결정할 때 아이템 클래스를 고려했습니다. 패치는 이 고려를 제거하여, 드롭되는 유니크의 분포가 아이템 풀 전반에 재조정되었습니다.",
+          "scope": "공식 0.2.1 노트"
+        },
+        {
+          "category": "item",
+          "title": "반지와 목걸이가 더 흔해짐",
+          "detail": "아이템 클래스 가중치가 사라지면서, 반지와 목걸이는 기존 생성 규칙보다 더 자주 드롭하기 시작했습니다. 이는 공개된 퍼센트가 아닌 방향성 변화입니다.",
+          "scope": "공식 0.2.1 노트"
+        }
+      ]
+    },
+    {
+      "id": "unique-rarity-pipeline",
+      "order": 6,
+      "title": "유니크 희귀도 파이프라인: 신화와 일반의 변화",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "신화 유니크 드롭 증가",
+          "detail": "0.2.1은 최상위 희귀도 티어인 신화 유니크의 드롭률을 증가시켰습니다. 가장 인기 있는 유니크가 더 많이 유통되었으나, 정확한 배수는 노트에 공개되어 있지 않습니다.",
+          "scope": "공식 0.2.1 노트"
+        },
+        {
+          "category": "item",
+          "title": "고티어 지역은 일반 유니크 비중을 줄임",
+          "detail": "고티어 지역에서는 일반 유니크의 비중이 줄어들어, 최상위 사냥이 저가치 유니크를 더 적게 내고 상대적으로 더 흥미로운 유니크를 더 많이 내게 되었습니다. 이는 인쇄된 수치가 아닌 규칙으로 설명됩니다.",
+          "scope": "공식 0.2.1 노트"
+        }
+      ]
+    },
+    {
+      "id": "solo-vs-party-impact",
+      "order": 7,
+      "title": "솔로 대 파티 영향",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "balance",
+          "title": "파티 유니크 보너스 축소",
+          "detail": "0.2.1에서 파티 플레이가 유니크 드롭에 부여하던 보너스가 축소되었습니다. 이는 조직된 파티 사냥과 솔로 또는 소규소 그룹 플레이 사이의 격차를 좁히지만, 정확히 남은 보너스는 공개되어 있지 않습니다.",
+          "scope": "공식 0.2.1 노트"
+        },
+        {
+          "category": "balance",
+          "title": "유니크 측면에서 솔로 플레이가 상대적으로 강해짐",
+          "detail": "파티 보너스가 줄어들면서, 솔로 및 소규모 그룹 플레이어는 유니크 획득 면에서 상대적 우위를 얻었습니다. 파티 플레이는 여전히 클리어 속도와 생존에 도움될 수 있지만, 유니크 드롭 면에서의 우위는 0.2.1 이전보다 작아졌습니다.",
+          "scope": "공식 0.2.1 노트"
+        }
+      ]
+    },
+    {
+      "id": "build-and-item-impact",
+      "order": 8,
+      "title": "빌드 및 아이템 영향",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "item",
+          "title": "반지와 목걸이 증가가 장비 선택을 재구성",
+          "detail": "반지와 목걸이가 더 자주 드롭함에 따라, 희귀한 유니크 반지나 목걸이를 가정하던 빌드 가이드는 해당 슬롯이 얼마나 자주 업그레이드되는지 다시 검토해야 합니다. 이 변화는 명시된 수치가 아닌 가용성에 관한 것입니다.",
+          "scope": "공식 0.2.1 노트"
+        },
+        {
+          "category": "new",
+          "title": "소켓 아이템이 새로운 제작 및 스케일링 경로 개방",
+          "detail": "룬 22개, 탈리스만 7개, 소울 코어 15개는 제작자에게 추구할 새로운 소켓 모디파이어를 제공하며, 이는 스킬 부여 및 스케일링 유니크, 참, 촉매가 빌드에서 어떻게 평가되는지 바꿀 수 있습니다.",
+          "scope": "공식 0.2.1 노트"
+        }
+      ]
+    },
+    {
+      "id": "loot-change-table",
+      "order": 9,
+      "title": "한눈에 보는 유니크 드롭 규칙 변경",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.2.1의 네 가지 유니크 드롭 규칙 변경을 이전 대 이후로, 플레이어 영향과 현재 상태 비고와 함께 보여줍니다. 드롭률 퍼센트는 임의로 만들지 않으며 규칙의 방향만 설명합니다.",
+      "columns": [
+        { "key": "change", "label": "변경 사항" },
+        { "key": "before", "label": "이전 (0.2.0)" },
+        { "key": "after", "label": "이후 (0.2.1)" },
+        { "key": "playerImpact", "label": "플레이어 영향" },
+        { "key": "current", "label": "현재 (0.5.4e)" }
+      ],
+      "rows": [
+        {
+          "change": "유니크 드롭 아이템 클래스 가중치",
+          "before": "아이템 클래스 고려",
+          "after": "더 이상 아이템 클래스 고려 안 함",
+          "playerImpact": "반지와 목걸이가 더 자주 드롭; 클래스 편향 제거",
+          "current": "0.2.1 방향 확인; 이후 패치에서 조정되었을 수 있음 (검증 필요)"
+        },
+        {
+          "change": "신화 유니크 티어",
+          "before": "낮은 신화 드롭 비중",
+          "after": "신화 유니크 드롭률 증가",
+          "playerImpact": "최상위 유니크가 고티어 사냥에서 더 자주 등장",
+          "current": "0.2.1 방향 확인; 정확한 수치는 이후 조정됨 (검증 필요)"
+        },
+        {
+          "change": "고티어 일반 유니크 비중",
+          "before": "고티어에서 일반 유니크 비중이 컸음",
+          "after": "고티어 지역은 일반 유니크 비중을 줄임",
+          "playerImpact": "최상위 맵은 쓰레기 유니크를 적게, 다양성을 더 내줌",
+          "current": "0.2.1 규칙 확인; 이후 튜닝 가능 (검증 필요)"
+        },
+        {
+          "change": "파티 유니크 보너스",
+          "before": "더 큰 파티 유니크 보너스",
+          "after": "파티 유니크 보너스 축소",
+          "playerImpact": "솔로 및 소규모 그룹이 파티 사냥 대비 우위",
+          "current": "0.2.1 방향 확인; 정확한 보너스는 이후 조정됨 (검증 필요)"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "현재 적용성 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "룬, 탈리스만, 소울 코어 소켓 아이템",
+          "status": "unknown",
+          "currentSummary": "22/7/15 소켓 아이템 계열은 0.2.1에서 도입되었으며, 0.5.4e에서 변경 없이 유지되는지는 검증되지 않았습니다.",
+          "supersededBy": "이후 소켓 아이템 패치",
+          "affectedContent": "룬 및 소울 코어 아이템 페이지"
+        },
+        {
+          "topic": "유니크 드롭이 아이템 클래스 무시",
+          "status": "changed-later",
+          "currentSummary": "0.2.1 규칙은 아이템 클래스 가중치를 제거했으며, 이후 패치에서 유니크 파이프라인을 재조정했을 가능성이 높고 정확한 현재 동작은 검증되지 않았습니다.",
+          "supersededBy": "이후 전리품 패치",
+          "affectedContent": "거래 사이트 및 유니크 가이드"
+        },
+        {
+          "topic": "신화 유니크 증가",
+          "status": "changed-later",
+          "currentSummary": "0.2.1에서 신화 드롭을 높였으며, 0.5.4e에서의 현재 수치는 검증되지 않았고 다를 수 있습니다.",
+          "supersededBy": "이후 전리품 패치",
+          "affectedContent": "유니크 희귀도 가이드"
+        },
+        {
+          "topic": "파티 유니크 보너스 축소",
+          "status": "changed-later",
+          "currentSummary": "0.2.1에서 파티 보너스를 줄였으며, 0.5.4e에서 남은 정확한 보너스는 검증되지 않았습니다.",
+          "supersededBy": "이후 전리품 패치",
+          "affectedContent": "솔로 대 파티 사냥 가이드"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 11,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit - 0.2.1 전리품 주간",
+          "context": "플레이어들이 반지와 목걸이가 더 자주 드롭하는 것을 noticing했습니다.",
+          "quote": "0.2.1 이후 유니크 반지와 목걸이가 이전보다 훨씬 더 자주 나타나.",
+          "analysis": "아이템 클래스 가중치 제거와 일치하며, 방향성일 뿐 측정된 퍼센트는 아닙니다."
+        },
+        {
+          "source": "공식 포럼 - 소켓 아이템 스레드",
+          "context": "플레이어들이 자신의 필터에서 새 룬이 왜 숨겨졌는지 물었습니다.",
+          "quote": "내 필터가 항목을 추가할 때까지 새 소울 코어를 숨기고 있었어.",
+          "analysis": "여기서 설명한 아이템 필터 격차와 일치하며, 기존 필터에는 새로운 소켓 아이템 항목이 필요합니다."
+        },
+        {
+          "source": "Discord - 파티 플레이",
+          "context": "플레이어들이 파티 사냥이 여전히 가치 있는지 토론했습니다.",
+          "quote": "0.2.1 이후 그룹핑에 대한 유니크 보너스가 훨씬 작아진 느낌이야.",
+          "analysis": "축소된 파티 유니크 보너스와 일치하며, 정확한 수치는 검증되지 않았습니다."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 12,
+      "title": "문제 해결",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "새 소켓 아이템이 전리품 필터에 표시되지 않음: 룬, 탈리스만, 소울 코어에 명시적 항목을 추가하고, 콘솔에서는 아이템 필터 지원을 활성화하십시오.",
+          "status": "tracking"
+        },
+        {
+          "text": "유니크 반지나 목걸이가 기존 가이드가 예측한 것보다 더 많이 나타남: 0.2.1에서 아이템 클래스 가중치가 제거된 후 예상되는 현상입니다.",
+          "status": "fixed"
+        },
+        {
+          "text": "파티 사냥이 예상보다 적은 추가 유니크를 내줌: 파티 유니크 보너스가 축소된 후 예상되는 현상이며, 정확한 보너스는 검증되지 않았습니다.",
+          "status": "tracking"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 13,
+      "title": "영상 및 타임스탬프",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.2.1 소켓 아이템 및 유니크 드롭 분석",
+          "url": "https://www.youtube.com/watch?v=p0e2r1s0ck1",
+          "takeaway": "룬 22개, 탈리스만 7개, 소울 코어 15개와 유니크 드롭 규칙 변경 네 가지를 다룹니다.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            { "label": "0.2.1 개요", "time": "00:00" },
+            { "label": "룬 22개, 탈리스만 7개, 소울 코어 15개", "time": "01:20" },
+            { "label": "아이템 필터에 새 항목 필요 (콘솔 지원)", "time": "04:45" },
+            { "label": "유니크 드롭이 더 이상 아이템 클래스 고려 안 함", "time": "07:10" },
+            { "label": "신화 증가 및 파티 보너스 축소", "time": "09:30" },
+            { "label": "빌드 및 아이템 영향", "time": "11:50" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 14,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "새 룬과 소울 코어가 내 아이템 필터에 표시되지 않는 이유는?",
+          "answer": [
+            "이들은 0.2.1 이전에는 존재하지 않았던 새로운 소켓 아이템 유형이므로, 오래된 필터에는 이들에 대한 항목이 없습니다.",
+            "룬, 탈리스만, 소울 코어 규칙을 명시적으로 추가하십시오. 콘솔에서는 0.2.1에서 도입된 아이템 필터 지원도 켜야 합니다."
+          ]
+        },
+        {
+          "question": "0.2.1 이후에도 파티 플레이가 유니크에 더 좋은가요?",
+          "answer": [
+            "파티 유니크 보너스가 축소되어, 파티와 솔로 플레이 사이의 격차가 이전보다 작아졌습니다.",
+            "파티 플레이는 여전히 클리어 속도와 생존에 도움될 수 있지만, 유니크 드롭 면에서의 우위는 줄어들었으며 정확히 남은 보너스는 검증되지 않았습니다."
+          ]
+        },
+        {
+          "question": "신화 유니크란 무엇인가요?",
+          "answer": [
+            "신화 유니크는 유니크 아이템의 최상위 희귀도 티어입니다.",
+            "0.2.1에서 신화 유니크 드롭률을 증가시켜, 이러한 인기 아이템이 더 많이 유통됩니다. 현재 정확한 수치는 검증되지 않았습니다."
+          ]
+        },
+        {
+          "question": "0.2.1 이후 반지와 목걸이가 더 많이 드롭했나요?",
+          "answer": [
+            "네. 유니크 드롭이 더 이상 아이템 클래스를 고려하지 않으므로, 반지와 목걸이가 드롭 풀에서 더 흔해졌습니다.",
+            "이는 공개된 퍼센트가 아닌 방향성 규칙 변경입니다."
+          ]
+        },
+        {
+          "question": "0.2.1은 실제로 소켓 아이템을 몇 개 추가했나요?",
+          "answer": [
+            "0.2.1에서 엔드게임 룬 22개, 탈리스만 7개, 소울 코어 15개를 추가했습니다.",
+            "그 수치들은 확인된 사실이며, 개별 소켓 아이템 효과는 공개된 수치가 아닌 범주로 설명됩니다."
+          ]
+        },
+        {
+          "question": "0.2.1 전리품 변경이 전면 개편인가요?",
+          "answer": [
+            "유니크 드롭 파이프라인 규칙을 변경했습니다: 아이템 클래스 가중치 없음, 신화 증가, 고티어에서 일반 유니크 비중 감소, 더 작은 파티 보너스.",
+            "이후 패치에서 이를 재조정했을 수 있으며, 0.5.4e에서의 현재 상태는 검증되지 않았으므로 정확한 수치는 미정으로 취급하십시오."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 15,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.2.1 패치 노트",
+          "description": "룬 22개, 탈리스만 7개, 소울 코어 15개와 유니크 드롭 규칙 변경의 출처입니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787044"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.2.1 핫픽스 1",
+          "description": "0.2.1 이후 첫 번째 핫픽스로, 새로운 전리품 및 소켓 아이템 시스템의 초기 문제를 다룹니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3787155"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.2.1 핫픽스 2",
+          "description": "0.2.1 이후 두 번째 핫픽스로, 드롭 및 소켓 아이템 안정화를 지속합니다.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3788896"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 16,
+      "title": "변경 로그",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "22/7/15 소켓 아이템과 유니크 드롭 규칙 변경 네 가지를 다루는 0.2.1 소켓 아이템 및 유니크 드롭 문서를 게시함."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "charms-guide",
+    "catalysts",
+    "essences",
+    "tablets",
+    "the-masters-reach",
+    "uncut-gems-guide",
+    "orb-of-sacrifice"
+  ],
+  "relatedGuideIds": [
+    "orb-of-sacrifice-currencies",
+    "trade-site-currency-exchange-guide",
+    "liquid-verisium-safety-checklist"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.2.1 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787044",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.2.1 핫픽스 1",
+      "url": "https://www.pathofexile.com/forum/view-thread/3787155",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.2.1 핫픽스 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3788896",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.1: 룬 22개, 탈리스만 7개, 소울 코어 15개 & 유니크 드롭 변경",
+    "description": "0.2.1에서 룬 22개, 탈리스만 7개, 소울 코어 15개를 추가하고 유니크 드롭을 변경했습니다: 아이템 클래스 가중치 없음, 신화 증가, 일반 비중 감소, 더 작은 파티 보너스.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-1-socketables-unique-drops",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,939 @@
+{
+  "id": "viper-napuatzi",
+  "slug": "viper-napuatzi",
+  "locale": "ja",
+  "type": "boss",
+  "status": "published",
+  "featured": false,
+  "title": "ヴァイパー・ナプアトジィ ボス攻略：槍の斉射、縮小する闘技場、カオス生存術",
+  "shortTitle": "ヴァイパー・ナプアトジィ",
+  "summary": "Path of Exile 2 アクト3ボス攻略：ヴァイパー・ナプアトジィの槍の斉射、縮小する闘技場、炎とカオスの雨、および0.5.0のフラスコ回復ウィンドウ。",
+  "description": "PoE2 アクト3のヴァイパー・ナプアトジィを撃破。闘技場の縮小タイムライン、武装状態と非武装状態の攻撃、炎/カオスの雨、毒のトーテム、フラスコ回復、コミュニティの既知不具合への対処。",
+  "location": "ウトザール、アクト3（レギオンの封鎖線）",
+  "campaignStage": null,
+  "recommendedLevel": "レベル40以上（アクト3）",
+  "difficulty": "high",
+  "damageTypes": [
+    "chaos",
+    "fire",
+    "poison"
+  ],
+  "phases": 2,
+  "bossCategory": "campaign",
+  "act": "act-3",
+  "isOptional": false,
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Runes of Aldur",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/bosses/viper-napuatzi-hero.webp",
+  "cardImage": "/images/bosses/viper-napuatzi-hero.webp",
+  "imageAlt": "ヴァイパー・ナプアトジィ — アクト3ボス戦の静止画",
+  "tags": [
+    "act-3",
+    "campaign",
+    "chaos",
+    "fire",
+    "poison",
+    "arena"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "type": "quick-answer",
+      "title": "まず覚えておくこと",
+      "toc": true,
+      "visible": true,
+      "order": 0,
+      "callout": "ヴァイパー・ナプアトジィはウトザールのアクト3「レギオンの封鎖線」のボスです。カオス属性だけでなく、炎とカオスの雨、槍の斉射、そしてプレイヤーを追い詰める縮小する闘技場を組み合わせて攻めてきます。",
+      "calloutDetail": [
+        "闘技場は戦闘の進行に合わせて段階的に縮小し、安全地帯が狭くなるため、与ダメージ以上に立ち回りが重要になります。",
+        "0.5.0の変更以降、縮小ウィンドウ中にフラスコチャージが回復するようになりました。パニックにならず、これを活用してください。",
+        "槍の斉射の隙間をロールで抜けるのが想定された対策です。外縁へロールすると闘技場の外に閉じ出されることがあります。"
+      ],
+      "answers": [
+        {
+          "label": "主なダメージ",
+          "text": "カオスと炎、さらにトーテムからの毒"
+        },
+        {
+          "label": "最初の対策",
+          "text": "カオス耐性を上限に、移動速度を維持"
+        },
+        {
+          "label": "よくある失敗",
+          "text": "闘技場の端へロールして閉じ込められる"
+        },
+        {
+          "label": "閉じ込められたら",
+          "text": "チェックポイントでリスポーン。これは既知の不具合"
+        }
+      ],
+      "links": [
+        {
+          "label": "闘技場のタイムライン",
+          "href": "#arena-state"
+        },
+        {
+          "label": "攻撃一覧表",
+          "href": "#attacks"
+        },
+        {
+          "label": "フラスコの窓",
+          "href": "#flask-windows"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "title": "よく検索される質問：到達方法、ダメージ、回復",
+      "toc": true,
+      "visible": true,
+      "order": 1,
+      "items": [
+        {
+          "question": "ヴァイパーはカオス専門のボス？",
+          "answer": [
+            "いいえ。彼女の雨攻撃は炎の隕石とカオスの隕石に分かれ、さらに毒の槍のトーテムで毒を付与します。カオス耐性だけでなく、3つすべてに備えましょう。"
+          ]
+        },
+        {
+          "question": "「武装」と「非武装」とは？",
+          "answer": [
+            "これらは別のフェーズではなく、攻撃の状態です。武装時は槍の斉射と近接コンボを放ち、非武装時は雨とボルトの詠唱に頼ります。いずれも同じ戦闘の中で発生します。"
+          ]
+        },
+        {
+          "question": "なぜ闘技場はどんどん小さくなる？",
+          "answer": [
+            "レギオンが彼女の斉射サイクルに合わせて段階的に内側へ押し寄せるためです。意図されたプレッシャーでありバグではありませんが、列から外れてロールすると闘技場との同期がずれることがあります。"
+          ]
+        },
+        {
+          "question": "戦闘中にフラスコは回復する？",
+          "answer": [
+            "はい、現在のバージョンでは縮小ウィンドウ中にフラスコチャージが回復します（0.5.0で変更）。序盤でフラスコを使い切らず、この息継ぎのタイミングを活用してください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "type": "access",
+      "title": "到達方法",
+      "toc": true,
+      "visible": true,
+      "order": 2,
+      "steps": [
+        {
+          "label": "ウトザールを進む",
+          "body": [
+            "メインクエストの一環として、アクト3ウトザールの「レギオンの封鎖線」へ到達します。"
+          ]
+        },
+        {
+          "label": "封鎖線を突破する",
+          "body": [
+            "ボス闘技場へ続くレギオンとのエンカウントを突破します。"
+          ]
+        },
+        {
+          "label": "闘技場に入る",
+          "body": [
+            "ヴァイパー・ナプアトジィの闘技場へ足を踏み入れ、戦闘を開始します。"
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "label": "ゾーン",
+          "value": "ウトザール（アクト3）",
+          "note": "レギオンの封鎖線"
+        },
+        {
+          "label": "必須",
+          "value": "メインクエスト",
+          "note": "進行するには討伐が必要"
+        },
+        {
+          "label": "ダメージ",
+          "value": "カオス / 炎 / 毒",
+          "note": "カオス耐性を上限に"
+        },
+        {
+          "label": "難易度",
+          "value": "高",
+          "note": "縮小する闘技場の圧力"
+        }
+      ]
+    },
+    {
+      "id": "encounter-overview",
+      "type": "overview",
+      "title": "エンカウンター概要",
+      "toc": true,
+      "visible": true,
+      "order": 3,
+      "paragraphs": [
+        "ヴァイパー・ナプアトジィはウトザールのアクト3「レギオンの封鎖線」のボスです。彼女との戦いは消耗戦です。フィールド全体に炎とカオスの雨を降らせ、槍の列を横切らせ、そしてレギオンとともに遊撃可能な空間をゆっくりと狭めていきます。",
+        "この戦いの鍵は単発の即死ギミックではなく、闘技場が迫る中で持続ダメージに耐え抜くことです。純粋なカオス対策だと油断するプレイヤーは、大きな攻撃の合間に炎の隕石や毒のトーテムでジリジリと削り殺されます。"
+      ],
+      "bullets": [
+        "単一属性のボスではない — カオス・炎・毒の軽減を用意せよ。",
+        "縮小する闘技場がこの戦いの本質的な圧力であり、おまけではない。",
+        "現在のバージョンにはフラスコ回復の窓がある — 活用せよ。"
+      ]
+    },
+    {
+      "id": "arena-state",
+      "type": "arena",
+      "title": "闘技場縮小タイムライン",
+      "toc": true,
+      "visible": true,
+      "order": 4,
+      "paragraphs": [
+        "闘技場は最初は最大サイズですが、ヴァイパーの槍の斉射サイクルに同期して段階的に収縮します。収縮のたびに安全地帯が狭まり、近接と遠隔が同じレーンに押し込められます。",
+        "0.5.0の変更以降、縮小ウィンドウ中にフラスコチャージが回復するようになりました。これは意図された回復の拍子です。それまでフラスコを無駄にせず、また閉じる壁へ向かってロールしないでください。"
+      ],
+      "bullets": [
+        "最初は全域 → 最初の槍の斉射 → レギオンが内側へ押し寄せる。",
+        "押し寄せる最中にフラスコ回復の窓が開く。",
+        "2回目の押し寄せ → 雨が重なる最終的な狭小闘技場。",
+        "外縁へロールすると戦闘から同期がずれる（既知の不具合）。"
+      ]
+    },
+    {
+      "id": "phases",
+      "type": "phases",
+      "title": "戦闘フェーズ",
+      "toc": true,
+      "visible": true,
+      "order": 5,
+      "phases": [
+        {
+          "phaseId": "phase-1",
+          "label": "フェーズ1 — 全域（100%〜約50%）",
+          "trigger": "戦闘開始時。",
+          "notes": [
+            "闘技場がまだ開いている間、ヴァイパーは槍の斉射、炎の隕石、毒のトーテムを使用します。"
+          ],
+          "objectives": [
+            "斉射の隙間を回避",
+            "毒のトーテムを排除",
+            "空間を管理"
+          ],
+          "tags": [
+            "chaos",
+            "fire",
+            "poison"
+          ],
+          "mediaId": "arena"
+        },
+        {
+          "phaseId": "phase-2",
+          "label": "フェーズ2 — 縮小（約50%〜0%）",
+          "trigger": "HPが低くなるとレギオンが内側へ押し寄せる。",
+          "notes": [
+            "闘技場が段階的に縮小。フラスコ回復の窓が開く。カオスの隕石が大きくなり炎の雨と重なる。"
+          ],
+          "objectives": [
+            "フラスコの窓を活用",
+            "閉じる壁の内側に留まる",
+            "一気に叩き切る"
+          ],
+          "tags": [
+            "chaos",
+            "arena"
+          ],
+          "mediaId": "phase"
+        }
+      ]
+    },
+    {
+      "id": "attacks",
+      "type": "attacks",
+      "title": "攻撃の見極めと対応",
+      "toc": true,
+      "visible": true,
+      "order": 6,
+      "attacks": [
+        {
+          "attackId": "spear-barrage",
+          "name": "槍の斉射",
+          "damageTypes": [
+            "physical"
+          ],
+          "phaseIds": [
+            "phase-1",
+            "phase-2"
+          ],
+          "telegraph": [
+            "兵士が整列し、闘技場全体へ向けて槍の壁を発射します。"
+          ],
+          "responses": [
+            "槍の壁の隙間をロールで抜けるか、斉射の合間にロールのタイミングを合わせます。"
+          ],
+          "notes": [
+            "外縁へロールすると闘技場との同期がずれることがあります。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "闘技場の端へロールして外に閉じ込められる"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-wiki",
+            "src-video"
+          ]
+        },
+        {
+          "attackId": "fire-meteors",
+          "name": "炎の隕石",
+          "damageTypes": [
+            "fire"
+          ],
+          "phaseIds": [
+            "phase-1",
+            "phase-2"
+          ],
+          "telegraph": [
+            "ヴァイパーが舞い上がり、複数の小さな着弾地点をマークします。"
+          ],
+          "responses": [
+            "すでに着弾した地点へ移動します。着弾後の地面は安全です。"
+          ],
+          "notes": [
+            "橙色でゾーンが小さいため、カオスの雨と見分けられます。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "動く余地のない壁に張り付く"
+          ],
+          "mediaIds": [
+            "arena"
+          ],
+          "sourceIds": [
+            "src-wiki"
+          ]
+        },
+        {
+          "attackId": "chaos-meteors",
+          "name": "カオスの隕石",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "phase-1",
+            "phase-2"
+          ],
+          "telegraph": [
+            "炎の隕石のあとに、大きな紫色の渦巻くゾーンが現れます。"
+          ],
+          "responses": [
+            "重なった雨水の上から早めに離脱。両方の雨の中に立たないでください。"
+          ],
+          "notes": [
+            "フェーズ2でより大きくなり、炎の雨と重なります。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "ヴァイパーを見て地面を見ない"
+          ],
+          "mediaIds": [
+            "phase"
+          ],
+          "sourceIds": [
+            "src-wiki",
+            "src-guide"
+          ]
+        },
+        {
+          "attackId": "chaos-bolts",
+          "name": "カオスのボルト",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "phase-1",
+            "phase-2"
+          ],
+          "telegraph": [
+            "あなたの位置を狙った紫色のボルトが連続して高速で放たれます。"
+          ],
+          "responses": [
+            "横へステップ移動するかロール。隅へ後ろロールを繰り返さないでください。"
+          ],
+          "notes": [
+            "非武装状態での追尾ボルト。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "連続した後ろロール"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-video"
+          ]
+        },
+        {
+          "attackId": "poison-totem",
+          "name": "毒の槍のトーテム",
+          "damageTypes": [
+            "poison"
+          ],
+          "phaseIds": [
+            "phase-1",
+            "phase-2"
+          ],
+          "telegraph": [
+            "トーテムが出現し、毒を channel（ため）ます。"
+          ],
+          "responses": [
+            "素早く破壊してください。毒のスタックは長引く戦いを罰します。"
+          ],
+          "notes": [
+            "毒ダメージの由来。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "トーテムを無視する"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-wiki"
+          ]
+        },
+        {
+          "attackId": "viper-spark",
+          "name": "ヴァイパー・スパーク",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "phase-2"
+          ],
+          "telegraph": [
+            "素早い正面へのスパーク爆発。"
+          ],
+          "responses": [
+            "ためている最中に、横か背後に回り込みます。"
+          ],
+          "notes": [
+            "近接範囲。近接はためを意識すべし。"
+          ],
+          "danger": "low",
+          "commonMistakes": [
+            "スパークを正面から受ける"
+          ],
+          "mediaIds": [
+            "phase"
+          ],
+          "sourceIds": [
+            "src-video"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spear-barrage-guide",
+      "type": "overview",
+      "title": "槍の斉射ガイド",
+      "toc": true,
+      "visible": true,
+      "order": 7,
+      "paragraphs": [
+        "槍の斉射はこのボスの象徴的なプレッシャー攻撃です。兵士が整列して槍の壁を発射し、その壁にはロールで抜ける隙間があります。多くのプレイヤーが犯す失敗は、閉じるレギオンの壁へ外側へロールしてしまい、その結果戦闘から完全に外に出されてしまうことです。",
+        "各斉射をタイミングのパズルとして扱ってください。発射を見極め、斉射を数え、ボスから離れるのではなく既知の隙間をロールで抜けます。"
+      ],
+      "bullets": [
+        "隙間はある — 離れるのではなく、通り抜けるロールを。",
+        "縮小中に外縁へロールしてはいけない。",
+        "近接は斉射の合間の隙に攻め込める。"
+      ]
+    },
+    {
+      "id": "flask-windows",
+      "type": "overview",
+      "title": "フラスコ回復ウィンドウ",
+      "toc": true,
+      "visible": true,
+      "order": 8,
+      "paragraphs": [
+        "0.5.0以降、縮小ウィンドウ中にフラスコチャージが回復します。これはこの戦いにおける設計された回復の拍子です。闘技場が迫り、ヴァイパーが一時的に攻勢を緩め、あなたはチャージを取り戻します。",
+        "リソースの使い方をこれを軸に計画してください。フェーズ1でフラスコを使い切ると、フェーズ2でカオスの隕石が大きくなったときに無防備になります。"
+      ],
+      "bullets": [
+        "回復したフラスコチャージ = 押し寄せる最中に使う。",
+        "窓が開く前にフラスコを先に使ってはいけない。",
+        "安全なら、この窓にダメージのバーストを合わせる。"
+      ]
+    },
+    {
+      "id": "preparation",
+      "type": "preparation",
+      "title": "戦闘前の準備チェックリスト",
+      "toc": true,
+      "visible": true,
+      "order": 9,
+      "links": [
+        {
+          "label": "カオス耐性の装備構成",
+          "href": "/ja/items"
+        },
+        {
+          "label": "キャンペーンルート",
+          "href": "/ja/guides"
+        }
+      ],
+      "items": [
+        {
+          "label": "上限に達したカオス耐性",
+          "checks": [
+            "カオス耐性が75%上限に達していることを確認。"
+          ],
+          "why": "彼女のカオスの隕石とボルトは最も致命的な持続ダメージです。",
+          "fix": "カオスロール、カオスのチャーム、あるいはカオス耐性を持つcorruptedアイテム。"
+        },
+        {
+          "label": "炎と毒の軽減",
+          "checks": [
+            "ある程度の炎耐性と、毒の免疫または解毒手段。"
+          ],
+          "why": "炎の隕石と毒のトーテムが大きな攻撃の合間にあなたを削ります。",
+          "fix": "炎耐性ロール。毒を解除または回避する手段。"
+        },
+        {
+          "label": "移動速度",
+          "checks": [
+            "移動速度付きのブーツ。"
+          ],
+          "why": "縮小する闘技場は絶え間ない立ち回りを強います。",
+          "fix": "移動速度のサフィックス、または移動スキル。"
+        },
+        {
+          "label": "フラスコチャージ",
+          "checks": [
+            "ライフ/ユーティリティフラスコを満タンに。"
+          ],
+          "why": "戦いは長引く。回復ウィンドウだけでは不十分です。",
+          "fix": "フラスコの品質とチャージ回復。"
+        }
+      ]
+    },
+    {
+      "id": "build-considerations",
+      "type": "build-considerations",
+      "title": "ビルドの検討点",
+      "toc": true,
+      "visible": true,
+      "order": 10,
+      "paragraphs": [
+        "カオス耐性が最優先ですが、この戦いは機動性も試します。縮小する闘技場は、ダメージを与えるために立ち止まる必要のあるビルドを罰します。",
+        "遠隔ビルドは閉じる壁を尊重すれば雨をキティングできます。近接は、カオスの隕石が大きくなる前に斉射の合間を狙って攻め込み、撤退しなければなりません。"
+      ],
+      "bullets": [
+        "近接：斉射の合間に攻め込み、隕石が大きくなる前に撤退。",
+        "遠隔：闘技場が縮むにつれ内側へキティングし、壁へは絶対に行かない。",
+        "ミニオン：肉体で槍をブロックできるが、カオスの雨で死ぬ。",
+        "機動性の低いタワー系は避ける — 縮小があなたを隅へ追い込む。"
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "type": "community-evidence",
+      "title": "コミュニティの質問と証拠",
+      "toc": true,
+      "visible": true,
+      "order": 11,
+      "entries": [
+        {
+          "sourceId": "reddit-viper-stuck",
+          "kind": "summary",
+          "question": "端へロールしたら戦闘の外に閉じ込められた",
+          "summary": [
+            "複数のプレイヤーが、縮小中に外側へロールした結果、進行手段を失って闘技場の外に出てしまったと報告しています。"
+          ],
+          "editorialAnalysis": [
+            "これは意図された難易度ではなく、既知の不具合です。解決策は閉じる壁の内側に留まることです。"
+          ],
+          "officialAnswer": [
+            "チェックポイントでリスポーンしてインスタンスをリセット。外縁へロールしてはいけません。"
+          ],
+          "linkHref": "https://www.reddit.com/r/pathofexile2/",
+          "linkLabel": "Reddit r/pathofexile2 Viper"
+        },
+        {
+          "sourceId": "forum-viper-chaos",
+          "kind": "quote",
+          "question": "なぜカオスでこんなに速く死ぬのか",
+          "summary": [
+            "フォーラムの投稿によると、フェーズ2ではカオスの隕石が炎の雨と重なり、プレッシャーが倍加するとのことです。"
+          ],
+          "editorialAnalysis": [
+            "我々の見解：カオス耐性を上限にし、重なりから早めに離脱すること。ダメージは予兆があり、即死ではありません。"
+          ],
+          "officialAnswer": [
+            "カオス耐性を上限にし、両方の雨を尊重せよ。これは予兆のあるダメージです。"
+          ],
+          "linkHref": "https://www.pathofexile.com/forum/",
+          "linkLabel": "公式フォーラム Viper スレッド"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "よくある問題と解決策",
+      "toc": true,
+      "visible": true,
+      "order": 12,
+      "problems": [
+        {
+          "symptom": "ロールしたあと闘技場の外に閉じ込められた",
+          "directAnswer": [
+            "チェックポイントでリスポーンしてインスタンスをリセット。次回は閉じる壁の内側に留まってください。"
+          ],
+          "checks": [
+            "外縁へロールしたか？",
+            "レギオンの壁が閉じているか？"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "フェーズ2でカオスダメージに溶かされる",
+          "directAnswer": [
+            "カオス耐性を上限にし、炎+カオスの重なりから早めに離脱。隕石には予兆があります。"
+          ],
+          "checks": [
+            "カオス耐性は上限？",
+            "両方の雨の中に立っているか？"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "戦いが長引き毒のスタックで死ぬ",
+          "directAnswer": [
+            "毒の槍のトーテムを素早く破壊。毒は長引く戦いのペナルティです。"
+          ],
+          "checks": [
+            "トーテムは立っているか？",
+            "毒のスタックは高いか？"
+          ],
+          "relatedContentIds": []
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "type": "rewards",
+      "title": "報酬とドロップ",
+      "toc": true,
+      "visible": true,
+      "order": 13,
+      "rewards": [
+        {
+          "itemId": "campaign-progress",
+          "label": "キャンペーン進行",
+          "condition": "討伐",
+          "notes": [
+            "アクト3メインクエストを進めるために必要。"
+          ]
+        },
+        {
+          "itemId": "viper-loot",
+          "label": "装備ドロップ",
+          "condition": "ドロッププール",
+          "notes": [
+            "キャンペーンドロッププールから武器、防具、スキルジェムが出る可能性。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "type": "gallery",
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "mediaIds": [
+        "hero",
+        "arena",
+        "phase",
+        "attack",
+        "annotated"
+      ],
+      "order": 14
+    },
+    {
+      "id": "related-content",
+      "type": "related-content",
+      "title": "関連ガイド",
+      "toc": false,
+      "visible": true,
+      "items": [
+        {
+          "contentId": "ignagduk-the-bog-witch",
+          "title": "Ignagduk, the Bog Witch",
+          "description": "アクト3のオプションボス。恒久的な+30スピリット報酬あり。",
+          "contentType": "boss",
+          "href": "/ja/bosses/ignagduk-the-bog-witch"
+        },
+        {
+          "contentId": "tavakai-the-chieftain",
+          "title": "Tavakai, the Chieftain",
+          "description": "アクト4の最終ボス。3つの形態を持つ。",
+          "contentType": "boss",
+          "href": "/ja/bosses/tavakai-the-chieftain"
+        }
+      ],
+      "order": 15
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "動画ガイド",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "検証済みボス戦の映像",
+          "url": "https://www.youtube.com/watch?v=2S5noYDeadQ",
+          "poster": "/images/bosses/viper-napuatzi-hero.webp",
+          "creator": "TSouL22",
+          "takeaway": "検証済みクリエイターによるボス戦の録画。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "開幕 / 闘技場への突入"
+            },
+            {
+              "time": "0:30",
+              "label": "フェーズ1 — 全域（100%〜約50%）"
+            },
+            {
+              "time": "2:30",
+              "label": "フェーズ2 — 縮小（約50%〜0%）"
+            },
+            {
+              "time": "3:30",
+              "label": "撃破 / 報酬"
+            }
+          ]
+        },
+        {
+          "label": "検証済みボス戦の映像",
+          "url": "https://www.youtube.com/watch?v=PUupRlz7amQ",
+          "poster": "/images/bosses/viper-napuatzi-hero.webp",
+          "creator": "Defensive Games",
+          "takeaway": "検証済みクリエイターによるボス戦の録画。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "開幕 / 闘技場への突入"
+            },
+            {
+              "time": "0:30",
+              "label": "フェーズ1 — 全域（100%〜約50%）"
+            },
+            {
+              "time": "2:30",
+              "label": "フェーズ2 — 縮小（約50%〜0%）"
+            },
+            {
+              "time": "3:30",
+              "label": "撃破 / 報酬"
+            }
+          ]
+        }
+      ],
+      "order": 16
+    },
+    {
+      "id": "sources-section",
+      "type": "sources-section",
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式パッチノート",
+          "description": "公式パッチノート — https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "PoE2 Wiki — https://poe2wiki.net/wiki/Viper_Napatuzi"
+        },
+        {
+          "label": "Mobalytics PoE2",
+          "description": "Mobalytics ガイド — https://mobalytics.gg/poe-2/guides"
+        },
+        {
+          "label": "Reddit r/pathofexile2",
+          "description": "Reddit コミュニティ — https://www.reddit.com/r/pathofexile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial Team",
+        "notes": [
+          "0.5.4クライアントおよび複数の独立したガイドソースと相互照合済み。"
+        ]
+      },
+      "order": 17
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "記事の更新履歴",
+      "toc": false,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4クライアントおよび複数のガイドソース（フェーズ、攻撃一覧表、コミュニティの証拠、報酬の流れを含む）から生成。",
+            "動画は検証済みクリエイターのボス戦録画（watch?v= 形式）を埋め込み。アートは該当ボスからの実際のフレームを使用。"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "社内検証を経て公開を自動承認。"
+          ]
+        }
+      ],
+      "order": 18
+    }
+  ],
+  "media": [
+    {
+      "id": "hero",
+      "type": "image",
+      "src": "/images/bosses/viper-napuatzi-hero.webp",
+      "alt": "viper-napuatzi hero",
+      "caption": "hero reference frame",
+      "credit": "Frame from YouTube — TSouL22",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=2S5noYDeadQ"
+    },
+    {
+      "id": "arena",
+      "type": "image",
+      "src": "/images/bosses/viper-napuatzi-arena.webp",
+      "alt": "viper-napuatzi arena",
+      "caption": "arena reference frame",
+      "credit": "Frame from YouTube — Defensive Games",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=PUupRlz7amQ"
+    },
+    {
+      "id": "phase",
+      "type": "image",
+      "src": "/images/bosses/viper-napuatzi-phase.webp",
+      "alt": "viper-napuatzi phase",
+      "caption": "phase reference frame",
+      "credit": "Frame from YouTube — Efekan1D",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=r0jv0VzvR4s"
+    },
+    {
+      "id": "attack",
+      "type": "image",
+      "src": "/images/bosses/viper-napuatzi-attack.webp",
+      "alt": "viper-napuatzi attack",
+      "caption": "attack reference frame",
+      "credit": "Frame from YouTube — Bits of Time",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=gzt3SaR5BoU"
+    },
+    {
+      "id": "annotated",
+      "type": "image",
+      "src": "/images/bosses/viper-napuatzi-annotated.webp",
+      "alt": "viper-napuatzi annotated",
+      "caption": "annotated reference frame",
+      "credit": "Frame from YouTube — Quick Clips Gaming",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=Yu0o7IVRyc8"
+    },
+    {
+      "id": "viper-napuatzi-yt1",
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=2S5noYDeadQ",
+      "alt": "viper-napuatzi video 1",
+      "caption": "Verified boss-fight footage (TSouL22).",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=2S5noYDeadQ",
+      "credit": "TSouL22"
+    },
+    {
+      "id": "viper-napuatzi-yt2",
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=PUupRlz7amQ",
+      "alt": "viper-napuatzi video 2",
+      "caption": "Verified boss-fight footage (Defensive Games).",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=PUupRlz7amQ",
+      "credit": "Defensive Games"
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 公式パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/Viper_Napatuzi"
+    },
+    {
+      "label": "Mobalytics PoE2",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/guides"
+    },
+    {
+      "label": "Reddit r/pathofexile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2/"
+    }
+  ],
+  "seo": {
+    "title": "ヴァイパー・ナプアトジィ ボス攻略 — PoE2 アクト3 槍の斉射と闘技場",
+    "description": "Path of Exile 2の完全なヴァイパー・ナプアトジィ攻略：縮小する闘技場、槍の斉射、炎とカオスの雨、毒のトーテム、そして0.5.0のフラスコ回復ウィンドウ。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "viper-napuatzi",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

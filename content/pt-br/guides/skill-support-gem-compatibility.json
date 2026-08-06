@@ -1,0 +1,476 @@
+{
+  "id": "skill-support-gem-compatibility",
+  "slug": "skill-support-gem-compatibility",
+  "locale": "pt-br",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Compatibilidade de Gemas de Suporte no PoE 2: Por que um Suporte não Encaixa ou não Funciona",
+  "shortTitle": "Compatibilidade de Suporte",
+  "summary": "Por que uma gema de suporte se recusa a encaixar na sua habilidade, ou encaixa mas não faz nada em combate: tags de habilidade versus tags de suporte, progressão de soquetes, requisitos de atributo e arma, duplicatas e buffs persistentes/espirituais.",
+  "description": "Um guia de compatibilidade de gemas de suporte no PoE 2 com foco em diagnóstico: como as tags de habilidade e as tags de suporte decidem se um suporte pode ser encaixado, como os soquetes de suporte crescem com o nível da gema, limites de atributo/arma/duplicata, interações de gatilho e buffs persistentes, um diagnóstico de compatibilidade interativo e um método de verificação por tooltip.",
+  "guideCategory": "mechanics",
+  "estimatedReadingMinutes": 12,
+  "prerequisites": [
+    "Você entende o básico de lapidação de gemas: habilidades e suportes vêm de Gemas Não Lapidadas e os suportes são colocados nas gemas de habilidade",
+    "Você tem uma gema de suporte que não consegue encaixar, ou uma que encaixa mas parece não fazer nada"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "mechanics"
+  ],
+  "heroImage": "/images/items/uncut-gems-hero.webp",
+  "cardImage": "/images/items/uncut-gems-hero.webp",
+  "imageAlt": "Gemas Não Lapidadas do PoE 2 ao lado de uma gema de suporte lapidada, os blocos de construção por trás da compatibilidade de habilidade e suporte",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Resposta rápida",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Por que meu suporte não encaixa na habilidade?",
+          "body": [
+            "Um suporte só pode ser encaixado se suas tags permitidas sobrepõem pelo menos uma das tags da habilidade. Se as tags não coincidirem, o jogo recusa o encaixe.",
+            "Também falha se a gema de habilidade não tiver um soquete de suporte livre, ou se você não atender ao requisito de atributo ou arma do suporte."
+          ]
+        },
+        {
+          "title": "Encaixou, mas a habilidade não mudou. Por quê?",
+          "body": [
+            "As tags se sobrepuseram o suficiente para permitir o encaixe, mas o efeito específico do suporte não se aplica à forma como sua habilidade realmente causa dano ou se comporta.",
+            "Alguns suportes afetam apenas uma palavra-chave que sua habilidade não possui, ou apenas modificam suportes vinculados em vez da própria habilidade. Abra a tooltip da habilidade para ver as interações listadas."
+          ]
+        },
+        {
+          "title": "Como confirmo a compatibilidade por mim mesmo?",
+          "body": [
+            "Passe o mouse sobre a gema de suporte: a tooltip lista as tags às quais ela se aplica e mostra as habilidades incompatíveis esmaecidas.",
+            "Após encaixar, compare o DPS e os modificadores da tooltip da habilidade com e sem o suporte para confirmar que o efeito foi aplicado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tag-definitions",
+      "order": 2,
+      "title": "Tags de habilidade vs tags de suporte",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Toda gema de habilidade carrega tags como Ataque, Magia, Projétil, Corpo a Corpo, Pet, Duração ou Área. Toda gema de suporte lista as tags que tem permissão para modificar. A compatibilidade é decidida por essa sobreposição, não pelo nome ou ícone do suporte."
+      ],
+      "bullets": [
+        "Um suporte que exige Projétil não faz nada em uma habilidade de corpo a corpo ou de magia lançada, porque essa habilidade não tem a tag Projétil.",
+        "Um suporte que exige Ataque não se aplica a uma habilidade de Magia, mesmo que ambas causem dano.",
+        "Alguns suportes são amplos (aplicam-se à maioria dos Ataques ou da maioria das Habilidades), enquanto outros são estreitos (apenas Projéteis, apenas Pets, apenas habilidades Acionadas).",
+        "A tooltip da gema é a fonte da verdade: mostra exatamente quais tags um suporte alvo e esmaece as habilidades que não pode modificar."
+      ]
+    },
+    {
+      "id": "socket-progression",
+      "order": 3,
+      "title": "Como os soquetes de suporte crescem",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Uma gema de habilidade não começa com todos os slots de suporte abertos. Os soquetes de suporte são desbloqueados conforme a gema de habilidade ganha experiência e sobe de nível em combate. No início, uma habilidade pode aceitar apenas um ou dois suportes; ela ganha mais soquetes em níveis mais altos da gema."
+      ],
+      "bullets": [
+        "Se um suporte 'não cabe', a habilidade simplesmente pode não ter um soquete livre ainda. Suba o nível da gema e reabra o painel de soquetes.",
+        "Gemas Não Lapidadas de tier superior podem produzir variantes de suporte mais fortes, mas o número de soquetes é governado pela gema de habilidade, não pelo suporte.",
+        "Verifique o painel da própria gema de habilidade para ver quantos slots de suporte estão disponíveis atualmente versus quantos ela desbloqueará."
+      ]
+    },
+    {
+      "id": "compatibility-diagnostic",
+      "order": 4,
+      "title": "Diagnóstico de compatibilidade",
+      "type": "compatibility-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Escolha a situação que corresponde à sua. Explicamos a causa mais provável por tag, soquete, atributo, arma ou duplicata, e o que verificar na tooltip.",
+      "controls": [
+        {
+          "id": "situation",
+          "label": "Sua situação",
+          "options": [
+            {
+              "label": "O suporte não encaixa de jeito nenhum",
+              "value": "wont-socket"
+            },
+            {
+              "label": "Encaixou, mas a habilidade não mudou",
+              "value": "socketed-no-change"
+            },
+            {
+              "label": "Buffou uma habilidade diferente, não esta",
+              "value": "wrong-target"
+            },
+            {
+              "label": "Bloqueado por requisito de atributo ou arma",
+              "value": "attribute-weapon"
+            },
+            {
+              "label": "Uma segunda cópia não faz nada",
+              "value": "duplicate"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Não encaixa: bloqueio de tag, soquete ou requisito",
+          "when": {
+            "situation": "wont-socket"
+          },
+          "steps": [
+            "Leia a tooltip do suporte: ela lista as tags que pode modificar e esmaece as habilidades que não coincidem.",
+            "Confirme que a habilidade tem um soquete de suporte livre; suba o nível da gema se todos os slots estiverem cheios.",
+            "Verifique os requisitos de atributo e arma: alguns suportes exigem um atributo mínimo ou uma classe de arma específica antes de poderem ser encaixados."
+          ]
+        },
+        {
+          "title": "Encaixou mas sem efeito: tags se sobrepõem, efeito não",
+          "when": {
+            "situation": "socketed-no-change"
+          },
+          "steps": [
+            "O encaixe foi permitido porque uma tag se sobrepôs, mas o bônus específico do suporte mira uma palavra-chave que sua habilidade não usa.",
+            "Compare a tooltip da habilidade com e sem o suporte para confirmar se o DPS ou os modificadores mudaram de fato.",
+            "Alguns suportes apenas modificam outros suportes vinculados (meta suportes); eles intencionalmente fazem pouco à habilidade diretamente."
+          ]
+        },
+        {
+          "title": "Buffou a habilidade errada",
+          "when": {
+            "situation": "wrong-target"
+          },
+          "steps": [
+            "Um suporte afeta apenas a gema de habilidade na qual está encaixado, além das habilidades que essa habilidade aciona ou às quais está vinculada.",
+            "Encaixe o suporte na exata habilidade que você quer buffar; um suporte na Habilidade A nunca melhora a Habilidade B na sua barra.",
+            "Para configurações acionadas, confirme qual habilidade o gatilho realmente dispara, porque é ela que recebe o suporte."
+          ]
+        },
+        {
+          "title": "Barreira de atributo ou arma",
+          "when": {
+            "situation": "attribute-weapon"
+          },
+          "steps": [
+            "Alguns suportes exigem uma Força, Destreza ou Inteligência mínima, ou um tipo de arma específico como arco, besta ou arma corpo a corpo.",
+            "Se seu personagem ou arma atual não atender ao requisito, o encaixe é bloqueado ou o efeito é suprimido.",
+            "Troque para uma arma que atenda e realoque atributos, depois verifique o soquete novamente."
+          ]
+        },
+        {
+          "title": "Suporte duplicado",
+          "when": {
+            "situation": "duplicate"
+          },
+          "steps": [
+            "Encaixar o mesmo suporte uma segunda vez na mesma habilidade não oferece benefício adicional e geralmente é bloqueado.",
+            "Use um suporte diferente que adicione um novo efeito em vez de repetir um que você já tem.",
+            "Se duas habilidades compartilham uma configuração, encaixe o suporte em cada habilidade separadamente em vez de esperar que uma cópia cubra ambas."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Verificação geral",
+        "steps": [
+          "Abra a tooltip do suporte primeiro: ela mostra as tags permitidas e esmaece as habilidades incompatíveis.",
+          "Confirme um soquete livre, depois verifique os requisitos de atributo e arma.",
+          "Após encaixar, compare a tooltip da habilidade com e sem o suporte para provar que o efeito foi aplicado."
+        ]
+      }
+    },
+    {
+      "id": "support-requirements",
+      "order": 5,
+      "title": "Limites de atributo, arma e duplicata",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Além das tags, três limites decidem se um suporte realmente contribui: barreiras de atributo, barreiras de arma e a regra de não duplicação."
+      ],
+      "bullets": [
+        "Barreira de atributo: suportes que exigem Força, Destreza ou Inteligência não funcionam a menos que seu personagem atinja o limite.",
+        "Barreira de arma: certos suportes funcionam apenas ao empunhar a classe de arma que especificam (por exemplo, arco, besta ou uma arma corpo a corpo).",
+        "Sem duplicata: o mesmo suporte não pode ser empilhado em uma habilidade; uma segunda cópia é desperdiçada.",
+        "Se um suporte encaixa mas parece inerte, uma dessas três barreiras silenciosas costuma ser o motivo, e não um bug."
+      ]
+    },
+    {
+      "id": "trigger-and-persistent-buffs",
+      "order": 6,
+      "title": "Habilidades acionadas, buffs persistentes e Espírito",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Dois casos especiais confundem a compatibilidade de suporte: habilidades acionadas e buffs persistentes (auras e efeitos semelhantes que reservam Espírito)."
+      ],
+      "bullets": [
+        "Habilidades acionadas: um suporte que aciona uma habilidade dispara a habilidade encaixada ao lado dela, governada por regras de gatilho e tempos de recarga em vez de conjuração manual.",
+        "Buffs persistentes: alguns suportes concedem auras ou efeitos persistentes que reservam uma porção do seu Espírito; se faltar Espírito, o efeito não pode ativar.",
+        "A reserva de Espírito é separada do mana: um suporte pode ser totalmente compatível por tags, mas ainda falhar ao ligar porque seu Espírito já está reservado em outro lugar.",
+        "Libere Espírito primeiro (desencaixe ou reduza outras reservas) e depois verifique se o suporte persistente ativa."
+      ]
+    },
+    {
+      "id": "before-after-example",
+      "order": 7,
+      "title": "Exemplo prático",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Um caso concreto mostra como o mesmo suporte se comporta de forma diferente entre habilidades puramente por causa das tags."
+      ],
+      "bullets": [
+        "Exemplo: um suporte que exige Projétil encaixa perfeitamente em uma habilidade de projétil e aumenta seu dano.",
+        "O mesmo suporte se recusa a encaixar em uma habilidade de magia lançada, porque essa habilidade não tem a tag Projétil.",
+        "Um suporte mais amplo que mira Ataques serve tanto a um ataque corpo a corpo quanto a um ataque de projétil, mas não a uma magia.",
+        "Lição: leia as tags, não o ícone. A lista esmaecida da tooltip é a resposta final."
+      ]
+    },
+    {
+      "id": "failed-methods",
+      "order": 8,
+      "title": "Métodos que não resolvem",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Os jogadores costumam tentar contornos que não podem alterar a compatibilidade. Pule estes e vá direto à verificação de tags."
+      ],
+      "bullets": [
+        "Reinstalar ou reconectar não muda a correspondência de tags; a decisão de encaixe é determinística a partir das tags e requisitos.",
+        "Lapidar um suporte de tier superior do mesmo tipo ainda não caberá em uma habilidade cujas tags ele não mira.",
+        "Adicionar o suporte a uma habilidade diferente na sua barra não buffará retroativamente a habilidade que você realmente queria.",
+        "Mais níveis da gema no suporte sozinho não contornam uma tag, atributo ou arma ausente."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Dúvidas da comunidade",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Perguntas comuns de compatibilidade de suporte do Reddit e dos comentários de vídeos, com nossa leitura e uma sugestão direta.",
+      "cards": [
+        {
+          "title": "O suporte esmaece minha habilidade",
+          "tag": "Tags",
+          "body": [
+            "Problema: o suporte não pode ser colocado na habilidade de forma alguma.",
+            "Evidência: as tags da habilidade não se sobrepõem às tags permitidas do suporte.",
+            "Sugestão: verifique a lista esmaecida da tooltip e escolha um suporte cujas tags correspondam à sua habilidade."
+          ]
+        },
+        {
+          "title": "Encaixou mas DPS inalterado",
+          "tag": "Efeito",
+          "body": [
+            "Problema: o suporte cabe, mas a tooltip não mostra mudança.",
+            "Evidência: uma tag se sobrepôs o suficiente para permitir o encaixe, mas o bônus mira uma palavra-chave que a habilidade não tem.",
+            "Sugestão: compare a tooltip da habilidade com e sem o suporte; troque por um suporte cujo efeito se aplica claramente."
+          ]
+        },
+        {
+          "title": "Suporte de aura não liga",
+          "tag": "Espírito",
+          "body": [
+            "Problema: um suporte de buff persistente não faz nada.",
+            "Evidência: ele reserva Espírito que você já gastou em outras auras ou reservas.",
+            "Sugestão: libere Espírito reduzindo outras reservas e depois verifique a ativação."
+          ]
+        },
+        {
+          "title": "Mesmo suporte duas vezes",
+          "tag": "Duplicata",
+          "body": [
+            "Problema: uma segunda cópia parece não fazer nada.",
+            "Evidência: suportes duplicados em uma habilidade são bloqueados ou não oferecem benefício de empilhamento.",
+            "Sugestão: use um suporte diferente que adicione um novo efeito em vez de repetir um."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Passo a passo em vídeo das gemas de suporte",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Gemas de Suporte no PoE 2 Explicadas: Tags, Soquetes e Compatibilidade",
+          "creator": "Criador da comunidade",
+          "description": "Um passo a passo de como as gemas de suporte interagem com as tags de habilidade, como os soquetes desbloqueiam e como ler a tooltip antes de encaixar.",
+          "takeaway": "Combine as tags do suporte com as tags da habilidade, fique de olho nos soquetes livres e no Espírito, e verifique o efeito na tooltip antes de confirmar.",
+          "url": "https://www.youtube.com/watch?v=LRemyu5I3UI",
+          "timestamps": [
+            {
+              "label": "Introdução",
+              "time": "0:00"
+            },
+            {
+              "label": "Como as tags decidem a compatibilidade",
+              "time": "1:30"
+            },
+            {
+              "label": "Soquetes de suporte e níveis da gema",
+              "time": "4:00"
+            },
+            {
+              "label": "Barreiras de atributo e arma",
+              "time": "7:00"
+            },
+            {
+              "label": "Espírito e buffs persistentes",
+              "time": "10:00"
+            },
+            {
+              "label": "Verificando na tooltip",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "Solução de problemas",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A maioria dos relatos de 'suporte não funciona' são incompatibilidades de tag ou de requisito, não bugs. Leia o sintoma e depois verifique as tags."
+      ],
+      "bullets": [
+        "Não consegue encaixar: abra a tooltip do suporte e leia a lista de habilidades incompatíveis esmaecidas.",
+        "Sem efeito após encaixar: compare a tooltip da habilidade com e sem o suporte para confirmar que o bônus foi aplicado.",
+        "Buffa a habilidade errada: mova o suporte para a habilidade que você realmente quer buffar.",
+        "Aura não ativa: libere Espírito de outras reservas primeiro.",
+        "Bug suspeito: capture as tags da habilidade, tags do suporte e seus atributos, depois compare com a tooltip antes de reportar."
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Fontes e verificação",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Fonte oficial",
+          "description": "Site oficial do Path of Exile 2 e tooltips de lapidação no jogo",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Notas de patch",
+          "description": "Notas de patch da Reformulação das Gemas de Suporte do PoE 2 0.3.0",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Guia da comunidade",
+          "description": "Wiki do PoE 2 - Mecânicas das Gemas de Suporte e sistema de tags",
+          "url": "https://www.poe2wiki.net/"
+        },
+        {
+          "label": "Guia em vídeo",
+          "description": "Passo a passo da comunidade - Gemas de Suporte Explicadas",
+          "url": "https://www.youtube.com/watch?v=LRemyu5I3UI"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Registro de alterações",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Publicado para o PoE 2 0.5.4. Cobre tags de habilidade vs suporte, progressão de soquetes, limites de atributo/arma/duplicata, interações de gatilho e buffs persistentes, um diagnóstico de compatibilidade interativo, um exemplo prático e verificação por tooltip. A verificação no cliente permanece pendente para os limites declarados."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-3-0-support-gem-overhaul"
+  ],
+  "relatedSkillIds": [
+    "chain-support"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 Oficial",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "Reformulação das Gemas de Suporte do PoE 2 0.3.0",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "Wiki do PoE 2 - Gemas de Suporte",
+      "sourceType": "community",
+      "url": "https://www.poe2wiki.net/"
+    },
+    {
+      "label": "Comunidade - Gemas de Suporte Explicadas",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=LRemyu5I3UI"
+    }
+  ],
+  "seo": {
+    "title": "Compatibilidade de Gemas de Suporte no PoE 2: Por que um Suporte não Encaixa ou não Funciona",
+    "description": "Por que uma gema de suporte se recusa a encaixar na sua habilidade, ou encaixa mas não faz nada: tags de habilidade versus tags de suporte, progressão de soquetes, requisitos de atributo e arma, duplicatas e buffs persistentes/espirituais.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "skill-support-gem-compatibility",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  },
+  "publishedAt": "2026-08-02"
+}

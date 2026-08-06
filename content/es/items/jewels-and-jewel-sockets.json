@@ -1,0 +1,1051 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "es",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Joyas y Ranuras de Joya: tipos, radio, corrupción y uso en el árbol de pasivas en 0.5.4",
+  "shortTitle": "Joyas y Ranuras de Joya",
+  "summary": "Cómo funcionan las Joyas en Path of Exile 2 0.5.4: dónde están las Ranuras de Joya, si deben asignarse primero, las diferencias entre las bases Rubí/Esmeralda/Zafiro/Diamante, el número de modificadores Normal/Mágica/Rara/Única, joyas corruptas frente a joyas normales, por qué las joyas Time-Lost afectan a nodos dentro del radio, cómo difiere Timeless de Time-Lost, las reglas de la Ranura Siniestra, cómo se muestra el Radio, Limitado a, y la corrección /reclaimjewels de la 0.2. Incluye una Fórmula de Valor de Joya para decidir si una ranura vale el punto de pasiva.",
+  "description": "Guía de Joyas y Ranuras de Joya de Path of Exile 2 0.5.4: asignación de ranuras, tipos base, número de modificadores, corrupción, radio Time-Lost, Timeless frente a Time-Lost, Ranuras Siniestras, solapamiento de radios, Limitado a, el comando /reclaimjewels y una fórmula de valor de joya.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Acceso Anticipado 0.5.4",
+  "league": "Acceso Anticipado",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-05",
+  "publishedAt": "2026-08-05",
+  "updatedAt": "2026-08-05",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "Árbol de habilidades pasivas de Path of Exile 2 que muestra una Ranura de Joya asignada y un círculo blanco de Radio proyectado por una joya Time-Lost",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Respuesta rápida",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Una Joya se inserta en una Ranura de Joya asignada del Árbol de Habilidades Pasivas y otorga bonificaciones a tu personaje o, en el caso de las joyas Time-Lost y las joyas de radio únicas, a los nodos pasivos dentro de un círculo de Radio. Las joyas básicas aplican sus propios modificadores explícitos; las joyas Time-Lost y las joyas de radio únicas (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac y Voices) reescriben los nodos dentro de su Radio. Solo asigna una ranura cuando el valor de la joya supere el coste del punto de pasiva y de la ruta.",
+      "calloutDetail": [
+        "Las Ranuras de Joya son nodos pasivos y deben asignarse (conectados a tu árbol) antes de poder insertar una joya.",
+        "Las joyas Time-Lost y las joyas de radio únicas proyectan un círculo blanco; solo se ven afectados los nodos dentro de ese círculo.",
+        "Usa la fórmula de coste de la sección Valor de Joya para decidir si una ranura vale los puntos."
+      ],
+      "answers": [
+        {
+          "label": "Uso para",
+          "text": [
+            "Añadir atributos, vida, resistencias, daño o mecánicas de asignación especializadas a una build a través del árbol de pasivas."
+          ]
+        },
+        {
+          "label": "Comprobar primero",
+          "text": [
+            "Confirma que la ranura está asignada, lee el Radio y el Limitado a de la joya, y calcula el coste en puntos de pasiva que supone la ranura."
+          ]
+        },
+        {
+          "label": "Evitar",
+          "text": [
+            "Gastar 3-4 puntos de ruta solo para llegar a una ranura de poco valor, asumir que Timeless equivale a Time-Lost, o poner una joya única en una Ranura Siniestra."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "Comparativa de familias de joyas"
+        },
+        {
+          "href": "#valuation",
+          "label": "Fórmula de valor de joya"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Datos rápidos",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Clase de objeto",
+          "value": "Jewel",
+          "note": [
+            "Todas las joyas comparten la clase de objeto Joya y se encajan en Ranuras de Joya del árbol de pasivas (o Ranuras Siniestras en el equipo para algunas)."
+          ]
+        },
+        {
+          "label": "La ranura debe asignarse",
+          "value": "Sí",
+          "note": [
+            "Una Ranura de Joya es un nodo pasivo; debe asignarse y conectarse antes de poder insertar una joya con clic derecho."
+          ]
+        },
+        {
+          "label": "Tipos base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "Las bases de color condicionan la reserva de afijos explícitos; Diamond es la base prismática (única)."
+          ]
+        },
+        {
+          "label": "Número de modificadores",
+          "value": "Normal 2 / Magic 2 / Rare hasta 4",
+          "note": [
+            "Una joya normal obtiene dos modificadores explícitos; la Mágica obtiene dos; la Rara puede llegar a cuatro; las joyas Únicas llevan líneas únicas fijas."
+          ]
+        },
+        {
+          "label": "Radio",
+          "value": "Solo joyas Time-Lost y de radio únicas",
+          "note": [
+            "Las joyas básicas aplican sus propios modificadores directamente; solo las joyas Time-Lost y las joyas de radio únicas proyectan un círculo de Radio."
+          ]
+        },
+        {
+          "label": "Limitado a",
+          "value": "Por joya única",
+          "note": [
+            "La mayoría de las joyas únicas son Limitado a 1 (o 3 para Grand Spectrum), por lo que solo se puede equipar una de esa única."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Comparativa de familias de joyas",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "Seis grupos de joyas importan para la planificación de builds en 0.5.4. Diffieren en dónde van, si proyectan un Radio y qué hacen. Esta es la Tabla de Comparación de Familias del plan de contenido, presentada como tarjetas de miembros."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "Socketables",
+          "title": "Joya Básica",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "Encaja en cualquier Ranura de Joya normal asignada. Aplica sus propios modificadores explícitos directamente, sin Radio.",
+            "El color base condiciona la reserva de afijos: Ruby favorece armadura/marcial, Sapphire favorece ES/conjurador, Emerald favorece evasión/a distancia, Diamond es prismática."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Joya Time-Lost",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "Cae de Time-Lost Caches en la Prueba de los Sekhemas. Tiene un Radio (Medio a Grande).",
+            "Sus modificadores 'en Radio también otorgan' bonificaciones a los nodos dentro del círculo. Error común: comprar el modificador equivocado para tu árbol."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Joya Única Diamond",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "Joyas únicas sobre base Diamond con mecánicas especiales de asignación o de Radio.",
+            "Error común: no entender el Keystone o el comportamiento del Radio antes de comprar."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Joya Timeless",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Cae de los jefes cúspide de Expedition. Tiene un Radio histórico y transforma pasivas según Seed y Keystone.",
+            "Error común: leer solo el nombre e ignorar el Seed, que define el resultado."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "Ranura de equipo",
+          "title": "Joya Siniestra",
+          "sub": "Vía Voices",
+          "body": [
+            "Aparece en el equipo a través de Voices, no en el árbol de pasivas. No tiene Radio ordinario.",
+            "Otorga un efecto de joya independiente. Error común: intentar colocar una Joya Única en una Ranura Siniestra."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "Corruption",
+          "title": "Joya Corrupta",
+          "sub": "Cualquier base, tras la corrupción",
+          "body": [
+            "Gana un implícito de corrupción y ya no puede alterarse con monedas de creación normales.",
+            "Error común: asumir que aún puede modificarse normalmente o Divinarse como una joya limpia."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propiedades y tooltips representativos",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Clase de objeto",
+          "value": "Jewel",
+          "notes": [
+            "Todas las joyas comparten la clase de objeto Joya y se encajan en Ranuras de Joya del árbol de pasivas."
+          ]
+        },
+        {
+          "label": "Requisito de ranura",
+          "value": "Ranura de Joya asignada",
+          "notes": [
+            "El nodo de la ranura debe asignarse (conectado a tu árbol) antes de poder insertar una joya."
+          ]
+        },
+        {
+          "label": "Tipos base",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "Las bases de color condicionan la reserva de afijos explícitos: Ruby favorece armadura/marcial, Sapphire favorece ES/conjurador, Emerald favorece evasión/a distancia, Diamond es prismática."
+          ]
+        },
+        {
+          "label": "Modificadores explícitos (normal)",
+          "value": "2 por defecto",
+          "notes": [
+            "Una joya normal obtiene dos modificadores explícitos; la Mágica obtiene dos; la Rara puede llegar a cuatro."
+          ]
+        },
+        {
+          "label": "Radio (solo Time-Lost)",
+          "value": "Medio a Grande",
+          "notes": [
+            "Solo las joyas Time-Lost y las joyas de radio únicas proyectan un círculo de radio; las joyas básicas aplican sus propios modificadores directamente."
+          ]
+        },
+        {
+          "label": "Corrupta",
+          "value": "Añade un modificador de corrupción",
+          "notes": [
+            "Una joya corrupta gana un implícito de corrupción y ya no puede alterarse con monedas de creación."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Resumen: cómo funcionan las joyas y las ranuras",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Una Ranura de Joya es un nodo de habilidad pasiva. Se asigna como cualquier otro nodo, y una vez conectado a tu árbol puedes insertar una joya con clic derecho. Las joyas básicas otorgan entonces sus propios modificadores explícitos a tu personaje. Las joyas Time-Lost y las joyas de radio únicas hacen algo distinto: proyectan un círculo blanco de Radio en el árbol, y sus modificadores se aplican a los nodos pasivos que caen dentro de ese círculo.",
+        "El tipo base importa. Las joyas Ruby, Emerald y Sapphire son bases de color cuya reserva de afijos explícitos se inclina hacia modificadores de armadura/marcial, evasión/a distancia y escudo de energía/conjurador respectivamente. Diamond es la base prismática usada por las joyas únicas (Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac) y puede obtener cualquier modificador de las listas de afijos.",
+        "Número de modificadores según rareza: una joya normal obtiene dos modificadores explícitos, una Mágica obtiene dos, y una Rara puede obtener hasta cuatro. Las joyas únicas los reemplazan con líneas únicas fijas. Una Joya Corrupta gana un implícito de corrupción extra y ya no puede alterarse con monedas de creación normales, que es exactamente por lo que The Adorned quiere joyas Mágicas corruptas.",
+        "Time-Lost frente a Timeless es la confusión más común. Una joya Time-Lost (Ruby/Emerald/Sapphire, o la única Against the Darkness en Diamond) procede de la Prueba de los Sekhemas y modifica los nodos dentro de su Radio con bonificaciones de estilo afijo aleatorio. Una joya Timeless (Heroic Tragedy, Undying Hate) procede de Expedition y conquista o reemplaza pasivas dentro de su Radio histórico según un Seed numérico y un Keystone. Son sistemas distintos con diferentes fuentes de obtención y diferentes reglas.",
+        "Las Ranuras Siniestras no son ranuras del árbol de pasivas. Aparecen en el equipo (por ejemplo vía la joya única Voices) y aceptan un conjunto específico de joyas con un efecto independiente y sin Radio ordinario. No puedes colocar una Joya Única en una Ranura Siniestra.",
+        "El Radio se muestra como un círculo blanco en el momento en que se encaja una joya de radio; el planificador del árbol de pasivas también lo previsualiza. Varios radios pueden solaparse, y un nodo situado dentro de más de un radio recibe el efecto de cada uno. Las joyas únicas suelen ser Limitado a 1, por lo que solo se puede equipar una copia de esa única a la vez.",
+        "Tras la reconstrucción del árbol de pasivas de la 0.2, algunas ranuras de joya se eliminaron de los personajes antiguos. Las joyas afectadas se podían recuperar con el comando de chat /reclaimjewels; es una corrección histórica, pero sigue siendo el paso correcto para cualquier personaje antiguo que aún muestre joyas faltantes tras una actualización del árbol."
+      ],
+      "bullets": [
+        "Ranura primero: una Ranura de Joya debe asignarse y conectarse antes de encajarla.",
+        "La base de color condiciona la reserva de afijos; Diamond es prismática (única).",
+        "Normal/Mágica = 2 mods, Rara = hasta 4, Única = líneas fijas.",
+        "Time-Lost = bonificaciones de radio de Sekhemas; Timeless = conquista por Seed/Keystone de Expedition.",
+        "Las Ranuras Siniestras están en el equipo, no en el árbol, y rechazan las Joyas Únicas.",
+        "Los radios pueden solaparse; Limitado a limita cuántas de una única puedes llevar."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Matriz de elegibilidad de ranuras",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Qué joya encaja en qué ranura, si proyecta un Radio y su regla especial. Las celdas 'text' dan el detalle relevante en lugar de un sí/no."
+      ],
+      "columns": [
+        "Tipo de joya",
+        "Ranura Normal",
+        "Ranura Siniestra",
+        "Radio",
+        "Regla especial"
+      ],
+      "rows": [
+        {
+          "label": "Básica (Ruby/Emerald/Sapphire/Diamond)",
+          "values": [
+            { "kind": "yes", "text": "Encaja en cualquier Ranura de Joya normal asignada" },
+            { "kind": "no", "text": "No válida en Ranuras Siniestras" },
+            { "kind": "text", "text": "Ninguno (mods directos)" },
+            { "kind": "text", "text": "Otorga solo sus propios mods explícitos" }
+          ]
+        },
+        {
+          "label": "Joya Time-Lost",
+          "values": [
+            { "kind": "yes", "text": "Encaja en cualquier Ranura de Joya normal asignada" },
+            { "kind": "no", "text": "No válida en Ranuras Siniestras" },
+            { "kind": "text", "text": "Medio a Grande" },
+            { "kind": "text", "text": "Modifica nodos dentro del Radio" }
+          ]
+        },
+        {
+          "label": "Diamond Única (Against the Darkness, etc.)",
+          "values": [
+            { "kind": "yes", "text": "Encaja en cualquier Ranura de Joya normal asignada" },
+            { "kind": "no", "text": "No válida en Ranuras Siniestras" },
+            { "kind": "text", "text": "Medio (varía según la joya)" },
+            { "kind": "text", "text": "Mecánica especial de asignación o de Radio" }
+          ]
+        },
+        {
+          "label": "Joya Timeless",
+          "values": [
+            { "kind": "yes", "text": "Encaja en cualquier Ranura de Joya normal asignada" },
+            { "kind": "no", "text": "No válida en Ranuras Siniestras" },
+            { "kind": "text", "text": "Histórico (varía)" },
+            { "kind": "text", "text": "Conquista/reemplaza pasivas por Seed" }
+          ]
+        },
+        {
+          "label": "Joya Siniestra",
+          "values": [
+            { "kind": "no", "text": "No válida en ranuras normales" },
+            { "kind": "yes", "text": "Encaja en una Ranura Siniestra del equipo" },
+            { "kind": "text", "text": "Ninguno (sin Radio ordinario)" },
+            { "kind": "text", "text": "Efecto de joya independiente" }
+          ]
+        },
+        {
+          "label": "Joya Corrupta",
+          "values": [
+            { "kind": "text", "text": "Sí si la base encaja en una ranura normal" },
+            { "kind": "text", "text": "La Mágica corrupta encaja en Siniestra" },
+            { "kind": "text", "text": "Depende de su base" },
+            { "kind": "text", "text": "Mod extra de corrupción, sin más creación" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Cómo encajar y previsualizar una joya",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Alcanzar y asignar la ranura",
+          "body": [
+            "Planifica una ruta hasta la Ranura de Joya y asígnala para que se conecte a tu árbol. La ranura debe asignarse antes de poder insertar una joya."
+          ]
+        },
+        {
+          "label": "Elegir la joya correcta para la ranura",
+          "body": [
+            "Empareja la base/afijos con tu build. Para las joyas de radio, comprueba qué nodos caen dentro del Radio en tu árbol real."
+          ]
+        },
+        {
+          "label": "Encajar y previsualizar el Radio",
+          "body": [
+            "Inserta la joya en la ranura con clic derecho. Aparece un círculo blanco; pasa el cursor sobre los nodos para confirmar qué pasivas Pequeñas y Notables se ven afectadas."
+          ]
+        },
+        {
+          "label": "Asignar dentro del Radio (si es necesario)",
+          "body": [
+            "Para las joyas Time-Lost y las joyas de radio únicas, las bonificaciones se aplican a los nodos que asignas dentro del Radio. Algunas tiradas especiales se extienden a nodos no asignados."
+          ]
+        },
+        {
+          "label": "Quitar o cambiar",
+          "body": [
+            "Haz clic derecho en la ranura para quitar la joya. Las joyas quitadas vuelven a tu inventario; los nodos asignados dentro del área de una joya de radio pierden su bonificación."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Una ranura de joya está asignada pero vacía; los nodos circundantes dan solo sus valores impresos."
+        ],
+        "after": [
+          "Tras encajar una joya de radio, cada nodo Pequeño y Notable asignado dentro del círculo blanco gana las bonificaciones 'también otorgan' de la joya."
+        ],
+        "note": "El valor añadido es la suma de las bonificaciones de los nodos afectados menos los puntos de pasiva gastados para alcanzar y usar la ranura."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Resultados según la situación",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Build de apilado de atributos que pasa por una ranura",
+          "audience": "Apiladores de atributos (Astramentis/HOWA)",
+          "benefit": "Una ranura en la ruta añade atributos, vida o resistencias gratis",
+          "risk": "Bajo",
+          "level": "low",
+          "recommendation": "Encaja una joya explícita fuerte; el coste de la ruta ya está pagado.",
+          "tags": [
+            "passive-tree"
+          ]
+        },
+        {
+          "scenario": "Desvío de 4 puntos a una ranura de poco valor",
+          "audience": "Presupuestos de pasivas ajustados",
+          "benefit": "Modificadores marginales de joya",
+          "risk": "Alto coste de oportunidad",
+          "level": "high",
+          "recommendation": "Salta la ranura; esos 4 puntos probablemente compren más en otro lado.",
+          "tags": [
+            "build-planning"
+          ]
+        },
+        {
+          "scenario": "Comprar una joya única concreta",
+          "audience": "Comerciantes",
+          "benefit": "Pago único predecible",
+          "risk": "Medio (precio por tirada/ranura)",
+          "level": "medium",
+          "recommendation": "Confirma la Ranura y el Radio exactos antes de pagar; véanse las guías de joyas únicas.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Personaje antiguo con joyas faltantes tras la 0.2",
+          "audience": "Jugadores que vuelven",
+          "benefit": "Recupera las joyas afectadas",
+          "risk": "Bajo",
+          "level": "low",
+          "recommendation": "Usa el comando de chat /reclaimjewels; no las compres de nuevo en el intercambio.",
+          "tags": [
+            "build-planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Uso en builds",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "Las joyas definen la build siempre que una ranura esté en tu ruta o una joya de radio pueda cubrir nodos que ya quieres. Las personas tipo siguientes muestran las formas principales de usar las joyas."
+      ],
+      "builds": [
+        {
+          "title": "Apilado de atributos",
+          "description": "Las builds de apilado de atributos (Astramentis, Hand of Wisdom and Action) usan ranuras en la ruta para atributos planos y escalado de fuerza/destreza/inteligencia.",
+          "href": "/en/items/astramentis/"
+        },
+        {
+          "title": "Joyas defensivas de vida/resistencia",
+          "description": "Las joyas básicas con vida y resistencias cubren huecos que el equipo no puede, especialmente en personajes cortos de resistencias elementales."
+        },
+        {
+          "title": "Únicas que habilitan radio",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned y Megalomaniac convierten una sola ranura en múltiples nodos asignados o potenciados.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "title": "Planificación del árbol de pasivas",
+          "description": "Planifica las rutas de ranuras en el planificador de builds antes de comprometer puntos; importa/exporta archivos del planificador para compartir el árbol exacto.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternativas",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Si una ranura está lejos de tu ruta, el coste de oportunidad de alcanzarla normalmente supera cualquier joya que pudieras colocar allí. En ese caso, gasta los puntos en nodos pasivos ordinarios o redirige tu árbol para pasar por una ranura de forma natural.",
+        "Para necesidades de atributos o resistencias, los sufijos del equipo, la calidad de los catalizadores y los amuletos a menudo entregan las mismas estadísticas más barato que una ranura de desvío. The Adorned y otros amplificadores únicos son alternativas solo cuando ya inviertes en joyas Mágicas corruptas.",
+        "Las joyas Timeless son una alternativa a las Time-Lost solo cuando tu build quiere la conquista de pasivas dirigida por Seed en lugar de simples bonificaciones de radio; no son intercambiables."
+      ],
+      "bullets": [
+        "Gasta los puntos de desvío en nodos normales en lugar de en una ranura lejana.",
+        "El equipo, los catalizadores y los amuletos pueden reemplazar las estadísticas de joya.",
+        "Timeless no es un reemplazo directo de Time-Lost."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Valoración: usar, vender o guardar",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "El valor de una joya no es un precio único en moneda; es una decisión sobre puntos de pasiva. Usa la Fórmula de Valor de Joya más abajo y los tres ejemplos resueltos para decidir."
+      ],
+      "use": {
+        "condition": "La ranura está en tu ruta o el radio cubre nodos que quieres",
+        "first": "Encaja la joya; el coste de la ruta ya está pagado",
+        "risk": "Ocupa una ranura y los puntos gastados para alcanzarla",
+        "text": [
+          "Úsala cuando el beneficio neto (estadísticas de la joya menos coste de puntos y ruta menos coste de oportunidad) sea positivo."
+        ]
+      },
+      "sell": {
+        "condition": "Encontraste un duplicado o una joya que no encaja en tu árbol",
+        "first": "Publica en el intercambio por base, corrupción y modificadores explícitos",
+        "risk": "Líquido pero el valor depende de la tirada exacta y la demanda del meta",
+        "text": [
+          "Vende cuando otra build la valoraría más que tu árbol actual."
+        ]
+      },
+      "hold": {
+        "condition": "Puedes reconstruir la build alrededor de joyas más adelante",
+        "first": "Conserva raras y únicas bien tiradas; mantienen el valor entre ligas",
+        "risk": "Solo espacio en el inventario",
+        "text": [
+          "Guarda las joyas de tirada alta; son activos de build a largo plazo."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Riesgo y coste de fallo",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Desvío de 4 puntos a una ranura de poco valor",
+          "gain": "Modificadores pequeños de joya",
+          "loss": "4 puntos de pasiva que podrían comprar un nodo notable o clave",
+          "level": "high",
+          "recommendation": "Toma la ranura solo si está en tu ruta natural."
+        },
+        {
+          "scenario": "Modificador Time-Lost equivocado para tu árbol",
+          "gain": "Cobertura de Radio",
+          "loss": "Bonificaciones de modificador desperdiciadas en nodos que no asignas",
+          "level": "medium",
+          "recommendation": "Previsualiza el Radio y elige el modificador que coincide con los nodos asignados."
+        },
+        {
+          "scenario": "Asumir que Timeless equivale a Time-Lost",
+          "gain": "Ninguno",
+          "loss": "Compró el sistema de joya equivocado para la build",
+          "level": "medium",
+          "recommendation": "Confirma la fuente de obtención y la mecánica antes de comprar."
+        },
+        {
+          "scenario": "Joya única en una Ranura Siniestra",
+          "gain": "Ninguno",
+          "loss": "Intento desperdiciado; las joyas únicas son rechazadas por las Ranuras Siniestras",
+          "level": "low",
+          "recommendation": "Usa las Ranuras Siniestras solo para su conjunto de joyas compatible."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Evidencia de la comunidad",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Pregunta de Reddit",
+          "question": "¿Necesito asignar la Ranura de Joya antes de encajar una joya?",
+          "summary": [
+            "Un jugador preguntó si se puede colocar una joya en un nodo de ranura no asignado."
+          ],
+          "editorialAnalysis": [
+            "Las Ranuras de Joya son nodos pasivos. Deben asignarse y conectarse a tu árbol antes de poder insertar una joya; una ranura no asignada no muestra ninguna ranura de joya."
+          ],
+          "officialAnswer": [
+            "Asigna la ranura primero; solo entonces puedes insertar una joya con clic derecho."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "Cómo encajar una joya"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "Guía",
+          "question": "¿Es Timeless lo mismo que Time-Lost?",
+          "summary": [
+            "Una guía confundió las joyas Timeless (Expedition) y Time-Lost (Sekhemas)."
+          ],
+          "editorialAnalysis": [
+            "Son sistemas distintos. Las joyas Time-Lost proceden de la Prueba de los Sekhemas y añaden bonificaciones de radio; las joyas Timeless proceden de Expedition y conquistan/reemplazan pasivas por Seed y Keystone."
+          ],
+          "officialAnswer": [
+            "Trátalas como familias separadas; lee la fuente de obtención y la mecánica antes de comprar."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "Comparativa de familias de joyas"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "Guía",
+          "question": "¿Por qué desaparecieron mis joyas tras una actualización del árbol de pasivas?",
+          "summary": [
+            "Jugadores que volvían reportaron joyas faltantes tras la reconstrucción del árbol de la 0.2."
+          ],
+          "editorialAnalysis": [
+            "Los cambios del árbol de pasivas de la 0.2 eliminaron algunas ranuras de los personajes antiguos. Las joyas afectadas son recuperables con el comando /reclaimjewels en lugar de volver a comprarse."
+          ],
+          "officialAnswer": [
+            "Usa /reclaimjewels para recuperar joyas de ranuras eliminadas; esta es una corrección histórica, no un cambio de obtención actual."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Historial de parches"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problemas y respuestas directas",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "El clic derecho no hace nada en la ranura",
+          "directAnswer": [
+            "La Ranura de Joya no está asignada o no está conectada a tu árbol. Asígnala primero y luego encaja la joya."
+          ],
+          "checks": [
+            "Abre el árbol de pasivas, confirma que el nodo de la ranura está iluminado y conectado, y vuelve a intentarlo."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "Pasos para encajar"
+            }
+          ]
+        },
+        {
+          "symptom": "El círculo de Radio es diminuto y no cubre nada útil",
+          "directAnswer": [
+            "El Radio de la joya es pequeño o tus nodos asignados están fuera de él. Repianifica la ranura o elige una joya con un Radio mayor para esa zona."
+          ],
+          "checks": [
+            "Previsualiza el Radio en el planificador y cuenta los nodos asignados dentro de él."
+          ]
+        },
+        {
+          "symptom": "La joya única no entra en una Ranura Siniestra",
+          "directAnswer": [
+            "Las Ranuras Siniestras rechazan las Joyas Únicas; aceptan solo su conjunto de joyas compatible (p. ej. Mágica Corrupta)."
+          ],
+          "checks": [
+            "Usa una ranura normal del árbol de pasivas para las joyas únicas."
+          ]
+        },
+        {
+          "symptom": "Joyas faltantes tras una actualización del árbol",
+          "directAnswer": [
+            "Si se eliminó una ranura, recupera la joya con /reclaimjewels en lugar de comprar una nueva."
+          ],
+          "checks": [
+            "Ejecuta /reclaimjewels en el chat; comprueba el inventario y el alijo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Vídeo explicativo",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Joyas, corrupción y especialización del árbol de pasivas de PoE 2",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "Creador de la comunidad",
+          "description": "Cubre la corrupción de joyas, la especialización del árbol de pasivas y una mención de Against the Darkness en un recorrido de build en vivo.",
+          "takeaway": "Muestra cómo encajan las joyas y la corrupción en un plan real del árbol de pasivas y dónde una joya de radio como Against the Darkness cambia los nodos asignados.",
+          "timestamps": [
+            { "label": "Especialización del árbol de pasivas", "time": "01:54" },
+            { "label": "Corrupción y joyas", "time": "03:03" },
+            { "label": "Mención de Against the Darkness", "time": "02:49" },
+            { "label": "Resumen de la build", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Galería de medios",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Ranura de Joya asignada en el árbol de habilidades pasivas",
+          "note": "Muestra el nodo de la ranura iluminado y conectado antes de encajar."
+        },
+        {
+          "caption": "Comparación de ranura no asignada frente a asignada",
+          "note": "Una ranura de joya solo aparece una vez asignada la ranura."
+        },
+        {
+          "caption": "Círculo blanco de Radio proyectado por una joya Time-Lost",
+          "note": "Los nodos dentro del círculo reciben las bonificaciones de la joya."
+        },
+        {
+          "caption": "Comparación de joyas Básica, Time-Lost, Timeless y Diamond única",
+          "note": "Cuatro grupos de joyas con distintas ranuras y comportamiento de Radio."
+        },
+        {
+          "caption": "Ubicación de la Ranura Siniestra en el equipo",
+          "note": "Aparece vía Voices, separada de las ranuras del árbol de pasivas."
+        },
+        {
+          "caption": "El resultado del comando /reclaimjewels",
+          "note": "Recupera joyas de ranuras eliminadas por la reconstrucción del árbol de la 0.2."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Contenido conectado",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "Diamond Time-Lost Única con dos modificadores de radio aleatorios.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Diamond Única que asigna un Keystone sin conexión.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "Diamond Única con un área de asignación remota en forma de anillo.",
+          "href": "/en/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "Amplifica joyas Mágicas corruptas en el radio.",
+          "href": "/en/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "Diamond Única que asigna Notables Aleatorios.",
+          "href": "/en/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices y Ranuras de Joya Siniestra",
+          "description": "Añade Ranuras Siniestras en el equipo para joyas específicas.",
+          "href": "/en/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless Jewels",
+          "description": "Conquista dirigida por Seed de Heroic Tragedy y Undying Hate.",
+          "href": "/en/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "Suelta Against the Darkness en la Prueba de los Sekhemas.",
+          "href": "/en/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Guía de Respec, Pasivas y Ascendencia",
+          "description": "Cómo funcionan los puntos de pasiva y los respec en 0.5.4.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "Planificador de Builds: Importación/Exportación de archivos de build",
+          "description": "Planifica rutas de ranuras y comparte árboles.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Parche 0.5.4 (Runes of Aldur)",
+          "description": "El contexto actual del parche de Acceso Anticipado.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historial de parches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, actual)",
+          "changes": [
+            "Las Joyas y las Ranuras de Joya funcionan como se describe: ranuras asignadas, reservas de afijos de base de color, y comportamiento de Radio para joyas Time-Lost y de radio únicas."
+          ]
+        },
+        {
+          "version": "0.2.1 (Socketables y obtención de únicas)",
+          "changes": [
+            "Ajustó el acceso de obtención de únicas para fuentes de joyas socketable y únicas."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "La reconstrucción del árbol de pasivas eliminó algunas Ranuras de Joya de los personajes antiguos; /reclaimjewels recupera las joyas afectadas."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Joyas y Ranuras de Joya introducidas en Acceso Anticipado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFICIAL",
+          "description": "Notas del parche 0.5.4 de Path of Exile 2 y documentación oficial de objetos.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "Datos de PoE2Wiki y poe2db sobre joyas y Against the Darkness.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Guía de joyas Time-Lost de Sportskeeda y guía de Against the Darkness de GameRant.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Discusión de Reddit r/PathOfExile2 sobre ranuras, radio y joyas faltantes.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "Vídeo de la comunidad sobre corrupción de joyas y especialización del árbol de pasivas.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Registro de cambios",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-05",
+          "changes": [
+            "Publicación inicial en español que cubre Ranuras de Joya, tipos base, número de modificadores, corrupción, Time-Lost frente a Timeless, Ranuras Siniestras, solapamiento de Radio, Limitado a, la corrección /reclaimjewels y la Fórmula de Valor de Joya para 0.5.4."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Notas del parche 0.5.4 de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - Cómo conseguir joyas Time-Lost",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - Cómo conseguir Against the Darkness",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - Joyas y corrupción de PoE 2",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Guía de Joyas y Ranuras de Joya de Path of Exile 2 (0.5.4)",
+    "description": "Cómo funcionan las Joyas y las Ranuras de Joya en PoE2 0.5.4: asignación de ranuras, bases Ruby/Emerald/Sapphire/Diamond, número de modificadores, corrupción, radio Time-Lost, Timeless frente a Time-Lost, Ranuras Siniestras y una fórmula de valor de joya.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,848 @@
+{
+  "id": "gas-grenade-pathfinder",
+  "slug": "gas-grenade-pathfinder",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "ガスグレネード・パスファインダー構成ガイド：毒の雲、ボス先置き、装備",
+  "shortTitle": "ガスグレネード・パスファインダー",
+  "summary": "0.5.4の毒の雲ツールキット：ガスグレネードが毒の雲を生成し重ね合わせ、デスペア／トキシックドメイン／ウィザーでスタックする。毒の持続時間の閾値、ボス先置き、ゴーストダンス、回避の境界を解説。",
+  "description": "Path of Exile 2 ガスグレネード・パスファインダー構成ガイド（0.5.4版）：雲の重ね合わせ、持続時間の閾値、ボス先置きの順序、防御の境界、実際の動画タイムスタンプ。",
+  "classId": "ranger",
+  "ascendancyId": "pathfinder",
+  "mainSkillIds": [
+    "gas-grenade"
+  ],
+  "secondarySkillIds": [
+    "despair",
+    "toxic-domain",
+    "herald-of-plague",
+    "withering-presence",
+    "dark-effigy"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "grenade",
+    "poison",
+    "chaos",
+    "ground-effect",
+    "ranged"
+  ],
+  "damageTypes": [
+    "chaos",
+    "poison"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "dot"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "cardImage": "/images/builds/covers/gas-grenade-pathfinder.webp",
+  "imageAlt": "レンジャーのパスファインダーがガスグレネードを投擲し、戦闘中に地面に毒の雲を広げている様子",
+  "tags": [
+    "bossing",
+    "chaos",
+    "dot",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "pathfinder",
+    "poison",
+    "ranged",
+    "ranger",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "ビルド概要",
+      "paragraphs": [
+        "ガスグレネード・パスファインダーはレンジャーの毒の雲ツールキットです。ガスグレネードは着弾点に毒の雲を生成し、グレネードを重ねることで雲とそのスタックを広げます。パスファインダーの昇極は継続ダメージ（DoT）とフラスコ／地面効果を強化し、雲を主力の火力にします。",
+        "重要なのは「正確に投げる」ことではなく「先置き」することです。ボス戦ではボスが到着する前に雲を敷き、その上でデスペア／トキシックドメイン／ウィザーによってスタックを積み上げます。マップ攻略では連続して投げることで雑魚を雲で覆います。",
+        "毒の持続時間が短すぎるとボスのヘルスバーは一瞬下がってから止まります——これが「単体火力が弱い」とされる最も一般的な根本原因です。本ガイドでは持続時間の閾値と先置きの順序を解説し、クライアント上の数値はすべてPC検証の対象としています。"
+      ],
+      "bullets": [
+        "ガスグレネードは重なり合う毒の雲を生成する。",
+        "パスファインダーはDoTとフラスコ／地面効果を強化する。",
+        "ボス戦が弱いのは大抵、装備ではなく毒の持続時間のせい。"
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "メリットとデメリット",
+      "pros": [
+        "雲が自動でDoTを与えるため、マップ攻略ではほとんど狙う必要がない。",
+        "スタックによってボスのヘルスバーが着実に削れる。",
+        "パスファインダーのフラスコ／地面バフが余裕を生む。",
+        "低予算でもすでに大半のコンテンツをマップ・ボス両方こなせる。"
+      ],
+      "cons": [
+        "毒の持続時間が短すぎると止まり、単体火力が弱く見える。",
+        "移動する対象（例：飛行するボス）は雲のカバー率が下がる。",
+        "カオス耐性とES回復は終盤で確保が厳しい要件となる。",
+        "先置きのリズムには練習が必要。適当な投擲は火力を無駄にする。"
+      ]
+    },
+    {
+      "id": "poison-cloud-lab",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "ループの読み方：雲を先置きする",
+      "paragraphs": [
+        "マップ攻略のループ：雑魚に向かってガスグレネードを連続で投げ、雲が重なるようにする。プレイヤーは雲の外、敵は雲の中にいればよい。",
+        "ボスのループ：ボスがその地点に到達する前に1〜2つの雲を先置きし、その後デスペアで耐性低下、トキシックドメインでスタック、ウィザーで増幅する。ダークエフィジーを置けば永続的な雲の層を追加できる。",
+        "雲の拡散は射撃ではなくエリア効果である。敵そのものを狙うより、敵がこれからいる場所に敷くことが重要だ。"
+      ],
+      "bullets": [
+        "マップ攻略＝連続投擲、雲の重ね合わせ。",
+        "ボス戦＝先置き → デスペア → トキシックドメイン → ウィザー。",
+        "雲は地面効果。狙うより先置きが勝る。"
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "レベリング経路",
+      "steps": [
+        {
+          "label": "レベル 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "基本的な弓／クロスボウスキルでマップを進める。ガスグレネードは解放後しばらくはつなぎであり、まだスタックは形成されない。"
+          ]
+        },
+        {
+          "label": "レベル 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "ガスグレネードを取得し雲のスタックを始める。ライフ／回避／カオス耐性のノードを足す。"
+          ]
+        },
+        {
+          "label": "レベル 30–42 — パスファインダー解放",
+          "levelRange": "30–42",
+          "body": [
+            "パスファインダーを選び、DoTと地面効果を強化する。ボス先置きが安定する。"
+          ]
+        },
+        {
+          "label": "レベル 43–60 — 初期マップ",
+          "levelRange": "43–60",
+          "body": [
+            "低予算で雲のループを回す。デスペア／トキシックドメインのリンクを足し、耐性を整える。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "スキル構成",
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Gas Grenade",
+              "skillId": "gas-grenade",
+              "role": "主力スキル。重なり合う毒の雲を生成する。",
+              "supportSkillIds": [
+                "poison-army",
+                "increased-area",
+                "acute-poison"
+              ],
+              "whyUse": [
+                "ツールキット全体の核。これがなければ雲は生まれない。"
+              ],
+              "whenReplace": [
+                "置き換え不可。すべての始まり。"
+              ],
+              "mappingBossingDiff": [
+                "マップ攻略：連続してカバーする。ボス戦：1〜2つ先置きしてからバフをかける。"
+              ],
+              "notes": [
+                "持続時間とスタックはサポートとバフでスケールする。"
+              ]
+            },
+            {
+              "displayName": "Despair",
+              "skillId": "despair",
+              "role": "カオス耐性を下げ、雲のダメージを増幅する。",
+              "supportSkillIds": [
+                "hex-bloom"
+              ],
+              "whyUse": [
+                "ボスの単体火力に必須。耐性低下がなければ雲のダメージは低いまま頭打ちになる。"
+              ],
+              "whenReplace": [
+                "呪いの構成として維持する。"
+              ],
+              "mappingBossingDiff": [
+                "マップ攻略では任意、ボス戦では必須。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Toxic Domain",
+              "skillId": "toxic-domain",
+              "role": "雲のスタックと範囲を広げる地面バフ。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "雲のスタックを最大化する。単体火力の鍵。"
+              ],
+              "whenReplace": [
+                "維持する。投資は重いが必要。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使用するが、ボス戦ではより依存する。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Withering Presence",
+              "skillId": "withering-presence",
+              "role": "カオスDoT向けのオーラ／パッシブのダメージ強化。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "安定したカオス強化で、あらゆる局面の火力を底上げする。"
+              ],
+              "whenReplace": [
+                "維持する。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使用する。"
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "label": "サポート",
+          "skills": [
+            {
+              "displayName": "Herald of Plague",
+              "skillId": "herald-of-plague",
+              "role": "カオス／毒のDoTを追加するヘラルドバフ。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "追加の毒の層とバフにより、全体のDoTを強化する。"
+              ],
+              "whenReplace": [
+                "バフとして維持する。"
+              ],
+              "mappingBossingDiff": [
+                "両方で使用する。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Dark Effigy",
+              "skillId": "dark-effigy",
+              "role": "設置式の永続的な雲の発生源。カバー率を追加。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "ボス先置き時にさらに雲の層を追加し、カバー率を上げる。"
+              ],
+              "whenReplace": [
+                "カバー率がさらに必要な時のみ設置する。"
+              ],
+              "mappingBossingDiff": [
+                "ボス戦でより有用。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "アセンダンシー順",
+      "steps": [
+        {
+          "label": "パスファインダー — 最初のノード",
+          "body": [
+            "DoTと地面／フラスコ効果を強化するノードを優先する。これが雲ツールキットの土台となる。"
+          ]
+        },
+        {
+          "label": "防御チェック",
+          "body": [
+            "T15以上で死ぬ場合は、回避／ES／ゴーストダンスのノードを足す。すべてをダメージに替えてはいけない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "パッシブツリー",
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "DoT、カオス、エリア、回避／ライフを取る。ESのホイールへは前もって回らないこと。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "雲の構成に切り替える。まず毒の持続時間、カオス耐性、ESから。"
+          ]
+        },
+        {
+          "label": "エンドゲーム",
+          "body": [
+            "防御と持続時間が解決してからダメージのホイールに投資する。同じティアで装備を比較する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "装備",
+      "slots": [
+        {
+          "slot": "Bow / Crossbow (throwing base)",
+          "recommendations": [
+            "投擲／エリアスキルとカオスダメージを強化するベースを選ぶ。ガスグレネードのリンク用に十分なソケットを確保する。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "スキルレベル／カオスDoT",
+              "reason": "雲の解決値に直接スケールする。"
+            },
+            {
+              "tier": "recommended",
+              "label": "投擲／エリアスキルダメージ",
+              "reason": "投擲全体の火力を上げる。"
+            },
+            {
+              "tier": "optional",
+              "label": "詠唱／投擲速度",
+              "reason": "雲の敷設が速くなる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "追加の毒スタック／クリティカル",
+              "reason": "持続時間が安定してからのみ。"
+            }
+          ],
+          "notes": [
+            "投擲ベース：スキルレベルとカオスモッドを優先する。"
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "回避、ES、ライフ、耐性。ブーツは移動速度。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと2つの上限耐性",
+              "reason": "雲ビルドでも死ぬから。"
+            },
+            {
+              "tier": "recommended",
+              "label": "回避／ES（ゴーストダンス込み）",
+              "reason": "終盤の防御境界。"
+            },
+            {
+              "tier": "optional",
+              "label": "移動速度",
+              "reason": "先置きの位置取りが良くなる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なカオスダメージ",
+              "reason": "防御の後で。"
+            }
+          ],
+          "notes": [
+            "ゴーストダンスにはESが必要。回避だけを積んではいけない。"
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "ステータス、耐性、ライフ、カオス耐性。必要に応じてES回復。"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器とジェムを装備するためのステータス",
+              "reason": "装備できなければ無意味。"
+            },
+            {
+              "tier": "recommended",
+              "label": "カオス耐性とES回復",
+              "reason": "終盤で厳しい要件。"
+            },
+            {
+              "tier": "optional",
+              "label": "フラスコ効果／持続時間",
+              "reason": "パスファインダーはフラスコの恩恵を増幅する。"
+            },
+            {
+              "tier": "luxury",
+              "label": "スキルレベル",
+              "reason": "終盤のダメージ。"
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "ステータス優先度",
+      "priorities": [
+        {
+          "label": "雲スキルレベル／カオスDoT",
+          "reason": "雲の解決値にスケール。最優先の進捗チェック。"
+        },
+        {
+          "label": "毒の持続時間",
+          "reason": "ボスのヘルス止まりを避ける核心。"
+        },
+        {
+          "label": "カオス耐性とES回復",
+          "reason": "終盤で厳しい生存要件。"
+        },
+        {
+          "label": "回避／ES（ゴーストダンス）",
+          "reason": "防御境界。ESが必要。"
+        },
+        {
+          "label": "投擲／詠唱速度",
+          "reason": "防御の後、敷設が速くなる。"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "強化優先度",
+      "steps": [
+        {
+          "label": "雲の中にボスはいるがダメージが止まる",
+          "symptom": "ボスのヘルスが下がってから止まる。",
+          "checks": [
+            "毒の持続時間は十分か？",
+            "再投擲の頻度は合っているか？"
+          ],
+          "upgrade": "武器の交換ではなく、持続時間を伸ばすか投擲のリズムを調整する。"
+        },
+        {
+          "label": "殲滅は速いが単体が弱い",
+          "symptom": "マップは速いが、ボスにダメージを与えられない。",
+          "checks": [
+            "デスペア／トキシックドメイン／ウィザーが抜けていないか？",
+            "ボスのループは完遂しているか？"
+          ],
+          "upgrade": "単体の準備を完遂する（耐性低下＋スタック＋バフ）。"
+        },
+        {
+          "label": "よく死ぬ",
+          "symptom": "マップやボスで頻繁に死ぬ。",
+          "checks": [
+            "ES回復や回避に隙はないか？",
+            "ロールオーバーの高いマップモッドか？"
+          ],
+          "upgrade": "まず防御を直し、ダメージの積み上げを止める。"
+        },
+        {
+          "label": "移動するボスのカバー率が低い",
+          "symptom": "飛行／ダッシュするボスが雲を外す。",
+          "checks": [
+            "ボスの経路の前に先置きしたか？",
+            "ダークエフィジーで層を足したか？"
+          ],
+          "upgrade": "先置き＋追加の雲の発生源。ダメージを増やすのではない。"
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "マッピング",
+      "paragraphs": [
+        "雑魚に向かってガスグレネードを連続で投げ、雲が重なるようにする。自分は雲の外、敵は雲の中にいて、ロールで位置を入れ直す。",
+        "雑魚にデスペアは不要。レア／ボスのみ耐性低下とスタックを与える。殲滅が遅くなったら、防御を積む前に投擲ベースを強化する。"
+      ],
+      "bullets": [
+        "連続投擲、雲の重ね合わせ。",
+        "雑魚にはデスペアを省略。",
+        "殲滅が遅くなったらまず投擲ベースを強化。"
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "ボス戦",
+      "paragraphs": [
+        "ボスがその地点に到達する前に1〜2つの雲を先置きし、その後デスペアで耐性低下、トキシックドメインでスタック、ウィザーで増幅、ダークエフィジーで層を追加する。",
+        "バーが止まる場合、問題は装備ではなく毒の持続時間／再投擲の頻度だ。移動するボスには、追いかけるのではなく経路の先に雲を敷く必要がある。"
+      ],
+      "bullets": [
+        "先置き → デスペア → トキシックドメイン → ウィザー。",
+        "ダークエフィジーが雲の層を追加する。",
+        "止まる＝武器の交換ではなく持続時間を直す。"
+      ]
+    },
+    {
+      "id": "poison-duration-breakpoints",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "毒の持続時間の閾値",
+      "paragraphs": [
+        "毒の持続時間は、スタックが対象にどれだけの間残るかを決める。短すぎるとスタックが切れたあとボスのバーが滑り止まり、偽の「単体火力が弱い」という印象を生む。",
+        "サポートの持続時間モッド、トキシックドメインのバフ、装備の持続時間／エリアモッド、パスファインダーの地面効果ノードによって伸ばす。正確な数値はPC検証待ち。クライアントで確認すること。"
+      ],
+      "bullets": [
+        "持続時間が短すぎるとボスのバーが止まる。",
+        "持続時間／エリアモッドとトキシックドメインは併せて伸びる。",
+        "クライアントで確認すること。"
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 140,
+      "visible": true,
+      "toc": true,
+      "title": "コミュニティの証拠",
+      "note": "このガイドはコミュニティの議論を再現可能なチェックリストとして使用しており、彼らの示すDPSを保証するものではない。",
+      "entries": [
+        {
+          "context": "プレイヤーが毒の雲のダメージをどう伸ばすかを問う。",
+          "label": "Dreamcore Gas Grenade Pathfinder guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このガイドは機構、ユニークアイテム、先置き、ジェムの順序を分けて説明し、持続時間とスタックを重視している。",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "context": "プレイヤーが0.5の毒の雲の強さを議論する。",
+          "label": "Fubgun Poisonburst Pathfinder guide",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "このガイドはパスファインダーのバフと潜在的な弱体化を区別し、ジェム構成とMobalyticsのリンクを提示している。",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "トラブルシューティング",
+      "problems": [
+        {
+          "symptom": "ボスのヘルスが止まる",
+          "checks": [
+            "毒の持続時間は十分か？",
+            "再投擲の頻度は移動するボスに合っているか？"
+          ]
+        },
+        {
+          "symptom": "殲滅は速いが単体が弱い",
+          "checks": [
+            "デスペア／トキシックドメイン／ウィザーが抜けていないか？",
+            "ボスのループは完遂しているか？"
+          ]
+        },
+        {
+          "symptom": "よく死ぬ",
+          "checks": [
+            "ES回復や回避に隙はないか？",
+            "ロールオーバーの高いマップモッドか？"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "ガスグレネードは何レベルで解放される？",
+          "answer": [
+            "正確なレベルはPC検証待ち。解放後はしばらくつなぎであり、スタックのツールキットはパスファインダー後に形成される。"
+          ],
+          "bullets": [
+            "解放後は雲の敷設を始める。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "より良い弓に替えたのに単体がまだ弱い？",
+          "answer": [
+            "単体は弓ではなく毒の持続時間と耐性低下／スタックに依存する。まず持続時間とボス先置きを直す。"
+          ],
+          "bullets": [
+            "ボス戦を録画し、雲のカバー率を確認する。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "移動するボスにはどう戦う？",
+          "answer": [
+            "経路の先に雲を先置きし、ダークエフィジーの層を足す。追いかけて投げてはいけない。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/ice-shot-deadeye/",
+              "label": "Ice Shot Deadeyeと比較"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "ビルドプランナーとインポート",
+      "note": "貼り付け可能なインポート文字列と.buildファイルはまだPC検証待ち。それまでは以下のクリエイターガイドと公式プランナーを使うこと。自分のクライアントでノードを必ず再確認すること。",
+      "creatorName": "Dreamcore",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "雲の拡散とボス先置きを観る",
+      "entries": [
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 Gas Grenade Pathfinder Guide",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M",
+          "description": "完全ガイド：機構、ユニーク、先置き、ジェム、ボスのループ。",
+          "takeaway": "毒の持続時間とボス先置きの順序に注目。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめにと機構"
+            },
+            {
+              "time": "3:00",
+              "label": "ユニークアイテム"
+            },
+            {
+              "time": "6:30",
+              "label": "ジェムとサポート"
+            },
+            {
+              "time": "9:40",
+              "label": "パッシブとアセンダンシー"
+            },
+            {
+              "time": "12:30",
+              "label": "装備と先置き"
+            }
+          ]
+        },
+        {
+          "creator": "Dreamcore",
+          "label": "0.5 Gas Grenade Pathfinder Final Update",
+          "url": "https://www.youtube.com/watch?v=obW5fV147kA",
+          "description": "ソロコンテンツとマップ性能を強化する終盤向けアップデート。",
+          "takeaway": "最終的な装備とマップのゲームプレイを観る。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "2:20",
+              "label": "装備アップデート"
+            },
+            {
+              "time": "5:10",
+              "label": "マップのゲームプレイ"
+            },
+            {
+              "time": "8:00",
+              "label": "まとめ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "出典と検証",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Dreamcore — Gas Grenade Pathfinder Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Fubgun — Poisonburst Pathfinder Full Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Dreamcore — Gas Grenade Pathfinder Mobalytics",
+          "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "更新履歴",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "出典付きの0.5.4 ガスグレネード・パスファインダー構成ガイドを作成。PC検証は進行中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedGuideIds": [
+    "how-to-fix-low-damage",
+    "campaign-early-maps-gearing-crafting"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Dreamcore — Gas Grenade Pathfinder Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=2NvYzQ61v7M"
+    },
+    {
+      "label": "Fubgun — Poisonburst Pathfinder Full Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=R-i7rJprfTA"
+    },
+    {
+      "label": "Dreamcore — Gas Grenade Pathfinder Mobalytics",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/dreamcore-gas-grenade-pathfinder"
+    }
+  ],
+  "seo": {
+    "title": "ガスグレネード・パスファインダー構成ガイド | Exile2 Guides",
+    "description": "0.5.4 ガスグレネード・パスファインダー：雲の重ね合わせ、毒の持続時間の閾値、ボス先置き、ゴーストダンス、回避の境界。",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "gas-grenade-pathfinder",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

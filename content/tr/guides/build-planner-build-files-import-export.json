@@ -1,0 +1,731 @@
+{
+  "id": "build-planner-build-files-import-export",
+  "slug": "build-planner-build-files-import-export",
+  "locale": "tr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2'de Build Planner .build Dosyalarını İçe ve Dışa Aktarma",
+  "shortTitle": "Build Planner .build Dosyaları",
+  "summary": "Oyun içi Path of Exile 2 Build Planner'ın .build veri dosyalarını nasıl okuduğu: neleri içerdiği, her platformda nereye konulacağı, nasıl içe aktarılıp açılacağı, doğru seviye/bütçe aşamasının nasıl seçileceği ve yüklenmeyen bir dosyanın nasıl doğrulanıp düzeltileceği.",
+  "description": "Path of Exile 2 Build Planner .build dosyalarına pratik bir rehber: içe aktarma, dışa aktarma, platform yolları, oyun içi aşama seçici, build dosyası doğrulayıcısı ve sürüm uyumluluğu.",
+  "guideCategory": "mechanics",
+  "heroImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "cardImage": "/images/builds/covers/ice-shot-deadeye.webp",
+  "imageAlt": "Path of Exile 2'de içe aktarılabilir .build dosyalarını temsil eden oyun içi bir build planner görünümü",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "Path of Exile 2 yüklü (PC veya Steam önerilir)",
+    "Güvenilir bir build oluşturucusundan alınmış bir .build dosyası",
+    "Documents / oyun dosyaları klasörünüze erişim"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "build-planner",
+    "build-file",
+    "import",
+    "export",
+    "passive-tree",
+    "pob"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Doğrudan yanıtlar",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": ".build dosyası nedir?",
+          "body": [
+            "Bir .build dosyası, bir build'in pasif ağacını, ascendancy (yükseliş) sınıfını, skillerini, ekipman notlarını ve planner aşamalarını saklayan bir VERİ dosyasıdır. Çalıştırılabilir bir program değildir ve Build Planner gerçek DPS hesaplamaz; yalnızca oyun içi tercihlerinizi yönlendirir."
+          ]
+        },
+        {
+          "title": "Nereye koymalıyım?",
+          "body": [
+            "Windows'ta dosyayı Documents\\My Games\\Path of Exile 2\\BuildPlanner klasörüne koyun. Linux'ta Steam/Proton üzerinden, Proton prefix'inin karşılık gelen yolunu kullanın. Klasör mevcut değilse, oyun ilk kez kaydettiğinizde veya dışa aktardığınızda onu oluşturur; ya da kendiniz oluşturabilirsiniz."
+          ]
+        },
+        {
+          "title": "Oyunda nasıl kullanırım?",
+          "body": [
+            "Pasif Yetenek Ağacı veya Gemcutting menüsünü açın (PC'de varsayılan olarak şu an P tuşu), ardından sol üst köşedeki mavi simgeye / açılır menüye tıklayın ve içe aktarılmış build'inizi seçin. Önerilen pasif yol mavi bir çizgiyle çizilir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-build-files-contain",
+      "order": 2,
+      "title": "Bir .build dosyası ne içerir",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bir .build dosyası, Build Planner'ın oyun içinde rehberlik eden bir katman çizmek için okuduğu bir JSON veri dosyasıdır. Build'in oluşturucusunu, bir açıklamayı, ascendancy sınıfını, pasif dağılımları, önerilen skilleri ve destek gemlerini (support gems) ile envanter ekipman notlarını saklar.",
+        "Bunun NE OLMADIĞINI anlamak önemlidir. Bir .build dosyası çalıştırılabilir değildir; onu asla çalıştırmazsınız ve işletim sisteminiz onu bir program olarak açmamalıdır. Build Planner ayrıca bir hasar simülatörü değildir: build'in hangi nodları, gemleri ve ekipmanı önerdiğini gösterir, ancak gerçek DPS hesaplamaz veya build'leri sayısal olarak karşılaştırmaz."
+      ],
+      "bullets": [
+        "İçerir: pasif ağaç planı, ascendancy sınıfı, skiller, destek gemleri, ekipman notları ve planner aşamaları.",
+        "İÇERMEZ: çalışan kod, makrolar veya bir DPS hesaplayıcı.",
+        "Her .build dosyasını düz veri olarak kabul edin; yalnızca güvenilir kaynaklardan indirin."
+      ]
+    },
+    {
+      "id": "platform-support",
+      "order": 3,
+      "title": "Platform desteği ve içe aktarma yöntemi",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Her platformun .build dosyalarını şu an nasıl içe aktardığı ve nereye aktardığı. Mac ve konsol desteği 0.5.4 itibarıyla doğrulanmamıştır - güvenmeden önce kontrol edin.",
+      "columns": [
+        {
+          "key": "platform",
+          "label": "Platform"
+        },
+        {
+          "key": "current-import-method",
+          "label": "Mevcut içe aktarma yöntemi"
+        },
+        {
+          "key": "file-directory",
+          "label": "Dosya dizini"
+        },
+        {
+          "key": "needs-restart",
+          "label": "Yeniden başlatma gerekir"
+        },
+        {
+          "key": "known-limit",
+          "label": "Bilinen kısıt"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "pc"
+          ],
+          "cells": {
+            "platform": "Windows",
+            "current-import-method": "BuildPlanner klasörüne elle kopyalama",
+            "file-directory": "Documents\\My Games\\Path of Exile 2\\BuildPlanner",
+            "needs-restart": "Yalnızca dosya eklenmeden önce oyun açıksa",
+            "known-limit": "Tam destek, bilinen kısıt yok"
+          }
+        },
+        {
+          "tags": [
+            "linux"
+          ],
+          "cells": {
+            "platform": "Linux (Steam / Proton)",
+            "current-import-method": "Proton prefix BuildPlanner klasörüne kopyalama",
+            "file-directory": ".../steamapps/compatdata/<appid>/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/BuildPlanner (appid'nizi doğrulayın)",
+            "needs-restart": "Yalnızca oyun zaten çalışıyorsa",
+            "known-limit": "Appid kuruluma göre değişir - tam yolu teyit edin"
+          }
+        },
+        {
+          "tags": [
+            "mac"
+          ],
+          "cells": {
+            "platform": "Mac",
+            "current-import-method": "0.5.4 itibarıyla doğrulanmadı (checkedAt 2026-08-02)",
+            "file-directory": "Belgelenmiş resmi yol yok",
+            "needs-restart": "Yok",
+            "known-limit": "Destek doğrulanmadı - güvenmeden önce teyit edin"
+          }
+        },
+        {
+          "tags": [
+            "console"
+          ],
+          "cells": {
+            "platform": "Konsol (PlayStation / Xbox)",
+            "current-import-method": "0.5.0 itibarıyla .build kodu desteği yok (checkedAt 2026-08-02)",
+            "file-directory": "Yok",
+            "needs-restart": "Yok",
+            "known-limit": "Konsollar .build dosyalarını kullanmaz"
+          }
+        }
+      ],
+      "note": "Platform desteği yamalar arasında değişir. Mac ve konsol satırları, canlı 0.5.4 istemcisine karşı PC doğrulaması beklemektedir olarak işaretlenmiştir."
+    },
+    {
+      "id": "platform-paths",
+      "order": 4,
+      "title": "Platforma göre tam build klasörü yolları",
+      "type": "tabs",
+      "visible": true,
+      "toc": true,
+      "intro": "Platformunuza uyan yolu kopyalayın ve .build dosyasını BuildPlanner klasörünün içine koyun. Klasör yoksa oluşturun.",
+      "tabs": [
+        {
+          "id": "windows",
+          "label": "Windows",
+          "paragraphs": [
+            "Aşağıdaki standart konum. Bunu Dosya Gezgini adres çubuğuna yapıştırabilirsiniz.",
+            "Documents\\My Games\\Path of Exile 2\\BuildPlanner"
+          ],
+          "bullets": [
+            "Oyun bu klasörü ilk kez bir build kaydettiğinizde veya dışa aktardığınızda otomatik olarak oluşturur.",
+            ".build dosyasını doğrudan BuildPlanner içine koyun, bir alt klasöre değil."
+          ],
+          "steps": []
+        },
+        {
+          "id": "linux-steam-proton",
+          "label": "Linux (Steam / Proton)",
+          "paragraphs": [
+            "Dosya, bir Windows kullanıcı profilini taklit eden Proton prefix'i içinde bulunur. Bu deseni kullanın ve <appid> yerine Path of Exile 2 Steam appid'nizi yazın:",
+            ".../steamapps/compatdata/<appid>/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/BuildPlanner"
+          ],
+          "bullets": [
+            "Appid'nizi compatdata klasörünü listeleyip kurulumla eşleştirerek bulun.",
+            "Emin değilseniz, oyunu bir kez başlatın ve klasörü oluşturmasına izin verin, sonra onu bulun."
+          ],
+          "steps": []
+        },
+        {
+          "id": "mac",
+          "label": "Mac",
+          "paragraphs": [
+            "0.5.4 itibarıyla (checkedAt 2026-08-02) macOS için belgelenmiş resmi bir .build içe aktarma yolu yoktur. Güvenmeden önce yama gününde güncel desteği doğrulayın."
+          ],
+          "bullets": [
+            "macOS'ta bir Windows yolunun var olduğunu varsaymayın.",
+            "İstemci güncellendiğinde resmi notları tekrar kontrol edin."
+          ],
+          "steps": []
+        },
+        {
+          "id": "console",
+          "label": "Konsol",
+          "paragraphs": [
+            "0.5.0 itibarıyla (checkedAt 2026-08-02) konsollar .build kodlarını kullanmaz. Dosya koyacak bir klasör yoktur."
+          ],
+          "bullets": [
+            "Build Planner içe aktarımlarına ihtiyacınız varsa bir PC veya Steam istemcisi kullanın.",
+            "Gelecekteki konsol desteği için resmi yama notlarını takip edin."
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": "download-and-safety",
+      "order": 5,
+      "title": "Güvenli indirme",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bir .build dosyası düz veridir, bir program değildir; bu nedenle kendi başına kod çalıştıramaz. Yine de .build dosyalarını yalnızca tanıdığınız güvenilir oluşturucu ve topluluklardan indirin."
+      ],
+      "bullets": [
+        "Yalnızca güvendiğiniz kaynaklardan indirin; dosya veridir, onu asla bir program gibi çalıştırmayın.",
+        "Doğrulanmamış kopyalar yerine resmi 'Export Build Planner' (Build Planner'ı Dışa Aktar) düğmesini gömülü barındıran build sayfalarını tercih edin.",
+        "Bir site sizden .build dosyasını yürütmenizi veya 'çalıştırmanızı' isterse, bu bir uyarı işaretidir - kapatın."
+      ]
+    },
+    {
+      "id": "import-steps",
+      "order": 6,
+      "title": "Adım adım içe aktarma",
+      "type": "progression-steps",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": ".build dosyasını indirin",
+          "body": [
+            "Dosyayı güvenilir bir build oluşturucusundan alın. Build birden fazla seviye veya bütçe varyantı içeriyorsa, karakterinize uyanı indirin."
+          ]
+        },
+        {
+          "label": "BuildPlanner klasörüne koyun",
+          "body": [
+            "Dosyayı doğrudan Documents\\My Games\\Path of Exile 2\\BuildPlanner (Windows) veya karşılık gelen Proton yoluna taşıyın ya da kaydedin."
+          ]
+        },
+        {
+          "label": "Eksikse klasörü oluşturun",
+          "body": [
+            "BuildPlanner klasörü yoksa onu oluşturun ya da oyun içi planner'ı açıp bir kez dışa aktarın; böylece oyun onu sizin için oluşturur."
+          ]
+        },
+        {
+          "label": "Oyun zaten açıksa yeniden başlatın",
+          "body": [
+            "Dosya izleyici, yeni dosyaları başlatma veya yenileme sırasında algılar. Oyun çalışıyorsa, build'in görünmesi için onu yeniden başlatın veya yenileyin."
+          ]
+        },
+        {
+          "label": "Yenileyin ve seçin",
+          "body": [
+            "Oyunda planner'ı açın ve build'i takip etmeden önce açılır listede göründüğünü teyit edin."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "open-in-game",
+      "order": 7,
+      "title": "Oyunda bir build açma",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Dosya algılandıktan sonra Pasif Yetenek Ağacı veya Gemcutting menüsünü açın. PC'de varsayılan tuş P'dir. Planner ekranının sol üst köşesinde mavi bir simge belirir."
+      ],
+      "bullets": [
+        "Build açılır menüsünü açmak için mavi simgeye tıklayın.",
+        "İçe aktarılmış build'inizi listeden seçin.",
+        "Mavi bir çizgi önerilen pasif dağılım yolunu çizer; kırmızı ve yeşil çizgiler silah seti I ve II bağlantılarını gösterir.",
+        "Ekipman notları, mavi simgenin üzerine her ekipman yuvasında geldiğinizde görünür."
+      ]
+    },
+    {
+      "id": "planner-stage-selector",
+      "order": 8,
+      "title": "Doğru ilerleme aşamasını seçme",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Bir build birden fazla Seviye / Bütçe dosyası içerebilir. Karakterinizin mevcut aşamasına uyanı seçin.",
+      "controls": [
+        {
+          "id": "character-stage",
+          "label": "Karakterinizin aşaması nedir?",
+          "options": [
+            {
+              "label": "Erken seviyelendirme",
+              "value": "early"
+            },
+            {
+              "label": "Bütçe ekipmanlı orta seviye",
+              "value": "mid"
+            },
+            {
+              "label": "Endgame / yüksek bütçe",
+              "value": "late"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Erken seviyelendirme varyantını kullanın",
+          "when": {
+            "character-stage": "early"
+          },
+          "steps": [
+            "Notlarında mevcut seviye aralığınızı açıklayan Seviye / Bütçe dosyasını seçin.",
+            "O aşamaya ait pasif yolunu ve önerilen gemlerini takip edin.",
+            "Seviye atladıkça bir sonraki varyanta geçin."
+          ]
+        },
+        {
+          "title": "Orta bütçe varyantını kullanın",
+          "when": {
+            "character-stage": "mid"
+          },
+          "steps": [
+            "Mevcut ekipman bütçeniz için etiketlenmiş varyantı açın.",
+            "Ekipman notlarını gerçekten karşılayabileceğiniz şeyle eşleştirin."
+          ]
+        },
+        {
+          "title": "Endgame / zirve varyantını kullanın",
+          "when": {
+            "character-stage": "late"
+          },
+          "steps": [
+            "Tam planlanmış ağaç ve en iyi slot notları için endgame dosyasını seçin.",
+            "Karakterinizin listelediği seviye ve gem gereksinimlerini karşıladığından emin olun."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Dosyayı karakterinizle eşleştirin",
+        "steps": [
+          "Her varyantın notlarını okuyarak hedeflediği seviye ve bütçe aralığını bulun.",
+          "Mevcut karakterinize en yakın varyantı yükleyin, sonra ilerledikçe bir sonrakine geçin."
+        ]
+      }
+    },
+    {
+      "id": "reading-passives-skills-gear-notes",
+      "order": 9,
+      "title": "Pasifleri, skilleri ve ekipman notlarını okuma",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bir build seçtikten sonra planner, rehberliğini birden fazla panelde katman olarak gösterir. Pasif Yetenek Ağacı önerilen dağılım yolunu gösterir. Gemcutting sekmesi önerilen skill gemlerini ve destek gemlerini listeler. Ekipman yuvaları, mavi simgenin üzerine geldiğinizde stat önceliği notlarını görüntüler."
+      ],
+      "bullets": [
+        "Pasif ağaç: mavi çizgiyi düğüm düğüm takip edin; silah seti renkleri set I / II bağlantılarını gösterir.",
+        "Ascendancy: plan önerilen ascendancy seçimlerini işaretler.",
+        "Skiller: Gemcutting sekmesi Kesilmemiş (Uncut) gemlerinizden gereken skill ve destek gemlerini gösterir.",
+        "Ekipman notları: her yuvanın üzerindeki mavi simgeye gelerek önerilen öncelikleri okuyun."
+      ]
+    },
+    {
+      "id": "edit-export-boundary",
+      "order": 10,
+      "title": "Kendi dosyanızı düzenleme ve dışa aktarma",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Kendi build'inizi oyun içinden düzenleyip dışa aktarabilirsiniz. Dışa aktarılan .build dosyası, ayarladığınız pasifleri, ascendancy sınıfını, skilleri, ekipman notlarını ve planner aşamalarını kaydeder; böylece onu daha sonra paylaşabilir veya yeniden yükleyebilirsiniz."
+      ],
+      "bullets": [
+        "Kendi dışa aktardığınız dosya üzerinde kontrol sizdedir; inşa ettiğiniz planı saklar, çalıştırılabilir bir şey değildir.",
+        "Dosya canlı karakter istatistiklerini, para birimini veya bir DPS hesaplamasını saklamaz.",
+        "Kaydettiğiniz dosya güncel kalsın diye büyük değişikliklerden sonra tekrar dışa aktarın."
+      ]
+    },
+    {
+      "id": "build-file-validator",
+      "order": 11,
+      "title": "Build dosyası doğrulayıcısı",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Bir dosyanın neden yüklenmediğini çözmek için bunu kullanın. Doğrulayıcı yalnızca uzantıyı, dosya adını ve temel yapıyı kontrol eder - asla kod çalıştırmaz.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Dosyada ne sorun var?",
+          "options": [
+            {
+              "label": "Yanlış dosya uzantısı",
+              "value": "ext"
+            },
+            {
+              "label": "Dosya var ama algılanmıyor",
+              "value": "nodetect"
+            },
+            {
+              "label": "Dosya var ama geçersiz",
+              "value": "invalid"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": ".build uzantısına yeniden adlandırın",
+          "when": {
+            "symptom": "ext"
+          },
+          "steps": [
+            "Dosya .build ile bitmelidir. .txt veya .json olarak kaydedildiyse yeniden adlandırın.",
+            "O bir veridir - onu çalıştırılabilir bir program olarak açacak şekilde ayarlamayın."
+          ]
+        },
+        {
+          "title": "Klasör konumunu düzeltin",
+          "when": {
+            "symptom": "nodetect"
+          },
+          "steps": [
+            "Dosyanın bir alt klasörde değil, BuildPlanner klasöründe olduğunu teyit edin.",
+            "Dosya izleyicinin onu alması için oyunu yeniden başlatın.",
+            "Doğru platform yolunu kullandığınızı doğrulayın."
+          ]
+        },
+        {
+          "title": "Güvenilir bir kaynaktan yeniden indirin",
+          "when": {
+            "symptom": "invalid"
+          },
+          "steps": [
+            "Dosya bozulmuş veya uyuşmayan bir yamadan olabilir - yeniden indirin.",
+            "Yalnızca güvendiğiniz kaynakları kullanın.",
+            "Build'in yamasının oyun sürümünüzle eşleştiğini teyit edin."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Genel düzeltme",
+        "steps": [
+          "Uzantının .build olduğunu, klasörün doğru olduğunu ve oyunun yeniden başlatıldığını kontrol edin.",
+          "Hâlâ başarısız olursa, güvenilir bir oluşturucudan temiz bir kopya indirin."
+        ]
+      }
+    },
+    {
+      "id": "version-compatibility",
+      "order": 12,
+      "title": "Sürüm uyumluluğu",
+      "type": "version-conflicts",
+      "visible": true,
+      "toc": true,
+      "intro": "Üçüncü taraf .build dosyaları güncel olmayabilir. Build'in yamasının oyun sürümünüzle eşleştiğini teyit edin.",
+      "conflicts": [
+        {
+          "recommendation": "İçe aktarmadan önce .build dosyasının yamasının oyun sürümüyle eşleştiğini doğrulayın",
+          "status": "valid",
+          "detail": "Mevcut 0.5.4 istemcisi için etiketlenmiş bir dosya doğru yüklenir ve katman olarak gösterilir.",
+          "sinceVersion": "0.5.4"
+        },
+        {
+          "recommendation": "0.5 öncesi yamalar için etiketlenmiş üçüncü taraf dosyalarından kaçının",
+          "status": "outdated",
+          "detail": "Build Planner 0.5.0'da başladı; ondan önceki kodlar mevcut ağaca uygulanmayabilir.",
+          "sinceVersion": "0.5.0"
+        },
+        {
+          "recommendation": "Doğrulayıcı dosyayı geçersiz olarak işaretlerse yeniden indirin",
+          "status": "conflict",
+          "detail": "Bozuk veya uyuşmayan bir build yüklenmez; güvenilir bir kaynaktan temiz bir kopya getirin.",
+          "sinceVersion": "0.5.4"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 13,
+      "title": "Topluluğun soruları yanıtlandı",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Oyuncuların bildirdiği yaygın sorunlar ve bu rehberin onları nasıl çözdüğü.",
+      "cards": [
+        {
+          "title": "BuildPlanner klasörü yok",
+          "tag": "folder",
+          "body": [
+            "Onu kendiniz Documents\\My Games\\Path of Exile 2\\BuildPlanner konumunda oluşturun ya da istemci onu yapsın diye oyunda bir kez dışa aktarın."
+          ]
+        },
+        {
+          "title": "Dosya açılır listede görünmüyor",
+          "tag": "detect",
+          "body": [
+            "Uzantının .build olduğunu, dosyanın bir alt klasörde olmadığını ve eklendikten sonra oyunun yeniden başlatıldığını kontrol edin."
+          ]
+        },
+        {
+          "title": "Mac / konsol desteği",
+          "tag": "platform",
+          "body": [
+            "0.5.4 / 0.5.0 itibarıyla (checkedAt 2026-08-02) Mac yolları doğrulanmamıştır ve konsollar .build kodlarını kullanmaz - bir PC veya Steam istemcisi kullanın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 14,
+      "title": "Build Planner kurulum videosu",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Path of Exile 2 Oyun İçi Build Planner Nasıl Kurulur",
+          "creator": "Ydoc",
+          "description": "BuildPlanner klasörünü bulma, bir .build dosyasını içe aktarma, planner'ı oyunda açma, doğru aşamayı seçme ve build notlarını okuma konusunda bir anlatım.",
+          "takeaway": ".build dosyasını BuildPlanner klasörüne koyun, gerekirse yeniden başlatın, ardından planner'ı P ile açın ve aşamanızı açılır listeden seçin.",
+          "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc",
+          "timestamps": [
+            {
+              "label": "BuildPlanner klasörünü bulun",
+              "time": "0:00"
+            },
+            {
+              "label": ".build dosyasını indirin ve yerleştirin",
+              "time": "1:15"
+            },
+            {
+              "label": "Oyun zaten açıksa yeniden başlatın",
+              "time": "2:40"
+            },
+            {
+              "label": "Build planner'ı oyunda açın (P'ye basın)",
+              "time": "3:50"
+            },
+            {
+              "label": "Build aşamasını açılır listeden seçin",
+              "time": "5:05"
+            },
+            {
+              "label": "Pasif, skill ve ekipman notlarını okuyun",
+              "time": "6:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 15,
+      "title": "Yaygın hatalar",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Çoğu içe aktarma hatası az sayıda kaçınılabilir hatadan kaynaklanır."
+      ],
+      "bullets": [
+        "Yanlış klasör: dosya BuildPlanner içinde olmalı, Downloads veya bir alt klasörde değil.",
+        "Yanlış uzantı: .txt veya .json değil, .build olmalıdır.",
+        "Oyun yenilenmedi: dosya izleyici yalnızca başlatma veya yeniden başlatmadan sonra yeni dosyaları görür.",
+        "Güncel olmayan build: eski bir yamadan gelen bir dosya mevcut ağaçla eşleşmeyebilir - sürümünü doğrulayın.",
+        "Onu bir program gibi ele almak: bir .build dosyası veridir; onu asla 'çalıştırmayın'."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 16,
+      "title": "Sıkça sorulan sorular",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Bir .build dosyasını açmak güvenli mi?",
+          "answer": [
+            "Evet - o düz bir veri dosyasıdır, çalıştırılabilir değildir. Kod çalıştıramaz. Yalnızca güvenilir kaynaklardan indirin ve onu asla bir program gibi açmayın."
+          ]
+        },
+        {
+          "question": "Build Planner DPS hesaplar mı?",
+          "answer": [
+            "Hayır. Önerilen bir pasif yol, skill gemleri ve ekipman notları katman olarak gösterir. Hasar hesaplamaz. DPS matematiği için ayrı bir planner kullanın."
+          ]
+        },
+        {
+          "question": "Dosyam neden görünmüyor?",
+          "answer": [
+            "Üç şeyi kontrol edin: uzantı .build, dosya doğrudan BuildPlanner klasöründe (bir alt klasörde değil) ve dosyayı ekledikten sonra oyun yeniden başlatıldı."
+          ]
+        },
+        {
+          "question": ".build dosyalarını konsolda kullanabilir miyim?",
+          "answer": [
+            "0.5.0 itibarıyla (checkedAt 2026-08-02) konsollar .build kodlarını desteklemiyor. Build Planner içe aktarımları için bir PC veya Steam istemcisi kullanın."
+          ]
+        },
+        {
+          "question": "Bir build'in doğru varyantını nasıl seçerim?",
+          "answer": [
+            "Her build birden fazla Seviye / Bütçe dosyası içerebilir. Notları karakterinizin seviyesine ve ekipmanına uyanı seçin ve ilerledikçe bir sonraki varyanta geçin."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "Kaynaklar ve doğrulama",
+      "order": 17,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "Resmi kaynak",
+          "description": "Path of Exile 2 geliştirici dokümanları - Build Planner dosya formatı ve BuildPlanner dizini",
+          "url": "https://www.pathofexile.com/developer/docs/game"
+        },
+        {
+          "label": "Video rehberi",
+          "description": "Ydoc - Path of Exile 2 Oyun İçi Build Planner Nasıl Kurulur",
+          "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc"
+        },
+        {
+          "label": "Topluluk wiki'si",
+          "description": "PoE 2 wiki - Build Planner ve ilgili sistemler",
+          "url": "https://www.poe2wiki.net/wiki/"
+        },
+        {
+          "label": "Topluluk içe aktarma rehberi",
+          "description": "games.gg - Path of Exile 2 Build Planner Rehberi: Build'ler Oyunda Nasıl İçe Aktarılır",
+          "url": "https://games.gg/path-of-exile-2/guides/path-of-exile-2-build-planner-guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 18,
+      "title": "Değişiklik günlüğü",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 yaması için .build dosyası içe aktarma, dışa aktarma, platform yolları, aşama seçici, doğrulayıcı ve sürüm uyumluluğunu kapsayan ilk rehber yayımlandı.",
+            "Mac ve konsol desteği PC doğrulaması beklemektedir olarak işaretlendi (checkedAt 2026-08-02)."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 geliştirici dokümanları - Build Planner dosya formatı",
+      "url": "https://www.pathofexile.com/developer/docs/game",
+      "sourceType": "official"
+    },
+    {
+      "label": "Ydoc - Path of Exile 2 Oyun İçi Build Planner Nasıl Kurulur (YouTube)",
+      "url": "https://www.youtube.com/watch?v=RAJ0evfRrxc",
+      "sourceType": "community"
+    },
+    {
+      "label": "PoE 2 wiki - Build Planner",
+      "url": "https://www.poe2wiki.net/wiki/",
+      "sourceType": "community"
+    },
+    {
+      "label": "games.gg - Path of Exile 2 Build Planner içe aktarma rehberi",
+      "url": "https://games.gg/path-of-exile-2/guides/path-of-exile-2-build-planner-guide/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Build Planner .build Dosya İçe ve Dışa Aktarma Rehberi",
+    "description": "Path of Exile 2 Build Planner .build dosyaları nasıl içe ve dışa aktarılır ve doğrulanır: platform yolları, oyun içi aşama seçici ve sürüm uyumluluğu.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "build-planner-build-files-import-export",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

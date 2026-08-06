@@ -73,8 +73,7 @@ export const patchCollectionPaths = supportedLocales.flatMap((locale) =>
 
 export const fixedPublicPaths = [
   "/",
-  "/en/",
-  "/zh-cn/",
+  ...supportedLocales.map((locale) => `/${locale}/`),
   ...categoryListPaths,
   ...informationPagePaths,
   ...searchPaths,
@@ -248,8 +247,7 @@ export function enumerateIndexablePaths(index: ContentIndex): string[] {
 
   return [
     "/",
-    "/en/",
-    "/zh-cn/",
+    ...supportedLocales.map((locale) => `/${locale}/`),
     ...populatedCategoryPaths,
     ...populatedBuildCollectionPaths,
     ...populatedBossCollectionPaths,

@@ -1,0 +1,961 @@
+{
+  "id": "fire-bear-smith-of-kitava",
+  "slug": "fire-bear-smith-of-kitava",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Low-input Fire Bear Smith of Kitava ビルドガイド",
+  "shortTitle": "Low-input Fire Bear Smith of Kitava",
+  "summary": "段階式の Smith of Kitava ベアビルド：Molten Crash の裂け目が火炎トリガーを駆動し、バフとチャージは手動で維持する。0.5 で Fire Spell on Hit と Cast on Elemental Ailment に供給されるアクションが変更された。",
+  "description": "Path of Exile 2 の Low-input Fire Bear Smith of Kitava ビルドガイド（0.5.4 ベースライン）。",
+  "classId": "warrior",
+  "ascendancyId": "smith-of-kitava",
+  "mainSkillIds": [
+    "molten-crash",
+    "walking-calamity"
+  ],
+  "secondarySkillIds": [
+    "ancestral-cry",
+    "ferocious-roar",
+    "living-bomb",
+    "comet"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame"
+  ],
+  "budgets": [
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "bear",
+    "shapeshift",
+    "fire",
+    "trigger",
+    "low-input"
+  ],
+  "damageTypes": [
+    "physical",
+    "fire"
+  ],
+  "bestFor": [
+    "low-input-mapping",
+    "shapeshift",
+    "trigger-research"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "cardImage": "/images/builds/covers/fire-bear-smith-of-kitava.webp",
+  "imageAlt": "燃え盛る裂け目と舞い落ちる燃えカスをまたぐ、溶岩のようなベア形態の Smith of Kitava",
+  "tags": [
+    "early-endgame",
+    "endgame",
+    "fire",
+    "leveling",
+    "physical",
+    "smith-of-kitava",
+    "starter",
+    "trigger",
+    "warrior"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "本ビルドは「ゼロボタン」ではなく Low-input Fire Bear である。完成したマップループが低負荷なのは、トリガー宝石が自動発動するからだが、キャラクターは依然としてアクティブなバフの維持、Glory と Rage の生成、そして Rage/Endurance の回復ループの維持を自分で行う必要がある。0.5 では、Ancestral Cry の踏み込みと Walking Calamity は、もはや Fire Spell on Hit や Cast on Elemental Ailment に直接供給されなくなった。Molten Crash の裂け目の上を歩くことが、現在のメンテナンス済みガイドが示すトリガー経路である。",
+        "この変更は重要だ。古い映像は見た目が同じでも、すでに機能しないトリガーソースを使っている可能性がある。Low-input の自動化を信用する前に、裂け目の生成、踏破による起爆、Living Bomb、そして火炎を纏った Comet の連鎖を一歩ずつ再現してほしい。",
+        "自動化されたものとして紹介するには最もリスクが高いビルドである：ループには依然として手動で維持するバフが必要であり、0.5 で火炎エフェクトをトリガーするアクションが変わった。"
+      ],
+      "bullets": [
+        "自動実行：Fire Spell on Hit と Cast on Elemental Ailment は条件を満たしたときに発動する。裂け目の踏破経路が火炎連鎖を駆動する（メンテナンス済みガイドによる、PC 検証待ち）。",
+        "手動維持：ガイドが要求する 2 つのアクティブバフ（正体は PC 検証待ち）に加え、Glory/Rage の生成と Endurance Charge の回復ループ。",
+        "レベリングや準備段階を「ゼロボタン」と呼んではならない——準備は実在する。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "高い防御性：高ライフ/高アーマーのベア形態は Low-input マップスタイルに向いている。",
+        "主要な裂け目トリガーループについては現在の 0.5 ガイドで網羅されている。",
+        "ガイドはマップの前提とボスの前提を明確に分けている。"
+      ],
+      "cons": [
+        "真のゼロボタンではない：バフとチャージを維持し続ける必要がある。",
+        "いくつかの機構は現在のクライアントでの再現がまだ必要。",
+        "エンドゲームの配信者構成には高価な依存関係が隠されている場合がある。",
+        "正確なサポートやパッシブの選択はバリアントによって変わる可能性がある。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "loop-rhythm",
+      "type": "playstyle",
+      "title": "ループの読み方",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "リズムは 2 つある。マッピングは低負荷状態だ：Molten Crash の裂け目を作り、その上を移動する。トリガー宝石が自動で火炎パッケージを発動する間、あなたはバフとチャージを維持する。ボス戦は、自動ループが sustaining する前の意図的な開始動作である。",
+        "ループはこう捉えよ：ダメージは自動トリガーが与えるが、バフの維持時間とチャージ回復はあなたの責任だ。画面が静かになったら、トリガー連鎖が切れたのである——武器ではなく構成を直せ。"
+      ],
+      "bullets": [
+        "自動：Fire Spell on Hit / Cast on Elemental Ailment は各々の条件で発動。",
+        "手動：要求されるバフを維持し、Glory/Rage と Endurance Charge を sustain する。",
+        "0.5 のトリガー経路：Molten Crash の裂け目の上を歩く（Ancestral Cry / Walking Calamity はもはや火炎トリガーに供給されない）。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "fissure-loop-visual",
+      "type": "figure",
+      "title": "現在のトリガーは裂け目から始まる",
+      "order": 35,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/fire-bear-smith-of-kitava-mechanic.webp",
+        "alt": "火炎のベアが Molten Crash の裂け目を生成し、それをまたぐ様子の編集図解",
+        "caption": "Molten Crash の裂け目を生成し、それをまたいで火炎連鎖をトリガーしたら、ループを自動化する前に各下流エフェクトを検証すること。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 40,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン開始",
+          "body": [
+            "検証済みの仮構成を使い、機能する武器かスペル集中を優先すること。"
+          ]
+        },
+        {
+          "label": "コアスキルへの移行",
+          "body": [
+            "現在の宝石とリソース要件を満たしてからのみ切り替えること。"
+          ]
+        },
+        {
+          "label": "キャンペーン終了",
+          "body": [
+            "耐性、回復、メインリソースループを整えること。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "エンドゲームのスナップショットを混ぜるのではなく、文書化された 1 つのバリアントを採用すること。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 45,
+      "visible": true,
+      "caption": "各段階で何を回すか。正確な宝石レベルとサポートリンクは PC 検証待ちのままだが、実践的なのは段階の境界である。",
+      "columns": [
+        "段階",
+        "メインスキル",
+        "主要サポート",
+        "パッシブの焦点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "レベリング近接",
+          "cells": [
+            "直接スラム（キャンペーン）",
+            "レベリング用サポートのみ",
+            "ライフ、アーマー、耐性",
+            "基本武器 + 防御",
+            "ベア形態と Molten Crash を解放"
+          ]
+        },
+        {
+          "label": "火炎トリガーベア（Low-input）",
+          "cells": [
+            "Molten Crash + Walking Calamity",
+            "Fire Spell on Hit、Cast on Elemental Ailment",
+            "火炎ダメージ、裂け目/異状状態、チャージ",
+            "バフ/チャージ + ユニーク依存",
+            "裂け目踏破トリガーを再現済み"
+          ]
+        },
+        {
+          "label": "Titan フォールバック",
+          "cells": [
+            "直接近接 + アーマースケーリング",
+            "アーマーブレイク / 防御層",
+            "高アーマー、防御特化",
+            "高アーマー装備",
+            "トリガーが落ちても防御は維持"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 50,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "displayName": "Molten Crash",
+              "skillId": "molten-crash",
+              "role": "裂け目の主要生成者。0.5 のトリガー経路は、その裂け目の上を歩くことから始まる。",
+              "supportSkillIds": [
+                "fire-spell-on-hit",
+                "cast-on-elemental-ailment"
+              ],
+              "whyUse": [
+                "0.5 で現在の火炎トリガー経路であるとメンテナンス済みガイドが特定している裂け目の供給源であるため。"
+              ],
+              "whenReplace": [
+                "置き換えない。これは Low-input ループの基盤である。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：裂け目を連打して踏破する。ボス戦：開始時に裂け目を事前設置し、その後踏破する。"
+              ],
+              "notes": [
+                "トリガーサポート宝石（Fire Spell on Hit / Cast on Elemental Ailment）が自動層である。正確なリンクは PC 検証待ち。",
+                "Ancestral Cry と Walking Calamity は 0.5 ではこれらのトリガーに供給されない。"
+              ]
+            },
+            {
+              "displayName": "Walking Calamity",
+              "skillId": "walking-calamity",
+              "role": "移動駆動の範囲フィニッシャー。かつては火炎トリガーに供給していた。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "移動中に範囲ダメージを集中させ、裂け目ループを補完する。"
+              ],
+              "whenReplace": [
+                "フィニッシャーとして維持。0.5 ではもはや火炎トリガーソースとしては機能しない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：走りながらの掃除。ボス戦：開始後、トリガーとしてではなく使用。"
+              ],
+              "notes": [
+                "0.5 では単体では Fire Spell on Hit や Cast on Elemental Ailment を生成しない。残存する相互作用があれば PC 確認待ち。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "補助・維持スキル",
+          "skills": [
+            {
+              "displayName": "Ancestral Cry",
+              "skillId": "ancestral-cry",
+              "role": "構築と維持に用いる Warcry。0.5 ではもはや火炎トリガーではない。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "ループが依存する手動のバフ/維持ステップを提供する。"
+              ],
+              "whenReplace": [
+                "維持として維持。これは自動トリガーではなく、維持されるバフソースである。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：バフを更新するために再詠唱。ボス戦：開始中に詠唱。"
+              ],
+              "notes": [
+                "その踏み込みは 0.5 では火炎トリガーに供給されない。そう示す古い映像はすべて旧式と見なすこと。"
+              ]
+            },
+            {
+              "displayName": "Ferocious Roar",
+              "skillId": "ferocious-roar",
+              "role": "ビルドが手動でアクティブに保つ必要があるバフ。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Low-input ループを稼働させ続ける維持バフのひとつ。"
+              ],
+              "whenReplace": [
+                "維持。バフの維持は必須であり、任意ではない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングもボス戦も：維持の一環としてクールダウンごとに再付与。"
+              ],
+              "notes": [
+                "正確な要求バフセットは PC 検証待ち（主張 C3）。"
+              ]
+            },
+            {
+              "displayName": "Living Bomb",
+              "skillId": "living-bomb",
+              "role": "連鎖内の火炎ダメージを有効化するもの。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "裂け目連鎖を可視化する火炎層を追加する。"
+              ],
+              "whenReplace": [
+                "構築補助として維持。検証済みのより強力な有効化手段が現れた場合のみ交換。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：任意。ボス戦：構築中に付与。"
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "連鎖を拡張するために使う、火炎を纏った爆発。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "メンテナンス済みガイドが裂け目トリガーから連鎖させる火炎の纏いを運ぶ。"
+              ],
+              "whenReplace": [
+                "連鎖の一部として維持。クライアントで順序を検証すること。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：まれ。ボス戦：検証済み連鎖の一部。"
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 60,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暫定順序",
+          "body": [
+            "選択した現在のガイドに従い、公開前に 0.5.4 クライアントで各ノードを確認すること。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件を支援するノードのみを取ること。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選択したビルドバリアントに移行すること。互換性のないプランナースナップショットを組み合わせてはならない。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 80,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "主要ダメージスロット",
+          "recommendations": [
+            "適切なスキルレベルまたは武器ダメージ",
+            "バリアント互換のモディファイア"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "階層に見合う武器/火炎ダメージ",
+              "reason": "裂け目トリガーはビルドが積むのと同じ火炎ダメージからスケールするため。"
+            },
+            {
+              "tier": "recommended",
+              "label": "裂け目 / 範囲または異状状態の強化",
+              "reason": "自動連鎖の成果を高めるため。"
+            },
+            {
+              "tier": "optional",
+              "label": "属性または宝石レベルのモディファイア",
+              "reason": "残りの装備を防御に集中させられるため。"
+            },
+            {
+              "tier": "luxury",
+              "label": "ユニークなトリガー依存（例：Fury of the King）",
+              "reason": "ループが 0.5 で検証されてからのみ。"
+            }
+          ],
+          "notes": [
+            "前提条件なしにエンドゲームアイテムをコピーしてはならない。"
+          ]
+        },
+        {
+          "slot": "防御アーマー",
+          "recommendations": [
+            "ライフまたは選択した防御プール",
+            "元素耐性と回復"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフ/アーマーと 2 つの上限未到達耐性",
+              "reason": "どんなトリガー DPS も、マップで死ぬことの代償にはならない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "Endurance Charge の生成 / 回復",
+              "reason": "手動の回復ループがこれに依存するため。"
+            },
+            {
+              "tier": "optional",
+              "label": "Glory/Rage の sustain モディファイア",
+              "reason": "ビルドが実行しなければならない維持を支援するため。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的な DPS アフィックス",
+              "reason": "防御が解決されてからのみ。"
+            }
+          ],
+          "notes": [
+            "防御パッケージ全体を比較すること。"
+          ]
+        },
+        {
+          "slot": "ジュエリーとユーティリティ",
+          "recommendations": [
+            "属性とリソースの sustain",
+            "検証済みのビルド固有モディファイアのみ"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "武器と宝石を装備するための属性",
+              "reason": "装備できない武器は無価値だ。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とライフ",
+              "reason": "防御シェルを完成させるため。"
+            },
+            {
+              "tier": "optional",
+              "label": "チャージ / バフ継続モディファイア",
+              "reason": "手動で再維持する頻度を減らすため。"
+            },
+            {
+              "tier": "luxury",
+              "label": "トリガーのユニーク有効化手段",
+              "reason": "選択したバリアントに条件付き。"
+            }
+          ],
+          "notes": [
+            "価格は現時点では固定されていない。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 90,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "防御ベースライン",
+          "reason": "まず耐性を上限にし、回復を確立すること。"
+        },
+        {
+          "label": "火炎ダメージのスカラー",
+          "reason": "裂け目連鎖が真のダメージ源だから。"
+        },
+        {
+          "label": "チャージ / バフ維持",
+          "reason": "バフとチャージが維持されている場合にのみループは低負荷になる。"
+        },
+        {
+          "label": "リソース sustain",
+          "reason": "メインループは単体ターゲットに対しても機能しなければならない。"
+        },
+        {
+          "label": "快適性",
+          "reason": "ビルドが機能してからのみ、速度や範囲を追加すること。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 100,
+      "visible": true,
+      "steps": [
+        {
+          "label": "マップでループが静かになる",
+          "symptom": "歩行中にトリガーの火炎パッケージが発動しなくなる。",
+          "checks": [
+            "本当に足元に Molten Crash の裂け目があるか？",
+            "Fire Spell on Hit / Cast on Elemental Ailment はまだソケットされ条件を満たしているか？",
+            "維持バフとチャージは落ちていないか？"
+          ],
+          "upgrade": "裂け目を再生成して踏破し、バフを再付与してチャージを再構築する。武器ではなく構成を直せ。"
+        },
+        {
+          "label": "マップ突入後に死ぬ",
+          "symptom": "T15 以降やボスアリーナで頻繁に死ぬ。",
+          "checks": [
+            "どの耐性が上限未到達か？",
+            "ライフ/アーマーがコンテンツ階層を下回っていないか？",
+            "防御層（Endurance Charge）はアクティブか？"
+          ],
+          "upgrade": "トリガー DPS を追う前に耐性を上限にし、ライフ/アーマーを安定させること。"
+        },
+        {
+          "label": "単体ターゲットのループが止まる",
+          "symptom": "開始動作後にボスダメージが崩壊する。",
+          "checks": [
+            "戦闘を通してバフとチャージが維持されているか？",
+            "裂け目踏破トリガーは再現されているか？",
+            "キル依存の前提は取り除かれたか？"
+          ],
+          "upgrade": "維持バフ/チャージを再構築し、裂け目 1 つを再テストすること。回復の破綻を DPS で直そうとしてはならない。"
+        },
+        {
+          "label": "トリガーユニークの検討",
+          "symptom": "Low-input の自動化が欲しく、ユニーク依存を狙っている。",
+          "checks": [
+            "非トリガーのベースライン（防御、裂け目トリガー）はすでに解決済みか？",
+            "ユニークは耐性上限を破る、あるいはライフ/アーマーを落とすか？",
+            "そのユニークは 0.5 で再現済みか？"
+          ],
+          "upgrade": "ループが検証されてからのみユニーク依存を追加。再テストし、自動化のために生存を犠牲にしてはならない。"
+        },
+        {
+          "label": "どのアクションがまだトリガーするか不確か",
+          "symptom": "古いガイド/動画が Ancestral Cry や Walking Calamity が火炎を供給していると示している。",
+          "checks": [
+            "これは 0.5 より前の映像か？",
+            "クライアントで 0.5 の裂け目経路を再現したか？"
+          ],
+          "upgrade": "0.5 の裂け目踏破経路を信じること。再現されるまでは 0.5 より前のトリガー論理は無効と見なす。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 110,
+      "visible": true,
+      "paragraphs": [
+        "要求バフを維持し、Molten Crash で裂け目を生成し、その上を移動してトリガー連鎖を発動させる。画面が静かなら、まず裂け目を確認すること。裂け目なしの歩行はもはや不十分である。",
+        "自動化は低負荷であり、不在ではない：あなたは依然として 2 つの要求バフとチャージ回復ループをアクティブに保つ。バフの維持時間をクリアの一部と見なし、任意とは見なさないこと。"
+      ],
+      "bullets": [
+        "自動：裂け目経路上の Fire Spell on Hit / Cast on Elemental Ailment。",
+        "手動：2 つの要求バフと Endurance Charge の回復を維持すること。",
+        "ループを恒久的と呼ぶ前に、Rage、Glory、Endurance Charge を追跡すること。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "ボス開始動作：自動ループがあなたを支える前に、Molten Crash で裂け目を事前生成し、使用する場合は第 2 武器セットで Forge Hammer を使う。アーマーブレイクまたはダメージバフ層を付与し、バフと Endurance Charge をアクティブにし、それから火炎トリガーが発動するよう裂け目を踏破する。ボスアリーナは、単に空の地面の上を歩いていると気づくには悪い場所だ。",
+        "ループ崩壊後の回復：火炎パッケージが止まっても、盲滅法に歩き続けてはならない。維持バフを再付与し、Glory/Rage と Endurance Charge を再構築し、裂け目を 1 つ再生成して踏破し、連鎖が戻ることを確認してからボスに再突入すること。トリガーの欠落は構成の破綻であり、装備の破綻ではない。"
+      ],
+      "bullets": [
+        "ボス開始：バフ UP → 裂け目設置 → チャージアクティブ → 裂け目踏破。",
+        "手動維持：2 つの要求バフとチャージループを終始維持すること。",
+        "回復：再バフ、チャージ再構築、再突入前に裂け目 1 つを再テスト。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "0.5 Fire Bear の段階",
+      "order": 130,
+      "visible": true,
+      "caption": "このルートは、機能する近接ベースラインと、トリガー版、そして高価な防御フォールバックを分けている。",
+      "columns": [
+        "レベリング近接",
+        "火炎トリガーベア",
+        "Titan フォールバック"
+      ],
+      "rows": [
+        {
+          "label": "ダメージソース",
+          "cells": [
+            "直接スラム",
+            "裂け目 → 火炎トリガー",
+            "直接近接とアーマースケーリング"
+          ]
+        },
+        {
+          "label": "要求される証明",
+          "cells": [
+            "ユニークなしでスキルが殺せる",
+            "裂け目踏破が可視的にトリガーする",
+            "トリガーを落としても防御が残る"
+          ]
+        },
+        {
+          "label": "主なコスト",
+          "cells": [
+            "基本武器と防御",
+            "バフ、チャージ、ユニーク依存",
+            "高アーマー装備"
+          ]
+        },
+        {
+          "label": "よくある罠",
+          "cells": [
+            "自動化を早買いする",
+            "0.5 より前のトリガー論理を使う",
+            "フォールバックがトリガー DPS を維持すると仮定する"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 140,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "コアスキルが使用不可",
+          "checks": [
+            "宝石レベル、形態、武器セット、装備要件を確認すること。",
+            "文書化された移行段階に戻ること。"
+          ]
+        },
+        {
+          "symptom": "単体ターゲットのループが止まる",
+          "checks": [
+            "キル依存の前提を取り除くこと。",
+            "シーケンス前後の各リソースを記録すること。",
+            "再突入前にバフを再付与し、チャージを再構築すること。"
+          ]
+        },
+        {
+          "symptom": "コピーしたエンドゲーム装備の感触が悪い",
+          "checks": [
+            "不足しているパッシブ、サポート、閾値を確認すること。",
+            "より低い検証済み段階から再構築すること。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "火炎ループを検証する",
+      "order": 150,
+      "visible": true,
+      "items": [
+        {
+          "question": "なぜ敵を通り抜けても火炎パッケージがトリガーしないのか？",
+          "answer": [
+            "0.5 では、歩行や Ancestral Cry の踏み込み単体ではトリガーにならない。Molten Crash が裂け目を生成し、正しいスキルがソケットされた状態でその裂け目の上を歩いていることを確認すること。"
+          ],
+          "bullets": [
+            "1 体の静止レアでテストする。",
+            "視覚的ノイズを取り除く。",
+            "各トリガー宝石を 1 つずつ戻す。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "本当にゼロボタンなのか？",
+          "answer": [
+            "否。これは低負荷である：Fire Spell on Hit と Cast on Elemental Ailment は自動発動するが、要求バフとチャージ回復ループを維持し続けなければならない。レベリングビルドをゼロボタンと呼ぶと準備が隠れ、ループが存在する前に高価な購入につながる。"
+          ],
+          "bullets": [
+            "自動層：条件を満たしたトリガー宝石。",
+            "手動層：バフ維持とチャージ回復。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "よりシンプルな Bear ルートが欲しい場合は？",
+          "answer": [
+            "Rampage Shaman はアクティブな Rage とアニメーション管理があるが、同じ火炎トリガー依存のない、より直接的な攻撃ループを持つ。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/bear-shaman-druid/",
+              "label": "Rampage Shaman Bear と比較"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 160,
+      "visible": true,
+      "note": "貼り付け可能なインポート文字列 / .build は PC 検証待ち。その間は以下の配信者ガイドとプランナーツールを使用すること。常に自分のクライアントでノード選択を再確認すること。",
+      "creatorName": "Skadoosh",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh",
+      "creatorUrl": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "パッチ修正と実践的適応",
+      "order": 170,
+      "visible": true,
+      "note": "メンテナンス済みガイドの変更履歴は、古いショーケース映像より重要である。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "Skadoosh BALROG Fire Bear ガイド",
+          "url": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh",
+          "statement": "ガイドは 0.5 のトリガー修正を記録している：Ancestral Cry と Walking Calamity はもはや 2 つの火炎トリガーを生成せず、Molten Crash の裂け目はキャラクターがその上を歩く限り依然として生成できる。",
+          "context": "これは記事の中心的な互換性の関門である。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "label": "公式フォーラムの Fire Bear 適応",
+          "url": "https://www.pathofexile.com/forum/view-thread/3899928",
+          "statement": "フォーラムの投稿者が、Skadoosh の Balrog コンセプトのより安価な適応を示しており、プレイヤーが最も高価な正確なアイテムリストからファンタジーと回復ループを意図的に切り離していることを示している。",
+          "context": "これを別の優先度の議論として使うこと。すべての機構が 0.5 で変わらず生き残ったという確認としては使わないこと。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "画面上のトリガー証拠を確認する",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "Skadoosh",
+          "label": "BALROG T15 ゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=oZBZkt0GabE",
+          "description": "ショーケースを使って、裂け目の生成、踏破のタイミング、完全なエフェクト連鎖の視覚的コストを特定すること。",
+          "takeaway": "視覚だけから現在のトリガーの妥当性を推測してはならない。0.5 の変更履歴と照合すること。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "T15 マップゲームプレイ開始（配信者はチャプターを提供せず）"
+            },
+            {
+              "time": "1:30",
+              "label": "裂け目と踏破のタイミング（概算、検証待ち）"
+            },
+            {
+              "time": "3:30",
+              "label": "トリガー連鎖とバフ維持（概算、検証待ち）"
+            },
+            {
+              "time": "6:00",
+              "label": "ボス開始動作と回復（概算、検証待ち）"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Skadoosh 0.5 BALROG Fire Bear ガイドとプランナー",
+          "url": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "外部比較用の Smith of Kitava ビルドインデックス",
+          "url": "https://mobalytics.gg/poe-2/smith-of-kitava-builds"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "以前の独立した Fire Bear ガイド。機構は 0.5 の再確認が必要",
+          "url": "https://www.ezokay.com/news/allgames/poe-2-how-to-build-the-best-fire-bear-smith-kitava-guide"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "元の Low-input ループの議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1ptrxb4/fire_bear_smith_of_kitava_0_button_endurance/"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー エクスポート",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "BALROG T15 ゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=oZBZkt0GabE"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "より低コストな Fire Bear 適応の議論",
+          "url": "https://www.pathofexile.com/forum/view-thread/3899928"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "出典付きの 0.5.4 ビルドガイドを作成。PC 検証は保留中。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "Low-input Fire Bear に改題。段階的構成表、ビルドプランナー項目、スロット別装備ステータス優先度、症状ベースの強化優先度、表示名スキルカードを追加。自動トリガーと手動維持バフを明確に分離し、ボス開始動作とループ崩壊時の回復を文書化した。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "bear-shaman-druid"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Skadoosh 0.5 BALROG Fire Bear ガイドとプランナー",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh"
+    },
+    {
+      "label": "外部比較用の Smith of Kitava ビルドインデックス",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/smith-of-kitava-builds"
+    },
+    {
+      "label": "以前の独立した Fire Bear ガイド。機構は 0.5 の再確認が必要",
+      "sourceType": "community",
+      "url": "https://www.ezokay.com/news/allgames/poe-2-how-to-build-the-best-fire-bear-smith-kitava-guide"
+    },
+    {
+      "label": "元の Low-input ループの議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1ptrxb4/fire_bear_smith_of_kitava_0_button_endurance/"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー エクスポート",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/profile/skadoosh/builds/balrog-fire-bear-smith-skadoosh"
+    },
+    {
+      "label": "BALROG T15 ゲームプレイ",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=oZBZkt0GabE"
+    },
+    {
+      "label": "より低コストな Fire Bear 適応の議論",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3899928"
+    }
+  ],
+  "seo": {
+    "title": "Low-input Fire Bear Smith of Kitava ビルドガイド",
+    "description": "Path of Exile 2 の Low-input Fire Bear Smith of Kitava ビルドガイド（0.5.4 ベースライン）。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "fire-bear-smith-of-kitava",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

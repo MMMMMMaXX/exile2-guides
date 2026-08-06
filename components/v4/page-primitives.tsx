@@ -1,6 +1,9 @@
 /** 文件职责：提供 V4 骨架页面可复用的目录、详情、事实、来源、FAQ 与空状态组件，不承载正式攻略结论。 */
 import type { ReactNode } from "react";
 
+import type { ContentLocale } from "../../lib/content/constants";
+import { getSharedCategoryCopy } from "../../lib/i18n/shared-category-copy";
+
 type LinkItem = { href: string; label: string; note?: string };
 
 /** 渲染 V4 页面英雄区，供分类、子类与详情页复用同一紧凑信息层级。 */
@@ -63,7 +66,12 @@ export function CatalogCard({
     </>
   );
   return href ? (
-    <a className="content-card" href={href} rel="noopener noreferrer" target="_blank">
+    <a
+      className="content-card"
+      href={href}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
       {body}
     </a>
   ) : (
@@ -72,10 +80,16 @@ export function CatalogCard({
 }
 
 /** 渲染详情页可降级的目录；小屏由 CSS 回落到普通文档区块。 */
-export function StickyToc({ items }: { items: readonly LinkItem[] }) {
+export function StickyToc({
+  items,
+  locale,
+}: {
+  items: readonly LinkItem[];
+  locale?: ContentLocale;
+}) {
   return (
     <aside className="v4-sticky-toc">
-      <h2>On this page</h2>
+      <h2>{getSharedCategoryCopy(locale, "tocHeading")}</h2>
       <nav>
         {items.map((item) => (
           <a href={item.href} key={item.href}>
@@ -113,12 +127,14 @@ export function DetailSection({
 /** 展示结构化的快速事实，不将缺失字段替换为虚构数值。 */
 export function FactsRail({
   facts,
+  locale,
 }: {
   facts: readonly { label: string; value: string }[];
+  locale?: ContentLocale;
 }) {
   return (
     <aside className="v4-facts-rail panel">
-      <h2>Quick facts</h2>
+      <h2>{getSharedCategoryCopy(locale, "quickFacts")}</h2>
       <dl>
         {facts.map((fact) => (
           <div key={fact.label}>
@@ -182,36 +198,61 @@ export function FAQ({
 }
 
 /** 渲染来源边界；空来源使用 EmptyState 而不产生伪造外链。 */
-export function SourceList({ items }: { items: readonly LinkItem[] }) {
+export function SourceList({
+  items,
+  locale,
+}: {
+  items: readonly LinkItem[];
+  locale?: ContentLocale;
+}) {
   return items.length ? (
     <ul className="v4-source-list">
       {items.map((item) => (
         <li key={item.href}>
-          <a href={item.href} rel="noopener noreferrer" target="_blank">{item.label}</a>
+          <a href={item.href} rel="noopener noreferrer" target="_blank">
+            {item.label}
+          </a>
           {item.note ? <span>{item.note}</span> : null}
         </li>
       ))}
     </ul>
   ) : (
-    <EmptyState title="Sources are required before publication" />
+    <EmptyState
+      locale={locale}
+      title={getSharedCategoryCopy(locale, "sourcesRequired")}
+    />
   );
 }
 
 /** 渲染关联入口；关联数据不足时显示明确的非发布状态。 */
-export function RelatedContent({ items }: { items: readonly LinkItem[] }) {
+export function RelatedContent({
+  items,
+  locale,
+}: {
+  items: readonly LinkItem[];
+  locale?: ContentLocale;
+}) {
   return (
     <section className="v4-related-content">
-      <h2>Related content</h2>
+      <h2>{getSharedCategoryCopy(locale, "relatedContent")}</h2>
       {items.length ? (
         <nav>
           {items.map((item) => (
-            <a href={item.href} key={item.href} rel="noopener noreferrer" target="_blank">
+            <a
+              href={item.href}
+              key={item.href}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               {item.label}
             </a>
           ))}
         </nav>
       ) : (
-        <EmptyState title="Related content will appear after verification" />
+        <EmptyState
+          locale={locale}
+          title={getSharedCategoryCopy(locale, "relatedPending")}
+        />
       )}
     </section>
   );
@@ -223,6 +264,7 @@ export function EmptyState({
   title,
 }: {
   description?: string;
+  locale?: ContentLocale | undefined;
   title: string;
 }) {
   return (

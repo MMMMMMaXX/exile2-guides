@@ -1,0 +1,495 @@
+{
+  "id": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "slug": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "locale": "ru",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.3.0c: Спринт, арбалет, взаимодействия умений и исправления боссов",
+  "shortTitle": "Пакет игровых исправлений 0.3.0c",
+  "summary": "0.3.0c — это обширный пакет игровых исправлений: в нём добавлена отсрочка тяжёлого оглушения при начале Спринта, устранены зависания перезарядки/выстрела арбалета и броски боеприпасов по каждому болту, исправлено масштабирование умений и взаимодействие тотемов/наборов оружия, а также починено несколько боссов и интерфейс геймпада.",
+  "description": "0.3.0c разбор: отсрочка Спринта, боеприпасы арбалета, мета-камни Gemling, исправления масштабирования умений, тотемы/наборы оружия, починка боссов и контроллер/UI — и что всё ещё актуально в 0.5.4e.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.3.0c",
+  "patch": "0.3.0c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-05",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/barrage.webp",
+  "cardImage": "/images/skills/barrage.webp",
+  "imageAlt": "Применение умения во время движения Спринтом.",
+  "tags": [
+    "patch",
+    "0-3-0c",
+    "sprint",
+    "crossbow",
+    "bug-fix",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "sprint-grace",
+      "status": "still-current",
+      "currentSummary": [
+        "Отсрочка тяжёлого оглушения Спринта из 0.3.0c всё ещё входит в ощущение передвижения в 0.5.4e."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "crossbow-ammo",
+      "status": "changed-later",
+      "currentSummary": [
+        "Правила перезарядки/выстрела и боеприпасов по каждому болту арбалета были исправлены в 0.3.0c, но позднее перенастроены последующими патчами."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Краткое резюме",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.3.0c — это широкий пакет игровых исправлений, а не переработка баланса. Исправления были сгруппированы по Спринту и передвижению, боеприпасам арбалета, мета-камням Gemling, масштабированию умений, тотемам и наборам оружия, боссам, контроллеру/UI и производительности.",
+        "Главное: отсрочка тяжёлого оглушения при начале Спринта, устранение зависаний перезарядки/выстрела арбалета и броски боеприпасов по каждому болту, исправление масштабирования умений, ранее игнорировавшего урон по площади/поддержку/качество, а также несколько исправлений боссов и контроллера."
+      ],
+      "bullets": [
+        "Отсрочка тяжёлого оглушения Спринта",
+        "Исправления перезарядки/боеприпасов арбалета",
+        "Исправления масштабирования умений",
+        "Исправления боссов и контроллера"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Историческое предупреждение",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — эпоха 0.3.0",
+      "baselineNote": "Заявления о текущем статусе измерены относительно клиента 0.5.4e.",
+      "paragraphs": [
+        "0.3.0c исправил баги стартового окна The Third Edict. Эти исправления — корректировки, а не баффы; последующие патчи могли снова изменить те же умения."
+      ],
+      "bullets": [
+        "0.3.0c исправил баги стартового окна The Third Edict",
+        "Это корректировки, а не усиления, в дальнейшем возможны изменения"
+      ]
+    },
+    {
+      "id": "change-explorer",
+      "order": 3,
+      "title": "Категории исправлений",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Отсрочка тяжёлого оглушения Спринта",
+          "detail": "При начале Спринта добавлена отсрочка, чтобы вы не получали мгновенное тяжёлое оглушение в самом начале.",
+          "scope": "Официальные патч-ноутсы 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Зависания перезарядки/выстрела",
+          "detail": "Исправлены команды, которые могли вызывать зависание перезарядки или выстрела арбалета; боеприпасы бросаются отдельно для каждого болта.",
+          "scope": "Официальные патч-ноутсы 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Масштабирование умений",
+          "detail": "Исправлены умения, которые некорректно масштабировались от урона по площади, поддержки или качества.",
+          "scope": "Официальные патч-ноутсы 0.3.0c"
+        },
+        {
+          "category": "boss",
+          "title": "Исправления боссов",
+          "detail": "Исправления получили Vessel, финальный босс акта 4, Torvian, Diamora и другие.",
+          "scope": "Официальные патч-ноутсы 0.3.0c"
+        },
+        {
+          "category": "technical",
+          "title": "UI и производительность",
+          "detail": "Устранены проблемы навигации по хранилищу с геймпада и проблемы производительности.",
+          "scope": "Официальные патч-ноутсы 0.3.0c"
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "Баг против исправления",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Типичные исправления из 0.3.0c и их текущий статус.",
+      "columns": [
+        {
+          "key": "bug",
+          "label": "Баг / Изменение"
+        },
+        {
+          "key": "target",
+          "label": "Затронуто"
+        },
+        {
+          "key": "fix",
+          "label": "Исправление 0.3.0c"
+        },
+        {
+          "key": "now",
+          "label": "Текущее (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "bug": "Мгновенное оглушение Спринта",
+          "target": "Передвижение",
+          "fix": "Добавлена отсрочка",
+          "now": "Всё ещё присутствует"
+        },
+        {
+          "bug": "Зависание арбалета",
+          "target": "Арбалет",
+          "fix": "Перезарядка/выстрел исправлены, бросок по болтам",
+          "now": "С тех пор перенастроено"
+        },
+        {
+          "bug": "Неверное масштабирование умений",
+          "target": "Несколько умений",
+          "fix": "Применены площадь/поддержка/качество",
+          "now": "Поздние патчи могут отличаться"
+        },
+        {
+          "bug": "Проблемы боссов",
+          "target": "Vessel/Act4/Torvian/Diamora",
+          "fix": "Различные исправления",
+          "now": "См. текущие страницы боссов"
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "Влияние на билды",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "Исправления масштабирования умений могут выглядеть как скачки урона, но это баг-фиксы; любое руководство по билду, описывавшее сломанное поведение, следует обновить, а не воспринимать как бафф.",
+        "Прояснено взаимодействие Integrated Efficiency у Gemling Legionnaire с minions и мета-камнями, что влияет на описание этой асценденси."
+      ],
+      "bullets": [
+        "Исправления — не баффы: обновляйте руководства",
+        "Прояснено взаимодействие Gemling"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "Спринт: до и после",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Спринт до 0.3.0c",
+      "oldText": "Начало Спринта могло мгновенно наложить на вас тяжёлое оглушение, из-за чего механика ощущалась наказанием с самого старта.",
+      "newLabel": "После 0.3.0c",
+      "newText": "Отсрочка позволяет начать Спринт без мгновенного тяжёлого оглушения, хотя оглушение всё ещё применяется при движении."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "Тогда и сейчас",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Оглушение Спринта",
+          "thenText": "Мгновенно при старте до 0.3.0c.",
+          "nowText": "Добавлена отсрочка; всё ещё присутствует в 0.5.4e."
+        },
+        {
+          "aspect": "Ощущение арбалета",
+          "thenText": "Зависания и неверные броски боеприпасов на запуске 0.3.0.",
+          "nowText": "Исправлено в 0.3.0c, с тех пор перенастроено."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "Текущая применимость (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Отсрочка Спринта",
+          "status": "still-current",
+          "currentSummary": "Всё ещё входит в передвижение в 0.5.4e.",
+          "supersededBy": "—",
+          "affectedContent": "Руководства по передвижению"
+        },
+        {
+          "topic": "Правила боеприпасов арбалета",
+          "status": "changed-later",
+          "currentSummary": "Исправлено в 0.3.0c, с тех пор перенастроено.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Страницы билдов арбалета"
+        },
+        {
+          "topic": "Исправления масштабирования умений",
+          "status": "changed-later",
+          "currentSummary": "Исправлено в 0.3.0c; поздние патчи могут отличаться.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Затронутые страницы умений"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Свидетельства сообщества",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (Sprint)",
+          "context": "Игроки спрашивали, почему Спринт всё ещё оглушает в начале.",
+          "quote": "Why do I get heavy stunned the moment I sprint?",
+          "analysis": "Отсрочка помогает, но оглушение всё ещё применяется при движении; это не полное удаление."
+        },
+        {
+          "source": "Форум (Crossbow)",
+          "context": "Игроки сообщали о случайной невозможности зарядить болты.",
+          "quote": "My crossbow sometimes won't reload.",
+          "analysis": "Совпадает с зависанием перезарядки/выстрела, исправленным в 0.3.0c; проверьте относительно текущего клиента."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "Поздние изменения, за которыми стоит следить",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "crossbow-build-guide",
+          "kind": "build",
+          "issue": "Описывает поведение боеприпасов до 0.3.0c.",
+          "action": "Обновить актуальными правилами боеприпасов.",
+          "status": "queued"
+        },
+        {
+          "contentId": "skill-page",
+          "kind": "skill",
+          "issue": "Масштабирование, исправленное в 0.3.0c, могло измениться снова.",
+          "action": "Повторно проверить относительно 0.5.4e.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "Затронутый контент",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Страницы билдов арбалета",
+          "type": "build",
+          "trigger": "Исправлены правила боеприпасов",
+          "action": "Повторно проверить текущее поведение.",
+          "status": "queued"
+        },
+        {
+          "name": "Страница Gemling Legionnaire",
+          "type": "build",
+          "trigger": "Прояснён Integrated Efficiency",
+          "action": "Обновить описание взаимодействия.",
+          "status": "queued"
+        },
+        {
+          "name": "Затронутые страницы умений",
+          "type": "skill",
+          "trigger": "Исправлено масштабирование",
+          "action": "Повторно проверить значения.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Историческое видео",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — официальное патч-сообщение",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Официальное сообщение для этой ветки версий. Читайте вместе с патч-ноутсами, чтобы узнать, что изменилось и как поздние патчи это переписали.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "Обзор патча",
+              "time": "00:30"
+            },
+            {
+              "label": "Изменения добычи и систем",
+              "time": "04:10"
+            },
+            {
+              "label": "Текущее влияние",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Частые вопросы",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "Это бафф к Спринту?",
+          "answer": [
+            "Нет. Добавляется отсрочка, чтобы Спринт мог начаться без мгновенного тяжёлого оглушения; оглушение всё ещё применяется, когда вы двигаетесь. Воспринимайте это как корректировку."
+          ]
+        },
+        {
+          "question": "Почему мой урон от умений изменился после 0.3.0c?",
+          "answer": [
+            "Некоторые умения некорректно не масштабировались от урона по площади, поддержки или качества. 0.3.0c это исправил; это баг-фикс, и поздние патчи могли снова изменить те же умения."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Источники и проверка",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Официальные патч-ноутсы Path of Exile 2 0.3.0c",
+          "description": "Официальная патч-тема с заявленными изменениями версии, порядком развёртывания и последующими разъяснениями.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+        },
+        {
+          "label": "Индекс форума Path of Exile 2 Early Access",
+          "description": "Индекс всех официальных тем патчей и хотфиксов EA, на которые ссылается эта страница.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Текущие данные умений, предметов, боссов и модификаторов, сверенные с актуальным клиентом для заявлений о текущей применимости.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "База данных умений, предметов и модификаторов, упомянутых в этой статье.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Руководства сообщества по билдам и системам, использованные для перекрёстной проверки влияния на игроков, а не как первоисточник фактов.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Журнал изменений",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Опубликована историческая статья о патче с проверкой текущей применимости относительно клиента 0.5.4e."
+          ]
+        },
+        {
+          "date": "2026-08-05",
+          "changes": [
+            "Переведено на русский (workbuddy-hy3), добавлен объект translation."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3851306",
+      "label": "Официальные патч-ноутсы Path of Exile 2 0.3.0c",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Индекс форума Path of Exile 2 Early Access",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.3.0c: Спринт, арбалет, взаимодействия умений и исправления боссов",
+    "description": "Игровые исправления 0.3.0c: отсрочка Спринта, боеприпасы арбалета, масштабирование умений и починка боссов.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-3-0c-sprint-skills-boss-fixes",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

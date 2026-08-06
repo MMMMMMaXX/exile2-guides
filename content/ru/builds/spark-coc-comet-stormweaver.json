@@ -1,0 +1,856 @@
+{
+  "id": "spark-coc-comet-stormweaver",
+  "slug": "spark-coc-comet-stormweaver",
+  "locale": "ru",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Гайд по билду Spark CoC Comet Stormweaver: Мана, настройка триггера и прогрессия",
+  "shortTitle": "Spark CoC Comet",
+  "summary": "Набор триггеров 0.5.4: Spark для зачистки, CoC Comet для одиночных целей. Охватывает смену умений с 1 уровня до карт, порог триггера, Ману как треугольник ресурс/защита/урон и границы вариантов MoM/EB/Archmage.",
+  "description": "Гайд по Spark CoC Comet Stormweaver в Path of Exile 2 для 0.5.4: лестница прокачки, порог триггера, треугольник Маны, выживание в боссах и реальные таймкоды видео.",
+  "classId": "sorceress",
+  "ascendancyId": "stormweaver",
+  "mainSkillIds": [
+    "spark"
+  ],
+  "secondarySkillIds": [
+    "cast-on-critical",
+    "comet",
+    "arc",
+    "lightning-warp"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "caster",
+    "lightning",
+    "trigger",
+    "mana-stacking",
+    "crit"
+  ],
+  "damageTypes": [
+    "lightning"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "trigger"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "cardImage": "/images/builds/covers/spark-coc-comet-stormweaver.webp",
+  "imageAlt": "Чародейка Stormweaver зачищает через Spark и добивает боссов кометами от Cast on Critical",
+  "tags": [
+    "bossing",
+    "caster",
+    "early-endgame",
+    "endgame",
+    "leveling",
+    "lightning",
+    "sorceress",
+    "starter",
+    "stormweaver",
+    "trigger"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "order": 10,
+      "visible": true,
+      "toc": true,
+      "title": "Обзор билда",
+      "paragraphs": [
+        "Spark CoC Comet — это набор триггеров Чародейки: Spark зачищает (покрытие множеством снарядов), Comet от Cast on Critical берёт одиночные цели и боссов. Разные задачи — Spark это движок зачистки, Comet — взрывной финишер.",
+        "Порог 0.5 — это «порог триггера»: Мана, крит и скорость каста должны совпасть, прежде чем CoC стабильно вызовет Comet. Здесь Мана выступает одновременно ресурсом, защитой (при низком здоровье урон поглощается пулом Маны) и уроном, поэтому низкая Мана смертельна напрямую.",
+        "MoM / EB / Archmage — это разные варианты защиты/ресурса, и их нельзя смешивать. В этом гайде объясняются лестница прокачки, порог триггера, треугольник Маны и границы вариантов; цифры ожидают проверки на ПК."
+      ],
+      "bullets": [
+        "Spark зачищает, CoC Comet добивает.",
+        "Порог триггера требует Ману/крит/скорость каста.",
+        "Мана — это треугольник ресурс + защита + урон."
+      ]
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "order": 20,
+      "visible": true,
+      "toc": false,
+      "title": "Плюсы и минусы",
+      "pros": [
+        "Зачистка через Spark ощущается плавной благодаря хорошему покрытию снарядами.",
+        "CoC Comet даёт высокий взрывной урон по одиночным целям.",
+        "Низкие эксплуатационные затраты после стабилизации триггера.",
+        "Уже зачищает на низком бюджете."
+      ],
+      "cons": [
+        "Высокий порог триггера; Comet едва срабатывает до его достижения.",
+        "Треугольник Маны жёсткий; низкая Мана смертельна напрямую.",
+        "Варианты MoM/EB/Archmage нельзя смешивать.",
+        "В боях с боссами надо не дать Мане опустошиться мгновенно."
+      ]
+    },
+    {
+      "id": "spark-behaviour",
+      "type": "playstyle",
+      "order": 30,
+      "visible": true,
+      "toc": false,
+      "title": "Как читается цикл: Spark → CoC Comet",
+      "paragraphs": [
+        "Цикл зачистки: кастуете Spark; множество снарядов автоматически покрывает паки; вы просто перемещаетесь и перекастуете.",
+        "Цикл босса: используйте Spark, чтобы держать частоту критов, и Cast on Critical стабильно вызывает Comet по боссу; Lightning Warp для мобильности.",
+        "Возможность «перейти на CoC» зависит от порога Мана/крит/скорость каста, а не только от уровня."
+      ],
+      "bullets": [
+        "Зачистка = покрытие множеством снарядов Spark.",
+        "Босс = Spark держит крит → CoC Comet.",
+        "Триггер зависит от порога, а не от уровня."
+      ]
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "order": 40,
+      "visible": true,
+      "toc": true,
+      "title": "Путь прокачки",
+      "steps": [
+        {
+          "label": "Уровни 1–14",
+          "levelRange": "1–14",
+          "body": [
+            "Качайтесь базовым заклинанием молнии (Spark или Arc); CoC ещё нет, Мана и крит не готовы."
+          ]
+        },
+        {
+          "label": "Уровни 15–29",
+          "levelRange": "15–29",
+          "body": [
+            "Берите Spark как основную зачистку, добавьте узлы Маны/крита/жизни."
+          ]
+        },
+        {
+          "label": "Уровни 30–42 — Раскрытие Stormweaver",
+          "levelRange": "30–42",
+          "body": [
+            "Выберите Stormweaver, усильте Ману и триггер; начните Comet от Cast on Critical."
+          ]
+        },
+        {
+          "label": "Уровни 43–60 — Ранние карты",
+          "levelRange": "43–60",
+          "body": [
+            "Запустите цепочку триггера на низком бюджете; поправьте пул Маны и крит, закройте сопротивления."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "order": 50,
+      "visible": true,
+      "toc": true,
+      "title": "Настройка умений",
+      "groups": [
+        {
+          "label": "Основные умения",
+          "skills": [
+            {
+              "displayName": "Spark",
+              "skillId": "spark",
+              "role": "Ядро зачистки, покрытие множеством снарядов.",
+              "supportSkillIds": [
+                "fork",
+                "added-lightning",
+                "arcane-tempo"
+              ],
+              "whyUse": [
+                "Это движок зачистки; больше снарядов = лучше покрытие."
+              ],
+              "whenReplace": [
+                "Никогда не заменяется; в боссах держит частоту критов."
+              ],
+              "mappingBossingDiff": [
+                "В зачистке спамится; в боссах поддерживает триггер CoC."
+              ],
+              "notes": [
+                "Снаряды/площадь масштабируются через поддержки."
+              ]
+            },
+            {
+              "displayName": "Cast on Critical",
+              "skillId": "cast-on-critical",
+              "role": "Носитель триггера, выпускающий Comet при крите.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Предусловие стабильного Comet; без него Comet не срабатывает."
+              ],
+              "whenReplace": [
+                "Оставьте; часть архитектуры триггера."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих, в боссах зависит сильнее."
+              ],
+              "notes": [
+                "Нужно достаточно крита и Маны."
+              ]
+            },
+            {
+              "displayName": "Comet",
+              "skillId": "comet",
+              "role": "Взрывной урон по одиночным целям от CoC.",
+              "supportSkillIds": [
+                "lightning-penetration",
+                "concentrated-effect"
+              ],
+              "whyUse": [
+                "Базовый взрыв, добивающий боссов."
+              ],
+              "whenReplace": [
+                "Не заменяется, нужен установленный триггер."
+              ],
+              "mappingBossingDiff": [
+                "В зачистке опционален; в боссах обязателен."
+              ],
+              "notes": [
+                "Тайминг выпуска задаётся триггером."
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Поддержки",
+          "skills": [
+            {
+              "displayName": "Arc",
+              "skillId": "arc",
+              "role": "Альтернативное умение зачистки/цепи, доп. покрытие.",
+              "supportSkillIds": [
+                "chain"
+              ],
+              "whyUse": [
+                "Дополняет покрытие цепью, когда Spark редок."
+              ],
+              "whenReplace": [
+                "Оставьте как поддержку."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих."
+              ],
+              "notes": []
+            },
+            {
+              "displayName": "Lightning Warp",
+              "skillId": "lightning-warp",
+              "role": "Умение мобильности, уходит от наземных эффектов.",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Ключевая мобильность, снижает смерти от стояния на месте."
+              ],
+              "whenReplace": [
+                "Оставьте как мобильность."
+              ],
+              "mappingBossingDiff": [
+                "Используется в обоих."
+              ],
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "order": 60,
+      "visible": true,
+      "toc": false,
+      "title": "Порядок аскенданси",
+      "steps": [
+        {
+          "label": "Stormweaver — первые узлы",
+          "body": [
+            "В приоритете узлы Маны и триггера; предусловие для треугольника Маны и стабильного CoC."
+          ]
+        },
+        {
+          "label": "Проверка защиты",
+          "body": [
+            "Если выживание на T15+ шаткое, добавьте узлы MoM/ES; не меняйте всё на урон."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "order": 70,
+      "visible": true,
+      "toc": false,
+      "title": "Дерево пассивок",
+      "steps": [
+        {
+          "label": "Кампания",
+          "body": [
+            "Берите Ману, крит, молнию и жизнь; не идите заранее к колёсам Archmage."
+          ]
+        },
+        {
+          "label": "Ранние карты",
+          "body": [
+            "Переключайтесь в вариант триггера; сначала пул Маны, крит и скорость каста."
+          ]
+        },
+        {
+          "label": "Эндгейм",
+          "body": [
+            "После решения треугольника Маны и защиты вложитесь в колёса урона; сравните снаряжение по тиру."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "order": 80,
+      "visible": true,
+      "toc": true,
+      "title": "Снаряжение",
+      "slots": [
+        {
+          "slot": "Staff / Focus",
+          "recommendations": [
+            "Выберите базу, повышающую уровень заклинаний и урон от молнии/заклинаний; достаточно гнёзд для связок Spark / Comet."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Уровень заклинаний / Урон от молнии заклинаниями",
+              "reason": "Масштабирует Spark и Comet."
+            },
+            {
+              "tier": "recommended",
+              "label": "Пул и реген Маны",
+              "reason": "Фундамент треугольника Маны."
+            },
+            {
+              "tier": "optional",
+              "label": "Скорость каста",
+              "reason": "Более частый ритм триггера."
+            },
+            {
+              "tier": "luxury",
+              "label": "Шанс крита / Урон в крите",
+              "reason": "Предусловие для CoC."
+            }
+          ],
+          "notes": [
+            "Focus: в приоритете урон заклинаний и Мана."
+          ]
+        },
+        {
+          "slot": "Body / Boots / Helmet",
+          "recommendations": [
+            "Жизнь, сопротивления и Мана; скорость ботинок."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Жизнь и два закрытых сопротивления",
+              "reason": "Никакой урон не компенсирует смерть."
+            },
+            {
+              "tier": "recommended",
+              "label": "Пул Маны (с MoM/ES)",
+              "reason": "При низком здоровье урон поглощается Маной."
+            },
+            {
+              "tier": "optional",
+              "label": "Скорость передвижения",
+              "reason": "Лучшее позиционирование."
+            },
+            {
+              "tier": "luxury",
+              "label": "Явный урон заклинаний",
+              "reason": "После защиты."
+            }
+          ],
+          "notes": [
+            "Треугольник Маны требует снаряжения и пассивок вместе."
+          ]
+        },
+        {
+          "slot": "Rings / Amulet / Belt",
+          "recommendations": [
+            "Характеристики, сопротивления, жизнь и Мана; крит и восполнение Маны где нужно."
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "Характеристики для посоха и камней",
+              "reason": "Неэкипируемое бесполезно."
+            },
+            {
+              "tier": "recommended",
+              "label": "Сопротивления и Мана",
+              "reason": "Завершает защиту и треугольник Маны."
+            },
+            {
+              "tier": "optional",
+              "label": "Шанс крита",
+              "reason": "Предусловие триггера CoC."
+            },
+            {
+              "tier": "luxury",
+              "label": "Уровень заклинаний",
+              "reason": "Урон позднего эндгейма."
+            }
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "order": 90,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет характеристик",
+      "priorities": [
+        {
+          "label": "Уровень навыка заклинания",
+          "reason": "Масштабирует Spark и Comet; главная проверка прогресса."
+        },
+        {
+          "label": "Пул и реген Маны",
+          "reason": "Фундамент треугольника Маны, на нём держится поглощение при низком здоровье."
+        },
+        {
+          "label": "Шанс крита",
+          "reason": "Предусловие для CoC."
+        },
+        {
+          "label": "Скорость каста",
+          "reason": "Более частый ритм триггера."
+        },
+        {
+          "label": "Урон от молнии заклинаниями",
+          "reason": "Прямой урон, после Маны."
+        }
+      ]
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "order": 100,
+      "visible": true,
+      "toc": false,
+      "title": "Приоритет улучшений",
+      "steps": [
+        {
+          "label": "Comet не срабатывает",
+          "symptom": "Comet едва появляется в боссах.",
+          "checks": [
+            "Хватает крита?",
+            "Мана держится?",
+            "Скорость каста на пороге?"
+          ],
+          "upgrade": "Исправьте порог триггера (крит/Мана/скорость каста), а не меняйте посох."
+        },
+        {
+          "label": "Смерть от низкой Маны",
+          "symptom": "Мана опустошена в боссах, мгновенная смерть.",
+          "checks": [
+            "MoM/ES активны?",
+            "Пул Маны достаточен?"
+          ],
+          "upgrade": "Исправьте треугольник Маны до наращивания урона."
+        },
+        {
+          "label": "Зачистка замедляется",
+          "symptom": "Зачистка через Spark недостаточна.",
+          "checks": [
+            "База посоха по тиру?",
+            "Хватает снарядов/площади?"
+          ],
+          "upgrade": "Улучшайте посох и поддержки, а не стекайте крит."
+        },
+        {
+          "label": "Рассмотрите Archmage/хай-энд",
+          "symptom": "Хочется выше потолок.",
+          "checks": [
+            "Треугольник Маны стабилен?",
+            "Не конфликтуют ли варианты при смешении?"
+          ],
+          "upgrade": "Покупайте по частям и перепроверяйте; не смешивайте MoM/EB/Archmage."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "order": 110,
+      "visible": true,
+      "toc": true,
+      "title": "Зачистка",
+      "paragraphs": [
+        "Кастуйте Spark; множество снарядов автоматически покрывает; Lightning Warp для перепозиции. Мусор не требует Comet; остановка ради триггера вас замедляет.",
+        "Когда зачистка замедляется, сначала улучшайте посох и поддержки снарядов. Держите восполнение Маны активным, чтобы зачистка не вставала."
+      ],
+      "bullets": [
+        "Покрытие множеством снарядов Spark.",
+        "Пропускайте триггер Comet по мусору.",
+        "При замедлении зачистки сначала улучшайте посох."
+      ]
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "order": 120,
+      "visible": true,
+      "toc": true,
+      "title": "Боссы",
+      "paragraphs": [
+        "Используйте Spark, чтобы держать частоту критов, и Cast on Critical стабильно вызывает Comet по боссу; Lightning Warp уходит от наземных эффектов.",
+        "Если Comet так и не приходит, проблема в пороге триггера (крит/Мана/скорость каста), а не в посохе. В боях с боссами не давайте Мане опустошиться мгновенно — держите MoM/ES и восполнение Маны."
+      ],
+      "bullets": [
+        "Spark держит крит → CoC Comet.",
+        "Уход через Lightning Warp.",
+        "Просадка Маны = правьте триггер и треугольник Маны."
+      ]
+    },
+    {
+      "id": "trigger-readiness",
+      "type": "overview",
+      "order": 130,
+      "visible": true,
+      "toc": false,
+      "title": "Готовность триггера: можно ли перейти на CoC?",
+      "paragraphs": [
+        "CoC Comet не становится автоматически сильным на каком-то уровне. Нужно: достаточно крита (частый Cast on Critical), достаточно Маны (держит непрерывный каст), достаточно скорости каста (быстрее триггер). Если чего-то не хватает, Comet выглядит «едва срабатывающим».",
+        "Чек-лист: крит на пороге? Пул/реген Маны держит непрерывный Spark? Скорость каста в ритме триггера? Переходите с самокаста Spark на CoC только когда все три выполняются; иначе сначала стабилизируйте зачистку."
+      ],
+      "bullets": [
+        "Переходите только когда крит + Мана + скорость каста выполняются.",
+        "Comet не сработает, если чего-то не хватает.",
+        "Стабилизируйте зачистку до перехода на CoC."
+      ]
+    },
+    {
+      "id": "mana-defence",
+      "type": "overview",
+      "order": 140,
+      "visible": true,
+      "toc": false,
+      "title": "Треугольник Маны: Ресурс / Защита / Урон",
+      "paragraphs": [
+        "Здесь Мана одновременно: ресурс (каст), защита (при низком здоровье урон бьёт сначала по пулу Маны, усиленный MoM/ES) и урон (варианты типа Archmage конвертируют Ману в урон).",
+        "Поэтому низкая Мана смертельна напрямую — не «не хватает синего на каст», а «не хватает синего на поглощение». Три состояния (полная/средняя/низкая) защищают по-разному: полная Мана прощает, при низкой одно умение босса может убить.",
+        "MoM / EB / Archmage — это отдельные варианты с разным использованием Маны, и их нельзя смешивать в одной сборке."
+      ],
+      "bullets": [
+        "Мана = ресурс + защита + урон.",
+        "Низкая Мана смертельна напрямую.",
+        "MoM/EB/Archmage не смешиваются."
+      ]
+    },
+    {
+      "id": "community",
+      "type": "community-voices",
+      "order": 145,
+      "visible": true,
+      "toc": true,
+      "title": "Мнения сообщества",
+      "note": "Этот гайд использует обсуждения сообщества как воспроизводимый чек-лист, а не обещание показанного ими DPS.",
+      "entries": [
+        {
+          "context": "Игроки спрашивают, играбелен ли Spark CoC на бюджете.",
+          "label": "Гайд по бюджетному Spark CoC Comet",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Гайд показывает, что Spark + CoC Comet играбелен на низком бюджете, с упором на порог триггера и Ману.",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "context": "Игроки спорят о границах MoM/EB/Archmage.",
+          "label": "Cast on Crit Comet Stormweaver Endgame",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "Эндгейм-гайд проясняет границы вариантов и снаряжение, делая упор на треугольник Маны.",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "order": 150,
+      "visible": true,
+      "toc": true,
+      "title": "Устранение неполадок",
+      "problems": [
+        {
+          "symptom": "Comet не срабатывает",
+          "checks": [
+            "Хватает крита?",
+            "Мана держится?",
+            "Скорость каста на пороге?"
+          ]
+        },
+        {
+          "symptom": "Смерть от низкой Маны",
+          "checks": [
+            "MoM/ES активны?",
+            "Пул Маны достаточен?"
+          ]
+        },
+        {
+          "symptom": "Зачистка замедляется",
+          "checks": [
+            "База посоха по тиру?",
+            "Хватает снарядов?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "order": 160,
+      "visible": true,
+      "toc": false,
+      "title": "ЧаВо",
+      "items": [
+        {
+          "question": "Когда переходить с самокаста Spark на CoC?",
+          "answer": [
+            "Переходите только после того, как крит, Мана и скорость каста достигнут порога триггера; иначе сначала стабилизируйте зачистку."
+          ],
+          "bullets": [
+            "Подтвердите по чек-листу."
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "Почему низкая Мана убивает меня напрямую?",
+          "answer": [
+            "Мана поглощает урон при низком здоровье; недостаток Маны — это брешь в защите, сквозь которую пробивают умения боссов."
+          ],
+          "bullets": [
+            "Держите треугольник Маны."
+          ],
+          "relatedLinks": [
+            {
+              "href": "/ru/guides/how-to-stop-getting-one-shot/",
+              "label": "См. гайд против ваншотов"
+            }
+          ]
+        },
+        {
+          "question": "Можно ли использовать MoM и Archmage вместе?",
+          "answer": [
+            "Смешивать не рекомендуется; это разные варианты использования Маны, настройте один чёткий вариант."
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        }
+      ]
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "order": 165,
+      "visible": true,
+      "toc": false,
+      "title": "Планировщик билда и импорт",
+      "note": "Вставляемые строки импорта и .build-файлы всё ещё ожидают проверки на ПК; пока используйте гайды авторов и официальный планировщик ниже. Всегда переподтверждайте узлы в своём клиенте.",
+      "creatorName": "Community Guide",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/build-planner",
+      "creatorUrl": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 180,
+      "visible": true,
+      "toc": true,
+      "title": "Смотреть зачистку и ритм триггера",
+      "entries": [
+        {
+          "creator": "Community",
+          "label": "0.5 Бюджетный Spark CoC Comet",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc",
+          "description": "Играбельность бюджетного Spark + CoC Comet и порог триггера.",
+          "takeaway": "Фокус на порог триггера и управление Маной.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Вступление"
+            },
+            {
+              "time": "1:30",
+              "label": "Зачистка и Spark"
+            },
+            {
+              "time": "4:00",
+              "label": "Порог триггера"
+            },
+            {
+              "time": "7:00",
+              "label": "Управление Маной"
+            },
+            {
+              "time": "10:00",
+              "label": "Снаряжение"
+            }
+          ]
+        },
+        {
+          "creator": "Community",
+          "label": "0.5 CoC Comet Stormweaver Endgame",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo",
+          "description": "Эндгейм: границы вариантов, снаряжение и треугольник Маны.",
+          "takeaway": "Смотрите финальное снаряжение и геймплей по боссам.",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Вступление"
+            },
+            {
+              "time": "2:00",
+              "label": "Границы вариантов"
+            },
+            {
+              "time": "5:00",
+              "label": "Снаряжение и Мана"
+            },
+            {
+              "time": "8:00",
+              "label": "Геймплей по боссам"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "order": 190,
+      "visible": true,
+      "toc": true,
+      "title": "Источники и верификация",
+      "categories": [
+        {
+          "label": "Official",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Community",
+          "description": "Budget Spark CoC Comet Guide (YouTube)",
+          "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+        },
+        {
+          "label": "Community",
+          "description": "Cast on Crit Comet Stormweaver Endgame (YouTube)",
+          "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+        },
+        {
+          "label": "Community",
+          "description": "PoE2 Stormweaver Spark Budget Build (YouTube)",
+          "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "order": 200,
+      "visible": true,
+      "toc": false,
+      "title": "Журнал изменений",
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Создан документированный гайд по билду Spark CoC Comet Stormweaver 0.5.4; ПК-верификация в процессе."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "cold-caster-chronomancer"
+  ],
+  "relatedGuideIds": [
+    "how-to-stop-getting-one-shot",
+    "how-to-fix-low-damage"
+  ],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 Patch Notes",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "Budget Spark CoC Comet Guide (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=uRY4KZJiwEc"
+    },
+    {
+      "label": "Cast on Crit Comet Stormweaver Endgame (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=f4yMRuWwOmo"
+    },
+    {
+      "label": "PoE2 Stormweaver Spark Budget Build (YouTube)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=PNEn_07PVPs"
+    }
+  ],
+  "seo": {
+    "title": "Гайд по билду Spark CoC Comet Stormweaver | Exile2 Guides",
+    "description": "0.5.4 Spark CoC Comet Stormweaver: зачистка Spark, одиночные цели CoC Comet, порог триггера, треугольник Маны и границы вариантов.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "spark-coc-comet-stormweaver",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

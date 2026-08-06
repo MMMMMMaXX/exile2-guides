@@ -1,0 +1,458 @@
+{
+  "id": "patch-0-4-0-fate-of-the-vaal-temple",
+  "slug": "patch-0-4-0-fate-of-the-vaal-temple",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 Fate of the Vaal & Atziri 사원: 비콘, 방, 그리고 0.4.0d/e 수정 사항",
+  "shortTitle": "0.4.0 Fate of the Vaal / 사원",
+  "summary": "0.4.0 Fate of the Vaal 리그가 다중 방 구조의 Atziri 사원을 어떻게 만들었는지, 론칭 당시 방이 끊기거나 불안정해진 이유, 그리고 0.4.0d와 0.4.0e가 현재 규칙을 어떻게 바꿨는지 설명합니다.",
+  "description": "Fate of the Vaal과 건설 가능한 Atziri 사원의 메커니즘 변천사: 비콘, 에너지, 방 배치와 업그레이드, Architect/Atziri/Chambers/Vault 관계, 0.4.0d 연결성 수정, 그리고 0.4.0e의 자동 불안정화(Destabilisation) 제거.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "imageAlt": "Atziri, the Red Queen, 재건된 사원의 최종 보스",
+  "tags": [
+    "league",
+    "major-updates"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "빠른 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Fate of the Vaal은 0.4.0 리그로, 그 핵심 콘텐츠는 비콘을 배치해 에너지를 소모하여 방을 짓는 방식으로 꾸리는 건설 가능한 Atziri 사원입니다. 더 깊은 방으로 갈수록 Chambers에 이르고, 궁극적으로는 Vault와 Atziri 본인에게 닿게 됩니다.",
+        "론칭 당시 이 시스템에는 두 가지 심각한 문제가 있었습니다. 취약한 방 연결성과 경고 없이 진행을 망가뜨릴 수 있는 자동 불안정화입니다. 두 문제 모두 0.4.0d와 0.4.0e에서 해결되었으므로, 현재 사원의 동작은 론칭 주간 영상과는 상당히 다릅니다."
+      ],
+      "bullets": [
+        "비콘은 에너지를 소모하여 방을 배치하고 업그레이드합니다",
+        "Architect는 방을 짓고 지키며, Atziri는 최종 보스입니다",
+        "0.4.0d는 방 연결 로직과 사망 재시도 흐름을 수정했습니다",
+        "0.4.0e는 자동 불안정화를 제거하고 경고를 추가했습니다",
+        "론칭 주간의 오래된 사원 가이드는 제거된 동작을 설명합니다"
+      ]
+    },
+    {
+      "id": "system-flow",
+      "order": 2,
+      "title": "시스템 흐름",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Beacons",
+          "verdict": "핵심 루프",
+          "detail": "비콘은 사원 지역에 배치되며 방을 건설하기 위해 에너지를 소모합니다. 배치 위치가 어떤 방이 연결되는지를 결정합니다."
+        },
+        {
+          "area": "Energy",
+          "verdict": "자원",
+          "detail": "클리어한 방과 리그 활동에서 얻으며, 건설하고 업그레이드할 수 있는 방의 수를 제한합니다."
+        },
+        {
+          "area": "Rooms",
+          "verdict": "건설 가능",
+          "detail": "각 방은 고유한 기능(보상, 위험 요소, 보스 전실)을 가집니다. 연결성은 론칭 주간의 골칫거리였습니다."
+        },
+        {
+          "area": "Chambers / Vault",
+          "verdict": "심층 진행",
+          "detail": "Chambers는 Vault로 가는 관문이며, Vault는 Atziri, the Red Queen에게 이르는 길입니다."
+        }
+      ]
+    },
+    {
+      "id": "boss-access",
+      "order": 3,
+      "title": "보스 접근: Architect, Atziri, Chambers",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "The Architect",
+          "detail": "사원 방을 짓고 지킵니다. 0.4.0e 이후 그 페이싱이 조정되어, 진행을 끝내는 존재가 아니라 위협으로 작용합니다.",
+          "action": "진행 차단 방지 계획에 과도하게 투자하지 말고 위협으로 대하세요."
+        },
+        {
+          "name": "Atziri, the Red Queen",
+          "detail": "Vault을 통해 도달하는 최종 보스입니다. 정체성은 변하지 않았지만, 아레나 접근은 0.4.0d 이후의 연결 규칙을 따릅니다.",
+          "action": "접근 가이드를 현재 연결 규칙에 맞춰 업데이트하세요."
+        },
+        {
+          "name": "Vaal-touched rares",
+          "detail": "사원 방 내부에서 변형(부패) 효과를 부여하는 존재로, 리그의 위험/보상 요소 중 하나입니다.",
+          "action": "별도 리그가 아니라 Endgame/Temple 하위로 분류하세요."
+        }
+      ]
+    },
+    {
+      "id": "reward-map",
+      "order": 4,
+      "title": "보상 지도",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "Currency",
+          "title": "Orb of Sacrifice",
+          "detail": "사원 제작과 리그와 함께 도입된 Vaal 부패 워크플로우의 중심입니다.",
+          "tags": [
+            "vaal",
+            "currency",
+            "crafting"
+          ]
+        },
+        {
+          "kind": "Currency",
+          "title": "Vaal Orb",
+          "detail": "부패시키는 역할은 이전 동작과 일관되며, Vaal 스토리라인과 함께 부각되었습니다.",
+          "tags": [
+            "vaal",
+            "corruption"
+          ]
+        },
+        {
+          "kind": "Base item",
+          "title": "Talisman",
+          "detail": "동일한 0.4.0 시점에 도입된 변신 무기 베이스이며, Vaal 콘텐츠에서 자주 드랍합니다.",
+          "tags": [
+            "druid",
+            "weapon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixes-d",
+      "order": 5,
+      "title": "0.4.0d 수정 사항",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "방 연결 로직",
+          "detail": "0.4.0d에서 배치된 방이 어떻게 연결되는지 다시 작성하여, 도달 불가능한 방과 막다른 경로를 줄였습니다.",
+          "scope": "공식 0.4.0d 노트"
+        },
+        {
+          "category": "fix",
+          "title": "사망 재시도 흐름",
+          "detail": "사원 내 사망 이후의 피드백과 재시도를 개선하여, 전멸이 방 상태를 조용히 손상시키지 않도록 했습니다.",
+          "scope": "공식 0.4.0d 노트"
+        },
+        {
+          "category": "fix",
+          "title": "맵 상태 피드백",
+          "detail": "연결된 방과 대기 중인 방을 구분하는 더 명확한 표시기를 추가했습니다.",
+          "scope": "공식 0.4.0d 노트"
+        }
+      ]
+    },
+    {
+      "id": "fixes-e",
+      "order": 6,
+      "title": "0.4.0e 수정 사항",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "자동 불안정화(Destabilisation) 제거",
+          "detail": "0.4.0e에서 경고 없이 사원을 망가뜨릴 수 있던 자동 불안정화를 삭제했습니다. 이제 방은 명시적 경고 이후에만 불안정해집니다.",
+          "scope": "공식 0.4.0e 노트"
+        },
+        {
+          "category": "balance",
+          "title": "Architect 페이싱",
+          "detail": "불안정화 제거 이후 Architect의 압박을 조정하여, 진행을 끝내는 무작위성 없이도 리그의 긴장감을 유지했습니다.",
+          "scope": "공식 0.4.0e 노트"
+        },
+        {
+          "category": "qol",
+          "title": "사원 UI 경고",
+          "detail": "조용한 자동 진행 방해를 대체하여, 방이 불안정해지기 전에 명시적인 경고를 추가했습니다.",
+          "scope": "공식 0.4.0e 노트"
+        }
+      ]
+    },
+    {
+      "id": "then-now",
+      "order": 7,
+      "title": "과거 vs 현재",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "방 연결성",
+          "thenText": "0.4.0 론칭: 방이 빈번하게 끊기거나 도달 불가능해졌습니다.",
+          "nowText": "0.4.0d 연결 로직이 방의 도달 가능성을 유지하며, 맵 피드백이 명시적입니다."
+        },
+        {
+          "aspect": "불안정화",
+          "thenText": "0.4.0 론칭: 사원이 경고 없이 자동으로 불안정해질 수 있었습니다.",
+          "nowText": "0.4.0e가 자동 불안정화를 제거했으며, 방은 먼저 경고합니다."
+        },
+        {
+          "aspect": "사원 내 사망",
+          "thenText": "0.4.0 론칭: 사망이 방 상태를 조용히 손상시킬 수 있었습니다.",
+          "nowText": "0.4.0d 재시도 흐름이 상태를 보존하고 명확한 피드백을 제공합니다."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 8,
+      "title": "현재 적용 범위 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "비콘 / 에너지 방 건설",
+          "status": "still-current",
+          "currentSummary": "사원의 핵심 루프 정체성은 변하지 않았습니다. 비콘이 에너지를 소모하여 방을 짓습니다.",
+          "supersededBy": "—",
+          "affectedContent": "Atziri 사원 가이드"
+        },
+        {
+          "topic": "방 연결 규칙",
+          "status": "changed-later",
+          "currentSummary": "0.4.0d에서 연결성을 다시 작성했습니다. 이후 맵 업데이트로 추가 조정되었을 수 있습니다.",
+          "supersededBy": "0.4.0d, 0.5.x 맵 업데이트",
+          "affectedContent": "Atziri 사원 가이드"
+        },
+        {
+          "topic": "자동 불안정화",
+          "status": "removed",
+          "currentSummary": "0.4.0e에서 제거되었습니다. 방이 더 이상 자동으로 진행을 망가뜨리지 않습니다.",
+          "supersededBy": "0.4.0e",
+          "affectedContent": "Fate of the Vaal 가이드"
+        },
+        {
+          "topic": "최종 보스로서의 Atziri",
+          "status": "still-current",
+          "currentSummary": "0.5.4e에서도 Atziri는 사원의 최종 보스로 남아 있습니다.",
+          "supersededBy": "—",
+          "affectedContent": "Atziri 보스 페이지"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 9,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (0.4.0 론칭 주간)",
+          "context": "플레이어들이 도달 불가능한 방과 조용한 불안정화를 보고했습니다.",
+          "quote": "내 사원 절반이 도달 불가능했고, 그러고 나니 경고 없이 불안정해졌어요.",
+          "analysis": "론칭 동작과 일치합니다. 0.4.0d가 연결성을 수정했고 0.4.0e가 자동 불안정화를 제거했습니다. 현재 플레이에서는 이런 일이 나타나지 않아야 합니다."
+        },
+        {
+          "source": "포럼 (0.4.0e 이후)",
+          "context": "플레이어들이 불안정화 이전에 경고가 나타남을 확인했습니다.",
+          "quote": "이제 방이 불안정해지기 전에 진짜 경고가 뜨네요.",
+          "analysis": "0.4.0e 동작이 적용 중임을 확인합니다. 0.4.0e 이후 가이드를 사용하세요."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "문제 해결",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "방이 '대기 중(pending)'으로 표시되어 연결되지 않습니다 — 비콘 배치와 에너지를 확인하세요. 이것은 연결 이전의 정상적인 상태이지 버그가 아닙니다.",
+          "status": "tracking"
+        },
+        {
+          "text": "Atziri에 도달할 수 없습니다 — Chamber 경로가 론칭 주간 경로가 아니라 0.4.0d 이후의 연결 규칙을 따르는지 확인하세요.",
+          "status": "open"
+        },
+        {
+          "text": "구버전 영상에 자동 불안정화가 나옵니다 — 그것은 0.4.0e 이전 영상이며 현재 규칙을 반영하지 않습니다.",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "영향을 받은 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Atziri 사원 가이드",
+          "type": "guide",
+          "trigger": "0.4.0d/e 연결 + 불안정화 변경",
+          "action": "연결 및 재시도 섹션을 다시 작성하고, 자동 불안정화를 제거하세요.",
+          "status": "queued"
+        },
+        {
+          "name": "Atziri 보스 페이지",
+          "type": "boss",
+          "trigger": "아레나 접근 규칙",
+          "action": "접근을 0.4.0d 이후 규칙에 맞춰 업데이트하세요.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Orb of Sacrifice 아이템 페이지",
+          "type": "item",
+          "trigger": "사원 제작",
+          "action": "Vaal 부패 워크플로우를 문서화하세요.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "역사적 영상",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 Fate of the Vaal — 사원 건설",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "론칭 주간 사원 소개 영상이며, 여기에 나온 자동 불안정화는 0.4.0e에서 제거되었음을 유의하세요.",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "오래된 사원 영상이 방이 스스로 불안정해지는 이유는 무엇인가요?",
+          "answer": [
+            "그것은 0.4.0 론칭 동작이었습니다. 0.4.0e가 자동 불안정화를 제거했으므로, 이제 방은 불안정해지기 전에 경고합니다."
+          ]
+        },
+        {
+          "question": "비콘과 에너지가 여전히 사원의 동작 방식인가요?",
+          "answer": [
+            "네, 비콘/에너지 방 건설 루프는 0.5.4e에서도 여전히 사원의 핵심 메커니즘이며, 연결성과 불안정화 규칙만 바뀌었습니다."
+          ]
+        },
+        {
+          "question": "Atziri는 여전히 최종 보스인가요?",
+          "answer": [
+            "네, Atziri the Red Queen은 여전히 사원의 최종 보스이며, 아레나 접근 경로만 0.4.0d 이후에 바뀌었습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.4.0 패치 노트",
+          "description": "Fate of the Vaal 리그와 Atziri 사원 도입.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0d 패치 노트",
+          "description": "방 연결 및 사망 재시도 수정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3983000"
+        },
+        {
+          "label": "Path of Exile 2 공식 0.4.0e 패치 노트",
+          "description": "자동 불안정화(Destabilisation) 제거 및 Architect 조정.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3985000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "atziri-red-queen"
+  ],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.4.0 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0d 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3983000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Path of Exile 2 공식 0.4.0e 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3985000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 Fate of the Vaal & Atziri 사원 — 비콘, 방 & 0.4.0d/e 수정 사항",
+    "description": "0.4.0 Atziri 사원이 어떻게 동작했는지, 론칭 당시 방이 깨진 이유, 그리고 0.4.0d/e가 0.5.4e를 위해 무엇을 바꿨는지.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-fate-of-the-vaal-temple",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

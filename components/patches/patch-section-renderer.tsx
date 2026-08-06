@@ -11,7 +11,7 @@ import { SourcesSection } from "../content/sections/sources-section";
 import { renderPatchRichSection } from "./patch-rich-sections";
 
 const rendererLabels: Record<
-  ContentLocale,
+  "en" | "zh-cn",
   {
     source: string;
     takeaway: string;
@@ -31,7 +31,7 @@ const rendererLabels: Record<
 };
 
 /** 各章节类型的眉标（小字大写标签），与原型 section-heading 的 eyebrow 对应。 */
-const patchEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
+const patchEyebrowLabels: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     overview: "OVERVIEW",
     "important-changes": "KEY CHANGES",
@@ -86,7 +86,7 @@ const patchEyebrowLabels: Record<ContentLocale, Record<string, string>> = {
 
 /** 根据章节类型回退眉标；无映射时英文用类型大写、中文用原类型。 */
 function patchEyebrow(type: string, locale: ContentLocale): string {
-  const label = patchEyebrowLabels[locale][type];
+  const label = patchEyebrowLabels[locale === "zh-cn" ? "zh-cn" : "en"][type];
   if (label) return label;
   return locale === "zh-cn" ? type : type.toUpperCase().replace(/-/g, " ");
 }
@@ -96,7 +96,7 @@ function renderSectionContent(
   section: PatchSection,
   locale: ContentLocale,
 ): ReactNode {
-  const labels = rendererLabels[locale];
+  const labels = rendererLabels[locale === "zh-cn" ? "zh-cn" : "en"];
 
   switch (section.type) {
     case "overview":
@@ -202,7 +202,7 @@ export function PatchSectionRenderer({ article }: { article: PatchArticle }) {
   ].filter(Boolean) as ReactNode[];
 }
 
-const historicalStatusLabels: Record<ContentLocale, Record<string, string>> = {
+const historicalStatusLabels: Record<"en" | "zh-cn", Record<string, string>> = {
   en: {
     historical: "Historical Patch",
     "partially-current": "Partially current",
@@ -226,7 +226,9 @@ function HistoricalPatchBanner({
   if (!article.historicalStatus) return null;
   const checked = article.lastVerifiedAt ?? article.updatedAt;
   const statusLabel =
-    historicalStatusLabels[locale][article.historicalStatus] ??
+    historicalStatusLabels[locale === "zh-cn" ? "zh-cn" : "en"][
+      article.historicalStatus
+    ] ??
     article.historicalStatus;
   return (
     <div

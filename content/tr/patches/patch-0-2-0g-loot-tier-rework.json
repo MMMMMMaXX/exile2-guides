@@ -1,0 +1,576 @@
+{
+  "id": "patch-0-2-0g-loot-tier-rework",
+  "slug": "patch-0-2-0g-loot-tier-rework",
+  "locale": "tr",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.2.0g Ganimet Katmanı Yeniden Düzenlemesi: Boss Düşürmeleri, Kademeli Nadirler, Simulacrum ve Filtre Riskleri",
+  "shortTitle": "0.2.0g Ganimet Katmanı Yeniden Düzenlemesi",
+  "summary": "0.2.0g, üst düzey canavarların daha az işe yaramaz beyaz eşya ve daha iyi işçilik tabanları düşürmesi, boss düşürme korumasını değiştirmesi ve geri alınmadan önce kısa süreliğine ustaları bozması için eşya nadirlik katmanlarını yeniden inşa etti.",
+  "description": "0.2.0g'nin ganimet katmanı yeniden düzenlemesinin boss düşürmelerini, kademeli nadirleri, Simulacrum'ı, lig mekaniklerini ve ganimet filtrelerini nasıl değiştirdiği ve 0.5.4e istemcisinde hâlâ nelerin geçerli olduğu.",
+  "patchCategory": "balance",
+  "patchVersion": "0.2.0g",
+  "patch": "0.2.0g",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/catalysts-hero.webp",
+  "cardImage": "/images/items/catalysts-hero.webp",
+  "imageAlt": "0.2.0g ganimet avı sonrası yerdeki katalizörler ve para birimi.",
+  "tags": [
+    "patch",
+    "0-2-0g",
+    "loot",
+    "item-tier",
+    "filter",
+    "simulacrum"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "item-tier",
+      "status": "changed-later",
+      "currentSummary": [
+        "Item Tier kavramı hayatta kaldı, ancak tam katman eşikleri ve hangi modların katmanla ölçeklendiği sonraki yamalar tarafından ayarlandı."
+      ],
+      "supersededByPatchIds": [
+        "patch-0-2-0h-item-filter-jewellers-qol"
+      ],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "boss-drop-protection",
+      "status": "still-current",
+      "currentSummary": [
+        "0.2.0g'dan gelen boss düşürme koruması, 0.5.4e'da zirve ve harita bosslarının ödülleri nasıl garanti ettiğini hâlâ belirliyor."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "gem-rollback",
+      "status": "removed",
+      "currentSummary": [
+        "0.2.0g'daki ustanın kaybolma hatası günler içinde düzeltildi ve 0.5.4e'da mevcut değil."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Hızlı özet",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.2.0g, topluluğun Ganimet Yaması dediği yamadır. Item Tier'ı tanıttı: nadirliğin üzerine eklenen bir katman olup, üst düzey canavarların daha az işe yaramaz beyaz eşya ve oyuncuların gerçekten işçilik yapmak istediği daha fazla Sihirli ve Nadir taban düşürmesini sağlar.",
+        "Ayrıca boss düşürme korumasını değiştirdi, Kampanya ve endgame kaynaklarının hissiyatını yeniden dengeledi ve Simulacrum, Trials, Expedition, Delirium ve Strongbox'lara dokundu. Dağıtımdan hemen sonra bir ustanın kaybolma hatası ortaya çıktı ve geri alındı; çoğu 1. gün görüntüsünün bağlam dışı gösterdiği kısım budur.",
+        "Bu sayfa 0.2.0g'nin gerçekte neyi değiştirdiğini, dağıtımı ve geri almayı ve ganimet modelinin hangi kısımlarının hâlâ 0.5.4e istemcisini tanımladığını, sonraki yamaların neleri yeniden yazdığını açıklar."
+      ],
+      "bullets": [
+        "Normal nadirliğin üzerine Item Tier eklendi",
+        "Boss düşürme koruması değişti",
+        "Bir ustanın kaybolma hatası yayınlandı ve sonra geri alındı",
+        "Sonraki yamalar (0.2.0h, 0.5.x) modeli ayarladı"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Tarihsel uyarı",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — 0.2.0 dönemi",
+      "baselineNote": "Bu sayfadaki güncel durum iddiaları 0.5.4e istemcisine karşı ölçülür.",
+      "paragraphs": [
+        "0.2.0g, Dawn of the Hunt dönemi için tarihsel bir kararlılık yamasıdır. Onun ganimet modeli bir başlangıç noktasıydı; sonraki yamalar katman eşiklerini, filtre davranışını ve lig düşürmelerini ayarladı.",
+        "Bugün bir 1. gün 0.2.0g videosu izlemek yanıltıcıdır: tam sayılar ve yayınladığı usta hatası günler içinde değiştirildi."
+      ],
+      "bullets": [
+        "0.2.0g = ganimet modelinin başlangıç noktası, nihai tasarım değil",
+        "1. gün görüntüleri geri alınmış bir hata içerir"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 3,
+      "title": "Yama ailesi zaman çizelgesi",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.2.0",
+          "date": "2025-04-04",
+          "kind": "Büyük güncelleme",
+          "summary": "Dawn of the Hunt: Huntress, yeni kılavuz sınıfları, Acts, Atlas ve lig sistemleri.",
+          "tags": [
+            "major-updates"
+          ]
+        },
+        {
+          "code": "0.2.0c",
+          "date": "2025-04",
+          "kind": "Denge",
+          "summary": "Minion ölçeklenmesi ve mızrak/boss düzeltmeleri.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0e",
+          "date": "2025-05",
+          "kind": "Denge",
+          "summary": "Act 3 düzeni, özellik runları ve oyuncu dengesi.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0g",
+          "date": "2025-05",
+          "kind": "Denge",
+          "summary": "Ganimet Katmanı yeniden düzenlemesi, boss düşürme koruması ve lig ganimet ayarı.",
+          "tags": [
+            "balance"
+          ]
+        },
+        {
+          "code": "0.2.0h",
+          "date": "2025-06",
+          "kind": "Büyük güncelleme",
+          "summary": "Item Tier filtre özelliği, Jeweller's Orbs ve endgame QoL.",
+          "tags": [
+            "major-updates"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "Ganimet kaynağı öncesi ve sonrası",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Yaygın ganimet kaynaklarının 0.2.0g öncesi ve sonrası nasıl davrandığı ve 0.5.4e ile hâlâ eşleşenler.",
+      "columns": [
+        {
+          "key": "source",
+          "label": "Kaynak"
+        },
+        {
+          "key": "before",
+          "label": "0.2.0g öncesi"
+        },
+        {
+          "key": "after",
+          "label": "0.2.0g"
+        },
+        {
+          "key": "now",
+          "label": "Güncel (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "source": "Beyaz eşyalar",
+          "before": "Üst düzey canavarlardan yaygın",
+          "after": "Üst düzey canavarlardan büyük ölçüde azaltıldı",
+          "now": "Düşük değerli beyazlar bastırılmış kaldı"
+        },
+        {
+          "source": "Sihirli / Nadir tabanlar",
+          "before": "Karışık kalite",
+          "after": "Üst düzey canavarlar işçilik tabanlarını tercih eder",
+          "now": "Katmanlama sonraki yamalarla inceltilmiş"
+        },
+        {
+          "source": "Boss düşürmeleri",
+          "before": "Değişken",
+          "after": "Düşürme koruması ayarlandı",
+          "now": "Koruma hâlâ aktif"
+        },
+        {
+          "source": "Simulacrum",
+          "before": "Eski ödül ağırlığı",
+          "after": "Katman modeliyle ayarlandı",
+          "now": "O zamandan beri süren ayarlama"
+        }
+      ]
+    },
+    {
+      "id": "item-impact",
+      "order": 5,
+      "title": "Eşya ve işçilik etkisi",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "system",
+          "title": "Item Tier",
+          "detail": "Nadirliğin üzerinde yeni bir katman. Üst düzey canavarlar artık daha az beyaz ve toplamaya değer Sihirli/Nadir tabanların daha çoğunu düşürür. Yalnızca nadirlikle eşleşen filtre kuralları bu kademeli tabanları gizleyebilir.",
+          "tags": [
+            "tier",
+            "rarity",
+            "filter"
+          ]
+        },
+        {
+          "kind": "base",
+          "title": "Kademeli Sihirli / Nadir tabanlar",
+          "detail": "Daha yüksek katman, daha iyi mod yuvarlanmalarıyla ilişkilidir ve onları 0.2.0g öncesine göre daha güçlü işçilik hedefleri yapar.",
+          "tags": [
+            "crafting",
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 6,
+      "title": "Filtre ve farm etkisi",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "0.2.0g'nin en büyük pratik tuzağı ganimet filtreleriydi. Yalnızca nadirliğe göre ayarlanmış filtreler yeni kademeli tabanları gizleyebilirdi, böylece eski bir filtreden yükselten oyuncular iyi düşürmeleri görmeyi aniden bıraktı.",
+        "Katman anlamı 0.2.0h ve sonrasında tekrar değiştiği için, yalnızca 0.2.0g'ye karşı yazılmış herhangi bir filtre güncel istemci için eksiktir."
+      ],
+      "bullets": [
+        "Eski yalnızca-nadirlik filtreleri kademeli tabanları gizleyebilir",
+        "Filtreleri güncel istemciye karşı yeniden doğrulayın"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 7,
+      "title": "Beyaz eşyalar ve kademeli düşürmeler",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.2.0g öncesi",
+      "oldText": "Üst düzey canavarlar çok sayıda beyaz eşya ve düşük değerli altın düşürdü, bu yüzden ekranı temizlemek ödüllendirici hissettiriyordu ama toplananlar çoğunlukla satıcı çöpüydü.",
+      "newLabel": "0.2.0g sonrası",
+      "newText": "Üst düzey canavarlar çok daha az beyaz ve tanımlamaya ve işçilik yapmaya değer Sihirli ve Nadir tabanların daha çoğunu düşürür; bu, oyuncuların neyi filtrelediğini ve ne topladığını yeniden şekillendirdi."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 8,
+      "title": "O zaman ve şimdi",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Item Tier kavramı",
+          "thenText": "0.2.0g'de yeni bir nadirlik katmanı olarak tanıtıldı.",
+          "nowText": "0.5.4e'da hâlâ mevcut ama ayarlanmış eşikler ve katman tabanlı modlarla."
+        },
+        {
+          "aspect": "Boss düşürme koruması",
+          "thenText": "0.2.0g'de yeniden dengelendi.",
+          "nowText": "Zirve ve harita bossu ödül garantilerini yönetmeye devam ediyor."
+        },
+        {
+          "aspect": "Usta hatası",
+          "thenText": "0.2.0g ile bir ustanın kaybolma hatası yayınlandı.",
+          "nowText": "Günler içinde düzeltildi; 0.5.4e'da yok."
+        }
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 9,
+      "title": "Dağıtım ve geri alma",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "0.2.0g dağıtıldıktan kısa süre sonra bazı oyuncular skill ustalarının skill ustalarından kaybolduğunu bildirdi; bu, günler içinde bir hotfix ile geri alınan bir gerilemeydi.",
+          "status": "fixed"
+        },
+        {
+          "text": "Eski ganimet filtrelerindeki oyuncular, filtrelerini güncelleyene kadar geçici olarak kademeli tabanları görmeyi bıraktı.",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 10,
+      "title": "Güncel uygulanabilirlik (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Item Tier kavramı",
+          "status": "changed-later",
+          "currentSummary": "Mevcut ama sonraki yamalarla ayarlanmış.",
+          "supersededBy": "0.2.0h, 0.5.x",
+          "affectedContent": "Ganimet filtresi ve işçilik rehberleri"
+        },
+        {
+          "topic": "Boss düşürme koruması",
+          "status": "still-current",
+          "currentSummary": "Boss ödül garantilerini hâlâ yönetiyor.",
+          "supersededBy": "—",
+          "affectedContent": "Boss ve endgame rehberleri"
+        },
+        {
+          "topic": "0.2.0g usta hatası",
+          "status": "removed",
+          "currentSummary": "0.5.4e'da mevcut değil.",
+          "supersededBy": "—",
+          "affectedContent": "—"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 11,
+      "title": "Topluluk kanıtı",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Forum (0.2.0g haftası)",
+          "context": "Oyuncular dayanıklı canavarlardan düşen çok daha az beyaz fark etti.",
+          "quote": "Sonunda ekran, anında görmezden geldiğim beyaz eşyaların %80'i değil.",
+          "analysis": "Çöp yerine faydalı işçilik tabanlarına doğru amaçlanan kaymayla eşleşiyor."
+        },
+        {
+          "source": "Reddit (filtreler)",
+          "context": "Kullanıcılar iyi nadirlerin filtrelerinden neden kaybolduğunu sordu.",
+          "quote": "Eski filtrem bu yamadan sonra yeni kademeli tabanları gizledi.",
+          "analysis": "Yukarıda belirtilen filtre-farkındalığı riskini doğruluyor; bir düşürme oranı hatası değil."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 12,
+      "title": "İzlenecek sonraki değişiklikler",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "loot-filter-guide",
+          "kind": "guide",
+          "issue": "Yalnızca 0.2.0g için yazılmış filtre eğitimleri 0.2.0h Item Tier özelliğini kaçırıyor.",
+          "action": "0.2.0h UnidentifiedItemTier kuralıyla güncelleyin.",
+          "status": "queued"
+        },
+        {
+          "contentId": "crafting-bases-guide",
+          "kind": "guide",
+          "issue": "Katman-mod eşlemesi 0.2.0g'den sonra değişti.",
+          "action": "Katman ölçeklenmesini 0.5.4e'ye karşı yeniden doğrulayın.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 13,
+      "title": "Etkilenen içerik",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Ganimet Filtresi Kurulum rehberi",
+          "type": "guide",
+          "trigger": "0.2.0g filtrelerin ne göstermesi gerektiğini değiştirdi",
+          "action": "Item Tier ve kademeli taban kuralları ekleyin.",
+          "status": "queued"
+        },
+        {
+          "name": "İşçilik Tabanları rehberi",
+          "type": "guide",
+          "trigger": "Kademeli tabanlar işçilik değerini değiştirdi",
+          "action": "Katman ölçeklenmesini yeniden doğrulayın.",
+          "status": "queued"
+        },
+        {
+          "name": "0.2.0h Item Filter yaması",
+          "type": "patch",
+          "trigger": "Bu ganimet yeniden düzenlemesinin doğrudan devamı",
+          "action": "Filtre-özelliği takibini çapraz bağlayın.",
+          "status": "reviewing"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "Tarihsel video",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — resmi yama iletişimi",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Bu sürüm ailesi için resmi iletişim. Nelerin değiştiğini ve sonraki yamaların bunu nasıl yeniden yazdığını görmek için yama notlarıyla birlikte okuyun.",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "Yama genel bakışı",
+              "time": "00:30"
+            },
+            {
+              "label": "Ganimet ve sistem değişiklikleri",
+              "time": "04:10"
+            },
+            {
+              "label": "Güncel etki",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "SSS",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.2.0g düşürme oranlarını artırdı mı yoksa sadece beyazları mı gizledi?",
+          "answer": [
+            "Çoğunlukla üst düzey canavarlardan düşen düşük değerli beyazları azalttı ve ağırlığı faydalı Sihirli/Nadir tabanlara kaydırdı. Bu, kapsamlı bir düşürme oranı artışı değildi ve sonraki yamalar modeli ayarlamaya devam etti."
+          ]
+        },
+        {
+          "question": "Eski filtrem neden iyi eşyaları göstermeyi bıraktı?",
+          "answer": [
+            "Yalnızca nadirliğe göre ayarlanmış filtreler yeni kademeli tabanları gizleyebilirdi. Filtreyi güncelleyin ve Item Tier kurallarını güncel istemciye karşı yeniden kontrol edin."
+          ]
+        },
+        {
+          "question": "Ustanın kaybolma hatası hâlâ var mı?",
+          "answer": [
+            "Hayır. Bu, bir hotfix ile düzeltilmiş kısa ömürlü bir 0.2.0g gerilemesiydi; 0.5.4e'da mevcut değil."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "Kaynaklar ve doğrulama",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 resmi 0.2.0g yama notları",
+          "description": "Sürümün belirtilen değişikliklerini, dağıtım sırasını ve takip açıklamalarını taşıyan resmi yama başlığı.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+        },
+        {
+          "label": "Path of Exile 2 Early Access forum dizini",
+          "description": "Bu sayfada referans verilen tüm resmi EA yama ve hotfix başlıklarının dizini.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Güncel uygulanabilirlik iddiaları için güncel skill, eşya, boss ve modifikatör verileri canlı istemciye karşı çapraz kontrol edildi.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Bu makalede referans verilen skill, eşya ve modifikatörler için veritabanı girişleri.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Oyuncu etkisi çapraz kontrolleri için kullanılan topluluk build ve sistem rehberleri, birincil gerçek kaynağı olarak değil.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 17,
+      "title": "Değişiklik günlüğü",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "İstemci 0.5.4e'ye karşı güncel uygulanabilirlik kontrolleriyle tarihsel yama makalesini yayınladı."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3774669",
+      "label": "Path of Exile 2 resmi 0.2.0g yama notları",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3774669"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 Early Access forum dizini",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.2.0g Ganimet Katmanı Yeniden Düzenlemesi: Boss Düşürmeleri, Kademeli Nadirler ve Filtre Riskleri",
+    "description": "0.2.0g ganimet yeniden düzenlemesi açıklandı: eşya katmanları, boss düşürme koruması, Simulacrum ve eski filtrelerin neden yeni tabanları gizlediği.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-2-0g-loot-tier-rework",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

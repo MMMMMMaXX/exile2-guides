@@ -2,25 +2,25 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useLocation } from "react-router";
 
-import type { StaticContentPageMap } from "../../lib/content/content-page";
+import type { ContentLocale } from "../../lib/content/constants";
+import type { StaticContentRouteMap } from "../../lib/content/content-page";
+import { t } from "../../lib/i18n/ui";
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import {
   getLocaleFromPathname,
   localeHomePath,
 } from "../../lib/i18n/locale-routing";
 import { LanguageSwitcher } from "../i18n/language-switcher";
-import {
-  availablePrimaryNavigation,
-  primaryNavigation,
-} from "./site-navigation";
+import { availablePrimaryNavigation, navigationLabel } from "./site-navigation";
 
 /** 站点 Logo 图片资源路径。 */
 const siteLogoSrc = resolveImageAsset("/images/logo.png");
 
 /** 根据当前 URL 判断一级栏目，后续分类页注册后不需要在组件中复制路由规则。 */
 function getActiveNavigationId(pathname: string): string | undefined {
-  return primaryNavigation.find((item) => pathname.includes(`/${item.id}/`))
-    ?.id;
+  return availablePrimaryNavigation.find((item) =>
+    pathname.includes(`/${item.id}/`),
+  )?.id;
 }
 
 /** 水合状态不依赖外部订阅；空订阅用于为服务端与客户端提供稳定的快照边界。 */
@@ -30,9 +30,9 @@ function subscribeToHydration() {
 
 /** 渲染共享页头；未注册的未来页面以禁用状态展示，避免当前版本生成 404 内链。 */
 export function Header({
-  contentPages = {},
+  contentRoutes = {},
 }: {
-  contentPages?: StaticContentPageMap;
+  contentRoutes?: StaticContentRouteMap;
 }) {
   const { pathname } = useLocation();
   const isHydrated = useSyncExternalStore(
@@ -43,9 +43,9 @@ export function Header({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const activeNavigationId = getActiveNavigationId(pathname);
   const currentLocale = getLocaleFromPathname(pathname);
+  const locale: ContentLocale = currentLocale ?? "en";
   const brandHref = currentLocale ? localeHomePath(currentLocale) : "/";
   const hasPrimaryNavigation = availablePrimaryNavigation.length > 0;
-  const zh = currentLocale === "zh-cn";
 
   // 菜单展开时支持 Escape 收起，避免键盘用户必须反向遍历所有导航项。
   useEffect(() => {
@@ -71,12 +71,12 @@ export function Header({
         return;
       }
       event.preventDefault();
-      window.location.assign(`/${currentLocale ?? "en"}/search/`);
+      window.location.assign(`/${locale}/search/`);
     }
 
     document.addEventListener("keydown", openSearchOnShortcut);
     return () => document.removeEventListener("keydown", openSearchOnShortcut);
-  }, [currentLocale]);
+  }, [locale]);
 
   /** 切换移动菜单，并用 aria-expanded 保持读屏状态与实际界面同步。 */
   function toggleMobileMenu() {
@@ -111,7 +111,7 @@ export function Header({
               type="button"
               aria-controls="primary-navigation"
               aria-expanded={isMenuOpen}
-              aria-label={zh ? "切换主导航菜单" : "Toggle navigation menu"}
+              aria-label={t(locale, "header.toggleNav")}
               disabled={!isHydrated}
               onClick={toggleMobileMenu}
             >
@@ -121,7 +121,7 @@ export function Header({
             <nav
               id="primary-navigation"
               className={`site-header__navigation${isMenuOpen ? " is-open" : ""}`}
-              aria-label={zh ? "主导航" : "Primary navigation"}
+              aria-label={t(locale, "header.navAria")}
             >
               <ul>
                 <li>
@@ -136,20 +136,20 @@ export function Header({
                     }
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {zh ? "首页" : "Home"}
+                    {t(locale, "nav.home")}
                   </a>
                 </li>
                 {availablePrimaryNavigation.map((item) => (
                   <li key={item.id}>
                     <a
                       className="site-header__nav-item"
-                      href={`/${currentLocale ?? "en"}/${item.id}/`}
+                      href={`/${locale}/${item.id}/`}
                       aria-current={
                         activeNavigationId === item.id ? "page" : undefined
                       }
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.label}
+                      {navigationLabel(locale, item.id)}
                     </a>
                   </li>
                 ))}
@@ -162,18 +162,18 @@ export function Header({
 
         <div
           className="site-header__utilities"
-          aria-label={zh ? "站点工具" : "Site utilities"}
+          aria-label={t(locale, "header.utilitiesAria")}
         >
           <a
             className="site-header__search"
-            href={`/${currentLocale ?? "en"}/search/`}
-            aria-label={zh ? "搜索" : "Search"}
+            href={`/${locale}/search/`}
+            aria-label={t(locale, "header.searchLabel")}
           >
             <span aria-hidden="true">⌕</span>
-            <span>{zh ? "搜索攻略…" : "Search guides..."}</span>
+            <span>{t(locale, "header.searchPlaceholder")}</span>
             <kbd aria-hidden="true">/</kbd>
           </a>
-          <LanguageSwitcher pages={contentPages} />
+          <LanguageSwitcher routes={contentRoutes} />
         </div>
       </div>
     </header>

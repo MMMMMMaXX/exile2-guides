@@ -1,0 +1,1069 @@
+{
+  "id": "twister-spirit-walker",
+  "slug": "twister-spirit-walker",
+  "locale": "ja",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "Twister Spirit Walker ビルドガイド",
+  "shortTitle": "Twister Spirit Walker",
+  "summary": "このガイドは、シンプルなマッピングループとボス戦準備の完全な手順を分けて扱う。武器セット、回避のタイミング、強化された投射物により、全体のルートは実質的に一段と複雑になるからだ。",
+  "description": "0.5.4 を基準とした Path of Exile 2 Twister Spirit Walker ビルドの完全ガイド。",
+  "classId": "huntress",
+  "ascendancyId": "spirit-walker",
+  "mainSkillIds": [
+    "twister"
+  ],
+  "secondarySkillIds": [
+    "whirling-slash",
+    "ice-tipped-arrows",
+    "barrage",
+    "parry",
+    "vivid-stampede",
+    "primal-bounty"
+  ],
+  "stages": [
+    "starter",
+    "leveling",
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "advanced",
+  "playstyleTags": [
+    "ranged",
+    "combo",
+    "projectile",
+    "mobile",
+    "multi-button"
+  ],
+  "damageTypes": [
+    "physical",
+    "cold"
+  ],
+  "bestFor": [
+    "mapping",
+    "projectile-combos",
+    "advanced-play"
+  ],
+  "patch": "0.5.4",
+  "league": "return-of-the-ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-07-29",
+  "updatedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/twister-spirit-walker.webp",
+  "cardImage": "/images/builds/covers/twister-spirit-walker.webp",
+  "imageAlt": "槍を構えた Spirit Walker が、戦場のレーンに沿って冷気の Twister を操っている様子",
+  "tags": [
+    "bossing",
+    "cold",
+    "early-endgame",
+    "endgame",
+    "huntress",
+    "leveling",
+    "mobile",
+    "physical",
+    "ranged",
+    "spirit-walker",
+    "starter"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "type": "overview",
+      "title": "ビルド概要",
+      "order": 10,
+      "visible": true,
+      "paragraphs": [
+        "Twister は連携（シーケンス）型のビルドだ。Whirling Slash で Whirlwind を生成し、その中で Twister を解放することで Whirlwind を消費し、より高いダメージを持つ追加のツイスターを生み出す。Ice-Tipped Arrows はそのダメージを冷気に変換し、Barrage は Frenzy Charges を消費して投射物を増やし、Dodge Roll（Primal Bounty 経由）は次の投射スキルを強化する。このビルドは単なる強いジェムの列挙ではなく、順序立てた行動として覚える必要がある。",
+        "管理されているプランナーには非クリティカル版と複数のクリティカル版が記載されているが、それらの名称が本当の壁を隠している。すなわち、選んだパッケージに足りる Spirit、生存可能なボディアーマーの選択、信頼できる投射物の挙動、そしてショーケース級の装備なしで機能する回転（ルーティン）だ。",
+        "ガイドは 4 つの明示的なループ——簡易クリア、フルボス、移行前、装備完成後——を提示する。なぜなら、スキルだけの羅列では実用にならないからだ。宣伝されている DPS は、プランナーと実際のゲームプレイ条件が再現されるまでは、配信者固有のものとして扱うこと。"
+      ],
+      "bullets": [
+        "マッピング：選んだ Twister 強化を維持し、移動しながら簡易ループを回す。",
+        "ボス戦：Twister の窓を開ける前に、Parry、Whirlwind、冷気、投射物のセットアップを準備する。",
+        "宣伝されている DPS は、プランナーと実際のゲームプレイ条件が再現されるまでは配信者固有のものとして扱うこと。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "pros-cons",
+      "type": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "visible": true,
+      "pros": [
+        "ビルドの個性が明確で、段階的な進行が可能。",
+        "主要ループには現在の 0.5 ガイドの解説がある。",
+        "ガイドはマッピングとボスの前提を順序立てたループとして分離している。"
+      ],
+      "cons": [
+        "一部の仕様は現在のクライアントでの再現がまだ必要。",
+        "エンドゲームの配信者構成は高価な依存関係（武器セット、Sacred Unity）を隠している場合がある。",
+        "正確なサポートやパッシブの選択はバリアントによって変わる可能性がある。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "loop-reads",
+      "type": "playstyle",
+      "title": "ループの読み取り方",
+      "order": 30,
+      "visible": true,
+      "paragraphs": [
+        "このビルドには、状況と装備に応じて 4 つの異なるループがある。スキルだけの羅列では実用にならない——順序こそがビルドだ。以下のセクションは、各状況に対する実際の手順を記載しており、単なるスキルのリストではない。"
+      ],
+      "bullets": [
+        "マッピング＝簡易クリアループ（移動しながらの流れ）。",
+        "ボス戦＝Parry と反復する Twister を含むフルループ。",
+        "移行前＝装備／レベルの閾値を満たす前の簡略化ループ。",
+        "装備完成後＝武器セットの切り替えと Sacred Unity を含むフルループ。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "rotation-simplified-clear",
+      "type": "playstyle",
+      "title": "簡易クリアループ（マッピング）",
+      "order": 31,
+      "visible": true,
+      "paragraphs": [
+        "マッピングループは、移動しながら回す流れだ。雑魚や大半のレア敵に対して同じ順序になる。正確な回数や位置は PC 検証待ち。"
+      ],
+      "bullets": [
+        "1. Dodge Roll — Primal Bounty を誘発し、Owl Feathers を消費して次の投射スキルを強化する。",
+        "2. Whirling Slash x3 — Twister が消費する Whirlwind を最大まで溜める（コミュニティガイドではマナのため低レベルを維持）。",
+        "3. Ice-Tipped Arrows — 次の攻撃を強化し、物理から冷気への変換と氷片の発生を行う（クールダウンごとに使用）。",
+        "4. Barrage（白 mob では任意）— Frenzy Charges を消費して Twister の投射物を増やす。",
+        "5. Twister — Whirlwind の内側に立ったまま解放し、その後も移動を続けてツイスターをパック内に引きずる。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "rotation-full-boss",
+      "type": "playstyle",
+      "title": "フルボスループ",
+      "order": 32,
+      "visible": true,
+      "paragraphs": [
+        "ボスに対しては、ダメージの窓を開け、その後でセットアップから解放までの完全な手順を回す。Parry の窓の中には複数回の Twister 回転が収まる。"
+      ],
+      "bullets": [
+        "0. Parry — ボスに短い「与ダメージ 50% 増」の窓を開ける（任意の拡張オープニング）。",
+        "1. Dodge Roll — Primal Bounty の誘発。",
+        "2. Whirling Slash x3 — Whirlwind を最大まで溜める。",
+        "3. Ice-Tipped Arrows — 冷気の強化。",
+        "4. Barrage — Frenzy Charges を消費して投射物を増やす。",
+        "5. Twister xN — Whirlwind の内側で解放。ループを繰り返し、窓が終わったら再度 Parry する。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "rotation-pre-transition",
+      "type": "playstyle",
+      "title": "移行前ループ（装備／レベル閾値到達前）",
+      "order": 33,
+      "visible": true,
+      "paragraphs": [
+        "ビルドが組み上がる前——Twister の強化、武器セット、サポート、マナのいずれかが欠けている状態——は、簡略化ループを回す。正確な数値は PC 検証待ち（主張 C1〜C4）。"
+      ],
+      "bullets": [
+        "Whirling Slash を 1〜2 回（マナやレベルに制限がある場合は最大化を気にしなくてよい）。",
+        "Twister を Whirlwind へ向けて解放。",
+        "移動を継続。閾値を満たすまでは Barrage、Ice-Tipped Arrows のタイミング、Primal Bounty の同期は省略。",
+        "優先すべきは最大ツイスターではなく、機能し生存できるループ。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "rotation-post-gear",
+      "type": "playstyle",
+      "title": "装備完成後ループ（組み上がった後）",
+      "order": 34,
+      "visible": true,
+      "paragraphs": [
+        "槍、サポート、2 つの武器セット、そして Sacred Unity トリオ（Vivid Stampede、Primal Bounty、Wild Protector）を割り当てた後は、武器セットの規律を持ったフルボス手順がループとなる。"
+      ],
+      "bullets": [
+        "セットアップ用武器セット（攻撃速度の槍）に切り替えて Whirling Slash を使用。",
+        "Dodge Roll -> Whirling Slash x3 -> Ice-Tipped Arrows -> Barrage。",
+        "ダメージ用武器セットに切り替え、その後 Whirlwind の内側で Twister を解放。",
+        "Vivid Stampede は Shocked Ground を、Sacred Unity は Soaring Ground を残し、ツイスターの強化を維持する。これを繰り返す。"
+      ],
+      "toc": false
+    },
+    {
+      "id": "projectile-line-visual",
+      "type": "figure",
+      "title": "Twister の前に軌跡を作る",
+      "order": 45,
+      "visible": true,
+      "toc": false,
+      "image": {
+        "src": "/images/builds/media/twister-spirit-walker-mechanic.webp",
+        "alt": "Twister を放つ前に冷気のレーンを準備する Spirit Walker を描いた編集図解",
+        "caption": "Whirling Slash で Whirlwind を作り、冷気と投射物で強化し、その後 Whirlwind の内側で Twister を解放して嵐を消費させ、追加のツイスターを生み出す。",
+        "credit": "Exile2 Guides によるオリジナルの編集イラスト",
+        "sourceKind": "generated"
+      }
+    },
+    {
+      "id": "leveling",
+      "type": "leveling",
+      "title": "レベリング",
+      "order": 50,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン開始",
+          "body": [
+            "検証済みの仮構成を使い、機能する武器かスペル集中を優先する。"
+          ]
+        },
+        {
+          "label": "コアスキルへの移行",
+          "body": [
+            "Twister と Whirling Slash をアンロックし、現在のジェムとリソース要件を満たしてからのみ切り替える（レベル要件は PC 検証待ち、主張 C1）。"
+          ]
+        },
+        {
+          "label": "キャンペーン終盤",
+          "body": [
+            "耐性、回復、主要リソースのループを整える。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "エンドゲームのスナップショットを混ぜるのではなく、文書化された 1 つのバリアントを採用する。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "スキル",
+      "order": 60,
+      "visible": true,
+      "groups": [
+        {
+          "label": "コアスキル",
+          "skills": [
+            {
+              "skillId": "twister",
+              "displayName": "Twister",
+              "role": "主要ダメージスキル。Twister を解放し、Whirlwind を消費して増殖させ、属性ダメージを得る。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Whirlwind と属性グラウンドを移動する範囲ダメージに変える唯一のスキル。クリアとボスの出力はすべてこれに依存する。"
+              ],
+              "whenReplace": [
+                "決して置き換えない。他のすべてのスキルはこれを強化するために存在する。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：Whirlwind の内側で放ち、移動を続けてツイスターをパック内に引きずる。ボス戦：同じ解放だが、Parry／ダメージの窓の中で戦闘全体にわたって反復する。"
+              ],
+              "notes": [
+                "正確なサポートリンクとジェムレベルは PC 検証待ち。Whirlwind の内側に立ったまま詠唱しないとボーナスが崩れる。"
+              ]
+            },
+            {
+              "skillId": "whirling-slash",
+              "displayName": "Whirling Slash",
+              "role": "Twister が消費して追加のツイスターと段階あたり +80% の増ダメージを得る Whirlwind を生成する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Twister のための Whirlwind 燃料を供給する。コミュニティガイドではマナ効率のために低レベルを維持している。"
+              ],
+              "whenReplace": [
+                "置き換えない。これはダメージを競うものではなく、セットアップ用スキルだ。"
+              ],
+              "mappingBossingDiff": [
+                "マッピングとボス戦の両方で詠唱する（多くの場合最大化のため x3）。違いは使用法ではなく文脈にある。"
+              ],
+              "notes": [
+                "正確なレベルと AoE の境界値は PC 検証待ち（主張 C1／C4）。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "補助候補",
+          "skills": [
+            {
+              "skillId": "ice-tipped-arrows",
+              "displayName": "Ice-Tipped Arrows",
+              "role": "次の投射攻撃を強化し、物理から冷気への変換と氷片の誘発を行う。冷気の相互作用を供給する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Twister 上で属性グラウンドと凍結のシナジーを観測可能にする冷気レイヤーを追加する。"
+              ],
+              "whenReplace": [
+                "セットアップ補助として維持。検証済みでより強い冷気エネブラーが現れた場合のみ交換。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：移動しながらクールダウンごとに使用。ボス戦：Twister の前のバースト窓の中で付与。"
+              ],
+              "notes": [
+                "クールダウン基準。Frenzy Charge を消費することで迂回される可能性がある。"
+              ]
+            },
+            {
+              "skillId": "barrage",
+              "displayName": "Barrage",
+              "role": "Frenzy Charges を消費して Twister の投射物を増やす。強力な単体火力向上。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "蓄積した Frenzy Charges を、ボスや密集パック向けのより多くの Twister 投射物に変換する。"
+              ],
+              "whenReplace": [
+                "ボス／レア用の道具。白 mob では任意。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：白 mob では任意。ボス戦：Twister の前のセットアップ中に発射。"
+              ],
+              "notes": []
+            },
+            {
+              "skillId": "parry",
+              "displayName": "Parry",
+              "role": "防御用ツール。追撃時にボスへの「与ダメージ 50% 増」の窓を開く。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "複数回の Twister 回転が収まる、対象への短い被ダメージ窓を開ける。"
+              ],
+              "whenReplace": [
+                "ボス戦用に維持。雑魚には不要。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：使用しない。ボス戦：標準ループの前の任意の拡張最初の手順。"
+              ],
+              "notes": [
+                "Act 1 のセットアップの一部で、後により滑らかなクリアへと受け継がれる（配信者ガイドによる）。"
+              ]
+            },
+            {
+              "skillId": "vivid-stampede",
+              "displayName": "Vivid Stampede",
+              "role": "Shocked Ground を残し、属性グラウンドを通じて Twister を強化するアセンダンシー移動スキル。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "移動を範囲ダメージと、Twister を強化する Shocked Ground に変える。"
+              ],
+              "whenReplace": [
+                "割り当て後は置き換えない。受動的な移動エンジンである。"
+              ],
+              "mappingBossingDiff": [
+                "両方：移動を継続して Wisps を生成しツイスターを引きずる。常時移動するマッピングでより重要。"
+              ],
+              "notes": [
+                "Sacred Unity トリオ（Primal Bounty と Wild Protector を含む）の一部。"
+              ]
+            },
+            {
+              "skillId": "primal-bounty",
+              "displayName": "Primal Bounty",
+              "role": "時間とともに Owl Feathers を付与するアセンダンシー。Dodge Roll がこれを消費し、次の投射スキルを追加投射物と速度で強化する。",
+              "supportSkillIds": [],
+              "whyUse": [
+                "Dodge Roll -> Primal Bounty の誘発がバースト Twister を動かす。タイミングが重要。"
+              ],
+              "whenReplace": [
+                "割り当て後は置き換えない。"
+              ],
+              "mappingBossingDiff": [
+                "マッピング：移動中の Dodge Roll で自然に誘発される。ボス戦：Twister 解放の直前に Dodge Roll のタイミングを合わせる。"
+              ],
+              "notes": [
+                "Dodge Roll と同期。同期を外すとバーストを失う（配信者ガイドによる）。正確なスタックは PC 検証待ち。"
+              ]
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "ascendancy",
+      "type": "ascendancy",
+      "title": "アセンダンシー",
+      "order": 70,
+      "visible": true,
+      "steps": [
+        {
+          "label": "暫定順序",
+          "body": [
+            "Sacred Unity を解放するため Vivid Stampede、Primal Bounty、Wild Protector を割り当て、公開前に 0.5.4 クライアントで各ノードを確認すること。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "passive-tree",
+      "type": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 80,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン",
+          "body": [
+            "現在のレベリングスキルと防御要件を支えるノードのみを取る。"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "body": [
+            "選んだビルドバリアントに移行する。互換性のないプランナーのスナップショットを組み合わせてはならない。"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "gear",
+      "type": "gear",
+      "title": "装備",
+      "order": 90,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "主要ダメージスロット",
+          "recommendations": [
+            "適切なスキルレベルまたは武器ダメージ",
+            "バリアント互換の修正"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "その階層に足りる武器ベースと Twister スキルレベル",
+              "reason": "クリアとボスダメージにおける主要な進行の確認点。"
+            },
+            {
+              "tier": "recommended",
+              "label": "バリアント互換のダメージ修正（物理／冷気／追加）",
+              "reason": "Twister のヒットを直接スケールする。"
+            },
+            {
+              "tier": "optional",
+              "label": "攻撃速度／移動速度",
+              "reason": "クリアの感触と Whirlwind の維持を改善する。"
+            },
+            {
+              "tier": "luxury",
+              "label": "バリアント専用のクリティカルまたは希少さの Affix",
+              "reason": "バリアントが実際に機能し防御が保たれた後でのみ。"
+            }
+          ],
+          "notes": [
+            "前提（武器セット、サポート）なしにエンドゲームのアイテムをコピーしてはならない。"
+          ]
+        },
+        {
+          "slot": "防御アーマー",
+          "recommendations": [
+            "ライフまたは選択した防御プール",
+            "属性耐性と回復"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "ライフと上限未到達の耐性",
+              "reason": "マップで死ぬことの代償を DPS が補うことはない。"
+            },
+            {
+              "tier": "recommended",
+              "label": "選択した防御プール（回避／アーマー）と回復",
+              "reason": "防御の殻を完成させる。"
+            },
+            {
+              "tier": "optional",
+              "label": "該当する場合の移動速度",
+              "reason": "射線の再配置に役立つ。"
+            },
+            {
+              "tier": "luxury",
+              "label": "明示的なダメージ Affix",
+              "reason": "防御の基準が解決された後でのみ。"
+            }
+          ],
+          "notes": [
+            "1 つのスロットではなく、防御パッケージ全体を比較すること。"
+          ]
+        },
+        {
+          "slot": "ジュエリーとユーティリティ",
+          "recommendations": [
+            "属性とリソースの維持",
+            "検証済みのビルド固有の修正のみ"
+          ],
+          "statPriorities": [
+            {
+              "tier": "required",
+              "label": "槍とジェムを装備するための属性",
+              "reason": "装備できない槍は無価値だ。"
+            },
+            {
+              "tier": "recommended",
+              "label": "耐性とリソース維持（マナ／ライフ）",
+              "reason": "ボス戦でもループを維持する。"
+            },
+            {
+              "tier": "optional",
+              "label": "ビルド固有の検証済み修正（移動速度、Twister スケーリング）",
+              "reason": "ジュエリーをビルドに合わせる。"
+            },
+            {
+              "tier": "luxury",
+              "label": "希少さのスタック（バリアント依存）",
+              "reason": "選んだエンドゲームバリアントに条件付き。"
+            }
+          ],
+          "notes": [
+            "価格は現時点では固定されていない。Mobalytics Verified は当方のクライアント検証ではない。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "stat-priority",
+      "type": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 100,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "防御の基準",
+          "reason": "まず耐性を上限にし、回復を確立する。"
+        },
+        {
+          "label": "主要ダメージ係数",
+          "reason": "プランナーとゲームプレイの両証拠が共有する係数を使う。"
+        },
+        {
+          "label": "リソース維持",
+          "reason": "主要ループは単体対象でも機能しなければならない。"
+        },
+        {
+          "label": "利便性",
+          "reason": "ビルドが機能した後にのみ速度や範囲を追加する。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "upgrade-priority",
+      "type": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 110,
+      "visible": true,
+      "steps": [
+        {
+          "label": "パックのクリアが遅い",
+          "symptom": "通常パックに Twister を 3 回以上詠唱する必要がある。",
+          "checks": [
+            "槍はまだ階層未満のベースではないか？",
+            "耐性とライフはすでに解決済みか（そうなら武器が本当のボトルネック）？",
+            "Twister 解放前に Whirlwind は実際に最大まで溜まっているか？"
+          ],
+          "upgrade": "ジュエリーやユーティリティに手を付ける前に、槍を強化する／Whirlwind の最大化を確認する。"
+        },
+        {
+          "label": "マップやボスアリーナで死ぬ",
+          "symptom": "T15 以上やボス戦で頻繁に死ぬ。",
+          "checks": [
+            "どの耐性が上限未到達か？",
+            "ライフ／防御がコンテンツ階層を下回っていないか？",
+            "防御層は機能しているか？"
+          ],
+          "upgrade": "耐性を上限にしライフ／防御を安定させる。防御の問題をダメージ装備で解決してはならない。"
+        },
+        {
+          "label": "単体ループが止まる",
+          "symptom": "ボスダメージが停滞するか、単体でループが崩れる。",
+          "checks": [
+            "セットアップで Ice-Tipped Arrows と Barrage は有効か？",
+            "Barrage に使える Frenzy Charges はあるか？",
+            "Twister 解放は Whirlwind の内側で行われたか？"
+          ],
+          "upgrade": "武器ではなく、セットアップ順（Whirlwind -> Ice-Tipped -> Barrage -> Twister）を修復する。"
+        },
+        {
+          "label": "コピーしたエンドゲーム装備が不調",
+          "symptom": "インポートしたエンドゲーム装備の性能が期待を下回る。",
+          "checks": [
+            "欠けているパッシブ、サポート、閾値は揃っているか？",
+            "武器セット構成は完全か？"
+          ],
+          "upgrade": "より下の検証済み段階から作り直す。互換性のないプランナーのスナップショットを混ぜてはならない。"
+        },
+        {
+          "label": "クリティカル／バリアント移行を検討",
+          "symptom": "より多くのダメージを求め、バリアント装備に関心がある。",
+          "checks": [
+            "非クリティカルでのクリア、ボスダメージ、防御は安定しているか？",
+            "バリアント装備は耐性上限を破るかライフを落とすか？"
+          ],
+          "upgrade": "チェックリストを通過してからのみバリアントへ移行する。再テストすること。プランナー上の数値だけのために生存を犠牲にしてはならない。"
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "mapping",
+      "type": "mapping",
+      "title": "マッピング",
+      "order": 120,
+      "visible": true,
+      "paragraphs": [
+        "標準ループでマップする：Dodge Roll（Primal Bounty）、Whirlwind を最大にする Whirling Slash x3、Ice-Tipped Arrows、その後 Whirlwind の内側に立ったまま解放する Twister。移動を続け、Vivid Stampede が Shocked Ground を生成しツイスターをパック内に引きずるようにする。",
+        "白 mob では Barrage を省く。それはレア／ボス用の道具だ。通常パックが 1〜2 回で処理できなくなった瞬間に槍を強化する。"
+      ],
+      "bullets": [
+        "Dodge -> Whirling Slash x3 -> Ice-Tipped Arrows -> Twister がマッピングのリズム。",
+        "雑魚では Barrage を省略。単体用の道具だ。",
+        "クリア速度が落ちたら槍を反応的に強化。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "bossing",
+      "type": "bossing",
+      "title": "ボス戦",
+      "order": 130,
+      "visible": true,
+      "paragraphs": [
+        "「与ダメージ 50% 増」の窓のために Parry で開始し、その後フルループを回す：Dodge Roll（Primal Bounty）、Whirling Slash x3、Ice-Tipped Arrows、Barrage（Frenzy Charges 消費）、そして Whirlwind の内側で解放する Twister。Parry の窓の中には複数回の Twister 回転が収まる。",
+        "ダメージが停滞する場合、問題はセットアップ順（Whirlwind の最大化、Ice-Tipped Arrows、Barrage、解放位置）であり槍ではない。Dodge／Primal Bounty の同期を外すとバーストを失う。"
+      ],
+      "bullets": [
+        "Parry -> Dodge -> Whirling Slash x3 -> Ice-Tipped Arrows -> Barrage -> Twister。",
+        "Twister は Whirlwind の内側で解放しないとボーナスが崩れる。",
+        "ダメージが出ない＝武器ではなくセットアップを直す。"
+      ],
+      "toc": true
+    },
+    {
+      "id": "build-variants",
+      "type": "comparison-table",
+      "title": "Twister の進行選択",
+      "order": 140,
+      "visible": true,
+      "caption": "管理されているバリアントと更新スレッドの質問に基づく判断表。",
+      "columns": [
+        "スターター（非クリ）",
+        "初期クリ",
+        "エンドゲームクリ"
+      ],
+      "rows": [
+        {
+          "label": "優先",
+          "cells": [
+            "回転と防御",
+            "Spirit を失わない確実なクリ",
+            "ダメージ、希少さ、または特殊装備"
+          ]
+        },
+        {
+          "label": "ボディアーマー",
+          "cells": [
+            "生存可能なレア",
+            "防御が保たれる場合のみ強化",
+            "正確なバリアント用に選ぶ"
+          ]
+        },
+        {
+          "label": "検証",
+          "cells": [
+            "Twister の軌跡が対象に命中する",
+            "クリ変化が計測可能",
+            "Spirit とチャージパッケージが維持される"
+          ]
+        },
+        {
+          "label": "警告",
+          "cells": [
+            "DPS ラベルを追いかけるな",
+            "バリアントを半分だけコピーするな",
+            "ショーケースの数値は当方の主張ではない"
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "staged-config",
+      "type": "comparison-table",
+      "title": "段階的な構成",
+      "order": 145,
+      "visible": true,
+      "caption": "各段階で回すべきもの。正確なジェムレベルとサポートリンクは PC 検証待ち。実用的なのは段階の境界とループ順だ。",
+      "columns": [
+        "段階",
+        "主要スキル",
+        "主要サポート",
+        "パッシブ重点",
+        "装備目標",
+        "移行条件"
+      ],
+      "rows": [
+        {
+          "label": "スターター（Twister 前、L1-30）",
+          "cells": [
+            "槍攻撃／レベリングスキル（仮）",
+            "基本攻撃サポート",
+            "ライフ、耐性、攻撃速度",
+            "任意の槍＋ライフ／耐性",
+            "L31 で Twister をアンロック（PC 待ち）"
+          ]
+        },
+        {
+          "label": "Twister 解放後（L31-50）",
+          "cells": [
+            "Twister",
+            "Whirling Slash（Whirlwind）",
+            "Twister／範囲ノード、最初のアセンダンシー",
+            "Twister レベル付きの槍、耐性上限",
+            "安定したクリアで初期マップへ到達"
+          ]
+        },
+        {
+          "label": "初期マップ",
+          "cells": [
+            "Twister + Whirling Slash",
+            "Ice-Tipped Arrows、Vivid Stampede",
+            "移動詠唱、範囲、属性グラウンド",
+            "耐性・ライフ上限、本物の槍",
+            "T15 以上を生き延び、確実なクリア"
+          ]
+        },
+        {
+          "label": "エンドゲーム／ボス戦",
+          "cells": [
+            "強化 Twister",
+            "Barrage + Primal Bounty（Dodge）、Parry",
+            "フルツリー、Sacred Unity トリオ",
+            "バリアント装備、2 武器セット",
+            "バリアント移行前に確実なボスダメージ"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 150,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "コアスキルが使用できない",
+          "checks": [
+            "ジェムレベル、形態、武器セット、装備要件を確認する。",
+            "文書化された移行段階に戻る。"
+          ]
+        },
+        {
+          "symptom": "単体ループが止まる",
+          "checks": [
+            "キル依存の前提を排除する。",
+            "手順の前後で各リソースを記録する。"
+          ]
+        },
+        {
+          "symptom": "コピーしたエンドゲーム装備が不調",
+          "checks": [
+            "欠けているパッシブ、サポート、閾値を確認する。",
+            "より下の検証済み段階から作り直す。"
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "faq",
+      "type": "question-answer",
+      "title": "投射軌跡と移行の回答",
+      "order": 160,
+      "visible": true,
+      "items": [
+        {
+          "question": "なぜ隣にいる対象を Twister が外すのか？",
+          "answer": [
+            "投射物は準備された軌跡と角度に従う。接近だけでは不十分だ。Whirling Slash の軌跡を作り直し、対象の未来位置へ Twister を放つ。"
+          ],
+          "bullets": [
+            "開けた地形でテストする。",
+            "1 回のロールで角度を修正する。",
+            "ドア口でスキルを評価しないこと。"
+          ],
+          "relatedLinks": []
+        },
+        {
+          "question": "なぜクリティカル版は生存力や Spirit を失ったのか？",
+          "answer": [
+            "クリへの移行はしばしば複数のスロットを変える。武器やパッシブツリーだけでなく、ボディアーマー、アミュレット、ベルト、チャージ生成、Spirit 予約をまとめて比較する。"
+          ],
+          "bullets": [],
+          "relatedLinks": []
+        },
+        {
+          "question": "直接近接型の道を好む場合は？",
+          "answer": [
+            "Whirling Assault Martial Artist は移動重視の個性を保ちつつ、ダメージを近接接触、bell の窓、チャージ管理に置く。"
+          ],
+          "bullets": [],
+          "relatedLinks": [
+            {
+              "href": "/ja/builds/whirling-assault-martial-artist/",
+              "label": "Whirling Assault Martial Artist と比較"
+            }
+          ]
+        }
+      ],
+      "toc": false
+    },
+    {
+      "id": "build-planner",
+      "type": "build-planner",
+      "title": "ビルドプランナーとインポート",
+      "order": 165,
+      "visible": true,
+      "note": "貼り付け可能なインポート文字列／.build は PC 検証待ち。",
+      "creatorName": "SiahZ",
+      "buildPlannerUrl": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
+      "creatorUrl": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
+      "toc": false
+    },
+    {
+      "id": "community-notes",
+      "type": "community-voices",
+      "title": "ショーケースの裏にある疑問",
+      "order": 170,
+      "visible": true,
+      "note": "コミュニティスレッドは、最終的なプランナーが隠しうるトレードオフを浮き彫りにするために使っている。",
+      "entries": [
+        {
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "label": "更新された Twister エンドゲーム議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1twvrlo/twister_spirit_walker_updated_endgame_build_guide/",
+          "statement": "プレイヤーはチェストの生存力、非クリからクリへの変更、チャージやベルトの選択、不足する Spirit について問い、このビルドの真の移行コストが複数のシステムに分散していることを示している。",
+          "context": "したがって本記事は、クリ移行前にパッケージ全体の比較を要する。"
+        },
+        {
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "label": "SiahZ Twister プランナー",
+          "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister",
+          "statement": "ガイドの表示されるマップ順は Dodge Roll（Primal Bounty）、Whirling Slash、Ice-Tipped Arrows、Twister。ボス順は Twister の前に Parry と Barrage を加える。これらの順序は、スキルリストに埋もれさせるのではなく明示的なループとして描かれている。",
+          "context": "これらの順序はスキルリストに埋もれさせるのではなく、チェックリストとして描かれている。"
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "投射物の前に軌跡を見る",
+      "order": 180,
+      "visible": true,
+      "entries": [
+        {
+          "creator": "SiahZ",
+          "label": "Twister Spirit Walker フルゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=0RknSCFoAOM",
+          "description": "映像を使って Whirling Slash の軌跡と、パックやボスに対する Twister の解放位置をなぞる。",
+          "takeaway": "投射物の軌跡をフレームごとに追う。検証されていないショーケースの DPS ラベルは無視する。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "はじめに"
+            },
+            {
+              "time": "1:04",
+              "label": "なぜ Spirit Walker はこれほど強いのか"
+            },
+            {
+              "time": "4:41",
+              "label": "レベリングの感触はどうか"
+            },
+            {
+              "time": "5:11",
+              "label": "Ward スタックは強すぎるかも"
+            },
+            {
+              "time": "7:06",
+              "label": "新しいブリーチベースとアイテム"
+            },
+            {
+              "time": "7:40",
+              "label": "強すぎる可能性のあるアイテム"
+            },
+            {
+              "time": "9:35",
+              "label": "なぜ Twister Spirit Walker をプレイするのか"
+            },
+            {
+              "time": "10:29",
+              "label": "終わりに"
+            }
+          ]
+        }
+      ],
+      "toc": true
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "title": "出典と検証",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式ソース",
+          "description": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "SiahZ Spirit Walker Twister ガイドとプランナー",
+          "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "SnooBAE Twister ガイド",
+          "url": "https://mobalytics.gg/poe-2/builds/twister-spirit-walker-snoobae"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "独立した Twister メカニクスガイド",
+          "url": "https://nexttier.pro/guide/poe2-twister-spirit-walker-build-guide"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "ソース動画の要約",
+          "url": "https://exile.codex-wiki.com/builds/path-of-exile-2-best-twister-spirit-walker-league-starter"
+        },
+        {
+          "label": "Mobalytics ビルドプランナー エクスポート",
+          "description": "外部ツール",
+          "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "SiahZ フルビルドゲームプレイ",
+          "url": "https://www.youtube.com/watch?v=0RknSCFoAOM"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "更新された Twister Spirit Walker エンドゲーム議論",
+          "url": "https://www.reddit.com/r/pathofexile2builds/comments/1twvrlo/twister_spirit_walker_updated_endgame_build_guide/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "更新履歴",
+      "order": 200,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-07-29",
+          "changes": [
+            "0.5.4 に基づく出典付きビルドガイドを作成。PC 検証は保留中。"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "changes": [
+            "スキーマ拡張：表示名スキルカード（whyUse／whenReplace／mappingBossingDiff／notes）、スロットごとの装備 statPriorities、症状ベースの強化優先度、段階的構成表、ビルドプランナー項目、4 つの明示的回転ループ（簡易クリア、フルボス、移行前、装備完成後）を追加。"
+          ]
+        }
+      ],
+      "toc": false
+    }
+  ],
+  "relatedBuildIds": [
+    "whirling-assault-martial-artist"
+  ],
+  "relatedGuideIds": [],
+  "sources": [
+    {
+      "label": "Grinding Gear Games — Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "SiahZ Spirit Walker Twister ガイドとプランナー",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
+    },
+    {
+      "label": "SnooBAE Twister ガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/twister-spirit-walker-snoobae"
+    },
+    {
+      "label": "独立した Twister メカニクスガイド",
+      "sourceType": "community",
+      "url": "https://nexttier.pro/guide/poe2-twister-spirit-walker-build-guide"
+    },
+    {
+      "label": "ソース動画の要約",
+      "sourceType": "community",
+      "url": "https://exile.codex-wiki.com/builds/path-of-exile-2-best-twister-spirit-walker-league-starter"
+    },
+    {
+      "label": "Mobalytics ビルドプランナー エクスポート",
+      "sourceType": "tool",
+      "url": "https://mobalytics.gg/poe-2/builds/spirit-walker-twister"
+    },
+    {
+      "label": "SiahZ フルビルドゲームプレイ",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=0RknSCFoAOM"
+    },
+    {
+      "label": "更新された Twister Spirit Walker エンドゲーム議論",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/pathofexile2builds/comments/1twvrlo/twister_spirit_walker_updated_endgame_build_guide/"
+    }
+  ],
+  "seo": {
+    "title": "Twister Spirit Walker ビルドガイド",
+    "description": "0.5.4 を基準とした Path of Exile 2 Twister Spirit Walker ビルドの完全ガイド。",
+    "noindex": false
+  },
+  "publishedAt": "2026-07-31",
+  "lastVerifiedAt": "2026-08-01",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "twister-spirit-walker",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -13,7 +13,7 @@ export function isKnownGuideCollection(collection: GuideCollection): boolean {
 
 /** 按聚合语义筛选同语言已发布 Guide，供页面和 Sitemap 共用同一规则。 */
 export function matchesGuideCollection(
-  article: GuideArticle,
+  article: Pick<GuideArticle, "guideCategory">,
   collection: GuideCollection,
 ): boolean {
   return article.guideCategory === collection.value;

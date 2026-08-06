@@ -1,0 +1,667 @@
+{
+  "id": "ball-lightning-volcano-blood-mage",
+  "slug": "ball-lightning-volcano-blood-mage",
+  "type": "build",
+  "status": "published",
+  "featured": false,
+  "title": "ボールライトニング・ボルケノー・ブラッドメイジ ビルドガイド",
+  "shortTitle": "ボルケノー・ブラッドメイジ",
+  "summary": "ウィッチのブラッドメイジで役割を分担：ボールライトニングで殲滅、ボルケノーでボス戦。シア・オブ・シャードとライフをリソースとしたスケーリングに依存する。",
+  "description": "ボールライトニングとボルケノーが分けられている理由、シア・オブ・シャードの組み込み方、動くボスが処理しづらい理由、そしてブラッドメイジのライフ/ES/リーチによる維持の仕組みを解説。実際の配信者動画と検証済みソースを掲載。",
+  "classId": "witch",
+  "ascendancyId": "blood-mage",
+  "mainSkillIds": [
+    "ball-lightning",
+    "volcano"
+  ],
+  "secondarySkillIds": [
+    "flame-wall",
+    "fire-infusion"
+  ],
+  "stages": [
+    "early-endgame",
+    "endgame",
+    "bossing"
+  ],
+  "budgets": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "difficulty": "intermediate",
+  "playstyleTags": [
+    "spellcaster",
+    "area-damage",
+    "life-cost",
+    "ignite"
+  ],
+  "damageTypes": [
+    "lightning",
+    "fire"
+  ],
+  "bestFor": [
+    "mapping",
+    "bossing",
+    "delirium"
+  ],
+  "patch": "0.5",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Review Team",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "heroImage": "/images/builds/covers/ball-lightning-volcano-blood-mage.webp",
+  "cardImage": "/images/builds/covers/ball-lightning-volcano-blood-mage.webp",
+  "imageAlt": "ボールライトニングとボルケノーを詠唱するブラッドメイジ",
+  "tags": [
+    "witch",
+    "blood-mage",
+    "ball-lightning",
+    "volcano",
+    "sire-of-shards",
+    "ballcano"
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich",
+    "plant-oracle-druid"
+  ],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain",
+    "how-to-fix-low-damage"
+  ],
+  "seo": {
+    "title": "ボールライトニング・ボルケノー・ブラッドメイジ ビルドガイド (PoE2 0.5)",
+    "description": "ボールライトニング（殲滅）とボルケノー（ボス）を分担するウィッチのブラッドメイジ。シア・オブ・シャードとライフをリソースとしたスケーリングに依存する。",
+    "noindex": false
+  },
+  "sources": [
+    {
+      "id": "src-official-forum",
+      "label": "Path of Exile 2 公式フォーラム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "id": "src-creator-video",
+      "label": "PhazePlays — BALLCANO Build Guide",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=cFqT8xaKJ8c"
+    },
+    {
+      "id": "src-stats",
+      "label": "poe.ninja ビルド統計",
+      "sourceType": "tool",
+      "url": "https://poe.ninja/pathofexile2"
+    }
+  ],
+  "sections": [
+    {
+      "type": "overview",
+      "id": "overview",
+      "title": "概要",
+      "order": 10,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "「ボルケノー」は2つの魔法セットを使い分けるブラッドメイジのウィッチだ。ボールライトニングでエリア殲滅、ボルケノーで単体のボスに火力を集中させる。これらは一つの無条件セットではない。ボールライトニングは雑魚群をカバーし、ボルケノーは静止または動きが予測できる標的にダメージを集中させる。",
+        "シア・オブ・シャードはボールライトニングを画面全体を覆う殲滅ツールに変える象徴的なアイテムだが、それだけが正解というわけではない。ブラッドメイジのライフをリソースとする道具箱（ライフ消費を攻撃力に変換、リーチ、残滓）が、長期戦でもビルドに燃料を供給し続ける。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "pros-cons",
+      "id": "pros-cons",
+      "title": "メリットとデメリット",
+      "order": 20,
+      "toc": true,
+      "visible": true,
+      "pros": [
+        "シア・オブ・シャードが揃えば、ボールライトニングは画面全体を楽に殲滅できる。",
+        "ボルケノーは静止した標的に確実なボスダメージを与える。",
+        "ブラッドメイジの維持力（リーチ＋残滓）は長期戦で強力。",
+        "2セット構成は開けたマップにも狭いマップにも対応できる。"
+      ],
+      "cons": [
+        "動くボスは処理しづらい。ボルケノーとボールライトニングの飛弾が外れるため。",
+        "ボールライトニングのサポートが不十分だとマナが急増する。",
+        "ビルドが完成した感を出すにはシア・オブ・シャードが相当な投資になる。",
+        "ES回復とリーチは能動的な管理が必要で、受け身のタンク性能ではない。"
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "build-readiness",
+      "title": "このビルドはあなたに合っていますか？",
+      "order": 30,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ボルケノーは、キャスターによる殲滅を楽しみつつ本格的なボス解答も欲しい、ライフ消費と回復の管理に抵抗がないプレイヤーに向いている。考えなしで始められるリーグスタート向けではない。2つのセットと維持の計画が必要だ。",
+        "たった一つのボタンだけで済ませたいなら、このビルドは向かない。その代わり、殲滅もボス戦も妥協した一つの構成ではなく、目的別のスキルで処理されるのがこのビルドの価値だ。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "leveling",
+      "id": "leveling",
+      "title": "レベリング経路",
+      "order": 40,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "キャンペーン — 任意のウィッチ魔法",
+          "body": [
+            "一般的な雷または炎の魔法でレベリングする。ジェムとライフ消費の計画ができるまでは、無理にボルケノーにしようとしないこと。"
+          ],
+          "levelRange": "1-50"
+        },
+        {
+          "label": "初期マップ — まずはボールライトニング",
+          "body": [
+            "基本構成でボールライトニングの殲滅を確立し、スピリットとサポートが揃ってからボス用にボルケノーを追加する。"
+          ],
+          "levelRange": "50-70"
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "id": "skills",
+      "title": "スキルとサポートジェム",
+      "order": 50,
+      "toc": true,
+      "visible": true,
+      "groups": [
+        {
+          "label": "殲滅 — ボールライトニング",
+          "skills": [
+            {
+              "displayName": "Ball Lightning",
+              "skillId": "ball-lightning",
+              "role": "画面の主な殲滅役。シア・オブ・シャードの恩恵を大きく受ける",
+              "supportSkillIds": [
+                "spell-cascade",
+                "lightning-infusion",
+                "concentrated-effect",
+                "controlled-destruction",
+                "unleash"
+              ],
+              "notes": [
+                "雑魚群にはボールライトニングを使うこと。動くボスを一撃で消し去ることは期待しないこと。"
+              ],
+              "whyUse": [
+                "ボールライトニングの飛弾はシア・オブ・シャードによって増幅され、1回の詠唱が画面全体を覆うネットになる。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "ボス — ボルケノー",
+          "skills": [
+            {
+              "displayName": "Volcano",
+              "skillId": "volcano",
+              "role": "決まった位置に集中する単体ダメージ",
+              "supportSkillIds": [
+                "fire-infusion",
+                "heightened-cruelty",
+                "controlled-destruction",
+                "ignite-proliferation"
+              ],
+              "notes": [],
+              "whyUse": [
+                "ボルケノーは持続するダメージゾーンを展開する。ファイア・インフュージョンと燃焼地面を組み合わせ、重ね焼けを狙う。"
+              ],
+              "mappingBossingDiff": [
+                "静止ボスには強力だが、動く相手には弱い。それこそがセットを分ける理由だ。"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "サポート — フレイムウォール / ファイア・インフュージョン",
+          "skills": [
+            {
+              "displayName": "Flame Wall",
+              "skillId": "flame-wall",
+              "role": "ボルケノーとの相乗効果のため、飛弾にファイア・インフュージョンを付与する",
+              "supportSkillIds": [
+                "fire-infusion"
+              ],
+              "notes": [
+                "フレイムウォールはファイア・インフュージョンを届ける手段だ。ボールライトニングをその中を通して撃つ。"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "ball-lightning-mechanics",
+      "title": "なぜボールライトニングとボルケノーを分けるのか",
+      "order": 60,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ボールライトニングは広い範囲を持つ飛弾魔法だが単体への1ヒットあたりの威力は落ちる。ボルケノーは地面に展開する持続ダメージゾーンで、固定された一点において真価を発揮する。どちらか一方で両方の役割をこなそうとすると、どちらも性能が落ちる。",
+        "この分割は地形にも合っている。ボールライトニングは開けたマップを支配し、ボルケノーはボス戦のアリーナを支配する。これを無視して「ボスにはボールライトニングを撃けばいい」としてしまうプレイヤーが、まさにコミュニティが嘆くボスが弱いという感覚を報告している。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "overview",
+      "id": "sire-of-shards-dependency",
+      "title": "シア・オブ・シャードは必須か？",
+      "order": 70,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "シア・オブ・シャードはボールライトニングを殲滅の化け物にする高価値アイテムだが、機能するために厳密に必須というわけではない。追加スペルダメージの良い通常のワンドでも、より低い層なら十分に殲滅できる。これは「ビルドを完成させる」アイテムと捉え、「ビルドを有効にする」アイテムではない。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "mapping",
+      "id": "mapping",
+      "title": "マッピング・ループ",
+      "order": 80,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "フレイムウォールを詠唱し、ボールライトニングを通してファイア・インフュージョンを乗せ、シア・オブ・シャードで画面を覆う。絶えず移動すること。飛弾が出てしまえば殲滅は受け身で進む。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "bossing",
+      "id": "bossing",
+      "title": "ボス・ループ",
+      "order": 90,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ボスが立つ位置にボルケノーを展開し、ファイア・インフュージョン用にフレイムウォールを維持し、ボールライトニングは一瞬の静止窓にだけ使う。動くボスに対しては、進路を予測して立ち止まる場所にボルケノーを事前に置く。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "ascendancy",
+      "id": "ascendancy",
+      "title": "ブラッドメイジのアセンダンシー",
+      "order": 100,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "なぜブラッドメイジか",
+          "body": [
+            "ブラッドメイジはライフ消費を攻撃スケーリングに変換し、強力なリーチ／残滓による維持を得る。これはライフを消費して詠唱するキャスターにぴったりだ。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "passive-tree",
+      "id": "passive-tree",
+      "title": "パッシブツリー",
+      "order": 110,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "ライフ / スペルダメージ",
+          "body": [
+            "ライフ、スペルダメージ、雷／炎の注目ノードを通るルートを取る。ライフ消費に報いるブラッドメイジのノードが優先。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "gear",
+      "id": "gear",
+      "title": "装備とステータスの優先度",
+      "order": 120,
+      "toc": true,
+      "visible": true,
+      "slots": [
+        {
+          "slot": "Weapon",
+          "recommendations": [
+            "シア・オブ・シャード（または追加スペルダメージの高いワンド）に加え、キャスト速度とステータスを持つフォーカス。"
+          ],
+          "notes": [
+            "シア・オブ・シャードはボールライトニングの飛弾を増幅する。通常のワンドは予算向けの代替。"
+          ],
+          "statPriorities": [
+            {
+              "label": "シア・オブ・シャード",
+              "reason": "ボールライトニングの殲滅像を完成させる。",
+              "tier": "recommended"
+            },
+            {
+              "label": "追加スペルダメージ",
+              "reason": "両セットに直接ダメージを与える。",
+              "tier": "required"
+            }
+          ]
+        },
+        {
+          "slot": "Body Armour",
+          "recommendations": [
+            "ライフ、耐性、できればスピリット。ライフとカオス耐性を持つボディが生存の下限。"
+          ],
+          "notes": [
+            "ダメージを追う前に耐性を上限まで満たすこと。"
+          ],
+          "statPriorities": [
+            {
+              "label": "ライフ",
+              "reason": "ブラッドメイジはライフ維持に依存して生きる。",
+              "tier": "required"
+            },
+            {
+              "label": "Chaos Resistance",
+              "reason": "カオスは一般的な死因。",
+              "tier": "recommended"
+            }
+          ]
+        },
+        {
+          "slot": "Jewels",
+          "recommendations": [
+            "ライフとスペルダメージのジュエル。残滓を強化するジュエルはブラッドメイジの維持に役立つ。"
+          ],
+          "notes": [
+            "残滓ジュエルはブラッドメイジの構成と相乗的に働く。"
+          ],
+          "statPriorities": [
+            {
+              "label": "Life + Spell Damage",
+              "reason": "両セットに平坦な価値をもたらす。",
+              "tier": "optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "stat-priority",
+      "id": "stat-priority",
+      "title": "ステータス優先度",
+      "order": 130,
+      "toc": true,
+      "visible": true,
+      "priorities": [
+        {
+          "label": "ライフ / ライフ維持",
+          "reason": "ブラッドメイジは詠唱にライフを使う。維持こそが生存。"
+        },
+        {
+          "label": "Spell Damage",
+          "reason": "両セットはスペルダメージに依存してスケールする。"
+        },
+        {
+          "label": "キャスト速度",
+          "reason": "毎秒のボールライトニング詠唱回数が増える。"
+        },
+        {
+          "label": "Mana / Mana Cost",
+          "reason": "不十分なサポートはマナを急増させる。管理すること。"
+        },
+        {
+          "label": "耐性",
+          "reason": "いかなるダメージ修正よりも前に満たすべき下限。"
+        }
+      ]
+    },
+    {
+      "type": "upgrade-priority",
+      "id": "upgrade-priority",
+      "title": "強化優先度",
+      "order": 140,
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "1 — ボールライトニングのサポート",
+          "body": [
+            "スペル・カスケードとインフュージョンのサポートが殲滅力の最大の跳躍。"
+          ]
+        },
+        {
+          "label": "2 — ライフ維持",
+          "body": [
+            "長期戦で死なないよう、リーチと残滓の装備を追加する。"
+          ]
+        },
+        {
+          "label": "3 — シア・オブ・シャード",
+          "body": [
+            "コアが安定してからの、殲滅を完成させるアイテム。"
+          ]
+        },
+        {
+          "label": "4 — ボルケノーのサポート",
+          "body": [
+            "ボスダメージ用のファイア・インフュージョンとイグナイトのサポート。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "overview",
+      "id": "defensive-layers",
+      "title": "防御層",
+      "order": 150,
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ブラッドメイジの防御は能動的だ。リーチがダメージを与えるたびにライフを満たし、残滓が重層的なボーナスを加え、ライフフラスコがバーストをカバーする。受け身のタンクではない。ダメージを与えるのを止めれば、維持も止まる。",
+        "カオス耐性と詠唱できるライフフラスコのパニックボタンを維持すること。最大の過ちはダメージに過投資し、ボスが急上昇した時に回復手段がないことだ。"
+      ],
+      "bullets": []
+    },
+    {
+      "type": "community-voices",
+      "id": "community",
+      "title": "コミュニティの質問",
+      "order": 160,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "context": "シア・オブ・シャードは必須か？",
+          "label": "Item dependency",
+          "representation": "paraphrase",
+          "sourceType": "guide",
+          "statement": "プレイヤーの共通認識では、これは「ビルドを有効にする」アイテムではなく「ビルドを完成させる」アイテム。良いワンドでもより低い層なら殲滅できる。",
+          "url": "https://www.youtube.com/watch?v=cFqT8xaKJ8c"
+        },
+        {
+          "context": "なぜ動くボスが処理しづらいのか？",
+          "label": "Boss matchup",
+          "representation": "paraphrase",
+          "sourceType": "reddit",
+          "statement": "一般的な答えは、ボルケノーとボールライトニングの飛弾が動く相手を外すため。動きを予測した進路上にボルケノーを事前配置すること。",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "context": "どうやってES / ライフを維持するか？",
+          "label": "Sustain",
+          "representation": "paraphrase",
+          "sourceType": "forum",
+          "statement": "ブラッドメイジのリーチに残滓を加えるのが標準的な答え。ライフフラスコがパニックボタン。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        }
+      ],
+      "note": "プレイヤーの報告は経験であり、検証された仕様ではない。正確な数値はゲーム内のツールチップで確認すること。"
+    },
+    {
+      "type": "troubleshooting",
+      "id": "troubleshooting",
+      "title": "トラブルシューティング",
+      "order": 170,
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "ボスにダメージが通らない",
+          "checks": [
+            "動く相手にボールライトニングを撃っている。ボルケノーを展開し、進路を予測すること。"
+          ]
+        },
+        {
+          "symptom": "マップ中にマナが急増する",
+          "checks": [
+            "ボールライトニングのサポート構成が不完全。エフィシェンシーを追加するか、サポートを一つ削る。"
+          ]
+        },
+        {
+          "symptom": "長期戦で死ぬ",
+          "checks": [
+            "維持が足りない。リーチ／残滓の装備とライフフラスコを追加する。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "id": "faq",
+      "title": "FAQ",
+      "order": 180,
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "ボールライトニングとボルケノーの両方が必要か？",
+          "answer": [
+            "はい、意図した結果のためには。ボールライトニングは殲滅し、ボルケノーはボスを処理する。妥協した一つのセットでは両方とも不発に終わる。"
+          ]
+        },
+        {
+          "question": "ボルケノーをリーグスタートにできるか？",
+          "answer": [
+            "ウィッチとしてレベリングすることはできるが、2セット＋維持の計画は初期マップのビルドであって、キャンペーンスタートではない。"
+          ]
+        },
+        {
+          "question": "シア・オブ・シャードはコストに見合うか？",
+          "answer": [
+            "殲滅を完成させるアイテムとしては、コアのループと維持が安定してからなら見合う。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "title": "動画ガイド",
+      "order": 190,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "PhazePlays — BALLCANO Build Guide",
+          "url": "https://www.youtube.com/watch?v=cFqT8xaKJ8c",
+          "timestamps": [
+            {
+              "label": "コンセプトとボルケノーの理由",
+              "time": "0:00"
+            },
+            {
+              "label": "ボールライトニングの殲滅構成",
+              "time": "3:00"
+            },
+            {
+              "label": "ボルケノーのボス回し",
+              "time": "9:00"
+            },
+            {
+              "label": "シア・オブ・シャードの解説",
+              "time": "14:00"
+            },
+            {
+              "label": "防御と維持",
+              "time": "19:00"
+            }
+          ],
+          "creator": "PhazePlays"
+        }
+      ]
+    },
+    {
+      "type": "sources",
+      "id": "sources",
+      "title": "出典と検証",
+      "order": 200,
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式 / パッチ",
+          "description": "ブラッドメイジ、ボールライトニング、ボルケノーに関する Path of Exile 2 公式フォーラムと0.5パッチノート。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "クリエイター動画",
+          "description": "PhazePlays の BALLCANO 実況映像と解説。",
+          "url": "https://www.youtube.com/watch?v=cFqT8xaKJ8c"
+        },
+        {
+          "label": "ビルド統計",
+          "description": "ブラッドメイジの装備傾向について相互参照した poe.ninja のライブデータ。",
+          "url": "https://poe.ninja/pathofexile2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "notes": [
+          "単一のクリエイターガイドを、公式のスペルデータとビルド統計ツールと相互参照。ソース検証済みステータスは、2つ目の独立したクリエイターの確認とクライアント内検証を待つ。"
+        ]
+      }
+    },
+    {
+      "type": "changelog",
+      "id": "changelog",
+      "title": "更新履歴",
+      "order": 210,
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "パッチ0.5（Return of the Ancients）向けの最初の公開ガイド。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "build-planner",
+      "id": "build-planner",
+      "title": "ビルドプランナー",
+      "order": 220,
+      "toc": true,
+      "visible": true,
+      "note": "クリエイターの動画でライブなスキルツリーと装備を確認すること。コピー＆ペースト用のインポート文字列は、クライアント内検証後に追加される。",
+      "creatorName": "PhazePlays",
+      "creatorUrl": "https://www.youtube.com/watch?v=cFqT8xaKJ8c"
+    }
+  ],
+  "locale": "ja",
+  "lastVerifiedAt": "2026-08-02",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "ball-lightning-volcano-blood-mage",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

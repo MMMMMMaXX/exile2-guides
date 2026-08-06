@@ -34,7 +34,7 @@ describe("search index", () => {
     });
     expect(indexes.en).toHaveLength(1);
     expect(indexes["zh-cn"]).toHaveLength(1);
-    expect(indexes.en[0]?.headings).toEqual(["Steps"]);
+    expect(indexes.en?.[0]?.headings).toEqual(["Steps"]);
   });
 
   it("requires every search term and ranks title matches before other fields", () => {

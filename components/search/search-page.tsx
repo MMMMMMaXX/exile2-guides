@@ -4,6 +4,9 @@ import { useSearchParams } from "react-router";
 
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { ContentLocale, ContentType } from "../../lib/content/constants";
+import { getCategoryLabel } from "../../lib/i18n/category-copy";
+import { t } from "../../lib/i18n/ui";
+import { formatBossTag, searchPageCopyByLocale } from "../../lib/i18n/search-copy";
 import {
   searchDocuments,
   type SearchDocument,
@@ -27,48 +30,30 @@ const fallbackImages: Record<ContentType, string> = {
   skill: resolveImageAsset("/images/prototype-v4/hero-skill.webp"),
 };
 
-/** Boss tag slug 到显示名的映射。 */
-const bossTagLabels: Record<string, { en: string; zh: string }> = {
-  "act-1": { en: "Act 1", zh: "Act 1" },
-  "act-2": { en: "Act 2", zh: "Act 2" },
-  campaign: { en: "Campaign", zh: "剧情" },
-  chaos: { en: "Chaos", zh: "混沌" },
-  cold: { en: "Cold", zh: "冰霜" },
-  elemental: { en: "Elemental", zh: "元素" },
-  endgame: { en: "Endgame", zh: "终局" },
-  fire: { en: "Fire", zh: "火焰" },
-  holy: { en: "Holy", zh: "神圣" },
-  "league-mechanic": { en: "League", zh: "赛季" },
-  lightning: { en: "Lightning", zh: "闪电" },
-  "map-boss": { en: "Map Boss", zh: "地图 Boss" },
-  "multi-phase": { en: "Multi-phase", zh: "多阶段" },
-  "permanent-reward": { en: "Reward", zh: "奖励" },
-  physical: { en: "Physical", zh: "物理" },
-  pinnacle: { en: "Pinnacle", zh: "巅峰" },
-  sekhemas: { en: "Sekhemas", zh: "Sekhemas" },
-  trial: { en: "Trial", zh: "试炼" },
-};
-
-/** 将 tag slug 转为当前语言的显示名。 */
-function formatBossTag(tag: string, zh: boolean): string {
-  const entry = bossTagLabels[tag];
-  return entry ? (zh ? entry.zh : entry.en) : tag;
-}
-
 /** 从 patch 字符串中提取版本号。 */
 function extractVersionNumber(patch: string): string {
   const match = patch.match(/(\d+\.\d+(?:\.\d+)?)/);
   return match ? match[1]! : patch;
 }
 
-const typeLabels: Record<ContentType, { en: string; zh: string }> = {
-  boss: { en: "Bosses", zh: "首领" },
-  build: { en: "Builds", zh: "Build" },
-  guide: { en: "Guides", zh: "攻略" },
-  item: { en: "Items", zh: "物品" },
-  patch: { en: "Patch Notes", zh: "版本" },
-  skill: { en: "Skills", zh: "技能" },
-};
+/** 快捷搜索入口：标签文案键 → 对应内容类型（提交时取英文索引词）。 */
+const quickQueries: ReadonlyArray<{
+  key:
+    | "quickBuilds"
+    | "quickBosses"
+    | "quickItems"
+    | "quickSkills"
+    | "quickGuides"
+    | "quickPatches";
+  type: ContentType;
+}> = [
+  { key: "quickBuilds", type: "build" },
+  { key: "quickBosses", type: "boss" },
+  { key: "quickItems", type: "item" },
+  { key: "quickSkills", type: "skill" },
+  { key: "quickGuides", type: "guide" },
+  { key: "quickPatches", type: "patch" },
+];
 
 /** 将关键词写入 URL，保持搜索结果可分享并避免额外服务端状态。 */
 function createQueryParams(query: string): Record<string, string> {
@@ -87,16 +72,7 @@ export function SearchPage({
   const query = searchParams.get("q") ?? "";
   const [input, setInput] = useState(query);
   const [selectedType, setSelectedType] = useState<ContentType | "all">("all");
-  const zh = locale === "zh-cn";
-  const filterLabels: Record<ContentType | "all", string> = {
-    all: zh ? "全部" : "All",
-    boss: zh ? typeLabels.boss.zh : typeLabels.boss.en,
-    build: zh ? typeLabels.build.zh : typeLabels.build.en,
-    guide: zh ? typeLabels.guide.zh : typeLabels.guide.en,
-    item: zh ? typeLabels.item.zh : typeLabels.item.en,
-    patch: zh ? typeLabels.patch.zh : typeLabels.patch.en,
-    skill: zh ? typeLabels.skill.zh : typeLabels.skill.en,
-  };
+  const copy = searchPageCopyByLocale[locale];
   const results = useMemo(() => {
     const searched = query ? searchDocuments(documents, query) : documents;
     return selectedType === "all"
@@ -118,51 +94,48 @@ export function SearchPage({
         <div className="page-shell">
           <nav
             className="breadcrumbs"
-            aria-label={zh ? "面包屑" : "Breadcrumb"}
+            aria-label={copy.breadcrumbAria}
           >
-            <a href={`/${locale}/`}>{zh ? "首页" : "Home"}</a>
+            <a href={`/${locale}/`}>{t(locale, "nav.home")}</a>
             <span>›</span>
-            <span>{zh ? "搜索" : "Search"}</span>
+            <span>{t(locale, "search.title")}</span>
           </nav>
-          <p className="eyebrow">{zh ? "专用搜索" : "Dedicated search"}</p>
-          <h1>{zh ? "搜索全部页面骨架" : "Search all page skeletons"}</h1>
+          <p className="eyebrow">{copy.dedicatedSearch}</p>
+          <h1>{copy.allPageSkeletons}</h1>
           <form autoComplete="off" onSubmit={submitSearch} role="search">
             <label className="sr-only" htmlFor="site-search">
-              {zh ? "搜索" : "Search"}
+              {t(locale, "search.title")}
             </label>
             <input
               autoComplete="off"
               id="site-search"
               name="site-search-query"
               onChange={(event) => setInput(event.target.value)}
-              placeholder={
-                zh
-                  ? "例如首领、货币、开荒、故障排除"
-                  : "Try: boss, currency, starter, troubleshooting"
-              }
+              placeholder={copy.inputPlaceholder}
               type="search"
               value={input}
             />
-            <button type="submit">{zh ? "搜索" : "Search"}</button>
+            <button type="submit">{t(locale, "search.submit")}</button>
           </form>
           <div className="v4-prototype-search__quick">
-            {["Builds", "Bosses", "Items", "Skills", "Troubleshooting"].map(
-              (term) => (
+            {quickQueries.map(({ key, type }) => {
+              const term = getCategoryLabel("en", type);
+              return (
                 <button
-                  key={term}
+                  key={key}
                   onClick={() => selectQuickQuery(term)}
                   type="button"
                 >
-                  {term}
+                  {copy[key]}
                 </button>
-              ),
-            )}
+              );
+            })}
           </div>
         </div>
       </section>
       <section className="page-shell v4-prototype-search__layout">
         <aside className="v4-prototype-search__filters">
-          <h2>{zh ? "内容类型" : "Content type"}</h2>
+          <h2>{copy.contentType}</h2>
           {(["all", ...contentTypes] as const).map((type) => (
             <button
               className={selectedType === type ? "is-selected" : undefined}
@@ -170,26 +143,24 @@ export function SearchPage({
               onClick={() => setSelectedType(type)}
               type="button"
             >
-              {filterLabels[type]}
+              {type === "all" ? copy.all : getCategoryLabel(locale, type)}
             </button>
           ))}
         </aside>
         <section className="v4-prototype-search__results" aria-live="polite">
           <header>
             <div>
-              <p className="section-kicker">{zh ? "结果" : "Results"}</p>
+              <p className="section-kicker">{copy.results}</p>
               <h2>
                 {query
-                  ? zh
-                    ? `“${query}”的结果`
-                    : `Results for “${query}”`
-                  : zh
-                    ? "热门页面"
-                    : "Popular pages"}
+                  ? copy.resultsFor.replace("{query}", query)
+                  : copy.popularPages}
               </h2>
             </div>
             <span>
-              {results.length} {zh ? "条结果" : "results"}
+              {t(locale, "search.resultsCount", {
+                count: String(results.length),
+              })}
             </span>
           </header>
           {results.length ? (
@@ -198,12 +169,10 @@ export function SearchPage({
                 const image = document.image
                   ? resolveImageAsset(document.image)
                   : fallbackImages[document.category];
-                const typeLabel = zh
-                  ? typeLabels[document.category].zh
-                  : typeLabels[document.category].en;
+                const typeLabel = getCategoryLabel(locale, document.category);
                 const displayTags =
                   document.category === "boss"
-                    ? document.tags.map((tag) => formatBossTag(tag, zh))
+                    ? document.tags.map((tag) => formatBossTag(tag, locale))
                     : [];
                 const versionNumber = extractVersionNumber(document.patch);
                 return (
@@ -258,12 +227,8 @@ export function SearchPage({
             </div>
           ) : (
             <EmptyState
-              description={
-                zh
-                  ? "尝试更短的关键词，或移除版本号后重新搜索。"
-                  : "Try a shorter search term or remove the patch number."
-              }
-              title={zh ? "未找到匹配页面" : "No matching page"}
+              description={copy.noMatchHint}
+              title={copy.noMatchTitle}
             />
           )}
         </section>

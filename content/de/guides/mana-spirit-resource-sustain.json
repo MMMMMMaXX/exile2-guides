@@ -1,0 +1,560 @@
+{
+  "id": "mana-spirit-resource-sustain",
+  "slug": "mana-spirit-resource-sustain",
+  "locale": "de",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "PoE 2 Mana- und Spirit-Probleme: Ressourcen-Erhalt beheben",
+  "shortTitle": "Mana & Spirit",
+  "summary": "Warum deine Skill-Schleife stockt, deine Mana-Flasche nie nachkommt oder sich eine Aura nicht aktivieren lässt: Manakosten gegen Wiederherstellung, Spirit als Reservierungspool, Supports, die Kosten erhöhen, und wie Karten und Bosskämpfe sich unterscheiden.",
+  "description": "Ein diagnoseorientierter PoE-2-Leitfaden zum Ressourcen-Erhalt: das Verhältnis zwischen Manakosten, Regeneration, Leech, On-Kill, Flasks und Auslöserate; warum Spirit ein separat reservierter Pool ist; wie Supports Kosten erhöhen oder Spirit reservieren; warum Boss- und Karten-Ressourcenprobleme sich unterscheiden; alternative Pools wie Leben und Energieschild; und eine 10-Sekunden-Schleifen-Methode, um den Bruchpunkt zu finden.",
+  "guideCategory": "troubleshooting",
+  "estimatedReadingMinutes": 13,
+  "prerequisites": [
+    "Du kannst deinen Hauptskill wirken, aber die Schleife stockt, oder eine Aura lässt sich nicht einschalten",
+    "Du verstehst, dass Mana pro Wirkung ausgegeben wird, während Spirit von persistenten Effekten reserviert wird"
+  ],
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "map",
+    "troubleshooting"
+  ],
+  "heroImage": "/images/skills/herald-of-ice.webp",
+  "cardImage": "/images/skills/herald-of-ice.webp",
+  "imageAlt": "PoE 2 Herald of Ice, ein Spirit-reservierender Skill-Buff, der den Unterschied zwischen ausgegebenem Mana und reserviertem Spirit veranschaulicht",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Kurzantwort",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Warum stockt meine Schleife?",
+          "body": [
+            "Dein pro Wirkung ausgegebenes Mana übersteigt das, was du zwischen den Wirkungen durch Regeneration, Leech, On-Kill und Flasks zurückerhältst.",
+            "In Bosskämpfen ohne Gegner trocknen On-Kill- und Leech-Quellen aus, sodass derselbe Aufbau, der Karten räumte, das Mana ausgeht."
+          ]
+        },
+        {
+          "title": "Warum lässt sich meine Aura nicht aktivieren?",
+          "body": [
+            "Spirit ist ein reservierter Pool, kein ausgegebenes Mana. Wenn dein reservierter Spirit dein Maximum übersteigt, kann der persistente Buff nicht aktiviert werden.",
+            "Gib Spirit zuerst aus anderen Reservierungen frei, und schalte dann die Aura oder den Support wieder ein."
+          ]
+        },
+        {
+          "title": "Schnellster Fix?",
+          "body": [
+            "Zeichne eine 10-Sekunden-Wirkungsschleife auf: zähle die Wirkungen, notiere ausgegebenes gegen zurückerhaltenes Mana, und finde heraus, wo die Wiederherstellung versagt.",
+            "Oft ist der günstigste Fix, einen Support zu entfernen, der die Kosten aufgebläht hat, statt mehr Wiederherstellung zu stapeln."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resource-overview",
+      "order": 2,
+      "title": "Mana vs. Spirit: zwei verschiedene Pools",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Mana und Spirit lösen unterschiedliche Probleme und lassen sich leicht verwechseln. Mana wird bei jeder Wirkung eines Skills ausgegeben. Spirit wird von persistenten Buffs, Auren und einigen Supports reserviert und ist während der Reservierung nicht verfügbar."
+      ],
+      "bullets": [
+        "Mana: pro Wirkung verbraucht; zurückgewonnen durch Regeneration, Mana-Leech, On-Kill-Mana-Gewinn sowie Flasks oder Charms.",
+        "Spirit: ein von persistenten Effekten reservierter Pool; übersteigt die Reservierung das Maximum, schaltet der Effekt nicht ein.",
+        "Ein Support kann sowohl die Manakosten eines Skills erhöhen als auch Spirit für einen persistenten Buff reservieren und trifft dich damit doppelt.",
+        "Behandle sie getrennt: das Fixen von Mana behebt nie ein Spirit-Überlauf und umgekehrt."
+      ]
+    },
+    {
+      "id": "symptom-selector",
+      "order": 3,
+      "title": "Wähle dein Symptom",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Fang hier an. Wähle das passende Symptom und nutze dann die detaillierte Diagnose unten, um den Bruchpunkt zu finden.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Dein Symptom",
+          "options": [
+            {
+              "label": "Karten sind okay, Bosskämpfe trocknen aus",
+              "value": "mapping-fine-boss-dry"
+            },
+            {
+              "label": "Aura oder persistenter Buff lässt sich nicht aktivieren",
+              "value": "aura-wont-enable"
+            },
+            {
+              "label": "Ausgelöste Skills brechen weg",
+              "value": "trigger-dropout"
+            },
+            {
+              "label": "Überall immer ohne Mana",
+              "value": "always-dry"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Karten okay, Boss trocken",
+          "when": {
+            "symptom": "mapping-fine-boss-dry"
+          },
+          "steps": [
+            "Deine Wiederherstellung stützt sich auf On-Kill und Leech, die stetige Kills brauchen.",
+            "Bosse mit langen Phasen und ohne Gegner schneiden diese Quellen ab.",
+            "Füge stehende Wiederherstellung hinzu (Regen, eine Mana-Flash/Charm) statt nur On-Kill oder Leech."
+          ]
+        },
+        {
+          "title": "Aura lässt sich nicht aktivieren",
+          "when": {
+            "symptom": "aura-wont-enable"
+          },
+          "steps": [
+            "Der reservierte Spirit ist größer als dein maximaler Spirit.",
+            "Entferne andere persistente Buffs und Supports oder verringere sie, um Spirit freizugeben.",
+            "Schalte die Aura wieder ein, sobald die gesamte Reservierung in deinen Pool passt."
+          ]
+        },
+        {
+          "title": "Ausgelöste Skills brechen weg",
+          "when": {
+            "symptom": "trigger-dropout"
+          },
+          "steps": [
+            "Ausgelöste Skills kosten beim Auslösen weiterhin Mana, zusätzlich zum Auslöser-Skill.",
+            "Ist die Auslöserate hoch, schnellt das gesamte ausgegebene Mana zwischen den Wiederherstellungen hoch.",
+            "Senke die Auslöserfrequenz oder füge Wiederherstellung hinzu, die auf die Auslöserate abgestimmt ist, nicht nur auf die Hauptwirkung."
+          ]
+        },
+        {
+          "title": "Immer ohne Mana",
+          "when": {
+            "symptom": "always-dry"
+          },
+          "steps": [
+            "Die basischen Manakosten übersteigen die basische Wiederherstellung in jedem Kontext.",
+            "Zeichne eine 10-Sekunden-Schleife auf, um die genaue Lücke zu messen.",
+            "Behebe zuerst die größte einzelne Quelle: meist ein Support, der die Kosten aufgebläht hat, oder fehlende Regeneration."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Allgemeiner erster Schritt",
+        "steps": [
+          "Zeichne eine 10-Sekunden-Wirkungsschleife auf: Wirkungen, ausgegebenes Mana, zurückerhaltenes Mana.",
+          "Stelle fest, ob die Wiederherstellung überall versagt oder nur ohne Kills.",
+          "Öffne dann die detaillierte Diagnose, um jeden Fix zu bemessen."
+        ]
+      }
+    },
+    {
+      "id": "resource-diagnostic",
+      "order": 4,
+      "title": "Detaillierte Diagnose",
+      "type": "resource-diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Wähle die Ressource, die du untersuchen möchtest. Wir zeigen, was ihre Kosten erhöht, was sie wiederherstellt und die Prüfreihenfolge.",
+      "controls": [
+        {
+          "id": "resource",
+          "label": "Zu untersuchende Ressource",
+          "options": [
+            {
+              "label": "Manakosten vs. Regen",
+              "value": "mana-cost"
+            },
+            {
+              "label": "Leech und On-Kill",
+              "value": "leech-onkill"
+            },
+            {
+              "label": "Flask und Charm",
+              "value": "flask-charm"
+            },
+            {
+              "label": "Spirit-Reservierung",
+              "value": "spirit"
+            },
+            {
+              "label": "Leben, ES, Runic Ward",
+              "value": "alt-pool"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Manakosten vs. Regen",
+          "when": {
+            "resource": "mana-cost"
+          },
+          "steps": [
+            "Vergleiche die Manakosten des Skills mit deiner Mana-Regeneration pro Sekunde.",
+            "Ein Support, der Manakosten hinzufügt, kann die Kosten über die Regen treiben, selbst wenn die Basis-Kosten in Ordnung waren.",
+            "Reihenfolge beim Fixen: entferne kostenauftreibende Supports, füge dann flache Regen oder -Manakosten-Modifikatoren hinzu."
+          ]
+        },
+        {
+          "title": "Leech und On-Kill",
+          "when": {
+            "resource": "leech-onkill"
+          },
+          "steps": [
+            "Leech- und On-Kill-Mana kehren nur zurück, solange du Schaden zufügst und Kills sicherst.",
+            "Sie sind in Karten hervorragend, in langen Bossphasen ohne Gegner schwach.",
+            "Verlass dich in bosslastigen Inhalten nicht allein auf sie als Wiederherstellung."
+          ]
+        },
+        {
+          "title": "Flask und Charm",
+          "when": {
+            "resource": "flask-charm"
+          },
+          "steps": [
+            "Eine Mana-Flash oder ein Charm stellt beim Einsatz einen Burst wieder her und füllt sich über Ladungen auf.",
+            "Prüfe den Ladegewinn: wenn du selten die Aktionen ausführst, die Ladungen gewähren, stockt die Wiederherstellung.",
+            "Behalte eine verlässliche stehende Quelle, selbst wenn Flasks auf Abklingzeit sind."
+          ]
+        },
+        {
+          "title": "Spirit-Reservierung",
+          "when": {
+            "resource": "spirit"
+          },
+          "steps": [
+            "Rechne jede persistente Buff- und Support-Reservierung gegen deinen maximalen Spirit zusammen.",
+            "Übersteigt die Summe das Maximum, schaltet der letzte Effekt nicht ein.",
+            "Kürze Reservierungen, bevor du neue Auren oder persistente Supports hinzufügst."
+          ]
+        },
+        {
+          "title": "Alternative Pools",
+          "when": {
+            "resource": "alt-pool"
+          },
+          "steps": [
+            "Einige Skills kosten Leben statt Mana; Energieschild und Runic Ward sind separate Pools.",
+            "Prüfe den belasteten Pool direkt: ein Leben-kostender Skill wird nicht durch Mana-Regen behoben.",
+            "Bemesse die Wiederherstellung auf den Pool, den dein Skill tatsächlich ausgibt."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Allgemeine Prüfung",
+        "steps": [
+          "Benenne den genauen unter Druck stehenden Pool (Mana, Spirit, Leben, ES, Ward).",
+          "Miss ausgegeben gegen zurückerhalten über eine 10-Sekunden-Schleife.",
+          "Gehe die größte Lücke zuerst an, teste dann erneut in Karten- und Boss-Kontext."
+        ]
+      }
+    },
+    {
+      "id": "cost-breakdown",
+      "order": 5,
+      "title": "Kosten jedes Fixes",
+      "type": "cost-breakdown",
+      "visible": true,
+      "toc": true,
+      "intro": "Nicht jeder Fix kostet gleich viel. Ordne die Optionen von am günstigsten bis am störendsten, bevor du dich festlegst.",
+      "rows": [
+        {
+          "item": "Einen kostenauftreibenden Support ausstecken",
+          "cost": "Kostenlos",
+          "detail": "Keine Rückerstattung nötig; einfach den Sockel entfernen. Günstigster erster Schritt, wenn ein Support Manakosten erhöht oder unnötigen Spirit reserviert hat.",
+          "currency": "-"
+        },
+        {
+          "item": "Eine Mana-Flash oder einen Charm hinzufügen",
+          "cost": "Niedrig",
+          "detail": "Eine Burst-Quelle beim Einsatz. Günstig zu beschaffen, hängt aber an Ladegewinn und hat Abklingzeit.",
+          "currency": "-"
+        },
+        {
+          "item": "Ausrüstung gegen -Manakosten oder +Mana-Regen tauschen",
+          "cost": "Variiert",
+          "detail": "Achte auf reduzierte Manakosten oder erhöhte Mana-Regeneration an Ringen, Amulett oder Rüstung. Die Kosten hängen davon ab, ob du herstellst oder handelst.",
+          "currency": "currency"
+        },
+        {
+          "item": "In Mana- oder Spirit-Knoten respeccen",
+          "cost": "Gold + Rückerstattungspunkte",
+          "detail": "Wenn du zu Ressourcen-Passiven pathen musst, nutze den Rückerstattungs-NPC; das kostet Gold und verteilt Punkte neu, die du woanders brauchen könntest.",
+          "currency": "gold"
+        },
+        {
+          "item": "Auf einen Leben-kostenden oder anderen Skill wechseln",
+          "cost": "Build-Änderung",
+          "detail": "Kosten von Mana auf Leben zu verlagern ändert, welcher Pool unter Druck gerät, und ist selten die günstigste Option.",
+          "currency": "-"
+        }
+      ],
+      "note": "Fang mit den kostenlosen oder günstigen Optionen an. Einen Support zu entfernen oder eine Flash hinzuzufügen löst die Lücke oft ohne Respec."
+    },
+    {
+      "id": "mapping-vs-bossing",
+      "order": 6,
+      "title": "Warum Karten und Bossen sich unterscheiden",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Derselbe Skill-Aufbau kann sich in Karten perfekt und in einer Boss-Arena unmöglich anfühlen. Der Unterschied liegt fast immer in deinen Wiederherstellungsquellen, nicht in deinem Skill."
+      ],
+      "bullets": [
+        "Karten: stetige Kills speisen On-Kill-Mana und Leech, sodass die Wiederherstellung unbegrenzt wirkt.",
+        "Bosse: lange Phasen und keine Gegner hungern On-Kill und Leech aus und legen eine schwache Basis-Regen offen.",
+        "Teste die Wiederherstellung in einem anhaltenden bossartigen Szenario, nicht nur beim Räumen von Packen.",
+        "Funktioniert ein Fix nur beim Töten, ist er kein bossfester Fix."
+      ]
+    },
+    {
+      "id": "solutions",
+      "order": 7,
+      "title": "Lösungen, die wirklich funktionieren",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Gehe auf die größte Lücke ein, die du in deiner 10-Sekunden-Schleife gemessen hast. Meist schließt eine Änderung den Großteil davon."
+      ],
+      "bullets": [
+        "Entferne oder tausche einen Support, der Manakosten aufgebläht oder unnötigen Spirit reserviert hat.",
+        "Füge eine stehende Wiederherstellungsquelle hinzu (Mana-Regen oder eine Flash/Charm), die nicht von Kills abhängt.",
+        "Gib Spirit frei, indem du andere persistente Buffs kürzt, bevor du eine neue Aura hinzufügst.",
+        "Bemesse bei auslöserlastigen Aufbauten die Wiederherstellung auf die Auslöserate, nicht nur auf die Hauptwirkung.",
+        "Prüfe den belasteten Pool direkt, wenn dein Skill Leben, Energieschild oder Runic Ward ausgibt."
+      ]
+    },
+    {
+      "id": "failed-methods",
+      "order": 8,
+      "title": "Methoden, die es nicht beheben",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Spieler stapeln oft das Falsche. Überspringe das und miss die Lücke zuerst."
+      ],
+      "bullets": [
+        "Noch mehr Leech aufstapeln, wenn der Kampf keine Kills hat: Leech braucht zugefügten Schaden und Kills, um zu zählen.",
+        "Mana-Regen hinzufügen, um eine Aura zu fixen, die nicht aktiviert: das ist ein Spirit-Problem, nicht Mana.",
+        "Anzunehmen, eine universelle Mana-Schwelle passe auf jeden Build: Wiederherstellungsbedarf skaliert mit deinen eigenen Kosten und deiner Wirkrate.",
+        "Auslöserkosten ignorieren: ausgelöste Skills geben beim Auslösen weiterhin Mana aus."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Community-Fragen",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Häufige Ressourcen-Erhalt-Fragen aus Reddit und Video-Kommentaren, mit unserer Einschätzung und einer direkten Empfehlung.",
+      "cards": [
+        {
+          "title": "In Karten okay, im Boss trocken",
+          "tag": "Boss",
+          "body": [
+            "Problem: die Schleife versagt nur während langer Bossphasen.",
+            "Beleg: die Wiederherstellung stützt sich auf On-Kill und Leech, die stetige Kills brauchen.",
+            "Empfehlung: stehende Regen oder eine Flash hinzufügen; verlass dich nicht auf killbasierte Wiederherstellung."
+          ]
+        },
+        {
+          "title": "Aura ausgegraut",
+          "tag": "Spirit",
+          "body": [
+            "Problem: ein persistenter Buff lässt sich nicht einschalten.",
+            "Beleg: der reservierte Spirit übersteigt den maximalen Spirit.",
+            "Empfehlung: Spirit aus anderen Reservierungen freigeben, dann wieder einschalten."
+          ]
+        },
+        {
+          "title": "Flash nie genug",
+          "tag": "Flask",
+          "body": [
+            "Problem: eine Mana-Flash kommt nicht hinterher.",
+            "Beleg: Ladegewinn ist zu langsam, oder die Kosten schnellen durch einen Support hoch.",
+            "Empfehlung: Ladungen prüfen und kostenauftreibende Supports entfernen, bevor Flashes gestapelt werden."
+          ]
+        },
+        {
+          "title": "Auslöser frisst Mana",
+          "tag": "Trigger",
+          "body": [
+            "Problem: ausgelöste Skills ziehen Mana schnell leer.",
+            "Beleg: ausgelöste Skills kosten Mana zusätzlich zum Auslöser-Skill.",
+            "Empfehlung: Wiederherstellung auf die Auslöserate abstimmen, nicht nur auf die Hauptwirkung."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 10,
+      "title": "Video-Walkthrough zum Ressourcen-Erhalt",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "PoE 2 Mana und Spirit Erhalt: nicht mehr leer laufen",
+          "creator": "Community-Ersteller",
+          "description": "Ein Walkthrough zur Diagnose von Mana- und Spirit-Problemen, der Trennung von ausgegebenem Mana von reserviertem Spirit und dem Beheben des Erhalts ohne vollen Respec.",
+          "takeaway": "Miss eine 10-Sekunden-Schleife, gib Spirit frei, bevor du Auren hinzufügst, und entferne kostenauftreibende Supports, bevor du Wiederherstellung stapelst.",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM",
+          "timestamps": [
+            {
+              "label": "Intro",
+              "time": "0:00"
+            },
+            {
+              "label": "Mana vs. Spirit",
+              "time": "1:30"
+            },
+            {
+              "label": "Karten vs. Boss",
+              "time": "4:00"
+            },
+            {
+              "label": "Supports, die Kosten aufblähen",
+              "time": "7:00"
+            },
+            {
+              "label": "10-Sekunden-Schleifen-Methode",
+              "time": "10:00"
+            },
+            {
+              "label": "Fix-Reihenfolge",
+              "time": "13:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 11,
+      "title": "Fehlerbehebung",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Trenne zuerst die Pools. Ein Mana-Fix löst nie ein Spirit-Problem, und die meisten Fälle von „ohne Mana\" sind eigentlich eine fehlende stehende Wiederherstellung."
+      ],
+      "bullets": [
+        "Immer trocken: zeichne eine 10-Sekunden-Schleife auf und entferne zuerst die größte Kostenquelle.",
+        "Nur Boss: stehende Regen oder eine Flash hinzufügen; hör auf, dich auf On-Kill oder Leech zu verlassen.",
+        "Aura lässt sich nicht aktivieren: summiere Spirit-Reservierungen und kürze, bis sie passen.",
+        "Auslöser-Abbruch: Wiederherstellung auf die Auslöserate abstimmen, nicht nur auf die Hauptwirkung.",
+        "Falscher Pool: kläre vor dem Fixen, ob der Skill Mana, Leben, ES oder Ward ausgibt."
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 12,
+      "title": "Quellen und Verifizierung",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offizielle Quelle",
+          "description": "Offizielle Seite von Path of Exile 2 und Ingame-Charakterpanel (Mana, Spirit, Regen)",
+          "url": "https://www.pathofexile2.com/"
+        },
+        {
+          "label": "Community-Guide",
+          "description": "PoE 2 Wiki - Mana-, Spirit- und Ressourcenmechanik",
+          "url": "https://www.poe2wiki.net/"
+        },
+        {
+          "label": "Video-Guide",
+          "description": "Community-Walkthrough - Mana und Spirit Erhalt",
+          "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 13,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "Veröffentlicht für PoE 2 0.5.4. Deckt Mana vs. Spirit, die zweistufige Ressourcen-Diagnose, die Kosten jedes Fixes, Karten vs. Bossen, alternative Pools und eine 10-Sekunden-Schleifen-Methode ab. Die Client-Verifizierung bleibt für die genannten Grenzen ausstehend."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [
+    "herald-of-ice"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 – Offiziell",
+      "sourceType": "official",
+      "url": "https://www.pathofexile2.com/"
+    },
+    {
+      "label": "PoE 2 Wiki - Ressourcen",
+      "sourceType": "community",
+      "url": "https://www.poe2wiki.net/"
+    },
+    {
+      "label": "Community - Mana und Spirit Erhalt",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=ROGSDsFUPAM"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Mana- und Spirit-Probleme: Ressourcen-Erhalt beheben",
+    "description": "Warum deine Skill-Schleife stockt, deine Mana-Flasche nie nachkommt oder sich eine Aura nicht aktivieren lässt: Manakosten gegen Wiederherstellung, Spirit als Reservierungspool, Supports, die Kosten erhöhen, und wie Karten und Bosskämpfe sich unterscheiden.",
+    "noindex": false
+  },
+  "publishedAt": "2026-08-02",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "mana-spirit-resource-sustain",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

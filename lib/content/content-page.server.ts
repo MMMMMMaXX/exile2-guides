@@ -10,6 +10,25 @@ import type { ParsedContent } from "./parse";
 import type { StaticContentPageMap } from "./content-page";
 import { addHeadingAnchors, extractTableOfContents } from "./table-of-contents";
 
+/**
+ * 缓存虚拟模块所需的静态页面映射，避免内容页和搜索索引同时启动时重复
+ * 渲染、序列化 1936 个翻译内容页面。
+ */
+const staticContentPagesCache = new Map<
+  string,
+  Promise<StaticContentPageMap>
+>();
+
+/** 清理开发态静态页面缓存，使内容文件热更新后能重新生成虚拟模块。 */
+export function clearStaticContentPagesCache(contentDirectory?: string): void {
+  if (!contentDirectory) {
+    staticContentPagesCache.clear();
+    return;
+  }
+
+  staticContentPagesCache.delete(path.resolve(contentDirectory));
+}
+
 /** 将已通过语法校验的 Markdown/MDX 正文渲染为构建期 HTML。 */
 export async function renderContentBody(
   body: string,
@@ -93,8 +112,22 @@ async function renderStaticContentPages(
 export async function loadStaticContentPages(
   contentDirectory = path.resolve(process.cwd(), "content"),
 ): Promise<StaticContentPageMap> {
-  const index = await loadContentIndex(contentDirectory);
-  return renderStaticContentPages(index.entries);
+  const key = path.resolve(contentDirectory);
+  const cached = staticContentPagesCache.get(key);
+  if (cached) return cached;
+
+  const loading = loadContentIndex(contentDirectory).then((index) =>
+    renderStaticContentPages(index.entries),
+  );
+  staticContentPagesCache.set(key, loading);
+
+  try {
+    return await loading;
+  } catch (error) {
+    // 失败结果不能阻止开发服务器在修复文件后重试。
+    staticContentPagesCache.delete(key);
+    throw error;
+  }
 }
 
 /**

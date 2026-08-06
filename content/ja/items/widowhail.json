@@ -1,0 +1,858 @@
+{
+  "id": "widowhail",
+  "slug": "widowhail",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "ウィドウヘイル：クイバーのボーナス増幅、最適な数値、ルーンフォージング（Path of Exile 2 0.5）",
+  "shortTitle": "ウィドウヘイル",
+  "summary": "ウィドウヘイルは Path of Exile 2 におけるユニークな「粗末な弓（Crude Bow）」であり、その唯一の修正値「装備中のクイバーから得るボーナス+(150-250)%」が、クイバーに記載された数値ボーナスを倍増させる。弓自体のダメージは無意味であり、本当のエンジンはクイバーだ。本ガイドでは、正確な増幅式、どのクイバー修正値が増幅されるか、低ロールと高ロールの違い、250%ロールに見合うクイバー、ルーンフォージ版、そして他人のクイバーをそのままコピーしてはいけないビルドについて解説する。",
+  "description": "PoE2 0.5 におけるウィドウヘイルの仕組み：「装備中のクイバーから得るボーナス+(150-250)%」の倍率、ベース×(1+W%)の式、増幅されるクイバー修正値（全体・内密・腐敗・射弹・追加ダメージ）と増幅されないもの（クイバー自身のローカル修正値）、ロールの価値、クイバー選び、ルーンフォージング、ビルド別の注意点。",
+  "itemType": "bow",
+  "rarity": "unique",
+  "requiredLevel": "1",
+  "useCases": [
+    "quiver-scaling",
+    "bow-builds",
+    "runeforging"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-bows",
+  "itemClass": "bow",
+  "baseType": "crude-bow",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-bow",
+    "quiver-scaling",
+    "bow-builds",
+    "widowhail",
+    "runeforging"
+  ],
+  "heroImage": "/images/items/widowhail-hero.webp",
+  "cardImage": "/images/items/widowhail-hero.webp",
+  "imageAlt": "Path of Exile 2 のユニークアイテム「ウィドウヘイル（粗末な弓）」。装備中のクイバーの数値ボーナスを倍増させる、クイバー増幅型の弓。",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "ウィドウヘイルの唯一の修正値「装備中のクイバーから得るボーナス+(150-250)%」は、クイバーの増幅可能なすべての数値ボーナスを(1+W/100)倍にする。150%なら×2.5、200%なら×3.0、250%なら×3.5だ。弓自体の物理DPSが低いのは意図的なもので、本当の武器はクイバーである。良いクイバーがあってこそ高ロールに価値が生まれ、クイバーが弱ければ250%のウィドウヘイルでも無意味になる。",
+      "calloutDetail": [
+        "この倍率は、クイバーが付与する全体・内密・腐敗ボーナス（追加矢弾、追加ダメージ、攻撃速度増加、耐性、ライフ、命中値など）に適用される。",
+        "新しいステータスを追加するわけではない。クイバーがすでに持っているものを増幅するだけだ。増幅する価値のないクイバーでは何も得られない。",
+        "ウィドウヘイルは低レベルユニークであればルーンフォージ（ユニークのルーンフォージング、アクト3で解放）が可能。ユニークのクイバーボーナス修正値は維持され、ベースの物理ダメージが上がったルーンフォージベースとなる。"
+      ],
+      "answers": [
+        {
+          "label": "使うべき場合",
+          "text": [
+            "すでに所有（または購入可能）している強力なクイバーがあり、その数値ボーナスを何度も倍増させたい場合——追加ダメージ、攻撃速度や射弹速度、スキルレベル、ライフ、耐性など。"
+          ]
+        },
+        {
+          "label": "避けるべき場合",
+          "text": [
+            "武器自体のローカルステータス（高い物理フラット値、弓自身の高い攻撃速度）に依存するビルドである場合、あるいは増幅する価値のあるクイバーを手に入らない場合。レア弓の方が適しているかもしれない。"
+          ]
+        },
+        {
+          "label": "狙うべきロール",
+          "text": [
+            "250%は自然ロールの天井。240-248%ならごくわずかな差で、はるかに安いコストでほぼ同等の強さが得られる。ヴァールのオーブによる腐敗で250%を超えることも可能（コミュニティ報告では約290%超）。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#overview",
+          "label": "倍率の仕組み"
+        },
+        {
+          "href": "#properties",
+          "label": "現在のツールチップとロール幅"
+        },
+        {
+          "href": "#build-usage",
+          "label": "採用するビルド"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "ベースタイプ",
+          "value": "Crude Bow",
+          "note": [
+            "初心者向けの弓。ベースの物理ダメージ（5-13）と攻撃速度（1.40）が低いのは、このアイテムの強さが武器ではなくクイバーに完全に依存しているため。"
+          ]
+        },
+        {
+          "label": "ユニーク修正値",
+          "value": "装備中のクイバーから得るボーナス+(150-250)%",
+          "note": [
+            "唯一の明示的（explicit）修正値。ロールは50%刻み（150 / 200 / 250）で変動するため、187%といったロールは存在せず、いずれかのティアにスナップする。"
+          ]
+        },
+        {
+          "label": "必要レベル",
+          "value": "1（器用さ14）",
+          "note": [
+            "キャンペーン開始直後から装備可能。そのためレベリング用の弓としても、エンドゲームのクイバー倍率器としても兼用される。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "Drops anywhere; can be chanced; tradeable",
+          "note": [
+            "レベル25以上のモンスター（アクト2以降）から比較的よくドロップする。また、白の「粗末な弓」にオブ・オブ・チャンスを使用して生成することも可能。売却価値はアルケミーのかけら6個分。"
+          ]
+        },
+        {
+          "label": "腐敗の天井",
+          "value": "250%超が可能",
+          "note": [
+            "ヴァールのオーブによる腐敗で、自然の250%上限を超えることがある（コミュニティ報告では約290%超）。正確な天井はゲーム内で確認すること。"
+          ]
+        },
+        {
+          "label": "ルーンフォージング",
+          "value": "対象（低レベルユニーク）",
+          "note": [
+            "レベル1のユニークであるため、アクト3で解放され次第ユニークのルーンフォージングの対象となる。クイバーボーナス修正値は維持され、ベースのダメージが強化される。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "現在のツールチップとロール幅（0.5.4）",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Base Physical Damage",
+          "value": "5-13",
+          "notes": [
+            "低いのは意図的。ウィドウヘイルはダメージの担い手ではなく、クイバーの増幅装置である。"
+          ]
+        },
+        {
+          "label": "Critical Strike Chance",
+          "value": "5.00%",
+          "notes": [
+            "粗末な弓のベースから引き継がれる。"
+          ]
+        },
+        {
+          "label": "Attacks per Second",
+          "value": "1.40",
+          "notes": [
+            "粗末な弓のベースから引き継がれる。"
+          ]
+        },
+        {
+          "label": "ユニーク修正値（変動）",
+          "value": "装備中のクイバーから得るボーナス+(150-250)%",
+          "notes": [
+            "唯一の明示的修正値。ロールは50%ティア：150%、200%、250%。この数値こそが弓の価値を決める。"
+          ]
+        },
+        {
+          "label": "必要条件",
+          "value": "Level 1, 14 Dexterity",
+          "notes": [
+            "筋力・知力の要件はなく、器用さ系のクラスならレベル1から装備可能。"
+          ]
+        },
+        {
+          "label": "Implicit",
+          "value": "Faith Springs Abundant at the edge of Death",
+          "notes": [
+            "アイテムに表示されるフレーバー的な内密（implicit）行。別の増幅可能ステータスではない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "クイバーボーナスの倍率の仕組み",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "ウィドウヘイルの修正値は「装備中のクイバーから得るボーナス+(150-250)%」と読む。キーワードは「増加（increased）」であり、クイバーボーナスの数値を取り、ウィドウヘイルのロール分だけ増加させる。最大ライフ+40のクイバーボーナスが250%のウィドウヘイルなら、+40×(1+2.50)=最大ライフ+140となる。一般式は「増幅後クイバーボーナス = ベースのクイバーボーナス × (1 + W/100)」。ここで W はウィドウヘイルのロール（150、200、250）。",
+        "倍率が(1+W/100)であるため、実効倍率は150%で×2.5、200%で×3.0、250%で×3.5となる。これは公式の矢弾例でも裏付けられている。内密で「弓攻撃が追加の矢を放つ」(+1)を与え、さらに明示的「投射物数+1」(+1)を持つクイバーは、ウィドウヘイル適用前に合計2になる。250%の効果ではその2が2×3.5=7の追加矢弾となる。ステータスはまず合計され、その後に倍増される。",
+        "「装備中のクイバーから得るボーナス」とは実際には、クイバーがキャラクターに与える増幅可能なすべての数値ボーナス——内密行と明示的プレフィックス/サフィックス、そして腐敗内密も含む。これには追加ダメージ（フラット）、増加率（攻撃速度、クリティカル、ダメージ）、ステータス、耐性、ライフ、命中、射弹速度、貫通回数、追加矢弾修正値が含まれる。倍率は新しいステータスを作り出すのではなく、すでに存在するものを増幅するだけだ。",
+        "多くのプレイヤーが見落とす細かい点：ボーナスは「別のコピーとして加算」されるのではなく「乗算」される。攻撃速度増加+20%のクイバーに200%のウィドウヘイルなら、その行から+20%×3.0=攻撃速度増加+60%となり、+20%+200%になるわけではない。ウィドウヘイルのロール自体が、クイバーの基礎ボーナス値に適用される「増加」の大きさなのだ。",
+        "なぜ弓自体のDPSは低いのにビルドが機能するのか：ウィドウヘイルは「良い武器ステータス」を「良いクイバーステータス（増幅済）」に置き換える。レアのクイバーなら、大きな物理/フラット追加ダメージ、2桁の攻撃速度増加、スキルレベル、ライフ、耐性を容易に備えられる。これらすべてを3.5倍にすることで、通常の弓が持つ物理フラットダメージ以上の総合的攻撃・防御価値が生まれる。その代償は、弓枠に見合うだけの強力でよくロールされたクイバーが必要なことだ。"
+      ],
+      "bullets": [
+        "式：増幅後 = ベース × (1 + W/100)。倍率：150% → ×2.5、200% → ×3.0、250% → ×3.5。",
+        "内密・明示的・腐敗のクイバーボーナスはすべてカウントされる。",
+        "弓は自身の低い物理ダメージを無視し、クイバーが武器となる。",
+        "クイバーのステータスは合計されてから乗算される——そのため内密+1と明示的+1の矢が250%で7になる。",
+        "新しいプレフィックス/サフィックスを追加するのではなく、既存のものを増幅するだけ。"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "増幅の境界値とクイバー修正値マトリックス",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "quiver",
+        "breakpoints"
+      ],
+      "rows": [
+        {
+          "scenario": "追加矢弾クイバー（内密+1、明示的+1）= ベース矢弾2",
+          "audience": "Spark / 射弹ビルド",
+          "benefit": "150 / 200 / 250%で追加矢弾 2 → 5 / 6 / 7",
+          "risk": "射弹数の恩恵があるスキルでなければ、追加矢弾は無意味",
+          "level": "high",
+          "recommendation": "増幅が強力。250%なら矢弾2のクイバーが7射弹になる。",
+          "tags": [
+            "projectile",
+            "arrows"
+          ]
+        },
+        {
+          "scenario": "クイバーの最大ライフ+40",
+          "audience": "あらゆるビルド",
+          "benefit": "150 / 200 / 250%でライフ 40 → 100 / 120 / 140",
+          "risk": "ライフを重視しないビルドなら低い",
+          "level": "medium",
+          "recommendation": "ライフはきれいに増幅される。高ロールならクイバーのライフボーナスが約3倍になる。",
+          "tags": [
+            "life",
+            "defence"
+          ]
+        },
+        {
+          "scenario": "クイバーの攻撃速度増加+20%",
+          "audience": "攻撃ビルド",
+          "benefit": "150 / 200 / 250%で攻撃速度増加 20% → 50 / 60 / 70%",
+          "risk": "低い。攻撃速度はほぼ常に有用",
+          "level": "medium",
+          "recommendation": "増幅するのに最も安全なクイバー修正値の一つ。",
+          "tags": [
+            "attack-speed"
+          ]
+        },
+        {
+          "scenario": "フラット追加ダメージ（例：攻撃時に氷ダメージ+5〜30）のクイバー",
+          "audience": "属性 / 変換ビルド",
+          "benefit": "150 / 200 / 250%で 5-30 → 12.5-75 / 15-90 / 17.5-105",
+          "risk": "変換とスキルタグに依存",
+          "level": "medium",
+          "recommendation": "変換Sparkや属性弓ビルドに最適。ダメージ種別が対応していることを確認すること。",
+          "tags": [
+            "added-damage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "ウィドウヘイルを採用するビルド",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "ウィドウヘイルはクイバー運搬装置である。クイバー枠を通じて価値を生み出し、強力なクイバーを供給できるビルドならばどれでも輝く。以下はこの弓の現実的な居場所。いずれも弓が実を結ぶ前に満たすべき硬性前提（クイバー）がある。"
+      ],
+      "builds": [
+        {
+          "title": "Ice Shot Deadeye",
+          "description": "申し分のない居場所。Deadeyeは射弹数を報酬とし、追加冷気/物理ダメージ、攻撃速度、投射物スキルレベルを盛ったクイバーは何度も倍増される。230%以上のウィドウヘイルと、投射物スキルレベル+2および高い追加ダメージを持つクイバーを目指そう。",
+          "href": "/ja/builds/ice-shot-deadeye/"
+        },
+        {
+          "title": "Spark / 変換Spark キャスター（Blood Mage、Stormweaver）",
+          "description": "ウィドウヘイルは、投射物スキルレベルと射弹速度を与えるクイバーを増幅するために使われる。倍増された射弹スケーリングはProjectile AccelerationとSparkの多段ヒットダメージを支える。低予算版なら数十エクスアルトオーブで初期マップを攻略できる。",
+          "href": "/ja/skills/ice-shot/"
+        },
+        {
+          "title": "Lightning Arrow / Lightning Rod Ranger のレベリング",
+          "description": "アクト2以降、ウィドウヘイルとこまめに更新するレアクイバーの組み合わせは最強のレベリング弓の一つ。レベルごとにクイバーを上回るたび、その追加ダメージと攻撃速度が倍増されるからだ。",
+          "href": "/ja/skills/ice-shot/"
+        },
+        {
+          "title": "Poisonous Concoction Pathfinder",
+          "description": "高ロールのウィドウヘイルに、全投射物スキルレベル+2、命中、攻撃速度を持つクイバーを組み合わせると、Master Fletchingとクイバー倍率を通じて毒DPSが跳ね上がる。",
+          "href": "/ja/builds/ice-shot-deadeye/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "代替案：レア弓と他のユニーク",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "ウィドウヘイルは「何でもDPSが上がる」弓ではない。その価値はクイバー次第である。増幅する価値のあるクイバーを手に入らなければ、よくロールされたレア弓の方が上回る。なぜならレア弓は自前の物理フラットダメージ、攻撃速度、クリティカル修正、ソケットを持っているからだ。",
+        "他のユニーク弓と比べると、ウィドウヘイルは独自のニッチを占める。それ自身のダメージ機構はなく、クイバー倍率のみ。フラットダメージ、貫通、異常状態変換を加える弓は使いやすく、入念に作り込んだクイバーを必要としない。自給自足の武器が欲しいなら、そうした弓を使うこと。",
+        "クイバー増幅というコンセプトの中では直接的な競合は存在しない——装備中のクイバーを増幅する弓はウィドウヘイルだけだ。だから本当の代替の決断は「クイバー＋ウィドウヘイルに投資する」か「同額をより強い自給自足のレア弓やユニーク弓に投資する」かだ。キャンペーンの序盤から中盤まではクイバー経由の方がパワーあたりのコストが安いことが多い。最上位ではミラー級レア弓に抜かれることもあるが、はるかに高くつく。"
+      ],
+      "bullets": [
+        "レア弓：強力なクイバーがない場合に有利。自前のダメージとソケットを持つ。",
+        "他のユニーク弓：より単純で自給自足の機構。クイバー依存なし。",
+        "クイバーを増幅する弓は他にない——このコンセプトではウィドウヘイルのみ。",
+        "判断：クイバー＋ウィドウヘイルは序盤が通常は安い。ミラーレア弓は終盤に上回るがはるかに高価。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "ウィドウヘイルの入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "ウィドウヘイルは比較的よく出るユニークであり、ミラー級アイテムと比べて高ロールでも手頃な価格が保たれる。所有する現実的な経路は3つある。"
+      ],
+      "routes": [
+        {
+          "label": "ランダムドロップ（レベル25以上のモンスター、アクト2以降）",
+          "body": [
+            "ウィドウヘイルはレベル25以上のモンスターからどこでもドロップする。特定狙いはできないが、「発見アイテムのレア度上昇」や強化されたWaystoneで全体のユニークドロップ率を上げれば、出現頻度は高まる。"
+          ]
+        },
+        {
+          "label": "白の粗末な弓へのオブ・オブ・チャンス",
+          "body": [
+            "通常の粗末な弓にオブ・オブ・チャンスを使うとウィドウヘイルを生成できるが、成功率は低く、その通貨はよりレアなユニークを狙う方が得だ。弓はすでにトレードで出回っているため、この経路を選ぶプレイヤーは少ない。"
+          ]
+        },
+        {
+          "label": "プレイヤー間トレード",
+          "body": [
+            "トレードサイトが特定のロールを確実に手に入れる最も頼れる手段。ドロップ率が高いため、240-248%のロールは完璧な250%の数分の一の価格で手に入ることも多く、250%の弓でさえミラー級レア弓よりはるかに安い。価格はリーグや地域で変動する——最新の相場はライブのトレードサイトで確認すること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使うか、売るか、持つか",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "ウィドウヘイルの価格はほぼ完全にクイバーボーナスのロールに左右される。低ロール（150-180%）はほぼタダ同然なことが多く、240%以上とりわけ250%にはプレミアムがつく。よくドロップするため、完璧なロールでもミラー級の高値にはならない。あらゆる価格は日付・リーグ・地域とセットで読まなければならない。"
+      ],
+      "use": {
+        "condition": "数値ボーナスを倍増する価値のある強力なクイバーを所有しており、かつビルドがクイバー（射弹、追加ダメージ、攻撃速度、ライフ）を通じて価値を生み出している。",
+        "first": "手の届く範囲で最も高いロールのウィドウヘイル（240%以上が価値の甘いspot）を装備し、レベルに合わせてクイバーを継続的に強化する。",
+        "risk": "クイバーが弱いと弓は死荷物。ロールだけでは力は生まれない。",
+        "text": [
+          "クイバーがすでに大きな物理/フラット追加ダメージ、2桁の攻撃速度増加、投射物スキルレベル、ライフ、耐性を持っている時に最良。",
+          "5〜10レベルごとにクイバーを強化し続けるなら、キャンペーン全体を通して弓を維持すること。"
+        ]
+      },
+      "sell": {
+        "condition": "低ロール（150-180%）でクイバー計画がなく、あるいは武器ローカルのダメージを必要とするビルドをプレイしている。",
+        "first": "低ロールは安く売る。出回っているし、多くの買い手は230%以上を求めている。",
+        "risk": "価格高騰を期待して低ロールを抱え込んでもまず無駄——供給は安定している。",
+        "text": [
+          "クイバーに投資していない150%のウィドウヘイルは、大半の買い手にとって白の粗末な弓と大差ない価値。",
+          "ロールは正直に出品すること。トレードサイトには正確なパーセンテージが表示され、買い手はそれで絞り込む。"
+        ]
+      },
+      "hold": {
+        "condition": "240%以上のロール、あるいはヴァール腐敗した250%以上のロールを持っており、後でクイバーベースのビルドに切り替える可能性がある。",
+        "first": "高ロールは持っておく。エンドゲームのクイバービルドは常にこの倍率を求めるため、価値が保たれる。",
+        "risk": "クイバー修正値やルーンフォージングへのパッチ変更で需要が移る可能性はあるが、中核のコンセプトは安定している。",
+        "text": [
+          "高ロールは流動性が高く、クイバービルドが存在する限り急激に減価することはないだろう。",
+          "腐敗250%超は自然250%に対してプレミアムがつくトロフィー級ロール。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "リスクと失敗コスト",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "250%のウィドウヘイルを買ったがクイバーが弱い",
+          "gain": "利用可能な最大の倍率が手に入る",
+          "loss": "実効的な力は得られず、クイバーではなく弓に通貨を使ってしまった",
+          "level": "high",
+          "recommendation": "弓よりクイバーに多くを投じること。クイバーがエンジン、弓は増幅装置。"
+        },
+        {
+          "scenario": "人気ビルドのクイバーをそのまま別の昇冠/スキルにコピーした",
+          "gain": "紙の上では実績ある構成と一致する",
+          "loss": "自身のスキルタグ・変換・サポートジェムが同じクイバーボーナスを使わない可能性があり、倍率が無駄になる",
+          "level": "high",
+          "recommendation": "クイバーを「自分のスキル」のダメージタグと変換に合わせること。クイバーを無思考でコピーしてはいけない。"
+        },
+        {
+          "scenario": "クイバーのローカル修正値（例：クイバー自体のローカル回避増加）に頼った",
+          "gain": "なし——これらはキャラクターが「得る」ボーナスではない",
+          "loss": "クイバーから期待したES/防御がそもそも現れない",
+          "level": "medium",
+          "recommendation": "全体・内密・腐敗のクイバーボーナスのみを数に入れること。ローカルなアイテム修正値は増幅されない。"
+        },
+        {
+          "scenario": "250%を超えて腐敗させたがそのまま壊れた",
+          "gain": "成功すれば約290%超の倍率の可能性",
+          "loss": "ヴァールのオーブは望ましくない内密を追加したり、ロールの改善に失敗することがある",
+          "level": "medium",
+          "recommendation": "代替可能な250%ベースのみを腐敗させること。上振れは本物だが、代償は消費されたユニークだ。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "コミュニティの証言と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-widowhail-spark",
+          "kind": "公式フォーラムのビルドスレッド",
+          "question": "Spark と一緒にウィドウヘイルを使っている人を見かけるが、どうして弓がスペルキャスターで機能するのか、どのクイバーのステータスが重要なのか？",
+          "summary": [
+            "あるプレイヤーが、弓（ウィドウヘイル）が Spark キャスタービルドに登場することに混乱し、どのクイバーのプレフィックス/サフィックスを優先すべきかを質問した。"
+          ],
+          "editorialAnalysis": [
+            "ウィドウヘイルは純粋にクイバー倍率のために使われる。このビルドは投射物スキルレベル+2と非常に高い射弹速度を与えるクイバーを採用し、倍増された射弹スケーリングが Projectile Acceleration と Spark のヒットごとのダメージを支える。弓自体は攻撃しない。"
+          ],
+          "officialAnswer": [
+            "全投射物スキルレベル+2と射弹速度150%以上のクイバーを優先すること。ウィドウヘイルのロールがその数値を増幅する。230%以上のウィドウヘイルがこのビルドの実質的な下限だ。"
+          ],
+          "linkHref": "#build-usage",
+          "linkLabel": "ウィドウヘイルを採用するビルド"
+        },
+        {
+          "sourceId": "forum-widowhail-pconc",
+          "kind": "コミュニティフォーラムスレッド",
+          "question": "Poisonous Concoction ビルドの場合、ウィドウヘイルでどのクイバー修正値を最大化すべきか？",
+          "summary": [
+            "あるプレイヤーが、ウィドウヘイルが最もダメージを倍増するようにどのクイバー修正値を積むべきかを質問した。"
+          ],
+          "editorialAnalysis": [
+            "このビルドは全投射物スキルレベル+2、攻撃速度+X%（最低14%）、命中評価からスケーリングする。これらはすべてウィドウヘイル倍率が増幅する数値のクイバーボーナスであり、Master Fletching パッシブと重なる。"
+          ],
+          "officialAnswer": [
+            "投射物スキルレベル+2（最重要）を積み、次にクイバーの攻撃速度と命中を積むこと。ウィドウヘイルのロールはこの3つすべてを倍増し、Master Fletching がさらに乗算を加える。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "倍率の仕組み"
+        },
+        {
+          "sourceId": "maxroll-leveling-uniques",
+          "kind": "ガイド / レベリング分析",
+          "question": "ウィドウヘイルはレベリングに本当に向いているのか、それともエンドゲームの弓だけなのか？",
+          "summary": [
+            "ある読者が、ウィドウヘイルをキャンペーン中に使う価値があるか、エンドゲームのみかを疑問視した。"
+          ],
+          "editorialAnalysis": [
+            "レベリング分析によれば、こまめに更新するレアクイバーを組み合わせたウィドウヘイルは、同価格帯のレアレベリング弓を上回る。クイバーの追加フラットダメージ、攻撃速度、キル時ライフ、さらにはジェムレベルまで、レベルごとにクイバーを上回るたび倍増されるからだ。"
+          ],
+          "officialAnswer": [
+            "そうだ——レベル35前後から、よくクイバーを組んだウィドウヘイルは同等コストのレアレベリング弓に勝ち、他のボーナス（ヒット時ライフ獲得、スキル速度、ジェムレベル）を増幅することで強力なキャンペーン用弓となる。"
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "ウィドウヘイルの入手方法"
+        },
+        {
+          "sourceId": "gamerant-widowhail",
+          "kind": "ガイド",
+          "question": "ウィドウヘイルはどのロールを買うべきか、250%を超えることはできるか？",
+          "summary": [
+            "ある買い手が価値の境界値と、腐敗が自然の上限を超えるかを知りたがっていた。"
+          ],
+          "editorialAnalysis": [
+            "自然のロールは250%が上限。コミュニティの指針では、240-248%ははるかに安いコストで250%とほぼ同等の強さであり、ヴァールのオーブによる腐敗で250%を超えられる（報告では約290%超）が、望ましくない内密が追加されるリスクがある。"
+          ],
+          "officialAnswer": [
+            "最も価値が高いのは240%以上を購入すること。自然の250%のプレミアムを払うのは予算が許す場合のみ。腐敗で250%を超えられるが、望ましくない内密が加わる可能性がある——代替可能なコピーを腐敗させること。"
+          ],
+          "linkHref": "#valuation",
+          "linkLabel": "使うか、売るか、持つか"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "ウィドウヘイルを装備してもDPSが上がらない",
+          "directAnswer": [
+            "ウィドウヘイルが増幅するのはクイバーボーナスのみ。クイバーに増幅する価値がほとんどない（あるいは修正値が数値ボーナスではないユニーククイバーを使っている）場合、弓はほとんど何も加えない。クイバーの全体・内密・腐敗ボーナスを確認すること。"
+          ],
+          "checks": [
+            "クイバーを開き、その全体ボーナス（追加ダメージ、攻撃速度、ライフ、耐性、スキルレベル）を列挙する。",
+            "それらのボーナスが数値で全体（global）であり、クイバーアイテム自体のローカルではないことを確認する。",
+            "ウィドウヘイルのロールが高い（理想は230%以上）ことを確認する。"
+          ],
+          "links": [
+            {
+              "href": "#overview",
+              "label": "倍率の仕組み"
+            }
+          ]
+        },
+        {
+          "symptom": "ストリーマーのクイバーをコピーしたがビルドが弱い",
+          "directAnswer": [
+            "クイバーの価値はビルド固有。Spark の射弹スケーリング向けに作られたクイバーは、ダメージタグや変換が異なれば Lightning Arrow ビルドでは無意味になる可能性がある。クイバーを自分のスキルに合わせること。"
+          ],
+          "checks": [
+            "メインスキルが実際に使用するダメージ種別とタグを確認する。",
+            "それらのタグに合うクイバーボーナスを選ぶ（冷気追加か物理か、射弹速度か攻撃速度か）。"
+          ]
+        },
+        {
+          "symptom": "期待したクイバーのローカル修正値が増幅されない",
+          "directAnswer": [
+            "キャラクターがクイバーから得るボーナスのみが増幅される。クイバーアイテム自体にのみ影響するローカル修正値は「得た」ものではないため、乗算されない。"
+          ],
+          "checks": [
+            "クイバーの全体ボーナスとローカル修正値を比較する。",
+            "ローカルなアイテムステータスではなく、内密・明示的・腐敗ボーナスに頼ること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "動画解説",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Spark Blood Mage：ウィドウヘイル低予算版の仕組み（goldfarmingGUIDE）",
+          "url": "https://youtu.be/e3PNt9rAnDc",
+          "creator": "goldfarmingGUIDE（Mobalytics ビルドガイド経由）",
+          "takeaway": "低予算のウィドウヘイル Spark Blood Mage 版のウォークスルー。クイバー選びと、クイバー倍率がどうダメージを牽引するかを含む。章ラベルは概略。",
+          "timestamps": [
+            {
+              "label": "なぜウィドウヘイル低予算版か",
+              "time": "00:00"
+            },
+            {
+              "label": "クイバー選びとロール",
+              "time": "03:30"
+            },
+            {
+              "label": "ダメージスケーリングのウォークスルー",
+              "time": "08:00"
+            },
+            {
+              "label": "マップ実演",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "ウィドウヘイルの現在のツールチップ（粗末な弓、装備中のクイバーから得るボーナス+(150-250)%）",
+          "note": "ユニーク修正値と50%のロールティアを示すこと。ベースの物理ダメージは意図的に低い。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "ウィドウヘイル倍率適用前後のクイバー",
+          "note": "単一のクイバー行（例：ライフ+40）が150 / 200 / 250%で+100 / +120 / +140になる様子を図示する。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "caption": "低ロールと高ロールの比較",
+          "note": "同じクイバーでの倍率差を示す、150%と250%のウィドウヘイルの並び。",
+          "sourceUrl": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "caption": "ルーンフォージされたウィドウヘイルのベース",
+          "note": "ルーンフォージベースがより高い物理ダメージと Runic Ward ベースを得ること、ユニークのクイバーボーナス修正値は維持されることを記述する。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Runeforged"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "ice-shot-deadeye",
+          "contentType": "build",
+          "title": "Ice Shot Deadeye",
+          "description": "ウィドウヘイルの主な居場所。射弹数と追加ダメージがクイバー倍率で強力にスケーリングする。",
+          "href": "/ja/builds/ice-shot-deadeye/"
+        },
+        {
+          "contentId": "ice-shot",
+          "contentType": "skill",
+          "title": "Ice Shot",
+          "description": "倍増されたクイバーの射弹・ダメージボーナスの恩恵を受ける Deadeye の代表スキル。",
+          "href": "/ja/skills/ice-shot/"
+        },
+        {
+          "contentId": "runes-and-soul-cores",
+          "contentType": "item",
+          "title": "Runes and Soul Cores",
+          "description": "クイバーに正しいルーンを嵌め込むと、ウィドウヘイルがその後に増幅するボーナスを追加できる。",
+          "href": "/ja/items/runes-and-soul-cores/"
+        },
+        {
+          "contentId": "liquid-verisium",
+          "contentType": "item",
+          "title": "Liquid Verisium",
+          "description": "ルーンフォージング（ルーンフォージされたウィドウヘイルを含む）を行う Verisium Anvil で使われる素材。",
+          "href": "/ja/items/liquid-verisium/"
+        },
+        {
+          "contentId": "runes-of-aldur-remnant-recipes",
+          "contentType": "guide",
+          "title": "Runes of Aldur Remnant Recipes",
+          "description": "ルーンフォージングと Runemastered クラフトの仕組み。ルーンフォージされたウィドウヘイルに関連。",
+          "href": "/ja/guides/runes-of-aldur-remnant-recipes/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 - Runes of Aldur",
+          "description": "ウィドウヘイルのような低レベルユニークを強化するシステムであるルーンフォージングを導入した現在のパッチ。",
+          "href": "/ja/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "パッチ履歴と現在版・旧版",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "現在（0.5.4、自然ドロップ）",
+          "changes": [
+            "ウィドウヘイルは装備中のクイバーから得るボーナス+(150-250)% を持つユニークの粗末な弓。ロールは50%ティア（150 / 200 / 250）。これが現在の唯一のバージョンであり、混同する別の旧式クイバーボーナス値は存在しない。"
+          ]
+        },
+        {
+          "version": "ルーンフォージング（0.5.0リーグ - Runes of Aldur）",
+          "changes": [
+            "ユニークのルーンフォージングが導入され、低レベルユニーク（必要レベル55未満）の強化が可能になった。ウィドウヘイル（レベル1）は対象となり、ユニークのクイバーボーナス修正値は維持され、ベースはより高い物理ダメージとルーンフォージベースを得る。クイバーボーナスのロールにディヴァインオーブの変更はない——固定範囲であり、可変の再ロールではない。"
+          ]
+        },
+        {
+          "version": "トレードでのバージョン識別方法",
+          "changes": [
+            "トレードサイトには正確な「装備中のクイバーから得るボーナス」のパーセンテージが表示される。買い手はそれで直接絞り込む。ルーンフォージされたウィドウヘイルは Runic Ward を持つ別のベースタイプであり、通常のユニークとは別に出品される。"
+          ]
+        },
+        {
+          "version": "ディヴァインオーブと腐敗に関する補足",
+          "changes": [
+            "クイバーボーナスのロールは固定範囲であるため、ディヴァインオーブでは変化しない。ヴァールのオーブによる腐敗で250%を超えられる（コミュニティ報告では約290%超）が、望ましくない内密が追加される可能性がある。正確な腐敗の天井はゲーム内で確認すること。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Path of Exile 2 0.5.4 パッチノート（公式フォーラム）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Wiki",
+          "description": "PoE2Wiki - Widowhail（ベースステータス、機構、矢弾の例）",
+          "url": "https://www.poe2wiki.net/wiki/Widowhail"
+        },
+        {
+          "label": "ガイド",
+          "description": "GameRant - How to Get Widowhail（ドロップ、ロール価値、腐敗）",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+        },
+        {
+          "label": "ガイド",
+          "description": "MaxRoll - Best Leveling Uniques（ウィドウヘイルのクイバー増幅分析）",
+          "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "公式フォーラムビルドスレッド - Widowhail Spark Infernalist",
+          "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "コミュニティフォーラムスレッド - Widowhail Poisonous Concoction 構成",
+          "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+        },
+        {
+          "label": "動画",
+          "description": "goldfarmingGUIDE - Spark Blood Mage Widowhail 低予算版",
+          "url": "https://youtu.be/e3PNt9rAnDc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "ウィドウヘイルのクイバーボーナス倍率の式、どのクイバー修正値が増幅されるか、低ロールと高ロールの価値、クイバー選び、ルーンフォージング、ビルド別の注意点を網羅した初期公開。"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ice-shot-deadeye"
+  ],
+  "relatedBossIds": [],
+  "relatedSkillIds": [
+    "ice-shot"
+  ],
+  "relatedGuideIds": [
+    "runes-of-aldur-remnant-recipes"
+  ],
+  "relatedItemIds": [
+    "runes-and-soul-cores",
+    "liquid-verisium"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-widowhail",
+      "label": "PoE2Wiki - Widowhail",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Widowhail"
+    },
+    {
+      "id": "poedb-widowhail",
+      "label": "poedb - Widowhail",
+      "sourceType": "other",
+      "url": "https://poedb.tw/us/Widowhail"
+    },
+    {
+      "id": "gamerant-widowhail",
+      "label": "GameRant - How to Get Widowhail",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-widowhail-unique-poe2"
+    },
+    {
+      "id": "maxroll-leveling-uniques",
+      "label": "MaxRoll - Best Leveling Uniques",
+      "sourceType": "other",
+      "url": "https://maxroll.gg/poe2/meta/the-best-leveling-uniques"
+    },
+    {
+      "id": "forum-widowhail-spark",
+      "label": "公式フォーラム - Widowhail Spark Infernalist ビルド",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3853920"
+    },
+    {
+      "id": "forum-widowhail-pconc",
+      "label": "コミュニティフォーラム - Widowhail Poisonous Concoction 構成",
+      "sourceType": "community",
+      "url": "https://fr.pathofexile.com/forum/view-thread/3635301"
+    },
+    {
+      "id": "video-widowhail",
+      "label": "goldfarmingGUIDE - Spark Blood Mage Widowhail 版",
+      "sourceType": "other",
+      "url": "https://youtu.be/e3PNt9rAnDc"
+    }
+  ],
+  "seo": {
+    "title": "ウィドウヘイルガイド：クイバーボーナスの増幅、最適なロール、ルーンフォージング（PoE2 0.5）",
+    "description": "Path of Exile 2 におけるウィドウヘイルの仕組み：「装備中のクイバーから得るボーナス+(150-250)%」の倍率、ベース×(1+W%)の式、どのクイバー修正値が増幅されるか、ロールの価値、クイバー選び、ルーンフォージング。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "widowhail",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

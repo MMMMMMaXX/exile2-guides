@@ -1,0 +1,599 @@
+{
+  "id": "grim-feast",
+  "slug": "grim-feast",
+  "locale": "de",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Grim Feast Guide — Grim-Überreste, Minion-Wiederbelebung und die überarbeitete Fähigkeit",
+  "shortTitle": "Grim Feast",
+  "summary": "Grim Feast stellt keine Energie-Schild mehr her — im aktuellen Client 0.5.4 ist es ein Geist-Edelstein, der gefallene Minions in Grim-Überreste verwandelt, von denen jeder einen Teil des Lebens des Minions speichert, und Minions über Grim Resurrection wiederbeleben kann. Dieser Guide erklärt, warum alte Build-Guides veraltet sind, welche Minions Überreste erzeugen, wie viel Leben gespeichert wird, wie die Wiederbelebung auswählt, welche Minions zurückkehren, die Kosten von 30 Geist, Qualität, die 0.5-Abklingzeit-Änderung sowie die Mapping- und Bossing-Rotationen von Lich-, Infernalist- und Gemling-Minion-Builds.",
+  "description": "Tiefer Grim-Feast-Guide: das Rework von ES-Überrest zu Minion-Überrest/Wiederbelebung, welche Minions Überreste erzeugen, gespeichertes Leben pro Überrest und das Limit, Grim-Resurrection-Reihenfolge und Grenzen, 30-Geist-Budget, Qualitäts-Speicherverhältnis, dauerhafte Supports, Überrest-Sammeln beim Mapping und Massentod-Handling beim Bossing, Fehlerbehebung (kein Überrest, keine Wiederbelebung, abgelaufen) sowie echte Community-Fragen direkt beantwortet.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "spirit",
+  "spiritReservation": 30,
+  "skillTags": [
+    "buff",
+    "persistent",
+    "minion",
+    "remnant",
+    "spell",
+    "spirit"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/grim-feast.webp",
+  "cardImage": "/images/skills/grim-feast.webp",
+  "imageAlt": "Grim Feast spirit gem icon",
+  "tags": [
+    "buff",
+    "persistent",
+    "minion",
+    "remnant",
+    "spell",
+    "spirit"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Kurzantwort: Es belebt Minions, nicht Energie-Schild, wieder",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Im aktuellen Client stellt Grim Feast KEINEN Energie-Schild wieder her. Es ist ein Geist-Edelstein, der gefallene Minions in Grim-Überreste verwandelt und Minions über Grim Resurrection zurückbringen kann.",
+        "Jeder alte Build-Guide zum „ES-Überlauf“ ist veraltet. Wenn du einem Guide für Grim Feast vor Version 0.3 folgst, verwirf ihn und nutze die Minion-Wiederbelebungs-Version."
+      ]
+    },
+    {
+      "id": "old-name-migration",
+      "order": 20,
+      "title": "Alte Version gegen aktuelle Version",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Vor dem Rework erzeugte Grim Feast Energie-Schild-Überreste/-Überlauf und war ein defensives Werkzeug. Dieses Design ist verschwunden.",
+        "Ab Version 0.3 ist Grim Feast ein Minion-Werkzeug: tote Minions hinterlassen Grim-Überreste, die Leben speichern, und Grim Resurrection verbraucht sie, um Minions wiederzubeleben. Der Patch 0.5 fügte eine Wiederbelebungs-Abklingzeit und Bugfixes hinzu, die ändern, wie aggressiv du wiederbeleben kannst."
+      ],
+      "bullets": [
+        "Vor 0.3: ES-Überrest/-Überlauf (Verteidigung).",
+        "0.3+: Minion-Überrest/Wiederbelebung (schnelle Wiederbelebung).",
+        "0.5: Grim-Resurrection-Abklingzeit + Bugfixes (Operations-Limits)."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 30,
+      "title": "Wichtige Werte und Beschaffung",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Kategorie",
+          "value": "Geist-Edelstein · Buff · Persistent · Minion",
+          "notes": [
+            "Markiert als buff, persistent, minion, remnant, spell."
+          ]
+        },
+        {
+          "label": "Geist-Kosten",
+          "value": "30 Geist",
+          "notes": [
+            "Reserviert 30 Geist, solange aktiviert; aktuellen Client-Wert bestätigen."
+          ]
+        },
+        {
+          "label": "Überrest",
+          "value": "Speichert einen %-Anteil des Minion-Lebens",
+          "notes": [
+            "Jeder gefallene Minion hinterlässt einen Überrest mit einem Teil seines Lebens."
+          ]
+        },
+        {
+          "label": "Dauer",
+          "value": "Überreste laufen nach einer Zeit ab",
+          "notes": [
+            "Ungeutzte Überreste verblassen; Dauer im aktuellen Client prüfen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 40,
+      "title": "Voraussetzungen und Einrichtung",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast benötigt Wiederbelebungs-Minions — Minions, die beim Tod einen Grim-Überrest hinterlassen, den die Fähigkeit später verbrauchen kann. Minions, die beim Tod einfach aufgelöst werden ohne Überrest, speisen die Wiederbelebungsschleife nicht.",
+        "Es ist ein Geist-Edelstein und konkurriert daher mit anderen persistenten Buffs um deine Reservierung von 30 Geist. Du aktivierst ihn einmal und er läuft im Hintergrund."
+      ],
+      "keyValues": [
+        {
+          "label": "Minions",
+          "value": "Müssen Wiederbelebungs-Minions sein",
+          "notes": [
+            "Nur wiederbelebende Minions hinterlassen nutzbare Überreste."
+          ]
+        },
+        {
+          "label": "Geist",
+          "value": "30 reserviert",
+          "notes": [
+            "Als persistenter Buff aktiviert."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "persistent-buff",
+      "order": 50,
+      "title": "Persistenter Buff und Geist",
+      "type": "persistent-buff",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast ist ein persistenter Buff: Sobald aktiviert, bleibt er aktiv und reserviert 30 Geist für die gesamte Karte. Du wirkst ihn nicht erneut; du verwaltest ihn über Geist-Budget und Wiederbelebungs-Timing.",
+        "Da er immer aktiv ist, liegt der Wert in dem, was er passiv tut — Überreste sammeln und Grim Resurrection ermöglichen — nicht im aktiven Wirken."
+      ],
+      "keyValues": [
+        {
+          "label": "Reservierung",
+          "value": "30 Geist (persistent)",
+          "notes": [
+            "Gegen deinen gesamten Geist-Pool anrechnen."
+          ]
+        },
+        {
+          "label": "Zustand",
+          "value": "Immer an, wenn aktiviert",
+          "notes": [
+            "Kein erneutes Wirken; über Wiederbelebungs-Timing verwalten."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remnant-revival",
+      "order": 60,
+      "title": "Überreste und Grim Resurrection",
+      "type": "remnant-revival",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Wenn ein Wiederbelebungs-Minion stirbt, hinterlässt es einen Grim-Überrest, der einen Teil seines Lebens speichert. Grim Resurrection verbraucht Überreste, um Minions zurückzuholen, belebt aber nicht alle Minions auf einmal — es belebt eine Teilmenge, und die Reihenfolge wird durch die Überrest-Warteschlange bestimmt, nicht danach, welchen Minion du „zurückhaben“ willst.",
+        "Wenn viele Minions gleichzeitig sterben (häufig bei Bosskämpfen), deckt die Wiederbelebung nur das ab, was das gespeicherte Leben bezahlen kann, sodass einige Minions tot bleiben, bis sich mehr Überreste ansammeln. Der Patch 0.5 fügte eine Wiederbelebungs-Abklingzeit hinzu, sodass du nicht pro Frame wiederbeleben kannst."
+      ],
+      "keyValues": [
+        {
+          "label": "Pro Überrest",
+          "value": "Speichert % des Minion-Lebens",
+          "notes": [
+            "Exakten gespeicherten Prozentsatz im Client 0.5.4 prüfen."
+          ]
+        },
+        {
+          "label": "Wiederbelebung",
+          "value": "Teilmenge, warteschlangenreihenfolge",
+          "notes": [
+            "Nicht alle Minions kehren gleichzeitig zurück; Reihenfolge folgt der Überrest-Warteschlange."
+          ]
+        },
+        {
+          "label": "Abklingzeit",
+          "value": "0.5 fügte Limit hinzu",
+          "notes": [
+            "Grim Resurrection hat nun eine Operations-Abklingzeit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "version-comparison",
+      "order": 65,
+      "title": "Versionsvergleich",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Version",
+        "Haupteffekt",
+        "Spielerziel",
+        "Derzeit gültig"
+      ],
+      "rows": [
+        [
+          "0.1",
+          "ES-Überrest/-Überlauf",
+          "Verteidigung",
+          "Nein"
+        ],
+        [
+          "0.2",
+          "Deaktiviert",
+          "Nutzlos",
+          "Nein"
+        ],
+        [
+          "0.3+",
+          "Minion-Überrest/Wiederbelebung",
+          "Schnelle Wiederbelebung",
+          "Ja"
+        ],
+        [
+          "0.5",
+          "Grim-Resurrection-Abklingzeit/Bugfix",
+          "Operations-Limit",
+          "Aktuell (verifiziert)"
+        ]
+      ]
+    },
+    {
+      "id": "spirit-budget",
+      "order": 70,
+      "title": "Geist-Budget-Abwägungen",
+      "type": "spirit-budget",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Grim Feast kostet 30 Geist, denselben Pool, den Herald-Buffs, Auren und andere persistente Minion-Supports nutzen. Bei einem Minion-Build musst du entscheiden, ob das Wiederbelebungs-Netz mehr wert ist als eine zusätzliche Aura oder Schadens-Verstärkung.",
+        "Die meisten Minion-Builds, die ohnehin Wiederbelebungs-Minions nutzen, behalten Grim Feast, doch Builds mit knappem Geist lassen ihn für mehr Schaden fallen."
+      ],
+      "keyValues": [
+        {
+          "label": "Kosten",
+          "value": "30 Geist",
+          "notes": [
+            "Derselbe Pool wie Herald/Auren."
+          ]
+        },
+        {
+          "label": "Abwägung",
+          "value": "Wiederbelebung gegen Schadens-Aura",
+          "notes": [
+            "Nur fallen lassen, wenn Geist der Engpass ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 80,
+      "title": "Qualität",
+      "type": "quality",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Qualität bei Grim Feast erhöht den Anteil des Minion-Lebens, der pro Überrest gespeichert wird, sodass höhere Qualität bedeutet, dass jeder Überrest mehr wiederbelebt oder Minions verlässlicher wiederbelebt.",
+        "Den exakten Qualitäts-Roll im aktuellen Client prüfen; er skaliert das Verhältnis des gespeicherten Lebens, nicht direkt die Wiederbelebungs-Anzahl."
+      ],
+      "keyValues": [
+        {
+          "label": "Qualitäts-Effekt",
+          "value": "Höheres Überrest-Speicherverhältnis",
+          "notes": [
+            "Aktuellen Client-Roll bestätigen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 90,
+      "title": "Support-Kompatibilität",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Persistente Supports, die Minion-Überleben oder additiven Minion-Schaden stärken, passen gut, da Grim Feast selbst ein persistenter Minion-Buff ist. Clarity und andere geist-beeinflussende Supports helfen indirekt, indem sie den Reservierungsdruck lindern.",
+        "Vermeide Supports, die annehmen, dass du den Edelstein aktiv wirkst — Grim Feast wird aktiviert, nicht gespannt."
+      ],
+      "keyValues": [
+        {
+          "label": "Persistente Minion-Supports",
+          "value": "Kern",
+          "notes": [
+            "Stapeln mit dem persistenten Wiederbelebungsthema."
+          ]
+        },
+        {
+          "label": "Clarity/Geist-Supports",
+          "value": "Situativ",
+          "notes": [
+            "Lindern die Reservierung von 30 Geist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "Mapping-Rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Sammeln",
+          "action": "Wiederbelebungs-Minions an Trashmobs sterben lassen, damit sie Überreste hinterlassen",
+          "result": "Ein Vorrat an Überresten baut sich passiv auf."
+        },
+        {
+          "label": "Wiederbeleben",
+          "action": "Grim Resurrection füllt die Armee zwischen den Packs auf",
+          "result": "Minions kehren ohne manuelles Beschwören zurück."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Bossing-Rotation",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Massentod",
+          "action": "Minions sterben gemeinsam durch Boss-AoE",
+          "result": "Viele Überreste fallen auf einmal."
+        },
+        {
+          "label": "Wiederbelebungs-Fenster",
+          "action": "Grim Resurrection innerhalb des Abklingzeit-Fensters",
+          "result": "Eine Teilmenge kehrt zurück; wiederholen, während sich Überreste ansammeln."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "Wo es eingesetzt wird",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lich- und Infernalist-Minion-Builds nutzen Grim Feast als Wiederbelebungs-Netz, damit ihre Armee den Aderlass auf Karten und bei Bossen übersteht. Gemling-Legionär-Varianten nutzen es, wenn sie ohnehin Wiederbelebungs-Minions laufen haben und die 30 Geist entbehren können.",
+        "In jedem Fall bewertet der Build die passive Wiederbelebung höher als die verlorene Schadens-Aura."
+      ],
+      "bullets": [
+        "Lich: Wiederbelebungs-Netz für Minions.",
+        "Infernalist: hält die Armee durch Aderlass am Leben.",
+        "Gemling Legionnaire: Wiederbelebung, sofern Geist es erlaubt."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Fehlerbehebung",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Keine Überreste erscheinen",
+          "action": "Minions sind keine Wiederbelebungs-Minions",
+          "result": "Auf Minions umstellen, die beim Tod Überreste hinterlassen."
+        },
+        {
+          "label": "Minions lassen sich nicht wiederbeleben",
+          "action": "Überreste abgelaufen oder Abklingzeit aktiv",
+          "result": "Überreste frisch halten und die 0.5-Wiederbelebungs-Abklingzeit beachten."
+        },
+        {
+          "label": "Manchmal keine Wiederbelebung",
+          "action": "Gespeichertes Leben deckt nur eine Teilmenge",
+          "result": "Mehr Minions sterben lassen, um genug Überrest-Leben aufzubauen."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "Community-Belege",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Die größte Community-Falle ist, alten „ES-Überlauf“-Guides für Grim Feast vor Version 0.3 zu folgen — sie beschreiben eine Fähigkeit, die nicht mehr existiert. Client-Tests bestätigen, dass die aktuelle Version nur Minion-Wiederbelebung ist.",
+        "Die 0.5-Meldungen „belebt manchmal nicht“ sind größtenteils die neue Wiederbelebungs-Abklingzeit plus das Teilmengen-Limit, kein harter Bug; das Abwarten der Abklingzeit und das Ansammeln von Überresten löst die meisten Fälle."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Video-Walkthrough und Zeitstempel",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Lilith",
+          "label": "Minion-Witch 0.5 — Wiederbelebungsschleife",
+          "description": "Minion-Witch-Vorführung, die Minion-Tod bis Überrest und die Grim-Resurrection-Erholung zeigt.",
+          "takeaway": "Beobachte die Schleife vom Tod zur Wiederbelebung und wie Überreste die Armee auffüllen.",
+          "url": "https://www.youtube.com/watch?v=Kl5SyQgLtRk",
+          "timestamps": [
+            {
+              "label": "Wiederbelebungsschleife",
+              "time": "0:00"
+            },
+            {
+              "label": "Massentod beim Boss",
+              "time": "5:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Quellen und Verifikation",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Offiziell",
+          "description": "Die offiziellen GGG-Forum-Patch Notes bestätigen das Grim-Feast-Rework (0.3 Minion-Wiederbelebung) und die 0.5-Wiederbelebungs-Abklingzeit/Bugfixes im aktuellen Client 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Datenbank",
+          "description": "PoE2DB und Community-Wiki liefern Fähigkeits-ID, Tags, Geist-Kosten und verstecktes Überrest-Verhalten.",
+          "url": "https://www.poe2wiki.net/wiki/Grim_Feast"
+        },
+        {
+          "label": "Builds und Video",
+          "description": "Mobalytics Lich-/Infernalist-Minion-Builds und das Lilith-Vorführ-Video, zur Querprüfung der Wiederbelebungsschleife genutzt.",
+          "url": "https://mobalytics.gg/poe-2/builds"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit und offizielle Foren fördern echte Probleme wie veraltete ES-Guides, keine Überreste und keine Wiederbelebung zutage, im Client reproduziert und direkt beantwortet.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Grim%20Feast&restrict_sr=1"
+        },
+        {
+          "label": "Offizielle Foren",
+          "description": "Offizielle GGG-Foren, in denen das Team Geist-Edelstein- und Minion-Wiederbelebungs-Mechaniken sowie Patch-Änderungen bestätigt.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Reddit-Community",
+          "description": "Reddit r/PathOfExile2-Diskussionen und Hilfe-Threads zu Grim Feast, nützlich für Versions-Feedback und Mainstream-Builds.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Bestätigt: Grim Feast ist Minion-Wiederbelebung, kein ES, im Client 0.5.4.",
+          "Überrest speichert einen %-Anteil des Minion-Lebens; Wiederbelebung ist Teilmenge/warteschlangenreihenfolge.",
+          "0.5-Wiederbelebungs-Abklingzeit als Operations-Limit bestätigt."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "Patch-Verlauf",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-09-01",
+          "changes": [
+            "0.2: Grim Feast deaktiviert; in diesem Patch nicht nutzbar."
+          ]
+        },
+        {
+          "date": "2026-01-20",
+          "changes": [
+            "0.3: zu einem Minion-Überrest-/Wiederbelebungs-Geist-Edelstein umgearbeitet."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients: Wiederbelebungs-Abklingzeit für Grim Resurrection und Bugfixes hinzugefügt; aktuelle Client-Werte in diesem Guide verwendet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Änderungsprotokoll",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Erste Veröffentlichung: Rework-Erklärung, Überrest-/Wiederbelebungs-Mechanik, 30-Geist-Budget, Qualität, persistente Supports, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich",
+    "sniper-minion-infernalist",
+    "corrupting-wings-gemling-legionnaire"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "mana-spirit-resource-sustain"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedSkillIds": [],
+  "relatedPatchIds": [
+    "patch-0-2-0-dawn-of-the-hunt",
+    "patch-0-3-0-third-edict",
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Grim Feast",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Grim_Feast"
+    },
+    {
+      "label": "Mobalytics — Minion builds",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds"
+    },
+    {
+      "label": "Reddit — Grim Feast discussions",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Grim%20Feast&restrict_sr=1"
+    },
+    {
+      "label": "Lilith — Minion Witch 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=Kl5SyQgLtRk"
+    }
+  ],
+  "seo": {
+    "title": "Grim Feast Guide — Grim-Überreste, Minion-Wiederbelebung und die überarbeitete Fähigkeit",
+    "description": "Grim-Feast-Geist-Edelstein-Guide: das Rework vom ES-Überrest zur Minion-Wiederbelebung, welche Minions Überreste erzeugen, gespeichertes Leben und Limit, Grim-Resurrection-Reihenfolge und Grenzen, 30-Geist-Budget, Qualität, 0.5-Abklingzeit, Mapping- und Bossing-Rotationen, Fehlerbehebung und Community-Belege.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "grim-feast",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

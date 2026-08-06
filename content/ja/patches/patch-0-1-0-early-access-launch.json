@@ -1,0 +1,691 @@
+{
+  "id": "patch-0-1-0-early-access-launch",
+  "slug": "patch-0-1-0-early-access-launch",
+  "locale": "ja",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.1.0 アーリーアクセス ローンチ：6 クラス、12 優異、3 幕と現在との違い",
+  "shortTitle": "0.1.0 アーリーアクセス ローンチ",
+  "summary": "Path of Exile 2 は 2024-12-06 にアーリーアクセスを開始し、基本クラス 6 種、優異（アセンダンシー）12 種、3 幕のキャンペーン、および独立したエンドゲームを実装しました。本ページでは、0.1.0 で実際に何が実装されたか、なぜリリース当日（Day-1）のビルドが現在のクライアントと一致しなくなったのか、そして後の 0.2 から 0.5 でどのシステムが置き換えられたのかを正確に解説します。",
+  "description": "Path of Exile 2 0.1.0 アーリーアクセス ローンチの完全な歴史。ローンチ時の 6 クラスと優異 12 種、3 幕のキャンペーン、初代アトラスとエンドゲーム、ローンチ初週のバランス用ホットフィックス、およびクライアント 0.5.4e において今も残る 0.1.0 のシステムと、後のパッチで書き換えられた部分について解説します。",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.1.0",
+  "patch": "0.1.0",
+  "league": "アーリーアクセス ローンチ",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "cardImage": "/images/builds/covers/lightning-spear-amazon.webp",
+  "imageAlt": "Path of Exile 2 アーリーアクセス ローンチ時の 6 クラスと、0.1.0 で追加された優異 12 種",
+  "tags": [
+    "early-access",
+    "0-1-0",
+    "launch",
+    "major-updates",
+    "historical",
+    "classes"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "Launch class roster",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0 の 6 クラスはそのまま残っているが、後にハントレス（0.2.0）とドルイド（0.4.0）が追加され、クラス構成と優異マップが変化した。"
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.4.0"
+      ],
+      "affectedContentIds": [
+        "lightning-spear-amazon",
+        "glacial-lance-ritualist"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Three-act campaign",
+      "status": "changed-later",
+      "currentSummary": [
+        "キャンペーンは現在より長くなっており、第 4 幕と幕間（インタールード）は 0.3.0 で追加された。"
+      ],
+      "supersededByPatchIds": [
+        "0.3.0"
+      ],
+      "affectedContentIds": [
+        "campaign-early-maps-gearing-crafting"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    },
+    {
+      "topicId": "Original Atlas and endgame",
+      "status": "changed-later",
+      "currentSummary": [
+        "0.1.0 のアトラスは 0.2 から 0.5 にかけて何度も作り直され、現在のマップのルールはローンチ時と異なる。"
+      ],
+      "supersededByPatchIds": [
+        "0.2.0",
+        "0.3.1",
+        "0.5.0"
+      ],
+      "affectedContentIds": [
+        "early-atlas-progression-waystone-sustain"
+      ],
+      "sourceIds": [
+        "official-0-1-0"
+      ]
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "クイックサマリー",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Path of Exile 2 は 2024 年 12 月 6 日、クライアントバージョン 0.1.0 でアーリーアクセスを開始しました。基本クラス 6 種、優異 12 種、3 幕のキャンペーン、そしてアトラス・オブ・ワールズを中心とした独立したエンドゲームを備えていました。Path of Exile 1 からのプレイヤーにとって、これは旧作の拡張ではなく、新システムを持つ新しいゲームでした。",
+        "ローンチはあえて「土台」として位置づけられました。最初の 3 日間のうちに、開発チームはすでにスーパーチャージド・スラム、マグネティック・サルヴォ、ガス・クラウドの相互作用など、明らかに強化されすぎていたスキルを調整しており、これがホットフィックスが連日相次いだローンチ週のトーンを決定づけました。",
+        "本ページは 0.1.0 の完全な歴史記録です。ローンチ時に実装された内容、初週でどのように安定化したか、そして 0.1.0 のどの部分がクライアント 0.5.4e でも今なお見て取れるのか、あるいは後のパッチで書き換えられたのかを解説します。現在のクライアントで確認できなかった事項は、推測せず「不明」として明示しています。"
+      ],
+      "bullets": [
+        "アーリーアクセスは 2024-12-06、クライアント 0.1.0 で開始",
+        "ローンチ時は基本クラス 6 種・優異 12 種",
+        "3 幕のキャンペーンと独立したアトラス・エンドゲーム",
+        "初週のホットフィックスですでにスーパーチャージド・スラム、マグネティック・サルヴォ、ガス・クラウドを調整"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "歴史的位置づけに関する注意",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 アーリーアクセス — 0.1.0 の時代",
+      "baselineNote": "本ページの「現在の状態」に関する記述は、クライアント 0.5.4e を基準としています。",
+      "paragraphs": [
+        "0.1.0 は現在の攻略ガイドではなく、過去の基準点です。そこで導入されたクラス、優異、エンドゲームのシステムは出発点であり、そのいくつかはアーリーアクセスの最初の 1 年以内に拡張または置き換えられました。",
+        "現在リリース当日のビルド動画を見るのは誤解を招きます。そこに映るスキル数値、優異ノード、アトラスのルールは、ローンチ週のホットフィックスによって変更され、さらに 0.2、0.3、0.4、0.5 でも変更されました。0.1.0 の映像はローンチ時点の記録として扱い、現在のチュートリアルとしては扱わないでください。"
+      ],
+      "bullets": [
+        "0.1.0 = システムの出発点であり、最終設計ではない",
+        "リリース当日のビルド動画は過去の記録であり、現在のガイドではない",
+        "以下の「現在のルール」に関する記述はすべて 0.5.4e と照合済み"
+      ]
+    },
+    {
+      "id": "launch-context",
+      "order": 3,
+      "title": "アーリーアクセスで実際に実装された内容",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "ローンチにより、現在もおなじみの基本クラス 6 種が確定しました。ソーセレス、ウォリアー、レンジャー、ウィッチ、マーセナリー、モンクです。それぞれが 2 つの優異とともにローンチし、後のクラス追加前の 0.1.0 時点で計 12 種となっていました。",
+        "キャンペーンは 3 幕で構成され、そこから独立したエンドゲームへと続きました。そのエンドゲームにはすでに独自のアトラス、マップ、リーグメカニクス、そして最高到達点（ピナクル）の構造があり、0.1.0 は縦長の一部披露ではなく完全なループでした。"
+      ],
+      "bullets": [
+        "ソーセレス、ウォリアー、レンジャー、ウィッチ、マーセナリー、モンク",
+        "優異 12 種（クラスごとに 2 種）",
+        "3 幕のキャンペーンから独立したアトラス・エンドゲームへ"
+      ]
+    },
+    {
+      "id": "patch-family-timeline",
+      "order": 4,
+      "title": "パッチ系統のタイムライン",
+      "toc": true,
+      "visible": true,
+      "type": "patch-family-timeline",
+      "versions": [
+        {
+          "code": "0.1.0",
+          "date": "2024-12-06",
+          "kind": "アーリーアクセス ローンチ",
+          "summary": "クラス 6 種、優異 12 種、3 幕のキャンペーン、独立したアトラス・エンドゲーム、初代リーグメカニクス、および最高到達点（ピナクル）のルート。",
+          "tags": [
+            "major-updates",
+            "early-access"
+          ]
+        },
+        {
+          "code": "0.1.0b",
+          "date": "2024-12-09",
+          "kind": "ホットフィックス",
+          "summary": "ガス・グレネードとガス・アローの爆発ダメージを低下。ロード、アトラス・コントローラーの返還、コンソール・ゲートウェイ、クラッシュを修正。",
+          "tags": [
+            "hotfixes",
+            "balance"
+          ]
+        },
+        {
+          "code": "0.1.0c",
+          "date": "2024-12-13",
+          "kind": "エコノミーパッチ",
+          "summary": "初のドロップと通貨の再調整：レガルとジェムカッターのプリズムの出現率を上方修正、カオスとアルティフィサーの再分配、ウェイストーンの接頭辞強化。",
+          "tags": [
+            "balance",
+            "economy"
+          ]
+        },
+        {
+          "code": "0.1.0d",
+          "date": "2024-12-17",
+          "kind": "メカニクスパッチ",
+          "summary": "トリガー・ジェムのエネルギー改修（モンスターパワーと異常状態強度）、リーチ強化、ブロックと回避の変更、試練の鍵の明確化。",
+          "tags": [
+            "balance",
+            "mechanics"
+          ]
+        },
+        {
+          "code": "0.1.0e",
+          "date": "2024-12-20",
+          "kind": "安定化",
+          "summary": "チェックポイントでの高速移動、リスペック費用の削減、名誉（オナー）の近接距離修正、大規模なスキルおよびサポートの刷新。",
+          "tags": [
+            "balance",
+            "progression"
+          ]
+        },
+        {
+          "code": "0.2.0+",
+          "date": "2025-04-04",
+          "kind": "後の系統",
+          "summary": "0.1.0 の基盤の大部分を書き換えた、現在のメジャー系統（ベースライン 0.5.4e）。",
+          "tags": [
+            "current-baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-ascendancy-map",
+      "order": 5,
+      "title": "ローンチ時のクラスと優異マップ",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Sorceress -> Stormweaver / Chronomancer",
+          "verdict": "現在も継続（後に拡張）",
+          "detail": "0.1.0 のソーセレスの 2 つの優異はいずれも残存。後にクラスが追加されて新たな選択肢が生まれたが、これらが削除されることはなかった。"
+        },
+        {
+          "area": "Warrior -> Titan / Warbringer",
+          "verdict": "現在も継続",
+          "detail": "ローンチ時のウォリアーの 2 つの優異は、0.5.4e まで同一性が維持されたまま変更されていない。"
+        },
+        {
+          "area": "Ranger -> Deadeye / Pathfinder",
+          "verdict": "現在も継続",
+          "detail": "レンジャーはリーディーとパスファインダーとともにローンチし、弓と毒の系統はここに由来する。"
+        },
+        {
+          "area": "Witch -> Blood Mage / Infernalist",
+          "verdict": "現在も継続",
+          "detail": "ウィッチの優異は、今も使われる ED コンタジオン・リッチなどの類似キャスターを支えている。"
+        },
+        {
+          "area": "Mercenary -> Witchhunter / Gemling Legionnaire",
+          "verdict": "現在も継続",
+          "detail": "クロスボウとステータス蓄積の方向性は、この 2 つのマーセナリー優異に端を発する。"
+        },
+        {
+          "area": "Monk -> Invoker / Acolyte of Chayula",
+          "verdict": "現在も継続",
+          "detail": "モンクの優異は、杖（クォータースタッフ）および混沌/物理の近接ビルドの核となる。"
+        }
+      ]
+    },
+    {
+      "id": "campaign-baseline",
+      "order": 6,
+      "title": "キャンペーンとエンドゲームの基準",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "0.1.0 がローンチ時に備えていた内容と、クライアント 0.5.4e と現在も一致するかどうか。",
+      "columns": [
+        {
+          "key": "system",
+          "label": "システム"
+        },
+        {
+          "key": "launch",
+          "label": "0.1.0 の状態"
+        },
+        {
+          "key": "status",
+          "label": "現在の状態 (0.5.4e)"
+        },
+        {
+          "key": "entry",
+          "label": "サイト内の現在の項目"
+        }
+      ],
+      "rows": [
+        {
+          "system": "クラス",
+          "launch": "ローンチ時は基本クラス 6 種。",
+          "status": "後のクラスにより拡張",
+          "entry": "lightning-spear-amazon / glacial-lance-ritualist ビルド"
+        },
+        {
+          "system": "優異",
+          "launch": "12 種（クラスごとに 2 種）。",
+          "status": "同じ 12 種に後に追加分が加わる",
+          "entry": "優異ガイド"
+        },
+        {
+          "system": "キャンペーン",
+          "launch": "3 幕。",
+          "status": "第 4 幕（0.3.0）以降で長くなった",
+          "entry": "campaign-early-maps-gearing-crafting ガイド"
+        },
+        {
+          "system": "エンドゲーム",
+          "launch": "マップと最高到達点（ピナクル）ルートを持つ独立したアトラス。",
+          "status": "0.5 まで何度も作り直し",
+          "entry": "early-atlas-progression-waystone-sustain ガイド"
+        },
+        {
+          "system": "スキル / サポート",
+          "launch": "ローンチ時のスキルおよびサポートセット。",
+          "status": "0.3 のサポート刷新により拡張",
+          "entry": "twister / tempest-bell スキルページ"
+        }
+      ]
+    },
+    {
+      "id": "launch-volatility",
+      "order": 7,
+      "title": "ローンチ時の変動：リリース当日と現在",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "ローンチ当日の 0.1.0（2024 年 12 月）",
+      "oldText": "いくつかのスキルは明らかに強化されすぎた状態で実装されました。スーパーチャージド・スラム、マグネティック・サルヴォ、そしてガス・グレネード / ガス・アロー / フレイム・ウォールのイグナイトループが初期の映像を席巻し、一部のリリース当日のビルドは数日後の姿よりも著しく強力に見えました。",
+      "newLabel": "安定化された 0.1.0（初週のホットフィックス後）",
+      "newText": "0.1.0b および周辺のホットフィックスにより、ガス・グレネードとガス・アローの爆発ダメージが引き下げられ、開発チームは明らかな外れ値の監視を続けました。0.2 から 0.5 にかけて数値は再び変化したため、現在のクライアントはローンチ時のバランスとほとんど似ていません。"
+    },
+    {
+      "id": "endgame-baseline",
+      "order": 8,
+      "title": "ローンチ時のエンドゲームとアトラス",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "アトラス・オブ・ワールズ",
+          "verdict": "ローンチ以降に書き換え",
+          "detail": "0.1.0 のアトラスには、後のパッチで再構成された初期形態のウェイストーン、タワー、タブレット、シタデルが存在していた。"
+        },
+        {
+          "area": "リーグメカニクス",
+          "verdict": "ローンチ時に存在",
+          "detail": "ブリーチ、エクスペディション、リチュアル、デリリウムはローンチ時にマップへ導入され、現在の挙動は後のパッチで調整された。"
+        },
+        {
+          "area": "最高到達点（ピナクル）ボス",
+          "verdict": "当時はコストが高かった",
+          "detail": "初期の最高到達点へのアクセスは、後のパッチが回復手段を導入する前のものよりもリトライコストが高かった。"
+        },
+        {
+          "area": "マップとウェイストーン",
+          "verdict": "繰り返し変更",
+          "detail": "ウェイストーンの階層付けと接頭辞は 0.1.0c およびその後何度も調整されており、かつての維持（サステイン）に関する助言は古いものとなっている。"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 9,
+      "title": "現在の適用範囲 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "ローンチ時の 6 クラス",
+          "status": "still-current",
+          "currentSummary": "0.1.0 の 6 クラスはすべて 0.5.4e でもプレイ可能で、現在は後の追加分と併存している。",
+          "supersededBy": "—",
+          "affectedContent": "クラスおよびビルドガイド"
+        },
+        {
+          "topic": "ローンチ時の 12 優異",
+          "status": "still-current",
+          "currentSummary": "12 の優異は今も選択可能であり、同一性が維持されたままである。",
+          "supersededBy": "—",
+          "affectedContent": "優異ガイド"
+        },
+        {
+          "topic": "3 幕のキャンペーン",
+          "status": "changed-later",
+          "currentSummary": "キャンペーンは現在より長く、元の 3 幕を超える幕は 0.3.0 で追加された。",
+          "supersededBy": "0.3.0 第 4 幕および幕間",
+          "affectedContent": "campaign-early-maps-gearing-crafting ガイド"
+        },
+        {
+          "topic": "0.1.0 のアトラスとウェイストーンのルール",
+          "status": "changed-later",
+          "currentSummary": "マップとウェイストーンのシステムは 0.2 から 0.5 にかけて再構築されており、ローンチ時代の維持（サステイン）に関する助言はもはや当てはまらない。",
+          "supersededBy": "0.2.0, 0.3.1, 0.5.0",
+          "affectedContent": "early-atlas-progression-waystone-sustain ガイド"
+        }
+      ]
+    },
+    {
+      "id": "then-vs-now",
+      "order": 10,
+      "title": "当時と現在",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "クラス構成",
+          "thenText": "0.1.0 ローンチ時はクラスは 6 種のみ存在した。",
+          "nowText": "0.5.4e では、ハントレス（0.2.0）とドルイド（0.4.0）の追加により構成が拡大している。"
+        },
+        {
+          "aspect": "キャンペーンの長さ",
+          "thenText": "ローンチ時のキャンペーンは 3 幕で終了していた。",
+          "nowText": "第 4 幕と幕間により、0.3.0 からキャンペーンが延長された。"
+        },
+        {
+          "aspect": "アトラスのルール",
+          "thenText": "ローンチ時のウェイストーン、タワー、タブレットは初期の形で機能していた。",
+          "nowText": "0.2 から 0.5 にかけての繰り返しの改修によりマップとタワーの挙動が変化しており、古い動画は古いものとなっている。"
+        },
+        {
+          "aspect": "バランスの外れ値",
+          "thenText": "スーパーチャージド・スラム、マグネティック・サルヴォ、ガス・クラウドのループはリリース当日に支配的に見えた。",
+          "nowText": "ローンチ週のホットフィックスとその後のバランス調整により、それらの数値はローンチ時の状態から大きく乖離した。"
+        }
+      ]
+    },
+    {
+      "id": "returning-checklist",
+      "order": 11,
+      "title": "復帰プレイヤーチェックリスト",
+      "toc": true,
+      "visible": true,
+      "type": "returning-player-checklist",
+      "items": [
+        {
+          "priority": "high",
+          "label": "リリース当日のビルド動画を信じない",
+          "detail": "0.1.0 のローンチ時のバランスは最初の 1 週間のうちに変更され、さらに 0.2 から 0.5 でも変更された。現在のビルドページを参照すること。"
+        },
+        {
+          "priority": "high",
+          "label": "アトラスとウェイストーンを再学習する",
+          "detail": "ローンチ時のマップのルールは作り直されている。現在の early-atlas-progression ガイドに従うこと。"
+        },
+        {
+          "priority": "medium",
+          "label": "より長いキャンペーンを想定する",
+          "detail": "0.1.0 で離脱した場合、第 4 幕と幕間はそれ以降に追加された新要素である。"
+        },
+        {
+          "priority": "medium",
+          "label": "現在のクラスマップを確認する",
+          "detail": "ハントレスとドルイドは 0.1.0 の後に登場しており、知っていた優異マップは拡大している。"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 12,
+      "title": "コミュニティの証言",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "フォーラム（ローンチ週 0.1.0）",
+          "context": "プレイヤーは、いくつかのスキルがリリース当日に意図した以上に強く感じられたと指摘した。",
+          "quote": "スーパーチャージド・スラムとマグネティック・サルヴォが画面を消し去っている、これが最終バランスであるはずがない。",
+          "analysis": "公式のローンチ週に見られる、恒久的な設計方針というよりは外れ値を迅速に調整するというパターンと一致する。"
+        },
+        {
+          "source": "Reddit（0.1.0 ビルド）",
+          "context": "視聴者は、リリース当日のティアリストに従っても安全かどうかを質問した。",
+          "quote": "これらのローンチ時のビルドガイドは今も有効か、それともすでに弱体化されたのか？",
+          "analysis": "それらはその週のうちに調整され、さらに後にも調整された。ローンチ時のガイドは過去のものとして扱うこと。"
+        },
+        {
+          "source": "YouTube コメント（0.1.0 の映像）",
+          "context": "プレイヤーはローンチ時のクルーエル / アトラスの状態を現在のものと混同した。",
+          "quote": "なぜ私のアトラスは 0.1.0 の動画とまったく違うのか？",
+          "analysis": "予想される通り：アトラスはローンチ後に作り直されたため、古い映像は現在のチュートリアルではない。"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 13,
+      "title": "影響を受けるコンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Lightning Spear Amazon ビルド",
+          "type": "build",
+          "trigger": "クラスと優異のマップはローンチ時に由来",
+          "action": "0.5.4e のスキル数値とノード配置で照合・検証する。",
+          "status": "reviewing"
+        },
+        {
+          "name": "Glacial Lance Ritualist ビルド",
+          "type": "build",
+          "trigger": "ローンチ時のクラスシステム",
+          "action": "出血/リチュアルのノード群が今も一致するか確認する。",
+          "status": "reviewing"
+        },
+        {
+          "name": "ED Contagion Lich ビルド",
+          "type": "build",
+          "trigger": "ローンチ時のウィッチの優異",
+          "action": "後のパッチによる DoT とミニオンのノード変更を確認する。",
+          "status": "queued"
+        },
+        {
+          "name": "初期アトラス進行ガイド",
+          "type": "guide",
+          "trigger": "ローンチ時のアトラスは 0.5 までに作り直し",
+          "action": "現在のアトラスとウェイストーンのルールに更新する。",
+          "status": "reviewing"
+        },
+        {
+          "name": "Twister / Tempest Bell スキルページ",
+          "type": "skill",
+          "trigger": "ローンチ時のスキルセット、後のサポート刷新",
+          "action": "ローンチ時と比較した現在のスキル挙動を記述する。",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 14,
+      "title": "過去の動画",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — 公式アーリーアクセス発表",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "0.1.0 のクラスとエンドゲームの方向性の公式公開。最初の 1 週間で何が変わったかは、ローンチ・ホットフィックスの注記と併せて読むこと。",
+          "creator": "Official Path of Exile 2",
+          "timestamps": [
+            {
+              "label": "クラス公開",
+              "time": "00:30"
+            },
+            {
+              "label": "エンドゲームとアトラス",
+              "time": "04:10"
+            },
+            {
+              "label": "ローンチ時の状態",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 15,
+      "title": "FAQ",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "0.1.0 は完成したゲームだったか？",
+          "answer": [
+            "いいえ。0.1.0 はアーリーアクセスの土台であり、クラス 6 種、優異 12 種、3 幕のキャンペーン、独立したエンドゲームでした。大規模なコンテンツとシステムの拡張は 0.2 から 0.5 にかけて行われました。"
+          ]
+        },
+        {
+          "question": "なぜリリース当日のビルド動画が今では違って感じるのか？",
+          "answer": [
+            "ローンチ週のホットフィックス（0.1.0b から開始）ですでに明らかな外れ値が変更され、0.2 から 0.5 で数値が再び動きました。ローンチ時の録画よりも現在のビルドページを信頼してください。"
+          ]
+        },
+        {
+          "question": "どの 0.1.0 のシステムが 0.5.4e でも今も継続しているか？",
+          "answer": [
+            "ローンチ時の 6 クラスと 12 優異は今も継続しています。キャンペーンとアトラスは拡張または作り直しが行われたため、それらの部分はもはやローンチ時の映像と一致しません。"
+          ]
+        },
+        {
+          "question": "サイトはなぜ過去の 0.1.0 ページを残しているのか？",
+          "answer": [
+            "プレイヤーは今も何がローンチされ、どう進化したかを検索している。出典のある過去のページを残すことで、復帰プレイヤーが古い映像がクライアントと一致しなくなった理由を理解する助けとなります。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 16,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 公式 0.1.0 アーリーアクセス発表",
+          "description": "クラス 6 種、優異 12 種、3 幕のキャンペーンを裏付ける公式のローンチ告知。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.1.0 FAQ とシステム",
+          "description": "ローンチ時のシステム、エンドゲーム、進行モデルに関する公式の詳細。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+        },
+        {
+          "label": "Path of Exile 2 公式 0.1.0 ローンチノート",
+          "description": "クラス、キャンペーン、エンドゲームの範囲を網羅した公式のローンチノート。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+        },
+        {
+          "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+          "description": "上記で参照したすべての公式 EA パッチおよびホットフィックスのスレッドの索引。",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "lightning-spear-amazon",
+    "glacial-lance-ritualist",
+    "ed-contagion-lich",
+    "fire-bear-smith-of-kitava",
+    "gas-grenade-pathfinder"
+  ],
+  "relatedBossIds": [],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [
+    "weapon-set-passive-points-explained",
+    "early-atlas-progression-waystone-sustain"
+  ],
+  "relatedSkillIds": [
+    "tempest-bell",
+    "twister"
+  ],
+  "sources": [
+    {
+      "id": "official-0-1-0",
+      "label": "Path of Exile 2 公式 0.1.0 アーリーアクセス発表",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592995"
+    },
+    {
+      "id": "official-0-1-0-faq",
+      "label": "Path of Exile 2 公式 0.1.0 FAQ とシステム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3594080"
+    },
+    {
+      "id": "official-0-1-0-notes",
+      "label": "Path of Exile 2 公式 0.1.0 ローンチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3592012"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Path of Exile 2 アーリーアクセス フォーラム索引",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.1.0 アーリーアクセス ローンチ — 6 クラス、12 優異 & 現在への影響",
+    "description": "Path of Exile 2 0.1.0 が何をもってローンチされたか、リリース当日のビルドがクライアントと一致しなくなった理由、0.5.4e に残るシステムは何か。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-1-0-early-access-launch",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

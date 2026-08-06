@@ -1,0 +1,1251 @@
+{
+  "id": "controlled-metamorphosis",
+  "slug": "controlled-metamorphosis",
+  "locale": "fr",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Métamorphose Contrôlée : taille de l'anneau, coût en résistance et points de passifs économisés en 0.5",
+  "shortTitle": "Métamorphose Contrôlée",
+  "summary": "La Métamorphose Contrôlée est un Joyau de Diamant Unique dans Path of Exile 2 0.5.4 qui crée un rayon en forme d'anneau (couronne) pour l'allocation à distance de passifs et applique -(20-5)% à toutes les Résistances Élémentaires. Ce guide couvre les huit tailles d'anneau, pourquoi il ne s'agit pas d'un rayon circulaire normal, comment la pénalité de Résistance Élémentaire est calculée, la suppression de l'ancienne pénalité de Résistance au Chaos en 0.4.0, les relances avec l'Orbe Divin, le tableau Coût-Avantage, et en quoi elle diffère de From Nothing.",
+  "description": "Comment fonctionne la Métamorphose Contrôlée dans PoE2 0.5.4 : un Diamant Unique avec un rayon d'anneau variable pour l'allocation à distance, le coût en Résistance Élémentaire, le drop de Xesht +4, et la planification de build.",
+  "itemType": "ring-radius",
+  "rarity": "unique",
+  "requiredLevel": null,
+  "useCases": [
+    "remote-allocation",
+    "ring-radius",
+    "passive-point-saving"
+  ],
+  "itemCategory": "unique-items",
+  "subcategoryId": "unique-jewels",
+  "itemClass": "jewel",
+  "baseType": "diamond",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Équipe éditoriale des guides Exile2",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/the-masters-reach-hero.webp",
+  "cardImage": "/images/items/the-masters-reach-hero.webp",
+  "imageAlt": "Joyau de Diamant unique Métamorphose Contrôlée de Path of Exile 2 créant un rayon en forme d'anneau pour l'allocation à distance de passifs avec une pénalité de Résistance Élémentaire",
+  "tags": [
+    "unique-jewel",
+    "ring-radius",
+    "remote-allocation",
+    "passive-point-saving",
+    "elemental-resistance",
+    "diamond",
+    "breach",
+    "xesht"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "La Métamorphose Contrôlée est un Joyau de Diamant Unique qui forme deux anneaux (une couronne) autour de son emplacement. Les passifs situés dans la bande de l'anneau peuvent être alloués sans être connectés, mais les nœuds dans le cercle intérieur ne servent à rien. Elle applique -(20-5)% à toutes les Résistances Élémentaires (l'ancienne pénalité de Résistance au Chaos a été supprimée en 0.4.0). Elle est toujours Corrompue, ne peut pas être transformée par Orbe de Chance, et ne drop que de Xesht, Nous Qui Sommes Un au Breach +4.",
+      "calloutDetail": [
+        "La taille de l'anneau est tirée de 1 à 8 (Très Petit à Massif) et est indépendante de la pénalité de résistance — un anneau Massif avec -5% Élémentaire est la meilleure copie.",
+        "Vous payez toujours le point de passif pour chaque nœud alloué ; le joyau ne supprime que l'exigence de cheminement."
+      ],
+      "answers": [
+        {
+          "label": "À utiliser pour",
+          "text": [
+            "Les arbres étalés dont les nœuds utiles se trouvent sur un périmètre autour d'un emplacement central que vous pouvez atteindre."
+          ]
+        },
+        {
+          "label": "À vérifier d'abord",
+          "text": [
+            "Lisez la taille de l'anneau (1-8) et le jet de Résistance Élémentaire avant d'acheter ; plus grand n'est pas automatiquement meilleur."
+          ]
+        },
+        {
+          "label": "À éviter",
+          "text": [
+            "De supposer que le cercle intérieur alloue, ou que le joyau possède encore une pénalité de Résistance au Chaos en 0.5.4."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#ring-size-comparison",
+          "label": "Comparaison des tailles d'anneau"
+        },
+        {
+          "href": "#cost-benefit",
+          "label": "Tableau Coût-Avantage"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Faits rapides",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "Type de base",
+          "value": "Diamond",
+          "note": [
+            "La Métamorphose Contrôlée est une variante Unique de la base de Joyau de Diamant."
+          ]
+        },
+        {
+          "label": "Niveau requis",
+          "value": "20",
+          "note": [
+            "Confirmé par l'entrée poe2dictionary ; une barrière basse pour un joyau de fin de partie."
+          ]
+        },
+        {
+          "label": "Limité à",
+          "value": "1",
+          "note": [
+            "Une seule Métamorphose Contrôlée peut être active par arbre de passifs."
+          ]
+        },
+        {
+          "label": "Rayon",
+          "value": "Anneau variable (1-8)",
+          "note": [
+            "Une couronne, et non un disque ; seule la bande de l'anneau alloue les nœuds."
+          ]
+        },
+        {
+          "label": "Résistance",
+          "value": "-(20-5)% toutes Élémentaires",
+          "note": [
+            "Le 0.5.4 actuel n'a pas de pénalité de Résistance au Chaos ; elle a été supprimée en 0.4.0."
+          ]
+        },
+        {
+          "label": "Source du drop",
+          "value": "Xesht, Nous Qui Sommes Un (+4 Breach)",
+          "note": [
+            "Drope du boss sommital du Breach en Difficulté 4 ; non compatible avec l'Orbe de Chance."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "Aperçu de la famille : Joyaux Uniques de Diamant",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "La Métamorphose Contrôlée appartient à la famille des Joyaux Uniques de Diamant — cinq joyaux qui transforment l'utilisation de l'arbre de passifs. Chaque membre résout un problème différent d'arbre."
+      ],
+      "members": [
+        {
+          "id": "against-the-darkness",
+          "eyebrow": "Attribut de rayon",
+          "title": "Against the Darkness",
+          "sub": "Diamant Hors-du-Temps",
+          "body": [
+            "Tire deux modificateurs de rayon aléatoires qui renforcent les petits passifs à l'intérieur de son rayon."
+          ],
+          "tags": [
+            "radius",
+            "attribute-stacking"
+          ]
+        },
+        {
+          "id": "from-nothing",
+          "eyebrow": "Pierre angulaire à distance",
+          "title": "From Nothing",
+          "sub": "Rayon de disque fixe",
+          "body": [
+            "Alloue à distance des passifs autour d'une Pierre Angulaire liée sans coût de résistance."
+          ],
+          "tags": [
+            "remote-allocation",
+            "passive-point-saving"
+          ]
+        },
+        {
+          "id": "the-adorned",
+          "eyebrow": "Amplification de joyau magique",
+          "title": "The Adorned",
+          "sub": "Amplification de Magique Corrompu",
+          "body": [
+            "Amplifie l'effet des Joyaux Magiques Corrompus insérés à proximité."
+          ],
+          "tags": [
+            "magic-jewels",
+            "effect-scaling"
+          ]
+        },
+        {
+          "id": "megalomaniac",
+          "eyebrow": "Notables aléatoires",
+          "title": "Megalomaniac",
+          "sub": "Allocateur de Notables",
+          "body": [
+            "Accorde un à trois Notables aléatoires directement allouables sans cheminement."
+          ],
+          "tags": [
+            "notable-allocation",
+            "passive-point-saving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "Propriétés et lignes de modificateurs",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "Type de base",
+          "value": "Diamond",
+          "notes": [
+            "La base de joyau qui occupe un Emplacement de Joyau sur l'arbre de passifs."
+          ]
+        },
+        {
+          "label": "Rareté",
+          "value": "Unique",
+          "notes": [
+            "Un joyau Unique qui facilite le build."
+          ]
+        },
+        {
+          "label": "Niveau requis",
+          "value": "20",
+          "notes": [
+            "Équipez dès que votre personnage atteint le niveau 20."
+          ]
+        },
+        {
+          "label": "Limité à",
+          "value": "1",
+          "notes": [
+            "Une seule copie peut être active par arbre de passifs."
+          ]
+        },
+        {
+          "label": "Rayon",
+          "value": "Anneau variable, jet de 1-8",
+          "notes": [
+            "Une couronne (deux anneaux). Valeurs : 1 Très Petit, 2 Petit, 3 Moyen-Petit, 4 Moyen, 5 Moyen-Grand, 6 Grand, 7 Grand-Très Grand, 8 Massif."
+          ]
+        },
+        {
+          "label": "Explicite - allocation à distance",
+          "value": "Les Passifs dans le Rayon peuvent être Alloués sans être connectés à votre arbre",
+          "notes": [
+            "Seule la bande de l'anneau alloue ; le cercle intérieur non."
+          ]
+        },
+        {
+          "label": "Explicite - limite de l'anneau",
+          "value": "N'affecte que les Passifs dans l'Anneau (Très Petit-Massif)",
+          "notes": [
+            "Confirme la forme en couronne plutôt qu'un disque complet."
+          ]
+        },
+        {
+          "label": "Explicite - résistance",
+          "value": "-(20-5)% à toutes les Résistances Élémentaires",
+          "notes": [
+            "Le 0.5.4 actuel n'a pas de ligne de Résistance au Chaos ; elle a été supprimée en 0.4.0."
+          ]
+        },
+        {
+          "label": "Corrompu",
+          "value": "Oui, toujours",
+          "notes": [
+            "Corrompu dès l'apparition : ne peut pas être transformé par Chance ; un Orbe Divin peut relancer ses jets variables."
+          ]
+        },
+        {
+          "label": "Drop",
+          "value": "Xesht, Nous Qui Sommes Un, Difficulté 4",
+          "notes": [
+            "Nécessite une Breachstone à la Porte des Royaumes et une progression de Breach +4 sur l'Atlas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "Aperçu, visuel de la taille d'anneau et actuel contre hérité",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "La Métamorphose Contrôlée est le seul Joyau Unique dont la zone d'allocation est un anneau (une couronne) plutôt qu'un cercle plein. Lorsqu'il est inséré dans un Emplacement de Joyau alloué, il trace deux cercles concentriques : un cercle intérieur et un cercle extérieur. Tout nœud passif situé sur la bande entre ces deux cercles — la couronne — peut être alloué sans être connecté à votre arbre. Fondamentalement, l'espace à l'intérieur du cercle intérieur est mort : les nœuds qui s'y trouvent ne peuvent pas être pris via le joyau, ce qui est la plus grande surprise pour les nouveaux utilisateurs qui s'attendent à un rayon circulaire normal.",
+        "Imaginez l'arbre de passifs comme une grille de nœuds. Placez l'Emplacement de Joyau au centre. Tracez un petit cercle de rayon r1 (le cercle intérieur) et un plus grand cercle de rayon r2 (le cercle extérieur) autour de lui. La couronne est la bande en forme de beignet entre r1 et r2. Les nœuds situés sur ce beignet sont accessibles ; les nœuds strictement à l'intérieur de r1 et ceux à l'extérieur de r2 ne le sont pas. Comme la bande est fine, le jet de taille d'anneau (1-8) décide combien de nœuds utiles y tombent — c'est pourquoi un plus grand anneau n'est pas automatiquement meilleur : cela dépend de si vos nœuds cibles se trouvent effectivement sur la bande à cette taille.",
+        "Le joyau applique également -(20-5)% à toutes les Résistances Élémentaires. Cette pénalité est indépendante de la taille de l'anneau : chaque copie, du Très Petit au Massif, peut tirer n'importe où dans cette plage, et un anneau Massif avec un jet de -5% est la combinaison la plus précieuse. Vous payez toujours le point de passif pour chaque nœud alloué ; le joyau ne supprime que l'exigence de cheminement, donc l'économie réside dans les points de cheminement que vous évitez.",
+        "Actuel contre hérité : avant le patch 0.4.0, la Métamorphose Contrôlée appliquait aussi -(23-3)% de Résistance au Chaos. Cette ligne de Chaos a été supprimée en 0.4.0 et ne revient pas sur les nouveaux drops 0.5.4 — seule la pénalité Élémentaire reste. Les copies héritées droppées avant 0.4.0 conservent leur pénalité de Chaos. Il existe aussi un cas limite documenté où un jet corrompu de 9 ou plus (hors plage 1-8) fait disparaître le modificateur de taille d'anneau et le joyau ne forme aucun anneau ; traitez toute copie de ce type comme une anomalie affectée par un bug et échangez uniquement contre des jets valides de 1-8."
+      ],
+      "bullets": [
+        "La zone d'allocation est une couronne (deux anneaux), et non un disque plein.",
+        "Le cercle intérieur est un espace mort ; seule la bande de l'anneau alloue.",
+        "La taille d'anneau est tirée de 1-8 (Très Petit à Massif), indépendamment de la résistance.",
+        "Pénalité de résistance : -(20-5)% tous Élémentaires ; pas de ligne de Chaos en 0.5.4.",
+        "Vous payez toujours le point pour chaque nœud ; seul le cheminement est évité.",
+        "Les copies héritées d'avant 0.4.0 conservent une pénalité de Résistance au Chaos ; les nouveaux drops non."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "Éligibilité : ce que l'anneau peut atteindre",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "Seule la couronne — la bande entre le cercle intérieur et le cercle extérieur — alloue les nœuds. Le cercle intérieur et tout ce qui est au-delà du cercle extérieur sont exclus."
+      ],
+      "columns": [
+        "Résultat",
+        "Détail"
+      ],
+      "rows": [
+        {
+          "label": "Nœuds dans la bande de l'anneau (couronne)",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Allouable à distance"
+            },
+            {
+              "kind": "text",
+              "text": "Les deux anneaux de la couronne allouent les nœuds ; c'est la seule zone qui fonctionne."
+            }
+          ]
+        },
+        {
+          "label": "Nœuds dans le cercle intérieur",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Non allouable"
+            },
+            {
+              "kind": "text",
+              "text": "Contrairement à un rayon circulaire normal, l'espace entre les deux anneaux ne sert à rien."
+            }
+          ]
+        },
+        {
+          "label": "Nœuds à l'extérieur du cercle extérieur",
+          "values": [
+            {
+              "kind": "no",
+              "text": "Non allouable"
+            },
+            {
+              "kind": "text",
+              "text": "Au-delà du cercle extérieur, vous devez cheminer normalement."
+            }
+          ]
+        },
+        {
+          "label": "L'Emplacement de Joyau lui-même",
+          "values": [
+            {
+              "kind": "yes",
+              "text": "Doit être alloué"
+            },
+            {
+              "kind": "text",
+              "text": "L'emplacement doit déjà être alloué sur l'arbre avant que l'anneau se forme."
+            }
+          ]
+        },
+        {
+          "label": "Résistances Élémentaires",
+          "values": [
+            {
+              "kind": "text",
+              "text": "Pénalisé de -(20-5)%"
+            },
+            {
+              "kind": "text",
+              "text": "Chaque copie réduit toutes les Résistances Élémentaires ; l'équipement doit compenser."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "Utilisation : insérer, lire le jet, allouer",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "Atteindre un Emplacement de Joyau alloué",
+          "body": [
+            "Insérez le joyau dans n'importe quel Emplacement de Joyau alloué ; l'emplacement doit déjà être alloué avant que l'anneau se forme."
+          ]
+        },
+        {
+          "label": "Lire la taille d'anneau tirée",
+          "body": [
+            "Le joyau tire une taille d'anneau 1-8 (Très Petit à Massif) et une pénalité de Résistance Élémentaire -(20-5)%. Les deux sont fixés par le drop/la corruption."
+          ]
+        },
+        {
+          "label": "Allouer la bande de l'anneau",
+          "body": [
+            "Les nœuds qui tombent à l'intérieur des deux anneaux (la couronne) peuvent être alloués sans connexion. Le cercle intérieur est un espace mort."
+          ]
+        },
+        {
+          "label": "Compenser les résistances",
+          "body": [
+            "Récupérez les Résistances Élémentaires perdues sur les suffixes de l'équipement ; les builds avec Inoculation au Chaos ignorent totalement la pénalité."
+          ]
+        },
+        {
+          "label": "Divin pour améliorer (optionnel)",
+          "body": [
+            "Un Orbe Divin relance la pénalité de Résistance Élémentaire vers -5% et peut relancer la taille d'anneau dans la plage 1-8."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "Cheminer vers un groupe périphérique autour d'un emplacement central coûte chaque nœud intermédiaire entre votre arbre et cette bande."
+        ],
+        "after": [
+          "Ces mêmes nœuds périphériques sont alloués directement depuis la bande de l'anneau, en sautant le chemin de connexion."
+        ],
+        "note": "Le joyau échange un Emplacement de Joyau plus des suffixes de Résistance Élémentaire contre les points de cheminement que vous évitez sur la bande de l'anneau."
+      }
+    },
+    {
+      "id": "ring-size-comparison",
+      "order": 66,
+      "title": "Comparaison des tailles d'anneau",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Le jet de taille d'anneau (1-8) décide la portée de la couronne. Plus grand n'est pas automatiquement meilleur : cela dépend de l'endroit où se trouvent vos nœuds cibles. La pénalité de Résistance Élémentaire est indépendante de la taille d'anneau.",
+      "columns": [
+        {
+          "key": "size",
+          "label": "Taille d'anneau (jet)"
+        },
+        {
+          "key": "name",
+          "label": "Nom"
+        },
+        {
+          "key": "reach",
+          "label": "Portée approx. de l'anneau"
+        },
+        {
+          "key": "use",
+          "label": "Idéal quand"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "size": "1",
+            "name": "Très Petit",
+            "reach": "Couronne la plus serrée",
+            "use": "Les nœuds cibles se trouvent juste à l'extérieur de l'emplacement"
+          },
+          "tags": [
+            "very-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "2",
+            "name": "Petit",
+            "reach": "Petite couronne",
+            "use": "Nœuds périphériques proches"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "3",
+            "name": "Moyen-Petit",
+            "reach": "Couronne moyenne-petite",
+            "use": "Groupes mélangés à proximité"
+          },
+          "tags": [
+            "medium-small"
+          ]
+        },
+        {
+          "cells": {
+            "size": "4",
+            "name": "Moyen",
+            "reach": "Couronne moyenne",
+            "use": "Placement équilibré courant"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "size": "5",
+            "name": "Moyen-Grand",
+            "reach": "Couronne moyenne-grande",
+            "use": "Nœuds périphériques très étalés"
+          },
+          "tags": [
+            "medium-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "6",
+            "name": "Grand",
+            "reach": "Grande couronne",
+            "use": "Large portée depuis un emplacement central"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "7",
+            "name": "Grand-Très Grand",
+            "reach": "Couronne grand-très-grande",
+            "use": "Nœuds périphériques très dispersés"
+          },
+          "tags": [
+            "large-very-large"
+          ]
+        },
+        {
+          "cells": {
+            "size": "8",
+            "name": "Massif",
+            "reach": "Couronne la plus large",
+            "use": "Couverture maximale ; plus précieux à l'échange"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "Seule la bande entre les deux anneaux alloue. Un anneau Massif est le plus précieux quand vos nœuds cibles se trouvent effectivement sur sa bande et que votre équipement de résistance peut absorber la pénalité."
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "Résultats par situation",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "ring-radius",
+        "passive-point-saving",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "Arbre étalé, nœuds périphériques sur la bande",
+          "audience": "Builds à arbre de passifs large",
+          "benefit": "Évite de nombreux points de cheminement vers un groupe périphérique",
+          "risk": "Faible (si la taille d'anneau convient)",
+          "level": "low",
+          "recommendation": "Excellent choix quand les nœuds cibles se trouvent sur la bande tirée.",
+          "tags": [
+            "ring-radius"
+          ]
+        },
+        {
+          "scenario": "Build Inoculation au Chaos",
+          "audience": "Builds CI",
+          "benefit": "La pénalité Élémentaire est le seul coût ; la portée de l'anneau est gratuite",
+          "risk": "Faible",
+          "level": "low",
+          "recommendation": "L'IC rend la pénalité de résistance beaucoup plus facile à accepter.",
+          "tags": [
+            "build-enabling"
+          ]
+        },
+        {
+          "scenario": "Mauvaise taille d'anneau pour le build",
+          "audience": "Acheteurs impulsifs",
+          "benefit": "Quelques nœuds à distance",
+          "risk": "Élevé (nœuds utiles dans le cercle intérieur mort)",
+          "level": "high",
+          "recommendation": "Choisissez la taille d'anneau qui couvre vos nœuds cibles ; plus grand n'est pas toujours meilleur.",
+          "tags": [
+            "trade"
+          ]
+        },
+        {
+          "scenario": "Résistances non compensées",
+          "audience": "Builds fragiles",
+          "benefit": "Portée de l'anneau",
+          "risk": "Élevé (mort aux dégâts élémentaires)",
+          "level": "high",
+          "recommendation": "Récupérez les Résistances Élémentaires sur les suffixes avant de vous engager."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "Utilisation par build",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "La Métamorphose Contrôlée porte ses fruits quand les nœuds utiles d'un build forment un périmètre autour d'un emplacement qu'il peut déjà atteindre. Les quatre personas ci-dessous montrent où elle brille."
+      ],
+      "builds": [
+        {
+          "title": "Builds à arbre de passifs large",
+          "description": "Arbres étalés dont les nœuds utiles se trouvent sur un périmètre autour d'un emplacement central.",
+          "href": "/fr/items/jewels-and-jewel-sockets/"
+        },
+        {
+          "title": "Builds Inoculation au Chaos",
+          "description": "L'IC rend la pénalité Élémentaire (et autrefois de Chaos) sans importance, donc vous conservez la portée de l'anneau gratuitement.",
+          "href": "/fr/items/ghostwrithe/"
+        },
+        {
+          "title": "Builds à résistance empilée",
+          "description": "Les builds qui dépassent déjà le cap de Résistance Élémentaire peuvent absorber la pénalité et continuer de gagner en portée d'anneau."
+        },
+        {
+          "title": "Builds du sommet du Breach",
+          "description": "S'associe naturellement aux routes de farm de Xesht et à la planification de fin de partie du Breach.",
+          "href": "/fr/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "Alternatives",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "Un Joyau de Diamant normal ou Rare offre des stats fixes pour le même emplacement, sans coût de résistance et sans pari sur la taille d'anneau. Si vos nœuds cibles sont peu coûteux à cheminer, un joyau Rare est généralement la valeur la plus sûre.",
+        "From Nothing est le cousin le plus proche : il alloue aussi à distance, mais via un disque fixe autour d'une Pierre Angulaire liée et sans pénalité de résistance — au prix d'être verrouillé sur la Pierre Angulaire. Megalomaniac accorde des Notables aléatoires directement. Against the Darkness renforce les petits passifs dans un rayon. Choisissez selon ce dont votre arbre a réellement besoin.",
+        "Comme la Métamorphose Contrôlée coûte des suffixes de Résistance Élémentaire, la vraie alternative est souvent de simplement cheminer normalement et d'utiliser l'emplacement pour un joyau Rare ou un unique favorable aux résistances — n'engagez-vous que lorsque le cheminement évité surpasse clairement la perte de suffixe."
+      ],
+      "bullets": [
+        "Joyau de Diamant Rare : stats flexibles, aucun coût de résistance.",
+        "From Nothing : allocation à distance par disque fixe, aucun coût de résistance, verrouillé sur Pierre Angulaire.",
+        "Megalomaniac : allocation directe de Notables aléatoires.",
+        "Cheminement normal : souvent moins cher qu'une copie de mauvaise taille d'anneau."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "Valorisation : utiliser, vendre ou conserver",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "La valeur de la Métamorphose Contrôlée évolue avec la taille d'anneau et le jet de Résistance Élémentaire. Les anneaux Massifs avec -5% Élémentaire sont les plus chers ; les petits anneaux avec -20% sont les moins chers.",
+        "Les prix ci-dessous reflètent le site d'échange de l'Early Access 0.5.4 début août 2026 et bougent constamment selon l'offre et la demande."
+      ],
+      "use": {
+        "condition": "Des nœuds périphériques utiles tombent dans votre anneau tiré et vous pouvez absorber la perte de résistance",
+        "first": "Insérez-le, allouez la bande de l'anneau, récupérez les résistances sur l'équipement",
+        "risk": "La pénalité de résistance consomme des emplacements de suffixe ; une mauvaise taille d'anneau gâche l'emplacement",
+        "text": [
+          "Pour la bonne taille d'anneau, il offre une allocation à distance qu'aucun autre joyau ne propose."
+        ]
+      },
+      "sell": {
+        "condition": "La taille d'anneau ou le jet de résistance ne convient pas à votre build",
+        "first": "Listez par taille d'anneau (1-8) et jet de résistance ; Massif + faible pénalité demande un prix premium",
+        "risk": "Liquide mais sensible à la taille",
+        "text": [
+          "Les prix d'échange suivent d'abord la taille d'anneau, puis la résistance."
+        ]
+      },
+      "hold": {
+        "condition": "Vous avez trouvé une copie Massif / faible pénalité",
+        "first": "Conservez-la ; les grandes copies à faible pénalité conservent leur valeur",
+        "risk": "Inventaire uniquement",
+        "text": [
+          "Une copie bien tirée est un actif à long terme pour les builds à portée d'anneau."
+        ]
+      }
+    },
+    {
+      "id": "cost-benefit",
+      "order": 116,
+      "title": "Tableau Coût-Avantage",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Les points nets économisés sont indicatifs ; le coût réel est les suffixes d'équipement dépensés pour récupérer la pénalité de Résistance Élémentaire.",
+      "columns": [
+        {
+          "key": "variant",
+          "label": "Variante d'anneau"
+        },
+        {
+          "key": "reach",
+          "label": "Nœuds accessibles"
+        },
+        {
+          "key": "saved",
+          "label": "Points nets économisés"
+        },
+        {
+          "key": "resist",
+          "label": "Coût de résistance"
+        },
+        {
+          "key": "gear",
+          "label": "Coût en suffixe d'équipement"
+        },
+        {
+          "key": "build",
+          "label": "Adéquation du build"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "variant": "Petit",
+            "reach": "Peu de nœuds périphériques",
+            "saved": "Faible (1-3)",
+            "resist": "-(20-5)% Élémentaire",
+            "gear": "1-2 suffixes à récupérer",
+            "build": "Nœuds déjà près de l'emplacement"
+          },
+          "tags": [
+            "small"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Moyen",
+            "reach": "Périphérie modérée",
+            "saved": "Modéré (3-6)",
+            "resist": "-(20-5)% Élémentaire",
+            "gear": "1-3 suffixes",
+            "build": "Usage général équilibré"
+          },
+          "tags": [
+            "medium"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Grand",
+            "reach": "Beaucoup de nœuds périphériques",
+            "saved": "Élevé (5-9)",
+            "resist": "-(20-5)% Élémentaire",
+            "gear": "2-3 suffixes",
+            "build": "Builds à large portée"
+          },
+          "tags": [
+            "large"
+          ]
+        },
+        {
+          "cells": {
+            "variant": "Massif",
+            "reach": "Périphérie maximale",
+            "saved": "Le plus élevé (8+)",
+            "resist": "-(20-5)% Élémentaire",
+            "gear": "2-4 suffixes",
+            "build": "Arbre étalé / flexibilité max"
+          },
+          "tags": [
+            "massive"
+          ]
+        }
+      ],
+      "note": "La pénalité de Résistance Élémentaire est la même plage (-(20-5)%) pour chaque taille d'anneau ; seuls le jet de cette pénalité et la taille d'anneau varient. Récupérer la résistance consomme des emplacements de suffixe qui pourraient sinon porter de la vie, des attributs ou des dégâts — le coût réel est le coût d'opportunité de ces suffixes."
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "Risque et coût d'échec",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "Mauvaise taille d'anneau",
+          "gain": "Quelques nœuds à distance",
+          "loss": "Les nœuds utiles tombent dans le cercle intérieur mort ou à l'extérieur",
+          "level": "high",
+          "recommendation": "Choisissez la taille d'anneau qui couvre vos nœuds cibles ; plus grand n'est pas toujours meilleur."
+        },
+        {
+          "scenario": "Résistance non compensée",
+          "gain": "Portée de l'anneau",
+          "loss": "Mort aux dégâts élémentaires en maps",
+          "level": "high",
+          "recommendation": "Récupérez les Résistances Élémentaires sur les suffixes ou jouez Inoculation au Chaos."
+        },
+        {
+          "scenario": "Supposer que la pénalité de Chaos existe encore",
+          "gain": "Aucun",
+          "loss": "Mauvaise planification d'équipement",
+          "level": "low",
+          "recommendation": "Le 0.5.4 actuel n'a aucune pénalité de Résistance au Chaos ; seulement Élémentaire."
+        },
+        {
+          "scenario": "Mauvais usage de Chance / Divin",
+          "gain": "Le Divin peut améliorer les jets",
+          "loss": "Un mauvais Divin peut aggraver la pénalité",
+          "level": "medium",
+          "recommendation": "Le Divin ne relance qu'à l'intérieur de la plage ; le joyau ne peut pas être transformé par Chance."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Témoignages de la communauté",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-controlled",
+          "kind": "Question Reddit",
+          "question": "Pourquoi ne puis-je pas allouer un nœud qui semble à l'intérieur du rayon ?",
+          "summary": [
+            "Un joueur s'attendait à un rayon circulaire plein et ne pouvait pas prendre un nœud au centre."
+          ],
+          "editorialAnalysis": [
+            "La Métamorphose Contrôlée forme une couronne, et non un disque. Seule la bande entre le cercle intérieur et le cercle extérieur alloue ; le cercle intérieur est un espace mort. Un nœud qui semble « à l'intérieur » peut se trouver dans ce centre mort."
+          ],
+          "officialAnswer": [
+            "Seule la bande de l'anneau (entre les deux anneaux) alloue les nœuds ; le cercle intérieur non."
+          ],
+          "linkHref": "#ring-size-comparison",
+          "linkLabel": "Comparaison des tailles d'anneau"
+        },
+        {
+          "sourceId": "gamerant-controlled",
+          "kind": "Guide",
+          "question": "A-t-il toujours une pénalité de Résistance au Chaos ?",
+          "summary": [
+            "Un guide a noté l'ancienne Résistance au Chaos -(23-3)% et a demandé si elle persiste."
+          ],
+          "editorialAnalysis": [
+            "Le patch 0.4.0 a supprimé la ligne de Résistance au Chaos. Les drops 0.5.4 actuels n'ont que -(20-5)% à toutes les Résistances Élémentaires. Les copies héritées d'avant 0.4.0 conservent leur pénalité de Chaos ; les nouveaux drops non."
+          ],
+          "officialAnswer": [
+            "Le 0.5.4 actuel n'a aucune pénalité de Résistance au Chaos ; seule la pénalité Élémentaire reste."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "Historique des patches"
+        },
+        {
+          "sourceId": "wiki-controlled",
+          "kind": "Base de données",
+          "question": "Que fait un jet corrompu supérieur à 8 sur l'anneau ?",
+          "summary": [
+            "Les notes de la base de données indiquent qu'une valeur d'anneau de 9 ou plus fait disparaître le modificateur de taille d'anneau."
+          ],
+          "editorialAnalysis": [
+            "La taille d'anneau est tirée de 1-8. Une valeur corrompue de 9+ est hors plage valide et le joyau ne forme aucun anneau (documenté comme probablement un bug). Échangez uniquement contre des jets valides de 1-8 ; ces valeurs aberrantes doivent être traitées comme affectées par un bug."
+          ],
+          "officialAnswer": [
+            "Les tailles d'anneau valides vont de 1 à 8 ; les valeurs hors de cette plage suppriment le modificateur d'anneau et le joyau n'alloue rien."
+          ],
+          "linkHref": "#properties",
+          "linkLabel": "Propriétés"
+        },
+        {
+          "sourceId": "youtube-controlled",
+          "kind": "Vidéo",
+          "question": "Un plus grand anneau est-il toujours meilleur ?",
+          "summary": [
+            "Une vidéo a expliqué que la valeur de la taille d'anneau dépend de l'endroit où se trouvent vos nœuds utiles."
+          ],
+          "editorialAnalysis": [
+            "Comme seule la bande alloue, un anneau Massif n'aide que si vos nœuds cibles tombent sur sa bande. Un anneau plus petit peut être meilleur quand les nœuds voulus sont plus proches de l'emplacement. La valeur d'échange favorise tout de même les anneaux plus grands."
+          ],
+          "officialAnswer": [
+            "Plus grand n'est pas automatiquement meilleur ; adaptez la taille d'anneau à vos nœuds cibles, bien que les prix d'échange augmentent avec la taille."
+          ],
+          "linkHref": "#cost-benefit",
+          "linkLabel": "Tableau Coût-Avantage"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "Problèmes et réponses directes",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "Le nœud est visuellement près de l'emplacement mais ne peut pas être alloué",
+          "directAnswer": [
+            "Règle normale actuelle : seuls les deux anneaux (la couronne) allouent les nœuds ; le cercle intérieur entre eux ne sert à rien. Bug historique : les toutes premières versions allouaient parfois le cercle intérieur de façon incohérente. Reproductible actuellement : non — le cercle intérieur est mort par conception ; placez l'emplacement pour que les nœuds cibles tombent sur la bande de l'anneau."
+          ],
+          "checks": [
+            "Vérifiez si le nœud se trouve à l'intérieur du cercle intérieur ; si oui, déplacez l'emplacement ou choisissez une autre taille d'anneau."
+          ]
+        },
+        {
+          "symptom": "J'ai alloué un nœud mais la fiche de personnage n'a pas changé",
+          "directAnswer": [
+            "Règle normale actuelle : vous payez toujours un point de passif pour chaque nœud alloué ; le joyau ne supprime que le cheminement, pas le coût du nœud. Bug historique : un décalage d'affichage passé montrait des valeurs obsolètes de la fiche. Reproductible actuellement : non pour la règle ; si la fiche est obsolète, rouvrez l'arbre. Confirmez que le nœud est bien à l'intérieur de la bande de l'anneau."
+          ],
+          "checks": [
+            "Vérifiez que le nœud est à l'intérieur de la bande de l'anneau et que le joyau est inséré ; rouvrez la fiche de personnage."
+          ]
+        },
+        {
+          "symptom": "Le joyau ne se retire pas / les nœuds restent alloués après retrait",
+          "directAnswer": [
+            "Règle normale actuelle : retirer le joyau désalloue tous les nœuds de l'anneau et rembourse leurs points. Bug historique : un client plus ancien laissait parfois les nœuds visuellement alloués jusqu'à la reconnexion. Reproductible actuellement : non — le retrait rembourse correctement ; si les nœuds persistent, reconnectez-vous et revérifiez."
+          ],
+          "checks": [
+            "Clic droit pour retirer ; si les nœuds restent, reconnectez-vous et confirmez le remboursement."
+          ]
+        },
+        {
+          "symptom": "Le joyau a drop sans pénalité de Résistance au Chaos",
+          "directAnswer": [
+            "Règle normale actuelle : la Métamorphose Contrôlée 0.5.4 n'a que -(20-5)% à toutes les Résistances Élémentaires ; l'ancienne Résistance au Chaos -(23-3)% a été supprimée en 0.4.0 et ne revient pas sur les nouveaux drops. Historique : les copies d'avant 0.4.0 avaient bien la pénalité de Chaos. Reproductible actuellement : un nouveau drop n'a jamais de pénalité de Chaos."
+          ],
+          "checks": [
+            "Lisez l'infobulle ; si vous voyez une pénalité de Chaos, c'est une copie héritée de 0.4.0 ou antérieure."
+          ],
+          "links": [
+            {
+              "href": "#patch-history",
+              "label": "Historique des patches"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Vidéo explicative",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Toutes les options de Joyaux Uniques avec usages optimaux (PoE2) - section Métamorphose Contrôlée",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8",
+          "creator": "SnooBae85",
+          "description": "Vidéo communautaire couvrant chaque joyau unique ; la section Métamorphose Contrôlée commence à 09:13 et la démonstration de recherche d'échange à 24:18.",
+          "takeaway": "Montre la forme de l'anneau, le compromis de résistance, et comment rechercher ces joyaux à l'échange.",
+          "timestamps": [
+            {
+              "label": "Intro et aperçu du joyau",
+              "time": "00:00"
+            },
+            {
+              "label": "Joyaux Hors-du-Temps rares",
+              "time": "01:20"
+            },
+            {
+              "label": "Contexte d'Against the Darkness",
+              "time": "06:48"
+            },
+            {
+              "label": "Plongée approfondie Métamorphose Contrôlée",
+              "time": "09:13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "Galerie multimédia",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "Infobulle de la Métamorphose Contrôlée montrant la ligne d'anneau et -(20-5)% Élémentaire",
+          "note": "Capture principale du héros pour la carte et l'en-tête de l'article."
+        },
+        {
+          "caption": "Arbre de passifs : couronne (deux anneaux) autour de l'emplacement",
+          "note": "Montre le cercle intérieur mort face à la bande allouante."
+        },
+        {
+          "caption": "Trois tailles d'anneau comparées (Petit, Moyen, Massif)",
+          "note": "Visualise comment la portée de la bande change avec le jet 1-8."
+        },
+        {
+          "caption": "Compensation de résistance sur un suffixe d'équipement",
+          "note": "Comment la pénalité Élémentaire est récupérée."
+        },
+        {
+          "caption": "Arène du boss Xesht, Nous Qui Sommes Un",
+          "note": "La source de drop du Breach +4."
+        },
+        {
+          "caption": "Métamorphose Contrôlée face aux formes de rayon de From Nothing",
+          "note": "Couronne face à disque fixe."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "Contenu associé",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, Nous Qui Sommes Un",
+          "description": "Le boss sommital du Breach en Difficulté 4 qui drop la Métamorphose Contrôlée.",
+          "href": "/fr/bosses/xesht-we-that-are-one/"
+        },
+        {
+          "contentId": "breachstones",
+          "contentType": "item",
+          "title": "Breachstones",
+          "description": "L'objet d'invitation (300 Éclats de Breach) nécessaire pour accéder à Xesht.",
+          "href": "/fr/items/breachstones/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "Le Diamant à allocation à distance par disque fixe sans coût de résistance.",
+          "href": "/fr/items/from-nothing/"
+        },
+        {
+          "contentId": "the-masters-reach",
+          "contentType": "item",
+          "title": "The Master's Reach",
+          "description": "Un Unique connexe référencé par l'image héros et le contenu du Breach.",
+          "href": "/fr/items/the-masters-reach/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "Guide Respec, Passifs et Ascendance",
+          "description": "Comment les points de passifs, les respec et les ascendance interagissent avec la planification des joyaux.",
+          "href": "/fr/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "Patch 0.5.4 (Runes of Aldur)",
+          "description": "Le contexte de patch de l'Early Access actuel pour cet objet.",
+          "href": "/fr/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "Historique des patches",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, actuel)",
+          "changes": [
+            "La Métamorphose Contrôlée reste un Diamant Unique avec taille d'anneau variable 1-8, allocation à distance dans la bande de l'anneau, et -(20-5)% à toutes les Résistances Élémentaires ; toujours Corrompue ; drop de Xesht au Breach +4."
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "changes": [
+            "Suppression du modificateur de Résistance au Chaos -(23-3)% ; les copies héritées existantes le conservent. Plage de taille d'anneau 1-8 confirmée ; les valeurs 9+ suppriment l'anneau (bug documenté)."
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "changes": [
+            "Tous les boss à difficulté verrouillée peuvent drop leurs uniques spécifiques à n'importe quelle difficulté, bien que les uniques rares le soient moins aux difficultés basses."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Introduction de la Métamorphose Contrôlée dans le jeu."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "Sources et vérification",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIEL",
+          "description": "Notes de patch de Path of Exile 2 0.5.4 et documentation officielle de l'objet.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "BASE DE DONNÉES",
+          "description": "Données d'objet PoE2Wiki et poe2db pour la Métamorphose Contrôlée.",
+          "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Walkthrough GameRant sur l'obtention et l'utilisation de la Métamorphose Contrôlée.",
+          "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+        },
+        {
+          "label": "COMMUNAUTÉ",
+          "description": "Discussion Reddit r/PathOfExile2 sur la forme de l'anneau et la résistance.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDÉO",
+          "description": "Vidéo communautaire couvrant les joyaux uniques incluant la Métamorphose Contrôlée.",
+          "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "Journal des modifications",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publication initiale couvrant la Métamorphose Contrôlée en 0.5.4 : l'allocation par anneau (couronne), les huit tailles d'anneau, le coût de Résistance Élémentaire, la suppression de la pénalité de Chaos en 0.4.0, les relances Divin, le tableau Coût-Avantage, et en quoi elle diffère de From Nothing."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "xesht-we-that-are-one"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export",
+    "breach-genesis-tree-xesht-progression"
+  ],
+  "relatedItemIds": [
+    "jewels-and-jewel-sockets",
+    "against-the-darkness",
+    "from-nothing",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "breachstones",
+    "the-masters-reach",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Notes de patch de Path of Exile 2 0.5.4",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-controlled",
+      "label": "PoE2Wiki - Métamorphose Contrôlée",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/Controlled_Metamorphosis"
+    },
+    {
+      "id": "poe2db-controlled",
+      "label": "poe2db - Métamorphose Contrôlée",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Controlled_Metamorphosis"
+    },
+    {
+      "id": "reddit-controlled",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "gamerant-controlled",
+      "label": "GameRant - Comment obtenir le Diamant Métamorphose Contrôlée",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-controlled-metamorphosis-diamond-jewel-poe2"
+    },
+    {
+      "id": "fextralife-controlled",
+      "label": "PoE2 Wiki (Fextralife) - Métamorphose Contrôlée",
+      "sourceType": "tool",
+      "url": "https://pathofexile2.wiki.fextralife.com/Controlled+Metamorphosis+Diamond"
+    },
+    {
+      "id": "youtube-controlled",
+      "label": "YouTube - Options de Joyaux Uniques (Métamorphose Contrôlée @09:13)",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=zdLm4VbZmU8"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 Métamorphose Contrôlée : taille d'anneau, coût de résistance et points économisés (0.5.4)",
+    "description": "Comment fonctionne la Métamorphose Contrôlée dans PoE2 0.5.4 : un Diamant Unique avec un rayon d'anneau variable pour l'allocation à distance, le coût de Résistance Élémentaire, le drop de Xesht +4, et la planification de build.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "controlled-metamorphosis",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}

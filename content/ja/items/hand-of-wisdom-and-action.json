@@ -1,0 +1,988 @@
+{
+  "id": "hand-of-wisdom-and-action",
+  "slug": "hand-of-wisdom-and-action",
+  "locale": "ja",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "Hand of Wisdom and Action (HOWA)：知性による雷ダメージ、敏捷性による攻撃速度、および現行と旧版のスケーリング比較 — PoE2 0.5",
+  "shortTitle": "HOWA",
+  "summary": "Hand of Wisdom and Action は、Path of Exile 2 におけるユニークな Spiral Wraps の手袋で、知性に応じて攻撃に固定値の雷ダメージを追加（知性20ごとに1〜10）、敏捷性に応じて攻撃速度を増加（敏捷性20ごとに1%）させます。ドロップは Xesht, We That Are One のみで、Chance Orb では入手できず、属性スタック型の攻撃ビルドの中核となるユニークです。本ガイドでは、正確なスケーリング、0.2.0 での弱体化とその自動適用、およびレア手袋から乗り換えるべき閾値について解説します。",
+  "description": "Path of Exile 2 0.5 における Hand of Wisdom and Action の仕組み：知性20ごとの雷追加（攻撃のみ）、敏捷性20ごとの攻撃速度、要求レベル33、Xesht ドロップ、Chance Orb での制限、現行と旧版（Furtive Wraps）のスケーリング、Astramentis／Pillar とのシナジー、属性スタック型ビルドでの運用。",
+  "itemType": "gloves",
+  "rarity": "unique",
+  "requiredLevel": "33",
+  "useCases": [
+    "intelligence-stacking",
+    "dexterity-stacking",
+    "attack-builds"
+  ],
+  "itemCategory": "unique-armour",
+  "subcategoryId": "unique-gloves",
+  "itemClass": "gloves",
+  "baseType": "spiral-wraps",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "アーリーアクセス",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "tags": [
+    "unique-gloves",
+    "attribute-stacking",
+    "lightning",
+    "attack-speed",
+    "intelligence",
+    "dexterity",
+    "breach",
+    "xesht"
+  ],
+  "heroImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "cardImage": "/images/items/hand-of-wisdom-and-action-hero.webp",
+  "imageAlt": "Path of Exile 2 におけるユニークアイテム「Hand of Wisdom and Action」の Spiral Wraps 手袋。知性に応じて雷の攻撃ダメージを、敏捷性に応じて攻撃速度をスケーリングする。",
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "簡潔な回答",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "Hand of Wisdom and Action（HOWA）は、キャラクターの属性を攻撃力に変換するユニーク手袋です。知性20ごとに攻撃に 1〜10 の雷ダメージを追加し、敏捷性20ごとに 1% の攻撃速度を増加させます。属性スタック型の攻撃ビルドにとって中核となるユニークですが、影響するのは攻撃のみ（呪文は対象外）であり、自身では防御・命中・リソースを何も提供しません。",
+      "calloutDetail": [
+        "固定値の雷ダメージと攻撃速度は、その他すべての上乗せとして加算されます。知性と敏捷性の合計値に比例して線形に増加するため、スタックするほど強力になります。",
+        "ドロップは Xesht, We That Are One（ブリーチの頂点ボス）のみで、Orb of Chance では生成できません。",
+        "0.2.0 のバランス調整で倍率が弱体化し、既存アイテムにも自動適用されたため、旧版の強力なスケーリングを持つ「レガシー」版を取引で入手することはできません。"
+      ],
+      "answers": [
+        {
+          "label": "使用する場合",
+          "text": [
+            "すでに知性200以上・敏捷性200以上をスタックし、1つの手袋スロットで固定値の雷ダメージと攻撃速度を必要とする攻撃ビルドを運用している場合。"
+          ]
+        },
+        {
+          "label": "見送る場合",
+          "text": [
+            "呪文使いの場合（モッドは攻撃のみ）、あるいは属性が低くスケーリングによるボーナスダメージがほとんど出ないビルドの場合。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "text": [
+            "Xesht, We That Are One から。Twisted Domain の Breachstone を経由して到達します。Chance Orb では不可、通常モンスターからはドロップしません。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#attribute-scaling",
+          "label": "属性スケーリング表"
+        },
+        {
+          "href": "#current-vs-legacy",
+          "label": "現行と旧版の比較"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "概要",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "アイテム種別",
+          "value": "ユニーク手袋（Spiral Wraps）",
+          "note": [
+            "現在のベースは Spiral Wraps。0.2.0 以前のアイテムは Furtive Wraps ベース（回避値・ES がやや高い）。"
+          ]
+        },
+        {
+          "label": "要求レベル",
+          "value": "33（敏捷性24、知性24）",
+          "note": [
+            "poe2wiki および exileindex で確認済み。"
+          ]
+        },
+        {
+          "label": "中核モッド1",
+          "value": "知性20ごとに攻撃に 1〜10 の雷ダメージを追加",
+          "note": [
+            "攻撃のみ、呪文は対象外。知性に比例してスケーリング。"
+          ]
+        },
+        {
+          "label": "中核モッド2",
+          "value": "敏捷性20ごとに 1% の攻撃速度増加",
+          "note": [
+            "攻撃のみ。敏捷性に比例してスケーリング。"
+          ]
+        },
+        {
+          "label": "固定モッド",
+          "value": "+(15–25) 敏捷性 および +(15–25) 知性",
+          "note": [
+            "ロール範囲。Divine Orb でこれらを再ロールできるが、旧スケーリングは復元できない。"
+          ]
+        },
+        {
+          "label": "ドロップ元",
+          "value": "Xesht, We That Are One（ブリーチ頂点ボス）",
+          "note": [
+            "ドロップ制限あり。Orb of Chance では入手不可。"
+          ]
+        },
+        {
+          "label": "取引可能",
+          "value": "はい（プレイヤー間取引）",
+          "note": [
+            "価格はリーグ・地域・時期により変動。リーグ初期は高ロールの一組で複数の Divine Orb になることも。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "現在のツールチップとロール範囲",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "ベースアイテム",
+          "value": "Spiral Wraps（手袋）",
+          "notes": [
+            "現在のベースの回避値は約43、エネルギーシールドは約15。"
+          ]
+        },
+        {
+          "label": "必要条件",
+          "value": "レベル33、敏捷性24、知性24",
+          "notes": [
+            "この性能のユニークとしては低い属性要求。"
+          ]
+        },
+        {
+          "label": "+(15–25) 敏捷性",
+          "value": "ロール範囲 15–25",
+          "notes": [
+            "ロールが高いほど、両スケーリングモッドとジェム要求を満たす属性が増える。"
+          ]
+        },
+        {
+          "label": "+(15–25) 知性",
+          "value": "ロール範囲 15–25",
+          "notes": [
+            "上記と同様。両方の属性がスケーリングに影響する。"
+          ]
+        },
+        {
+          "label": "敏捷性20ごとに 1% の攻撃速度増加",
+          "value": "現行（0.2.0以降）",
+          "notes": [
+            "旧版は敏捷性25ごとに 3%（より強力）。弱体化は既存アイテムにも自動適用された。"
+          ]
+        },
+        {
+          "label": "知性20ごとに攻撃に 1〜10 の雷ダメージを追加",
+          "value": "現行（0.2.0以降）",
+          "notes": [
+            "旧版は知性10ごとに 1〜10（2倍）。攻撃のみの固定雷ダメージ。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 40,
+      "title": "Hand of Wisdom and Action の仕組み",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Hand of Wisdom and Action（HOWA）は、その価値のすべてが「属性の合計値を攻撃力に変換すること」に由来するユニーク手袋です。スケーリングを持つモッドは2つあります。1つ目の「知性20ごとに攻撃に 1〜10 の雷ダメージを追加」は、攻撃の命中ごとに固定値の雷ダメージを与え、知性が高いほど追加される固定値が大きくなります。2つ目の「敏捷性20ごとに 1% の攻撃速度増加」は、敏捷性に比例してスケーリングする攻撃速度を与えます。",
+        "両方のモッドは明確に「攻撃に対して」と規定されています。呪文は恩恵を受けず、攻撃でない効果（呪文駆動の Herald の粉砕_proc や、自身の武器を用いるミニオン／トーテムの命中など）も固定の雷ダメージを受け取りません。追加される雷ダメージは通常の固定元素ダメージであるため、すでに持っているすべての「増加する雷ダメージ」「攻撃に対する増加する元素ダメージ」「増加する攻撃ダメージ」および «more» 乗算によって増幅されます。",
+        "具体例：知性600・敏捷性400の場合、知性スタック数は 600 ÷ 20 = 30 となるため、手袋は攻撃ごとに 30 ×（1〜10）= 30〜300 の雷ダメージを追加します。敏捷性スタック数は 400 ÷ 20 = 20 となり、20% の攻撃速度増加を得ます。これが、他の装備を一切考慮しない場合の手袋の全貢献です。そして、これは固定値かつ百分率ベースであるため、属性スタッカーの他の乗算と相乗的に作用します。",
+        "決定的に重要な点として、HOWA は命中・ライフ・エネルギーシールド・耐性・リソースの持続を一切提供しません。命中（Accuracy）を決め、生き残り（防御）、マナ／スピリットを維持する必要は依然としてあります。これが、属性だけをスタックできない理由です。手袋はエナブラー（補助役）であり、命中・防御・リソースを他で解決しなければならない属性スタック型の枠組みに組み込まれます。よくある組み合わせは、全属性アミュレット（Astramentis）と、属性に比例してスケーリングするクオータスタッフ Pillar of the Caged God です。いずれも同じ属性を増幅させます。"
+      ],
+      "bullets": [
+        "知性 → 各攻撃に追加される固定雷ダメージ（知性20ごとに1〜10）。",
+        "敏捷性 → 攻撃速度増加（敏捷性20ごとに1%）。",
+        "対象は攻撃のみ。呪文および武器を持たない命中は恩恵を受けない。",
+        "固定雷ダメージは、既存の雷／元素／攻撃ダメージ乗算によって増幅される。",
+        "本来の防御・命中・リソースはなし — これらはビルド側で用意する必要がある。"
+      ]
+    },
+    {
+      "id": "attribute-scaling",
+      "order": 45,
+      "title": "属性スケーリング表",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "代表的な属性の閾値における現行（0.2.0以降）のスケーリング。「レガシー」列は弱体化の差を示すためだけに 0.2.0 以前の数値を掲載しています。そのスケーリングはすべてのアイテムに自動適用され、ゲーム内にはすでに存在しません。",
+      "columns": [
+        {
+          "key": "attrs",
+          "label": "属性（知性 / 敏捷性）"
+        },
+        {
+          "key": "lightMin",
+          "label": "追加雷ダメージ 最小"
+        },
+        {
+          "key": "lightMax",
+          "label": "追加雷ダメージ 最大"
+        },
+        {
+          "key": "asPct",
+          "label": "攻撃速度増加"
+        },
+        {
+          "key": "legacyNote",
+          "label": "旧版（0.2.0以前）相当"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "attrs": "知性200 / 敏捷性200",
+            "lightMin": "+10",
+            "lightMax": "+100",
+            "asPct": "10%",
+            "legacyNote": "旧版：+20–200 雷、24% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "知性400 / 敏捷性300",
+            "lightMin": "+20",
+            "lightMax": "+200",
+            "asPct": "15%",
+            "legacyNote": "旧版：+40–400 雷、36% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "知性600 / 敏捷性400",
+            "lightMin": "+30",
+            "lightMax": "+300",
+            "asPct": "20%",
+            "legacyNote": "旧版：+60–600 雷、48% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "知性800 / 敏捷性500",
+            "lightMin": "+40",
+            "lightMax": "+400",
+            "asPct": "25%",
+            "legacyNote": "旧版：+80–800 雷、60% AS"
+          }
+        },
+        {
+          "cells": {
+            "attrs": "知性1000 / 敏捷性600",
+            "lightMin": "+50",
+            "lightMax": "+500",
+            "asPct": "30%",
+            "legacyNote": "旧版：+100–1000 雷、72% AS"
+          }
+        }
+      ],
+      "note": "旧版の数値は比較のためにのみ掲載しています。0.2.0 のバランス調整が自動適用されたため、ゲーム内のすべての HOWA はベース種別に関わらず現行（左）の数値を使用します。"
+    },
+    {
+      "id": "outcomes",
+      "order": 50,
+      "title": "属性投資による結果",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "scaling",
+        "build",
+        "decision"
+      ],
+      "rows": [
+        {
+          "scenario": "低属性（知性200未満）",
+          "audience": "非スタッカー、初期キャラクター",
+          "benefit": "わずかな固定雷ダメージと若干の攻撃速度、および +敏捷/+知性 のロール",
+          "risk": "ダメージ還元が低い。手袋は防御を提供しない",
+          "level": "low",
+          "recommendation": "すでにスタックしているのでない限り、固定雷+耐性+ライフを持つレア手袋を推奨。",
+          "tags": [
+            "decision"
+          ]
+        },
+        {
+          "scenario": "中属性（知性200–400、敏捷性200–300）",
+          "audience": "移行期の属性スタッカー",
+          "benefit": "手袋から +10–200 雷および 10–15% AS。強力なキャンペーン／マップ中ダメージ",
+          "risk": "中（耐性／防御が整うまで脆い）",
+          "level": "medium",
+          "recommendation": "属性が約200知性を超え、耐性が上限に達したら中核手袋として HOWA を装備。",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "高属性（知性600以上、敏捷性400以上）",
+          "audience": "エンドゲームの属性スタッカー",
+          "benefit": "+30–500 雷および 20–30% AS。固定雷手袋源のなかでも最上位クラス",
+          "risk": "中（ガラスの砲弾。CI／カオス耐性とマナ維持が必要）",
+          "level": "high",
+          "recommendation": "HOWA を維持。Pillar of the Caged God と全属性アミュレットと組み合わせる。",
+          "tags": [
+            "build"
+          ]
+        },
+        {
+          "scenario": "呪文専用ビルド",
+          "audience": "呪文使い",
+          "benefit": "スケーリングモッドによる恩恵なし",
+          "risk": "高（無駄なユニークスロット）",
+          "level": "high",
+          "recommendation": "HOWA は使用しない。固定雷と AS は攻撃のみ。",
+          "tags": [
+            "decision"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "switch-thresholds",
+      "order": 52,
+      "title": "HOWA に乗り換えるべき閾値",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "レア手袋を HOWA に置き換える判断基準。「純利益」は、ビルドの残りがすでに命中・防御・リソースを満たしていることを前提とします。",
+      "columns": [
+        {
+          "key": "int",
+          "label": "知性の合計"
+        },
+        {
+          "key": "rareEq",
+          "label": "同等のレア手袋"
+        },
+        {
+          "key": "howaGain",
+          "label": "HOWA の追加価値"
+        },
+        {
+          "key": "verdict",
+          "label": "判定"
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "int": "150未満",
+            "rareEq": "固定雷 1–15 + 耐性 + ライフ",
+            "howaGain": "+8–75 未満の雷、防御なし",
+            "verdict": "レア手袋の方が優秀"
+          }
+        },
+        {
+          "cells": {
+            "int": "200–400",
+            "rareEq": "固定雷 1–20 + 耐性",
+            "howaGain": "+10–200 雷 + AS、防御なし",
+            "verdict": "属性をスタックするなら HOWA"
+          }
+        },
+        {
+          "cells": {
+            "int": "600以上",
+            "rareEq": "固定雷 1–30 + 耐性",
+            "howaGain": "+30–500 雷 + 20%以上 AS",
+            "verdict": "明らかに HOWA が優秀"
+          }
+        }
+      ],
+      "note": "HOWA は防御を提供しないため、比較は耐性／ライフ／ES を他で解決済みであることを前提とします。"
+    },
+    {
+      "id": "build-usage",
+      "order": 60,
+      "title": "ビルドでの運用",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "HOWA はエナブラー（補助役）であり、単独のビルドではありません。以下の4つの文脈は、どこに位置づくか、何を併用する必要があるか、何を提供しないか、どのスキルをサポートできないかを示します。"
+      ],
+      "builds": [
+        {
+          "title": "初期属性スタッカー（キャンペーンから初期マップ）",
+          "description": "敏捷性24／知性24 に到達したらレベル33で装備。固定雷+攻撃速度の恩恵を受ける任意の攻撃スキルと組み合わせる。入り口：ドロップのため Xesht を討伐。欠けている防御：手袋の回避／ES は低いため、ライフ／ES／耐性は残りの装備から確保する必要がある。非サポート：純粋な呪文使い（攻撃のみのモッド）。"
+        },
+        {
+          "title": "中盤 HOWA 移行期（マップ、全属性アミュレット入手前）",
+          "description": "耐性上限かつ属性スタック型のパッシブ骨格を持ち、知性200／敏捷性200 前後。中核手袋として HOWA を維持。防御は他で解決済みなので、指輪／アミュレットの接尾に属性を確保できる。欠けている防御：手袋からの固有防御は依然としてなし。非サポート：呪文。"
+        },
+        {
+          "title": "エンドゲーム属性スタッカー（全属性アミュレット入手後）",
+          "description": "典型的には知性500以上・敏捷性400以上（最上位閾値では知性800／敏捷性600）。HOWA（手袋）+ Pillar of the Caged God（武器）+ 全属性アミュレット + Ingenuity（指輪）+ 属性ジュエルを運用。欠けている防御：ガラスの砲弾。CI／カオス耐性とマナ維持が必要。非サポート：呪文／トーテム自身の武器による命中。"
+        },
+        {
+          "title": "レガシーアイテムの比較（Furtive Wraps 対 Spiral Wraps）",
+          "description": "0.2.0 以前の HOWA は Furtive Wraps ベース（回避／ES がやや高い 約50／19）を維持していたが、バランス調整が自動適用されたため同じ現行スケーリングを使用する。Divine Orb が再ロールできるのは +(15–25) 敏捷/知性 のロールのみ。どちらのロールが優れているかで購入すればよく、攻撃面ではベース種別はほとんど影響しない。"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 70,
+      "title": "代替案",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "高ロールのレア Spiral Wraps／Furtive Wraps と比較した際の違いはスケーリングにあります。レア手袋は固定の小さな固定雷ロール、固定の攻撃速度増加ロールに加え、耐性・ライフ／ES・命中を提供できます。一方 HOWA は、その固定雷と攻撃速度を属性に応じて成長させます。つまり知性／敏捷性をどれだけスタックするかで、各手袋モッドの価値が高まります。ビルドですでに知性300以上・敏捷性200以上をスタックしているなら、HOWA はダメージ面でほぼ常にレア手袋に勝ちます。属性をスタックしない（知性が低い）場合は、HOWA のスケーリングが無駄になり防御も提供しないため、固定雷+耐性+ライフ を持つレア手袋の方が通常は優れています。",
+        "現在、属性ごとの固定雷スケーリングを持つ他のユニーク手袋は存在しないため、HOWA は 0.5 における唯一の「属性スケーリング型攻撃手袋」です。関連するユニーク手袋は別の役割を担います。Kitoko's Current は雷命中による Electrocution の蓄積（異常状態の制御）を付与し、ダメージの代替にはなりません。Ghostwrithe はライフ→ES 変換用のボディアーマーです。武器である Pillar of the Caged God に対しては、HOWA は代替ではなく補完関係にあります。標準的な属性スタッカーは両方を運用します。Pillar は武器ダメージ%（筋力）を、HOWA は固定雷（知性）と AS（敏捷性）を追加するためです。"
+      ],
+      "bullets": [
+        "レア手袋：固定値 + 防御。属性が低いときに優秀。",
+        "HOWA：スケーリングする固定雷 + AS。属性が高いときに優秀。",
+        "Kitoko's Current／Ghostwrithe：役割が異なり、直接の代替にならない。",
+        "Pillar of the Caged God：補完する武器であり、代替ではない。"
+      ]
+    },
+    {
+      "id": "acquisition",
+      "order": 80,
+      "title": "入手方法",
+      "toc": true,
+      "visible": true,
+      "type": "acquisition",
+      "intro": [
+        "取引不可のドロップ元は1つだけで、Orb of Chance 経由の手段はありません。頂点ボスを討伐するか、プレイヤー間取引で購入するかのいずれかです。"
+      ],
+      "routes": [
+        {
+          "label": "Xesht, We That Are One（ブリーチ頂点ボス）",
+          "body": [
+            "HOWA はドロップ制限されたユニークで、Xesht, We That Are One からドロップします。Xesht には、Twisted Domain（アトラス・レルムゲート）で Breachstone を使用することで到達します。Breachstone は、ブリーチのエンドゲームマップで集めた 300 の Breach Splinter から作成されます。",
+            "Xesht の難易度を問わずドロップするため、初期の Twisted Domain 周回でも入手できる可能性があります。"
+          ]
+        },
+        {
+          "label": "プレイヤー間取引",
+          "body": [
+            "公式取引サイトで一組を購入。価格はリーグ・地域・時期により変動。リーグ初期は高ロールの一組で複数の Divine Orb になることもあれば、低ロールの一組ははるかに安価です。常に現在のロール範囲（15–25）とベース種別を確認してください。"
+          ]
+        },
+        {
+          "label": "Orb of Chance — 不可",
+          "body": [
+            "HOWA は Orb of Chance のプールから除外されています。白の Spiral Wraps／Furtive Wraps に Chance Orb を使用しても、決して生成されません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 90,
+      "title": "使用・売却・保持",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "HOWA は属性スタック型攻撃ビルド向けの人気（chase）ユニークです。市場価値はリーグ経済と属性スタッカーの人気に連動するため、リーグ／日付／地域が明記されていない価格は信頼できません。"
+      ],
+      "use": {
+        "condition": "知性200以上・敏捷性200以上の攻撃ビルドを運用している（または属性をスタックする予定がある）場合。",
+        "first": "中核手袋として装備。属性に応じてスケーリングし、雷／元素の乗算と相乗的に作用する。",
+        "risk": "このスロットからの防御はなし — 耐性／ライフ／ES と命中は他で解決しないと死亡する。",
+        "text": [
+          "ビルドがすでに命中・防御・リソース維持を満たしているときが最良。",
+          "Pillar of the Caged God と全属性アミュレットと強力にシナジーする。"
+        ]
+      },
+      "sell": {
+        "condition": "属性をスタックしない、あるいは呪文ビルドをプレイしている場合。",
+        "first": "取引で売却。低ロールでも属性スタッカーは常に一組を望むため価値を維持する。",
+        "risk": "価格はリーグの進行と供給増に伴い下落する。新リーグでは早めに売却すべき。",
+        "text": [
+          "呪文使いは攻撃のみのモッドから何も得ない。",
+          "低属性の攻撃ビルドはダメージも得られず防御もないため、手袋は死荷重になる。"
+        ]
+      },
+      "hold": {
+        "condition": "属性スタッカーへ向けて構築中だがまだ到達していない場合。",
+        "first": "予備の一組を保持。属性の合計はリーグを通じて装備とジュエルで伸びる。",
+        "risk": "今投資できたはずのインベントリと通貨の機会損失。",
+        "text": [
+          "知性が約150未満なら、その間はレア手袋の方が役立つ可能性が高い。",
+          "エンドゲームの枠組みには最も高いロールの一組を保持する。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 100,
+      "title": "リスクと失敗コスト",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "HOWA を装備するが防御を無視",
+          "gain": "強力な固定雷 + AS のスケーリング",
+          "loss": "絶えず死亡 — 手袋はライフ／ES／耐性を提供しない",
+          "level": "high",
+          "recommendation": "耐性が上限に達し、防御層（ライフ／ES／CI）がある場合のみ装備すること。"
+        },
+        {
+          "scenario": "呪文ビルドに HOWA を使用",
+          "gain": "なし",
+          "loss": "無駄なユニーク手袋スロット",
+          "level": "medium",
+          "recommendation": "使用しないこと — モッドは攻撃のみで呪文には適用されない。"
+        },
+        {
+          "scenario": "旧スケーリングを期待して旧価格相当で購入",
+          "gain": "追加の恩恵なし",
+          "loss": "過払い。旧来の強力なスケーリングはすでに存在しない",
+          "level": "medium",
+          "recommendation": "モッド文本体を確認すること。現行アイテムは敏捷性20ごとに1%、知性20ごとに+1–10。旧スケーリングは自動弱体化済み。"
+        },
+        {
+          "scenario": "低属性合計（知性150未満）",
+          "gain": "わずかな固定雷",
+          "loss": "防御なし、レア手袋に対してダメージも弱い",
+          "level": "low",
+          "recommendation": "代わりに固定雷+耐性+ライフ を持つレア手袋を使用すること。"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 110,
+      "title": "コミュニティの証拠",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "forum-howa-spells",
+          "kind": "フォーラムの質問",
+          "question": "HOWA の追加雷ダメージは呪文でも効くのか、それとも攻撃のみか？",
+          "summary": [
+            "あるプレイヤーが、固定雷ダメージが自身の雷呪文スキルに恩恵をもたらすか不安に思っていた。"
+          ],
+          "editorialAnalysis": [
+            "モッド文本体は「知性20ごとに攻撃に 1〜10 の雷ダメージを追加」と記載されている。「攻撃」という語が攻撃命中に限定している。呪文の命中、および呪文駆動の Herald／二次効果は、固定雷ダメージを受け取らない。"
+          ],
+          "officialAnswer": [
+            "攻撃のみ。固定値を別元素（例：カオス）に変換するビルドでも、まずダメージが攻撃である必要がある。呪文専用の使い手は HOWA から何も得られない。"
+          ],
+          "linkHref": "#overview",
+          "linkLabel": "HOWA の仕組み"
+        },
+        {
+          "sourceId": "forum-howa-600int",
+          "kind": "Reddit スタイルの質問",
+          "question": "知性600 のとき、雷ダメージはどれくらい得られる？",
+          "summary": [
+            "あるプレイヤーが、一般的なエンドゲームの属性合計における正確な固定雷ダメージを知りたがっていた。"
+          ],
+          "editorialAnalysis": [
+            "スケーリングは線形：スタック数 = floor(知性 / 20) で、各スタックが 1〜10 の雷を追加する。知性600 なら 30 スタック。"
+          ],
+          "officialAnswer": [
+            "知性600 では、他の乗算を考慮する前に、攻撃ごとに 30 ×（1〜10）= 30〜300 の追加雷ダメージを得る。"
+          ],
+          "linkHref": "#attribute-scaling",
+          "linkLabel": "属性スケーリング表"
+        },
+        {
+          "sourceId": "forum-howa-chance",
+          "kind": "フォーラムの質問",
+          "question": "Orb of Chance で HOWA を狙えるか？",
+          "summary": [
+            "あるプレイヤーが、白の Spiral Wraps を chancing すれば HOWA が出るか質問した。"
+          ],
+          "editorialAnalysis": [
+            "HOWA は Xesht にドロップ限定されており、Orb of Chance のプールから明確に除外されている。poe2wiki および複数のガイドで確認済み。"
+          ],
+          "officialAnswer": [
+            "いいえ。Xesht, We That Are One（Twisted Domain の Breachstone 経由）を討伐するか、取引で購入する必要がある。Chance Orb が生成することは決してない。"
+          ],
+          "linkHref": "#acquisition",
+          "linkLabel": "入手方法"
+        },
+        {
+          "sourceId": "forum-howa-legacy",
+          "kind": "フォーラムの質問",
+          "question": "旧来の 0.2.0 以前の HOWA（敏捷性25ごとに3%）はまだ入手できるか？",
+          "summary": [
+            "あるプレイヤーが、より強い数値を記載した古いガイドを見て、それらのアイテムがまだドロップするか疑問に思っていた。"
+          ],
+          "editorialAnalysis": [
+            "0.2.0 のバランス調整で倍率が変更され、パッチノートには属性ごとの変更が既存アイテムに影響すると記載されている。そのため旧スケーリングはすべての所有 HOWA に対して自動変換された。"
+          ],
+          "officialAnswer": [
+            "いいえ。ゲーム内のすべての HOWA は現在、敏捷性20ごとに1%、知性20ごとに+1–10 を使用する。異なるのはベース種別名（Furtive Wraps 対 Spiral Wraps）のみ。旧来の強力な倍率は消滅した。Divine Orb が再ロールできるのは +(15–25) 敏捷/知性 のロールのみ。"
+          ],
+          "linkHref": "#current-vs-legacy",
+          "linkLabel": "現行と旧版の比較"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "問題と直接的な回答",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "HOWA ビルドでほとんどダメージが出ない",
+          "directAnswer": [
+            "おそらく知性が低すぎる。約200知性未満では固定雷は小さい。知性（および攻撃速度用の敏捷性）をスタックする — 知性600 なら手袋単体で命中ごとに 30〜300 の雷を追加する。"
+          ],
+          "checks": [
+            "キャラクターシートで知性と敏捷性の合計を確認する。",
+            "使用スキルが攻撃であり、呪文でないことを確認する。",
+            "固定値を増幅する雷／元素ダメージ乗算を持っていることを確認する。"
+          ],
+          "links": [
+            {
+              "href": "#attribute-scaling",
+              "label": "スケーリング表"
+            }
+          ]
+        },
+        {
+          "symptom": "HOWA を装備していると死に続ける",
+          "directAnswer": [
+            "HOWA はライフ・エネルギーシールド・耐性・命中を提供しない。手袋は攻撃面のエナブラーに過ぎず、防御は残りの装備とパッシブツリーから確保する必要がある。"
+          ],
+          "checks": [
+            "元素耐性を上限（75%）にする。",
+            "他のスロットから防御層（ライフ／ES／CI）と命中を追加する。",
+            "HOWA を防御ユニークとして扱わないこと。"
+          ]
+        },
+        {
+          "symptom": "呪文に雷ダメージが乗らない",
+          "directAnswer": [
+            "その通り — モッドは「攻撃に対して」。呪文の命中は固定雷ダメージも攻撃速度も受け取らない。"
+          ],
+          "checks": [
+            "攻撃スキルに切り替えるか、呪文ビルド用の別ユニークを使用する。"
+          ]
+        },
+        {
+          "symptom": "Chance Orb で HOWA が出なかった",
+          "directAnswer": [
+            "想定通り。HOWA は Chance Orb のプールになく、Xesht からのドロップか取引での購入のみ。"
+          ],
+          "checks": [
+            "Breach Splinter を集めて → Breachstone → Xesht を周回するか、取引で購入する。"
+          ],
+          "links": [
+            {
+              "href": "#acquisition",
+              "label": "入手方法"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 130,
+      "title": "動画解説",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "[PoE 2] HoWA Molten Blast Build | Gemling Legionnaire",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc",
+          "creator": "wishdropper（PoE フォーラムのビルド作者）",
+          "takeaway": "HOWA を使用する実際の属性スタッカー。レベル92で知性901 に到達し、ジェム構成とレベリングの助言を紹介。",
+          "timestamps": [
+            {
+              "label": "ビルド概要 ＆ HOWA の理由",
+              "time": "00:00"
+            },
+            {
+              "label": "属性スタック（L92 で知性901）",
+              "time": "02:30"
+            },
+            {
+              "label": "ジェム構成（Molten Blast + Lightning Infusion）",
+              "time": "05:00"
+            },
+            {
+              "label": "レベリングの助言（まずは Galvanic Shards）",
+              "time": "08:00"
+            },
+            {
+              "label": "エンドゲームのスケーリング ＆ 閾値",
+              "time": "14:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 140,
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "現行 0.5 のツールチップ — Spiral Wraps ベース、敏捷性20ごとに1% AS、知性20ごとに+1–10 雷。",
+          "note": "現行（0.2.0以降）のモッド文本体を表示し、旧版の数値は使わないこと。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "旧版（0.2.0以前）の Furtive Wraps バリアント — ベースの回避／ES が高く、旧来の強力なスケーリング。",
+          "note": "現行と旧版の対比を示す。旧スケーリングは 0.2.0 で自動弱体化された。",
+          "sourceUrl": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "caption": "仕組み図：知性 → 固定雷、敏捷性 → 攻撃速度、攻撃命中へ。",
+          "note": "オリジナル図。固定値が「攻撃に対する増加する雷／元素ダメージ」によって増幅される様子を示す。"
+        },
+        {
+          "caption": "エンドゲームのキャラクターシート（知性800／敏捷性600）と HOWA + Pillar + 全属性アミュレット。",
+          "note": "HOWA がレア手袋を上回る閾値を示す。"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 150,
+      "title": "関連コンテンツ",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "pillar-of-the-caged-god",
+          "contentType": "item",
+          "title": "Pillar of the Caged God",
+          "description": "HOWA を補完する属性スケーリング型クオータスタッフ：筋力 → 武器ダメージ、敏捷性 → 攻撃速度、知性 → AoE。",
+          "href": "/ja/items/pillar-of-the-caged-god/"
+        },
+        {
+          "contentId": "catalysts",
+          "contentType": "item",
+          "title": "Catalysts",
+          "description": "属性スタッカー装備を補完する品質および属性ジュエルの作成。",
+          "href": "/ja/items/catalysts/"
+        },
+        {
+          "contentId": "spark-gemling-legionnaire",
+          "contentType": "build",
+          "title": "Spark Gemling Legionnaire",
+          "description": "HOWA の固定雷の恩恵を受ける属性スタック型 Gemling ビルド。",
+          "href": "/ja/builds/spark-gemling-legionnaire/"
+        },
+        {
+          "contentId": "twister-spirit-walker",
+          "contentType": "build",
+          "title": "Twister Spirit Walker",
+          "description": "HOWA の候補となり得る敏捷／知性ハイブリッドの攻撃ビルド。",
+          "href": "/ja/builds/twister-spirit-walker/"
+        },
+        {
+          "contentId": "mana-spirit-resource-sustain",
+          "contentType": "guide",
+          "title": "Mana, Spirit and Resource Sustain",
+          "description": "オーラと高攻撃速度に依存する攻撃ビルドのマナ／スピリットの維持方法。",
+          "href": "/ja/guides/mana-spirit-resource-sustain/"
+        },
+        {
+          "contentId": "xesht-we-that-are-one",
+          "contentType": "boss",
+          "title": "Xesht, We That Are One",
+          "description": "ブリーチの頂点ボスにして、Hand of Wisdom and Action の唯一のドロップ元。",
+          "href": "/ja/bosses/xesht-we-that-are-one/"
+        }
+      ]
+    },
+    {
+      "id": "current-vs-legacy",
+      "order": 160,
+      "title": "パッチ履歴と現行・旧版の比較",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "現行（0.2.0以降、0.5.x の自然ドロップ）",
+          "changes": [
+            "ベース種別 Spiral Wraps（回避 約43、ES 約15）。モッド：+(15–25) 敏捷、+(15–25) 知性、敏捷性20ごとに 1% の攻撃速度増加、知性20ごとに攻撃に 1〜10 の雷ダメージを追加。",
+            "Xesht, We That Are One からドロップ。Chance Orb では不可。"
+          ]
+        },
+        {
+          "version": "現行と旧版の比較（0.2.0以前）",
+          "changes": [
+            "旧版のベースは Furtive Wraps（回避 約50、ES 約19）— 現在の Spiral Wraps よりやや高い防御。",
+            "旧版のスケーリングはより強力：敏捷性25ごとに 3% の攻撃速度増加、および知性10ごとに攻撃に 1〜10 の雷ダメージ追加（現在の雷の約2倍、攻撃速度の約2.4倍）。",
+            "Divine Orb の挙動：0.2.0 のパッチノートでは、属性ごとの変更は既存アイテムに自動的に影響し、Divine Orb は残りの数値変更を得られるとしている。そのため旧スケーリングはすべての所有 HOWA に自動適用（弱体化）され、Divine Orb が再ロールできるのは +(15–25) 敏捷/知性 のロールのみ。",
+            "自動適用されるものと新規のみのもの：スケーリング倍率は旧アイテムに自動適用された。自動適用されなかったのはベース種別の変更（Furtive Wraps → Spiral Wraps）のみ。したがって、旧スケーリングを持つ取引可能なレガシー HOWA は存在しない — ゲーム内のすべての HOWA は現行倍率を使用する。",
+            "取引でのバージョン判別方法：ベース種別名による。「Hand of Wisdom and Action Furtive Wraps」＝ 0.2.0 以前の時代（旧ベースを維持、現行スケーリング）。「Hand of Wisdom and Action Spiral Wraps」＝ 現行ドロップ（現行ベース、現行スケーリング）。モッド文本体は同一のため、実際の違いはベースの回避／ES のみ。"
+          ]
+        },
+        {
+          "version": "0.2.0（Dawn of the Hunt）",
+          "changes": [
+            "HOWA をバランス調整：攻撃に 1〜10 の雷ダメージを追加するのが知性20ごと（以前は10ごと）に、攻撃速度増加が敏捷性20ごとに 1%（以前は25ごとに3%）になった。属性ごとの変更は既存アイテムに影響する。Divine Orb は残りの数値変更を得られる。現在は Furtive Wraps ではなく Spiral Wraps として登場（ベース変更は既存アイテムには影響しない）。"
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "Hand of Wisdom and Action がゲームに実装（Furtive Wraps ベース）。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 170,
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "公式",
+          "description": "Path of Exile 2 0.2.0 パッチノート（Dawn of the Hunt）— HOWA のバランス調整と自動適用の記載",
+          "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+        },
+        {
+          "label": "Wiki",
+          "description": "PoE2Wiki — Hand of Wisdom and Action（現行ツールチップ、必要条件、ドロップ制限、旧版バリアント）",
+          "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+        },
+        {
+          "label": "ガイド",
+          "description": "Sportskeeda — How to get Hand of Wisdom and Action（入手方法、Chance Orb の制限）",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+        },
+        {
+          "label": "ガイド",
+          "description": "exileindex — Hand of Wisdom and Action（現行ステータス、Xesht ドロップ、chance 不可）",
+          "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "PoE フォーラム — [PoE 2] HoWA Molten Blast Build | Gemling Legionnaire（実際のビルド＋動画）",
+          "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "PoE フォーラム — Monk Invoker ヘルプスレッド（HOWA が必須ユニークとして言及）",
+          "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+        },
+        {
+          "label": "動画",
+          "description": "YouTube — HoWA Molten Blast Build, Gemling Legionnaire（実際の視聴 URL）",
+          "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "更新履歴",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "初期公開。現行 0.5 の HOWA スケーリング（敏捷性20ごとに1% AS、知性20ごとに+1–10 雷）、要求レベル33、Xesht ドロップ、Chance Orb の制限、0.2.0 の自動適用を伴う現行と旧版（Furtive Wraps）の比較、属性スケーリング表、ビルド運用、代替案、コミュニティの質問を網羅。"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-02-0",
+      "label": "Path of Exile 2 0.2.0 Patch Notes (Dawn of the Hunt)",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3740562"
+    },
+    {
+      "id": "wiki-howa",
+      "label": "PoE2Wiki — Hand of Wisdom and Action",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Hand_of_Wisdom_and_Action"
+    },
+    {
+      "id": "guide-sportskeeda-howa",
+      "label": "Sportskeeda — How to get Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-howa-hand-wisdom-action-poe2"
+    },
+    {
+      "id": "guide-exileindex-howa",
+      "label": "exileindex — Hand of Wisdom and Action",
+      "sourceType": "other",
+      "url": "https://exileindex.com/uniques/hand-of-wisdom-and-action"
+    },
+    {
+      "id": "forum-howa-build",
+      "label": "PoE Forum — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "community",
+      "url": "https://www.pathofexile.com/forum/view-thread/3670962"
+    },
+    {
+      "id": "forum-howa-help",
+      "label": "PoE Forum — Monk Invoker help (HOWA essential)",
+      "sourceType": "community",
+      "url": "https://es.pathofexile.com/forum/view-thread/3724200"
+    },
+    {
+      "id": "video-howa",
+      "label": "YouTube — HoWA Molten Blast Build (Gemling Legionnaire)",
+      "sourceType": "other",
+      "url": "https://www.youtube.com/watch?v=wtI5W93-7dc"
+    }
+  ],
+  "seo": {
+    "title": "Hand of Wisdom and Action (HOWA) ガイド：知性による雷、敏捷性による速度、現行と旧版の比較 — PoE2 0.5",
+    "description": "Path of Exile 2 0.5 における Hand of Wisdom and Action の仕組み：知性に応じた雷の攻撃ダメージ、敏捷性に応じた攻撃速度、要求レベル、Xesht ドロップ、Chance Orb の制限、現行と旧版のスケーリング。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "hand-of-wisdom-and-action",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

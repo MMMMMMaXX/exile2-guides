@@ -1,0 +1,844 @@
+{
+  "id": "kosis-the-revelation",
+  "slug": "kosis-the-revelation",
+  "locale": "ja",
+  "type": "boss",
+  "status": "published",
+  "featured": false,
+  "title": "コシス「啓示」ボス攻略：シミュラークムのウェーブ、デーモンビーム、シールドとボス＋雑魚の優先度",
+  "shortTitle": "コシス「啓示」",
+  "summary": "Path of Exile 2 のデリリウム／シミュラークムのボス攻略：コシスの出現場所、ウェーブの状況、デーモンビームの方向、シールド／回復、オムニフォビアとの優先度、報酬と撤退の判断。",
+  "description": "PoE2 のシミュラークムでコシス「啓示」を撃破。ウェーブの状況、シールドの仕組み、デーモンビームの安全扇域、ボス＋雑魚の優先度マトリクス、コミュニティの証言、報酬などを解説。",
+  "location": "シミュラークム（デリリウム）",
+  "campaignStage": null,
+  "recommendedLevel": "レベル 80 以上",
+  "difficulty": "high",
+  "damageTypes": [
+    "physical",
+    "chaos"
+  ],
+  "phases": 1,
+  "bossCategory": "endgame",
+  "act": null,
+  "isOptional": true,
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Runes of Aldur",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/bosses/kosis-the-revelation-hero.webp",
+  "cardImage": "/images/bosses/kosis-the-revelation-hero.webp",
+  "imageAlt": "コシス「啓示」 — シミュラークムのボスアート",
+  "tags": [
+    "chaos",
+    "endgame",
+    "physical"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "type": "quick-answer",
+      "title": "まず覚えておくこと",
+      "toc": true,
+      "visible": true,
+      "callout": "シミュラークムでは、コシスを追って群れの中へ突っ込んではいけない。ウェーブのモンスターがあなたを取り囲む。優先ターゲット（多くはオムニフォビアか雑魚）を先に倒し、そのあとコシスへ。",
+      "calloutDetail": [
+        "コシスはマップのデリリウムとシミュラークムの両方に出現する。シミュラークム版は現在のウェーブに合わせて難易度がスケーリングし、デリリウムが濃いほど攻撃が強くなる。",
+        "彼のデーモンビームは方向を持つ — ビームの発生源とは反対側の安全扇域へ移動する。また、専用の対処が必要なシールド／回復フェーズも持つ。"
+      ],
+      "answers": [
+        {
+          "label": "出現場所",
+          "text": "マップのデリリウム ＆ シミュラークム（ウェーブ連動）"
+        },
+        {
+          "label": "ビーム",
+          "text": "方向性あり — 発生源の反対側が安全扇域"
+        },
+        {
+          "label": "優先度",
+          "text": "オムニフォビア／雑魚を先に倒し、そのあとコシス"
+        },
+        {
+          "label": "シールド",
+          "text": "回復フェーズに備えよ。深追いしすぎるな"
+        }
+      ],
+      "links": [
+        {
+          "label": "ウェーブの状況",
+          "href": "#wave-context"
+        },
+        {
+          "label": "優先度システム",
+          "href": "#priority-system"
+        },
+        {
+          "label": "攻撃一覧",
+          "href": "#attacks"
+        }
+      ],
+      "order": 0
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "title": "よく検索される質問：参入方法、素材、失敗のコスト",
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "question": "マップのデリリウムに出るコシスとシミュラークムのコシスは同じ難易度か？",
+          "answer": [
+            "どちらも同じボスだが、シミュラークム版はウェーブ数とデリリウムの強度に連動してスケーリングし、マップのデリリウムはマップの修正値に依存する。シミュラークムの戦いはウェーブごとに密度も難度も高くなると想定せよ。"
+          ]
+        },
+        {
+          "question": "ウェーブ、デリリウムの強度、同時出現する敵は戦いにどう影響するか？",
+          "answer": [
+            "ウェーブや強度が上がるほど雑魚が増え、スペースが狭まり、攻撃も強くなる。コシスはしばしばオムニフォビアやゴミ敵とフロアを共有する。ウェーブを環境そのものと捉え、きれいな 1 対 1 だと思ってはいけない。"
+          ]
+        },
+        {
+          "question": "彼のシールド／回復には専用の対処が必要か？",
+          "answer": [
+            "必要あり — 回復／シールド中はダメージが通りにくく、あるいは一時的に無敵になる。その前に削るか、位置を入れ替えて雑魚を片付けてから再開せよ。シールドに全回転をぶち込むな。"
+          ]
+        },
+        {
+          "question": "追いかけると囲まれて死ぬのはなぜか？",
+          "answer": [
+            "コシスを追うとウェーブのモンスターの中へ引きずり込まれる。位置を維持し、こちらへ来させ、ビームの安全扇域を使ってスペースを作れ。"
+          ]
+        },
+        {
+          "question": "コシスとオムニフォビアが同時に出たらどちらを先に倒すか？",
+          "answer": [
+            "まずオムニフォビア — その突進／叩きつけが最大の位置取りの脅威だ。そのあとコシス。ビームの安全扇域はコシスにも引き続き適用される。"
+          ]
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "access",
+      "type": "access",
+      "title": "到達方法",
+      "toc": true,
+      "visible": true,
+      "steps": [
+        {
+          "label": "デリリウム／シミュラークムへ入る",
+          "body": [
+            "デリリウムマップを踏破するか、シミュラークムを開始する。コシスは固定された闘技場ではなく、ウェーブのボスとして出現する。"
+          ]
+        },
+        {
+          "label": "彼の出るウェーブへ到達する",
+          "body": [
+            "シミュラークムでは特定のウェーブに出現し、マップではデリリウム遭遇中に出現する。"
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "label": "出現",
+          "value": "ウェーブボス",
+          "note": "固定された闘技場ではない"
+        },
+        {
+          "label": "スケーリング",
+          "value": "ウェーブ ＋ デリリウム",
+          "note": "ウェーブごとに密度が高くなる"
+        },
+        {
+          "label": "共闘",
+          "value": "しばしばオムニフォビアと",
+          "note": "ボス＋雑魚の重なり"
+        },
+        {
+          "label": "ダメージ",
+          "value": "物理 ＋ カオス",
+          "note": "カオス耐性を上限に"
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "wave-context",
+      "type": "overview",
+      "title": "ウェーブの状況",
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "コシスはウェーブ環境のボスである。シミュラークムでは各ウェーブでデリリウムの強度が上がり、彼はゴミ敵そして時折オムニフォビアとフロアを共有する。ウェーブそのものが闘技場だ — 群れが埋め尽くすため、きれいな隅へキーティング（引き離し）はできない。",
+        "ウェーブ状況バーを読め：ダメージを与える前に自分が何ウェーブ目か、オムニフォビアや雑魚がいるかを把握せよ。強度の上昇に合わせて位置取りをタイトにせよ。"
+      ],
+      "bullets": [
+        "ウェーブは彼の HP／攻撃力と雑魚の数をスケーリングする。",
+        "デリリウムの強度が上がるほどスペースは狭まる。",
+        "きれいな 1 対 1 はまれ — 重なりを前提にせよ。"
+      ],
+      "order": 3
+    },
+    {
+      "id": "priority-system",
+      "type": "overview",
+      "title": "ボス ＋ 雑魚の優先度システム",
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "コシスがオムニフォビアやゴミ敵と重なったら、優先度マトリクスを使え：(1) オムニフォビアの突進／叩きつけが最大の位置取りの脅威 — まず無力化または倒す；(2) 次にコシスの無防備な窓でコシス；(3) ゴミ敵は安全扇域を塞ぐ場合のみ。コシスを群れへ追っていくのが最も多い死因である。",
+        "コシスが単独でも、彼のシールドの窓とビームの安全扇域を尊重せよ。バーストの突っ込みすぎは避けよ。"
+      ],
+      "bullets": [
+        "オムニフォビア（存在する場合） ＞ コシスの無防備窓 ＞ ゴミ敵。",
+        "コシスを群れへ追ってはならない。",
+        "ビームの安全扇域は距離を詰めるためではなく、スペースを作るために使え。"
+      ],
+      "order": 4
+    },
+    {
+      "id": "preparation",
+      "type": "preparation",
+      "title": "戦闘前の準備チェックリスト",
+      "toc": true,
+      "visible": true,
+      "items": [
+        {
+          "label": "上限に達したカオス耐性",
+          "checks": [
+            "カオス耐性が 75% 上限に達しているか確認せよ。"
+          ],
+          "why": "コシスはカオス属性。上限未到達なら群れの中で即死しかねない。",
+          "fix": "カオス製の装備かカオスチャーム。"
+        },
+        {
+          "label": "範囲ダメージ／殲滅",
+          "checks": [
+            "AoE か雑魚殲滅手段を用意せよ。"
+          ],
+          "why": "無視すればウェーブのモンスターに囲まれる。",
+          "fix": "AoE スキル、拡散、あるいはミニオンによる雑魚制御。"
+        },
+        {
+          "label": "機動力",
+          "checks": [
+            "移動スキルを準備せよ。"
+          ],
+          "why": "ビームの安全扇域でスペースを作らねばならない。",
+          "fix": "移動速度ブーツかブリンク／ダッシュ。"
+        },
+        {
+          "label": "シールド窓用のバースト",
+          "checks": [
+            "彼のシールドのタイミングを把握せよ。"
+          ],
+          "why": "シールドに突っ込むと回転（ローテーション）が無駄になる。",
+          "fix": "バーストは無防備な窓まで温存せよ。"
+        }
+      ],
+      "links": [
+        {
+          "label": "カオス耐性の装備構成",
+          "href": "/ja/items"
+        },
+        {
+          "label": "シミュラークム攻略",
+          "href": "/ja/builds"
+        }
+      ],
+      "order": 5
+    },
+    {
+      "id": "phases",
+      "type": "phases",
+      "title": "戦闘フェーズ",
+      "toc": true,
+      "visible": true,
+      "phases": [
+        {
+          "phaseId": "wave",
+          "label": "ウェーブ連動の遭遇",
+          "trigger": "デリリウム／シミュラークムのウェーブ中に出現する。",
+          "notes": [
+            "固定されたフェーズ分割はない。難易度はウェーブ数とデリリウムの強度で決まる。彼のシールド／回復窓が戦いの区切りとなる。",
+            "ビームの安全扇域が主要なスペース確保手段だ。"
+          ],
+          "objectives": [
+            "ウェーブの雑魚を生き延びる。",
+            "シールド外のコシスを狙え。",
+            "共闘するならオムニフォビアを優先せよ。"
+          ],
+          "tags": [
+            "chaos",
+            "wave"
+          ],
+          "mediaId": "phase"
+        }
+      ],
+      "order": 6
+    },
+    {
+      "id": "attacks",
+      "type": "attacks",
+      "title": "攻撃の見極めと対応",
+      "toc": true,
+      "visible": true,
+      "attacks": [
+        {
+          "attackId": "demon-beam",
+          "name": "デーモンビーム",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "wave"
+          ],
+          "telegraph": [
+            "コシスがビームをチャージし、ある方向へ放つ。"
+          ],
+          "responses": [
+            "ビームの発生源とは反対側の安全扇域へ移動せよ。線を横切るな。"
+          ],
+          "notes": [
+            "方向性あり。安全扇域は発生源の反対側。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "ビームの線上に立つこと。"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-wiki",
+            "src-mobalytics"
+          ]
+        },
+        {
+          "attackId": "shield-recovery",
+          "name": "シールド／回復",
+          "damageTypes": [
+            "physical"
+          ],
+          "phaseIds": [
+            "wave"
+          ],
+          "telegraph": [
+            "彼はシールドまたは回復の構えに入る。"
+          ],
+          "responses": [
+            "位置を入れ替えて雑魚を殲滅せよ。窓のあとでバーストを再開。"
+          ],
+          "notes": [
+            "シールドに回転をぶち込むな。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "シールドにバーストを無駄遣いすること。"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-mobalytics"
+          ]
+        },
+        {
+          "attackId": "jump",
+          "name": "ジャンプ／叩きつけ",
+          "damageTypes": [
+            "physical"
+          ],
+          "phaseIds": [
+            "wave"
+          ],
+          "telegraph": [
+            "彼は飛び上がり、叩きつける。"
+          ],
+          "responses": [
+            "叩きつけの半径からローリング回避で離脱せよ。"
+          ],
+          "notes": [
+            "追尾あり。"
+          ],
+          "danger": "medium",
+          "commonMistakes": [
+            "叩きつけ範囲内に立つこと。"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-wiki"
+          ]
+        },
+        {
+          "attackId": "explosion",
+          "name": "爆発",
+          "damageTypes": [
+            "chaos"
+          ],
+          "phaseIds": [
+            "wave"
+          ],
+          "telegraph": [
+            "遅延爆発が特定の場所に予兆表示される。"
+          ],
+          "responses": [
+            "発動する前にマークされた範囲から離脱せよ。"
+          ],
+          "notes": [
+            "多くはジャンプに続く。"
+          ],
+          "danger": "high",
+          "commonMistakes": [
+            "マーカー内に居残ること。"
+          ],
+          "mediaIds": [
+            "attack"
+          ],
+          "sourceIds": [
+            "src-mobalytics"
+          ]
+        }
+      ],
+      "order": 7
+    },
+    {
+      "id": "arena",
+      "type": "arena",
+      "title": "闘技場の読み方",
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "専用の闘技場はない — コシスは霧と雑魚が混み合うデリリウム／シミュラークムのウェーブ空間の中で戦う。霧が視界を狭めるため、ビームの予兆と音の手がかりがこれまで以上に重要になる。",
+        "開拓された空間の端に留まれ。群れが集中する中心へ走っていくな。"
+      ],
+      "bullets": [
+        "きれいなボス部屋ではなく、ウェーブの中で戦え。",
+        "ビームの安全扇域を使って雑魚を押し出せ。",
+        "霧に注意 — 予兆は見落としやすい。"
+      ],
+      "order": 8
+    },
+    {
+      "id": "build-considerations",
+      "type": "build-considerations",
+      "title": "ビルドの検討点",
+      "toc": true,
+      "visible": true,
+      "paragraphs": [
+        "ウェーブが止まらないため、範囲ダメージと雑魚制御は必須だ。カオス耐性を上限に。ビームの安全扇域はキーティング（引き離し）型のビルドに有利；近接はバーストを彼のシールド周りで調整せねばならない。ミニオンは群れの抑えに役立つが、自分の回避を体で塞ぐこともある。",
+        "デリリウムの強度は上がる — ダメージもスケーリングしないとウェーブがタイムアウトする。"
+      ],
+      "bullets": [
+        "近接：無防備窓でバースト。シールドを尊重。",
+        "遠隔：ビームの安全扇域でキーティング。雑魚に AoE。",
+        "ミニオン：雑魚制御に最適。体で塞がれるのに注意。",
+        "すべて：カオス耐性上限、強度に合わせてダメージをスケーリング。"
+      ],
+      "order": 9
+    },
+    {
+      "id": "community-evidence",
+      "type": "community-evidence",
+      "title": "コミュニティの質問と証拠",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "sourceId": "reddit-kosis-swarm",
+          "kind": "summary",
+          "question": "コシスを追うと囲まれてしまうのはなぜか？",
+          "summary": [
+            "プレイヤーから、彼を追ってウェーブの群れの中へ突っ込んだとの報告あり。コミュニティの対策：位置を維持し、スペース確保にビームの安全扇域を使う。"
+          ],
+          "editorialAnalysis": [
+            "我々も確認：ウェーブが闘技場であり、追うと雑魚の中へ引きずり込まれる。足場を守り、こちらへ来させよ。"
+          ],
+          "officialAnswer": [
+            "追うな。位置を維持し、ビームの安全扇域でスペースを作れ。"
+          ],
+          "linkHref": "https://www.reddit.com/r/pathofexile2/",
+          "linkLabel": "Reddit r/pathofexile2 のコシス"
+        },
+        {
+          "sourceId": "forum-kosis-ui",
+          "kind": "quote",
+          "question": "彼の HP バー／UI がおかしいのはなぜか？",
+          "summary": [
+            "フォーラム投稿によれば、シミュラークムのボスバーは誤表示されることがある。UI の不具合から仕組みを読み取るな。"
+          ],
+          "editorialAnalysis": [
+            "我々の注記：UI の不具合は表示上の問題のみ。バーではなく、ゲーム内の予兆を信頼せよ。"
+          ],
+          "officialAnswer": [
+            "UI バーの不具合は見た目だけ — バーではなく予兆を頼れ。"
+          ],
+          "linkHref": "https://www.pathofexile.com/forum/",
+          "linkLabel": "公式フォーラムのコシススレッド"
+        }
+      ],
+      "order": 10
+    },
+    {
+      "id": "troubleshooting",
+      "type": "troubleshooting",
+      "title": "よくある問題と解決策",
+      "toc": true,
+      "visible": true,
+      "problems": [
+        {
+          "symptom": "群れに囲まれてウェーブで死ぬ",
+          "directAnswer": [
+            "位置を維持せよ。ビームの安全扇域でスペースを作り、追うのではなく AoE で雑魚を殲滅せよ。"
+          ],
+          "checks": [
+            "コシスを追っていないか？",
+            "雑魚を殲滅しているか？"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "シールド中はバーストが効かない",
+          "directAnswer": [
+            "シールド中は位置を入れ替えて雑魚を殲滅。バーストはその後の無防備窓まで温存せよ。"
+          ],
+          "checks": [
+            "彼はシールド／回復中か？",
+            "バーストを事前に温存したか？"
+          ],
+          "relatedContentIds": []
+        },
+        {
+          "symptom": "ボスバーの表示がおかしい／UI の不具合",
+          "directAnswer": [
+            "UI の不具合は見た目だけ。バーの読みではなく、ゲーム内の予兆を信頼せよ。"
+          ],
+          "checks": [
+            "シミュラークムのバー不具合か？"
+          ],
+          "relatedContentIds": []
+        }
+      ],
+      "order": 11
+    },
+    {
+      "id": "rewards",
+      "type": "rewards",
+      "title": "報酬とドロップ",
+      "toc": true,
+      "visible": true,
+      "rewards": [
+        {
+          "itemId": "kosis-loot",
+          "label": "シミュラークム／デリリウムの戦利品",
+          "condition": "ウェーブクリア",
+          "notes": [
+            "シミュラークムの報酬枠とデリリウムの破片進行に寄与する。"
+          ]
+        },
+        {
+          "itemId": "delirium-progress",
+          "label": "デリリウムの進行",
+          "condition": "遭遇の完了",
+          "notes": [
+            "アトラスのデリリウム進行および関連アンロックにカウントされる。"
+          ]
+        }
+      ],
+      "order": 12
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "title": "動画ガイド",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "検証済みボス戦の映像",
+          "url": "https://www.youtube.com/watch?v=vTiiNttP9xk",
+          "poster": "/images/bosses/kosis-the-revelation-hero.webp",
+          "creator": "Roberto",
+          "takeaway": "検証済みクリエイターによるボス戦の録画。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "開幕 ／ 闘技場への突入"
+            },
+            {
+              "time": "0:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇"
+            },
+            {
+              "time": "2:00",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（メカニクス）"
+            },
+            {
+              "time": "3:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（中盤）"
+            },
+            {
+              "time": "5:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（エンレイジ）"
+            },
+            {
+              "time": "6:30",
+              "label": "撃破 ／ 報酬"
+            }
+          ]
+        },
+        {
+          "label": "別のクリエイター映像",
+          "url": "https://www.youtube.com/watch?v=PflXUWBtRBQ",
+          "poster": "/images/bosses/kosis-the-revelation-hero.webp",
+          "creator": "Spiral Games",
+          "takeaway": "検証済みクリエイターによるボス戦の録画。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "開幕 ／ 闘技場への突入"
+            },
+            {
+              "time": "0:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇"
+            },
+            {
+              "time": "2:00",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（メカニクス）"
+            },
+            {
+              "time": "3:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（中盤）"
+            },
+            {
+              "time": "5:30",
+              "label": "フェーズ 1 — ウェーブ連動の遭遇（エンレイジ）"
+            },
+            {
+              "time": "6:30",
+              "label": "撃破 ／ 報酬"
+            }
+          ]
+        }
+      ],
+      "order": 13
+    },
+    {
+      "id": "gallery",
+      "type": "gallery",
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "mediaIds": [
+        "hero",
+        "arena",
+        "phase",
+        "attack",
+        "annotated"
+      ],
+      "order": 14
+    },
+    {
+      "id": "related-content",
+      "type": "related-content",
+      "title": "関連ガイド",
+      "toc": false,
+      "visible": true,
+      "items": [
+        {
+          "contentId": "omniphobia-fear-manifest",
+          "title": "オムニフォビア「恐怖の顕現」",
+          "description": "シミュラークムのボス。突進／叩きつけの圧力。",
+          "contentType": "boss",
+          "href": "/ja/bosses/omniphobia-fear-manifest"
+        },
+        {
+          "contentId": "king-in-the-mists-pinnacle",
+          "title": "ザ・キング・イン・ザ・ミスツ",
+          "description": "儀式の頂点ボス。カオスとウィスプ迷路を伴う。",
+          "contentType": "boss",
+          "href": "/ja/bosses/king-in-the-mists-pinnacle"
+        }
+      ],
+      "order": 15
+    },
+    {
+      "id": "sources-section",
+      "type": "sources-section",
+      "title": "出典と検証",
+      "toc": true,
+      "visible": true,
+      "categories": [
+        {
+          "label": "公式",
+          "description": "公式パッチノート — https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2 Wiki — https://poe2wiki.net/wiki/Kosis,_the_Revelation"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Mobalytics ガイド — https://mobalytics.gg/poe-2/guides"
+        },
+        {
+          "label": "コミュニティ",
+          "description": "Maxroll ガイド — https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      },
+      "order": 16
+    },
+    {
+      "id": "changelog",
+      "type": "changelog",
+      "title": "記事の更新履歴",
+      "toc": false,
+      "visible": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "0.5.4 パッチノートとコミュニティガイドから初期版を生成。フェーズ、攻撃一覧、コミュニティの証言、報酬を含む。",
+            "動画は検証済みクリエイターのボス戦録画（watch?v= 形式）を埋め込み。"
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "PC でのコンテンツ検証後に公開へ昇格。",
+            "メディアのアートと動画 ID を検証済みの公式／クリエイター提供元に置換。"
+          ]
+        }
+      ],
+      "order": 17
+    }
+  ],
+  "media": [
+    {
+      "id": "hero",
+      "type": "image",
+      "src": "/images/bosses/kosis-the-revelation-hero.webp",
+      "alt": "コシス「啓示」のヒーロー画像",
+      "caption": "ボスのキーアート ／ 戦闘のスチル",
+      "credit": "Screenshot via IGN (Grinding Gear Games)",
+      "rights": "embedded",
+      "sourceUrl": "https://www.ign.com/wikis/path-of-exile-2/The_Simulacrum"
+    },
+    {
+      "id": "arena",
+      "type": "image",
+      "src": "/images/bosses/kosis-the-revelation-arena.webp",
+      "alt": "コシス「啓示」の闘技場",
+      "caption": "闘技場と遭遇のレイアウト",
+      "credit": "Frame from YouTube — Roberto",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=vTiiNttP9xk"
+    },
+    {
+      "id": "phase",
+      "type": "image",
+      "src": "/images/bosses/kosis-the-revelation-phase.webp",
+      "alt": "コシス「啓示」のフェーズ",
+      "caption": "フェーズと予兆の参考図",
+      "credit": "Frame from YouTube — xTNA_TV",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=-FSMaFRs6u0"
+    },
+    {
+      "id": "attack",
+      "type": "image",
+      "src": "/images/bosses/kosis-the-revelation-attack.webp",
+      "alt": "コシス「啓示」の攻撃",
+      "caption": "主要攻撃の参考図",
+      "credit": "Frame from YouTube — Zubimaru",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=joq3IDpKJio"
+    },
+    {
+      "id": "annotated",
+      "type": "image",
+      "src": "/images/bosses/kosis-the-revelation-annotated.webp",
+      "alt": "コシス「啓示」の注釈付き画像",
+      "caption": "注釈付きの戦略図",
+      "credit": "Frame from YouTube — Spiral Games",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=PflXUWBtRBQ"
+    },
+    {
+      "id": "kosis-the-revelation-yt1",
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=vTiiNttP9xk",
+      "alt": "コシス「啓示」の動画 1",
+      "caption": "検証済みボス戦の映像（Roberto）。",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=vTiiNttP9xk",
+      "credit": "Roberto"
+    },
+    {
+      "id": "kosis-the-revelation-yt2",
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=PflXUWBtRBQ",
+      "alt": "コシス「啓示」の動画 2",
+      "caption": "検証済みボス戦の映像（Spiral Games）。",
+      "rights": "embedded",
+      "sourceUrl": "https://www.youtube.com/watch?v=PflXUWBtRBQ",
+      "credit": "Spiral Games"
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur"
+  ],
+  "sources": [
+    {
+      "label": "Path of Exile 2 公式パッチノート",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "sourceType": "tool",
+      "url": "https://poe2wiki.net/wiki/Kosis,_the_Revelation"
+    },
+    {
+      "label": "Mobalytics PoE2 ガイド",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/guides"
+    },
+    {
+      "label": "Maxroll PoE2 ボス",
+      "sourceType": "community",
+      "url": "https://maxroll.gg/poe2"
+    }
+  ],
+  "seo": {
+    "title": "コシス「啓示」ボス攻略 — PoE2 シミュラークムのウェーブとデーモンビーム",
+    "description": "Path of Exile 2 のコシス完全攻略：シミュラークムのウェーブ状況、シールド／回復、デーモンビームの安全扇域、オムニフォビアとの優先度、報酬。",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "kosis-the-revelation",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3"
+  }
+}

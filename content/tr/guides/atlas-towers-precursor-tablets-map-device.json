@@ -1,0 +1,657 @@
+{
+  "id": "atlas-towers-precursor-tablets-map-device",
+  "slug": "atlas-towers-precursor-tablets-map-device",
+  "locale": "tr",
+  "type": "guide",
+  "status": "published",
+  "featured": false,
+  "title": "Atlas Kuleleri, Öncü Tabletleri ve Harita Cihazı",
+  "shortTitle": "Kuleler, Tabletler ve Harita Cihazı",
+  "summary": "0.5.4 Atlas kule sistemi nasıl çalışır: bir Kule bulup temizleyin, Öncü Tabletlerini Atlas ekranından yerleştirin ve hedef haritayı Harita Cihazı'nda çalıştırın. Eski rehber çakışması kontrolü ve 'tablet çalışmıyor' teşhisi dahildir.",
+  "description": "Path of Exile 2 Atlas Kuleleri ve Öncü Tabletleri için bir düzeltme rehberi: güncel keşfet-yerleştir akışı, Harita Cihazı'ndan ayrışımı ve tabletle kalan kullanımların nasıl okunacağı.",
+  "guideCategory": "endgame-atlas",
+  "heroImage": "/images/items/tablets-hero.webp",
+  "cardImage": "/images/items/tablets-hero.webp",
+  "imageAlt": "Path of Exile 2 Atlas'ında bir Kule'nin çevresindeki haritaları değiştirmek için kullanılan Öncü Tabletleri",
+  "estimatedReadingMinutes": 14,
+  "prerequisites": [
+    "En az bir karakterde kampanya tamamlanmış olmalı",
+    "Atlas harita ekranına ve Harita Cihazı'na erişim",
+    "Atlas'ınızda keşfedilmiş bir Kule düğümü"
+  ],
+  "patch": "Path of Exile 2 Erken Erişim 0.5.4",
+  "league": "Standard",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Max",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "tags": [
+    "atlas",
+    "tower",
+    "precursor-tablet",
+    "map-device",
+    "waystone",
+    "endgame"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 1,
+      "title": "Doğrudan yanıtlar",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "title": "Öncü Tabletini gerçekte nasıl kullanırım?",
+          "body": [
+            "Tableti doğrudan envanterinizden kullanamazsınız. Atlas'ta bir Kule bulmalı, onu temizleyerek Öncü İşaretçisini (Precursor Beacon) etkinleştirmeli ve ardından tabletleri Atlas ekranından o Kule'ye yerleştirmelisiniz. Her Kule en fazla 3 tablet alır ve bunlar yarıçapı içindeki her haritaya uygulanır."
+          ]
+        },
+        {
+          "title": "Haritalarım tabletin etkisini neden göstermiyor?",
+          "body": [
+            "Üç şeyi kontrol edin: hedef harita Kule'nin yarıçapı içinde olmalı, tabletin kalan kullanımları tükenmemiş olmalı ve değiştirici (modifier) o haritaya uygulanmalı. Üçü de uygunsa ve etki hâlâ görünmüyorsa, bu bir kurulum hatası değil bir arayüz (UI) hatası olabilir."
+          ]
+        },
+        {
+          "title": "Tabletler Harita Cihazı'na mı girer?",
+          "body": [
+            "Hayır. Harita Cihazı, bir Waystone yerleştirip haritayı gerçekten çalıştırdığınız yerdir. Öncü Tabletleri, tamamlanmış Kule'ye Atlas ekranından yerleştirilir; Harita Cihazı'na değil."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "version-conflicts",
+      "order": 2,
+      "title": "Eski rehberler ve güncel sürüm",
+      "type": "version-conflicts",
+      "visible": true,
+      "toc": true,
+      "intro": "Bazı eski rehberler, artık 0.5.4 ile uyuşmayan bir tablet akışı anlatıyor. Aşağıdakileri güncel olmayan olarak kabul edin.",
+      "conflicts": [
+        {
+          "recommendation": "Tablete sağ tıklayıp bir Kule düğümüne yapıştırmayın",
+          "status": "outdated",
+          "detail": "Eski rehberler, Atlas'ta bir tablet düğümüne doğrudan sağ tıklamayı gösteriyor. 0.5.4'te tabletleri, kuleyi temizledikten sonra Atlas ekranından yerleştirirsiniz; envanterdeki tablete tıklayarak değil.",
+          "sinceVersion": "0.5.4"
+        },
+        {
+          "recommendation": "'Yarıçap aurasına yürü' adımı yoktur",
+          "status": "outdated",
+          "detail": "Eski açıklamalar, etkileri almak için fiziksel olarak içine yürüdüğünüz bir yarıçap aurası tarif ediyor. Tabletler artık Atlas ekranındaki Kule'den, yarıçapı içindeki tüm haritalara uygulanıyor; bir aura'ya hiç girmezsiniz.",
+          "sinceVersion": "0.5.4"
+        }
+      ]
+    },
+    {
+      "id": "current-system-overview",
+      "order": 3,
+      "title": "Güncel kule ve tablet akışı",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "0.5.4 akışının dört aşaması vardır. İlk olarak Atlas'ta bir Kule düğümü keşfeder veya bulursunuz. İkinci olarak Kule haritasına girip onu temizlersiniz. Üçüncü olarak Kule'yi temizlemek bir Öncü İşaretçisini etkinleştirir. Dördüncü olarak Öncü Tabletlerini Atlas ekranından o Kule'ye yerleştirirsiniz.",
+        "Yerleştirilen bir tablet, Kule'nin yarıçapı içindeki her haritayı değiştirir. Bu bölgesel bir sistemdir: tek bir tablet aynı anda bir harita kümesinin tamamını yükseltebilir ve birden fazla Kule aynı haritaları örttüğünde tabletler üst üste biner."
+      ],
+      "bullets": [
+        "Tableti envanterden doğrudan bir kaleye kullanamazsınız.",
+        "Tabletler Atlas ekranından yerleştirilir, asla Harita Cihazı'ndan veya envanterden değil.",
+        "Her Kule en fazla 3 Öncü Tableti alır."
+      ]
+    },
+    {
+      "id": "tower-access",
+      "order": 4,
+      "title": "Bir Kule nasıl bulunur ve ona nasıl ulaşılır",
+      "type": "preparation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Kuleler, Atlas'ta özel harita düğümleri olarak görünür. Oyunun başlarında Doryani'nin görev dizisi sizi ilk Öncü Kule'nize yönlendirir; bu da sırayla merkezi şehir bölgesinin kilidini açar."
+      ],
+      "bullets": [
+        "Atlas ekranını açın ve ulaşabileceğiniz haritalar arasında Kule düğümü simgesini arayın.",
+        "Sisin (fog) açtığı Kuleler genellikle keşfedilen bölgelerin kenarlarında bulunur.",
+        "Yarıçapı zaten çalışmayı planladığınız haritaları kapsayan bir Kule'ye öncelik verin.",
+        "Bir Kule'yi temizlemek ayrıca Atlas pasif puanları ve garantili bir tablet düşüşü verir; bu yüzden erkenden o tarafa rota çizmeye değer."
+      ]
+    },
+    {
+      "id": "tower-completion",
+      "order": 5,
+      "title": "Kule'yi temizlemek",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Kule haritasına Atlas'tan girin ve içeriğini yenin. Kule'yi tamamlamak, onu tabletler için kullanılabilir kılan şeydir."
+      ],
+      "bullets": [
+        "Karakterinizin gücüne uygun bir aşama (tier) Waystone kullanın.",
+        "Temizlendikten sonra Kule düğümü, Atlas'ınızda tamamlanmış bir Kule olur.",
+        "Tamamlanan Kuleler, temizlik ödülü olarak fazladan bir Öncü Tableti düşürür."
+      ]
+    },
+    {
+      "id": "precursor-beacon",
+      "order": 6,
+      "title": "Öncü İşaretçisi etkinleşir",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Kule'yi temizledikten sonra bir Öncü İşaretçisi etkinleşir. İşaretçisi, Atlas ekranından Kule'nin tablet yuvalarını açmanızı sağlayan şeydir."
+      ],
+      "bullets": [
+        "İşaretçi aktif olduğunda Kule'nin Atlas'ta etkileşilebilir hale geldiğini göreceksiniz.",
+        "Yalnızca tamamlanmış Kuleler (işaretçi aktif) tablet tutabilir.",
+        "Kule'de yuva görünmüyorsa, temizliğin kaydedildiğini ve işaretçinin aktif olduğunu yeniden kontrol edin."
+      ]
+    },
+    {
+      "id": "tablet-acquisition",
+      "order": 7,
+      "title": "Öncü Tabletleri nereden gelir",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Öncü Tabletleri, harita yaparken canavarlardan düşer. Mekaniğe özel tabletlerin kendi içeriklerinden düşme şansı daha yüksektir: Yarık (Breach) tabletleri Yarık canavarlarından, Seferi (Expedition) tabletleri Seferi'den ve Gözetmen (Overseer) tabletleri harita bosslarından."
+      ],
+      "bullets": [
+        "Genel Öncü Tabletleri de normal harita canavarlarından, ancak daha seyrek düşer.",
+        "Her tamamlanmış Kule garantili bir tablet düşüşü sağlar.",
+        "Tabletler normal, sihirli (magic) veya nadir (rare) olarak düşer; nadir tabletler daha fazla değiştirici taşır.",
+        "Waystone'larınıza ilgili değiştiriciyi ekleyerek tablet düşüşlerini artırabilirsiniz."
+      ]
+    },
+    {
+      "id": "current-vs-old-flow",
+      "order": 8,
+      "title": "Eski rehberler ve güncel sürüm",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "caption": "Eski rehberlerin iddia ettikleri ile 0.5.4'ün gerçekte yaptığının yan yana karşılaştırması.",
+      "columns": [
+        {
+          "key": "step",
+          "label": "Adım"
+        },
+        {
+          "key": "old-tutorial",
+          "label": "Eski rehber"
+        },
+        {
+          "key": "current-version",
+          "label": "Güncel sürüm"
+        },
+        {
+          "key": "what-to-do",
+          "label": "Ne yapmalı"
+        }
+      ],
+      "filters": [],
+      "rows": [
+        {
+          "tags": [
+            "outdated"
+          ],
+          "cells": {
+            "step": "Tableti uygula",
+            "old-tutorial": "Tablete kule düğümünde sağ tıkla",
+            "current-version": "Temizledikten sonra Atlas ekranından yerleştir",
+            "what-to-do": "Kule'yi temizle, sonra Atlas'ta yuvaları aç"
+          }
+        },
+        {
+          "tags": [
+            "outdated"
+          ],
+          "cells": {
+            "step": "Etkiyi al",
+            "old-tutorial": "Yarıçap aurasına yürü",
+            "current-version": "Yarıçap içindeki tüm haritalara otomatik uygulanır",
+            "what-to-do": "Hedef haritayı yarıçap içinde tut"
+          }
+        },
+        {
+          "tags": [
+            "current"
+          ],
+          "cells": {
+            "step": "Haritayı çalıştır",
+            "old-tutorial": "Tablet harita cihazında",
+            "current-version": "Waystone Harita Cihazı'nda, tablet Kule'de",
+            "what-to-do": "Harita Cihazı'nı yalnızca Waystone için kullan"
+          }
+        },
+        {
+          "tags": [
+            "current"
+          ],
+          "cells": {
+            "step": "Şarjlar",
+            "old-tutorial": "Kuledeyken sınırsız",
+            "current-version": "Harita başına tüketilir; kalan kullanımları görüntüle",
+            "what-to-do": "Tabletteki kalan kullanımları kontrol et"
+          }
+        }
+      ],
+      "note": "Tam yuva sayısı ve şarj (charge) sayıları, canlı 0.5.4 Atlas'a göre açıklanmıştır ve oyun içinde doğrulanmalıdır."
+    },
+    {
+      "id": "map-device-flow",
+      "order": 9,
+      "title": "Hedef haritayı Harita Cihazı'nda çalıştırmak",
+      "type": "progression-steps",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Tableti Kule'ye yerleştirin (Atlas ekranı)",
+          "body": [
+            "Atlas'ı açın, tamamlanmış Kule'yi seçin ve Öncü Tabletlerinizi Atlas ekranından onun yuvalarına yerleştirin."
+          ]
+        },
+        {
+          "label": "Harita Cihazı'nı açın",
+          "body": [
+            "Harita Cihazı, gerçek haritayı çalıştırdığınız ayrı bir arayüzdür; tabletlerin gittiği yer orası değildir."
+          ]
+        },
+        {
+          "label": "Hedef harita için bir Waystone takın",
+          "body": [
+            "Kule'nin yarıçapı içinde kalan bir harita seçin ve onun Waystone'unu Harita Cihazı'na takın."
+          ]
+        },
+        {
+          "label": "Haritayı çalıştırın",
+          "body": [
+            "Haritayı başlatın. Tablet'in değiştiricileri, harita Kule'nin yarıçapı içinde olduğu için uygulanır. Her çalıştırma, tabletin bir kullanımını tüketir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tablet-use-tracker",
+      "order": 10,
+      "title": "Tabletin mekaniği neden görünmüyor?",
+      "type": "diagnostic",
+      "visible": true,
+      "toc": true,
+      "intro": "Belirtiyi seçin. Araç en olası nedene işaret eder.",
+      "controls": [
+        {
+          "id": "symptom",
+          "label": "Ne oluyor?",
+          "options": [
+            {
+              "label": "Haritada etki yok",
+              "value": "no-effect"
+            },
+            {
+              "label": "Birkaç çalıştırmadan sonra etki kayboldu",
+              "value": "vanished"
+            },
+            {
+              "label": "Tablet hiç yerleştirilemiyor",
+              "value": "cannot-place"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "title": "Harita, Kule'nin yarıçapının dışında",
+          "when": {
+            "symptom": "no-effect"
+          },
+          "steps": [
+            "Atlas'ı açın ve hedef haritanın Kule'nin yarıçap halkasının içinde olduğunu doğrulayın.",
+            "Çiftçiliğinizi (farm) yarıçap içinde açıkça kalan bir haritaya taşıyın.",
+            "Değiştiricinin o harita türüne de uygulanması gerektiğini unutmayın."
+          ]
+        },
+        {
+          "title": "Tabletin kullanımları tükenmiş",
+          "when": {
+            "symptom": "vanished"
+          },
+          "steps": [
+            "Kule'nin yuvalarındaki tablet üzerinde kalan kullanımları görüntüleyin.",
+            "Bir tablet, uygulandığı her harita çalıştırması başına tüketilir; onu taze bir tabletle değiştirin.",
+            "Sınırsız bir etki varsaymayın; kalan kullanımlar sayacını kontrol edin."
+          ]
+        },
+        {
+          "title": "Kule tamamlanmamış ya da işaretçi aktif değil",
+          "when": {
+            "symptom": "cannot-place"
+          },
+          "steps": [
+            "Kule'nün temizlendiğini ve Öncü İşaretçisi'nin aktif olduğunu doğrulayın.",
+            "Temizlenmemiş bir Kule'ye veya envanterinizden tablet yerleştiremezsiniz.",
+            "Önce Kule haritasını tamamlayın, sonra Atlas ekranından yerleştirin."
+          ]
+        }
+      ],
+      "defaultResult": {
+        "title": "Hâlâ bir şey yok mu? Bir arayüz hatası olup olmadığını kontrol edin",
+        "steps": [
+          "Atlas ekranını yeniden açın ve yarıçap ile kalan kullanımları yeniden doğrulayın.",
+          "Kurulum doğruysa ama etki eksikse, bu bir arayüz hatası olabilir; yeniden giriş yapıp (re-log) tekrar kontrol edin.",
+          "Tek bir nedeni suçlamaktan kaçının; yarıçapı, kullanımları ve harita türünü birlikte doğrulayın."
+        ]
+      }
+    },
+    {
+      "id": "modifier-compatibility",
+      "order": 11,
+      "title": "Tablet değiştiricileri nasıl üst üste biner",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Bir Öncü Tableti'nin değiştiricileri, Kule'nin yarıçapı içindeki tüm haritalara uygulanır ve Waystone değiştiricileri ile Atlas pasif bonuslarıyla birleşir."
+      ],
+      "bullets": [
+        "Tablet etkileri, aynı haritadaki Waystone özelikleri (affix) ile üst üste biner.",
+        "Tablet etkisini artıran Atlas pasif düğümleri, faydayı katlar.",
+        "Aynı haritaların üzerine iki veya üç Kule'yi örtüştürmek, değiştiricilerini üst üste bindirir.",
+        "Tableti bir Waystone'un yerine geçen olarak görmeyin; bunlar tamamlayıcıdır."
+      ]
+    },
+    {
+      "id": "map-preparation-checklist",
+      "order": 12,
+      "title": "Haritayı çalıştırmadan önce",
+      "type": "checklist",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Yarıçapı doğrulayın",
+          "body": [
+            "Hedef haritanın Atlas ekranında Kule'nin yarıçapı içinde olduğundan emin olun."
+          ]
+        },
+        {
+          "label": "Kalan kullanımları doğrulayın",
+          "body": [
+            "Çalıştırmayı başlatmadan önce tabletin kalan kullanımları gösterdiğini kontrol edin."
+          ]
+        },
+        {
+          "label": "Hedef haritayı doğrulayın",
+          "body": [
+            "Yarıçap içindeki bir harita için doğru Waystone'u Harita Cihazı'na takın."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-now-or-save-decision",
+      "order": 13,
+      "title": "Tableti şimdi kullanın mı yoksa saklayın mı?",
+      "type": "risk-reward-matrix",
+      "visible": true,
+      "toc": true,
+      "intro": "Yüksek değerli bir tablet, onu biriktirme (hoard) dürtüsü uyandırır. Takası tartın.",
+      "rows": [
+        {
+          "choice": "Yüksek değerli tableti şimdi kullanın",
+          "riskLevel": "green",
+          "risk": "Sınırlı bir tablet çalıştırması harcarsınız",
+          "reward": "Anında güçlendirilmiş (juiced) haritalar ve çiftçilikten düzenli tablet dönüşü",
+          "when": "Yarıçap içindeki haritaları aktif olarak işliyorsanız (farm)"
+        },
+        {
+          "choice": "Tableti sonraya saklayın",
+          "riskLevel": "yellow",
+          "risk": "Şu an çiftçilik verimliliği kaçar; tabletler kullanılmadan durabilir",
+          "reward": "Planlı bir atılım için güçlü bir tablet elinizde tutun",
+          "when": "Çiftçilik seansları arasındaysanız ya da uygun bir yarıçapınız yoksa"
+        },
+        {
+          "choice": "Nadir tabletleri hiç kullanmayın",
+          "riskLevel": "red",
+          "risk": "Tabletler yığılır ve içerikten seviye atladıkça değerini yitirir",
+          "reward": "Yok - biriktirmek kaynağı israf eder",
+          "when": "Bundan kaçının; tedariki akıtık tutmak için tabletleri kullanın"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 14,
+      "title": "Yaygın oyuncu soruları",
+      "type": "card-grid",
+      "visible": true,
+      "toc": true,
+      "intro": "Oyuncuların kule ve tablet sistemi hakkında sorduğu gerçek sorular.",
+      "cards": [
+        {
+          "title": "Tableti kaleye koyamıyorum",
+          "tag": "placement",
+          "body": [
+            "Tableti envanterinizden yerleştiremezsiniz. Önce Kule'yi temizleyin ki Öncü İşaretçisi etkinleşsin, sonra tabletleri Atlas ekranından yerleştirin."
+          ]
+        },
+        {
+          "title": "Tabletim çalışmıyor",
+          "tag": "troubleshooting",
+          "body": [
+            "Çoğunlukla harita yarıçapın dışındadır, kullanımlar tükenmiştir ya da Kule tamamlanmamıştır. Bir hatayı varsaymadan önce üçünü de kontrol edin."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-guide",
+      "order": 15,
+      "title": "Atlas kilidini açma video rehberi",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "label": "Atlas'ınızı TAMAMEN Nasıl Açarsınız - 0.5 Atlas Rehberi - Path of Exile 2",
+          "creator": "Fubgun",
+          "description": "Kulelerin, Öncü Tabletlerinin ve Harita Cihazı'nın endgame ilerlemesine nasıl uyduğunu ve en büyük rota hatalarını kapsayan tam bir 0.5 Atlas anlatımı.",
+          "takeaway": "İşaretçileri etkinleştirmek ve tabletleri Atlas ekranından yerleştirmek için Kuleleri erkenden temizleyin, sonra yarıçap haritalarını Harita Cihazı'nda çalıştırın.",
+          "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w",
+          "timestamps": [
+            {
+              "label": "Giriş",
+              "time": "0:00"
+            },
+            {
+              "label": "İlk Kule'nizi bulma",
+              "time": "1:15"
+            },
+            {
+              "label": "Kule'ye giriş ve temizleme",
+              "time": "3:40"
+            },
+            {
+              "label": "Öncü İşaretçisini etkinleştirme",
+              "time": "6:05"
+            },
+            {
+              "label": "Tablet düşüşleri ve edinimi",
+              "time": "8:20"
+            },
+            {
+              "label": "Harita Cihazı'nı açma ve haritaları çalıştırma",
+              "time": "11:30"
+            },
+            {
+              "label": "Kalan tablet kullanımlarını kontrol etme",
+              "time": "14:10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 16,
+      "title": "Kule ve tablet arayüzünde sorun giderme",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Çoğu tablet sorunu, güncel olmayan bir rehberi izlemekten, yanlış bir tıklamadan ya da gerçek bir arayüz hatasından kaynaklanır. Tek bir nedeni varsaymayın."
+      ],
+      "bullets": [
+        "Güncel olmayan rehber: sağ tıklama ya da aura rehberi izlediniz - bunun yerine Atlas ekranı akışını kullanın.",
+        "Yanlış tıklama: tableti envanterden yerleştirmeye çalıştınız - Kule'yi temizleyin ve Atlas ekranını kullanın.",
+        "Hata: kurulum doğru ama etki eksik - Atlas'ı yeniden açıp kontrol edin ya da yeniden giriş yapın (re-log).",
+        "Bir etkene suç atmadan önce her zaman yarıçapı, kalan kullanımları ve harita türünü birlikte doğrulayın."
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 17,
+      "title": "Sıkça sorulan sorular",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Bir Öncü Tableti'ni doğrudan envanterimden kullanabilir miyim?",
+          "answer": [
+            "Hayır. Önce Öncü İşaretçisini etkinleştirmek için Kule'yi temizlemeli, sonra tabletleri Atlas ekranından Kule'ye yerleştirmelisiniz. Envanterden yerleştirme 0.5.4'te çalışmaz."
+          ]
+        },
+        {
+          "question": "Bir Kule kaç tablet alır?",
+          "answer": [
+            "Tamamlanmış bir Kule en fazla 3 Öncü Tableti alır. Tam yuva davranışı, canlı 0.5.4 Atlas'a göre açıklanmıştır ve oyun içinde doğrulanmalıdır."
+          ]
+        },
+        {
+          "question": "Bir tabletin kullanımlarına ne olur?",
+          "answer": [
+            "Bir tablet, uygulandığı her harita çalıştırması başına tüketilir. Kule'nin yuvalarındaki tablet üzerinde kalan kullanımları görüntüleyin; sıfıra ulaştığında tablet tükenmiş olur."
+          ]
+        },
+        {
+          "question": "Bir Büyütme Küresi (Orb of Augmentation) veya Kraliyet Küresi (Regal Orb) bir tableti yükseltebilir mi?",
+          "answer": [
+            "Bir Büyütme Küresi, Sihirli (Magic) bir tablete değiştirici ekleyebilir. Bir Kraliyet Küresi normal kullanımla bir tableti Nadir'e (Rare) yükseltemez; tablet nadirlik davranışı güncel yamaya karşı doğrulanmalıdır."
+          ]
+        },
+        {
+          "question": "Tablet değiştiricileri Waystone'lar ve Atlas pasifleri ile üst üste biner mi?",
+          "answer": [
+            "Evet. Tablet değiştiricileri, Kule'nin yarıçapı içindeki tüm haritalara uygulanır ve Waystone özelikleri (affix) ile Atlas pasif bonuslarıyla birleşir, ayrıca örtüşen Kuleler arasında üst üste biner."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 18,
+      "type": "sources",
+      "title": "Kaynaklar ve doğrulama",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Topluluk wiki'si",
+          "description": "PoE 2 wiki - Öncü Tableti / Tablet mekanikleri",
+          "url": "https://www.poe2wiki.net/wiki/Tablet"
+        },
+        {
+          "label": "Güncel 0.5 rehberi",
+          "description": "PoE2 Tabletler ve Kuleler (0.5) rehberi",
+          "url": "https://bot-lobbies.vercel.app/blog/poe2-tablets-and-towers-guide"
+        },
+        {
+          "label": "Atlas rota rehberi",
+          "description": "PoE 2 Atlas Ağacı Rehberi 0.5 - Kuleler ve Citadel Yolu",
+          "url": "https://gamemarket.gg/news/path-of-exile-2/poe-2-atlas-tree-guide-0-5-best-routing-towers-citadel-path"
+        },
+        {
+          "label": "Video rehberi",
+          "description": "Fubgun - Atlas'ınızı TAMAMEN Nasıl Açarsınız (0.5)",
+          "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 19,
+      "title": "Değişiklik günlüğü",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 için kule ve tablet düzeltme rehberinin ilk yayını.",
+            "Eski 'kuleye sağ tıkla tablet' ve 'yarıçap aurası' rehberleri güncel olmayan olarak işaretlendi.",
+            "Tabletlerin Atlas ekranından yerleştirildiği ve Harita Cihazı'nın Waystone haritasını çalıştırdığı netleştirildi."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "PoE 2 wiki - Öncü Tableti / Tablet",
+      "url": "https://www.poe2wiki.net/wiki/Tablet",
+      "sourceType": "community"
+    },
+    {
+      "label": "PoE2 Tabletler ve Kuleler (0.5) rehberi",
+      "url": "https://bot-lobbies.vercel.app/blog/poe2-tablets-and-towers-guide",
+      "sourceType": "community"
+    },
+    {
+      "label": "PoE 2 Atlas Ağacı Rehberi 0.5",
+      "url": "https://gamemarket.gg/news/path-of-exile-2/poe-2-atlas-tree-guide-0-5-best-routing-towers-citadel-path",
+      "sourceType": "community"
+    },
+    {
+      "label": "Fubgun Atlas kilidini açma videosu (YouTube)",
+      "url": "https://www.youtube.com/watch?v=-R5KjDJQu9w",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE 2 Atlas Kuleleri, Öncü Tabletleri ve Harita Cihazı Rehberi",
+    "description": "0.5.4 Atlas Kule sistemi nasıl çalışır: bir Kule'yi temizleyin, Öncü Tabletlerini Atlas ekranından yerleştirin ve yarıçap haritalarını Harita Cihazı'nda çalıştırın. Eski rehber çakışması kontrolü dahildir.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "atlas-towers-precursor-tablets-map-device",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

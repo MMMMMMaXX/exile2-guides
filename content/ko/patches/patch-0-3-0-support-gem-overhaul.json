@@ -1,0 +1,342 @@
+{
+  "id": "patch-0-3-0-support-gem-overhaul",
+  "slug": "patch-0-3-0-support-gem-overhaul",
+  "locale": "ko",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.3.0 Support Gem 개편: 제한 삭제, 반복 가능한 서포트, 티어 및 빌드 마이그레이션",
+  "shortTitle": "0.3.0 Support Gem 개편",
+  "summary": "0.3.0은 '캐릭터당 서포트 1개, 1회만' 제한을 삭제하고, 서포트를 반복 사용 가능하게 만들었으며, 여러 서포트에 티어를 추가하고, 이전 수치 일부를 병합하고, 새로운 서포트 11개를 추가했습니다. 이전 규칙, 새로운 규칙, 그리고 기존 빌드를 마이그레이션하는 방법을 정리했습니다.",
+  "description": "스킬과 빌드를 위한 0.3.0 Support Gem 개편의 집중 요약: 삭제된 캐릭터당 1회 제한, 반복 가능한 서포트, 추가된 티어, 병합된 효과, 새로운 서포트 11개, 그리고 0.3.0 이전 빌드를 위한 마이그레이션 체크리스트.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.3.0",
+  "patch": "0.3.0",
+  "league": "Rise of the Abyssals",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/builds/covers/explosive-witchhunter.webp",
+  "imageAlt": "Path of Exile 2 위치나이터가 폭발 스킬을 시전하는 모습",
+  "tags": [
+    "builds",
+    "major-updates"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "high",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "간단 요약",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "0.3.0 서포트 젬 개편은 기존 poe2 빌드 가이드가 0.3.0 이전에 조용히 깨지는 가장 흔한 이유입니다. 예전에는 주어진 서포트를 캐릭터당 1회만 소켓할 수 있었지만, 0.3.0 이후 그 제한은 사라졌습니다.",
+        "제한 삭제 외에도 서포트가 반복 사용 가능해졌고, 여러 서포트에 추가 티어가 생겼으며, 일부 이전 수치/효과가 병합되고, 새로운 서포트 11개가 추가되었습니다. 기존 구성과 영상은 현재 스킬/서포트 데이터를 기준으로 다시 읽어야 합니다."
+      ],
+      "bullets": [
+        "캐릭터당 서포트 1개만 사용 가능하던 제한 삭제",
+        "서포트를 링크 간에 반복 사용 가능",
+        "여러 서포트에 추가 티어 부여",
+        "일부 이전 서포트 수치/효과 병합",
+        "새로운 서포트 11개 추가",
+        "0.3.0 이전 빌드 설정 재해석 필요"
+      ]
+    },
+    {
+      "id": "old-rule",
+      "order": 2,
+      "title": "이전 규칙 (0.3.0 이전)",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "0.3.0 이전 서포트 규칙",
+      "oldText": "각 Support Gem은 캐릭터당 최대 1회만 사용할 수 있었습니다. 다른 링크에 동일한 서포트의 사본을 두 번째로 꽂아도 효과가 없었습니다.",
+      "newLabel": "0.3.0 규칙 (0.5.4e에도 동일)",
+      "newText": "서포트는 링크 간에 반복 사용 가능하며, 여러 서포트에 티어가 추가되었고, 새로운 서포트 11개가 존재합니다."
+    },
+    {
+      "id": "tier-system",
+      "order": 3,
+      "title": "티어 시스템 & 새로운 서포트",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "new",
+          "title": "반복 가능한 서포트",
+          "detail": "동일한 서포트가 한 캐릭터의 여러 스킬 링크에 등장할 수 있어, 이전에는 불가능했던 스택 전략이 가능해집니다.",
+          "scope": "공식 0.3.0 노트"
+        },
+        {
+          "category": "new",
+          "title": "추가된 티어",
+          "detail": "여러 서포트에 추가 티어가 생겨 스케일링과 빌드 선택지가 넓어졌습니다.",
+          "scope": "공식 0.3.0 노트"
+        },
+        {
+          "category": "balance",
+          "title": "병합된 수치/효과",
+          "detail": "일부 오래된 서포트 수치나 효과가 통합되어, 이전에 특정 링크가 얼마나 가치 있었는지가 달라졌습니다.",
+          "scope": "공식 0.3.0 노트"
+        },
+        {
+          "category": "new",
+          "title": "새로운 서포트 11개",
+          "detail": "새로운 서포트 무리가 빌드 구성 가능성을 확장했으며, 여러 개가 리워크된 시스템과 연결되어 있습니다.",
+          "scope": "공식 0.3.0 노트"
+        }
+      ]
+    },
+    {
+      "id": "before-after-loadout",
+      "order": 4,
+      "title": "변경 전후 구성",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "링크 계획",
+          "thenText": "0.3.0 이전: 고유한 서포트를 스킬에 걸쳐 분산시켜야 했으며, 중복은 낭비였습니다.",
+          "nowText": "0.3.0+: 중복 서포트는 유효합니다. 이득이 되는 곳에서 스택을 계획하세요."
+        },
+        {
+          "aspect": "스케일링 상한",
+          "thenText": "0.3.0 이전: 서포트당 1개 티어가 스택을 제한했습니다.",
+          "nowText": "0.3.0+: 추가된 티어가 티어형 서포트의 상한을 높입니다."
+        },
+        {
+          "aspect": "빌드 고유성",
+          "thenText": "0.3.0 이전: 'X는 1개만'이 많은 빌드를 규정했습니다.",
+          "nowText": "0.3.0+: 그 제약은 사라졌습니다. 희소성이 아닌 가치로 링크를 평가하세요."
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "order": 5,
+      "title": "빌드 마이그레이션 체크리스트",
+      "toc": true,
+      "visible": true,
+      "type": "migration-guide",
+      "steps": [
+        {
+          "from": "서포트를 각각 1개씩만 둔 기존 배치",
+          "to": "핵심 링크의 중복 서포트 재평가",
+          "note": "중복이 이제 유효합니다. 스택이 고유 대안을 이기는지 확인하세요."
+        },
+        {
+          "from": "병합 이전 수치를 가정한 링크",
+          "to": "현재 서포트 수치를 스킬/서포트 페이지에서 다시 확인",
+          "note": "병합된 수치가 이전에 가정했던 계산을 바꿨습니다."
+        },
+        {
+          "from": "티어를 무시하던 경우",
+          "to": "티어형 서포트의 추가 티어 반영",
+          "note": "티어가 스케일링 상한을 높입니다. DPS를 다시 시뮬레이션하세요."
+        },
+        {
+          "from": "0.3.0 이전 영상 설정",
+          "to": "현재 스킬/서포트 데이터를 기준으로 재해석",
+          "note": "오래된 영상은 캐릭터당 1회 시대를 보여줍니다. 그대로 복사하지 마세요."
+        }
+      ]
+    },
+    {
+      "id": "skill-impact",
+      "order": 6,
+      "title": "스킬 페이지 영향",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Support Gem 페이지",
+          "type": "skill",
+          "trigger": "제한 삭제 + 티어 + 새로운 11개",
+          "action": "반복 가능한 서포트, 티어, 신규 항목 문서화.",
+          "status": "queued"
+        },
+        {
+          "name": "구 크루얼 시대 빌드",
+          "type": "build",
+          "trigger": "서포트 가정 변경",
+          "action": "링크 계산과 티어 재검증.",
+          "status": "reviewing"
+        },
+        {
+          "name": "스킬 페이지 (영향받은 서포트)",
+          "type": "skill",
+          "trigger": "병합된 수치",
+          "action": "스킬별 서포트 추천 업데이트.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 7,
+      "title": "현재 적용 가능 여부 (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "캐릭터당 1회 제한",
+          "status": "removed",
+          "currentSummary": "0.3.0에서 삭제되었으며, 0.5.4e에서는 서포트가 반복 사용 가능합니다.",
+          "supersededBy": "0.3.0",
+          "affectedContent": "Support Gem 페이지"
+        },
+        {
+          "topic": "서포트 티어",
+          "status": "still-current",
+          "currentSummary": "0.3.0에서 추가된 티어는 그대로 남아 있으며, 이후 밸런스에서 수치가 조정되었을 수 있습니다.",
+          "supersededBy": "—",
+          "affectedContent": "Support Gem 페이지"
+        },
+        {
+          "topic": "새로운 서포트 11개",
+          "status": "still-current",
+          "currentSummary": "0.3.0에서 추가된 새로운 서포트는 0.5.4e에서도 사용 가능합니다.",
+          "supersededBy": "—",
+          "affectedContent": "Support Gem 페이지"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 8,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (0.3.0 출시)",
+          "context": "플레이어들이 동일 서포트를 두 개 사용할 수 있게 된 것을 환영했습니다.",
+          "quote": "드디어 같은 서포트를 두 개 돌려도 죽은 게 아니네.",
+          "analysis": "제한 삭제를 확인합니다. 현재 빌드는 반복 가능한 서포트를 자유롭게 사용해야 합니다."
+        },
+        {
+          "source": "포럼 (0.3.0 이전 빌드 스레드)",
+          "context": "오래된 가이드들은 '서포트는 각각 1개'를 절대 규칙으로 나열했습니다.",
+          "quote": "서포트는 각각 한 번만 쓸 수 있어, 그걸 두고 계획해.",
+          "analysis": "0.3.0 이후로는 구형입니다. 해당 가이드는 개편 이전으로 표시하세요."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 9,
+      "title": "역사 영상",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.3.0 Support Gem 개편 설명",
+          "url": "https://www.youtube.com/watch?v=zXLzXS4I2ak",
+          "takeaway": "삭제된 제한과 티어를 설명합니다. 규칙은 여전히 정확하나, 수치는 이후 바뀌었을 수 있습니다.",
+          "creator": "공식 Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 10,
+      "title": "자주 묻는 질문",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "이제 같은 서포트를 서로 다른 두 스킬에 사용할 수 있나요?",
+          "answer": [
+            "네, 0.3.0에서 캐릭터당 1회 제한이 삭제되어 서포트가 여러 링크에 등장할 수 있습니다."
+          ]
+        },
+        {
+          "question": "0.3.0에서 추가된 티어가 아직도 존재하나요?",
+          "answer": [
+            "네, 여러 서포트가 0.3.0에서 추가 티어를 얻었으며, 해당 티어는 0.5.4e에도 남아 있습니다. 밸런스 수치는 다를 수 있습니다."
+          ]
+        },
+        {
+          "question": "왜 내 빌드 영상이 틀려 보이나요?",
+          "answer": [
+            "그 영상은 캐릭터당 1회 시대에 만들어졌습니다. 현재 스킬/서포트 데이터를 기준으로 다시 읽으세요. 중복과 티어가 계산을 바꿉니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 11,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Path of Exile 2 공식 0.3.0 패치 노트",
+          "description": "Support Gem 개편: 제한 삭제, 티어, 병합된 수치, 새로운 서포트 11개.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3970000"
+        },
+        {
+          "label": "PoE2 Wiki — Support Gems",
+          "description": "티어와 신규 항목을 포함한 현재 상태의 서포트 데이터.",
+          "url": "https://poe2wiki.net/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Path of Exile 2 공식 0.3.0 패치 노트",
+      "url": "https://www.pathofexile.com/forum/view-thread/3970000",
+      "sourceType": "official"
+    },
+    {
+      "label": "PoE2 Wiki",
+      "url": "https://poe2wiki.net/",
+      "sourceType": "community"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.3.0 Support Gem 개편 — 제한 삭제, 티어 & 빌드 마이그레이션",
+    "description": "0.3.0 Support Gem 개편(반복 가능한 서포트, 티어, 새로운 11개)이 기존 빌드를 어떻게 바꿨고, 0.5.4e에서 무엇을 마이그레이션해야 하는지.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-3-0-support-gem-overhaul",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

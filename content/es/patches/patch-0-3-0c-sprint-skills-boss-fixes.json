@@ -1,0 +1,489 @@
+{
+  "id": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "slug": "patch-0-3-0c-sprint-skills-boss-fixes",
+  "locale": "es",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "PoE2 0.3.0c: Sprint, Ballesta, Interacciones de Habilidades y Correcciones de Jefes",
+  "shortTitle": "Paquete de correcciones de 0.3.0c",
+  "summary": "El 0.3.0c fue un amplio paquete de correcciones de jugabilidad: añadió un periodo de gracia de Aturdimiento Pesado al iniciar Sprint, corrigió los bloqueos de recarga/disparo de la Ballesta y los lanzamientos de munición por virote, corrigió la escala de habilidades y las interacciones de totems/conjuntos de armas, y reparó varios jefes y la interfaz de mando.",
+  "description": "El 0.3.0c explicado: periodo de gracia de Sprint, munición de Ballesta, Meta Gems de Gemling, correcciones de escala de habilidades, totems/conjuntos de armas, correcciones de jefes e interfaz de mando — y qué sigue aplicándose en el 0.5.4e.",
+  "patchCategory": "bug-fixes",
+  "patchVersion": "0.3.0c",
+  "patch": "0.3.0c",
+  "league": "Early Access",
+  "patchStatus": "legacy",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4e",
+  "author": "StratLore Editorial",
+  "reviewer": "Exile2 Guides Automated Editorial QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/barrage.webp",
+  "cardImage": "/images/skills/barrage.webp",
+  "imageAlt": "Una habilidad disparándose durante un desplazamiento con Sprint.",
+  "tags": [
+    "patch",
+    "0-3-0c",
+    "sprint",
+    "crossbow",
+    "bug-fix",
+    "skills"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [
+    {
+      "topicId": "sprint-grace",
+      "status": "still-current",
+      "currentSummary": [
+        "El periodo de gracia de Aturdimiento Pesado de Sprint del 0.3.0c sigue formando parte de la sensación de movimiento en el 0.5.4e."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    },
+    {
+      "topicId": "crossbow-ammo",
+      "status": "changed-later",
+      "currentSummary": [
+        "Las reglas de recarga/disparo y de munición por virote de la Ballesta se corrigieron en el 0.3.0c pero fueron reajustadas por parches posteriores."
+      ],
+      "supersededByPatchIds": [],
+      "affectedContentIds": [],
+      "sourceIds": []
+    }
+  ],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Resumen rápido",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "El 0.3.0c es un amplio paquete de correcciones de jugabilidad, no una reescritura de balance. Agrupó las correcciones en Sprint y movimiento, munición de Ballesta, Meta Gems de Gemling, escala de habilidades, totems y conjuntos de armas, jefes, interfaz de mando y rendimiento.",
+        "Destacados: un periodo de gracia de Aturdimiento Pesado al iniciar Sprint, corrección de los bloqueos de recarga/disparo de la Ballesta y lanzamiento de munición por virote, corrección de la escala de habilidades que antes ignoraba Daño de Área/Soporte/Calidad, y varias correcciones de jefes e interfaz de mando."
+      ],
+      "bullets": [
+        "Periodo de gracia de Aturdimiento Pesado de Sprint",
+        "Correcciones de recarga/munición de Ballesta",
+        "Correcciones de escala de habilidades",
+        "Correcciones de jefes e interfaz de mando"
+      ]
+    },
+    {
+      "id": "historical-context",
+      "order": 2,
+      "title": "Advertencia histórica",
+      "toc": true,
+      "visible": true,
+      "type": "historical-context",
+      "era": "Path of Exile 2 Early Access — la era 0.3.0",
+      "baselineNote": "Las afirmaciones de estado actual se miden frente al cliente 0.5.4e.",
+      "paragraphs": [
+        "El 0.3.0c corrigió errores de la ventana de lanzamiento de The Third Edict. Las correcciones aquí son rectificaciones, no mejoras; parches posteriores pudieron haber cambiado las mismas habilidades de nuevo."
+      ],
+      "bullets": [
+        "0.3.0c 修复第三谕令上线窗口的 bug",
+        "这些是修正而非增强,后续可能再改"
+      ]
+    },
+    {
+      "id": "change-explorer",
+      "order": 3,
+      "title": "Categorías de correcciones",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Gracia de Aturdimiento Pesado de Sprint",
+          "detail": "Se añadió un periodo de gracia al iniciar Sprint para que no seas Aturdido Pesadamente de inmediato al arrancar.",
+          "scope": "Notas oficiales del parche 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Bloqueos de recarga / disparo",
+          "detail": "Se corrigieron comandos que podían bloquear la recarga o el disparo de la Ballesta; la munición se lanza por virote.",
+          "scope": "Notas oficiales del parche 0.3.0c"
+        },
+        {
+          "category": "fix",
+          "title": "Escala de habilidades",
+          "detail": "Se corrigieron las habilidades que no escalaban correctamente con Daño de Área, Soporte o Calidad.",
+          "scope": "Notas oficiales del parche 0.3.0c"
+        },
+        {
+          "category": "boss",
+          "title": "Correcciones de jefes",
+          "detail": "Vessel, el jefe final del Acto 4, Torvian, Diamora y otros recibieron correcciones.",
+          "scope": "Notas oficiales del parche 0.3.0c"
+        },
+        {
+          "category": "technical",
+          "title": "Interfaz y rendimiento",
+          "detail": "Se abordaron la navegación del alijo con mando y problemas de rendimiento.",
+          "scope": "Notas oficiales del parche 0.3.0c"
+        }
+      ]
+    },
+    {
+      "id": "data-table",
+      "order": 4,
+      "title": "Error vs corrección",
+      "toc": true,
+      "visible": true,
+      "type": "data-table",
+      "caption": "Correcciones representativas del 0.3.0c y su estado actual.",
+      "columns": [
+        {
+          "key": "bug",
+          "label": "Error / Cambio"
+        },
+        {
+          "key": "target",
+          "label": "Afectado"
+        },
+        {
+          "key": "fix",
+          "label": "Corrección 0.3.0c"
+        },
+        {
+          "key": "now",
+          "label": "Actual (0.5.4e)"
+        }
+      ],
+      "rows": [
+        {
+          "bug": "Aturdimiento instantáneo al Sprint",
+          "target": "Movimiento",
+          "fix": "Periodo de gracia añadido",
+          "now": "Sigue presente"
+        },
+        {
+          "bug": "Bloqueo de Ballesta",
+          "target": "Ballesta",
+          "fix": "Recarga/disparo corregidos, lanzamiento por virote",
+          "now": "Reajustado desde entonces"
+        },
+        {
+          "bug": "Escala de habilidad incorrecta",
+          "target": "Varias habilidades",
+          "fix": "Aplicado Área/Soporte/Calidad",
+          "now": "Parches posteriores pueden diferir"
+        },
+        {
+          "bug": "Problemas de jefes",
+          "target": "Vessel/Act4/Torvian/Diamora",
+          "fix": "Varias correcciones",
+          "now": "Consulta las páginas actuales de jefes"
+        }
+      ]
+    },
+    {
+      "id": "build-impact",
+      "order": 5,
+      "title": "Impacto en builds",
+      "toc": true,
+      "visible": true,
+      "type": "build-impact",
+      "paragraphs": [
+        "Las correcciones de escala de habilidades pueden parecer picos de daño, pero son correcciones de errores; cualquier guía de build que describiera el comportamiento roto debe actualizarse en lugar de tratarse como una mejora.",
+        "Se aclaró la interacción de Integrated Efficiency de Gemling Legionnaire con Súbditos y Meta Gems, afectando cómo se describe esa ascendencia."
+      ],
+      "bullets": [
+        "Las correcciones no son mejoras — actualiza las guías",
+        "Interacción de Gemling aclarada"
+      ]
+    },
+    {
+      "id": "before-after",
+      "order": 6,
+      "title": "Sprint antes vs después",
+      "toc": true,
+      "visible": true,
+      "type": "before-after",
+      "oldLabel": "Sprint previo a 0.3.0c",
+      "oldText": "Iniciar un Sprint podía Aturdirte Pesadamente de inmediato, haciendo que la mecánica se sintiera castigadora al entrar.",
+      "newLabel": "Tras 0.3.0c",
+      "newText": "Un periodo de gracia te permite comenzar a hacer Sprint sin un Aturdimiento Pesado instantáneo, mientras que el aturdimiento sigue aplicándose una vez en movimiento."
+    },
+    {
+      "id": "then-vs-now",
+      "order": 7,
+      "title": "Entonces vs ahora",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Aturdimiento de Sprint",
+          "thenText": "Instantáneo al iniciar antes del 0.3.0c.",
+          "nowText": "Periodo de gracia añadido; sigue presente en el 0.5.4e."
+        },
+        {
+          "aspect": "Sensación de Ballesta",
+          "thenText": "Bloqueos y lanzamientos de munición erróneos en el lanzamiento del 0.3.0.",
+          "nowText": "Corregido en el 0.3.0c, reajustado desde entonces."
+        }
+      ]
+    },
+    {
+      "id": "current-applicability",
+      "order": 8,
+      "title": "Aplicabilidad actual (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Periodo de gracia de Sprint",
+          "status": "still-current",
+          "currentSummary": "Sigue formando parte del movimiento en el 0.5.4e.",
+          "supersededBy": "—",
+          "affectedContent": "Guías de movimiento"
+        },
+        {
+          "topic": "Reglas de munición de Ballesta",
+          "status": "changed-later",
+          "currentSummary": "Corregido en el 0.3.0c, reajustado desde entonces.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Páginas de build de Ballesta"
+        },
+        {
+          "topic": "Correcciones de escala de habilidades",
+          "status": "changed-later",
+          "currentSummary": "Corregido en el 0.3.0c; parches posteriores pueden diferir.",
+          "supersededBy": "0.5.x",
+          "affectedContent": "Páginas de habilidades afectadas"
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 9,
+      "title": "Evidencia de la comunidad",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (Sprint)",
+          "context": "Los jugadores preguntaron por qué Sprint sigue aturdiendo al inicio.",
+          "quote": "¿Por qué me aturden pesadamente en cuanto hago sprint?",
+          "analysis": "El periodo de gracia ayuda, pero el aturdimiento sigue aplicándose una vez en movimiento; no es una eliminación total."
+        },
+        {
+          "source": "Foro (Ballesta)",
+          "context": "Los jugadores reportaron fallos ocasionales al cargar virote.",
+          "quote": "Mi ballesta a veces no recarga.",
+          "analysis": "Coincide con el bloqueo de recarga/disparo corregido en el 0.3.0c; verifica frente al cliente actual."
+        }
+      ]
+    },
+    {
+      "id": "legacy-content-audit",
+      "order": 10,
+      "title": "Cambios posteriores a vigilar",
+      "toc": true,
+      "visible": true,
+      "type": "legacy-content-audit",
+      "rows": [
+        {
+          "contentId": "crossbow-build-guide",
+          "kind": "build",
+          "issue": "Describe el comportamiento de munición previo a 0.3.0c.",
+          "action": "Actualiza con las reglas de munición actuales.",
+          "status": "queued"
+        },
+        {
+          "contentId": "skill-page",
+          "kind": "skill",
+          "issue": "La escala corregida en 0.3.0c pudo haber cambiado de nuevo.",
+          "action": "Verifica de nuevo frente al 0.5.4e.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "affected-content",
+      "order": 11,
+      "title": "Contenido afectado",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Páginas de build de Ballesta",
+          "type": "build",
+          "trigger": "Reglas de munición corregidas",
+          "action": "Verifica de nuevo el comportamiento actual.",
+          "status": "queued"
+        },
+        {
+          "name": "Página de Gemling Legionnaire",
+          "type": "build",
+          "trigger": "Integrated Efficiency aclarado",
+          "action": "Actualiza la descripción de la interacción.",
+          "status": "queued"
+        },
+        {
+          "name": "Páginas de habilidades afectadas",
+          "type": "skill",
+          "trigger": "Escala corregida",
+          "action": "Verifica de nuevo los números.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Vídeo histórico",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Path of Exile 2 — comunicación oficial del parche",
+          "url": "https://www.youtube.com/watch?v=0Vx8rF2z4kY",
+          "takeaway": "Comunicación oficial para esta familia de versiones. Léela junto con las notas del parche para ver qué cambió y cómo lo reescribieron parches posteriores.",
+          "creator": "Path of Exile 2 oficial",
+          "timestamps": [
+            {
+              "label": "Resumen del parche",
+              "time": "00:30"
+            },
+            {
+              "label": "Cambios de botín y sistemas",
+              "time": "04:10"
+            },
+            {
+              "label": "Impacto actual",
+              "time": "09:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Preguntas frecuentes",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "¿Es una mejora la corrección de Sprint?",
+          "answer": [
+            "No. Añade un periodo de gracia para que Sprint pueda iniciarse sin un Aturdimiento Pesado instantáneo; el aturdimiento sigue aplicándose una vez en movimiento. Trátalo como una corrección."
+          ]
+        },
+        {
+          "question": "¿Por qué cambió el daño de mi habilidad tras el 0.3.0c?",
+          "answer": [
+            "Algunas habilidades no escalaban correctamente con Daño de Área, Soporte o Calidad. El 0.3.0c lo corrigió; es una corrección de error, y parches posteriores pudieron haber cambiado las mismas habilidades de nuevo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Notas oficiales del parche 0.3.0c de Path of Exile 2",
+          "description": "Hilo oficial del parche con los cambios declarados de la versión, orden de despliegue y aclaraciones de seguimiento.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+        },
+        {
+          "label": "Índice del foro de Early Access de Path of Exile 2",
+          "description": "Índice de todos los hilos oficiales de parches y hotfix de EA referenciados en esta página.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2222"
+        },
+        {
+          "label": "PoE2 Wiki",
+          "description": "Datos actuales de habilidades, objetos, jefes y modificadores contrastados con el cliente en vivo para las afirmaciones de aplicabilidad actual.",
+          "url": "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki"
+        },
+        {
+          "label": "PoE2DB",
+          "description": "Entradas de base de datos para las habilidades, objetos y modificadores referenciados en este artículo.",
+          "url": "https://poe2db.tw/us"
+        },
+        {
+          "label": "Maxroll PoE2",
+          "description": "Guías comunitarias de builds y sistemas usadas para comprobaciones de impacto en jugadores, no como fuente primaria de hechos.",
+          "url": "https://maxroll.gg/poe2"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "official",
+        "verifiedClientVersion": "0.5.4e"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 15,
+      "title": "Registro de cambios",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Publicado el artículo histórico del parche con comprobaciones de aplicabilidad actual frente al cliente 0.5.4e."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [],
+  "relatedItemIds": [],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "id": "official-3851306",
+      "label": "Notas oficiales del parche 0.3.0c de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3851306"
+    },
+    {
+      "id": "official-ea-index",
+      "label": "Índice del foro de Early Access de Path of Exile 2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2222"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.3.0c: Sprint, Ballesta, Interacciones de Habilidades y Correcciones de Jefes",
+    "description": "Correcciones de jugabilidad del 0.3.0c: gracia de Sprint, munición de Ballesta, escala de habilidades y reparaciones de jefes.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-3-0c-sprint-skills-boss-fixes",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

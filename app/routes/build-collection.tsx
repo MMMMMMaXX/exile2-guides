@@ -1,11 +1,11 @@
 /** 文件职责：渲染 Builds 职业、升华与高价值分类聚合页，并根据真实发布数量控制索引状态。 */
-import { useLocation, useParams } from "react-router";
+import { useLocation } from "react-router";
 
 import type { Route } from "./+types/build-collection";
 import { ContentCard } from "../../components/content/content-card";
 import { NotFoundPage } from "../../components/content/not-found-page";
 import { EmptyState, PageHero } from "../../components/v4/page-primitives";
-import { buildCategorySlugs, type BuildArticle } from "../../lib/builds/schema";
+import { buildCategorySlugs } from "../../lib/builds/schema";
 import {
   type BuildCollection,
   isKnownBuildCollection,
@@ -15,8 +15,17 @@ import {
   supportedLocales,
   type ContentLocale,
 } from "../../lib/content/constants";
-import type { StaticContentPage } from "../../lib/content/content-page";
-import { locallyVisibleContentPages as contentPages } from "../../lib/content/runtime-pages";
+import type {
+  CatalogBuildArticle,
+  StaticContentCatalogPageMap,
+} from "../../lib/content/content-page";
+import {
+  contentCatalogMetrics,
+  loadContentCatalog,
+} from "../../lib/content/content-catalog";
+import { loadStaticContentCatalogForLocale } from "../../lib/content/content-catalog.server";
+import { getCategoryLabel } from "../../lib/i18n/category-copy";
+import { t } from "../../lib/i18n/ui";
 import {
   createBilingualAlternatePaths,
   createSeoMetadata,
@@ -61,51 +70,77 @@ function getBuildCollectionRoute(
 }
 
 /** 从运行时页面模块读取当前可见 Build；生产模块仍只包含已发布内容。 */
-function getVisibleBuilds(locale: ContentLocale): BuildArticle[] {
-  return (Object.values(contentPages) as StaticContentPage[]).flatMap((page) =>
+function getVisibleBuilds(
+  catalog: StaticContentCatalogPageMap,
+  locale: ContentLocale,
+): CatalogBuildArticle[] {
+  return Object.values(catalog).flatMap((page) =>
     page.buildArticle?.locale === locale ? [page.buildArticle] : [],
   );
+}
+
+/** 聚合页只加载当前语言目录，保留本地草稿预览但不触碰其它语言。 */
+export async function loader({ params }: Route.LoaderArgs) {
+  return { catalog: await loadStaticContentCatalogForLocale(params.locale) };
+}
+
+/** 客户端导航只加载当前语言目录，并保留开发态草稿预览能力。 */
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  return { catalog: await loadContentCatalog(params.locale) };
+}
+
+/** 返回当前聚合维度对应的眉标题案键（class/ascendancy/category）。 */
+function buildEyebrowKey(
+  kind: BuildCollection["kind"],
+):
+  | "collection.eyebrowClass"
+  | "collection.eyebrowAscendancy"
+  | "collection.eyebrowCategory" {
+  if (kind === "class") return "collection.eyebrowClass";
+  if (kind === "ascendancy") return "collection.eyebrowAscendancy";
+  return "collection.eyebrowCategory";
 }
 
 /** 为聚合页生成描述；不足两篇时保留访问能力但不进入搜索索引。 */
 export function meta({ location, params }: Route.MetaArgs) {
   const route = getBuildCollectionRoute(params, location.pathname);
-  if (!route)
-    return getNotFoundMeta(params.locale === "zh-cn" ? "zh-cn" : "en");
-  const count = getVisibleBuilds(route.locale).filter((article) =>
-    matchesBuildCollection(article, route.collection),
-  ).length;
+  if (!route) return getNotFoundMeta(params.locale as ContentLocale);
+  const count =
+    contentCatalogMetrics[`${route.locale}/${route.pathAfterLocale}`] ?? 0;
   const label = route.collection.value.replace(/-/g, " ");
-  const zh = route.locale === "zh-cn";
+  const typeLabel = getCategoryLabel(route.locale, "build");
   return createSeoMetadata({
     alternatePaths: createBilingualAlternatePaths(route.pathAfterLocale),
-    description: zh
-      ? `${label} Path of Exile 2 Build 聚合与经过审核的攻略。`
-      : `${label} Path of Exile 2 Build collection and reviewed guides.`,
+    description: t(route.locale, "collection.metaDescription", {
+      label,
+      type: typeLabel,
+    }),
     locale: route.locale,
     path: `/${route.locale}/${route.pathAfterLocale}`,
     ...(count < 2 ? { robots: "noindex, follow" } : {}),
-    title: `${label} Builds | Exile2 Guides`,
+    title: `${label} ${typeLabel} | Exile2 Guides`,
   });
 }
 
 /** 渲染由同一 JSON 数据计算出的聚合结果；无内容时不创建虚假详情卡。 */
-export default function BuildCollectionRoute() {
-  const params = useParams();
+export default function BuildCollectionRoute({
+  loaderData,
+  params,
+}: Route.ComponentProps) {
   const location = useLocation();
   const route = getBuildCollectionRoute(params, location.pathname);
   if (!route) {
-    return <NotFoundPage locale={params.locale === "zh-cn" ? "zh-cn" : "en"} />;
+    return <NotFoundPage locale={params.locale as ContentLocale} />;
   }
-  const articles = getVisibleBuilds(route.locale)
+  const articles = getVisibleBuilds(loaderData.catalog, route.locale)
     .filter((article) => matchesBuildCollection(article, route.collection))
     .sort(
       (left, right) =>
         right.updatedAt.localeCompare(left.updatedAt) ||
         left.title.localeCompare(right.title),
     );
-  const zh = route.locale === "zh-cn";
   const label = route.collection.value.replace(/-/g, " ");
+  const typeLabel = getCategoryLabel(route.locale, "build");
   const hasDraftPreviews = articles.some(
     (article) => article.status === "draft",
   );
@@ -113,36 +148,29 @@ export default function BuildCollectionRoute() {
   return (
     <main className="v4-subtype-page" data-prerender-content="true">
       <PageHero
-        eyebrow={
-          zh
-            ? route.collection.kind === "class"
-              ? "职业 Build"
-              : route.collection.kind === "ascendancy"
-                ? "升华 Build"
-                : "Build 分类"
-            : `${route.collection.kind} Builds`
-        }
-        title={`${label} Builds`}
+        eyebrow={t(route.locale, buildEyebrowKey(route.collection.kind), {
+          type: typeLabel,
+        })}
+        title={`${label} ${typeLabel}`}
       />
       <section className="page-shell v4-module-stack">
         <header>
           <p className="section-kicker">
-            {hasDraftPreviews
-              ? zh
-                ? "本地草稿预览"
-                : "Local draft preview"
-              : zh
-                ? "已发布内容"
-                : "Published content"}
+            {t(
+              route.locale,
+              hasDraftPreviews
+                ? "collection.localDraftPreview"
+                : "collection.publishedContent",
+            )}
           </p>
           <h2>
-            {hasDraftPreviews
-              ? zh
-                ? "Build 草稿与已发布页面"
-                : "Build drafts and published pages"
-              : zh
-                ? "可阅读 Build"
-                : "Available Builds"}
+            {t(
+              route.locale,
+              hasDraftPreviews
+                ? "collection.draftAndPublished"
+                : "collection.availableContent",
+              { type: typeLabel },
+            )}
           </h2>
         </header>
         {articles.length > 0 ? (
@@ -165,12 +193,12 @@ export default function BuildCollectionRoute() {
                   meta: `${article.patch} · ${article.updatedAt}`,
                   summary: article.summary,
                   title: article.title,
-                  typeLabel: "Build",
+                  typeLabel,
                 }}
                 footer={
                   article.status === "draft" ? (
                     <span className="local-draft-badge">
-                      {zh ? "本地草稿" : "Local draft"}
+                      {t(route.locale, "collection.localDraft")}
                     </span>
                   ) : undefined
                 }
@@ -180,11 +208,9 @@ export default function BuildCollectionRoute() {
           </div>
         ) : (
           <EmptyState
-            title={
-              zh
-                ? "该分类暂时没有经过审核的 Build"
-                : "No reviewed Builds are available in this collection"
-            }
+            title={t(route.locale, "collection.emptyCollection", {
+              type: typeLabel,
+            })}
           />
         )}
       </section>

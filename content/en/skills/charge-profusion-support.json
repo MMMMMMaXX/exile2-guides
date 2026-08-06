@@ -1,0 +1,496 @@
+{
+  "id": "charge-profusion-support",
+  "slug": "charge-profusion-support",
+  "locale": "en",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Charge Profusion Support Guide — Tiers, Extra Charges and Valid Generators",
+  "shortTitle": "Charge Profusion",
+  "summary": "Charge Profusion is a support gem family (Tier I and Tier II) that grants extra charges to skills that generate charges. It only works on charge-generating skills, and Tier II can also roll random extra charges. This guide covers what each tier does, why it is limited to charge generators, the probability math, valid generator matrix, and how it interacts with meta-skill support cost.",
+  "description": "Charge Profusion support guide: Tier I vs Tier II, what each does, why only charge-generating skills, same-type vs random extra charges, valid generator matrix (Combat Frenzy, Profane Ritual, Sniper's Mark, Siphoning Strike), 30% and 15% probability, UI absence of random charges, old name Profusion, comparison with Overabundance / Boundless Energy / Perpetual Charge, charge cap handling, troubleshooting and community questions.",
+  "skillType": "support",
+  "requiredLevel": "1",
+  "gemLevel": null,
+  "uncutGemTier": 5,
+  "minimumCharacterLevel": 1,
+  "spiritReservation": null,
+  "skillCategory": "support",
+  "skillTags": [
+    "support",
+    "charge",
+    "generator",
+    "meta"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "source-reviewed",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Guides Editorial",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/skills/charge-profusion-support.webp",
+  "cardImage": "/images/skills/charge-profusion-support.webp",
+  "imageAlt": "Charge Profusion support gem icon",
+  "tags": [
+    "support",
+    "charge",
+    "generator",
+    "meta"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Quick Answer",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion I grants an extra charge of the same type whenever the supported skill generates a charge; Charge Profusion II does the same plus a chance to roll a random extra charge.",
+        "It only works on skills that actually generate charges — a normal attack that creates no charge gets nothing.",
+        "The extra charge is the same type as the original; Tier II's random charge can be any charge type your character can use, and if you cannot use a rolled charge type, it is wasted."
+      ]
+    },
+    {
+      "id": "support-family",
+      "order": 20,
+      "title": "Support Family",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Charge Profusion I",
+          "notes": [
+            "Grants an additional charge of the same type on generation.",
+            "Available earlier (lower tier).",
+            "No random charge roll."
+          ],
+          "priority": "core"
+        },
+        {
+          "label": "Charge Profusion II",
+          "notes": [
+            "Same extra same-type charge as I.",
+            "Adds a chance to generate a random extra charge.",
+            "Available later (higher tier)."
+          ],
+          "priority": "situational"
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Requirements",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion must be socketed into a charge-generating skill. A skill that only deals damage with no charge generation cannot use it."
+      ]
+    },
+    {
+      "id": "charge-profusion-family",
+      "order": 40,
+      "title": "Charge Profusion Family",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "When the supported skill generates a charge, Charge Profusion I adds one more of that same charge type. This stacks with the skill's own generation, so one trigger can yield two of the same charge.",
+        "Charge Profusion II adds the same, plus a percentage chance to also create a random charge. The random roll is independent and can produce a charge type your build uses or one it cannot.",
+        "If your character cannot use a randomly rolled charge type, that charge is effectively wasted — build around charges you actually consume."
+      ],
+      "bullets": [
+        "I: +1 same-type charge on generation.",
+        "II: +1 same-type plus chance of random charge.",
+        "Unusable random charge is wasted."
+      ]
+    },
+    {
+      "id": "probability-analysis",
+      "order": 50,
+      "title": "Probability Analysis",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Support",
+        "Same-type extra",
+        "Random extra",
+        "Cost multiplier",
+        "Stage"
+      ],
+      "rows": [
+        [
+          "Charge Profusion I",
+          "Yes (per generation)",
+          "No",
+          "Current client value",
+          "Early"
+        ],
+        [
+          "Charge Profusion II",
+          "Yes (per generation)",
+          "Yes (chance, independent roll)",
+          "Current client value",
+          "Late"
+        ]
+      ]
+    },
+    {
+      "id": "valid-generator-matrix",
+      "order": 60,
+      "title": "Valid Generator Matrix",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Generator",
+        "Charge type",
+        "Can socket",
+        "I works",
+        "II random works"
+      ],
+      "rows": [
+        [
+          "Combat Frenzy",
+          "Frenzy",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ],
+        [
+          "Profane Ritual",
+          "Power",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ],
+        [
+          "Sniper's Mark",
+          "Power / marked",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ],
+        [
+          "Siphoning Strike",
+          "Power",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ],
+        [
+          "Lingering Illusion",
+          "Power",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ],
+        [
+          "Reaper's Invocation",
+          "Power",
+          "Yes",
+          "Yes",
+          "If character uses random type"
+        ]
+      ]
+    },
+    {
+      "id": "support-interactions",
+      "order": 70,
+      "title": "Support Interactions",
+      "type": "skill-interactions",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion can be socketed into Combat Frenzy, Profane Ritual and similar generators. It is a meta-skill support, so the support cost multiplier of the meta skill applies on top of the gem cost.",
+        "When multiple charges generate at once, each generation event is evaluated separately for the extra and the random roll.",
+        "It does not replace the generator's own charge; it adds to it."
+      ],
+      "bullets": [
+        "Works on Frenzy / Power generators.",
+        "Meta-skill support cost multiplier applies.",
+        "Each generation rolls separately."
+      ]
+    },
+    {
+      "id": "mapping-usage",
+      "order": 80,
+      "title": "Mapping Usage",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "In maps, Charge Profusion keeps your charge uptime high while clearing, which sustains auras and buffs that consume charges.",
+        "Use Tier I early; switch to Tier II once available if your build uses multiple charge types."
+      ],
+      "bullets": [
+        "Sustains charge-dependent buffs in maps.",
+        "Tier I early, Tier II late."
+      ]
+    },
+    {
+      "id": "bossing-usage",
+      "order": 90,
+      "title": "Bossing Usage",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Against a boss, steady charge generation from a profusion-augmented generator keeps your damage buffs active through the fight.",
+        "If the boss phase rarely lets you generate charges, the support contributes less — pair it with a generator you can trigger reliably."
+      ],
+      "bullets": [
+        "Keeps buffs active during boss.",
+        "Needs a reliably triggerable generator."
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 100,
+      "title": "Build Usage",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion fits charge-stacking builds such as Explosive Witchhunter (Combat Frenzy) and any Power-charge generator setup.",
+        "It is strongest when your build both generates and consumes the same charge type consistently."
+      ],
+      "bullets": [
+        "Explosive Witchhunter: Combat Frenzy profusion.",
+        "Power-charge builds: Profane Ritual profusion.",
+        "Best with consistent generate-and-consume."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 110,
+      "title": "Troubleshooting",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "If no extra charge appears, the supported skill is not a charge generator — socket it into Combat Frenzy or another generator. If the random charge seems missing, it is not shown separately in the UI; it is rolled silently.",
+        "If you cannot find 'Profusion', the gem was renamed to Charge Profusion; search that. If your charge cap is full, extra charges are wasted."
+      ],
+      "bullets": [
+        "No extra: not a generator skill.",
+        "Random charge not in UI: silent roll.",
+        "Old name 'Profusion' renamed.",
+        "Full cap: extra charges wasted.",
+        "Wrong random type: wasted if unusable."
+      ]
+    },
+    {
+      "id": "known-issues",
+      "order": 120,
+      "title": "Known Issues",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "A common mistake is socketing Charge Profusion into a non-generator skill expecting free charges — it only adds to existing generation. Another is assuming the random charge always helps; if your build cannot use the rolled type, it is lost."
+      ],
+      "bullets": [
+        "Only adds to real generation.",
+        "Random charge may be unusable."
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "Community Evidence",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Charge Profusion is discussed as a strong enabler for charge-stacking builds in 0.5 threads, with the rename from 'Profusion' causing search confusion.",
+        "Players note the silent random charge roll is not shown in the UI, leading to 'where did my charge go' questions."
+      ],
+      "bullets": [
+        "Strong for charge-stack builds.",
+        "Rename from Profusion confuses search.",
+        "Random charge is a silent roll."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 140,
+      "title": "Video Guides",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Passive Charges Anoint",
+          "label": "This Anoint Grants You Charges Passively (0.5)",
+          "description": "A guide on charge generation and passive charge sources relevant to profusion setups.",
+          "takeaway": "Watch the charge generation context.",
+          "url": "https://youtu.be/_Fi6R_df2Pc",
+          "timestamps": [
+            {
+              "label": "Intro",
+              "time": "0:00"
+            },
+            {
+              "label": "Charge talk",
+              "time": "3:00"
+            }
+          ]
+        },
+        {
+          "creator": "Meta Gems Explained",
+          "label": "How to Use POE 2 Meta Gems (0.5)",
+          "description": "A guide covering meta-skill support cost and behaviour, relevant to Charge Profusion as a meta support.",
+          "takeaway": "Watch the meta-skill support cost multiplier.",
+          "url": "https://youtu.be/FN4oNxr50MQ",
+          "timestamps": [
+            {
+              "label": "Meta gems",
+              "time": "0:00"
+            },
+            {
+              "label": "Support cost",
+              "time": "4:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 150,
+      "title": "Sources and Verification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Official",
+          "description": "GGG official Patch Notes and forums confirming Charge Profusion I/II behaviour, charge generation limit and rename in 0.5.4.",
+          "url": "https://www.pathofexile.com/forum/view-forum/2214"
+        },
+        {
+          "label": "Database",
+          "description": "PoE2DB and Community Wiki provide Charge Profusion support gem data and generator tags.",
+          "url": "https://poe2db.tw/Charge_Profusion"
+        },
+        {
+          "label": "Wiki",
+          "description": "Community wiki page for Charge Profusion with tier details.",
+          "url": "https://www.poe2wiki.net/wiki/Charge_Profusion"
+        },
+        {
+          "label": "Community",
+          "description": "Reddit and forums surface charge generation and profusion discussions.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Charge%20Profusion&restrict_sr=1"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "other",
+        "verifiedClientVersion": "0.5.4"
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 160,
+      "title": "Patch History",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "0.5.0 (Return of the Ancients): Charge Profusion (formerly Profusion) support family grants extra charges to charge generators; Tier II adds random charge chance."
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "0.5.4 (2026-08): Current baseline: I grants same-type extra, II adds random charge chance, limited to charge generators, meta-skill support cost applies."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 170,
+      "title": "Changelog",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "Initial release: tier comparison, charge-profusion family, probability analysis, valid generator matrix, support interactions, mapping and bossing usage, troubleshooting and community questions."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [
+    "skill-support-gem-compatibility"
+  ],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "combat-frenzy",
+    "barrage",
+    "ice-tipped-arrows"
+  ],
+  "sources": [
+    {
+      "label": "PoE2 Official Patch Notes Forum",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-forum/2214"
+    },
+    {
+      "label": "PoE2DB — Charge Profusion",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/Charge_Profusion"
+    },
+    {
+      "label": "PoE2 Community Wiki — Charge Profusion",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Charge_Profusion"
+    },
+    {
+      "label": "Passive Charges Anoint video",
+      "sourceType": "community",
+      "url": "https://youtu.be/_Fi6R_df2Pc"
+    },
+    {
+      "label": "Meta Gems Explained video",
+      "sourceType": "community",
+      "url": "https://youtu.be/FN4oNxr50MQ"
+    },
+    {
+      "label": "Reddit — Charge Profusion discussion",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Charge%20Profusion&restrict_sr=1"
+    }
+  ],
+  "seo": {
+    "title": "Charge Profusion Support Guide — Tiers, Extra Charges and Valid Generators",
+    "description": "Charge Profusion support guide: Tier I vs Tier II, same-type vs random extra charges, why only charge generators, valid generator matrix (Combat Frenzy, Profane Ritual, Sniper's Mark, Siphoning Strike), probability, meta-skill support cost, troubleshooting and community questions.",
+    "noindex": false
+  }
+}

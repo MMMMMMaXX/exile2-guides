@@ -1,0 +1,458 @@
+{
+  "id": "patch-0-4-0-fate-of-the-vaal-temple",
+  "slug": "patch-0-4-0-fate-of-the-vaal-temple",
+  "locale": "es",
+  "type": "patch",
+  "status": "published",
+  "featured": false,
+  "title": "Path of Exile 2 0.4.0 Fate of the Vaal y el Templo de Atziri: Balizas, salas y las correcciones 0.4.0d/e",
+  "shortTitle": "0.4.0 Fate of the Vaal / Templo",
+  "summary": "Cómo construyó la liga 0.4.0 Fate of the Vaal un Templo de Atziri de múltiples salas, por qué las salas se desconectaban o desestabilizaban al lanzamiento, y qué cambiaron 0.4.0d y 0.4.0e en las reglas actuales.",
+  "description": "Una historia a nivel de sistema de Fate of the Vaal y el Templo de Atziri construible: Balizas, Energía, colocación y mejora de salas, la relación Architect/Atziri/Chambers/Vault, las correcciones de conexión 0.4.0d y la eliminación de la Desestabilización automática en 0.4.0e.",
+  "patchCategory": "major-updates",
+  "patchVersion": "0.4.0",
+  "patch": "0.4.0",
+  "league": "Fate of the Vaal",
+  "patchStatus": "legacy",
+  "verificationStatus": "pending-pc",
+  "author": "StratLore Editorial",
+  "reviewer": "StratLore Editorial",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "lastVerifiedAt": "2026-08-01",
+  "heroImage": "/images/bosses/atziri-red-queen-hero.webp",
+  "imageAlt": "Atziri, la Reina Roja, jefa final del Templo reconstruido",
+  "tags": [
+    "league",
+    "major-updates"
+  ],
+  "historicalStatus": "historical",
+  "currentBaseline": "0.5.4e",
+  "currentApplicability": [],
+  "supersededByPatchIds": [],
+  "returningPlayerPriority": "medium",
+  "sections": [
+    {
+      "id": "overview",
+      "order": 1,
+      "title": "Resumen rápido",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "Fate of the Vaal fue la liga 0.4.0 cuyo contenido distintivo es un templo de atziri construible colocas balizas que gastan energía para construir salas salas más profundas llevan a cámaras y en última instancia a la vault y a la propia atziri",
+        "En el lanzamiento el sistema tuvo dos problemas graves conectividad frágil de las salas y desestabilización automática que podía arruinar una partida sin aviso ambos se abordaron en 0.4.0d y 0.4.0e así que el comportamiento actual del templo difiere sustancialmente de los vídeos de la semana de lanzamiento"
+      ],
+      "bullets": [
+        "Las Balizas gastan Energía para colocar y mejorar salas",
+        "El Architect construye y defiende salas, Atziri es la jefa final",
+        "0.4.0d corrigió la lógica de conexión de salas y el flujo de reintento tras muerte",
+        "0.4.0e eliminó la desestabilización automática y añadió avisos",
+        "Las guías antiguas del templo de la semana de lanzamiento describen comportamientos eliminados"
+      ]
+    },
+    {
+      "id": "system-flow",
+      "order": 2,
+      "title": "Flujo del sistema",
+      "toc": true,
+      "visible": true,
+      "type": "impact-dashboard",
+      "cards": [
+        {
+          "area": "Balizas",
+          "verdict": "Bucle central",
+          "detail": "Las Balizas se colocan en el área del Templo y consumen Energía para construir salas. Su colocación determina qué salas se conectan."
+        },
+        {
+          "area": "Energía",
+          "verdict": "Recurso",
+          "detail": "Se obtiene de salas limpiadas y actividades de la liga; limita cuántas salas puedes construir y mejorar."
+        },
+        {
+          "area": "Salas",
+          "verdict": "Construible",
+          "detail": "Cada sala tiene una función (recompensa, peligro, antecámara de jefe). La conectividad fue el punto crítico de la semana de lanzamiento."
+        },
+        {
+          "area": "Chambers / Vault",
+          "verdict": "Progresión profunda",
+          "detail": "Las Chambers dan acceso a la Vault; la Vault lleva a Atziri, la Reina Roja."
+        }
+      ]
+    },
+    {
+      "id": "boss-access",
+      "order": 3,
+      "title": "Acceso a jefes: Architect, Atziri, Chambers",
+      "toc": true,
+      "visible": true,
+      "type": "boss-impact",
+      "bosses": [
+        {
+          "name": "The Architect",
+          "detail": "Construye y defiende las salas del Templo. Tras 0.4.0e su ritmo se ajustó para que sea una amenaza, no el fin de la partida.",
+          "action": "Trátalo como una amenaza de ritmo; no sobreinviertas en planes anti-bloqueo."
+        },
+        {
+          "name": "Atziri, the Red Queen",
+          "detail": "Jefa final a la que se accede a través de la Vault. Su identidad no cambia, pero el acceso al arena sigue las reglas de conexión posteriores a 0.4.0d.",
+          "action": "Actualiza las guías de acceso a las reglas de conexión actuales."
+        },
+        {
+          "name": "Vaal-touched rares",
+          "detail": "Modificadores corruptores dentro de las salas del Templo; parte del riesgo/recompensa de la liga.",
+          "action": "Mapa bajo Endgame/Temple, no como una liga separada."
+        }
+      ]
+    },
+    {
+      "id": "reward-map",
+      "order": 4,
+      "title": "Mapa de recompensas",
+      "toc": true,
+      "visible": true,
+      "type": "item-impact",
+      "items": [
+        {
+          "kind": "Currency",
+          "title": "Orb of Sacrifice",
+          "detail": "Central para el crafteo del Templo y los flujos de corrupción Vaal introducidos con la liga.",
+          "tags": [
+            "vaal",
+            "currency",
+            "crafting"
+          ]
+        },
+        {
+          "kind": "Currency",
+          "title": "Vaal Orb",
+          "detail": "Su rol corruptor es coherente con el comportamiento anterior, promovido junto a la historia de los Vaal.",
+          "tags": [
+            "vaal",
+            "corruption"
+          ]
+        },
+        {
+          "kind": "Base item",
+          "title": "Talisman",
+          "detail": "Base de arma de transformación introducida en la misma ventana 0.4.0; cae con frecuencia en contenido Vaal.",
+          "tags": [
+            "druid",
+            "weapon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixes-d",
+      "order": 5,
+      "title": "Correcciones 0.4.0d",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Lógica de conexión de salas",
+          "detail": "0.4.0d reescribió cómo se conectan las salas colocadas, reduciendo las salas inalcanzables y las rutas sin salida.",
+          "scope": "Notas oficiales 0.4.0d"
+        },
+        {
+          "category": "fix",
+          "title": "Flujo de reintento tras muerte",
+          "detail": "Mejoró la retroalimentación y el reintento tras la muerte dentro del Templo para que un fallo no corrompiera silenciosamente el estado de las salas.",
+          "scope": "Notas oficiales 0.4.0d"
+        },
+        {
+          "category": "fix",
+          "title": "Retroalimentación del estado del mapa",
+          "detail": "Añadió indicadores más claros de qué salas estaban conectadas frente a pendientes.",
+          "scope": "Notas oficiales 0.4.0d"
+        }
+      ]
+    },
+    {
+      "id": "fixes-e",
+      "order": 6,
+      "title": "Correcciones 0.4.0e",
+      "toc": true,
+      "visible": true,
+      "type": "change-explorer",
+      "changes": [
+        {
+          "category": "fix",
+          "title": "Eliminada la Desestabilización automática",
+          "detail": "0.4.0e eliminó la auto-Desestabilización que podía bloquear un Templo sin aviso; ahora las salas solo se desestabilizan tras avisos explícitos.",
+          "scope": "Notas oficiales 0.4.0e"
+        },
+        {
+          "category": "balance",
+          "title": "Ritmo del Architect",
+          "detail": "Ajustó la presión del Architect tras eliminar la Desestabilización para que la liga mantuviera tensión sin aleatoriedad que terminara la partida.",
+          "scope": "Notas oficiales 0.4.0e"
+        },
+        {
+          "category": "qol",
+          "title": "Avisos de UI del Templo",
+          "detail": "Añadió avisos explícitos antes de que una sala se desestabilice, reemplazando el auto-bloqueo silencioso.",
+          "scope": "Notas oficiales 0.4.0e"
+        }
+      ]
+    },
+    {
+      "id": "then-now",
+      "order": 7,
+      "title": "Antes vs Ahora",
+      "toc": true,
+      "visible": true,
+      "type": "then-vs-now",
+      "rows": [
+        {
+          "aspect": "Conectividad de salas",
+          "thenText": "Lanzamiento 0.4.0: las salas se desconectaban con frecuencia o quedaban inalcanzables.",
+          "nowText": "La lógica de conexión 0.4.0d mantiene las salas alcanzables; la retroalimentación del mapa es explícita."
+        },
+        {
+          "aspect": "Desestabilización",
+          "thenText": "Lanzamiento 0.4.0: el Templo podía auto-desestabilizarse sin aviso.",
+          "nowText": "0.4.0e eliminó la auto-Desestabilización; las salas avisan primero."
+        },
+        {
+          "aspect": "Muerte dentro del Templo",
+          "thenText": "Lanzamiento 0.4.0: una muerte podía corromper silenciosamente el estado de las salas.",
+          "nowText": "El flujo de reintento 0.4.0d preserva el estado y da retroalimentación clara."
+        }
+      ]
+    },
+    {
+      "id": "applicability",
+      "order": 8,
+      "title": "Aplicabilidad actual (0.5.4e)",
+      "toc": true,
+      "visible": true,
+      "type": "current-applicability",
+      "rows": [
+        {
+          "topic": "Construcción de salas Baliza / Energía",
+          "status": "still-current",
+          "currentSummary": "El bucle central del Templo no cambia en identidad; construye salas con Balizas que gastan Energía.",
+          "supersededBy": "—",
+          "affectedContent": "Guía del Templo de Atziri"
+        },
+        {
+          "topic": "Reglas de conectividad de salas",
+          "status": "changed-later",
+          "currentSummary": "0.4.0d reescribió la conectividad; actualizaciones de mapa posteriores pudieron ajustar más.",
+          "supersededBy": "0.4.0d, actualizaciones de mapa 0.5.x",
+          "affectedContent": "Guía del Templo de Atziri"
+        },
+        {
+          "topic": "Desestabilización automática",
+          "status": "removed",
+          "currentSummary": "Eliminada en 0.4.0e; las salas ya no se bloquean solas.",
+          "supersededBy": "0.4.0e",
+          "affectedContent": "Guía de Fate of the Vaal"
+        },
+        {
+          "topic": "Atziri como jefa final",
+          "status": "still-current",
+          "currentSummary": "Atziri sigue siendo la jefa final del Templo en 0.5.4e.",
+          "supersededBy": "—",
+          "affectedContent": "Página de jefe de Atziri"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "order": 9,
+      "title": "Evidencia de la comunidad",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "reports": [
+        {
+          "source": "Reddit (semana de lanzamiento 0.4.0)",
+          "context": "Los jugadores reportaron salas inalcanzables y desestabilización silenciosa.",
+          "quote": "La mitad de mi Templo era inalcanzable y luego se desestabilizó sin aviso.",
+          "analysis": "Coincide con el comportamiento de lanzamiento; 0.4.0d corrigió la conectividad y 0.4.0e eliminó la auto-Desestabilización. Las partidas actuales no deberían mostrar esto."
+        },
+        {
+          "source": "Foro (post-0.4.0e)",
+          "context": "Los jugadores confirmaron avisos antes de la desestabilización.",
+          "quote": "Ahora sí recibo un aviso antes de que una sala se vaya.",
+          "analysis": "Confirma que el comportamiento 0.4.0e está activo; usa guías posteriores a 0.4.0e."
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 10,
+      "title": "Solución de problemas",
+      "toc": true,
+      "visible": true,
+      "type": "known-issues",
+      "issues": [
+        {
+          "text": "Una sala muestra 'pendiente' y no se conecta — verifica la colocación de la Baliza y la Energía; esto es esperado antes de la conexión, no un bug.",
+          "status": "tracking"
+        },
+        {
+          "text": "Atziri inalcanzable — confirma que el enrutamiento de Chamber sigue las reglas de conexión posteriores a 0.4.0d, no las rutas de la semana de lanzamiento.",
+          "status": "open"
+        },
+        {
+          "text": "Vídeos antiguos muestran auto-Desestabilización — son previos a 0.4.0e y no reflejan las reglas actuales.",
+          "status": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "affected",
+      "order": 11,
+      "title": "Contenido afectado",
+      "toc": true,
+      "visible": true,
+      "type": "affected-content",
+      "rows": [
+        {
+          "name": "Guía del Templo de Atziri",
+          "type": "guide",
+          "trigger": "Cambios de conexión y Desestabilización 0.4.0d/e",
+          "action": "Reescribe las secciones de conexión y reintento; elimina la auto-Desestabilización.",
+          "status": "queued"
+        },
+        {
+          "name": "Página de jefe de Atziri",
+          "type": "boss",
+          "trigger": "Reglas de acceso al arena",
+          "action": "Actualiza el acceso a las reglas posteriores a 0.4.0d.",
+          "status": "reviewing"
+        },
+        {
+          "name": "Página de objeto Orb of Sacrifice",
+          "type": "item",
+          "trigger": "Crafteo del Templo",
+          "action": "Documenta el flujo de corrupción Vaal.",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 12,
+      "title": "Vídeo histórico",
+      "toc": false,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "0.4.0 Fate of the Vaal — construcción del Templo",
+          "url": "https://www.youtube.com/watch?v=R4c0znfzdBQ",
+          "takeaway": "Muestra del Templo de la semana de lanzamiento; nota que la auto-Desestabilización mostrada se eliminó en 0.4.0e.",
+          "creator": "Official Path of Exile 2"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 13,
+      "title": "Preguntas frecuentes",
+      "toc": true,
+      "visible": true,
+      "type": "faq",
+      "items": [
+        {
+          "question": "¿Por qué los vídeos antiguos del Templo muestran salas desestabilizándose solas?",
+          "answer": [
+            "Ese era el comportamiento del lanzamiento 0.4.0 0.4.0e eliminó la desestabilización automática ahora las salas avisan antes de desestabilizarse"
+          ]
+        },
+        {
+          "question": "¿Siguen siendo Balizas y Energía la forma en que funciona el Templo?",
+          "answer": [
+            "Sí el bucle de construcción de salas con baliza y energía sigue siendo la mecánica central del templo en 0.5.4e solo cambiaron las reglas de conectividad y desestabilización"
+          ]
+        },
+        {
+          "question": "¿Sigue siendo Atziri la jefa final?",
+          "answer": [
+            "Sí atziri la reina roja sigue siendo la jefa final del templo solo cambió la ruta de acceso al arena tras 0.4.0d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 14,
+      "title": "Fuentes y verificación",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "Notas oficiales del parche 0.4.0 de Path of Exile 2",
+          "description": "Introducción de la liga Fate of the Vaal y el Templo de Atziri.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3981000"
+        },
+        {
+          "label": "Notas oficiales del parche 0.4.0d de Path of Exile 2",
+          "description": "Correcciones de conexión de salas y reintento tras muerte.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3983000"
+        },
+        {
+          "label": "Notas oficiales del parche 0.4.0e de Path of Exile 2",
+          "description": "Eliminación de la Desestabilización automática y ajuste del Architect.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3985000"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "atziri-red-queen"
+  ],
+  "relatedItemIds": [
+    "orb-of-sacrifice",
+    "vaal-orb"
+  ],
+  "relatedGuideIds": [],
+  "relatedSkillIds": [],
+  "sources": [
+    {
+      "label": "Notas oficiales del parche 0.4.0 de Path of Exile 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3981000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Notas oficiales del parche 0.4.0d de Path of Exile 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3983000",
+      "sourceType": "official"
+    },
+    {
+      "label": "Notas oficiales del parche 0.4.0e de Path of Exile 2",
+      "url": "https://www.pathofexile.com/forum/view-thread/3985000",
+      "sourceType": "official"
+    }
+  ],
+  "seo": {
+    "title": "PoE2 0.4.0 Fate of the Vaal y el Templo de Atziri — Balizas, salas y correcciones 0.4.0d/e",
+    "description": "Cómo funcionaba el Templo de Atziri 0.4.0, por qué las salas fallaban al lanzamiento y qué cambiaron 0.4.0d/e para 0.5.4e.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "patch-0-4-0-fate-of-the-vaal-temple",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

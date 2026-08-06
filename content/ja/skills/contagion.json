@@ -1,0 +1,415 @@
+{
+  "id": "contagion",
+  "slug": "contagion",
+  "locale": "ja",
+  "type": "skill",
+  "status": "published",
+  "featured": true,
+  "title": "Contagion スキルガイド — カオス波及、デバフ伝播、そして「広がらない」理由",
+  "shortTitle": "Contagion",
+  "summary": "Contagion はカオス系呪文です。自身にカオス DoT を与え、対象の死亡時（または脈動時）に、その対象が保持していたすべてのカオスデバフ（Essence Drain を含む）を周囲の敵へ拡散させます。本ガイドでは、自身のダメージと波及の価値の違い、どのデバフを広げるか、なぜ品質が初期対象数を増やすのか、そして「なぜ広がらないのか」のトラブルシューティング一覧を解説します。",
+  "description": "Contagion カオス呪文の徹底ガイド：自身の DoT と波及の価値、広げるデバフ・呪い、波及チェーンとダメージの伸び、持続時間の更新、品質による初期対象数、Essence Drain や呪いとの相性、「広がらない」チェックリストと実際のコミュニティの問題点。",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "spell",
+    "chaos",
+    "dot",
+    "aoe",
+    "spread",
+    "duration"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Editorial Team",
+  "createdAt": "2026-08-01",
+  "publishedAt": "2026-08-01",
+  "updatedAt": "2026-08-01",
+  "tags": [
+    "active",
+    "aoe",
+    "chaos",
+    "dot",
+    "spell"
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "order": 10,
+      "title": "概要：Contagion の仕組み",
+      "type": "overview",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Contagion はカオス系呪文ですが、本来の価値はその自身のダメージではなく「波及」にあります。対象に Contagion を付与した後、その対象の死亡時（または脈動のタイミング）に、その対象が保持していたすべてのカオスデバフ——特に Essence Drain の DoT——を周囲の敵へ伝播させます。言い換えれば、これは ED の「増幅装置」です。",
+        "役割が波及であるため、Contagion 自身が与えるカオス DoT は終盤では重要ではなくなります。中核となる機能は「Essence Drain のデバフを画面全体に展開すること」です。この点を理解しておけば、Contagion 自体を無意味にレベル上げすることを避けられます。",
+        "Essence Drain とは強い相性を持ちますが、検索意図は独立しています。プレイヤーはしばしば「なぜ Contagion が広がらないのか」「品質は何を追加するのか」「呪いや死体とどう相互作用するのか」を検索します。これらに本ガイドは直接答えます。"
+      ],
+      "bullets": [
+        "要点：カオス呪文＋波及メカニズム（保持しているカオスデバフを周囲の敵へ伝播させる）。",
+        "自身のダメージは終盤では重要ではなく、中核の機能は ED のデバフを展開すること。",
+        "Essence Drain とは強い相性を持つが、検索意図や疑問は独立している。",
+        "典型的な使い手：Lich ／ 各種キャスターリーグスタート（ED＋Con）。"
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 20,
+      "title": "基礎メカニズム：何を広げるか、いつ広がるか、ダメージの伸び",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "何を広げるか：Contagion は、対象が保持していたカオスデバフ（Essence Drain の DoT を含む）と一部の呪い・カオスデバフを、対象の死亡時または脈動時に周囲の敵へ伝播させます。これは新たな独立したダメージインスタンスを生成するのではなく、すでに付与されているデバフを「運ぶ」ものです。つまり、Contagion が広げるものを持つには、事前に ED のようなデバフが対象に存在している必要があります。",
+        "いつ広がるか：一般的なトリガーは「対象の死亡」または「脈動のタイミング」です（現在のクライアントで確認）。つまり雑魚を掃除する際、パックに ED＋Con を付与し、それらが死ぬたびにデバフが次のパックへチェーンし、雪だるま式の殲滅が生まれます。",
+        "ダメージの伸びと上限：各回の波及は既存のデバフを新たな対象へコピーし、理論上は素早く膨大な数の敵をカバーできます。しかし単一デバフの毎秒ダメージが波及によって倍増するわけではありません。波及が変えるのは「カバー数」であり、「単体ダメージ」ではありません。ボスには「死亡波及」の担い手がいないため、Contagion は単体に対してほとんど何も寄与しません。",
+        "持続時間の更新：新たに波及した対象は、その持続時間内にデバフを受け取ります。持続時間の更新ルールを理解しておくことで、波及チェーンを維持できます。一方品質は、単体ダメージを上げるのではなく「初期対象数」を増やします（1 回の詠唱でより多くの開始対象をカバーする）。"
+      ],
+      "bullets": [
+        "広げるのはすでに付与されたカオスデバフ（ED の DoT など）であり、新たなダメージではない。",
+        "一般的なトリガー：対象の死亡／脈動。死亡波及のチェーンで殲滅する。",
+        "波及はカバー数を変えるものであり、毎秒の単体ダメージではない。",
+        "品質は初期対象数を追加。持続時間が波及チェーンを持続させるかを決める。"
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 30,
+      "title": "主要特性と入手方法",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "スキルタイプ",
+          "value": "Active Spell (Chaos)",
+          "notes": [
+            "呪文、カオス、dot、aoe、spread、duration のタグ付き。"
+          ]
+        },
+        {
+          "label": "武器要件",
+          "value": "Staff / Wand + Focus",
+          "notes": [
+            "呪文であるため、通常は +スキルレベル／+カオスダメージ／+詠唱速度 と組み合わせる。"
+          ]
+        },
+        {
+          "label": "入手方法",
+          "value": "未加工スキルジェム",
+          "notes": [
+            "キャンペーン序盤（約レベル 1 から使用可能）ですぐに解放でき、ED＋Con コンボの波及の基盤。"
+          ]
+        },
+        {
+          "label": "Mana cost",
+          "value": "Scales with level and combo",
+          "notes": [
+            "高頻度のカバースキルであるため、マナの負担は単発の詠唱ではなく全体のループから生じる。"
+          ]
+        },
+        {
+          "label": "品質",
+          "value": "+1 initial target (approx.)",
+          "notes": [
+            "品質は 1 回の詠唱ごとの初期対象数を増やし、波及チェーンを展開する鍵となる。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "supports",
+      "order": 40,
+      "title": "推奨サポートジェム",
+      "type": "supports",
+      "visible": true,
+      "toc": true,
+      "supports": [
+        {
+          "label": "Unleash",
+          "priority": "core",
+          "notes": [
+            "1 回の詠唱で複数回の解放を蓄積し、より多くの対象へ素早く Contagion を配置する。",
+            "殲滅カバーの中核サポート。"
+          ]
+        },
+        {
+          "label": "拡大領域",
+          "priority": "core",
+          "notes": [
+            "波及トリガーの半径を広げ、チェーンがより遠くへ届くようにする。",
+            "単体よりも殲滅での価値が明らかに高い。"
+          ]
+        },
+        {
+          "label": "Deadly Ailments",
+          "priority": "situational",
+          "notes": [
+            "Contagion 自身の DoT にもダメージを寄与させたい場合は増幅する。ただし自身のダメージは終盤では重要ではない。",
+            "主な価値はカオス DoT 全体のスケーリングにある。"
+          ]
+        },
+        {
+          "label": "Swift Affliction",
+          "priority": "situational",
+          "notes": [
+            "DoT の解決を速め、間接的に波及デバフの効率を向上させる。",
+            "Contagion 自身よりも ED のリンクで使われることが多い。"
+          ]
+        },
+        {
+          "label": "Arcane Tempo",
+          "priority": "situational",
+          "notes": [
+            "詠唱速度を提供し、カバー頻度を改善する。",
+            "殲滅と全体のループの両方に恩恵がある。"
+          ]
+        },
+        {
+          "label": "Energy Retention",
+          "priority": "optional",
+          "notes": [
+            "マナコストを下げ、高頻度のカバーによる負担を和らげる。"
+          ]
+        },
+        {
+          "label": "Prolonged Duration",
+          "priority": "optional",
+          "notes": [
+            "デバフの持続時間を延長し、波及チェーンが切れにくくなる。",
+            "持続時間の更新ロジックとより安定して組み合わせられる。"
+          ]
+        },
+        {
+          "label": "Considered Casting",
+          "priority": "optional",
+          "notes": [
+            "同じリンクが呪いを運ぶ場合、呪いの効果を増幅する。",
+            "呪いを組み込んだリンクでのみ意味を持つ。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-use-cases",
+      "order": 50,
+      "title": "ビルド間の役割と違い",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lich：Contagion は ED＋Con 殲滅コンボの波及エンジンです。死んでいくパックへ ED のデバフをチェーンさせ、Lich は単体操作を最小限に抑えながら画面全体を殲滅できます。終盤では自身のダメージへの投資を完全に止め、すべての価値は「ED の展開」から生まれます。",
+        "一般的なキャスターリーグスタート：キャンペーン中、Contagion は ED とほぼ一体となって現れます。最もスムーズなキャスターリーグスタートの殲滅コンボであり、先に Contagion をかけてから ED、あるいは先に ED をかけてから Contagion、いずれも波及チェーンを形成します。",
+        "呪い・死体との相互作用：Contagion が主に広げるのは「カオスデバフ」であり、Despair のような呪いや死体メカニズムとは別のシステムです。「呪いが広がらなかった」と Contagion の問題と誤認しないでください。死体との相互作用（Unearth など）は追加の手段であり、Contagion に必須の前提条件ではありません。"
+      ],
+      "bullets": [
+        "Lich：Contagion は ED の波及エンジン。自身のダメージには終盤投資しない。",
+        "リーグスタート：ED と一体となり、死亡波及のチェーンを形成する。",
+        "呪い・死体は別のシステム。「呪いが広がらない」と Contagion を責めないこと。"
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "order": 60,
+      "title": "よくある間違い：「広がらない」理由",
+      "type": "common-mistakes",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "対象が死ななかった：典型的な波及トリガーは対象の死亡（または脈動）です。デバフを付与するだけで倒さなければ、チェーンした波及は起きません。まず十分なキル速度（ED の DoT で敵を毒殺する）を確保してください。",
+        "同じ対象に当てていない／デバフが切れた：波及には、対象が実際に広げ可能なカオスデバフを保持しており、かつ持続時間内であることが必要です。ED のデバフがすでに切れていれば、Contagion が広げるものは何もありません。",
+        "波及範囲が不十分：拡大領域が足りない、あるいは壁や地形に遮られていると、チェーンは途中で途切れます。開けた地形＋十分な範囲が、うまく転がるための条件です。",
+        "終盤で Contagion をレベル上げする：Contagion 自身のダメージは終盤では重要ではありません。資源を ED や品質（初期対象数）へ投資する方が費用対効果が高いです。",
+        "ボスで役立つと期待する：ボスには「死亡波及」の担い手がいないため、Contagion は単体に対してほとんど何も寄与しません。単体は ED＋Dark Effigy／Despair に任せましょう。"
+      ],
+      "bullets": [
+        "問題：広がらない。即答：対象の死亡／脈動トリガーが必要。まず倒すこと。",
+        "問題：チェーンが途中で切れる。即答：デバフ切れか範囲遮断。範囲と持続時間を追加。",
+        "問題：ダメージが低い。即答：終盤で Contagion をレベル上げしない。ED／品質へ投資。",
+        "問題：ボスで無力。即答：単体は ED＋増幅に依存。Contagion は単体向けではない。"
+      ]
+    },
+    {
+      "id": "video",
+      "order": 70,
+      "title": "動画デモとタイムスタンプ",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "ronarray",
+          "label": "0.5 ED+Con Lich リーグスタート＆エンドゲーム デモ",
+          "description": "リーグスタートのレベリング、ソケットリンクからエンドゲームまでを網羅し、Essence Drain＋Contagion の波及ループと殲滅のリズムを解説。",
+          "takeaway": "Contagion が死んでいくパックへ ED のデバフをどうチェーンさせ、なぜ終盤では自身のダメージに投資しなくなるのかを観察する。",
+          "url": "https://youtu.be/qbrEeLZzuqI",
+          "timestamps": [
+            {
+              "label": "概要とビルドの特性",
+              "time": "0:00"
+            },
+            {
+              "label": "リーグスタートのレベリングとソケットリンク",
+              "time": "1:30"
+            },
+            {
+              "label": "ED/Con 波及ループ",
+              "time": "4:00"
+            },
+            {
+              "label": "チェーンした波及の実践",
+              "time": "7:00"
+            },
+            {
+              "label": "エンドゲームのプレイ",
+              "time": "11:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "order": 80,
+      "title": "よくある質問",
+      "type": "faq",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "question": "Contagion はどのデバフを広げますか？",
+          "answer": [
+            "対象が保持していたカオスデバフ（Essence Drain の DoT を含む）と一部のカオスデバフを、死亡／脈動時に周囲の敵へ広げます。",
+            "自身で新たなダメージを生成するわけではなく、すでに付与されたデバフを「運ぶ」だけです。"
+          ]
+        },
+        {
+          "question": "Contagion を唱えたのに広がらないのはなぜですか？",
+          "answer": [
+            "典型的なトリガーは対象の死亡／脈動です。倒さなければチェーンした波及は起きません。まずキル速度を確保してください。",
+            "対象のデバフが切れた、あるいは地形や範囲に遮られたことも考えられます。項目ごとにトラブルシューティングしてください。"
+          ]
+        },
+        {
+          "question": "品質は何を改善しますか？",
+          "answer": [
+            "品質は 1 回の詠唱ごとの初期対象数を増やし、波及チェーンを展開しやすくします。",
+            "単体ダメージを直接上げるわけではないため、価値は殲滅カバーに現れます。"
+          ]
+        },
+        {
+          "question": "終盤でも Contagion をレベル上げすべきですか？",
+          "answer": [
+            "いいえ。終盤では中核の機能は ED の展開であり、自身のダメージはもはや重要ではありません。",
+            "資源は ED／呪いの増幅／品質（初期対象数）へシフトすべきです。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 90,
+      "title": "更新履歴",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-01",
+          "changes": [
+            "初回リリース：波及メカニズム、波及範囲、品質の初期対象数、「広がらない」チェックリスト、ED との相性。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 100,
+      "title": "出典と検証",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "公式",
+          "description": "GGG 公式フォーラムのパッチノートとアナウンス。0.5 でのカオス DoT と波及メカニズムの調整を確認するために使用。",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "データベース",
+          "description": "PoE2DB とコミュニティ Wiki が、タグ、マナコスト、レベルスケーリング、隠し挙動フィールドを提供。",
+          "url": "https://poe2db.tw/us/Skill_Gems"
+        },
+        {
+          "label": "ビルドと動画",
+          "description": "ronarray の 0.5 ED+Con Lich リーグスタートガイドと Maxroll の Essence Drain Lich ガイド。Contagion の波及ループと終盤の役割を相互検証。",
+          "url": "https://maxroll.gg/poe2/build-guides/essence-drain-lich-build-guide-clone"
+        },
+        {
+          "label": "コミュニティでの議論",
+          "description": "Reddit、公式フォーラム、コメントから、「広がらない、品質は何を追加するか、呪い・死体とどう相互作用するか」といった実際の問題が浮上。クライアント上で再現し直接回答。"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4"
+      }
+    }
+  ],
+  "relatedBuildIds": [
+    "ed-contagion-lich"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [],
+  "relatedPatchIds": [],
+  "sources": [
+    {
+      "label": "PoE2 公式パッチノート フォーラム",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2DB スキルジェム データベース",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Skill_Gems"
+    },
+    {
+      "label": "PoE2 コミュニティ Wiki",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Skill_gem"
+    },
+    {
+      "label": "Maxroll — Essence Drain Lich Guide",
+      "sourceType": "community",
+      "url": "https://maxroll.gg/poe2/build-guides/essence-drain-lich-build-guide-clone"
+    },
+    {
+      "label": "ronarray — 0.5 ED+Con Lich Video",
+      "sourceType": "community",
+      "url": "https://youtu.be/qbrEeLZzuqI"
+    }
+  ],
+  "seo": {
+    "title": "Contagion スキルガイド — カオス波及、デバフ伝播、そして「広がらない」理由",
+    "description": "Contagion カオス呪文の徹底ガイド：自身の DoT と波及の価値、広げるデバフ、品質の初期対象数、Essence Drain や呪いとの相性、「広がらない」チェックリストとコミュニティの問題点。",
+    "noindex": false
+  },
+  "heroImage": "/images/skills/contagion.webp",
+  "cardImage": "/images/skills/contagion.webp",
+  "imageAlt": "Contagion スキルジェムのアイコン",
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "contagion",
+    "sourceRevision": "2026-08-01",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

@@ -1,0 +1,1039 @@
+{
+  "id": "jewels-and-jewel-sockets",
+  "slug": "jewels-and-jewel-sockets",
+  "locale": "ko",
+  "type": "item",
+  "status": "published",
+  "featured": false,
+  "title": "보석 및 보석 소켓: 유형, 반경, 부패 및 패시브 트리 활용 (0.5.4)",
+  "shortTitle": "보석 및 보석 소켓",
+  "summary": "Path of Exile 2 0.5.4에서 보석의 작동 방식: 보석 소켓의 위치, 먼저 할당해야 하는지 여부, Ruby/Emerald/Sapphire/Diamond 베이스의 차이, 일반/마법/레어/고유 수식어 개수, 부패한 보석과 일반 보석의 차이, Time-Lost 보석이 반경 내 노드에 영향을 주는 이유, Timeless와 Time-Lost의 차이, Sinister Socket 규칙, 반경 표시 방식, 장착 제한, 그리고 0.2 /reclaimjewels 수정 사항. 소켓이 패시브 포인트 가치가 있는지 판단하는 보석 가치 공식도 포함합니다.",
+  "description": "Path of Exile 2 보석 및 보석 소켓 가이드 0.5.4: 보석 소켓 할당, 베이스 유형, 수식어 개수, 부패, Time-Lost 반경, Timeless 대 Time-Lost, Sinister Socket, 반경 중첩, 장착 제한, /reclaimjewels 명령어, 그리고 보석 가치 공식.",
+  "itemType": "family-guide",
+  "rarity": null,
+  "requiredLevel": null,
+  "useCases": [
+    "passive-tree",
+    "crafting",
+    "build-planning"
+  ],
+  "itemCategory": "socketables",
+  "subcategoryId": "jewels",
+  "itemClass": "jewel",
+  "patch": "Path of Exile 2 Early Access 0.5.4",
+  "league": "Early Access",
+  "patchStatus": "current",
+  "verificationStatus": "pending-pc",
+  "author": "Exile2 Guides Editorial Team",
+  "reviewer": "Exile2 Guides Automated QA",
+  "createdAt": "2026-08-03",
+  "publishedAt": "2026-08-03",
+  "updatedAt": "2026-08-03",
+  "lastVerifiedAt": "2026-08-03",
+  "heroImage": "/images/items/jewellers-orbs-hero.webp",
+  "cardImage": "/images/items/jewellers-orbs-hero.webp",
+  "imageAlt": "할당된 보석 소켓과 Time-Lost 보석이 투사한 흰색 반경 원을 보여주는 Path of Exile 2 패시브 스킬 트리 이미지",
+  "tags": [
+    "jewels",
+    "jewel-sockets",
+    "passive-tree",
+    "crafting",
+    "build-planning",
+    "socketables",
+    "family-guide"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "빠른 정답",
+      "toc": true,
+      "visible": true,
+      "type": "quick-answer",
+      "callout": "보석은 패시브 스킬 트리에서 할당된 보석 소켓에 꽂으며, 캐릭터에 보너스를 부여하거나(Time-Lost 및 고유 반경 보석의 경우) 반경 원 안의 패시브 노드에 보너스를 부여합니다. 기본 보석은 자체 명시적 수식어를 적용합니다. Time-Lost 보석과 고유 반경 보석(Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac, Voices)은 반경 내 노드를 재작성합니다. 보석의 가치가 패시브 포인트 및 경로 비용을 능가할 때만 소켓을 할당하세요.",
+      "calloutDetail": [
+        "보석 소켓은 패시브 노드이며 보석을 꽂기 전에 할당(트리에 연결)되어야 합니다.",
+        "Time-Lost 및 고유 반경 보석은 흰색 원을 투사하며, 그 원 안의 노드만 영향을 받습니다.",
+        "보석 가치 섹션의 비용 공식을 사용하여 소켓이 포인트 가치가 있는지 판단하세요."
+      ],
+      "answers": [
+        {
+          "label": "사용 용도",
+          "text": [
+            "패시브 트리를 통해 빌드에 속성, 생명력, 저항, 피해 또는 전문화된 할당 메커니즘을 추가합니다."
+          ]
+        },
+        {
+          "label": "먼저 확인",
+          "text": [
+            "소켓이 할당되었는지 확인하고, 보석의 반경과 장착 제한을 읽으며, 소켓이 소모하는 패시브 포인트의 가격을 산정하세요."
+          ]
+        },
+        {
+          "label": "피해야 할 것",
+          "text": [
+            "가치 낮은 소켓에 도달하려고 3-4 경로 포인트를 소비하거나, Timeless를 Time-Lost와 같다고 가정하거나, 고유 보석을 Sinister Socket에 넣는 것."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "#family-overview",
+          "label": "보석 계열 비교"
+        },
+        {
+          "href": "#valuation",
+          "label": "보석 가치 공식"
+        }
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "빠른 사실",
+      "toc": true,
+      "visible": true,
+      "type": "quick-facts",
+      "facts": [
+        {
+          "label": "아이템 클래스",
+          "value": "보석",
+          "note": [
+            "모든 보석은 보석 아이템 클래스를 공유하며 패시브 트리의 보석 소켓(또는 일부는 장비의 Sinister Socket)에 꽂습니다."
+          ]
+        },
+        {
+          "label": "소켓 할당 필요",
+          "value": "예",
+          "note": [
+            "보석 소켓은 패시브 노드입니다. 우클릭으로 보석을 꽂기 전에 할당되고 연결되어야 합니다."
+          ]
+        },
+        {
+          "label": "베이스 유형",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "note": [
+            "색상 베이스는 명시적 접두사 풀을 제한합니다. Diamond는 분광(고유) 베이스입니다."
+          ]
+        },
+        {
+          "label": "수식어 개수",
+          "value": "일반 2 / 마법 2 / 레어 최대 4",
+          "note": [
+            "일반 보석은 명시적 수식어 두 개를 굴리고, 마법은 두 개, 레어는 최대 네 개까지 가능하며, 고유 보석은 고정된 고유 라인을 가집니다."
+          ]
+        },
+        {
+          "label": "반경",
+          "value": "Time-Lost 및 고유 반경 보석만",
+          "note": [
+            "기본 보석은 자체 수식어를 직접 적용합니다. Time-Lost 및 고유 반경 보석만 반경 원을 투사합니다."
+          ]
+        },
+        {
+          "label": "장착 제한",
+          "value": "고유 보석별",
+          "note": [
+            "대부분의 고유 보석은 1로 제한되며(또는 Grand Spectrum의 경우 3), 해당 고유는 하나만 장착할 수 있습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-overview",
+      "order": 30,
+      "title": "보석 계열 비교",
+      "toc": true,
+      "visible": true,
+      "type": "family-overview",
+      "intro": [
+        "0.5.4에서 빌드 계획에 중요한 보석 그룹은 여섯 가지입니다. 이들은 위치, 반경 투사 여부, 하는 일이 다릅니다. 이것은 콘텐츠 계획의 계열 비교 표를 멤버 카드로 표현한 것입니다."
+      ],
+      "members": [
+        {
+          "id": "basic-jewel",
+          "eyebrow": "소켓 가능",
+          "title": "기본 보석",
+          "sub": "Ruby / Emerald / Sapphire / Diamond",
+          "body": [
+            "할당된 일반 보석 소켓 어디에나 들어갑니다. 반경 없이 자체 명시적 수식어를 직접 적용합니다.",
+            "베이스 색상이 접두사 풀을 제한합니다. Ruby는 방어구/무기 숙련에, Sapphire는 ES/캐스터에, Emerald는 회피/원거리에, Diamond는 분광에 치중합니다."
+          ],
+          "tags": [
+            "basic",
+            "socketables"
+          ]
+        },
+        {
+          "id": "time-lost-jewel",
+          "eyebrow": "Sekhemas",
+          "title": "Time-Lost 보석",
+          "sub": "Ruby / Emerald / Sapphire",
+          "body": [
+            "Trial of the Sekhemas의 Time-Lost Cache에서 드롭합니다. 반경(Medium에서 Large)을 가집니다.",
+            "수식어가 '반경 내에도 부여' 하는 방식으로 원 안 노드에 보너스를 줍니다. 흔한 실수: 트리에 맞지 않는 수식어를 구매하는 것."
+          ],
+          "tags": [
+            "time-lost",
+            "radius"
+          ]
+        },
+        {
+          "id": "diamond-unique",
+          "eyebrow": "Unique",
+          "title": "Diamond 고유 보석",
+          "sub": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac",
+          "body": [
+            "특수 할당 또는 반경 메커니즘을 가진 Diamond 베이스의 고유 보석.",
+            "흔한 실수: 구매 전 핵심 특성이나 반경 동작을 이해하지 못하는 것."
+          ],
+          "tags": [
+            "unique",
+            "diamond"
+          ]
+        },
+        {
+          "id": "timeless-jewel",
+          "eyebrow": "Expedition",
+          "title": "Timeless 보석",
+          "sub": "Heroic Tragedy, Undying Hate",
+          "body": [
+            "Expedition 정점 보스에서 드롭합니다. 역사적 반경을 가지며 시드와 핵심 특성으로 패시브를 변환합니다.",
+            "흔한 실수: 이름만 읽고 결과를 결정하는 시드를 무시하는 것."
+          ],
+          "tags": [
+            "timeless",
+            "seed"
+          ]
+        },
+        {
+          "id": "sinister-jewel",
+          "eyebrow": "장비 소켓",
+          "title": "Sinister 보석",
+          "sub": "Via Voices",
+          "body": [
+            "패시브 트리가 아닌 Voices를 통해 장비에 나타납니다. 일반 반경이 없습니다.",
+            "독립적인 보석 효과를 부여합니다. 흔한 실수: 고유 보석을 Sinister Socket에 넣으려 하는 것."
+          ],
+          "tags": [
+            "sinister",
+            "voices"
+          ]
+        },
+        {
+          "id": "corrupted-jewel",
+          "eyebrow": "부패",
+          "title": "부패한 보석",
+          "sub": "모든 베이스, 부패 후",
+          "body": [
+            "부패 암시어를 얻으며 더 이상 일반 제작 통화로 변경할 수 없습니다.",
+            "흔한 실수: 깨끗한 보석처럼 여전히 일반 수정이나 Divine Orb 처리가 가능하다고 가정하는 것."
+          ],
+          "tags": [
+            "corrupted",
+            "vaal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "order": 40,
+      "title": "속성 및 대표 툴팁",
+      "toc": true,
+      "visible": true,
+      "type": "properties",
+      "properties": [
+        {
+          "label": "아이템 클래스",
+          "value": "보석",
+          "notes": [
+            "모든 보석은 보석 아이템 클래스를 공유하며 패시브 트리의 보석 소켓에 꽂습니다."
+          ]
+        },
+        {
+          "label": "소켓 요구사항",
+          "value": "할당된 보석 소켓",
+          "notes": [
+            "보석을 꽂기 전에 소켓 노드가 할당(트리에 연결)되어야 합니다."
+          ]
+        },
+        {
+          "label": "베이스 유형",
+          "value": "Ruby / Emerald / Sapphire / Diamond",
+          "notes": [
+            "색상 베이스가 명시적 접두사 풀을 제한합니다: Ruby는 방어구/무기 숙련, Sapphire는 ES/캐스터, Emerald는 회피/원거리, Diamond는 분광."
+          ]
+        },
+        {
+          "label": "명시적 수식어(일반)",
+          "value": "기본 2개",
+          "notes": [
+            "일반 보석은 명시적 수식어 두 개를 굴리고, 마법은 두 개, 레어는 최대 네 개까지 가능합니다."
+          ]
+        },
+        {
+          "label": "반경(Time-Lost만)",
+          "value": "Medium to Large",
+          "notes": [
+            "Time-Lost 및 고유 반경 보석만 반경 원을 투사합니다. 기본 보석은 자체 수식어를 직접 적용합니다."
+          ]
+        },
+        {
+          "label": "부패",
+          "value": "부패 수식어 추가",
+          "notes": [
+            "부패한 보석은 부패 암시어를 얻으며 더 이상 제작 통화로 변경할 수 없습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "order": 50,
+      "title": "개요: 보석과 소켓의 작동 방식",
+      "toc": true,
+      "visible": true,
+      "type": "overview",
+      "paragraphs": [
+        "보석 소켓은 패시브 스킬 노드입니다. 다른 노드처럼 할당하며, 트리에 연결되면 우클릭으로 보석을 꽂을 수 있습니다. 그러면 기본 보석은 캐릭터에 자체 명시적 수식어를 부여합니다. Time-Lost 보석과 고유 반경 보석은 다르게 동작합니다. 트리에 흰색 반경 원을 투사하며, 그 원 안에 있는 패시브 노드에 수식어를 적용합니다.",
+        "베이스 유형이 중요합니다. Ruby, Emerald, Sapphire 보석은 색상 베이스로, 명시적 접두사 풀이 각각 방어구/무기 숙련, 회피/원거리, 에너지 보호막/캐스터 수식어에 치중됩니다. Diamond는 고유 보석(Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac)이 사용하는 분광 베이스이며 모든 접두사 목록에서 어떤 수식어든 굴릴 수 있습니다.",
+        "희귀도별 수식어 개수: 일반 보석은 명시적 수식어 두 개, 마법 보석은 두 개, 레어 보석은 최대 네 개까지 굴립니다. 고유 보석은 이를 고정된 고유 라인으로 대체합니다. 부패한 보석은 추가 부패 암시어를 얻으며 더 이상 일반 제작 통화로 변경할 수 없는데, 이것이 바로 The Adorned가 부패한 마법 보석을 원하는 이유입니다.",
+        "Time-Lost와 Timeless의 혼동은 가장 흔한 실수입니다. Time-Lost 보석(Ruby/Emerald/Sapphire, 또는 Diamond의 고유 Against the Darkness)은 Trial of the Sekhemas에서 나오며 무작위 접두사 스타일 보너스로 반경 내 노드를 수정합니다. Timeless 보석(Heroic Tragedy, Undying Hate)은 Expedition에서 나오며 숫자 시드와 핵심 특성에 따라 역사적 반경 내 패시브를 정복하거나 교체합니다. 이들은 드롭 출처와 규칙이 다른 별개 시스템입니다.",
+        "Sinister Socket은 패시브 트리 소켓이 아닙니다. 장비에 나타나며(예: Voices 고유 보석을 통해), 독립적 효과와 일반 반경 없는 특정 보석 세트를 받습니다. 고유 보석을 Sinister Socket에 넣을 수 없습니다.",
+        "반경은 반경 보석이 꽂히는 순간 흰색 원으로 표시되며, 패시브 트리 플래너도 미리 보여줍니다. 여러 반경이 중첩될 수 있으며, 두 개 이상의 반경 안에 있는 노드는 각각의 효과를 받습니다. 고유 보석은 종종 1로 제한되므로 해당 고유는 한 번에 하나만 장착할 수 있습니다.",
+        "0.2 패시브 트리 재구성 후 일부 보석 소켓이 이전 캐릭터에서 제거되었습니다. 영향을 받은 보석은 /reclaimjewels 채팅 명령으로 복구할 수 있습니다. 이것은 과거의 수정이지만, 트리 업데이트 후 여전히 보석이 누락된 오래된 캐릭터에는 여전히 올바른 해결책입니다."
+      ],
+      "bullets": [
+        "먼저 소켓: 보석 소켓은 꽂기 전에 할당되고 연결되어야 합니다.",
+        "색상 베이스가 접두사 풀을 제한하며, Diamond는 분광(고유)입니다.",
+        "일반/마법 = 2 수식어, 레어 = 최대 4, 고유 = 고정 라인.",
+        "Time-Lost = Sekhemas 반경 보너스; Timeless = Expedition 시드/핵심 특성 정복.",
+        "Sinister Socket은 트리가 아닌 장비에 있으며 고유 보석을 거부합니다.",
+        "반경은 중첩될 수 있으며, 장착 제한은 고유를 몇 개나 착용할지 제한합니다."
+      ]
+    },
+    {
+      "id": "eligibility",
+      "order": 60,
+      "title": "소켓 적합성 매트릭스",
+      "toc": true,
+      "visible": true,
+      "type": "eligibility",
+      "note": [
+        "어떤 보석이 어떤 소켓에 맞는지, 반경을 투사하는지, 그리고 특수 규칙은 무엇인지. 'text' 셀은 예/아니오 대신 관련 세부 정보를 제공합니다."
+      ],
+      "columns": [
+        "보석 유형",
+        "일반 소켓",
+        "Sinister Socket",
+        "반경",
+        "특수 규칙"
+      ],
+      "rows": [
+        {
+          "label": "기본 (Ruby/Emerald/Sapphire/Diamond)",
+          "values": [
+            { "kind": "yes", "text": "할당된 일반 보석 소켓 어디에나 들어감" },
+            { "kind": "no", "text": "Sinister Socket에 유효하지 않음" },
+            { "kind": "text", "text": "없음(직접 수식어)" },
+            { "kind": "text", "text": "자체 명시적 수식어만 부여" }
+          ]
+        },
+        {
+          "label": "Time-Lost 보석",
+          "values": [
+            { "kind": "yes", "text": "할당된 일반 보석 소켓 어디에나 들어감" },
+            { "kind": "no", "text": "Sinister Socket에 유효하지 않음" },
+            { "kind": "text", "text": "Medium에서 Large" },
+            { "kind": "text", "text": "반경 내 노드 수정" }
+          ]
+        },
+        {
+          "label": "Diamond 고유 (Against the Darkness 등)",
+          "values": [
+            { "kind": "yes", "text": "할당된 일반 보석 소켓 어디에나 들어감" },
+            { "kind": "no", "text": "Sinister Socket에 유효하지 않음" },
+            { "kind": "text", "text": "Medium(보석별 상이)" },
+            { "kind": "text", "text": "특수 할당 또는 반경 메커니즘" }
+          ]
+        },
+        {
+          "label": "Timeless 보석",
+          "values": [
+            { "kind": "yes", "text": "할당된 일반 보석 소켓 어디에나 들어감" },
+            { "kind": "no", "text": "Sinister Socket에 유효하지 않음" },
+            { "kind": "text", "text": "역사적(상이)" },
+            { "kind": "text", "text": "시드로 패시브 정복/교체" }
+          ]
+        },
+        {
+          "label": "Sinister 보석",
+          "values": [
+            { "kind": "no", "text": "일반 소켓에 유효하지 않음" },
+            { "kind": "yes", "text": "장비의 Sinister Socket에 들어감" },
+            { "kind": "text", "text": "없음(일반 반경 없음)" },
+            { "kind": "text", "text": "독립적 보석 효과" }
+          ]
+        },
+        {
+          "label": "부패한 보석",
+          "values": [
+            { "kind": "text", "text": "베이스가 일반 소켓에 맞으면 예" },
+            { "kind": "text", "text": "부패한 마법은 Sinister에 맞음" },
+            { "kind": "text", "text": "베이스에 따라 다름" },
+            { "kind": "text", "text": "추가 부패 수식어, 추가 제작 없음" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "order": 70,
+      "title": "보석 장착 및 미리보기 방법",
+      "toc": true,
+      "visible": true,
+      "type": "usage",
+      "steps": [
+        {
+          "label": "소켓까지 경로 만들기 및 할당",
+          "body": [
+            "보석 소켓으로 가는 경로를 계획하고 트리에 연결되도록 할당하세요. 보석을 넣기 전에 소켓이 할당되어 있어야 합니다."
+          ]
+        },
+        {
+          "label": "소켓에 맞는 올바른 보석 고르기",
+          "body": [
+            "베이스/접두사를 빌드에 맞추세요. 반경 보석의 경우 실제 트리에서 반경 안에 어떤 노드가 있는지 확인하세요."
+          ]
+        },
+        {
+          "label": "소켓 장착 및 반경 미리보기",
+          "body": [
+            "보석을 소켓에 우클릭하여 넣으세요. 흰색 원이 나타납니다. 노드에 마우스를 올려 어떤 Small 및 Notable 패시브가 영향을 받는지 확인하세요."
+          ]
+        },
+        {
+          "label": "반경 내 할당(필요 시)",
+          "body": [
+            "Time-Lost 및 고유 반경 보석의 경우 보너스는 반경 내에 할당한 노드에 적용됩니다. 일부 특수 굴림은 미할당 노드까지 확장됩니다."
+          ]
+        },
+        {
+          "label": "제거 또는 교체",
+          "body": [
+            "소켓을 우클릭하여 보석을 제거하세요. 제거된 보석은 인벤토리로 돌아갑니다. 반경 보석 영역 내 할당 노드는 해당 보너스를 잃습니다."
+          ]
+        }
+      ],
+      "compare": {
+        "before": [
+          "보석 소켓은 할당되었지만 비어 있습니다. 주변 노드는 인쇄된 수치만 제공합니다."
+        ],
+        "after": [
+          "반경 보석을 꽂은 후, 흰색 원 안의 모든 할당된 Small 및 Notable 노드가 보석의 '에도 부여' 보너스를 얻습니다."
+        ],
+        "note": "추가된 가치는 영향을 받은 노드 보너스의 합에서 소켓에 도달해 사용하는 데 쓴 패시브 포인트를 뺀 값입니다."
+      }
+    },
+    {
+      "id": "outcomes",
+      "order": 80,
+      "title": "상황별 결과",
+      "toc": true,
+      "visible": true,
+      "type": "outcomes",
+      "filters": [
+        "passive-tree",
+        "build-planning",
+        "trade"
+      ],
+      "rows": [
+        {
+          "scenario": "속성 스태킹 빌드가 소켓을 지날 때",
+          "audience": "속성 스태커 (Astramentis/HOWA)",
+          "benefit": "경로상 소켓이 속성, 생명력 또는 저항을 무료로 추가합니다",
+          "risk": "낮음",
+          "level": "low",
+          "recommendation": "강력한 명시적 보석을 꽂으세요. 경로 비용은 이미 지불되었습니다."
+        },
+        {
+          "scenario": "가치 낮은 소켓까지 4 포인트 우회",
+          "audience": "빡빡한 패시브 예산",
+          "benefit": "미미한 보석 수식어",
+          "risk": "기회비용 높음",
+          "level": "high",
+          "recommendation": "소켓을 건너뛰세요. 그 4 포인트는 다른 곳에서 더 많이 삽니다."
+        },
+        {
+          "scenario": "특정 고유 보석 구매",
+          "audience": "거래자",
+          "benefit": "예측 가능한 고유 보상",
+          "risk": "중간(굴림/소켓별 가격)",
+          "level": "medium",
+          "recommendation": "지불하기 전에 정확한 소켓과 반경을 확인하세요. 고유 보석 가이드를 참고하세요."
+        },
+        {
+          "scenario": "0.2 이후 보석이 누락된 오래된 캐릭터",
+          "audience": "복귀 플레이어",
+          "benefit": "영향받은 보석 복구",
+          "risk": "낮음",
+          "level": "low",
+          "recommendation": "/reclaimjewels 채팅 명령을 사용하세요. 거래로 재구매하지 마세요."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 90,
+      "title": "빌드 활용",
+      "toc": true,
+      "visible": true,
+      "type": "build-usage",
+      "intro": [
+        "보석은 소켓이 경로 위에 있거나 반경 보석이 이미 원하는 노드를 덮을 수 있을 때 빌드를 규정합니다. 아래 페르소나는 보석이 사용되는 주요 방식을 보여줍니다."
+      ],
+      "builds": [
+        {
+          "title": "속성 스태킹",
+          "description": "속성 스태킹 빌드(Astramentis, Hand of Wisdom and Action)는 경로상 소켓을 사용해 플랫 속성과 힘/민첩/지능 스케일링을 얻습니다.",
+          "href": "/en/items/astramentis/"
+        },
+        {
+          "title": "방어 생명력/저항 보석",
+          "description": "생명력과 저항이 있는 기본 보석은 장비가 채울 수 없는 빈틈을 메우며, 특히 원소 저항이 부족한 캐릭터에게 그렇습니다."
+        },
+        {
+          "title": "반경 활성화 고유",
+          "description": "Against the Darkness, From Nothing, Controlled Metamorphosis, The Adorned, Megalomaniac은 단일 소켓을 여러 할당되거나 강화된 노드로 바꿉니다.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "title": "패시브 트리 계획",
+          "description": "포인트를 확정하기 전 빌드 플래너에서 소켓 경로를 계획하세요. 플래너 파일을 가져오기/내보내기하여 정확한 트리를 공유하세요.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        }
+      ]
+    },
+    {
+      "id": "alternatives",
+      "order": 100,
+      "title": "대안",
+      "toc": true,
+      "visible": true,
+      "type": "alternatives",
+      "paragraphs": [
+        "소켓이 경로에서 멀리 떨어져 있으면 도달하는 기회비용이 보통 그곳에 놓을 수 있는 어떤 보석보다 큽니다. 그 경우 포인트를 일반 패시브 노드에 쓰거나 트리를 우회하여 자연스럽게 소켓을 지나가게 하세요.",
+        "속성이나 저항이 필요하면 장비 접미사, 촉매 품질, 부적이 종종 우회 소켓보다 저렴하게 동일한 능력치를 제공합니다. The Adorned 및 다른 고유 증폭기는 부패한 마법 보석에 이미 투자한 경우에만 대안입니다.",
+        "Timeless 보석은 단순한 반경 보너스가 아니라 시드 기반 패시브 정복을 빌드가 원할 때만 Time-Lost 보석의 대안입니다. 서로 바꿔 쓸 수 없습니다."
+      ],
+      "bullets": [
+        "먼 소켓 대신 우회 포인트를 일반 노드에 사용하세요.",
+        "장비, 촉매, 부적이 보석 능력치를 대체할 수 있습니다.",
+        "Timeless는 Time-Lost의 그대로 바꿀 수 있는 대체품이 아닙니다."
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 110,
+      "title": "가치 평가: 사용, 판매 또는 보유",
+      "toc": true,
+      "visible": true,
+      "type": "valuation",
+      "marketNote": [
+        "보석 가치는 단일 통화 가격이 아닙니다. 패시브 포인트에 대한 결정입니다. 아래 보석 가치 공식과 세 가지 예제를 사용하여 판단하세요."
+      ],
+      "use": {
+        "condition": "소켓이 경로 위에 있거나 반경이 원하는 노드를 덮음",
+        "first": "보석을 꽂으세요. 경로 비용은 이미 지불되었습니다",
+        "risk": "한 소켓과 그에 도달하는 데 쓴 포인트를 점유합니다",
+        "text": [
+          "순이익(보석 능력치 - 포인트 및 경로 비용 - 기회비용)이 양일 때 사용하세요."
+        ]
+      },
+      "sell": {
+        "condition": "복제본을 찾았거나 트리에 맞지 않는 보석인 경우",
+        "first": "베이스, 부패, 명시적 수식어별로 거래에 등록하세요",
+        "risk": "유동적이나 가치는 정확한 굴림과 메타 수요에 좌우됩니다",
+        "text": [
+          "현재 트리보다 다른 빌드가 더 가치 있게 여길 때 판매하세요."
+        ]
+      },
+      "hold": {
+        "condition": "나중에 보석을 중심으로 재구성할 수 있음",
+        "first": "잘 굴린 레어와 고유를 보관하세요. 리그를 거쳐도 가치가 유지됩니다",
+        "risk": "인벤토리 공간뿐",
+        "text": [
+          "고굴림 보석을 보유하세요. 장기 빌드 자산입니다."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 120,
+      "title": "위험 및 실패 비용",
+      "toc": true,
+      "visible": true,
+      "type": "risk-analysis",
+      "rows": [
+        {
+          "scenario": "가치 낮은 소켓까지 4 포인트 우회",
+          "gain": "작은 보석 수식어",
+          "loss": "Notable이나 핵심 노드를 살 수 있는 4 패시브 포인트",
+          "level": "high",
+          "recommendation": "자연스러운 경로에 있을 때만 소켓을 취하세요."
+        },
+        {
+          "scenario": "트리에 맞지 않는 잘못된 Time-Lost 수식어",
+          "gain": "반경 커버리지",
+          "loss": "할당하지 않는 노드에 낭비된 수식어 보너스",
+          "level": "medium",
+          "recommendation": "반경을 미리보기하고 할당된 노드와 일치하는 수식어를 고르세요."
+        },
+        {
+          "scenario": "Timeless를 Time-Lost와 같다고 가정",
+          "gain": "없음",
+          "loss": "빌드에 맞지 않는 잘못된 보석 시스템 구매",
+          "level": "medium",
+          "recommendation": "구매 전 드롭 출처와 메커니즘을 확인하세요."
+        },
+        {
+          "scenario": "고유 보석을 Sinister Socket에",
+          "gain": "없음",
+          "loss": "헛된 시도. 고유 보석은 Sinister Socket에서 거부됩니다",
+          "level": "low",
+          "recommendation": "Sinister Socket은 지원하는 보석 세트에만 사용하세요."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 130,
+      "title": "커뮤니티 증거",
+      "toc": true,
+      "visible": true,
+      "type": "community-evidence",
+      "entries": [
+        {
+          "sourceId": "reddit-jewels",
+          "kind": "Reddit 질문",
+          "question": "보석 소켓을 할당해야 보석을 꽂을 수 있나요?",
+          "summary": [
+            "플레이어가 미할당 소켓 노드에 보석을 넣을 수 있는지 물었습니다."
+          ],
+          "editorialAnalysis": [
+            "보석 소켓은 패시브 노드입니다. 보석을 넣기 전에 할당되고 트리에 연결되어야 하며, 미할당 소켓에는 보석 슬롯이 나타나지 않습니다."
+          ],
+          "officialAnswer": [
+            "먼저 소켓을 할당하세요. 그 후에야 보석을 우클릭하여 넣을 수 있습니다."
+          ],
+          "linkHref": "#usage",
+          "linkLabel": "보석 장착 방법"
+        },
+        {
+          "sourceId": "ssegold-unique-jewels",
+          "kind": "가이드",
+          "question": "Timeless가 Time-Lost와 같은가요?",
+          "summary": [
+            "가이드가 Timeless(Expedition)와 Time-Lost(Sekhemas) 보석을 혼동했습니다."
+          ],
+          "editorialAnalysis": [
+            "이들은 다른 시스템입니다. Time-Lost 보석은 Trial of the Sekhemas에서 나오며 반경 보너스를 추가합니다. Timeless 보석은 Expedition에서 나오며 시드와 핵심 특성으로 패시브를 정복/교체합니다."
+          ],
+          "officialAnswer": [
+            "별개 계열로 취급하세요. 구매 전 드롭 출처와 메커니즘을 읽으세요."
+          ],
+          "linkHref": "#family-overview",
+          "linkLabel": "보석 계열 비교"
+        },
+        {
+          "sourceId": "sportskeeda-timelost",
+          "kind": "가이드",
+          "question": "패시브 트리 업데이트 후 보석이 사라진 이유는?",
+          "summary": [
+            "복귀 플레이어가 0.2 트리 재구성 후 보석 누락을 보고했습니다."
+          ],
+          "editorialAnalysis": [
+            "0.2 패시브 트리 변경으로 이전 캐릭터에서 일부 소켓이 제거되었습니다. 영향을 받은 보석은 재구매가 아니라 /reclaimjewels 명령으로 복구 가능합니다."
+          ],
+          "officialAnswer": [
+            "제거된 소켓의 보석을 복구하려면 /reclaimjewels를 사용하세요. 이것은 과거의 수정이며 현재 드롭 변경이 아닙니다."
+          ],
+          "linkHref": "#patch-history",
+          "linkLabel": "패치 이력"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 140,
+      "title": "문제 및 직접 답변",
+      "toc": true,
+      "visible": true,
+      "type": "troubleshooting",
+      "problems": [
+        {
+          "symptom": "소켓에서 우클릭이 아무 작동도 안 함",
+          "directAnswer": [
+            "보석 소켓이 할당되지 않았거나 트리에 연결되지 않았습니다. 먼저 할당한 뒤 보석을 꽂으세요."
+          ],
+          "checks": [
+            "패시브 트리를 열고 소켓 노드가 켜져 연결되었는지 확인한 뒤 다시 시도하세요."
+          ],
+          "links": [
+            {
+              "href": "#usage",
+              "label": "소켓 장착 단계"
+            }
+          ]
+        },
+        {
+          "symptom": "반경 원이 너무 작아 유용한 것을 덮지 않음",
+          "directAnswer": [
+            "보석의 반경이 작거나 할당된 노드가 그 밖에 있습니다. 소켓을 재계획하거나 그 영역에 더 큰 반경의 보석을 고르세요."
+          ],
+          "checks": [
+            "플래너에서 반경을 미리보기하고 그 안의 할당 노드 수를 세세요."
+          ]
+        },
+        {
+          "symptom": "고유 보석이 Sinister Socket에 안 들어감",
+          "directAnswer": [
+            "Sinister Socket은 고유 보석을 거부합니다. 지원하는 보석 세트(예: 부패한 마법)만 받습니다."
+          ],
+          "checks": [
+            "고유 보석에는 일반 패시브 트리 소켓을 사용하세요."
+          ]
+        },
+        {
+          "symptom": "트리 업데이트 후 보석 누락",
+          "directAnswer": [
+            "소켓이 제거되었다면 새 것으로 구매하지 말고 /reclaimjewels로 보석을 복구하세요."
+          ],
+          "checks": [
+            "채팅에서 /reclaimjewels를 실행하세요. 인벤토리와 창고를 확인하세요."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "영상 설명",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "PoE 2 보석, 부패 및 패시브 트리 특화",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc",
+          "creator": "커뮤니티 제작자",
+          "description": "라이브 빌드 설명에서 보석 부패, 패시브 트리 특화 및 Against the Darkness 언급을 다룹니다.",
+          "takeaway": "보석과 부패가 실제 패시브 트리 계획에 어떻게 맞는지, 그리고 Against the Darkness와 같은 반경 보석이 할당된 노드를 어디서 바꾸는지 보여줍니다.",
+          "timestamps": [
+            { "label": "패시브 트리 특화", "time": "01:54" },
+            { "label": "부패 및 보석", "time": "03:03" },
+            { "label": "Against the Darkness 언급", "time": "02:49" },
+            { "label": "빌드 요약", "time": "04:05" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media-gallery",
+      "order": 160,
+      "title": "미디어 갤러리",
+      "toc": true,
+      "visible": true,
+      "type": "media-gallery",
+      "items": [
+        {
+          "caption": "패시브 스킬 트리의 할당된 보석 소켓",
+          "note": "소켓 장착 전 소켓 노드가 켜져 연결되어 있음을 보여줍니다."
+        },
+        {
+          "caption": "미할당 대 할당 소켓 비교",
+          "note": "소켓이 할당되어야만 보석 슬롯이 나타납니다."
+        },
+        {
+          "caption": "Time-Lost 보석이 투사한 흰색 반경 원",
+          "note": "원 안 노드는 보석의 보너스를 받습니다."
+        },
+        {
+          "caption": "기본, Time-Lost, Timeless, Diamond 고유 비교",
+          "note": "소켓과 반경 동작이 다른 네 보석 그룹."
+        },
+        {
+          "caption": "장비의 Sinister Socket 위치",
+          "note": "Voices를 통해 나타나며 패시브 트리 소켓과 별개입니다."
+        },
+        {
+          "caption": "/reclaimjewels 명령 결과",
+          "note": "0.2 트리 재구성으로 제거된 소켓의 보석을 복구합니다."
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 170,
+      "title": "연결된 콘텐츠",
+      "toc": true,
+      "visible": true,
+      "type": "related-content",
+      "items": [
+        {
+          "contentId": "against-the-darkness",
+          "contentType": "item",
+          "title": "Against the Darkness",
+          "description": "두 개의 무작위 반경 수식어를 가진 고유 Time-Lost Diamond.",
+          "href": "/en/items/against-the-darkness/"
+        },
+        {
+          "contentId": "from-nothing",
+          "contentType": "item",
+          "title": "From Nothing",
+          "description": "연결 없이 핵심 특성을 할당하는 고유 Diamond.",
+          "href": "/en/items/from-nothing/"
+        },
+        {
+          "contentId": "controlled-metamorphosis",
+          "contentType": "item",
+          "title": "Controlled Metamorphosis",
+          "description": "링형 원격 할당 영역을 가진 고유 Diamond.",
+          "href": "/en/items/controlled-metamorphosis/"
+        },
+        {
+          "contentId": "the-adorned",
+          "contentType": "item",
+          "title": "The Adorned",
+          "description": "반경 내 부패한 마법 보석을 증폭합니다.",
+          "href": "/en/items/the-adorned/"
+        },
+        {
+          "contentId": "megalomaniac",
+          "contentType": "item",
+          "title": "Megalomaniac",
+          "description": "무작위 Notable을 할당하는 고유 Diamond.",
+          "href": "/en/items/megalomaniac/"
+        },
+        {
+          "contentId": "voices-and-sinister-jewels",
+          "contentType": "item",
+          "title": "Voices 및 Sinister 보석 소켓",
+          "description": "특정 보석용 장비에 Sinister Socket을 추가합니다.",
+          "href": "/en/items/voices-and-sinister-jewels/"
+        },
+        {
+          "contentId": "timeless-jewels",
+          "contentType": "item",
+          "title": "Timeless 보석",
+          "description": "Heroic Tragedy 및 Undying Hate의 시드 기반 정복.",
+          "href": "/en/items/timeless-jewels/"
+        },
+        {
+          "contentId": "zarokh-the-temporal",
+          "contentType": "boss",
+          "title": "Zarokh, the Temporal",
+          "description": "Trial of the Sekhemas에서 Against the Darkness를 드롭합니다.",
+          "href": "/en/bosses/zarokh-the-temporal/"
+        },
+        {
+          "contentId": "respec-passive-ascendancy-guide",
+          "contentType": "guide",
+          "title": "리스펙, 패시브 및 승천 가이드",
+          "description": "0.5.4에서 패시브 포인트와 리스펙이 작동하는 방식.",
+          "href": "/en/guides/respec-passive-ascendancy-guide/"
+        },
+        {
+          "contentId": "build-planner-build-files-import-export",
+          "contentType": "guide",
+          "title": "빌드 플래너: 빌드 파일 가져오기/내보내기",
+          "description": "소켓 경로를 계획하고 트리를 공유합니다.",
+          "href": "/en/guides/build-planner-build-files-import-export/"
+        },
+        {
+          "contentId": "patch-0-5-4-runes-of-aldur",
+          "contentType": "patch",
+          "title": "패치 0.5.4 (Runes of Aldur)",
+          "description": "현재 얼리 액세스 패치 상황.",
+          "href": "/en/patches/patch-0-5-4-runes-of-aldur/"
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 180,
+      "title": "패치 이력",
+      "toc": true,
+      "visible": true,
+      "type": "patch-history",
+      "entries": [
+        {
+          "version": "0.5.4 (Runes of Aldur, 현재)",
+          "changes": [
+            "보석 및 보석 소켓은 설명대로 작동합니다: 할당된 소켓, 색상 베이스 접두사 풀, 그리고 Time-Lost 및 고유 반경 보석의 반경 동작."
+          ]
+        },
+        {
+          "version": "0.2.1 (Socketables and Unique Drops)",
+          "changes": [
+            "소켓 가능 및 고유 보석 소스에 대한 고유 드롭 접근을 조정했습니다."
+          ]
+        },
+        {
+          "version": "0.2.0 (Dawn of the Hunt)",
+          "changes": [
+            "패시브 트리 재구성으로 이전 캐릭터에서 일부 보석 소켓이 제거되었습니다. /reclaimjewels가 영향을 받은 보석을 복구합니다."
+          ]
+        },
+        {
+          "version": "0.1.0",
+          "changes": [
+            "보석 및 보석 소켓이 얼리 액세스에서 도입되었습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 190,
+      "title": "출처 및 검증",
+      "toc": true,
+      "visible": true,
+      "type": "sources",
+      "categories": [
+        {
+          "label": "OFFICIAL",
+          "description": "Path of Exile 2 0.5.4 패치 노트 및 공식 아이템 문서.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "DATABASE",
+          "description": "PoE2Wiki 및 poe2db의 보석과 Against the Darkness 데이터.",
+          "url": "https://www.poe2wiki.net/wiki/Against_the_Darkness"
+        },
+        {
+          "label": "GUIDE",
+          "description": "Sportskeeda의 Time-Lost 보석 가이드 및 GameRant의 Against the Darkness 가이드.",
+          "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+        },
+        {
+          "label": "COMMUNITY",
+          "description": "Reddit r/PathOfExile2의 소켓, 반경, 누락된 보석 논의.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        },
+        {
+          "label": "VIDEO",
+          "description": "보석 부패와 패시브 트리 특화를 다루는 커뮤니티 영상.",
+          "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "pending-pc",
+        "method": "tool"
+      }
+    },
+    {
+      "id": "changelog",
+      "order": 200,
+      "title": "변경 로그",
+      "toc": true,
+      "visible": true,
+      "type": "changelog",
+      "entries": [
+        {
+          "date": "2026-08-03",
+          "changes": [
+            "0.5.4의 보석 소켓, 베이스 유형, 수식어 개수, 부패, Time-Lost 대 Timeless, Sinister Socket, 반경 중첩, 장착 제한, /reclaimjewels 수정, 그리고 보석 가치 공식에 대한 초판 발행."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [],
+  "relatedBossIds": [
+    "zarokh-the-temporal",
+    "king-in-the-mists-pinnacle"
+  ],
+  "relatedSkillIds": [],
+  "relatedGuideIds": [
+    "respec-passive-ascendancy-guide",
+    "build-planner-build-files-import-export"
+  ],
+  "relatedItemIds": [
+    "against-the-darkness",
+    "from-nothing",
+    "controlled-metamorphosis",
+    "the-adorned",
+    "megalomaniac",
+    "voices-and-sinister-jewels",
+    "timeless-jewels",
+    "astramentis",
+    "hand-of-wisdom-and-action",
+    "ingenuity",
+    "widowhail",
+    "ghostwrithe"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-4-runes-of-aldur",
+    "patch-0-2-1-socketables-unique-drops"
+  ],
+  "sources": [
+    {
+      "id": "official-05-4",
+      "label": "Path of Exile 2 0.5.4 패치 노트",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "id": "wiki-jewel",
+      "label": "PoE2Wiki - Jewel",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Jewel"
+    },
+    {
+      "id": "poe2db-jewel",
+      "label": "poe2db - Jewel",
+      "sourceType": "tool",
+      "url": "https://poe2db.tw/us/Jewel"
+    },
+    {
+      "id": "sportskeeda-timelost",
+      "label": "Sportskeeda - Time-Lost 보석 획득 방법",
+      "sourceType": "other",
+      "url": "https://www.sportskeeda.com/mmo/path-exile-2-poe2-time-lost-jewel-get-use-how"
+    },
+    {
+      "id": "gamerant-atd",
+      "label": "GameRant - Against the Darkness 획득 방법",
+      "sourceType": "other",
+      "url": "https://gamerant.com/path-of-exile-2-how-to-get-against-the-darkness-time-lost-diamond-poe2"
+    },
+    {
+      "id": "reddit-jewels",
+      "label": "Reddit - r/PathOfExile2",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/"
+    },
+    {
+      "id": "youtube-jewels",
+      "label": "YouTube - PoE 2 보석 및 부패",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=C5Z5Gu7gijc"
+    }
+  ],
+  "seo": {
+    "title": "Path of Exile 2 보석 및 보석 소켓 가이드 (0.5.4)",
+    "description": "PoE2 0.5.4에서 보석과 보석 소켓의 작동 방식: 소켓 할당, Ruby/Emerald/Sapphire/Diamond 베이스, 수식어 개수, 부패, Time-Lost 반경, Timeless 대 Time-Lost, Sinister Socket, 그리고 보석 가치 공식.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "jewels-and-jewel-sockets",
+    "sourceRevision": "2026-08-03",
+    "translationStatus": "reviewed",
+    "translationRisk": "low",
+    "translatedAt": "2026-08-05",
+    "translator": "workbuddy-hy3"
+  }
+}

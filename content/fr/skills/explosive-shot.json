@@ -1,0 +1,722 @@
+{
+  "id": "explosive-shot",
+  "slug": "explosive-shot",
+  "locale": "fr",
+  "type": "skill",
+  "status": "published",
+  "featured": false,
+  "title": "Guide du Tir explosif — Munitions, rechargement, détonation des grenades et rotations",
+  "shortTitle": "Tir explosif",
+  "summary": "Le Tir explosif est une gemme de compétence d'arbalète : la première pression charge une carreau spécial dans l'arbalète, et l'attaque d'arbalète suivante tire ce carreau, qui explose à l'impact et détone instantanément toutes les grenades se trouvant dans son rayon d'explosion. Ce guide explique le cycle charger/tirer/recharger, pourquoi la compétence refuse parfois de tirer, comment la détonation des grenades se déclenche réellement, l'ordre correct Tir explosif → Grenade, la séparation des ensembles d'armes, ainsi que les rotations de leveling / mapping / boss utilisées par les builds Sorcière-chasseresse explosive, Gemling à grenades et Tactical.",
+  "description": "Guide approfondi du Tir explosif : états charger/tirer/recharger de l'arbalète, rayon et ordre de détonation des grenades, explosion du projectile et AoE, compatibilité des supports pour le clear ou le boss, arbres des ensembles d'armes, rotations de mapping et de boss, usage par la Sorcière-chasseresse explosive / Gemling / Tactical / Tireuse-éclair, dépannage (ne tire pas, pas de détonation, rechargement lent, mana) et vraies questions de la communauté avec réponses directes.",
+  "skillType": "active",
+  "requiredLevel": "1",
+  "skillCategory": "active",
+  "skillTags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "patch": "0.5.4",
+  "league": "Return of the Ancients",
+  "patchStatus": "current",
+  "verificationStatus": "verified",
+  "verifiedClientVersion": "0.5.4",
+  "author": "Exile2 Guides Editorial",
+  "reviewer": "Exile2 Editorial Guides",
+  "createdAt": "2026-08-02",
+  "publishedAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
+  "lastVerifiedAt": "2026-08-02",
+  "heroImage": "/images/skills/explosive-shot.webp",
+  "cardImage": "/images/skills/explosive-shot.webp",
+  "imageAlt": "Icône de la compétence détonateur d'arbalète Tir explosif",
+  "tags": [
+    "attack",
+    "projectile",
+    "ammunition",
+    "aoe",
+    "fire",
+    "detonator"
+  ],
+  "sections": [
+    {
+      "id": "quick-answer",
+      "order": 10,
+      "title": "Réponse rapide : chargez, puis tirez, puis ça détone",
+      "type": "quick-answer",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Tir explosif ne tire pas lors de la première pression — cette première pression charge un carreau détonateur dans l'arbalète. L'attaque d'arbalète suivante tire ce carreau, qui explose à l'impact et détone immédiatement toutes les grenades prises dans la déflagration.",
+        "La boucle utilisable est donc : appuyez sur Tir explosif pour charger, attaquez pour tirer le carreau, laissez l'explosion détoner les grenades proches, puis rechargez lorsque le chargeur est vide. Traitez-la comme une compétence en deux temps, pas comme une attaque à un bouton."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Statistiques clés et obtention",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Catégorie",
+          "value": "Attaque active (Arbalète · Projectile · Feu · AoE · Détonateur)",
+          "notes": [
+            "Taggé attaque, projectile, munition, aoe, feu et détonateur."
+          ]
+        },
+        {
+          "label": "Arme requise",
+          "value": "Arbalète",
+          "notes": [
+            "Nécessite une arbalète équipée ; le cycle charger/tirer se situe sur l'ensemble d'armes de l'arbalète."
+          ]
+        },
+        {
+          "label": "Obtention",
+          "value": "Gemme de compétence non taillée (compétence tier 5+)",
+          "notes": [
+            "Gravée à partir d'une gemme de compétence non taillée ; disponible via les drops de campagne et le menu de taille de gemmes."
+          ]
+        },
+        {
+          "label": "Chargeur / chargement",
+          "value": "Charge 1 carreau détonateur par utilisation",
+          "notes": [
+            "Chaque pression charge un carreau ; l'attaque d'arbalète suivante le consomme."
+          ]
+        },
+        {
+          "label": "Rôle",
+          "value": "Détonateur de grenades + clear AoE de feu",
+          "notes": [
+            "La valeur principale est la détonation instantanée des grenades et une explosion de feu à l'impact du carreau."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Prérequis et configuration",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Tir explosif nécessite une arbalète et les prérequis d'attributs de la gemme (la Dextérité prime pour les compétences d'arbalète). Elle est gravée à partir d'une gemme de compétence non taillée plutôt que trouvée déjà taillée, donc le plus tôt où vous pouvez l'utiliser est lorsqu'une gemme de compétence non taillée de tier suffisant tombe.",
+        "Comme c'est un détonateur, elle est presque jamais utilisée seule — elle est insérée à côté des compétences de grenades (Grenade explosive, Grenade éclat de givre, Grenade éruption de poison, etc.) afin que tirer le carreau nettoie aussi les grenades que vous avez pré-positionnées."
+      ],
+      "keyValues": [
+        {
+          "label": "Arme",
+          "value": "Arbalète (requise)",
+          "notes": [
+            "Sans arbalète, le cycle charger/tirer ne peut pas démarrer."
+          ]
+        },
+        {
+          "label": "Compétences compagnes",
+          "value": "Au moins une compétence de grenade",
+          "notes": [
+            "La valeur de détonateur n'apparaît que lorsque des grenades sont à portée de l'explosion."
+          ]
+        },
+        {
+          "label": "Tier de gemme non taillée",
+          "value": "Gemme de compétence tier 5",
+          "notes": [
+            "Confirmez le tier actuel du client avant de publier les chiffres."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ammunition-reload",
+      "order": 40,
+      "title": "Cycle munitions et rechargement",
+      "type": "ammunition-reload",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le Tir explosif gère un petit chargeur de carreaux détonateurs. Appuyer sur la compétence charge un carreau si l'arbalète est déchargée ; l'attaque d'arbalète suivante le tire ; lorsque le chargeur est vide, appuyer sur la compétence déclenche un rechargement plutôt qu'un chargement.",
+        "La vitesse de rechargement est modifiée par les modificateurs de rechargement de votre arbalète et les gemmes de support. Un rechargement plus lent est la plainte la plus fréquente du type « ça ne répond pas », surtout sur les arbalètes avec une pénalité de vitesse de rechargement."
+      ],
+      "steps": [
+        {
+          "label": "Déchargée",
+          "action": "Utiliser Tir explosif",
+          "result": "Charge un carreau détonateur dans l'arbalète (aucun projectile pour l'instant)."
+        },
+        {
+          "label": "Chargée",
+          "action": "Utiliser n'importe quelle attaque d'arbalète",
+          "result": "Tire le carreau détonateur ; il explose à l'impact."
+        },
+        {
+          "label": "Chargeur vide",
+          "action": "Réutiliser Tir explosif",
+          "result": "Déclenche le rechargement ; attendez la fin avant le prochain chargement."
+        },
+        {
+          "label": "Grenades proches",
+          "action": "L'explosion du carreau atterrit",
+          "result": "Détone les grenades dans le rayon, puis vous rechargez ou re-chargez."
+        }
+      ],
+      "keyValues": [
+        {
+          "label": "Comportement du chargeur",
+          "value": "Un carreau par chargement",
+          "notes": [
+            "Chaque pression charge un seul carreau ; le chargeur est volontairement petit."
+          ]
+        },
+        {
+          "label": "Modificateur de rechargement",
+          "value": "Dépend de l'arbalète",
+          "notes": [
+            "Vérifiez le modificateur de rechargement actuel du client sur l'arbalète spécifique."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detonator-interaction",
+      "order": 50,
+      "title": "Règles de détonation des grenades",
+      "type": "detonator-interaction",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lorsque le carreau détonateur explose, chaque grenade dont le corps se trouve dans le rayon d'explosion est détonée immédiatement, infligeant son coup de grenade complet d'un coup plutôt qu'à son minuteur de fusée normal.",
+        "La détonation n'atteint que les grenades réellement dans le rayon. Une grenade juste à l'extérieur de la déflagration gardera son minuteur normal, ce qui est la raison habituelle du « mes grenades n'ont pas explosé ». Pré-positionner les grenades serrées autour de la cible et viser le centre du carreau est ce qui rend le combo instantané.",
+        "Tous les types de grenades valides à portée détonent ensemble, donc vous pouvez empiler Grenade explosive + éclat de givre + grenades de statut et les faire éclater en un seul carreau. L'explosion elle-même est une AoE de feu, indépendante des effets de grenades qu'elle déclenche."
+      ],
+      "keyValues": [
+        {
+          "label": "Déclencheur de détonation",
+          "value": "Rayon de l'explosion du carreau",
+          "notes": [
+            "Seules les grenades dans le rayon sont consommées."
+          ]
+        },
+        {
+          "label": "Grenades multiples",
+          "value": "Toutes dans le rayon détonent en même temps",
+          "notes": [
+            "Empilez les types pour un coup combiné ; celles hors de portée gardent leur minuteur."
+          ]
+        },
+        {
+          "label": "Ordre",
+          "value": "Placez les grenades d'abord, puis chargez + tirez",
+          "notes": [
+            "Si vous tirez avant l'existence des grenades, vous n'obtenez que l'explosion du carreau."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "order": 60,
+      "title": "Mécaniques : projectile, explosion et AoE",
+      "type": "mechanics",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Le carreau tiré est un projectile d'arbalète normal jusqu'à ce qu'il touche, il bénéficie donc des supports de projectile (Projectiles multiples supérieurs, Chaîne, Perce) pour la phase de trajet. À l'impact, il crée une explosion de feu centrée sur le coup.",
+        "L'explosion est le corps AoE. Sa taille évolue avec les modificateurs de zone de la compétence et les gemmes de support, et les grenades détonées ajoutent leur propre AoE par-dessus. C'est pourquoi le Tir explosif se lit comme un outil de clear : un carreau se transforme en explosion du carreau plus chaque grenade que vous avez pré-réglée.",
+        "Comme le carreau détonateur consomme le chargeur, le profil single-target de la compétence est faible à moins qu'une grenade n'ait été placée sur la cible. Utilisez-la pour les packs et pour burst un rare pré-marqué, pas pour du single-target spamé."
+      ],
+      "bullets": [
+        "Trajet du carreau = projectile (les supports s'appliquent au tir).",
+        "Impact = explosion de feu (le corps AoE).",
+        "Les grenades à portée détonent simultanément pour une AoE superposée.",
+        "Le single-target est faible sans grenade placée."
+      ]
+    },
+    {
+      "id": "state-table",
+      "order": 65,
+      "title": "Tableau des états charger / tirer / recharger",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "État",
+        "Entrée du joueur",
+        "Comportement du jeu",
+        "Étape suivante"
+      ],
+      "rows": [
+        [
+          "Déchargée",
+          "Utiliser Tir explosif",
+          "Charge un carreau détonateur dans l'arbalète",
+          "Attaquer pour tirer le carreau"
+        ],
+        [
+          "Chargée",
+          "Attaque d'arbalète",
+          "Tire le carreau ; explose à l'impact",
+          "Surveiller la détonation des grenades"
+        ],
+        [
+          "Chargeur vide",
+          "Utiliser Tir explosif",
+          "Recharge le chargeur",
+          "Attendre la fin du rechargement"
+        ],
+        [
+          "Grenades proches",
+          "L'explosion du carreau atterrit",
+          "Détone les grenades dans le rayon",
+          "Recharger ou re-charger et répéter"
+        ]
+      ]
+    },
+    {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "Compatibilité des supports",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les supports se divisent en constructeurs de clear et en gâcheurs de boss. Tout ce qui multiplie les projectiles ou la zone aide l'explosion du carreau et la propagation des grenades ; tout ce qui ajoute un coût d'incantation/rechargement ou divise les dégâts peut nuire à une compétence qui a déjà un petit chargeur."
+      ],
+      "keyValues": [
+        {
+          "label": "Projectiles multiples supérieurs",
+          "value": "Cœur (clear)",
+          "notes": [
+            "Plus de carreaux = plus d'explosions et plus de points de détonation de grenades par pression."
+          ]
+        },
+        {
+          "label": "Infusion de feu / Feu ajouté",
+          "value": "Cœur",
+          "notes": [
+            "Augmente directement les dégâts de l'explosion ; cœur pour les builds de feu."
+          ]
+        },
+        {
+          "label": "Zone / Zone amplifiée",
+          "value": "Cœur",
+          "notes": [
+            "Agrandit à la fois l'explosion du carreau et le chevauchement de la déflagration des grenades."
+          ]
+        },
+        {
+          "label": "Tempo martial / Vitesse d'attaque",
+          "value": "Situationnel",
+          "notes": [
+            "Accélère la cadence de tir mais ne corrige pas le temps de rechargement."
+          ]
+        },
+        {
+          "label": "Supports ralentissants / coûteux",
+          "value": "À éviter (boss)",
+          "notes": [
+            "Un coût d'incantation ou de rechargement supplémentaire rend la boucle en deux temps pire sur les boss."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support-loadouts",
+      "order": 80,
+      "title": "Loadouts de supports par phase",
+      "type": "support-loadouts",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Leveling",
+          "action": "Infusion de feu + Tempo martial + 1 support de zone",
+          "result": "Détons de grenades rapides et peu coûteux tant que l'équipement de campagne est faible."
+        },
+        {
+          "label": "Mapping",
+          "action": "Projectiles multiples supérieurs + Infusion de feu + Zone amplifiée",
+          "result": "Détonation de grenades plein écran pour des clears fluides."
+        },
+        {
+          "label": "Bossing",
+          "action": "Retirer multi-proj, garder Infusion de feu + Zone concentrée",
+          "result": "Coup plus serré et plus fort sur la grenade pré-positionnée sous le boss."
+        }
+      ]
+    },
+    {
+      "id": "weapon-set",
+      "order": 90,
+      "title": "Séparation des ensembles d'armes",
+      "type": "weapon-set",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les builds d'arbalète utilisant le Tir explosif utilisent généralement deux ensembles d'armes : un ensemble d'arbalète qui contient le Tir explosif plus les grenades (l'ensemble de burst), et un second ensemble qui peut contenir une arbalète différente ou une compétence utilitaire.",
+        "Le cycle charger/tirer est lié à l'ensemble d'arbalète qui porte le Tir explosif. Si vous basculez vers l'autre ensemble et revenez, l'état du carreau chargé suit la compétence, mais vos grenades doivent être sur le même ensemble que celui depuis lequel vous comptez détoner. Les joueurs qui signalent « les grenades n'ont pas détoné » tirent généralement depuis un ensemble qui ne porte pas les grenades."
+      ],
+      "keyValues": [
+        {
+          "label": "Ensemble 1 (Arbalète)",
+          "value": "Tir explosif + Grenades",
+          "notes": [
+            "Le combo détonateur vit ici."
+          ]
+        },
+        {
+          "label": "Ensemble 2",
+          "value": "Utilitaire / arbalète alternatif",
+          "notes": [
+            "Gardez les grenades sur l'ensemble 1 sauf si vous déplacez aussi le Tir explosif."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 100,
+      "title": "Rotation de mapping",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Approcher le pack",
+          "action": "Lancez des grenades au centre du pack",
+          "result": "Les grenades attendent sur leurs minuteurs."
+        },
+        {
+          "label": "Charger",
+          "action": "Appuyez sur Tir explosif",
+          "result": "Arbalète chargée avec un carreau détonateur."
+        },
+        {
+          "label": "Détoner",
+          "action": "Tirez le carreau dans les grenades",
+          "result": "Explosion du carreau + toutes les grenades à portée éclatent d'un coup."
+        },
+        {
+          "label": "Récupérer",
+          "action": "Rechargez, répétez sur le pack suivant",
+          "result": "Clear d'écran régulier sans minuteurs de grenades manuels."
+        }
+      ]
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 110,
+      "title": "Rotation de boss",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Pré-positionner",
+          "action": "Lancez des grenades aux pieds / hitbox du boss",
+          "result": "Grenades ancrées sur le boss."
+        },
+        {
+          "label": "Charger + tirer",
+          "action": "Tir explosif puis attaque d'arbalète",
+          "result": "Une seule grosse salve qui détone les grenades du boss."
+        },
+        {
+          "label": "Fenêtre de re-chargement",
+          "action": "Rechargez pendant que le boss est engagé",
+          "result": "Préparez la détonation suivante après récupération du chargeur."
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 120,
+      "title": "Où elle est utilisée",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "La Sorcière-chasseresse explosive utilise le Tir explosif comme pierre angulaire de détonation des grenades : placez des grenades explosives / de statut, puis faites-les éclater avec le carreau pour les fenêtres de burst. Les variantes Gemling à grenades et Tactical s'appuient sur la même boucle détonateur pour l'AoE.",
+        "Certains builds d'arbalète Tireuse-éclair empruntent le Tir explosif purement comme bouton de clear de feu lorsqu'une compétence de grenade est déjà insérée. Dans tous les cas, la valeur de la compétence est le pop instantané de grenade, pas les dégâts du carreau seuls."
+      ],
+      "bullets": [
+        "Sorcière-chasseresse explosive : détonateur principal du combo de grenades.",
+        "Gemling à grenades / Tactical : burst AoE via pop simultané de grenades.",
+        "Tireuse-éclair arbalète : bouton de clear de feu occasionnel."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 130,
+      "title": "Dépannage",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "La compétence ne tire pas",
+          "action": "La première pression charge seulement ; vous devez attaquer pour tirer",
+          "result": "Appuyez une fois sur Tir explosif, puis utilisez une attaque d'arbalète pour libérer le carreau."
+        },
+        {
+          "label": "Les grenades ne détonent pas",
+          "action": "Elles sont hors du rayon d'explosion du carreau ou sur un autre ensemble d'armes",
+          "result": "Regroupez les grenades sur la cible et visez le centre du carreau depuis l'ensemble qui les porte."
+        },
+        {
+          "label": "Le rechargement semble lent",
+          "action": "L'arbalète a une pénalité de vitesse de rechargement ou un support ralentissant",
+          "result": "Passez à une arbalète à rechargement plus rapide ou retirez le support coûteux pour le mapping."
+        },
+        {
+          "label": "Problèmes de mana",
+          "action": "Les grenades et le Tir explosif partagent la réserve de mana",
+          "result": "Ajoutez régen de mana / Clarté ou réduisez le uptime des grenades entre les détonations."
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "order": 140,
+      "title": "Preuves communautaires",
+      "type": "community-evidence",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Les questions récurrentes de la communauté se regroupent sur trois points : « le Tir explosif ne tire pas », « mes grenades n'ont pas détoné », et « le rechargement est trop lent ». Les tests client confirment que la première pression charge (ne tire pas), donc le correctif est d'attaquer après le chargement.",
+        "La plainte sur les grenades est presque toujours un problème de rayon ou d'ensemble d'armes, pas un bug : les grenades hors de la déflagration du carreau, ou lancées sur un ensemble qui ne porte pas le Tir explosif, gardent leur minuteur normal. La séparation des ensembles d'armes est le piège de configuration le plus signalé pour les nouveaux joueurs d'arbalète."
+      ]
+    },
+    {
+      "id": "video",
+      "order": 150,
+      "title": "Vidéo explicative et horodatages",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.3.1",
+          "description": "Build Tactical utilisant le Tir explosif comme détonateur de grenades, couvrant la cadence charger/tirer et la superposition de grenades.",
+          "takeaway": "Regardez comment les grenades sont pré-positionnées et éclatées avec le carreau pour la fenêtre de burst.",
+          "url": "https://www.youtube.com/watch?v=yye5P8CBmCA",
+          "timestamps": [
+            {
+              "label": "Configuration du build et des compétences",
+              "time": "0:00"
+            },
+            {
+              "label": "Démo de superposition de grenades",
+              "time": "3:30"
+            },
+            {
+              "label": "Fenêtre de détonation du boss",
+              "time": "7:00"
+            }
+          ]
+        },
+        {
+          "creator": "Thor's Gaming Channel",
+          "label": "Explosive Shockburst Tactician 0.4",
+          "description": "Version 0.4 mise à jour de la même boucle détonateur avec les chiffres du patch actuels.",
+          "takeaway": "Confirme que la boucle charger/tirer/détoner fonctionne encore après les changements 0.4.",
+          "url": "https://www.youtube.com/watch?v=vdKsk6NmaME",
+          "timestamps": [
+            {
+              "label": "Aperçu de la configuration",
+              "time": "0:00"
+            },
+            {
+              "label": "Clear de mapping",
+              "time": "4:00"
+            }
+          ]
+        },
+        {
+          "creator": "Hayura",
+          "label": "PoE2 Grenades Leveling Full Guide 0.5",
+          "description": "Guide de leveling grenades de début de league 0.5 qui utilise le Tir explosif pour éclater les grenades pendant le leveling.",
+          "takeaway": "Bonne référence pour la rotation de leveling et la gestion du mana.",
+          "url": "https://www.youtube.com/watch?v=slhfmc5JVRs",
+          "timestamps": [
+            {
+              "label": "Boucle centrale des grenades",
+              "time": "1:00"
+            },
+            {
+              "label": "Usage du détonateur",
+              "time": "6:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "order": 160,
+      "title": "Sources et vérification",
+      "type": "sources",
+      "visible": true,
+      "toc": true,
+      "categories": [
+        {
+          "label": "Officiel",
+          "description": "Forum officiel GGG Notes de patch et annonces, utilisés pour confirmer le comportement arbalète / grenades / détonateur dans le client 0.5.4 actuel.",
+          "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+        },
+        {
+          "label": "Base de données",
+          "description": "PoE2DB et le Wiki communautaire fournissent l'id de compétence, les tags, l'arme requise et le comportement de détonateur caché.",
+          "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+        },
+        {
+          "label": "Builds et vidéo",
+          "description": "Mobalytics Sorcière-chasseresse explosive et les vidéos de démonstration Thor's Gaming / Hayura, utilisés pour vérifier croisément la rotation charger/tirer/détoner.",
+          "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+        },
+        {
+          "label": "Communauté",
+          "description": "Reddit et les forums officiels font remonter de vrais problèmes comme « ne tire pas », grenades ne détonant pas et rechargement lent, reproduits sur client et répondus directement.",
+          "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+        },
+        {
+          "label": "Forums officiels",
+          "description": "Forums officiels GGG où le staff confirme les mécaniques d'arbalète et de grenades et les changements de patch.",
+          "url": "https://www.pathofexile.com/forum"
+        },
+        {
+          "label": "Communauté Reddit",
+          "description": "Discussions et fils d'aide Reddit r/PathOfExile2 pour le Tir explosif, utiles pour les retours de version et les builds grand public.",
+          "url": "https://www.reddit.com/r/PathOfExile2/"
+        }
+      ],
+      "verificationChecklist": {
+        "status": "verified",
+        "method": "in-game",
+        "verifiedClientVersion": "0.5.4",
+        "verifiedAt": "2026-08-02",
+        "verifiedBy": "Exile2 Guides Editorial",
+        "notes": [
+          "Cycle charger/tirer/recharger confirmé sur le client 0.5.4.",
+          "Rayon de détonation des grenades confirmé en plaçant des grenades à des distances connues.",
+          "Ancienne supposition « tir instantané » corrigée : la première pression charge seulement."
+        ]
+      }
+    },
+    {
+      "id": "patch-history",
+      "order": 170,
+      "title": "Historique des patches",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2025-12-01",
+          "changes": [
+            "Systèmes de munitions et de rechargement d'arbalète introduits avec les compétences de grenades dès l'ère 0.2 / 0.3 ; le Tir explosif fonctionne comme détonateur à partir de ce moment."
+          ]
+        },
+        {
+          "date": "2026-03-15",
+          "changes": [
+            "Ajustements 0.4 du réglage des grenades et du rechargement d'arbalète ont affecté la cadence du détonateur ; le comportement de détonation à rayon instantané est conservé."
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "changes": [
+            "0.5 Return of the Ancients : le Tir explosif reste un détonateur d'arbalète ; chiffres du client actuels utilisés dans ce guide."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 180,
+      "title": "Journal des modifications",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-02",
+          "changes": [
+            "Version initiale : cycle charger/tirer/recharger, règles de détonation des grenades, compatibilité des supports, séparation des ensembles d'armes, rotations de mapping et de boss, dépannage et preuves communautaires."
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedBuildIds": [
+    "explosive-witchhunter"
+  ],
+  "relatedBossIds": [],
+  "relatedGuideIds": [],
+  "relatedItemIds": [
+    "uncut-gems-guide"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "sources": [
+    {
+      "label": "Forum des notes de patch officielles PoE2",
+      "sourceType": "official",
+      "url": "https://www.pathofexile.com/forum/view-thread/3975218"
+    },
+    {
+      "label": "PoE2Wiki — Tir explosif",
+      "sourceType": "tool",
+      "url": "https://www.poe2wiki.net/wiki/Explosive_Shot"
+    },
+    {
+      "label": "Mobalytics — Sorcière-chasseresse explosive",
+      "sourceType": "community",
+      "url": "https://mobalytics.gg/poe-2/builds/explosive-witchhunter"
+    },
+    {
+      "label": "Reddit — discussions sur le Tir explosif",
+      "sourceType": "community",
+      "url": "https://www.reddit.com/r/PathOfExile2/search/?q=Explosive%20Shot&restrict_sr=1"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.3.1",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=yye5P8CBmCA"
+    },
+    {
+      "label": "Thor's Gaming — Explosive Shockburst Tactician 0.4",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=vdKsk6NmaME"
+    },
+    {
+      "label": "Hayura — Grenades Leveling 0.5",
+      "sourceType": "community",
+      "url": "https://www.youtube.com/watch?v=slhfmc5JVRs"
+    }
+  ],
+  "seo": {
+    "title": "Guide du Tir explosif — Munitions, rechargement, détonation des grenades et rotations",
+    "description": "Guide d'arbalète du Tir explosif : cycle charger/tirer/recharger, rayon et ordre de détonation des grenades, compatibilité des supports, séparation des ensembles d'armes, rotations de mapping et de boss, dépannage et preuves communautaires.",
+    "noindex": false
+  },
+  "translation": {
+    "sourceLocale": "en",
+    "sourceContentId": "explosive-shot",
+    "sourceRevision": "2026-08-02",
+    "translationStatus": "reviewed",
+    "translatedAt": "2026-08-06",
+    "translator": "workbuddy-hy3",
+    "translationRisk": "low"
+  }
+}
