@@ -10,6 +10,8 @@ import {
   type ContentType,
 } from "../../lib/content/constants";
 import type { StaticContentPage } from "../../lib/content/content-page";
+import { getCategoryCopy } from "../../lib/i18n/category-copy";
+import { t } from "../../lib/i18n/ui";
 import {
   filterBuilds,
   parseBuildQuery,
@@ -19,7 +21,13 @@ import {
   buildAscendancySlugs,
   buildClassSlugs,
 } from "../../lib/builds/taxonomy";
-import { TAG_TAXONOMY, formatTag, type TagLabel } from "../../lib/content/tag-taxonomy";
+import {
+  RAIL_FILTER_LABELS_10,
+  TAG_TAXONOMY,
+  formatFacetLabel,
+  formatTag,
+  localeToTagKey,
+} from "../../lib/content/tag-taxonomy";
 
 type BuildContentPage = StaticContentPage & {
   buildArticle: NonNullable<StaticContentPage["buildArticle"]>;
@@ -76,14 +84,7 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
     heroImage: asset("hero-item.webp"),
     intro:
       "Build a useful item index by category, acquisition, use case and related problem guides.",
-    filters: [
-      "All",
-      "Equipment",
-      "Materials",
-      "Endgame",
-      "Unique",
-      "Currency",
-    ],
+    filters: ["All", "Equipment", "Materials", "Endgame", "Unique", "Currency"],
   },
   skill: {
     eyebrow: "Skill reference",
@@ -135,58 +136,6 @@ const catalogConfigs: Record<ContentType, PrototypeConfig> = {
       "Bug Fixes",
       "Impact",
     ],
-  },
-};
-
-/**
- * 左侧栏分类按钮的中英显示名。与顶部 facet 不同，这里每个值是某分类的主类别
- * 聚合标签（如 Equipment 对应 weapons/armour/jewellery/off-hand），因此单独维护
- * 一份词表而非复用 tag 显示名；"All" 在渲染处统一处理为「全部」。
- */
-const railFilterLabels: Record<ContentType, Record<string, TagLabel>> = {
-  build: {
-    Starter: { en: "Starter", zh: "开荒" },
-    Leveling: { en: "Leveling", zh: "练级" },
-    Endgame: { en: "Endgame", zh: "终局" },
-    Bossing: { en: "Bossing", zh: "打王" },
-    Budget: { en: "Budget", zh: "预算" },
-  },
-  boss: {
-    Campaign: { en: "Campaign", zh: "剧情" },
-    Trial: { en: "Trial", zh: "试炼" },
-    Endgame: { en: "Endgame", zh: "终局" },
-    Pinnacle: { en: "Pinnacle", zh: "巅峰" },
-  },
-  item: {
-    Equipment: { en: "Equipment", zh: "装备" },
-    Materials: { en: "Materials", zh: "材料" },
-    Endgame: { en: "Endgame", zh: "终局" },
-    Unique: { en: "Unique", zh: "独特" },
-    Currency: { en: "Currency", zh: "通货" },
-  },
-  skill: {
-    Active: { en: "Active", zh: "主动" },
-    Support: { en: "Support", zh: "辅助" },
-    Passive: { en: "Passive", zh: "被动" },
-    Spirit: { en: "Spirit", zh: "灵魄" },
-    Meta: { en: "Meta", zh: "通用" },
-    Ascendancy: { en: "Ascendancy", zh: "升华" },
-    Lineage: { en: "Lineage", zh: "血脉" },
-  },
-  guide: {
-    Beginner: { en: "Beginner", zh: "新手" },
-    Campaign: { en: "Campaign", zh: "剧情" },
-    Mechanics: { en: "Mechanics", zh: "机制" },
-    Crafting: { en: "Crafting", zh: "工艺交易" },
-    Endgame: { en: "Endgame", zh: "终局地图" },
-    Troubleshooting: { en: "Troubleshooting", zh: "排错" },
-  },
-  patch: {
-    "Major Updates": { en: "Major Updates", zh: "大版本" },
-    Balance: { en: "Balance", zh: "平衡" },
-    Hotfixes: { en: "Hotfixes", zh: "热修" },
-    "Bug Fixes": { en: "Bug Fixes", zh: "问题修复" },
-    Impact: { en: "Impact", zh: "影响" },
   },
 };
 
@@ -287,13 +236,12 @@ export function V4ContentPageCard({
   locale: ContentLocale;
   page: StaticContentPage;
 }) {
-  const zh = locale === "zh-cn";
   const fm = page.frontMatter;
   const image = fm.image ? resolveImageAsset(fm.image) : fallbackImage;
   const segment = contentTypeSegments[contentType];
-  const typeLabel = catalogConfigs[contentType].title;
+  const typeLabel = getCategoryCopy(locale, contentType).label;
   // 全部分类统一用受控词表把 tag slug 渲染为当前语言显示名。
-  const displayTags = fm.tags.map((tag) => formatTag(contentType, tag, zh));
+  const displayTags = fm.tags.map((tag) => formatTag(contentType, tag, locale));
   const versionNumber = extractVersionNumber(fm.patch);
 
   return (
@@ -306,7 +254,7 @@ export function V4ContentPageCard({
     >
       <div className="v4-card-image-wrap">
         <span className={`v4-card-image-label${fm.draft ? " is-draft" : ""}`}>
-          {fm.draft ? (zh ? "本地草稿" : "Local draft") : typeLabel}
+          {fm.draft ? t(locale, "collection.localDraft") : typeLabel}
         </span>
         <img
           alt={fm.imageAlt ?? ""}
@@ -357,15 +305,14 @@ export function V4BuildContentCard({
   page: BuildContentPage;
 }) {
   const article = page.buildArticle;
-  const zh = locale === "zh-cn";
   const image = getBuildCardImage(page, fallbackImage);
   // 模块 1：左侧标签轮播。职业/升华始终置顶显示，随后是文章 tags；既保留
   // 身份识别，又与 Boss/Item/Skill/Guide/Patch 卡片保持一致的芯片轮播样式。
   const identityTags = [article.classId, article.ascendancyId]
     .filter((id): id is string => Boolean(id))
-    .map((id) => formatTag("build", id, zh));
+    .map((id) => formatTag("build", id, locale));
   const baseTags = page.frontMatter.tags.map((tag) =>
-    formatTag("build", tag, zh),
+    formatTag("build", tag, locale),
   );
   const displayTags = [
     ...identityTags,
@@ -385,10 +332,8 @@ export function V4BuildContentCard({
           className={`v4-card-image-label${article.status === "draft" ? " is-draft" : ""}`}
         >
           {article.status === "draft"
-            ? zh
-              ? "本地草稿"
-              : "Local draft"
-            : "Build"}
+            ? t(locale, "collection.localDraft")
+            : getCategoryCopy(locale, "build").label}
         </span>
         <img
           alt={article.imageAlt ?? ""}
@@ -594,8 +539,7 @@ const guideRailFilterMap: Record<string, (page: StaticContentPage) => boolean> =
     Beginner: (page) => page.guideArticle?.guideCategory === "beginner",
     Campaign: (page) => page.guideArticle?.guideCategory === "campaign",
     Mechanics: (page) => page.guideArticle?.guideCategory === "mechanics",
-    Crafting: (page) =>
-      page.guideArticle?.guideCategory === "crafting-trading",
+    Crafting: (page) => page.guideArticle?.guideCategory === "crafting-trading",
     Endgame: (page) => page.guideArticle?.guideCategory === "endgame-atlas",
     Troubleshooting: (page) =>
       page.guideArticle?.guideCategory === "troubleshooting",
@@ -630,6 +574,163 @@ const railFilterMapByContentType: Partial<
   skill: skillRailFilterMap,
 };
 
+/**
+ * 列表布局里复用的一组 UI 文案，按当前 locale 取用，避免英语混入其他语言。
+ * 键为组件内统一引用名，便于筛选、标签与空状态等区块共享同一份译词。
+ */
+const catalogLabels: Record<ContentLocale, Record<string, string>> = {
+  en: {
+    browse: "Browse content",
+    filter: "Filter",
+    all: "All",
+    results: "results",
+    selected: "Selected tags",
+    clear: "Clear",
+    clearFilters: "Clear filters",
+    required: "Required connections",
+    searchResults: "Search results",
+    contentInventory: "Content inventory",
+    patchRelationships: "Patch relationships",
+    noMatch: "No matching results",
+    adjust: "Adjust or clear the filters to see everything.",
+  },
+  "zh-cn": {
+    browse: "浏览内容",
+    filter: "筛选",
+    all: "全部",
+    results: "条结果",
+    selected: "已选标签",
+    clear: "清除",
+    clearFilters: "清除筛选",
+    required: "必需关联",
+    searchResults: "搜索结果",
+    contentInventory: "内容清单",
+    patchRelationships: "补丁关联",
+    noMatch: "没有符合条件的内容",
+    adjust: "调整或清除筛选查看全部内容。",
+  },
+  "pt-br": {
+    browse: "Explorar conteúdo",
+    filter: "Filtrar",
+    all: "Todos",
+    results: "resultados",
+    selected: "Tags selecionadas",
+    clear: "Limpar",
+    clearFilters: "Limpar filtros",
+    required: "Conexões obrigatórias",
+    searchResults: "Resultados de busca",
+    contentInventory: "Inventário de conteúdo",
+    patchRelationships: "Relações de patch",
+    noMatch: "Nenhum resultado correspondente",
+    adjust: "Ajuste ou limpe os filtros para ver tudo.",
+  },
+  ru: {
+    browse: "Обзор контента",
+    filter: "Фильтр",
+    all: "Все",
+    results: "результатов",
+    selected: "Выбранные метки",
+    clear: "Очистить",
+    clearFilters: "Очистить фильтры",
+    required: "Обязательные связи",
+    searchResults: "Результаты поиска",
+    contentInventory: "Каталог контента",
+    patchRelationships: "Связи патчей",
+    noMatch: "Нет подходящих результатов",
+    adjust: "Измените или сбросьте фильтры, чтобы увидеть всё.",
+  },
+  de: {
+    browse: "Inhalt durchsuchen",
+    filter: "Filtern",
+    all: "Alle",
+    results: "Ergebnisse",
+    selected: "Ausgewählte Tags",
+    clear: "Zurücksetzen",
+    clearFilters: "Filter zurücksetzen",
+    required: "Erforderliche Verbindungen",
+    searchResults: "Suchergebnisse",
+    contentInventory: "Inhaltsverzeichnis",
+    patchRelationships: "Patch-Beziehungen",
+    noMatch: "Keine passenden Ergebnisse",
+    adjust: "Passe die Filter an oder setze sie zurück, um alles zu sehen.",
+  },
+  es: {
+    browse: "Explorar contenido",
+    filter: "Filtrar",
+    all: "Todos",
+    results: "resultados",
+    selected: "Etiquetas seleccionadas",
+    clear: "Borrar",
+    clearFilters: "Borrar filtros",
+    required: "Conexiones requeridas",
+    searchResults: "Resultados de búsqueda",
+    contentInventory: "Inventario de contenido",
+    patchRelationships: "Relaciones de parche",
+    noMatch: "Sin resultados coincidentes",
+    adjust: "Ajusta o borra los filtros para verlo todo.",
+  },
+  fr: {
+    browse: "Parcourir le contenu",
+    filter: "Filtrer",
+    all: "Tous",
+    results: "résultats",
+    selected: "Tags sélectionnés",
+    clear: "Effacer",
+    clearFilters: "Effacer les filtres",
+    required: "Connexions requises",
+    searchResults: "Résultats de recherche",
+    contentInventory: "Inventaire de contenu",
+    patchRelationships: "Relations de correctif",
+    noMatch: "Aucun résultat correspondant",
+    adjust: "Ajustez ou effacez les filtres pour tout voir.",
+  },
+  ja: {
+    browse: "コンテンツを参照",
+    filter: "フィルター",
+    all: "すべて",
+    results: "件の結果",
+    selected: "選択したタグ",
+    clear: "クリア",
+    clearFilters: "フィルターをクリア",
+    required: "必須の関連",
+    searchResults: "検索結果",
+    contentInventory: "コンテンツ一覧",
+    patchRelationships: "パッチの関連",
+    noMatch: "該当する結果がありません",
+    adjust: "フィルターを調整またはクリアしてすべてを表示します。",
+  },
+  ko: {
+    browse: "콘텐츠 둘러보기",
+    filter: "필터",
+    all: "전체",
+    results: "개 결과",
+    selected: "선택한 태그",
+    clear: "지우기",
+    clearFilters: "필터 지우기",
+    required: "필수 연결",
+    searchResults: "검색 결과",
+    contentInventory: "콘텐츠 목록",
+    patchRelationships: "패치 관련",
+    noMatch: "일치하는 결과 없음",
+    adjust: "필터를 조정하거나 지워서 전체를 확인하세요.",
+  },
+  tr: {
+    browse: "İçeriğe göz at",
+    filter: "Filtrele",
+    all: "Tümü",
+    results: "sonuç",
+    selected: "Seçili etiketler",
+    clear: "Temizle",
+    clearFilters: "Filtreleri temizle",
+    required: "Gerekli bağlantılar",
+    searchResults: "Arama sonuçları",
+    contentInventory: "İçerik envanteri",
+    patchRelationships: "Yama ilişkileri",
+    noMatch: "Eşleşen sonuç yok",
+    adjust: "Her şeyi görmek için filtreleri ayarla veya temizle.",
+  },
+};
+
 /** 按 V4 原型结构渲染分类页；Build 真实内容会替换骨架卡片并沿用同一发布布局。 */
 export function V4CatalogPage({
   contentType,
@@ -642,6 +743,8 @@ export function V4CatalogPage({
 }) {
   const zh = locale === "zh-cn";
   const config = catalogConfigs[contentType];
+  const categoryCopy = getCategoryCopy(locale, contentType);
+  const labels = catalogLabels[locale];
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState("All");
   // 选中的标签统一存受控 slug，供全部分类的标签筛选与卡片展示复用。
@@ -830,21 +933,21 @@ export function V4CatalogPage({
           <div>
             <nav
               className="breadcrumbs"
-              aria-label={zh ? "面包屑" : "Breadcrumb"}
+              aria-label={t(locale, "header.navAria")}
             >
-              <a href={`/${locale}/`}>{zh ? "首页" : "Home"}</a>
+              <a href={`/${locale}/`}>{t(locale, "nav.home")}</a>
               <span>›</span>
-              <span>{config.title}</span>
+              <span>{categoryCopy.label}</span>
             </nav>
-            <p className="eyebrow">{config.eyebrow}</p>
-            <h1>{config.title}</h1>
-            <p>{config.intro}</p>
+            <p className="eyebrow">{categoryCopy.label}</p>
+            <h1>{categoryCopy.label}</h1>
+            <p>{categoryCopy.intro}</p>
             <div className="v4-prototype-catalog__actions">
               <a className="v4-primary-button" href="#catalog-modules">
-                {zh ? "查看内容计划" : "Open content plan"}
+                {t(locale, "home.viewAll")}
               </a>
               <a className="v4-secondary-button" href={`/${locale}/search/`}>
-                {zh ? "搜索网站" : "Search site"}
+                {t(locale, "search.submit")}
               </a>
             </div>
           </div>
@@ -864,7 +967,7 @@ export function V4CatalogPage({
       <section className="page-shell v4-taxonomy-strip">
         {TAG_TAXONOMY[contentType].facets.map((facet) => (
           <section className="v4-taxonomy-group" key={facet.label.en}>
-            <h3>{zh ? facet.label.zh : facet.label.en}</h3>
+            <h3>{formatFacetLabel(facet, locale)}</h3>
             <div>
               {facet.values.map((value) => {
                 // Build 可映射标签看 URL 查询激活态，其余分类直接看选中 slug。
@@ -885,7 +988,7 @@ export function V4CatalogPage({
                     onClick={() => toggleTag(value)}
                     type="button"
                   >
-                    {formatTag(contentType, value, zh)}
+                    {formatTag(contentType, value, locale)}
                   </button>
                 );
               })}
@@ -1005,10 +1108,8 @@ export function V4CatalogPage({
         id="catalog-modules"
       >
         <aside className="v4-prototype-filter">
-          <p className="section-kicker">{zh ? "浏览内容" : "Browse content"}</p>
-          <h2>
-            {zh ? `筛选${config.titleZh}` : `Filter ${config.title}`}
-          </h2>
+          <p className="section-kicker">{labels.browse}</p>
+          <h2>{`${labels.filter} ${categoryCopy.label}`}</h2>
           <div>
             {config.filters.map((value) => (
               <button
@@ -1030,12 +1131,8 @@ export function V4CatalogPage({
                 type="button"
               >
                 {value === "All"
-                  ? zh
-                    ? "全部"
-                    : "All"
-                  : zh
-                    ? railFilterLabels[contentType][value]?.zh ?? value
-                    : value}
+                  ? labels.all
+                  : `${getCategoryCopy(locale, contentType).label} ${RAIL_FILTER_LABELS_10[value]?.[localeToTagKey(locale)] ?? value}`}
               </button>
             ))}
           </div>
@@ -1043,34 +1140,26 @@ export function V4CatalogPage({
         <section className="v4-prototype-catalog__main">
           <header>
             <div>
-              <h2>
-                {rendersRealBuilds
-                  ? zh
-                    ? "Build 攻略"
-                    : "Build guides"
-                  : zh
-                    ? `${config.title}攻略`
-                    : `${config.title} guides`}
-              </h2>
+              <h2>{categoryCopy.label}</h2>
             </div>
             <span>
               {rendersRealBuilds
                 ? visibleBuildPages.length
                 : visibleItems.length}{" "}
-              {zh ? "条结果" : "results"}
+              {labels.results}
             </span>
           </header>
           {querySelectedTags.length ? (
             <p className="v4-active-tags">
-              {zh ? "已选标签：" : "Selected tags: "}
+              {labels.selected}:{" "}
               {querySelectedTags.map((slug, index) => (
                 <span key={slug}>
                   {index > 0 ? " · " : ""}
-                  {formatTag(contentType, slug, zh)}
+                  {formatTag(contentType, slug, locale)}
                 </span>
               ))}
               <button onClick={clearTags} type="button">
-                {zh ? "清除" : "Clear"}
+                {labels.clear}
               </button>
             </p>
           ) : null}
@@ -1096,19 +1185,15 @@ export function V4CatalogPage({
           </div>
           {rendersRealBuilds && visibleBuildPages.length === 0 ? (
             <div className="empty-state v4-prototype-catalog__empty">
-              <h2>{zh ? "没有符合条件的 Build" : "No matching Builds"}</h2>
-              <p>
-                {zh
-                  ? "调整筛选条件，或清除筛选查看全部 Build。"
-                  : "Change or clear the filters to see all Builds."}
-              </p>
+              <h2>{categoryCopy.emptyTitle}</h2>
+              <p>{categoryCopy.emptyDescription}</p>
               <button
                 onClick={() =>
                   setSearchParams({}, { preventScrollReset: true })
                 }
                 type="button"
               >
-                {zh ? "清除筛选" : "Clear filters"}
+                {labels.clearFilters}
               </button>
             </div>
           ) : !rendersRealBuilds && visibleItems.length === 0 ? (
@@ -1131,15 +1216,15 @@ export function V4CatalogPage({
         </section>
         <aside className="v4-prototype-rail">
           <section>
-            <h2>Required connections</h2>
+            <h2>{labels.required}</h2>
             <a href={`/${locale}/search/`}>
-              Search results <span>→</span>
+              {labels.searchResults} <span>→</span>
             </a>
             <a href={`/${locale}/guides/`}>
-              Content inventory <span>→</span>
+              {labels.contentInventory} <span>→</span>
             </a>
             <a href={`/${locale}/patches/`}>
-              Patch relationships <span>→</span>
+              {labels.patchRelationships} <span>→</span>
             </a>
           </section>
         </aside>
