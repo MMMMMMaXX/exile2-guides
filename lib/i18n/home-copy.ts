@@ -21,178 +21,179 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
       "Browse the latest source-linked pages. Entries marked as pending verification remain public under the site's editorial policy and clearly state that boundary.",
     contentStatusTitle: "Latest published content",
     description:
-      "Clear, patch-aware guides for builds, bosses, items, skills and progression.",
+      "Find verified Path of Exile 2 builds, boss strategies, item answers and skill breakdowns for patch 0.5.4e.",
     emptyDescription:
       "Published content will appear here after editorial approval. Templates and internal research are never shown.",
     emptyTitle: "Published content is being prepared",
     eyebrow: "Unofficial Path of Exile 2 guide site",
-    heroTitle: "Path of Exile 2 Builds, Boss Guides and Beginner Help",
+    heroTitle: "PoE 2 Builds, Boss Guides & Skill Database",
     metaDescription:
-      "Clear, patch-aware Path of Exile 2 guides for builds, bosses, items, skills and beginners.",
+      "Find verified Path of Exile 2 builds, boss strategies, item answers and skill breakdowns. Updated for patch 0.5.4e.",
     metaTitle:
-      "Exile2 Guides - Path of Exile 2 Builds, Boss Guides & Beginner Help",
-    primaryCta: "Browse Guides",
-    secondaryCta: "View Patch Notes",
+      "PoE 2 Builds, Boss Guides & Skill Database | Exile2 Guides",
+    primaryCta: "Browse Builds",
+    secondaryCta: "Boss Guides",
   },
   "zh-cn": {
     contentStatusDescription:
       "浏览最新的来源链接页面。按编辑规则公开但仍待实机核验的内容会明确标注核验边界。",
     contentStatusTitle: "最新公开内容",
-    description: "提供清晰、适配当前版本的 Build、Boss、物品、技能与成长攻略。",
+    description:
+      "查找适配 0.5.4e 版本的 Path of Exile 2 Build、首领打法、物品答案与技能解析。",
     emptyDescription:
       "内容会在编辑批准后显示于此；模板和内部研究不会进入公开首页。",
     emptyTitle: "公开内容正在准备中",
     eyebrow: "非官方 Path of Exile 2 攻略站",
-    heroTitle: "Path of Exile 2 Build、Boss 与新手攻略",
+    heroTitle: "PoE 2 Build、Boss 攻略与技能数据库",
     metaDescription:
-      "清晰、适配当前版本的 Path of Exile 2 Build、Boss、物品、技能与新手攻略。",
-    metaTitle: "Exile2 Guides - Path of Exile 2 Build、Boss 与新手攻略",
-    primaryCta: "浏览 Guides",
-    secondaryCta: "查看 Patch Notes",
+      "查找经过核验的 Path of Exile 2 Build、首领攻略、物品机制与技能解析。适配当前版本 0.5.4e。",
+    metaTitle: "PoE 2 Build、Boss 攻略与技能数据库 | Exile2 Guides",
+    primaryCta: "浏览 Build",
+    secondaryCta: "Boss 攻略",
   },
   "pt-br": {
     contentStatusDescription:
       "Navegue pelas páginas mais recentes vinculadas à fonte. Entradas marcadas como pendentes de verificação permanecem públicas segundo a política editorial do site e declaram claramente esse limite.",
     contentStatusTitle: "Conteúdo publicado recentemente",
     description:
-      "Guias claros e atualizados por patch para builds, bosses, itens, habilidades e progressão.",
+      "Encontre builds, estratégias de chefes, respostas sobre itens e análises de habilidades de Path of Exile 2 para o patch 0.5.4e.",
     emptyDescription:
       "O conteúdo publicado aparecerá aqui após a aprovação editorial. Modelos e pesquisas internas nunca são exibidos.",
     emptyTitle: "O conteúdo publicado está sendo preparado",
     eyebrow: "Site de guias não oficial de Path of Exile 2",
-    heroTitle: "Builds de Path of Exile 2, Guias de Boss e Ajuda para Iniciantes",
+    heroTitle: "Builds, Guias de Chefes e Banco de Habilidades de PoE 2",
     metaDescription:
-      "Guias claros e atualizados por patch de Path of Exile 2 para builds, bosses, itens, habilidades e iniciantes.",
+      "Encontre builds verificadas, estratégias de chefes, respostas sobre itens e análises de habilidades de Path of Exile 2. Atualizado para o patch 0.5.4e.",
     metaTitle:
-      "Exile2 Guides - Builds de Path of Exile 2, Guias de Boss e Ajuda para Iniciantes",
-    primaryCta: "Ver Guias",
-    secondaryCta: "Ver Notas do Patch",
+      "Builds, Guias de Chefes e Banco de Habilidades de PoE 2 | Exile2 Guides",
+    primaryCta: "Ver Builds",
+    secondaryCta: "Guias de Chefes",
   },
   ru: {
     contentStatusDescription:
       "Просматривайте последние страницы со ссылками на источники. Записи, отмеченные как ожидающие проверки, остаются опубликованными согласно редакционной политике сайта и чётко указывают этот предел.",
     contentStatusTitle: "Последний опубликованный контент",
     description:
-      "Понятные гайды с учётом патчей для билдов, боссов, предметов, навыков и прогресса.",
+      "Найдите проверенные билды, стратегии по боссам, ответы по предметам и разборы навыков Path of Exile 2 для патча 0.5.4e.",
     emptyDescription:
       "Опубликованный контент появится здесь после редакционного одобрения. Шаблоны и внутренние исследования никогда не показываются.",
     emptyTitle: "Опубликованный контент готовится",
     eyebrow: "Неофициальный сайт гайдов по Path of Exile 2",
-    heroTitle: "Билды Path of Exile 2, гайды по боссам и помощь новичкам",
+    heroTitle: "Билды, гайды по боссам и база навыков PoE 2",
     metaDescription:
-      "Понятные гайды по Path of Exile 2 с учётом патчей для билдов, боссов, предметов, навыков и новичков.",
+      "Найдите проверенные билды, стратегии по боссам, ответы по предметам и разборы навыков Path of Exile 2. Обновлено для патча 0.5.4e.",
     metaTitle:
-      "Exile2 Guides — билды Path of Exile 2, гайды по боссам и помощь новичкам",
-    primaryCta: "Смотреть гайды",
-    secondaryCta: "Смотреть примечания к патчу",
+      "Билды, гайды по боссам и база навыков PoE 2 | Exile2 Guides",
+    primaryCta: "Смотреть билды",
+    secondaryCta: "Гайды по боссам",
   },
   de: {
     contentStatusDescription:
       "Durchsuche die neuesten, mit Quellen verknüpften Seiten. Einträge, die als wartend auf Verifizierung markiert sind, bleiben gemäß der redaktionellen Richtlinie der Seite öffentlich und grenzen dies deutlich ab.",
     contentStatusTitle: "Zuletzt veröffentlichter Inhalt",
     description:
-      "Klare, patch-bewusste Guides für Builds, Bosse, Items, Skills und Fortschritt.",
+      "Finde verifizierte Builds, Boss-Strategien, Item-Antworten und Skill-Erklärungen für Path of Exile 2 Patch 0.5.4e.",
     emptyDescription:
       "Veröffentlichter Inhalt erscheint hier nach redaktioneller Freigabe. Vorlagen und interne Recherchen werden niemals angezeigt.",
     emptyTitle: "Veröffentlichter Inhalt wird vorbereitet",
     eyebrow: "Inoffizielle Path of Exile 2-Guide-Seite",
-    heroTitle: "Path of Exile 2 Builds, Boss-Guides und Hilfe für Einsteiger",
+    heroTitle: "PoE 2 Builds, Boss-Guides & Skill-Datenbank",
     metaDescription:
-      "Klare, patch-bewusste Path of Exile 2-Guides für Builds, Bosse, Items, Skills und Einsteiger.",
+      "Finde verifizierte Path of Exile 2 Builds, Boss-Strategien, Item-Antworten und Skill-Erklärungen. Aktualisiert für Patch 0.5.4e.",
     metaTitle:
-      "Exile2 Guides – Path of Exile 2 Builds, Boss-Guides & Hilfe für Einsteiger",
-    primaryCta: "Guides durchsuchen",
-    secondaryCta: "Patch-Notes ansehen",
+      "PoE 2 Builds, Boss-Guides & Skill-Datenbank | Exile2 Guides",
+    primaryCta: "Builds durchsuchen",
+    secondaryCta: "Boss-Guides",
   },
   es: {
     contentStatusDescription:
       "Explora las páginas más recientes vinculadas a fuentes. Las entradas marcadas como pendientes de verificación permanecen públicas según la política editorial del sitio y declaran claramente ese límite.",
     contentStatusTitle: "Contenido publicado más reciente",
     description:
-      "Guías claras y actualizadas por parche para builds, jefes, objetos, habilidades y progresión.",
+      "Encuentra builds verificadas, estrategias de jefes, respuestas sobre objetos y análisis de habilidades de Path of Exile 2 para el parche 0.5.4e.",
     emptyDescription:
       "El contenido publicado aparecerá aquí tras la aprobación editorial. Las plantillas e investigaciones internas nunca se muestran.",
     emptyTitle: "El contenido publicado se está preparando",
     eyebrow: "Sitio de guías no oficial de Path of Exile 2",
-    heroTitle: "Builds de Path of Exile 2, guías de jefes y ayuda para principiantes",
+    heroTitle: "Builds, guías de jefes y base de datos de habilidades de PoE 2",
     metaDescription:
-      "Guías claras y actualizadas por parche de Path of Exile 2 para builds, jefes, objetos, habilidades y principiantes.",
+      "Encuentra builds verificadas, estrategias de jefes, respuestas sobre objetos y análisis de habilidades de Path of Exile 2. Actualizado para el parche 0.5.4e.",
     metaTitle:
-      "Exile2 Guides - Builds de Path of Exile 2, guías de jefes y ayuda para principiantes",
-    primaryCta: "Ver guías",
-    secondaryCta: "Ver notas del parche",
+      "Builds, guías de jefes y base de datos de habilidades de PoE 2 | Exile2 Guides",
+    primaryCta: "Ver builds",
+    secondaryCta: "Guías de jefes",
   },
   fr: {
     contentStatusDescription:
       "Parcourez les dernières pages liées à leurs sources. Les entrées marquées comme en attente de vérification restent publiques selon la politique éditoriale du site et indiquent clairement cette limite.",
     contentStatusTitle: "Dernier contenu publié",
     description:
-      "Des guides clairs et à jour des correctifs pour les builds, boss, objets, compétences et la progression.",
+      "Trouvez des builds vérifiés, stratégies de boss, réponses sur les objets et explications de compétences pour Path of Exile 2 patch 0.5.4e.",
     emptyDescription:
       "Le contenu publié apparaîtra ici après validation éditoriale. Les modèles et recherches internes ne sont jamais affichés.",
     emptyTitle: "Le contenu publié est en préparation",
     eyebrow: "Site de guides non officiel de Path of Exile 2",
-    heroTitle: "Builds Path of Exile 2, guides de boss et aide aux débutants",
+    heroTitle: "Builds, guides de boss et base de compétences PoE 2",
     metaDescription:
-      "Des guides clairs et à jour des correctifs de Path of Exile 2 pour les builds, boss, objets, compétences et débutants.",
+      "Trouvez des builds vérifiés, stratégies de boss, réponses sur les objets et explications de compétences pour Path of Exile 2. Mis à jour pour le patch 0.5.4e.",
     metaTitle:
-      "Exile2 Guides - Builds Path of Exile 2, guides de boss et aide aux débutants",
-    primaryCta: "Parcourir les guides",
-    secondaryCta: "Voir les notes de mise à jour",
+      "Builds, guides de boss et base de compétences PoE 2 | Exile2 Guides",
+    primaryCta: "Parcourir les builds",
+    secondaryCta: "Guides de boss",
   },
   ja: {
     contentStatusDescription:
       "最新のソース付きページを閲覧できます。検証待ちとマークされた項目は、サイトの編集方針に基づき公開されたままとなり、その境界を明確に示します。",
     contentStatusTitle: "最新の公開コンテンツ",
     description:
-      "ビルド、ボス、アイテム、スキル、育成に関する、パッチに沿った分かりやすいガイド。",
+      "Path of Exile 2 の検証済みビルド、ボス攻略、アイテム解説、スキル解説をパッチ 0.5.4e 向けに探せます。",
     emptyDescription:
       "公開コンテンツは編集承認後にここに表示されます。テンプレートと社内リサーチが表示されることはありません。",
     emptyTitle: "公開コンテンツを準備中",
     eyebrow: "非公式の Path of Exile 2 ガイドサイト",
-    heroTitle: "Path of Exile 2 のビルド、ボス攻略、初心者向けヘルプ",
+    heroTitle: "PoE 2 ビルド、ボス攻略、スキルデータベース",
     metaDescription:
-      "ビルド、ボス、アイテム、スキル、初心者向けの、パッチに沿った分かりやすい Path of Exile 2 ガイド。",
+      "Path of Exile 2 の検証済みビルド、ボス攻略、アイテム解説、スキル解説を見つける。パッチ 0.5.4e に対応。",
     metaTitle:
-      "Exile2 Guides - Path of Exile 2 のビルド、ボス攻略、初心者向けヘルプ",
-    primaryCta: "ガイドを見る",
-    secondaryCta: "パッチノートを見る",
+      "PoE 2 ビルド、ボス攻略、スキルデータベース | Exile2 Guides",
+    primaryCta: "ビルドを見る",
+    secondaryCta: "ボス攻略",
   },
   ko: {
     contentStatusDescription:
       "최신 소스 연결 페이지를 둘러보세요. 검증 대기로 표시된 항목은 사이트 편집 정책에 따라 공개 상태로 유지되며 그 경계를 명확히 안내합니다.",
     contentStatusTitle: "최신 게시 콘텐츠",
     description:
-      "빌드, 보스, 아이템, 스킬, 육성에 대한 패치 반영 가이드.",
+      "Path of Exile 2 의 검증된 빌드, 보스 공략, 아이템 답변, 스킬 분석을 패치 0.5.4e 기준으로 찾아보세요.",
     emptyDescription:
       "게시 콘텐츠는 편집 승인 후 여기에 표시됩니다. 템플릿과 내부 연구는 절대 표시되지 않습니다.",
     emptyTitle: "게시 콘텐츠를 준비하는 중",
     eyebrow: "비공식 Path of Exile 2 가이드 사이트",
-    heroTitle: "Path of Exile 2 빌드, 보스 공략, 초보자 도움말",
+    heroTitle: "PoE 2 빌드, 보스 공략, 스킬 데이터베이스",
     metaDescription:
-      "빌드, 보스, 아이템, 스킬, 초보자를 위한 패치 반영 Path of Exile 2 가이드.",
+      "Path of Exile 2 의 검증된 빌드, 보스 공략, 아이템 답변, 스킬 분석을 찾아보세요. 패치 0.5.4e 기준 업데이트.",
     metaTitle:
-      "Exile2 Guides - Path of Exile 2 빌드, 보스 공략, 초보자 도움말",
-    primaryCta: "가이드 보기",
-    secondaryCta: "패치 노트 보기",
+      "PoE 2 빌드, 보스 공략, 스킬 데이터베이스 | Exile2 Guides",
+    primaryCta: "빌드 보기",
+    secondaryCta: "보스 공략",
   },
   tr: {
     contentStatusDescription:
       "Kaynak bağlantılı en son sayfaları göz atın. Doğrulama bekliyor olarak işaretlenen girişler, sitenin editoryal politikası gereği herkese açık kalır ve bu sınırı açıkça belirtir.",
     contentStatusTitle: "En son yayımlanan içerik",
     description:
-      "Build'ler, boss'lar, eşyalar, yetenekler ve ilerleme için yama farkında, net rehberler.",
+      "Path of Exile 2 için doğrulanmış build'ler, boss stratejileri, eşya cevapları ve yetenek açıklamalarını 0.5.4e yaması için bulun.",
     emptyDescription:
       "Yayımlanan içerik, editoryal onaydan sonra burada görünecek. Şablonlar ve dahili araştırmalar hiçbir zaman gösterilmez.",
     emptyTitle: "Yayımlanan içerik hazırlanıyor",
     eyebrow: "Resmi olmayan Path of Exile 2 rehber sitesi",
-    heroTitle: "Path of Exile 2 Build'leri, Boss Rehberleri ve Yeni Başlayan Yardımı",
+    heroTitle: "PoE 2 Build'leri, Boss Rehberleri ve Yetenek Veritabanı",
     metaDescription:
-      "Build'ler, boss'lar, eşyalar, yetenekler ve yeni başlayanlar için yama farkında, net Path of Exile 2 rehberleri.",
+      "Path of Exile 2 için doğrulanmış build'ler, boss stratejileri, eşya cevapları ve yetenek açıklamalarını bulun. 0.5.4e yaması için güncellendi.",
     metaTitle:
-      "Exile2 Guides - Path of Exile 2 Build'leri, Boss Rehberleri ve Yeni Başlayan Yardımı",
-    primaryCta: "Rehberlere Göz At",
-    secondaryCta: "Yama Notlarını Görüntüle",
+      "PoE 2 Build'leri, Boss Rehberleri ve Yetenek Veritabanı | Exile2 Guides",
+    primaryCta: "Build'lere Göz At",
+    secondaryCta: "Boss Rehberleri",
   },
 };
 
