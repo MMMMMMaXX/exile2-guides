@@ -76,7 +76,11 @@ import {
   createSeoMetadata,
 } from "../../lib/seo/metadata";
 import { getNotFoundMeta } from "../../lib/seo/not-found";
-import { createArticleJsonLd } from "../../lib/seo/structured-data";
+import {
+  createArticleJsonLd,
+  createFaqJsonLd,
+  createHowToJsonLd,
+} from "../../lib/seo/structured-data";
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { isV4Subtype } from "../../lib/content/v4-taxonomy";
 
@@ -404,6 +408,28 @@ export default function ContentDetailRoute({
       {!page.frontMatter.draft ? (
         <StructuredData data={createArticleJsonLd(page.frontMatter)} />
       ) : null}
+      {/* P1-1: 从可见章节派生 FAQPage / HowTo 富结果结构化数据 */}
+      {!page.frontMatter.draft
+        ? (() => {
+            const article =
+              page.buildArticle ??
+              page.bossArticle ??
+              page.itemArticle ??
+              page.skillArticle ??
+              page.guideArticle ??
+              page.patchArticle;
+            if (!article) return null;
+            const locale = page.frontMatter.locale;
+            const faq = createFaqJsonLd(locale, article.sections);
+            const howTo = createHowToJsonLd(locale, article.sections);
+            return (
+              <>
+                {faq ? <StructuredData data={faq} /> : null}
+                {howTo ? <StructuredData data={howTo} /> : null}
+              </>
+            );
+          })()
+        : null}
       <ArticleLayout
         breadcrumbs={breadcrumbs}
         category={page.frontMatter.contentType}
