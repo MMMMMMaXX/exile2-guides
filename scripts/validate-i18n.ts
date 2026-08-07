@@ -6,12 +6,14 @@ import {
 } from "../lib/content/constants";
 import { hasUiTable, uiByLocale } from "../lib/i18n/ui";
 
+/** 输出错误信息并以非零退出码终止进程。 */
 function fail(message: string): never {
   console.error(`i18n validation failed: ${message}`);
   process.exitCode = 1;
   throw new Error(message);
 }
 
+/** 入口：校验 localeMeta 覆盖全部 10 语言、各语言元数据完整、UI 文案表键对齐。 */
 function main(): void {
   const metaLocales = Object.keys(localeMeta) as ContentLocale[];
   const missingMeta = supportedLocales.filter(

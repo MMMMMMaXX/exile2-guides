@@ -37,10 +37,12 @@ const categoryKinds: Record<ContentType, readonly string[]> = {
   patch: ["categories"],
 };
 
+/** 拼接 locale 与段名为规范预渲染路由（尾部斜杠）。 */
 function localeRoute(locale: string, segment: string): string {
   return segment === "" ? `/${locale}/` : `/${locale}/${segment}/`;
 }
 
+/** 入口：生成全量预渲染路由 manifest 并写入文件，供 CI 核对构建完整性。 */
 async function main(): Promise<void> {
   const routes: string[] = [];
   for (const locale of supportedLocales) {

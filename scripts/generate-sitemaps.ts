@@ -28,6 +28,7 @@ import {
 
 const buildClientDir = path.resolve(process.cwd(), "build", "client");
 
+/** 入口：加载全量内容索引，生成 sitemap.xml 与 robots.txt 并写入 build/client。 */
 async function main(): Promise<void> {
   if (!existsSync(buildClientDir)) {
     console.error(

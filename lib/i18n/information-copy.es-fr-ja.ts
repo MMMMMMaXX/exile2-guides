@@ -1,3 +1,4 @@
+/** 文件职责：信息页（es/fr/ja）多语言文案定义，从主文件拆分以控制单文件体积。 */
 import type {
   InformationPageSlug,
   InformationPageCopy,

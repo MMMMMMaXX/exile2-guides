@@ -1,3 +1,5 @@
+<!-- 文件职责：全站 SEO 优化策略文档，含技术基建、内容策略、外链建设、国际化与 AI 搜索适配方案。 -->
+
 # StratLore (PoE2 Guides) — 全面 SEO 优化策略
 
 > 审计日期：2026-08-07 · 审计对象：`poe2.stratlore.com`（GSC 域名属性 `sc-domain:stratlore.com`）

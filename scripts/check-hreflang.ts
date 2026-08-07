@@ -16,6 +16,7 @@ const knownHreflangs = new Set<string>(
   Object.values(localeMeta).map((meta) => meta.hreflang),
 );
 
+/** 递归遍历目录下所有 index.html 文件，返回完整路径列表。 */
 async function walkHtml(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
   const nested = await Promise.all(
@@ -28,6 +29,7 @@ async function walkHtml(directory: string): Promise<string[]> {
   return nested.flat();
 }
 
+/** 入口：扫描构建产物中所有 HTML 的 hreflang alternate 链接，校验值是否合法且指向已生成页面。 */
 async function main(): Promise<void> {
   if (!existsSync(buildDir)) {
     console.log(

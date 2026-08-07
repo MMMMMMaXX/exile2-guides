@@ -10,6 +10,7 @@ import {
 const contentRoot = path.resolve(process.cwd(), "content");
 const writeMode = process.argv.includes("--write");
 
+/** 递归遍历目录下所有 JSON 文件，返回完整路径列表。 */
 async function walkJson(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
   const nested = await Promise.all(
@@ -31,6 +32,7 @@ type FileInfo = {
   file: string;
 };
 
+/** 入口：遍历全量内容 JSON，比对 EN revision 与译文 sourceRevision，检测并可选标记过期翻译。 */
 async function main(): Promise<void> {
   const files = await walkJson(contentRoot);
   const enRevisions = new Map<string, string>();

@@ -72,6 +72,7 @@ export type BuildContentIndexOptions = {
  */
 const parsedContentCache = new Map<string, Promise<readonly ParsedContent[]>>();
 
+/** 根据内容目录与项目根路径生成缓存键，避免不同工作目录的缓存冲突。 */
 function parsedContentCacheKey(
   contentDirectory: string,
   projectRoot: string,

@@ -6,6 +6,7 @@ import { translationMetaFromRaw } from "../lib/content/translation";
 
 const contentRoot = path.resolve(process.cwd(), "content");
 
+/** 递归遍历目录下所有 JSON 文件，返回完整路径列表。 */
 async function walkJson(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
   const nested = await Promise.all(
@@ -18,6 +19,7 @@ async function walkJson(directory: string): Promise<string[]> {
   return nested.flat();
 }
 
+/** 入口：遍历全量内容 JSON，校验 translation 块结构合法性并输出统计摘要。 */
 async function main(): Promise<void> {
   const files = await walkJson(contentRoot);
   let checked = 0;
