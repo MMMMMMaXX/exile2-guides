@@ -382,6 +382,9 @@ const buildArticleBaseSchema = z.strictObject({
   // 翻译元数据块：与通用内容 schema 对齐，允许目标语言译文携带 translation 块而不破坏严格校验。
   translation: translationMetaSchema.optional(),
 
+  // 英语事实源修订号：修改 en 源时必须 bump，供 translations:stale 检测译文是否过期；可选，老文件可不含。
+  revision: z.string().trim().min(1).optional(),
+
   seo: z.strictObject({
     title: requiredText,
     description: requiredText,

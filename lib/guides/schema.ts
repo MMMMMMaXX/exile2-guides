@@ -616,6 +616,9 @@ const guideArticleBaseSchema = z.strictObject({
 
   // 目标语言译文元数据（可选）。由翻译流水线写入，不影响既有英语/中文内容。
   translation: translationMetaSchema.optional(),
+
+  // 英语事实源修订号：修改 en 源时必须 bump，供 translations:stale 检测译文是否过期；可选，老文件可不含。
+  revision: z.string().trim().min(1).optional(),
 });
 
 /**

@@ -2,6 +2,9 @@
 
 # Exile2 Guides 仓库工作规则
 
+> ⚠️ **强制规则（最高优先级）· 内容多语言同步**
+> 本项目内容面向 **10 种语言**（en, zh-cn, pt-br, ru, de, es, fr, ja, ko, tr）。**任何内容修改——`content/` 下的内容 JSON，或 `lib/i18n/` 下的文案 TS——都必须同步全部 10 种语言。** 只允许改动单一语言（例如只改英文）视为未完成任务，发布前复查与门禁会打回。实施细则见下方「内容多语言同步（10 语言强制）」专节。
+
 > 本节更新时间：2026-08-02 01:36（Asia/Shanghai）
 
 ## 开始工作前
@@ -39,6 +42,17 @@
 5. 内容生成任务必须在同一任务中补齐双语正文、来源、版本、SEO、图片/视频权利信息、内链和责任字段，并通过 `npm run validate:content` 与适用质量门禁；不能把审核债务转交给用户。
 6. `scripts/validate-content.ts` 必须持续阻止任何非模板文章恢复为草稿或禁止索引状态。
 7. 自 Items 第四批起，内容生成采用 publish-first：自动化来源审核与构建校验即为发布门禁；逐篇人工批准不再是发布前置条件，Agent 直接以 `status: published` 与 `seo.noindex: false` 上线，不等待用户逐篇确认。
+
+## 内容多语言同步（10 语言强制）
+
+> 本节更新时间：2026-08-07（Asia/Shanghai）
+
+1. **适用范围**：`content/{locale}/**/*.json` 全部内容文件；`lib/i18n/*.ts` 中任何带 `Record<ContentLocale, ...>` 或多语言键的文案（home-copy、category-copy、ui 等）。
+2. **内容 JSON**：英语（`en`）是事实源。修改任一 `en` 文件后，必须同步更新其余 9 种语言的同名同 slug 文件，保持结构、章节顺序、来源与 `seo` 块一致；各语言文案须为该语言母语表达，不得残留英文占位或机器未审文本。
+3. **同步锚点（revision）**：修改 `en` 源时必须 bump 顶层 `revision` 字段；9 种译文须在 `translation` 块把 `sourceRevision` 更新为新的 `en` `revision`，`translationStatus` 保持 `reviewed`；若暂缓翻译，须将 `translationStatus` 标为 `stale`，以便 `npm run translations:stale --check` 追踪。
+4. **i18n 文案 TS**：`Record<ContentLocale, X>` 类型已强制 10 个键都存在（缺一个即类型错误）。在此之上，修改任一 locale 的值（如 `en` 的导语/文案）必须同步改写其余 9 个 locale 的对应值，禁止只改 `en` 而让其他语言停留在旧文案。
+5. **校验脚本（只报告、不强制）**：`npm run translations:validate`（translation 块合法性）、`npm run translations:stale --check`（源修订号变化后的过期译文）、`npm run i18n:validate`（i18n 键对齐）。同步纪律主要靠本规则与人工复查保证。
+6. **发布前自查**：本次改动是否触碰内容/文案？若是，10 种语言是否都已处理？只改单一语言却未同步的改动不得合并或标记完成。
 
 ## GitHub 推送权限
 

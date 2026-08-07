@@ -96,6 +96,8 @@ const commonFrontMatterShape = {
   sources: z.array(sourceSchema).default([]),
   // 翻译元数据块：可选，供 POE-I18N-003 校验与过期检测；对未携带该块的老文件无影响。
   translation: translationMetaSchema.optional(),
+  // 英语事实源修订号：修改 en 源时必须 bump，供 translations:stale 检测译文是否过期；可选，老文件可不含。
+  revision: z.string().trim().min(1).optional(),
 };
 
 export const buildFrontMatterSchema = z.strictObject({

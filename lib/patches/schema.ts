@@ -556,6 +556,9 @@ const patchArticleBaseSchema = z.strictObject({
 
   // Optionale Übersetzungs-Metadaten (entspricht items/bosses Schemas).
   translation: translationMetaSchema.optional(),
+
+  // 英语事实源修订号：修改 en 源时必须 bump，供 translations:stale 检测译文是否过期；可选，老文件可不含。
+  revision: z.string().trim().min(1).optional(),
 });
 
 /**

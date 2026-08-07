@@ -591,6 +591,7 @@ const railFilterMapByContentType: Partial<
 const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   en: {
     browse: "Browse content",
+    popular: "Popular",
     filter: "Filter",
     all: "All",
     results: "results",
@@ -606,6 +607,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   "zh-cn": {
     browse: "浏览内容",
+    popular: "热门",
     filter: "筛选",
     all: "全部",
     results: "条结果",
@@ -621,6 +623,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   "pt-br": {
     browse: "Explorar conteúdo",
+    popular: "Populares",
     filter: "Filtrar",
     all: "Todos",
     results: "resultados",
@@ -636,6 +639,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   ru: {
     browse: "Обзор контента",
+    popular: "Популярное",
     filter: "Фильтр",
     all: "Все",
     results: "результатов",
@@ -651,6 +655,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   de: {
     browse: "Inhalt durchsuchen",
+    popular: "Beliebt",
     filter: "Filtern",
     all: "Alle",
     results: "Ergebnisse",
@@ -666,6 +671,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   es: {
     browse: "Explorar contenido",
+    popular: "Populares",
     filter: "Filtrar",
     all: "Todos",
     results: "resultados",
@@ -681,6 +687,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   fr: {
     browse: "Parcourir le contenu",
+    popular: "Populaires",
     filter: "Filtrer",
     all: "Tous",
     results: "résultats",
@@ -696,6 +703,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   ja: {
     browse: "コンテンツを参照",
+    popular: "人気",
     filter: "フィルター",
     all: "すべて",
     results: "件の結果",
@@ -711,6 +719,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   ko: {
     browse: "콘텐츠 둘러보기",
+    popular: "인기",
     filter: "필터",
     all: "전체",
     results: "개 결과",
@@ -726,6 +735,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
   },
   tr: {
     browse: "İçeriğe göz at",
+    popular: "Popüler",
     filter: "Filtrele",
     all: "Tümü",
     results: "sonuç",
@@ -850,6 +860,17 @@ export function V4CatalogPage({
   ].flatMap((value) => (value ? [value] : []));
   const querySelectedTags =
     contentType === "build" ? [...buildUrlTags, ...selectedTags] : selectedTags;
+  /** 分类首页热门条目：按更新时间取前 6 篇真实已发布页面，作为 hub→spoke 内链。 */
+  const popularItems = useMemo(
+    () =>
+      items
+        .filter((page) => !page.frontMatter.draft)
+        .sort((left, right) =>
+          right.frontMatter.updatedAt.localeCompare(left.frontMatter.updatedAt),
+        )
+        .slice(0, 6),
+    [items],
+  );
 
   /** 更新一个筛选参数并保留其他筛选；空值会删除参数以恢复规范列表状态。 */
   function updateBuildQuery(name: string, value: string) {
@@ -952,6 +973,27 @@ export function V4CatalogPage({
             <p className="eyebrow">{categoryCopy.label}</p>
             <h1>{categoryCopy.label}</h1>
             <p>{categoryCopy.intro}</p>
+            {popularItems.length > 0 && (
+              <nav
+                className="v4-prototype-catalog__popular"
+                aria-label={labels.popular}
+              >
+                <h2 className="v4-prototype-catalog__popular-title">
+                  {labels.popular}
+                </h2>
+                <ul>
+                  {popularItems.map((page) => (
+                    <li key={page.frontMatter.contentId}>
+                      <a
+                        href={`/${locale}/${contentTypeSegments[contentType]}/${page.frontMatter.slug}/`}
+                      >
+                        {page.frontMatter.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
             <div className="v4-prototype-catalog__actions">
               <a className="v4-primary-button" href="#catalog-modules">
                 {t(locale, "home.viewAll")}

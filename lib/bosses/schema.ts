@@ -463,6 +463,9 @@ const bossArticleBaseSchema = z.strictObject({
 
   // 可选翻译元数据；携带时由 translationMetaSchema 单独校验（与全局 content schema 一致）。
   translation: translationMetaSchema.optional(),
+
+  // 英语事实源修订号：修改 en 源时必须 bump，供 translations:stale 检测译文是否过期；可选，老文件可不含。
+  revision: z.string().trim().min(1).optional(),
 });
 
 /**
