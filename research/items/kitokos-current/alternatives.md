@@ -30,12 +30,12 @@ or is not the pick.
 
 ## 4. Decision summary
 
-| If you want… | Pick |
-|--------------|------|
-| Lightning hits that also stun/CC | Kitoko's Current |
-| Pure damage amplification | Shock-enabling unique |
-| Max ES / attributes | High-stat unique or rare |
-| No speed tax | Attack-speed unique or rare |
+| If you want…                     | Pick                        |
+| -------------------------------- | --------------------------- |
+| Lightning hits that also stun/CC | Kitoko's Current            |
+| Pure damage amplification        | Shock-enabling unique       |
+| Max ES / attributes              | High-stat unique or rare    |
+| No speed tax                     | Attack-speed unique or rare |
 
 ## Uncertain / flagged
 

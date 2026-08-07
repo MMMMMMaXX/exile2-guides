@@ -13,5 +13,6 @@ Images to capture for the media gallery and article proof. (Facts verified again
    - Capture Hand of Wisdom and Action (glove) + an all-attribute amulet to show the attribute-stacker shell that feeds Pillar's multipliers.
 
 ## Image paths
+
 - Hero / card: `/images/items/pillar-of-the-caged-god-hero.webp` (referenced in media-gallery items).
 - Source references may also link to PoE2Wiki if a captured asset is unavailable.

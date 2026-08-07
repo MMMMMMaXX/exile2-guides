@@ -5,6 +5,7 @@ Creator: Alphagamer
 URL: https://www.youtube.com/watch?v=1Ptv-EsofeQ
 
 ## English labels (used in EN file)
+
 - 0:00 Introduction
 - 1:30 Rarity tiers
 - 4:10 Prefix vs suffix
@@ -14,6 +15,7 @@ URL: https://www.youtube.com/watch?v=1Ptv-EsofeQ
 - 16:00 Summary
 
 ## Chinese labels (used in ZH file)
+
 - 0:00 简介
 - 1:30 稀有度阶级
 - 4:10 前缀与后缀

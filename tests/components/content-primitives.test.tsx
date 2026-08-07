@@ -77,4 +77,3 @@ describe("related content", () => {
     expect(screen.getByRole("link", { name: /Verified Guide/i })).toBeTruthy();
   });
 });
-

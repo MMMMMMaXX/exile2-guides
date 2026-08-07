@@ -6,6 +6,7 @@
 **oEmbed-verified:** yes (per batch spec §8)
 
 ## EN labels (used in en file)
+
 - 0:00 — Introduction
 - 2:10 — Base and added damage
 - 6:30 — Increased modifiers
@@ -15,6 +16,7 @@
 - 25:30 — Summary
 
 ## ZH labels (used in zh-cn file)
+
 - 0:00 — 简介
 - 2:10 — 基础与附加伤害
 - 6:30 — 增大修正

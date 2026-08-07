@@ -5,6 +5,7 @@ Locale: en + zh-cn
 Generated: 2026-08-03
 
 ## Identity
+
 - slug: from-nothing
 - itemType: remote-allocation
 - itemCategory: unique-items
@@ -17,6 +18,7 @@ Generated: 2026-08-03
 - verificationStatus: pending-pc
 
 ## Source count: 7
+
 - Official source count: 1
 - Current database source count: 2 (PoE2Wiki, poe2db)
 - Community source count: 2 (Reddit, YouTube)
@@ -24,6 +26,7 @@ Generated: 2026-08-03
 - Video source count: 1
 
 ## Content requirements
+
 - Structured tables (data-table): 2 (passive-point-savings, trade-search) + matrix sections (eligibility, outcomes, risk-analysis). Requirement >=2 satisfied.
 - Community-evidence entries: 4 (>=3 satisfied).
 - Build decision: yes (build-usage + valuation).
@@ -31,16 +34,20 @@ Generated: 2026-08-03
 - Current vs legacy comparison: yes (overview + current-vs-legacy.md + patch-history).
 
 ## Exact numeric claims
+
 - Required Level 20, Limited to 1, Radius fixed small disc, -(none) resistance, Drop King in the Mists +4 Crux.
 - Two-source numeric claims: required level (poe2db + poe2dictionary), Limited to (wiki + db), drop boss/difficulty (wiki + GameRant).
 
 ## Legacy claims
+
 - Keystone pool changed in 0.3.0 / 0.4.0 (wiki version history). Clearly labelled legacy.
 
 ## Current claims
+
 - 0.5.4 mechanic, Corrupted always, no resistance cost. Cross-supported.
 
 ## Quality gates
+
 - Unresolved conflicts = 0
 - Broken links = 0
 - Missing required media = 0 (media described; hero borrowed per spec)
@@ -51,6 +58,7 @@ Generated: 2026-08-03
 - seo.noindex = false
 
 ## Quality score (target >= 88)
+
 - Current rules & version: 20/20
 - Source coverage: 15/15
 - Passive Tree explanation: 15/15
@@ -63,6 +71,7 @@ Generated: 2026-08-03
 - **Estimated total: 100/100 (>= 88)**
 
 ## Final state
+
 - status: published
 - seo.noindex: false
 - Entered Sitemap and Search (per batch policy)

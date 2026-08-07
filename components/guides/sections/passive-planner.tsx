@@ -36,11 +36,7 @@ export function PassivePlanner({ section }: { section: Section }) {
       <div className="guide-passive-planner__masters">
         {section.masters.map((master) => (
           <button
-            className={
-              master.id === activeMasterId
-                ? "is-selected"
-                : ""
-            }
+            className={master.id === activeMasterId ? "is-selected" : ""}
             key={master.id}
             onClick={() => setActiveMasterId(master.id)}
             type="button"

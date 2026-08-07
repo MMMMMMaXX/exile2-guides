@@ -46,9 +46,7 @@ export function ArticleLayout({
   updatedAt,
 }: ArticleLayoutProps) {
   const resolvedImage = image ? resolveImageAsset(image) : undefined;
-  const scopedClass = category
-    ? ` v4-article-page--${category}`
-    : "";
+  const scopedClass = category ? ` v4-article-page--${category}` : "";
   return (
     <>
       <ReadingProgress />

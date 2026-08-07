@@ -9,36 +9,36 @@ items/builds/patches). No unallowlisted slug is linked.
 
 ## Builds (relatedBuildIds)
 
-| Slug | Type | Why linked |
-|------|------|-----------|
-| `lightning-spear-amazon` | build | Primary Lightning-hit CC user |
-| `ice-shot-deadeye` | build | Lightning-arrow hits benefit from Electrocution |
-| `spark-gemling-legionnaire` | build | Many small Lightning hits stack Electrocution |
+| Slug                        | Type  | Why linked                                      |
+| --------------------------- | ----- | ----------------------------------------------- |
+| `lightning-spear-amazon`    | build | Primary Lightning-hit CC user                   |
+| `ice-shot-deadeye`          | build | Lightning-arrow hits benefit from Electrocution |
+| `spark-gemling-legionnaire` | build | Many small Lightning hits stack Electrocution   |
 
 ## Skills (relatedSkillIds)
 
-| Slug | Type | Why linked |
-|------|------|-----------|
+| Slug              | Type  | Why linked                                   |
+| ----------------- | ----- | -------------------------------------------- |
 | `lightning-arrow` | skill | Core Lightning-hit skill the glove amplifies |
-| `lightning-rod` | skill | Lightning-hit enabler |
+| `lightning-rod`   | skill | Lightning-hit enabler                        |
 
 ## Guides (relatedGuideIds)
 
-| Slug | Type | Why linked |
-|------|------|-----------|
-| `ailments-thresholds-charms-immunity` | guide | Explains Electrocution/Shock thresholds + charms |
-| `stun-daze-pin-electrocute-armour-break` | guide | Explains Electrocution as a stun/CC mechanic |
+| Slug                                     | Type  | Why linked                                       |
+| ---------------------------------------- | ----- | ------------------------------------------------ |
+| `ailments-thresholds-charms-immunity`    | guide | Explains Electrocution/Shock thresholds + charms |
+| `stun-daze-pin-electrocute-armour-break` | guide | Explains Electrocution as a stun/CC mechanic     |
 
 ## Patches (relatedPatchIds)
 
-| Slug | Type | Why linked |
-|------|------|-----------|
+| Slug                          | Type  | Why linked                         |
+| ----------------------------- | ----- | ---------------------------------- |
 | `patch-0-5-4-hotfix-timeline` | patch | Current EA version context (0.5.4) |
 
 ## Bosses (relatedBossIds)
 
-| Slug | Type | Why linked |
-|------|------|-----------|
+| Slug                    | Type | Why linked                              |
+| ----------------------- | ---- | --------------------------------------- |
 | `xesht-we-that-are-one` | boss | Boss control demo target in video/build |
 
 ## Excluded (verify against allowlist)

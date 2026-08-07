@@ -9,8 +9,18 @@ const EN = path.join(ROOT, "content", "en");
 const TR = path.join(ROOT, "content", "tr");
 const TSV = process.argv[2] || path.join(ROOT, "tmp", "tr_dict.tsv");
 
-const unesc = (s) => s.replace(/\\n/g, "\n").replace(/\\t/g, "\t").replace(/\\r/g, "\r").replace(/\\\\/g, "\\");
-const esc = (s) => s.replace(/\\/g, "\\\\").replace(/\t/g, "\\t").replace(/\n/g, "\n").replace(/\r/g, "\r");
+const unesc = (s) =>
+  s
+    .replace(/\\n/g, "\n")
+    .replace(/\\t/g, "\t")
+    .replace(/\\r/g, "\r")
+    .replace(/\\\\/g, "\\");
+const esc = (s) =>
+  s
+    .replace(/\\/g, "\\\\")
+    .replace(/\t/g, "\\t")
+    .replace(/\n/g, "\n")
+    .replace(/\r/g, "\r");
 
 // build EN->TR map
 const map = new Map();
@@ -24,23 +34,76 @@ for (const l of raw) {
 }
 
 const KEEP_KEYS = new Set([
-  "id", "slug", "locale", "type", "status", "order", "sourceType",
-  "rarity", "itemType", "itemClass", "patch", "league", "verificationStatus",
-  "author", "reviewer", "createdAt", "publishedAt", "updatedAt",
-  "lastVerifiedAt", "heroImage", "cardImage", "url", "href", "method",
-  "verifiedClientVersion", "noindex", "canonical", "time", "date",
-  "requiredLevel", "gemLevel", "minimumCharacterLevel", "spiritReservation",
-  "uncutGemTier", "patchStatus", "skillType", "skillCategory",
+  "id",
+  "slug",
+  "locale",
+  "type",
+  "status",
+  "order",
+  "sourceType",
+  "rarity",
+  "itemType",
+  "itemClass",
+  "patch",
+  "league",
+  "verificationStatus",
+  "author",
+  "reviewer",
+  "createdAt",
+  "publishedAt",
+  "updatedAt",
+  "lastVerifiedAt",
+  "heroImage",
+  "cardImage",
+  "url",
+  "href",
+  "method",
+  "verifiedClientVersion",
+  "noindex",
+  "canonical",
+  "time",
+  "date",
+  "requiredLevel",
+  "gemLevel",
+  "minimumCharacterLevel",
+  "spiritReservation",
+  "uncutGemTier",
+  "patchStatus",
+  "skillType",
+  "skillCategory",
 ]);
 const KEEP_ARRAY_KEYS = new Set([
-  "skillTags", "tags", "relatedBuildIds", "relatedBossIds",
-  "relatedGuideIds", "relatedItemIds", "relatedPatchIds", "relatedSkillIds",
+  "skillTags",
+  "tags",
+  "relatedBuildIds",
+  "relatedBossIds",
+  "relatedGuideIds",
+  "relatedItemIds",
+  "relatedPatchIds",
+  "relatedSkillIds",
 ]);
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game",
-  "community", "tool", "other", "current", "supported", "legacy",
-  "under-review", "draft", "published", "source-reviewed", "pending-pc",
-  "verified", "active",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
+  "active",
 ]);
 const isSlug = (s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s);
 const isUrl = (s) => /^https?:\/\//i.test(s);
@@ -51,7 +114,10 @@ const rewriteLink = (s) => {
   // http(s):// URLs that happen to contain /en/ (e.g. poe2db.tw/en/...) intact.
   if (typeof s !== "string") return s;
   const urls = [];
-  let t = s.replace(/https?:\/\/[^\s)"'\]]+/g, (m) => { urls.push(m); return "\u0000" + (urls.length - 1) + "\u0000"; });
+  let t = s.replace(/https?:\/\/[^\s)"'\]]+/g, (m) => {
+    urls.push(m);
+    return "\u0000" + (urls.length - 1) + "\u0000";
+  });
   t = t.replace(/\/en\//g, "/tr/");
   t = t.replace(/\u0000(\d+)\u0000/g, (_, i) => urls[+i]);
   return t;
@@ -66,7 +132,10 @@ function walk(obj, key) {
   if (obj && typeof obj === "object") {
     const o = {};
     for (const k of Object.keys(obj)) {
-      if (k === "locale") { o[k] = "tr"; continue; }
+      if (k === "locale") {
+        o[k] = "tr";
+        continue;
+      }
       o[k] = walk(obj[k], k);
     }
     return o;
@@ -74,10 +143,15 @@ function walk(obj, key) {
   if (typeof obj === "string") {
     if (KEEP_KEYS.has(key)) {
       // href/url/link hold links: rewrite internal /en/ -> /tr/ but keep external URLs.
-      if ((key === "href" || key === "url" || key === "link") && typeof obj === "string") return rewriteLink(obj);
+      if (
+        (key === "href" || key === "url" || key === "link") &&
+        typeof obj === "string"
+      )
+        return rewriteLink(obj);
       return obj;
     }
-    if (ENUM_VALUES.has(obj.trim().toLowerCase()) && obj.length < 24) return obj;
+    if (ENUM_VALUES.has(obj.trim().toLowerCase()) && obj.length < 24)
+      return obj;
     if (isSlug(obj)) return obj;
     if (isUrl(obj)) return obj;
     if (isDate(obj)) return obj;
@@ -92,7 +166,13 @@ function walk(obj, key) {
 }
 
 let wrote = 0;
-for (const cat of fs.readdirSync(EN).filter((c) => { try { return fs.statSync(path.join(EN, c)).isDirectory(); } catch { return false; } })) {
+for (const cat of fs.readdirSync(EN).filter((c) => {
+  try {
+    return fs.statSync(path.join(EN, c)).isDirectory();
+  } catch {
+    return false;
+  }
+})) {
   const dir = path.join(EN, cat);
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json"))) {
     const slug = f.replace(/\.json$/, "");
@@ -101,8 +181,13 @@ for (const cat of fs.readdirSync(EN).filter((c) => { try { return fs.statSync(pa
     const translated = walk(data, null);
     translated.locale = "tr";
     fs.mkdirSync(path.join(TR, cat), { recursive: true });
-    fs.writeFileSync(path.join(TR, cat, slug + ".json"), JSON.stringify(translated, null, 2) + "\n");
+    fs.writeFileSync(
+      path.join(TR, cat, slug + ".json"),
+      JSON.stringify(translated, null, 2) + "\n",
+    );
     wrote++;
   }
 }
-console.log(`Applied dictionary (${map.size} entries) -> wrote ${wrote} files. Untranslated leaves (fell back to EN): ${missing}`);
+console.log(
+  `Applied dictionary (${map.size} entries) -> wrote ${wrote} files. Untranslated leaves (fell back to EN): ${missing}`,
+);

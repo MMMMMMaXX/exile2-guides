@@ -21,10 +21,7 @@ export function NotFoundPage({ locale = "en" }: { locale?: ContentLocale }) {
             <a className="button" href={homePath}>
               {t(locale, "notFound.returnHome")}
             </a>
-            <a
-              className="button button--secondary"
-              href={`/${locale}/search/`}
-            >
+            <a className="button button--secondary" href={`/${locale}/search/`}>
               {t(locale, "notFound.searchGuides")}
             </a>
           </div>

@@ -149,9 +149,7 @@ function extractCardData(article) {
   if (type === "boss") {
     name = article.shortTitle || article.title;
   } else if (type === "build") {
-    name = [article.className, article.ascendancy]
-      .filter(Boolean)
-      .join(" · ");
+    name = [article.className, article.ascendancy].filter(Boolean).join(" · ");
   } else if (type === "guide") {
     name = article.guideCategory || article.title;
   }
@@ -176,7 +174,9 @@ async function generateOne(card) {
     patch: card.patch,
     hasHero: Boolean(card.heroImage),
   });
-  const baseBuffer = await sharp(Buffer.from(baseSvg)).webp({ quality: 88 }).toBuffer();
+  const baseBuffer = await sharp(Buffer.from(baseSvg))
+    .webp({ quality: 88 })
+    .toBuffer();
 
   const outDir = path.join(OUT_BASE, card.segment);
   fs.mkdirSync(outDir, { recursive: true });
@@ -214,9 +214,7 @@ async function main() {
     if (!fs.existsSync(dir)) continue;
     for (const file of fs.readdirSync(dir)) {
       if (!file.endsWith(".json")) continue;
-      const article = JSON.parse(
-        fs.readFileSync(path.join(dir, file), "utf8"),
-      );
+      const article = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
       if (article.status !== "published" || article.draft === true) continue;
       cards.push(extractCardData(article));
     }

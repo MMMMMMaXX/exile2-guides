@@ -1,8 +1,5 @@
 /** 文件职责：统一生成 canonical、hreflang、Open Graph 与 Twitter Metadata，避免各路由重复并产生冲突。 */
-import {
-  supportedLocales,
-  type ContentLocale,
-} from "../content/constants";
+import { supportedLocales, type ContentLocale } from "../content/constants";
 import { getHrefLang, getOgLocale } from "../i18n/locale-meta";
 
 type AlternatePaths = Partial<Record<ContentLocale, string>>;

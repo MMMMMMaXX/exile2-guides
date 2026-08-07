@@ -2,10 +2,10 @@
 
 ## Effect range
 
-| Version | Range | Multiplier ceiling | Notes |
-|---|---|---|---|
-| Current (0.5.4) | 0-150% | x2.5 | Raised in 0.4.0 |
-| Legacy (pre-0.4.0) | 0-100% | x2.0 | Capped lower |
+| Version            | Range  | Multiplier ceiling | Notes           |
+| ------------------ | ------ | ------------------ | --------------- |
+| Current (0.5.4)    | 0-150% | x2.5               | Raised in 0.4.0 |
+| Legacy (pre-0.4.0) | 0-100% | x2.0               | Capped lower    |
 
 A modern 150% roll is strictly stronger than any legacy 100% copy. When valuing or comparing, always check the displayed roll against the current 0-150% band.
 

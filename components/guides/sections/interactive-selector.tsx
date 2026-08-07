@@ -58,7 +58,7 @@ export function InteractiveSelector({
             steps: matched.steps,
             title: matched.title,
           }
-        : section.defaultResult ?? null,
+        : (section.defaultResult ?? null),
     );
   };
 

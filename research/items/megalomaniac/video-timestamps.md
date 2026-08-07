@@ -9,13 +9,13 @@
 
 ## Suggested Timestamps for In-Page Embed
 
-| Time | Segment |
-|---|---|
-| 0:00 | Intro — what Megalomaniac is |
-| 1:40 | Where it drops (Simulacrum) |
-| 4:20 | How Notable allocation works (2 vs 3) |
-| 8:05 | Trade filtering for target Notables |
-| 11:30 | Verdict / build value |
+| Time  | Segment                               |
+| ----- | ------------------------------------- |
+| 0:00  | Intro — what Megalomaniac is          |
+| 1:40  | Where it drops (Simulacrum)           |
+| 4:20  | How Notable allocation works (2 vs 3) |
+| 8:05  | Trade filtering for target Notables   |
+| 11:30 | Verdict / build value                 |
 
 > The page's `video` section (order 150) embeds this URL with the five timestamps above. The URL is a real, current YouTube watch link; no fabricated timestamp deep-links are used.
 

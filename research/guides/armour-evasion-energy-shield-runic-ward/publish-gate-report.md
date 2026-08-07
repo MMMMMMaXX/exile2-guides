@@ -10,7 +10,7 @@ Checklist confirming the article passes the publish gate (SPEC §0, §1, §5).
 - [x] **required section types present** — quick-answer, overview/data-table/diagnostic/card-grid, video, faq (6 items), sources, changelog.
 - [x] **JSON valid** — both files pass `JSON.parse`.
 - [x] **ids/order/slug/type/tags/URLs identical** across EN and ZH; only prose and `imageAlt` translated.
-- [x] **related*Ids empty arrays** — all five arrays `[]`.
+- [x] **related\*Ids empty arrays** — all five arrays `[]`.
 - [x] **no fabricated URLs** — only verified wiki/video/community URLs used.
 
 Result: PASS (pending PC verification of numeric specifics, as flagged inline).

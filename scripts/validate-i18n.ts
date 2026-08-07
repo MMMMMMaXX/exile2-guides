@@ -1,5 +1,9 @@
 /** 文件职责：校验 10 语言契约完整性（localeMeta + UI 文案表），作为 i18n 门禁。 */
-import { localeMeta, supportedLocales, type ContentLocale } from "../lib/content/constants";
+import {
+  localeMeta,
+  supportedLocales,
+  type ContentLocale,
+} from "../lib/content/constants";
 import { hasUiTable, uiByLocale } from "../lib/i18n/ui";
 
 function fail(message: string): never {
@@ -34,7 +38,9 @@ function main(): void {
     if (!hasUiTable(locale)) {
       const expected = Object.keys(uiByLocale.en).length;
       const actual = Object.keys(uiByLocale[locale]).length;
-      fail(`UI copy table for ${locale} incomplete (${actual}/${expected} keys)`);
+      fail(
+        `UI copy table for ${locale} incomplete (${actual}/${expected} keys)`,
+      );
     }
   }
 

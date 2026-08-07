@@ -2487,7 +2487,9 @@ export function formatTag(
 }
 
 /** 将 ContentLocale | boolean 映射到 TagLabel10 的语言键，zh-cn 与 true 走中文。 */
-export function localeToTagKey(locale: ContentLocale | boolean): keyof TagLabel10 {
+export function localeToTagKey(
+  locale: ContentLocale | boolean,
+): keyof TagLabel10 {
   if (locale === "zh-cn" || locale === true) return "zh-cn";
   if (locale === "pt-br") return "pt-br";
   if (locale === "ru") return "ru";

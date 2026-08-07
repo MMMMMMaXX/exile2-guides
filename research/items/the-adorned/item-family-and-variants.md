@@ -4,12 +4,12 @@
 
 The Adorned belongs to the **Unique Jewel** family in Path of Exile 2. Its base type is **Diamond**, the same base shared by many amplifier-style unique jewels. It is a sibling of other unique jewels that modify jewel-socket passive skills or allocate content, but it is the only one that specifically amplifies **Corrupted Magic Jewels**.
 
-| Jewel | Base | Role | Amplifies |
-|---|---|---|---|
-| The Adorned | Diamond | Amplifier | Corrupted Magic Jewels only |
-| Against the Darkness | Diamond | Conditional modifier | Specific jewel-socket mods |
-| Voices & Sinister Jewels | Various | Special sockets | N/A (dedicated sockets) |
-| Megalomaniac | Diamond | Notable allocator | N/A (allocates notables) |
+| Jewel                    | Base    | Role                 | Amplifies                   |
+| ------------------------ | ------- | -------------------- | --------------------------- |
+| The Adorned              | Diamond | Amplifier            | Corrupted Magic Jewels only |
+| Against the Darkness     | Diamond | Conditional modifier | Specific jewel-socket mods  |
+| Voices & Sinister Jewels | Various | Special sockets      | N/A (dedicated sockets)     |
+| Megalomaniac             | Diamond | Notable allocator    | N/A (allocates notables)    |
 
 ## Variants by Roll
 

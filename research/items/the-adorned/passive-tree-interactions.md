@@ -8,17 +8,17 @@ The mechanic wording is precise:
 
 > increased Effect of **Jewel Socket Passive Skills** that are **Corrupted Magic Jewels**
 
-"Jewel Socket Passive Skills" means the passive modifiers granted by the jewel itself (its implicit and explicit passive modifiers). The Adorned increases the *magnitude* of those granted passives — not the jewel's drop-only stats.
+"Jewel Socket Passive Skills" means the passive modifiers granted by the jewel itself (its implicit and explicit passive modifiers). The Adorned increases the _magnitude_ of those granted passives — not the jewel's drop-only stats.
 
 ## What Gets Amplified
 
-| Condition | Amplified? |
-|---|---|
-| Magic Jewel, corrupted, socketed in The Adorned's radius | Yes |
-| Magic Jewel, **not** corrupted, in radius | No |
-| Rare Jewel in radius | No |
-| Unique Jewel in radius | No |
-| Corrupted Magic Jewel **outside** the radius | No |
+| Condition                                                                     | Amplified?                          |
+| ----------------------------------------------------------------------------- | ----------------------------------- |
+| Magic Jewel, corrupted, socketed in The Adorned's radius                      | Yes                                 |
+| Magic Jewel, **not** corrupted, in radius                                     | No                                  |
+| Rare Jewel in radius                                                          | No                                  |
+| Unique Jewel in radius                                                        | No                                  |
+| Corrupted Magic Jewel **outside** the radius                                  | No                                  |
 | Corrupted Magic Jewel inside radius but socket is itself The Adorned's socket | N/A (that socket holds The Adorned) |
 
 ## Interaction with Other Jewel Modifiers

@@ -12,29 +12,100 @@ const CACHE_PATH = path.resolve("scripts/_fr_cache.json");
 
 // ---- 结构判定（与 _gen-de.mjs 一致，并据本任务补充 league/keywords）----
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium",
-  "official", "in-game", "community", "tool", "other",
-  "current", "supported", "legacy", "under-review", "draft", "published", "archived",
-  "source-reviewed", "pending-pc", "verified", "source", "machine-draft",
-  "review-needed", "reviewed", "stale", "mechanic-critical",
-  "required", "recommended", "optional", "luxury",
-  "quote", "paraphrase", "forum", "reddit", "guide", "video",
-  "starter", "leveling", "early-endgame", "endgame", "bossing",
-  "beginner", "intermediate", "advanced", "true", "false",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "archived",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
+  "source",
+  "machine-draft",
+  "review-needed",
+  "reviewed",
+  "stale",
+  "mechanic-critical",
+  "required",
+  "recommended",
+  "optional",
+  "luxury",
+  "quote",
+  "paraphrase",
+  "forum",
+  "reddit",
+  "guide",
+  "video",
+  "starter",
+  "leveling",
+  "early-endgame",
+  "endgame",
+  "bossing",
+  "beginner",
+  "intermediate",
+  "advanced",
+  "true",
+  "false",
 ]);
 const NEVER_KEYS = new Set([
-  "id", "slug", "contentId", "type", "status", "locale",
-  "classId", "ascendancyId", "skillId",
-  "patchStatus", "verificationStatus", "difficulty",
-  "sourceType", "representation", "tier", "time", "levelRange",
-  "url", "buildPlannerUrl", "importUrl", "downloadUrl", "creatorUrl",
-  "heroImage", "cardImage", "image", "icon", "verifiedClientVersion", "patch",
-  "league", "keywords", "noindex", "canonical",
+  "id",
+  "slug",
+  "contentId",
+  "type",
+  "status",
+  "locale",
+  "classId",
+  "ascendancyId",
+  "skillId",
+  "patchStatus",
+  "verificationStatus",
+  "difficulty",
+  "sourceType",
+  "representation",
+  "tier",
+  "time",
+  "levelRange",
+  "url",
+  "buildPlannerUrl",
+  "importUrl",
+  "downloadUrl",
+  "creatorUrl",
+  "heroImage",
+  "cardImage",
+  "image",
+  "icon",
+  "verifiedClientVersion",
+  "patch",
+  "league",
+  "keywords",
+  "noindex",
+  "canonical",
 ]);
 const ID_LIST_KEYS = new Set([
-  "mainSkillIds", "secondarySkillIds", "tags", "relatedBuildIds",
-  "relatedGuideIds", "playstyleTags", "damageTypes", "bestFor",
-  "stages", "budgets", "supportSkillIds",
+  "mainSkillIds",
+  "secondarySkillIds",
+  "tags",
+  "relatedBuildIds",
+  "relatedGuideIds",
+  "playstyleTags",
+  "damageTypes",
+  "bestFor",
+  "stages",
+  "budgets",
+  "supportSkillIds",
 ]);
 const isUrl = (v) => /^https?:\/\//i.test(v);
 const isPath = (v) => v.startsWith("/");
@@ -60,7 +131,9 @@ function autoKeep(key, value, parentKey) {
 // ---- 翻译层 ----
 let CACHE = {};
 if (existsSync(CACHE_PATH)) {
-  try { CACHE = JSON.parse(await readFile(CACHE_PATH, "utf8")); } catch {}
+  try {
+    CACHE = JSON.parse(await readFile(CACHE_PATH, "utf8"));
+  } catch {}
 }
 const needSave = { dirty: false };
 async function saveCache() {
@@ -75,7 +148,10 @@ async function fetchTranslate(text, engine, timeoutMs = 6000) {
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   let res;
   try {
-    res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, signal: ctrl.signal });
+    res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      signal: ctrl.signal,
+    });
   } finally {
     clearTimeout(timer);
   }
@@ -106,7 +182,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // 收集所有唯一可译字符串
 function collect(node, parentKey, set) {
   if (node == null) return;
-  if (Array.isArray(node)) { node.forEach((it) => collect(it, parentKey, set)); return; }
+  if (Array.isArray(node)) {
+    node.forEach((it) => collect(it, parentKey, set));
+    return;
+  }
   if (typeof node !== "object") return;
   for (const [k, v] of Object.entries(node)) {
     if (k === "href") continue;
@@ -122,17 +201,25 @@ function collect(node, parentKey, set) {
 async function translateAll(uniqueStrings) {
   const arr = [...uniqueStrings];
   const todo = arr.filter((s) => !(s in CACHE));
-  console.log(`unique=${uniqueStrings.size} cached=${uniqueStrings.size - todo.length} toTranslate=${todo.length}`);
+  console.log(
+    `unique=${uniqueStrings.size} cached=${uniqueStrings.size - todo.length} toTranslate=${todo.length}`,
+  );
   // 含换行的单独翻；其余按行批量
   const withNL = todo.filter((s) => s.includes("\n"));
   const plain = todo.filter((s) => !s.includes("\n"));
   const BUDGET = 2500; // 按 URL 编码后长度封顶（避免 431/挂起）
   const batches = [];
-  let cur = [], n = 0;
+  let cur = [],
+    n = 0;
   for (const s of plain) {
     const enc = encodeURIComponent(s).length + 1;
-    if (n + enc > BUDGET && cur.length) { batches.push(cur); cur = []; n = 0; }
-    cur.push(s); n += enc;
+    if (n + enc > BUDGET && cur.length) {
+      batches.push(cur);
+      cur = [];
+      n = 0;
+    }
+    cur.push(s);
+    n += enc;
   }
   if (cur.length) batches.push(cur);
 
@@ -145,7 +232,9 @@ async function translateAll(uniqueStrings) {
     if (tr != null) {
       const parts = tr.split("\n");
       if (parts.length === batch.length) {
-        batch.forEach((s, i) => { CACHE[s] = parts[i]; });
+        batch.forEach((s, i) => {
+          CACHE[s] = parts[i];
+        });
       } else {
         // 行数不匹配：逐条回退
         for (const s of batch) {
@@ -154,7 +243,9 @@ async function translateAll(uniqueStrings) {
         }
       }
     } else {
-      batch.forEach((s) => { CACHE[s] = s; });
+      batch.forEach((s) => {
+        CACHE[s] = s;
+      });
     }
     await sleep(500);
   }
@@ -164,14 +255,25 @@ async function translateAll(uniqueStrings) {
     await sleep(500);
   }
   const CONC = 3;
-  const queue = [...batches.map((b) => () => workerBatch(b)), ...withNL.map((s) => () => workerSingle(s))];
+  const queue = [
+    ...batches.map((b) => () => workerBatch(b)),
+    ...withNL.map((s) => () => workerSingle(s)),
+  ];
   let idx = 0;
   async function run() {
     while (idx < queue.length) {
       const i = idx++;
-      try { await queue[i](); } catch (e) { /* ignore */ }
+      try {
+        await queue[i]();
+      } catch (e) {
+        /* ignore */
+      }
       done++;
-      if (++saveTick >= 1) { saveTick = 0; needSave.dirty = true; await saveCache(); }
+      if (++saveTick >= 1) {
+        saveTick = 0;
+        needSave.dirty = true;
+        await saveCache();
+      }
       if (done % 5 === 0) console.log(`progress ${done}/${total}`);
     }
   }
@@ -184,13 +286,20 @@ async function translateAll(uniqueStrings) {
 function transform(node, parentKey, cache) {
   if (node == null) return node;
   if (Array.isArray(node)) {
-    return node.map((item) => (typeof item === "object" && item !== null ? transform(item, parentKey, cache) : item));
+    return node.map((item) =>
+      typeof item === "object" && item !== null
+        ? transform(item, parentKey, cache)
+        : item,
+    );
   }
   if (typeof node !== "object") return node;
   const out = {};
   for (const [k, v] of Object.entries(node)) {
     if (k === "href") {
-      out[k] = typeof v === "string" && v.startsWith("/en/") ? v.replace("/en/", "/fr/") : v;
+      out[k] =
+        typeof v === "string" && v.startsWith("/en/")
+          ? v.replace("/en/", "/fr/")
+          : v;
       continue;
     }
     if (typeof v === "string") {
@@ -207,7 +316,8 @@ function transform(node, parentKey, cache) {
 
 function forbiddenInContent(node, inTranslation) {
   if (node == null) return false;
-  if (Array.isArray(node)) return node.some((x) => forbiddenInContent(x, inTranslation));
+  if (Array.isArray(node))
+    return node.some((x) => forbiddenInContent(x, inTranslation));
   if (typeof node === "string") {
     if (inTranslation) return false; // 翻译块内的 machine-draft 等不算占位符
     return /TODO|草稿|draft|placeholder|REPLACE_WITH/i.test(node);
@@ -216,7 +326,8 @@ function forbiddenInContent(node, inTranslation) {
     for (const [k, v] of Object.entries(node)) {
       // status 为受控枚举（可能为 "draft"），不计入占位符检查
       if (k === "status") continue;
-      if (forbiddenInContent(v, inTranslation || k === "translation")) return true;
+      if (forbiddenInContent(v, inTranslation || k === "translation"))
+        return true;
     }
   }
   return false;
@@ -233,12 +344,16 @@ async function main() {
     }
   }
   if (process.env.SKIP_TRANSLATE) {
-    console.log(`SKIP_TRANSLATE set: using existing cache (${Object.keys(CACHE).length} strings), no network.`);
+    console.log(
+      `SKIP_TRANSLATE set: using existing cache (${Object.keys(CACHE).length} strings), no network.`,
+    );
   } else {
     await translateAll(unique);
   }
 
-  let written = 0, skipped = 0, bad = 0;
+  let written = 0,
+    skipped = 0,
+    bad = 0;
   for (const c of CATS) {
     await mkdir(FR_DIR(c), { recursive: true });
     const dir = EN_DIR(c);
@@ -246,7 +361,10 @@ async function main() {
     for (const f of files) {
       const slug = f.replace(/\.json$/, "");
       const frPath = path.join(FR_DIR(c), f);
-      if (existsSync(frPath)) { skipped++; continue; }
+      if (existsSync(frPath)) {
+        skipped++;
+        continue;
+      }
       const src = JSON.parse(await readFile(path.join(dir, f), "utf8"));
       const out = transform(src, null, CACHE);
       out.locale = "fr";
@@ -264,7 +382,8 @@ async function main() {
       const errs = [];
       if (out.locale !== "fr") errs.push("locale");
       if (!out.id || !out.slug) errs.push("id/slug");
-      if (forbiddenInContent(out, false)) errs.push("forbidden-marker(content)");
+      if (forbiddenInContent(out, false))
+        errs.push("forbidden-marker(content)");
       if (errs.length) {
         // 写出但仍记录告警：draft 模板文件含源生占位符 / "Mastodon" 误命中 todo 正则，
         // 与 de/ 既有处理一致，不阻塞产出。locale/id/slug 已保证正确。
@@ -275,7 +394,9 @@ async function main() {
       written++;
     }
   }
-  console.log(`\nDONE written=${written} skipped=${skipped} bad=${bad} cacheSize=${Object.keys(CACHE).length}`);
+  console.log(
+    `\nDONE written=${written} skipped=${skipped} bad=${bad} cacheSize=${Object.keys(CACHE).length}`,
+  );
 }
 
 await main();

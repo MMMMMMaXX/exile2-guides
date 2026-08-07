@@ -21,38 +21,43 @@
 ## 1. 技术审计结果
 
 ### 1.1 已做对的部分（不要动）
-| 维度 | 状态 | 证据 |
-|------|------|------|
-| 服务端渲染 / 预渲染 | ✅ | 详情页 HTML 71KB，含 `<article>`，真实正文在源码 |
-| Sitemap | ✅ | `sitemap.xml` 含 **2921** 条 URL |
-| robots.txt | ✅ | 声明 `Sitemap:`，`Allow: /` |
-| Canonical | ✅（相对） | 每页有 canonical，但为相对路径 |
-| JSON-LD | ✅ | `Article` + `BreadcrumbList` 已注入 |
-| Open Graph / Twitter | ✅ | 指纹化 webp og:image，summary_large_image |
-| 多语言覆盖 | ✅ | 10 语言 × 242 篇 = 2420 页，翻译为真实母语内容（非占位） |
-| 图片优化 | ✅ | webp + `loading="lazy"` + 显式 `width/height`（CLS 受控） |
-| 标题关键词 | ✅ | 如「Hollow Palm Martial Artist Build Guide (PoE2 0.5)」 |
-| 内链 | ✅ | `relatedContentIds` 上下文关联已接线 |
+
+| 维度                 | 状态       | 证据                                                      |
+| -------------------- | ---------- | --------------------------------------------------------- |
+| 服务端渲染 / 预渲染  | ✅         | 详情页 HTML 71KB，含 `<article>`，真实正文在源码          |
+| Sitemap              | ✅         | `sitemap.xml` 含 **2921** 条 URL                          |
+| robots.txt           | ✅         | 声明 `Sitemap:`，`Allow: /`                               |
+| Canonical            | ✅（相对） | 每页有 canonical，但为相对路径                            |
+| JSON-LD              | ✅         | `Article` + `BreadcrumbList` 已注入                       |
+| Open Graph / Twitter | ✅         | 指纹化 webp og:image，summary_large_image                 |
+| 多语言覆盖           | ✅         | 10 语言 × 242 篇 = 2420 页，翻译为真实母语内容（非占位）  |
+| 图片优化             | ✅         | webp + `loading="lazy"` + 显式 `width/height`（CLS 受控） |
+| 标题关键词           | ✅         | 如「Hollow Palm Martial Artist Build Guide (PoE2 0.5)」   |
+| 内链                 | ✅         | `relatedContentIds` 上下文关联已接线                      |
 
 ### 1.2 必须修的漏点（按紧急度）
 
 #### 🔴 P0 — hreflang 属性丢失（国际 SEO 致命）
+
 - **现象**：构建产物里 11 条 `<link rel="alternate">`（10 语言 + x-default）**全部没有 `hreflang` 属性**，只剩 `href`。
 - **后果**：Google 无法判断哪个 URL 对应哪种语言/地区，会错误投放语言版本、稀释排名信号，x-default 也失效。
 - **根因**：`lib/seo/metadata.ts` 的 `createSeoMetadata` 产出 `{ tagName:"link", rel:"alternate", hrefLang, href }`，但 React Router 的 `<Meta>` 在此构建中未把 `hrefLang` 渲染成属性。
 - **修复**：确认 React Router `Meta` 对 `hrefLang` 的支持；若其丢弃该键，改为在 `root.tsx` 手动注入 `<link rel="alternate" hreflang=...>`，或用 `links()` 导出。修复后必须验证 HTML 源码出现 `hreflang="en"` / `hreflang="x-default"` 等。
 
 #### 🟠 P1 — 缺 FAQ / HowTo 结构化数据（丢 SERP 特性）
+
 - **现象**：文章有大量 `question-answer` 与步骤型章节，但 JSON-LD 只有 `Article` + `BreadcrumbList`，**无 `FAQPage`、无 `HowTo`**。
 - **后果**：白白错过「People Also Ask」展开、问答富媒体结果、步骤富摘要——这些是攻略站最容易抢的免费 SERP 位置。
 - **修复**：为 `question-answer` 章节生成 `FAQPage` schema；为带有序号步骤的章节（leveling / mapping / bossing 等）生成 `HowTo` schema。复用现有 `components/seo/structured-data.tsx` 的 `StructuredData` 组件。
 
 #### 🟡 P2 — canonical / hreflang / OG 应为绝对地址
+
 - **现象**：构建时未设 `VITE_SITE_URL`，canonical、alternate、og:url 均为相对路径（`/en/...`）。
 - **后果**：相对 canonical 合法但非最优；多子域 + 10 语言场景下，绝对地址能消除歧义。
 - **修复**：生产构建注入 `VITE_SITE_URL=https://poe2.stratlore.com`，`toPublicUrl()` 会自动输出绝对地址（代码已支持，只差配置）。
 
 #### 🟡 P2 — 分类/聚合页薄内容风险
+
 - `V4SubtypeSkeleton` 等聚合页当前 `noindex`，处理正确；但各分类列表页（如 `/en/builds/`）需保证有**独特的导语文本**而非仅卡片网格，否则难以单独排名。
 
 ---
@@ -60,16 +65,19 @@
 ## 2. 流量不足的根因（不在技术，在权威与策略）
 
 ### 2.1 域名权威 ≈ 0（头号原因）
+
 - 这是一个相对新的站点。Google 对 YMYL/游戏攻略类查询高度依赖 **Domain Authority + 反向链接质量**。
 - 你们的对手是运营多年、DR 70+ 的站点。没有外链，单页内容质量无法弥补权威差距。
 - **这是 SEO 里最慢、但唯一的排名杠杆**——必须做外链建设（见第 4 节）。
 
 ### 2.2 关键词策略可更锋利
+
 - 当前标题已含玩法名 + 「Build Guide」+ 版本号，方向对。
 - 但「Path of Exile 2」vs「PoE 2」在标题里混用（如 guide 用「PoE 2」、item 用「Path of Exile 2」），建议**统一为高搜索量主词**以避免信号分散。
 - 缺系统化的**话题集群（Topic Cluster）**：应有「Builds Hub / Bosses Hub / Items Hub」支柱页，把 242 篇聚合成可排名的主题权威，而非各自为战。
 
-### 2.3  patch 时效性流量没吃满
+### 2.3 patch 时效性流量没吃满
+
 - PoE2 每次更新（0.5.x、0.6 等）都会带来搜索量尖峰（「patch 0.5 changes」「best build after patch」）。
 - 你们已有 patch 内容类型，但需要**在补丁上线数小时内**发布解读文，才能抢到这波短时高意图流量。
 
@@ -78,6 +86,7 @@
 ## 3. 分阶段执行路线图（按 ROI 排序）
 
 ### 阶段一：技术止血（1–2 周，立即可做，零依赖）
+
 1. **修 hreflang 渲染**（P0）—— 验证 HTML 出现 `hreflang` 属性。
 2. **加 FAQPage + HowTo schema**（P1）—— 直接用现有 Q&A/步骤章节生成。
 3. **生产构建注入 `VITE_SITE_URL`**（P2）—— 绝对 canonical/OG。
@@ -85,12 +94,14 @@
 5. 用 GSC「URL 检查」提交几个代表页，确认索引无异常。
 
 ### 阶段二：内容权威（持续，核心竞争力）
+
 1. **建话题集群**：每类建 1 个支柱页（Hub）+ 内部链接网，把 242 篇串成权威主题。
 2. **长尾 + 高意图覆盖**：针对「[技能/BD] build 0.5」「how to beat [boss]」「best currency farm 0.5」写精准页。
 3. **patch 时效战**：补丁上线 ≤ 24h 出解读，抢搜索尖峰。
 4. **放大已有差异化**：社区视频（community-voices）、build planner 导入、来源核验——这些是独特价值，多做曝光。
 
 ### 阶段三：外链杠杆（最慢但决定性，持续 3–12 个月）
+
 1. **数字 PR / 原创数据**：做 PoE2 原创研究（如「我们分析了 1 万套 BD 的 ascendancy 分布」）、信息图、层级榜 → 媒体/创作者外联。
 2. **未链接品牌提及 → 转链接**。
 3. **入驻 PoE 资源聚合站 / wiki 引用**（如相关页面在 poe2wiki 加引用）。
@@ -98,6 +109,7 @@
 5. **专家署名评注**：游戏/直播类媒体 HARO 机会。
 
 ### 阶段四：SERP 特性 & 监测
+
 1. FAQ/HowTo schema 上线后追踪富结果覆盖率（GSC 增强报告）。
 2. 监测指标（建议 Looker Studio 看板）：
    - 非品牌自然会话、关键词 Top3 占比、CWV 通过率、DR 增长、索引覆盖率。

@@ -4,13 +4,13 @@ Required media for the published page (media-gallery section, order 160). No `so
 
 ## Shots
 
-| # | Asset | Description | Status |
-|---|---|---|---|
-| 1 | `/images/items/simulacrum-hero.webp` | Hero image — Megalomaniac tooltip + Simulacrum context | Required (exists) |
-| 2 | Passive tree allocation screenshot | Showing 2–3 granted Notables highlighted | Required (author-supplied) |
-| 3 | Trade filter screenshot | Stat filter "Allocates Notable Passive Skill" | Required (author-supplied) |
-| 4 | Simulacrum boss screenshot | Delirium boss (Omniphobia/Kosis/Fear Manifest) | Required (author-supplied) |
-| 5 | Before/after comparison | Tree with vs without Megalomaniac points saved | Recommended |
+| #   | Asset                                | Description                                            | Status                     |
+| --- | ------------------------------------ | ------------------------------------------------------ | -------------------------- |
+| 1   | `/images/items/simulacrum-hero.webp` | Hero image — Megalomaniac tooltip + Simulacrum context | Required (exists)          |
+| 2   | Passive tree allocation screenshot   | Showing 2–3 granted Notables highlighted               | Required (author-supplied) |
+| 3   | Trade filter screenshot              | Stat filter "Allocates Notable Passive Skill"          | Required (author-supplied) |
+| 4   | Simulacrum boss screenshot           | Delirium boss (Omniphobia/Kosis/Fear Manifest)         | Required (author-supplied) |
+| 5   | Before/after comparison              | Tree with vs without Megalomaniac points saved         | Recommended                |
 
 ## Hero / Card Mapping
 

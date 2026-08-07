@@ -1,6 +1,7 @@
 # Build Usage — Timeless Jewels
 
 Personas (see published build-usage section):
+
 - Keystone Enabler (Heroic Tragedy) — uses leader name for a defensive Keystone conversion; depends on name, not seed, for Keystone.
 - Small Passive Scaling (Undying Hate) — every small node becomes +5 Tribute; scales with conquered small-node count. Cheap seeds work for bulk.
 - Notable Transformation — seed decides Notables that scale with Tribute (Undying Hate) or become Kalguur notables (Heroic Tragedy); verify in planner.

@@ -2,7 +2,7 @@
 
 # Bosses 页面说明
 
- 本节更新时间：2026-07-31 03:10（Asia/Shanghai）
+本节更新时间：2026-07-31 03:10（Asia/Shanghai）
 
 ## V5 富内容改造
 
@@ -22,16 +22,16 @@ Bosses 已完成 V5 原型交互设计的全量富内容改造：
 
 > 本节更新时间：2026-07-31 03:10（Asia/Shanghai）
 
-| Slug | Boss | 分类 | 阶段数 |
-| --- | --- | --- | --- |
-| count-geonor | Count Geonor | campaign | 3 |
-| jamanra-the-abomination | Jamanra, the Abomination | campaign | 3 |
-| zarokh-the-temporal | Zarokh, the Temporal | trial | 2 |
-| atziri-red-queen | Atziri, the Red Queen | pinnacle | 3 |
-| arbiter-of-ash | Arbiter of Ash | pinnacle | 3 |
-| arbiter-of-divinity | Arbiter of Divinity | trial | 2 |
-| doryani-royal-thaumaturge | Doryani, Royal Thaumaturge | endgame | 3 |
-| trialmaster | Trialmaster | trial | 3 |
+| Slug                      | Boss                       | 分类     | 阶段数 |
+| ------------------------- | -------------------------- | -------- | ------ |
+| count-geonor              | Count Geonor               | campaign | 3      |
+| jamanra-the-abomination   | Jamanra, the Abomination   | campaign | 3      |
+| zarokh-the-temporal       | Zarokh, the Temporal       | trial    | 2      |
+| atziri-red-queen          | Atziri, the Red Queen      | pinnacle | 3      |
+| arbiter-of-ash            | Arbiter of Ash             | pinnacle | 3      |
+| arbiter-of-divinity       | Arbiter of Divinity        | trial    | 2      |
+| doryani-royal-thaumaturge | Doryani, Royal Thaumaturge | endgame  | 3      |
+| trialmaster               | Trialmaster                | trial    | 3      |
 
 ## 公开数据边界
 

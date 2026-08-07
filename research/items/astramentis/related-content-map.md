@@ -1,6 +1,7 @@
 # Related Content Map - Astramentis (星芒之链)
 
 relatedItemIds (article cross-links):
+
 - hand-of-wisdom-and-action -> /en/items/hand-of-wisdom-and-action/
 - pillar-of-the-caged-god -> /en/items/pillar-of-the-caged-god/
 - runes-and-soul-cores -> /en/items/runes-and-soul-cores/

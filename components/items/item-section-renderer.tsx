@@ -522,11 +522,11 @@ function renderSectionContent(
                   </ol>
                 ) : null}
                 {problem.links.length > 0 ? (
-                <div className="qa-links">
-                  {problem.links.map((link) => (
-                    <a
-                      href={resolveInternalContentHref(link.href, locale)}
-                      key={link.href}
+                  <div className="qa-links">
+                    {problem.links.map((link) => (
+                      <a
+                        href={resolveInternalContentHref(link.href, locale)}
+                        key={link.href}
                         rel="noopener noreferrer"
                         target="_blank"
                       >

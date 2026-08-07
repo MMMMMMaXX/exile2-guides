@@ -35,7 +35,7 @@ export function Diagnostic({ section }: { section: DiagnosticSection }) {
           steps: matched.steps,
           title: matched.title,
         }
-      : section.defaultResult ?? null;
+      : (section.defaultResult ?? null);
     setResult(chosen);
   };
 

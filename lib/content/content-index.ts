@@ -70,10 +70,7 @@ export type BuildContentIndexOptions = {
  * 的虚拟模块并发重复读取并解析数千个 JSON 文件。
  * 缓存值包含进行中的 Promise，首轮加载期间的并发调用也只会执行一次。
  */
-const parsedContentCache = new Map<
-  string,
-  Promise<readonly ParsedContent[]>
->();
+const parsedContentCache = new Map<string, Promise<readonly ParsedContent[]>>();
 
 function parsedContentCacheKey(
   contentDirectory: string,
@@ -245,10 +242,7 @@ function validateIndexInvariants(
       const sourceTarget = localizedIds.get(`${relatedContentId}:en`);
       const sourceOk =
         sourceTarget && isPublishedContent(sourceTarget.frontMatter);
-      if (
-        (!target || !isPublishedContent(target.frontMatter)) &&
-        !sourceOk
-      ) {
+      if ((!target || !isPublishedContent(target.frontMatter)) && !sourceOk) {
         issues.push({
           code: "missing-related-content",
           contentId: content.frontMatter.contentId,

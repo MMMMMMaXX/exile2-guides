@@ -45,7 +45,9 @@ export function getLocaleSwitcherOptions() {
 }
 
 /** 判断给定字符串是否为受支持语言。 */
-export function isSupportedLocale(value: string | undefined): value is ContentLocale {
+export function isSupportedLocale(
+  value: string | undefined,
+): value is ContentLocale {
   return supportedLocales.includes(value as ContentLocale);
 }
 
@@ -86,9 +88,9 @@ export function readSavedLocalePreference(): ContentLocale | undefined {
     // Cookie 不可用时忽略。
   }
   try {
-    const stored = localStorage.getItem("exile2-guides-locale") as
-      | ContentLocale
-      | null;
+    const stored = localStorage.getItem(
+      "exile2-guides-locale",
+    ) as ContentLocale | null;
     if (stored && isSupportedLocale(stored)) return stored;
   } catch {
     // localStorage 不可用时忽略。

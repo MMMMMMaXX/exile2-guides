@@ -1,6 +1,7 @@
 # Trade Search — Against the Darkness
 
 ## Steps (current UI)
+
 1. Item Category: Jewel
 2. Rarity: Unique (or Normal/Magic/Rare for basic)
 3. Name: Against the Darkness (or base for others)

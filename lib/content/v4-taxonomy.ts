@@ -66,7 +66,12 @@ export function getV4SubtypePaths(): string[] {
   return (["en", "zh-cn"] as const).flatMap((locale) =>
     (Object.entries(v4Taxonomy) as [ContentType, readonly string[]][]).flatMap(
       ([type, categories]) =>
-        type === "patch" || type === "build" || type === "boss" || type === "item" || type === "skill" || type === "guide"
+        type === "patch" ||
+        type === "build" ||
+        type === "boss" ||
+        type === "item" ||
+        type === "skill" ||
+        type === "guide"
           ? []
           : categories.map(
               (category) => `/${locale}/${segmentByType[type]}/${category}/`,

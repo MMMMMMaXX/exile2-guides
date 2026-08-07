@@ -29,21 +29,11 @@ const replacements = {
     ["the gear门槛", "the gear requirement"],
     ["lower门槛", "lower gear requirement"],
   ],
-  "explosive-grenade.json": [
-    ["burn-laying主力", "burn-laying mainstay"],
-  ],
-  "walking-calamity.json": [
-    ["boss主力", "boss mainstay"],
-  ],
-  "chain-support.json": [
-    ["already补 damage", "already adds filler damage"],
-  ],
-  "twister.json": [
-    ["成熟 play", "mature play"],
-  ],
-  "essence-drain.json": [
-    ["偏 single-target/boss", "leans single-target/boss"],
-  ],
+  "explosive-grenade.json": [["burn-laying主力", "burn-laying mainstay"]],
+  "walking-calamity.json": [["boss主力", "boss mainstay"]],
+  "chain-support.json": [["already补 damage", "already adds filler damage"]],
+  "twister.json": [["成熟 play", "mature play"]],
+  "essence-drain.json": [["偏 single-target/boss", "leans single-target/boss"]],
 };
 
 const cjk = /[一-鿿]/;

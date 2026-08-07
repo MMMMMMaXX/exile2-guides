@@ -268,10 +268,7 @@ export function BossPrepChecklist({
           {checkedCount} / {items.length}{" "}
           {locale === "zh-cn" ? "已检查" : "checked"}
         </span>
-        <button
-          onClick={() => persist(items.map(() => false))}
-          type="button"
-        >
+        <button onClick={() => persist(items.map(() => false))} type="button">
           {locale === "zh-cn" ? "清除勾选" : "Reset"}
         </button>
       </div>

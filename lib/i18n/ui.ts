@@ -165,7 +165,8 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "search.placeholder": "Search builds, bosses, items, skills and guides…",
     "search.submit": "Search",
     "search.resultsFor": "Results for",
-    "search.noResults": "No results found. Try a different term or browse a category.",
+    "search.noResults":
+      "No results found. Try a different term or browse a category.",
     "search.resultsCount": "{count} result(s)",
     "missing.title": "This guide is not available in {language} yet.",
     "missing.viewEnglish": "View the English guide",
@@ -321,7 +322,8 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.startHere": "Comece aqui",
     "home.quickAccess": "Acesso Rápido",
     "home.popular": "Populares:",
-    "home.searchPlaceholder": "Busque builds, chefes, itens, habilidades e guias…",
+    "home.searchPlaceholder":
+      "Busque builds, chefes, itens, habilidades e guias…",
     "home.searchSubmit": "Buscar",
     "home.quickBuilds": "Builds Iniciais",
     "home.quickBosses": "Guias de Chefes",
@@ -946,8 +948,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
 export function hasUiTable(locale: ContentLocale): boolean {
   return (
     locale in uiByLocale &&
-    Object.keys(uiByLocale[locale]).length ===
-      Object.keys(uiByLocale.en).length
+    Object.keys(uiByLocale[locale]).length === Object.keys(uiByLocale.en).length
   );
 }
 
@@ -999,7 +1000,13 @@ export function getNavigationLabel(
 /** 返回法律/信息页导航标签（与 footerInformationLinks 的 slug 对应）。 */
 export function getInformationLinkLabel(
   locale: ContentLocale | undefined,
-  slug: "about" | "contact" | "privacy-policy" | "terms-of-use" | "cookie-policy" | "disclaimer",
+  slug:
+    | "about"
+    | "contact"
+    | "privacy-policy"
+    | "terms-of-use"
+    | "cookie-policy"
+    | "disclaimer",
 ): string {
   const map: Record<
     | "about"

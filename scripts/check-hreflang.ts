@@ -30,7 +30,9 @@ async function walkHtml(directory: string): Promise<string[]> {
 
 async function main(): Promise<void> {
   if (!existsSync(buildDir)) {
-    console.log(`hreflang check skipped: build/client not found at ${buildDir}`);
+    console.log(
+      `hreflang check skipped: build/client not found at ${buildDir}`,
+    );
     return;
   }
 
@@ -84,7 +86,9 @@ async function main(): Promise<void> {
     process.exitCode = 1;
     return;
   }
-  console.log(`hreflang check passed: ${htmlFiles.length} HTML file(s) verified.`);
+  console.log(
+    `hreflang check passed: ${htmlFiles.length} HTML file(s) verified.`,
+  );
 }
 
 await main();

@@ -4,13 +4,13 @@ Required media for the published page (media-gallery section, order 160). No `so
 
 ## Shots
 
-| # | Asset | Description | Status |
-|---|---|---|---|
-| 1 | `/images/items/vaal-orb-hero.webp` | Hero image — The Adorned tooltip + corrupted magic jewel context | Required (exists) |
-| 2 | Passive tree radius screenshot | The Adorned socket with small radius overlapping 2+ neighbor jewel sockets | Required (author-supplied) |
-| 3 | Trade filter screenshot | Trade site stat filter for the amplification modifier | Required (author-supplied) |
-| 4 | Corrupted Magic Jewel tooltip | Example magic jewel showing Corrupted state | Required (author-supplied) |
-| 5 | Before/after comparison | Same build with vs without The Adorned amplified jewels | Recommended |
+| #   | Asset                              | Description                                                                | Status                     |
+| --- | ---------------------------------- | -------------------------------------------------------------------------- | -------------------------- |
+| 1   | `/images/items/vaal-orb-hero.webp` | Hero image — The Adorned tooltip + corrupted magic jewel context           | Required (exists)          |
+| 2   | Passive tree radius screenshot     | The Adorned socket with small radius overlapping 2+ neighbor jewel sockets | Required (author-supplied) |
+| 3   | Trade filter screenshot            | Trade site stat filter for the amplification modifier                      | Required (author-supplied) |
+| 4   | Corrupted Magic Jewel tooltip      | Example magic jewel showing Corrupted state                                | Required (author-supplied) |
+| 5   | Before/after comparison            | Same build with vs without The Adorned amplified jewels                    | Recommended                |
 
 ## Hero / Card Mapping
 

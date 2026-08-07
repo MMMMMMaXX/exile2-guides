@@ -131,12 +131,7 @@ const gearSectionSchema = z.strictObject({
             z.strictObject({
               label: requiredText,
               reason: z.string().trim().default(""),
-              tier: z.enum([
-                "required",
-                "recommended",
-                "optional",
-                "luxury",
-              ]),
+              tier: z.enum(["required", "recommended", "optional", "luxury"]),
             }),
           )
           .default([]),

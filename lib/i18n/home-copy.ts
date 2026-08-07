@@ -29,8 +29,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
     heroTitle: "PoE 2 Builds, Boss Guides & Skill Database",
     metaDescription:
       "Find verified Path of Exile 2 builds, boss strategies, item answers and skill breakdowns. Updated for patch 0.5.4e.",
-    metaTitle:
-      "PoE 2 Builds, Boss Guides & Skill Database | Exile2 Guides",
+    metaTitle: "PoE 2 Builds, Boss Guides & Skill Database | Exile2 Guides",
     primaryCta: "Browse Builds",
     secondaryCta: "Boss Guides",
   },
@@ -82,8 +81,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
     heroTitle: "Билды, гайды по боссам и база навыков PoE 2",
     metaDescription:
       "Найдите проверенные билды, стратегии по боссам, ответы по предметам и разборы навыков Path of Exile 2. Обновлено для патча 0.5.4e.",
-    metaTitle:
-      "Билды, гайды по боссам и база навыков PoE 2 | Exile2 Guides",
+    metaTitle: "Билды, гайды по боссам и база навыков PoE 2 | Exile2 Guides",
     primaryCta: "Смотреть билды",
     secondaryCta: "Гайды по боссам",
   },
@@ -100,8 +98,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
     heroTitle: "PoE 2 Builds, Boss-Guides & Skill-Datenbank",
     metaDescription:
       "Finde verifizierte Path of Exile 2 Builds, Boss-Strategien, Item-Antworten und Skill-Erklärungen. Aktualisiert für Patch 0.5.4e.",
-    metaTitle:
-      "PoE 2 Builds, Boss-Guides & Skill-Datenbank | Exile2 Guides",
+    metaTitle: "PoE 2 Builds, Boss-Guides & Skill-Datenbank | Exile2 Guides",
     primaryCta: "Builds durchsuchen",
     secondaryCta: "Boss-Guides",
   },
@@ -154,8 +151,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
     heroTitle: "PoE 2 ビルド、ボス攻略、スキルデータベース",
     metaDescription:
       "Path of Exile 2 の検証済みビルド、ボス攻略、アイテム解説、スキル解説を見つける。パッチ 0.5.4e に対応。",
-    metaTitle:
-      "PoE 2 ビルド、ボス攻略、スキルデータベース | Exile2 Guides",
+    metaTitle: "PoE 2 ビルド、ボス攻略、スキルデータベース | Exile2 Guides",
     primaryCta: "ビルドを見る",
     secondaryCta: "ボス攻略",
   },
@@ -172,8 +168,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
     heroTitle: "PoE 2 빌드, 보스 공략, 스킬 데이터베이스",
     metaDescription:
       "Path of Exile 2 의 검증된 빌드, 보스 공략, 아이템 답변, 스킬 분석을 찾아보세요. 패치 0.5.4e 기준 업데이트.",
-    metaTitle:
-      "PoE 2 빌드, 보스 공략, 스킬 데이터베이스 | Exile2 Guides",
+    metaTitle: "PoE 2 빌드, 보스 공략, 스킬 데이터베이스 | Exile2 Guides",
     primaryCta: "빌드 보기",
     secondaryCta: "보스 공략",
   },

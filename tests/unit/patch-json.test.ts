@@ -3,11 +3,11 @@ import { describe, expect, it } from "vitest";
 
 import { patchArticleToParsedContent } from "../../lib/patches/content-adapter";
 import { InMemoryPatchRepository } from "../../lib/patches/repository";
-import { patchArticleSchema, type PatchArticle } from "../../lib/patches/schema";
 import {
-  filterPatches,
-  parsePatchQuery,
-} from "../../lib/patches/service";
+  patchArticleSchema,
+  type PatchArticle,
+} from "../../lib/patches/schema";
+import { filterPatches, parsePatchQuery } from "../../lib/patches/service";
 import { matchesPatchCollection } from "../../lib/patches/taxonomy";
 import { buildContentIndex } from "../../lib/content";
 import { enumerateIndexablePaths } from "../../lib/prerender";
@@ -123,8 +123,22 @@ describe("patchArticleSchema", () => {
       updatedAt: "2026-01-01",
       tags: [],
       sections: [
-        { id: "a", order: 1, title: "A", type: "overview", paragraphs: [], bullets: [] },
-        { id: "a", order: 2, title: "B", type: "overview", paragraphs: [], bullets: [] },
+        {
+          id: "a",
+          order: 1,
+          title: "A",
+          type: "overview",
+          paragraphs: [],
+          bullets: [],
+        },
+        {
+          id: "a",
+          order: 2,
+          title: "B",
+          type: "overview",
+          paragraphs: [],
+          bullets: [],
+        },
       ],
       sources: [],
       seo: { title: "Dup", description: "Dup" },
@@ -154,7 +168,14 @@ describe("patchArticleSchema", () => {
       updatedAt: "2026-01-01",
       tags: [],
       sections: [
-        { id: "s1", order: 1, title: "S", type: "overview", paragraphs: ["Text"], bullets: [] },
+        {
+          id: "s1",
+          order: 1,
+          title: "S",
+          type: "overview",
+          paragraphs: ["Text"],
+          bullets: [],
+        },
       ],
       sources: [
         { label: "Src", url: "https://example.com", sourceType: "official" },

@@ -38,7 +38,9 @@ async function main(): Promise<void> {
     withTranslation += 1;
     const meta = translationMetaFromRaw(translation);
     if (!meta) {
-      problems.push(`${path.relative(process.cwd(), file)}: invalid translation block`);
+      problems.push(
+        `${path.relative(process.cwd(), file)}: invalid translation block`,
+      );
     } else if (meta.sourceLocale !== "en") {
       problems.push(
         `${path.relative(process.cwd(), file)}: sourceLocale must be "en"`,

@@ -19,7 +19,9 @@ export function VersionConflicts({ section }: { section: Section }) {
           <li className="guide-version-conflicts__item" key={index}>
             <div className="guide-version-conflicts__head">
               <strong>{conflict.recommendation}</strong>
-              <span className={`pill ${statusPill[conflict.status] ?? "pill--blue"}`}>
+              <span
+                className={`pill ${statusPill[conflict.status] ?? "pill--blue"}`}
+              >
                 {conflict.status}
               </span>
               <span className="guide-version-conflicts__since">

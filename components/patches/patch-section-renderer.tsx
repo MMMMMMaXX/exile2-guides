@@ -228,8 +228,7 @@ function HistoricalPatchBanner({
   const statusLabel =
     historicalStatusLabels[locale === "zh-cn" ? "zh-cn" : "en"][
       article.historicalStatus
-    ] ??
-    article.historicalStatus;
+    ] ?? article.historicalStatus;
   return (
     <div
       className={`patch-historical-banner patch-historical-banner--${article.historicalStatus}`}

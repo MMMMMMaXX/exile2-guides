@@ -4,10 +4,7 @@ import type { GuideArticle } from "./schema";
 
 export interface GuideRepository {
   getAll(): Promise<readonly GuideArticle[]>;
-  getById(
-    id: string,
-    locale: ContentLocale,
-  ): Promise<GuideArticle | undefined>;
+  getById(id: string, locale: ContentLocale): Promise<GuideArticle | undefined>;
   getBySlug(
     locale: ContentLocale,
     slug: string,

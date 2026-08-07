@@ -6,7 +6,10 @@ import {
   PatchMediaNotice,
   PatchSectionRenderer,
 } from "../../components/patches/patch-section-renderer";
-import { patchArticleSchema, type PatchArticle } from "../../lib/patches/schema";
+import {
+  patchArticleSchema,
+  type PatchArticle,
+} from "../../lib/patches/schema";
 
 afterEach(cleanup);
 
@@ -55,9 +58,7 @@ function createArticle(locale: "en" | "zh-cn"): PatchArticle {
         type: "important-changes",
         paragraphs: [],
         bullets: [
-          locale === "zh-cn"
-            ? "第一项已确认改动。"
-            : "First confirmed change.",
+          locale === "zh-cn" ? "第一项已确认改动。" : "First confirmed change.",
         ],
       },
       {
@@ -119,7 +120,9 @@ describe("PatchSectionRenderer", () => {
     const { container } = render(
       <PatchSectionRenderer article={createArticle("en")} />,
     );
-    const stepsList = container.querySelector(".patch-steps--verification-steps");
+    const stepsList = container.querySelector(
+      ".patch-steps--verification-steps",
+    );
     expect(stepsList).toBeTruthy();
     expect(stepsList!.textContent).toContain("Step one");
   });

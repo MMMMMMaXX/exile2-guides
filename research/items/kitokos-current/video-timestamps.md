@@ -13,14 +13,14 @@ They were derived from the build-thread context (Lightning-hit Electrocution gam
 not from a frame-by-frame transcript. Marked pending-pc; verify exact seconds before
 relying on them for captions.
 
-| Time | Segment |
-|------|---------|
-| 0:00 | Build intro — why Lightning hits + Electrocution |
+| Time | Segment                                               |
+| ---- | ----------------------------------------------------- |
+| 0:00 | Build intro — why Lightning hits + Electrocution      |
 | 0:30 | Kitoko's Current shown on the character (glove stats) |
-| 1:00 | Electrocution uptime demo on rares |
-| 1:45 | Speed penalty discussion / offset strategy |
-| 2:30 | Boss (Xesht) control demo |
-| 3:15 | Final thoughts / where it fits |
+| 1:00 | Electrocution uptime demo on rares                    |
+| 1:45 | Speed penalty discussion / offset strategy            |
+| 2:30 | Boss (Xesht) control demo                             |
+| 3:15 | Final thoughts / where it fits                        |
 
 ## Uncertain / flagged
 

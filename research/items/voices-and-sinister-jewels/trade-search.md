@@ -1,6 +1,7 @@
 # Trade Search — Voices and Sinister Jewel Sockets
 
 ## Steps (current UI)
+
 1. Item Category: Jewel
 2. Rarity: Unique
 3. Base type: Sapphire (Voices is a Unique Sapphire)
@@ -10,6 +11,7 @@
 7. League: current; filter Online/Offline as needed.
 
 ## Notes
+
 - Voices is not chanced and not craftable; buy the exact socket-count variant you need.
 - Do not confuse with basic Sapphire jewels or other Unique jewels.
 - Do not hardcode long-term Trade URLs in static copy.

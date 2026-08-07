@@ -4,12 +4,12 @@
 
 Megalomaniac is a Diamond-base Unique whose defining trait is **allocating random Notable Passive Skills**. It shares the Diamond base and the "Limited to 1 / Corrupted on drop" pattern with The Adorned and Against the Darkness, but solves a different problem.
 
-| Jewel | Base | Role | Allocates? |
-|---|---|---|---|
-| Megalomaniac | Diamond | Notable allocator | 2–3 random Notables |
-| The Adorned | Diamond | Amplifier | No (amplifies corrupted magic jewels) |
-| Against the Darkness | Diamond | Conditional mods | No |
-| From Nothing | (cluster/unique) | Start-notable | Specialized |
+| Jewel                | Base             | Role              | Allocates?                            |
+| -------------------- | ---------------- | ----------------- | ------------------------------------- |
+| Megalomaniac         | Diamond          | Notable allocator | 2–3 random Notables                   |
+| The Adorned          | Diamond          | Amplifier         | No (amplifies corrupted magic jewels) |
+| Against the Darkness | Diamond          | Conditional mods  | No                                    |
+| From Nothing         | (cluster/unique) | Start-notable     | Specialized                           |
 
 ## Variants
 

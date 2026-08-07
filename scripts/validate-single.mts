@@ -21,7 +21,11 @@ try {
 
 const result = patchArticleSchema.safeParse(raw);
 if (result.success) {
-  const a = result.data as { id: string; sections: unknown[]; sources: unknown[] };
+  const a = result.data as {
+    id: string;
+    sections: unknown[];
+    sources: unknown[];
+  };
   console.log(
     `OK  ${a.id}  sections=${a.sections.length} sources=${a.sources.length}`,
   );

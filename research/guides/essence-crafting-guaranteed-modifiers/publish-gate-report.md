@@ -9,11 +9,12 @@ Checklist against the publish gate (SPEC §5):
 - [x] **bilingual pair written** — EN file fully in English; ZH file fully in Simplified Chinese; ids/order/slug/type/tags/URLs identical.
 - [x] **required sections present** — quick-answer, overview/data-table/risk-reward-matrix/tabs-style sections, video, faq (6 items), sources, changelog. 19 sections total.
 - [x] **valid JSON** — `node -e "JSON.parse(...)"` returned OK for both files.
-- [x] **related*Ids empty** — all five related arrays are `[]`.
+- [x] **related\*Ids empty** — all five related arrays are `[]`.
 - [x] **imageAlt required** — present and non-empty in both (EN + ZH variants).
 - [x] **video URL exact** — `https://www.youtube.com/watch?v=9oFGFT-X1OA` used in both the video section and sources.
 
 ## Notes
+
 - `featured` set to `false` per SPEC (reference used `true`; spec overrides).
 - `verifiedClientVersion` set to `0.5.4` per SPEC.
 - Exact tier numbers/prices omitted as version-dependent; flagged pending PC verification.

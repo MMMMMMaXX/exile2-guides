@@ -1,6 +1,7 @@
 # Publish Gate Report — damage-scaling-order-conversion-gain-as-extra
 
 ## Gate checks
+
 - [x] status = "published" (no `draft` field, no `unresolvedClaimCount`, no "automated-verified").
 - [x] guideCategory = "mechanics".
 - [x] verificationStatus = "pending-pc".
@@ -17,8 +18,10 @@
 - [x] Sources present (top-level + sources section), real URLs only.
 
 ## Files
+
 - EN: content/en/guides/damage-scaling-order-conversion-gain-as-extra.json
 - ZH: content/zh-cn/guides/damage-scaling-order-conversion-gain-as-extra.json
 
 ## Status
+
 Ready for the orchestrator's validation and build. JSON parse-validated separately.

@@ -28,7 +28,9 @@ export function RiskRewardMatrix({ section }: { section: Section }) {
             <tr key={index} className={`guide-matrix__row--${row.riskLevel}`}>
               <td>{row.choice}</td>
               <td>
-                <span className={`pill ${riskPill[row.riskLevel] ?? "pill--blue"}`}>
+                <span
+                  className={`pill ${riskPill[row.riskLevel] ?? "pill--blue"}`}
+                >
                   {row.riskLevel}
                 </span>
               </td>

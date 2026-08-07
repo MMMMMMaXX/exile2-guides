@@ -50,15 +50,27 @@ export default [
   route(":locale/items/categories/:category", "./routes/item-collection.tsx", {
     id: "item-category",
   }),
-  route(":locale/skills/categories/:category", "./routes/skill-collection.tsx", {
-    id: "skill-category",
-  }),
-  route(":locale/guides/categories/:category", "./routes/guide-collection.tsx", {
-    id: "guide-category",
-  }),
-  route(":locale/patches/categories/:category", "./routes/patch-collection.tsx", {
-    id: "patch-category",
-  }),
+  route(
+    ":locale/skills/categories/:category",
+    "./routes/skill-collection.tsx",
+    {
+      id: "skill-category",
+    },
+  ),
+  route(
+    ":locale/guides/categories/:category",
+    "./routes/guide-collection.tsx",
+    {
+      id: "guide-category",
+    },
+  ),
+  route(
+    ":locale/patches/categories/:category",
+    "./routes/patch-collection.tsx",
+    {
+      id: "patch-category",
+    },
+  ),
   route(":locale/:section", "./routes/content-list.tsx"),
   route(":locale/:section/:slug", "./routes/content-detail.tsx"),
   route("*", "./routes/not-found.tsx"),

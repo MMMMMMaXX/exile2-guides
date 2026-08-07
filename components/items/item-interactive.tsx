@@ -128,10 +128,7 @@ export function ItemOutcomesTable({
   const text = labels[locale === "zh-cn" ? "zh-cn" : "en"];
   const anyHigh = section.rows.some((row) => row.level === "high");
   const availableFilters = [
-    ...new Set([
-      ...section.filters,
-      ...(anyHigh ? ["high"] : []),
-    ]),
+    ...new Set([...section.filters, ...(anyHigh ? ["high"] : [])]),
   ];
   const [filter, setFilter] = useState("all");
 

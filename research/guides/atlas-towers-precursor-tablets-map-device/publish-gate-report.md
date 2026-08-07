@@ -7,7 +7,7 @@
 - **banned words**: none of `draft`, `草稿`, `版本复核中`, `TODO`, `REPLACE_WITH_`, `example.invalid`, `placeholder`, `TBD`, `pending verification`, `under review`, `待审核` present in prose. Only allowed `pending-pc` enum used. PASS.
 - **ids/tags**: lowercase-hyphen; tags lowercase-hyphen. PASS.
 - **imageAlt**: required non-empty; EN and ZH translated. PASS.
-- **related*Ids**: all five arrays empty `[]`. PASS.
+- **related\*Ids**: all five arrays empty `[]`. PASS.
 - **video**: real URL `https://www.youtube.com/watch?v=-R5KjDJQu9w`; 7 bilingual timestamps; no `id` on entries. PASS.
 - **JSON validity**: both files pass `JSON.parse`. PASS.
 - **verificationStatus**: `pending-pc`; verificationChecklist status `pending-pc`, method `in-game`, version `0.5.4`. PASS.

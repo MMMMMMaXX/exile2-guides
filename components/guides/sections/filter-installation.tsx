@@ -19,9 +19,7 @@ export function FilterInstallation({ section }: { section: Section }) {
                 <li key={index}>{step}</li>
               ))}
             </ol>
-            {method.note ? (
-              <p className="guide-note">{method.note}</p>
-            ) : null}
+            {method.note ? <p className="guide-note">{method.note}</p> : null}
           </div>
         ))}
       </div>

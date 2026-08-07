@@ -32,21 +32,28 @@ function loadArticles() {
 
 function imgSrc(p) {
   if (!p) return "";
-  if (p.startsWith("/images/")) return "app/assets/images/" + p.slice("/images/".length);
+  if (p.startsWith("/images/"))
+    return "app/assets/images/" + p.slice("/images/".length);
   return p;
 }
 
 const articles = loadArticles();
 
 // 将 hero 图以 base64 data URI 内联，保证预览在任何打开方式下都能显示封面（不依赖相对路径解析）。
-const heroPaths = [...new Set(articles.map((a) => a.heroImage).filter(Boolean))];
+const heroPaths = [
+  ...new Set(articles.map((a) => a.heroImage).filter(Boolean)),
+];
 const IMG_MAP = {};
 for (const p of heroPaths) {
   const fp = imgSrc(p);
   try {
     const buf = fs.readFileSync(path.join(ROOT, fp));
     const ext = fp.split(".").pop();
-    IMG_MAP[p] = "data:image/" + (ext === "jpg" ? "jpeg" : ext) + ";base64," + buf.toString("base64");
+    IMG_MAP[p] =
+      "data:image/" +
+      (ext === "jpg" ? "jpeg" : ext) +
+      ";base64," +
+      buf.toString("base64");
   } catch {
     /* 缺失文件则回退到路径 */
   }
@@ -239,4 +246,11 @@ build();
 const outPath = path.join(ROOT, "preview", "patches-fifth-batch-preview.html");
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, html);
-console.log("wrote", outPath, "bytes=", html.length, "articles=", articles.length);
+console.log(
+  "wrote",
+  outPath,
+  "bytes=",
+  html.length,
+  "articles=",
+  articles.length,
+);

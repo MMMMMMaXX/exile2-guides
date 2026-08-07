@@ -3,17 +3,20 @@
 The authoritative current rules for patch 0.5.4 (Runes of Aldur).
 
 ## Family (current)
+
 - Two members: Heroic Tragedy (Kalguur) and Undying Hate (Abyssal).
 - Both: Historic Unique jewels, Limited to 1, Very Large radius (1500), conquer in-radius passives.
 - Seed (number) decides Notable outcomes; Name (leader/faction) decides Keystone outcomes.
 - Divine Orb rerolls both seed and name.
 
 ## Heroic Tragedy (current)
+
 - Seed 100-8000; leader name Vorana / Medved / Olroth.
 - Drops from Olroth, Origin of the Fall at Expedition Difficulty 4.
 - No desecration system.
 
 ## Undying Hate (current)
+
 - Seed 79-30977; faction Amanamu / Ulaman / Kurgal / Tecrod / Kulemak.
 - Small passives -> Tribute (+5 each, +3 attribute Tribute).
 - Notables scale with Tribute.

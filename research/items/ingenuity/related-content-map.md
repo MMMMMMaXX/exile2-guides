@@ -1,6 +1,7 @@
 # Related Content Map - Ingenuity (机巧)
 
 relatedItemIds (article cross-links):
+
 - charms-guide -> /en/items/charms-guide/
 - runes-and-soul-cores -> /en/items/runes-and-soul-cores/
 - liquid-verisium -> /en/items/liquid-verisium/

@@ -29,7 +29,13 @@ const BATCHES = [
 const LOCALES = ["en", "zh-cn"];
 
 const esc = (s) =>
-  String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  String(s ?? "").replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
 
 function inline(text) {
   let t = esc(text);
@@ -38,14 +44,18 @@ function inline(text) {
   // `code`
   t = t.replace(/`(.+?)`/g, "<code>$1</code>");
   // bare URLs
-  t = t.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener">$1</a>',
+  );
   return t;
 }
 
 function renderValue(key, v) {
   if (v == null) return "";
   if (typeof v === "string") return `<p>${inline(v)}</p>`;
-  if (typeof v === "number" || typeof v === "boolean") return `<p>${esc(v)}</p>`;
+  if (typeof v === "number" || typeof v === "boolean")
+    return `<p>${esc(v)}</p>`;
   if (Array.isArray(v)) {
     if (v.length === 0) return "";
     if (typeof v[0] === "string") {
@@ -60,7 +70,7 @@ function renderValue(key, v) {
               `<div class="tl"><span class="tl-code">${esc(e.code || e.version || "")}</span>` +
               `<span class="tl-date">${esc(e.date || "")}</span>` +
               `<span class="tl-kind">${esc(e.kind || e.type || "")}</span>` +
-              `<span class="tl-sum">${inline(e.summary || e.note || "")}</span></div>`
+              `<span class="tl-sum">${inline(e.summary || e.note || "")}</span></div>`,
           )
           .join("")}</div>`;
       }
@@ -104,7 +114,8 @@ function renderSection(s) {
     if (skip.has(k)) continue;
     body += renderValue(k, s[k]);
   }
-  if (!body.trim()) body = `<pre class="json">${esc(JSON.stringify(s, null, 1))}</pre>`;
+  if (!body.trim())
+    body = `<pre class="json">${esc(JSON.stringify(s, null, 1))}</pre>`;
   return `<section class="sec"><h2>${esc(title)}</h2>${body}</section>`;
 }
 
@@ -114,7 +125,8 @@ function renderSources(sources) {
     .map((s) => {
       const url = s.url || (s.description && s.description.url) || "";
       const label = s.label || s.category || "source";
-      const desc = s.description?.en || s.description?.zh || s.description || "";
+      const desc =
+        s.description?.en || s.description?.zh || s.description || "";
       return `<li><span class="src-label">${esc(label)}</span> — <a href="${esc(url)}" target="_blank" rel="noopener">${esc(desc || url)}</a></li>`;
     })
     .join("");

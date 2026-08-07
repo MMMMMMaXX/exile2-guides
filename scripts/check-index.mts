@@ -13,7 +13,9 @@ try {
     const key = paths || i.message;
     if (seen.has(key)) continue;
     seen.add(key);
-    console.error(`- [${i.code}] ${i.contentId ?? ""} :: ${i.message} :: ${paths}`);
+    console.error(
+      `- [${i.code}] ${i.contentId ?? ""} :: ${i.message} :: ${paths}`,
+    );
   }
   console.error(`TOTAL unique sources: ${seen.size}`);
   process.exit(1);

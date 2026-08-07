@@ -162,9 +162,7 @@ const guideTabsSectionSchema = z.strictObject({
         label: requiredText,
         paragraphs: paragraphList,
         steps: z
-          .array(
-            z.strictObject({ body: paragraphList, label: requiredText }),
-          )
+          .array(z.strictObject({ body: paragraphList, label: requiredText }))
           .default([]),
       }),
     )

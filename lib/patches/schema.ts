@@ -243,12 +243,7 @@ const patchTechnicalEnvironmentSectionSchema = z.strictObject({
   environments: z
     .array(
       z.strictObject({
-        key: z.enum([
-          "steam-vulkan",
-          "steam-dx12",
-          "standalone",
-          "console",
-        ]),
+        key: z.enum(["steam-vulkan", "steam-dx12", "standalone", "console"]),
         note: requiredText,
       }),
     )

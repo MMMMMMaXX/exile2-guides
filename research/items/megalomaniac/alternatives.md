@@ -2,13 +2,13 @@
 
 ## If You Cannot Get a Useful Megalomaniac
 
-| Alternative | Type | Why | Trade-off |
-|---|---|---|---|
-| Rare Jewel (explicit passives) | Rare | Cheap filler in the socket | No free Notables |
-| From Nothing | Unique | Grants a start Notable | Different mechanic, build-specific |
-| The Adorned | Unique Diamond | Amplifies corrupted magic jewels | Different role; can't co-equip (Limited to 1) |
-| Against the Darkness | Unique Diamond | Conditional jewel mods | Different role |
-| Manual speccing | Passive points | Full control | Costs the points Megalomaniac would save |
+| Alternative                    | Type           | Why                              | Trade-off                                     |
+| ------------------------------ | -------------- | -------------------------------- | --------------------------------------------- |
+| Rare Jewel (explicit passives) | Rare           | Cheap filler in the socket       | No free Notables                              |
+| From Nothing                   | Unique         | Grants a start Notable           | Different mechanic, build-specific            |
+| The Adorned                    | Unique Diamond | Amplifies corrupted magic jewels | Different role; can't co-equip (Limited to 1) |
+| Against the Darkness           | Unique Diamond | Conditional jewel mods           | Different role                                |
+| Manual speccing                | Passive points | Full control                     | Costs the points Megalomaniac would save      |
 
 ## Comparison Summary
 

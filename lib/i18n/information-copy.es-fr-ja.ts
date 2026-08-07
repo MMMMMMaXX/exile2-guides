@@ -159,7 +159,12 @@ export const esFrJaInfoCopy: Record<
         {
           title: "Categorías de cookies",
           table: {
-            headers: ["Categoría de cookie", "Propósito", "Duración", "Estado en este sitio"],
+            headers: [
+              "Categoría de cookie",
+              "Propósito",
+              "Duración",
+              "Estado en este sitio",
+            ],
             rows: [
               [
                 "Estrictamente necesarias",
@@ -331,7 +336,10 @@ export const esFrJaInfoCopy: Record<
               ["Analíticas y seguimiento", "No habilitado"],
               ["Publicidad y marketing", "No habilitado"],
               ["Cookies y LocalStorage", "No utilizadas intencionalmente"],
-              ["Envíos de formulario de contacto", "No habilitado (solo correo)"],
+              [
+                "Envíos de formulario de contacto",
+                "No habilitado (solo correo)",
+              ],
               ["Contenido generado por el usuario", "No aceptado"],
               ["Compartición de datos con terceros", "Ninguna"],
               ["Seguimiento entre sitios", "Ninguno"],
@@ -665,7 +673,12 @@ export const esFrJaInfoCopy: Record<
         {
           title: "Catégories de cookies",
           table: {
-            headers: ["Catégorie de cookie", "Objet", "Durée", "État sur ce site"],
+            headers: [
+              "Catégorie de cookie",
+              "Objet",
+              "Durée",
+              "État sur ce site",
+            ],
             rows: [
               [
                 "Strictement nécessaires",
@@ -837,7 +850,10 @@ export const esFrJaInfoCopy: Record<
               ["Analytique et suivi", "Désactivés"],
               ["Publicité et marketing", "Désactivés"],
               ["Cookies et LocalStorage", "Non utilisés intentionnellement"],
-              ["Soumissions de formulaire de contact", "Désactivées (e-mail uniquement)"],
+              [
+                "Soumissions de formulaire de contact",
+                "Désactivées (e-mail uniquement)",
+              ],
               ["Contenu généré par l'utilisateur", "Non accepté"],
               ["Partage de données avec des tiers", "Aucun"],
               ["Suivi intersites", "Aucun"],
@@ -1179,12 +1195,7 @@ export const esFrJaInfoCopy: Record<
                 "セッション",
                 "未使用",
               ],
-              [
-                "設定",
-                "言語、テーマ、表示設定",
-                "最大 1 年",
-                "未使用",
-              ],
+              ["設定", "言語、テーマ、表示設定", "最大 1 年", "未使用"],
               [
                 "アクセス解析",
                 "利用統計、ページのパフォーマンス",

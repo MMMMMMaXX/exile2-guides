@@ -32,7 +32,10 @@ for (const file of enSkillFiles) {
   for (const m of raw.matchAll(/"([^"]*[一-鿿぀-ヿ가-힯][^"]*)"/g)) {
     snippets.add(m[1].slice(0, 40));
   }
-  cjkHits.push({ file: file.replace(CONTENT_ROOT + "/", ""), snippets: [...snippets] });
+  cjkHits.push({
+    file: file.replace(CONTENT_ROOT + "/", ""),
+    snippets: [...snippets],
+  });
 }
 
 // 2) ZH-CN patches with untranslated English sentences
@@ -49,16 +52,28 @@ for (const file of zhPatchFiles) {
       hits.add(v.slice(0, 60));
     }
   }
-  if (hits.size > 0) untranslatedHits.push({ file: file.replace(CONTENT_ROOT + "/", ""), samples: [...hits].slice(0, 5) });
+  if (hits.size > 0)
+    untranslatedHits.push({
+      file: file.replace(CONTENT_ROOT + "/", ""),
+      samples: [...hits].slice(0, 5),
+    });
 }
 
 const report = {
   enSkillsWithCJK: cjkHits,
   zhPatchesUntranslated: untranslatedHits,
 };
-writeFileSync("scripts/quality-scan-report.json", JSON.stringify(report, null, 2), "utf8");
+writeFileSync(
+  "scripts/quality-scan-report.json",
+  JSON.stringify(report, null, 2),
+  "utf8",
+);
 
 console.log(`EN skills with CJK: ${cjkHits.length}`);
-cjkHits.forEach((h) => console.log(`  - ${h.file} (${h.snippets.length} snippets)`));
+cjkHits.forEach((h) =>
+  console.log(`  - ${h.file} (${h.snippets.length} snippets)`),
+);
 console.log(`\nZH-CN patches with untranslated EN: ${untranslatedHits.length}`);
-untranslatedHits.forEach((h) => console.log(`  - ${h.file} (${h.samples.length} samples)`));
+untranslatedHits.forEach((h) =>
+  console.log(`  - ${h.file} (${h.samples.length} samples)`),
+);

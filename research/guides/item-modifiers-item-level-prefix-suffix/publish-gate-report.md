@@ -8,7 +8,7 @@
 - **verificationStatus**: `pending-pc`; verificationChecklist.status `pending-pc` (allowed enum) ✅
 - **bilingual**: EN file all English; ZH file fully Simplified Chinese. ids/order/slug/type/tags/URLs identical across both ✅
 - **imageAlt**: non-empty, English in EN / Chinese in ZH ✅
-- **related*Ids**: all five arrays empty `[]`; no `relatedGuideIds` field ✅
+- **related\*Ids**: all five arrays empty `[]`; no `relatedGuideIds` field ✅
 - **JSON valid**: both files pass `JSON.parse` ✅
 - **section counts**: 19 sections each (EN and ZH) ✅
 - **FAQ**: 6 items (meets 3–6 requirement) ✅

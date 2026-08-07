@@ -15,4 +15,6 @@ for (const f of files) {
       console.log("   ", i.path.join(".") + ": " + i.message);
   }
 }
-console.log(`checked ${files.length} de build files, build-schema errors: ${errs}`);
+console.log(
+  `checked ${files.length} de build files, build-schema errors: ${errs}`,
+);

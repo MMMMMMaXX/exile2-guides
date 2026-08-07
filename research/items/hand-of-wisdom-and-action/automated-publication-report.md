@@ -9,6 +9,7 @@
 - canonicalLocale：en；alternates：[{en, 同slug}, {zh-cn, 同slug}]
 
 ## 已创建文件
+
 - content/zh-cn/items/hand-of-wisdom-and-action.json（主文章）
 - research/items/hand-of-wisdom-and-action/source-ledger.md
 - research/items/hand-of-wisdom-and-action/claim-matrix.md
@@ -23,6 +24,7 @@
 - research/items/hand-of-wisdom-and-action/automated-publication-report.md
 
 ## 自检
+
 - JSON.parse 通过。
 - 禁用词扫描（TODO/draft/草稿/版本复核中/example.invalid/Best in Slot）无命中。
 - seo.noindex = false，status = published。

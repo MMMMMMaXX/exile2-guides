@@ -16,13 +16,14 @@ multiplies at the end) penalty applied to the wearer.
 
 Representative rolls:
 
-| Roll | Reduced Attack & Cast Speed |
-|------|-----------------------------|
-| Top roll (15%) | 15% slower |
-| Mid roll (12%) | 12% slower |
-| Low roll (10%) | 10% slower |
+| Roll           | Reduced Attack & Cast Speed |
+| -------------- | --------------------------- |
+| Top roll (15%) | 15% slower                  |
+| Mid roll (12%) | 12% slower                  |
+| Low roll (10%) | 10% slower                  |
 
 Offset logic (qualitative, pending-pc measured DPS):
+
 - Attack-based lightning builds usually recover speed through a different gear slot or
   gem setup. The glove is not the only source of attack speed, so a 10-15% reduction is
   rarely the binding constraint.
@@ -47,6 +48,7 @@ more buildup to be Electrocuted. The glove's benefit is that Lightning damage th
 otherwise only deal damage now also pushes toward the Electrocution threshold.
 
 Important rule confirmed by two community/explain sites:
+
 - **Only Hits** contribute. Damage over Time (DoT) from the wearer does NOT feed the
   Electrocution buildup via this glove.
 - Electrocution is a control effect (stun/CC), distinct from Shock, which increases damage

@@ -15,33 +15,97 @@ const [locale, type, limitArg] = process.argv.slice(2);
 const LIMIT = limitArg ? Number(limitArg) : Infinity;
 
 if (!locale || !type) {
-  console.error("用法: node scripts/translate-content.mjs <locale> <type> [limit]");
+  console.error(
+    "用法: node scripts/translate-content.mjs <locale> <type> [limit]",
+  );
   process.exit(2);
 }
 
 // MyMemory 目标语言码
 const MM_TARGET = {
-  "zh-cn": "zh-CN", "pt-br": "pt", ru: "ru", de: "de",
-  es: "es", fr: "fr", ja: "ja", ko: "ko", tr: "tr",
+  "zh-cn": "zh-CN",
+  "pt-br": "pt",
+  ru: "ru",
+  de: "de",
+  es: "es",
+  fr: "fr",
+  ja: "ja",
+  ko: "ko",
+  tr: "tr",
 }[locale];
-if (!MM_TARGET) { console.error("未知 locale:", locale); process.exit(2); }
+if (!MM_TARGET) {
+  console.error("未知 locale:", locale);
+  process.exit(2);
+}
 
 // 可译字段键名（其 string 值或 string[] 元素需翻译）
 const TRANSLATABLE_KEYS = new Set([
-  "title", "shortTitle", "seoTitle", "seoDescription", "summary", "description",
-  "imageAlt", "league", "reviewMethod", "verificationMethod",
-  "callout", "calloutDetail", "label", "text", "value", "note", "paragraphs",
-  "bullets", "columns", "intro", "body", "why", "fix", "scenario", "audience",
-  "benefit", "risk", "recommendation", "gain", "loss", "question", "answer",
-  "summary", "editorialAnalysis", "officialAnswer", "symptom", "directAnswer",
-  "checks", "changes", "description", "takeaway", "kind",
+  "title",
+  "shortTitle",
+  "seoTitle",
+  "seoDescription",
+  "summary",
+  "description",
+  "imageAlt",
+  "league",
+  "reviewMethod",
+  "verificationMethod",
+  "callout",
+  "calloutDetail",
+  "label",
+  "text",
+  "value",
+  "note",
+  "paragraphs",
+  "bullets",
+  "columns",
+  "intro",
+  "body",
+  "why",
+  "fix",
+  "scenario",
+  "audience",
+  "benefit",
+  "risk",
+  "recommendation",
+  "gain",
+  "loss",
+  "question",
+  "answer",
+  "summary",
+  "editorialAnalysis",
+  "officialAnswer",
+  "symptom",
+  "directAnswer",
+  "checks",
+  "changes",
+  "description",
+  "takeaway",
+  "kind",
 ]);
 
 // 永不可译的枚举值
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game",
-  "community", "tool", "other", "current", "supported", "legacy", "under-review",
-  "draft", "published", "source-reviewed", "pending-pc", "verified",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
 ]);
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -138,13 +202,22 @@ async function walk(node) {
   if (node && typeof node === "object") {
     const out = {};
     for (const [k, v] of Object.entries(node)) {
-      if (k === "translation") { out[k] = v; continue; } // 保留已有 translation 块
+      if (k === "translation") {
+        out[k] = v;
+        continue;
+      } // 保留已有 translation 块
       if (k === "href" && typeof v === "string" && v.startsWith("/en/")) {
         out[k] = v.replace(/^\/en\//, `/${locale}/`);
         continue;
       }
-      if (k === "sourceId" && typeof v === "string") { out[k] = v; continue; } // slug 保持
-      if (k === "url" || k === "sourceType" || k === "id") { out[k] = v; continue; }
+      if (k === "sourceId" && typeof v === "string") {
+        out[k] = v;
+        continue;
+      } // slug 保持
+      if (k === "url" || k === "sourceType" || k === "id") {
+        out[k] = v;
+        continue;
+      }
       if (TRANSLATABLE_KEYS.has(k)) {
         if (typeof v === "string") out[k] = await translate(v);
         else if (Array.isArray(v)) out[k] = await walk(v);
@@ -164,7 +237,10 @@ async function walk(node) {
 // ---- 主流程 ----
 const enDir = join(ROOT, "content", "en", type);
 const outDir = join(ROOT, "content", locale, type);
-if (!existsSync(enDir)) { console.error("无源目录:", enDir); process.exit(2); }
+if (!existsSync(enDir)) {
+  console.error("无源目录:", enDir);
+  process.exit(2);
+}
 mkdirSync(outDir, { recursive: true });
 
 const files = readdirSync(enDir)
@@ -172,11 +248,16 @@ const files = readdirSync(enDir)
   .sort()
   .slice(0, LIMIT);
 
-let written = 0, skipped = 0, errors = 0;
+let written = 0,
+  skipped = 0,
+  errors = 0;
 for (const f of files) {
   const slug = f.replace(/\.json$/, "");
   const outPath = join(outDir, f);
-  if (existsSync(outPath)) { skipped++; continue; }
+  if (existsSync(outPath)) {
+    skipped++;
+    continue;
+  }
   try {
     const raw = JSON.parse(readFileSync(join(enDir, f), "utf8"));
     const translated = await walk(structuredClone(raw));
@@ -195,10 +276,13 @@ for (const f of files) {
     }
     writeFileSync(outPath, JSON.stringify(translated, null, 2) + "\n", "utf8");
     written++;
-    if (written % 5 === 0) console.error(`  [${locale}/${type}] 已写 ${written}`);
+    if (written % 5 === 0)
+      console.error(`  [${locale}/${type}] 已写 ${written}`);
   } catch (e) {
     errors++;
     console.error(`  [${locale}/${type}] 失败 ${slug}:`, e.message);
   }
 }
-console.error(`完成 ${locale}/${type}: 写=${written} 跳过=${skipped} 错=${errors}`);
+console.error(
+  `完成 ${locale}/${type}: 写=${written} 跳过=${skipped} 错=${errors}`,
+);

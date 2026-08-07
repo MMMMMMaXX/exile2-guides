@@ -124,9 +124,7 @@ describe("SkillSectionRenderer", () => {
     const { container } = render(<SkillSectionRenderer article={article} />);
     const supportsSection = container.querySelector(".skill-supports");
     expect(supportsSection).not.toBeNull();
-    expect(supportsSection?.textContent).toContain(
-      "Increased Area of Effect",
-    );
+    expect(supportsSection?.textContent).toContain("Increased Area of Effect");
     expect(supportsSection?.textContent).toContain("Core");
     expect(supportsSection?.textContent).toContain("Situational");
   });

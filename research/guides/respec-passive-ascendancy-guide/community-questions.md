@@ -1,6 +1,6 @@
 # Community Questions — respec-passive-ascendancy-guide
 
-## Refund cost exploded  (tag: Gold)
+## Refund cost exploded (tag: Gold)
 
 ```text
 原始问题 / 引用
@@ -14,7 +14,7 @@
 - Evidence: gold cost scales with points refunded and character level.
 - Suggestion: refund only the points you must; batch minimally.
 
-## Ascendancy reset lost everything  (tag: Ascendancy)
+## Ascendancy reset lost everything (tag: Ascendancy)
 
 ```text
 原始问题 / 引用
@@ -28,7 +28,7 @@
 - Evidence: a reset returns all points until you re-earn them via the Trial.
 - Suggestion: plan the new path first; only reset when the new class clearly wins.
 
-## Weapon Set stranded points  (tag: Weapon Set)
+## Weapon Set stranded points (tag: Weapon Set)
 
 ```text
 原始问题 / 引用
@@ -42,7 +42,7 @@
 - Evidence: linked sets must be refunded as a pair.
 - Suggestion: plan and refund both sets together.
 
-## Trial requirement changed  (tag: Trial)
+## Trial requirement changed (tag: Trial)
 
 ```text
 原始问题 / 引用
@@ -55,6 +55,5 @@
 - Problem: the old Trial path no longer works for the class.
 - Evidence: Trial/Altar requirements shift between patches.
 - Suggestion: confirm the current requirement in the client before resetting.
-
 
 Reddit preferred via official embed; forums as short quote; YouTube via official player + timestamps.

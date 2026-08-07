@@ -1,4 +1,5 @@
 <!-- 文件职责：记录全站 P0 内容修复指令（10 个子任务）的修复范围、核验与验证结果。 -->
+
 # 全站 P0 内容修复报告
 
 > 文档更新时间：2026-08-01，具体分钟未保留（Asia/Shanghai）
@@ -6,18 +7,18 @@
 
 ## 修复总览
 
-| 任务 | 内容 | 状态 | 验证 |
-| ---- | ---- | ---- | ---- |
-| #1 Plant Oracle Druid | 已确认事实错误 | 已完成（前序） | validate/typecheck |
-| #2 Essences | 3 处事实错误 + 技能等级数据表 | 已完成 | validate/typecheck |
-| #3 Cast on Elemental Ailment | 宝石等级拆分 / one-or-more / Energy 公式 / Spell Echo 不兼容 | 已完成 | validate/typecheck |
-| #4 How to Fix Low Damage | 去除 PoE1 术语（6-link/孔/Jeweller）/ 暴击表 | 已完成 | validate/typecheck/lint |
-| #5 Blackjaw Boss | 去除 CJK / Ruby Flask→Ruby Charm / 来源绑定 | 已完成 | validate/typecheck/lint |
-| #6 状态门禁 | 185 文件转 draft+noindex | 已完成（脚本） | 全 212 文件 status 仅 draft/published |
-| #7 Patch slug 下线 | 重复 slug 清理 | 已完成（脚本） | — |
-| #8 Verification completed→结构化 | 180 文件占位转结构化对象 + 8 文件真实数组包裹 | 已完成 | validate/typecheck/lint |
-| #9 媒体版权元数据 | 80 处 rights:official 误标转 embedded + 域名门禁 | 已完成 | validate/typecheck/lint |
-| #10 EN/CN 质量扫描 | 9 篇 EN 技能 CJK 修复 + ZH patch 误报分析 | 已完成 | validate/typecheck |
+| 任务                             | 内容                                                         | 状态           | 验证                                  |
+| -------------------------------- | ------------------------------------------------------------ | -------------- | ------------------------------------- |
+| #1 Plant Oracle Druid            | 已确认事实错误                                               | 已完成（前序） | validate/typecheck                    |
+| #2 Essences                      | 3 处事实错误 + 技能等级数据表                                | 已完成         | validate/typecheck                    |
+| #3 Cast on Elemental Ailment     | 宝石等级拆分 / one-or-more / Energy 公式 / Spell Echo 不兼容 | 已完成         | validate/typecheck                    |
+| #4 How to Fix Low Damage         | 去除 PoE1 术语（6-link/孔/Jeweller）/ 暴击表                 | 已完成         | validate/typecheck/lint               |
+| #5 Blackjaw Boss                 | 去除 CJK / Ruby Flask→Ruby Charm / 来源绑定                  | 已完成         | validate/typecheck/lint               |
+| #6 状态门禁                      | 185 文件转 draft+noindex                                     | 已完成（脚本） | 全 212 文件 status 仅 draft/published |
+| #7 Patch slug 下线               | 重复 slug 清理                                               | 已完成（脚本） | —                                     |
+| #8 Verification completed→结构化 | 180 文件占位转结构化对象 + 8 文件真实数组包裹                | 已完成         | validate/typecheck/lint               |
+| #9 媒体版权元数据                | 80 处 rights:official 误标转 embedded + 域名门禁             | 已完成         | validate/typecheck/lint               |
+| #10 EN/CN 质量扫描               | 9 篇 EN 技能 CJK 修复 + ZH patch 误报分析                    | 已完成         | validate/typecheck                    |
 
 ## 关键事实修正（均已 WebSearch 核验，非臆造）
 

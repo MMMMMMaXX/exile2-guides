@@ -5,12 +5,7 @@ import { getInformationLinkLabel, getNavigationLabel } from "../../lib/i18n/ui";
 export type NavigationItem = {
   id: "builds" | "bosses" | "items" | "skills" | "guides" | "patches";
   releaseTask:
-    | "TASK-010"
-    | "TASK-011"
-    | "TASK-012"
-    | "TASK-013"
-    | "TASK-014"
-    | "TASK-015";
+    "TASK-010" | "TASK-011" | "TASK-012" | "TASK-013" | "TASK-014" | "TASK-015";
 };
 
 // 分类列表页会在后续页面任务注册；releaseTask 让启用入口时能回溯对应验收边界。

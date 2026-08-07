@@ -2,7 +2,9 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 const EN_DIR = path.resolve("content/en/guides");
 const out = [];
-for (const f of (await readdir(EN_DIR)).filter((f)=>f.endsWith(".json")).sort()) {
+for (const f of (await readdir(EN_DIR))
+  .filter((f) => f.endsWith(".json"))
+  .sort()) {
   const d = JSON.parse(await readFile(path.join(EN_DIR, f), "utf8"));
   out.push({
     slug: f.replace(/\.json$/, ""),
@@ -14,7 +16,11 @@ for (const f of (await readdir(EN_DIR)).filter((f)=>f.endsWith(".json")).sort())
     seoDescription: d.seo?.description || "",
   });
 }
-await writeFile(path.resolve("tmp/_heads.json"), JSON.stringify(out, null, 2) + "\n", "utf8");
+await writeFile(
+  path.resolve("tmp/_heads.json"),
+  JSON.stringify(out, null, 2) + "\n",
+  "utf8",
+);
 console.log("wrote tmp/_heads.json with " + out.length + " entries");
 // print compact
 for (const e of out) {

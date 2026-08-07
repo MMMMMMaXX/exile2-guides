@@ -4,10 +4,7 @@ import type { SkillArticle } from "./schema";
 
 export interface SkillRepository {
   getAll(): Promise<readonly SkillArticle[]>;
-  getById(
-    id: string,
-    locale: ContentLocale,
-  ): Promise<SkillArticle | undefined>;
+  getById(id: string, locale: ContentLocale): Promise<SkillArticle | undefined>;
   getBySlug(
     locale: ContentLocale,
     slug: string,

@@ -12,12 +12,12 @@ Key differences from normal Notables:
 
 ## What Gets Allocated
 
-| Condition | Allocated? |
-|---|---|
-| Any Notable in the game pool | Yes (random selection) |
-| Keystones | No (Keystones are not Notables) |
-| Normal/Minor passives | No (only Notables) |
-| Ascendancy notables | No (only passive-tree Notables) |
+| Condition                    | Allocated?                      |
+| ---------------------------- | ------------------------------- |
+| Any Notable in the game pool | Yes (random selection)          |
+| Keystones                    | No (Keystones are not Notables) |
+| Normal/Minor passives        | No (only Notables)              |
+| Ascendancy notables          | No (only passive-tree Notables) |
 
 ## Interaction Notes
 

@@ -4,10 +4,7 @@ import type { PatchArticle } from "./schema";
 
 export interface PatchRepository {
   getAll(): Promise<readonly PatchArticle[]>;
-  getById(
-    id: string,
-    locale: ContentLocale,
-  ): Promise<PatchArticle | undefined>;
+  getById(id: string, locale: ContentLocale): Promise<PatchArticle | undefined>;
   getBySlug(
     locale: ContentLocale,
     slug: string,

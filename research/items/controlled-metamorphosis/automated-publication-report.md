@@ -5,6 +5,7 @@ Locale: en + zh-cn
 Generated: 2026-08-03
 
 ## Identity
+
 - slug: controlled-metamorphosis
 - itemType: ring-radius
 - itemCategory: unique-items
@@ -17,6 +18,7 @@ Generated: 2026-08-03
 - verificationStatus: pending-pc
 
 ## Source count: 7
+
 - Official source count: 1
 - Current database source count: 3 (PoE2Wiki, poe2db, Fextralife)
 - Community source count: 2 (Reddit, YouTube)
@@ -24,6 +26,7 @@ Generated: 2026-08-03
 - Video source count: 1
 
 ## Content requirements
+
 - Structured tables (data-table): 2 (ring-size-comparison, cost-benefit) + matrix sections (eligibility, outcomes, risk-analysis). Requirement >=2 satisfied.
 - Community-evidence entries: 4 (>=3 satisfied).
 - Build decision: yes (build-usage + valuation).
@@ -32,17 +35,21 @@ Generated: 2026-08-03
 - Ring Size Visual: original passive-tree diagram described in prose in overview (images cannot be embedded).
 
 ## Exact numeric claims
+
 - Required Level 20, Limited to 1, ring 1-8 (Very Small..Massive), -(20-5)% all Elemental, drop Xesht +4 Breach.
 - Two-source numeric claims: required level (poe2db + poe2dictionary), Limited to (wiki + db), Elemental penalty (wiki + Fextralife), drop boss/difficulty (wiki + GameRant).
 
 ## Legacy claims
+
 - Chaos Resistance -(23-3)% removed in 0.4.0 (wiki + Fextralife). Clearly labelled legacy.
 - Bug: ring value 9+ drops ring (single source, flagged).
 
 ## Current claims
+
 - 0.5.4 annulus mechanic, Elemental-only penalty, Corrupted always, Divine rerolls. Cross-supported.
 
 ## Quality gates
+
 - Unresolved conflicts = 0
 - Broken links = 0
 - Missing required media = 0 (media described; hero borrowed per spec)
@@ -53,6 +60,7 @@ Generated: 2026-08-03
 - seo.noindex = false
 
 ## Quality score (target >= 88)
+
 - Current rules & version: 20/20
 - Source coverage: 15/15
 - Passive Tree explanation: 15/15
@@ -65,6 +73,7 @@ Generated: 2026-08-03
 - **Estimated total: 100/100 (>= 88)**
 
 ## Final state
+
 - status: published
 - seo.noindex: false
 - Entered Sitemap and Search (per batch policy)

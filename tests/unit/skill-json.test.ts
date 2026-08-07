@@ -470,8 +470,16 @@ describe("skill service helpers", () => {
 
   it("sortSkills 按 updatedAt 降序", () => {
     const articles = [
-      createSkillArticle({ id: "skill-old", slug: "old", updatedAt: "2026-01-01" }),
-      createSkillArticle({ id: "skill-new", slug: "new", updatedAt: "2026-07-01" }),
+      createSkillArticle({
+        id: "skill-old",
+        slug: "old",
+        updatedAt: "2026-01-01",
+      }),
+      createSkillArticle({
+        id: "skill-new",
+        slug: "new",
+        updatedAt: "2026-07-01",
+      }),
     ];
     const sorted = sortSkills(articles, "updated");
     expect(sorted[0]?.id).toBe("skill-new");

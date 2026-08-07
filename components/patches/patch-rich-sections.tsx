@@ -221,8 +221,12 @@ function PatchChangeExplorer({
           className={`patch-change-card patch-change-card--${change.category}`}
           key={`${change.category}-${index}`}
         >
-          <span className={`patch-change-badge patch-change-badge--${change.category}`}>
-            {changeCategoryLabel[locale === "zh-cn" ? "zh-cn" : "en"][change.category] ?? change.category}
+          <span
+            className={`patch-change-badge patch-change-badge--${change.category}`}
+          >
+            {changeCategoryLabel[locale === "zh-cn" ? "zh-cn" : "en"][
+              change.category
+            ] ?? change.category}
           </span>
           <h3>{change.title}</h3>
           <p>{change.detail}</p>
@@ -354,8 +358,7 @@ function PatchAffectedContent({
           {locale === "zh-cn" ? "受影响" : "affected"}
         </span>
         <span>
-          <b>{counts.ready ?? 0}</b>{" "}
-          {locale === "zh-cn" ? "已更新" : "updated"}
+          <b>{counts.ready ?? 0}</b> {locale === "zh-cn" ? "已更新" : "updated"}
         </span>
         <span>
           <b>{counts.reviewing ?? 0}</b>{" "}
@@ -382,7 +385,11 @@ function PatchAffectedContent({
                 <td>
                   <b>{row.name}</b>
                 </td>
-                <td>{affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][row.type] ?? row.type}</td>
+                <td>
+                  {affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][
+                    row.type
+                  ] ?? row.type}
+                </td>
                 <td>{row.trigger}</td>
                 <td>{row.action}</td>
                 <td>
@@ -399,8 +406,8 @@ function PatchAffectedContent({
         <span
           style={{
             width: `${Math.round(
-              ((counts.ready ?? 0) + (counts.reviewing ?? 0)) /
-                Math.max(section.rows.length, 1) *
+              (((counts.ready ?? 0) + (counts.reviewing ?? 0)) /
+                Math.max(section.rows.length, 1)) *
                 100,
             )}%`,
           }}
@@ -421,8 +428,12 @@ function PatchCommunityEvidence({
       {section.reports.map((report, index) => (
         <article className="patch-community-card" key={index}>
           <div className="patch-community-card__meta">
-            <span className="patch-community-card__source">{report.source}</span>
-            <span className="patch-community-card__context">{report.context}</span>
+            <span className="patch-community-card__source">
+              {report.source}
+            </span>
+            <span className="patch-community-card__context">
+              {report.context}
+            </span>
           </div>
           <blockquote>{report.quote}</blockquote>
           <div className="patch-community-card__analysis">
@@ -488,7 +499,9 @@ function PatchFollowup({
       {section.children.map((child, index) => (
         <li className="patch-followup-chain__item" key={index}>
           <span className="patch-followup-chain__code">{child.code}</span>
-          <span className="patch-followup-chain__relation">{child.relation}</span>
+          <span className="patch-followup-chain__relation">
+            {child.relation}
+          </span>
         </li>
       ))}
     </ul>
@@ -576,7 +589,10 @@ const historicalI18n: Record<
   },
 };
 
-function applicabilityStatusLabel(locale: ContentLocale, status: string): string {
+function applicabilityStatusLabel(
+  locale: ContentLocale,
+  status: string,
+): string {
   const map = historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"];
   if (status === "still-current") return map.stillCurrent;
   if (status === "changed-later") return map.changedLater;
@@ -634,13 +650,20 @@ function PatchCurrentApplicability({
           <thead>
             <tr>
               <th>{locale === "zh-cn" ? "机制" : "Mechanic"}</th>
-              <th>{historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"].status}</th>
+              <th>
+                {historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"].status}
+              </th>
               <th>
                 {locale === "zh-cn"
                   ? "当前规则（0.5.4e）"
                   : "Current rule (0.5.4e)"}
               </th>
-              <th>{historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"].supersededBy}</th>
+              <th>
+                {
+                  historicalI18n[locale === "zh-cn" ? "zh-cn" : "en"]
+                    .supersededBy
+                }
+              </th>
               <th>{locale === "zh-cn" ? "应读页面" : "Read"}</th>
             </tr>
           </thead>
@@ -781,7 +804,11 @@ function PatchLegacyContentAudit({
                 <td>
                   <b>{row.contentId}</b>
                 </td>
-                <td>{affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][row.kind] ?? row.kind}</td>
+                <td>
+                  {affectedTypeLabel[locale === "zh-cn" ? "zh-cn" : "en"][
+                    row.kind
+                  ] ?? row.kind}
+                </td>
                 <td>{row.issue}</td>
                 <td>{row.action}</td>
                 <td>
@@ -957,7 +984,9 @@ export function renderPatchRichSection(
     case "superseded-changes":
       return <PatchSupersededChanges section={section} locale={locale} />;
     case "returning-player-checklist":
-      return <PatchReturningPlayerChecklist section={section} locale={locale} />;
+      return (
+        <PatchReturningPlayerChecklist section={section} locale={locale} />
+      );
     case "legacy-content-audit":
       return <PatchLegacyContentAudit section={section} locale={locale} />;
     case "version-dependency-map":

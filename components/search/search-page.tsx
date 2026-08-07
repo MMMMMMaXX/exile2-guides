@@ -6,7 +6,10 @@ import { resolveImageAsset } from "../../lib/assets/image-assets";
 import type { ContentLocale, ContentType } from "../../lib/content/constants";
 import { getCategoryLabel } from "../../lib/i18n/category-copy";
 import { t } from "../../lib/i18n/ui";
-import { formatBossTag, searchPageCopyByLocale } from "../../lib/i18n/search-copy";
+import {
+  formatBossTag,
+  searchPageCopyByLocale,
+} from "../../lib/i18n/search-copy";
 import {
   searchDocuments,
   type SearchDocument,
@@ -92,10 +95,7 @@ export function SearchPage({
     <main className="v4-prototype-search" data-prerender-content="true">
       <section className="v4-prototype-search__hero">
         <div className="page-shell">
-          <nav
-            className="breadcrumbs"
-            aria-label={copy.breadcrumbAria}
-          >
+          <nav className="breadcrumbs" aria-label={copy.breadcrumbAria}>
             <a href={`/${locale}/`}>{t(locale, "nav.home")}</a>
             <span>›</span>
             <span>{t(locale, "search.title")}</span>
@@ -209,7 +209,10 @@ export function SearchPage({
                                 </span>
                               ))}
                               {displayTags.map((tag) => (
-                                <span className="v4-card-meta__tag" key={`dup-${tag}`}>
+                                <span
+                                  className="v4-card-meta__tag"
+                                  key={`dup-${tag}`}
+                                >
                                   {tag}
                                 </span>
                               ))}

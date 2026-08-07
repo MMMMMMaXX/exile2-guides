@@ -57,7 +57,9 @@ writeFileSync(
   JSON.stringify(results, null, 2),
   "utf8",
 );
-console.log(`ZH patches with candidate untranslated English: ${results.length}`);
+console.log(
+  `ZH patches with candidate untranslated English: ${results.length}`,
+);
 results.forEach((r) => {
   console.log(`\n${r.file} (${r.hits.length} hits)`);
   r.hits.forEach((h) => console.log(`  L${h.line}: ${h.text}`));

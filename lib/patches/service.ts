@@ -33,11 +33,7 @@ export function parsePatchQuery(searchParams: URLSearchParams): {
         : {}),
     },
     sort:
-      sort === "title"
-        ? "title"
-        : sort === "version"
-          ? "version"
-          : "updated",
+      sort === "title" ? "title" : sort === "version" ? "version" : "updated",
   };
 }
 

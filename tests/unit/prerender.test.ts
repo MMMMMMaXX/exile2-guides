@@ -281,11 +281,13 @@ describe("content route structural gates", () => {
   it("要求内容详情页恰好一个 H1", () => {
     expect(inspectSingleH1("<h1>Title</h1>", "/en/guides/g/")).toEqual([]);
     expect(
-      inspectSingleH1("<h1>A</h1><h1>B</h1>", "/en/guides/g/").map((i) => i.code),
+      inspectSingleH1("<h1>A</h1><h1>B</h1>", "/en/guides/g/").map(
+        (i) => i.code,
+      ),
     ).toEqual(["duplicate-h1"]);
-    expect(
-      inspectSingleH1("<p>No heading</p>", "/en/guides/g/")[0]?.code,
-    ).toBe("duplicate-h1");
+    expect(inspectSingleH1("<p>No heading</p>", "/en/guides/g/")[0]?.code).toBe(
+      "duplicate-h1",
+    );
   });
 
   it("要求页内锚点都指向真实存在的 id", () => {
@@ -303,9 +305,7 @@ describe("content route structural gates", () => {
   });
 
   it("要求引用的根相对 og:image 在构建产物中存在", async () => {
-    const outputDirectory = await mkdtemp(
-      path.join(os.tmpdir(), "exile2-og-"),
-    );
+    const outputDirectory = await mkdtemp(path.join(os.tmpdir(), "exile2-og-"));
     const ogDir = path.join(outputDirectory, "images", "og", "guides");
     await mkdir(ogDir, { recursive: true });
     await writeFile(path.join(ogDir, "verified-guide.webp"), "webp");
@@ -313,7 +313,11 @@ describe("content route structural gates", () => {
     const okHtml =
       '<meta property="og:image" content="/images/og/guides/verified-guide.webp">';
     expect(
-      await inspectOgImageFile(okHtml, "/en/guides/verified-guide/", outputDirectory),
+      await inspectOgImageFile(
+        okHtml,
+        "/en/guides/verified-guide/",
+        outputDirectory,
+      ),
     ).toEqual([]);
 
     const brokenHtml =

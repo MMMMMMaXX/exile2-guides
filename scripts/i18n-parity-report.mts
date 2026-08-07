@@ -9,7 +9,10 @@ import { extraUiByLocale } from "../lib/i18n/ui-extra";
 import { searchPageCopyByLocale } from "../lib/i18n/search-copy";
 import { getCategoryCopy } from "../lib/i18n/category-copy";
 import { getHomeCopy } from "../lib/i18n/home-copy";
-import { getInformationPageCopy, informationPageSlugs } from "../lib/i18n/information-copy";
+import {
+  getInformationPageCopy,
+  informationPageSlugs,
+} from "../lib/i18n/information-copy";
 
 type LeafMap = Record<string, true>;
 
@@ -17,7 +20,11 @@ type LeafMap = Record<string, true>;
 function leafKeys(value: unknown, prefix = ""): LeafMap {
   const out: LeafMap = {};
   if (value === null || value === undefined) return out;
-  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+  if (
+    typeof value === "string" ||
+    typeof value === "number" ||
+    typeof value === "boolean"
+  ) {
     out[prefix] = true;
     return out;
   }
@@ -40,7 +47,11 @@ function leafKeys(value: unknown, prefix = ""): LeafMap {
   return out;
 }
 
-function reportTable(name: string, enLeaves: LeafMap, byLocale: Record<ContentLocale, LeafMap>) {
+function reportTable(
+  name: string,
+  enLeaves: LeafMap,
+  byLocale: Record<ContentLocale, LeafMap>,
+) {
   const enCount = Object.keys(enLeaves).length;
   const lines: string[] = [];
   let allComplete = true;
@@ -58,7 +69,9 @@ function reportTable(name: string, enLeaves: LeafMap, byLocale: Record<ContentLo
         (extra.length ? ` extra:${extra.length}` : ""),
     );
   }
-  console.log(`\n### ${name}  (en leaf keys = ${enCount})  ${allComplete ? "[ALL COMPLETE]" : "[HAS GAPS]"}`);
+  console.log(
+    `\n### ${name}  (en leaf keys = ${enCount})  ${allComplete ? "[ALL COMPLETE]" : "[HAS GAPS]"}`,
+  );
   console.log(lines.join("\n"));
 }
 
@@ -67,31 +80,41 @@ async function main() {
   reportTable(
     "ui.uiByLocale",
     leafKeys(uiByLocale.en),
-    Object.fromEntries(supportedLocales.map((l) => [l, leafKeys(uiByLocale[l])])) as Record<ContentLocale, LeafMap>,
+    Object.fromEntries(
+      supportedLocales.map((l) => [l, leafKeys(uiByLocale[l])]),
+    ) as Record<ContentLocale, LeafMap>,
   );
 
   // 2. extraUiByLocale（扁平）
   reportTable(
     "ui-extra.extraUiByLocale",
     leafKeys(extraUiByLocale.en),
-    Object.fromEntries(supportedLocales.map((l) => [l, leafKeys(extraUiByLocale[l])])) as Record<ContentLocale, LeafMap>,
+    Object.fromEntries(
+      supportedLocales.map((l) => [l, leafKeys(extraUiByLocale[l])]),
+    ) as Record<ContentLocale, LeafMap>,
   );
 
   // 3. searchPageCopyByLocale（扁平）
   reportTable(
     "search-copy.searchPageCopyByLocale",
     leafKeys(searchPageCopyByLocale.en),
-    Object.fromEntries(supportedLocales.map((l) => [l, leafKeys(searchPageCopyByLocale[l])])) as Record<ContentLocale, LeafMap>,
+    Object.fromEntries(
+      supportedLocales.map((l) => [l, leafKeys(searchPageCopyByLocale[l])]),
+    ) as Record<ContentLocale, LeafMap>,
   );
 
   // 4. category-copy（结构化，按三个子表）
   for (const type of ["build", "boss", "generic"] as const) {
     const getter = (l: ContentLocale) =>
-      type === "generic" ? getCategoryCopy(l, "item") : getCategoryCopy(l, type);
+      type === "generic"
+        ? getCategoryCopy(l, "item")
+        : getCategoryCopy(l, type);
     reportTable(
       `category-copy.${type}`,
       leafKeys(getter("en")),
-      Object.fromEntries(supportedLocales.map((l) => [l, leafKeys(getter(l))])) as Record<ContentLocale, LeafMap>,
+      Object.fromEntries(
+        supportedLocales.map((l) => [l, leafKeys(getter(l))]),
+      ) as Record<ContentLocale, LeafMap>,
     );
   }
 
@@ -99,7 +122,9 @@ async function main() {
   reportTable(
     "home-copy.homeCopyByLocale",
     leafKeys(getHomeCopy("en")),
-    Object.fromEntries(supportedLocales.map((l) => [l, leafKeys(getHomeCopy(l))])) as Record<ContentLocale, LeafMap>,
+    Object.fromEntries(
+      supportedLocales.map((l) => [l, leafKeys(getHomeCopy(l))]),
+    ) as Record<ContentLocale, LeafMap>,
   );
 
   // 6. information-copy（结构化，按 slug 聚合）
@@ -146,7 +171,12 @@ async function main() {
   }
   const enTotal = cats.reduce((acc, c) => {
     try {
-      return acc + fs.readdirSync(path.join("content", "en", c)).filter((f) => f.endsWith(".json")).length;
+      return (
+        acc +
+        fs
+          .readdirSync(path.join("content", "en", c))
+          .filter((f) => f.endsWith(".json")).length
+      );
     } catch {
       return acc;
     }

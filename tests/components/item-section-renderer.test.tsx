@@ -145,9 +145,7 @@ describe("ItemSectionRenderer", () => {
 
     expect(queryByText("How to Obtain")).not.toBeNull();
     expect(queryByText("Visit Farrow")).not.toBeNull();
-    expect(
-      queryByText("Travel to the Expedition encampment."),
-    ).not.toBeNull();
+    expect(queryByText("Travel to the Expedition encampment.")).not.toBeNull();
   });
 
   it("renders narrative sections with paragraphs and bullets", () => {

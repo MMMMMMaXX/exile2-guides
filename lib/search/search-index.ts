@@ -15,7 +15,9 @@ export type SearchDocument = {
   updatedAt: string;
 };
 
-export type SearchIndexByLocale = Partial<Record<ContentLocale, SearchDocument[]>>;
+export type SearchIndexByLocale = Partial<
+  Record<ContentLocale, SearchDocument[]>
+>;
 
 /** 将已发布静态页压缩为搜索所需字段；正文不会被复制进索引以控制首发体积。 */
 export function buildSearchIndexes(

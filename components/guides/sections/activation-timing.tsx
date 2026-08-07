@@ -10,7 +10,9 @@ export function ActivationTiming({ section }: { section: Section }) {
       <ul className="guide-activation-timing__rules">
         {section.rules.map((rule, index) => (
           <li className="guide-activation-timing__rule" key={index}>
-            <p className="guide-activation-timing__situation">{rule.situation}</p>
+            <p className="guide-activation-timing__situation">
+              {rule.situation}
+            </p>
             <p className="guide-activation-timing__effect">
               <strong>生效：</strong>
               {rule.takesEffect}

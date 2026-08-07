@@ -14,5 +14,6 @@ Images to capture for the media gallery and article proof.
    - Capture the ES bar recharging after the start-of-recharge delay to demonstrate the sustain rebuild.
 
 ## Image paths
+
 - Hero / card: `/images/items/ghostwrithe-hero.webp` (referenced in media-gallery items 1 and 2).
 - Source references may also link to PoE2Wiki if a captured asset is unavailable.

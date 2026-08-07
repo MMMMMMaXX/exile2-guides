@@ -11,7 +11,14 @@ const map: Record<string, string> = {
 
 let changed = 0;
 for (const loc of ["en", "zh-cn"]) {
-  for (const type of ["items", "guides", "skills", "bosses", "builds", "patches"]) {
+  for (const type of [
+    "items",
+    "guides",
+    "skills",
+    "bosses",
+    "builds",
+    "patches",
+  ]) {
     const dir = `content/${loc}/${type}`;
     let files: string[];
     try {
@@ -23,7 +30,8 @@ for (const loc of ["en", "zh-cn"]) {
       const p = `${dir}/${f}`;
       const raw = readFileSync(p, "utf8");
       let out = raw;
-      for (const [from, to] of Object.entries(map)) out = out.split(from).join(to);
+      for (const [from, to] of Object.entries(map))
+        out = out.split(from).join(to);
       if (out !== raw) {
         writeFileSync(p, out);
         changed++;

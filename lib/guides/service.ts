@@ -51,7 +51,9 @@ export function sortGuides(
     if (sort === "reading-time") {
       const leftMinutes = left.estimatedReadingMinutes ?? 999;
       const rightMinutes = right.estimatedReadingMinutes ?? 999;
-      return leftMinutes - rightMinutes || left.title.localeCompare(right.title);
+      return (
+        leftMinutes - rightMinutes || left.title.localeCompare(right.title)
+      );
     }
     return (
       right.updatedAt.localeCompare(left.updatedAt) ||

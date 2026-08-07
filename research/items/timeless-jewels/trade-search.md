@@ -1,6 +1,7 @@
 # Trade Search — Timeless Jewels
 
 ## Steps (current UI)
+
 1. Item Category: Jewel
 2. Rarity: Unique
 3. Name: Heroic Tragedy OR Undying Hate
@@ -10,6 +11,7 @@
 7. League: current; filter Online/Offline as needed.
 
 ## Notes
+
 - Do not buy "the same seed as a build guide" without re-verifying in your own planner; seeds are build-specific.
 - A perfect 4-mod Undying Hate can reach mirror-tier prices; verify before committing.
 - Do not hardcode long-term Trade URLs in static copy.

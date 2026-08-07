@@ -36,8 +36,11 @@ export type ExtraUiKey =
   | "subtype.noThinDetails"
   | "info.onThisPage";
 
-export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> = {
-  "en": {
+export const extraUiByLocale: Record<
+  ContentLocale,
+  Record<ExtraUiKey, string>
+> = {
+  en: {
     "collection.kindClass": "Class",
     "collection.kindAscendancy": "Ascendancy",
     "collection.kindCategory": "Category",
@@ -51,9 +54,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "{type} drafts and published pages",
     "collection.availableContent": "Available {type}",
     "collection.localDraft": "Local draft",
-    "collection.emptyCollection": "No reviewed {type} are available in this collection",
-    "collection.metaDescription": "{label} Path of Exile 2 {type} collection with verified guides.",
-    "search.description": "Search published Path of Exile 2 guides in the current language.",
+    "collection.emptyCollection":
+      "No reviewed {type} are available in this collection",
+    "collection.metaDescription":
+      "{label} Path of Exile 2 {type} collection with verified guides.",
+    "search.description":
+      "Search published Path of Exile 2 guides in the current language.",
     "subtype.eyebrow": "Subtype aggregation",
     "subtype.notAvailable": "This aggregation page is not available",
     "subtype.overview": "Overview",
@@ -86,7 +92,8 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.availableContent": "可阅读 {type}",
     "collection.localDraft": "本地草稿",
     "collection.emptyCollection": "该分类暂时没有经过审核的 {type}",
-    "collection.metaDescription": "{label} Path of Exile 2 {type} 聚合（经过核验的内容）。",
+    "collection.metaDescription":
+      "{label} Path of Exile 2 {type} 聚合（经过核验的内容）。",
     "search.description": "以当前语言搜索已发布的 Path of Exile 2 攻略。",
     "subtype.eyebrow": "分类聚合",
     "subtype.notAvailable": "该聚合页面暂时不可用",
@@ -119,9 +126,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "Rascunhos e páginas publicadas de {type}",
     "collection.availableContent": "{type} disponíveis",
     "collection.localDraft": "Rascunho local",
-    "collection.emptyCollection": "Nenhum {type} revisado está disponível nesta coleção",
-    "collection.metaDescription": "Coleção {label} de {type} de Path of Exile 2 com guias verificados.",
-    "search.description": "Pesquise guias publicados de Path of Exile 2 no idioma atual.",
+    "collection.emptyCollection":
+      "Nenhum {type} revisado está disponível nesta coleção",
+    "collection.metaDescription":
+      "Coleção {label} de {type} de Path of Exile 2 com guias verificados.",
+    "search.description":
+      "Pesquise guias publicados de Path of Exile 2 no idioma atual.",
     "subtype.eyebrow": "Agregação de subtipo",
     "subtype.notAvailable": "Esta página de agregação não está disponível",
     "subtype.overview": "Visão geral",
@@ -129,8 +139,10 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.connections": "Conexões",
     "subtype.publicationRule": "Regra de publicação",
     "subtype.module": "Módulo {n}",
-    "subtype.readyForContent": "{label} está pronto para conteúdo de {type} revisado",
-    "subtype.devIndexRow": "Linha de índice de desenvolvimento · sem página de detalhes",
+    "subtype.readyForContent":
+      "{label} está pronto para conteúdo de {type} revisado",
+    "subtype.devIndexRow":
+      "Linha de índice de desenvolvimento · sem página de detalhes",
     "subtype.skeletonRow": "{title} linha de esqueleto",
     "subtype.moduleLabel": "Módulo",
     "subtype.subtypeLabel": "Subtipo",
@@ -139,7 +151,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "Sem detalhes superficiais",
     "info.onThisPage": "Nesta página",
   },
-  "ru": {
+  ru: {
     "collection.kindClass": "Класс",
     "collection.kindAscendancy": "Вознесение",
     "collection.kindCategory": "Категория",
@@ -150,12 +162,15 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.eyebrowAct": "Акт {type}",
     "collection.publishedContent": "Опубликованный контент",
     "collection.localDraftPreview": "Предпросмотр локального черновика",
-    "collection.draftAndPublished": "Черновики и опубликованные страницы {type}",
+    "collection.draftAndPublished":
+      "Черновики и опубликованные страницы {type}",
     "collection.availableContent": "Доступные {type}",
     "collection.localDraft": "Локальный черновик",
     "collection.emptyCollection": "В этой подборке нет проверенных {type}",
-    "collection.metaDescription": "Подборка {label} {type} Path of Exile 2 с проверенными гайдами.",
-    "search.description": "Поиск опубликованных гайдов Path of Exile 2 на текущем языке.",
+    "collection.metaDescription":
+      "Подборка {label} {type} Path of Exile 2 с проверенными гайдами.",
+    "search.description":
+      "Поиск опубликованных гайдов Path of Exile 2 на текущем языке.",
     "subtype.eyebrow": "Агрегация подтипов",
     "subtype.notAvailable": "Эта страница агрегации недоступна",
     "subtype.overview": "Обзор",
@@ -173,7 +188,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "Без малосодержательных деталей",
     "info.onThisPage": "На этой странице",
   },
-  "de": {
+  de: {
     "collection.kindClass": "Klasse",
     "collection.kindAscendancy": "Ascendancy",
     "collection.kindCategory": "Kategorie",
@@ -184,12 +199,16 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.eyebrowAct": "Akt {type}",
     "collection.publishedContent": "Veröffentlichte Inhalte",
     "collection.localDraftPreview": "Vorschau des lokalen Entwurfs",
-    "collection.draftAndPublished": "{type}-Entwürfe und veröffentlichte Seiten",
+    "collection.draftAndPublished":
+      "{type}-Entwürfe und veröffentlichte Seiten",
     "collection.availableContent": "Verfügbare {type}",
     "collection.localDraft": "Lokaler Entwurf",
-    "collection.emptyCollection": "In dieser Sammlung sind keine geprüften {type} verfügbar",
-    "collection.metaDescription": "{label} Path of Exile 2 {type}-Sammlung mit verifizierten Guides.",
-    "search.description": "Veröffentlichte Path of Exile 2-Guides in der aktuellen Sprache durchsuchen.",
+    "collection.emptyCollection":
+      "In dieser Sammlung sind keine geprüften {type} verfügbar",
+    "collection.metaDescription":
+      "{label} Path of Exile 2 {type}-Sammlung mit verifizierten Guides.",
+    "search.description":
+      "Veröffentlichte Path of Exile 2-Guides in der aktuellen Sprache durchsuchen.",
     "subtype.eyebrow": "Subtyp-Aggregation",
     "subtype.notAvailable": "Diese Aggregationsseite ist nicht verfügbar",
     "subtype.overview": "Übersicht",
@@ -207,7 +226,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "Keine dünnen Details",
     "info.onThisPage": "Auf dieser Seite",
   },
-  "es": {
+  es: {
     "collection.kindClass": "Clase",
     "collection.kindAscendancy": "Ascendencia",
     "collection.kindCategory": "Categoría",
@@ -221,9 +240,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "Borradores y páginas publicadas de {type}",
     "collection.availableContent": "{type} disponibles",
     "collection.localDraft": "Borrador local",
-    "collection.emptyCollection": "No hay {type} revisados disponibles en esta colección",
-    "collection.metaDescription": "Colección {label} de {type} de Path of Exile 2 con guías verificadas.",
-    "search.description": "Busca guías publicados de Path of Exile 2 en el idioma actual.",
+    "collection.emptyCollection":
+      "No hay {type} revisados disponibles en esta colección",
+    "collection.metaDescription":
+      "Colección {label} de {type} de Path of Exile 2 con guías verificadas.",
+    "search.description":
+      "Busca guías publicados de Path of Exile 2 en el idioma actual.",
     "subtype.eyebrow": "Agregación de subtipos",
     "subtype.notAvailable": "Esta página de agregación no está disponible",
     "subtype.overview": "Resumen",
@@ -231,8 +253,10 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.connections": "Conexiones",
     "subtype.publicationRule": "Regla de publicación",
     "subtype.module": "Módulo {n}",
-    "subtype.readyForContent": "{label} está listo para contenido de {type} revisado",
-    "subtype.devIndexRow": "Fila de índice de desarrollo · sin página de detalles",
+    "subtype.readyForContent":
+      "{label} está listo para contenido de {type} revisado",
+    "subtype.devIndexRow":
+      "Fila de índice de desarrollo · sin página de detalles",
     "subtype.skeletonRow": "{title} fila de esqueleto",
     "subtype.moduleLabel": "Módulo",
     "subtype.subtypeLabel": "Subtipo",
@@ -241,7 +265,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "Sin detalles superficiales",
     "info.onThisPage": "En esta página",
   },
-  "fr": {
+  fr: {
     "collection.kindClass": "Classe",
     "collection.kindAscendancy": "Ascendance",
     "collection.kindCategory": "Catégorie",
@@ -255,9 +279,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "Brouillons et pages publiées de {type}",
     "collection.availableContent": "{type} disponibles",
     "collection.localDraft": "Brouillon local",
-    "collection.emptyCollection": "Aucun {type} vérifié n'est disponible dans cette collection",
-    "collection.metaDescription": "Collection {label} de {type} Path of Exile 2 avec des guides vérifiés.",
-    "search.description": "Recherchez les guides Path of Exile 2 publiés dans la langue actuelle.",
+    "collection.emptyCollection":
+      "Aucun {type} vérifié n'est disponible dans cette collection",
+    "collection.metaDescription":
+      "Collection {label} de {type} Path of Exile 2 avec des guides vérifiés.",
+    "search.description":
+      "Recherchez les guides Path of Exile 2 publiés dans la langue actuelle.",
     "subtype.eyebrow": "Agrégation de sous-types",
     "subtype.notAvailable": "Cette page d'agrégation n'est pas disponible",
     "subtype.overview": "Aperçu",
@@ -265,8 +292,10 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.connections": "Connexions",
     "subtype.publicationRule": "Règle de publication",
     "subtype.module": "Module {n}",
-    "subtype.readyForContent": "{label} est prêt pour le contenu de {type} vérifié",
-    "subtype.devIndexRow": "Ligne d'index de développement · aucune page de détail",
+    "subtype.readyForContent":
+      "{label} est prêt pour le contenu de {type} vérifié",
+    "subtype.devIndexRow":
+      "Ligne d'index de développement · aucune page de détail",
     "subtype.skeletonRow": "{title} ligne squelette",
     "subtype.moduleLabel": "Module",
     "subtype.subtypeLabel": "Sous-type",
@@ -275,7 +304,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "Pas de détails superficiels",
     "info.onThisPage": "Sur cette page",
   },
-  "ja": {
+  ja: {
     "collection.kindClass": "クラス",
     "collection.kindAscendancy": "昇華",
     "collection.kindCategory": "カテゴリ",
@@ -289,9 +318,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "{type} の下書きと公開ページ",
     "collection.availableContent": "利用可能な {type}",
     "collection.localDraft": "ローカル下書き",
-    "collection.emptyCollection": "このコレクションにレビュー済みの {type} はありません",
-    "collection.metaDescription": "Path of Exile 2 の {label} {type} コレクション（検証済みガイド付き）。",
-    "search.description": "現在の言語で公開済みの Path of Exile 2 ガイドを検索します。",
+    "collection.emptyCollection":
+      "このコレクションにレビュー済みの {type} はありません",
+    "collection.metaDescription":
+      "Path of Exile 2 の {label} {type} コレクション（検証済みガイド付き）。",
+    "search.description":
+      "現在の言語で公開済みの Path of Exile 2 ガイドを検索します。",
     "subtype.eyebrow": "サブタイプの集約",
     "subtype.notAvailable": "この集約ページは利用できません",
     "subtype.overview": "概要",
@@ -299,7 +331,8 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.connections": "関連コンテンツ",
     "subtype.publicationRule": "公開ルール",
     "subtype.module": "モジュール {n}",
-    "subtype.readyForContent": "{label} はレビュー済みの {type} コンテンツの準備ができています",
+    "subtype.readyForContent":
+      "{label} はレビュー済みの {type} コンテンツの準備ができています",
     "subtype.devIndexRow": "開発インデックス行 · 詳細ページなし",
     "subtype.skeletonRow": "{title} のスケルトン行",
     "subtype.moduleLabel": "モジュール",
@@ -309,7 +342,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "薄い詳細なし",
     "info.onThisPage": "このページの目次",
   },
-  "ko": {
+  ko: {
     "collection.kindClass": "클래스",
     "collection.kindAscendancy": "승천",
     "collection.kindCategory": "카테고리",
@@ -323,9 +356,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "{type} 초안 및 게시된 페이지",
     "collection.availableContent": "사용 가능한 {type}",
     "collection.localDraft": "로컬 초안",
-    "collection.emptyCollection": "이 컬렉션에는 검토 완료된 {type}이(가) 없습니다",
-    "collection.metaDescription": "검증된 가이드가 포함된 Path of Exile 2 {label} {type} 컬렉션.",
-    "search.description": "현재 언어로 게시된 Path of Exile 2 가이드를 검색합니다.",
+    "collection.emptyCollection":
+      "이 컬렉션에는 검토 완료된 {type}이(가) 없습니다",
+    "collection.metaDescription":
+      "검증된 가이드가 포함된 Path of Exile 2 {label} {type} 컬렉션.",
+    "search.description":
+      "현재 언어로 게시된 Path of Exile 2 가이드를 검색합니다.",
     "subtype.eyebrow": "하위 유형 집계",
     "subtype.notAvailable": "이 집계 페이지는 사용할 수 없습니다",
     "subtype.overview": "개요",
@@ -333,7 +369,8 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.connections": "연결",
     "subtype.publicationRule": "게시 규칙",
     "subtype.module": "모듈 {n}",
-    "subtype.readyForContent": "{label}은(는) 검토 완료된 {type} 콘텐츠 준비가 되었습니다",
+    "subtype.readyForContent":
+      "{label}은(는) 검토 완료된 {type} 콘텐츠 준비가 되었습니다",
     "subtype.devIndexRow": "개발 인덱스 행 · 상세 페이지 없음",
     "subtype.skeletonRow": "{title} 스켈레톤 행",
     "subtype.moduleLabel": "모듈",
@@ -343,7 +380,7 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "subtype.noThinDetails": "빈약한 상세 없음",
     "info.onThisPage": "이 페이지 목차",
   },
-  "tr": {
+  tr: {
     "collection.kindClass": "Sınıf",
     "collection.kindAscendancy": "Yükseliş",
     "collection.kindCategory": "Kategori",
@@ -357,9 +394,12 @@ export const extraUiByLocale: Record<ContentLocale, Record<ExtraUiKey, string>> 
     "collection.draftAndPublished": "{type} taslakları ve yayınlanan sayfalar",
     "collection.availableContent": "Kullanılabilir {type}",
     "collection.localDraft": "Yerel taslak",
-    "collection.emptyCollection": "Bu koleksiyonda incelenmiş {type} bulunmamaktadır",
-    "collection.metaDescription": "{label} Path of Exile 2 {type} koleksiyonu, doğrulanmış rehberlerle.",
-    "search.description": "Mevcut dilde yayınlanmış Path of Exile 2 rehberlerini arayın.",
+    "collection.emptyCollection":
+      "Bu koleksiyonda incelenmiş {type} bulunmamaktadır",
+    "collection.metaDescription":
+      "{label} Path of Exile 2 {type} koleksiyonu, doğrulanmış rehberlerle.",
+    "search.description":
+      "Mevcut dilde yayınlanmış Path of Exile 2 rehberlerini arayın.",
     "subtype.eyebrow": "Alt tür toplaması",
     "subtype.notAvailable": "Bu toplama sayfası kullanılamıyor",
     "subtype.overview": "Genel bakış",

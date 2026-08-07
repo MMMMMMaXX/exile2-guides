@@ -3,6 +3,7 @@
 Real node names + effects (from creator breakdowns; percentages pending PC verification).
 
 ## Jado — Spycraft
+
 - Trove Seekers: 100% inc Rare Chests; Strongboxes 100% inc chance to be Unique.
 - In The Wrong Hands: Powerful Map Bosses drop additional Unique.
 - Unexpected Missions: Corrupted Waystones +1 random Modifier; random map area on Basic.
@@ -17,6 +18,7 @@ Real node names + effects (from creator breakdowns; percentages pending PC verif
 - Ancient Activations: Powerful Map Bosses 5% add Ancient Modifiers nearby.
 
 ## Doryani — Science
+
 - Stitch the Flesh: +1 Revival.
 - Refined Formula: 150% Expedition Explosive Radius, 100% Placement Range, 1 Explosive.
 - Evolutionary Pressure: per Explicit Modifier: +1% rarity, +2% monster effectiveness, Rare +3% mod chance.
@@ -31,6 +33,7 @@ Real node names + effects (from creator breakdowns; percentages pending PC verif
 - Head of the Snake: Pinnacle +25% Unique, single Revive, 5% Citadel reveal.
 
 ## Hilda — Hunting
+
 - Breeding Season: 15% inc Rare Monsters; Rare +25% mod chance.
 - Mighty Prey: 25% upgrade Map Bosses to Powerful.
 - Scarred Lands: 15% Runic Markers; 20% Rare Expedition Monsters.

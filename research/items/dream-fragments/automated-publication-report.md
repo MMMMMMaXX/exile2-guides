@@ -9,6 +9,7 @@
 - canonicalLocale：en；alternates：[{en, 同slug}, {zh-cn, 同slug}]
 
 ## 已创建文件
+
 - content/zh-cn/items/dream-fragments.json（主文章）
 - research/items/dream-fragments/source-ledger.md
 - research/items/dream-fragments/claim-matrix.md
@@ -23,6 +24,7 @@
 - research/items/dream-fragments/automated-publication-report.md
 
 ## 自检
+
 - JSON.parse 通过。
 - 禁用词扫描（TODO/draft/草稿/版本复核中/example.invalid/Best in Slot）无命中。
 - seo.noindex = false，status = published。

@@ -33,8 +33,7 @@ for (const file of walk(CONTENT_ROOT)) {
   const items = [...arrayText.matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((x) =>
     x[1].replace(/\\"/g, '"'),
   );
-  const isPlaceholder =
-    items.length === 1 && PLACEHOLDERS.includes(items[0]);
+  const isPlaceholder = items.length === 1 && PLACEHOLDERS.includes(items[0]);
   let objectText;
   if (isPlaceholder) {
     objectText =

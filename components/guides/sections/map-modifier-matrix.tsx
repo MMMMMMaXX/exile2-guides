@@ -30,7 +30,9 @@ export function MapModifierMatrix({ section }: { section: Section }) {
               <td>{modifier.modifier}</td>
               <td>{modifier.affects}</td>
               <td>
-                <span className={`pill ${dangerPill[modifier.danger] ?? "pill--blue"}`}>
+                <span
+                  className={`pill ${dangerPill[modifier.danger] ?? "pill--blue"}`}
+                >
                   {modifier.danger}
                 </span>
               </td>

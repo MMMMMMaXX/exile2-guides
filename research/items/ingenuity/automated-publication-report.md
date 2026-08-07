@@ -8,6 +8,7 @@
 - createdAt / publishedAt / updatedAt / lastVerifiedAt: 2026-08-03
 
 ## Files created
+
 - content/en/items/ingenuity.json
 - content/zh-cn/items/ingenuity.json
 - research/items/ingenuity/source-ledger.md
@@ -23,10 +24,12 @@
 - research/items/ingenuity/automated-publication-report.md
 
 ## Gate checks
+
 - JSON.parse: PASS on both content files.
 - Forbidden words (TODO/draft/草稿/版本复核中/example.invalid/Best in Slot): NONE.
 - seo.noindex === false: YES.
 - status === "published": YES.
 
 ## Pending
+
 - Manual in-game client verification of exact roll bands and charm/attribute behaviour (pending-pc).

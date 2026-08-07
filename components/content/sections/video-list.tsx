@@ -47,7 +47,10 @@ function extractYouTubeId(url: string): string | undefined {
 /** 将 "m:ss"、"mm:ss" 或 "h:mm:ss" 形式的时间解析为秒数；非法输入返回 undefined。 */
 function parseTimestampSeconds(time: string): number | undefined {
   const segments = time.split(":").map((part) => Number(part.trim()));
-  if (segments.length === 0 || segments.some((value) => !Number.isFinite(value))) {
+  if (
+    segments.length === 0 ||
+    segments.some((value) => !Number.isFinite(value))
+  ) {
     return undefined;
   }
   return segments.reduce((total, value) => total * 60 + value, 0);
@@ -69,7 +72,9 @@ function VideoRow({
   const posterSrc = entry.poster ? resolveImageAsset(entry.poster) : undefined;
   const coverSrc =
     posterSrc ??
-    (youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : undefined);
+    (youtubeId
+      ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
+      : undefined);
   const playVideo = labels.playVideo ?? labels.videoPreview;
 
   const playFrom = (start: number) => setActive(start);
@@ -81,7 +86,9 @@ function VideoRow({
   })();
 
   return (
-    <div className={`build-video-row${hasTimestamps ? "" : " build-video-row--solo"}`}>
+    <div
+      className={`build-video-row${hasTimestamps ? "" : " build-video-row--solo"}`}
+    >
       <article className="build-video-card">
         {youtubeId ? (
           active !== null ? (
@@ -149,7 +156,9 @@ function VideoRow({
       </article>
       {hasTimestamps ? (
         <aside className="build-video-timestamps">
-          <p className="build-section-kicker">{labels.timestamps ?? "Timestamps"}</p>
+          <p className="build-section-kicker">
+            {labels.timestamps ?? "Timestamps"}
+          </p>
           <ol>
             {timestamps.map((timestamp) => {
               const seconds = parseTimestampSeconds(timestamp.time);

@@ -10,23 +10,76 @@ const EN = path.join(ROOT, "content", "en");
 const OUT = path.join(ROOT, "tmp", "tr_extract.tsv");
 
 const KEEP_KEYS = new Set([
-  "id", "slug", "locale", "type", "status", "order", "sourceType",
-  "rarity", "itemType", "itemClass", "patch", "league", "verificationStatus",
-  "author", "reviewer", "createdAt", "publishedAt", "updatedAt",
-  "lastVerifiedAt", "heroImage", "cardImage", "url", "href", "method",
-  "verifiedClientVersion", "noindex", "canonical", "time", "date",
-  "requiredLevel", "gemLevel", "minimumCharacterLevel", "spiritReservation",
-  "uncutGemTier", "patchStatus", "skillType", "skillCategory",
+  "id",
+  "slug",
+  "locale",
+  "type",
+  "status",
+  "order",
+  "sourceType",
+  "rarity",
+  "itemType",
+  "itemClass",
+  "patch",
+  "league",
+  "verificationStatus",
+  "author",
+  "reviewer",
+  "createdAt",
+  "publishedAt",
+  "updatedAt",
+  "lastVerifiedAt",
+  "heroImage",
+  "cardImage",
+  "url",
+  "href",
+  "method",
+  "verifiedClientVersion",
+  "noindex",
+  "canonical",
+  "time",
+  "date",
+  "requiredLevel",
+  "gemLevel",
+  "minimumCharacterLevel",
+  "spiritReservation",
+  "uncutGemTier",
+  "patchStatus",
+  "skillType",
+  "skillCategory",
 ]);
 const KEEP_ARRAY_KEYS = new Set([
-  "skillTags", "tags", "relatedBuildIds", "relatedBossIds",
-  "relatedGuideIds", "relatedItemIds", "relatedPatchIds", "relatedSkillIds",
+  "skillTags",
+  "tags",
+  "relatedBuildIds",
+  "relatedBossIds",
+  "relatedGuideIds",
+  "relatedItemIds",
+  "relatedPatchIds",
+  "relatedSkillIds",
 ]);
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game",
-  "community", "tool", "other", "current", "supported", "legacy",
-  "under-review", "draft", "published", "source-reviewed", "pending-pc",
-  "verified", "active",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
+  "active",
 ]);
 const isSlug = (s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s);
 const isUrl = (s) => /^https?:\/\//i.test(s);
@@ -61,7 +114,15 @@ function collect(cat, slug, obj, key, path) {
   }
 }
 
-const cats = process.argv[2] ? [process.argv[2]] : fs.readdirSync(EN).filter((c) => { try { return fs.statSync(path.join(EN, c)).isDirectory(); } catch { return false; } });
+const cats = process.argv[2]
+  ? [process.argv[2]]
+  : fs.readdirSync(EN).filter((c) => {
+      try {
+        return fs.statSync(path.join(EN, c)).isDirectory();
+      } catch {
+        return false;
+      }
+    });
 for (const cat of cats) {
   const dir = path.join(EN, cat);
   if (!fs.existsSync(dir)) continue;
@@ -74,7 +135,14 @@ for (const cat of cats) {
 }
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-const esc = (s) => s.replace(/\\/g, "\\\\").replace(/\t/g, "\\t").replace(/\n/g, "\\n").replace(/\r/g, "");
-const lines = rows.map((r) => `${r.cat}/${r.slug}.json\t${r.path}\t${esc(r.en)}`);
+const esc = (s) =>
+  s
+    .replace(/\\/g, "\\\\")
+    .replace(/\t/g, "\\t")
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "");
+const lines = rows.map(
+  (r) => `${r.cat}/${r.slug}.json\t${r.path}\t${esc(r.en)}`,
+);
 fs.writeFileSync(OUT, lines.join("\n") + (lines.length ? "\n" : ""));
 console.log(`Extracted ${rows.length} translatable strings -> ${OUT}`);

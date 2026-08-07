@@ -11,14 +11,14 @@ export type PrerenderVerificationIssue = {
     | "missing-canonical"
     | "missing-description"
     | "missing-hreflang"
-  | "missing-internal-link-target"
-  | "missing-open-graph"
-  | "missing-structured-data"
-  | "missing-title"
-  | "missing-twitter-card"
-  | "duplicate-h1"
-  | "missing-anchor-target"
-  | "missing-og-image-file";
+    | "missing-internal-link-target"
+    | "missing-open-graph"
+    | "missing-structured-data"
+    | "missing-title"
+    | "missing-twitter-card"
+    | "duplicate-h1"
+    | "missing-anchor-target"
+    | "missing-og-image-file";
   message: string;
   publicPath: string;
 };
@@ -206,9 +206,9 @@ export async function inspectOgImageFile(
   publicPath: string,
   outputDirectory: string,
 ): Promise<PrerenderVerificationIssue[]> {
-  const content = html
-    .match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
-    ?.[1];
+  const content = html.match(
+    /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i,
+  )?.[1];
   if (!content) return [];
   // 仅校验根相对路径；已配置 VITE_SITE_URL 输出的绝对地址由部署方保证可达。
   if (!content.startsWith("/")) return [];

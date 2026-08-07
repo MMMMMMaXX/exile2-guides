@@ -1,6 +1,6 @@
 # Community Questions — loot-filter-install-strictness
 
-## Why did my screen suddenly go empty?  (tag: Strictness)
+## Why did my screen suddenly go empty? (tag: Strictness)
 
 ```text
 原始问题 / 引用
@@ -14,7 +14,7 @@
 - Evidence: stricter filters hide more low-value items by design.
 - Suggestion: you likely jumped too strict too early; drop back to Semi-Strict until you know what is hidden.
 
-## I hid items I still needed  (tag: Mistake)
+## I hid items I still needed (tag: Mistake)
 
 ```text
 原始问题 / 引用
@@ -28,7 +28,7 @@
 - Evidence: hiding whole gear categories too early hurts multi-build accounts.
 - Suggestion: keep build-critical bases visible; raise strictness per category, not all at once.
 
-## Console cannot find the filter  (tag: Platform)
+## Console cannot find the filter (tag: Platform)
 
 ```text
 原始问题 / 引用
@@ -42,7 +42,7 @@
 - Evidence: console uses account-linked filters built on web/PC.
 - Suggestion: confirm you selected PoE 2 on the site, then refresh the in-game filter list or restart.
 
-## Alt does not show everything  (tag: Mechanic)
+## Alt does not show everything (tag: Mechanic)
 
 ```text
 原始问题 / 引用
@@ -55,6 +55,5 @@
 - Problem: holding Alt still hides some names.
 - Evidence: at high strictness, hidden item names shrink rather than fully appear.
 - Suggestion: use the filter panel to inspect hidden tiers, or lower strictness for that category.
-
 
 Reddit preferred via official embed; forums as short quote; YouTube via official player + timestamps.

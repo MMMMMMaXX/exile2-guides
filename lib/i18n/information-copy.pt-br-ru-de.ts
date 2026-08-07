@@ -340,7 +340,10 @@ export const ptBrRuDeInfoCopy: Record<
               ["Análise e rastreamento", "Não ativado"],
               ["Publicidade e marketing", "Não ativado"],
               ["Cookies e LocalStorage", "Não usado intencionalmente"],
-              ["Envios de formulário de contato", "Não ativado (somente e-mail)"],
+              [
+                "Envios de formulário de contato",
+                "Não ativado (somente e-mail)",
+              ],
               ["Conteúdo gerado pelo usuário", "Não aceito"],
               ["Compartilhamento de dados com terceiros", "Nenhum"],
               ["Rastreamento entre sites", "Nenhum"],
@@ -674,7 +677,12 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Категории файлов cookie",
           table: {
-            headers: ["Категория cookie", "Назначение", "Срок действия", "Статус на сайте"],
+            headers: [
+              "Категория cookie",
+              "Назначение",
+              "Срок действия",
+              "Статус на сайте",
+            ],
             rows: [
               [
                 "Строго необходимые",
@@ -799,7 +807,8 @@ export const ptBrRuDeInfoCopy: Record<
           ],
         },
         {
-          title: "Добросовестное использование и интеллектуальная собственность",
+          title:
+            "Добросовестное использование и интеллектуальная собственность",
           paragraphs: [
             "Связанное с игрой содержимое на этом сайте, включая ссылки на игровые механики, названия предметов, описания умений и стратегии боссов, используется на принципах добросовестного использования и в целях предоставления созданных сообществом игровых гайдов и комментариев.",
             "Мы уважаем права интеллектуальной собственности Grinding Gear Games и всех прочих правообладателей. Если вы считаете, что любое содержимое этого сайта нарушает ваши права интеллектуальной собственности, пожалуйста, немедленно свяжитесь с нами по адресу " +
@@ -1168,7 +1177,7 @@ export const ptBrRuDeInfoCopy: Record<
           title: "Was sind Cookies",
           paragraphs: [
             "Cookies sind kleine Textdateien, die Websites auf Ihrem Computer, Telefon oder einem anderen mit dem Internet verbundenen Gerät speichern, wenn Sie sie besuchen. Sie werden häufig verwendet, damit Websites korrekt funktionieren, die Leistung verbessern, Benutzereinstellungen speichern und Betreibern von Websites Informationen liefern.",
-            "Websites können auch ähnliche Technologien wie LocalStorage, SessionStorage oder IndexedDB (zusammenfassend „Browser-Speicher\") verwenden. Auf dieser Seite umfassen Verweise auf „Cookies\" alle derartigen Technologien, sofern nicht anders angegeben.",
+            'Websites können auch ähnliche Technologien wie LocalStorage, SessionStorage oder IndexedDB (zusammenfassend „Browser-Speicher") verwenden. Auf dieser Seite umfassen Verweise auf „Cookies" alle derartigen Technologien, sofern nicht anders angegeben.',
           ],
         },
         {
@@ -1182,7 +1191,12 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Cookie-Kategorien",
           table: {
-            headers: ["Cookie-Kategorie", "Zweck", "Dauer", "Status auf dieser Seite"],
+            headers: [
+              "Cookie-Kategorie",
+              "Zweck",
+              "Dauer",
+              "Status auf dieser Seite",
+            ],
             rows: [
               [
                 "Strikt notwendig",
@@ -1269,7 +1283,7 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Inoffizielle, von Fans erstellte Ressource",
           paragraphs: [
-            "Exile2 Guides ist eine unabhängige, inoffizielle Website von Fans. Sie ist weder mit der Grinding Gear Games Limited („GGG\"), der Entwicklerin und Verlegerin von Path of Exile 2, verbunden, von ihr genehmigt, gesponsert noch auf andere Weise mit ihr verknüpft.",
+            'Exile2 Guides ist eine unabhängige, inoffizielle Website von Fans. Sie ist weder mit der Grinding Gear Games Limited („GGG"), der Entwicklerin und Verlegerin von Path of Exile 2, verbunden, von ihr genehmigt, gesponsert noch auf andere Weise mit ihr verknüpft.',
             "Path of Exile, Path of Exile 2, Grinding Gear Games und alle zugehörigen Logos, Charaktere, Namen, Kunstwerke und sonstigen Materialien sind Marken oder eingetragene Marken der Grinding Gear Games Limited. Alle Rechte bleiben ihren jeweiligen Inhabern vorbehalten. Die Verwendung dieser Materialien auf dieser Website dient ausschließlich informativen und Community-Zwecken und impliziert keinerlei Verbindung zu oder Billigung durch GGG.",
             "Wir haben keinen Zugriff auf nicht öffentliche Spieldaten, interne Entwicklungs-Builds, vertrauliche Serverinformationen oder andere Eigentumsmaterialien der Grinding Gear Games.",
           ],
@@ -1326,7 +1340,7 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Überblick",
           paragraphs: [
-            "Diese Datenschutzerklärung beschreibt, wie Exile2 Guides („wir\", „uns\", „unser\") personenbezogene Daten und Privatsphäre der Besucher unserer Website behandelt. Wir verpflichten uns, Ihre Privatsphäre zu schützen und bei unseren Datenpraktiken transparent zu sein.",
+            'Diese Datenschutzerklärung beschreibt, wie Exile2 Guides („wir", „uns", „unser") personenbezogene Daten und Privatsphäre der Besucher unserer Website behandelt. Wir verpflichten uns, Ihre Privatsphäre zu schützen und bei unseren Datenpraktiken transparent zu sein.',
             "Diese Richtlinie gilt für alle Benutzer unabhängig von ihrem geografischen Standort. Durch die Nutzung dieser Website erkennen Sie an, dass Sie diese Datenschutzerklärung gelesen und verstanden haben. Zuletzt aktualisiert: Juli 2026.",
           ],
         },
@@ -1356,7 +1370,10 @@ export const ptBrRuDeInfoCopy: Record<
               ["Analyse und Tracking", "Nicht aktiviert"],
               ["Werbung und Marketing", "Nicht aktiviert"],
               ["Cookies und LocalStorage", "Nicht absichtlich verwendet"],
-              ["Kontaktformular-Übermittlungen", "Nicht aktiviert (nur E-Mail)"],
+              [
+                "Kontaktformular-Übermittlungen",
+                "Nicht aktiviert (nur E-Mail)",
+              ],
               ["Vom Benutzer generierte Inhalte", "Nicht akzeptiert"],
               ["Weitergabe von Daten an Dritte", "Keine"],
               ["Website-übergreifendes Tracking", "Keine"],
@@ -1409,7 +1426,7 @@ export const ptBrRuDeInfoCopy: Record<
           title: "Änderungen dieser Datenschutzerklärung",
           paragraphs: [
             "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren, um Änderungen unserer Praktiken, der Technologie, gesetzlicher Anforderungen oder anderer Faktoren zu berücksichtigen. Wesentliche Änderungen werden über einen auffälligen Hinweis auf der Website bekannt gegeben.",
-            "Das Datum „Zuletzt aktualisiert\" am Anfang dieser Seite gibt die jüngste Überarbeitung wieder. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Annahme der aktualisierten Richtlinie.",
+            'Das Datum „Zuletzt aktualisiert" am Anfang dieser Seite gibt die jüngste Überarbeitung wieder. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Annahme der aktualisierten Richtlinie.',
             "Führen wir Praktiken ein, die die Erhebung personenbezogener Daten beinhalten, wird diese Richtlinie vor Beginn solcher Praktiken umfassend neu verfasst und betroffene Benutzer werden benachrichtigt.",
           ],
         },
@@ -1431,9 +1448,9 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Annahme der Bedingungen",
           paragraphs: [
-            "Diese Nutzungsbedingungen („Bedingungen\") regeln Ihren Zugang zur Website Exile2 Guides („Website\") und deren Nutzung, einschließlich aller Inhalte, Funktionen und Möglichkeiten, die auf der Website oder über sie verfügbar sind.",
+            'Diese Nutzungsbedingungen („Bedingungen") regeln Ihren Zugang zur Website Exile2 Guides („Website") und deren Nutzung, einschließlich aller Inhalte, Funktionen und Möglichkeiten, die auf der Website oder über sie verfügbar sind.',
             "Durch den Zugriff auf, das Durchsuchen oder die Nutzung von Exile2 Guides erkennen Sie an, dass Sie diese Bedingungen in ihrer Gesamtheit gelesen, verstanden und akzeptiert haben. Wenn Sie nicht allen diesen Bedingungen zustimmen, dürfen Sie auf diese Website nicht zugreifen oder sie nicht nutzen.",
-            "Diese Bedingungen stellen eine rechtlich bindende Vereinbarung zwischen Ihnen („Benutzer\") und den Betreibern von Exile2 Guides dar. Ihre fortgesetzte Nutzung der Website nach Änderungen gilt als Annahme dieser Änderungen.",
+            'Diese Bedingungen stellen eine rechtlich bindende Vereinbarung zwischen Ihnen („Benutzer") und den Betreibern von Exile2 Guides dar. Ihre fortgesetzte Nutzung der Website nach Änderungen gilt als Annahme dieser Änderungen.',
           ],
         },
         {
@@ -1486,7 +1503,7 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Haftungsausschluss der Gewährleistung",
           paragraphs: [
-            "EXILE2 GUIDES WIRD IM ZUSTAND „WIE BESEHEN\" UND „WIE VERFÜGBAR\" OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER STILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF STILLSCHWEIGENDE GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND DER NICHTVERLETZUNG VON RECHTEN DRITTER, BEREITGESTELLT.",
+            'EXILE2 GUIDES WIRD IM ZUSTAND „WIE BESEHEN" UND „WIE VERFÜGBAR" OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER STILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF STILLSCHWEIGENDE GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND DER NICHTVERLETZUNG VON RECHTEN DRITTER, BEREITGESTELLT.',
             "Wir gewährleisten nicht, dass die Website unterbrechungsfrei, fehlerfrei oder vollständig sicher ist. Wir gewährleisten nicht, dass die Inhalte korrekt, vollständig, zuverlässig, aktuell oder fehlerfrei sind.",
             "Sie erkennen an, dass sich Spielmechaniken mit Updates häufig ändern. Inhalte können jederzeit ohne Vorankündigung veralten. Wir gewährleisten nicht, dass ein Guide, eine Build-Empfehlung oder eine Strategie bestimmte Ergebnisse erzielt.",
             "Jedes über die Website heruntergeladene oder abgerufene Material wird auf eigene Gefahr und Verantwortung abgerufen. Sie sind allein verantwortlich für Schäden an Ihrem Computersystem oder Datenverluste, die aus dem Zugriff auf Material resultieren.",
@@ -1509,7 +1526,7 @@ export const ptBrRuDeInfoCopy: Record<
         {
           title: "Änderungen der Bedingungen",
           paragraphs: [
-            "Wir behalten uns das Recht vor, diese Bedingungen jederzeit nach unserem alleinigen Ermessen zu ändern. Wenn wir Änderungen vornehmen, aktualisieren wir das Datum „Zuletzt aktualisiert\" am Anfang dieser Seite. Wesentliche Änderungen können über einen auffälligen Hinweis auf der Website mitgeteilt werden.",
+            'Wir behalten uns das Recht vor, diese Bedingungen jederzeit nach unserem alleinigen Ermessen zu ändern. Wenn wir Änderungen vornehmen, aktualisieren wir das Datum „Zuletzt aktualisiert" am Anfang dieser Seite. Wesentliche Änderungen können über einen auffälligen Hinweis auf der Website mitgeteilt werden.',
             "Wenn Sie mit einer Änderung nicht einverstanden sind, müssen Sie die Nutzung der Website einstellen. Ihre fortgesetzte Nutzung nach Änderungen gilt als Annahme der überarbeiteten Bedingungen.",
           ],
         },

@@ -17,31 +17,92 @@ const TR = path.join(ROOT, "content", "tr");
 
 // ---- Deny-list: keys whose string value must NEVER be translated ----
 const KEEP_KEYS = new Set([
-  "id", "slug", "locale", "type", "status", "order", "sourceType",
-  "rarity", "itemType", "itemClass", "patch", "league", "verificationStatus",
-  "author", "reviewer", "createdAt", "publishedAt", "updatedAt",
-  "lastVerifiedAt", "heroImage", "cardImage", "url", "href", "method",
-  "verifiedClientVersion", "noindex", "canonical", "time", "date",
-  "requiredLevel", "gemLevel", "minimumCharacterLevel", "spiritReservation",
-  "uncutGemTier", "patchStatus", "skillType", "skillCategory",
+  "id",
+  "slug",
+  "locale",
+  "type",
+  "status",
+  "order",
+  "sourceType",
+  "rarity",
+  "itemType",
+  "itemClass",
+  "patch",
+  "league",
+  "verificationStatus",
+  "author",
+  "reviewer",
+  "createdAt",
+  "publishedAt",
+  "updatedAt",
+  "lastVerifiedAt",
+  "heroImage",
+  "cardImage",
+  "url",
+  "href",
+  "method",
+  "verifiedClientVersion",
+  "noindex",
+  "canonical",
+  "time",
+  "date",
+  "requiredLevel",
+  "gemLevel",
+  "minimumCharacterLevel",
+  "spiritReservation",
+  "uncutGemTier",
+  "patchStatus",
+  "skillType",
+  "skillCategory",
   // controlled enum-like values inside objects:
-  "status", "method",
+  "status",
+  "method",
 ]);
 
 // Keys that hold arrays of controlled tags/ids -> keep whole array as-is.
 const KEEP_ARRAY_KEYS = new Set([
-  "skillTags", "tags", "relatedBuildIds", "relatedBossIds",
-  "relatedGuideIds", "relatedItemIds", "relatedPatchIds",
+  "skillTags",
+  "tags",
+  "relatedBuildIds",
+  "relatedBossIds",
+  "relatedGuideIds",
+  "relatedItemIds",
+  "relatedPatchIds",
   "relatedSkillIds",
 ]);
 
 // Enum string values that must be preserved exactly.
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game",
-  "community", "tool", "other", "current", "supported", "legacy",
-  "under-review", "draft", "published", "source-reviewed", "pending-pc",
-  "verified", "active", "spell", "projectile", "lightning", "chaining",
-  "aoe", "cold", "fire", "physical", "chaos",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
+  "active",
+  "spell",
+  "projectile",
+  "lightning",
+  "chaining",
+  "aoe",
+  "cold",
+  "fire",
+  "physical",
+  "chaos",
 ]);
 
 function isSlug(s) {
@@ -82,7 +143,8 @@ function translateString(key, value, parentObj) {
 
   // Never translate controlled values.
   if (KEEP_KEYS.has(key)) return value;
-  if (ENUM_VALUES.has(value.trim().toLowerCase()) && value.length < 24) return value;
+  if (ENUM_VALUES.has(value.trim().toLowerCase()) && value.length < 24)
+    return value;
   if (isSlug(value)) return value;
   if (isUrl(value)) return value;
   if (isPath(value) && !value.startsWith("/en/")) return value;
@@ -154,9 +216,14 @@ function main() {
   if (slug) {
     slugs = [slug];
   } else {
-    slugs = fs.readdirSync(path.join(EN, cat)).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
+    slugs = fs
+      .readdirSync(path.join(EN, cat))
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => f.replace(/\.json$/, ""));
   }
-  let wrote = 0, skip = 0, miss = 0;
+  let wrote = 0,
+    skip = 0,
+    miss = 0;
   for (const s of slugs) {
     const r = processFile(cat, s);
     if (r === true) wrote++;

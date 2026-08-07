@@ -117,9 +117,7 @@ const itemQuickAnswerSchema = z.strictObject({
   callout: requiredText,
   calloutDetail: paragraphList,
   answers: z
-    .array(
-      z.strictObject({ label: requiredText, text: paragraphList }),
-    )
+    .array(z.strictObject({ label: requiredText, text: paragraphList }))
     .default([]),
   links: z
     .array(z.strictObject({ href: requiredText, label: requiredText }))
@@ -203,9 +201,7 @@ const itemUsageSchema = z.strictObject({
   ...baseSectionShape,
   type: z.literal("usage"),
   steps: z
-    .array(
-      z.strictObject({ body: paragraphList, label: requiredText }),
-    )
+    .array(z.strictObject({ body: paragraphList, label: requiredText }))
     .default([]),
   compare: z
     .strictObject({

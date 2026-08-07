@@ -59,8 +59,7 @@ export function meta({
   params: Record<string, string | undefined>;
 }) {
   const route = getSubtypeRoute(params);
-  if (!route)
-    return getNotFoundMeta(params.locale as ContentLocale);
+  if (!route) return getNotFoundMeta(params.locale as ContentLocale);
   const prefix =
     route.contentType === "build"
       ? `builds/classes/${route.subtype}/`
@@ -79,8 +78,7 @@ export function meta({
 export default function ContentSubtypeRoute() {
   const params = useParams();
   const route = getSubtypeRoute(params);
-  if (!route)
-    return <EmptyState title={t("en", "subtype.notAvailable")} />;
+  if (!route) return <EmptyState title={t("en", "subtype.notAvailable")} />;
   const title = route.subtype.replace(/-/g, " ");
   const typeLabel = getCategoryLabel(route.locale, route.contentType);
   const sectionItems = [
@@ -91,10 +89,7 @@ export default function ContentSubtypeRoute() {
   ];
   return (
     <main className="v4-subtype-page" data-prerender-content="true">
-      <PageHero
-        eyebrow={t(route.locale, "subtype.eyebrow")}
-        title={title}
-      />
+      <PageHero eyebrow={t(route.locale, "subtype.eyebrow")} title={title} />
       <div className="page-shell v4-subtype-layout">
         <StickyToc
           items={sectionItems.map((label, index) => ({
@@ -139,9 +134,15 @@ export default function ContentSubtypeRoute() {
         </article>
         <FactsRail
           facts={[
-            { label: t(route.locale, "subtype.moduleLabel"), value: route.contentType },
+            {
+              label: t(route.locale, "subtype.moduleLabel"),
+              value: route.contentType,
+            },
             { label: t(route.locale, "subtype.subtypeLabel"), value: title },
-            { label: t(route.locale, "subtype.localeLabel"), value: route.locale },
+            {
+              label: t(route.locale, "subtype.localeLabel"),
+              value: route.locale,
+            },
             {
               label: t(route.locale, "subtype.publishingLabel"),
               value: t(route.locale, "subtype.noThinDetails"),

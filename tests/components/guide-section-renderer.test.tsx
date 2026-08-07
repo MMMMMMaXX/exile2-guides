@@ -127,7 +127,9 @@ describe("GuideSectionRenderer", () => {
       <GuideSectionRenderer article={createArticle("en")} />,
     );
 
-    const stepsList = container.querySelector(".guide-steps--progression-steps");
+    const stepsList = container.querySelector(
+      ".guide-steps--progression-steps",
+    );
     expect(stepsList).toBeTruthy();
     expect(stepsList!.textContent).toContain("Step one");
     expect(stepsList!.textContent).toContain("Complete the first task.");

@@ -8,20 +8,20 @@ Verification status: pending-pc
 
 ## Files produced
 
-| File | Purpose | State |
-|------|---------|-------|
-| `content/en/items/kitokos-current.json` | EN published article | written |
-| `content/zh-cn/items/kitokos-current.json` | ZH-CN published article | written |
-| `research/items/kitokos-current/source-ledger.md` | 8 sources, mix compliance | written |
-| `research/items/kitokos-current/claim-matrix.md` | 12 claims, two-source check | written |
-| `research/items/kitokos-current/current-vs-legacy.md` | legacy/Divine note | written |
-| `research/items/kitokos-current/scaling-formula.md` | speed + Electrocution math | written |
-| `research/items/kitokos-current/build-usage.md` | usage patterns | written |
-| `research/items/kitokos-current/alternatives.md` | alternative options | written |
-| `research/items/kitokos-current/community-questions.md` | 6 FAQ entries | written |
-| `research/items/kitokos-current/video-timestamps.md` | video index (pending-pc) | written |
-| `research/items/kitokos-current/screenshot-shot-list.md` | capture spec | written |
-| `research/items/kitokos-current/related-content-map.md` | link allowlist map | written |
+| File                                                     | Purpose                     | State   |
+| -------------------------------------------------------- | --------------------------- | ------- |
+| `content/en/items/kitokos-current.json`                  | EN published article        | written |
+| `content/zh-cn/items/kitokos-current.json`               | ZH-CN published article     | written |
+| `research/items/kitokos-current/source-ledger.md`        | 8 sources, mix compliance   | written |
+| `research/items/kitokos-current/claim-matrix.md`         | 12 claims, two-source check | written |
+| `research/items/kitokos-current/current-vs-legacy.md`    | legacy/Divine note          | written |
+| `research/items/kitokos-current/scaling-formula.md`      | speed + Electrocution math  | written |
+| `research/items/kitokos-current/build-usage.md`          | usage patterns              | written |
+| `research/items/kitokos-current/alternatives.md`         | alternative options         | written |
+| `research/items/kitokos-current/community-questions.md`  | 6 FAQ entries               | written |
+| `research/items/kitokos-current/video-timestamps.md`     | video index (pending-pc)    | written |
+| `research/items/kitokos-current/screenshot-shot-list.md` | capture spec                | written |
+| `research/items/kitokos-current/related-content-map.md`  | link allowlist map          | written |
 
 ## Quality checklist
 
