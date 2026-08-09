@@ -12,6 +12,9 @@ import {
 import type { StaticContentCatalogPage } from "../../lib/content/content-page";
 import { getCategoryCopy } from "../../lib/i18n/category-copy";
 import { t } from "../../lib/i18n/ui";
+import { FaqAccordion } from "../content/faq-accordion";
+import { createFaqJsonLdFromItems } from "../../lib/seo/structured-data";
+import { StructuredData } from "../seo/structured-data";
 import {
   filterBuilds,
   parseBuildQuery,
@@ -604,6 +607,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Patch relationships",
     noMatch: "No matching results",
     adjust: "Adjust or clear the filters to see everything.",
+    faqTitle: "Frequently asked questions",
   },
   "zh-cn": {
     browse: "浏览内容",
@@ -620,6 +624,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "补丁关联",
     noMatch: "没有符合条件的内容",
     adjust: "调整或清除筛选查看全部内容。",
+    faqTitle: "常见问题",
   },
   "pt-br": {
     browse: "Explorar conteúdo",
@@ -636,6 +641,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Relações de patch",
     noMatch: "Nenhum resultado correspondente",
     adjust: "Ajuste ou limpe os filtros para ver tudo.",
+    faqTitle: "Perguntas frequentes",
   },
   ru: {
     browse: "Обзор контента",
@@ -652,6 +658,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Связи патчей",
     noMatch: "Нет подходящих результатов",
     adjust: "Измените или сбросьте фильтры, чтобы увидеть всё.",
+    faqTitle: "Часто задаваемые вопросы",
   },
   de: {
     browse: "Inhalt durchsuchen",
@@ -668,6 +675,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Patch-Beziehungen",
     noMatch: "Keine passenden Ergebnisse",
     adjust: "Passe die Filter an oder setze sie zurück, um alles zu sehen.",
+    faqTitle: "Häufige Fragen",
   },
   es: {
     browse: "Explorar contenido",
@@ -684,6 +692,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Relaciones de parche",
     noMatch: "Sin resultados coincidentes",
     adjust: "Ajusta o borra los filtros para verlo todo.",
+    faqTitle: "Preguntas frecuentes",
   },
   fr: {
     browse: "Parcourir le contenu",
@@ -700,6 +709,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Relations de correctif",
     noMatch: "Aucun résultat correspondant",
     adjust: "Ajustez ou effacez les filtres pour tout voir.",
+    faqTitle: "Questions fréquentes",
   },
   ja: {
     browse: "コンテンツを参照",
@@ -716,6 +726,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "パッチの関連",
     noMatch: "該当する結果がありません",
     adjust: "フィルターを調整またはクリアしてすべてを表示します。",
+    faqTitle: "よくある質問",
   },
   ko: {
     browse: "콘텐츠 둘러보기",
@@ -732,6 +743,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "패치 관련",
     noMatch: "일치하는 결과 없음",
     adjust: "필터를 조정하거나 지워서 전체를 확인하세요.",
+    faqTitle: "자주 묻는 질문",
   },
   tr: {
     browse: "İçeriğe göz at",
@@ -748,6 +760,7 @@ const catalogLabels: Record<ContentLocale, Record<string, string>> = {
     patchRelationships: "Yama ilişkileri",
     noMatch: "Eşleşen sonuç yok",
     adjust: "Her şeyi görmek için filtreleri ayarla veya temizle.",
+    faqTitle: "Sıkça sorulan sorular",
   },
 };
 
@@ -765,6 +778,10 @@ export function V4CatalogPage({
   const config = catalogConfigs[contentType];
   const categoryCopy = getCategoryCopy(locale, contentType);
   const labels = catalogLabels[locale];
+  const faqJsonLd =
+    categoryCopy.faq && categoryCopy.faq.length > 0
+      ? createFaqJsonLdFromItems(locale, categoryCopy.faq)
+      : null;
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState("All");
   // 选中的标签统一存受控 slug，供全部分类的标签筛选与卡片展示复用。
@@ -1281,6 +1298,18 @@ export function V4CatalogPage({
           </section>
         </aside>
       </section>
+      {categoryCopy.faq ? (
+        <>
+          {faqJsonLd ? <StructuredData data={faqJsonLd} /> : null}
+          <FaqAccordion
+            heading={labels.faqTitle ?? "Frequently asked questions"}
+            items={categoryCopy.faq.map((item) => ({
+              question: item.question,
+              answer: <p>{item.answer}</p>,
+            }))}
+          />
+        </>
+      ) : null}
     </main>
   );
 }

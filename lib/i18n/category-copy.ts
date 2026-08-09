@@ -4,6 +4,8 @@ import type { ContentLocale, ContentType } from "../content/constants";
 type CategoryCopy = {
   emptyDescription: string;
   emptyTitle: string;
+  /** 可选 FAQ；目前仅 patches 聚合页填充，用于抢 FAQPage 富结果。 */
+  faq?: ReadonlyArray<{ question: string; answer: string }>;
   intro: string;
   label: string;
   metaDescription: string;
@@ -659,110 +661,386 @@ const patchCopyByLocale: Record<ContentLocale, CategoryCopy> = {
       "Verified Patch Notes will appear here after editorial review. Drafts and sample patches are never shown on this public page.",
     emptyTitle: "Verified Patch Notes are being prepared",
     intro:
-      "Path of Exile 2 patch notes, balance changes and build, boss and item impact summaries for every update. Track major patches, hotfixes and bug fixes through a patch-first content graph.",
+      "PoE2 patch notes, balance changes and build, boss and item impact summaries for every Path of Exile 2 update. Track major patches, hotfixes and bug fixes through a patch-first content graph.",
     label: "Patch Notes",
     metaDescription:
-      "Path of Exile 2 patch notes and impact summaries for builds, bosses and items, plus balance changes and hotfixes. Updated for patch 0.5.4e.",
-    metaTitle: "Path of Exile 2 Patch Notes | Exile2 Guides",
+      "PoE2 patch notes with build, boss and item impact summaries, plus balance changes and hotfixes. Track every Path of Exile 2 update in one archive.",
+    metaTitle: "PoE2 Patch Notes & Update History | Exile2 Guides",
+    faq: [
+      {
+        question: "What are PoE2 patch notes?",
+        answer:
+          "PoE2 patch notes are the change logs for Path of Exile 2. This archive collects every major update, balance change, hotfix and bug fix, with build, boss and item impact summaries so you can see exactly what changed in each version.",
+      },
+      {
+        question: "How do I find a specific PoE2 patch?",
+        answer:
+          "Use the category filter to browse Major Updates, Balance changes, Hotfixes, Bug Fixes and Impact summaries. Each entry opens a structured breakdown of the changes in that version of Path of Exile 2.",
+      },
+      {
+        question: "Do PoE2 patch notes cover build, boss and item changes?",
+        answer:
+          "Yes. Every gameplay-affecting patch is tagged with its impact, so you can see how balance changes alter builds, which bosses or encounters were adjusted, and what changed for items, uniques and crafting.",
+      },
+      {
+        question: "How often does Path of Exile 2 get updated?",
+        answer:
+          "Path of Exile 2 ships major content updates on a regular cadence, with hotfixes and bug fixes between them. This archive is refreshed as each patch is verified, so the latest PoE2 patch notes appear here once reviewed.",
+      },
+      {
+        question: "Where can I read the latest PoE2 patch notes?",
+        answer:
+          "The newest Path of Exile 2 patch notes are listed under Popular at the top of this page, and every version has its own detailed notes page. Filter by Impact to jump straight to the changes that affect your build, boss or item.",
+      },
+    ],
   },
   "zh-cn": {
     emptyDescription:
       "经过核验的补丁说明会在编辑审阅后显示于此。草稿与示例补丁不会进入公开页面。",
     emptyTitle: "已核验补丁说明正在准备中",
     intro:
-      "Path of Exile 2 补丁说明、平衡改动，以及对 Build、首领、物品的影响汇总，覆盖每次更新。通过以补丁为先的内容图谱追踪大版本、热修与 bug 修复。",
+      "PoE2 补丁说明、平衡改动，以及对 Build、首领、物品的影响汇总，覆盖每次 Path of Exile 2 更新。通过以补丁为先的内容图谱追踪大版本、热修与 bug 修复。",
     label: "补丁说明",
     metaDescription:
-      "Path of Exile 2 补丁说明与对 Build、首领、物品的影响汇总，外加平衡改动与热修。适配 0.5.4e 版本。",
-    metaTitle: "Path of Exile 2 补丁说明 | Exile2 Guides",
+      "PoE2 补丁说明，含 Build、首领、物品影响汇总，以及平衡改动与热修。在一个归档中追踪每次 Path of Exile 2 更新。",
+    metaTitle: "PoE2 补丁说明与更新历史 | Exile2 Guides",
+    faq: [
+      {
+        question: "什么是 PoE2 补丁说明？",
+        answer:
+          "PoE2 补丁说明是 Path of Exile 2 的更新日志。本归档汇集每次大版本、平衡改动、热修与 bug 修复，并附 Build、首领、物品的影响汇总，让你清楚看到每个版本改了什么。",
+      },
+      {
+        question: "如何找到某个特定的 PoE2 补丁？",
+        answer:
+          "使用分类筛选，浏览大版本更新、平衡改动、热修、Bug 修复与影响汇总。每一条都打开该版本 Path of Exile 2 的改动明细。",
+      },
+      {
+        question: "PoE2 补丁说明是否涵盖 Build、首领与物品改动？",
+        answer:
+          "涵盖。每个影响玩法的补丁都会标注其影响范围，因此你可以看到平衡改动如何改变 Build、哪些首领或遭遇被调整，以及物品、暗金与制造有何变化。",
+      },
+      {
+        question: "Path of Exile 2 多久更新一次？",
+        answer:
+          "Path of Exile 2 按固定节奏推出大型内容更新，其间穿插热修与 bug 修复。本归档会在每个补丁核验后刷新，因此最新的 PoE2 补丁说明一经审阅即会出现在此。",
+      },
+      {
+        question: "在哪里可以阅读最新的 PoE2 补丁说明？",
+        answer:
+          "最新的 Path of Exile 2 补丁说明列在本页顶部的「热门」中，每个版本也都有独立的详细说明页。按「影响」筛选可直接跳到影响你 Build、首领或物品的改动。",
+      },
+    ],
   },
   "pt-br": {
     emptyDescription:
       "Notas de Atualização verificadas aparecerão aqui após a revisão editorial. Rascunhos e patches de amostra nunca são exibidos nesta página pública.",
     emptyTitle: "Notas de Atualização verificadas estão sendo preparadas",
     intro:
-      "Notas de atualização, mudanças de balanceamento e resumos de impacto em builds, chefes e itens de Path of Exile 2 para cada atualização. Acompanhe patches principais, hotfixes e correções de bug por um grafo de conteúdo prioritário por patch.",
+      "Notas do PoE2, mudanças de balanceamento e resumos de impacto em builds, chefes e itens para cada atualização do Path of Exile 2. Acompanhe patches principais, hotfixes e correções de bug por um grafo de conteúdo prioritário por patch.",
     label: "Notas de Atualização",
     metaDescription:
-      "Notas de atualização e resumos de impacto de Path of Exile 2 para builds, chefes e itens, além de mudanças de balanceamento e hotfixes. Atualizado para o patch 0.5.4e.",
-    metaTitle: "Path of Exile 2 Notas de Atualização | Exile2 Guides",
+      "Notas do PoE2 com resumos de impacto em builds, chefes e itens, além de mudanças de balanceamento e hotfixes. Acompanhe cada atualização do Path of Exile 2 em um arquivo.",
+    metaTitle: "Notas do PoE2 e Histórico de Atualizações | Exile2 Guides",
+    faq: [
+      {
+        question: "O que são as notas do PoE2?",
+        answer:
+          "As notas do PoE2 são os registros de alterações do Path of Exile 2. Este arquivo reúne cada atualização principal, mudança de balanceamento, hotfix e correção de bug, com resumos de impacto em builds, chefes e itens para você ver exatamente o que mudou em cada versão.",
+      },
+      {
+        question: "Como encontro um patch específico do PoE2?",
+        answer:
+          "Use o filtro de categoria para navegar por Atualizações Principais, Balanceamento, Hotfixes, Correções de Bug e Resumos de Impacto. Cada entrada abre uma análise estruturada das mudanças daquela versão do Path of Exile 2.",
+      },
+      {
+        question: "As notas do PoE2 cobrem mudanças em builds, chefes e itens?",
+        answer:
+          "Sim. Cada patch que afeta a jogabilidade recebe a marca de seu impacto, então você vê como as mudanças de balanceamento alteram builds, quais chefes ou encontros foram ajustados e o que mudou para itens, uniques e crafting.",
+      },
+      {
+        question: "Com que frequência o Path of Exile 2 é atualizado?",
+        answer:
+          "O Path of Exile 2 recebe atualizações de conteúdo principais em um ritmo regular, com hotfixes e correções de bug entre elas. Este arquivo é atualizado conforme cada patch é verificado, então as notas mais recentes do PoE2 aparecem aqui após a revisão.",
+      },
+      {
+        question: "Onde leio as notas mais recentes do PoE2?",
+        answer:
+          "As notas mais recentes do Path of Exile 2 estão listadas em Populares no topo desta página, e cada versão tem sua própria página de notas detalhadas. Filtre por Impacto para ir direto às mudanças que afetam seu build, chefe ou item.",
+      },
+    ],
   },
   ru: {
     emptyDescription:
       "Проверенные примечания к обновлению появятся здесь после редакционной проверки. Черновики и примеры обновлений никогда не показываются на этой публичной странице.",
     emptyTitle: "Проверенные примечания к обновлению готовятся к публикации",
     intro:
-      "Примечания к обновлению, изменения баланса и сводки влияния на билды, боссов и предметы Path of Exile 2 для каждого обновления. Отслеживайте крупные патчи, хотфиксы и исправления багов через граф контента с приоритетом патча.",
+      "Патч-ноуты PoE2, изменения баланса и сводки влияния на билды, боссов и предметы для каждого обновления Path of Exile 2. Отслеживайте крупные патчи, хотфиксы и исправления багов через граф контента с приоритетом патча.",
     label: "Примечания к обновлению",
     metaDescription:
-      "Примечания к обновлению и сводки влияния Path of Exile 2 для билдов, боссов и предметов, а также изменения баланса и хотфиксы. Обновлено для патча 0.5.4e.",
-    metaTitle: "Path of Exile 2 Примечания к обновлению | Exile2 Guides",
+      "Патч-ноуты PoE2 со сводками влияния на билды, боссов и предметы, а также изменения баланса и хотфиксы. Отслеживайте каждое обновление Path of Exile 2 в одном архиве.",
+    metaTitle: "Патч-ноуты PoE2 и история обновлений | Exile2 Guides",
+    faq: [
+      {
+        question: "Что такое патч-ноуты PoE2?",
+        answer:
+          "Патч-ноуты PoE2 — это журналы изменений Path of Exile 2. Этот архив собирает каждое крупное обновление, изменение баланса, хотфикс и исправление бага со сводками влияния на билды, боссов и предметы, чтобы вы видели, что именно изменилось в каждой версии.",
+      },
+      {
+        question: "Как найти конкретный патч PoE2?",
+        answer:
+          "Используйте фильтр категорий, чтобы просмотреть Крупные обновления, Баланс, Хотфиксы, Исправления багов и Сводки влияния. Каждая запись открывает структурированный разбор изменений той версии Path of Exile 2.",
+      },
+      {
+        question:
+          "Патч-ноуты PoE2 охватывают изменения билдов, боссов и предметов?",
+        answer:
+          "Да. Каждый патч, влияющий на геймплей, помечается своим воздействием, поэтому вы видите, как изменения баланса меняют билды, какие боссы или встречи были скорректированы и что изменилось для предметов, уникальных предметов и крафта.",
+      },
+      {
+        question: "Как часто обновляется Path of Exile 2?",
+        answer:
+          "Path of Exile 2 выпускает крупные контентные обновления по регулярному графику, а между ними — хотфиксы и исправления багов. Этот архив обновляется по мере проверки каждого патча, поэтому свежие патч-ноуты PoE2 появляются здесь после рецензии.",
+      },
+      {
+        question: "Где читать свежие патч-ноуты PoE2?",
+        answer:
+          "Свежие патч-ноуты Path of Exile 2 перечислены в разделе Популярное вверху страницы, а у каждой версии есть своя подробная страница. Отфильтруйте по Влиянию, чтобы сразу перейти к изменениям, затрагивающим ваш билд, босса или предмет.",
+      },
+    ],
   },
   de: {
     emptyDescription:
       "Verifizierte Patch-Hinweise erscheinen hier nach redaktioneller Prüfung. Entwürfe und Beispiel-Patches werden auf dieser öffentlichen Seite nie angezeigt.",
     emptyTitle: "Verifizierte Patch-Hinweise werden vorbereitet",
     intro:
-      "Path of Exile 2-Patch-Hinweise, Balance-Änderungen und Auswirkungen auf Builds, Bosse und Items für jedes Update. Verfolge große Patches, Hotfixes und Bug-Fixes über einen Patch-zuerst-Inhaltsgraphen.",
+      "PoE2 Patch-Hinweise, Balance-Änderungen und Auswirkungen auf Builds, Bosse und Items für jedes Path of Exile 2 Update. Verfolge große Patches, Hotfixes und Bug-Fixes über einen Patch-zuerst-Inhaltsgraphen.",
     label: "Patch-Hinweise",
     metaDescription:
-      "Path of Exile 2-Patch-Hinweise und Auswirkungszusammenfassungen für Builds, Bosse und Items, plus Balance-Änderungen und Hotfixes. Aktualisiert für Patch 0.5.4e.",
-    metaTitle: "Path of Exile 2 Patch-Hinweise | Exile2 Guides",
+      "PoE2 Patch-Hinweise mit Auswirkungszusammenfassungen für Builds, Bosse und Items sowie Balance-Änderungen und Hotfixes. Verfolge jedes Path of Exile 2 Update in einem Archiv.",
+    metaTitle: "PoE2 Patch-Hinweise & Update-Verlauf | Exile2 Guides",
+    faq: [
+      {
+        question: "Was sind PoE2 Patch-Hinweise?",
+        answer:
+          "PoE2 Patch-Hinweise sind die Änderungsprotokolle für Path of Exile 2. Dieses Archiv sammelt jedes große Update, jede Balance-Änderung, jeden Hotfix und Bug-Fix mit Auswirkungszusammenfassungen für Builds, Bosse und Items, damit du genau siehst, was sich in jeder Version geändert hat.",
+      },
+      {
+        question: "Wie finde ich einen bestimmten PoE2 Patch?",
+        answer:
+          "Nutze den Kategorie-Filter, um Große Updates, Balance, Hotfixes, Bug-Fixes und Auswirkungszusammenfassungen zu durchsuchen. Jeder Eintrag öffnet eine strukturierte Aufschlüsselung der Änderungen dieser Version von Path of Exile 2.",
+      },
+      {
+        question:
+          "Decken PoE2 Patch-Hinweise Build-, Boss- und Item-Änderungen ab?",
+        answer:
+          "Ja. Jeder gameplay-relevante Patch wird mit seiner Auswirkung versehen, sodass du siehst, wie Balance-Änderungen Builds verändern, welche Bosse oder Begegnungen angepasst wurden und was sich bei Items, Uniques und Crafting geändert hat.",
+      },
+      {
+        question: "Wie oft wird Path of Exile 2 aktualisiert?",
+        answer:
+          "Path of Exile 2 erhält regelmäßig große Content-Updates, dazwischen Hotfixes und Bug-Fixes. Dieses Archiv wird mit jeder verifizierten Version aktualisiert, sodass die neuesten PoE2 Patch-Hinweise hier nach der Prüfung erscheinen.",
+      },
+      {
+        question: "Wo lese ich die neuesten PoE2 Patch-Hinweise?",
+        answer:
+          "Die neuesten Path of Exile 2 Patch-Hinweise stehen oben auf dieser Seite unter Beliebt, und jede Version hat eine eigene Detailseite. Filtere nach Auswirkung, um direkt zu den Änderungen zu springen, die deinen Build, Boss oder Item betreffen.",
+      },
+    ],
   },
   es: {
     emptyDescription:
       "Las Notas del Parche verificadas aparecerán aquí tras la revisión editorial. Los borradores y parches de muestra nunca se muestran en esta página pública.",
     emptyTitle: "Las Notas del Parche verificadas se están preparando",
     intro:
-      "Notas del parche, cambios de balance y resúmenes de impacto en builds, jefes e objetos de Path of Exile 2 para cada actualización. Sigue parches principales, hotfixes y correcciones de errores mediante un grafo de contenido prioritario por parche.",
+      "Notas del parche PoE2, cambios de balance y resúmenes de impacto en builds, jefes e items para cada actualización de Path of Exile 2. Sigue parches principales, hotfixes y correcciones de errores mediante un grafo de contenido prioritario por parche.",
     label: "Notas del Parche",
     metaDescription:
-      "Notas del parche y resúmenes de impacto de Path of Exile 2 para builds, jefes y objetos, además de cambios de balance y hotfixes. Actualizado para el parche 0.5.4e.",
-    metaTitle: "Path of Exile 2 Notas del Parche | Exile2 Guides",
+      "Notas del parche PoE2 con resúmenes de impacto en builds, jefes e items, además de cambios de balance y hotfixes. Sigue cada actualización de Path of Exile 2 en un archivo.",
+    metaTitle: "Notas del Parche PoE2 e Historial | Exile2 Guides",
+    faq: [
+      {
+        question: "¿Qué son las notas del parche PoE2?",
+        answer:
+          "Las notas del parche PoE2 son los registros de cambios de Path of Exile 2. Este archivo reúne cada actualización principal, cambio de balance, hotfix y corrección de error, con resúmenes de impacto en builds, jefes e items para que veas exactamente qué cambió en cada versión.",
+      },
+      {
+        question: "¿Cómo encuentro un parche concreto de PoE2?",
+        answer:
+          "Usa el filtro de categoría para navegar por Actualizaciones Principales, Balance, Hotfixes, Correcciones de Errores y Resúmenes de Impacto. Cada entrada abre un desglose estructurado de los cambios de esa versión de Path of Exile 2.",
+      },
+      {
+        question:
+          "¿Las notas del parche PoE2 cubren cambios en builds, jefes e items?",
+        answer:
+          "Sí. Cada parche que afecta la jugabilidad se etiqueta con su impacto, así que ves cómo los cambios de balance alteran los builds, qué jefes o encuentros se ajustaron y qué cambió para items, uniques y crafting.",
+      },
+      {
+        question: "¿Con qué frecuencia se actualiza Path of Exile 2?",
+        answer:
+          "Path of Exile 2 recibe actualizaciones de contenido principales con cadencia regular, con hotfixes y correcciones de errores entre ellas. Este archivo se renueva conforme se verifica cada parche, así que las notas más recientes del PoE2 aparecen aquí tras la revisión.",
+      },
+      {
+        question: "¿Dónde leo las notas del parche PoE2 más recientes?",
+        answer:
+          "Las notas más recientes de Path of Exile 2 aparecen arriba en Populares, y cada versión tiene su propia página detallada. Filtra por Impacto para ir directo a los cambios que afectan a tu build, jefe o item.",
+      },
+    ],
   },
   fr: {
     emptyDescription:
       "Les Notes de Mise à Jour vérifiées apparaîtront ici après relecture éditoriale. Les brouillons et mises à jour d'exemple ne sont jamais affichés sur cette page publique.",
     emptyTitle: "Les Notes de Mise à Jour vérifiées sont en préparation",
     intro:
-      "Notes de mise à jour, changements d'équilibrage et résumés d'impact sur les builds, boss et objets Path of Exile 2 pour chaque mise à jour. Suivez les patches majeurs, hotfixes et corrections de bugs via un graphe de contenu piloté par patch.",
+      "Notes de patch PoE2, changements d'équilibrage et résumés d'impact sur les builds, boss et objets pour chaque mise à jour Path of Exile 2. Suivez les patches majeurs, hotfixes et corrections de bugs via un graphe de contenu piloté par patch.",
     label: "Notes de Mise à Jour",
     metaDescription:
-      "Notes de mise à jour et résumés d'impact Path of Exile 2 pour builds, boss et objets, plus changements d'équilibrage et hotfixes. Mis à jour pour le patch 0.5.4e.",
-    metaTitle: "Path of Exile 2 Notes de Mise à Jour | Exile2 Guides",
+      "Notes de patch PoE2 avec résumés d'impact sur les builds, boss et objets, plus les changements d'équilibrage et hotfixes. Suivez chaque mise à jour Path of Exile 2 dans une archive.",
+    metaTitle: "Notes de Patch PoE2 & Historique | Exile2 Guides",
+    faq: [
+      {
+        question: "Que sont les notes de patch PoE2 ?",
+        answer:
+          "Les notes de patch PoE2 sont les journaux de modification de Path of Exile 2. Cet archive regroupe chaque mise à jour majeure, changement d'équilibrage, hotfix et correction de bug, avec des résumés d'impact sur les builds, boss et objets pour voir exactement ce qui a changé à chaque version.",
+      },
+      {
+        question: "Comment trouver un patch PoE2 précis ?",
+        answer:
+          "Utilisez le filtre de catégorie pour parcourir Mises à jour majeures, Équilibrage, Hotfixes, Corrections de bugs et Résumés d'impact. Chaque entrée ouvre une analyse structurée des changements de cette version de Path of Exile 2.",
+      },
+      {
+        question:
+          "Les notes de patch PoE2 couvrent-elles les changements de builds, boss et objets ?",
+        answer:
+          "Oui. Chaque patch affectant le gameplay est marqué de son impact, donc vous voyez comment les changements d'équilibrage modifient les builds, quels boss ou rencontres ont été ajustés et ce qui a changé pour les objets, uniques et crafting.",
+      },
+      {
+        question: "À quelle fréquence Path of Exile 2 est-il mis à jour ?",
+        answer:
+          "Path of Exile 2 publie des mises à jour de contenu majeures à un rythme régulier, avec des hotfixes et corrections de bugs entre elles. Cet archive est actualisé à chaque patch vérifié, donc les dernières notes de patch PoE2 apparaissent ici après relecture.",
+      },
+      {
+        question: "Où lire les dernières notes de patch PoE2 ?",
+        answer:
+          "Les dernières notes de patch Path of Exile 2 sont listées dans Populaires en haut de la page, et chaque version a sa propre page détaillée. Filtrez par Impact pour aller directement aux changements qui concernent votre build, boss ou objet.",
+      },
+    ],
   },
   ja: {
     emptyDescription:
       "検証済みのパッチノートは編集審査後にこちらに表示されます。草稿やサンプルパッチがこの公開ページに表示されることはありません。",
     emptyTitle: "検証済みパッチノートを準備中です",
     intro:
-      "Path of Exile 2 のパッチノート、バランス調整、ビルド・ボス・アイテムへの影響まとめを毎回の更新で提供。パッチ優先のコンテンツグラフでメジャーパッチ、ホットフィックス、バグ修正を追跡。",
+      "PoE2 パッチノート、バランス調整、ビルド・ボス・アイテムへの影響まとめを毎回の Path of Exile 2 更新で提供。パッチ優先のコンテンツグラフでメジャーパッチ、ホットフィックス、バグ修正を追跡。",
     label: "パッチノート",
     metaDescription:
-      "ビルド、ボス、アイテムへの影響まとめ付きの Path of Exile 2 パッチノート。バランス調整とホットフィックスも。パッチ 0.5.4e に対応。",
-    metaTitle: "Path of Exile 2 パッチノート | Exile2 Guides",
+      "PoE2 パッチノート。ビルド・ボス・アイテムへの影響まとめ、バランス調整、ホットフィックス付き。Path of Exile 2 のあらゆる更新を1つのアーカイブで追跡。",
+    metaTitle: "PoE2 パッチノートと更新履歴 | Exile2 Guides",
+    faq: [
+      {
+        question: "PoE2 パッチノートとは？",
+        answer:
+          "PoE2 パッチノートは Path of Exile 2 の変更履歴です。このアーカイブは各メジャーアップデート、バランス調整、ホットフィックス、バグ修正をビルド・ボス・アイテムへの影響まとめとともに集約し、各バージョンで何が変わったかを正確に確認できます。",
+      },
+      {
+        question: "特定の PoE2 パッチを見つけるには？",
+        answer:
+          "カテゴリフィルターでメジャーアップデート、バランス調整、ホットフィックス、バグ修正、影響まとめを閲覧できます。各項目はそのバージョンの Path of Exile 2 の変更を構造化して表示します。",
+      },
+      {
+        question:
+          "PoE2 パッチノートはビルド・ボス・アイテムの変更を含みますか？",
+        answer:
+          "はい。ゲームプレイに影響するパッチはすべて影響範囲でタグ付けされるため、バランス調整がビルドをどう変えるか、どのボスや遭遇が調整されたか、アイテム・ユニーク・クラフトの何が変わったかがわかります。",
+      },
+      {
+        question: "Path of Exile 2 はどのくらいの頻度で更新されますか？",
+        answer:
+          "Path of Exile 2 は定期的な大型コンテンツアップデートに加え、その間にホットフィックスとバグ修正を配信します。このアーカイブは各パッチの検証後に更新されるため、最新の PoE2 パッチノートは確認後にここに表示されます。",
+      },
+      {
+        question: "最新の PoE2 パッチノートはどこで読めますか？",
+        answer:
+          "最新の Path of Exile 2 パッチノートは本ページ上部の「人気」に一覧され、各バージョンに専用の詳細ページがあります。「影響」でフィルターすると、あなたのビルド・ボス・アイテムに影響する変更へ直接ジャンプできます。",
+      },
+    ],
   },
   ko: {
     emptyDescription:
       "검증된 패치 노트는 편집 검토 후 여기에 표시됩니다. 초안과 샘플 패치는 이 공개 페이지에 절대 표시되지 않습니다.",
     emptyTitle: "검증된 패치 노트를 준비 중입니다",
     intro:
-      "Path of Exile 2 패치 노트, 밸런스 변경, 빌드/보스/아이템 영향 요약을 모든 업데이트마다 제공. 패치 우선 콘텐츠 그래프로 메이저 패치, 핫픽스, 버그 수정을 추적하세요.",
+      "PoE2 패치 노트, 밸런스 변경, 빌드/보스/아이템 영향 요약을 모든 Path of Exile 2 업데이트마다 제공. 패치 우선 콘텐츠 그래프로 메이저 패치, 핫픽스, 버그 수정을 추적하세요.",
     label: "패치 노트",
     metaDescription:
-      "빌드, 보스, 아이템 영향 요약이 있는 Path of Exile 2 패치 노트. 밸런스 변경과 핫픽스 포함. 패치 0.5.4e 기준 업데이트.",
-    metaTitle: "Path of Exile 2 패치 노트 | Exile2 Guides",
+      "PoE2 패치 노트: 빌드·보스·아이템 영향 요약, 밸런스 변경, 핫픽스 포함. Path of Exile 2의 모든 업데이트를 한 아카이브에서 추적.",
+    metaTitle: "PoE2 패치 노트 및 업데이트 기록 | Exile2 Guides",
+    faq: [
+      {
+        question: "PoE2 패치 노트란?",
+        answer:
+          "PoE2 패치 노트는 Path of Exile 2의 변경 로그입니다. 이 아카이브는 각 메이저 업데이트, 밸런스 변경, 핫픽스, 버그 수정을 빌드·보스·아이템 영향 요약과 함께 모아 각 버전에서 무엇이 바뀌었는지 정확히 확인할 수 있습니다.",
+      },
+      {
+        question: "특정 PoE2 패치를 어떻게 찾나요?",
+        answer:
+          "카테고리 필터로 메이저 업데이트, 밸런스 변경, 핫픽스, 버그 수정, 영향 요약을 살펴보세요. 각 항목은 해당 Path of Exile 2 버전의 변경 사항을 구조화해 보여줍니다.",
+      },
+      {
+        question: "PoE2 패치 노트는 빌드·보스·아이템 변경을 다루나요?",
+        answer:
+          "예. 게임 플레이에 영향을 주는 모든 패치는 영향 범위로 태그되므로 밸런스 변경이 빌드를 어떻게 바꾸는지, 어떤 보스나 조우가 조정됐는지, 아이템·유니크·크래프트에서 무엇이 바뀌었는지 볼 수 있습니다.",
+      },
+      {
+        question: "Path of Exile 2는 얼마나 자주 업데이트되나요?",
+        answer:
+          "Path of Exile 2는 정기적인 대형 콘텐츠 업데이트와 그 사이의 핫픽스·버그 수정을 제공합니다. 이 아카이브는 각 패치 검증 후 갱신되므로 최신 PoE2 패치 노트는 확인 후 여기에 표시됩니다.",
+      },
+      {
+        question: "최신 PoE2 패치 노트는 어디서 읽나요?",
+        answer:
+          "최신 Path of Exile 2 패치 노트는 이 페이지 상단의 '인기'에 나열되며, 각 버전마다 전용 상세 페이지가 있습니다. '영향'으로 필터하면 내 빌드·보스·아이템에 영향을 주는 변경 사항으로 바로 이동합니다.",
+      },
+    ],
   },
   tr: {
     emptyDescription:
       "Doğrulanmış Yama Notları, editöryel incelemeden sonra burada görünecektir. Taslaklar ve örnek yamalar bu genel sayfada hiçbir zaman gösterilmez.",
     emptyTitle: "Doğrulanmış Yama Notları hazırlanıyor",
     intro:
-      "Path of Exile 2 yama notları, denge değişiklikleri ve her güncellemede build/boss/eşya etki özetleri. Büyük yamaları, hotfix'leri ve bug düzeltmelerini yama öncelikli içerik grafiğiyle takip edin.",
+      "PoE2 yama notları, denge değişiklikleri ve her Path of Exile 2 güncellemesi için build/boss/eşya etki özetleri. Büyük yamaları, hotfix'leri ve bug düzeltmelerini yama öncelikli içerik grafiğiyle takip edin.",
     label: "Yama Notları",
     metaDescription:
-      "Build, boss ve eşya etki özetleriyle Path of Exile 2 yama notları, artı denge değişiklikleri ve hotfix'ler. 0.5.4e yaması için güncellendi.",
-    metaTitle: "Path of Exile 2 Yama Notları | Exile2 Guides",
+      "PoE2 yama notları: build, boss ve eşya etki özetleri, denge değişiklikleri ve hotfix'lerle. Her Path of Exile 2 güncellemesini tek bir arşivde takip edin.",
+    metaTitle: "PoE2 Yama Notları ve Güncelleme Geçmişi | Exile2 Guides",
+    faq: [
+      {
+        question: "PoE2 yama notları nedir?",
+        answer:
+          "PoE2 yama notları, Path of Exile 2'nin değişiklik günlükleridir. Bu arşiv, her büyük güncellemeyi, denge değişikliğini, hotfix'i ve bug düzeltmesini build, boss ve eşya etki özetleriyle bir araya getirerek her sürümde neyin değiştiğini tam olarak görmenizi sağlar.",
+      },
+      {
+        question: "Belirli bir PoE2 yamasını nasıl bulurum?",
+        answer:
+          "Kategori filtresini kullanarak Büyük Güncellemeler, Denge, Hotfix'ler, Bug Düzeltmeleri ve Etki Özetleri arasında gezinin. Her giriş, o Path of Exile 2 sürümünün değişikliklerinin yapılandırılmış bir dökümünü açar.",
+      },
+      {
+        question:
+          "PoE2 yama notları build, boss ve eşya değişikliklerini kapsar mı?",
+        answer:
+          "Evet. Oynanışı etkileyen her yama etkisiyle etiketlenir, böylece denge değişikliklerinin build'leri nasıl değiştirdiğini, hangi boss veya karşılaşmaların ayarlandığını ve eşya, benzersiz ve craft için neyin değiştiğini görebilirsiniz.",
+      },
+      {
+        question: "Path of Exile 2 ne sıklıkla güncellenir?",
+        answer:
+          "Path of Exile 2 düzenli aralıklarla büyük içerik güncellemeleri yayınlar ve bunların arasında hotfix ile bug düzeltmeleri gelir. Bu arşiv, her yama doğrulandıkça yenilenir, böylece en yeni PoE2 yama notları incelemeden sonra burada görünür.",
+      },
+      {
+        question: "En yeni PoE2 yama notlarını nerede okuyabilirim?",
+        answer:
+          "En yeni Path of Exile 2 yama notları bu sayfanın üstündeki Popüler bölümünde listelenir ve her sürümün kendi ayrıntılı not sayfası vardır. Build'inizi, boss'unuzu veya eşyanızı etkileyen değişikliklere doğrudan atlamak için Etki'ye göre filtreleyin.",
+      },
+    ],
   },
 };
 

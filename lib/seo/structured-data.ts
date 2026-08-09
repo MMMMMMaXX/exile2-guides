@@ -160,6 +160,30 @@ export function createFaqJsonLd(
 }
 
 /**
+ * 从显式 FAQ 条目生成 FAQPage 结构化数据，供非文章路由（如 patches 聚合页）复用。
+ * 无条目时返回 null（调用方据此跳过注入）。
+ */
+export function createFaqJsonLdFromItems(
+  locale: ContentLocale,
+  items: ReadonlyArray<{ question: string; answer: string }>,
+): object | null {
+  if (items.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: toLanguageTag(locale),
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+/**
  * 从步骤型章节生成 HowTo 结构化数据，抢步骤富摘要。
  * 无步骤内容时返回 null（调用方据此跳过注入）。
  */

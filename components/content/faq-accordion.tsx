@@ -7,12 +7,18 @@ export type FaqItem = {
 };
 
 /** 渲染真实问答内容；空数组不产生空白区块或虚构 FAQ。 */
-export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
+export function FaqAccordion({
+  heading = "Frequently asked questions",
+  items,
+}: {
+  heading?: string;
+  items: readonly FaqItem[];
+}) {
   if (items.length === 0) return null;
 
   return (
     <section className="faq-accordion" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Frequently asked questions</h2>
+      <h2 id="faq-heading">{heading}</h2>
       {items.map((item) => (
         <details key={item.question}>
           <summary>{item.question}</summary>
