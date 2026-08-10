@@ -2,6 +2,7 @@
 import { z } from "zod";
 
 import { supportedLocales } from "./constants";
+import { imagePath } from "./section-schema";
 import { translationMetaSchema } from "./translation";
 
 export { contentTypes, supportedLocales } from "./constants";
@@ -82,14 +83,7 @@ const commonFrontMatterShape = {
   publishedAt: isoDate.optional(),
   updatedAt: isoDate,
   verifiedAt: isoDate.optional(),
-  image: z
-    .string()
-    .trim()
-    .startsWith("/")
-    .regex(/\.(?:avif|webp)$/i, {
-      message: "must use an AVIF or WebP image",
-    })
-    .optional(),
+  image: imagePath.optional(),
   imageAlt: requiredText.optional(),
   tags: z.array(stableIdentifier).default([]),
   relatedContentIds: z.array(stableIdentifier).default([]),

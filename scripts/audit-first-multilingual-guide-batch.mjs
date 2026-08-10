@@ -3,6 +3,8 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { firstBatchCardImages } from "./first-batch-card-images.mjs";
+
 const locales = [
   "en",
   "zh-cn",
@@ -34,6 +36,7 @@ const batch = [
 ];
 
 const errors = [];
+const usedCardImages = new Set();
 const readArticle = async (locale, type, slug) => {
   const file = path.join("content", locale, type, `${slug}.json`);
   try {
@@ -100,6 +103,21 @@ for (const [type, slug] of batch) {
   if (source.seo?.noindex !== false)
     errors.push(`en/${type}/${slug}: seo.noindex 不是 false`);
   if (!source.revision) errors.push(`en/${type}/${slug}: 缺少 revision`);
+  const expectedCardImage = firstBatchCardImages[slug]?.imageUrl;
+  if (!expectedCardImage) {
+    errors.push(`en/${type}/${slug}: 缺少已审计的卡片图来源`);
+  } else {
+    if (
+      source.heroImage !== expectedCardImage ||
+      source.cardImage !== expectedCardImage
+    ) {
+      errors.push(`en/${type}/${slug}: 卡片图未使用已审计的逐主题来源`);
+    }
+    if (usedCardImages.has(expectedCardImage))
+      errors.push(`en/${type}/${slug}: 卡片图与批次内其他文章重复`);
+    usedCardImages.add(expectedCardImage);
+  }
+  if (!source.imageAlt) errors.push(`en/${type}/${slug}: 缺少图片替代文本`);
   const expectedShape = JSON.stringify(sectionShape(source));
   const expectedSources = JSON.stringify(sourceUrls(source));
   const sourceVisibleStrings = new Set(visibleLongStrings(source));
@@ -117,6 +135,12 @@ for (const [type, slug] of batch) {
       errors.push(`${label}: seo.noindex 不是 false`);
     if (!article.seo?.title || !article.seo?.description)
       errors.push(`${label}: SEO 标题或描述为空`);
+    if (
+      article.heroImage !== source.heroImage ||
+      article.cardImage !== source.cardImage
+    )
+      errors.push(`${label}: 卡片图未与英文事实源同步`);
+    if (!article.imageAlt) errors.push(`${label}: 缺少图片替代文本`);
     if (JSON.stringify(sectionShape(article)) !== expectedShape)
       errors.push(`${label}: 章节骨架与英文事实源不一致`);
     if (JSON.stringify(sourceUrls(article)) !== expectedSources)

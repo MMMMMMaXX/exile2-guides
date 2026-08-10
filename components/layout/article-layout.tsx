@@ -87,6 +87,7 @@ export function ArticleLayout({
                   decoding="async"
                   fetchPriority="high"
                   height="540"
+                  referrerPolicy="no-referrer"
                   sizes="(max-width: 920px) calc(100vw - 2rem), 42vw"
                   src={resolvedImage}
                   srcSet={`${resolvedImage} 960w`}

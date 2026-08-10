@@ -6,6 +6,11 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
+import {
+  addedImageAlts,
+  firstBatchCardImages,
+} from "./first-batch-card-images.mjs";
+
 const ROOT = process.cwd();
 const DATE = "2026-08-10";
 const PATCH = "Path of Exile 2 Early Access 0.5.4";
@@ -70,13 +75,24 @@ const base = (type, data) => ({
   lastVerifiedAt: DATE,
   tags: data.tags,
   sources: data.sources,
-  revision: `${data.slug}-${DATE}-01`,
+  revision: `${data.slug}-${DATE}-02`,
   seo: {
     title: data.seoTitle,
     description: data.seoDescription,
     noindex: false,
   },
 });
+
+/** 给第一批文章绑定逐主题外部配图，避免栏目卡片继续回退到默认图或复用无关图片。 */
+function cardImageFields(data) {
+  const source = firstBatchCardImages[data.slug];
+  if (!source) throw new Error(`缺少 ${data.slug} 的卡片图来源`);
+  return {
+    heroImage: source.imageUrl,
+    cardImage: source.imageUrl,
+    imageAlt: data.imageAlt ?? addedImageAlts[data.slug]?.en,
+  };
+}
 
 /** 为构筑文章建立可扩展且不伪造具体装备数值的发布结构。 */
 function buildArticle(data) {
@@ -92,9 +108,7 @@ function buildArticle(data) {
     playstyleTags: data.playstyleTags,
     damageTypes: data.damageTypes,
     bestFor: data.bestFor,
-    heroImage: data.heroImage,
-    cardImage: data.heroImage,
-    imageAlt: data.imageAlt,
+    ...cardImageFields(data),
     sections: [
       {
         id: "overview",
@@ -164,9 +178,7 @@ function skillArticle(data) {
     requiredLevel: data.requiredLevel,
     skillCategory: "active",
     skillTags: data.skillTags,
-    heroImage: data.heroImage,
-    cardImage: data.heroImage,
-    imageAlt: data.imageAlt,
+    ...cardImageFields(data),
     sections: [
       {
         id: "overview",
@@ -238,9 +250,7 @@ function guideArticle(data) {
   return {
     ...base("guide", data),
     guideCategory: data.guideCategory,
-    heroImage: data.heroImage,
-    cardImage: data.heroImage,
-    imageAlt: data.imageAlt,
+    ...cardImageFields(data),
     estimatedReadingMinutes: data.readingMinutes,
     prerequisites: data.prerequisites,
     sections: [
@@ -317,6 +327,7 @@ function itemArticle(data) {
     itemCategory: data.itemCategory,
     itemClass: data.itemClass,
     baseType: data.baseType,
+    ...cardImageFields(data),
     sections: [
       {
         id: "overview",
@@ -397,6 +408,7 @@ function bossArticle(data) {
     act: "act-1",
     isOptional: false,
     reviewMethod: "automated-evidence-gate",
+    ...cardImageFields(data),
     sections: [
       {
         id: "overview",

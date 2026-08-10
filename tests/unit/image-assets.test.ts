@@ -5,6 +5,7 @@ import {
   getRegisteredImageAssetPaths,
   resolveImageAsset,
 } from "../../lib/assets/image-assets";
+import { imagePath } from "../../lib/content/section-schema";
 
 describe("image assets", () => {
   it("把仓库图片路径解析为 Vite 资源 URL", () => {
@@ -24,5 +25,19 @@ describe("image assets", () => {
     const missingPath = "/images/missing.webp";
 
     expect(resolveImageAsset(missingPath)).toBe(missingPath);
+  });
+
+  it("允许已核验的 HTTPS 外部图片格式", () => {
+    expect(
+      imagePath.parse("https://i.ytimg.com/vi/example/maxresdefault.jpg"),
+    ).toBe("https://i.ytimg.com/vi/example/maxresdefault.jpg");
+  });
+
+  it.each([
+    "http://example.com/image.jpg",
+    "https://example.com/page",
+    "javascript:alert(1)",
+  ])("拒绝不安全或不是图片文件的外部地址：%s", (source) => {
+    expect(() => imagePath.parse(source)).toThrow();
   });
 });

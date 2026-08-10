@@ -11,13 +11,33 @@ export const stableIdentifier = z
 export const isoDate = z.iso.date();
 export const paragraphList = z.array(requiredText).default([]);
 export const identifierList = z.array(stableIdentifier).default([]);
-export const imagePath = z
+const localImagePath = z
   .string()
   .trim()
   .startsWith("/")
   .regex(/\.(?:avif|webp)$/i, {
-    message: "must use an AVIF or WebP image",
+    message: "local images must use an AVIF or WebP image",
   });
+const externalImageUrl = z.url().refine(
+  (value) => {
+    try {
+      const url = new URL(value);
+      return (
+        url.protocol === "https:" &&
+        /\.(?:avif|gif|jpe?g|png|webp)$/i.test(url.pathname)
+      );
+    } catch {
+      return false;
+    }
+  },
+  {
+    message:
+      "external images must use HTTPS and identify a supported image file",
+  },
+);
+
+/** 图片可使用站内指纹资源或经编辑核验的 HTTPS 外部来源；外部来源必须在内容研究台账中留痕。 */
+export const imagePath = z.union([localImagePath, externalImageUrl]);
 export const optionalImagePath = imagePath.optional();
 
 /** 全部章节类型共享的基础字段；id 和 order 的文章内唯一性由各模块发布门禁校验。 */

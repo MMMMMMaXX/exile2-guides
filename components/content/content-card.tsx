@@ -44,6 +44,7 @@ export function ContentCard({
           alt={content.imageAlt ?? ""}
           height="252"
           loading="lazy"
+          referrerPolicy="no-referrer"
           width="448"
         />
       ) : (

@@ -4,6 +4,8 @@ import { readFile, writeFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import path from "node:path";
 
+import { addedImageAlts } from "./first-batch-card-images.mjs";
+
 const batch = [
   ["builds", "big-monkee-spirit-walker"],
   ["builds", "grenade-gemling-legionnaire"],
@@ -129,8 +131,10 @@ for (const [type, slug] of batch) {
   article.shortTitle = data.meta.shortTitle;
   article.summary = data.meta.summary;
   article.description = data.meta.description;
-  if (data.meta.imageAlt && "imageAlt" in article)
-    article.imageAlt = data.meta.imageAlt;
+  if ("imageAlt" in article) {
+    article.imageAlt =
+      addedImageAlts[slug]?.[locale] ?? data.meta.imageAlt ?? article.imageAlt;
+  }
   article.seo.title = data.meta.seoTitle;
   article.seo.description = data.meta.seoDescription;
   article.sections = localizeSections(type, article.sections, data);
