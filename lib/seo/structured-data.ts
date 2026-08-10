@@ -1,12 +1,18 @@
 /** 文件职责：从已验证的页面数据生成最小、真实且可维护的 Schema.org 结构化数据。 */
-import { contentRoutePath, type ContentLocale } from "../content/constants";
+import {
+  contentRoutePath,
+  supportedLocales,
+  type ContentLocale,
+} from "../content/constants";
 import type { ContentFrontMatter } from "../content/schema";
 import { toPublicUrl } from "./metadata";
 import { siteConfig } from "./site-config";
 
 /** 将内容 locale 映射为 Schema.org BCP-47 语言标签，与 createArticleJsonLd 保持一致。 */
 function toLanguageTag(locale: ContentLocale): string {
-  return locale === "zh-cn" ? "zh-CN" : "en";
+  if (locale === "zh-cn") return "zh-CN";
+  if (locale === "pt-br") return "pt-BR";
+  return locale;
 }
 
 /**
@@ -94,19 +100,21 @@ function extractHowToSteps(
 }
 
 /** 生成站点级 WebSite 数据；不声明尚未确认的运营组织或个人。 */
-export function createWebSiteJsonLd() {
+export function createWebSiteJsonLd(locale?: ContentLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     description:
       "Unofficial multilingual guides for Path of Exile 2, with patch-aware and source-verified content.",
-    inLanguage: ["en", "zh-CN"],
+    inLanguage: locale
+      ? toLanguageTag(locale)
+      : supportedLocales.map(toLanguageTag),
     name: siteConfig.siteName,
     publisher: {
       "@type": "Organization",
       name: siteConfig.brandName,
     },
-    url: toPublicUrl("/"),
+    url: toPublicUrl(locale ? `/${locale}/` : "/en/"),
   };
 }
 
@@ -129,7 +137,7 @@ export function createArticleJsonLd(frontMatter: ContentFrontMatter) {
     description: frontMatter.seoDescription,
     headline: frontMatter.title,
     image: toPublicUrl(frontMatter.image ?? "/og.png"),
-    inLanguage: frontMatter.locale === "zh-cn" ? "zh-CN" : "en",
+    inLanguage: toLanguageTag(frontMatter.locale),
     mainEntityOfPage: toPublicUrl(path),
   };
 }

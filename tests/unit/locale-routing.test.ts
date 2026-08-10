@@ -16,16 +16,18 @@ describe("locale routing", () => {
     expect(resolveBrowserLocale(["zh-SG"])).toBe("zh-cn");
   });
 
-  it("falls back to English when the primary browser language is unsupported", () => {
-    expect(resolveBrowserLocale(["fr-FR", "zh-CN"])).toBe("en");
-    expect(resolveBrowserLocale(["zh-TW"])).toBe("en");
+  it("maps supported browser languages and falls back to English for unknown languages", () => {
+    expect(resolveBrowserLocale(["fr-FR", "zh-CN"])).toBe("fr");
+    expect(resolveBrowserLocale(["zh-TW"])).toBe("zh-cn");
+    expect(resolveBrowserLocale(["it-IT"])).toBe("en");
     expect(resolveBrowserLocale(undefined)).toBe("en");
   });
 
-  it("recognizes only supported leading locale segments", () => {
+  it("recognizes all supported leading locale segments", () => {
     expect(getLocaleFromPathname("/en/builds/")).toBe("en");
     expect(getLocaleFromPathname("/zh-cn/")).toBe("zh-cn");
-    expect(getLocaleFromPathname("/fr/")).toBeUndefined();
+    expect(getLocaleFromPathname("/fr/")).toBe("fr");
+    expect(getLocaleFromPathname("/it/")).toBeUndefined();
     expect(localeHomePath("zh-cn")).toBe("/zh-cn/");
   });
 

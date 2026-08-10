@@ -2,6 +2,7 @@
 import { resolveImageAsset } from "../../lib/assets/image-assets";
 import { ContentCard } from "../../components/content/content-card";
 import { ReadingProgress } from "../../components/content/reading-progress";
+import { StructuredData } from "../../components/seo/structured-data";
 import {
   contentTypeSegments,
   type ContentLocale,
@@ -9,6 +10,7 @@ import {
 } from "../../lib/content/constants";
 import type { StaticContentCatalogPage } from "../../lib/content/content-page";
 import { loadContentCatalog } from "../../lib/content/content-catalog";
+import { contentCatalogMetrics } from "../../lib/content/content-catalog";
 import { loadStaticContentCatalogForLocale } from "../../lib/content/content-catalog.server";
 import { getHomeContentItems } from "../../lib/content/home-content";
 import { getHomeCopy } from "../../lib/i18n/home-copy";
@@ -17,22 +19,13 @@ import {
   createBilingualAlternatePaths,
   createSeoMetadata,
 } from "../../lib/seo/metadata";
+import { createWebSiteJsonLd } from "../../lib/seo/structured-data";
 import type { Route } from "./+types/home";
 
 const homeHeroImage = resolveImageAsset("/images/prototype-v2/hero-home.webp");
 const currentGameVersion = "0.5.4e";
 const latestMajorPatchVersion = "0.5.4";
 const historicalPatchRange = `0.3.0–${currentGameVersion}`;
-
-/** 首页只加载当前语言卡片，根级导航仍由更小的路由索引独立提供。 */
-export async function loader({ params }: Route.LoaderArgs) {
-  return { catalog: await loadStaticContentCatalogForLocale(params.locale) };
-}
-
-/** 客户端导航只加载当前语言卡片，根级导航继续复用轻量路由索引。 */
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-  return { catalog: await loadContentCatalog(params.locale) };
-}
 
 /** 将内容类型或路径片段的首字母大写，用于派生首页文案键。 */
 function cap<S extends string>(s: S): Capitalize<S> {
@@ -56,6 +49,69 @@ const quickAccessItems = [
   ["skills", "✦"],
   ["patches", "◈"],
 ] as const;
+
+/**
+ * 首页每类只渲染四张卡片，因此 loader 只序列化真正使用的 24 条目录数据。
+ * 数量从构建期指标读取；最新大版本补丁单独保留，避免全量目录进入 HTML hydration 数据。
+ */
+function createHomeLoaderData(
+  catalog: Readonly<Record<string, StaticContentCatalogPage>>,
+  locale: ContentLocale,
+) {
+  const allItems = Object.values(catalog).filter(
+    (page) => page.frontMatter.locale === locale,
+  );
+  const selectedItems = homeSectionOrder.flatMap((contentType) =>
+    getHomeContentItems(
+      Object.fromEntries(
+        allItems
+          .filter((page) => page.frontMatter.contentType === contentType)
+          .map((page) => [page.frontMatter.contentId, page]),
+      ),
+      locale,
+      4,
+    ),
+  );
+  const latestMajorPatch = allItems.find(
+    (page) => page.patchArticle?.patchVersion === latestMajorPatchVersion,
+  );
+  if (
+    latestMajorPatch &&
+    !selectedItems.some(
+      (page) =>
+        page.frontMatter.contentId === latestMajorPatch.frontMatter.contentId,
+    )
+  ) {
+    selectedItems.push(latestMajorPatch);
+  }
+
+  return {
+    counts: Object.fromEntries(
+      homeSectionOrder.map((contentType) => [
+        contentType,
+        contentCatalogMetrics[
+          `${locale}/${contentTypeSegments[contentType]}/`
+        ] ?? 0,
+      ]),
+    ) as Record<ContentType, number>,
+    items: selectedItems,
+  };
+}
+
+/** 首页服务端只回传可见卡片与指标，避免把整份当前语言目录嵌入 HTML。 */
+export async function loader({ params }: Route.LoaderArgs) {
+  const locale = params.locale as ContentLocale;
+  return createHomeLoaderData(
+    await loadStaticContentCatalogForLocale(params.locale),
+    locale,
+  );
+}
+
+/** 客户端导航沿用同一投影契约，保证服务端与浏览器渲染结果一致。 */
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  const locale = params.locale as ContentLocale;
+  return createHomeLoaderData(await loadContentCatalog(params.locale), locale);
+}
 
 /** 返回对应语言首页的静态 Metadata，未知语言由路由级 404 文案处理。 */
 export function meta({ params }: Route.MetaArgs) {
@@ -144,9 +200,11 @@ function HomeContentSection({
 
 /** 渲染版本范围和编辑状态侧栏，避免把历史补丁误标为当前版本。 */
 function HomeSidebar({
+  counts,
   items,
   locale,
 }: {
+  counts: Record<ContentType, number>;
   items: readonly StaticContentCatalogPage[];
   locale: ContentLocale;
 }) {
@@ -195,9 +253,7 @@ function HomeSidebar({
         <h2>{t(locale, "home.publishedContent")}</h2>
         <ol className="home-ranking-list">
           {homeSectionOrder.map((contentType, index) => {
-            const count = items.filter(
-              (item) => item.frontMatter.contentType === contentType,
-            ).length;
+            const count = counts[contentType];
             const label = t(
               locale,
               `home.section${cap(contentType)}Title` as const,
@@ -240,13 +296,15 @@ export default function HomeRoute({
     );
   }
   const locale = localeParam as ContentLocale;
-  const items = getHomeContentItems(loaderData.catalog, locale, 100);
+  const items = loaderData.items;
+  const counts = loaderData.counts;
   const groupedItems = groupHomeItems(items);
   const publishedCountByType = (contentType: ContentType) =>
-    items.filter((item) => item.frontMatter.contentType === contentType).length;
+    counts[contentType];
 
   return (
     <main className="home-page" data-prerender-content="true">
+      <StructuredData data={createWebSiteJsonLd(locale)} />
       <ReadingProgress />
       <section className="home-hero-v2" aria-labelledby="home-title">
         <img
@@ -327,11 +385,15 @@ export default function HomeRoute({
           </form>
           <div className="home-popular-searches">
             <span>{t(locale, "home.popular")}</span>
-            {["Liquid Verisium", "Atziri", currentGameVersion].map((term) => (
-              <a
-                href={`/${locale}/search/?q=${encodeURIComponent(term)}`}
-                key={term}
-              >
+            {[
+              ["Path of Exile 2 Items", `/${locale}/items/`],
+              [
+                "Power, Frenzy & Endurance Charges",
+                `/${locale}/guides/power-frenzy-endurance-charges/`,
+              ],
+              [currentGameVersion, `/${locale}/patches/`],
+            ].map(([term, href]) => (
+              <a href={href} key={term}>
                 {term}
               </a>
             ))}
@@ -372,7 +434,7 @@ export default function HomeRoute({
             />
           ))}
         </div>
-        <HomeSidebar items={items} locale={locale} />
+        <HomeSidebar counts={counts} items={items} locale={locale} />
       </div>
     </main>
   );

@@ -14,6 +14,7 @@ import type {
   StaticContentRoute,
   StaticContentRouteMap,
 } from "./content-page";
+import { getRuntimeContentDirectory } from "./runtime-content-directory";
 
 /** 同一内容目录只投影一次；Vite 的多个虚拟模块共享进行中的 Promise。 */
 const catalogCache = new Map<string, Promise<StaticContentCatalogPageMap>>();
@@ -278,7 +279,7 @@ export function projectStaticContentCatalogMetrics(
 
 /** 读取并缓存轻量目录；正文页面虚拟模块与本模块共享底层索引缓存。 */
 export async function loadStaticContentCatalog(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentCatalogPageMap> {
   const key = path.resolve(contentDirectory);
   const cached = catalogCache.get(key);
@@ -300,9 +301,16 @@ export async function loadStaticContentCatalog(
 /** 预渲染单语言页面时只返回当前语言目录，避免把其它语言序列化进 HTML。 */
 export async function loadStaticContentCatalogForLocale(
   locale: string | undefined,
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentCatalogPageMap> {
-  const catalog = await loadStaticContentCatalog(contentDirectory);
+  const publishedCatalog = await loadStaticContentCatalog(contentDirectory);
+  // E2E 开发模式需要在同一 SSR 首屏展示隔离草稿；生产环境没有该变量，绝不合并草稿。
+  const catalog = process.env.E2E_CONTENT_DIRECTORY
+    ? {
+        ...publishedCatalog,
+        ...(await loadLocalDraftContentCatalog(contentDirectory)),
+      }
+    : publishedCatalog;
   if (!locale) return {};
   return Object.fromEntries(
     Object.entries(catalog).filter(
@@ -313,7 +321,7 @@ export async function loadStaticContentCatalogForLocale(
 
 /** 为本地开发构建与 Boss 草稿生成同样的轻量目录，不将其它草稿暴露到公开路由。 */
 export async function loadLocalDraftContentCatalog(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentCatalogPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,

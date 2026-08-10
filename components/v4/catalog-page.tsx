@@ -254,8 +254,6 @@ export function V4ContentPageCard({
       aria-label={fm.title}
       className="v4-prototype-card v4-prototype-card--content"
       href={`/${locale}/${segment}/${fm.slug}/`}
-      rel="noopener noreferrer"
-      target="_blank"
     >
       <div className="v4-card-image-wrap">
         <span className={`v4-card-image-label${fm.draft ? " is-draft" : ""}`}>
@@ -329,8 +327,6 @@ export function V4BuildContentCard({
       aria-label={article.title}
       className="v4-prototype-card v4-prototype-card--content v4-prototype-card--build"
       href={`/${locale}/builds/${article.slug}/`}
-      rel="noopener noreferrer"
-      target="_blank"
     >
       <div className="v4-card-image-wrap">
         <span

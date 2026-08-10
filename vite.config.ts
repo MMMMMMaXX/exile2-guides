@@ -133,11 +133,11 @@ function serializeContentCatalogLoaders(locales: readonly string[]): string {
  * 仅允许开发态 E2E 服务读取隔离夹具。
  * 生产构建始终使用仓库 content/，防止测试内容进入公共路由、Sitemap 或搜索索引。
  */
+let configuredContentDirectory: string | undefined;
+
+/** 返回已配置的内容目录；未配置时由调用方回退到生产内容根。 */
 function getContentDirectory(): string | undefined {
-  const testDirectory = process.env.E2E_CONTENT_DIRECTORY;
-  return testDirectory && process.env.NODE_ENV !== "production"
-    ? path.resolve(process.cwd(), testDirectory)
-    : undefined;
+  return configuredContentDirectory;
 }
 
 /** 返回当前命令实际读取的内容根目录，供缓存和热更新使用同一边界。 */
@@ -377,19 +377,31 @@ function searchIndexesPlugin(): Plugin {
   };
 }
 
-export default defineConfig(({ command }) => ({
-  plugins: [
-    contentPagesPlugin(command),
-    buildDraftPreviewPagesPlugin(command === "serve"),
-    bossDraftPreviewPagesPlugin(command === "serve"),
-    searchIndexesPlugin(),
-    tailwindcss(),
-    reactRouter(),
-  ],
-  preview: {
-    host: "127.0.0.1",
-  },
-  server: {
-    host: "127.0.0.1",
-  },
-}));
+export default defineConfig(({ command, mode }) => {
+  // React Router dev 会重启子进程并可能重写环境变量；显式 Vite mode 可稳定保留测试边界。
+  configuredContentDirectory =
+    mode === "e2e"
+      ? path.resolve(process.cwd(), ".e2e-content-fixtures")
+      : undefined;
+  if (configuredContentDirectory) {
+    // 同步给 SSR loader；虚拟模块和服务端 loader 必须读取同一套隔离夹具。
+    process.env.E2E_CONTENT_DIRECTORY = configuredContentDirectory;
+  }
+
+  return {
+    plugins: [
+      contentPagesPlugin(command),
+      buildDraftPreviewPagesPlugin(command === "serve"),
+      bossDraftPreviewPagesPlugin(command === "serve"),
+      searchIndexesPlugin(),
+      tailwindcss(),
+      reactRouter(),
+    ],
+    preview: {
+      host: "127.0.0.1",
+    },
+    server: {
+      host: "127.0.0.1",
+    },
+  };
+});

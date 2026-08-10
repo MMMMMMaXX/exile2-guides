@@ -16,7 +16,7 @@ test.describe("public content routes", () => {
       page,
     }) => {
       await page.goto(`/en/${section}/`);
-      await page.getByRole("link", { name: title }).click();
+      await page.locator("a.v4-prototype-card", { hasText: title }).click();
       await expect(page).toHaveURL(new RegExp(`/en/${section}/e2e-`));
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
       await page.reload();
@@ -28,7 +28,7 @@ test.describe("public content routes", () => {
     page,
   }) => {
     await page.goto("/en/guides/e2e-guide/");
-    await page.getByRole("button", { name: "EN" }).click();
+    await page.getByRole("button", { name: "English" }).click();
     await page.getByRole("menuitem", { name: "简体中文" }).click();
     await expect(page).toHaveURL("/zh-cn/guides/e2e-guide/");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -71,8 +71,8 @@ test.describe("public content routes", () => {
     page,
   }) => {
     await page.goto("/en/builds/");
-    const publishedCard = page.getByRole("link", {
-      name: "E2E Build Fixture",
+    const publishedCard = page.locator("a.v4-prototype-card", {
+      hasText: "E2E Build Fixture",
     });
     await expect(publishedCard).toHaveClass(/v4-prototype-card--content/);
     await expect(page.locator(".v4-published-content")).toHaveCount(0);
@@ -101,7 +101,7 @@ test.describe("public content routes", () => {
 
     await page.goto("/en/builds/?class=ranger&budget=low");
     await expect(
-      page.getByRole("link", { name: "E2E Build Fixture" }),
+      page.locator("a.v4-prototype-card", { hasText: "E2E Build Fixture" }),
     ).toBeVisible();
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
@@ -138,7 +138,7 @@ test.describe("public content routes", () => {
     );
 
     await page.goto("/en/search/?q=Local%20Build%20Draft%20Fixture");
-    await expect(page.getByText("0 results", { exact: true })).toBeVisible();
+    await expect(page.getByText("0 result(s)", { exact: true })).toBeVisible();
   });
 
   test("keeps unified Build content cards single-column on mobile", async ({

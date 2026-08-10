@@ -180,8 +180,6 @@ export function SearchPage({
                     className="v4-prototype-card v4-prototype-card--content"
                     href={document.path}
                     key={`${document.path}-${document.title}`}
-                    rel="noopener noreferrer"
-                    target="_blank"
                   >
                     <div className="v4-card-image-wrap">
                       <span className="v4-card-image-label">{typeLabel}</span>

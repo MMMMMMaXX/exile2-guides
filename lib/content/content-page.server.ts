@@ -8,6 +8,7 @@ import * as jsxRuntime from "react/jsx-runtime";
 import { contentRoutePath, loadContentIndex } from "./content-index";
 import type { ParsedContent } from "./parse";
 import type { StaticContentPageMap } from "./content-page";
+import { getRuntimeContentDirectory } from "./runtime-content-directory";
 import { addHeadingAnchors, extractTableOfContents } from "./table-of-contents";
 
 /**
@@ -110,7 +111,7 @@ async function renderStaticContentPages(
 
 /** 一次生成全部已发布页面数据，供生产路由、首页和搜索虚拟模块复用。 */
 export async function loadStaticContentPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const key = path.resolve(contentDirectory);
   const cached = staticContentPagesCache.get(key);
@@ -135,7 +136,7 @@ export async function loadStaticContentPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalBuildDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,
@@ -156,7 +157,7 @@ export async function loadLocalBuildDraftPreviewPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalBossDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,
@@ -177,7 +178,7 @@ export async function loadLocalBossDraftPreviewPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalItemDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,
@@ -198,7 +199,7 @@ export async function loadLocalItemDraftPreviewPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalSkillDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,
@@ -219,7 +220,7 @@ export async function loadLocalSkillDraftPreviewPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalGuideDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,
@@ -240,7 +241,7 @@ export async function loadLocalGuideDraftPreviewPages(
  * 模板草稿始终排除；生产插件返回空映射，因此这些正文不会进入正式浏览器产物。
  */
 export async function loadLocalPatchDraftPreviewPages(
-  contentDirectory = path.resolve(process.cwd(), "content"),
+  contentDirectory = getRuntimeContentDirectory(),
 ): Promise<StaticContentPageMap> {
   const index = await loadContentIndex(contentDirectory, {
     includeDrafts: true,

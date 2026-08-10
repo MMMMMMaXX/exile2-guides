@@ -1,36 +1,19 @@
-/** 文件职责：在根语言选择页首次加载时，按浏览器默认语言尽早写入语言 URL。 */
+/** 文件职责：把没有语言标识的入口稳定重定向到英语首页。 */
 
 /**
  * 生成根路径初始化脚本。
- * 静态 HTML 仍保留完整语言选择作为无脚本回退；脚本仅增强真实浏览器首次访问。
+ * 英语是没有语言选择、无法读取浏览器语言或语言偏好失效时的唯一安全回退。
  */
 function createInitialLocaleRedirectScript(): string {
   return String.raw`
     (() => {
       if (window.location.pathname !== "/") return;
-      const primaryLanguage = (navigator.languages?.[0] || navigator.language || "")
-        .trim()
-        .toLowerCase();
-      const supported = ["en","zh-cn","pt-br","ru","de","es","fr","ja","ko","tr"];
-      const resolve = (lang) => {
-        if (lang.startsWith("zh")) return "zh-cn";
-        if (lang.startsWith("pt")) return "pt-br";
-        if (lang.startsWith("ru")) return "ru";
-        if (lang.startsWith("de")) return "de";
-        if (lang.startsWith("es")) return "es";
-        if (lang.startsWith("fr")) return "fr";
-        if (lang.startsWith("ja")) return "ja";
-        if (lang.startsWith("ko")) return "ko";
-        if (lang.startsWith("tr")) return "tr";
-        return "en";
-      };
-      const locale = resolve(primaryLanguage);
-      window.location.replace("/" + locale + "/");
+      window.location.replace("/en/");
     })();
   `;
 }
 
-/** 渲染只在根路径执行的轻量客户端脚本，使地址栏从一开始就包含语言段。 */
+/** 渲染只在根路径执行的轻量客户端脚本，使地址栏从一开始就进入英语页面。 */
 export function InitialLocaleRedirect() {
   return (
     <script

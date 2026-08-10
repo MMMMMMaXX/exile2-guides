@@ -1,20 +1,21 @@
-/** 文件职责：验证双语首页文案与未知语言路径的失败关闭行为。 */
+/** 文件职责：验证 10 语言首页文案与未知语言路径的失败关闭行为。 */
 import { describe, expect, it } from "vitest";
 
 import { getHomeCopy, isHomeLocale } from "../../lib/i18n/home-copy";
 
 describe("home copy", () => {
-  it("provides the PRD hero copy for both supported home locales", () => {
+  it("provides keyword-focused hero copy for supported home locales", () => {
     expect(getHomeCopy("en")?.heroTitle).toBe(
-      "Path of Exile 2 Builds, Boss Guides and Beginner Help",
+      "PoE 2 Builds, Boss Guides & Skill Database",
     );
     expect(getHomeCopy("zh-cn")?.heroTitle).toBe(
-      "Path of Exile 2 Build、Boss 与新手攻略",
+      "PoE 2 Build、Boss 攻略与技能数据库",
     );
+    expect(getHomeCopy("ja")?.heroTitle).toContain("PoE 2");
   });
 
   it("rejects unsupported locales instead of serving an unintended home page", () => {
-    expect(isHomeLocale("ja")).toBe(false);
-    expect(getHomeCopy("ja")).toBeUndefined();
+    expect(isHomeLocale("it")).toBe(false);
+    expect(getHomeCopy("it")).toBeUndefined();
   });
 });

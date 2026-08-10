@@ -7,12 +7,9 @@ import { describe, expect, it } from "vitest";
 
 import { buildContentIndex } from "../../lib/content";
 import type { ParsedContent } from "../../lib/content/parse";
-import { getV4SubtypePaths } from "../../lib/content/v4-taxonomy";
 import {
-  bossCollectionPaths,
-  buildCollectionPaths,
   enumeratePublicPaths,
-  guideCollectionPaths,
+  fixedPublicPaths,
   inspectAnchorTargets,
   inspectInternalLinkTargets,
   inspectOgImageFile,
@@ -20,11 +17,8 @@ import {
   inspectSeoMetadata,
   inspectSingleH1,
   inspectStructuredData,
-  itemCollectionPaths,
-  patchCollectionPaths,
   PrerenderVerificationError,
   publicPathToHtmlFile,
-  skillCollectionPaths,
   verifyPrerenderBuild,
   verifyStaticNotFoundDocument,
 } from "../../lib/prerender";
@@ -78,42 +72,7 @@ describe("public prerender paths", () => {
     const index = buildContentIndex([createContent()]);
 
     expect(enumeratePublicPaths(index)).toEqual([
-      "/",
-      "/en/",
-      "/zh-cn/",
-      "/en/bosses/",
-      "/en/builds/",
-      "/en/guides/",
-      "/en/items/",
-      "/en/patches/",
-      "/en/skills/",
-      "/zh-cn/bosses/",
-      "/zh-cn/builds/",
-      "/zh-cn/guides/",
-      "/zh-cn/items/",
-      "/zh-cn/patches/",
-      "/zh-cn/skills/",
-      "/en/about/",
-      "/en/contact/",
-      "/en/privacy-policy/",
-      "/en/terms-of-use/",
-      "/en/cookie-policy/",
-      "/en/disclaimer/",
-      "/zh-cn/about/",
-      "/zh-cn/contact/",
-      "/zh-cn/privacy-policy/",
-      "/zh-cn/terms-of-use/",
-      "/zh-cn/cookie-policy/",
-      "/zh-cn/disclaimer/",
-      "/en/search/",
-      "/zh-cn/search/",
-      ...buildCollectionPaths,
-      ...bossCollectionPaths,
-      ...itemCollectionPaths,
-      ...skillCollectionPaths,
-      ...guideCollectionPaths,
-      ...patchCollectionPaths,
-      ...getV4SubtypePaths(),
+      ...fixedPublicPaths,
       "/en/guides/verified-guide/",
     ]);
   });
@@ -127,44 +86,9 @@ describe("public prerender paths", () => {
       sources: [],
     });
 
-    expect(enumeratePublicPaths(buildContentIndex([draft]))).toEqual([
-      "/",
-      "/en/",
-      "/zh-cn/",
-      "/en/bosses/",
-      "/en/builds/",
-      "/en/guides/",
-      "/en/items/",
-      "/en/patches/",
-      "/en/skills/",
-      "/zh-cn/bosses/",
-      "/zh-cn/builds/",
-      "/zh-cn/guides/",
-      "/zh-cn/items/",
-      "/zh-cn/patches/",
-      "/zh-cn/skills/",
-      "/en/about/",
-      "/en/contact/",
-      "/en/privacy-policy/",
-      "/en/terms-of-use/",
-      "/en/cookie-policy/",
-      "/en/disclaimer/",
-      "/zh-cn/about/",
-      "/zh-cn/contact/",
-      "/zh-cn/privacy-policy/",
-      "/zh-cn/terms-of-use/",
-      "/zh-cn/cookie-policy/",
-      "/zh-cn/disclaimer/",
-      "/en/search/",
-      "/zh-cn/search/",
-      ...buildCollectionPaths,
-      ...bossCollectionPaths,
-      ...itemCollectionPaths,
-      ...skillCollectionPaths,
-      ...guideCollectionPaths,
-      ...patchCollectionPaths,
-      ...getV4SubtypePaths(),
-    ]);
+    expect(enumeratePublicPaths(buildContentIndex([draft]))).toEqual(
+      fixedPublicPaths,
+    );
   });
 });
 

@@ -12,6 +12,11 @@ import type {
 
 const simplifiedChineseLocalePattern = /^zh(?:-(?:cn|sg|hans))(?:-|$)/;
 
+/** 判断首段是否像语言标签，以便从非法语言 URL 中剥离该段。 */
+export function looksLikeLocaleSegment(segment: string | undefined): boolean {
+  return Boolean(segment && /^[a-z]{2}(?:-[a-z0-9]{2,8})*$/i.test(segment));
+}
+
 /** 从公开路径读取受支持语言；未知路径返回 undefined，避免误判业务 Slug。 */
 export function getLocaleFromPathname(
   pathname: string,
@@ -20,6 +25,22 @@ export function getLocaleFromPathname(
   return supportedLocales.includes(localeSegment as ContentLocale)
     ? (localeSegment as ContentLocale)
     : undefined;
+}
+
+/**
+ * 将根路径、缺少语言段或非法语言段统一转换为英语路径。
+ * 已有有效语言段返回 undefined；静态资源不在应用路由内，不参与此转换。
+ */
+export function getEnglishFallbackPath(pathname: string): string | undefined {
+  const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  if (normalized.startsWith("/__design-system")) return undefined;
+  const parts = normalized.split("/").filter(Boolean);
+  if (parts.length === 0) return "/en/";
+  if (supportedLocales.includes(parts[0] as ContentLocale)) return undefined;
+  if (parts.at(-1)?.includes(".")) return undefined;
+
+  const rest = looksLikeLocaleSegment(parts[0]) ? parts.slice(1) : parts;
+  return rest.length > 0 ? `/en/${rest.join("/")}/` : "/en/";
 }
 
 /**

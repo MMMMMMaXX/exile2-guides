@@ -57,9 +57,8 @@ export function createSeoMetadata(options: SeoMetadataOptions) {
     metadata.push({
       tagName: "link",
       rel: "alternate",
-      // 注意：React 19 服务端渲染会把 camelCase 的 hrefLang 原样输出为无效属性名，
-      // Google 只识别全小写的 hreflang，故此处必须用字符串键 "hreflang" 强制小写属性。
-      hreflang: getHrefLang(locale as ContentLocale),
+      // React 要求使用标准 DOM 属性名；HTML 解析器会将属性名规范化供搜索引擎读取。
+      hrefLang: getHrefLang(locale as ContentLocale),
       href: toPublicUrl(path),
     });
   }
@@ -69,7 +68,7 @@ export function createSeoMetadata(options: SeoMetadataOptions) {
     metadata.push({
       tagName: "link",
       rel: "alternate",
-      hreflang: "x-default",
+      hrefLang: "x-default",
       href: toPublicUrl(englishPath),
     });
   }

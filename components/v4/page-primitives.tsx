@@ -66,12 +66,7 @@ export function CatalogCard({
     </>
   );
   return href ? (
-    <a
-      className="content-card"
-      href={href}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <a className="content-card" href={href}>
       {body}
     </a>
   ) : (
@@ -238,12 +233,7 @@ export function RelatedContent({
       {items.length ? (
         <nav>
           {items.map((item) => (
-            <a
-              href={item.href}
-              key={item.href}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href={item.href} key={item.href}>
               {item.label}
             </a>
           ))}

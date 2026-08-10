@@ -8,7 +8,7 @@ import {
 } from "../../lib/seo/metadata";
 
 describe("SEO metadata", () => {
-  it("creates self canonical, bilingual alternates and x-default", () => {
+  it("creates self canonical, multilingual alternates and x-default", () => {
     const metadata = createSeoMetadata({
       alternatePaths: createBilingualAlternatePaths("guides/"),
       description: "Verified guides.",

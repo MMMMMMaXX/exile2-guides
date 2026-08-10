@@ -36,11 +36,13 @@ describe("site header", () => {
     expect(
       screen.getByRole("link", { name: "Search" }).getAttribute("href"),
     ).toBe("/en/search/");
-    const languageToggle = screen.getByRole("button", { name: "EN" });
+    const languageToggle = screen.getByRole("button", { name: "English" });
     expect(languageToggle.getAttribute("aria-expanded")).toBe("false");
     fireEvent.click(languageToggle);
     expect(
-      screen.getByRole("menuitem", { name: "EN" }).getAttribute("aria-current"),
+      screen
+        .getByRole("menuitem", { name: "English" })
+        .getAttribute("aria-current"),
     ).toBe("page");
     expect(
       screen.getByRole("menuitem", { name: "简体中文" }).getAttribute("href"),
@@ -69,7 +71,7 @@ describe("site header", () => {
 
   it("stores an explicit locale choice without replacing the language URL", () => {
     renderHeader("/en/");
-    fireEvent.click(screen.getByRole("button", { name: "EN" }));
+    fireEvent.click(screen.getByRole("button", { name: "English" }));
     fireEvent.click(screen.getByRole("menuitem", { name: "简体中文" }));
 
     expect(localStorage.getItem("exile2-guides-locale")).toBe("zh-cn");
@@ -105,18 +107,16 @@ describe("site footer", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/unofficial fan-made guide site/i)).toBeTruthy();
+    expect(screen.getByText(/非官方玩家制作攻略站/)).toBeTruthy();
     expect(
-      screen.getByRole("link", { name: "Builds" }).getAttribute("href"),
+      screen.getByRole("link", { name: "Build 攻略" }).getAttribute("href"),
     ).toBe("/zh-cn/builds/");
     expect(
-      screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href"),
+      screen.getByRole("link", { name: "隐私政策" }).getAttribute("href"),
     ).toBe("/zh-cn/privacy-policy/");
     expect(
-      screen.getByRole("link", { name: "Disclaimer" }).getAttribute("href"),
+      screen.getByRole("link", { name: "免责声明" }).getAttribute("href"),
     ).toBe("/zh-cn/disclaimer/");
-    expect(
-      screen.getByText(/Exile2 Guides. All rights reserved./),
-    ).toBeTruthy();
+    expect(screen.getByText(/Exile2 Guides. 保留所有权利。/)).toBeTruthy();
   });
 });

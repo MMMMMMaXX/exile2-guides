@@ -10,7 +10,10 @@ import {
 } from "react-router";
 
 import { AppShell } from "../components/layout/app-shell";
-import { getLocaleFromPathname } from "../lib/i18n/locale-routing";
+import {
+  getEnglishFallbackPath,
+  getLocaleFromPathname,
+} from "../lib/i18n/locale-routing";
 import { getHtmlLang } from "../lib/i18n/locale-meta";
 import { siteConfig } from "../lib/seo/site-config";
 import "./styles/app.css";
@@ -58,10 +61,29 @@ function DocumentLocaleSynchronizer() {
   return null;
 }
 
+/**
+ * 在静态主机返回 404 外壳或开发服务器命中宽泛路由时，补齐英语语言段。
+ * 查询参数和 hash 由浏览器保留，避免搜索页或外部分享链接丢失上下文。
+ */
+function EnglishLocaleRedirect() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const target = getEnglishFallbackPath(pathname);
+    if (!target || target === pathname) return;
+    window.location.replace(
+      `${target}${window.location.search}${window.location.hash}`,
+    );
+  }, [pathname]);
+
+  return null;
+}
+
 /** 提供 React Router 的根级路由出口，不在此处耦合具体页面逻辑。 */
 export default function App() {
   return (
     <>
+      <EnglishLocaleRedirect />
       <DocumentLocaleSynchronizer />
       <AppShell>
         <Outlet />

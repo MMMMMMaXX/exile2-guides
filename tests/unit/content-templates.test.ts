@@ -15,7 +15,7 @@ import { buildSearchIndexes } from "../../lib/search/search-index";
 import { renderSitemapXml } from "../../lib/seo/site-files.server";
 
 describe("repository content templates", () => {
-  it("keeps exactly one bilingual draft pair per content type template", async () => {
+  it("keeps exactly one 10-locale draft set per content type template", async () => {
     const editingIndex = await loadContentIndex(undefined, {
       includeDrafts: true,
     });
@@ -32,11 +32,10 @@ describe("repository content templates", () => {
           entry.frontMatter.contentType === contentType &&
           entry.frontMatter.contentId.endsWith("-template"),
       );
-      expect(entries).toHaveLength(2);
-      expect(entries.map((entry) => entry.frontMatter.locale).sort()).toEqual([
-        "en",
-        "zh-cn",
-      ]);
+      expect(entries).toHaveLength(supportedLocales.length);
+      expect(entries.map((entry) => entry.frontMatter.locale).sort()).toEqual(
+        [...supportedLocales].sort(),
+      );
       expect(
         new Set(entries.map((entry) => entry.frontMatter.contentId)).size,
       ).toBe(1);

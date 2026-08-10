@@ -1,4 +1,4 @@
-/** 文件职责：提供根语言选择页，让每种首页保持独立、可预渲染的公开 URL。 */
+/** 文件职责：提供无语言入口的英语重定向页，避免根路径成为重复首页。 */
 import { InitialLocaleRedirect } from "../../components/i18n/initial-locale-redirect";
 import { StructuredData } from "../../components/seo/structured-data";
 import { createWebSiteJsonLd } from "../../lib/seo/structured-data";
@@ -14,15 +14,16 @@ export function meta() {
     alternatePaths: createAlternatePaths(""),
     description: "Choose your language for Exile2 Guides.",
     locale: "en",
-    path: "/",
+    path: "/en/",
     title: "Exile2 Guides | Choose your language",
   });
 }
 
-/** 渲染不强制重定向的语言选择页，搜索引擎和访客均可主动选择独立语言 URL。 */
+/** 渲染带无脚本兜底的英语重定向页；语言入口仍可由站内选择器访问。 */
 export default function IndexRoute() {
   return (
     <>
+      <meta httpEquiv="refresh" content="0;url=/en/" />
       <StructuredData data={createWebSiteJsonLd()} />
       <main className="page-shell language-landing">
         <InitialLocaleRedirect />
