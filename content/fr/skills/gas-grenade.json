@@ -17,9 +17,14 @@
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
-  "tags": ["gas-grenade", "poison", "grenade", "detonator"],
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
+  "tags": [
+    "gas-grenade",
+    "poison",
+    "grenade",
+    "detonator"
+  ],
   "sources": [
     {
       "label": "Path of Exile 2 Early Access Patch Notes",
@@ -32,7 +37,7 @@
       "url": "https://poe2db.tw/us/Gas_Grenade"
     }
   ],
-  "revision": "gas-grenade-2026-08-10-02",
+  "revision": "gas-grenade-2026-08-12-video",
   "seo": {
     "title": "Gas Grenade : poison et détonation (PoE2 0.5)",
     "description": "Gas Grenade dans PoE2 0.5 : limite de 6 nuages, feu, récupération, qualité, soutiens et builds.",
@@ -50,126 +55,371 @@
     "chaos",
     "duration"
   ],
-  "heroImage": "https://i.ytimg.com/vi/2NvYzQ61v7M/maxresdefault.jpg",
-  "cardImage": "https://i.ytimg.com/vi/2NvYzQ61v7M/maxresdefault.jpg",
+  "heroImage": "/images/skills/gas-grenade.webp",
+  "cardImage": "/images/skills/gas-grenade.webp",
   "imageAlt": "Pathfinder lançant Gas Grenade",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "Vue d’ensemble",
-      "type": "overview",
+      "title": "Réponse rapide",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Gas Grenade rebondit et libère du gaz à la fin de sa mèche. Le nuage applique poison comme un hit sans être un hit normal et grandit ; une brûlure ou un Detonator compatible provoque une explosion de feu.",
-        "La compétence stocke plusieurs charges de récupération et maintient au maximum six nuages, donc la rotation dépend du chevauchement, de la durée et de la recharge."
+        "Lance une grenade gazeuse là où les ennemis resteront, puis laisse soit le nuage empoisonner, soit le faire exploser avec un effet de brûlure ou une compétence Détonateur pour une explosion de feu.",
+        "Choisissez une tâche principale — nuage empoisonné, détonation de feu ou utilité. Un lien divisé entre les trois fonctionne généralement moins bien qu’une configuration ciblée."
       ],
+      "bullets": [],
+      "keyValues": []
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "Propriétés de compétence",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Palier gemme",
+          "value": "5",
+          "notes": [
+            "Une attaque d’arbalète de force/dextérité."
+          ]
+        },
+        {
+          "label": "Temps de recharge",
+          "value": "3 secondes avec 3 utilisations",
+          "notes": [
+            "La qualité peut améliorer la récupération du temps de recharge."
+          ]
+        },
+        {
+          "label": "Fusible d’impact",
+          "value": "2 secondes",
+          "notes": [
+            "La grenade rebondit et suit son minuteur de détonation."
+          ]
+        },
+        {
+          "label": "Durée des nuages",
+          "value": "6 secondes",
+          "notes": [
+            "Les supports au sol persistants peuvent étendre la couverture de contrôle et de poison."
+          ]
+        },
+        {
+          "label": "Limite des nuages",
+          "value": "6",
+          "notes": [
+            "Lancer au-delà de la limite remplace les vieux nuages."
+          ]
+        },
+        {
+          "label": "Croissance des nuages",
+          "value": "20 % de rayon par seconde en plus, jusqu’à 80 %",
+          "notes": [
+            "Un nuage frais a moins de couverture qu’un nuage mature."
+          ]
+        },
+        {
+          "label": "Détonation",
+          "value": "Effets de combustion ou compétences de détonateur",
+          "notes": [
+            "Convertit la composante explosion en dégâts de feu."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Exigences et configuration",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [],
       "bullets": [
-        "Maximum de 6 nuages.",
-        "Brûlure ou Detonator fait exploser le nuage.",
-        "La qualité améliore récupération et dégâts de feu."
+        "Il faut une arbalète et suffisamment de Force/Dextérité.",
+        "Il a besoin d’un plan fiable pour les charges de recharge et l’atterrissage des grenades retardées.",
+        "Les versions à détonation par incendie nécessitent un allumeur ou détonateur fiable ; Les versions empoisonnées nécessitent plutôt une échelle poison et chaos."
       ]
     },
     {
       "id": "mechanics",
-      "order": 20,
-      "title": "Mécaniques principales",
+      "order": 40,
+      "title": "Mécaniques de base",
       "type": "mechanics",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Le nuage de poison et l’explosion ne se scalent pas pareil. La branche poison recherche chaos, magnitude et durée ; la branche explosion nécessite une brûlure ou un Detonator fiable.",
-        "Depuis 0.3, la compétence respecte strictement la mèche de grenade, il faut donc anticiper les cibles mobiles."
+        "L’impact de la grenade crée un nuage empoisonné après la mèche. Le nuage ne frappe pas, mais empoisonne comme s’il avait frappé, donc son mise à l’échelle des altérations diffère de l’impact initial puis de l’explosion de feu.",
+        "Le nuage grandit avec le temps et dure six secondes. La détonation immédiate échange cette zone de croissance et le temps de disponibilité du poison contre une explosion de feu, donc le bon timing dépend si la construction valorise le poison, le contrôle de foule ou les dégâts de feu.",
+        "Seuls six nuages toxiques peuvent être actifs. Les lancers supplémentaires peuvent remplacer des nuages bien établis et gaspiller des charges de recharge."
       ],
-      "bullets": [
-        "Stocke 3 utilisations de récupération.",
-        "Le nuage grandit jusqu’à sa limite actuelle.",
-        "Il ne touche pas normalement mais applique poison comme un hit."
+      "bullets": []
+    },
+    {
+      "id": "mechanics-table",
+      "order": 50,
+      "title": "Qu’est-ce qui fait évoluer chaque composant",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Composant",
+        "Investissement utile",
+        "Piège commun"
+      ],
+      "rows": [
+        [
+          "Nuage empoisonné",
+          "Chaos, poison, durée, zone persistante",
+          "Ne pas exploser immédiatement"
+        ],
+        [
+          "Explosion de feu",
+          "Dégâts de l’arme, conversion de tir, surface, allumeur fiable",
+          "Faire exploser lorsque la cible est à l’intérieur"
+        ],
+        [
+          "Nuage utilitaire",
+          "Durée, zone, récupération du temps de recharge",
+          "À utiliser pour contrôler des packs ou activer une autre compétence"
+        ],
+        [
+          "Préchargement du boss",
+          "Charges multiples avant une phase stationnaire",
+          "Respectez la limite des six nuages et le déplacement des boss"
+        ]
       ]
     },
     {
       "id": "supports",
-      "order": 30,
-      "title": "Priorité des gemmes de soutien",
+      "order": 60,
+      "title": "Priorités de soutien",
       "type": "supports",
       "visible": true,
       "toc": true,
       "supports": [
         {
-          "label": "Second Wind",
-          "notes": ["Ajoute de la souplesse de charges pendant le burst."],
+          "label": "Second Vent",
+          "notes": [
+            "Ajoute de la flexibilité de charge lorsque la rotation vide régulièrement toutes les utilisations."
+          ],
           "priority": "core"
         },
         {
-          "label": "Persistent Ground",
-          "notes": ["Prolonge la couverture des nuages."],
+          "label": "Sol persistant",
+          "notes": [
+            "Cela prolonge la disponibilité cloud pour les versions poison ou utilitaire."
+          ],
+          "priority": "core"
+        },
+        {
+          "label": "Maîtrise du feu",
+          "notes": [
+            "Pour un build dédié à la détonation, pas un setup purement poison."
+          ],
           "priority": "situational"
         },
         {
-          "label": "Fire Mastery",
-          "notes": ["Soutient la branche de détonation de feu."],
+          "label": "Récupération du temps de recharge",
+          "notes": [
+            "Améliore la disponibilité soutenue une fois que le lien de base est fonctionnel."
+          ],
           "priority": "situational"
+        },
+        {
+          "label": "Long fusible",
+          "notes": [
+            "Cela modifie le timing de placement et peut prévenir les détonations prématurées dans des installations spécialisées."
+          ],
+          "priority": "optional"
         }
       ]
     },
     {
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "Règles de compatibilité de support",
+      "type": "support-compatibility",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Choisissez des supports pour le composant qui inflige réellement des dégâts dans la construction. Un support peut être techniquement compatible tout en affaiblissant le placement, la vitesse, la conversion ou un autre composant."
+      ],
+      "bullets": [
+        "Retestez la vitesse, la durée et la surface du projectile après avoir changé les supports.",
+        "N’inférez pas le comportement de soutien uniquement à partir de l’effet visuel.",
+        "Gardez un socket flexible pour les besoins de mappage ou de bossage."
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 80,
+      "title": "Cartographie de la rotation",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Lancez devant le peloton, pas derrière. Pour les versions feu, enflammez ou faites exploser après que les monstres soient entrés dans le nuage. Pour les versions empoisonnées, laissez le nuage grandir et faites passer les ennemis à travers lui.",
+        "Ne dépensez pas les trois utilisations sur le premier petit groupe. Une charge en réserve garde la construction réactive quand un pack rare ou rapide apparaît."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "bossing-rotation",
+      "order": 90,
+      "title": "Rotation contre les boss",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Préchargez les nuages pendant une longue animation et déclenchez la détonation choisie uniquement tant que le boss est encore à l’intérieur. Si le boss se téléporte fréquemment, utilisez moins de projections par fenêtre.",
+        "Suivez si les anciens nuages sont encore actifs. Remplacer six nuages matures par des nuages frais hors cible réduit à la fois le temps d’activation et le contrôle du poison."
+      ],
+      "bullets": []
+    },
+    {
       "id": "build-use-cases",
-      "order": 40,
-      "title": "Utilisation dans les builds",
+      "order": 100,
+      "title": "Cas d’utilisation de la construction",
       "type": "build-use-cases",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Pathfinder peut préparer des nuages avant l’arrivée du boss, cumuler Wither et Despair, puis entretenir le poison ou détoner pour des dégâts de feu."
-      ],
-      "bullets": []
+      "paragraphs": [],
+      "bullets": [
+        "Les builds grenade utilisent de l’huile ou un autre effet de brûlure pour la détonation du feu.",
+        "Les builds arbalètes empoisonnées qui évoluent avec le comportement des nuages non touchés.",
+        "Les installations de services publics nécessitent une zone de croissance persistante et une explosion retardée."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 110,
+      "title": "Dépannage",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [],
+      "bullets": [],
+      "steps": [
+        {
+          "label": "Des nuages se forment derrière les ennemis",
+          "action": "Avancez la cible et tenez compte de la mèche.",
+          "result": "Utilisez un système de contrôle ou un support adhésif si compatible avec le plan."
+        },
+        {
+          "label": "L’explosion de feu n’a jamais lieu",
+          "action": "Confirmez que l’effet d’activation est une combustion ou un détonateur valide.",
+          "result": "Assurez-vous qu’elle atteigne le nuage et pas seulement l’ennemi."
+        },
+        {
+          "label": "Les dégâts du boss stagnent après une seule explosion",
+          "action": "Conservez les charges et ajoutez un temps de récupération.",
+          "result": "Utilise une attaque de remplissage pendant que les charges se récupèrent."
+        }
+      ]
     },
     {
       "id": "common-mistakes",
-      "order": 50,
-      "title": "Erreurs fréquentes",
+      "order": 120,
+      "title": "Erreurs courantes",
       "type": "common-mistakes",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Ne scalez pas poison et feu sans choisir de branche principale. Respectez la limite de six nuages et n’épuisez pas les charges avant que le boss soit ciblable."
-      ],
-      "bullets": []
+      "paragraphs": [],
+      "bullets": [
+        "Mélanger poison et supports de feu sans assez de scaling pour l’un ou l’autre.",
+        "Lancer directement sur un ennemi rapide au lieu de sa trajectoire.",
+        "Ignorant la limite des six nuages.",
+        "Faire exploser immédiatement un nuage focalisé sur le poison."
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
-      "title": "Questions fréquentes",
+      "order": 130,
+      "title": "Questions fréquemment posées",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "Le nuage peut-il empoisonner sans hit ?",
+          "question": "Le nuage frappe-t-il ?",
           "answer": [
-            "Oui. Ce n’est pas un hit normal, mais il applique poison comme s’il en était un."
+            "Non. Il empoisonne comme s’il frappait, ce qui est important pour les effets de coup unique."
           ]
         },
         {
-          "question": "Qu’est-ce qui fait exploser le nuage ?",
+          "question": "Combien de nuages peuvent exister ?",
           "answer": [
-            "Les effets de brûlure et les compétences Detonator compatibles déclenchent l’explosion de feu."
+            "Six selon les données actuelles sur les compétences."
+          ]
+        },
+        {
+          "question": "Dois-je enflammer chaque nuage ?",
+          "answer": [
+            "Seulement dans une version à détonation de feu. Les versions empoisonnées veulent généralement que le cloud persiste."
+          ]
+        },
+        {
+          "question": "Pourquoi un nuage frais semble-t-il petit ?",
+          "answer": [
+            "Son rayon augmente au fil du temps jusqu’au plafond inscrit."
+          ]
+        },
+        {
+          "question": "Scattershot est-il toujours bon ?",
+          "answer": [
+            "Non. Plus de grenades modifient la dispersion, l’utilisation de la charge et le placement ; Testez s’ils atterrissent là où la cible reste."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 135,
+      "title": "Video guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "PoE2 Gas Grenade Guide",
+          "label": "Gas Grenade — poison cloud, detonation and cooldown (PoE2 0.5)",
+          "description": "Guide covering Gas Grenade poison cloud buildup, ignition detonation, and cooldown handling.",
+          "takeaway": "Watch the cloud buildup and detonation timing.",
+          "url": "https://youtu.be/2NvYzQ61v7M",
+          "timestamps": [
+            {
+              "label": "Skill overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Core mechanics",
+              "time": "2:00"
+            },
+            {
+              "label": "Mapping and boss rotation",
+              "time": "5:00"
+            }
           ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
+      "order": 140,
       "title": "Sources et vérification",
       "type": "sources",
       "visible": true,
       "toc": true,
       "categories": [
         {
-          "label": "Sources actuelles et vérification croisée",
-          "description": "Les informations ont été recoupées avec les notes officielles, les bases de données actuelles et les sources communautaires indiquées.",
+          "label": "Base de données de compétences",
+          "description": "Limite actuelle des nuages, temps de recharge, branches de dégâts et effets de qualité.",
           "url": "https://poe2db.tw/us/Gas_Grenade"
         }
       ],
@@ -178,24 +428,52 @@
         "method": "tool",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "Les mécaniques et la portée du patch ont été vérifiées avec des sources officielles, des bases actuelles et des guides communautaires ; les essais directs sur PC sont consignés séparément et ne sont pas présentés comme réalisés."
+          "Les mécaniques publiées étaient vérifiées par rapport à la base de données des versions actuelles liée, à l’historique officiel des correctifs et à la référence communautaire nommée. La performance exacte dépend toujours de l’équipement des personnages, des modificateurs de carte et de l’exécution des joueurs."
         ]
       }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "Historique des révisions",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "A élargi la page des compétences avec les propriétés mécaniques actuelles, la mise à l’échelle des composants, les rotations, les règles de compatibilité et le dépannage basé sur les symptômes."
+          ]
+        }
+      ]
     }
   ],
-  "relatedBuildIds": ["gas-grenade-pathfinder", "grenade-gemling-legionnaire"],
+  "relatedBuildIds": [
+    "gas-grenade-pathfinder",
+    "grenade-gemling-legionnaire"
+  ],
   "relatedBossIds": [],
-  "relatedGuideIds": ["ailments-thresholds-charms-immunity"],
+  "relatedGuideIds": [
+    "ailments-thresholds-charms-immunity"
+  ],
   "relatedItemIds": [],
-  "relatedPatchIds": ["patch-0-5-0-return-of-the-ancients"],
-  "relatedSkillIds": ["explosive-grenade", "oil-grenade"],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "explosive-grenade",
+    "oil-grenade"
+  ],
   "translation": {
     "sourceLocale": "en",
     "sourceContentId": "gas-grenade",
-    "sourceRevision": "gas-grenade-2026-08-10-02",
+    "sourceRevision": "gas-grenade-2026-08-11-03",
     "translationStatus": "reviewed",
-    "translatedAt": "2026-08-10",
-    "translator": "codex-gpt5-local-review",
+    "translatedAt": "2026-08-11",
+    "reviewedAt": "2026-08-11",
+    "translator": "bing-translator-codex-editorial-review",
+    "reviewer": "Exile2 Guides Automated QA",
     "translationRisk": "low"
   }
 }

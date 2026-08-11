@@ -17,8 +17,8 @@
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
   "tags": ["unique-wand", "power-charges", "infusion", "weapon-swap"],
   "sources": [
     {
@@ -37,7 +37,7 @@
       "url": "https://www.reddit.com/r/pathofexile2builds/comments/1us5smp/adonias_ego_on_second_set/"
     }
   ],
-  "revision": "adonias-ego-2026-08-10-02",
+  "revision": "adonias-ego-2026-08-11-03",
   "seo": {
     "title": "Adonia's Ego Power Charge 与武器切换攻略",
     "description": "PoE2 0.5 Adonia's Ego：Infusion 准备、武器切换、Power Charge、常见错误和 Stormweaver 用途。",
@@ -55,114 +55,513 @@
   "imageAlt": "用于 Power Charge 准备的 Adonia's Ego 独特法杖",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "概览",
-      "type": "overview",
+      "title": "30秒答案",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Adonia's Ego 用于主动生成并消耗 Infusion，以建立 Power Charge。它通常放在独立武器组，避免干扰主伤害武器。",
-        "它不是被动充能来源；玩家必须正确设置技能和武器组，并在地图开场或 Boss 前执行流程。"
+      "callout": "仅在构筑能够生成并消耗能量充能，同时不让抗性惩罚成为永久防御失败时使用。",
+      "calloutDetail": [
+        "Adonia的自我是一件系统物品，而不是普通的3级法术魔杖。它的价值来自力量巅峰、充能生成、武器套装行为，以及有意设计的缺点。"
       ],
-      "bullets": [
-        "使用独立武器组完成准备。",
-        "确认 Infusion 技能在正确武器组启用。",
-        "主伤害组可以使用更强的稀有法杖或其他核心装备。"
+      "answers": [
+        {
+          "label": "使用",
+          "text": ["当核心机制为关键且其机会成本已被覆盖时装备。"]
+        },
+        {
+          "label": "出售",
+          "text": ["当卷轴具有专门价值但当前构筑无法安全使用该机制时出售。"]
+        },
+        {
+          "label": "持有",
+          "text": ["仅为计划构筑或已验证配方持有；不要假定固定市场价格。"]
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "快速信息",
+      "type": "quick-facts",
+      "visible": true,
+      "toc": true,
+      "facts": [
+        {
+          "label": "基础",
+          "value": "吸能魔杖",
+          "note": ["物品的固有能量吸取等级可能不同。"]
+        },
+        {
+          "label": "需求等级",
+          "value": "取决于赋予的技能；掉落等级65",
+          "note": ["高阶版本可以赋予更高的固有技能等级。"]
+        },
+        {
+          "label": "法术等级",
+          "value": "对所有法术技能+3",
+          "note": ["法术构筑的广泛进攻性加成。"]
+        },
+        {
+          "label": "法力",
+          "value": "最大法力100–150",
+          "note": ["对基于法力的法术组合有用。"]
+        },
+        {
+          "label": "施法速度",
+          "value": "15–30%提升",
+          "note": ["一个强力但可替代的常规词缀。"]
+        },
+        {
+          "label": "能量充能",
+          "value": "−1 到 1 最大值",
+          "note": ["掷骰同时改变上限和管理方式。"]
+        },
+        {
+          "label": "缺点",
+          "value": "每个能量充能 −10% 所有元素抗性",
+          "note": ["必须在构筑实际持有的充能数量下进行评估。"]
+        },
+        {
+          "label": "授予的增益",
+          "value": "20级 力量巅峰",
+          "note": ["关键机制和考虑使用魔杖的原因。"]
+        }
       ]
     },
     {
       "id": "properties",
-      "order": 20,
-      "title": "属性",
+      "order": 30,
+      "title": "重要属性",
       "type": "properties",
       "visible": true,
       "toc": true,
       "properties": [
         {
-          "label": "底材",
-          "value": "Siphoning Wand",
-          "notes": ["服务 Infusion 与 Power Charge 流程的独特法杖。"]
+          "label": "基础",
+          "value": "吸能魔杖",
+          "notes": ["物品的固有能量吸取等级可能不同。"]
         },
         {
-          "label": "主要用途",
-          "value": "Power Charge 准备",
-          "notes": ["它支持准备序列，不替代主伤害循环。"]
+          "label": "需求等级",
+          "value": "取决于赋予的技能；掉落等级65",
+          "notes": ["高阶版本可以赋予更高的固有技能等级。"]
         },
         {
-          "label": "关键风险",
-          "value": "武器组设置",
-          "notes": ["错误的技能启用状态会让装备看起来无效。"]
+          "label": "法术等级",
+          "value": "对所有法术技能+3",
+          "notes": ["法术构筑的广泛进攻性加成。"]
+        },
+        {
+          "label": "法力",
+          "value": "最大法力100–150",
+          "notes": ["对基于法力的法术组合有用。"]
+        },
+        {
+          "label": "施法速度",
+          "value": "15–30%提升",
+          "notes": ["一个强力但可替代的常规词缀。"]
+        },
+        {
+          "label": "能量充能",
+          "value": "−1 到 1 最大值",
+          "notes": ["掷骰同时改变上限和管理方式。"]
+        },
+        {
+          "label": "缺点",
+          "value": "每个能量充能 −10% 所有元素抗性",
+          "notes": ["必须在构筑实际持有的充能数量下进行评估。"]
+        },
+        {
+          "label": "授予的增益",
+          "value": "20级 力量巅峰",
+          "notes": ["关键机制和考虑使用魔杖的原因。"]
         }
       ]
     },
     {
-      "id": "build-use-cases",
-      "order": 30,
-      "title": "构筑用途",
-      "type": "use-cases",
+      "id": "effect",
+      "order": 40,
+      "title": "物品的工作原理",
+      "type": "effect",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Adonia's Trifusion Stormweaver 等配置把它放在副手组，产生 Infusion 并获得充能，然后切回主伤害组。"
+        "力量巅峰将管理好的能量充能状态转化为暂时的进攻窗口。只要持有充能，抗性惩罚就会生效，因此充能生成、消耗时机以及武器组分配都是防御计划的一部分。",
+        "社区通常将生成和消耗技能放在特定的武器组上。目前的维基也提醒，切换武器时力量巅峰增益会被移除，因此任何依赖于切换后持续存在的设置都必须视为版本敏感并进行测试，而不是保证发生。",
+        "不要围绕错误报告或未记录的武器切换例外进行构筑。只配置在当前客户端下存活的交互，并保留足够的未封顶抗性余量以避免突然的脆弱。"
       ],
       "bullets": []
     },
     {
+      "id": "usage",
+      "order": 50,
+      "title": "使用方法",
+      "type": "usage",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "衡量缺点",
+          "body": [
+            "将抗性惩罚乘以预期持有的最大能量充能数，并确认角色在生成期间仍然安全。"
+          ]
+        },
+        {
+          "label": "分配武器组",
+          "body": [
+            "将生成器、消耗器和魔杖放在明确的武器组上。禁用与不相关技能导致的意外组变。"
+          ]
+        },
+        {
+          "label": "生成充能",
+          "body": ["仅在安全窗口期间使用选择的注入或充能引擎。"]
+        },
+        {
+          "label": "有意消耗",
+          "body": [
+            "将力量巅峰作为伤害轮换的一部分激活，而不是无限期地携带危险充能。"
+          ]
+        },
+        {
+          "label": "每次更改后验证",
+          "body": [
+            "更换技能、武器、符文或最大充能修改器后，打开角色面板并测试完整循环。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "order": 60,
+      "title": "契合与机会成本矩阵",
+      "type": "outcomes",
+      "visible": true,
+      "toc": true,
+      "filters": ["use", "risk"],
+      "rows": [
+        {
+          "scenario": "自施法技能构筑",
+          "benefit": "大型法术等级、魔力、施法速度和增益套装",
+          "risk": "充能设置期间的抗性惩罚",
+          "recommendation": "在轮换测试时使用",
+          "level": "high",
+          "audience": "自施法技能构筑",
+          "tags": ["high"]
+        },
+        {
+          "scenario": "武器组实用性",
+          "benefit": "可隔离部分充能引擎",
+          "risk": "交换行为与版本相关",
+          "recommendation": "仅在客户端验证后使用",
+          "level": "medium",
+          "audience": "武器组实用性",
+          "tags": ["medium"]
+        },
+        {
+          "scenario": "通用施法者",
+          "benefit": "强力的常规属性",
+          "risk": "复杂性与防御缺陷",
+          "recommendation": "如果增益未使用，优先选择稀有魔杖",
+          "level": "low",
+          "audience": "通用施法者",
+          "tags": ["low"]
+        },
+        {
+          "scenario": "硬核或脆弱的配置",
+          "benefit": "高上限",
+          "risk": "失败的充能循环可能会移除大幅抗性余量",
+          "recommendation": "除非在最坏情况下防御仍安全，否则避免使用",
+          "level": "high",
+          "audience": "硬核或脆弱的配置",
+          "tags": ["high"]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 70,
+      "title": "构筑应用案例",
+      "type": "build-usage",
+      "visible": true,
+      "toc": true,
+      "intro": ["这些是机械使用案例，并不是该独特装备为最佳的承诺。"],
+      "builds": [
+        {
+          "title": "充能法术施法者",
+          "description": "按指令生成充能，立即消耗，并按给予的增益比例增幅。"
+        },
+        {
+          "title": "法力堆叠施法者",
+          "description": "在保留足够装备预算覆盖抗性时使用最高法力和法术等级。"
+        },
+        {
+          "title": "触发法术包",
+          "description": "仅在当前客户端验证武器组合和增益持续性后可使用魔杖。"
+        }
+      ]
+    },
+    {
       "id": "alternatives",
-      "order": 40,
-      "title": "替代品与升级路线",
+      "order": 80,
+      "title": "替代方案及更换点",
       "type": "alternatives",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "不需要充能流程时，稀有法杖加 Focus 往往更强；只有构筑明确说明如何消耗充能时才值得购买。"
+        "一根属性完美的稀有魔杖，带有法术等级、施法速度、法力和实用伤害，可提供较低的复杂性且无基于充能的抗性惩罚。",
+        "对于只需要法术等级的构筑，请比较完整的稀有武器和盾牌组合；当巅峰之力未激活时，阿多尼亚之自我不自动成为最佳。",
+        "将独特装备保存在存储中，直到充能系统完成，而不是为了早期装备而削弱已有构筑。"
       ],
       "bullets": []
     },
     {
-      "id": "common-mistakes",
-      "order": 50,
-      "title": "常见错误",
-      "type": "common-mistakes",
+      "id": "acquisition",
+      "order": 90,
+      "title": "获取和属性检测",
+      "type": "acquisition",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "常见问题是技能启用在错误武器组，或没有先生成所需 Infusion；两个武器组之间的唯一 Rune 冲突也可能禁用流程。"
+      "intro": [
+        "可用性和价格随赛季变化；指南记录途径和评估标准，而非固定估值。"
       ],
-      "bullets": []
+      "routes": [
+        {
+          "label": "世界掉落",
+          "body": ["该物品可在等级匹配的内容中掉落；当前维基列出掉落等级为65。"]
+        },
+        {
+          "label": "掉落几率路线",
+          "body": [
+            "维基记录了基础物品可以掉落，但这并不是在未检查当前基础物品可用性和概率前花费货币的推荐。"
+          ]
+        },
+        {
+          "label": "交易",
+          "body": [
+            "可按最大充能属性、法术/施法属性、赋予技能等级和价格搜索。不要为构筑无法使用的高属性支付。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 100,
+      "title": "使用、出售或保存",
+      "type": "valuation",
+      "visible": true,
+      "toc": true,
+      "marketNote": [
+        "未存储实时价格。将当前列表与匹配属性和物品等级进行比较。"
+      ],
+      "use": {
+        "condition": "定义机制在当前构筑中是激活的。",
+        "first": "测试完整交互效果。",
+        "risk": "物品栏位的机会成本。",
+        "text": [
+          "可用副本具有构筑所需的充能属性和常规属性；价格依赛季而定，故刻意省略。"
+        ]
+      },
+      "sell": {
+        "condition": "该物品有专业需求，但当前无实际用途。",
+        "first": "比较匹配的卷轴。",
+        "risk": "联赛价格变化快速。",
+        "text": ["当卷轴对专门的能量充能构筑有用但你的角色无法安全使用时出售。"]
+      },
+      "hold": {
+        "condition": "计划了一个特定的未来构筑或配方。",
+        "first": "记录所需的卷轴。",
+        "risk": "该物品可能保持未使用状态。",
+        "text": [
+          "如果构筑计划不完整，保留一个有潜力的副本，但不要把每个卷轴都视为通用有价值。"
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "风险分析",
+      "type": "risk-analysis",
+      "visible": true,
+      "toc": true,
+      "rows": [
+        {
+          "scenario": "像普通法术魔杖一样装备",
+          "gain": "良好的法术属性",
+          "loss": "未使用增益和危险的充能惩罚",
+          "recommendation": "改用稀有魔杖",
+          "level": "high"
+        },
+        {
+          "scenario": "最大充能叠加",
+          "gain": "更高的理论增益上限",
+          "loss": "可能更大的抗性损失",
+          "recommendation": "最糟充能状态的上限超额",
+          "level": "high"
+        },
+        {
+          "scenario": "武器套装技巧",
+          "gain": "可能孤立设置动作",
+          "loss": "补丁后行为可能变化或失败",
+          "recommendation": "在当前客户端重新测试",
+          "level": "medium"
+        },
+        {
+          "scenario": "低充能控制循环",
+          "gain": "更简单的防御预算",
+          "loss": "较低上限",
+          "recommendation": "如果循环仍然值得，这是良好的进阶入门",
+          "level": "low"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "故障排除",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "problems": [
+        {
+          "symptom": "设置期间抗性崩溃",
+          "checks": [
+            "计算活跃的能量充能数量。",
+            "增加超额或更早消耗。",
+            "检查另一个最大充能修饰是否改变了最糟情况。"
+          ],
+          "directAnswer": ["计算活跃的能量充能数量。"],
+          "links": []
+        },
+        {
+          "symptom": "能量巅峰消失",
+          "checks": [
+            "测试武器切换是否移除了它。",
+            "验证哪个套装拥有授予的技能。",
+            "不要依赖报告的持续性错误。"
+          ],
+          "directAnswer": ["测试武器切换是否移除了它。"],
+          "links": []
+        },
+        {
+          "symptom": "这根魔杖比稀有魔杖弱",
+          "checks": [
+            "确认增益在实际战斗中激活。",
+            "比较完整的稀有武器套装。",
+            "检查施法速度和法术等级断点，而不是物品稀有度。"
+          ],
+          "directAnswer": ["确认增益在实际战斗中激活。"],
+          "links": []
+        }
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
-      "title": "常见问题",
+      "order": 130,
+      "title": "常见问题解答",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "Adonia's Ego 应该作为主伤害武器吗？",
+          "question": "为什么抗性惩罚很危险？",
           "answer": [
-            "通常不是。很多 0.5 配置把它放副手，主手使用更强法杖或法杖加 Focus。"
+            "它会随持有的能量充能而增加，所以一个充能较多的角色在准备阶段可能会失去大量的所有元素抗性。"
           ]
         },
         {
-          "question": "为什么没有获得充能？",
-          "answer": ["先检查 Infusion 来源、武器组技能开关和唯一 Rune 冲突。"]
+          "question": "我可以把魔杖放在第二武器栏吗？",
+          "answer": [
+            "存在武器栏技能，但由于维基指出切换时增益会被移除，目前行为必须测试。"
+          ]
+        },
+        {
+          "question": "1个最大能量充能总是最好的数值吗？",
+          "answer": [
+            "不是。它提高了潜在收益和潜在抗性损失；构筑必须安全地管理两者。"
+          ]
+        },
+        {
+          "question": "没有力量巅峰效果，这个魔杖好用吗？",
+          "answer": [
+            "它有强大的常规施法者属性，但稀有魔杖通常可以以更低的复杂度提供这些。"
+          ]
+        },
+        {
+          "question": "我应该先测试什么？",
+          "answer": [
+            "按顺序测试：充能生成、最大持有充能时的抗性、增益激活以及武器切换的持续性。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 140,
+      "title": "补丁历史",
+      "type": "patch-history",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "version": "0.3.0",
+          "changes": [
+            "具有固有技能的物品在高阶地图中很少掉落技能等级可达20的物品。"
+          ]
+        },
+        {
+          "version": "0.2.1",
+          "changes": ["引入了亚多尼亚的自我（Adonia's Ego）。"]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 145,
+      "title": "视频攻略",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Adonia's Ego — 暴击球与武器切换机制（流放之路 2）",
+          "url": "https://www.youtube.com/watch?v=XCUJWUhpJWc",
+          "creator": "社区作者",
+          "takeaway": "逐步讲解 Adonia's Ego 如何将注能（infusion）与武器切换配置转化为暴击球，以及抗性惩罚会在何处带来风险。",
+          "timestamps": [
+            {
+              "label": "Adonia's Ego 的效果",
+              "time": "00:00"
+            },
+            {
+              "label": "暴击球配置",
+              "time": "01:30"
+            },
+            {
+              "label": "武器切换技巧",
+              "time": "04:00"
+            },
+            {
+              "label": "抗性惩罚与风险",
+              "time": "06:30"
+            }
+          ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
-      "title": "来源与核验",
+      "order": 150,
+      "title": "来源与验证",
       "type": "sources",
       "visible": true,
       "toc": true,
       "categories": [
         {
-          "label": "当前资料与交叉核验",
-          "description": "文章事实由官方补丁、当前数据库与所列社区资料交叉核对。",
+          "label": "物品与构筑引用",
+          "description": "物品身份以及当前社区关于武器栏工作流程的证据。",
           "url": "https://www.poe2wiki.net/wiki/Adonia%27s_Ego"
         }
       ],
@@ -171,9 +570,29 @@
         "method": "tool",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "机制与版本范围已通过官方补丁、当前数据库和社区攻略交叉核对；第一方 PC 实机状态单独记录，不据此虚构实测结论。"
+          "已发布的机制已与链接的当前版本数据库、官方补丁历史和命名社区参考进行核对。确切性能仍取决于角色装备、地图修正以及玩家操作。"
         ]
       }
+    },
+    {
+      "id": "changelog",
+      "order": 160,
+      "title": "修订历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "将简短物品摘要替换为机械构筑、机会成本分析、获取检查、补丁历史及故障排除。"
+          ]
+        },
+        {
+          "date": "2026-08-11",
+          "changes": ["新增视频攻略章节，补充流放之路 2 社区参考。"]
+        }
+      ]
     }
   ],
   "relatedBuildIds": [
@@ -188,10 +607,12 @@
   "translation": {
     "sourceLocale": "en",
     "sourceContentId": "adonias-ego",
-    "sourceRevision": "adonias-ego-2026-08-10-02",
+    "sourceRevision": "adonias-ego-2026-08-11-04",
     "translationStatus": "reviewed",
-    "translatedAt": "2026-08-10",
-    "translator": "codex-gpt5-local-review",
+    "translatedAt": "2026-08-11",
+    "reviewedAt": "2026-08-11",
+    "translator": "bing-translator-codex-editorial-review",
+    "reviewer": "Exile2 Guides Automated QA",
     "translationRisk": "low"
   }
 }

@@ -17,8 +17,8 @@
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
   "tags": ["unique-wand", "power-charges", "infusion", "weapon-swap"],
   "sources": [
     {
@@ -37,7 +37,7 @@
       "url": "https://www.reddit.com/r/pathofexile2builds/comments/1us5smp/adonias_ego_on_second_set/"
     }
   ],
-  "revision": "adonias-ego-2026-08-10-02",
+  "revision": "adonias-ego-2026-08-11-04",
   "seo": {
     "title": "Adonia's Ego Guide: Power Charges and Weapon Swap",
     "description": "How Adonia's Ego works in PoE2 0.5: infusion setup, weapon swapping, Power Charges, common mistakes and Stormweaver use.",
@@ -55,114 +55,525 @@
   "imageAlt": "Adonia's Ego unique wand shown for a Power Charge setup",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "Item overview",
-      "type": "overview",
+      "title": "30-second answer",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Adonia's Ego is a unique Siphoning Wand used in spell builds that deliberately generate and consume infusions to establish Power Charges. It is commonly isolated on one weapon set so the setup does not interfere with the main damage weapon.",
-        "The item is not a passive source of charges. The player must configure skills and weapon sets correctly, then perform the setup at the start of a map or before a boss."
+      "callout": "Use it only when the build can generate and consume Power Charges without letting the resistance penalty become a permanent defensive failure.",
+      "calloutDetail": [
+        "Adonia's Ego is a system item, not a generic +3 spell wand. Its value comes from Pinnacle of Power, charge generation, weapon-set behaviour, and a deliberately managed downside."
       ],
-      "bullets": [
-        "Use a dedicated weapon set for the setup.",
-        "Confirm the infusion-generating skill is enabled on the correct set.",
-        "The main damage set can use a stronger rare wand or another build-enabling weapon."
+      "answers": [
+        {
+          "label": "Use",
+          "text": [
+            "Equip when the defining mechanic is central and its opportunity cost is already covered."
+          ]
+        },
+        {
+          "label": "Sell",
+          "text": [
+            "Sell when the roll has specialist value but the current build cannot use the mechanic safely."
+          ]
+        },
+        {
+          "label": "Hold",
+          "text": [
+            "Hold only for a planned build or verified recipe; do not assume a fixed market price."
+          ]
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "quick-facts",
+      "order": 20,
+      "title": "Quick facts",
+      "type": "quick-facts",
+      "visible": true,
+      "toc": true,
+      "facts": [
+        {
+          "label": "Base",
+          "value": "Siphoning Wand",
+          "note": ["The inherent Power Siphon level can vary with the item."]
+        },
+        {
+          "label": "Required level",
+          "value": "Depends on granted skill; drop level 65",
+          "note": ["High-tier versions can grant higher inherent skill levels."]
+        },
+        {
+          "label": "Spell levels",
+          "value": "+3 to all Spell Skills",
+          "note": ["A broad offensive modifier for spell builds."]
+        },
+        {
+          "label": "Mana",
+          "value": "+100–150 maximum Mana",
+          "note": ["Useful for mana-based spell packages."]
+        },
+        {
+          "label": "Cast speed",
+          "value": "15–30% increased",
+          "note": ["A strong but replaceable conventional affix."]
+        },
+        {
+          "label": "Power Charges",
+          "value": "−1 to +1 maximum",
+          "note": ["The roll changes both ceiling and management."]
+        },
+        {
+          "label": "Downside",
+          "value": "−10% all elemental resistances per Power Charge",
+          "note": [
+            "Must be evaluated at the charge count the build actually holds."
+          ]
+        },
+        {
+          "label": "Granted buff",
+          "value": "Level 20 Pinnacle of Power",
+          "note": ["The defining mechanic and reason to consider the wand."]
+        }
       ]
     },
     {
       "id": "properties",
-      "order": 20,
+      "order": 30,
       "title": "Important properties",
       "type": "properties",
       "visible": true,
       "toc": true,
       "properties": [
         {
-          "label": "Base type",
+          "label": "Base",
           "value": "Siphoning Wand",
+          "notes": ["The inherent Power Siphon level can vary with the item."]
+        },
+        {
+          "label": "Required level",
+          "value": "Depends on granted skill; drop level 65",
           "notes": [
-            "A unique wand used by infusion and Power Charge spell setups."
+            "High-tier versions can grant higher inherent skill levels."
           ]
         },
         {
-          "label": "Primary role",
-          "value": "Power Charge setup",
+          "label": "Spell levels",
+          "value": "+3 to all Spell Skills",
+          "notes": ["A broad offensive modifier for spell builds."]
+        },
+        {
+          "label": "Mana",
+          "value": "+100–150 maximum Mana",
+          "notes": ["Useful for mana-based spell packages."]
+        },
+        {
+          "label": "Cast speed",
+          "value": "15–30% increased",
+          "notes": ["A strong but replaceable conventional affix."]
+        },
+        {
+          "label": "Power Charges",
+          "value": "−1 to +1 maximum",
+          "notes": ["The roll changes both ceiling and management."]
+        },
+        {
+          "label": "Downside",
+          "value": "−10% all elemental resistances per Power Charge",
           "notes": [
-            "It supports a sequence rather than replacing the main damage rotation."
+            "Must be evaluated at the charge count the build actually holds."
           ]
         },
         {
-          "label": "Key risk",
-          "value": "Weapon-set configuration",
-          "notes": [
-            "Incorrect skill-set toggles make the item appear not to work."
+          "label": "Granted buff",
+          "value": "Level 20 Pinnacle of Power",
+          "notes": ["The defining mechanic and reason to consider the wand."]
+        }
+      ]
+    },
+    {
+      "id": "effect",
+      "order": 40,
+      "title": "How the item works",
+      "type": "effect",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Pinnacle of Power converts a managed Power Charge state into a temporary offensive window. The resistance penalty is live while charges are held, so charge generation, consumption timing, and weapon-set assignment are part of the defensive plan.",
+        "The community commonly places generation and consumption skills on deliberate weapon sets. Current wiki notes also warn that the Pinnacle of Power buff is removed when swapping weapons, so any setup depending on persistence across a swap must be treated as version-sensitive and tested rather than presented as guaranteed.",
+        "Do not build around a bug report or an undocumented weapon-swap exception. Configure only interactions that survive the current client and keep enough uncapped resistance margin to avoid sudden vulnerability."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "usage",
+      "order": 50,
+      "title": "How to use it",
+      "type": "usage",
+      "visible": true,
+      "toc": true,
+      "steps": [
+        {
+          "label": "Measure the downside",
+          "body": [
+            "Multiply the resistance penalty by the maximum Power Charges you expect to hold and verify the character remains safe during generation."
+          ]
+        },
+        {
+          "label": "Assign weapon sets",
+          "body": [
+            "Put the generator, consumer, and wand on explicit sets. Disable accidental set changes from unrelated skills."
+          ]
+        },
+        {
+          "label": "Generate charges",
+          "body": [
+            "Use the chosen infusion or charge engine only during a safe window."
+          ]
+        },
+        {
+          "label": "Consume deliberately",
+          "body": [
+            "Activate Pinnacle of Power as part of the damage rotation instead of carrying dangerous charges indefinitely."
+          ]
+        },
+        {
+          "label": "Verify after every change",
+          "body": [
+            "Open the character panel and test the complete loop after changing a skill, weapon, rune, or maximum-charge modifier."
           ]
         }
       ]
     },
     {
-      "id": "build-use-cases",
-      "order": 30,
-      "title": "Build use cases",
-      "type": "use-cases",
+      "id": "outcomes",
+      "order": 60,
+      "title": "Fit and opportunity-cost matrix",
+      "type": "outcomes",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Adonia's Trifusion Stormweaver and related Pinnacle of Power setups use the wand on a secondary set, generate infusions, obtain charges, then return to the main damage set."
+      "filters": ["use", "risk"],
+      "rows": [
+        {
+          "scenario": "Self-cast spell build",
+          "benefit": "Large spell-level, mana, cast-speed, and buff package",
+          "risk": "Resistance penalty during charge setup",
+          "recommendation": "Use when the rotation is tested",
+          "level": "high",
+          "audience": "Self-cast spell build",
+          "tags": ["high"]
+        },
+        {
+          "scenario": "Weapon-set utility",
+          "benefit": "Can isolate part of the charge engine",
+          "risk": "Swap behaviour is version-sensitive",
+          "recommendation": "Use only after client verification",
+          "level": "medium",
+          "audience": "Weapon-set utility",
+          "tags": ["medium"]
+        },
+        {
+          "scenario": "Generic caster",
+          "benefit": "Strong conventional stats",
+          "risk": "Complexity and defensive downside",
+          "recommendation": "Prefer a rare wand if the buff is unused",
+          "level": "low",
+          "audience": "Generic caster",
+          "tags": ["low"]
+        },
+        {
+          "scenario": "Hardcore or fragile setup",
+          "benefit": "High ceiling",
+          "risk": "A failed charge cycle can remove a large resistance margin",
+          "recommendation": "Avoid unless the defense remains safe at worst case",
+          "level": "high",
+          "audience": "Hardcore or fragile setup",
+          "tags": ["high"]
+        }
+      ]
+    },
+    {
+      "id": "build-usage",
+      "order": 70,
+      "title": "Build use cases",
+      "type": "build-usage",
+      "visible": true,
+      "toc": true,
+      "intro": [
+        "These are mechanical use cases, not a promise that the unique is best in slot."
       ],
-      "bullets": []
+      "builds": [
+        {
+          "title": "Power Charge spell caster",
+          "description": "Generates charges on command, consumes them immediately, and scales the granted buff."
+        },
+        {
+          "title": "Mana-stacking caster",
+          "description": "Uses maximum Mana and spell levels while reserving enough gear budget to cover resistances."
+        },
+        {
+          "title": "Trigger spell package",
+          "description": "Can use the wand only when weapon-set and buff persistence are proven in the current client."
+        }
+      ]
     },
     {
       "id": "alternatives",
-      "order": 40,
-      "title": "Alternatives and upgrade path",
+      "order": 80,
+      "title": "Alternatives and replacement point",
       "type": "alternatives",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "A rare wand and focus can be stronger for players who do not need the charge setup. Do not buy Adonia's Ego until the build guide explicitly explains what consumes the generated charges."
+        "A well-rolled rare wand with spell levels, cast speed, mana, and useful damage offers lower complexity and no charge-based resistance penalty.",
+        "For a build that only wants +spell levels, compare the full rare weapon and shield package; Adonia's Ego is not automatically best when Pinnacle of Power is inactive.",
+        "Keep the unique in storage until the charge engine is complete rather than weakening a functioning build to equip it early."
       ],
       "bullets": []
     },
     {
-      "id": "common-mistakes",
-      "order": 50,
-      "title": "Common mistakes",
-      "type": "common-mistakes",
+      "id": "acquisition",
+      "order": 90,
+      "title": "Acquisition and roll checks",
+      "type": "acquisition",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "The common failure is leaving skills enabled on the wrong weapon set or expecting charges without first generating the required infusion state. Limit-one rune conflicts across both sets can also disable the intended setup."
+      "intro": [
+        "Availability and price change by league; the guide records routes and evaluation criteria rather than a fixed valuation."
       ],
-      "bullets": []
+      "routes": [
+        {
+          "label": "World drop",
+          "body": [
+            "The item can drop in level-appropriate content; the current wiki lists a drop level of 65."
+          ]
+        },
+        {
+          "label": "Chance route",
+          "body": [
+            "The wiki records that the base can be chanced, but this is not a recommendation to spend currency without checking current base availability and odds."
+          ]
+        },
+        {
+          "label": "Trade",
+          "body": [
+            "Search by maximum-charge roll, spell/cast rolls, granted skill level, and price. Do not pay for a high roll that the build cannot use."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "order": 100,
+      "title": "Use, sell, or hold",
+      "type": "valuation",
+      "visible": true,
+      "toc": true,
+      "marketNote": [
+        "No live price is stored. Compare current listings with matching rolls and item level."
+      ],
+      "use": {
+        "condition": "The defining mechanic is active in the current build.",
+        "first": "Test the full interaction.",
+        "risk": "Opportunity cost of the item slot.",
+        "text": [
+          "A usable copy has the charge roll and conventional stats the build needs; price is league-dependent and deliberately omitted."
+        ]
+      },
+      "sell": {
+        "condition": "The item has specialist demand but no current use.",
+        "first": "Compare matching rolls.",
+        "risk": "League prices move quickly.",
+        "text": [
+          "Sell when the roll is desirable to specialised charge builds but your character cannot safely use it."
+        ]
+      },
+      "hold": {
+        "condition": "A specific future build or recipe is planned.",
+        "first": "Record the required roll.",
+        "risk": "The item may remain unused.",
+        "text": [
+          "Hold a promising copy if the build plan is incomplete, but do not treat every roll as universally valuable."
+        ]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "order": 110,
+      "title": "Risk analysis",
+      "type": "risk-analysis",
+      "visible": true,
+      "toc": true,
+      "rows": [
+        {
+          "scenario": "Equip as a normal spell wand",
+          "gain": "Good spell stats",
+          "loss": "Unused buff and dangerous charge penalty",
+          "recommendation": "Use a rare wand instead",
+          "level": "high"
+        },
+        {
+          "scenario": "Maximum-charge stacking",
+          "gain": "Higher theoretical buff ceiling",
+          "loss": "Larger possible resistance loss",
+          "recommendation": "Overcap for the worst held-charge state",
+          "level": "high"
+        },
+        {
+          "scenario": "Weapon-set technique",
+          "gain": "May isolate setup actions",
+          "loss": "Behaviour can change or fail after a patch",
+          "recommendation": "Retest in the current client",
+          "level": "medium"
+        },
+        {
+          "scenario": "Low-charge controlled loop",
+          "gain": "Simpler defense budget",
+          "loss": "Lower ceiling",
+          "recommendation": "Good progression entry if the rotation remains worthwhile",
+          "level": "low"
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 120,
+      "title": "Troubleshooting",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "problems": [
+        {
+          "symptom": "Resistances collapse during setup",
+          "checks": [
+            "Count active Power Charges.",
+            "Add overcap or consume sooner.",
+            "Check that another maximum-charge modifier changed the worst case."
+          ],
+          "directAnswer": ["Count active Power Charges."],
+          "links": []
+        },
+        {
+          "symptom": "Pinnacle of Power disappears",
+          "checks": [
+            "Test whether a weapon swap removed it.",
+            "Verify which set owns the granted skill.",
+            "Do not rely on a reported persistence bug."
+          ],
+          "directAnswer": ["Test whether a weapon swap removed it."],
+          "links": []
+        },
+        {
+          "symptom": "The wand is weaker than a rare",
+          "checks": [
+            "Confirm the buff is active in real combat.",
+            "Compare the complete rare weapon setup.",
+            "Check cast-speed and spell-level breakpoints rather than item rarity."
+          ],
+          "directAnswer": ["Confirm the buff is active in real combat."],
+          "links": []
+        }
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
+      "order": 130,
       "title": "Frequently asked questions",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "Should Adonia's Ego be the main damage weapon?",
+          "question": "Why is the resistance penalty dangerous?",
           "answer": [
-            "Usually no. Many 0.5 setups keep it on the secondary set and use a stronger wand or wand-and-focus combination for damage."
+            "It scales with held Power Charges, so a charge-heavy character can lose a large amount of all elemental resistance during setup."
           ]
         },
         {
-          "question": "Why am I not gaining charges?",
+          "question": "Can I put the wand on the second weapon set?",
           "answer": [
-            "Check the infusion source, weapon-set skill toggles and any limit-one rune conflict before changing the build."
+            "Weapon-set techniques exist, but current behaviour must be tested because the wiki notes the buff is removed on swapping."
+          ]
+        },
+        {
+          "question": "Is +1 maximum Power Charge always the best roll?",
+          "answer": [
+            "No. It raises potential upside and potential resistance loss; the build must safely manage both."
+          ]
+        },
+        {
+          "question": "Is it good without Pinnacle of Power?",
+          "answer": [
+            "It has strong conventional caster stats, but a rare wand can often provide those with less complexity."
+          ]
+        },
+        {
+          "question": "What should I test first?",
+          "answer": [
+            "Charge generation, resistance at maximum held charges, buff activation, and weapon-swap persistence in that order."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patch-history",
+      "order": 140,
+      "title": "Patch history",
+      "type": "patch-history",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "version": "0.3.0",
+          "changes": [
+            "Items with inherent skills can rarely drop with skill levels up to 20 in high-tier maps."
+          ]
+        },
+        {
+          "version": "0.2.1",
+          "changes": ["Adonia's Ego was introduced."]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 145,
+      "title": "Video walkthrough",
+      "toc": true,
+      "visible": true,
+      "type": "video",
+      "entries": [
+        {
+          "label": "Adonia's Ego - Power Charge & Weapon Swap Mechanics (PoE 2)",
+          "url": "https://www.youtube.com/watch?v=XCUJWUhpJWc",
+          "creator": "Community creator",
+          "takeaway": "Walks through how Adonia's Ego turns an infusion and weapon-swap setup into Power Charges, and where the resistance penalty bites.",
+          "timestamps": [
+            {
+              "label": "What Adonia's Ego does",
+              "time": "00:00"
+            },
+            {
+              "label": "Power Charge setup",
+              "time": "01:30"
+            },
+            {
+              "label": "Weapon-swap technique",
+              "time": "04:00"
+            },
+            {
+              "label": "Resistance penalty & risks",
+              "time": "06:30"
+            }
           ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
+      "order": 150,
       "title": "Sources and verification",
       "type": "sources",
       "visible": true,
@@ -179,9 +590,31 @@
         "method": "tool",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "Mechanics and patch scope were cross-checked against the linked database, official notes, and current community build references."
+          "Published mechanics were checked against the linked current-version database, official patch history, and the named community reference. Exact performance still depends on character gear, map modifiers, and player execution."
         ]
       }
+    },
+    {
+      "id": "changelog",
+      "order": 160,
+      "title": "Revision history",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "Replaced the short item summary with mechanical setup, opportunity-cost analysis, acquisition checks, patch history, and troubleshooting."
+          ]
+        },
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "Added a video walkthrough section with community PoE 2 references."
+          ]
+        }
+      ]
     }
   ],
   "relatedBuildIds": [

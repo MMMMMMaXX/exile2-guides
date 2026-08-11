@@ -17,9 +17,14 @@
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
-  "tags": ["ball-lightning", "lightning", "shock", "fire-infusion"],
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
+  "tags": [
+    "ball-lightning",
+    "lightning",
+    "shock",
+    "fire-infusion"
+  ],
   "sources": [
     {
       "label": "Path of Exile 2 Early Access Patch Notes",
@@ -32,7 +37,7 @@
       "url": "https://poe2db.tw/us/Ball_Lightning"
     }
   ],
-  "revision": "ball-lightning-2026-08-10-02",
+  "revision": "ball-lightning-2026-08-12-video",
   "seo": {
     "title": "Ball Lightning ve Infusion rehberi (PoE2 0.5)",
     "description": "PoE2 0.5 Ball Lightning: 0,2 saniyelik boşalma, shock, Fire Infusion, projeksiyon hızı, destekler ve build'ler.",
@@ -49,128 +54,369 @@
     "lightning",
     "duration"
   ],
-  "heroImage": "https://i.ytimg.com/vi/cFqT8xaKJ8c/maxresdefault.jpg",
-  "cardImage": "https://i.ytimg.com/vi/cFqT8xaKJ8c/maxresdefault.jpg",
+  "heroImage": "/images/skills/ball-lightning.webp",
+  "cardImage": "/images/skills/ball-lightning.webp",
   "imageAlt": "Ball Lightning kullanan Blood Mage",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "Genel bakış",
-      "type": "overview",
+      "title": "Hızlı cevap",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Ball Lightning yavaş bir küreyi düşmanların arasından geçirir. Küre kendisi vurmaz; aynı hedefe her 0,2 saniyede tekrarlı yıldırımlar gönderir.",
-        "Fire Infusion tüketildiğinde küre yavaşlar, yanan zemin bırakır ve kaybolurken ateş patlaması oluşturur."
+        "Yavaş küreyi hedefin içinden veya yanından ateşleyin, böylece tekrar eden mermikaları mümkün olduğunca uzun süre menzilde kalsın. Küre kendisi vurmaz; yakındaki yıldırım deşarjları ise yapar.",
+        "Mermi hızı bir akort istatistiktir: daha yavaş hareket bir patronun yakınında zaman kazandırırken, daha hızlı hareket ulaşımı ve haritalama konforunu artırır."
       ],
+      "bullets": [],
+      "keyValues": []
+    },
+    {
+      "id": "properties",
+      "order": 20,
+      "title": "Yetenek özellikleri",
+      "type": "properties",
+      "visible": true,
+      "toc": true,
+      "properties": [
+        {
+          "label": "Mücevher seviyesi",
+          "value": "11",
+          "notes": [
+            "Bir Zeka aktif büyüsü."
+          ]
+        },
+        {
+          "label": "Oyuncu Süresi",
+          "value": "1.00 saniye",
+          "notes": [
+            "Hareket ederken becerinin hareket cezasıyla kullanılabilir."
+          ]
+        },
+        {
+          "label": "Sürgü aralığı",
+          "value": "0.2 saniye",
+          "notes": [
+            "Menzildeki düşman, küre hareket ederken tekrar tekrar hedef alınabilir."
+          ]
+        },
+        {
+          "label": "Hedef yarıçapı",
+          "value": "1,8 metre",
+          "notes": [
+            "Kalite, hedef yarıçapını artırabilir."
+          ]
+        },
+        {
+          "label": "Mermi hızı",
+          "value": "saniyede 4 metre",
+          "notes": [
+            "Kalite hızı düşürebilir; Mermi hızı değiştiriciler temas süresini değiştirir."
+          ]
+        },
+        {
+          "label": "Ateş İnfuzyonu",
+          "value": "Mevcut olduğunda tüketilir",
+          "notes": [
+            "Yıldırım davranışına ek olarak tutuşmuş toprak ve son patlama yaratır."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "order": 30,
+      "title": "Gereksinimler ve kurulum",
+      "type": "requirements",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [],
       "bullets": [
-        "Projeksiyonun kendisi vurmaz.",
-        "Hedef arama yarıçapı 1,8 metredir.",
-        "Yüksek shock şansına sahiptir."
+        "Sürekli veya tekrarlanan bir atış deseni için Zeka ve yeterli mana gerekiyor.",
+        "Tek hedef performansı, patronun yakınında yavaş bir yol yerleştirmeye bağlıdır.",
+        "Ateş Etkisiyle ölçeklenme ayrı bir daldır; Yıldırım desteklerinin yangın patlamasını veya tutuşmuş toprağı iyileştirdiğini varsaymayın."
       ]
     },
     {
       "id": "mechanics",
-      "order": 20,
-      "title": "Temel mekanikler",
+      "order": 40,
+      "title": "Çekirdek mekanikler",
       "type": "mechanics",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Düşük hız küreyi boss yakınında daha uzun tutar; aşırı hız boşalma sayısını azaltabilir. Alan ve konum, hedefin menzilde kalma süresini belirler.",
-        "Fire Infusion ayrı bir yanan zemin ve ateş patlaması koludur; bilinçli biçimde ölçeklenmelidir."
+        "Ball Lightning, topun kendisi vurmadan düşmanların arasından geçer. Okları her 0.2 saniyede bir sıralanan yarıçaptaki düşmanları seçiyor, bu da gerçek hasarın yol ve hızını merkezi hale getiriyor.",
+        "Büyük bir hedef veya merminin yanında hareket eden bir hedef, birkaç atış için menzilde kalabilir. Ek mermiler kapsamanı artırır, ancak her kürenin aynı düşmanı tekrar tekrar hedef alacağını garanti etmez.",
+        "Bir Ateş İnfuzyonu tüketildiğinde, mermi zamanla yavaşlar, ateşlenmiş zemini bırakır ve dağıldıktan sonra patlar. Bu ateş paketinin kendi kritik şansı ve hasar değerleri var ve kasıtlı bir hibrit tercih olarak ele alınmalıdır."
       ],
-      "bullets": [
-        "Aynı hedef aralığı: 0,2 saniye.",
-        "Hedef yarıçapı: 1,8 metre.",
-        "Temel kritik şansı: %9."
+      "bullets": []
+    },
+    {
+      "id": "mechanics-table",
+      "order": 50,
+      "title": "Her bileşeni ölçeklendiren",
+      "type": "data-table",
+      "visible": true,
+      "toc": true,
+      "columns": [
+        "Bileşen",
+        "Faydalı yatırım",
+        "Ortak tuzak"
+      ],
+      "rows": [
+        [
+          "Yavaş mermi",
+          "Sabit bir patronun yanında daha fazla zaman geçirmek",
+          "Daha kısa erişim ve daha yavaş harita kapsamı"
+        ],
+        [
+          "Hızlı mermi",
+          "Daha iyi ekran kapsamı",
+          "Bir hedefe yakın daha az olası sürgü aralığı"
+        ],
+        [
+          "Daha fazla alan veya hedef yarıçapı",
+          "Daha kolay çoklu hedef kapsama",
+          "Kendi başına cıvata frekansını artırmaz"
+        ],
+        [
+          "Ek mermiler",
+          "Daha geniş kapsama ve daha fazla güzergah",
+          "Tek bir hedeften uzaklara yayılabilir"
+        ],
+        [
+          "Ateş İnfuzyonu",
+          "Ateşlenen zemin ve son yangın patlaması",
+          "Ateş ölçeklendirme ve güvenilir infüzyon üretimi gerektirir"
+        ]
       ]
     },
     {
       "id": "supports",
-      "order": 30,
-      "title": "Destek gemi önceliği",
+      "order": 60,
+      "title": "Destek öncelikleri",
       "type": "supports",
       "visible": true,
       "toc": true,
       "supports": [
         {
-          "label": "Considered Casting",
+          "label": "Düşünülen Oyuncu Seçimi",
           "notes": [
-            "Hız kaybını kaldırabilen self-cast düzenleri için uygundur."
-          ],
-          "priority": "situational"
-        },
-        {
-          "label": "Magnified Area",
-          "notes": ["Temizlikte konumlanma baskısını azaltır."],
-          "priority": "situational"
-        },
-        {
-          "label": "Lightning Mastery",
-          "notes": [
-            "Uyumlu yıldırım build'lerinde yetenek seviyesini artırır."
+            "Hızlı kaybı rahat kaldığında güçlü kendi kendine büyü hasarı."
           ],
           "priority": "core"
+        },
+        {
+          "label": "Büyütülmüş Alan",
+          "notes": [
+            "Her küre etrafında pratik hedef kapsamını artırır."
+          ],
+          "priority": "core"
+        },
+        {
+          "label": "Yıldırım Uyumu",
+          "notes": [
+            "Saf yıldırım versiyonunu tercih ederken diğer elementleri azaltır."
+          ],
+          "priority": "core"
+        },
+        {
+          "label": "Mermi Ivmesi",
+          "notes": [
+            "Haritalama seçeneği; Daha hızlı seyahat patron temas süresini azaltabilir."
+          ],
+          "priority": "situational"
+        },
+        {
+          "label": "Çok Atış",
+          "notes": [
+            "Kapsama ekliyor ama hız ve hasar dengeleri taşıyor ve bunların test edilmesi gerekiyor."
+          ],
+          "priority": "situational"
         }
       ]
     },
     {
-      "id": "build-use-cases",
-      "order": 40,
-      "title": "Build kullanımları",
-      "type": "build-use-cases",
+      "id": "support-compatibility",
+      "order": 70,
+      "title": "Destek uyumluluk kuralları",
+      "type": "support-compatibility",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Ballcano Blood Mage, Ball Lightning ile temizleyip shock uygular; bosslarda hasarı Volcano veya başka bir spell ile yoğunlaştırır."
+        "Yapıda gerçekten hasar veren bileşen için destekler seçin. Bir destek, yerleştirme, hız, dönüşüm veya başka bir bileşeni zayıflatırken teknik olarak uyumlu olabilir."
+      ],
+      "bullets": [
+        "Destekler değiştirdikten sonra mermi hızı, süresi ve alanı tekrar test edilsin.",
+        "Destek davranışını sadece görsel etkiden çıkarmayın.",
+        "Haritalama veya patron ihtiyaçları için tek esnek bir soket bulundurun."
+      ]
+    },
+    {
+      "id": "mapping-rotation",
+      "order": 80,
+      "title": "Dönüşüm haritalanması",
+      "type": "mapping-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Sürünün hareket çizgisi boyunca doğrudan ön kenarına değil, uygulanır. İyi açılı bir küre, karakter bir sonraki gruba geçerken boşalmaya devam edebilir.",
+        "Daha hızlı mermiler veya ek mermiler sadece kapsama darboğazı olduğunda kullanın. Normal düşmanlar zaten ölüyorsa, soketleri mana rahatlığına veya patrona özel bir bağlantıya harcay."
       ],
       "bullets": []
     },
     {
+      "id": "bossing-rotation",
+      "order": 90,
+      "title": "Boss rotasyonu",
+      "type": "bossing-rotation",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [
+        "Hedefle, mermi patronun orta hattından veya hareketi boyunca ilerleyecek şekilde hareket etmelidir. Sadece atış animasyonu mevcut olduğunda değil, hedef yarıçapından çıktıktan sonra yeniden atıyor.",
+        "Sabit bir hedefe karşı, daha yavaş mermi hızı ve kontrollü atış, daha fazla mermi ateş etmeye uygun olduğu için çılgın spam'dan daha iyi olabilir."
+      ],
+      "bullets": []
+    },
+    {
+      "id": "build-use-cases",
+      "order": 100,
+      "title": "Yapı kullanım durumları",
+      "type": "build-use-cases",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [],
+      "bullets": [
+        "Lightning, tekrarlanan darbeleri ve şoku ölçekleyen kendi kendine büyülenmiş yapılar oluşturuyor.",
+        "Bir alanda sürekli bir mermi gerektiren tetikleyici veya yardımcı sistemler.",
+        "Hibrit Ateş İnfuzyonu, patlama ve yer etkisini ayrı ayrı ölçeklendirmeye hazırlanır."
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 110,
+      "title": "Sorun Giderme",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "paragraphs": [],
+      "bullets": [],
+      "steps": [
+        {
+          "label": "Patron hasarı, haritalama hasarından daha düşüktür",
+          "action": "Mermiyi yavaşlatın veya yönlendirin ki patron 1,8 metre içinde kalsın.",
+          "result": "Maksimum mesafeden atış yapmayı bırak."
+        },
+        {
+          "label": "Yetenek çok fazla mana tüketiyor",
+          "action": "Daha az kasıtlı atış kullanın ve maliyet verimliliği ekleyin.",
+          "result": "Çarpanı amaçlanan bileşeni iyileştirmeyen bir desteği kaldırın."
+        },
+        {
+          "label": "Fire Infusion zayıf hissettiriyor",
+          "action": "Yıldırım, patlama ve ateşlenmiş zemin ölçeklendirmesini ayırın.",
+          "result": "Yapımın soketleri haklı çıkaracak kadar sık infüzyonu üretebileceğini doğrulayın."
+        }
+      ]
+    },
+    {
       "id": "common-mistakes",
-      "order": 50,
+      "order": 120,
       "title": "Yaygın hatalar",
       "type": "common-mistakes",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "Kürenin temasından hasar çıkarmayın; kendisi vurmaz. Yeterli sayıda boşalmadan hedefi geçecek kadar hız da eklemeyin."
-      ],
-      "bullets": []
+      "paragraphs": [],
+      "bullets": [
+        "Görünür kürenin düşmanlara çarptığını varsayarsak.",
+        "Bosslar için mermi hızını kayıp temas süresini kontrol etmeden üst üste yığmak.",
+        "Ek mermilerin bir hedefi otomatik olarak pompalı tüfekle yapmasını bekliyorum.",
+        "Ateş veya ateş planı olmadan Ateş İnfuzyonu kullanmak."
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
-      "title": "Sık sorulan sorular",
+      "order": 130,
+      "title": "Sıkça Sorulan Sorular",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "Küre düşmandan geçerken vurur mu?",
-          "answer": ["Hayır; hasar tekrarlanan yıldırım boşalmalarından gelir."]
+          "question": "Topun kendisi mi çarpıyor?",
+          "answer": [
+            "Hayır. Yakındaki şimşekler ise yıldırım darbeleridir."
+          ]
         },
         {
-          "question": "Fire Infusion neden kullanılır?",
+          "question": "Daha yavaş mermi hızı her zaman daha mı iyidir?",
           "answer": [
-            "Yanan zemin ve son patlama ekler; Infusion üreten ve ölçekleyen hibrit build'lerde kullanışlıdır."
+            "Hayır. Bu, sabit tek hedeflere yardımcı olur ancak haritalama ve hedef edinimini daha da kötüleştirebilir."
+          ]
+        },
+        {
+          "question": "Bir düşman tekrar tekrar vurulabilir mi?",
+          "answer": [
+            "Evet, birden fazla 0,2 saniyelik aralıklarla sürgü hedefleme yarıçapı içinde kalırken."
+          ]
+        },
+        {
+          "question": "Alan sürgü sıklığını artırır mı?",
+          "answer": [
+            "Hayır. Kapsamayı artırır; Listelenen aralık aynı kalır."
+          ]
+        },
+        {
+          "question": "Her yapı Fire Infusion kullanmalı mı?",
+          "answer": [
+            "Sadece onu üretebilen ve ek ateş paketini ölçekleyebilen, çekirdek yıldırım planını zayıflatmadan ölçekleyebilen yapılar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "order": 135,
+      "title": "Video guide",
+      "type": "video",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "creator": "PoE2 Ball Lightning Guide",
+          "label": "Ball Lightning — orb frequency, fire infusion and shock (PoE2 0.5)",
+          "description": "Guide covering Ball Lightning cast cadence, fire-infusion setups, and shock application.",
+          "takeaway": "Watch the orb frequency and shock procs.",
+          "url": "https://youtu.be/cFqT8xaKJ8c",
+          "timestamps": [
+            {
+              "label": "Skill overview",
+              "time": "0:00"
+            },
+            {
+              "label": "Core mechanics",
+              "time": "2:00"
+            },
+            {
+              "label": "Mapping and boss rotation",
+              "time": "5:00"
+            }
           ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
+      "order": 140,
       "title": "Kaynaklar ve doğrulama",
       "type": "sources",
       "visible": true,
       "toc": true,
       "categories": [
         {
-          "label": "Güncel kaynaklar ve çapraz doğrulama",
-          "description": "Bilgiler resmî yama notları, güncel veri tabanları ve listelenen topluluk kaynaklarıyla karşılaştırıldı.",
+          "label": "Yetenek veritabanı",
+          "description": "Mevcut mermi, cıma, şok ve Ateş İnfuzyon davranışı.",
           "url": "https://poe2db.tw/us/Ball_Lightning"
         }
       ],
@@ -179,24 +425,54 @@
         "method": "tool",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "Mekanikler ve yama kapsamı resmî kaynaklar, güncel veri tabanları ve topluluk rehberleriyle doğrulandı; doğrudan PC testleri ayrı kaydedilir ve yapılmamış testler yapılmış gibi sunulmaz."
+          "Yayınlanan mekanikler, bağlantılı güncel sürüm veritabanı, resmi yama geçmişi ve adlandırılmış topluluk referansıyla karşılaştırıldı. Kesin performans karakter ekipmanlarına, harita değiştiricilerine ve oyuncu uygulamasına bağlı."
         ]
       }
+    },
+    {
+      "id": "changelog",
+      "order": 150,
+      "title": "Revizyon geçmişi",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "Yetenek sayfasını mevcut mekanik özellikler, bileşen ölçeklendirme, rotasyonlar, uyumluluk kuralları ve belirti tabanlı sorun giderme ile genişletti."
+          ]
+        }
+      ]
     }
   ],
-  "relatedBuildIds": ["ball-lightning-volcano-blood-mage", "crit-blood-mage"],
+  "relatedBuildIds": [
+    "ball-lightning-volcano-blood-mage",
+    "crit-blood-mage"
+  ],
   "relatedBossIds": [],
-  "relatedGuideIds": ["ailments-thresholds-charms-immunity"],
-  "relatedItemIds": ["sire-of-shards"],
-  "relatedPatchIds": ["patch-0-5-0-return-of-the-ancients"],
-  "relatedSkillIds": ["spark", "comet"],
+  "relatedGuideIds": [
+    "ailments-thresholds-charms-immunity"
+  ],
+  "relatedItemIds": [
+    "sire-of-shards"
+  ],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
+  "relatedSkillIds": [
+    "spark",
+    "comet"
+  ],
   "translation": {
     "sourceLocale": "en",
     "sourceContentId": "ball-lightning",
-    "sourceRevision": "ball-lightning-2026-08-10-02",
+    "sourceRevision": "ball-lightning-2026-08-11-03",
     "translationStatus": "reviewed",
-    "translatedAt": "2026-08-10",
-    "translator": "codex-gpt5-local-review",
+    "translatedAt": "2026-08-11",
+    "reviewedAt": "2026-08-11",
+    "translator": "bing-translator-codex-editorial-review",
+    "reviewer": "Exile2 Guides Automated QA",
     "translationRisk": "low"
   }
 }
