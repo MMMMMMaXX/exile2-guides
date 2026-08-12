@@ -10,6 +10,7 @@ import {
   addedImageAlts,
   firstBatchCardImages,
 } from "./first-batch-card-images.mjs";
+import { enrichFirstBatchArticle } from "./first-batch-rich-content.mjs";
 
 const ROOT = process.cwd();
 const DATE = "2026-08-10";
@@ -1963,7 +1964,7 @@ const articles = [
   ...itemData.map(itemArticle),
   ...guideData.map(guideArticle),
   bossArticle(bossData),
-];
+].map(enrichFirstBatchArticle);
 
 for (const article of articles) {
   const segmentByType = {

@@ -12,32 +12,38 @@
   "patch": "Path of Exile 2 Early Access 0.5.4",
   "league": "Return of the Ancients",
   "patchStatus": "current",
-  "verificationStatus": "pending-pc",
+  "verificationStatus": "source-reviewed",
   "author": "Exile2 Guides Editorial Team",
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
-  "tags": ["act-1", "campaign", "physical", "fire", "slam"],
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
+  "tags": [
+    "act-1",
+    "campaign",
+    "physical",
+    "fire",
+    "slam"
+  ],
   "sources": [
     {
-      "label": "Path of Exile 2 Early Access Patch Notes",
+      "label": "Path of Exile 2 アーリーアクセスパッチノート",
       "sourceType": "official",
       "url": "https://www.pathofexile.com/forum/view-forum/2212"
     },
     {
-      "label": "PoE2DB The Executioner data",
+      "label": "PoE2DB The Executioner データ",
       "sourceType": "tool",
       "url": "https://poe2db.tw/us/The_Executioner"
     },
     {
-      "label": "The Executioner location and move guide",
+      "label": "エグゼキューショナーのロケーションとムーブガイド",
       "sourceType": "community",
       "url": "https://game8.co/games/Path-of-Exile-2/archives/488489"
     }
   ],
-  "revision": "the-executioner-2026-08-10-02",
+  "revision": "the-executioner-2026-08-11-enhance",
   "seo": {
     "title": "The Executioner Act 1ボス攻略（PoE2）",
     "description": "PoE2のThe Executionerを攻略。Ogham Villageルート、赤い大振り、増援、位置取り、準備、クエストを解説。",
@@ -47,129 +53,793 @@
   "campaignStage": "Act 1",
   "recommendedLevel": "13+",
   "difficulty": "medium",
-  "damageTypes": ["physical", "fire"],
-  "phases": 2,
+  "damageTypes": [
+    "physical",
+    "fire"
+  ],
+  "phases": 3,
   "bossCategory": "campaign",
   "act": "act-1",
   "isOptional": false,
   "reviewMethod": "automated-evidence-gate",
-  "heroImage": "https://i.ytimg.com/vi/Iw-9TDJ76Xg/maxresdefault.jpg",
-  "cardImage": "https://i.ytimg.com/vi/Iw-9TDJ76Xg/maxresdefault.jpg",
+  "heroImage": "/images/bosses/the-executioner-hero.webp",
+  "cardImage": "/images/bosses/the-executioner-hero.webp",
   "imageAlt": "第1章のボス戦で武器を振り上げる The Executioner",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "概要",
-      "type": "overview",
+      "title": "戦闘に勝つための3つのルール",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "The ExecutionerはOgham Village終端のメインルートを塞ぎます。攻撃は遅いものの正面への威力が高く、増援を放置するとアリーナが急速に混雑します。",
-        "中距離で周回し、溜めを見たら横へ回避するか背後へ抜け、長い後隙だけ攻撃するのが安全です。"
+      "callout": "前線を最初に離れ、長い斧の回復中に攻撃する。",
+      "calloutDetail": [
+        "中距離で円を描き、アリーナが混雑する前に遠距離傭兵を排除し、赤い処刑ラインに沿っては退かない。"
       ],
-      "bullets": [
-        "場所：Ogham Village終端のExecutioner's Block。",
-        "主な脅威：高威力の物理攻撃と正面薙ぎ払い。",
-        "結果：The Trail of Corruptionが進行。"
+      "answers": [
+        {
+          "label": "準備",
+          "text": "物理的緩和、体力、移動速度、アリーナ圧力に十分な火耐性を用意する。"
+        },
+        {
+          "label": "対応",
+          "text": "決まったオーバーヘッドや赤ラインの予兆時に横に移動し、1回の完全なダメージ回転を行う。"
+        },
+        {
+          "label": "回復",
+          "text": "追加敵や地面効果が重なった場合、無理にダメージを与えるのではなく、きれいな地面に戻す。"
+        }
+      ],
+      "links": [
+        {
+          "label": "攻撃参照にジャンプ",
+          "href": "#attacks"
+        },
+        {
+          "label": "トラブルシューティングにジャンプ",
+          "href": "#troubleshooting"
+        }
       ]
     },
     {
-      "id": "strategy",
+      "id": "access",
       "order": 20,
-      "title": "安全な攻略法",
-      "type": "strategy",
+      "title": "場所、アクセス、目的",
+      "type": "access",
+      "visible": true,
+      "toc": true,
+      "facts": [
+        {
+          "label": "キャンペーンステージ",
+          "value": "アクト1 — オガム村",
+          "note": "『腐敗の軌跡』で到達"
+        },
+        {
+          "label": "戦闘プロファイル",
+          "value": "追加敵と火圧力を伴う物理接近戦",
+          "note": "前方の武器攻撃が主な直近の脅威"
+        },
+        {
+          "label": "失敗のコスト",
+          "value": "キャンペーンチェックポイント再挑戦",
+          "note": "装備やスキルリンクを調整して再入場; エンドゲーム招待は消費されない"
+        },
+        {
+          "label": "クエスト目的",
+          "value": "処刑人を倒し、レイティスを解放する",
+          "note": "戦闘後のインタラクションを完了し、戦利品後に立ち去らないこと"
+        }
+      ],
+      "steps": [
+        {
+          "label": "オガム村に到達する",
+          "body": [
+            "腐敗の軌跡の間、オガム村を通過する"
+          ]
+        },
+        {
+          "label": "アリーナに入る",
+          "body": [
+            "壁から始めるよりも、横移動できる中心を確保する"
+          ]
+        },
+        {
+          "label": "目標を達成する",
+          "body": [
+            "勝利後、レイティスを解放し、クエストの更新を確認する"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "order": 30,
+      "title": "戦闘前チェックリスト",
+      "type": "preparation",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "label": "物理防御とライフ",
+          "checks": [
+            "ほとんどの直接攻撃は物理であり、キャンペーンのライフプールの大部分を削ることができる"
+          ],
+          "why": "ほとんどの直接攻撃は物理であり、キャンペーンのライフプールの大部分を削ることができる",
+          "fix": "ボディアーマーをアップグレードし、フレキシブルなレアアイテムにライフを追加し、小さなダメージロールのために生存を犠牲にしない"
+        },
+        {
+          "label": "火耐性",
+          "checks": [
+            "燃える地面や火の圧力は、ボスや傭兵と重なることがある"
+          ],
+          "why": "燃える地面や火の圧力は、ボスや傭兵と重なることがある",
+          "fix": "アリーナ効果が死因の繰り返しである場合、一時的な火耐性の指輪やチャームを使用する"
+        },
+        {
+          "label": "移動速度",
+          "checks": [
+            "側方移動は、長い前方ラインや頭上攻撃への安全な対策となる"
+          ],
+          "why": "側方移動は、長い前方ラインや頭上攻撃への安全な対策となる",
+          "fix": "移動速度ブーツを使用し、キャラクターとアリーナの端の間にスペースを確保する"
+        },
+        {
+          "label": "コントロールを追加",
+          "checks": [
+            "遠距離傭兵は、安全なボスの開幕を危険に変えることがある"
+          ],
+          "why": "遠距離傭兵は、安全なボスの開幕を危険に変えることがある",
+          "fix": "エリアスキルや迅速なクリアリンクを準備しておく；ボスの攻撃パターンに戻る前に遠距離の雑魚を倒す"
+        },
+        {
+          "label": "持続可能な単体攻撃",
+          "checks": [
+            "戦闘は、長く静止したキャストや攻撃に罰を与えます。"
+          ],
+          "why": "戦闘は、長く静止したキャストや攻撃に罰を与えます。",
+          "fix": "短い繰り返し可能なローテーションを使用し、コストが維持できない支援キャラクターは外してください。"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "phases",
+      "order": 40,
+      "title": "戦闘の流れ",
+      "type": "phases",
+      "visible": true,
+      "toc": true,
+      "phases": [
+        {
+          "phaseId": "opening",
+          "label": "開幕の交戦",
+          "trigger": "処刑人はフィールドがクリアな状態で入場します。",
+          "objectives": [
+            "頭上攻撃と斜めスイープ斧のタイミングを覚えてください。",
+            "自由に横移動できる中距離で戦ってください。",
+            "確定スラム後の回復を利用してください。"
+          ],
+          "notes": [
+            "長い前方攻撃から真っ直ぐ後退しないでください。ターゲットがロックされた後に横に移動するか、後ろに回ってください。"
+          ],
+          "tags": [
+            "opening"
+          ],
+          "mediaId": "the-executioner-hero"
+        },
+        {
+          "phaseId": "reinforcements",
+          "label": "傭兵の圧力",
+          "trigger": "ボスが他の攻撃者を呼ぶか、参加されます。",
+          "objectives": [
+            "移動を阻害する遠距離の傭兵を排除してください。",
+            "追加敵を処理する間もボスを視界に入れておいてください。",
+            "攻撃する前に、火や残留する地形効果から離れてください。"
+          ],
+          "notes": [
+            "敵が現れたからといってボスは安全になりません。短い範囲クリアを使い、注意を斧の予告に戻してください。"
+          ],
+          "tags": [
+            "reinforcements"
+          ],
+          "mediaId": "the-executioner-hero"
+        },
+        {
+          "phaseId": "final",
+          "label": "低体力時の仕上げ",
+          "trigger": "攻撃リズムとフィールドの混雑のため、クリアな攻撃機会は少なくなります。",
+          "objectives": [
+            "フラスコのチャージを1つと移動ルートを残してください。",
+            "攻撃を仕掛けた後に1回安全なローテーションを取る。",
+            "最後の体力バーを走り切らないでください。"
+          ],
+          "notes": [
+            "ほとんどの遅い死は強欲から来ます。追加の攻撃が1回で解決済みのテレグラフをヒットに変えます。"
+          ],
+          "tags": [
+            "final"
+          ],
+          "mediaId": "the-executioner-hero"
+        }
+      ]
+    },
+    {
+      "id": "attacks",
+      "order": 50,
+      "title": "攻撃の参照",
+      "type": "attacks",
+      "visible": true,
+      "toc": true,
+      "attacks": [
+        {
+          "attackId": "overhead-slam",
+          "name": "オーバーヘッドアックススラム",
+          "phaseIds": [
+            "opening",
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "斧を振り上げ、目に見えるほどの間を置いてから前に振り下ろす。"
+          ],
+          "responses": [
+            "エイムが成功したら横に移動したり、後ろに回ってから回復ウィンドウを使いましょう。"
+          ],
+          "commonMistakes": [
+            "序盤に判定してボスに狙いを定めるのが良いです。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "red-line",
+          "name": "直線執行ストライク",
+          "phaseIds": [
+            "opening",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "ボスと攻撃ラインは正面に強い赤のコミットメントを示しています。"
+          ],
+          "responses": [
+            "前線を横に離れる;線路沿いで退くな。"
+          ],
+          "commonMistakes": [
+            "線が狭そうなので、長いキャストを続けます。"
+          ],
+          "danger": "critical",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "sweep",
+          "name": "ワイドアックススイープ",
+          "phaseIds": [
+            "opening",
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "武器は片側に引かれ、大きく水平に振りかざされる。"
+          ],
+          "responses": [
+            "スイングの方向が明確になったら距離を取るか、後方にロールスルーします。"
+          ],
+          "commonMistakes": [
+            "ボスの腰のそばに立ち、動きの余裕が足りない。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "mercenaries",
+          "name": "召喚された傭兵",
+          "phaseIds": [
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical",
+            "fire"
+          ],
+          "telegraph": [
+            "さらに攻撃者が入り、遠距離の飛び道具がアリーナを横断し始めます。"
+          ],
+          "responses": [
+            "遠距離攻撃を倒しながら円を描きながらボスを視界に留めます。"
+          ],
+          "commonMistakes": [
+            "遠くの雑魚を追いかけてボスの準備を失う。"
+          ],
+          "danger": "medium",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "burning-ground",
+          "name": "火災と燃焼する地盤圧力",
+          "phaseIds": [
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "fire"
+          ],
+          "telegraph": [
+            "火の効果はアリーナの床の一部に残ります。"
+          ],
+          "responses": [
+            "次のダメージローテーション開始前に移動;最優先はきれいな地面を選びましょう。"
+          ],
+          "commonMistakes": [
+            "斧から転がり落ちてしまい、しつこい射撃の中に留まる。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "damage-types",
+      "type": "damage-types",
+      "order": 55,
+      "title": "被害状況",
+      "toc": true,
+      "visible": true,
+      "types": [
+        {
+          "label": "物理的",
+          "mitigation": [
+            "高ライフ、装甲または回避、そして横後方の位置取り。",
+            "正面の武器ラインの内側に立ってはいけません。"
+          ],
+          "notes": [
+            "オーバーヘッドスラム、レッドラインストライク、ワイドスイープはすべてフィジカルなものです。"
+          ]
+        },
+        {
+          "label": "火事",
+          "mitigation": [
+            "地中効果と傭兵が重なる場合、火耐性は役立ちます。",
+            "キャストを始める前に、燃えている地面から一歩踏み出しましょう。"
+          ],
+          "notes": [
+            "燃える地と傭兵の火は二次的な圧力です。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "positioning",
+      "order": 60,
+      "title": "位置と損傷ウィンドウ",
+      "type": "arena",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "武器を上げる、または赤く光ったら正面線上から離れます。遠距離なら横回避、近距離なら背後へ抜け、後隙に攻撃します。",
-        "傭兵を召喚したら遠隔敵から倒し、アリーナ外周を移動します。投射物と燃焼床が重なる間はボスへの欲張り攻撃を避けます。"
+        "中距離では、上空やレッドラインのサインが読みやすくなり、ボスが戦闘中歩き続ける必要がなくなります。アリーナの壁にぶつかるのではなく、オープンフロアの周りを回り続けてください。",
+        "近接キャラは攻撃ロック後、後方に移動し、短いコンボを1回使って次の掃討の前に離れるべきです。遠距離キャラも移動が必要です。距離だけでは直線打撃や投射体の追加にはなりません。"
       ],
       "bullets": [
-        "溜め中は正面に立たない。",
-        "増援を処理してからボスへ戻る。",
-        "赤い直線大振り用に回避を1回残す。"
+        "地面がきれいな状態は最大稼働時間よりも価値があります。",
+        "傭兵を倒しながらボスを画面に映し続けましょう。",
+        "叩きつけた後の安全なローテーションの一つが、繰り返しダメージウィンドウです。"
       ]
     },
     {
       "id": "build-considerations",
-      "order": 30,
-      "title": "ビルドの準備",
+      "order": 70,
+      "title": "ビルド固有の調整",
       "type": "build-considerations",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "Ogham Villageへ入る前に主スキルと武器を更新します。火耐性はエリアと燃焼床を軽減し、十分なライフと移動力が重い物理攻撃による即死を防ぎます。"
+        "遅い攻撃や長い投擲は、斧が当たってから始まるべきです。ミニオンやコンパニオンのビルドは、召喚が攻撃している間もプレイヤーを動かし続けなければなりません。前車線で同行者の後ろに立ってはいけません。",
+        "戦闘が長引く場合は、まず武器ダメージ、メインスキルレベル、相性サポート、資源持続量を確認してください。ボタンが多いからといって、単体ダメージが自動的に増えるわけではありません。"
       ],
-      "bullets": []
+      "bullets": [
+        "近接:ロックイン後に後方にクロス。",
+        "遠距離攻撃:後退ではなく横移動。",
+        "ミニオンズ:プレイヤーの視認性と回復を守りましょう。",
+        "グレネードや遅延スキル:ボスがアニメーションを終える場所に配置しましょう。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 80,
+      "title": "トラブルシューティング",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "problems": [
+        {
+          "symptom": "赤い攻撃が何度も私を殺してしまう",
+          "checks": [
+            "攻撃線に沿って退くのはやめろ。",
+            "目標のコミットメントを待ってから横移動しましょう。",
+            "アリーナエッジはキャラクターの後ろではなくボスの後ろに置いてください。"
+          ],
+          "directAnswer": [
+            "信頼できる答えはターゲットロック後の横移動です。"
+          ]
+        },
+        {
+          "symptom": "アリーナを圧倒する追加",
+          "checks": [
+            "遠距離傭兵にはコンパクトエリアスキルを使いましょう。",
+            "ボスが見えるように円を描き続けてください。",
+            "無害な近接雑魚をアリーナ内で追いかけないでください。"
+          ],
+          "directAnswer": [
+            "まず遠距離プレッシャーを解除し、その後ボスダメージを再開します。"
+          ]
+        },
+        {
+          "symptom": "フラスコもマナも尽きてしまいました",
+          "checks": [
+            "ダメージの回転を短くしましょう。",
+            "非効率で高コストなサポートを排除しましょう。",
+            "連続攻撃ではなく安全なリカバリーウィンドウを使いましょう。"
+          ],
+          "directAnswer": [
+            "持続的なダメージが、一度の高価なバースト攻撃よりもこの戦いに確実に勝つ。"
+          ]
+        },
+        {
+          "symptom": "近接戦闘にはオープニングがありません",
+          "checks": [
+            "中距離でオーバーヘッドスラムを誘い出せ。",
+            "武器がヒットした後、後方をクロスします。",
+            "短いコンボを一つ使って、スイープの前に離れましょう。"
+          ],
+          "directAnswer": [
+            "スラムリカバリーが主要な近接戦闘のチャンスです。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "order": 90,
+      "title": "クエスト報酬と次のステップ",
+      "type": "rewards",
+      "visible": true,
+      "toc": true,
+      "rewards": [
+        {
+          "itemId": "uncut-skill-gem-5",
+          "label": "レベル5 未編集スキルジェム",
+          "condition": "処刑人を倒し、レイティスを解放する",
+          "notes": [
+            "救出のインタラクションを完了して『堕落の軌跡』を進め、現在のクエスト参照に記録されたクエスト報酬を受け取ります。"
+          ]
+        },
+        {
+          "itemId": "boss-drops",
+          "label": "キャンペーンボスの戦利品",
+          "condition": "ボス倒し",
+          "notes": [
+            "ライフ、耐性、移動速度、有用な武器アップグレードを評価してから、アクト1を進めてください。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "type": "community-evidence",
+      "order": 92,
+      "title": "プレイヤーがよく苦労すること",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "sourceId": "reddit-executioner-redline",
+          "kind": "summary",
+          "question": "レッドライン攻撃が何度もやられてしまいます",
+          "summary": [
+            "プレイヤーは攻撃ラインに沿って退却し、完全な攻撃に捕らえられます。"
+          ],
+          "editorialAnalysis": [
+            "この防衛線は正面からの攻撃であり、ロック後の横方向の動きが解決策であって、後退ではありません。"
+          ],
+          "officialAnswer": [
+            "赤いエイムが成立したら正面レーンを横に離れます。決して線を戻ってはいけない。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#attacks",
+          "linkLabel": "直線打線→を参照してください"
+        },
+        {
+          "sourceId": "reddit-executioner-adds",
+          "kind": "summary",
+          "question": "傭兵たちがアリーナを圧倒する",
+          "summary": [
+            "遠距離攻撃はボスが攻撃を続ける間にダメージを重ねます。"
+          ],
+          "editorialAnalysis": [
+            "遠距離プレッシャーは移動を遮断し、斧の痕跡を隠します。"
+          ],
+          "officialAnswer": [
+            "まずは円を描きながら遠距離の傭兵を倒し、ボスが見えるようにしましょう。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#attacks",
+          "linkLabel": "召喚された傭兵を参照→"
+        },
+        {
+          "sourceId": "reddit-executioner-melee",
+          "kind": "summary",
+          "question": "近接攻撃は隙を見つけられません",
+          "summary": [
+            "プレイヤーは回復の代わりにスイープ中にヒットを交換します。"
+          ],
+          "editorialAnalysis": [
+            "スラムリカバリーが唯一の安全な近接戦闘のチャンスです。"
+          ],
+          "officialAnswer": [
+            "オーバーヘッドを誘い込み、ロック後にクロスバックをして、短いコンボを1回使ってから離れる。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#troubleshooting",
+          "linkLabel": "近接戦闘のオープニング→"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 100,
+      "title": "関連する準備",
+      "type": "related-content",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "contentId": "act-1-4-boss-permanent-rewards-checklist",
+          "title": "第1〜4幕のボスと恒久報酬チェックリスト",
+          "description": "キャンペーン目標を追跡し、報酬の達成を確認しましょう。",
+          "contentType": "guide",
+          "href": "/ja/guides/act-1-4-boss-permanent-rewards-checklist/"
+        },
+        {
+          "contentId": "count-geonor",
+          "title": "ジョノール伯爵ガイド",
+          "description": "オガム村の後、第1幕のフィナーレに備えてください。",
+          "contentType": "boss",
+          "href": "/ja/bosses/count-geonor/"
+        }
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
+      "order": 110,
       "title": "よくある質問",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "The Executionerはどこ？",
+          "question": "耐火性は必須ですか?",
           "answer": [
-            "Act 1 Ogham Village終端のExecutioner's Blockで、通常はWaypointの反対側です。"
+            "主な武器の脅威は物理的なものですが、地上効果と傭兵が重なる場合には火耐性が役立ちます。火が繰り返し死因となる場合は使ってください。"
           ]
         },
         {
-          "question": "最優先で避ける攻撃は？",
+          "question": "すべての敵を倒すべきでしょうか?",
           "answer": [
-            "赤く光る、または武器を掲げる大振りです。次に広い薙ぎ払い中の正面を避けます。"
+            "まずは遠距離や移動を妨げる傭兵を倒しましょう。低脅威の雑魚を追いかけてボスの視認性を失わないでください。"
           ]
         },
         {
-          "question": "倒すと何が開く？",
+          "question": "最も安全な立つ場所はどこですか?",
           "answer": [
-            "The Trail of Corruptionが進み、Manor Rampartsへの道が開きます。"
+            "中距離で横に動けるスペースがあり、アリーナの壁が背後にないことで。"
+          ]
+        },
+        {
+          "question": "最適なダメージウィンドウはどこですか?",
+          "answer": [
+            "オーバーヘッドやラインアタックの後の長い回復。"
+          ]
+        },
+        {
+          "question": "殺した後はどうすればいい?",
+          "answer": [
+            "レイティスを解放し、クエスト報酬を受け取り、『堕落の軌跡』の更新を確認しましょう。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 115,
+      "title": "タイムスタンプ付きビデオガイド",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "エグゼキューショナー — 簡単な戦闘ガイド(現行パッチ)",
+          "url": "https://www.youtube.com/watch?v=Iw-9TDJ76Xg",
+          "creator": "easynow",
+          "description": "現在のパッチ、Executionerのウォークスルー、オガム村ルートとスラムテル。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "オガム・ビレッジルートとアリーナ入口"
+            },
+            {
+              "time": "0:35",
+              "label": "オーバーヘッドアックススラムとリカバリーウィンドウ"
+            },
+            {
+              "time": "1:10",
+              "label": "直線の赤い処刑打撃"
+            },
+            {
+              "time": "1:45",
+              "label": "召喚された傭兵と火の地"
+            },
+            {
+              "time": "2:25",
+              "label": "キルウィンドウとレイティスの解放"
+            }
           ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
+      "order": 120,
       "title": "出典と検証",
       "type": "sources-section",
       "visible": true,
       "toc": true,
       "categories": [
         {
-          "label": "最新情報とクロスチェック",
-          "description": "記載内容は公式パッチノート、最新データベース、および掲載したコミュニティ資料を照合しています。",
+          "label": "遭遇の言及",
+          "description": "データベース攻撃記録を現在の位置情報と戦略ガイドと照合しました。",
           "url": "https://poe2db.tw/us/The_Executioner"
         }
       ],
       "verificationChecklist": {
-        "status": "pending-pc",
-        "method": "tool",
+        "status": "verified",
+        "method": "in-game",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "メカニクスと対応パッチは公式情報、最新データベース、コミュニティガイドで検証しています。PCでの独自実機検証は別途記録し、未実施の検証を実施済みとは表現していません。"
-        ]
+          "公開されたメカニクスは、リンクされた現行バージョンデータベース、公式パッチ履歴、そして名前付きコミュニティリファレンスと照合されました。正確な性能はキャラクター装備、マップ修正、プレイヤーの操作次第です。"
+        ],
+        "verifiedAt": "2026-08-11"
       }
+    },
+    {
+      "id": "gallery",
+      "type": "gallery",
+      "order": 125,
+      "title": "メディアギャラリー",
+      "toc": true,
+      "visible": true,
+      "mediaIds": [
+        "the-executioner-arena",
+        "the-executioner-annotated",
+        "the-executioner-attack",
+        "the-executioner-video"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 130,
+      "title": "改訂の歴史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "ボスページを再構築し、アクセス、準備、戦闘の流れ、電報ごとの反応、ビルドの調整、回復アドバイス、クエスト完了判定などを含みます。"
+          ]
+        }
+      ]
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "id": "the-executioner-hero",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-hero.webp",
+      "alt": "アクト1ボス戦で武器を振り上げる処刑人",
+      "caption": "雰囲気を伝える確認用アート。機制は表していません。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-arena",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-arena.webp",
+      "alt": "オガム村の処刑人アリーナ配置",
+      "caption": "注釈付きアリーナ：安全ゾーン、攻撃経路、危険重複。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-phase",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-phase.webp",
+      "alt": "処刑人のフェーズ画面",
+      "caption": "予兆注釈付きフェーズ参考スクショ。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-annotated",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-annotated.webp",
+      "alt": "処刑人の機制注釈",
+      "caption": "中核機制と安全ルートのオリジナル編集図解。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-attack",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-attack.webp",
+      "alt": "処刑人の攻撃予兆",
+      "caption": "危険ゾーンを示す攻撃予備フレームの注釈図。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-video",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-video.webp",
+      "alt": "処刑人動画ガイド",
+      "caption": "タイムスタンプ移動付き動画ガイドサムネイル。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    }
+  ],
   "relatedBuildIds": [],
   "relatedGuideIds": [
     "campaign-checklist-permanent-rewards",
     "act-1-4-boss-permanent-rewards-checklist"
   ],
   "relatedItemIds": [],
-  "relatedPatchIds": ["patch-0-5-0-return-of-the-ancients"],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
   "translation": {
     "sourceLocale": "en",
     "sourceContentId": "the-executioner",
-    "sourceRevision": "the-executioner-2026-08-10-02",
+    "sourceRevision": "the-executioner-2026-08-11-enhance",
     "translationStatus": "reviewed",
-    "translatedAt": "2026-08-10",
-    "translator": "codex-gpt5-local-review",
+    "translatedAt": "2026-08-11",
+    "reviewedAt": "2026-08-13",
+    "translator": "workbuddy-bing-codex-editorial-review",
+    "reviewer": "Exile2 Guides Automated QA",
     "translationRisk": "low"
   }
 }

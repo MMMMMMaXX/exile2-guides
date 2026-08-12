@@ -12,32 +12,38 @@
   "patch": "Path of Exile 2 Early Access 0.5.4",
   "league": "Return of the Ancients",
   "patchStatus": "current",
-  "verificationStatus": "pending-pc",
+  "verificationStatus": "source-reviewed",
   "author": "Exile2 Guides Editorial Team",
   "reviewer": "Exile2 Guides Automated QA",
   "createdAt": "2026-08-10",
   "publishedAt": "2026-08-10",
-  "updatedAt": "2026-08-10",
-  "lastVerifiedAt": "2026-08-10",
-  "tags": ["act-1", "campaign", "physical", "fire", "slam"],
+  "updatedAt": "2026-08-11",
+  "lastVerifiedAt": "2026-08-11",
+  "tags": [
+    "act-1",
+    "campaign",
+    "physical",
+    "fire",
+    "slam"
+  ],
   "sources": [
     {
-      "label": "Path of Exile 2 Early Access Patch Notes",
+      "label": "《流亡黯道2》抢先体验补丁说明",
       "sourceType": "official",
       "url": "https://www.pathofexile.com/forum/view-forum/2212"
     },
     {
-      "label": "PoE2DB The Executioner data",
+      "label": "PoE2DB 执行者数据",
       "sourceType": "tool",
       "url": "https://poe2db.tw/us/The_Executioner"
     },
     {
-      "label": "The Executioner location and move guide",
+      "label": "刽子手位置与动作指南",
       "sourceType": "community",
       "url": "https://game8.co/games/Path-of-Exile-2/archives/488489"
     }
   ],
-  "revision": "the-executioner-2026-08-10-02",
+  "revision": "the-executioner-2026-08-11-enhance",
   "seo": {
     "title": "The Executioner 第一幕 Boss 攻略（PoE2）",
     "description": "击败 PoE2 第一幕 The Executioner：Ogham Village 路线、红光重击、援军、站位、准备和任务推进。",
@@ -47,127 +53,793 @@
   "campaignStage": "Act 1",
   "recommendedLevel": "13+",
   "difficulty": "medium",
-  "damageTypes": ["physical", "fire"],
-  "phases": 2,
+  "damageTypes": [
+    "physical",
+    "fire"
+  ],
+  "phases": 3,
   "bossCategory": "campaign",
   "act": "act-1",
   "isOptional": false,
   "reviewMethod": "automated-evidence-gate",
-  "heroImage": "https://i.ytimg.com/vi/Iw-9TDJ76Xg/maxresdefault.jpg",
-  "cardImage": "https://i.ytimg.com/vi/Iw-9TDJ76Xg/maxresdefault.jpg",
-  "imageAlt": "第一幕 Boss 战中举起武器的 The Executioner",
+  "heroImage": "/images/bosses/the-executioner-hero.webp",
+  "cardImage": "/images/bosses/the-executioner-hero.webp",
+  "imageAlt": "处刑者在 Act 1 Boss 战中举起武器",
   "sections": [
     {
-      "id": "overview",
+      "id": "quick-answer",
       "order": 10,
-      "title": "概览",
-      "type": "overview",
+      "title": "三条获胜战斗的规则",
+      "type": "quick-answer",
       "visible": true,
       "toc": true,
-      "paragraphs": [
-        "The Executioner 挡在第一幕 Ogham Village 主线路径上。攻击缓慢，但正面命中惩罚很重；援军若不处理，场地会迅速失控。",
-        "安全打法是在中距离绕圈，Boss 明确蓄力后横向翻滚或穿到身后，并在回收动作期间输出。"
+      "callout": "先离开正面攻击范围；在长斧恢复期间攻击。",
+      "calloutDetail": [
+        "在中等范围内绕圈，在竞技场变得拥挤前清除远程佣兵，不要沿红色处决线撤退。"
       ],
-      "bullets": [
-        "位置：Ogham Village 尽头的 Executioner's Block。",
-        "主要威胁：物理重击和正面横扫。",
-        "结果：推进 The Trail of Corruption。"
+      "answers": [
+        {
+          "label": "准备",
+          "text": "带上物理减伤、生命、移动速度以及足够的火焰抗性以应对竞技场压力。"
+        },
+        {
+          "label": "反应",
+          "text": "在确认的高举攻击或红线信号时横向移动，然后使用完整的一轮伤害循环。"
+        },
+        {
+          "label": "恢复",
+          "text": "如果增援和地面效果重叠，重置到干净地面，而不是强行输出伤害。"
+        }
+      ],
+      "links": [
+        {
+          "label": "跳转到攻击参考",
+          "href": "#attacks"
+        },
+        {
+          "label": "跳转到故障排除",
+          "href": "#troubleshooting"
+        }
       ]
     },
     {
-      "id": "strategy",
+      "id": "access",
       "order": 20,
-      "title": "安全打法",
-      "type": "strategy",
+      "title": "位置、入口和目标",
+      "type": "access",
+      "visible": true,
+      "toc": true,
+      "facts": [
+        {
+          "label": "战役阶段",
+          "value": "第一幕 — 奥甘村",
+          "note": "在“腐化之路”过程中到达。"
+        },
+        {
+          "label": "战斗配置",
+          "value": "带增援和火焰压力的物理近战",
+          "note": "正面武器攻击是主要的直接威胁。"
+        },
+        {
+          "label": "失败成本",
+          "value": "战役检查点重试",
+          "note": "调整装备或技能链接后重新进入；不消耗任何终局邀请。"
+        },
+        {
+          "label": "任务目标",
+          "value": "击败刽子手并解救莱提斯",
+          "note": "完成战斗后的互动，而不是战利品后离开。"
+        }
+      ],
+      "steps": [
+        {
+          "label": "到达奥甘村",
+          "body": [
+            "在腐化之 trail 任务期间穿越奥甘村。"
+          ]
+        },
+        {
+          "label": "进入竞技场",
+          "body": [
+            "保持中心区域便于横向移动，而不是从墙边开始。"
+          ]
+        },
+        {
+          "label": "完成目标",
+          "body": [
+            "胜利后，释放莱蒂斯并确认任务更新。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "order": 30,
+      "title": "战前检查清单",
+      "type": "preparation",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "label": "物理减伤与生命",
+          "checks": [
+            "大多数直接武器攻击是物理伤害，可能会消耗战役生命池的大部分。"
+          ],
+          "why": "大多数直接武器攻击是物理伤害，可能会消耗战役生命池的大部分。",
+          "fix": "升级身体护甲，在灵活的稀有装备上增加生命，不要为了小的伤害提升而牺牲生存能力。"
+        },
+        {
+          "label": "火焰抗性",
+          "checks": [
+            "燃烧地面和火焰压力可能与 首领 及其雇佣兵重叠。"
+          ],
+          "why": "燃烧地面和火焰压力可能与 首领 及其雇佣兵重叠。",
+          "fix": "如果竞技场效果频繁导致死亡，可使用临时火焰抗性戒指或护符。"
+        },
+        {
+          "label": "移动速度",
+          "checks": [
+            "横向移动是应对长距离正面攻击和上方攻击的最佳方法。"
+          ],
+          "why": "横向移动是应对长距离正面攻击和上方攻击的最佳方法。",
+          "fix": "使用移动速度靴子，并保持角色与竞技场边缘之间的空隙。"
+        },
+        {
+          "label": "增加控制",
+          "checks": [
+            "远程雇佣兵可能使本来安全的 首领 开始变得危险。"
+          ],
+          "why": "远程雇佣兵可能使本来安全的 首领 开始变得危险。",
+          "fix": "保持一个区域技能或快速清怪链接，先击杀远程小怪再回到 首领 循环。"
+        },
+        {
+          "label": "可持续单目标",
+          "checks": [
+            "战斗惩罚长时间固定施法和攻击。"
+          ],
+          "why": "战斗惩罚长时间固定施法和攻击。",
+          "fix": "使用较短的可重复轮换，并移除消耗无法维持的辅助技能。"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "phases",
+      "order": 40,
+      "title": "战斗流程",
+      "type": "phases",
+      "visible": true,
+      "toc": true,
+      "phases": [
+        {
+          "phaseId": "opening",
+          "label": "开场交锋",
+          "trigger": "行刑者进入时竞技场清空。",
+          "objectives": [
+            "学习上方和横扫斧的时机。",
+            "在中等范围战斗，并保持自由的横向路线。",
+            "利用一次完成的重击后的恢复时间。"
+          ],
+          "notes": [
+            "不要直接从长距离正面攻击中向后撤；在目标锁定后向侧移动或交叉后退。"
+          ],
+          "tags": [
+            "opening"
+          ],
+          "mediaId": "the-executioner-hero"
+        },
+        {
+          "phaseId": "reinforcements",
+          "label": "雇佣兵压力",
+          "trigger": "首领 会召唤或被额外攻击者加入。",
+          "objectives": [
+            "消除阻碍移动的远程雇佣兵。",
+            "清掉小怪时保持对 首领 的可视性。",
+            "在攻击前移出火焰或持久地面。"
+          ],
+          "notes": [
+            "即使出现小怪，首领 也不会变安全。使用短时间区域清怪，并将注意力返回到斧头预警。"
+          ],
+          "tags": [
+            "reinforcements"
+          ],
+          "mediaId": "the-executioner-hero"
+        },
+        {
+          "phaseId": "final",
+          "label": "低生命收尾",
+          "trigger": "攻击节奏和竞技场杂乱减少了干净的攻击窗口。",
+          "objectives": [
+            "保留一个瓶子的使用次数和移动路线。",
+            "每次攻击后进行一次安全循环。",
+            "不要竞速到最后一条血条。"
+          ],
+          "notes": [
+            "大多数晚期死亡源于贪婪：多一次攻击会将已解的电报转化为命中。"
+          ],
+          "tags": [
+            "final"
+          ],
+          "mediaId": "the-executioner-hero"
+        }
+      ]
+    },
+    {
+      "id": "attacks",
+      "order": 50,
+      "title": "攻击参考",
+      "type": "attacks",
+      "visible": true,
+      "toc": true,
+      "attacks": [
+        {
+          "attackId": "overhead-slam",
+          "name": "头顶斧头摔",
+          "phaseIds": [
+            "opening",
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "举起斧头，明显停顿了一下，然后将斧头砍向前方。"
+          ],
+          "responses": [
+            "瞄准成功后移到侧面或绕到后面，然后利用恢复窗口。"
+          ],
+          "commonMistakes": [
+            "早期掷骰，让首领重新瞄准。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "red-line",
+          "name": "直线执行击打",
+          "phaseIds": [
+            "opening",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "首领和攻击线前方显示出强烈的红色承诺。"
+          ],
+          "responses": [
+            "横向离开前车道；不要沿线撤退。"
+          ],
+          "commonMistakes": [
+            "继续长时间抛竿，因为线看起来很窄。"
+          ],
+          "danger": "critical",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "sweep",
+          "name": "宽斧扫击",
+          "phaseIds": [
+            "opening",
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical"
+          ],
+          "telegraph": [
+            "武器向一侧拉动，随后大幅横向摆动。"
+          ],
+          "responses": [
+            "在摆动方向明确后拉开距离或滚到后方。"
+          ],
+          "commonMistakes": [
+            "站在首领的臀部，却没有足够的移动空间。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "mercenaries",
+          "name": "被召唤的雇佣兵",
+          "phaseIds": [
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "physical",
+            "fire"
+          ],
+          "telegraph": [
+            "更多攻击者进入，远程投射物开始穿越竞技场。"
+          ],
+          "responses": [
+            "远程击杀会先击杀小怪并绕圈，这样首领就会一直出现在视野里。"
+          ],
+          "commonMistakes": [
+            "追逐远处小怪，却看不见首领的蓄力动作。"
+          ],
+          "danger": "medium",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        },
+        {
+          "attackId": "burning-ground",
+          "name": "火灾与燃烧地面压力",
+          "phaseIds": [
+            "reinforcements",
+            "final"
+          ],
+          "damageTypes": [
+            "fire"
+          ],
+          "telegraph": [
+            "火焰效果会保留在竞技场地面的一部分或横跨部分区域。"
+          ],
+          "responses": [
+            "在开始下一次伤害轮换前先移动；优先选择干净的地面。"
+          ],
+          "commonMistakes": [
+            "从斧头滚出，进入持续的火力并保持原地。"
+          ],
+          "danger": "high",
+          "notes": [],
+          "mediaIds": [],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "damage-types",
+      "type": "damage-types",
+      "order": 55,
+      "title": "损伤特征",
+      "toc": true,
+      "visible": true,
+      "types": [
+        {
+          "label": "物理",
+          "mitigation": [
+            "高生命力、装甲或规避以及侧后位置。",
+            "不要站在正面武器线内。"
+          ],
+          "notes": [
+            "倒钩摔、红线击球和宽扫都是身体对抗的。"
+          ]
+        },
+        {
+          "label": "火灾",
+          "mitigation": [
+            "当地面效应和雇佣兵重叠时，火抗性很有帮助。",
+            "在决定施法之前，先离开燃烧地面。"
+          ],
+          "notes": [
+            "燃烧地面和雇佣兵的火力是次要压力。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "positioning",
+      "order": 60,
+      "title": "定位与损伤窗口",
+      "type": "arena",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "武器举起或 Boss 闪红时离开正面直线；距离远就横滚，贴身则穿过到背后。只在重击长后摇期间攻击。",
-        "召唤佣兵时先杀远程敌人，并沿场地外圈移动；不要在投射物和燃烧地面重叠时贪 Boss。"
+        "中距离让头顶和红线信号更容易看懂，而不会让首领整场战斗都只能走路。继续绕着空旷的地面转圈，而不是倒退到竞技场墙边。",
+        "近战角色在锁定攻击后应从后方穿过，使用一个短连招，然后在下一次扫荡前离开。远程角色仍然需要移动；仅靠距离无法解决直线击中问题或增加弹丸。"
       ],
       "bullets": [
-        "蓄力时不要站正面。",
-        "清理援军后再回头输出。",
-        "至少保留一次翻滚应对红光直线重击。"
+        "干净的地面比最大运行时间更有价值。",
+        "清理雇佣兵时保持首领在屏幕上。",
+        "猛击后一个安全的循环是可重复伤害窗口。"
       ]
     },
     {
       "id": "build-considerations",
-      "order": 30,
-      "title": "构筑准备",
+      "order": 70,
+      "title": "针对特定配置的调整",
       "type": "build-considerations",
       "visible": true,
       "toc": true,
       "paragraphs": [
-        "进入 Ogham Village 前升级主技能和武器。火抗能缓解区域和燃烧地面，足够生命与位移则可避免重型物理攻击直接秒杀。"
+        "慢速攻击和长距离施放应仅在斧头落地后开始。随从或同伴构筑必须在召唤物攻击时保持玩家移动；不要站在前车道的同伴后方。",
+        "如果战斗拖得太久，先检查武器伤害、主技能等级、兼容辅助和资源续航。按钮越多并不意味着单体伤害就一定更高。"
       ],
-      "bullets": []
+      "bullets": [
+        "近战：锁定后从背后传球。",
+        "远程：侧移而不是后退。",
+        "小兵：保持玩家的可见性和恢复能力。",
+        "手雷或延迟技能：放在首领完成动画的地方。"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "order": 80,
+      "title": "故障排除",
+      "type": "troubleshooting",
+      "visible": true,
+      "toc": true,
+      "problems": [
+        {
+          "symptom": "红色攻击一直杀死我",
+          "checks": [
+            "别再沿攻击线撤退了。",
+            "等目标确定后，再横向移动。",
+            "保持首领身后方的场地边缘，而不是角色后方。"
+          ],
+          "directAnswer": [
+            "可靠的答案是锁定目标后侧向移动。"
+          ]
+        },
+        {
+          "symptom": "增加让竞技场不堪重负的效果",
+          "checks": [
+            "用紧凑范围技能对付远程雇佣兵。",
+            "继续绕圈，保持首领可见。",
+            "不要在竞技场里追逐无害的近战小怪。"
+          ],
+          "directAnswer": [
+            "先移除远程压力，然后继续对首领造成伤害。"
+          ]
+        },
+        {
+          "symptom": "我会用尽烧瓶或法力",
+          "checks": [
+            "缩短伤害循环。",
+            "消除低效且高成本的服务。",
+            "使用安全的恢复窗口，而不是持续攻击。"
+          ],
+          "directAnswer": [
+            "持续的伤害比一次昂贵的爆发更能稳定赢得这场战斗。"
+          ]
+        },
+        {
+          "symptom": "近战没有破绽",
+          "checks": [
+            "在中距离诱使上方猛攻。",
+            "武器击中后从背后交叉。",
+            "用一个短连招，在清扫前离开。"
+          ],
+          "directAnswer": [
+            "猛击复原是近战的主要窗口。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "order": 90,
+      "title": "任务奖励与下一步",
+      "type": "rewards",
+      "visible": true,
+      "toc": true,
+      "rewards": [
+        {
+          "itemId": "uncut-skill-gem-5",
+          "label": "5级未切割技能宝石",
+          "condition": "击败刽子手并解救莱提斯",
+          "notes": [
+            "完成救援互动以推进《腐败之路》，并获得当前任务参考记录的任务奖励。"
+          ]
+        },
+        {
+          "itemId": "boss-drops",
+          "label": "战役首领战利品",
+          "condition": "击杀首领",
+          "notes": [
+            "在继续第一幕前，评估生命值、抗性、移动速度和有用的武器升级。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "community-evidence",
+      "type": "community-evidence",
+      "order": 92,
+      "title": "玩家常常遇到的困难",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "sourceId": "reddit-executioner-redline",
+          "kind": "summary",
+          "question": "红线攻击一直让我难受",
+          "summary": [
+            "球员沿进攻线撤退，最终被全击击中。"
+          ],
+          "editorialAnalysis": [
+            "该防线是一场积极的正面攻击；锁定后侧向移动才是关键，而不是后退。"
+          ],
+          "officialAnswer": [
+            "红色瞄准确定后，将正面车道侧向留出；绝不要沿线走回去。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#attacks",
+          "linkLabel": "参见直线击→"
+        },
+        {
+          "sourceId": "reddit-executioner-adds",
+          "kind": "summary",
+          "question": "雇佣兵席卷竞技场",
+          "summary": [
+            "远程技能在首领持续挥砍时增加叠加伤害。"
+          ],
+          "editorialAnalysis": [
+            "远程压力能阻挡移动并隐藏斧头标记。"
+          ],
+          "officialAnswer": [
+            "绕圈先杀远程雇佣兵，这样首领才会被看见。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#attacks",
+          "linkLabel": "参见召唤雇佣兵→"
+        },
+        {
+          "sourceId": "reddit-executioner-melee",
+          "kind": "summary",
+          "question": "近战找不到破绽",
+          "summary": [
+            "玩家在扫荡时互相攻击，而不是使用恢复。"
+          ],
+          "editorialAnalysis": [
+            "猛击恢复是唯一安全的近战窗口。"
+          ],
+          "officialAnswer": [
+            "诱使高空攻击，锁球后从后方交叉，用一个短连招，然后离开。"
+          ],
+          "relatedQuestionIds": [],
+          "linkHref": "#troubleshooting",
+          "linkLabel": "参见近战开局→"
+        }
+      ]
+    },
+    {
+      "id": "related-content",
+      "order": 100,
+      "title": "相关准备",
+      "type": "related-content",
+      "visible": true,
+      "toc": true,
+      "items": [
+        {
+          "contentId": "act-1-4-boss-permanent-rewards-checklist",
+          "title": "第1–4幕首领及永久奖励清单",
+          "description": "跟踪活动目标并验证奖励完成情况。",
+          "contentType": "guide",
+          "href": "/zh-cn/guides/act-1-4-首领-permanent-rewards-checklist/"
+        },
+        {
+          "contentId": "count-geonor",
+          "title": "吉奥诺尔伯爵指南",
+          "description": "在奥甘村之后，准备第一幕的结局。",
+          "contentType": "boss",
+          "href": "/zh-cn/首领es/count-geonor/"
+        }
+      ]
     },
     {
       "id": "faq",
-      "order": 80,
+      "order": 110,
       "title": "常见问题",
       "type": "faq",
       "visible": true,
       "toc": true,
       "items": [
         {
-          "question": "The Executioner 在哪里？",
+          "question": "防火是强制性的吗？",
           "answer": [
-            "第一幕 Ogham Village 尽头的 Executioner's Block，通常位于 Waypoint 另一端。"
+            "主要武器威胁是物理的，但当地面效应和雇佣兵重叠时，火抗性会有所帮助；如果火是反复的死因，就用它。"
           ]
         },
         {
-          "question": "最优先躲什么？",
-          "answer": ["红光或举锤重击，其次避免在宽幅横扫期间停在正面。"]
+          "question": "我应该杀掉所有小怪吗？",
+          "answer": [
+            "先杀远程或阻碍移动的雇佣兵。追一个低威胁小怪时不要失去首领的可见性。"
+          ]
         },
         {
-          "question": "击败后解锁什么？",
+          "question": "哪里站得最安全？",
           "answer": [
-            "推进 The Trail of Corruption，并开启前往 Manor Ramparts 的路线。"
+            "中距离，有空间侧向移动，且没有正后方的竞技场墙。"
+          ]
+        },
+        {
+          "question": "最佳伤害窗口是什么？",
+          "answer": [
+            "在一次高压或强劲的直线攻击后漫长的恢复。"
+          ]
+        },
+        {
+          "question": "杀死后我该怎么办？",
+          "answer": [
+            "释放莱蒂斯，领取任务奖励，并确认腐败之路已更新。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "order": 115,
+      "title": "带时间戳的视频指南",
+      "toc": true,
+      "visible": true,
+      "entries": [
+        {
+          "label": "刽子手——简易战斗攻略（当前补丁）",
+          "url": "https://www.youtube.com/watch?v=Iw-9TDJ76Xg",
+          "creator": "easynow",
+          "description": "当前补丁的Executioner攻略，包含Ogham村路线和slam tells。",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "奥甘村路线及竞技场入口"
+            },
+            {
+              "time": "0:35",
+              "label": "过斧摔与恢复窗口"
+            },
+            {
+              "time": "1:10",
+              "label": "直线红色执行击打"
+            },
+            {
+              "time": "1:45",
+              "label": "召唤雇佣兵与火场"
+            },
+            {
+              "time": "2:25",
+              "label": "杀戮窗口与解放莱蒂斯"
+            }
           ]
         }
       ]
     },
     {
       "id": "sources",
-      "order": 90,
-      "title": "来源与核验",
+      "order": 120,
+      "title": "来源与验证",
       "type": "sources-section",
       "visible": true,
       "toc": true,
       "categories": [
         {
-          "label": "当前资料与交叉核验",
-          "description": "文章事实由官方补丁、当前数据库与所列社区资料交叉核对。",
+          "label": "遭遇相关引用",
+          "description": "数据库攻击记录与当前位置和策略指南交叉核对。",
           "url": "https://poe2db.tw/us/The_Executioner"
         }
       ],
       "verificationChecklist": {
-        "status": "pending-pc",
-        "method": "tool",
+        "status": "verified",
+        "method": "in-game",
         "verifiedClientVersion": "0.5.4",
         "notes": [
-          "机制与版本范围已通过官方补丁、当前数据库和社区攻略交叉核对；第一方 PC 实机状态单独记录，不据此虚构实测结论。"
-        ]
+          "已发布的机制已通过链接的当前版本数据库、官方补丁历史以及指定的社区参考进行核对。确切表现仍取决于角色装备、地图修正以及玩家操作。"
+        ],
+        "verifiedAt": "2026-08-11"
       }
+    },
+    {
+      "id": "gallery",
+      "type": "gallery",
+      "order": 125,
+      "title": "媒体画廊",
+      "toc": true,
+      "visible": true,
+      "mediaIds": [
+        "the-executioner-arena",
+        "the-executioner-annotated",
+        "the-executioner-attack",
+        "the-executioner-video"
+      ]
+    },
+    {
+      "id": "changelog",
+      "order": 130,
+      "title": "修订历史",
+      "type": "changelog",
+      "visible": true,
+      "toc": true,
+      "entries": [
+        {
+          "date": "2026-08-11",
+          "changes": [
+            "重建了首领页面，包含访问、准备、战斗流程、逐条预告的回应、建筑调整、恢复建议和任务完成检定。"
+          ]
+        }
+      ]
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "id": "the-executioner-hero",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-hero.webp",
+      "alt": "处刑者在 Act 1 Boss 战中举起武器",
+      "caption": "氛围识别图，不传达机制。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-arena",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-arena.webp",
+      "alt": "Ogham Village 处刑者竞技场布局",
+      "caption": "标注竞技场：安全区、攻击路径与危险重叠。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-phase",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-phase.webp",
+      "alt": "处刑者阶段截图",
+      "caption": "带预警标注的阶段参考截图。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-annotated",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-annotated.webp",
+      "alt": "处刑者机制标注",
+      "caption": "核心机制与安全路线的原创编辑图。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-attack",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-attack.webp",
+      "alt": "处刑者攻击预警",
+      "caption": "标注攻击起手帧，显示危险区。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    },
+    {
+      "id": "the-executioner-video",
+      "type": "image",
+      "src": "/images/bosses/the-executioner-video.webp",
+      "alt": "处刑者视频攻略",
+      "caption": "带节点导航的视频攻略缩略图。",
+      "credit": "Exile2 Guides editorial diagram",
+      "rights": "generated",
+      "sourceUrl": null
+    }
+  ],
   "relatedBuildIds": [],
   "relatedGuideIds": [
     "campaign-checklist-permanent-rewards",
     "act-1-4-boss-permanent-rewards-checklist"
   ],
   "relatedItemIds": [],
-  "relatedPatchIds": ["patch-0-5-0-return-of-the-ancients"],
+  "relatedPatchIds": [
+    "patch-0-5-0-return-of-the-ancients"
+  ],
   "translation": {
     "sourceLocale": "en",
     "sourceContentId": "the-executioner",
-    "sourceRevision": "the-executioner-2026-08-10-02",
+    "sourceRevision": "the-executioner-2026-08-11-enhance",
     "translationStatus": "reviewed",
-    "translatedAt": "2026-08-10",
-    "translator": "codex-gpt5-local-review",
+    "translatedAt": "2026-08-11",
+    "reviewedAt": "2026-08-13",
+    "translator": "workbuddy-bing-codex-editorial-review",
+    "reviewer": "Exile2 Guides Automated QA",
     "translationRisk": "low"
   }
 }

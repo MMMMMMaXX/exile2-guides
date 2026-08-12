@@ -2,9 +2,9 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-12 23:59（Asia/Shanghai）
+> 文档更新时间：2026-08-13 00:58（Asia/Shanghai）
 >
-> 最新状态补记：第一批 15 篇攻略的十语言深度重写与静态质量门禁已完成；生产客户端和服务端编译通过，但本地预渲染与 E2E 因沙箱禁止监听端口且提权被平台工具额度拦截而受阻，本轮尚未提交、推送或部署。
+> 最新状态补记：第一批 19 篇攻略的十语言深度重写、翻译修订锚点收敛与完整质量门禁已完成；本轮按用户要求仅建立本地提交，远端网络不可用时不再反复推送。
 
 ## 必须遵守的更新说明
 
@@ -375,3 +375,5 @@
 
 | EXTRA-118 | 2026-08-12 | 已完成 | 完成 guides 四篇攻略的十语言结构对齐同步与质量门禁收尾 | 接续前序会话网络中断点，对 es/fr/ja/ko/tr 四篇攻略（act-1-4-boss-permanent-rewards-checklist、classes-ascendancies-guide、currency-farming-strategies-0-5、best-atlas-tree-0-5）按 EN 新 section 结构做全文 LLM 高质量译文，采用 index-aligned 装配法（按抽取顺序逐条对齐译文，规避源串重录错位导致的静默英文回退，约 585 条译文 ×5 语言）；修复 build_guides.mjs 将 translationRisk 误置为 "medium"（schema 枚举仅允许 low|mechanic-critical），改为 "low" 并同步修正 ko/tr 8 个已生成文件的非法值；新增 scripts/assemble_trans.mjs（index-aligned 译文装配器）入仓 | validate:content / translations:validate / i18n:validate / typecheck / lint / 生产构建全绿（490 Guide JSON、2570 文件、10 语言；生产构建前缀 BASH_ENV=/dev/null NODE_OPTIONS="--use-system-ca" EXIT=0）；es/fr/ja/ko/tr ×4 共 20 个新攻略页全部预渲染成功，ko 标题渲染为原生韩语（클래스와 승천 가이드） | 本地提交 40 个 guide JSON（10 语言 ×4 slug，含 en 源重构）+ assemble_trans.mjs/build_guides.mjs 工具链白名单，不推送；stale 译文待人工编辑复核后转 reviewed |
 | SESSION-148 | 2026-08-12（续 guides 十语言结构对齐同步） | 完成剩余 es/fr/ja/ko/tr 四篇攻略基于 EN 新结构的全文同步收尾与质量门禁 | 接续前序会话网络中断点，完成 es/fr/ja/ko/tr 四篇攻略按 EN 新 section 结构的 LLM 高质量译文（index-aligned 装配法，按抽取顺序逐条对齐译文，规避源串重录错位导致的静默英文回退），统一 translationStatus=stale、translator=llm-workbuddy-editorial-draft、translatedAt=2026-08-12；发现并修复 build_guides.mjs 将 translationRisk 误置为 "medium"（schema 枚举仅允许 low|mechanic-critical），改为 "low"，并同步修正 ko/tr 8 个已生成文件的非法值；新增 scripts/assemble_trans.mjs（index-aligned 译文装配器）入仓 | validate:content 0 error（490 Guide JSON）、translations:validate 通过（2570 文件）、i18n:validate 通过（10 语言）、typecheck 0、lint 0 error（仅既有 react-refresh 警告）、生产构建前缀 BASH_ENV=/dev/null NODE_OPTIONS="--use-system-ca" EXIT=0；es/fr/ja/ko/tr ×4 共 20 个新攻略页全部预渲染成功，ko 标题渲染为原生韩语（클래스와 승천 가이드）；全 10 语言 ×4 slug 指南 section 结构对齐 EN | 本地提交 40 个 guide JSON（10 语言 ×4 slug，含 en 源重构）+ assemble_trans.mjs/build_guides.mjs 工具链白名单，不推送；stale 译文待人工编辑复核后转 reviewed |
+
+| SESSION-149 | 2026-08-13 00:58 | 第一阶段现有内容改动十语言收敛与提交前总验收 | 将第一批范围扩展为 19 篇，补齐 power/frenzy/endurance charges、resistance/curse/exposure/penetration、cast-on-elemental-ailment 与 wind-dancer 的九语言正文；增强润色脚本，使正文结构、英语 revision、translation.sourceRevision、review 状态和翻译来源可重复收敛，避免内容已同步但仍被旧 stale 元数据覆盖 | translations:validate 2570 文件通过；translations:stale 零条；validate:content、601 图片、211 文件中文注释、typecheck、lint（0 error/21 既有 warning）、35 个测试文件 204 项测试和生产构建全部通过；远端不可用时按用户要求只保留本地提交 | 下一阶段基于 2026-08-12 GSC 24h/7d 数据执行六站 SEO 修复，第二阶段不推送 |
