@@ -11,23 +11,55 @@ if (!locale) {
   process.exit(2);
 }
 
-const extract = JSON.parse(readFileSync(join(ROOT, "tmp", `guide_extract_${locale}.json`), "utf8"));
+const extract = JSON.parse(
+  readFileSync(join(ROOT, "tmp", `guide_extract_${locale}.json`), "utf8"),
+);
 const transFile = join(ROOT, "tmp", `guide_trans_${locale}.json`);
 const translations = JSON.parse(readFileSync(transFile, "utf8")).translations;
 const map = new Map(Object.entries(translations));
 
 const BLOCK = new Set([
-  "url", "sourceType", "id", "sourceId", "slug", "href", "revision", "locale",
-  "patch", "patchStatus", "status", "type", "verificationStatus", "noindex",
-  "createdAt", "publishedAt", "updatedAt", "lastVerifiedAt", "translator",
-  "sourceRevision", "translatedAt", "translationStatus", "translationRisk",
-  "key", "order", "time", "translation", "creator", "value", "tags", "categories",
+  "url",
+  "sourceType",
+  "id",
+  "sourceId",
+  "slug",
+  "href",
+  "revision",
+  "locale",
+  "patch",
+  "patchStatus",
+  "status",
+  "type",
+  "verificationStatus",
+  "noindex",
+  "createdAt",
+  "publishedAt",
+  "updatedAt",
+  "lastVerifiedAt",
+  "translator",
+  "sourceRevision",
+  "translatedAt",
+  "translationStatus",
+  "translationRisk",
+  "key",
+  "order",
+  "time",
+  "translation",
+  "creator",
+  "value",
+  "tags",
+  "categories",
 ]);
 
 function replace(node) {
   if (Array.isArray(node)) {
     return node.map((it) =>
-      typeof it === "string" ? map.get(it) || it : it && typeof it === "object" ? replace(it) : it,
+      typeof it === "string"
+        ? map.get(it) || it
+        : it && typeof it === "object"
+          ? replace(it)
+          : it,
     );
   }
   if (node && typeof node === "object") {
@@ -53,7 +85,9 @@ function replace(node) {
 
 let written = 0;
 for (const slug of extract.slugs) {
-  const en = JSON.parse(readFileSync(join(ROOT, "content", "en", "guides", slug + ".json"), "utf8"));
+  const en = JSON.parse(
+    readFileSync(join(ROOT, "content", "en", "guides", slug + ".json"), "utf8"),
+  );
   const m = extract.meta[slug];
   const out = replace(en);
   out.locale = locale;

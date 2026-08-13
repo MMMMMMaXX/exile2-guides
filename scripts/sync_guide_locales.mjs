@@ -25,17 +25,68 @@ const MM_TARGET = {
 const NEW_REV = (slug) => slug + "-2026-08-11-04";
 
 const TRANSLATABLE_KEYS = new Set([
-  "title", "shortTitle", "seoTitle", "seoDescription", "summary", "description",
-  "imageAlt", "league", "callout", "calloutDetail", "label", "text", "value", "note",
-  "paragraphs", "bullets", "columns", "intro", "body", "why", "fix", "scenario",
-  "audience", "benefit", "risk", "recommendation", "gain", "loss", "question",
-  "answer", "summary", "editorialAnalysis", "officialAnswer", "symptom",
-  "directAnswer", "checks", "changes", "description", "takeaway", "kind",
+  "title",
+  "shortTitle",
+  "seoTitle",
+  "seoDescription",
+  "summary",
+  "description",
+  "imageAlt",
+  "league",
+  "callout",
+  "calloutDetail",
+  "label",
+  "text",
+  "value",
+  "note",
+  "paragraphs",
+  "bullets",
+  "columns",
+  "intro",
+  "body",
+  "why",
+  "fix",
+  "scenario",
+  "audience",
+  "benefit",
+  "risk",
+  "recommendation",
+  "gain",
+  "loss",
+  "question",
+  "answer",
+  "summary",
+  "editorialAnalysis",
+  "officialAnswer",
+  "symptom",
+  "directAnswer",
+  "checks",
+  "changes",
+  "description",
+  "takeaway",
+  "kind",
 ]);
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game", "community",
-  "tool", "other", "current", "supported", "legacy", "under-review", "draft",
-  "published", "source-reviewed", "pending-pc", "verified",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
 ]);
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const URL_RE = /^https?:\/\//i;
@@ -96,7 +147,15 @@ async function walkTranslate(node, target) {
   if (node && typeof node === "object") {
     const out = {};
     for (const [k, v] of Object.entries(node)) {
-      if (k === "url" || k === "sourceType" || k === "id" || k === "order" || k === "type" || k === "time" || k === "creator") {
+      if (
+        k === "url" ||
+        k === "sourceType" ||
+        k === "id" ||
+        k === "order" ||
+        k === "type" ||
+        k === "time" ||
+        k === "creator"
+      ) {
         out[k] = v;
         continue;
       }
@@ -105,7 +164,8 @@ async function walkTranslate(node, target) {
           const t = await translate(v, target);
           out[k] = t === null ? v : t;
         } else if (Array.isArray(v)) out[k] = await walkTranslate(v, target);
-        else if (v && typeof v === "object") out[k] = await walkTranslate(v, target);
+        else if (v && typeof v === "object")
+          out[k] = await walkTranslate(v, target);
         else out[k] = v;
       } else if (v && typeof v === "object") {
         out[k] = await walkTranslate(v, target);
@@ -166,15 +226,19 @@ async function syncLocale(locale) {
     // 同步 heroImage 为本地 webp
     const HERO = {
       "best-atlas-tree-0-5": "/images/items/waystones-hero.webp",
-      "currency-farming-strategies-0-5": "/images/items/jewellers-orbs-hero.webp",
+      "currency-farming-strategies-0-5":
+        "/images/items/jewellers-orbs-hero.webp",
       "classes-ascendancies-guide": "/images/prototype-v4/hero-guide.webp",
-      "act-1-4-boss-permanent-rewards-checklist": "/images/bosses/count-geonor-hero.webp",
+      "act-1-4-boss-permanent-rewards-checklist":
+        "/images/bosses/count-geonor-hero.webp",
     };
     locArticle.heroImage = HERO[slug];
     locArticle.cardImage = HERO[slug];
 
     writeFileSync(locPath, JSON.stringify(locArticle, null, 2) + "\n", "utf8");
-    console.log(`  [${locale}] ${slug} -> ${locArticle.translation.translationStatus}`);
+    console.log(
+      `  [${locale}] ${slug} -> ${locArticle.translation.translationStatus}`,
+    );
   }
   return allOk;
 }

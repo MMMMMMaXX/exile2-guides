@@ -83,7 +83,8 @@ const HERO = {
   "best-atlas-tree-0-5": "/images/items/waystones-hero.webp",
   "currency-farming-strategies-0-5": "/images/items/jewellers-orbs-hero.webp",
   "classes-ascendancies-guide": "/images/prototype-v4/hero-guide.webp",
-  "act-1-4-boss-permanent-rewards-checklist": "/images/bosses/count-geonor-hero.webp",
+  "act-1-4-boss-permanent-rewards-checklist":
+    "/images/bosses/count-geonor-hero.webp",
 };
 
 function atlasRoutesTabs() {
@@ -109,8 +110,18 @@ function atlasRoutesTabs() {
           "为通往你第一个可重复机制的捷径预留点数，而非分散铺开。",
         ],
         steps: [
-          { label: "先续航", body: ["在任何 Boss 或高阶压力之前，先点满 Waystone 数量、阶层与通关节点。"] },
-          { label: "一个锚点", body: ["选择你流派能快速清空并出售的单一机制，并向其奖励节点靠拢。"] },
+          {
+            label: "先续航",
+            body: [
+              "在任何 Boss 或高阶压力之前，先点满 Waystone 数量、阶层与通关节点。",
+            ],
+          },
+          {
+            label: "一个锚点",
+            body: [
+              "选择你流派能快速清空并出售的单一机制，并向其奖励节点靠拢。",
+            ],
+          },
           { label: "验证", body: ["跑一小批；仅在通关率稳定后再加难度。"] },
         ],
       },
@@ -126,9 +137,15 @@ function atlasRoutesTabs() {
           "用石板把这一机制铺满一个区域，而不是把点数打散。",
         ],
         steps: [
-          { label: "深化一个机制", body: ["完成你真正能清空并出售的那个机制的节点线。"] },
+          {
+            label: "深化一个机制",
+            body: ["完成你真正能清空并出售的那个机制的节点线。"],
+          },
           { label: "石板覆盖", body: ["在你farm最多的区域叠加对应石板类型。"] },
-          { label: "测算", body: ["对比扣除消耗品与失败地图后的净收益，而非总掉落。"] },
+          {
+            label: "测算",
+            body: ["对比扣除消耗品与失败地图后的净收益，而非总掉落。"],
+          },
         ],
       },
       {
@@ -143,8 +160,14 @@ function atlasRoutesTabs() {
           "在扩大高阶地图、Boss 或赌注前，先小批量测试高风险组合。",
         ],
         steps: [
-          { label: "更好转化", body: ["收紧路线与仓库处理，让通关变成稳定利润。"] },
-          { label: "加大师", body: ["选择能改善下一张 Waystone 而不使其失败的那个大师。"] },
+          {
+            label: "更好转化",
+            body: ["收紧路线与仓库处理，让通关变成稳定利润。"],
+          },
+          {
+            label: "加大师",
+            body: ["选择能改善下一张 Waystone 而不使其失败的那个大师。"],
+          },
           { label: "风险最后", body: ["仅在基线稳定净正后，才扩大高阶遭遇。"] },
         ],
       },
@@ -195,7 +218,9 @@ function applySlug(slug) {
     const today = cl.entries.find((e) => e.date === "2026-08-11");
     const note =
       "新增视频章节" +
-      (slug === "best-atlas-tree-0-5" ? "与具体的 20/40/60 加点路线（tabs）" : "") +
+      (slug === "best-atlas-tree-0-5"
+        ? "与具体的 20/40/60 加点路线（tabs）"
+        : "") +
       "；按图片指纹契约将外链封面替换为本地 webp。";
     if (today) {
       if (!today.changes.includes(note)) today.changes.push(note);

@@ -9,7 +9,8 @@ const P = join(ROOT, "content", "en", "guides");
 const VIDEO = {
   "best-atlas-tree-0-5": {
     url: "https://www.youtube.com/watch?v=VSeDfybR3Cc",
-    label: "The Ultimate PoE 2 Endgame Progression Guide (Common Mistakes, Tricks, SSF & Trade)",
+    label:
+      "The Ultimate PoE 2 Endgame Progression Guide (Common Mistakes, Tricks, SSF & Trade)",
     creator: "Asmo",
     description:
       "A full early-Atlas routing guide covering the Master layer, Hilda's passive, tower and tablet strategy, and the biggest mistakes players make.",
@@ -83,7 +84,8 @@ const HERO = {
   "best-atlas-tree-0-5": "/images/items/waystones-hero.webp",
   "currency-farming-strategies-0-5": "/images/items/jewellers-orbs-hero.webp",
   "classes-ascendancies-guide": "/images/prototype-v4/hero-guide.webp",
-  "act-1-4-boss-permanent-rewards-checklist": "/images/bosses/count-geonor-hero.webp",
+  "act-1-4-boss-permanent-rewards-checklist":
+    "/images/bosses/count-geonor-hero.webp",
 };
 
 // Atlas 20/40/60 加点路线（tabs 章节，仅 best-atlas-tree-0-5 使用）
@@ -110,9 +112,24 @@ function atlasRoutesTabs() {
           "Reserve points for the shortest path to your first repeatable mechanic rather than spreading thin.",
         ],
         steps: [
-          { label: "Sustain first", body: ["Allocate Waystone quantity, tier and completion before any boss or premium pressure."] },
-          { label: "One anchor", body: ["Pick the single mechanic your build clears quickly and path toward its reward nodes."] },
-          { label: "Verify", body: ["Run a small batch; only add difficulty once completion rate stays healthy."] },
+          {
+            label: "Sustain first",
+            body: [
+              "Allocate Waystone quantity, tier and completion before any boss or premium pressure.",
+            ],
+          },
+          {
+            label: "One anchor",
+            body: [
+              "Pick the single mechanic your build clears quickly and path toward its reward nodes.",
+            ],
+          },
+          {
+            label: "Verify",
+            body: [
+              "Run a small batch; only add difficulty once completion rate stays healthy.",
+            ],
+          },
         ],
       },
       {
@@ -127,9 +144,24 @@ function atlasRoutesTabs() {
           "Use tablets to extend that one mechanic across a region rather than scattering points.",
         ],
         steps: [
-          { label: "Deepen one mechanic", body: ["Finish the node line for the mechanic you actually clear and sell."] },
-          { label: "Cover with tablets", body: ["Stack the matching tablet type on the region you farm most."] },
-          { label: "Measure", body: ["Compare net returns after consumables and failed maps, not gross drops."] },
+          {
+            label: "Deepen one mechanic",
+            body: [
+              "Finish the node line for the mechanic you actually clear and sell.",
+            ],
+          },
+          {
+            label: "Cover with tablets",
+            body: [
+              "Stack the matching tablet type on the region you farm most.",
+            ],
+          },
+          {
+            label: "Measure",
+            body: [
+              "Compare net returns after consumables and failed maps, not gross drops.",
+            ],
+          },
         ],
       },
       {
@@ -144,9 +176,24 @@ function atlasRoutesTabs() {
           "Test a small high-risk batch before scaling premium maps, bosses or gambles.",
         ],
         steps: [
-          { label: "Convert better", body: ["Tighten routing and stash handling so completion becomes steady profit."] },
-          { label: "Add a Master", body: ["Select the Master that improves the next Waystone without making it fail."] },
-          { label: "Risk last", body: ["Only scale premium encounters after the baseline is reliably net-positive."] },
+          {
+            label: "Convert better",
+            body: [
+              "Tighten routing and stash handling so completion becomes steady profit.",
+            ],
+          },
+          {
+            label: "Add a Master",
+            body: [
+              "Select the Master that improves the next Waystone without making it fail.",
+            ],
+          },
+          {
+            label: "Risk last",
+            body: [
+              "Only scale premium encounters after the baseline is reliably net-positive.",
+            ],
+          },
         ],
       },
     ],
@@ -199,7 +246,9 @@ function applySlug(slug) {
     const today = cl.entries.find((e) => e.date === "2026-08-11");
     const note =
       "Added a walkthrough video section" +
-      (slug === "best-atlas-tree-0-5" ? " and concrete 20/40/60 point-allocation routes (tabs)" : "") +
+      (slug === "best-atlas-tree-0-5"
+        ? " and concrete 20/40/60 point-allocation routes (tabs)"
+        : "") +
       "; replaced the external hero image with a local webp per the image-fingerprint contract.";
     if (today) {
       if (!today.changes.includes(note)) today.changes.push(note);

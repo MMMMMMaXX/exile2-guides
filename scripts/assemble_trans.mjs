@@ -12,15 +12,21 @@ if (!locale) {
   process.exit(2);
 }
 
-const extract = JSON.parse(readFileSync(join(ROOT, "tmp", `guide_extract_${locale}.json`), "utf8"));
-const ordered = JSON.parse(readFileSync(join(ROOT, "tmp", `guide_trans_ordered_${locale}.json`), "utf8"));
+const extract = JSON.parse(
+  readFileSync(join(ROOT, "tmp", `guide_extract_${locale}.json`), "utf8"),
+);
+const ordered = JSON.parse(
+  readFileSync(join(ROOT, "tmp", `guide_trans_ordered_${locale}.json`), "utf8"),
+);
 
 if (!Array.isArray(ordered)) {
   console.error("guide_trans_ordered_<locale>.json 必须是数组");
   process.exit(3);
 }
 if (ordered.length !== extract.strings.length) {
-  console.error(`长度不一致: 源 ${extract.strings.length} vs 译文 ${ordered.length}`);
+  console.error(
+    `长度不一致: 源 ${extract.strings.length} vs 译文 ${ordered.length}`,
+  );
   process.exit(4);
 }
 
@@ -35,5 +41,9 @@ extract.strings.forEach((src, i) => {
 });
 
 const outPath = join(ROOT, "tmp", `guide_trans_${locale}.json`);
-writeFileSync(outPath, JSON.stringify({ translations }, null, 2) + "\n", "utf8");
+writeFileSync(
+  outPath,
+  JSON.stringify({ translations }, null, 2) + "\n",
+  "utf8",
+);
 console.log(`[${locale}] 组装 ${ordered.length} 条译文 -> ${outPath}`);

@@ -13,17 +13,60 @@ if (!locale || slugs.length === 0) {
 
 // 永不可译的技术/元数据字段
 const BLOCK = new Set([
-  "url", "sourceType", "id", "sourceId", "slug", "href", "revision", "locale",
-  "patch", "patchStatus", "status", "type", "verificationStatus", "noindex",
-  "createdAt", "publishedAt", "updatedAt", "lastVerifiedAt", "translator",
-  "sourceRevision", "translatedAt", "translationStatus", "translationRisk",
-  "key", "order", "time", "translation", "creator", "value", "tags", "categories",
+  "url",
+  "sourceType",
+  "id",
+  "sourceId",
+  "slug",
+  "href",
+  "revision",
+  "locale",
+  "patch",
+  "patchStatus",
+  "status",
+  "type",
+  "verificationStatus",
+  "noindex",
+  "createdAt",
+  "publishedAt",
+  "updatedAt",
+  "lastVerifiedAt",
+  "translator",
+  "sourceRevision",
+  "translatedAt",
+  "translationStatus",
+  "translationRisk",
+  "key",
+  "order",
+  "time",
+  "translation",
+  "creator",
+  "value",
+  "tags",
+  "categories",
 ]);
 
 const ENUM_VALUES = new Set([
-  "yes", "no", "text", "high", "low", "medium", "official", "in-game",
-  "community", "tool", "other", "current", "supported", "legacy", "under-review",
-  "draft", "published", "source-reviewed", "pending-pc", "verified",
+  "yes",
+  "no",
+  "text",
+  "high",
+  "low",
+  "medium",
+  "official",
+  "in-game",
+  "community",
+  "tool",
+  "other",
+  "current",
+  "supported",
+  "legacy",
+  "under-review",
+  "draft",
+  "published",
+  "source-reviewed",
+  "pending-pc",
+  "verified",
 ]);
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const URL_RE = /^https?:\/\//i;
@@ -77,8 +120,14 @@ function walk(node) {
 
 const meta = {};
 for (const slug of slugs) {
-  const en = JSON.parse(readFileSync(join(ROOT, "content", "en", "guides", slug + ".json"), "utf8"));
-  meta[slug] = { revision: en.revision, heroImage: en.heroImage, cardImage: en.cardImage };
+  const en = JSON.parse(
+    readFileSync(join(ROOT, "content", "en", "guides", slug + ".json"), "utf8"),
+  );
+  meta[slug] = {
+    revision: en.revision,
+    heroImage: en.heroImage,
+    cardImage: en.cardImage,
+  };
   walk(en);
 }
 
@@ -90,5 +139,11 @@ const out = {
   // 保持抽取顺序，便于逐条翻译
   strings: [...strings],
 };
-writeFileSync(join(ROOT, "tmp", `guide_extract_${locale}.json`), JSON.stringify(out, null, 2) + "\n", "utf8");
-console.log(`[${locale}] 抽取 ${strings.size} 条可译字符串，覆盖 ${slugs.length} 篇攻略`);
+writeFileSync(
+  join(ROOT, "tmp", `guide_extract_${locale}.json`),
+  JSON.stringify(out, null, 2) + "\n",
+  "utf8",
+);
+console.log(
+  `[${locale}] 抽取 ${strings.size} 条可译字符串，覆盖 ${slugs.length} 篇攻略`,
+);

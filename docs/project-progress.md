@@ -2,7 +2,7 @@
 
 # Exile2 Guides 项目任务与会话台账
 
-> 文档更新时间：2026-08-14 00:05（Asia/Shanghai）
+> 文档更新时间：2026-08-14 00:33（Asia/Shanghai）
 >
 > 最新状态补记：第一批 19 篇攻略的十语言深度重写、翻译修订锚点收敛与完整质量门禁已完成；本轮按用户要求仅建立本地提交，远端网络不可用时不再反复推送。
 
@@ -378,3 +378,5 @@
 
 | SESSION-149 | 2026-08-13 00:58 | 第一阶段现有内容改动十语言收敛与提交前总验收 | 将第一批范围扩展为 19 篇，补齐 power/frenzy/endurance charges、resistance/curse/exposure/penetration、cast-on-elemental-ailment 与 wind-dancer 的九语言正文；增强润色脚本，使正文结构、英语 revision、translation.sourceRevision、review 状态和翻译来源可重复收敛，避免内容已同步但仍被旧 stale 元数据覆盖 | translations:validate 2570 文件通过；translations:stale 零条；validate:content、601 图片、211 文件中文注释、typecheck、lint（0 error/21 既有 warning）、35 个测试文件 204 项测试和生产构建全部通过；远端不可用时按用户要求只保留本地提交 | 下一阶段基于 2026-08-12 GSC 24h/7d 数据执行六站 SEO 修复，第二阶段不推送 |
 | SESSION-150 | 2026-08-13 01:07–2026-08-14 00:05 | GSC 增量数据诊断与目录 SEO 防复发门禁 | 对前 24 小时/7 天按设备、排名区间、页面和子域拆分；确认 CTR 下滑由桌面端 21–50 位长尾曝光扩张主导。为六类十语言目录增加真实 ItemList JSON-LD，预渲染门禁要求目录 ItemList 与真实语言 alternate；更新 SEO 诊断文档 | 内容、图片、10 语言、翻译同步、typecheck、Lint、35 个测试文件 205 项测试、生产构建与 13 项 Playwright E2E 全部通过；当前准备提交并推送，PoE2 原有 tmp 临时文件明确排除 | 推送并部署后按 7/14/28 天窗口观察目录排名 |
+| SESSION-150 | 2026-08-13 01:07–2026-08-14 00:05 | GSC 增量数据诊断与目录 SEO 防复发门禁 | 对前 24 小时/7 天按设备、排名区间、页面和子域拆分；确认 CTR 下滑由桌面端 21–50 位长尾曝光扩张主导。为六类十语言目录增加真实 ItemList JSON-LD，预渲染门禁要求目录 ItemList 与真实语言 alternate；更新 SEO 诊断文档 | 内容、图片、10 语言、翻译同步、typecheck、Lint、35 个测试文件 205 项测试、生产构建与 13 项 Playwright E2E 全部通过；本轮 SEO 提交已推送，PoE2 原有 tmp 临时文件明确排除 | 推送并部署后按 7/14/28 天窗口观察目录排名 |
+| SESSION-151 | 2026-08-14 00:15–00:33 | 修复推送后 GitHub Quality 的全仓库格式门禁失败 | GitHub Quality 运行 31719297287 在 `prettier --check .` 阶段报告 191 个既有格式不一致文件；仅对 Git 已跟踪文件执行 Prettier 归一化，未处理 tmp 临时文件；更新后的结构化 JSON 逐个解析确认数据可读 | Prettier 全仓库通过；183 个变更 JSON 语义解析 0 个失败；完整 `npm run quality` 通过（205 项测试、生产构建、13/13 E2E）；待推送该 CI 修复提交，远端运行需再次确认 | Quality 通过后确认自动部署与线上 ItemList 同步 |
