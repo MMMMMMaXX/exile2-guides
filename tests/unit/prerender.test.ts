@@ -136,9 +136,31 @@ describe("prerender HTML verification", () => {
     ]);
   });
 
+  it("分类目录必须输出 ItemList 结构化数据", () => {
+    expect(
+      inspectStructuredData(
+        '<script type="application/ld+json">{"@type":"FAQPage"}</script>',
+        "/en/items/",
+        false,
+      ),
+    ).toEqual([
+      expect.objectContaining({
+        code: "missing-structured-data",
+        message: expect.stringContaining("ItemList"),
+      }),
+    ]);
+    expect(
+      inspectStructuredData(
+        '<script type="application/ld+json">{"@type":"ItemList"}</script>',
+        "/en/items/",
+        false,
+      ),
+    ).toEqual([]);
+  });
+
   it("accepts canonical, hreflang, Open Graph and Twitter metadata", () => {
     const html =
-      '<link rel="canonical" href="/en/"><link rel="alternate" hrefLang="en" href="/en/"><meta property="og:image" content="/og.png"><meta name="twitter:card" content="summary_large_image">';
+      '<link rel="canonical" href="/en/"><link rel="alternate" hreflang="en" href="/en/"><meta property="og:image" content="/og.png"><meta name="twitter:card" content="summary_large_image">';
     expect(inspectSeoMetadata(html, "/en/")).toEqual([]);
   });
 

@@ -80,6 +80,11 @@ export function inspectStructuredData(
 ): PrerenderVerificationIssue[] {
   const requiredTypes = [
     ...(publicPath === "/" ? ["WebSite"] : []),
+    ...(/^\/(?:en|zh-cn|pt-br|ru|de|es|fr|ja|ko|tr)\/(?:builds|bosses|items|skills|guides|patches)\/$/.test(
+      publicPath,
+    )
+      ? ["ItemList"]
+      : []),
     ...(isContentRoute ? ["Article", "BreadcrumbList"] : []),
   ];
 

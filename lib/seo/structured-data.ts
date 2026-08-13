@@ -1,9 +1,11 @@
 /** 文件职责：从已验证的页面数据生成最小、真实且可维护的 Schema.org 结构化数据。 */
 import {
+  contentTypeSegments,
   contentRoutePath,
   supportedLocales,
   type ContentLocale,
 } from "../content/constants";
+import type { StaticContentCatalogPage } from "../content/content-page";
 import type { ContentFrontMatter } from "../content/schema";
 import { toPublicUrl } from "./metadata";
 import { siteConfig } from "./site-config";
@@ -139,6 +141,29 @@ export function createArticleJsonLd(frontMatter: ContentFrontMatter) {
     image: toPublicUrl(frontMatter.image ?? "/og.png"),
     inLanguage: toLanguageTag(frontMatter.locale),
     mainEntityOfPage: toPublicUrl(path),
+  };
+}
+
+/**
+ * 为内容中心输出真实 ItemList，明确目录页与详情页的 hub→spoke 关系。
+ * 只使用当前目录已经展示的发布条目，避免结构化数据声明不可见或未发布页面。
+ */
+export function createCatalogItemListJsonLd(
+  locale: ContentLocale,
+  contentType: ContentFrontMatter["contentType"],
+  pages: readonly StaticContentCatalogPage[],
+) {
+  const segment = contentTypeSegments[contentType];
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: pages.map((page, index) => ({
+      "@type": "ListItem",
+      name: page.frontMatter.title,
+      position: index + 1,
+      url: toPublicUrl(`/${locale}/${segment}/${page.frontMatter.slug}/`),
+    })),
+    numberOfItems: pages.length,
   };
 }
 

@@ -13,7 +13,10 @@ import type { StaticContentCatalogPage } from "../../lib/content/content-page";
 import { getCategoryCopy } from "../../lib/i18n/category-copy";
 import { t } from "../../lib/i18n/ui";
 import { FaqAccordion } from "../content/faq-accordion";
-import { createFaqJsonLdFromItems } from "../../lib/seo/structured-data";
+import {
+  createCatalogItemListJsonLd,
+  createFaqJsonLdFromItems,
+} from "../../lib/seo/structured-data";
 import { StructuredData } from "../seo/structured-data";
 import {
   filterBuilds,
@@ -778,6 +781,11 @@ export function V4CatalogPage({
     categoryCopy.faq && categoryCopy.faq.length > 0
       ? createFaqJsonLdFromItems(locale, categoryCopy.faq)
       : null;
+  const itemListJsonLd = createCatalogItemListJsonLd(
+    locale,
+    contentType,
+    items,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState("All");
   // 选中的标签统一存受控 slug，供全部分类的标签筛选与卡片展示复用。
@@ -972,6 +980,7 @@ export function V4CatalogPage({
   return (
     <main className="v4-prototype-catalog" data-prerender-content="true">
       <ReadingProgress />
+      <StructuredData data={itemListJsonLd} />
       <section className="v4-prototype-catalog__hero">
         <div className="page-shell v4-prototype-catalog__hero-grid">
           <div>
