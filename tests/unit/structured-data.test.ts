@@ -91,6 +91,7 @@ describe("SEO site files", () => {
 
     expect(paths).toContain("/en/guides/");
     expect(paths).toContain("/en/guides/verified-guide/");
+    expect(paths).not.toContain("/");
     expect(paths).not.toContain("/en/search/");
     expect(paths).not.toContain("/404.html");
   });
@@ -105,6 +106,7 @@ describe("SEO site files", () => {
     );
     expect(sitemap).toContain("<lastmod>2026-07-27</lastmod>");
     expect(sitemap).not.toContain("/en/search/");
+    expect(sitemap).not.toContain("<loc>https://poe2.stratlore.com/</loc>");
     expect(robots).toBe(
       "User-agent: *\nAllow: /\nSitemap: https://poe2.stratlore.com/sitemap.xml\n",
     );

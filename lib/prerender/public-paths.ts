@@ -72,7 +72,6 @@ export const patchCollectionPaths = supportedLocales.flatMap((locale) =>
 );
 
 export const fixedPublicPaths = [
-  "/",
   ...supportedLocales.map((locale) => `/${locale}/`),
   ...categoryListPaths,
   ...informationPagePaths,
@@ -246,7 +245,6 @@ export function enumerateIndexablePaths(index: ContentIndex): string[] {
   });
 
   return [
-    "/",
     ...supportedLocales.map((locale) => `/${locale}/`),
     ...populatedCategoryPaths,
     ...populatedBuildCollectionPaths,

@@ -75,6 +75,7 @@ describe("public prerender paths", () => {
       ...fixedPublicPaths,
       "/en/guides/verified-guide/",
     ]);
+    expect(fixedPublicPaths).not.toContain("/");
   });
 
   it("不会把草稿内容加入生产路径", () => {

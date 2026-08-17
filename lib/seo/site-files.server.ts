@@ -91,9 +91,10 @@ export async function verifySeoSiteFiles(
   index: ContentIndex,
   siteOrigin = getBuildSiteOrigin(),
 ): Promise<void> {
-  const [sitemap, robots] = await Promise.all([
+  const [sitemap, robots, redirects] = await Promise.all([
     fs.readFile(path.join(outputDirectory, "sitemap.xml"), "utf8"),
     fs.readFile(path.join(outputDirectory, "robots.txt"), "utf8"),
+    fs.readFile(path.join(outputDirectory, "_redirects"), "utf8"),
   ]);
   if (sitemap !== renderSitemapXml(index, siteOrigin)) {
     throw new Error(
@@ -104,5 +105,8 @@ export async function verifySeoSiteFiles(
     throw new Error(
       "Generated robots.txt does not declare the current Sitemap",
     );
+  }
+  if (!redirects.split(/\r?\n/).includes("/ /en/ 301")) {
+    throw new Error("Cloudflare Pages redirects must consolidate / into /en/");
   }
 }
