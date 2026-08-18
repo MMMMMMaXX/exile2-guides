@@ -116,6 +116,7 @@ function renderSectionContent(
       return (
         <NarrativeContent
           bullets={section.bullets}
+          locale={locale}
           paragraphs={section.paragraphs}
         />
       );
@@ -411,7 +412,7 @@ function renderSectionContent(
     case "sources-section":
       return <SourcesSection categories={section.categories} />;
     case "faq":
-      return <FaqList items={section.items} />;
+      return <FaqList items={section.items} locale={locale} />;
     case "video":
       return (
         <VideoList

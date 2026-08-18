@@ -122,7 +122,8 @@ export function createWebSiteJsonLd(locale?: ContentLocale) {
 
 /**
  * 从发布 Front Matter 生成 Article 数据。
- * author 保留为编辑者提供的真实名称字符串，避免擅自推断其属于 Person 或 Organization。
+ * 内容文件中的旧 author 值包含多个历史团队称呼；公开结构化数据统一指向真实站点组织与编辑说明页，
+ * 防止同一作者被 Google 拆成多个不完整实体，同时给读者提供可核查的责任主体。
  */
 export function createArticleJsonLd(frontMatter: ContentFrontMatter) {
   const path = contentRoutePath(
@@ -133,7 +134,11 @@ export function createArticleJsonLd(frontMatter: ContentFrontMatter) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    author: frontMatter.author,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: toPublicUrl(`/${frontMatter.locale}/about/`),
+    },
     dateModified: frontMatter.updatedAt,
     datePublished: frontMatter.publishedAt,
     description: frontMatter.seoDescription,

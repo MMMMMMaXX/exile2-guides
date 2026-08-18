@@ -1,11 +1,19 @@
 /** 文件职责：渲染可筛选 data-table，用于奖励矩阵、对比表等；筛选按行 tags 匹配。 */
 import { useState } from "react";
 
+import type { ContentLocale } from "../../../lib/content/constants";
 import type { GuideSection } from "../../../lib/guides/schema";
+import { formatPublicEvidenceText } from "../../../lib/i18n/public-evidence-copy";
 
 type DataTableSection = Extract<GuideSection, { type: "data-table" }>;
 
-export function DataTable({ section }: { section: DataTableSection }) {
+export function DataTable({
+  locale,
+  section,
+}: {
+  locale: ContentLocale;
+  section: DataTableSection;
+}) {
   const [active, setActive] = useState<string>("all");
   const filters = [{ id: "all", label: "全部" }, ...section.filters];
   const rows = section.rows.filter(
@@ -15,7 +23,9 @@ export function DataTable({ section }: { section: DataTableSection }) {
   return (
     <div className="guide-data-table">
       {section.caption ? (
-        <p className="guide-data-table__caption">{section.caption}</p>
+        <p className="guide-data-table__caption">
+          {formatPublicEvidenceText(locale, section.caption)}
+        </p>
       ) : null}
       {section.filters.length > 0 ? (
         <div className="guide-data-table__filters">
@@ -46,7 +56,10 @@ export function DataTable({ section }: { section: DataTableSection }) {
                 {section.columns.map((column) => (
                   <td
                     dangerouslySetInnerHTML={{
-                      __html: row.cells[column.key] ?? "",
+                      __html: formatPublicEvidenceText(
+                        locale,
+                        row.cells[column.key] ?? "",
+                      ),
                     }}
                     key={column.key}
                   />
@@ -56,7 +69,11 @@ export function DataTable({ section }: { section: DataTableSection }) {
           </tbody>
         </table>
       </div>
-      {section.note ? <p className="guide-note">{section.note}</p> : null}
+      {section.note ? (
+        <p className="guide-note">
+          {formatPublicEvidenceText(locale, section.note)}
+        </p>
+      ) : null}
     </div>
   );
 }

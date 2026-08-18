@@ -1,5 +1,6 @@
 /** 文件职责：渲染 Patch 详情页视觉原型所要求的富内容模块（时间线、影响仪表盘、改动浏览器、Before/After、Boss/Item 影响、受影响内容队列、社区证据、技术环境矩阵、已知问题、后续链）。所有文案均与文章语言一致，分类与状态标签由本地化映射提供。 */
 import type { ContentLocale } from "../../lib/content/constants";
+import { formatPublicEvidenceText } from "../../lib/i18n/public-evidence-copy";
 import type { PatchSection } from "../../lib/patches/schema";
 
 /** 状态与分类标签本地化映射，避免在 JSON 中写入界面词。 */
@@ -937,7 +938,9 @@ function PatchDataTable({
           {section.rows.map((row, index) => (
             <tr key={index}>
               {section.columns.map((column) => (
-                <td key={column.key}>{row[column.key] ?? ""}</td>
+                <td key={column.key}>
+                  {formatPublicEvidenceText(locale, row[column.key] ?? "")}
+                </td>
               ))}
             </tr>
           ))}

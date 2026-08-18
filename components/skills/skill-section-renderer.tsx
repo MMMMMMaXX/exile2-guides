@@ -7,6 +7,7 @@ import type {
   SkillRichSection,
   SkillSection,
 } from "../../lib/skills/schema";
+import { formatPublicEvidenceText } from "../../lib/i18n/public-evidence-copy";
 import { NarrativeContent } from "../content/sections/narrative-content";
 import { FaqList } from "../content/sections/faq-list";
 import { VideoList } from "../content/sections/video-list";
@@ -65,6 +66,7 @@ const priorityLabels: Record<"en" | "zh-cn", Record<string, string>> = {
  * 供第三批新增的 25 种复用业务模型章节共用，避免为单篇引入一次性 JSX。
  */
 function RichSection({
+  locale,
   section,
 }: {
   section: SkillRichSection;
@@ -80,6 +82,7 @@ function RichSection({
       {(section.paragraphs.length > 0 || section.bullets.length > 0) && (
         <NarrativeContent
           bullets={section.bullets}
+          locale={locale}
           paragraphs={section.paragraphs}
         />
       )}
@@ -88,10 +91,10 @@ function RichSection({
           {section.keyValues!.map((kv) => (
             <div className="skill-property-row" key={kv.label}>
               <dt>{kv.label}</dt>
-              <dd>{kv.value}</dd>
+              <dd>{formatPublicEvidenceText(locale, kv.value)}</dd>
               {kv.notes.map((note) => (
                 <dd className="skill-property-note" key={note}>
-                  {note}
+                  {formatPublicEvidenceText(locale, note)}
                 </dd>
               ))}
             </div>
@@ -153,6 +156,7 @@ function renderSectionContent(
       return (
         <NarrativeContent
           bullets={section.bullets}
+          locale={locale}
           paragraphs={section.paragraphs}
         />
       );
@@ -185,7 +189,7 @@ function renderSectionContent(
               <dd>{property.value}</dd>
               {property.notes.map((note) => (
                 <dd className="skill-property-note" key={note}>
-                  {note}
+                  {formatPublicEvidenceText(locale, note)}
                 </dd>
               ))}
             </div>
@@ -193,7 +197,7 @@ function renderSectionContent(
         </dl>
       );
     case "faq":
-      return <FaqList items={section.items} />;
+      return <FaqList items={section.items} locale={locale} />;
     case "video":
       return (
         <VideoList

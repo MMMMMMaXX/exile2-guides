@@ -1,6 +1,11 @@
 /** 文件职责：为原型 V2 详情页右栏集中展示可核验元数据与安全导航，不重复正文结论。 */
 
 import type { ContentLocale, ContentType } from "../../lib/content/constants";
+import {
+  formatPublicVerificationStatus,
+  getArticleSidebarCopy,
+} from "../../lib/i18n/article-sidebar-copy";
+import { siteConfig } from "../../lib/seo/site-config";
 
 /** Boss tag slug 到显示名的映射；侧栏标签读取此表。 */
 const bossTagLabels: Record<string, { en: string; zh: string }> = {
@@ -34,7 +39,6 @@ function formatTag(tag: string, contentType: ContentType, zh: boolean): string {
 }
 
 export type ArticleSidebarProps = {
-  author: string;
   categoryHref: string;
   categoryLabel: string;
   contentType: ContentType;
@@ -47,7 +51,6 @@ export type ArticleSidebarProps = {
 
 /** 渲染详情页右侧事实摘要、分类入口和核验边界。 */
 export function ArticleSidebar({
-  author,
   categoryHref,
   categoryLabel,
   contentType,
@@ -57,53 +60,59 @@ export function ArticleSidebar({
   updatedAt,
   verificationStatus,
 }: ArticleSidebarProps) {
+  const copy = getArticleSidebarCopy(locale);
   const zh = locale === "zh-cn";
+  const aboutHref = `/${locale}/about/`;
+  const browseAllLabel = copy.browseAll.replace("{category}", categoryLabel);
 
   return (
     <>
       <section className="article-rail-panel">
-        <h2>{zh ? "页面信息" : "Page facts"}</h2>
+        <h2>{copy.pageFacts}</h2>
         <dl>
           <div>
-            <dt>Patch</dt>
+            <dt>{copy.patch}</dt>
             <dd>{patch}</dd>
           </div>
           <div>
-            <dt>{zh ? "更新日期" : "Updated"}</dt>
+            <dt>{copy.updated}</dt>
             <dd>{updatedAt}</dd>
           </div>
           <div>
-            <dt>{zh ? "作者" : "Author"}</dt>
-            <dd>{author}</dd>
+            <dt>{copy.author}</dt>
+            <dd>
+              <a href={aboutHref}>{siteConfig.siteName}</a>
+            </dd>
           </div>
           {verificationStatus ? (
             <div>
-              <dt>{zh ? "核验状态" : "Verification"}</dt>
-              <dd>{verificationStatus}</dd>
+              <dt>{copy.evidenceStatus}</dt>
+              <dd>
+                {formatPublicVerificationStatus(locale, verificationStatus)}
+              </dd>
             </div>
           ) : null}
         </dl>
       </section>
 
       <section className="article-rail-panel">
-        <h2>{zh ? "内容标签" : "Content tags"}</h2>
+        <h2>{copy.contentTags}</h2>
         <div className="article-rail-tags">
           {tags.slice(0, 6).map((tag) => (
             <span key={tag}>{formatTag(tag, contentType, zh)}</span>
           ))}
         </div>
         <a className="article-rail-link" href={categoryHref}>
-          {zh ? `浏览全部${categoryLabel}` : `Browse all ${categoryLabel}`} →
+          {browseAllLabel} →
         </a>
       </section>
 
       <section className="article-rail-panel article-rail-panel--notice">
-        <h2>{zh ? "核验边界" : "Verification boundary"}</h2>
-        <p>
-          {zh
-            ? "来源与 Patch 范围会在正文中明确区分；本站不会把尚未经实机确认的内容表述为实测结论。"
-            : "Sources, patch scope and pending in-game checks remain visibly separated. Pending work is never presented as tested fact."}
-        </p>
+        <h2>{copy.evidenceScope}</h2>
+        <p>{copy.evidenceScopeBody}</p>
+        <a className="article-rail-link" href={aboutHref}>
+          {copy.editorialProcess} →
+        </a>
       </section>
     </>
   );

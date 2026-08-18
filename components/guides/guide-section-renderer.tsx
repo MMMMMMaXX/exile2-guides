@@ -145,6 +145,7 @@ function renderSectionContent(
       return (
         <NarrativeContent
           bullets={section.bullets}
+          locale={locale}
           paragraphs={section.paragraphs}
         />
       );
@@ -164,7 +165,7 @@ function renderSectionContent(
         </ol>
       );
     case "faq":
-      return <FaqList items={section.items} />;
+      return <FaqList items={section.items} locale={locale} />;
     case "video":
       return (
         <VideoList
@@ -185,7 +186,7 @@ function renderSectionContent(
     case "stat-grid":
       return <StatGrid section={section} />;
     case "data-table":
-      return <DataTable section={section} />;
+      return <DataTable locale={locale} section={section} />;
     case "tabs":
       return <Tabbed section={section} />;
     case "card-grid":

@@ -18,7 +18,7 @@ export type HomeCopy = {
 const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   en: {
     contentStatusDescription:
-      "Browse the latest source-linked pages. Entries marked as pending verification remain public under the site's editorial policy and clearly state that boundary.",
+      "Browse the latest source-linked pages. Each article identifies its patch, evidence and the limits of its first-hand testing.",
     contentStatusTitle: "Latest published content",
     description:
       "Find verified Path of Exile 2 builds, boss strategies, item answers and skill breakdowns for patch 0.5.4e.",
@@ -35,7 +35,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   "zh-cn": {
     contentStatusDescription:
-      "浏览最新的来源链接页面。按编辑规则公开但仍待实机核验的内容会明确标注核验边界。",
+      "浏览最新的来源链接页面；每篇文章都会说明适用版本、证据来源与第一方实机测试范围。",
     contentStatusTitle: "最新公开内容",
     description:
       "查找适配 0.5.4e 版本的 Path of Exile 2 Build、首领打法、物品答案与技能解析。",
@@ -52,7 +52,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   "pt-br": {
     contentStatusDescription:
-      "Navegue pelas páginas mais recentes vinculadas à fonte. Entradas marcadas como pendentes de verificação permanecem públicas segundo a política editorial do site e declaram claramente esse limite.",
+      "Navegue pelas páginas mais recentes com fontes. Cada artigo identifica o patch, as evidências e os limites dos testes diretos.",
     contentStatusTitle: "Conteúdo publicado recentemente",
     description:
       "Encontre builds, estratégias de chefes, respostas sobre itens e análises de habilidades de Path of Exile 2 para o patch 0.5.4e.",
@@ -70,7 +70,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   ru: {
     contentStatusDescription:
-      "Просматривайте последние страницы со ссылками на источники. Записи, отмеченные как ожидающие проверки, остаются опубликованными согласно редакционной политике сайта и чётко указывают этот предел.",
+      "Читайте последние страницы со ссылками на источники. В каждой статье указаны патч, доказательства и границы собственных игровых проверок.",
     contentStatusTitle: "Последний опубликованный контент",
     description:
       "Найдите проверенные билды, стратегии по боссам, ответы по предметам и разборы навыков Path of Exile 2 для патча 0.5.4e.",
@@ -87,7 +87,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   de: {
     contentStatusDescription:
-      "Durchsuche die neuesten, mit Quellen verknüpften Seiten. Einträge, die als wartend auf Verifizierung markiert sind, bleiben gemäß der redaktionellen Richtlinie der Seite öffentlich und grenzen dies deutlich ab.",
+      "Durchsuche die neuesten Seiten mit Quellenangaben. Jeder Artikel nennt Patch, Nachweise und die Grenzen eigener Spieltests.",
     contentStatusTitle: "Zuletzt veröffentlichter Inhalt",
     description:
       "Finde verifizierte Builds, Boss-Strategien, Item-Antworten und Skill-Erklärungen für Path of Exile 2 Patch 0.5.4e.",
@@ -104,7 +104,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   es: {
     contentStatusDescription:
-      "Explora las páginas más recientes vinculadas a fuentes. Las entradas marcadas como pendientes de verificación permanecen públicas según la política editorial del sitio y declaran claramente ese límite.",
+      "Explora las páginas más recientes con fuentes. Cada artículo indica el parche, las pruebas y los límites de las comprobaciones directas.",
     contentStatusTitle: "Contenido publicado más reciente",
     description:
       "Encuentra builds verificadas, estrategias de jefes, respuestas sobre objetos y análisis de habilidades de Path of Exile 2 para el parche 0.5.4e.",
@@ -122,7 +122,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   fr: {
     contentStatusDescription:
-      "Parcourez les dernières pages liées à leurs sources. Les entrées marquées comme en attente de vérification restent publiques selon la politique éditoriale du site et indiquent clairement cette limite.",
+      "Parcourez les dernières pages avec leurs sources. Chaque article indique le patch, les preuves et les limites des tests directs.",
     contentStatusTitle: "Dernier contenu publié",
     description:
       "Trouvez des builds vérifiés, stratégies de boss, réponses sur les objets et explications de compétences pour Path of Exile 2 patch 0.5.4e.",
@@ -140,7 +140,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   ja: {
     contentStatusDescription:
-      "最新のソース付きページを閲覧できます。検証待ちとマークされた項目は、サイトの編集方針に基づき公開されたままとなり、その境界を明確に示します。",
+      "最新の出典付きページを閲覧できます。各記事では対象パッチ、根拠、実測範囲の限界を明記しています。",
     contentStatusTitle: "最新の公開コンテンツ",
     description:
       "Path of Exile 2 の検証済みビルド、ボス攻略、アイテム解説、スキル解説をパッチ 0.5.4e 向けに探せます。",
@@ -157,7 +157,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   ko: {
     contentStatusDescription:
-      "최신 소스 연결 페이지를 둘러보세요. 검증 대기로 표시된 항목은 사이트 편집 정책에 따라 공개 상태로 유지되며 그 경계를 명확히 안내합니다.",
+      "최신 출처 연결 페이지를 둘러보세요. 각 글에는 적용 패치, 근거, 직접 테스트 범위의 한계가 명시됩니다.",
     contentStatusTitle: "최신 게시 콘텐츠",
     description:
       "Path of Exile 2 의 검증된 빌드, 보스 공략, 아이템 답변, 스킬 분석을 패치 0.5.4e 기준으로 찾아보세요.",
@@ -174,7 +174,7 @@ const homeCopyByLocale: Record<ContentLocale, HomeCopy> = {
   },
   tr: {
     contentStatusDescription:
-      "Kaynak bağlantılı en son sayfaları göz atın. Doğrulama bekliyor olarak işaretlenen girişler, sitenin editoryal politikası gereği herkese açık kalır ve bu sınırı açıkça belirtir.",
+      "Kaynak bağlantılı en son sayfalara göz atın. Her makale yamayı, kanıtları ve doğrudan testlerin sınırlarını belirtir.",
     contentStatusTitle: "En son yayımlanan içerik",
     description:
       "Path of Exile 2 için doğrulanmış build'ler, boss stratejileri, eşya cevapları ve yetenek açıklamalarını 0.5.4e yaması için bulun.",

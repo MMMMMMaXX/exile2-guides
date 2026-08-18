@@ -67,7 +67,11 @@ describe("structured data", () => {
     expect(website).toMatchObject({ "@type": "WebSite" });
     expect(article).toMatchObject({
       "@type": "Article",
-      author: "Editorial Team",
+      author: {
+        "@type": "Organization",
+        name: "Exile2 Guides",
+        url: "/en/about/",
+      },
       dateModified: "2026-07-27",
       datePublished: "2026-07-26",
       headline: "Verified Guide",

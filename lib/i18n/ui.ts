@@ -147,7 +147,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Published content",
     "home.editorialNote": "Editorial note",
     "home.editorialNoteBody":
-      "Every public page keeps its patch, sources and verification status visible. Pending verification is not presented as tested fact.",
+      "Every public page identifies its patch and cited sources. First-hand observations and their limits are stated beside the relevant claim.",
     "home.siteStatus": "Site status",
     "home.startHere": "Start here",
     "home.quickAccess": "Quick Access",
@@ -233,7 +233,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "公开内容",
     "home.editorialNote": "编辑说明",
     "home.editorialNoteBody":
-      "所有公开内容均保留 Patch、来源与实机核验状态；待核验不等于已实测。",
+      "所有公开内容都会说明适用版本与引用来源；第一方实机观察及其边界会写在相关结论旁。",
     "home.siteStatus": "站点状态",
     "home.startHere": "从这里开始",
     "home.quickAccess": "快捷入口",
@@ -317,7 +317,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Conteúdo publicado",
     "home.editorialNote": "Nota editorial",
     "home.editorialNoteBody":
-      "Toda página pública mantém seu patch, fontes e status de verificação visíveis. Verificação pendente não é apresentada como fato testado.",
+      "Toda página pública identifica o patch e as fontes citadas. Observações diretas e seus limites aparecem junto à afirmação relevante.",
     "home.siteStatus": "Status do site",
     "home.startHere": "Comece aqui",
     "home.quickAccess": "Acesso Rápido",
@@ -403,7 +403,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Опубликованный контент",
     "home.editorialNote": "Редакционная заметка",
     "home.editorialNoteBody":
-      "На каждой публичной странице видны патч, источники и статус проверки. Ожидающая проверки информация не выдаётся за проверенную.",
+      "На каждой публичной странице указаны патч и источники. Собственные наблюдения и границы их применимости приведены рядом с соответствующим утверждением.",
     "home.siteStatus": "Статус сайта",
     "home.startHere": "Начните здесь",
     "home.quickAccess": "Быстрый доступ",
@@ -488,7 +488,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Veröffentlichte Inhalte",
     "home.editorialNote": "Redaktionelle Anmerkung",
     "home.editorialNoteBody":
-      "Jede öffentliche Seite zeigt Patch, Quellen und Verifizierungsstatus. Ausstehende Verifizierung wird nicht als getestete Tatsache dargestellt.",
+      "Jede öffentliche Seite nennt Patch und Quellen. Eigene Beobachtungen und ihre Grenzen stehen direkt bei der jeweiligen Aussage.",
     "home.siteStatus": "Website-Status",
     "home.startHere": "Hier beginnen",
     "home.quickAccess": "Schnellzugriff",
@@ -575,7 +575,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Contenido publicado",
     "home.editorialNote": "Nota editorial",
     "home.editorialNoteBody":
-      "Cada página pública muestra su parche, fuentes y estado de verificación. La verificación pendiente no se presenta como un hecho comprobado.",
+      "Cada página pública indica el parche y las fuentes citadas. Las observaciones directas y sus límites aparecen junto a la afirmación relevante.",
     "home.siteStatus": "Estado del sitio",
     "home.startHere": "Empieza aquí",
     "home.quickAccess": "Acceso Rápido",
@@ -661,7 +661,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Contenu publié",
     "home.editorialNote": "Note éditoriale",
     "home.editorialNoteBody":
-      "Chaque page publique affiche son patch, ses sources et son statut de vérification. Une vérification en attente n'est pas présentée comme un fait testé.",
+      "Chaque page publique indique le patch et les sources citées. Les observations directes et leurs limites figurent près de l’affirmation concernée.",
     "home.siteStatus": "État du site",
     "home.startHere": "Commencez ici",
     "home.quickAccess": "Accès Rapide",
@@ -748,7 +748,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "公開コンテンツ",
     "home.editorialNote": "編集者注記",
     "home.editorialNoteBody":
-      "すべての公開ページにはパッチ、出典、検証ステータスが表示されます。検証待ちの情報は検証済みの事実として提示されません。",
+      "すべての公開ページに対象パッチと出典を明記し、実測した内容とその限界を該当する記述の近くに示します。",
     "home.siteStatus": "サイト状況",
     "home.startHere": "ここから始める",
     "home.quickAccess": "クイックアクセス",
@@ -833,7 +833,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "게시된 콘텐츠",
     "home.editorialNote": "편집자 노트",
     "home.editorialNoteBody":
-      "모든 공개 페이지에는 패치, 출처, 검증 상태가 표시됩니다. 검증 대기 중인 정보는 검증된 사실로 제시되지 않습니다.",
+      "모든 공개 페이지에는 적용 패치와 인용 출처가 표시되며, 직접 관찰한 내용과 그 한계는 관련 주장 옆에 명시됩니다.",
     "home.siteStatus": "사이트 상태",
     "home.startHere": "여기서 시작",
     "home.quickAccess": "빠른 메뉴",
@@ -918,7 +918,7 @@ export const uiByLocale: Record<ContentLocale, Record<string, string>> = {
     "home.publishedContent": "Yayınlanan içerik",
     "home.editorialNote": "Editöryel not",
     "home.editorialNoteBody":
-      "Her açık sayfada yama, kaynaklar ve doğrulama durumu görünür. Doğrulama bekleyen bilgi test edilmiş gerçek olarak sunulmaz.",
+      "Her açık sayfa yamayı ve alıntılanan kaynakları belirtir. Doğrudan gözlemler ve sınırları ilgili iddianın yanında açıklanır.",
     "home.siteStatus": "Site durumu",
     "home.startHere": "Buradan başlayın",
     "home.quickAccess": "Hızlı Erişim",

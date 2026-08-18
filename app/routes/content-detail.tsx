@@ -449,7 +449,6 @@ export default function ContentDetailRoute({
         patch={page.frontMatter.patch}
         rail={
           <ArticleSidebar
-            author={page.frontMatter.author}
             categoryHref={`/${page.frontMatter.locale}/${contentTypeSegments[page.frontMatter.contentType]}/`}
             categoryLabel={getCategoryLabel(
               page.frontMatter.locale,
